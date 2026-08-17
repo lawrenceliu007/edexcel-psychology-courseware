@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edexcel IAL Psychology Courseware | 爱德思心理学课件</title>
+    <style>
+        :root {
+            --edx-orange: #E87722;
+            --edx-dark: #C62828;
+            --intro-purple: #6A1B9A;
+            --bio-red: #dc2626;
+            --social-blue: #2563eb;
+            --clinical-teal: #0d9488;
+            --bg: #F5F7FA;
+            --card-bg: #FFFFFF;
+            --text: #2C3E50;
+            --text-light: #607D8B;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        .header { background: linear-gradient(135deg, #c2410c 0%, #ea580c 50%, #f97316 100%); color: white; padding: 3rem 2rem; text-align: center; }
+        .header h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .header p { font-size: 1.1rem; opacity: 0.9; }
+        .container { max-width: 1200px; margin: 2rem auto; padding: 0 1.5rem; }
+        .section-title { font-size: 1.6rem; font-weight: 700; margin: 2.5rem 0 1.2rem; padding-bottom: 0.5rem; border-bottom: 3px solid; display: flex; align-items: center; gap: 0.6rem; }
+        .section-title.topic { color: var(--edx-orange); border-color: var(--edx-orange); }
+        .section-title.intro { color: var(--intro-purple); border-color: var(--intro-purple); }
+        .badge { font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 12px; color: white; font-weight: 600; vertical-align: middle; }
+        .badge.topic-a { background: var(--social-blue); }
+        .badge.topic-b { background: var(--bio-red); }
+        .badge.topic-c { background: #16a34a; }
+        .badge.clinical { background: var(--clinical-teal); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.2rem; margin-bottom: 2rem; }
+        .card { background: var(--card-bg); border-radius: 12px; padding: 1.5rem; transition: transform 0.2s, box-shadow 0.2s; border-left: 4px solid #ddd; }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .card.edx-a { border-left-color: var(--social-blue); }
+        .card.edx-b { border-left-color: var(--bio-red); }
+        .card.edx-c { border-left-color: #16a34a; }
+        .card.clinical { border-left-color: var(--intro-purple); }
+        .card h3 { font-size: 1.15rem; margin-bottom: 0.4rem; }
+        .card h3 a { color: var(--text); text-decoration: none; }
+        .card h3 a:hover { color: var(--edx-orange); }
+        .card .meta { font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.6rem; }
+        .card .desc { font-size: 0.92rem; color: var(--text-light); }
+        .footer { text-align: center; padding: 2rem; color: var(--text-light); font-size: 0.85rem; border-top: 1px solid #ddd; margin-top: 2rem; }
+        .stats { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap; }
+        .stat { text-align: center; }
+        .stat-num { font-size: 2rem; font-weight: 700; color: white; }
+        .stat-label { font-size: 0.85rem; opacity: 0.8; }
+        .feature-box { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; border-left: 5px solid var(--edx-orange); }
+        .feature-box h3 { color: #9a3412; margin-bottom: 0.5rem; font-size: 1.05rem; }
+        .feature-box ul { padding-left: 1.2rem; color: #9a3412; font-size: 0.92rem; }
+        .feature-box li { margin-bottom: 0.3rem; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📙 Edexcel IAL Psychology</h1>
+        <p>Pearson Edexcel International A Level Psychology / 爱德思心理学课件</p>
+        <div class="stats">
+            <div class="stat"><div class="stat-num">3</div><div class="stat-label">Topic Chapters</div></div>
+            <div class="stat"><div class="stat-num">2</div><div class="stat-label">Clinical Intro</div></div>
+            <div class="stat"><div class="stat-num">5</div><div class="stat-label">Total Modules</div></div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Feature Box -->
+        <div class="feature-box">
+            <h3>🎯 About This Courseware / 关于本课件</h3>
+            <ul>
+                <li><strong>Syllabus:</strong> Pearson Edexcel International Advanced Level (IAL) Psychology (9PS0)</li>
+                <li><strong>Format:</strong> Interactive HTML with diagrams, study cards, and exam practice</li>
+                <li><strong>Language:</strong> English content with Chinese support for key terms</li>
+                <li><strong>Topics covered:</strong> Social, Biological, Clinical Psychology</li>
+            </ul>
+        </div>
+
+        <!-- Topic A: Social -->
+        <h2 class="section-title topic">📘 Topic A: Social Psychology（社会心理学）</h2>
+        <div class="grid">
+            <div class="card edx-a">
+                <h3><a href="edexcel/ch1-obedience/">Chapter 1: Obedience（服从）</a> <span class="badge topic-a">Topic A</span></h3>
+                <div class="meta">Social Psychology / 社会心理学</div>
+                <div class="desc">Milgram's research (baseline + variations), Agency Theory, Social Power Theory (French & Raven), individual/situational/cultural factors in obedience, ethical issues in social psychology research.</div>
+            </div>
+        </div>
+
+        <!-- Topic B: Cognitive (placeholder) -->
+        <h2 class="section-title topic">📗 Topic B: Cognitive Psychology（认知心理学）</h2>
+        <div class="grid">
+            <div style="background:#fefce8;border:2px dashed #eab308;border-radius:12px;padding:1.5rem;text-align:center;color:#854d0e;">
+                <p style="font-size:1.1rem;margin-bottom:0.3rem;">🚧 Coming Soon</p>
+                <p style="font-size:0.9rem;">Cognitive Psychology chapters under development</p>
+            </div>
+        </div>
+
+        <!-- Topic C: Biological -->
+        <h2 class="section-title topic">📕 Topic C: Biological Psychology（生物心理学）</h2>
+        <div class="grid">
+            <div class="card edx-c">
+                <h3><a href="edexcel/topic-c-biological/">Topic C: Biological Psychology（生物心理学）</a> <span class="badge topic-c">Topic C</span></h3>
+                <div class="meta">Biological Psychology / 生物心理学 ⭐ Latest</div>
+                <div class="desc">Nervous system, neuron structure, action potential, synaptic transmission, brain lobes & areas, neurotransmitters (serotonin, dopamine, GABA), hormones (testosterone, cortisol), genetics of aggression (MAOA, twin/adoption studies, Caspi et al.), wider issues & debates.</div>
+            </div>
+        </div>
+
+        <!-- Topic D: Learning (placeholder) -->
+        <h2 class="section-title topic">📙 Topic D: Learning Psychology（学习心理学）</h2>
+        <div class="grid">
+            <div style="background:#fefce8;border:2px dashed #eab308;border-radius:12px;padding:1.5rem;text-align:center;color:#854d0e;">
+                <p style="font-size:1.1rem;margin-bottom:0.3rem;">🚧 Coming Soon</p>
+                <p style="font-size:0.9rem;">Learning Psychology chapters under development</p>
+            </div>
+        </div>
+
+        <!-- Topic E: Clinical (placeholder) -->
+        <h2 class="section-title topic">📓 Topic E: Clinical Psychology（临床心理学）</h2>
+        <div class="grid">
+            <div class="card edx-b">
+                <h3><a href="edexcel/ch22-depression/">Chapter 22: Unipolar Depression（单相抑郁）</a> <span class="badge clinical">Clinical</span></h3>
+                <div class="meta">Clinical Psychology / 临床心理学</div>
+                <div class="desc">DSM-5 symptoms and classification, biological explanations (Monoamine Hypothesis, drug treatments), cognitive explanations (Beck's Cognitive Triad, Ellis' ABC model), CBT treatment approaches (cognitive restructuring, behavioral activation).</div>
+            </div>
+        </div>
+
+        <!-- Intro/Clinical -->
+        <h2 class="section-title intro">📕 Introductory & Clinical Foundations（概论与临床基础）</h2>
+        <div class="grid">
+            <div class="card clinical">
+                <h3><a href="intro/ch20-diagnosis/">Chapter 20: Definitions and Debates in Diagnosis（诊断的定义与辩论）</a></h3>
+                <div class="meta">Clinical Psychology / 临床心理学概论</div>
+                <div class="desc">Reliability & validity of diagnosis, classification systems (DSM-5, ICD-11), Rosenhan study, key debates in psychopathology (validity of diagnostic categories).</div>
+            </div>
+            <div class="card clinical">
+                <h3><a href="intro/ch21-schizophrenia/">Chapter 21: Schizophrenia（精神分裂症）</a></h3>
+                <div class="meta">Clinical Psychology / 临床心理学</div>
+                <div class="desc">Symptoms & classifications (positive/negative), biological explanations (dopamine hypothesis, neural correlates), psychological explanations (family dysfunction, cognitive explanations), therapies (drug therapy, CBT, family therapy, token economies).</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>Edexcel IAL Psychology Courseware © 2024–2026 | Built for A Level Psychology students</p>
+        <p style="margin-top:0.3rem;">Pearson Edexcel International Advanced Level (9PS0) | 爱德思国际高级水平心理学</p>
+    </div>
+</body>
+</html>
