@@ -192,7 +192,13 @@ body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
 body.dark tr:hover { background: rgba(234,88,12,.05); }
 body.dark td:first-child { color: #fb923c; }
 body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
-body.dark .figure img { border-color: #334155; }
+body.dark .figure img, body.dark svg.funnel-plot { border-color: #334155; }
+body.dark svg.funnel-plot .fp-bg { fill: #1e293b; stroke: #334155; }
+body.dark svg.funnel-plot text { fill: #cbd5e1; }
+body.dark svg.funnel-plot text[fill="#c2410c"] { fill: #fb923c; }
+body.dark svg.funnel-plot text[fill="#475569"] { fill: #94a3b8; }
+body.dark svg.funnel-plot text[fill="#334155"] { fill: #e2e8f0; }
+body.dark svg.funnel-plot rect[fill="#ffffff"] { fill: #0f172a; stroke: #334155; }
 body.dark .figure-caption { color: #94a3b8; }
 body.dark .flowchart { background: #16213e; border-color: #334155; }
 body.dark .wider-issue { background: rgba(251,192,45,.06); border-color: #f59e0b; }
@@ -749,8 +755,51 @@ body.dark a:hover { color: #93c5fd; }
   </ul>
 
   <div class="figure">
-    <img src="images/p324-funnel-plot.png" alt="Funnel plot from textbook showing how meta-analysis checks for publication bias">
-    <div class="figure-caption">Figure: A funnel plot — each dot is one study. If studies are missing from one corner, it suggests publication bias（发表偏倚）</div>
+    <svg class="funnel-plot" viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Funnel plot showing publication bias" style="max-width:620px; width:100%; height:auto;">
+      <rect class="fp-bg" x="0" y="0" width="640" height="400" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+      <!-- funnel boundaries: dashed triangle -->
+      <line x1="320" y1="50" x2="128" y2="352" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="6 4"/>
+      <line x1="320" y1="50" x2="512" y2="352" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="6 4"/>
+      <!-- combined effect line -->
+      <line x1="320" y1="50" x2="320" y2="352" stroke="#ea580c" stroke-width="2.6" stroke-dasharray="9 5"/>
+      <!-- axis arrows -->
+      <line x1="60" y1="352" x2="585" y2="352" stroke="#64748b" stroke-width="1.4"/>
+      <polygon points="585,352 575,347.5 575,356.5" fill="#64748b"/>
+      <line x1="60" y1="352" x2="60" y2="40" stroke="#64748b" stroke-width="1.4"/>
+      <polygon points="60,40 55.5,50 64.5,50" fill="#64748b"/>
+      <!-- axis labels -->
+      <text x="322" y="45" fill="#c2410c" font-size="12.5" font-weight="700">combined effect (合并效应量)</text>
+      <text x="322" y="376" text-anchor="middle" fill="#475569" font-size="12.5">Effect size（效应量）</text>
+      <text x="56" y="196" text-anchor="middle" fill="#475569" font-size="12.5" transform="rotate(-90 56 196)">Study size / precision（研究规模与精确度）</text>
+      <!-- published studies: symmetric dots -->
+      <g fill="#1d4ed8">
+        <circle cx="312" cy="66" r="4"/><circle cx="328" cy="70" r="4"/><circle cx="305" cy="82" r="4"/>
+        <circle cx="336" cy="86" r="4"/><circle cx="297" cy="98" r="4"/><circle cx="343" cy="104" r="4"/>
+        <circle cx="288" cy="118" r="4"/><circle cx="352" cy="124" r="4"/><circle cx="278" cy="138" r="4"/>
+        <circle cx="362" cy="142" r="4"/><circle cx="266" cy="158" r="4"/><circle cx="374" cy="162" r="4"/>
+        <circle cx="252" cy="178" r="4"/><circle cx="388" cy="182" r="4"/><circle cx="238" cy="198" r="4"/>
+        <circle cx="402" cy="202" r="4"/><circle cx="224" cy="218" r="4"/><circle cx="416" cy="222" r="4"/>
+        <circle cx="210" cy="238" r="4"/><circle cx="430" cy="242" r="4"/><circle cx="196" cy="258" r="4"/>
+        <circle cx="444" cy="262" r="4"/><circle cx="182" cy="278" r="4"/><circle cx="458" cy="282" r="4"/>
+        <circle cx="430" cy="302" r="4"/><circle cx="448" cy="322" r="4"/><circle cx="472" cy="342" r="4"/>
+        <circle cx="168" cy="298" r="4"/><circle cx="155" cy="322" r="4"/><circle cx="142" cy="345" r="4"/>
+      </g>
+      <!-- missing studies region (bottom left): publication bias -->
+      <ellipse cx="196" cy="318" rx="80" ry="52" fill="rgba(220,38,38,0.13)" stroke="#dc2626" stroke-width="2" stroke-dasharray="5 4"/>
+      <text x="196" y="306" text-anchor="middle" fill="#dc2626" font-size="12.5" font-weight="700">missing studies</text>
+      <text x="196" y="322" text-anchor="middle" fill="#dc2626" font-size="11.5">(未发表的研究)</text>
+      <text x="196" y="338" text-anchor="middle" fill="#dc2626" font-size="11">小样本 + 无显著效果的研究</text>
+      <text x="196" y="352" text-anchor="middle" fill="#dc2626" font-size="11">很少被期刊发表</text>
+      <!-- legend -->
+      <g>
+        <rect x="72" y="66" width="150" height="46" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+        <circle cx="86" cy="80" r="4.5" fill="#1d4ed8"/>
+        <text x="96" y="84" fill="#334155" font-size="11.5">已发表的研究</text>
+        <rect x="86" y="94" width="12" height="8" rx="2" fill="rgba(220,38,38,0.2)" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <text x="104" y="102" fill="#334155" font-size="11.5">缺失的研究区域（发表偏倚）</text>
+      </g>
+    </svg>
+    <div class="figure-caption">Funnel plot（漏斗图）：每个点代表一个研究。点越靠上，研究规模越大、越精确。如果左下角出现"空洞"（小样本又没效果的研究找不到），就说明存在 publication bias（发表偏倚）——不是研究没做过，而是没被发表。</div>
   </div>
 
   <div class="keyterm-box">
@@ -918,10 +967,7 @@ body.dark a:hover { color: #93c5fd; }
     <tr><td>Self-induced vomiting（自我催吐）</td><td><strong>0%</strong></td><td><strong>11.3%</strong></td></tr>
     <tr><td>Girls reporting dieting to lose weight</td><td>rare</td><td>much more common</td></tr>
   </table>
-  <div class="figure">
-    <img src="images/p331-becker-tv-tables.png" alt="Textbook tables and images from Becker's Fiji study">
-    <div class="figure-caption">Figure: Textbook page with Becker's data tables and images from the Fiji study</div>
-  </div>
+
 
   <p>Interview themes revealed <strong>why</strong>: girls explicitly said they wanted to look like Western TV characters, believing thinness brought status and opportunities. Some felt shame about their bodies after watching. Thematic analysis also found that girls from households owning a TV, and girls who felt more "competing" pressure, showed higher risk.</p>
 
