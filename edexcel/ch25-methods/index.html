@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edexcel Chapter 25 — Methods（临床心理学研究方法）</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --card-bg: #FFFFFF;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --note-bg: #fff7ed;
+  --note-border: #fb923c;
+  --term-color: #ea580c;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; transition: background .15s; white-space: nowrap; }
+.nav-pill:hover { background: var(--primary-dark); }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; transition: color .15s; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; font-weight: 300; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); transition: all .15s; display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+body.dark .nav-btn:hover { border-color: #f97316; color: #f97316; }
+
+.page-layout { display: grid; grid-template-columns: 190px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 190px; flex-shrink: 0; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; transition: all .15s ease; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 600; background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+.sb-item a.sb-sub { padding-left: 30px; font-size: .7em; opacity: .82; }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; backdrop-filter: blur(6px); }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box strong { color: #b45309; }
+.key-term { display: inline-block; background: #e8eaf6; color: #283593; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: .9em; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box h4 { color: #991b1b; margin-bottom: 5px; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.wider-issue { background: #fff8e1; border: 2px solid #fbc02d; border-radius: 8px; padding: 16px 20px; margin: 14px 0; }
+.wider-issue h4 { color: #f57f17; margin-top: 0; }
+.activity-box { background: #f0f4f8; border: 2px solid #90a4ae; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+.activity-box h4 { color: #546e7a; margin-top: 0; display: flex; align-items: center; gap: 8px; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+tr:hover { background: #fff7ed; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.figure { margin: 18px 0; text-align: center; }
+.figure img { max-width: 100%; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 3px 12px rgba(0,0,0,.08); }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.flowchart { background: #f6f7f9; border: 2px solid var(--border); border-radius: 12px; padding: 20px; margin: 18px 0; text-align: center; }
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: opacity .2s; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.ao-badge { background: rgba(255,255,255,.25); padding: 2px 8px; border-radius: 10px; font-size: .72em; font-weight: 700; margin-left: auto; }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; animation: slideDown .25s ease; }
+.summary-card-body.hidden { display: none; }
+@keyframes slideDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
+.summary-card-body ol { margin: 0; padding-left: 20px; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; display: flex; align-items: center; gap: 8px; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.study-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px 18px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.06); transition: all .25s ease; position: relative; }
+.study-card:hover { box-shadow: 0 4px 16px rgba(234,88,12,.15); border-color: #fb923c; transform: translateY(-2px); }
+.study-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid #fef3c7; }
+.study-icon { font-size: 1.3em; }
+.study-name { font-weight: 700; font-size: .95em; color: #ea580c; flex: 1; }
+.study-badge { font-size: .7em; font-weight: 600; padding: 3px 10px; border-radius: 12px; background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; white-space: nowrap; }
+.study-badge.classic { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: #9d174d; }
+.study-badge.contemp { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; }
+.study-badge.cross { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; }
+.study-badge.meta { background: linear-gradient(135deg, #ede9fe, #ddd6fe); color: #5b21b6; }
+.study-badge.corr { background: linear-gradient(135deg, #dcfce7, #bbf7d0); color: #166534; }
+.study-badge.natural { background: linear-gradient(135deg, #ffedd5, #fed7aa); color: #9a3412; }
+.study-badge.expt { background: linear-gradient(135deg, #cffafe, #a5f3fc); color: #155e75; }
+.study-card-body p { margin: 6px 0; line-height: 1.65; font-size: .9em; }
+.study-card-body ul { margin: 6px 0 6px 18px; padding: 0; }
+.study-card-body li { margin: 4px 0; font-size: .89em; line-height: 1.6; }
+.eval-tag { display: inline-block; background: #fef2f2; border-left: 3px solid #ef4444; padding: 4px 10px; margin-top: 6px; font-size: .85em; color: #991b1b; border-radius: 0 6px 6px 0; }
+.ao-zone-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 10px; margin: 20px 0 14px; font-weight: 700; font-size: 1.05em; }
+.ao-zone-header.ao1 { background: linear-gradient(135deg, #eff6ff, #dbeafe); border-left: 5px solid #2563eb; color: #1e40af; }
+.ao-zone-header.ao3 { background: linear-gradient(135deg, #fdf4ff, #fae8ff); border-left: 5px solid #c026d3; color: #a21caf; }
+.ao-zone-desc { font-size: .82em; font-weight: 400; opacity: .8; margin-left: auto; }
+.gold-standard-para { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 2px solid #fcd34d; border-radius: 10px; padding: 16px 18px; margin: 14px 0; }
+.gold-standard-para h4 { color: #92400e; margin: 0 0 8px; font-size: .95em; }
+.gold-standard-para p { font-size: .89em; line-height: 1.7; margin: 6px 0; }
+.gold-standard-para ul { font-size: .89em; margin: 6px 0; }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { box-shadow: 0 6px 20px rgba(234,88,12,.4); transform: translateY(-2px); }
+@media(max-width:900px){
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .main-content { max-width: 100%; }
+  .compare-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+body.dark { background: #0f172a; color: #e2e8f0; transition: background .3s, color .3s; }
+body.dark .container { background: #0f172a; }
+body.dark .nav-bar { background: #1a1a2e; border-bottom-color: var(--primary); }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+body.dark .sb-divider { background: #334155; }
+body.dark .sb-group-label { color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a:hover { color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.10), transparent); border-left-color: #f97316; }
+body.dark .sb-item a.sb-active { color: #fb923c; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); border-left-color: #f97316; }
+body.dark .header { background: linear-gradient(135deg, #c2410c, #ea580c, #f97316); }
+body.dark .section { background: #1a1a2e; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .warn-box h4 { color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .keyterm-box strong { color: #fbbf24; }
+body.dark .key-term { background: #2a2a4a; color: #a5b4fc; }
+body.dark strong { color: #fbbf24; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; color: white; border-color: #7f1d1d; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark tr:hover { background: rgba(234,88,12,.05); }
+body.dark td:first-child { color: #fb923c; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+body.dark .flowchart { background: #16213e; border-color: #334155; }
+body.dark .wider-issue { background: rgba(251,192,45,.06); border-color: #f59e0b; }
+body.dark .wider-issue h4 { color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .activity-box { background: #1e293b; border-color: #475569; }
+body.dark .activity-box h4 { color: #94a3b8; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark .study-card { background: #16213e; border-color: #334155; }
+body.dark .study-card:hover { border-color: #f97316; box-shadow: 0 4px 16px rgba(234,88,12,.2); }
+body.dark .study-card-header { border-bottom-color: #3f3f5e; }
+body.dark .study-name { color: #fb923c; }
+body.dark .study-card-body p, body.dark .study-card-body li { color: #cbd5e1; }
+body.dark .eval-tag { background: rgba(220,38,38,.08); color: #fca5a5; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .ao-zone-header.ao1 { background: linear-gradient(135deg, rgba(37,99,235,.15), rgba(37,99,235,.08)); border-left-color: #3b82f6; color: #93c5fd; }
+body.dark .ao-zone-header.ao3 { background: linear-gradient(135deg, rgba(192,38,211,.15), rgba(192,38,211,.08)); border-left-color: #c026d3; color: #e9d5ff; }
+body.dark .gold-standard-para { background: linear-gradient(135deg, rgba(245,158,11,.08), rgba(245,158,11,.04)); border-color: #f59e0b; }
+body.dark .gold-standard-para h4 { color: #fbbf24; }
+body.dark .gold-standard-para p, body.dark .gold-standard-para ul, body.dark .gold-standard-para li { color: #d1d5db; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+body.dark a { color: #60a5fa; }
+body.dark a:hover { color: #93c5fd; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../index.html">Home</a> <span class="sep">›</span>
+    <a href="../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Chapter 25 — Methods</span>
+  </div>
+  <span class="nav-pill">⚙️ Clinical Psychology · Methods</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn" title="Toggle dark mode">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)" title="Decrease font size">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)" title="Increase font size">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">Chapter 25 Contents</div>
+        <div class="sb-header-sub">Clinical Psychology · Methods</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">1 · Foundations</li>
+        <li class="sb-item"><a href="#s1" class="sb-active">1. Learning Objectives</a></li>
+        <li class="sb-item"><a href="#s2">2. Getting Started</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">2 · Research Methods</li>
+        <li class="sb-item"><a href="#s3">3. Randomised Controlled Trials</a></li>
+        <li class="sb-item"><a href="#s4">4. Evaluating RCTs</a></li>
+        <li class="sb-item"><a href="#s5">5. Neuroimaging: MRI &amp; fMRI</a></li>
+        <li class="sb-item"><a href="#s6">6. Evaluating Neuroimaging</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">3 · Research in Practice</li>
+        <li class="sb-item"><a href="#s7">7. Conventions of Reports</a></li>
+        <li class="sb-item"><a href="#s8">8. Peer Review</a></li>
+        <li class="sb-item"><a href="#s9">9. HCPC Guidelines</a></li>
+        <li class="sb-item"><a href="#s10">10. Data &amp; Statistics</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">4 · Evaluating Clinical Research</li>
+        <li class="sb-item"><a href="#s11">11. Reliability</a></li>
+        <li class="sb-item"><a href="#s12">12. Validity</a></li>
+        <li class="sb-item"><a href="#s13">13. Generalisability</a></li>
+        <li class="sb-item"><a href="#s14">14. Credibility, Objectivity</a></li>
+        <li class="sb-item"><a href="#s15">15. Ethics &amp; Applications</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-item"><a href="#s16">📝 Checkpoint &amp; Exam Practice</a></li>
+        <li class="sb-item"><a href="#s17">📚 Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>⚙️ CHAPTER 25: METHODS<br><span style="font-size:0.65em">临床心理学研究方法</span></h1>
+  <div class="subtitle">Edexcel International A Level Psychology · Clinical Psychology</div>
+  <div class="meta">
+    <span class="badge">📘 Pearson Edexcel International A Level</span>
+    <span class="badge">📋 Topic H · Clinical Psychology</span>
+    <span class="badge">🔬 RCTs · Neuroimaging · Reports · Peer Review · HCPC</span>
+    <span class="badge">📝 10 Checkpoint Qs + 4 Exam Qs</span>
+  </div>
+</div>
+
+
+<!-- ============ SECTION 1: LEARNING OBJECTIVES ============ -->
+<section class="section" id="s1">
+  <h2>1. Learning Objectives（学习目标）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary — 本节要学什么</h4>
+    <p>Chapter 24 taught you <strong>the studies</strong> (what psychologists found). Chapter 25 teaches you <strong>the methods behind those studies</strong> — how clinical research is designed, carried out, published, checked and regulated. Every example in this chapter comes from research you already know: Rosenhan, Suzuki, Hans &amp; Hiller, Ma, Becker and Reichel.</p>
+  </div>
+
+  <div class="note-box blue-box">
+    <h4>🎯 By the end of this chapter, you should be able to describe and/or evaluate:</h4>
+    <ul>
+      <li><strong>Methods from Units 1 and 2</strong> as appropriate</li>
+      <li><strong>Randomised controlled trials (RCTs)</strong> related to clinical psychology</li>
+      <li><strong>Neuroimaging</strong>, including structural and functional brain scanning related to clinical psychology</li>
+      <li><strong>Conventions of published psychological research</strong>: abstract, introduction, aims and hypotheses, method, results, discussion — and the process of <strong>peer review</strong></li>
+      <li>The <strong>Health and Care Professions Council (HCPC) guidelines</strong> for clinical practitioners</li>
+      <li><strong>Decision making and interpretation of data</strong></li>
+      <li>Issues of <strong>reliability, validity, generalisability, credibility, objectivity, subjectivity, ethics</strong> and <strong>practical application of findings</strong> as appropriate in clinical psychology</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>第 24 章学的是"心理学家发现了什么"，这一章学的是"他们<strong>怎么</strong>发现"——研究怎么设计、怎么做、怎么写成论文发表、怎么被同行检查、临床心理学家受什么规则约束。这一章的每个概念都会用第 24 章的研究举例子，所以学这章之前，最好已经熟悉那 6 个研究的基本内容。
+  </div>
+</section>
+
+<!-- ============ SECTION 2: GETTING STARTED ============ -->
+<section class="section" id="s2">
+  <h2>2. Getting Started — Is the Rat Depressed?（这只老鼠抑郁吗？）</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <ol>
+      <li>Clinical researchers sometimes use <strong>animal experiments</strong> to explore the causes and treatments of mental disorders</li>
+      <li>Animals cannot tell us how they feel — so researchers must design procedures that reveal normal vs abnormal behaviour</li>
+      <li>Rats normally <strong>love sugar</strong> and <strong>hate water</strong> — two clues you can use to design an experiment on a new antidepressant</li>
+    </ol>
+  </div>
+
+  <p>How do we know if a rat is delusional or depressed? The absence of language and other higher-order cognitive processes means procedures must be devised to determine whether animals are behaving <strong>normally</strong> or <strong>abnormally</strong>. Rats typically love sugar and hate being in water — this knowledge can be used to design an experiment testing the effects of a new antidepressant drug.</p>
+
+  <div class="activity-box">
+    <h4>🧪 Getting Started Activity — Design Your Own Animal Experiment</h4>
+    <p>You have access to the following equipment: <strong>two rat drinking bottles, a bag of sugar, weighing scales, a stopwatch, a one-metre square tank of water, a thermometer</strong> — and <strong>20 rats</strong>.</p>
+    <p>Work in pairs and decide on your:</p>
+    <ul>
+      <li><strong>experimental design</strong>（实验设计）</li>
+      <li><strong>fully operationalised independent and dependent variables</strong>（完整操作化的自变量与因变量）</li>
+      <li><strong>aim, directional experimental and null hypotheses</strong>（研究目的、方向性实验假设与虚无假设）</li>
+      <li><strong>control variables</strong>（控制变量）</li>
+      <li><strong>procedure</strong> — written out in steps so it is clear and can be replicated（程序：分步写出，确保可以重复）</li>
+      <li><strong>appropriate descriptive and inferential statistics</strong>（合适的描述统计与推断统计）</li>
+    </ul>
+    <p>Share your idea with another pair and decide on one way of improving your experiment.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>老鼠不会说"我最近心情很低落"，研究者只能<strong>通过行为间接测量</strong>它的状态。思路很简单：正常老鼠爱喝糖水（糖水偏好）、不愿意泡在水里（强迫游泳）。如果一只老鼠连糖水都不爱喝了，就像一个平时爱吃甜食的人突然对最爱的蛋糕毫无兴趣——这种行为变化可以当作"抑郁样行为"的指标。<br><br>
+    这个活动其实在复习 Unit 1 学过的整套实验设计流程：设计 → 变量操作化 → 假设 → 控制变量 → 程序 → 统计。本章后面讲的 RCT 就是这套流程在临床研究中的"豪华加强版"。
+  </div>
+</section>
+
+<!-- ============ SECTION 3: RCTs ============ -->
+<section class="section" id="s3">
+  <h2>3. Randomised Controlled Trials (RCTs)（随机对照试验）</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary — 30 秒看懂 RCT</h4>
+    <ol>
+      <li>RCT 是检验治疗/药物效果的 <strong>gold standard（黄金标准）</strong></li>
+      <li>三大控制手段：<strong>randomisation</strong>（随机分组）、<strong>placebos</strong>（安慰剂）、<strong>double-blind</strong>（双盲）</li>
+      <li>目的：确认症状改善到底是<strong>治疗本身</strong>引起的，还是其他因素（期待、偏见）引起的</li>
+    </ol>
+  </div>
+
+  <p>Throughout the clinical psychology topic, you have encountered many <strong>randomised controlled trials (RCTs)</strong>. These are the <strong>gold standard</strong> method for providing credible scientific evidence regarding the <strong>efficacy</strong> of treatments and therapies. RCTs are a special type of experiment which typically employs various controls to investigate whether changes in a person's symptoms are a result of the specific treatment or therapy they have received — or some other factor. These controls include <strong>randomisation</strong>, the use of <strong>placebos or other control groups</strong>, and a <strong>double-blind design</strong>.</p>
+
+  <div class="keyterm-box">
+    <strong>Key Term — Efficacy（效力）</strong><br>
+    How well a treatment works under ideal, controlled conditions (such as in an RCT). 对比 effectiveness（效果）：治疗在真实临床环境中的表现。记住这对词的区分，考试写 evaluation 时很有用。
+  </div>
+
+  <div class="flowchart">
+    <svg viewBox="0 0 680 300" width="100%" style="max-width:640px">
+      <rect x="240" y="10" width="200" height="46" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="340" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#c2410c">Participants with</text>
+      <text x="340" y="47" text-anchor="middle" font-size="14" font-weight="700" fill="#c2410c">the same disorder</text>
+      <line x1="340" y1="56" x2="340" y2="80" stroke="#94a3b8" stroke-width="2"/>
+      <polygon points="340,88 333,78 347,78" fill="#94a3b8"/>
+      <rect x="250" y="90" width="180" height="40" rx="20" fill="#ea580c"/>
+      <text x="340" y="115" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">🎲 Random allocation</text>
+      <line x1="330" y1="130" x2="170" y2="170" stroke="#94a3b8" stroke-width="2"/>
+      <line x1="350" y1="130" x2="510" y2="170" stroke="#94a3b8" stroke-width="2"/>
+      <rect x="40" y="175" width="260" height="50" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+      <text x="170" y="196" text-anchor="middle" font-size="13" font-weight="700" fill="#1e40af">Experimental group</text>
+      <text x="170" y="214" text-anchor="middle" font-size="12" fill="#1e40af">receives the new treatment</text>
+      <rect x="380" y="175" width="260" height="50" rx="10" fill="#fce7f3" stroke="#db2777" stroke-width="2"/>
+      <text x="510" y="196" text-anchor="middle" font-size="13" font-weight="700" fill="#9d174d">Control group</text>
+      <text x="510" y="214" text-anchor="middle" font-size="12" fill="#9d174d">placebo / old drug / usual care / wait-list</text>
+      <line x1="170" y1="225" x2="170" y2="248" stroke="#94a3b8" stroke-width="2"/>
+      <line x1="510" y1="225" x2="510" y2="248" stroke="#94a3b8" stroke-width="2"/>
+      <rect x="60" y="250" width="220" height="42" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+      <text x="170" y="268" text-anchor="middle" font-size="12" font-weight="700" fill="#166534">Symptoms measured</text>
+      <text x="170" y="284" text-anchor="middle" font-size="11" fill="#166534">researcher is 'blind' to groups</text>
+      <rect x="400" y="250" width="220" height="42" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+      <text x="510" y="268" text-anchor="middle" font-size="12" font-weight="700" fill="#166534">Symptoms measured</text>
+      <text x="510" y="284" text-anchor="middle" font-size="11" fill="#166534">researcher is 'blind' to groups</text>
+    </svg>
+    <div class="figure-caption">Figure: The basic structure of a randomised controlled trial</div>
+  </div>
+
+  <h3>Randomisation（随机分组）</h3>
+  <p>Participants are <strong>randomly allocated</strong> to one of two or more groups:</p>
+  <ul>
+    <li>The <strong>experimental group</strong> receives the treatment or therapy being investigated (e.g. a new drug)</li>
+    <li>The <strong>control group(s)</strong> receive either:
+      <ul>
+        <li>another type of treatment or therapy (e.g. an old drug)</li>
+        <li><strong>treatment as usual</strong> (e.g. standard clinical care)</li>
+        <li>or they are placed on a <strong>wait-list</strong> — they will receive treatment, but not until the next phase of the study or when the study is over</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>Placebos（安慰剂）</h3>
+  <p>A common feature of many RCTs is the use of placebos in drug trials, and/or <strong>sham (fake) treatments</strong> when investigating psychological treatments. Placebos are <strong>inactive medications that look, smell and taste exactly like the genuine medication</strong>. These are given to the control group, who are unaware whether they have received the real drug or the placebo.</p>
+
+  <div class="keyterm-box">
+    <strong>Key Term — Placebo effect（安慰剂效应）</strong><br>
+    When people <em>expect</em> to feel better because they know they have been prescribed a drug, and this expectation actually makes them feel better — separate from any biological effect of the drug. 就像闻到咖啡香就觉得自己精神了——起作用的不是咖啡因，而是"期待"本身。
+  </div>
+
+  <p>This lack of awareness is an example of a <strong>single-blind design</strong> and allows the researcher to control for <strong>expectancy effects</strong>. When people know they are taking a drug prescribed by a doctor for a certain condition, they typically expect to feel better. This expectation sometimes leads them to actually feel better — but placebo effects like this are ultimately <strong>psychological</strong> and separate from any <strong>biological</strong> effects of the drug on the nervous system.</p>
+  <p>Using placebo pills, injections or patches allows researchers to determine how much of a change in symptoms is due to the placebo effect, and how much is due to the genuine impact of the drug. As <strong>both groups expect to feel better</strong> after taking the drug, any difference in improvement between the experimental group and the placebo group must be due to the <strong>efficacy of the drug</strong>, not a placebo effect.</p>
+
+  <h4>What about psychological therapies?</h4>
+  <p>When testing the efficacy of psychological therapies, the control group may attend <strong>weekly 50-minute sessions with a CBT therapist</strong>, but they will <strong>not practise CBT together</strong>. They might engage in some other form of non-directive therapy or counselling session, or just talk informally.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>注意这里的关键逻辑——两组人都<strong>以为自己吃的是真药</strong>，所以两组人都会有"期待效应"。既然期待效应两组一样，那最后两组症状改善的<strong>差距</strong>就只能归因于药物本身。就像两个班都被告知"这次模拟卷很难"，如果A班多练了一种新方法而B班没有，最后的分数差距就只能是那个新方法带来的。<br><br>
+    心理治疗也能设"安慰剂"：对照组同样每周和治疗师见面 50 分钟，只是<strong>不做真正的 CBT</strong>——这样被试"有人倾听、有治疗陪伴"的期待被控制住了，剩下的差异才能归给 CBT 本身。
+  </div>
+
+  <h3>Double-Blind（双盲）</h3>
+  <p>Many RCTs also use a <strong>double-blind design</strong>. This means that not only does the <strong>participant</strong> not know whether they have received a placebo (single blind), but also the <strong>researcher who assesses their symptoms</strong> and collects other data does not know which group they were in. This reduces the effect of <strong>researcher bias</strong>.</p>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span>
+    <span>Exam Key Points — RCTs</span>
+    <span class="ao-badge">AO1</span>
+  </div>
+  <div class="summary-card-body hidden">
+    <ol>
+      <li>RCTs are the <strong>gold standard</strong> for credible scientific evidence about the <strong>efficacy</strong> of treatments and therapies.</li>
+      <li><strong>Randomisation</strong>: participants randomly allocated to experimental group vs control group (old drug / treatment as usual / wait-list).</li>
+      <li><strong>Placebos</strong>: inactive medications that look, smell and taste identical to the real drug; control for expectancy effects; single-blind.</li>
+      <li>For psychological therapies the control group attends <strong>weekly 50-minute sessions</strong> with a therapist but does not practise CBT (non-directive therapy or informal talk).</li>
+      <li><strong>Double-blind</strong>: neither participant nor the assessing researcher knows group membership — reduces researcher bias.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 4: EVALUATING RCTs ============ -->
+<section class="section" id="s4">
+  <h2>4. Evaluating RCTs（评价随机对照试验）</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <ol>
+      <li><strong>优点</strong>：随机分组提高内部效度（减少被试变量影响）；双盲减少需求特征与研究者偏差</li>
+      <li><strong>缺点</strong>：RCT 可能<strong>高估</strong>真实世界中的疗效，给患者虚假希望</li>
+    </ol>
+  </div>
+
+  <div class="ao-zone-header ao3">
+    AO3 — Evaluation
+    <span class="ao-zone-desc">Strengths &amp; weaknesses of RCTs</span>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>✅ Strength: Randomisation increases internal validity</h4>
+      <p>Random allocation reduces the impact of <strong>participant variables</strong>. For example, it should reduce the chances of all the people with <strong>worse symptoms</strong> ending up in the control group. Often, statistical tests are run to ensure the groups are well matched — that no variables differ significantly between them, such as <strong>how long they have been experiencing symptoms</strong>.</p>
+      <span class="eval-tag">Internal validity（内部效度）</span>
+    </div>
+    <div class="compare-card green">
+      <h4>✅ Strength: Double-blind reduces bias</h4>
+      <p>A double-blind design decreases the effects of <strong>demand characteristics</strong> and <strong>researcher bias</strong>. For example, a researcher who expects that a person will feel better since they took a real drug may respond differently when assessing symptoms — a surprised expression or tone of voice which affects how the participant answers further questions.</p>
+      <span class="eval-tag">Researcher bias（研究者偏差）</span>
+    </div>
+    <div class="compare-card">
+      <h4>❌ Weakness: RCTs may overestimate real-world impact</h4>
+      <p>RCTs may <strong>overestimate</strong> the impact of drugs/treatments and give <strong>false hope</strong> about how much they can actually reduce symptoms in the real world. In real clinical practice, doctors <em>do</em> know which drug they are providing and to whom. Some may spend time generating positive feelings about recovery, others may not. Patients go about their usual lives, eat their normal diet and may take other medications which interact with the drugs.</p>
+      <span class="eval-tag">Ecological validity（生态效度）</span>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>RCT 在实验室般的理想条件下"净化的"了干扰因素，但真实医院不是无菌环境：医生知道开的是什么药、患者生活里有一堆别的变量。所以 RCT 测的是 <strong>efficacy</strong>（理想条件下的效力），不一定等于 <strong>effectiveness</strong>（真实世界的效果）——这正是 Hans &amp; Hiller (2013) 做元分析时关注"非随机效果研究"的原因。
+  </div>
+
+  <div class="exam-tip">
+    <strong>Exam tip:</strong> Even if you do not intend to answer exam questions on the contemporary study by <strong>Hans and Hiller (2013)</strong> (pages 321–324), it is worth having a brief working knowledge of this study — you can use it as an example when <strong>evaluating the validity of RCTs</strong>.
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span>
+    <span>Exam Key Points — Evaluating RCTs</span>
+    <span class="ao-badge">AO3</span>
+  </div>
+  <div class="summary-card-body hidden">
+    <ol>
+      <li><strong>Strength</strong>: randomisation increases internal validity by reducing the impact of participant variables (e.g. worse symptoms clustering in the control group); statistical tests check groups are matched on variables like symptom duration.</li>
+      <li><strong>Strength</strong>: double-blind design decreases demand characteristics and researcher bias (e.g. a researcher's surprised expression affecting participants' responses).</li>
+      <li><strong>Weakness</strong>: RCTs may overestimate treatment impact and give false hope — in real practice doctors know which drug they provide, and patients' normal lives, diets and other medications may change the effects.</li>
+      <li>Use <strong>Hans &amp; Hiller (2013)</strong> as a supporting example when evaluating the validity of RCTs.</li>
+    </ol>
+  </div>
+</section>
+<!-- ============ SECTION 5: NEUROIMAGING ============ -->
+<section class="section" id="s5">
+  <h2>5. Neuroimaging: Structural and Functional Brain Scanning（神经影像：结构与功能脑扫描）</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <ol>
+      <li><strong>Structural scanning（结构扫描）</strong> = 给大脑"拍照片"（静态结构：形状、大小）——MRI</li>
+      <li><strong>Functional scanning（功能扫描）</strong> = 给大脑"拍视频"（哪个区域正在活动）——fMRI</li>
+      <li>临床用途：追踪神经退行性疾病的进展、比较患者与常人的大脑差异（如精神分裂症早期患者的脑室扩大）</li>
+    </ol>
+  </div>
+
+  <h3>Structural Brain Scanning（结构脑扫描）</h3>
+  <p>Structural brain scanning involves taking <strong>static (still) images</strong> of the brain from different angles. These images can be examined on their own, or used together to create a <strong>three-dimensional digital model</strong> of the brain. You have learned about <strong>CAT scans</strong> as a way of creating structural scans. Another structural technique is <strong>magnetic resonance imaging (MRI)</strong>.</p>
+
+  <div class="keyterm-box">
+    <strong>Key Term — Magnetic resonance imaging (MRI)（磁共振成像）</strong><br>
+    A technique for creating structural scans with high spatial resolution, using powerful magnetic fields and radio waves. 通俗说：用强磁场"摇一摇"你身体里的氢原子，再听它们"回位"的信号，就能画出非常清晰的大脑结构图。
+  </div>
+
+  <h4>What happens during an MRI scan?</h4>
+  <ul>
+    <li>MRI is a <strong>non-invasive</strong> technique — it does not require an injection or another painful procedure — although the process can be very <strong>noisy and claustrophobic</strong></li>
+    <li>Patient lies <strong>flat on their back inside a large tube</strong> which creates a very powerful magnetic field around the body</li>
+    <li>Movement affects image quality, so the person must remain <strong>very still</strong>; they may be asked to hold a <strong>bite-bar</strong> in the mouth — a device that stops the head from moving while images are taken</li>
+    <li>Brain tissue contains a lot of water, so many <strong>hydrogen atoms</strong> are present; the scanner uses <strong>radio frequencies</strong> to measure the movement of protons in hydrogen atoms, which behave differently when the magnetic field is on compared with off</li>
+    <li>The scanner uses this information to detect where tissue is <strong>denser or less dense</strong>, creating extremely clear and detailed images showing the <strong>shape and relative size of individual brain regions</strong></li>
+  </ul>
+
+  <h4>Why do clinical psychologists use MRI?</h4>
+  <ul>
+    <li><strong>In clinical practice</strong> — used <strong>longitudinally</strong>（纵向研究） to determine the progress of a <strong>neurodegenerative disorder</strong>: scans taken at two or more time points are compared to identify differences</li>
+    <li><strong>In research</strong> — used in <strong>cross-sectional designs</strong>（横断面设计） to determine whether there are <strong>neuroanatomical differences</strong> between people with and without a specific disorder</li>
+  </ul>
+
+  <div class="keyterm-box">
+    <strong>Key Term — Neurodegenerative disorder（神经退行性疾病）</strong><br>
+    A condition in which nerve cells (neurons) become increasingly damaged; symptoms include decline in cognition and movement. 就像电路里的电线逐渐老化——神经元一点点受损，大脑的"信号传输"越来越差。
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>MRI 研究发现：早期发病的精神分裂症患者常有<strong>扩大的脑室</strong>（ventricles，大脑里充满液体的空腔）。这是一个经典例子，说明结构扫描如何帮助比较"有病"和"没病"的大脑有什么不同。记住：脑室扩大 = 周围脑组织减少的间接信号。
+  </div>
+
+  <h3>Functional Brain Scanning（功能脑扫描）</h3>
+  <p>One neuroimaging technique that produces data about the <strong>function</strong> of different brain regions is <strong>fMRI (functional MRI)</strong>. Function is about purpose — a functional scan can tell us the <strong>role</strong> of different brain regions, e.g. how different regions contribute to the completion of a certain task.</p>
+
+  <h4>How does fMRI work?</h4>
+  <ul>
+    <li>fMRI works by measuring the amount of <strong>oxygenated blood flow</strong> through each area of the brain</li>
+    <li>The theory: <strong>active areas require higher blood flow</strong> than inactive areas, because they need more oxygen</li>
+    <li>When an area becomes active there is an initial but <strong>brief dip</strong> in oxygenated blood — then the body quickly <strong>overcompensates</strong> by directing an increase in blood flow to that region, <strong>peaking six seconds after</strong> the area has been activated</li>
+    <li>The fMRI tracks this information to create a <strong>multi-coloured image</strong> in which the most active areas are shown in <strong>yellow, fading to orange and red</strong></li>
+  </ul>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 260" width="100%" style="max-width:620px">
+      <rect x="10" y="20" width="300" height="220" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="160" y="48" text-anchor="middle" font-size="14" font-weight="700" fill="#c2410c">Structural scan (MRI)</text>
+      <path d="M110,90 C85,80 75,105 85,125 C70,140 80,165 100,170 C95,190 115,205 135,195 C150,210 180,210 195,195 C220,205 240,185 230,165 C250,155 250,125 235,115 C245,95 230,75 210,80 C200,65 170,60 160,72 C145,60 120,65 110,90 Z" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+      <path d="M150,85 C140,100 145,120 152,135 C158,150 156,170 150,185" fill="none" stroke="#94a3b8" stroke-width="2"/>
+      <text x="160" y="235" text-anchor="middle" font-size="12" fill="#475569">Still images: shape &amp; size of regions</text>
+      <rect x="330" y="20" width="340" height="220" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+      <text x="500" y="48" text-anchor="middle" font-size="14" font-weight="700" fill="#1e40af">Functional scan (fMRI)</text>
+      <path d="M440,90 C415,80 405,105 415,125 C400,140 410,165 430,170 C425,190 445,205 465,195 C480,210 510,210 525,195 C550,205 570,185 560,165 C580,155 580,125 565,115 C575,95 560,75 540,80 C530,65 500,60 490,72 C475,60 450,65 440,90 Z" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+      <ellipse cx="470" cy="110" rx="22" ry="16" fill="#facc15" opacity="0.9"/>
+      <ellipse cx="500" cy="120" rx="16" ry="12" fill="#fb923c" opacity="0.85"/>
+      <ellipse cx="520" cy="105" rx="12" ry="9" fill="#ef4444" opacity="0.75"/>
+      <ellipse cx="460" cy="160" rx="14" ry="10" fill="#fb923c" opacity="0.7"/>
+      <ellipse cx="490" cy="170" rx="10" ry="8" fill="#ef4444" opacity="0.6"/>
+      <text x="595" y="112" font-size="11" fill="#b45309" font-weight="600">yellow =</text>
+      <text x="595" y="127" font-size="11" fill="#b45309">most active</text>
+      <text x="500" y="235" text-anchor="middle" font-size="12" fill="#475569">Oxygenated blood flow: which areas are active</text>
+    </svg>
+    <div class="figure-caption">Figure 25.1 — fMRI scans show which brain regions are active by detecting increases in oxygenated blood flow</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>可以把大脑想象成一栋教学楼：MRI 是给整栋楼拍一张高清照片，看每间教室的大小和墙的结构；fMRI 则是看<strong>哪间教室的灯最亮、用电最多</strong>——哪个脑区在"上课"（活动），哪里就需要更多"供电"（含氧血液）。fMRI 图上最活跃的区域显示为黄色，逐渐过渡到橙色和红色。
+  </div>
+
+  <h3>Example: Egan et al. (2001) — COMT and the Prefrontal Cortex</h3>
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-icon">🧠</span>
+      <span class="study-name">Egan et al. (2001) — fMRI study of the COMT gene</span>
+      <span class="study-badge expt">Neuroimaging</span>
+    </div>
+    <div class="study-card-body">
+      <p>Research using fMRI scans showed that the <strong>prefrontal cortex was less active</strong> when performing a cognitive task in people carrying the <strong>Val allele of the COMT gene</strong> than in people with one or more copies of the <strong>Met allele</strong>.</p>
+      <p>This data was used to infer that Val <strong>interfered with dopamine regulation</strong>, which is necessary for activation of neural networks within the prefrontal cortex.</p>
+      <p>As the <strong>Val allele is more common in people with schizophrenia</strong>, this helps to explain some of the symptoms, such as <strong>disorganised thinking</strong>（思维紊乱）.</p>
+    </div>
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span>
+    <span>Exam Key Points — Neuroimaging</span>
+    <span class="ao-badge">AO1</span>
+  </div>
+  <div class="summary-card-body hidden">
+    <ol>
+      <li><strong>Structural scanning</strong>: static images from different angles → 2D images or 3D digital model; techniques: CAT, <strong>MRI</strong> (non-invasive, noisy, claustrophobic; uses magnetic fields + radio waves; hydrogen protons; tissue density).</li>
+      <li>MRI uses: <strong>longitudinally</strong> to track neurodegenerative disorders (comparing scans at 2+ time points); <strong>cross-sectionally</strong> to compare people with and without a disorder — e.g. early-onset schizophrenia patients often have <strong>enlarged ventricles</strong>.</li>
+      <li><strong>Functional scanning (fMRI)</strong>: measures oxygenated blood flow; active areas need more oxygen; brief dip then overcompensation <strong>peaking 6 seconds after activation</strong>; colour map: yellow (most active) → orange → red.</li>
+      <li><strong>Egan et al. (2001)</strong>: prefrontal cortex less active during a cognitive task in carriers of the <strong>Val allele of COMT</strong> vs Met allele; Val interferes with dopamine regulation; Val more common in people with schizophrenia → helps explain disorganised thinking.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 6: EVALUATING NEUROIMAGING ============ -->
+<section class="section" id="s6">
+  <h2>6. Evaluating Neuroimaging（评价神经影像技术）</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <ol>
+      <li><strong>优点</strong>：客观数据 + 精确测量（立方毫米、每 100g 脑组织的毫升数）→ 可重复 → 信度高</li>
+      <li><strong>缺点一</strong>：数据客观，但<strong>解释可能主观</strong>（杏仁核活跃 ≠ 一定是负面情绪）</li>
+      <li><strong>缺点二</strong>：必须一动不动地待在吵闹狭窄的机器里——部分人群（儿童、金属植入者）<strong>不适合甚至无法参与</strong></li>
+    </ol>
+  </div>
+
+  <div class="ao-zone-header ao3">
+    AO3 — Evaluation
+    <span class="ao-zone-desc">Strengths &amp; weaknesses of MRI / fMRI</span>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>✅ Strength: Objective, quantitative, replicable</h4>
+      <p>MRI and fMRI data provides <strong>objective, quantitative data</strong> that can be subjected to statistical analysis. For example, the size of different brain regions can be calculated in <strong>cubic millimetres</strong>; oxygenated cerebral blood flow is typically measured in <strong>millilitres of blood per 100g of brain tissue</strong>. Using these very precise measurements and scientific apparatus means other researchers can attempt to <strong>replicate the findings</strong> in order to check their reliability.</p>
+      <span class="eval-tag">Objectivity &amp; reliability（客观性与信度）</span>
+    </div>
+    <div class="compare-card">
+      <h4>❌ Weakness: Objective data, subjective interpretation</h4>
+      <p>Although the data is objective (created by a computer), the <strong>interpretation may be subjective</strong>. For example, a researcher may believe that because the <strong>amygdala</strong> is highly active when a person observes certain images, this suggests a negative emotional response. However, the amygdala also registers emotions such as <strong>surprise</strong>, which may be neither positive nor negative — simply unexpected. For conclusions to be valid, the researcher must interpret data carefully and <strong>not make claims which go beyond what the data actually show</strong>.</p>
+      <span class="eval-tag">Validity of conclusions（结论效度）</span>
+    </div>
+    <div class="compare-card">
+      <h4>❌ Weakness: Distressing and not suitable for everyone</h4>
+      <p>Both techniques rely on participants remaining <strong>very still within a very noisy and cramped environment</strong>. This could be distressing, especially for <strong>young children, people with limited mobility, cognitive difficulties or sensory issues</strong> — so this type of data collection may not be suitable, ethically, for some participants. Likewise, neuroimaging is <strong>not possible</strong> for people with <strong>metal implants</strong> (e.g. pins for fractured bones) or electrical devices such as <strong>pacemakers</strong>, due to the powerful magnets.</p>
+      <span class="eval-tag">Ethics &amp; generalisability（伦理与泛化性）</span>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>"数据客观"和"结论客观"是两回事。机器输出的数字不会撒谎，但<strong>怎么解读</strong>这些数字是人做的——同一个杏仁核激活，可以解读成"恐惧"，也可以解读成"惊讶"。这就像体检报告的数值是机器测的，但"这个指标高意味着什么"要靠医生判断——判断就可能带偏见。<br><br>
+    另外注意一个连带影响：某些人（装了心脏起搏器、体内有金属钉）根本<strong>无法做 MRI</strong>，这意味着这类人群永远不会出现在神经影像研究的样本里——样本代表性（generalisability）也受影响。
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span>
+    <span>Exam Key Points — Evaluating Neuroimaging</span>
+    <span class="ao-badge">AO3</span>
+  </div>
+  <div class="summary-card-body hidden">
+    <ol>
+      <li><strong>Strength</strong>: objective quantitative data, statistical analysis (brain region size in cubic millimetres; blood flow in millilitres per 100g of brain tissue) → replicable → reliability can be checked.</li>
+      <li><strong>Weakness</strong>: interpretation may be subjective — e.g. amygdala activity assumed to mean negative emotion, but the amygdala also registers surprise; conclusions must not go beyond the data.</li>
+      <li><strong>Weakness</strong>: must stay very still in a noisy, cramped machine — distressing for young children, people with limited mobility, cognitive difficulties or sensory issues (ethical issue).</li>
+      <li><strong>Weakness</strong>: impossible for people with metal implants or pacemakers (powerful magnets) — limits the sample and generalisability.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 7: CONVENTIONS OF PUBLISHED RESEARCH ============ -->
+<section class="section" id="s7">
+  <h2>7. Conventions of Published Psychological Research（心理学研究报告的写作规范）</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <ol>
+      <li>研究报告有<strong>固定的格式</strong>：Abstract → Introduction（含 aims &amp; hypotheses）→ Method → Results → Discussion</li>
+      <li>每个部分有固定的任务——记住"每一节该写什么"就是本章最常考的内容</li>
+      <li>学术诚实（academic honesty）：别人的观点必须标注 in-text citations（文内引用）</li>
+    </ol>
+  </div>
+
+  <p>In order for research studies to be published in scientific journals, researchers must learn to present their work according to a specific set of agreed conventions.</p>
+
+  <div class="flowchart">
+    <svg viewBox="0 0 680 400" width="100%" style="max-width:640px">
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#94a3b8"/></marker>
+      </defs>
+      <rect x="30" y="15" width="620" height="52" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="340" y="38" text-anchor="middle" font-size="14" font-weight="700" fill="#c2410c">1 · ABSTRACT（摘要）</text>
+      <text x="340" y="56" text-anchor="middle" font-size="11.5" fill="#475569">Brief summary: methodology + results + conclusions; uploaded to searchable databases</text>
+      <line x1="340" y1="67" x2="340" y2="85" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr)"/>
+      <rect x="30" y="88" width="620" height="52" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+      <text x="340" y="111" text-anchor="middle" font-size="14" font-weight="700" fill="#1e40af">2 · INTRODUCTION（引言）+ Aims &amp; Hypotheses</text>
+      <text x="340" y="129" text-anchor="middle" font-size="11.5" fill="#475569">Literature review · academic context · rationale · in-text citations · testable hypotheses</text>
+      <line x1="340" y1="140" x2="340" y2="158" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr)"/>
+      <rect x="30" y="161" width="620" height="52" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+      <text x="340" y="184" text-anchor="middle" font-size="14" font-weight="700" fill="#166534">3 · METHOD（方法）</text>
+      <text x="340" y="202" text-anchor="middle" font-size="11.5" fill="#475569">Design · operationalised variables · sample &amp; participants · materials · procedure · ethics</text>
+      <line x1="340" y1="213" x2="340" y2="231" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr)"/>
+      <rect x="30" y="234" width="620" height="52" rx="10" fill="#fdf4ff" stroke="#c026d3" stroke-width="2"/>
+      <text x="340" y="257" text-anchor="middle" font-size="14" font-weight="700" fill="#a21caf">4 · RESULTS（结果）</text>
+      <text x="340" y="275" text-anchor="middle" font-size="11.5" fill="#475569">Descriptive + inferential statistics · tables · bar charts · scattergrams · themes + quotes</text>
+      <line x1="340" y1="286" x2="340" y2="304" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr)"/>
+      <rect x="30" y="307" width="620" height="52" rx="10" fill="#fff8e1" stroke="#f59e0b" stroke-width="2"/>
+      <text x="340" y="330" text-anchor="middle" font-size="14" font-weight="700" fill="#b45309">5 · DISCUSSION（讨论）</text>
+      <text x="340" y="348" text-anchor="middle" font-size="11.5" fill="#475569">Reiterate findings · link back to theories/studies · evaluation · future research · applications</text>
+      <text x="340" y="383" text-anchor="middle" font-size="12" fill="#94a3b8" font-style="italic">After publication: the process of peer review checks the quality (Section 8)</text>
+    </svg>
+    <div class="figure-caption">Figure: The conventional structure of a published research report</div>
+  </div>
+
+  <h3>Abstract（摘要）</h3>
+  <p>A brief <strong>summary of the research</strong>. It should include the main details of the <strong>methodology, results</strong> (which may include descriptive and inferential findings) <strong>and conclusions</strong>. Abstracts are uploaded to large <strong>searchable databases</strong> so that other researchers can identify studies which might be useful to them. For example, a schizophrenia researcher might search for all the studies on D2 dopamine receptors published in the last year, and read through them to decide which paper they wish to download.</p>
+  <p>If the abstract is not written well, people will be less likely to download and read the full article — leading to <strong>fewer citations</strong>, which matters because citations are often used as a <strong>metric of a researcher's academic success</strong>.</p>
+
+  <h3>Introduction（引言）</h3>
+  <p>The introduction provides a detailed <strong>literature review</strong> of relevant theories and studies — an academic context which helps to explain how the researcher decided on their research question and/or hypotheses. Theories and studies are not necessarily evaluated in the introduction, unless problems with the existing literature have led the researcher to carry out their own research — in which case the problem needs to be explained to provide context and a <strong>rationale</strong>（研究依据）.</p>
+
+  <div class="keyterm-box">
+    <strong>Key Term — Literature review（文献综述）</strong><br>
+    A critical summary of the existing research findings on a specific topic. 把某个题目已有的研究"盘点一遍"，指出我们已经知道什么、还缺什么。
+  </div>
+  <div class="keyterm-box">
+    <strong>Key Term — In-text citations（文内引用）</strong><br>
+    A way of acknowledging the original author/source of an idea presented within a piece of academic writing — the author's name and publication date appear in brackets within the main body of the essay, paper or chapter, directly after the first mention of the idea/research. This is central to <strong>academic honesty</strong>（学术诚实）— researchers must never present other people's ideas or work as their own.
+  </div>
+
+  <p>A once-popular method of presenting citations was developed by the <strong>American Psychological Association</strong>; this style guide is currently in its seventh edition, referred to as <strong>APA-7 (APA, 2019)</strong>. Citations following this guidance include the researchers' last names and the publication date in brackets. If direct quotes are used, the researcher also adds the exact <strong>page number</strong>.</p>
+
+  <h3>Aims and Hypotheses（目的与假设）</h3>
+  <p>Aims and hypotheses should be included <strong>within the introduction</strong> section. The <strong>aim</strong> is what the researcher hopes to find out — this might be quite specific (testing a certain feature of a theory) or more exploratory and open if there has not been much research in that area already. If the study is an experiment, the researchers should state an explicit <strong>hypothesis</strong> — a testable statement which should be true if a certain theory is correct.</p>
+
+  <table>
+    <tr><th>Type of hypothesis</th><th>Example (dopamine hypothesis of schizophrenia)</th><th>When to use</th></tr>
+    <tr><td><strong>Directional</strong>（方向性假设）</td><td>People with schizophrenia who take daily chlorpromazine have <em>fewer</em> hallucinations <em>than</em> people without schizophrenia who take placebo</td><td>When previous research evidence supports the view</td></tr>
+    <tr><td><strong>Non-directional</strong>（非方向性假设）</td><td>There is a <em>difference</em> in the number of hallucinations experienced when taking chlorpromazine compared with placebo</td><td>When the literature is contradictory, or the area of research is fairly new</td></tr>
+    <tr><td><strong>Null</strong>（虚无假设）</td><td>There is <em>no difference</em> in the number of hallucinations experienced by people taking chlorpromazine in comparison with people taking placebos</td><td>In science, researchers typically test the null hypothesis</td></tr>
+  </table>
+
+  <div class="exam-tip">
+    <strong>Exam tip:</strong> When writing experimental hypotheses in exams, always make sure you include <strong>both levels (groups or conditions) of the independent variable</strong> and write a <strong>comparative statement including the word 'than'</strong>. You must also <strong>fully operationalise</strong> your variables — give good detail about how they are measured. For example, if the IV is 'take a walk', say <em>how long</em> the walk should be and <em>how often</em>. Never leave the examiner in any doubt that you have at least tried to operationalise!
+  </div>
+
+  <h3>Method（方法）</h3>
+  <ul>
+    <li><strong>Design</strong> of the study and how the <strong>variables were operationalised</strong></li>
+    <li><strong>Sample</strong> and details about the participants, such as their <strong>mean age and gender ratio</strong>; in clinical research there may be details of their <strong>psychiatric histories</strong>, given in terms of the group (not individuals) — e.g. '45 per cent had tried three or more antidepressants'</li>
+    <li>Detailed description of <strong>all the materials</strong> used — clinical studies often use many questionnaires or psychometric tests to measure symptoms; details will be given of the <strong>validity and reliability of these instruments</strong></li>
+    <li>Detailed <strong>procedure</strong> with enough information to allow for a <strong>full replication</strong></li>
+    <li>Usually details of how <strong>ethical guidelines were upheld</strong>, e.g. how informed consent was obtained</li>
+  </ul>
+
+  <h3>Results（结果）</h3>
+  <p>The contents of the results section depend on whether the study was <strong>qualitative or quantitative</strong>, correlational or experimental:</p>
+  <ul>
+    <li>In an experimental study, descriptive statistics include <strong>percentages, measures of central tendency</strong> (mode, median and/or mean) <strong>and measures of dispersion</strong> (e.g. range and standard deviation) — usually presented in <strong>tables</strong></li>
+    <li><strong>Bar charts</strong> display differences between groups and/or conditions; findings of correlational research may be presented in a <strong>scattergram</strong> — measures of central tendency and dispersion are unnecessary here, as they do not help address a hypothesis about a <strong>relationship between pairs of scores</strong></li>
+    <li>Findings of <strong>inferential statistical tests</strong> are also presented, including <strong>p-values</strong> — the probability of obtaining the results if the null hypothesis were true</li>
+    <li>In <strong>qualitative</strong> studies, the results may comprise a description of <strong>emergent themes</strong> from thematic analysis, with examples of <strong>quotes</strong> to support each theme; there may be a model (diagram) representing how themes interact</li>
+  </ul>
+
+  <h3>Discussion（讨论）</h3>
+  <ul>
+    <li>Usually begins by <strong>reiterating the findings</strong> and discussing them in the context of the theory and studies identified in the introduction — e.g. comparing findings to those of similar studies and suggesting reasons for any differences</li>
+    <li>The second main part is an <strong>evaluation of the study</strong>, identifying key limitations of the <strong>validity, reliability and generalisability</strong></li>
+    <li>Suggestions for <strong>future research</strong> may be identified</li>
+    <li>Researchers may also discuss ways the findings could be <strong>beneficial to society</strong> in terms of practical applications</li>
+  </ul>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>把报告的五段结构想象成讲一个完整的故事：Abstract 是"预告片"（30 秒讲完全片）；Introduction 是"背景铺垫"（别人做过什么、我为什么还要做）；Method 是"菜谱"（照着做能做出同一道菜）；Results 是"只摆事实"（数据说话，不解释）；Discussion 是"讲道理"（这些数据意味着什么、研究有什么不足、接下来怎么办）。记住这个比喻，考试时"哪部分该写什么"就不会乱。
+  </div>
+
+  <div class="activity-box">
+    <h4>✏️ Skills Activity 1 — Colour-Code a Journal Article</h4>
+    <p>Choose an example of a journal article about anything you have found interesting in clinical psychology. Using different coloured pens or patterns (e.g. bubbles, boxes, underline), identify <strong>each of the different sections</strong> of the report as described above. Can you find all the key features of each section? Is there anything missing — or anything extra?</p>
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span>
+    <span>Exam Key Points — Conventions of Reports</span>
+    <span class="ao-badge">AO1</span>
+  </div>
+  <div class="summary-card-body hidden">
+    <ol>
+      <li><strong>Abstract</strong>: brief summary of methodology + results + conclusions; searchable databases; poorly written abstracts → fewer downloads and citations.</li>
+      <li><strong>Introduction</strong>: literature review, academic context, rationale; <strong>in-text citations</strong> (e.g. APA-7, 2019) = academic honesty.</li>
+      <li><strong>Aims &amp; hypotheses</strong>: inside the introduction; directional (previous evidence exists) / non-directional (contradictory or new area) / null (what is statistically tested).</li>
+      <li><strong>Method</strong>: design, operationalised variables, sample (mean age, gender ratio, group-level psychiatric history e.g. '45% had tried 3+ antidepressants'), materials + their validity/reliability, replicable procedure, ethics.</li>
+      <li><strong>Results</strong>: quantitative → tables, central tendency, dispersion, bar charts/scattergrams, inferential tests + p-values; qualitative → emergent themes + quotes.</li>
+      <li><strong>Discussion</strong>: reiterate findings, link to theory, compare with similar studies, evaluate validity/reliability/generalisability, future research, practical applications.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 8: PEER REVIEW ============ -->
+<section class="section" id="s8">
+  <h2>8. The Process of Peer Review（同行评审的过程）</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <ol>
+      <li>论文投稿 → 编辑初筛（原创性、重要性、效度）→ <strong>盲审</strong>送独立专家 → 三种结局：接受 / 修改后接受 / 拒稿</li>
+      <li><strong>目的</strong>：保证科学的严谨性和质量</li>
+      <li><strong>评价</strong>：匿名更客观；但评审可能不独立、视野可能狭窄</li>
+    </ol>
+  </div>
+
+  <p>The purpose of peer review is to help ensure high levels of <strong>scientific rigour and quality</strong> of published research.</p>
+
+  <div class="flowchart">
+    <svg viewBox="0 0 680 330" width="100%" style="max-width:640px">
+      <defs>
+        <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#94a3b8"/></marker>
+      </defs>
+      <rect x="210" y="10" width="260" height="46" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="340" y="38" text-anchor="middle" font-size="13.5" font-weight="700" fill="#c2410c">Author submits paper to a journal</text>
+      <line x1="340" y1="56" x2="340" y2="76" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr2)"/>
+      <rect x="190" y="79" width="300" height="56" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+      <text x="340" y="102" text-anchor="middle" font-size="13" font-weight="700" fill="#1e40af">Journal editor: initial checks</text>
+      <text x="340" y="121" text-anchor="middle" font-size="11.5" fill="#475569">topic suitable? originality · significance · validity</text>
+      <line x1="340" y1="135" x2="340" y2="155" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr2)"/>
+      <rect x="150" y="158" width="380" height="56" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+      <text x="340" y="181" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">Blind copies sent to independent peer reviewers</text>
+      <text x="340" y="200" text-anchor="middle" font-size="11.5" fill="#475569">academic experts in the same field; authors are anonymous</text>
+      <line x1="340" y1="214" x2="340" y2="234" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr2)"/>
+      <rect x="150" y="237" width="380" height="52" rx="10" fill="#fdf4ff" stroke="#c026d3" stroke-width="2"/>
+      <text x="340" y="258" text-anchor="middle" font-size="12.5" font-weight="700" fill="#a21caf">Critical analysis + written feedback to the editor</text>
+      <text x="340" y="276" text-anchor="middle" font-size="11.5" fill="#475569">literature comprehensive? correct statistical tests? conclusions grounded?</text>
+      <line x1="340" y1="289" x2="340" y2="305" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr2)"/>
+      <rect x="60" y="308" width="560" height="0" rx="10"/>
+      <rect x="40" y="296" width="190" height="30" rx="15" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+      <text x="135" y="316" text-anchor="middle" font-size="11.5" fill="#166534" font-weight="600">✓ Accept (no changes)</text>
+      <rect x="245" y="296" width="190" height="30" rx="15" fill="#fff8e1" stroke="#f59e0b" stroke-width="1.5"/>
+      <text x="340" y="316" text-anchor="middle" font-size="11.5" fill="#b45309" font-weight="600">↻ Accept with revisions</text>
+      <rect x="450" y="296" width="190" height="30" rx="15" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+      <text x="545" y="316" text-anchor="middle" font-size="11.5" fill="#991b1b" font-weight="600">✗ Reject (no resubmit)</text>
+    </svg>
+    <div class="figure-caption">Figure: The peer review process from submission to decision</div>
+  </div>
+
+  <h3>The Process（过程）</h3>
+  <ul>
+    <li>When an article is first submitted to the <strong>journal editor</strong>, they decide whether the topic is suitable for their journal, carrying out initial checks regarding the <strong>originality, significance and validity</strong> of the research</li>
+    <li>If they like the article, they send a <strong>blind copy (researchers are anonymous)</strong> to a team of <strong>independent peer reviewers</strong> — academic experts working in the same field</li>
+    <li>Reviewers <strong>critically analyse the quality</strong> of the research: from checking that the literature in the introduction is comprehensive, to checking the <strong>correct statistical tests</strong> have been used and that the <strong>conclusions are not overstated</strong> and are grounded in the actual findings</li>
+    <li>They provide detailed written feedback to the editor with a recommendation: <strong>accept without any changes</strong>, <strong>accept if certain changes (revisions) are made</strong>, or <strong>reject without a chance to resubmit</strong></li>
+    <li>The journal editor makes their decision based on the opinions of the full team of reviewers and communicates it to the researchers, who <strong>remain unaware of the identity of the reviewers</strong></li>
+  </ul>
+
+  <h3>Evaluation（评价）</h3>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>✅ Advantage</h4>
+      <p>Peer review helps to maintain the <strong>integrity of scientific research</strong> through meticulous critical analysis. This makes findings more useful to society: findings and conclusions which <strong>lack validity do not get into the public domain</strong>, so decision making about <strong>funding and policy</strong> is based on high quality evidence. The fact that the process is conducted <strong>anonymously</strong> should make it more objective.</p>
+      <span class="eval-tag">Credibility of science（科学可信度）</span>
+    </div>
+    <div class="compare-card">
+      <h4>❌ Disadvantages</h4>
+      <p>The <strong>blinding process can break down</strong> — in reality, peer reviewers may not be completely independent and may have a <strong>vested interest</strong> in supporting certain types of research or researchers. Also, only certain types of people may become sufficiently expert to be reviewers on prestigious journals — meaning perspectives on what makes quality research may become <strong>narrow</strong>, and certain <strong>methodologies may be favoured</strong> over others.</p>
+      <span class="eval-tag">Bias in the system（制度性偏差）</span>
+    </div>
+  </div>
+
+  <div class="wider-issue">
+    <h4>🤔 Thinking Like a Psychologist</h4>
+    <p>Can you think of any reasons why a journal editor might reject an article <em>without even sending it for peer review</em>? What sort of design features do you think a peer reviewer would be pleased to see in an experiment, an observation, a case study or a questionnaire? You may like to conduct some further research into the <strong>open science movement</strong>, <strong>pre-registration</strong> and alternatives to peer review.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>同行评审就像论文的"门禁系统"：编辑是前台保安（先看材料齐不齐、题目合不合适），评审专家是各科室的考官（匿名审稿、挑毛病），最后三种结果——直接通过、按意见修改、直接退回。它的核心价值是<strong>挡住不靠谱的研究进入公共领域</strong>，让政策制定和经费分配建立在高质量证据上。但这个系统也有漏洞：评审也是人，可能有自己的立场和小圈子偏好。
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span>
+    <span>Exam Key Points — Peer Review</span>
+    <span class="ao-badge">AO1 + AO3</span>
+  </div>
+  <div class="summary-card-body hidden">
+    <ol>
+      <li>Purpose: ensure high levels of <strong>scientific rigour and quality</strong> of published research.</li>
+      <li>Process: editor's initial checks (originality, significance, validity) → blind copy to independent expert reviewers → critical analysis (literature, statistical tests, conclusions not overstated) → written feedback + recommendation → editor decides; researchers never learn reviewer identities.</li>
+      <li>Three possible outcomes: <strong>accept / accept with revisions / reject without resubmission</strong>.</li>
+      <li><strong>Strength</strong>: maintains integrity; invalid findings kept out of the public domain; funding/policy based on high-quality evidence; anonymity → objectivity.</li>
+      <li><strong>Weaknesses</strong>: blinding can break down; reviewers not fully independent (vested interests); narrow pool of reviewers → narrow perspectives, some methodologies favoured over others.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 9: HCPC ============ -->
+<section class="section" id="s9">
+  <h2>9. HCPC Guidelines for Clinical Practitioners（临床从业者准则）</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <ol>
+      <li>HCPC 是英国的健康与照护专业委员会——<strong>执业注册制度</strong>，不达标可被除名</li>
+      <li>三大类标准：<strong>standards of proficiency</strong>（执业能力标准）、<strong>conduct, performance and ethics</strong>（十项行为伦理标准）、<strong>CPD</strong>（持续专业发展）</li>
+      <li>最新修订（2024年9月）：多元平等包容、可持续发展、<strong>duty of candour</strong>（坦诚义务）</li>
+    </ol>
+  </div>
+
+  <h3>What is the HCPC?</h3>
+  <p>In the United Kingdom, health and care professionals who work directly with the public have to register with the <strong>Health and Care Professions Council (HCPC)</strong>. In order to register, practitioners need to demonstrate that they meet a wide range of <strong>professional standards of proficiency</strong>. Some of these are general and apply to all health and care professionals; others are specific to individual professions, including <strong>practitioner psychologists</strong>. If these standards are violated, the HCPC may <strong>remove practitioners from the register</strong>.</p>
+
+  <div class="keyterm-box">
+    <strong>Key Term — Standards of proficiency（执业能力标准）</strong><br>
+    Minimum expectations that must be met in order for practitioner psychologists to register with the HCPC. 可以理解为这个行业"持证上岗"的最低门槛。
+  </div>
+
+  <p>These standards are updated regularly — the most recent revision came into effect in <strong>September 2024</strong>. Some revisions were made to demonstrate the HCPC's commitment to <strong>equality, diversity and inclusion</strong> and <strong>sustainability</strong>, as well as the <strong>duty of candour</strong> — meaning learning from mistakes and <strong>apologising to service users and their carers when things go wrong</strong>.</p>
+
+  <div class="keyterm-box">
+    <strong>Key Term — Standards of continuing professional development (CPD)（持续专业发展标准）</strong><br>
+    Expectations regarding the need for health and care professionals to learn and develop, including updating their knowledge and skills. All practitioners on the register must keep detailed records of training and supervision sessions attended — the aim is to keep knowledge and skills up to date in ways which directly benefit service users.
+  </div>
+
+  <h3>Qualifications（资格要求）</h3>
+  <p>All registered health and care practitioners must be suitably qualified — either at <strong>graduate level</strong> (e.g. a bachelor's degree) or <strong>postgraduate level</strong> (e.g. a master's degree). Some specialisms, such as <strong>clinical psychology, require the highest level of degree, known as a doctorate</strong>. The HCPC also regulates the provision of these education and training programmes, to ensure all graduates are fully prepared and meet the necessary standards of proficiency for their future careers.</p>
+
+  <h3>The Ten Standards of Conduct, Performance and Ethics（十项行为、表现与伦理标准）</h3>
+  <p>Once practitioners are registered, they must demonstrate that they are meeting the following ten standards (Table 25.1):</p>
+
+  <table>
+    <tr><th style="width:32%">Standard</th><th>What it means in practice</th></tr>
+    <tr><td><strong>1. Promote and protect the interests of service users and carers</strong></td><td>Respecting service users and carers, right to privacy and dignity; always obtaining valid consent for care/treatment</td></tr>
+    <tr><td><strong>2. Communicate appropriately and effectively</strong></td><td>Work in partnership with service users and carers, empowering them to make decisions about care and treatment; be polite and considerate; listen to understand needs and wishes; provide information in a way which is clear and appropriate (e.g. language, communication issues)</td></tr>
+    <tr><td><strong>3. Work within the limits of your knowledge and skills</strong></td><td>Only work in areas relevant to your knowledge, experience and training; attend regular training to keep knowledge and skills up to date</td></tr>
+    <tr><td><strong>4. Delegate appropriately</strong></td><td>When asking other colleagues to offer care/treatment on your behalf, ensure they are suitably qualified, skilled or experienced; make referrals if a service user would benefit from care outside your specialism</td></tr>
+    <tr><td><strong>5. Respect confidentiality</strong></td><td>Only disclose confidential information with the service user's consent, or if it is legal to do so, or in the service user's or the public's best interests (e.g. preventing people from immediate risk of harm)</td></tr>
+    <tr><td><strong>6. Manage risk</strong></td><td>Reduce risk of harm to service users, carers and colleagues as far as possible; monitor your own physical and mental health so your ability to offer effective and safe care is not compromised</td></tr>
+    <tr><td><strong>7. Report concerns about safety</strong></td><td>Report concerns about the safety or well-being of service users promptly and appropriately; support and encourage others to raise concerns; follow up concerns you have reported and act on concerns reported to you</td></tr>
+    <tr><td><strong>8. Be open when things go wrong</strong></td><td>Be open and honest when something has gone wrong — apologise and take action to put matters right; support service users and carers who want to raise concerns; give helpful and honest responses to complaints</td></tr>
+    <tr><td><strong>9. Be honest and trustworthy</strong></td><td>Be honest about your experience, qualifications, previous investigations into your conduct/competence, criminal convictions; keep full, clear and accurate records; complete records promptly and keep them securely</td></tr>
+    <tr><td><strong>10. Keep records of your work</strong></td><td>Full, clear and accurate records — completed promptly and kept securely</td></tr>
+  </table>
+
+  <div class="exam-tip">
+    <strong>Exam tip:</strong> You do not need to remember <em>every</em> standard for conduct, performance, ethics and proficiency — but it is helpful to have a good working understanding of <strong>all</strong> the standards. Questions assessing this knowledge often have an <strong>extract</strong> where you will be asked to <strong>apply</strong> your knowledge. The longest essay you could get on the HCPC guidelines is worth <strong>16 marks</strong>, with <strong>6 marks allocated to description</strong> — about 8 minutes of writing time, so you may only be able to describe <strong>4 standards in detail</strong>.
+  </div>
+
+  <div class="wider-issue">
+    <h4>🤔 Thinking Like a Psychologist</h4>
+    <p>If you are interested in a career in clinical psychology, you could research the <strong>15 standards of proficiency</strong> further — especially how the standards differ for psychologists compared with other clinical practitioners, and the standards for <strong>clinical psychologists</strong> specifically (as opposed to forensic or health psychologists).</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>HCPC 类似于"执业资格注册+行业监管"制度：想当临床心理学家，不光要读到<strong>博士</strong>（doctorate），注册后还要一辈子持续学习（CPD），并遵守十项行为伦理标准——不达标就可能被<strong>吊销注册</strong>。十项标准可以用一句话串起来：<strong>一切以服务对象的利益为中心</strong>——保护他们的隐私（5）、只做你擅长的事（3）、出了错要坦诚道歉（8）。2024 年新修订特别强调 duty of candour（坦诚义务）：出了错，承认错误、道歉、改正——这是职业道德的底线。
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span>
+    <span>Exam Key Points — HCPC</span>
+    <span class="ao-badge">AO1</span>
+  </div>
+  <div class="summary-card-body hidden">
+    <ol>
+      <li>UK health and care professionals working with the public must <strong>register with the HCPC</strong>; violation of standards can lead to removal from the register.</li>
+      <li>Standards updated regularly — most recent revision effective <strong>September 2024</strong>: equality, diversity and inclusion; sustainability; <strong>duty of candour</strong> (learning from mistakes, apologising to service users and carers).</li>
+      <li>All registered practitioners must commit to <strong>CPD</strong> — detailed records of training and supervision, keeping knowledge and skills up to date for the benefit of service users.</li>
+      <li>Qualifications: bachelor's / master's degree; <strong>clinical psychology requires a doctorate</strong>; the HCPC also regulates education programmes.</li>
+      <li>The ten standards of conduct, performance and ethics centre on: protecting service users' interests, appropriate communication, working within limits of knowledge/skills, appropriate delegation, confidentiality, managing risk, reporting safety concerns, openness when things go wrong, honesty and trustworthiness, and keeping records.</li>
+      <li>Exam format: extract-based application; longest essay = 16 marks (6 for description, ~8 minutes → describe ~4 standards in detail).</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 10: DATA & STATISTICS ============ -->
+<section class="section" id="s10">
+  <h2>10. Decision Making and Interpretation of Data（数据决策与解读）</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <ol>
+      <li>Unit 4 考试会考<strong>描述统计</strong>（List A）和<strong>推断统计</strong>（List B）——都是 Student Book 1 学过的内容</li>
+      <li>关键技能：根据<strong>数据类型 + 实验设计</strong>选对统计检验/图表</li>
+    </ol>
+  </div>
+
+  <p>For Unit 4 you will need to be prepared to answer questions including <strong>descriptive</strong> and <strong>inferential statistics</strong> covered in Student Book 1:</p>
+  <ul>
+    <li><strong>List A (from Topic A) — descriptive statistics</strong>: percentages, measures of central tendency (mode, median, mean), measures of dispersion (range, standard deviation), tables, bar charts and scattergrams</li>
+    <li><strong>List B (from Topic B) — inferential statistics</strong>: choosing and interpreting the right statistical test for the design and level of measurement, including p-values and critical values</li>
+  </ul>
+
+  <h3>Revision table — choosing the right tool</h3>
+  <table>
+    <tr><th>Situation</th><th>Descriptive statistics</th><th>Graph</th></tr>
+    <tr><td>Comparing groups/conditions (quantitative)</td><td>Percentages, mean/median, range/SD</td><td>Bar chart</td></tr>
+    <tr><td>Correlational data (pairs of scores)</td><td>No central tendency/dispersion — they do not address a relationship between pairs of scores</td><td>Scattergram</td></tr>
+    <tr><td>Content analysis / nominal (category) data</td><td>Frequencies, percentages, <strong>mode</strong></td><td>Bar chart / pie chart</td></tr>
+  </table>
+
+  <table>
+    <tr><th>If the design is…</th><th>and the data are…</th><th>the test is…</th></tr>
+    <tr><td>Independent measures</td><td>Nominal</td><td><strong>Chi-square</strong>（卡方检验）</td></tr>
+    <tr><td>Repeated measures / matched pairs</td><td>Nominal</td><td>Sign test</td></tr>
+    <tr><td>Independent measures</td><td>Ordinal</td><td>Mann-Whitney</td></tr>
+    <tr><td>Repeated measures</td><td>Ordinal</td><td><strong>Wilcoxon signed ranks</strong></td></tr>
+    <tr><td>Correlation</td><td>Ordinal</td><td>Spearman's rho</td></tr>
+    <tr><td>Correlation / experimental</td><td>Interval/ratio</td><td>Pearson's r / related t-tests</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>这两张表是把 Student Book 1 Topic A/B 的内容压缩成的"速查表"。考试里最常见的组合就是 Checkpoint 第 8 题那种：<strong>独立测量设计 + 定类数据 → 卡方检验</strong>。选检验的口诀：先问"同一组人测两次还是两组不同的人"（决定 repeated / independent），再问"数据是类别、排名还是连续数值"（决定 nominal / ordinal / interval），交叉一查表就出来了。<br><br>
+    做推断统计题时记住流程：算出观察值 → 查临界值表（critical values）→ 比较两者 → 决定是否拒绝虚无假设。本章 Exam Practice 第 3 题（Wilcoxon）就是这个流程的完整演练。
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span>
+    <span>Exam Key Points — Data &amp; Statistics</span>
+    <span class="ao-badge">AO1</span>
+  </div>
+  <div class="summary-card-body hidden">
+    <ol>
+      <li>Unit 4 questions can include any descriptive (List A) and inferential (List B) statistics from Student Book 1.</li>
+      <li>Descriptive: percentages, mode/median/mean, range/SD, tables, bar charts (group differences) and scattergrams (correlational pairs of scores).</li>
+      <li>Nominal (category) data from content analysis → frequencies, percentages and the <strong>mode</strong> (there can be more than one mode).</li>
+      <li>Choosing a test: design (independent vs repeated) + level of measurement (nominal / ordinal / interval). Independent + nominal → <strong>chi-square</strong>; repeated + ordinal → <strong>Wilcoxon signed ranks</strong>; correlation + ordinal → Spearman's rho.</li>
+      <li>Interpreting an inferential test: observed value vs critical value → reject or retain the null hypothesis.</li>
+    </ol>
+  </div>
+</section>
+<!-- ============ SECTION 11: RELIABILITY ============ -->
+<section class="section" id="s11">
+  <h2>11. Reliability（信度）</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <ol>
+      <li>评估信度的三条路：<strong>可重复性</strong>（标准程序能否被复制）、<strong>评分者间信度</strong>（两个评分者是否一致）、<strong>内部信度</strong>（问卷题目是否测同一个构念）</li>
+      <li>例子全部来自 Ch24：Rosenhan 的两部分程序、Hans &amp; Hiller 的双人编码、Ma 的 CSES</li>
+      <li><strong>难点</strong>：共病（comorbidity）与症状重叠让重做研究时结果难以一致</li>
+    </ol>
+  </div>
+
+  <p>This chapter has focused on a number of different strategies for ensuring the <strong>reliability of findings and conclusions</strong> of clinical research. For example, studies which are <strong>replicable</strong> due to use of standardised procedures for collecting and analysing data can be repeated to check whether the findings are reliable.</p>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-icon">🔁</span>
+      <span class="study-name">Replicability — Rosenhan (1973) and Lauren Slater</span>
+      <span class="study-badge natural">Observation</span>
+    </div>
+    <div class="study-card-body">
+      <p>One example is the replication of Rosenhan's study conducted by <strong>Lauren Slater</strong>. The <strong>first part</strong> of the Rosenhan study is replicable: all pseudopatients followed <strong>standardised procedures</strong> when presenting to the hospital admissions offices.</p>
+      <p>However, once they had been admitted, there was <strong>no standardised procedure</strong> — the method was a <strong>naturalistic, covert participant observation</strong> and the participants merely behaved as they usually would while recording their experiences within the hospital.</p>
+      <p>This part of the procedure <strong>lacked reliability</strong> as it cannot be replicated exactly.</p>
+      <span class="eval-tag">Replicability（可重复性）</span>
+    </div>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-icon">👥</span>
+      <span class="study-name">Inter-rater reliability — Hans and Hiller (2013)</span>
+      <span class="study-badge meta">Meta-analysis</span>
+    </div>
+    <div class="study-card-body">
+      <p>Another way of assessing reliability is to use <strong>two observers or raters</strong> to 'code' or record the data. In the contemporary study by Hans and Hiller (2013), <strong>two researchers</strong> assessed the 'clinical representativeness' and 'methodological quality' of the studies included in their meta-analysis. They were in <strong>almost full agreement</strong> — strong <strong>inter-rater reliability</strong>.</p>
+      <p>This is a strength as it demonstrates that the criteria were applied <strong>consistently</strong> each time when assessing each study, improving the overall <strong>credibility and usefulness</strong> of the findings.</p>
+      <span class="eval-tag">Inter-rater reliability（评分者间信度）</span>
+    </div>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-icon">📋</span>
+      <span class="study-name">Internal reliability — Ma et al. (2014) and the CSES</span>
+      <span class="study-badge corr">Correlational</span>
+    </div>
+    <div class="study-card-body">
+      <p>The contemporary study by Ma et al. (2014) demonstrates another type of reliability. They used <strong>questionnaires</strong> to gather quantitative data about core self-evaluations in their study of depression.</p>
+      <p>The reliability of their findings was improved by using a questionnaire — the <strong>CSES</strong> — that had previously been tested for <strong>internal reliability</strong>: individual items all <strong>correlated with each other</strong>, suggesting the questions were consistently measuring the same underlying construct.</p>
+      <span class="eval-tag">Internal reliability（内部信度）</span>
+    </div>
+  </div>
+
+  <h3>Problems with reliability in clinical research（信度的难题）</h3>
+  <ul>
+    <li>Mental and behavioural disorders can be very difficult to diagnose due to <strong>comorbidity</strong>（共病）and <strong>overlapping symptoms</strong>. When studies are replicated with a different set of participants (or even the same participants), the findings may not be consistent: although both studies may have used people diagnosed with schizophrenia or depression, <strong>the symptoms these people experience may be very different and can change over time</strong></li>
+    <li>In studies using <strong>qualitative data</strong>, such as Becker et al. (2002), if the transcripts were re-analysed by a second rater, the <strong>emergent themes may be different</strong> — because the process of <strong>thematic analysis</strong> tends to be rather <strong>subjective</strong></li>
+  </ul>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>信度 = 一致性：换个时间、换个评分者、换个题项，结果还稳不稳。三个研究恰好对应三种检查方式——Rosenhan 告诉我们<strong>没有标准程序的观察没法复制</strong>；Hans &amp; Hiller 告诉我们<strong>两个评分者先各自独立打分再对比</strong>（几乎完全一致 = 信度高）；Ma 告诉我们<strong>问卷内部题目互相关联</strong>（Cronbach's α 高）就是内部信度好。<br><br>
+    但临床研究有个先天难题：同样是"精神分裂症"诊断，两个人的症状可能大不相同，还会随时间变化——就像两批都贴着"水果"标签的货，一箱是苹果一箱是榴莲，比较结果自然不稳。
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span>
+    <span>Exam Key Points — Reliability</span>
+    <span class="ao-badge">AO1 + AO3</span>
+  </div>
+  <div class="summary-card-body hidden">
+    <ol>
+      <li><strong>Replicability</strong>: standardised procedures → study can be repeated. Rosenhan: admission procedure replicable; ward observation (naturalistic covert participant observation) not standardised → not exactly replicable.</li>
+      <li><strong>Inter-rater reliability</strong>: two raters code data independently. Hans &amp; Hiller (2013): two researchers coded clinical representativeness and methodological quality — almost full agreement → criteria applied consistently → credibility.</li>
+      <li><strong>Internal reliability</strong>: Ma et al. (2014) used the CSES, pre-tested so that all items correlated with each other — consistently measuring the same construct.</li>
+      <li><strong>Problems</strong>: comorbidity and overlapping symptoms → different participants with the same diagnosis may have very different symptoms (which also change over time) → replications inconsistent; qualitative data (Becker) — thematic analysis is subjective, second rater may find different themes.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 12: VALIDITY ============ -->
+<section class="section" id="s12">
+  <h2>12. Validity（效度）</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <ol>
+      <li><strong>内部效度</strong>：你测到的差异真的是你想测的原因造成的吗？（Suzuki 的对照组缺陷）</li>
+      <li><strong>生态效度</strong>：实验室里的行为能代表日常生活吗？（Reichel 低、Rosenhan 高但有瑕疵）</li>
+      <li><strong>预测效度</strong>：今天的测量/诊断能预测未来的结果吗？</li>
+    </ol>
+  </div>
+
+  <div class="exam-tip">
+    <strong>Exam tip:</strong> You need to understand the difference between <strong>internal and ecological validity</strong>. Try not to confuse these with terms used to refer to <strong>validity of diagnoses</strong>, such as aetiological and criterion validity. Note that <strong>predictive validity</strong> can be used to discuss both measures used in research studies <em>and</em> diagnoses: a measurement has predictive validity if it can accurately predict some other outcome in the future, measured in a different way. For example, a test measuring self-esteem might predict the severity of depressive symptoms (using the DSM-5) in 12 months' time; a diagnosis of depression using the ICD-11 has predictive validity if it can accurately predict who will have a lower score on the 'global assessment of functioning' in six months.
+  </div>
+
+  <h3>Internal validity（内部效度）</h3>
+  <p>Internal validity refers to the extent to which you have <strong>measured what you intended to measure</strong>. When applied to experiments, the intention is to measure the effect of an independent variable on a dependent variable. If you have uncontrolled, potentially confounding variables, you will have measured the combined effect of the IV <em>and</em> all these uncontrolled variables on your DV — the study lacks internal validity.</p>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-icon">🏥</span>
+      <span class="study-name">Suzuki et al. (2014) — a missing control group</span>
+      <span class="study-badge contemp">Cross-sectional</span>
+    </div>
+    <div class="study-card-body">
+      <p>Suzuki et al. compared <strong>inpatients with schizophrenia</strong> with <strong>healthy controls</strong> in terms of body mass index and a variety of nutritional variables. However, it was impossible to tell whether differences in BMI and nutritional status were a result of <strong>being an inpatient</strong>, <strong>having schizophrenia</strong>, or a <strong>combination of both</strong> — because they did not have a control group of outpatients with schizophrenia, or inpatients with a different disorder.</p>
+      <p>Poor internal validity reduces the usefulness of the findings: they <strong>cannot be used to establish causal relationships</strong> or make evidence-based suggestions about how to improve hospital practice.</p>
+      <span class="eval-tag">Internal validity（内部效度）</span>
+    </div>
+  </div>
+
+  <h4>Two further problems with validity in clinical research</h4>
+  <ul>
+    <li><strong>No random allocation in clinical practice</strong>: often participants are not randomly allocated to treatment groups, because clinicians choose to refer certain people for certain types of therapy based on whether they think it will be successful. For example, clinicians would not refer a family for family therapy if they thought not everyone would attend sessions, as this would not be cost-effective. Research findings may therefore give a <strong>more positive impression of the therapy</strong> than is actually the case for many families</li>
+    <li><strong>Self-reported symptoms</strong>: clinical studies often rely on checklists and psychometric tests. Participants may find these difficult to complete if they <strong>lack self-awareness</strong>; they may show <strong>social desirability bias</strong> and exaggerate improvement in symptoms — especially if the researcher administering the questionnaire is the same person who delivered the treatment</li>
+  </ul>
+
+  <div class="gold-standard-para">
+    <h4>🏅 Overcoming self-report problems: the PANSS and triangulation</h4>
+    <p>Some studies have overcome the self-report problem by using measures such as the <strong>Positive and Negative Syndrome Scale (PANSS)</strong>, which combines <strong>clinician observations</strong> and <strong>self-report from both caregivers and patients</strong>. This is a form of <strong>triangulation</strong>（三角验证）and therefore improves the validity/credibility of the findings. Mark Opler and colleagues (2017) refer to this scale as the <strong>gold standard</strong> for assessment of antipsychotic treatment efficacy.</p>
+    <p>However, increased validity comes at a cost: the scale <strong>takes a long time to administer</strong>, and researchers/practitioners need a lot of training in its use to achieve an acceptable level of inter-rater reliability.</p>
+  </div>
+
+  <h3>Ecological validity（生态效度）</h3>
+  <p>Ecological validity refers to the extent to which the findings of a study <strong>represent everyday life</strong>.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Rosenhan (1973) — mostly high</h4>
+      <p>The main research method was naturalistic covert participant observation. Pseudopatients lived in the hospital wards among real patients and staff. Their field notes suggest staff were <strong>totally unaware</strong> that their behaviour was being observed — there are records of patient abuse that happened in plain sight. This suggests the qualitative data had <strong>high ecological validity</strong>.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Rosenhan — but with a caveat</h4>
+      <p>The pseudopatients were <strong>not real patients</strong> themselves, and this may have interfered with the atmosphere on the wards. This is supported by the fact that <strong>other patients detected their presence</strong>, which may have changed their behaviour — <strong>reducing</strong> ecological validity.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Reichel et al. (2014) — arguably low</h4>
+      <p>Participants viewed images of emaciation <strong>on a screen while physiological measures were taken</strong> (startle response, heart rate, skin conductance). Viewing such imagery under these highly controlled circumstances is far removed from how people with anorexia nervosa might view these images in everyday life: they would have selected which images to look at <strong>on their own devices within their own home setting</strong>, without being observed. Their physiological responses may be very different under more naturalistic conditions.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>内部效度和生态效度常常是<strong>跷跷板关系</strong>：控制得越严（Reichel 的实验室），内部效度越高，但离日常生活越远（生态效度越低）；越贴近真实（Rosenhan 住在病房里），生态效度越高，但变量控制越松。考试答题时不要只说"效度低"，要<strong>说清是哪种效度、为什么、对结论有什么影响</strong>。<br><br>
+    Suzuki 的例子是经典考点：住院患者和健康人比较，发现了营养差异——但到底是"生病"造成的还是"住院生活方式"造成的？缺一个"不住院的分裂症患者"或"住其他病的患者"对照组，因果链就断了。就像发现"消防员到场的地方火灾损失更大"，不能推出"消防员造成损失"——是因为火灾本身严重才既有消防员又有大损失。
+  </div>
+
+  <div class="activity-box">
+    <h4>✏️ Skills Activity 2 — Revision Table</h4>
+    <p>To help you revise, make a table of <strong>different ways of assessing reliability</strong> (inter-rater, test-retest, split halves) and <strong>different types of validity</strong> (internal, predictive, ecological). Identify examples of research from the content and/or studies as examples of each.</p>
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span>
+    <span>Exam Key Points — Validity</span>
+    <span class="ao-badge">AO1 + AO3</span>
+  </div>
+  <div class="summary-card-body hidden">
+    <ol>
+      <li><strong>Internal validity</strong> = measured what you intended. Suzuki et al. (2014): BMI/nutrition differences could be due to being an inpatient, having schizophrenia, or both — no outpatient-with-schizophrenia or inpatient-with-different-disorder control → no causal conclusions.</li>
+      <li>Clinical practice problem: <strong>no random allocation</strong> — clinicians refer patients they think will succeed (family therapy example) → therapy looks better than reality.</li>
+      <li>Self-report problem: lack of self-awareness, social desirability bias, exaggerating improvement — overcome via <strong>PANSS</strong> (clinician observations + self-report from caregivers and patients = <strong>triangulation</strong>; Opler et al. 2017 call it the gold standard) — but slow to administer and requires training.</li>
+      <li><strong>Predictive validity</strong>: a measure/diagnosis predicts a future outcome measured differently (self-esteem test → DSM-5 depression severity in 12 months; ICD-11 diagnosis → global assessment of functioning in 6 months).</li>
+      <li><strong>Ecological validity</strong>: Rosenhan high (staff unaware; abuse in plain sight) but reduced (pseudopatients not real; detected by real patients); Reichel low (viewing emaciation images in a lab ≠ viewing on own devices at home).</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 13: GENERALISABILITY ============ -->
+<section class="section" id="s13">
+  <h2>13. Generalisability（泛化性）</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <ol>
+      <li>评估泛化性看三样：<strong>抽样方法</strong>、<strong>样本量</strong>、<strong>研究地点</strong></li>
+      <li>随机/分层抽样最有代表性但几乎没人用；机会/志愿者样本（Reichel）是常态</li>
+      <li>大样本有好例子：Zhao et al. (2016) 元分析 10,000 名被试、56 项 RCT</li>
+    </ol>
+  </div>
+
+  <p>When evaluating the generalisability of clinical research, you need to identify the <strong>sampling technique</strong>, the <strong>sample size</strong> and <strong>relevant characteristics of the participants</strong>, plus <strong>where the studies took place</strong>.</p>
+
+  <h3>Sampling technique and sample size</h3>
+  <ul>
+    <li><strong>Random and stratified samples</strong> provide the most representative samples, as action is taken to ensure diversity and reduce sampling bias. Such techniques are <strong>rarely used</strong>, however, due to practical constraints on time and funding</li>
+    <li>Samples are far more likely to be <strong>opportunity or volunteer samples</strong> — such as the 36 participants in the control group in the study by Reichel et al. (2014). These girls and young women all applied to <strong>adverts placed in newspapers, youth groups or on a university campus</strong>. All of these ways of recruiting participants <strong>limits the diversity</strong> of people who will apply. Also, the participants in the anorexia nervosa group were all from <strong>specific treatment programmes in Berlin, Germany</strong> — they may not have been representative of people with anorexia nervosa in other countries, or even other parts of Germany</li>
+    <li><strong>Small sample size</strong> also affects generalisability: Reichel et al. used only <strong>36 participants with anorexia nervosa and 36 controls</strong>. However, <strong>Zhao et al. (2016)</strong> included <strong>10,000 participants</strong> in their meta-analysis of <strong>56 RCTs</strong> on the efficacy of antipsychotics, increasing the likelihood of the sample being representative of the target population</li>
+  </ul>
+
+  <h3>Where the studies took place</h3>
+  <ul>
+    <li>In the study by <strong>Suzuki et al. (2014)</strong>, all inpatients with schizophrenia were Japanese and were inpatients at <strong>nine hospitals on the west coast of Japan</strong> — the findings cannot be generalised beyond this region, where hospital policy may have differed from other areas of the country</li>
+    <li>An interesting example regarding generalisability: the schoolgirls used in <strong>Becker et al. (2002)</strong> all spoke <strong>English as their first language</strong>, despite living in Fiji, and attended <strong>English-speaking schools</strong>. The results may have been different in parts of the country that were less Westernised</li>
+  </ul>
+
+  <div class="exam-tip">
+    <strong>Exam tip:</strong> When evaluating studies in terms of generalisability, always think about <strong>who the results can be generalised to</strong> (who is the target population?) as well as <strong>who they cannot be generalised to, and why</strong>. How might this affect the overall usefulness of the study?
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>泛化性三问：① 人是怎么招来的？（报纸广告招来的志愿者 ≠ 所有年轻女性）② 人够多吗？（36 人难以代表全体，10,000 人的元分析就稳得多）③ 在哪做的？（日本西海岸九家医院的住院政策，不代表全国；斐济英语学校的女生，不代表斐济所有地区）。答题模板：<strong>"这些结果可以推广到 X 群体，但不能推广到 Y 群体，因为 Z——这限制了研究关于 Y 的应用价值。"</strong>
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span>
+    <span>Exam Key Points — Generalisability</span>
+    <span class="ao-badge">AO3</span>
+  </div>
+  <div class="summary-card-body hidden">
+    <ol>
+      <li>Evaluate: sampling technique + sample size + participant characteristics + <strong>where the study took place</strong>.</li>
+      <li>Random/stratified most representative but rarely used (time, funding); opportunity/volunteer typical — Reichel's 36 controls came from adverts in newspapers, youth groups and a university campus; AN group from specific Berlin treatment programmes.</li>
+      <li>Sample size: Reichel 36+36 (small) vs <strong>Zhao et al. (2016): 10,000 participants, meta-analysis of 56 RCTs</strong> on antipsychotic efficacy (large).</li>
+      <li>Location: Suzuki — Japanese inpatients at nine west-coast hospitals (not generalisable beyond the region); Becker — English-first-language schoolgirls in Fiji (results may differ in less Westernised areas).</li>
+      <li>Always state who results CAN and CANNOT be generalised to, and the consequence for usefulness.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 14: CREDIBILITY, OBJECTIVITY & SUBJECTIVITY ============ -->
+<section class="section" id="s14">
+  <h2>14. Credibility, Objectivity and Subjectivity（可信度、客观性与主观性）</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <ol>
+      <li><strong>可信度</strong>：提高数据可信度的策略——漏斗图查发表偏倚、双人编码、安慰剂与盲法</li>
+      <li><strong>主动安慰剂</strong>（active placebos）揭露了一个惊人数据：真药只在 14% 的研究中有效（用无活性安慰剂时是 59%）</li>
+      <li><strong>客观 vs 主观</strong>：仪器数据客观，但诊断和文本编码是主观判断（Rosenhan 选择性报告 Harry Lando 的数据）</li>
+    </ol>
+  </div>
+
+  <h3>Credibility（可信度）</h3>
+  <p>The credibility of clinical research is increased when researchers employ strategies which improve the <strong>trustworthiness of the data</strong>. How this is done depends on the research and methods employed:</p>
+  <ul>
+    <li><strong>Meta-analyses</strong> are more credible when statistics such as <strong>funnel plots</strong>（漏斗图）have been used to assess <strong>publication bias</strong>（发表偏倚）, and when <strong>unpublished doctoral research is included</strong></li>
+    <li>The credibility of the meta-analysis by Hans and Hiller (2013) was improved by the fact that they <strong>coded all studies</strong> to show their clinical representativeness and methodological quality — covering areas such as <strong>low drop-out rate, intention-to-treat (ITT) analysis, formal diagnostic investigation</strong> (whether diagnoses were checked), <strong>minimum sample size of 30, and minimum follow-up length of 6 months</strong></li>
+    <li>Other ways of increasing credibility include the use of <strong>placebos and blinding procedures</strong> in RCTs</li>
+  </ul>
+
+  <div class="gold-standard-para">
+    <h4>🏅 When blinding breaks down: active placebos</h4>
+    <p>One problem is that in practice, <strong>blinding procedures sometimes break down</strong> — researchers and/or participants become aware of which group/condition they are in. This can happen in studies using <strong>inert placebos</strong> with participants who have previously taken similar medications (e.g. antipsychotics or antidepressants) and therefore <strong>know what side-effects to expect</strong>. When they don't experience any side-effects, they realise they are in the control group — and their expectation of improvement decreases.</p>
+    <p>One way researchers have overcome this is to use <strong>active placebos</strong>: imitation drugs which contain active ingredients causing <strong>similar side-effects to the real drug</strong> (e.g. drowsiness, nausea). Active placebo studies of antidepressants have shown that the real drugs are only effective in <strong>14 per cent</strong> of studies, compared with <strong>59 per cent</strong> when using inactive placebos (Fisher and Greenberg, 1995). This research has reduced the credibility of many of the <strong>older RCTs on the efficacy of antidepressants</strong>.</p>
+  </div>
+
+  <h3>Objectivity and Subjectivity（客观性与主观性）</h3>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Objective measures</h4>
+      <p>Some measures used in clinical psychology are highly objective, as data is collected using <strong>precise scientific instruments</strong>: neuroimaging technology, electrocardiograms, electromyograms, skin conductance, blood, hair and urine samples. These test results do not usually require much interpretation and are therefore <strong>free from bias</strong>.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Subjective measures</h4>
+      <p>Other types of data are more subjective. <strong>Diagnosis</strong> of patients falls into this category — poor inter-rater reliability demonstrates the role of subjective judgement. Data gathered through <strong>open questions in semi-structured interviews</strong> has to be interpreted, and choices made about whether what the patient has shared is a good enough match for the criteria for a diagnosis to be made.</p>
+    </div>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-icon">⚖️</span>
+      <span class="study-name">Subjectivity in practice — Rosenhan's selectivity</span>
+      <span class="study-badge classic">Classic</span>
+    </div>
+    <div class="study-card-body">
+      <p>One excellent example of subjectivity is the <strong>selectivity</strong> in Rosenhan's report of <strong>which observations he chose to include</strong>. The data collected by <strong>Harry Lando</strong> was <strong>ignored altogether</strong>, as it did not fit with Rosenhan's expectations regarding the treatment of psychiatric patients in hospital.</p>
+      <p>换句话说：连"揭露偏见"的经典研究本身，也在用主观选择来呈现证据。</p>
+      <span class="eval-tag">Researcher bias（研究者偏差）</span>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>客观/主观的分界线其实很清晰：<strong>仪器输出的数字</strong>（心电图、皮肤电、脑扫描）几乎不需要人来解读 → 客观；<strong>需要人来判断"算不算"的</strong>（这个症状够不够诊断标准？这句话该归到哪个主题？）→ 主观。<br><br>
+    主动安慰剂的例子值得记住：老药厂试验用"完全无效的糖丸"做对照，患者一吃"没副作用"就知道自己吃的是假药，期待感崩塌，药物看起来效果超好。换成<strong>同样有副作用的假药</strong>后，真药的有效率从 59% 掉到 14%——原来大半"疗效"是期待效应。这个例子同时是"可信度"和"效度"两个考点的绝佳素材。
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span>
+    <span>Exam Key Points — Credibility, Objectivity &amp; Subjectivity</span>
+    <span class="ao-badge">AO3</span>
+  </div>
+  <div class="summary-card-body hidden">
+    <ol>
+      <li>Credibility strategies: <strong>funnel plots</strong> to assess publication bias; including <strong>unpublished doctoral research</strong>; coding studies (Hans &amp; Hiller: low drop-out, ITT analysis, formal diagnostic investigation, minimum n = 30, minimum 6-month follow-up); placebos and blinding.</li>
+      <li><strong>Blinding can break down</strong>: experienced participants detect inert placebos (no side-effects) → expectation drops. Solution: <strong>active placebos</strong> with similar side-effects (drowsiness, nausea).</li>
+      <li>Key statistic: real antidepressants effective in only <strong>14%</strong> of studies with active placebos vs <strong>59%</strong> with inactive placebos (Fisher &amp; Greenberg, 1995) → reduced credibility of older antidepressant RCTs.</li>
+      <li>Objective data: neuroimaging, ECG, EMG, skin conductance, blood/hair/urine — little interpretation, free from bias. Subjective: diagnosis (poor inter-rater reliability), open-question interview data.</li>
+      <li>Example of subjectivity: Rosenhan <strong>ignored Harry Lando's data</strong> because it did not fit his expectations.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 15: ETHICS & APPLICATIONS ============ -->
+<section class="section" id="s15">
+  <h2>15. Ethics and Practical Applications（伦理与实际应用）</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <ol>
+      <li><strong>伦理</strong>：Rosenhan 的知情同意缺陷（但"公共利益"可以平衡代价）；双盲研究的知情同意难题；数据保密与伦理委员会审批</li>
+      <li><strong>实际应用</strong>：临床研究催生了 CBT、家庭疗法等治疗，帮助患者避免长期住院、回归社区生活</li>
+    </ol>
+  </div>
+
+  <h3>Ethics（伦理）</h3>
+  <p>As you revise the key research in clinical psychology, you will find evidence of many ethical strengths and weaknesses.</p>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-icon">🏥</span>
+      <span class="study-name">Rosenhan (1973) — consent vs public interest</span>
+      <span class="study-badge classic">Classic</span>
+    </div>
+    <div class="study-card-body">
+      <p>The only permission gained for the pseudopatients' admission into the hospitals was for <strong>Rosenhan's own admission</strong> — and even then, only with the hospital administrator and the chief psychologist in <strong>one institution</strong>.</p>
+      <p>It could be argued the pseudopatients' actions affected the amount of attention given to those who were genuinely ill. However, the testimonies of the pseudopatients suggest this was not true: staff had very limited contact with patients — an average of <strong>6.8 minutes per day</strong> per pseudopatient (including admission, discharge and all medication).</p>
+      <p>Despite the ethical shortcomings, the findings were arguably <strong>in the public interest</strong> — the costs to hospital staff were outweighed by the potential benefits to society.</p>
+    </div>
+  </div>
+
+  <h4>Ethical issues in RCT designs</h4>
+  <ul>
+    <li>In <strong>double-blind placebo studies</strong>, participants cannot give their fully informed consent, as they are not allowed to know whether they are taking the placebo or the real drug. Researchers must give <strong>detailed information</strong> so participants can make an informed decision, and must <strong>regularly remind them of their right to withdraw</strong>, to protect them from harm</li>
+    <li>In studies using <strong>wait-list control groups</strong>, these groups are also offered the experimental treatment — but at the end of the trial period. This improves the ethics of the study, as <strong>all participants have the opportunity to try the alternative treatment</strong>, which may significantly benefit their quality of life</li>
+  </ul>
+
+  <h4>Confidentiality and approval</h4>
+  <p>As the majority of studies in clinical psychology involve collecting <strong>highly sensitive and personal medical data</strong>, the highest standards must be maintained for the <strong>confidential storage of data</strong>. All studies must be approved by the university <strong>Ethics Committee or Institutional Review Board</strong>. For example:</p>
+  <ul>
+    <li><strong>Suzuki et al. (2014)</strong> — approved by the Ethics Committee at <strong>Niigata University Graduate School of Medical and Dental Science</strong></li>
+    <li><strong>Ma et al. (2014)</strong> — approved by the <strong>Guangdong Medical College Institutional Review Board</strong>; informed consent was obtained from each participant</li>
+  </ul>
+
+  <h3>Practical Application of Findings（研究结果的实际应用）</h3>
+  <p>Clinical research into the causes of disorders such as schizophrenia, depression and anorexia nervosa has paved the way for the development of <strong>treatments and therapies</strong> which have helped people to <strong>avoid long-term hospitalisation</strong> and live in the community alongside family and friends:</p>
+  <ul>
+    <li>Treatments such as <strong>CBT</strong> have helped people to <strong>regain a sense of control</strong> in their lives, improving their quality of life and daily functioning</li>
+    <li><strong>Family therapy</strong> supports the entire family to develop <strong>coping strategies</strong>, identifying and building on existing strengths, and ensuring that <strong>everyone feels supported and heard</strong></li>
+  </ul>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>伦理题的答题思路不是简单贴标签"违反了知情同意"，而是要<strong>权衡（weigh up）</strong>：Rosenhan 确实没给医院知情同意，但研究揭露了影响全体患者权益的系统性问题——成本（医院员工被误导）小于收益（推动精神病院改革），这就是"public interest（公共利益）"论证。再配上 6.8 分钟的数据反驳"抢占了真病人的注意力"这一指控，论证就完整了。<br><br>
+    实际应用是评价的"正面收尾"素材：任何临床研究被批得体无完肤后，一句"但它催生了 CBT 和家庭疗法，帮助无数患者回归社区生活"就能体现研究的 ultimate value。
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span>
+    <span>Exam Key Points — Ethics &amp; Applications</span>
+    <span class="ao-badge">AO3</span>
+  </div>
+  <div class="summary-card-body hidden">
+    <ol>
+      <li>Rosenhan: consent only for Rosenhan's own admission (administrator + chief psychologist, one institution); claim that pseudopatients took attention from real patients countered by the <strong>6.8 minutes/day</strong> contact figure; findings in the public interest → costs outweighed by benefits.</li>
+      <li>Double-blind placebo studies: no fully informed consent possible → detailed information + regular reminders of the <strong>right to withdraw</strong>.</li>
+      <li>Wait-list controls get the treatment at the end of the trial — improves ethics.</li>
+      <li>Sensitive medical data → confidential storage; approval by Ethics Committee / IRB (Suzuki: Niigata University Graduate School of Medical and Dental Science; Ma: Guangdong Medical College IRB; informed consent from each participant).</li>
+      <li>Applications: research → treatments helping people <strong>avoid long-term hospitalisation</strong>; CBT (sense of control, quality of life); family therapy (coping strategies, building strengths, everyone feels supported).</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 16: CHECKPOINT & EXAM PRACTICE ============ -->
+<section class="section" id="s16">
+  <h2>16. Checkpoint and Exam Practice（自测与考试练习）</h2>
+
+  <div class="checkpoint">
+    <h3>✅ Checkpoint — Test Yourself（课本 10 题）</h3>
+
+    <div class="study-card">
+      <div class="study-card-body">
+        <p><strong>Q1.</strong> What does <em>randomised</em> mean in relation to a randomised controlled trial?</p>
+      </div>
+      <div class="summary-card-header" onclick="toggleSummary(this)">
+        <span class="arrow">▶</span><span>Answer</span><span class="ao-badge">1</span>
+      </div>
+      <div class="summary-card-body hidden">
+        <p>Participants are <strong>randomly allocated</strong> to the experimental group (receiving the treatment being investigated) or the control group(s) (receiving another treatment, treatment as usual, or a wait-list) — allocation is down to chance, not choice.</p>
+      </div>
+    </div>
+
+    <div class="study-card">
+      <div class="study-card-body">
+        <p><strong>Q2.</strong> What is the difference between a <em>placebo</em> and a <em>placebo effect</em>?</p>
+      </div>
+      <div class="summary-card-header" onclick="toggleSummary(this)">
+        <span class="arrow">▶</span><span>Answer</span><span class="ao-badge">2</span>
+      </div>
+      <div class="summary-card-body hidden">
+        <p>A <strong>placebo</strong> is an inactive medication that looks, smells and tastes exactly like the genuine drug. The <strong>placebo effect</strong> is the psychological improvement that comes from <em>expecting</em> to feel better after taking (what you believe is) a prescribed drug — separate from any biological effect.</p>
+      </div>
+    </div>
+
+    <div class="study-card">
+      <div class="study-card-body">
+        <p><strong>Q3.</strong> What is the difference between an MRI and an fMRI?</p>
+      </div>
+      <div class="summary-card-header" onclick="toggleSummary(this)">
+        <span class="arrow">▶</span><span>Answer</span><span class="ao-badge">3</span>
+      </div>
+      <div class="summary-card-body hidden">
+        <p><strong>MRI</strong> is a <em>structural</em> technique — static images showing the shape and relative size of brain regions. <strong>fMRI</strong> is a <em>functional</em> technique — it measures oxygenated blood flow to show <em>which areas are active</em> during tasks (colour map: yellow = most active → orange → red).</p>
+      </div>
+    </div>
+
+    <div class="study-card">
+      <div class="study-card-body">
+        <p><strong>Q4.</strong> Which sections of a published research study would contain the results of the study?</p>
+      </div>
+      <div class="summary-card-header" onclick="toggleSummary(this)">
+        <span class="arrow">▶</span><span>Answer</span><span class="ao-badge">4</span>
+      </div>
+      <div class="summary-card-body hidden">
+        <p>Primarily the <strong>results section</strong> (descriptive and inferential statistics) — but the <strong>abstract</strong> also summarises the main results, and the <strong>discussion</strong> begins by reiterating the findings.</p>
+      </div>
+    </div>
+
+    <div class="study-card">
+      <div class="study-card-body">
+        <p><strong>Q5.</strong> Where in a published research study would you expect to find the hypothesis/research question?</p>
+      </div>
+      <div class="summary-card-header" onclick="toggleSummary(this)">
+        <span class="arrow">▶</span><span>Answer</span><span class="ao-badge">5</span>
+      </div>
+      <div class="summary-card-body hidden">
+        <p>Within the <strong>introduction</strong> section (aims and hypotheses come at the end of the introduction, after the literature review).</p>
+      </div>
+    </div>
+
+    <div class="study-card">
+      <div class="study-card-body">
+        <p><strong>Q6.</strong> Can you name three things that a psychologist does each day to meet the standards of conduct, practice and ethics?</p>
+      </div>
+      <div class="summary-card-header" onclick="toggleSummary(this)">
+        <span class="arrow">▶</span><span>Answer</span><span class="ao-badge">6</span>
+      </div>
+      <div class="summary-card-body hidden">
+        <p>Any three of the ten standards — e.g. obtaining valid consent; communicating appropriately with service users; keeping full, clear and accurate records; respecting confidentiality; attending regular training (CPD).</p>
+      </div>
+    </div>
+
+    <div class="study-card">
+      <div class="study-card-body">
+        <p><strong>Q7.</strong> How could a psychologist show that they are 'open when things go wrong'?</p>
+      </div>
+      <div class="summary-card-header" onclick="toggleSummary(this)">
+        <span class="arrow">▶</span><span>Answer</span><span class="ao-badge">7</span>
+      </div>
+      <div class="summary-card-body hidden">
+        <p>Standard 8: be open and honest — <strong>apologise to the service user/carer and take action to put matters right</strong>; support those who raise concerns; give helpful and honest responses to complaints. This reflects the <strong>duty of candour</strong>.</p>
+      </div>
+    </div>
+
+    <div class="study-card">
+      <div class="study-card-body">
+        <p><strong>Q8.</strong> What statistical test would you use if the experimental design was independent measures and the level of measurement was nominal?</p>
+      </div>
+      <div class="summary-card-header" onclick="toggleSummary(this)">
+        <span class="arrow">▶</span><span>Answer</span><span class="ao-badge">8</span>
+      </div>
+      <div class="summary-card-body hidden">
+        <p><strong>Chi-square</strong>（卡方检验）.</p>
+      </div>
+    </div>
+
+    <div class="study-card">
+      <div class="study-card-body">
+        <p><strong>Q9.</strong> What type of graph is appropriate for a correlational study?</p>
+      </div>
+      <div class="summary-card-header" onclick="toggleSummary(this)">
+        <span class="arrow">▶</span><span>Answer</span><span class="ao-badge">9</span>
+      </div>
+      <div class="summary-card-body hidden">
+        <p>A <strong>scattergram</strong>（散点图）.</p>
+      </div>
+    </div>
+
+    <div class="study-card">
+      <div class="study-card-body">
+        <p><strong>Q10.</strong> How could you improve the credibility of a meta-analysis?</p>
+      </div>
+      <div class="summary-card-header" onclick="toggleSummary(this)">
+        <span class="arrow">▶</span><span>Answer</span><span class="ao-badge">10</span>
+      </div>
+      <div class="summary-card-body hidden">
+        <p>Use <strong>funnel plots</strong> to assess publication bias; include <strong>unpublished doctoral research</strong>; code studies for clinical representativeness and methodological quality (as Hans &amp; Hiller did).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="exam-practice">
+    <h3>📝 Exam Practice（课本 4 题）</h3>
+
+    <h4>Question 1 (2 marks)</h4>
+    <p>A clinical researcher is trying to decide whether to use a structural or a functional neuroimaging technique in her study. Suggest <strong>one reason</strong> why she might choose to use functional imaging rather than structural imaging.</p>
+    <div class="summary-card-header" onclick="toggleSummary(this)">
+      <span class="arrow">▶</span><span>Mark scheme guidance</span><span class="ao-badge">2</span>
+    </div>
+    <div class="summary-card-body hidden">
+      <ol>
+        <li mark-style>One mark for a reason, one mark for elaboration. E.g. she wants to investigate <strong>which brain regions are active</strong> while participants perform a task (e.g. differences between people with and without a disorder) — functional imaging shows <strong>oxygenated blood flow</strong> over time, whereas structural imaging only shows <em>static</em> shape and size. (Egan et al. 2001 is a model example.)</li>
+      </ol>
+    </div>
+
+    <h4>Question 2 (4 marks)</h4>
+    <p>Makoto is preparing for an interview for a new job working as a mental health nurse. He has been asked to give a short presentation to new colleagues about the HCPC guidelines. <strong>Explain two ways</strong> Makoto could help his new colleagues to demonstrate awareness of HCPC guidelines for clinical practitioners in the workplace.</p>
+    <div class="summary-card-header" onclick="toggleSummary(this)">
+      <span class="arrow">▶</span><span>Mark scheme guidance</span><span class="ao-badge">4</span>
+    </div>
+    <div class="summary-card-body hidden">
+      <ol>
+        <li>2 marks per way (1 identification + 1 application to the workplace). E.g. colleagues could always <strong>obtain valid consent</strong> before care/treatment and record it accurately; colleagues could <strong>report concerns about safety</strong> promptly and support others who raise concerns; colleagues keep <strong>full, clear and accurate records</strong>, completed promptly and stored securely.</li>
+        <li>Apply to the mental health nursing context — e.g. confidentiality of sensitive patient information; being open and apologising when things go wrong (duty of candour).</li>
+      </ol>
+    </div>
+
+    <h4>Question 3 (2 + 2 marks)</h4>
+    <p>Zuzanna is carrying out an observational study of nine people with schizophrenia who live independently in the community. She visits them at home before and after visits from their family. She asks them to complete a brief self-report questionnaire (minimum score 5 and maximum score 50) to assess the severity of their symptoms. Zuzanna is unsure whether seeing the families will make her participants' symptoms better or worse, so she decides to use a non-directional hypothesis.</p>
+    <p><strong>a)</strong> Explain one weakness of the experimental design that Zuzanna is using. (2 marks)</p>
+    <div class="summary-card-header" onclick="toggleSummary(this)">
+      <span class="arrow">▶</span><span>Mark scheme guidance 3a</span><span class="ao-badge">2</span>
+    </div>
+    <div class="summary-card-body hidden">
+      <ol>
+        <li>She is using a <strong>repeated measures design</strong> (the same nine people measured before and after). One weakness: <strong>order effects</strong> — completing the same questionnaire twice may lead to practice effects or participants guessing the aim (demand characteristics). Alternatively: participants' symptoms may change over time for reasons unconnected to family visits (e.g. medication changes) — an <strong>uncontrolled confounding variable</strong> reducing internal validity.</li>
+      </ol>
+    </div>
+    <p><strong>b)</strong> Zuzanna conducts a Wilcoxon signed ranks test to assess the significance of her findings. She achieved a <strong>T value of 4</strong> and there were no zeros when the difference between the scores was calculated. Explain whether she should reject the null hypothesis or not. (2 marks)</p>
+    <div class="summary-card-header" onclick="toggleSummary(this)">
+      <span class="arrow">▶</span><span>Mark scheme guidance 3b</span><span class="ao-badge">2</span>
+    </div>
+    <div class="summary-card-body hidden">
+      <ol>
+        <li>N = 9 (all participants had non-zero differences, so none are removed). For a two-tailed test at p ≤ 0.05, the critical value of T for N = 9 is <strong>6</strong>.</li>
+        <li>Zuzanna's observed T (4) is <strong>less than or equal to the critical value (6)</strong> → the result is <strong>significant</strong> → she <strong>should reject the null hypothesis</strong>.</li>
+        <li>记住判断规则：Wilcoxon 的观察值 T 必须<strong>小于等于</strong>临界值才显著。</li>
+      </ol>
+    </div>
+
+    <h4>Question 4 (8 marks)</h4>
+    <p>Otakar is writing up a research study about cognitive problems in people with and without schizophrenia. He asks them to learn the positions of a number of objects in a VR environment and then to go back and find them after a short break. The participants are given a score out of 10 to show how many objects they correctly located within one minute. Otakar has asked for your advice about how to write up the method and results section of the report. <strong>Discuss the conventions of published psychological research with reference to Otakar's methods and results sections.</strong></p>
+    <div class="summary-card-header" onclick="toggleSummary(this)">
+      <span class="arrow">▶</span><span>Essay plan</span><span class="ao-badge">8</span>
+    </div>
+    <div class="summary-card-body hidden">
+      <table>
+        <tr><th>Paragraph</th><th>Content (applied to Otakar)</th></tr>
+        <tr><td><strong>1. Method — design &amp; variables</strong></td><td>Describe the design (independent measures: with/without schizophrenia), operationalised IV (diagnosis) and DV (number of objects correctly located within one minute, score out of 10)</td></tr>
+        <tr><td><strong>2. Method — sample &amp; materials</strong></td><td>Mean age, gender ratio, group-level psychiatric history; details of the VR environment and its validity/reliability</td></tr>
+        <tr><td><strong>3. Method — procedure</strong></td><td>Step-by-step with enough detail for full replication; ethics (informed consent from a vulnerable group, right to withdraw)</td></tr>
+        <tr><td><strong>4. Results</strong></td><td>Quantitative experimental data → descriptive statistics in tables (central tendency + dispersion per group), <strong>bar chart</strong> comparing the two groups, then the appropriate inferential test with p-value (e.g. Mann-Whitney if ordinal data + independent measures)</td></tr>
+        <tr><td><strong>5. Conclusion link</strong></td><td>Conventions exist so findings are checkable, replicable and peer-reviewable — Otakar's report should enable others to replicate his VR study exactly</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 17: KEY TERMS ============ -->
+<section class="section" id="s17">
+  <h2>17. Key Terms（关键术语表）</h2>
+  <table>
+    <tr><th style="width:30%">Term</th><th>Plain-language meaning（大白话解释）</th></tr>
+    <tr><td><strong>Randomised controlled trial (RCT)</strong></td><td>An experiment testing a treatment where participants are randomly allocated to treatment vs control groups — the "gold standard" for testing efficacy</td></tr>
+    <tr><td><strong>Placebo</strong></td><td>A fake treatment (pill/injection/patch) that looks, smells and tastes identical to the real one</td></tr>
+    <tr><td><strong>Placebo effect</strong></td><td>Feeling better because you <em>expect</em> to — not because of the drug's biology</td></tr>
+    <tr><td><strong>Single-blind</strong></td><td>Participants don't know if they have the real treatment or placebo</td></tr>
+    <tr><td><strong>Double-blind</strong></td><td>Neither participants nor the assessing researchers know who is in which group</td></tr>
+    <tr><td><strong>Wait-list control</strong></td><td>Control group that receives the treatment later, after the study ends</td></tr>
+    <tr><td><strong>Active placebo</strong></td><td>Imitation drug with real side-effects (e.g. drowsiness) so participants can't detect it's fake</td></tr>
+    <tr><td><strong>Efficacy vs effectiveness</strong></td><td>How well a treatment works in ideal controlled conditions vs in real-world clinical practice</td></tr>
+    <tr><td><strong>MRI (magnetic resonance imaging)</strong></td><td>Structural brain scan using magnetic fields and radio waves — shows shape and size of brain regions</td></tr>
+    <tr><td><strong>fMRI (functional MRI)</strong></td><td>Functional brain scan measuring oxygenated blood flow — shows which regions are active (yellow = most active)</td></tr>
+    <tr><td><strong>Neurodegenerative disorder</strong></td><td>Condition where neurons become increasingly damaged (decline in cognition and movement)</td></tr>
+    <tr><td><strong>Abstract</strong></td><td>Short summary of methodology, results and conclusions at the start of a paper — searchable in databases</td></tr>
+    <tr><td><strong>Literature review</strong></td><td>Critical summary of existing research findings on a topic, in the introduction</td></tr>
+    <tr><td><strong>In-text citations</strong></td><td>Author name + date in brackets after an idea — academic honesty</td></tr>
+    <tr><td><strong>Peer review</strong></td><td>Independent expert scrutiny of research before publication — accept / revise / reject</td></tr>
+    <tr><td><strong>HCPC</strong></td><td>UK Health and Care Professions Council — the register clinical practitioners must join and stay on</td></tr>
+    <tr><td><strong>Standards of proficiency</strong></td><td>Minimum expectations to register as a practitioner psychologist</td></tr>
+    <tr><td><strong>CPD (continuing professional development)</strong></td><td>Lifelong learning requirement — records of training and supervision</td></tr>
+    <tr><td><strong>Duty of candour</strong></td><td>Being open when things go wrong: learn from mistakes, apologise to service users and carers</td></tr>
+    <tr><td><strong>Inter-rater reliability</strong></td><td>Two raters code the same data — strong agreement = reliable criteria</td></tr>
+    <tr><td><strong>Internal reliability</strong></td><td>All items in a questionnaire measure the same construct (items correlate)</td></tr>
+    <tr><td><strong>Internal validity</strong></td><td>You measured what you intended — differences are due to the IV, not confounds</td></tr>
+    <tr><td><strong>Ecological validity</strong></td><td>Findings represent everyday life</td></tr>
+    <tr><td><strong>Predictive validity</strong></td><td>A measure/diagnosis accurately predicts a future outcome measured differently</td></tr>
+    <tr><td><strong>Triangulation</strong></td><td>Combining multiple sources/methods (e.g. clinician + caregiver + patient) to check findings</td></tr>
+    <tr><td><strong>PANSS</strong></td><td>Positive and Negative Syndrome Scale — combines clinician observation with self/caregiver report</td></tr>
+    <tr><td><strong>Comorbidity</strong></td><td>Two or more disorders occurring in the same person at the same time</td></tr>
+    <tr><td><strong>Publication bias</strong></td><td>Journals publish positive results more than null results — skews the literature</td></tr>
+    <tr><td><strong>Funnel plot</strong></td><td>Graph used to detect publication bias in a meta-analysis (effect size vs sample size)</td></tr>
+    <tr><td><strong>Intention-to-treat (ITT) analysis</strong></td><td>Analysing participants in the groups they were allocated to, even if they dropped out</td></tr>
+  </table>
+
+  <div class="note-box green-box">
+    <h4>💡 一张表记住本章主线</h4>
+    <table>
+      <tr><th>主题</th><th>核心一句话</th><th>代表例子</th></tr>
+      <tr><td>RCT</td><td>随机 + 安慰剂 + 双盲 = 检验疗效的黄金标准</td><td>心理治疗对照版：50 分钟陪伴但不做 CBT</td></tr>
+      <tr><td>神经影像</td><td>MRI 拍结构，fMRI 看活动（6 秒峰值）</td><td>Egan 2001：COMT Val 等位基因 → 前额叶活动低</td></tr>
+      <tr><td>报告规范</td><td>五段式：摘要→引言→方法→结果→讨论</td><td>摘要决定引用量；方法要能复制</td></tr>
+      <tr><td>同行评审</td><td>匿名专家审稿，三种结局</td><td>防止不靠谱研究进入公共领域</td></tr>
+      <tr><td>HCPC</td><td>注册 + 十项标准 + CPD + 坦诚义务</td><td>2024 修订；16 分大题只描述约 4 项</td></tr>
+      <tr><td>信度/效度/泛化</td><td>一致性 / 测对东西 / 能推广谁</td><td>Hans &amp; Hiller 双评分；Suzuki 缺对照组；Reichel 小样本</td></tr>
+      <tr><td>可信度</td><td>主动安慰剂揭穿 59% → 14%</td><td>Fisher &amp; Greenberg (1995)</td></tr>
+    </table>
+  </div>
+</section>
+
+</main>
+</div><!-- END PAGE LAYOUT -->
+
+<div class="footer-note">
+  <p>📚 Edexcel IAL Psychology · Topic H: Clinical Psychology · Chapter 25 — Methods</p>
+  <p>Topics covered: RCTs (randomisation · placebos · double-blind) · Neuroimaging (MRI · fMRI · Egan et al. 2001) · Conventions of published research · Peer review · HCPC guidelines · Reliability · Validity · Generalisability · Credibility · Objectivity · Ethics · Practical applications</p>
+</div>
+</div><!-- END CONTAINER -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<script>
+function toggleSummary(header) {
+  header.classList.toggle('open');
+  var body = header.nextElementSibling;
+  if (body && body.classList.contains('summary-card-body')) {
+    body.classList.toggle('hidden');
+  }
+}
+
+// Scroll spy — highlight active sidebar item
+(function(){
+  var sections = document.querySelectorAll('.section[id^="s"]');
+  var links = document.querySelectorAll('.sb-item a');
+  function onScroll() {
+    var scrollPos = window.scrollY + 120;
+    var currentId = sections.length ? sections[0].id : null;
+    sections.forEach(function(sec) {
+      if (sec.offsetTop <= scrollPos) { currentId = sec.id; }
+    });
+    links.forEach(function(link) {
+      link.classList.toggle('sb-active', link.getAttribute('href') === '#' + currentId);
+    });
+    var btn = document.getElementById('backToTop');
+    if (btn) { btn.classList.toggle('show', window.scrollY > 400); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+// Dark mode
+function toggleDarkMode() {
+  document.body.classList.toggle('dark');
+  var isDark = document.body.classList.contains('dark');
+  localStorage.setItem('edexcel-ch25-darkMode', isDark ? '1' : '0');
+  var btn = document.getElementById('darkBtn');
+  if (btn) { btn.textContent = isDark ? '☀️ Light' : '🌙 Dark'; }
+}
+
+// Font size
+function adjustFontSize(delta) {
+  var current = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+  var next = Math.min(22, Math.max(12, current + delta));
+  document.documentElement.style.fontSize = next + 'px';
+  localStorage.setItem('edexcel-ch25-fontSize', String(next));
+}
+
+// Restore preferences
+(function(){
+  if (localStorage.getItem('edexcel-ch25-darkMode') === '1') {
+    document.body.classList.add('dark');
+    var btn = document.getElementById('darkBtn');
+    if (btn) { btn.textContent = '☀️ Light'; }
+  }
+  var fs = localStorage.getItem('edexcel-ch25-fontSize');
+  if (fs) { document.documentElement.style.fontSize = fs + 'px'; }
+})();
+</script>
+</body>
+</html>

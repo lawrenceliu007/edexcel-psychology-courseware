@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edexcel Chapter 26 — Clinical Practical（内容分析：大众对心理健康的态度）</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --card-bg: #FFFFFF;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --note-bg: #fff7ed;
+  --note-border: #fb923c;
+  --term-color: #ea580c;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; transition: background .15s; white-space: nowrap; }
+.nav-pill:hover { background: var(--primary-dark); }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; transition: color .15s; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; font-weight: 300; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); transition: all .15s; display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+body.dark .nav-btn:hover { border-color: #f97316; color: #f97316; }
+
+.page-layout { display: grid; grid-template-columns: 190px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 190px; flex-shrink: 0; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; transition: all .15s ease; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 600; background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+.sb-item a.sb-sub { padding-left: 30px; font-size: .7em; opacity: .82; }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; backdrop-filter: blur(6px); }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box strong { color: #b45309; }
+.key-term { display: inline-block; background: #e8eaf6; color: #283593; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: .9em; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box h4 { color: #991b1b; margin-bottom: 5px; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.wider-issue { background: #fff8e1; border: 2px solid #fbc02d; border-radius: 8px; padding: 16px 20px; margin: 14px 0; }
+.wider-issue h4 { color: #f57f17; margin-top: 0; }
+.activity-box { background: #f0f4f8; border: 2px solid #90a4ae; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+.activity-box h4 { color: #546e7a; margin-top: 0; display: flex; align-items: center; gap: 8px; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+tr:hover { background: #fff7ed; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.figure { margin: 18px 0; text-align: center; }
+.figure img { max-width: 100%; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 3px 12px rgba(0,0,0,.08); }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.flowchart { background: #f6f7f9; border: 2px solid var(--border); border-radius: 12px; padding: 20px; margin: 18px 0; text-align: center; }
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: opacity .2s; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.ao-badge { background: rgba(255,255,255,.25); padding: 2px 8px; border-radius: 10px; font-size: .72em; font-weight: 700; margin-left: auto; }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; animation: slideDown .25s ease; }
+.summary-card-body.hidden { display: none; }
+@keyframes slideDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
+.summary-card-body ol { margin: 0; padding-left: 20px; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; display: flex; align-items: center; gap: 8px; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.study-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px 18px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.06); transition: all .25s ease; position: relative; }
+.study-card:hover { box-shadow: 0 4px 16px rgba(234,88,12,.15); border-color: #fb923c; transform: translateY(-2px); }
+.study-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid #fef3c7; }
+.study-icon { font-size: 1.3em; }
+.study-name { font-weight: 700; font-size: .95em; color: #ea580c; flex: 1; }
+.study-badge { font-size: .7em; font-weight: 600; padding: 3px 10px; border-radius: 12px; background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; white-space: nowrap; }
+.study-badge.classic { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: #9d174d; }
+.study-badge.contemp { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; }
+.study-badge.cross { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; }
+.study-badge.meta { background: linear-gradient(135deg, #ede9fe, #ddd6fe); color: #5b21b6; }
+.study-badge.corr { background: linear-gradient(135deg, #dcfce7, #bbf7d0); color: #166534; }
+.study-badge.natural { background: linear-gradient(135deg, #ffedd5, #fed7aa); color: #9a3412; }
+.study-badge.expt { background: linear-gradient(135deg, #cffafe, #a5f3fc); color: #155e75; }
+.study-card-body p { margin: 6px 0; line-height: 1.65; font-size: .9em; }
+.study-card-body ul { margin: 6px 0 6px 18px; padding: 0; }
+.study-card-body li { margin: 4px 0; font-size: .89em; line-height: 1.6; }
+.eval-tag { display: inline-block; background: #fef2f2; border-left: 3px solid #ef4444; padding: 4px 10px; margin-top: 6px; font-size: .85em; color: #991b1b; border-radius: 0 6px 6px 0; }
+.ao-zone-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 10px; margin: 20px 0 14px; font-weight: 700; font-size: 1.05em; }
+.ao-zone-header.ao1 { background: linear-gradient(135deg, #eff6ff, #dbeafe); border-left: 5px solid #2563eb; color: #1e40af; }
+.ao-zone-header.ao3 { background: linear-gradient(135deg, #fdf4ff, #fae8ff); border-left: 5px solid #c026d3; color: #a21caf; }
+.ao-zone-desc { font-size: .82em; font-weight: 400; opacity: .8; margin-left: auto; }
+.gold-standard-para { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 2px solid #fcd34d; border-radius: 10px; padding: 16px 18px; margin: 14px 0; }
+.gold-standard-para h4 { color: #92400e; margin: 0 0 8px; font-size: .95em; }
+.gold-standard-para p { font-size: .89em; line-height: 1.7; margin: 6px 0; }
+.gold-standard-para ul { font-size: .89em; margin: 6px 0; }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { box-shadow: 0 6px 20px rgba(234,88,12,.4); transform: translateY(-2px); }
+@media(max-width:900px){
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .main-content { max-width: 100%; }
+  .compare-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+body.dark { background: #0f172a; color: #e2e8f0; transition: background .3s, color .3s; }
+body.dark .container { background: #0f172a; }
+body.dark .nav-bar { background: #1a1a2e; border-bottom-color: var(--primary); }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+body.dark .sb-divider { background: #334155; }
+body.dark .sb-group-label { color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a:hover { color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.10), transparent); border-left-color: #f97316; }
+body.dark .sb-item a.sb-active { color: #fb923c; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); border-left-color: #f97316; }
+body.dark .header { background: linear-gradient(135deg, #c2410c, #ea580c, #f97316); }
+body.dark .section { background: #1a1a2e; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .warn-box h4 { color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .keyterm-box strong { color: #fbbf24; }
+body.dark .key-term { background: #2a2a4a; color: #a5b4fc; }
+body.dark strong { color: #fbbf24; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; color: white; border-color: #7f1d1d; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark tr:hover { background: rgba(234,88,12,.05); }
+body.dark td:first-child { color: #fb923c; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+body.dark .flowchart { background: #16213e; border-color: #334155; }
+body.dark .wider-issue { background: rgba(251,192,45,.06); border-color: #f59e0b; }
+body.dark .wider-issue h4 { color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .activity-box { background: #1e293b; border-color: #475569; }
+body.dark .activity-box h4 { color: #94a3b8; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark .study-card { background: #16213e; border-color: #334155; }
+body.dark .study-card:hover { border-color: #f97316; box-shadow: 0 4px 16px rgba(234,88,12,.2); }
+body.dark .study-card-header { border-bottom-color: #3f3f5e; }
+body.dark .study-name { color: #fb923c; }
+body.dark .study-card-body p, body.dark .study-card-body li { color: #cbd5e1; }
+body.dark .eval-tag { background: rgba(220,38,38,.08); color: #fca5a5; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .ao-zone-header.ao1 { background: linear-gradient(135deg, rgba(37,99,235,.15), rgba(37,99,235,.08)); border-left-color: #3b82f6; color: #93c5fd; }
+body.dark .ao-zone-header.ao3 { background: linear-gradient(135deg, rgba(192,38,211,.15), rgba(192,38,211,.08)); border-left-color: #c026d3; color: #e9d5ff; }
+body.dark .gold-standard-para { background: linear-gradient(135deg, rgba(245,158,11,.08), rgba(245,158,11,.04)); border-color: #f59e0b; }
+body.dark .gold-standard-para h4 { color: #fbbf24; }
+body.dark .gold-standard-para p, body.dark .gold-standard-para ul, body.dark .gold-standard-para li { color: #d1d5db; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+body.dark a { color: #60a5fa; }
+body.dark a:hover { color: #93c5fd; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../index.html">Home</a> <span class="sep">›</span>
+    <a href="../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Chapter 26 — Clinical Practical</span>
+  </div>
+  <span class="nav-pill">🧪 Clinical Psychology · Practical</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn" title="Toggle dark mode">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)" title="Decrease font size">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)" title="Increase font size">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">Chapter 26 Contents</div>
+        <div class="sb-header-sub">Clinical Psychology · Practical</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">1 · Foundations</li>
+        <li class="sb-item"><a href="#s1" class="sb-active">1. Objectives &amp; Mental Health Literacy</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">2 · Planning the Practical</li>
+        <li class="sb-item"><a href="#s2">2. What is Content Analysis?</a></li>
+        <li class="sb-item"><a href="#s3">3. Design Decisions &amp; Sources</a></li>
+        <li class="sb-item"><a href="#s4">4. Ethical Considerations</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">3 · Analysing &amp; Reporting</li>
+        <li class="sb-item"><a href="#s5">5. Manifest &amp; Latent Content</a></li>
+        <li class="sb-item"><a href="#s6">6. Example Data: Two Videos</a></li>
+        <li class="sb-item"><a href="#s7">7. Presenting Results</a></li>
+        <li class="sb-item"><a href="#s8">8. Reliability &amp; Validity</a></li>
+        <li class="sb-item"><a href="#s9">9. Writing the Report</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">4 · Evaluation</li>
+        <li class="sb-item"><a href="#s10">10. Strengths &amp; Weaknesses</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-item"><a href="#s11">🎲 Skills Activity</a></li>
+        <li class="sb-item"><a href="#s12">📝 Checkpoint &amp; Exam Practice</a></li>
+        <li class="sb-item"><a href="#s13">📚 Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>🧪 CHAPTER 26: CLINICAL PRACTICAL<br><span style="font-size:0.65em">用内容分析研究大众对心理健康的态度</span></h1>
+  <div class="subtitle">Edexcel International A Level Psychology · Clinical Psychology</div>
+  <div class="meta">
+    <span class="badge">📘 Pearson Edexcel International A Level</span>
+    <span class="badge">📋 Topic H · Clinical Psychology</span>
+    <span class="badge">🔍 Content Analysis · Secondary Data · Attitudes to Mental Health</span>
+    <span class="badge">📝 10 Checkpoint Qs + 4 Exam Qs</span>
+  </div>
+</div>
+
+
+<!-- ============ SECTION 1: LEARNING OBJECTIVES ============ -->
+<section class="section" id="s1">
+  <h2>1. Learning Objectives &amp; Getting Started（学习目标与导入）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary — 本节要学什么</h4>
+    <p>This chapter is different from every other chapter: it is a <strong>practical investigation</strong>（实操研究）. You will not just read about research — you will <strong>carry out your own content analysis（内容分析）</strong> to explore public attitudes towards mental health, then write it up as a report.</p>
+  </div>
+
+  <div class="note-box blue-box">
+    <h4>🎯 By the end of this chapter you should be able to:</h4>
+    <ul>
+      <li><strong>Perform your own content analysis</strong> to explore attitudes to mental health</li>
+      <li><strong>Explain ethical principles</strong> relating to your content analysis</li>
+      <li><strong>Make design decisions</strong> when planning and gathering sources — including <strong>credibility of secondary data</strong>, <strong>ethical considerations</strong>, <strong>controls</strong> and <strong>reliability</strong></li>
+      <li><strong>Analyse at least two sources</strong> (e.g. radio interviews, newspapers, magazines) to <strong>compare attitudes</strong> towards mental health</li>
+      <li><strong>Collect, present and comment on</strong> the sources gathered</li>
+      <li>Consider <strong>strengths and weaknesses</strong> of a content analysis and <strong>possible design improvements</strong></li>
+      <li><strong>Complete the procedure, results and discussion</strong> sections of a report</li>
+    </ul>
+  </div>
+
+  <h3>🚀 Getting Started: Mental Health Literacy（心理健康素养）</h3>
+  <p><span class="key-term">Mental health literacy（心理健康素养）</span> refers to knowledge and beliefs about mental disorders and ways to promote positive mental health (Jorm et al., 1997; Sampaio et al., 2022).</p>
+  <ul>
+    <li>If this knowledge is <strong>accurate</strong>, it can help people to <strong>identify, manage and prevent</strong> disorders in themselves and others.</li>
+    <li>If the knowledge is <strong>inaccurate</strong>, it may lead to <strong>damaging stereotypes and discrimination</strong> — which prevent people from seeking help and lead to more severe symptoms.</li>
+  </ul>
+  <p>Today, practically everything we know about mental health is available in seconds via smartphone technology — from open-access scientific journals to user-created content on social media. However:</p>
+  <ul>
+    <li>the <strong>credibility（可信度）</strong> of some of this material may be <strong>questionable and highly subjective</strong>;</li>
+    <li>increased access to information does <strong>not</strong> necessarily mean people's mental health literacy is improving, or that it is actually changing attitudes or behaviours.</li>
+  </ul>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>mental health literacy 就像"健康常识"——你听说过感冒要休息、发烧要量体温，这些都算 health literacy。心理健康版就是：你知道抑郁症是什么、能识别自己或朋友的状态、知道去哪里求助。现在这些知识全部可以在手机上几秒钟搜到，但<strong>搜得到 ≠ 搜到的都对</strong>。网上的心理健康信息有的是科学期刊，有的是随便写的帖子，质量差别巨大——这就是为什么"信息的 credibility（可信度）"是本章的核心问题之一。
+  </div>
+
+  <div class="activity-box">
+    <h4>💬 Think About It</h4>
+    <ol>
+      <li>What does it mean if information is <strong>credible</strong>? How can we determine the credibility of a source?</li>
+      <li>Do you think access to information about mental health <strong>online</strong> has improved attitudes towards people with mental health issues?</li>
+      <li>Who do you think this information has influenced the most — how, and why?</li>
+      <li>Many young people obtain information about mental health online, but is access to information <strong>enough</strong> to change attitudes and reduce stigmatisation?</li>
+    </ol>
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span> Exam Key Points — Section 1
+    <span class="ao-badge">AO1</span>
+  </div>
+  <div class="summary-card-body">
+    <ol>
+      <li><strong>Mental health literacy</strong> = knowledge and beliefs about mental disorders which aid identification, management and prevention (Jorm et al., 1997).</li>
+      <li>Accurate literacy → early identification and help-seeking; inaccurate literacy → <strong>stereotypes, discrimination</strong>, delayed help-seeking, more severe symptoms.</li>
+      <li>Online information is instantly accessible but varies hugely in <strong>credibility</strong> — a key reason this practical focuses on analysing media sources.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 2: WHAT IS CONTENT ANALYSIS ============ -->
+<section class="section" id="s2">
+  <h2>2. What is Content Analysis?（什么是内容分析）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary — 本节要学什么</h4>
+    <ol>
+      <li><strong>Content analysis（内容分析）</strong> = a technique for reducing and making sense of qualitative data by <strong>searching for patterns and meaning</strong> (Patton, 2002).</li>
+      <li>Two ways of doing it: <strong>conventional</strong>（自下而上，代码从文本中自己长出来）and <strong>directive</strong>（自上而下，先定好代码再去找）。</li>
+      <li>It is an <strong>indirect observation（间接观察）</strong> — you do not work directly with participants.</li>
+    </ol>
+  </div>
+
+  <p>This final practical investigation gives you the opportunity to research attitudes towards mental health through the analysis of <strong>two or more media sources</strong>. You could compare:</p>
+  <ul>
+    <li>radio interviews or podcasts</li>
+    <li>newspaper or magazine or blog articles</li>
+    <li>clips from feature films or online videos</li>
+    <li>song lyrics, or comment threads on social media</li>
+  </ul>
+  <p>The sources you choose may be <strong>fictional or non-fictional</strong>. Both are important in shaping people's attitudes — it is important to understand the wide range of messages the public receives about mental health.</p>
+
+  <div class="keyterm-box">
+    <strong>Secondary data（二手数据）</strong> — information that has been collected for a purpose <em>other than</em> the current research. For example, an interview with a celebrity about their mental health which was part of a news bulletin, or a comment written under a video. In this practical you <em>must</em> analyse secondary data. Content analysis is the main research method psychologists use to analyse it.
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>content analysis 做的事情很像"数评论里的态度"。想象你刷完一条视频的 500 条评论，想搞清楚大家的态度是支持还是嘲讽——你不可能把 500 条全念给老师听，你必须把它们<strong>归类</strong>（classify）然后<strong>数数</strong>（tally）。把一大堆杂乱的文字变成可以比较的数字，这就是"reducing and making sense of qualitative data"的意思。它是间接观察，因为你没有直接接触任何被试——你分析的是他们留下的文字和影像。
+  </div>
+
+  <p>You first studied content analysis in Student Book 1 (Learning theories and development), where it was described as an <strong>indirect observation</strong>, because you are not working directly with participants. Here, you will be analysing source material either in <strong>print/text form</strong> or <strong>spoken words and behaviour</strong> in films, videos and/or vlogs.</p>
+
+  <p>Content analysis is a technique that involves <strong>reducing and making sense of qualitative data by searching for patterns and meaning</strong> (Patton, 2002). Hsiu-Fang Hsieh and Sarah Shannon (2015) identify <strong>two ways</strong> of conducting content analysis: <strong>conventional</strong> and <strong>directive</strong>.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>🌀 Conventional Content Analysis（常规式/自下而上）</h4>
+      <p>A qualitative data analysis technique where the researcher systematically analyses (<strong>codes</strong>) the text to identify themes or coding categories, then <strong>tallies the frequency</strong> of each theme.</p>
+      <p><strong>Steps:</strong></p>
+      <ul>
+        <li>The researcher uses <strong>close reading（细读）</strong> in which <strong>every phrase is given a label (code)</strong> that summarises what it is about. The same code can be applied to other phrases that reference the same core idea.</li>
+        <li>Researchers repeatedly read the text until they reach the point of <strong>data saturation（数据饱和）</strong> — when they feel there is no need to create any further coding units.</li>
+        <li>This is a <strong>bottom-up approach</strong>： researchers do not begin with any codes — all codes arise from the data itself. It is also <strong>inductive（归纳式）</strong>: no theory is being tested, although the researcher may develop a theory as they code/analyse the data.</li>
+        <li>After data saturation, the researcher organises the coding units into <strong>categories of similar concepts or ideas</strong>.</li>
+      </ul>
+    </div>
+    <div class="compare-card green">
+      <h4>📋 Directive Content Analysis（指令式/自上而下）</h4>
+      <p>A qualitative data analysis technique where the researcher has a <strong>predetermined set of codes/themes</strong> which they use to systematically analyse the text and <strong>tally (count) the frequency</strong> of each code/theme.</p>
+      <p><strong>Steps:</strong></p>
+      <ul>
+        <li>The researcher still carries out close reading, but this time the codes are <strong>pre-determined</strong> — the researcher has already decided on keywords, themes or concepts of interest.</li>
+        <li>These codes are usually based on <strong>pre-existing theory or research</strong>.</li>
+        <li>The researcher <strong>counts (tallies) examples</strong> of each code to see how frequently they arise.</li>
+        <li>This is a <strong>top-down approach</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="flowchart">
+    <svg viewBox="0 0 680 300" width="100%" style="max-width:640px">
+      <defs>
+        <marker id="arrA" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker>
+      </defs>
+      <text x="340" y="24" text-anchor="middle" font-size="15" font-weight="700" fill="#c2410c">Two Routes Through a Content Analysis</text>
+      <rect x="40" y="45" width="280" height="34" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+      <text x="180" y="67" text-anchor="middle" font-size="12.5" fill="#7c2d12" font-weight="600">Start: read the text closely</text>
+      <line x1="180" y1="79" x2="180" y2="105" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrA)"/>
+      <rect x="40" y="105" width="280" height="50" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+      <text x="180" y="125" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">CONVENTIONAL (bottom-up)</text>
+      <text x="180" y="143" text-anchor="middle" font-size="11.5" fill="#374151">no codes at the start — invent a label</text>
+      <text x="180" y="157" text-anchor="middle" font-size="11.5" fill="#374151">for every phrase as you read</text>
+      <line x1="180" y1="155" x2="180" y2="180" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrA)"/>
+      <rect x="40" y="180" width="280" height="34" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+      <text x="180" y="202" text-anchor="middle" font-size="12" fill="#1e40af">keep reading → data saturation?</text>
+      <line x1="180" y1="214" x2="180" y2="239" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrA)"/>
+      <rect x="40" y="239" width="280" height="34" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+      <text x="180" y="261" text-anchor="middle" font-size="12" fill="#1e40af">group codes into categories → tally</text>
+
+      <rect x="360" y="105" width="280" height="50" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+      <text x="500" y="125" text-anchor="middle" font-size="12" fill="#166534" font-weight="600">DIRECTIVE (top-down)</text>
+      <text x="500" y="143" text-anchor="middle" font-size="11.5" fill="#374151">codes decided in advance,</text>
+      <text x="500" y="157" text-anchor="middle" font-size="11.5" fill="#374151">based on theory or earlier research</text>
+      <line x1="500" y1="155" x2="500" y2="180" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrA)"/>
+      <rect x="360" y="180" width="280" height="34" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+      <text x="500" y="202" text-anchor="middle" font-size="12" fill="#166534">read with your code list in hand</text>
+      <line x1="500" y1="214" x2="500" y2="239" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrA)"/>
+      <rect x="360" y="239" width="280" height="34" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+      <text x="500" y="261" text-anchor="middle" font-size="12" fill="#166534">tally each time a code appears</text>
+    </svg>
+    <div class="figure-caption">Conventional vs directive content analysis: same destination (themes + frequencies), different starting point.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>conventional 和 directive 的区别可以理解为"两种逛超市的方式"。Conventional（自下而上）是<strong>空手进门</strong>：你沿着货架走，看到什么需要的就拿什么，逛完之后购物车里自然形成了一堆东西，再分类装袋。Directive（自上而下）是<strong>拿着购物清单进门</strong>：出发前已经列好了"鸡蛋、牛奶、面包"，进店后直奔目标，只记录清单上有的东西。<strong>data saturation</strong>（数据饱和）的意思是：你反复读一段文本，读到某一刻发现"新词都是旧主题的重复，再读也不会出现新类别了"——该停了。
+  </div>
+
+  <div class="keyterm-box">
+    <strong>Key terms — 3 core concepts:</strong>
+    <ul>
+      <li><strong>Close reading（细读）</strong> — thorough examination of a text to identify underlying themes and patterns; every phrase is carefully scrutinised to ensure the researcher has captured all of the meaning conveyed.</li>
+      <li><strong>Data saturation（数据饱和）</strong> — the point at which no further themes emerge from a text.</li>
+      <li><strong>Bottom-up vs top-down（自下而上 vs 自上而下）</strong> — bottom-up: themes emerge from the text, no preconceived ideas; top-down: analysis guided by a set of predetermined codes/themes.</li>
+    </ul>
+  </div>
+
+  <p>You should decide whether you want to carry out a <strong>conventional or a directive content analysis</strong>. Before you can do this, you need to think about your <strong>research question</strong> — what are you hoping to find out? (See Section 3.)</p>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span> Exam Key Points — Section 2
+    <span class="ao-badge">AO1</span>
+  </div>
+  <div class="summary-card-body">
+    <ol>
+      <li>Content analysis = reducing and making sense of qualitative data by searching for <strong>patterns and meaning</strong> (Patton, 2002); it is an <strong>indirect observation</strong> of secondary data.</li>
+      <li><strong>Conventional</strong>: close reading → invent codes per phrase → data saturation → group into categories → tally. <strong>Bottom-up / inductive</strong>.</li>
+      <li><strong>Directive</strong>: predetermined codes (from theory/research) → count occurrences. <strong>Top-down</strong>.</li>
+      <li>Both end in the same place: <strong>frequencies of themes</strong> that can be compared across sources.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: DESIGN DECISIONS ============ -->
+<section class="section" id="s3">
+  <h2>3. Design Decisions: Research Question &amp; Gathering Sources（设计决策：研究问题与收集材料）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary — 本节要学什么</h4>
+    <ol>
+      <li>Research is all about making decisions: research question → sources → credibility → ethics → controls → reliability.</li>
+      <li>Your research question <strong>must be about attitudes towards mental health</strong>.</li>
+      <li>You must analyse <strong>secondary data</strong> — texts created for a purpose other than research.</li>
+    </ol>
+  </div>
+
+  <h3>❓ Choosing a Research Question（研究问题）</h3>
+  <p>Your research question must be about <strong>attitudes towards mental health</strong>. You could investigate how attitudes have <strong>changed over time</strong>, or how <strong>different sources report</strong> mental health. Example research questions include:</p>
+  <div class="blue-box">
+    <ul>
+      <li>'Are there differences between attitudes towards mental health expressed on <strong>individual social media accounts</strong> compared with accounts belonging to <strong>organisations</strong>, e.g. charities or support groups?'</li>
+      <li>'How have attitudes towards <strong>schizophrenia</strong> (or depression, or anorexia nervosa) <strong>changed over time</strong>?'</li>
+    </ul>
+  </div>
+
+  <h3>📥 Planning and Gathering Sources（规划与收集材料）</h3>
+  <p>You must analyse <strong>secondary data</strong> — texts/sources that were created for a purpose other than research. A text can be anything from:</p>
+  <ul>
+    <li>a newspaper article, television or radio advert, chapter from a novel (fiction book)</li>
+    <li>a feature film, online video, social media posts, or song lyrics</li>
+  </ul>
+  <p>You will need to choose <strong>two or more sources/texts to compare</strong>.</p>
+
+  <h4>📱 If you use social media</h4>
+  <ul>
+    <li>Use a platform that does <strong>not</strong> require account owners to accept a 'friend' or follower request for you to access their content. The material needs to be <strong>completely public</strong> in order for you to ethically use it in your analysis.</li>
+    <li>Check your school's <strong>social media policy</strong> and discuss this with your teacher before you begin collecting any data.</li>
+  </ul>
+
+  <h4>📰 If you use newspapers or magazines</h4>
+  <ul>
+    <li>You could compare articles in magazines targeted at <strong>women versus men</strong>, or in <strong>cheaper versus more expensive</strong> magazines.</li>
+  </ul>
+
+  <h4>⏱️ Keep it manageable</h4>
+  <ul>
+    <li>Content analysis can be very <strong>time-consuming</strong> — select <strong>short texts</strong>. Television or film clips of <strong>5–10 minutes</strong> will be much more manageable than a whole film.</li>
+    <li>If you analyse very short texts (15–60-second social media videos or short comments), you might be able to analyse <strong>several examples</strong>.</li>
+  </ul>
+
+  <h3>🎚️ Controls（控制变量）</h3>
+  <p>When selecting and analysing your texts you must think carefully about <strong>control</strong> in order to improve the <strong>credibility of your findings</strong>:</p>
+  <ul>
+    <li>If comparing men's and women's magazines → make sure the articles come from magazines of <strong>similar price</strong>, targeted at people of <strong>similar age</strong>.</li>
+    <li>If comparing comments on online videos → try to use videos of roughly the <strong>same length</strong>, or with <strong>similar amounts of 'likes' or comments</strong>.</li>
+  </ul>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>为什么要控制这些变量？假设你想比较"男刊 vs 女刊对抑郁症的态度"，但你的男刊是面向 50 岁 businessmen 的贵价杂志，女刊是面向 16 岁学生的便宜八卦杂志——最后发现态度不同，你说不清是因为<strong>性别</strong>还是因为<strong>年龄/价位</strong>。控制变量就是让两个来源<strong>除了你想比较的那一点之外尽量一样</strong>，这样发现差异时才能有底气归因。
+  </div>
+
+  <div class="exam-tip">
+    <strong>Exam Tip:</strong> In the exam you might be asked to <strong>explain how or why you gathered the secondary data</strong> for your clinical practical. The question is likely to be for 2 marks but could be more. For this reason, it is sensible to <strong>gather (collect together) several sources and then choose two or more</strong> from the larger set. This means you can talk about <strong>how and why you chose these particular sources</strong> — and why you rejected the others.
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span> Exam Key Points — Section 3
+    <span class="ao-badge">AO1 · AO3</span>
+  </div>
+  <div class="summary-card-body">
+    <ol>
+      <li>The research question must concern <strong>attitudes to mental health</strong> — over time, or between sources.</li>
+      <li>Sources = <strong>secondary data</strong>: newspapers, adverts, novels, films, videos, posts, lyrics; fiction and non-fiction both shape attitudes.</li>
+      <li>Social media material must be <strong>completely public</strong>; check the school's social media policy first.</li>
+      <li><strong>Controls</strong> (price, target age, video length, likes) improve credibility by ruling out alternative explanations for differences between sources.</li>
+      <li>Gather <strong>several</strong> sources, then justify why you selected your final two — this gives you evaluation material for the exam.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 4: ETHICS ============ -->
+<section class="section" id="s4">
+  <h2>4. Ethical Considerations（伦理考量）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary — 本节要学什么</h4>
+    <ol>
+      <li>Ethics works <strong>differently with secondary data</strong>: you cannot get informed consent, because you are not working directly with anyone.</li>
+      <li>Fictional texts carry <strong>no risk of psychological harm</strong>; real people's words need protection (<strong>pseudonyms</strong>).</li>
+      <li>Public ≠ consented: online users did not agree to be research participants.</li>
+    </ol>
+  </div>
+
+  <p>Ethical considerations <strong>differ when you are working with secondary data</strong>:</p>
+  <ul>
+    <li>It is <strong>not possible to gather informed consent</strong> from participants, as you are not working directly with anyone.</li>
+    <li>If you are analysing a <strong>fictional text</strong> (imaginary events and people) there is <strong>no risk of psychological harm</strong>.</li>
+    <li>However, if you are analysing texts written by or including <strong>real people</strong>, you should consider whether there might be any <strong>consequences of your analysis</strong> for the people whose words/behaviour you are analysing — or for others from groups that these people represent.</li>
+  </ul>
+
+  <div class="warn-box">
+    <h4>🔒 Anonymity online</h4>
+    <p>If you are analysing social media posts (and/or comment threads) you should use <strong>pseudonyms or numbers</strong> to protect users' anonymity. Even if posts and comments are made in forums or online spaces which you consider to be public, <strong>users have not consented</strong> to have their content analysed as part of a research study — and they may believe that they are commenting to an audience that they consider to be <strong>closed and to some extent private</strong>.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>这条伦理很容易被忽略：一个粉丝群里聊抑郁症，你觉得"反正是公开的"，就把人家原话引用进报告。但说话的人当时心里想的是"我在跟群里几个朋友聊天"，从来没同意当研究对象。换位思考一下——你的私密吐槽某天出现在别人的作业里，就算匿名了也不舒服。所以规则很简单：<strong>公开 ≠ 可随意研究</strong>，引用时一律用 pseudonym（化名）或编号处理。
+  </div>
+
+  <div class="wider-issue">
+    <h4>🌐 Thinking Like a Psychologist: Internet-Mediated Research</h4>
+    <p>Some countries have published specific ethical guidance for <strong>internet-mediated research (IMR)</strong> — any research that takes place online (e.g. communication with participants, online questionnaires and virtual interviews) or involves analysing data from online sources such as social media. You may find it interesting to read more about these guidelines.</p>
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span> Exam Key Points — Section 4
+    <span class="ao-badge">AO1 · AO3</span>
+  </div>
+  <div class="summary-card-body">
+    <ol>
+      <li>Secondary data means <strong>no informed consent</strong> is possible — a built-in ethical issue of content analysis.</li>
+      <li><strong>Fictional texts</strong> = no risk of psychological harm; <strong>real people's texts</strong> = consider consequences for them and the groups they represent.</li>
+      <li>Protect anonymity with <strong>pseudonyms or numbers</strong>; "public" online spaces may still feel private to users.</li>
+      <li>Some countries publish ethical guidance for <strong>internet-mediated research (IMR)</strong> — useful background for evaluation answers.</li>
+    </ol>
+  </div>
+</section>
+<!-- ============ SECTION 5: MANIFEST AND LATENT CONTENT ============ -->
+<section class="section" id="s5">
+  <h2>5. Analysing Sources: Manifest &amp; Latent Content（分析材料：显性内容与隐性内容）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary — 本节要学什么</h4>
+    <ol>
+      <li><strong>Manifest content（显性内容）</strong> = what the text actually says — the words and phrases you read and tally. Objective, easy to count.</li>
+      <li><strong>Latent content（隐性内容）</strong> = the underlying meanings and insights within the text. Requires interpretation — more subjective.</li>
+      <li>Good analysis goes <strong>beyond the tally</strong> to interpret what the patterns mean.</li>
+    </ol>
+  </div>
+
+  <h3>🔑 Deciding on your keywords（确定关键词）</h3>
+  <p>If you decide to carry out a <strong>directive content analysis</strong>, you will need to decide on a set of themes, concepts or ideas that you are going to look for in the texts/sources. For example, you might look for <strong>positive keywords</strong> such as <em>'advocate'</em>, <em>'empower'</em> and <em>'support'</em>. You could decide on these keywords by:</p>
+  <ul>
+    <li>analysing a few other texts before the main data collection — a small-scale <strong>conventional content analysis</strong>; or</li>
+    <li>talking to a small group of people (a <strong>focus group</strong>) who might be the target audience for the sources you are looking at — e.g. people who read the magazines you have chosen, or users of the specific social media platform.</li>
+  </ul>
+  <p>Once you have decided on the keywords, you first need to <strong>count (tally)</strong> the number of times they appear in each text. These could either be:</p>
+  <ul>
+    <li><strong>explicit mentions</strong> of the actual word; or</li>
+    <li><strong>phrases which you believe match</strong> the keyword/theme — e.g. if 'advocate' was one of your keywords, you might tally phrases such as <em>'speak out'</em>, <em>'promote'</em>, <em>'champion'</em>.</li>
+  </ul>
+  <p>Once you have started your analysis, you can <strong>add more keywords</strong> if you need to. When you are analysing the actual content of the texts/sources, this is called the <strong>manifest content</strong>.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>👁️ Manifest content（显性内容）</h4>
+      <ul>
+        <li><strong>What the text says</strong> — the words and phrases which the researcher reads and tallies.</li>
+        <li>Counting keyword frequencies is <strong>objective</strong>: you simply count how many times certain words appear.</li>
+        <li>But you must be sure your keywords are a <strong>good measure of what you intend to record</strong> — and the same word can be used in <strong>different contexts</strong>, so you need a way of recording that.</li>
+      </ul>
+    </div>
+    <div class="compare-card green">
+      <h4>🧊 Latent content（隐性内容）</h4>
+      <ul>
+        <li><strong>Underlying meanings</strong> — the implicit meanings and insights within the text, which may reflect the participants' or authors' assumptions.</li>
+        <li>Identifying latent content requires <strong>interpretation</strong>, and is therefore <strong>more subjective and less reliable</strong> than analysing manifest content.</li>
+        <li>You look at the <strong>context</strong> of the keywords, themes or ideas — not just their frequency.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>manifest 和 latent 的区别就是<strong>"台词"和"潜台词"</strong>的区别。台词是角色说出口的字面内容——"我没事"三个字，谁听都一样，可以数、可以统计，这就是 manifest。潜台词是弦外之音——说"我没事"的时候语气冰冷、回避眼神，你推断其实是"我有事但不想说"，这个推断就是 latent。台词直接可数所以客观；潜台词要靠解读，不同人可能读出不同东西，所以主观、信度低。内容分析的高阶动作是：先数台词（manifest），再解读潜台词（latent）。
+  </div>
+
+  <div class="note-box">
+    <h4>🔍 Latent content in action — the textbook's example</h4>
+    <p>Tables 26.1 and 26.2 (Section 6) both contain mentions of the key theme of <strong>stigma</strong>, but the latent content differs:</p>
+    <ul>
+      <li>In the <strong>schizophrenia</strong> video comments, stigma talk was <strong>general</strong> — the need to break down stigma or prejudices held by people <em>without</em> mental health issues towards people <em>with</em> them.</li>
+      <li>In the <strong>depression</strong> analysis, stigma talk was about people with mental health issues <strong>stigmatising themselves</strong> (self-stigma).</li>
+      <li>Both disorders attracted comments using <strong>biological language</strong> ('doctors', 'illness'), but <strong>schizophrenia was talked about as an example of a disease</strong>, whereas <strong>depression was talked about as though it was not biological — in fact a choice</strong> people made if they chose not to get treatment.</li>
+    </ul>
+    <p>Same keyword, completely different meaning — that difference only appears at the latent level.</p>
+  </div>
+
+  <p>If you decide to conduct a <strong>conventional analysis</strong>, you do not need to choose keywords, themes or ideas in advance — you just begin analysing your text and deciding on suitable <strong>codes (labels)</strong> for each segment of the text (e.g. a sentence, or part of a sentence). See Section 6 for examples of codes/themes identified when coding viewers' comments on two online videos.</p>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span> Exam Key Points — Section 5
+    <span class="ao-badge">AO1 · AO3</span>
+  </div>
+  <div class="summary-card-body">
+    <ol>
+      <li><strong>Manifest content</strong> = the words and phrases actually present; tallied objectively. <strong>Latent content</strong> = underlying meaning; needs interpretation, more <strong>subjective</strong>.</li>
+      <li>Keywords can be chosen via a pilot conventional analysis or a <strong>focus group</strong> of the target audience.</li>
+      <li>Tally both <strong>explicit mentions</strong> and <strong>matching phrases</strong> ('advocate' → 'speak out', 'promote', 'champion'); new keywords can be added mid-analysis.</li>
+      <li>Keyword counting is objective <em>only if</em> the keywords are a valid measure — same words in different contexts must be handled with clear coding rules.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 6: EXAMPLE DATA ============ -->
+<section class="section" id="s6">
+  <h2>6. Example Data: Two Online Videos（示例数据：两个视频的评论区分析）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary — 本节要学什么</h4>
+    <ol>
+      <li>The textbook coded viewers' comments on <strong>two online videos</strong>: a presentation by a person with <strong>schizophrenia</strong>, and a presentation by a person with <strong>depression</strong>.</li>
+      <li>Comments were selected using a <strong>random number generator</strong> — 10 comments from each thread.</li>
+      <li>This is the format your own results tables should follow: <strong>code/theme · tally · example comments</strong>.</li>
+    </ol>
+  </div>
+
+  <p>The tables below show codes/themes identified when coding viewers' comments on two online videos. Notice how each theme is illustrated with <strong>real example comments</strong> — your own write-up should do the same.</p>
+
+  <h3>TABLE 26.1 — Online video of a presentation by a person with schizophrenia</h3>
+  <table>
+    <thead>
+      <tr><th style="width:32%">Code / theme</th><th style="width:12%">Tally</th><th>Examples</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Admiring achievements<br><span style="font-weight:400;color:#475569">（钦佩成就）</span></td>
+        <td>3 <strong>(30%)</strong></td>
+        <td>'She is the real person' · 'Amazing' · 'strong'</td>
+      </tr>
+      <tr>
+        <td>Biological language<br><span style="font-weight:400;color:#475569">（生物学术语）</span></td>
+        <td>—</td>
+        <td>'Having this disease…'</td>
+      </tr>
+      <tr>
+        <td>Friends/relatives with same condition<br><span style="font-weight:400;color:#475569">（亲友有同样病症）</span></td>
+        <td>—</td>
+        <td>'My great aunt had schizophrenia' · 'My son developed schizophrenia in his freshman year' · 'It was so heartbreaking to hear how people were treated in the 1950s'</td>
+      </tr>
+      <tr>
+        <td>Stigma<br><span style="font-weight:400;color:#475569">（污名）</span></td>
+        <td>3 <strong>(30%)</strong></td>
+        <td>'Thank you for sharing your story and breaking the stigma' · 'From a mother, thank you for speaking up and [breaking stigma] on living with schizophrenia' · 'I think schizophrenia has been demonised in movies'</td>
+      </tr>
+      <tr>
+        <td>Media portrayals are unhelpful<br><span style="font-weight:400;color:#475569">（媒体刻画无益）</span></td>
+        <td>—</td>
+        <td>'…demonised in movies' (overlaps with the stigma theme)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>TABLE 26.2 — Online video of a presentation by a person with depression</h3>
+  <table>
+    <thead>
+      <tr><th style="width:32%">Code / theme</th><th style="width:12%">Tally</th><th>Examples</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Treating physical and mental health differently<br><span style="font-weight:400;color:#475569">（区别对待身体与心理健康）</span></td>
+        <td>—</td>
+        <td>'I don't get if I have a fever or if I'm just sick I can miss a day of school but if I have depression I can't'</td>
+      </tr>
+      <tr>
+        <td>Biological language<br><span style="font-weight:400;color:#475569">（生物学术语）</span></td>
+        <td>2 <strong>(20%)</strong></td>
+        <td>'Depression is not a mental illness' · 'The only reason doctors say that depression is a mental illness is to make money'</td>
+      </tr>
+      <tr>
+        <td>Depression is a choice<br><span style="font-weight:400;color:#475569">（抑郁是选择）</span></td>
+        <td>—</td>
+        <td>'People with depression can be helped, it's just choosing to be helped'</td>
+      </tr>
+      <tr>
+        <td>Perceived lack of support<br><span style="font-weight:400;color:#475569">（感到缺乏支持）</span></td>
+        <td>—</td>
+        <td>'My family says nothing is wrong with me but yet they don't try talking to me about how I feel or anything' · 'I have told some of my friends about my struggles and nobody reached out to help me, they just listened, tried to briefly cheer me up and… that's it'</td>
+      </tr>
+      <tr>
+        <td>Perceived importance of support<br><span style="font-weight:400;color:#475569">（感到支持的重要性）</span></td>
+        <td>—</td>
+        <td>'I understand how much it can mean to someone when their parents are supportive'</td>
+      </tr>
+      <tr>
+        <td>People should not share experiences of depression online<br><span style="font-weight:400;color:#475569">（不应在网上分享抑郁经历）</span></td>
+        <td>—</td>
+        <td>'If people carry on sharing… only going to make people view it as the norm… [people] are going to view it as the norm, this sadness… more depressed'</td>
+      </tr>
+      <tr>
+        <td>Stigma<br><span style="font-weight:400;color:#475569">（污名）</span></td>
+        <td>1 <strong>(10%)</strong></td>
+        <td>'I read an article that said "no one stigmatises depression more than the depressed one"'</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>对比这两张表，最有价值的发现藏在<strong>相同关键词的不同含义</strong>里：两个视频的评论区都出现了 stigma（污名）和 biological language（生物学术语），但精神分裂症视频下，stigma 指的是"外人污名化病人"（谢谢分享、打破污名），biological language 把它称为 disease（疾病）；抑郁视频下，stigma 指的是"病人污名化自己"（抑郁者最会污名化抑郁者），biological language 反而在<strong>否认</strong>它的疾病身份（说医生这么讲只是为了赚钱、抑郁是一种选择）。同样是"谈论抑郁症/精神分裂症"，公众隐含的假设完全不同——这正是 latent content 分析的意义。另外注意 coding units 必须清晰无歧义，否则 inter-rater reliability（评分者间信度）会很差：你要提前说清楚"一条评论同时提到 stigma 和 biological language 时算哪一类"。
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span> Exam Key Points — Section 6
+    <span class="ao-badge">AO1</span>
+  </div>
+  <div class="summary-card-body">
+    <ol>
+      <li>Comments were selected from each thread using a <strong>random number generator</strong> (10 per thread) — a control that avoids cherry-picking.</li>
+      <li>Results tables should show <strong>code/theme + tally + verbatim example comments</strong>.</li>
+      <li>Schizophrenia comments: <strong>admiring achievements (30%)</strong> and <strong>stigma (30%)</strong> were the two modes.</li>
+      <li>The same theme (stigma / biological language) can carry <strong>different latent meanings</strong> in different sources — evidence for why interpretation matters.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 7: PRESENTING RESULTS ============ -->
+<section class="section" id="s7">
+  <h2>7. Presenting Results: Nominal Data &amp; Percentages（呈现结果：称名数据与百分比）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary — 本节要学什么</h4>
+    <ol>
+      <li>Tallying counts of keywords/themes = <strong>nominal data（称名数据）</strong> — data in categories.</li>
+      <li>Present it as <strong>percentages of total mentions</strong>, find the <strong>mode</strong>, and draw <strong>bar charts</strong> comparing sources.</li>
+    </ol>
+  </div>
+
+  <p>If you are tallying or counting the number of times certain keywords, themes or ideas are mentioned in one type of source compared with another, you are collecting <strong>nominal data</strong> — data consisting of categories. This can be presented as <strong>percentages of the total number of mentions</strong>.</p>
+
+  <div class="note-box">
+    <h4>🧮 Worked example — from Table 26.1</h4>
+    <p>Imagine you are comparing comments on social media posts about schizophrenia and depression. You use a <strong>random number generator</strong> to select <strong>ten comments from each thread</strong> to analyse (see Table 26.1). You can easily calculate the percentage of comments that fall into each category:</p>
+    <p style="text-align:center;font-size:1.05em"><strong>Admitting achievement: 3 (number of comments) ÷ 10 (total comments) = 0.3 × 100 = 30 per cent</strong></p>
+    <p>Here there are <strong>two modes</strong> — 'admitting achievements' and 'stigma' — both with <strong>30 per cent</strong> of the comments.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>为什么算百分比而不是只报次数？因为两个来源的评论总数可能不同：A 视频有 500 条评论、B 视频只有 80 条，直接比"stigma 出现 15 次 vs 12 次"没有意义——A 的基数大得多。换成百分比（15÷50=30% vs 12÷40=30%）才能公平比较。nominal data（称名数据）的特点是"只能数个数、不能算平均"——"污名"和"支持"是类别不是数字，所以合适的描述统计是<strong>百分比和 mode（众数）</strong>，呈现图形用<strong>柱状图</strong>。
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span> Exam Key Points — Section 7
+    <span class="ao-badge">AO1 · AO2</span>
+  </div>
+  <div class="summary-card-body">
+    <ol>
+      <li>Theme tallies = <strong>nominal data</strong> → describe with <strong>percentages and the mode</strong> (not means).</li>
+      <li>Percentage = (category count ÷ total count) × 100; e.g. 3/10 = 30%.</li>
+      <li>Results sections should include <strong>tables of percentages with examples</strong> and <strong>bar charts</strong> comparing theme frequencies across your two or more sources.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 8: RELIABILITY AND VALIDITY ============ -->
+<section class="section" id="s8">
+  <h2>8. Reliability, Validity &amp; Wider Issues（信度、效度与延伸议题）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary — 本节要学什么</h4>
+    <ol>
+      <li><strong>Clear operationalisation of coding units</strong> is the key to reliability and objectivity.</li>
+      <li>Check validity with an <strong>expert</strong>; check reliability with a <strong>second rater</strong> (inter-rater reliability).</li>
+      <li>Your findings may be <strong>socially sensitive</strong> — keep claims tentative and scientific.</li>
+    </ol>
+  </div>
+
+  <div class="wider-issue">
+    <h4>🌍 Wider Issues and Debates: Practical issues in the design and implementation of research</h4>
+    <p>In order to be <strong>reliable and objective</strong> in the way the data is collected, <strong>clear operationalisation of your coding system</strong> is required:</p>
+    <ul>
+      <li><strong>Coding units must be clear and unambiguous</strong> — this removes potential sources of bias and allows other researchers to <strong>replicate</strong> your method and test the reliability of your conclusions.</li>
+      <li>Think about ways to ensure raters are clear about how to code the source material. For example, you could have a <strong>practice text which has already been coded</strong>, and ask raters to use this to help them understand the codes and apply them consistently (in the same way) when coding all source material.</li>
+      <li>Content analysis using keywords <strong>can be objective</strong> — you simply count how many times certain words have been used. However, you need to be sure that the keywords you have chosen are a <strong>good measure of what you intend to record</strong>. You may also find that the same words are used in <strong>different contexts</strong>, so you need a way of recording this.</li>
+    </ul>
+  </div>
+
+  <h3>✅ Checking for reliability and validity（检验信度与效度）</h3>
+  <ul>
+    <li><strong>Validity</strong>: if you are able to, ask an <strong>expert in clinical psychology</strong> to look at your list of keywords/ideas/themes. Maybe you know someone who is a mental health practitioner or social worker who could help you decide whether your suggestions are valid, or whether you might have missed something.</li>
+    <li><strong>Reliability</strong>: work in <strong>pairs</strong> and both analyse the same texts, to see whether there is a <strong>good level of agreement</strong> between you about the wording of the codes and their frequency. This is <strong>inter-rater reliability（评分者间信度）</strong>.</li>
+    <li>If <strong>agreement is low</strong>, this means your analysis is <strong>subjective</strong>. You may wish to work together to decide on some <strong>clearer guidelines</strong> about when a certain code should be applied and when it should not.</li>
+    <li>If analysing social media comments, you may wish to have a <strong>rule about which comments should be analysed</strong> and which should not — e.g. exclude comments below a certain number of words.</li>
+  </ul>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>inter-rater reliability 的逻辑很简单：同一段文本，两个人独立编码，如果结果高度一致，说明编码规则足够清晰、结果可信；如果各编各的、对不上，说明规则太模糊、结果只是你个人的解读。解决办法是坐下来把规则写细——"提到'吃药''看医生'算 biological language，但说'医生骗钱'也算，因为主题仍是生物医学视角"。加一条"少于 5 个词的评论不编码"这类规则，也能过滤掉没有分析价值的灌水评论。
+  </div>
+
+  <div class="wider-issue">
+    <h4>🌍 Wider Issues and Debates: Issues related to socially sensitive research</h4>
+    <p>Think about the possible <strong>impact of your findings on different groups in society</strong>. For example, if you found that certain groups of people have more negative attitudes than others, this might cause <strong>conflict or tension</strong> if the findings were made public.</p>
+    <ul>
+      <li>Be careful <strong>not to overstate your findings</strong>.</li>
+      <li>When writing up your report, keep your tone/style of writing <strong>scientific and tentative</strong> — e.g. 'These findings <em>suggest</em> that…'</li>
+      <li>Remember: content analysis <strong>can be subjective</strong>, and therefore it is essential that you find ways to <strong>check the reliability</strong> of your analysis.</li>
+    </ul>
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span> Exam Key Points — Section 8
+    <span class="ao-badge">AO1 · AO3</span>
+  </div>
+  <div class="summary-card-body">
+    <ol>
+      <li><strong>Operationalise coding units clearly</strong> → removes bias, enables replication and reliable conclusions.</li>
+      <li>Support raters with a <strong>pre-coded practice text</strong>; keyword counting is objective only if keywords validly measure the intended concept.</li>
+      <li><strong>Validity</strong>: expert review of your keyword list (clinical psychologist / mental health practitioner / social worker).</li>
+      <li><strong>Reliability</strong>: inter-rater agreement in pairs; low agreement = subjectivity → refine guidelines for when a code applies.</li>
+      <li><strong>Social sensitivity</strong>: findings about group attitudes could cause tension if publicised — write tentatively ('these findings suggest…').</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 9: WRITING THE REPORT ============ -->
+<section class="section" id="s9">
+  <h2>9. Completing the Report: Procedure, Results &amp; Discussion（完成报告：程序、结果与讨论）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary — 本节要学什么</h4>
+    <ol>
+      <li>Chapter 25 taught the <strong>conventions of published psychological research</strong> — here you apply them to your own practical.</li>
+      <li><strong>Procedure</strong> = how you did it · <strong>Results</strong> = what you found (tables + bar charts) · <strong>Discussion</strong> = what it means (findings, links, evaluation, improvements).</li>
+    </ol>
+  </div>
+
+  <div class="blue-box">
+    <p>🔗 <strong>Link:</strong> Revise the conventions for published psychological research (Chapter 25) — they should help you decide what to include in the procedure, results and discussion sections of your clinical practical.</p>
+  </div>
+
+  <h3>🔧 Your procedure section should explain…</h3>
+  <ul>
+    <li><strong>how you selected your sources</strong> — e.g. why certain sources were chosen and why others were rejected</li>
+    <li>whether the analysis was <strong>conventional (bottom-up) or directive (top-down)</strong>, and why</li>
+    <li>if directive, <strong>how you chose your predetermined keywords/themes/ideas</strong></li>
+    <li>how you decided whether you needed to <strong>add new codes</strong> — include examples of pieces of text which were <strong>difficult to code</strong> and how you decided what to do about them</li>
+    <li><strong>how you tested for reliability</strong> — e.g. inter-rater reliability</li>
+  </ul>
+
+  <h3>📊 Your results section should include…</h3>
+  <ul>
+    <li><strong>tables of percentages and examples</strong>, such as those shown in Section 6</li>
+    <li><strong>bar charts</strong> comparing the frequency of different themes across the two or more sources that you analysed</li>
+  </ul>
+
+  <h3>💬 Your discussion section should include…</h3>
+  <ul>
+    <li>a <strong>summary of your findings and conclusions</strong></li>
+    <li><strong>links to theories or other research studies</strong> that inspired your practical — for example, content analysis was the main research method in studies by <strong>Patricia Owen (2012)</strong> on portrayals of schizophrenia in film, and <strong>Darragh McCashin and Collette Murphy (2023)</strong> on social media and public and youth mental health</li>
+    <li><strong>evaluation of your practical</strong>, including strengths and weaknesses relating to <strong>reliability, validity, subjectivity, objectivity, credibility, ethics</strong> and <strong>practical applications</strong></li>
+    <li><strong>suggestions of ways to improve</strong> your content analysis</li>
+  </ul>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-icon">🎬</span>
+      <span class="study-name">Owen (2012) — Portrayals of Schizophrenia in Film</span>
+      <span class="study-badge contemp">Content analysis</span>
+    </div>
+    <div class="study-card-body">
+      <p>Patricia Owen used <strong>content analysis as her main research method</strong> to examine how schizophrenia is portrayed in feature films. This is exactly the kind of study your discussion section can link to: media portrayals (fictional sources) were analysed thematically to see what messages the public receives about the disorder.</p>
+      <span class="eval-tag">Use in your report discussion: "My practical was inspired by Owen (2012), who used content analysis to…"</span>
+    </div>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-icon">📱</span>
+      <span class="study-name">McCashin &amp; Murphy (2023) — Social Media and Public/Youth Mental Health</span>
+      <span class="study-badge contemp">Content analysis</span>
+    </div>
+    <div class="study-card-body">
+      <p>Darragh McCashin and Collette Murphy used content analysis to study <strong>social media content related to public and youth mental health</strong>. Again, a direct methodological parallel with your own investigation of online sources and attitudes.</p>
+      <span class="eval-tag">Use in your report discussion: "…and by McCashin &amp; Murphy (2023), who analysed social media content on mental health."</span>
+    </div>
+  </div>
+
+  <div class="flowchart">
+    <svg viewBox="0 0 680 190" width="100%" style="max-width:640px">
+      <defs>
+        <marker id="arrB" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker>
+      </defs>
+      <text x="340" y="24" text-anchor="middle" font-size="15" font-weight="700" fill="#c2410c">The Three Write-Up Sections</text>
+      <rect x="30" y="50" width="190" height="110" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+      <text x="125" y="76" text-anchor="middle" font-size="13" font-weight="700" fill="#1e40af">PROCEDURE</text>
+      <text x="125" y="98" text-anchor="middle" font-size="11.5" fill="#374151">how sources were chosen</text>
+      <text x="125" y="116" text-anchor="middle" font-size="11.5" fill="#374151">conventional or directive?</text>
+      <text x="125" y="134" text-anchor="middle" font-size="11.5" fill="#374151">difficult-to-code examples</text>
+      <text x="125" y="152" text-anchor="middle" font-size="11.5" fill="#374151">how reliability was tested</text>
+      <line x1="220" y1="105" x2="252" y2="105" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrB)"/>
+      <rect x="245" y="50" width="190" height="110" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+      <text x="340" y="76" text-anchor="middle" font-size="13" font-weight="700" fill="#c2410c">RESULTS</text>
+      <text x="340" y="98" text-anchor="middle" font-size="11.5" fill="#374151">tables: theme + tally</text>
+      <text x="340" y="116" text-anchor="middle" font-size="11.5" fill="#374151">+ % + example quotes</text>
+      <text x="340" y="134" text-anchor="middle" font-size="11.5" fill="#374151">bar charts comparing</text>
+      <text x="340" y="152" text-anchor="middle" font-size="11.5" fill="#374151">theme frequency by source</text>
+      <line x1="435" y1="105" x2="467" y2="105" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrB)"/>
+      <rect x="460" y="50" width="190" height="110" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+      <text x="555" y="76" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">DISCUSSION</text>
+      <text x="555" y="98" text-anchor="middle" font-size="11.5" fill="#374151">summary + conclusions</text>
+      <text x="555" y="116" text-anchor="middle" font-size="11.5" fill="#374151">links: Owen 2012,</text>
+      <text x="555" y="134" text-anchor="middle" font-size="11.5" fill="#374151">McCashin &amp; Murphy 2023</text>
+      <text x="555" y="152" text-anchor="middle" font-size="11.5" fill="#374151">evaluation + improvements</text>
+    </svg>
+    <div class="figure-caption">What goes in each section of your clinical practical report.</div>
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span> Exam Key Points — Section 9
+    <span class="ao-badge">AO2 · AO3</span>
+  </div>
+  <div class="summary-card-body">
+    <ol>
+      <li><strong>Procedure</strong>: source selection (and rejection) rationale; conventional vs directive choice; how keywords were chosen; difficult-to-code examples; reliability testing method.</li>
+      <li><strong>Results</strong>: percentage tables with example quotes + bar charts comparing theme frequencies across sources.</li>
+      <li><strong>Discussion</strong>: summary/conclusions; links to Owen (2012) and McCashin &amp; Murphy (2023); evaluation across reliability, validity, subjectivity, objectivity, credibility, ethics, applications; concrete improvements.</li>
+    </ol>
+  </div>
+</section>
+<!-- ============ SECTION 10: STRENGTHS AND WEAKNESSES ============ -->
+<section class="section" id="s10">
+  <h2>10. Strengths, Weaknesses &amp; Improvements（内容分析的优势、劣势与改进）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary — 本节要学什么</h4>
+    <ol>
+      <li><strong>Strength</strong>: no direct interaction with participants — ideal for a sensitive topic like mental health; anonymous online comments reveal more extreme views.</li>
+      <li><strong>Weakness</strong>: views may not be representative (trolls, even AI-generated comments); analysis can be <strong>subjective</strong> and unreliable.</li>
+      <li>After your practical, evaluate <strong>your own design decisions</strong> and suggest <strong>improvements</strong>.</li>
+    </ol>
+  </div>
+
+  <div class="ao-zone-header ao1"><span>📖 AO1 — What the textbook says</span></div>
+  <p>A strength of content analysis as a way of investigating attitudes towards mental health is that it <strong>does not involve interacting directly with participants</strong>:</p>
+  <ul>
+    <li>Mental health is a <strong>sensitive topic</strong> — people may not give their honest opinion if they are being interviewed or participating in a focus group.</li>
+    <li>Analysing <strong>secondary data gathered from anonymous online comments</strong> may provide insight into <strong>more extreme views</strong> which may be difficult to access in other ways.</li>
+  </ul>
+  <p>However, this can also be a weakness:</p>
+  <ul>
+    <li>Although it helps gather data from people who may not otherwise volunteer for a project on mental health, the views may <strong>not be representative of the majority of people</strong>.</li>
+    <li><strong>Internet trolls（网络喷子）</strong> sometimes make extremely controversial comments, and the motivation for this may be simply to generate interest on a particular thread. These trolls may not even be actual people — the content may be generated by <strong>AI (artificial intelligence)</strong>, meaning the views are <strong>not a valid source of data</strong>.</li>
+  </ul>
+  <p>A further weakness is that content analysis <strong>can be subjective</strong>:</p>
+  <ul>
+    <li><strong>Conventional (bottom-up) analysis</strong> involves coding content in the absence of any predetermined categories or themes — the analysis may be <strong>biased</strong>. If another researcher codes the same sources, the emergent themes may be very different, owing to the researchers' differing interpretations of the material.</li>
+    <li>Even with <strong>directive (top-down) content analysis</strong>, researchers may differ with regard to <strong>how individual phrases are coded</strong>. This would mean that the analysis may be <strong>unreliable</strong>.</li>
+  </ul>
+
+  <div class="ao-zone-header ao3"><span>⚖️ AO3 — Evaluating the method (exam-ready points)</span></div>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>✅ Strengths of content analysis</h4>
+      <ul>
+        <li><strong>No direct interaction</strong> — avoids social desirability effects on a sensitive topic; participants never know they are being studied, so their comments are naturalistic.</li>
+        <li><strong>Access to extreme views</strong> — anonymous online data can reveal attitudes people would never say to a researcher's face.</li>
+        <li><strong>Flexible</strong> — works on any text type: films, lyrics, posts, newspapers, fiction and non-fiction.</li>
+        <li><strong>Ethically light</strong> — with fictional sources there is no risk of psychological harm; with real sources, pseudonyms protect anonymity.</li>
+        <li><strong>Manifest counting is objective and replicable</strong> — clear coding units allow other researchers to repeat the method exactly.</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>❌ Weaknesses of content analysis</h4>
+      <ul>
+        <li><strong>Unrepresentative</strong> — online commenters are self-selected; trolls post for attention, and some content is AI-generated, so the data may not be valid.</li>
+        <li><strong>Subjectivity</strong> — especially conventional analysis: different researchers may produce different themes from the same text.</li>
+        <li><strong>Unreliable coding</strong> — even in directive analysis, raters may disagree on which code a phrase belongs to → low inter-rater reliability.</li>
+        <li><strong>Latent interpretation is researcher-dependent</strong> — the same 'stigma' comment can be read differently by different analysts.</li>
+        <li><strong>No consent from authors</strong> — public ≠ consented; ethical tension is built in.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="gold-standard-para">
+    <h4>🏅 Improving your content analysis — a checklist of concrete upgrades</h4>
+    <ul>
+      <li><strong>Inter-rater reliability</strong>: have two researchers independently code the same texts and compare agreement; where they disagree, refine the coding rules and re-code.</li>
+      <li><strong>Pre-coded practice text</strong>: train raters on a text that has already been coded, so everyone applies the codes the same way.</li>
+      <li><strong>Clear inclusion rules</strong>: e.g. exclude comments below a certain number of words; decide in advance what happens when a comment fits two codes.</li>
+      <li><strong>Expert validation</strong>: ask a mental health practitioner to check that your keywords/themes are a valid measure.</li>
+      <li><strong>Random selection</strong>: use a random number generator to pick comments, rather than choosing ones that catch your eye.</li>
+      <li><strong>Control source variables</strong>: match sources on price, target age, length and popularity so differences reflect attitudes, not audience.</li>
+      <li><strong>Larger sample</strong>: analyse more sources/comments to improve generalisability and reduce the impact of trolls/AI comments.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>评价内容分析时，最锋利的一条 weakness 是<strong>"数据是别人留下的，不是为你设计的"</strong>：评论的人不知道你在做研究，所以说话很真实（这是优点）；但正因为他们没打算被研究，评论区里混着喷子和 AI 生成的评论，这些人/机器人根本不代表大众态度（这是缺点）。改进思路全都是围绕"让主观的判断变得更可检验"：两个人独立编码看一致性、用已编码的练习文本训练、把"什么算什么"写成明确规则。记住评价的落点永远要回答：<strong>这个改进对 validity / reliability / generalisability 有什么具体影响</strong>。
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span> Exam Key Points — Section 10
+    <span class="ao-badge">AO3</span>
+  </div>
+  <div class="summary-card-body">
+    <ol>
+      <li><strong>Strength</strong>: indirect method suits a sensitive topic — no social desirability; anonymous comments access extreme views.</li>
+      <li><strong>Weakness</strong>: self-selected commenters + trolls + AI-generated content → <strong>not valid/representative</strong> data.</li>
+      <li><strong>Weakness</strong>: subjectivity — conventional analysis is open to researcher bias; even directive coding of individual phrases varies between raters → <strong>unreliable</strong>.</li>
+      <li><strong>Improvements</strong>: inter-rater reliability, practice texts, clear coding rules, expert validation, random selection, matched sources, larger samples.</li>
+      <li>In the exam, always tie each improvement to the evaluation dimension it helps (validity / reliability / generalisability / credibility).</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 11: SKILLS ACTIVITY ============ -->
+<section class="section" id="s11">
+  <h2>11. Skills Activity: The Dice Game（技能活动：掷骰评价游戏）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary — 本节要学什么</h4>
+    <p>A group game that trains you to write <strong>evaluation points</strong> about your own practical — the exact skill tested by "assess your investigation" exam questions.</p>
+  </div>
+
+  <div class="activity-box">
+    <h4>🎲 Activity 1 — Teamwork · Empathy · Perspective-taking · Creativity</h4>
+    <p>If you worked as a group when carrying out your practical, play this game to help with the evaluation:</p>
+    <ol>
+      <li><strong>Roll 1 — strength or weakness?</strong> Take it in turns to privately roll a dice. <strong>Even numbers</strong> mean you have to give a <strong>strength</strong>; <strong>odd numbers</strong> mean you have to give a <strong>weakness</strong>.</li>
+      <li><strong>Roll 2 — which evaluation dimension?</strong> Roll again:
+        <ul>
+          <li><strong>1</strong> = generalisability</li>
+          <li><strong>2</strong> = reliability</li>
+          <li><strong>3</strong> = validity</li>
+          <li><strong>4</strong> = objectivity</li>
+          <li><strong>5</strong> = subjectivity</li>
+          <li><strong>6</strong> = any point you want</li>
+        </ul>
+      </li>
+      <li>Other group members should <strong>not</strong> see the numbers that were rolled.</li>
+      <li>Once everyone knows the type of point they need to make, points should be <strong>written down without discussing them</strong>. Most importantly, you must <strong>not reveal</strong> whether your point is a strength or a weakness, or which evaluation you are writing about.</li>
+      <li>Once everyone has finished, <strong>read your points to the group</strong> to see whether they can guess what you rolled (even or odd, and which number).</li>
+      <li>You could also <strong>swap papers and try to improve each other's points</strong> — for example by making the point less generic and including key details from your investigation, or adding a competing argument.</li>
+    </ol>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>这个游戏训练的是考试里"assess your practical investigation"（评价你的研究）的核心能力。规则逼着你走出舒适区：骰到"odd + subjectivity"就得写一条关于主观性的弱点，不能挑自己擅长的写。互相猜骰子的环节检验你的表述是否清晰——如果同伴猜不出你写的是 strength 还是 weakness、是 reliability 还是 validity，说明你的 point 写得太含糊。交换改进环节则在练"把泛泛而谈改成带研究细节的具体评价"（比如从"sample 太小"改成"我只分析了 10 条评论，遇到 2 条反讽评论无法确定是否编码为 stigma，削弱了信度"）。
+  </div>
+</section>
+
+<!-- ============ SECTION 12: CHECKPOINT + EXAM PRACTICE ============ -->
+<section class="section" id="s12">
+  <h2>12. Checkpoint &amp; Exam Practice（自测与考试练习）</h2>
+
+  <div class="checkpoint">
+    <h3>✅ Checkpoint — 10 questions on your clinical practical</h3>
+    <p>Answer these about <strong>your own</strong> practical investigation (click to reveal suggested answers):</p>
+
+    <div class="study-card">
+      <div class="study-card-header" onclick="toggleSummary(this)">
+        <span class="arrow" style="transition:transform .3s;font-size:.8em">▶</span>
+        <span class="study-name" style="font-size:.88em">1. What was the aim of your clinical practical investigation? · 2. What is meant by close reading? · 3. How would you know when data saturation has been achieved?</span>
+      </div>
+      <div class="summary-card-body hidden">
+        <ol>
+          <li>E.g. 'To compare attitudes towards schizophrenia and depression expressed in comments on two online videos' (must be about attitudes to mental health).</li>
+          <li><strong>Close reading</strong> — thorough examination of a text to identify underlying themes and patterns; every phrase is carefully scrutinised to ensure the researcher has captured all of the meaning conveyed.</li>
+          <li>When repeated reading produces <strong>no new themes/coding units</strong> — the researcher feels there is no need to create any further codes.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="study-card">
+      <div class="study-card-header" onclick="toggleSummary(this)">
+        <span class="arrow" style="transition:transform .3s;font-size:.8em">▶</span>
+        <span class="study-name" style="font-size:.88em">4. How did you decide on which sources to analyse? · 5. What is the difference between conventional and directive content analysis?</span>
+      </div>
+      <div class="summary-card-body hidden">
+        <ol start="4">
+          <li>E.g. gathered several sources, then selected two matched on control variables (length, popularity, target audience) and completely public; others rejected because they were too long or not comparable.</li>
+          <li><strong>Conventional</strong>: codes emerge from the data during close reading (bottom-up, inductive); <strong>directive</strong>: predetermined codes based on existing theory/research are applied and tallied (top-down).</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="study-card">
+      <div class="study-card-header" onclick="toggleSummary(this)">
+        <span class="arrow" style="transition:transform .3s;font-size:.8em">▶</span>
+        <span class="study-name" style="font-size:.88em">6. Which code, keyword or theme was most common in your content analysis? · 7. What type of descriptive statistics are suitable for nominal (category) data?</span>
+      </div>
+      <div class="summary-card-body hidden">
+        <ol start="6">
+          <li>In the textbook example: 'admitting achievements' and 'stigma' were both modes at 30% (schizophrenia video). Your own answer should name your most frequent theme and its percentage.</li>
+          <li><strong>Percentages</strong> and the <strong>mode</strong> (plus bar charts for presentation). Means/medians are not appropriate for categories.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="study-card">
+      <div class="study-card-header" onclick="toggleSummary(this)">
+        <span class="arrow" style="transition:transform .3s;font-size:.8em">▶</span>
+        <span class="study-name" style="font-size:.88em">8. How did you check the reliability of your content analysis? · 9. Can you think of one way you could have improved the objectivity of your analysis? · 10. How could you improve the generalisability of your findings?</span>
+      </div>
+      <div class="summary-card-body hidden">
+        <ol start="8">
+          <li><strong>Inter-rater reliability</strong>: two researchers independently coded the same texts and compared agreement on code wording and frequencies.</li>
+          <li>E.g. clearer operationalised coding rules; a pre-coded practice text for raters; recording rules for the same word appearing in different contexts.</li>
+          <li>E.g. analyse more sources/comments (larger sample); sample from different platforms or time periods; random selection to avoid cherry-picking.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="exam-practice">
+    <h3>📝 Exam Practice — Clinical Practical</h3>
+    <p>Skills trained: <strong>Communication · Analysis · Critical thinking</strong></p>
+    <ol>
+      <li>Describe the aim of your Clinical psychology practical investigation. <strong>(2 marks)</strong></li>
+      <li>Explain one strength and one weakness of your Clinical psychology practical investigation. <strong>(4 marks)</strong></li>
+      <li>Explain one way that you could improve the validity of your Clinical psychology practical investigation. <strong>(2 marks)</strong></li>
+      <li>Assess the credibility of your Clinical psychology practical investigation. <strong>(16 marks)</strong></li>
+    </ol>
+
+    <h4 style="margin-top:16px">🗺️ How to attack the 16-mark 'assess credibility' question</h4>
+    <table>
+      <thead>
+        <tr><th style="width:24%">Paragraph</th><th>What to write</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1 · Define</td>
+          <td>Open by defining <strong>credibility</strong> in the context of a practical investigation: can the findings be believed? Cover <strong>reliability</strong> (inter-rater agreement), <strong>validity</strong> (do keywords measure attitudes?), and <strong>generalisability</strong> (are the sources/commenters representative?).</td>
+        </tr>
+        <tr>
+          <td>2 · Strengths</td>
+          <td>Argue credibility is supported: e.g. matched sources (controls), random selection of comments, objective manifest-level tallies, inter-rater reliability checks carried out.</td>
+        </tr>
+        <tr>
+          <td>3 · Weaknesses</td>
+          <td>Argue credibility is weakened: subjectivity of latent interpretation, self-selected commenters, possible troll/AI comments, no consent (ethical limitation), small sample.</td>
+        </tr>
+        <tr>
+          <td>4 · Weigh &amp; conclude</td>
+          <td>Reach a judgement: e.g. 'manifest-level findings are relatively credible because counting is objective, but latent-level claims are less credible and should be stated tentatively.' Reference design improvements (expert validation, larger sample) as routes to higher credibility.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:.9em;color:#475569">Throughout: use <strong>specific details from your own practical</strong> (your sources, your themes, your percentages) — generic points score low.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 13: KEY TERMS ============ -->
+<section class="section" id="s13">
+  <h2>13. Key Terms（术语表）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary — 本章主线一图流</h4>
+    <p>Chapter 26 = one practical, done properly: <strong>ask a question about attitudes to mental health → pick credible public sources ethically → code them (conventional or directive) → count manifest content, interpret latent content → present percentages and bar charts → check reliability and validity → write the report → evaluate and improve</strong>.</p>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th style="width:28%">Term</th><th>Plain-English meaning（大白话解释）</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Mental health literacy</td><td>Knowledge and beliefs about mental disorders — knowing what they are and how to promote positive mental health.</td></tr>
+      <tr><td>Content analysis</td><td>A technique for reducing and making sense of qualitative data by searching for patterns and meaning.</td></tr>
+      <tr><td>Secondary data</td><td>Data collected for a purpose other than your current research (e.g. a news interview, a comment thread).</td></tr>
+      <tr><td>Indirect observation</td><td>Observing behaviour through the material people leave behind, without working directly with them.</td></tr>
+      <tr><td>Conventional content analysis</td><td>Bottom-up: you read closely and invent codes as themes emerge from the data itself.</td></tr>
+      <tr><td>Directive content analysis</td><td>Top-down: you decide the codes in advance (from theory/research) and tally their occurrences.</td></tr>
+      <tr><td>Bottom-up approach</td><td>Themes emerge from the text; the researcher does not begin with any preconceived ideas.</td></tr>
+      <tr><td>Top-down approach</td><td>Analysis of a text guided by a set of predetermined codes/themes.</td></tr>
+      <tr><td>Close reading</td><td>Thorough examination of a text where every phrase is scrutinised to capture all the meaning conveyed.</td></tr>
+      <tr><td>Data saturation</td><td>The point at which no further themes emerge from a text — time to stop coding.</td></tr>
+      <tr><td>Inductive</td><td>No theory is being tested; a theory may develop out of the data as you analyse it.</td></tr>
+      <tr><td>Coding unit</td><td>The label (code) given to a segment of text, or the defined chunk of text you code (word, phrase, sentence).</td></tr>
+      <tr><td>Manifest content</td><td>What the text actually says — the words and phrases the researcher reads and tallies.</td></tr>
+      <tr><td>Latent content</td><td>The underlying meanings within the text; identifying it requires interpretation, so it is more subjective.</td></tr>
+      <tr><td>Focus group</td><td>A small group of target-audience people you talk to, e.g. to help decide which themes to look for.</td></tr>
+      <tr><td>Nominal data</td><td>Category data — you count frequencies, present percentages and the mode.</td></tr>
+      <tr><td>Mode</td><td>The most frequently occurring category/value; suitable descriptive statistic for nominal data.</td></tr>
+      <tr><td>Inter-rater reliability</td><td>The level of agreement between two researchers who code the same material independently.</td></tr>
+      <tr><td>Operationalisation</td><td>Defining your variables/coding units precisely, so everyone measures the same thing the same way.</td></tr>
+      <tr><td>Pseudonym</td><td>A fake name (or number) used to protect the anonymity of real people whose words you analyse.</td></tr>
+      <tr><td>Internet-mediated research (IMR)</td><td>Any research that takes place online or analyses online sources — some countries publish specific ethical guidance for it.</td></tr>
+      <tr><td>Credibility</td><td>Whether your findings can be believed — supported by reliability, validity, representative sources and honest reporting.</td></tr>
+      <tr><td>Internet troll</td><td>Someone who posts controversial comments mainly to provoke or generate interest — their views may not represent real attitudes.</td></tr>
+      <tr><td>Socially sensitive research</td><td>Research whose findings could have consequences for groups in society — report tentatively and scientifically.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span> Exam Key Points — Whole Chapter
+    <span class="ao-badge">AO1 · AO2 · AO3</span>
+  </div>
+  <div class="summary-card-body">
+    <ol>
+      <li>Content analysis = <strong>indirect observation of secondary data</strong>, searching for patterns and meaning (Patton, 2002).</li>
+      <li>Two routes: <strong>conventional</strong> (bottom-up, codes emerge, data saturation) vs <strong>directive</strong> (top-down, predetermined codes from theory).</li>
+      <li>Sources must be <strong>public, ethical (pseudonyms), matched on controls</strong>, and short enough to manage.</li>
+      <li>Analyse <strong>manifest content</strong> (objective tallies) then <strong>latent content</strong> (subjective interpretation).</li>
+      <li>Nominal data → <strong>percentages, mode, bar charts</strong>; 10 comments per thread via random number generator.</li>
+      <li>Quality checks: <strong>inter-rater reliability</strong>, expert validation, clear operationalised coding units.</li>
+      <li>Report = procedure (choices + reliability testing) · results (tables + bar charts) · discussion (findings, Owen 2012 / McCashin &amp; Murphy 2023, evaluation, improvements).</li>
+      <li>Core evaluation: indirect method suits sensitive topics, but sources are unrepresentative (trolls/AI) and coding is subjective — improvements must target validity, reliability and generalisability.</li>
+    </ol>
+  </div>
+</section>
+
+</main>
+</div><!-- END PAGE LAYOUT -->
+
+<div class="footer-note">
+  <p>📚 Edexcel IAL Psychology · Topic H: Clinical Psychology · Chapter 26 — Clinical Practical</p>
+  <p>Topics covered: Content analysis (conventional · directive · close reading · data saturation) · Secondary data · Ethics (pseudonyms · IMR) · Manifest &amp; latent content · Nominal data (percentages · mode · bar charts) · Inter-rater reliability · Report writing (procedure · results · discussion) · Strengths &amp; weaknesses · Improvements</p>
+</div>
+</div><!-- END CONTAINER -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<script>
+function toggleSummary(header) {
+  header.classList.toggle('open');
+  var body = header.nextElementSibling;
+  if (body && body.classList.contains('summary-card-body')) {
+    body.classList.toggle('hidden');
+  }
+}
+
+// Scroll spy — highlight active sidebar item
+(function(){
+  var sections = document.querySelectorAll('.section[id^="s"]');
+  var links = document.querySelectorAll('.sb-item a');
+  function onScroll() {
+    var scrollPos = window.scrollY + 120;
+    var currentId = sections.length ? sections[0].id : null;
+    sections.forEach(function(sec) {
+      if (sec.offsetTop <= scrollPos) { currentId = sec.id; }
+    });
+    links.forEach(function(link) {
+      link.classList.toggle('sb-active', link.getAttribute('href') === '#' + currentId);
+    });
+    var btn = document.getElementById('backToTop');
+    if (btn) { btn.classList.toggle('show', window.scrollY > 400); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+// Dark mode
+function toggleDarkMode() {
+  document.body.classList.toggle('dark');
+  var isDark = document.body.classList.contains('dark');
+  localStorage.setItem('edexcel-ch26-darkMode', isDark ? '1' : '0');
+  var btn = document.getElementById('darkBtn');
+  if (btn) { btn.textContent = isDark ? '☀️ Light' : '🌙 Dark'; }
+}
+
+// Font size
+function adjustFontSize(delta) {
+  var current = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+  var next = Math.min(22, Math.max(12, current + delta));
+  document.documentElement.style.fontSize = next + 'px';
+  localStorage.setItem('edexcel-ch26-fontSize', String(next));
+}
+
+// Restore preferences
+(function(){
+  if (localStorage.getItem('edexcel-ch26-darkMode') === '1') {
+    document.body.classList.add('dark');
+    var btn = document.getElementById('darkBtn');
+    if (btn) { btn.textContent = '☀️ Light'; }
+  }
+  var fs = localStorage.getItem('edexcel-ch26-fontSize');
+  if (fs) { document.documentElement.style.fontSize = fs + 'px'; }
+})();
+</script>
+</body>
+</html>
