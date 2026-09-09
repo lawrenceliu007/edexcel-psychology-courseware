@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch17 Research Methods — Student Notes Workbook</title>
+<style>
+@page { size: A4; margin: 13mm 12mm 15mm 12mm; }
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif; color:#1a1a1a; font-size:10.5pt; line-height:1.5; margin:0; background:#f3f3f3; }
+.page { background:#fff; max-width: 800px; margin: 0 auto 10px auto; padding: 10mm 11mm; page-break-after: always; position: relative; min-height: 248mm; }
+@media print { body { background:#fff; } .page { margin:0; padding:0; max-width:none; box-shadow:none; } }
+.pg-head { display:flex; justify-content:space-between; align-items:baseline; border-bottom: 2px solid #333; padding-bottom:4px; margin-bottom:12px; }
+.pg-head .t { font-size:12pt; font-weight:700; }
+.pg-head .r { font-size:8pt; color:#777; letter-spacing:.04em; }
+.pg-foot { position:absolute; bottom:4mm; left:0; right:0; text-align:center; font-size:8pt; color:#999; }
+.sec { font-size:11.5pt; font-weight:700; margin:14px 0 6px 0; padding-left:7px; border-left:3.5px solid #444; }
+.sec:first-of-type { margin-top:4px; }
+.sub { font-size:10pt; font-weight:700; margin:10px 0 4px 0; }
+.bl { display:inline-block; border-bottom:1px solid #555; height:1em; vertical-align:baseline; min-width:60px; margin:0 2px; }
+.hint { font-size:8.5pt; color:#666; }
+.hint::before { content:"（"; } .hint::after { content:"）"; }
+.hint2 { font-size:8.5pt; color:#666; display:block; margin:2px 0 0 2px; }
+table.n { width:100%; border-collapse:collapse; margin:6px 0 10px 0; font-size:9.5pt; }
+table.n th, table.n td { border:1px solid #999; padding:4px 7px; text-align:left; vertical-align:top; }
+table.n th { background:#e9e9e9; font-size:9pt; }
+td.lbl { background:#f4f4f4; width:24%; font-weight:600; }
+.box { border:1px solid #aaa; border-left:4px solid #555; padding:7px 10px; margin:8px 0; border-radius:3px; }
+.box.grey { border:1px dashed #999; border-left:4px dashed #999; background:#fafafa; }
+.box .bx-t { font-size:9.5pt; font-weight:700; margin-bottom:3px; }
+.wl { border-bottom:1px solid #bbb; height:26pt; }
+.wl.short { height:30pt; }
+.kicker { font-size:8.5pt; font-weight:700; color:#555; text-transform:uppercase; letter-spacing:.05em; margin-bottom:2px; }
+ul.tight { margin:4px 0 8px 0; padding-left:18px; }
+ul.tight li { margin-bottom:3px; }
+ol.tight { margin:4px 0 8px 0; padding-left:18px; }
+ol.tight li { margin-bottom:4px; }
+.two { display:flex; gap:10px; } .two > div { flex:1; }
+.three { display:flex; gap:8px; } .three > div { flex:1; }
+.chk { font-size:9.5pt; }
+.chk .c { display:inline-block; width:11px; height:11px; border:1.3px solid #555; margin-right:6px; vertical-align:-1px; }
+.ao-tag { display:inline-block; font-size:8pt; font-weight:700; border:1px solid #444; padding:1px 6px; border-radius:2px; margin-left:6px; vertical-align:1px; }
+.q { font-style:italic; background:#f6f6f6; border:1px solid #ccc; padding:5px 9px; margin:5px 0; font-size:9.5pt; border-radius:3px; }
+.formula { background:#fbf6ee; border:1.5px solid #d9c39a; border-left:5px solid #b98a2f; border-radius:4px; padding:8px 12px; margin:8px 0; font-size:11.5pt; text-align:center; }
+.calcbox { border:1.5px solid #999; background:#fdfdfd; border-radius:4px; padding:8px 12px; margin:8px 0; }
+.math { font-family:"Menlo","Courier New",monospace; }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1: COVER ================= -->
+<div class="page">
+  <div style="text-align:center; margin-top:5mm;">
+    <div style="font-size:9pt; letter-spacing:.25em; color:#666;">PEARSON EDEXCEL IAL PSYCHOLOGY · PAPER 3 (WPS03/01) · UNIT 3</div>
+    <div style="font-size:26pt; font-weight:800; margin:8px 0 2px 0;">Chapter 17 — Research Methods</div>
+    <div style="font-size:13pt; color:#444;">Student Notes Workbook · 学习笔记工作册</div>
+    <div style="font-size:9.5pt; color:#666; margin-top:4px;">Correlation · Scatter diagrams · Spearman's rank · Brain scanning · Twin studies</div>
+  </div>
+
+  <div style="display:flex; gap:14px; margin:10mm 0 6mm 0; font-size:9.5pt;">
+    <div style="flex:1;">Name 姓名: <span class="bl" style="min-width:150px;"></span></div>
+    <div style="flex:1;">Class 班级: <span class="bl" style="min-width:100px;"></span></div>
+    <div>Start date: <span class="bl" style="min-width:90px;"></span></div>
+  </div>
+
+  <div class="sec">How to use this workbook 使用方法</div>
+  <ol class="tight" style="line-height:1.45;">
+    <li><strong>Read one section</strong> of the courseware, then fill in the matching workbook page. 边读课件边填空。</li>
+    <li><strong>Write out every step</strong> of the Spearman calculations by hand — no mental maths. 计算题逐步写出来。</li>
+    <li><strong>Check answers</strong> on p. 13 and tick the tracker below. 对答案并打卡。每页右上角标有对应课件章节。</li>
+  </ol>
+
+  <div class="sec">Syllabus map — what the exam can ask 大纲考点</div>
+  <table class="n">
+    <tr><th style="width:22%;">Syllabus</th><th>Content 内容</th><th style="width:30%;">Workbook pages</th></tr>
+    <tr><td><strong>3.2.1</strong></td><td>Correlational research: co-variables（协变量）</td><td>p. 2</td></tr>
+    <tr><td><strong>3.2.2</strong></td><td>Positive, negative and no correlation; scatter diagrams（散点图）</td><td>pp. 2–3</td></tr>
+    <tr><td><strong>3.2.3</strong></td><td>Issues with correlation: cause and effect, third variables（第三变量）</td><td>p. 7</td></tr>
+    <tr><td><strong>3.2.4</strong></td><td>Calculating and interpreting the Spearman's rank test（斯皮尔曼等级相关）</td><td>pp. 4–6, 10</td></tr>
+    <tr><td><strong>3.2.5</strong></td><td>CAT, PET and fMRI in investigating behaviour, including aggression</td><td>p. 8</td></tr>
+    <tr><td><strong>3.2.6</strong></td><td>Twin studies（双生子研究）in investigating genetic relatedness and aggression</td><td>p. 9</td></tr>
+    <tr><td colspan="3" style="font-size:9pt; color:#555;">Exam format 考试形式: Paper 3 — <strong>4-mark Spearman</strong> + <strong>2-mark justification</strong>; describe &amp; evaluate one scanning technique; interpret concordance data. Real worked question: p. 10.</td></tr>
+  </table>
+
+  <div class="sec">Review tracker 复习打卡</div>
+  <div class="chk" style="line-height:2.0;">
+    <span class="c"></span>First pass — all blanks filled 第一遍填完 &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span><br>
+    <span class="c"></span>Spearman calculations done by hand (pp. 5–6, 10) 手算完所有斯皮尔曼 &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span><br>
+    <span class="c"></span>Answer key checked — corrections in pen 对过答案并用笔订正 &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span><br>
+    <span class="c"></span>Brain dump page done from memory 合上笔记完成自测页 &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span>
+  </div>
+
+  <div class="pg-foot">Page 1 of 13</div>
+</div>
+
+<!-- ================= PAGE 2: §2 CORRELATION ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§2 · Correlational research 相关研究</span><span class="r">ANSWERS → 课件 §2</span></div>
+
+  <div class="box">
+    <div class="bx-t">Core idea 核心定义填空</div>
+    A <strong>correlation</strong>（相关）looks for a <span class="bl" style="min-width:90px;"></span><span class="hint">关系 relationship</span> between <strong>two co-variables</strong>（两个协变量）.<br>
+    <strong>Co-variables</strong> are the two variables being <span class="bl" style="min-width:60px;"></span><span class="hint">测量 measured</span> in a correlation. They are <strong>not</strong> an IV and a DV, because the researcher does <span class="bl" style="min-width:90px;"></span><span class="hint">不操纵任何变量 not manipulate</span>.<br>
+    A correlation does <strong>not</strong> tell you that one variable <span class="bl" style="min-width:50px;"></span><span class="hint">导致 caused</span> the other to change.
+  </div>
+
+  <div class="sub">Experiment vs Correlation 实验与相关的区别</div>
+  <table class="n">
+    <tr><th style="width:22%;"></th><th>Experiment 实验</th><th>Correlation 相关</th></tr>
+    <tr><td class="lbl">Aim</td><td>Find a <strong>causal</strong> relationship</td><td>Find a <span class="bl" style="min-width:80px;"></span><span class="hint">relationship 关系</span></td></tr>
+    <tr><td class="lbl">Variables</td><td>Independent variable (IV) &amp; <span class="bl" style="min-width:70px;"></span><span class="hint">dependent variable 因变量 DV</span></td><td>Two <span class="bl" style="min-width:80px;"></span><span class="hint">co-variables 协变量</span></td></tr>
+    <tr><td class="lbl">Groups</td><td>Compares differences <span class="bl" style="min-width:70px;"></span><span class="hint">between groups 组间</span></td><td>Looks for a link <span class="bl" style="min-width:80px;"></span><span class="hint">within one group 组内</span></td></tr>
+    <tr><td class="lbl">Cause?</td><td>Can claim <span class="bl" style="min-width:80px;"></span><span class="hint">causation 因果关系</span></td><td><span class="bl" style="min-width:90px;"></span><span class="hint">cannot 不能</span> claim causation</td></tr>
+  </table>
+
+  <div class="sub">Hypotheses for a correlation 相关研究的假设（三种都要会写）</div>
+  <table class="n">
+    <tr><th style="width:30%;">Type</th><th>What it predicts 预测什么</th></tr>
+    <tr><td><strong>Directional / one-tailed</strong>（定向/单尾）</td><td>Predicts a <span class="bl" style="min-width:70px;"></span><span class="hint">positive 正</span> or <span class="bl" style="min-width:70px;"></span><span class="hint">negative 负</span> correlation.</td></tr>
+    <tr><td><strong>Non-directional / two-tailed</strong>（非定向/双尾）</td><td>Predicts a <span class="bl" style="min-width:90px;"></span><span class="hint">relationship 关系</span>, but does not say which <span class="bl" style="min-width:70px;"></span><span class="hint">direction 方向</span>.</td></tr>
+    <tr><td><strong>Null hypothesis</strong>（零假设）</td><td>Predicts <span class="bl" style="min-width:90px;"></span><span class="hint">no relationship 无关系</span>.</td></tr>
+  </table>
+
+  <div class="sub">Write them yourself 自己写三句 — scenario: <em>hours of revision</em> and <em>test marks</em></div>
+  <div class="box">
+    Directional: There will be a <span class="bl" style="min-width:70px;"></span> correlation between hours of revision and test marks.<br><br>
+    Non-directional: There will be a <span class="bl" style="min-width:80px;"></span> between hours of revision and test marks.<br><br>
+    Null: There will be <span class="bl" style="min-width:100px;"></span> between hours of revision and test marks.
+  </div>
+  <p class="hint" style="margin:0 0 4px 0;">黄金规则：写相关假设时永远不写 "IV" 或 "DV"——只写 co-variable 1 和 co-variable 2。</p>
+
+  <div class="sub">Spot the type 判断练习 — what correlation is each one?</div>
+  <table class="n">
+    <tr><th style="width:55%;">Two co-variables</th><th>Positive</th><th>Negative</th><th>None</th></tr>
+    <tr><td>Number of hours spent revising &nbsp;·&nbsp; test mark</td><td style="text-align:center;"><span class="c"></span></td><td style="text-align:center;"><span class="c"></span></td><td style="text-align:center;"><span class="c"></span></td></tr>
+    <tr><td>Hours spent playing violent games &nbsp;·&nbsp; helping behaviour</td><td style="text-align:center;"><span class="c"></span></td><td style="text-align:center;"><span class="c"></span></td><td style="text-align:center;"><span class="c"></span></td></tr>
+    <tr><td>Ice-cream sales &nbsp;·&nbsp; air temperature</td><td style="text-align:center;"><span class="c"></span></td><td style="text-align:center;"><span class="c"></span></td><td style="text-align:center;"><span class="c"></span></td></tr>
+    <tr><td>Shoe size &nbsp;·&nbsp; IQ score</td><td style="text-align:center;"><span class="c"></span></td><td style="text-align:center;"><span class="c"></span></td><td style="text-align:center;"><span class="c"></span></td></tr>
+  </table>
+  <p class="hint" style="margin:2px 0 0 0;">提醒：correlation 只描述"一起变化"，冰淇淋销量和气温相关并不代表冰淇淋导致气温升高！</p>
+
+  <div class="pg-foot">Page 2 of 13</div>
+</div>
+
+<!-- ================= PAGE 3: §3 SCATTER ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§3 · Scatter diagrams 散点图</span><span class="r">ANSWERS → 课件 §3</span></div>
+
+  <div class="box">
+    <div class="bx-t">Definition 定义</div>
+    A scatter diagram plots each participant's <span class="bl" style="min-width:80px;"></span><span class="hint">two scores 两个分数</span>: one on the <span class="bl" style="min-width:40px;"></span><span class="hint">x 轴</span>-axis, one on the <span class="bl" style="min-width:40px;"></span><span class="hint">y 轴</span>-axis. The pattern of dots tells you the <span class="bl" style="min-width:80px;"></span><span class="hint">direction 方向</span> and <span class="bl" style="min-width:70px;"></span><span class="hint">strength 强度</span> of the correlation.
+  </div>
+
+  <div class="sub">Read the pattern 读图规则 — label each diagram</div>
+  <div class="three" style="text-align:center;">
+    <div>
+      <svg viewBox="0 0 100 84" style="width:100%; border:1px solid #ccc;"><rect x="6" y="6" width="88" height="72" fill="none" stroke="#666" stroke-width="1"/><circle cx="16" cy="64" r="2.6"/><circle cx="24" cy="60" r="2.6"/><circle cx="32" cy="56" r="2.6"/><circle cx="38" cy="50" r="2.6"/><circle cx="46" cy="46" r="2.6"/><circle cx="54" cy="40" r="2.6"/><circle cx="62" cy="34" r="2.6"/><circle cx="70" cy="28" r="2.6"/><circle cx="78" cy="22" r="2.6"/><circle cx="86" cy="16" r="2.6"/></svg>
+      Type: <span class="bl" style="min-width:90px;"></span>
+    </div>
+    <div>
+      <svg viewBox="0 0 100 84" style="width:100%; border:1px solid #ccc;"><rect x="6" y="6" width="88" height="72" fill="none" stroke="#666" stroke-width="1"/><circle cx="16" cy="18" r="2.6"/><circle cx="24" cy="24" r="2.6"/><circle cx="32" cy="28" r="2.6"/><circle cx="38" cy="34" r="2.6"/><circle cx="46" cy="38" r="2.6"/><circle cx="54" cy="44" r="2.6"/><circle cx="62" cy="48" r="2.6"/><circle cx="70" cy="56" r="2.6"/><circle cx="78" cy="62" r="2.6"/><circle cx="86" cy="66" r="2.6"/></svg>
+      Type: <span class="bl" style="min-width:90px;"></span>
+    </div>
+    <div>
+      <svg viewBox="0 0 100 84" style="width:100%; border:1px solid #ccc;"><rect x="6" y="6" width="88" height="72" fill="none" stroke="#666" stroke-width="1"/><circle cx="14" cy="22" r="2.6"/><circle cx="22" cy="60" r="2.6"/><circle cx="34" cy="18" r="2.6"/><circle cx="40" cy="68" r="2.6"/><circle cx="52" cy="36" r="2.6"/><circle cx="58" cy="72" r="2.6"/><circle cx="66" cy="26" r="2.6"/><circle cx="76" cy="48" r="2.6"/><circle cx="84" cy="38" r="2.6"/><circle cx="90" cy="64" r="2.6"/></svg>
+      Type: <span class="bl" style="min-width:90px;"></span>
+    </div>
+  </div>
+
+  <div class="sub">Two things you must say when you describe a scatter diagram 描述必须说两点</div>
+  <table class="n">
+    <tr><th style="width:18%;">① Direction</th><td>Dots slope <strong>upwards</strong> left→right = <span class="bl" style="min-width:60px;"></span> &nbsp;·&nbsp; dots slope <strong>downwards</strong> left→right = <span class="bl" style="min-width:60px;"></span> &nbsp;·&nbsp; random cloud = <span class="bl" style="min-width:60px;"></span></td></tr>
+    <tr><th>② Strength</th><td>How <span class="bl" style="min-width:70px;"></span><span class="hint">close 靠近</span> the dots are to an imaginary straight line: very close = <span class="bl" style="min-width:50px;"></span>; spread out = <span class="bl" style="min-width:50px;"></span>.</td></tr>
+  </table>
+
+  <div class="sub">Strength by the numbers — memorise these boundaries 强度数值要背</div>
+  <div class="box">
+    <span class="math">|r| = 0.00 – 0.30</span> → <span class="bl" style="min-width:110px;"></span><span class="hint">weak / little or no 弱</span><br>
+    <span class="math">|r| = 0.30 – 0.70</span> → <span class="bl" style="min-width:110px;"></span><span class="hint">moderate 中等</span><br>
+    <span class="math">|r| = 0.70 – 1.00</span> → <span class="bl" style="min-width:110px;"></span><span class="hint">strong 强</span><br>
+    <span class="math">|r| = 1.00</span> → perfect（all dots exactly on the line）<br>
+    <span class="hint2">看绝对值，不看正负号：+0.85 和 −0.85 都是 strong。</span>
+  </div>
+
+  <div class="sub">Quick check 判断练习 — describe each result (direction + strength)</div>
+  <table class="n">
+    <tr><th style="width:55%;">Result</th><th>Describe it 用"方向 + 强度"描述</th></tr>
+    <tr><td><span class="math">r = +0.91</span>, n = 40</td><td style="height:26px;"></td></tr>
+    <tr><td><span class="math">r = −0.22</span>, n = 30</td><td style="height:26px;"></td></tr>
+    <tr><td><span class="math">r = −0.76</span>, n = 25</td><td style="height:26px;"></td></tr>
+  </table>
+
+  <div class="sub">Levels of measurement 数据水平 — when is a scatter diagram allowed?</div>
+  <div class="box">
+    To draw a scatter diagram (and to do Spearman), the data must be at least <span class="bl" style="min-width:80px;"></span><span class="hint">ordinal 顺序数据</span> — the scores can be put in <span class="bl" style="min-width:70px;"></span><span class="hint">rank order 排名顺序</span>.<br>
+    If your data are <span class="bl" style="min-width:60px;"></span><span class="hint">nominal 类别数据</span> (categories only), you <span class="bl" style="min-width:60px;"></span><span class="hint">cannot 不能</span> use a correlation or a scatter diagram.
+  </div>
+
+  <div class="pg-foot">Page 3 of 13</div>
+</div>
+
+<!-- ================= PAGE 4: §4 SPEARMAN CONCEPTS + RANKING ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§4a · Spearman's rank — the formula &amp; ranking 排等级</span><span class="r">ANSWERS → 课件 §4</span></div>
+
+  <div class="box">
+    <div class="bx-t">Why we use it 用途</div>
+    Spearman's rank correlation coefficient（斯皮尔曼等级相关系数，<span class="math">r_s</span>）tells us whether two <span class="bl" style="min-width:70px;"></span><span class="hint">ordinal 顺序</span> variables are related, and whether the result is likely to be <span class="bl" style="min-width:80px;"></span><span class="hint">significant 显著</span>. It only works for <span class="bl" style="min-width:70px;"></span><span class="hint">correlation 相关</span> data.
+  </div>
+
+  <div class="sub">The formula — copy it out and label it 抄一遍公式并标注</div>
+  <div class="formula">
+    r_s = 1 − <span style="display:inline-block;text-align:center;">6Σd²<br><span style="border-top:1px solid #000;">n(n² − 1)</span></span>
+  </div>
+  <table class="n">
+    <tr><th style="width:22%;">Symbol</th><th>What it means 含义</th></tr>
+    <tr><td class="lbl"><span class="math">r_s</span></td><td>Spearman's rank correlation <span class="bl" style="min-width:90px;"></span><span class="hint">coefficient 相关系数（结果）</span> — always between <span class="bl" style="min-width:40px;"></span> and <span class="bl" style="min-width:40px;"></span><span class="hint">−1 与 +1</span></td></tr>
+    <tr><td class="lbl"><span class="math">d</span></td><td>The <span class="bl" style="min-width:100px;"></span><span class="hint">difference 差</span> between the two ranks for each pair of scores（同一行两个等级的差）</td></tr>
+    <tr><td class="lbl"><span class="math">Σd²</span></td><td>The <span class="bl" style="min-width:110px;"></span><span class="hint">sum 总和</span> of all the squared differences（所有 d² 加起来）</td></tr>
+    <tr><td class="lbl"><span class="math">n</span></td><td>The number of <span class="bl" style="min-width:80px;"></span><span class="hint">pairs of scores 成对数据</span>（不是人数的一半！）</td></tr>
+  </table>
+
+  <div class="sub">The two ranking rules 排名两大铁律</div>
+  <ol class="tight">
+    <li>Rank each variable <strong>separately</strong>（两列分开排）。The <span class="bl" style="min-width:70px;"></span><span class="hint">highest 最高</span> score gets rank <span class="bl" style="min-width:30px;"></span><span class="hint">1</span>, the next gets rank 2, and so on.</li>
+    <li><strong>Tied scores</strong>（并列分数）share the <span class="bl" style="min-width:70px;"></span><span class="hint">average 平均</span> of the ranks they would have taken. 例如两个分数本来该拿第 6 和第 7 名 → 两个都拿 rank <span class="bl" style="min-width:30px;"></span><span class="hint">6.5</span>。</li>
+  </ol>
+
+  <div class="sub">Your turn — rank these 8 test scores 自己排一次（最高分 = rank 1）</div>
+  <table class="n">
+    <tr><th style="width:25%;">Score 分数</th><th>Your rank 你排的等级</th><th style="width:50%;">Check 核对</th></tr>
+    <tr><td>34</td><td style="text-align:center;"><strong>8</strong></td><td><span class="hint">已帮你填好（最低分 = rank 8）</span></td></tr>
+    <tr><td>45</td><td></td><td></td></tr>
+    <tr><td>52</td><td></td><td></td></tr>
+    <tr><td>60</td><td></td><td><span class="hint">三个 60 并列 → 它们共享 rank？</span></td></tr>
+    <tr><td>60</td><td></td><td></td></tr>
+    <tr><td>60</td><td></td><td></td></tr>
+    <tr><td>78</td><td></td><td></td></tr>
+    <tr><td>91</td><td></td><td><span class="hint">最高分 → rank 1</span></td></tr>
+  </table>
+
+  <div class="box grey">
+    <div class="bx-t">What's wrong with this ranking? 找出错误</div>
+    A student ranked revision hours like this: 6 hours → 1, 5 → 2, 4 → 3, 4 → 3, 4 → 3, 3 → 4, 2 → 5, 1 → 6, 1 → 6, 1 → 6.<br>
+    Write the correct shared rank for the three "4-hour" students and the three "1-hour" students:<br>
+    4 hours × 3 → they should all get rank <span class="bl" style="min-width:30px;"></span> &nbsp;·&nbsp; 1 hour × 3 → they should all get rank <span class="bl" style="min-width:30px;"></span>
+    <span class="hint2">提示：4 小时占了第 3、4、5 名 → (3+4+5)÷3；1 小时占了第 8、9、10 名 → (8+9+10)÷3。</span>
+  </div>
+
+  <div class="pg-foot">Page 4 of 13</div>
+</div>
+
+<!-- ================= PAGE 5: §4b TEXTBOOK WORKED EXAMPLE ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§4b · The textbook example — fill in d, d² and Σd² 算差、平方、求和</span><span class="r">ANSWERS → 课件 §4</span></div>
+
+  <div class="box">
+    <div class="bx-t">The study 题目</div>
+    10 students recorded their <strong>hours of revision</strong> and scored a <strong>test mark /20</strong>. The ranks are already done for you (revision hours and marks ranked separately; ties share the average rank). Your job: fill in the <strong>d</strong> and <strong>d²</strong> columns, then add up Σd².
+  </div>
+
+  <table class="n">
+    <tr><th>Student</th><th>Hours</th><th>Rank of hours</th><th>Mark /20</th><th>Rank of mark</th><th>d (rank hrs − rank mark)</th><th>d²</th></tr>
+    <tr><td>1</td><td>4</td><td>4</td><td>14</td><td>5</td><td></td><td></td></tr>
+    <tr><td>2</td><td>2</td><td>7</td><td>11</td><td>7</td><td></td><td></td></tr>
+    <tr><td>3</td><td>1</td><td>9</td><td>8</td><td>8</td><td></td><td></td></tr>
+    <tr><td>4</td><td>3</td><td>6</td><td>7</td><td>9.5</td><td></td><td></td></tr>
+    <tr><td>5</td><td>4</td><td>4</td><td>17</td><td>3</td><td></td><td></td></tr>
+    <tr><td>6</td><td>5</td><td>2</td><td>20</td><td>1</td><td></td><td></td></tr>
+    <tr><td>7</td><td>1</td><td>9</td><td>7</td><td>9.5</td><td></td><td></td></tr>
+    <tr><td>8</td><td>1</td><td>9</td><td>12</td><td>6</td><td></td><td></td></tr>
+    <tr><td>9</td><td>6</td><td>1</td><td>18</td><td>2</td><td></td><td></td></tr>
+    <tr><td>10</td><td>4</td><td>4</td><td>15</td><td>4</td><td></td><td></td></tr>
+    <tr><td colspan="6"><strong>Total 总和 Σd² =</strong></td><td></td></tr>
+  </table>
+
+  <div class="box grey">
+    <div class="bx-t">Working space 草稿区（d 可正可负，d² 永远 ≥ 0）</div>
+    Row 1: d = 4 − 5 = −1 → d² = 1 &nbsp;·&nbsp; Row 2: d = 7 − 7 = 0 → d² = 0 &nbsp;·&nbsp; Row 4: d = 6 − 9.5 = −3.5 → d² = 12.25<br>
+    <div class="wl"></div><div class="wl"></div>
+    Your total should be <span class="bl" style="min-width:40px;"></span> <span class="hint">答案页核对（一个半整数：.5 结尾）</span>
+  </div>
+
+  <div class="sub">Check your ranking logic 回顾这三个并列（课本原文）</div>
+  <ul class="tight">
+    <li>3 名学生复习 <strong>4 小时</strong>（第 1、5、10 名）→ 占了 rank 3、4、5 → 共享 rank <span class="bl" style="min-width:30px;"></span></li>
+    <li>3 名学生复习 <strong>1 小时</strong>（第 3、7、8 名）→ 占了 rank 8、9、10 → 共享 rank <span class="bl" style="min-width:30px;"></span></li>
+    <li>2 名学生考了 <strong>7 分</strong>（第 4、7 名）→ 占了 rank 9、10 → 共享 rank <span class="bl" style="min-width:30px;"></span></li>
+  </ul>
+
+  <div class="pg-foot">Page 5 of 13</div>
+</div>
+
+<!-- ================= PAGE 6: §4c FORMULA + SIGNIFICANCE ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§4c · Put it in the formula &amp; check significance 代入公式与显著性</span><span class="r">ANSWERS → 课件 §4</span></div>
+
+  <div class="sub">Step by step — the textbook example continued 接上页（Σd² = 26.5, n = 10）</div>
+  <div class="calcbox">
+    <p style="margin:2px 0;"><strong>Step 1</strong> — work out the top of the fraction 先算分子的 6Σd²:<br>
+    6 × 26.5 = <span class="bl" style="min-width:50px;"></span></p>
+    <p style="margin:2px 0;"><strong>Step 2</strong> — work out the bottom 再算分母 n(n² − 1):<br>
+    10 × (10² − 1) = 10 × 99 = <span class="bl" style="min-width:50px;"></span></p>
+    <p style="margin:2px 0;"><strong>Step 3</strong> — divide 相除:<br>
+    <span class="bl" style="min-width:50px;"></span> ÷ <span class="bl" style="min-width:50px;"></span> = <span class="bl" style="min-width:50px;"></span> <span class="hint">≈ 0.161</span></p>
+    <p style="margin:2px 0;"><strong>Step 4</strong> — take away from 1:<br>
+    r_s = 1 − 0.161 = <span class="bl" style="min-width:50px;"></span> <span class="hint">≈ 0.84（保留两位小数）</span></p>
+  </div>
+
+  <div class="formula" style="margin-top:2px;">
+    r_s = 1 − <span style="display:inline-block;text-align:center;">6 × 26.5<br><span style="border-top:1px solid #000;">10(100 − 1)</span></span>
+    = 1 − <span style="display:inline-block;text-align:center;">159<br><span style="border-top:1px solid #000;">990</span></span>
+    = <strong>0.839 ≈ 0.84</strong>
+  </div>
+  <p class="hint" style="margin:0 0 4px 0;">0.84 说明什么？在方向上是 <strong>positive</strong>（复习越多、分数越高），在强度上落在 0.70–1.00 → <strong>strong</strong>。</p>
+
+  <div class="sub">Significance — compare with the critical value 查临界值表判断显著性</div>
+  <table class="n" style="margin-bottom:4px;">
+    <tr><th>n</th><th>p ≤ 0.05 one-tailed</th><th>p ≤ 0.05 two-tailed</th><th>p ≤ 0.01 one-tailed</th></tr>
+    <tr><td>8</td><td>0.643</td><td>0.738</td><td>0.833</td></tr>
+    <tr><td>9</td><td>0.600</td><td>0.700</td><td>0.783</td></tr>
+    <tr><td><strong>10</strong></td><td>0.564</td><td><strong>0.648</strong></td><td>0.745</td></tr>
+    <tr><td>12</td><td>0.503</td><td>0.591</td><td>0.712</td></tr>
+    <tr><td>15</td><td>0.446</td><td>0.517</td><td>0.654</td></tr>
+  </table>
+  <p class="hint" style="margin:0 0 4px 0;">规则只有一条：calculated value（计算值）<strong>≥ critical value（临界值）</strong>才 significant。若假设是 two-tailed（非定向），用两尾列。</p>
+  <div class="box">
+    Calculated r_s = 0.84 &nbsp;·&nbsp; critical value (n = 10, two-tailed, p ≤ 0.05) = <span class="bl" style="min-width:40px;"></span><br>
+    0.84 <span class="bl" style="min-width:25px;"></span> 0.648 → the result <span class="bl" style="min-width:110px;"></span><span class="hint">is significant 显著</span> at p ≤ 0.05.<br>
+    Conclusion: we <span class="bl" style="min-width:60px;"></span><span class="hint">accept 接受</span> the alternative hypothesis and <span class="bl" style="min-width:55px;"></span><span class="hint">reject 拒绝</span> the null hypothesis.
+  </div>
+  <p class="hint" style="margin:2px 0 6px 0;">注意：negative 结果怎么办？例如 r_s = −0.87 —— 查表时用<strong>绝对值 0.87</strong> 比较，符号只用来解释方向。</p>
+
+  <div class="sub">Common mistakes — tick the ones you will avoid 常见错误自查</div>
+  <div class="chk" style="line-height:2.0;">
+    <span class="c"></span>把两列数据合在一起排 rank（必须分开排）<br>
+    <span class="c"></span>忘记并列分数要共享平均 rank<br>
+    <span class="c"></span>把 n 当成"每组人数"（n = 成对数据的数量）<br>
+    <span class="c"></span>查显著性时带着负号比大小（用绝对值）<br>
+    <span class="c"></span>从显著的相关推出因果（significant ≠ causation！）
+  </div>
+
+  <div class="pg-foot">Page 6 of 13</div>
+</div>
+
+<!-- ================= PAGE 7: §5 EVALUATION ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§5 · Evaluating correlation as a method 评价相关研究法</span><span class="r">ANSWERS → 课件 §5</span></div>
+
+  <div class="two">
+    <div>
+      <div class="kicker">✅ Strengths 优点（填关键词）</div>
+      <ul class="tight">
+        <li><strong>Ethical:</strong> lets you study relationships it would be <span class="bl" style="min-width:80px;"></span><span class="hint">unethical 不道德</span> to manipulate, e.g. stress &amp; aggression.</li>
+        <li><strong>Cost-effective:</strong> can use <span class="bl" style="min-width:80px;"></span><span class="hint">secondary data 二手数据</span> to check a relationship before spending money on an experiment.</li>
+        <li><strong>Natural:</strong> measures behaviour in real life → high <span class="bl" style="min-width:100px;"></span><span class="hint">ecological validity 生态效度</span>.</li>
+        <li><strong>Useful pilot:</strong> a significant correlation may justify a later <span class="bl" style="min-width:70px;"></span><span class="hint">experimental 实验</span> study.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="kicker">❌ Weaknesses 缺点（填关键词）</div>
+      <ul class="tight">
+        <li><strong>Causation problem:</strong> cannot tell which variable <span class="bl" style="min-width:50px;"></span><span class="hint">caused 导致</span> which.</li>
+        <li><strong>Third variable:</strong> another factor may cause <span class="bl" style="min-width:60px;"></span><span class="hint">both 两者</span> co-variables to change.</li>
+        <li><strong>Directionality problem:</strong> stress → aggression, or aggression → <span class="bl" style="min-width:60px;"></span><span class="hint">stress 压力</span>?</li>
+        <li><strong>Coincidence:</strong> some correlations are <span class="bl" style="min-width:60px;"></span><span class="hint">spurious 虚假的</span>, e.g. mozzarella cheese sales and civil-engineering doctorates.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sub">The third-variable problem in detail 第三变量问题（AO3 最爱考）</div>
+  <div class="box">
+    A study finds that stress is positively correlated with aggression. <strong>Three</strong> explanations are possible:<br>
+    ① Stress <span class="bl" style="min-width:60px;"></span><span class="hint">causes 导致</span> aggression.<br>
+    ② Aggression <span class="bl" style="min-width:60px;"></span> stress.<br>
+    ③ A <span class="bl" style="min-width:80px;"></span><span class="hint">third variable 第三变量</span> (e.g. <span class="bl" style="min-width:70px;"></span><span class="hint">hot weather 高温</span>) causes both stress and aggression <span class="bl" style="min-width:80px;"></span><span class="hint">independently 各自独立地</span>.<br>
+    <span class="hint2">这就是为什么一个"显著的相关"绝不能写成"proves causation 证明因果"。</span>
+  </div>
+
+  <div class="box grey">
+    <div class="bx-t">Write the money sentence 背下并默写这一句</div>
+    "Correlation does not imply <span class="bl" style="min-width:80px;"></span>. For example, although stress and aggression are correlated, a third variable such as <span class="bl" style="min-width:70px;"></span> could cause both, or aggression could cause <span class="bl" style="min-width:60px;"></span> rather than the other way round."
+    <div class="wl"></div>
+  </div>
+
+  <div class="box grey">
+    <div class="bx-t">In your own words 用自己的话写</div>
+    A news headline says: "New study proves that playing violent video games makes teenagers violent!" Based on this section, write two sentences explaining why the headline is wrong.<br>
+    <div class="wl"></div><div class="wl"></div><div class="wl"></div>
+  </div>
+
+  <div class="pg-foot">Page 7 of 13</div>
+</div>
+
+<!-- ================= PAGE 8: §6 BRAIN SCANNING ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§6 · Brain-scanning techniques 脑扫描技术</span><span class="r">ANSWERS → 课件 §6</span></div>
+
+  <div class="box">
+    <div class="bx-t">Big picture 总览</div>
+    CAT shows brain <span class="bl" style="min-width:60px;"></span><span class="hint">structure 结构</span>; PET and fMRI show brain <span class="bl" style="min-width:60px;"></span><span class="hint">activity/function 功能活动</span>.
+  </div>
+
+  <div class="sub">Fill the comparison table 三技术对比总表</div>
+  <table class="n">
+    <tr><th style="width:16%;">Technique</th><th>What it measures</th><th>Radiation?</th><th>Example study</th></tr>
+    <tr><td><strong>CAT/CT</strong></td><td><span class="bl" style="min-width:110px;"></span><span class="hint">structure 结构（X 光）</span></td><td><span class="bl" style="min-width:70px;"></span><span class="hint">Yes — X-rays</span></td><td>Prefrontal-cortex <span class="bl" style="min-width:80px;"></span><span class="hint">damage 损伤</span> and aggression</td></tr>
+    <tr><td><strong>PET</strong></td><td><span class="bl" style="min-width:120px;"></span><span class="hint">metabolic activity 代谢活动（葡萄糖）</span></td><td><span class="bl" style="min-width:70px;"></span><span class="hint">Yes — radioactive tracer</span></td><td><span class="bl" style="min-width:100px;"></span><span class="hint">Raine et al. (1997)</span> — murderers</td></tr>
+    <tr><td><strong>fMRI</strong></td><td><span class="bl" style="min-width:120px;"></span><span class="hint">blood oxygenation 血氧变化 (BOLD)</span></td><td><span class="bl" style="min-width:70px;"></span><span class="hint">No</span></td><td><span class="bl" style="min-width:120px;"></span><span class="hint">Montag et al. (2011)</span> — violent gamers</td></tr>
+  </table>
+
+  <div class="sub">Mechanism detail 机制细节填空</div>
+  <ul class="tight">
+    <li><strong>CAT:</strong> uses <span class="bl" style="min-width:60px;"></span><span class="hint">X-rays 射线</span> from multiple angles → a detailed still image of brain structure; good for detecting <span class="bl" style="min-width:60px;"></span><span class="hint">tumours 肿瘤</span>, damage and structural abnormalities.</li>
+    <li><strong>PET:</strong> injects a radioactive tracer called <span class="bl" style="min-width:40px;"></span><span class="hint">FDG</span>（一种类似葡萄糖的物质）; active areas use more glucose and emit more <span class="bl" style="min-width:70px;"></span><span class="hint">gamma rays 伽马射线</span> → shows over- or under-active areas.</li>
+    <li><strong>fMRI:</strong> uses a powerful <span class="bl" style="min-width:70px;"></span><span class="hint">magnet 磁铁</span> to detect changes in blood <span class="bl" style="min-width:90px;"></span><span class="hint">oxygenation 含氧量</span> while a person does a task vs a baseline.</li>
+  </ul>
+
+  <div class="sub">Evaluation 评价要点（考试常考 one strength + one weakness + example）</div>
+  <table class="n">
+    <tr><th style="width:50%;">✅ Strengths</th><th>❌ Weaknesses</th></tr>
+    <tr>
+      <td>① <strong>Objective images:</strong> visual data can be checked by other researchers → improves <span class="bl" style="min-width:70px;"></span><span class="hint">reliability 信度</span>.<br>
+      ② <strong>Precise localisation:</strong> pinpoints which brain <span class="bl" style="min-width:60px;"></span><span class="hint">areas 区域</span> are involved.<br>
+      ③ <strong>Scientific credibility:</strong> quantitative data, <span class="bl" style="min-width:60px;"></span><span class="hint">falsifiable 可证伪</span> hypotheses.</td>
+      <td>① <strong>Correlational:</strong> cannot prove brain differences <span class="bl" style="min-width:50px;"></span><span class="hint">cause 导致</span> aggression.<br>
+      ② <strong>Directionality:</strong> violent behaviour may <span class="bl" style="min-width:60px;"></span><span class="hint">change 改变</span> the brain, not the reverse.<br>
+      ③ <strong>Artificial tasks:</strong> lab tasks may lack <span class="bl" style="min-width:90px;"></span><span class="hint">ecological validity 生态效度</span>.<br>
+      ④ <strong>Ethics:</strong> stigmatising labels like "<span class="bl" style="min-width:100px;"></span><span class="hint">aggressive brain 攻击性大脑</span>" and screening for future violence.</td>
+    </tr>
+  </table>
+
+  <div class="box grey">
+    <div class="bx-t">Exam sentence builder 组句练习 — "Describe and evaluate one scanning technique"</div>
+    Technique: <span class="bl" style="min-width:90px;"></span> &nbsp;·&nbsp; Mechanism (1 sentence): <span class="bl" style="min-width:150px;"></span><br>
+    Strength + example: <span class="bl" style="min-width:200px;"></span><br>
+    Weakness + example: <span class="bl" style="min-width:200px;"></span><br>
+    <div class="wl"></div><div class="wl"></div>
+  </div>
+
+  <div class="pg-foot">Page 8 of 13</div>
+</div>
+
+<!-- ================= PAGE 9: §7 TWIN STUDIES ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§7 · Twin studies 双生子研究</span><span class="r">ANSWERS → 课件 §7</span></div>
+
+  <div class="sub">MZ vs DZ — fill the gaps 同卵与异卵对比</div>
+  <table class="n">
+    <tr><th style="width:16%;">Type</th><th>Also called</th><th>Genetic overlap</th><th>How formed 怎么来的</th></tr>
+    <tr><td><strong>MZ</strong></td><td>Monozygotic / <span class="bl" style="min-width:60px;"></span><span class="hint">identical 同卵</span></td><td><span class="bl" style="min-width:50px;"></span><span class="hint">100%</span></td><td>One fertilised <span class="bl" style="min-width:50px;"></span><span class="hint">egg 卵子</span> splits into two embryos</td></tr>
+    <tr><td><strong>DZ</strong></td><td>Dizygotic / <span class="bl" style="min-width:60px;"></span><span class="hint">fraternal 异卵</span></td><td><span class="bl" style="min-width:50px;"></span><span class="hint">~50%</span></td><td>Two separate eggs fertilised by two separate <span class="bl" style="min-width:50px;"></span><span class="hint">sperm 精子</span></td></tr>
+  </table>
+
+  <div class="box">
+    <div class="bx-t">Concordance rate 一致率 — definition</div>
+    The <strong>concordance rate</strong> is the <span class="bl" style="min-width:70px;"></span><span class="hint">percentage 百分比</span> of twin pairs in which <span class="bl" style="min-width:50px;"></span><span class="hint">both 两个都</span> twins show the behaviour being studied. <br>
+    Rule: higher concordance in <strong>MZ</strong> than <strong>DZ</strong> → a <span class="bl" style="min-width:70px;"></span><span class="hint">genetic 遗传的</span> influence is suggested.
+  </div>
+
+  <div class="sub">Two key studies 两个关键研究（数字必须记住）</div>
+  <table class="n">
+    <tr><th style="width:32%;">Study</th><th>Findings 结果</th><th>Conclusion</th></tr>
+    <tr><td><strong>Gottesman &amp; Shields (1966)</strong><br><span class="hint2" style="display:inline;">schizophrenia 精神分裂症</span></td>
+    <td>MZ concordance = <span class="bl" style="min-width:35px;"></span>% &nbsp;·&nbsp; DZ = <span class="bl" style="min-width:35px;"></span>%</td>
+    <td>MZ much higher → <span class="bl" style="min-width:80px;"></span><span class="hint">genetics 遗传</span> may play a role</td></tr>
+    <tr><td><strong>Brendgen et al. (2005)</strong><br><span class="hint2" style="display:inline;">aggression 攻击行为</span></td>
+    <td><strong>Physical</strong> aggression: MZ <span class="bl" style="min-width:25px;"></span> DZ (higher in MZ) → genetic<br>
+    <strong>Social</strong> aggression: MZ <span class="bl" style="min-width:25px;"></span> DZ (similar) → environmental</td>
+    <td>Different types of aggression may have <span class="bl" style="min-width:70px;"></span><span class="hint">different 不同</span> causes</td></tr>
+  </table>
+
+  <div class="sub">Reading concordance data — the exam template 解释数据模板（背）</div>
+  <div class="box">
+    "The concordance rate was higher in MZ twins (<span class="bl" style="min-width:100px;"></span>) than in DZ twins (<span class="bl" style="min-width:100px;"></span>), which suggests a <span class="bl" style="min-width:60px;"></span> influence. However, this is a <span class="bl" style="min-width:90px;"></span><span class="hint">correlation 相关</span>, not proof of causation — MZ twins may also share a more <span class="bl" style="min-width:80px;"></span><span class="hint">similar 相似</span> environment."
+  </div>
+
+  <div class="sub">Evaluation 评价</div>
+  <table class="n">
+    <tr><th style="width:50%;">✅ Strengths</th><th>❌ Weaknesses</th></tr>
+    <tr>
+      <td>① <strong>Natural manipulation:</strong> MZ/DZ pairs give a <span class="bl" style="min-width:70px;"></span><span class="hint">natural 自然</span> comparison of genetic similarity.<br>
+      ② <strong>Consistent evidence:</strong> many twin studies find <span class="bl" style="min-width:50px;"></span><span class="hint">higher 更高</span> MZ concordance for aggression traits.<br>
+      ③ <strong>Quantifiable:</strong> concordance rates are easy to <span class="bl" style="min-width:60px;"></span><span class="hint">compare 比较</span>.</td>
+      <td>① <strong>Equal-environments assumption:</strong> MZ twins may be treated more <span class="bl" style="min-width:70px;"></span><span class="hint">similarly 相似</span> than DZ twins → higher concordance may be <span class="bl" style="min-width:70px;"></span><span class="hint">environmental 环境</span>, not genetic.<br>
+      ② <strong>Epigenetics:</strong> genes can be switched <span class="bl" style="min-width:40px;"></span><span class="hint">on/off</span> by experience → 100% shared DNA ≠ identical outcomes.<br>
+      ③ <strong>Sample size:</strong> large MZ/DZ samples are hard to find → limits <span class="bl" style="min-width:100px;"></span><span class="hint">generalisability 可推广性</span>.<br>
+      ④ <strong>Nature–nurture:</strong> twins usually share their environment, so the two cannot be fully <span class="bl" style="min-width:80px;"></span><span class="hint">separated 分开</span>.</td>
+    </tr>
+  </table>
+
+  <div class="pg-foot">Page 9 of 13</div>
+</div>
+
+<!-- ================= PAGE 10: §8 REAL EXAM QUESTION ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§8 · Real exam question — Jan 2025 Paper 3, Q7 (8 marks) 真题全流程</span><span class="r">采分点 → 课件 §8</span></div>
+
+  <div class="q">
+    Becky is a forensic psychologist interested in the relationship between Cognitive Behavioural Therapy (CBT) sessions and aggressive incidents in offenders. She recorded the number of CBT sessions attended over six months and the number of aggressive incidents over the same period for 9 offenders.
+  </div>
+
+  <div class="sub">(a) Complete the table and calculate Spearman's rank. Give your answer to two decimal places. (4)</div>
+  <p class="hint" style="margin:2px 0 4px 0;">Rank 1 和 Rank 2 已经帮你排好（最高值 = rank 1，无并列）。你只需要算每行的 d、d²，再求和，最后代入公式。</p>
+  <table class="n">
+    <tr><th>CBT sessions</th><th>Rank 1</th><th>Aggressive incidents</th><th>Rank 2</th><th>d</th><th>d²</th></tr>
+    <tr><td>18</td><td>9</td><td>9</td><td>1</td><td></td><td></td></tr>
+    <tr><td>7</td><td>1</td><td>20</td><td>9</td><td></td><td></td></tr>
+    <tr><td>16</td><td>8</td><td>13</td><td>3</td><td></td><td></td></tr>
+    <tr><td>15</td><td>7</td><td>12</td><td>2</td><td></td><td></td></tr>
+    <tr><td>10</td><td>3</td><td>15</td><td>5</td><td></td><td></td></tr>
+    <tr><td>9</td><td>2</td><td>18</td><td>8</td><td></td><td></td></tr>
+    <tr><td>14</td><td>6</td><td>17</td><td>7</td><td></td><td></td></tr>
+    <tr><td>11</td><td>4</td><td>16</td><td>6</td><td></td><td></td></tr>
+    <tr><td>13</td><td>5</td><td>14</td><td>4</td><td></td><td></td></tr>
+    <tr><td colspan="5"><strong>Total Σd² =</strong></td><td></td></tr>
+  </table>
+
+  <div class="calcbox">
+    <p style="margin:2px 0;"><strong>Working 计算过程（写全拿方法分）：</strong> n = <span class="bl" style="min-width:30px;"></span>（9 名 offender = 9 对数据）</p>
+    <p style="margin:2px 0;">r_s = 1 − <span style="display:inline-block;text-align:center;vertical-align:middle;">6 × <span class="bl" style="min-width:35px;"></span><br><span style="border-top:1px solid #000;"><span class="bl" style="min-width:25px;"></span>(<span class="bl" style="min-width:25px;"></span>² − 1)</span></span> = 1 − <span style="display:inline-block;text-align:center;vertical-align:middle;"><span class="bl" style="min-width:40px;"></span><br><span style="border-top:1px solid #000;"><span class="bl" style="min-width:40px;"></span></span></span> = 1 − <span class="bl" style="min-width:40px;"></span> = <span class="bl" style="min-width:60px;"></span></p>
+    <p style="margin:2px 0;" class="hint">格式参考 p.6：分子 6×Σd² → 分母 n(n²−1) → 相除 → 1 减 → 保留两位小数。</p>
+  </div>
+
+  <div class="sub">(b) Justify why Becky used Spearman's rank correlation coefficient on her data. (2)</div>
+  <div class="wl"></div><div class="wl"></div>
+  <p class="hint" style="margin:0 0 6px 0;">两个采分点：① 研究要找的是 co-variables 之间的 correlation/relationship；② 数据至少是 ordinal（可排序）。各写一句。</p>
+
+  <div class="sub">(c) Explain one improvement Becky could make to her investigation. (2)</div>
+  <div class="wl"></div><div class="wl"></div>
+  <p class="hint" style="margin:0 0 6px 0;">想想 aggressive incidents 是怎么被记录的——如果是 offender 自己报告，有什么问题？换一种更客观的测量方式就是 improvement。</p>
+
+  <div class="box grey" style="margin-top:4px;">
+    <div class="bx-t">Method marks 方法分提醒（就算最后答案算错也能拿分）</div>
+    考官按步骤给分：正确的 ranks ✓ → 正确的 d 和 d² ✓ → 正确的 Σd² ✓ → 正确的公式代入 ✓ → 正确的 r_s ✓。所以<b>每一步都要写在卷面上</b>，不要跳步心算。
+  </div>
+
+  <div class="pg-foot">Page 10 of 13</div>
+</div>
+
+<!-- ================= PAGE 11: EXAM-STYLE QUICK QUESTIONS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Exam-style quick questions — Matilda 独立练习</span><span class="r">采分点 → 课件 §8</span></div>
+
+  <div class="q">
+    Matilda correlated hours slept per night with calorie intake. She hypothesised that fewer hours slept = more calories consumed. She found r = −0.66 with n = 10.
+  </div>
+
+  <div class="sub">(a) What is meant by p &lt; 0.05? (2)</div>
+  <p class="hint" style="margin:0 0 2px 0;">写"可能性/概率"和"偶然/机会"两个关键词。</p>
+  <div class="wl"></div><div class="wl"></div>
+
+  <div class="sub">(b) Using a critical-values table, is her result significant at p &lt; 0.05? Show your comparison. (2)</div>
+  <table class="n" style="width:70%; margin-bottom:2px;">
+    <tr><th>n</th><th>p ≤ 0.05 one-tailed</th><th>p ≤ 0.05 two-tailed</th><th>p ≤ 0.01 one-tailed</th></tr>
+    <tr><td>10</td><td>0.564</td><td>0.648</td><td>0.745</td></tr>
+  </table>
+  <p class="hint" style="margin:0 0 2px 0;">注意 r = <strong>−</strong>0.66 —— 查表要用绝对值 |−0.66| = 0.66。Matilda 的假设是定向还是非定向？题里说 "fewer hours = more calories" → 这是 directional（one-tailed）。</p>
+  <div class="wl"></div><div class="wl"></div>
+
+  <div class="sub">(c) Give two reasons why Matilda used Spearman's rank test. (2)</div>
+  <div class="wl"></div><div class="wl"></div>
+
+  <div class="sub">(d) Explain one weakness of using a correlation for this study. (2)</div>
+  <div class="wl"></div><div class="wl"></div>
+
+  <div class="box grey" style="margin-top:6px;">
+    <div class="bx-t">Self-mark 自评（对照评分标准给自己打分）</div>
+    <span class="chk" style="line-height:2.0;">
+      <span class="c"></span>(a) 提到 "5% probability" 且 "due to chance" → 2 分<br>
+      <span class="c"></span>(b) 用 0.66 &gt; 0.564（one-tailed）并写出 significant → 2 分（如果错用了 two-tailed 的 0.648 → 得 1 分，因为比较数字对了但结论要相应调整：0.66 &gt; 0.648 也 significant）<br>
+      <span class="c"></span>(c) ① correlation/relationship ② ordinal data → 2 分<br>
+      <span class="c"></span>(d) correlation ≠ causation + 一个具体第三变量（如 stress）→ 2 分
+    </span>
+  </div>
+
+  <div class="pg-foot">Page 11 of 13</div>
+</div>
+
+<!-- ================= PAGE 12: BRAIN DUMP ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Brain dump 自测 — close the courseware, use only the prompts 合上课件只看提示词</span><span class="r">CH17 NOTES</span></div>
+
+  <ul class="tight">
+    <li>Correlation vs experiment — the four rows of difference: <div class="wl" style="height:22pt;"></div></li>
+    <li>Three hypothesis types for a correlation (write all three sentences): <div class="wl" style="height:22pt;"></div><div class="wl" style="height:22pt;"></div></li>
+    <li>The Spearman formula + what each symbol means: <div class="wl" style="height:22pt;"></div></li>
+    <li>Ranking rules (highest = ?  ties = ?): <div class="wl" style="height:22pt;"></div></li>
+    <li>How you check significance (critical value, one-tailed/two-tailed, absolute value): <div class="wl" style="height:22pt;"></div></li>
+    <li>Scatter-diagram description sentence (direction + strength): <div class="wl" style="height:22pt;"></div></li>
+    <li>CAT vs PET vs fMRI — one line each (what they measure + one study): <div class="wl" style="height:22pt;"></div><div class="wl" style="height:22pt;"></div></li>
+    <li>MZ vs DZ + concordance logic (MZ &gt; DZ → ? ; MZ ≈ DZ → ?): <div class="wl" style="height:22pt;"></div></li>
+    <li>Key numbers: Gottesman &amp; Shields ___% vs ___% · textbook example Σd² ___ r_s ___ · Becky Σd² ___ r_s ___ · Matilda r ___ n ___: <div class="wl" style="height:22pt;"></div></li>
+    <li>Two reasons to justify using Spearman: <div class="wl" style="height:22pt;"></div></li>
+  </ul>
+
+  <div class="sec" style="margin-top:8px;">Exam sentences to memorise 背下来的句式</div>
+  <table class="n">
+    <tr><th style="width:34%;">When asked…</th><th>Sentence pattern 句式</th></tr>
+    <tr><td>Describe the scatter diagram (2)</td><td>"The dots slope <span class="bl" style="min-width:70px;"></span> from left to right, so there is a <span class="bl" style="min-width:50px;"></span> correlation; the dots are <span class="bl" style="min-width:80px;"></span> to the line, so it is <span class="bl" style="min-width:50px;"></span>."</td></tr>
+    <tr><td>Justify Spearman (2)</td><td>"Spearman's is used because the study looks for a <span class="bl" style="min-width:80px;"></span> between two co-variables, and the data are at least <span class="bl" style="min-width:60px;"></span>."</td></tr>
+    <tr><td>Interpret concordance data</td><td>"MZ concordance (<span class="bl" style="min-width:50px;"></span>%) was higher than DZ (<span class="bl" style="min-width:50px;"></span>%), suggesting a <span class="bl" style="min-width:60px;"></span> influence — but this is correlational."</td></tr>
+  </table>
+
+  <div class="box grey">
+    <div class="bx-t">Final self-check 最后自问</div>
+    如果现在合上笔记，你能在 10 分钟内完整算出 Jan 2025 Q7（表格 → Σd² → 公式 → r_s → 显著性）吗？如果不能——回到课件 §4 和 §8 重看一遍，然后把 p.10 再做一次。
+  </div>
+
+  <div class="pg-foot">Page 12 of 13</div>
+</div>
+
+<!-- ================= PAGE 13: ANSWER KEY ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Answer key 答案速查（先做完再看！）</span><span class="r">CH17 NOTES</span></div>
+
+  <div style="font-size:8.5pt; line-height:1.6; columns:2; column-gap:14px;">
+    <p style="margin:0 0 5px 0;"><strong>p.2</strong> — relationship · measured · not manipulate · caused · relationship · DV · co-variables · between groups · within one group · causation · cannot · positive · negative · relationship · direction · no relationship · Directional: positive / Non-dir: relationship / Null: no relationship · 判断练习: positive, negative, positive, none.</p>
+    <p style="margin:0 0 5px 0;"><strong>p.3</strong> — two scores · x · y · direction · strength · 图: positive / negative / no correlation · direction: positive / negative / none · strength: close · strong · weak · boundaries: weak, moderate, strong · 判断: +0.91 strong positive · −0.22 weak negative · −0.76 strong negative · ordinal · rank order · nominal · cannot.</p>
+    <p style="margin:0 0 5px 0;"><strong>p.4</strong> — ordinal · significant · correlation · coefficient · −1 and +1 · difference · sum · pairs of scores · highest · 1 · average · 6.5 · 排 rank: 34→8, 45→7, 52→6, 60→4 (×3), 78→2, 91→1 · 找错: 4 hours → rank 4; 1 hour → rank 9.</p>
+    <p style="margin:0 0 5px 0;"><strong>p.5</strong> — d 列: −1, 0, 1, −3.5, 1, 1, −0.5, 3, −1, 0 · d² 列: 1, 0, 1, 12.25, 1, 1, 0.25, 9, 1, 0 · Σd² = 26.5 · 并列回顾: rank 4 / rank 9 / rank 9.5.</p>
+    <p style="margin:0 0 5px 0;"><strong>p.6</strong> — Step1: 159 · Step2: 990 · Step3: 159 ÷ 990 = 0.161 · Step4: 0.839 ≈ 0.84 · 临界值: 0.648 · 0.84 &gt; 0.648 · is significant · accept · reject.</p>
+    <p style="margin:0 0 5px 0;"><strong>p.7</strong> — unethical · secondary data · ecological validity · experimental · caused · both · stress · spurious · 三解释: ① causes ② causes ③ third variable · hot weather · independently · money sentence: causation · hot weather (any third variable) · stress.</p>
+    <p style="margin:0 0 5px 0;"><strong>p.8</strong> — 总览: structure · activity/function · 总表: structure (X-rays) · Yes — X-rays · damage · metabolic activity (glucose use) · Yes — radioactive tracer · Raine et al. (1997) · blood oxygenation (BOLD) · No · Montag et al. (2011) · 机制: X-rays · tumours · FDG · gamma rays · magnet · oxygenation · 评价: reliability · areas · falsifiable · cause · change · ecological validity · "aggressive brain".</p>
+    <p style="margin:0 0 5px 0;"><strong>p.9</strong> — identical · 100% · egg · fraternal · ~50% · sperm · percentage · both · genetic · 42 · 9 · genetics · &gt; · ≈ · different · 模板: (higher MZ number) · (lower DZ number) · genetic · correlation · similar · 评价: natural · higher · compare · similarly · environmental · on/off · generalisability · separated.</p>
+    <p style="margin:0 0 5px 0;"><strong>p.10</strong> — d 列: 8, −8, 5, 5, −2, −6, −1, −2, 1 · d² 列: 64, 64, 25, 25, 4, 36, 1, 4, 1 · Σd² = 224 · n = 9 · r_s = 1 − 1344/720 = 1 − 1.8667 = <strong>−0.87</strong>（strong negative）· (b) ① correlation between two co-variables ② ordinal data · (c) 例如用官方记录/观察记录代替 self-report——offender 可能少报攻击行为（social desirability）。</p>
+    <p style="margin:0 0 5px 0;"><strong>p.11</strong> — (a) 少于 5% 的概率是偶然发生的 (b) directional → one-tailed critical value 0.564; |−0.66| = 0.66 &gt; 0.564 → significant (c) ① correlation ② ordinal (d) 不能证明因果——第三变量（如 stress）可能同时导致睡得少和吃得多。</p>
+    <p style="margin:0;"><strong>p.12</strong> — 背句：① positive/negative · close · strong (or weak) ② relationship · ordinal ③ 42% · 9% · genetic.</p>
+  </div>
+
+  <div class="box grey" style="margin-top:8px;">
+    <strong>最后提醒：</strong>Spearman 计算题几乎每次 Paper 3 都考。考试当天先写公式，再逐列填表——方法分比最终数字更容易拿。做错一题 ≠ 世界末日：把 p.10 再做一遍，直到能不看答案完整算出 −0.87。
+  </div>
+
+  <div class="pg-foot">Page 13 of 13</div>
+</div>
+
+</body>
+</html>
