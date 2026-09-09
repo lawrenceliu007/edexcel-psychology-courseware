@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edexcel Ch17 — Research Methods: Correlation, Spearman, Scanning & Twin Studies</title>
+<style>
+:root {
+  --primary: #ea580c; --primary-light: #fff7ed; --primary-dark: #9a3412;
+  --secondary: #f97316; --accent: #fbbf24;
+  --bg: #fafaf9; --surface: #ffffff; --card: #ffffff;
+  --text: #1c1917; --text-secondary: #57534e; --muted: #a8a29e;
+  --border: #e7e5e4; --shadow: 0 4px 20px rgba(0,0,0,.06);
+  --radius: 14px; --sidebar-w: 190px;
+  --success: #16a34a; --warning: #d97706; --info: #2563eb; --danger: #dc2626;
+  --font-size: 16px;
+}
+.dark-mode {
+  --bg: #1c1917; --surface: #292524; --card: #44403c;
+  --text: #fafaf9; --text-secondary: #d6d3d1; --muted: #a8a29e;
+  --border: #57534e; --shadow: 0 4px 20px rgba(0,0,0,.25);
+  --primary-light: #431407;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: var(--font-size); line-height: 1.7;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* Navbar */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.dark-mode nav { background: rgba(41,37,36,.92); }
+.nav-inner { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
+.breadcrumb { font-size: .9em; color: var(--text-secondary); }
+.breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.breadcrumb a:hover { text-decoration: underline; }
+.nav-controls { display: flex; gap: 8px; align-items: center; }
+.nav-btn {
+  background: var(--primary-light); color: var(--primary-dark); border: 1px solid var(--border);
+  border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: .85em; font-weight: 600;
+  transition: .15s; text-decoration: none;
+}
+.nav-btn:hover { background: var(--primary); color: #fff; }
+
+/* Layout */
+.page-layout { display: grid; grid-template-columns: var(--sidebar-w) 1fr; gap: 28px; padding-top: 24px; }
+
+/* Sidebar */
+.sidebar {
+  position: sticky; top: 70px; align-self: start;
+  height: calc(100vh - 90px); overflow-y: auto;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 14px 10px;
+}
+.sb-header {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff; padding: 14px 10px; border-radius: 10px; text-align: center; margin-bottom: 12px;
+}
+.sb-header-title { font-weight: 700; font-size: 1.05em; }
+.sb-header-sub { font-size: .78em; opacity: .9; }
+.sb-list { list-style: none; margin: 0; padding: 0; }
+.sb-item a {
+  display: block; padding: 8px 10px; border-radius: 8px; color: var(--text-secondary);
+  text-decoration: none; font-size: .85em; margin-bottom: 4px; transition: .15s;
+}
+.sb-item a:hover, .sb-item a.active { background: var(--primary-light); color: var(--primary-dark); font-weight: 600; }
+.sb-divider { height: 1px; background: var(--border); margin: 10px 0; }
+
+/* Main */
+main { min-height: 100vh; padding-bottom: 60px; }
+
+/* Header card */
+.header-card {
+  background: linear-gradient(135deg, var(--primary), #fb923c); color: #fff;
+  border-radius: var(--radius); padding: 32px; margin-bottom: 28px; box-shadow: var(--shadow);
+}
+.header-card h1 { margin: 0 0 10px; font-size: 2em; }
+.subtitle { font-size: 1.1em; opacity: .95; margin-bottom: 18px; }
+.badges { display: flex; flex-wrap: wrap; gap: 10px; }
+.badge {
+  background: rgba(255,255,255,.22); color: #fff; padding: 5px 12px; border-radius: 20px;
+  font-size: .8em; font-weight: 600;
+}
+
+/* Sections */
+.section {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 28px; margin-bottom: 24px; box-shadow: var(--shadow);
+  scroll-margin-top: 80px;
+}
+.section h2 { color: var(--primary-dark); margin-top: 0; font-size: 1.45em; border-left: 5px solid var(--primary); padding-left: 14px; }
+.section h3 { color: var(--text); margin-top: 24px; font-size: 1.2em; }
+.section h4 { color: var(--primary-dark); margin-top: 20px; font-size: 1.05em; }
+
+/* Quick summary / exam key */
+.quick-summary {
+  background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 5px solid var(--primary);
+  border-radius: 10px; padding: 16px 18px; margin: 16px 0;
+}
+.dark-mode .quick-summary { background: linear-gradient(135deg, #431407, #7c2d12); }
+.quick-summary h4 { margin: 0 0 8px; color: var(--primary-dark); }
+.dark-mode .quick-summary h4 { color: #ffedd5; }
+.exam-key {
+  background: #f3e8ff; border-left: 5px solid #9333ea; border-radius: 10px; padding: 16px 18px; margin: 16px 0;
+}
+.dark-mode .exam-key { background: #3b0764; }
+.exam-key h4 { color: #7e22ce; margin: 0 0 8px; }
+.dark-mode .exam-key h4 { color: #e9d5ff; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .95em; }
+th, td { border: 1px solid var(--border); padding: 10px 12px; text-align: left; vertical-align: top; }
+th { background: var(--primary-light); color: var(--primary-dark); font-weight: 700; }
+tr:nth-child(even) { background: rgba(0,0,0,.02); }
+.dark-mode tr:nth-child(even) { background: rgba(255,255,255,.03); }
+
+/* Lists */
+ul, ol { padding-left: 22px; }
+li { margin-bottom: 6px; }
+
+/* Study card */
+.study-card {
+  border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin: 14px 0;
+  background: var(--card);
+}
+.study-card-header {
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;
+}
+.study-card-title { font-weight: 700; color: var(--primary-dark); font-size: 1.05em; }
+.study-card-year { font-size: .8em; color: var(--muted); }
+
+/* Math boxes */
+.math-box {
+  background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 10px; padding: 16px; margin: 14px 0;
+}
+.dark-mode .math-box { background: #082f49; border-color: #0ea5e9; }
+.math-box strong { color: #0369a1; }
+.dark-mode .math-box strong { color: #7dd3fc; }
+.formula {
+  font-family: "Times New Roman", Times, Georgia, serif; font-size: 1.15em; font-style: italic;
+  background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 12px 18px;
+  display: inline-block; margin: 10px 0;
+}
+.dark-mode .formula { background: #1c1917; }
+.step-number {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border-radius: 50%; background: var(--primary); color: #fff;
+  font-weight: 700; font-size: .9em; margin-right: 8px;
+}
+
+/* Images */
+.fig { max-width: 100%; border-radius: 10px; border: 1px solid var(--border); margin: 12px 0; }
+.fig-caption { font-size: .88em; color: var(--text-secondary); font-style: italic; margin-top: 4px; }
+
+/* Compare grid */
+.compare-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 14px 0; }
+.compare-card { border: 1px solid var(--border); border-radius: 10px; padding: 14px; background: var(--card); }
+.compare-card h4 { margin-top: 0; color: var(--primary-dark); }
+
+/* Exam practice */
+.exam-practice {
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 18px; margin: 16px 0;
+}
+.dark-mode .exam-practice { background: linear-gradient(135deg, #0c4a6e, #075985); border-color: #38bdf8; }
+.exam-practice h4 { color: #0d47a1; margin: 8px 0 4px; }
+.dark-mode .exam-practice h4 { color: #e0f2fe; }
+
+/* Checkpoint details */
+.checkpoint { margin: 16px 0; }
+details { border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; background: var(--surface); }
+summary { cursor: pointer; font-weight: 600; color: var(--primary-dark); }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--primary); color: #fff; padding: 8px 16px; border-radius: 8px;
+  text-decoration: none; font-weight: 600; font-size: .9em; margin-top: 8px;
+}
+.btn:hover { background: var(--primary-dark); }
+
+/* Footer */
+.footer-note { text-align: center; font-size: .85em; color: var(--muted); padding: 30px 0; }
+
+/* Back to top */
+.back-to-top {
+  position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px;
+  border-radius: 50%; border: none; background: var(--primary); color: #fff;
+  font-size: 1.2em; cursor: pointer; box-shadow: var(--shadow); opacity: 0; visibility: hidden; transition: .2s;
+}
+.back-to-top.show { opacity: 1; visibility: visible; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .header-card h1 { font-size: 1.6em; }
+}
+@media print {
+  nav, .sidebar, .back-to-top { display: none; }
+  .section { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="breadcrumb">🏠 <a href="/edexcel-psychology-courseware/">Home</a> / <a href="/edexcel-psychology-courseware/edexcel/">Edexcel</a> / Ch17 · Research Methods</div>
+    <div class="nav-controls">
+      <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn" title="Toggle dark mode">🌙 Dark</button>
+      <button class="nav-btn" onclick="adjustFontSize(-1)" title="Decrease font size">A-</button>
+      <button class="nav-btn" onclick="adjustFontSize(0)" title="Reset font size">A</button>
+      <button class="nav-btn" onclick="adjustFontSize(1)" title="Increase font size">A+</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+<div class="page-layout">
+
+<aside class="sidebar">
+  <div class="sb-header">
+    <div class="sb-header-title">Ch17 Contents</div>
+    <div class="sb-header-sub">Methods · Unit 3</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s1" class="active">📚 Learning Objectives</a></li>
+    <li class="sb-item"><a href="#s2">🔗 What is Correlation?</a></li>
+    <li class="sb-item"><a href="#s3">📊 Scatter Diagrams</a></li>
+    <li class="sb-item"><a href="#s4">🧮 Spearman's Rank Test</a></li>
+    <li class="sb-item"><a href="#s5">⚖️ Evaluating Correlation</a></li>
+    <li class="sb-item"><a href="#s6">🧠 Brain Scanning</a></li>
+    <li class="sb-item"><a href="#s7">👯 Twin Studies</a></li>
+    <li class="sb-item"><a href="#s8">📝 Exam Practice</a></li>
+    <li class="sb-item"><a href="#s9">🔑 Key Terms</a></li>
+    <li class="sb-divider"></li>
+  </ul>
+</aside>
+
+<main>
+
+<!-- SECTION 1 -->
+<div class="section" id="s1">
+  <h2>📚 Learning Objectives & Syllabus Mapping</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>Chapter 17 sits in <strong>Unit 3: Applications of Psychology</strong>, but it is a <strong>methods chapter</strong>（方法章节）, not a theory chapter. You need to be able to <em>calculate</em> a Spearman’s rank correlation coefficient, <em>read</em> a scatter diagram, and <em>evaluate</em> correlations, brain-scanning techniques and twin studies. These topics are examined in <strong>Paper 3 (WPS03/01)</strong>.</p>
+  </div>
+
+  <table>
+    <tr><th>Syllabus code</th><th>You must be able to…</th><th>Where in this chapter</th></tr>
+    <tr><td>3.2.1</td><td>Describe and evaluate correlational research, including <strong>co-variables</strong>（协变量）.</td><td>§2, §5</td></tr>
+    <tr><td>3.2.2</td><td>Identify <strong>positive</strong>, <strong>negative</strong> and <strong>no correlation</strong>; use <strong>scatter diagrams</strong>（散点图）.</td><td>§3</td></tr>
+    <tr><td>3.2.3</td><td>Understand issues with correlation: <strong>cause and effect</strong>, <strong>third variables</strong>（第三变量）.</td><td>§5</td></tr>
+    <tr><td>3.2.4</td><td>Calculate and interpret the <strong>Spearman’s rank test</strong>（斯皮尔曼等级相关检验）.</td><td>§4</td></tr>
+    <tr><td>3.2.5</td><td>Describe and evaluate <strong>CAT</strong>, <strong>PET</strong> and <strong>fMRI</strong> to investigate behaviour, including aggression.</td><td>§6</td></tr>
+    <tr><td>3.2.6</td><td>Describe and evaluate the use of <strong>twin studies</strong>（双生子研究） to investigate genetic relatedness and aggression.</td><td>§7</td></tr>
+    <tr><td>3.2.7</td><td>List A from Topic A — already covered in your methods course.</td><td>—</td></tr>
+  </table>
+
+  <div class="exam-key">
+    <h4>🎯 Exam Key Points</h4>
+    <ul>
+      <li>Paper 3 has a 4-mark <strong>Spearman calculation</strong> question almost every session. You must be able to complete the table and give <code>r_s</code> to 2 decimal places.</li>
+      <li>The 2-mark "justify why Spearman" question always needs two reasons: ① a <strong>correlation</strong> was predicted, and ② the data are at least <strong>ordinal</strong>（ranked）.</li>
+      <li>For scanning techniques, exam questions usually ask for one <strong>strength</strong> and one <strong>weakness</strong>, with research examples.</li>
+      <li>Twin-study questions often test whether you understand <strong>concordance rates</strong> and the difference between MZ and DZ twins.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SECTION 2 -->
+<div class="section" id="s2">
+  <h2>🔗 What is Correlational Research?（什么是相关研究？）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>Correlation looks for a <strong>relationship between two co-variables</strong>（两个协变量之间的关系）. It does <strong>not</strong> tell you that one variable <em>caused</em> the other to change.</p>
+  </div>
+
+  <p><strong>Co-variables</strong>（协变量） are the two variables measured in a correlation. They are not IV and DV — there is no manipulation. For example:</p>
+  <ul>
+    <li>Variable A: number of hours of revision</li>
+    <li>Variable B: mark achieved on a test</li>
+  </ul>
+
+  <h3>Experiment vs Correlation</h3>
+  <table>
+    <tr><th></th><th>Experiment（实验）</th><th>Correlation（相关）</th></tr>
+    <tr><td>Aim</td><td>Find a <strong>causal</strong> relationship</td><td>Find a <strong>relationship</strong></td></tr>
+    <tr><td>Variables</td><td>Independent variable（IV）& Dependent variable（DV）</td><td>Two <strong>co-variables</strong></td></tr>
+    <tr><td>Groups</td><td>Compares differences <strong>between groups</strong></td><td>Looks for a link <strong>within one group</strong></td></tr>
+    <tr><td>Cause?</td><td>Can claim causation</td><td>Cannot claim causation</td></tr>
+  </table>
+
+  <h3>Directional hypotheses for correlations</h3>
+  <p>A correlation uses an <strong>alternative hypothesis</strong>（备择假设）, not an experimental hypothesis, because there is no IV/DV.</p>
+  <ul>
+    <li><strong>Directional / one-tailed</strong>（定向/单尾）: predicts a <strong>positive</strong> or <strong>negative</strong> correlation.</li>
+    <li><strong>Non-directional / two-tailed</strong>（非定向/双尾）: predicts a relationship, but does not say which direction.</li>
+    <li><strong>Null hypothesis</strong>（零假设）: predicts <strong>no relationship</strong>.</li>
+  </ul>
+
+  <div class="math-box">
+    <strong>Examples of hypotheses:</strong>
+    <ul>
+      <li><strong>Directional:</strong> There will be a <strong>positive correlation</strong> between hours of revision and test marks.</li>
+      <li><strong>Non-directional:</strong> There will be a <strong>relationship</strong> between hours of revision and test marks.</li>
+      <li><strong>Null:</strong> There will be <strong>no relationship</strong> between hours of revision and test marks.</li>
+    </ul>
+  </div>
+
+  <h3>Positive and negative correlation</h3>
+  <table>
+    <tr><th>Type</th><th>What happens</th><th>Example</th></tr>
+    <tr><td><strong>Positive correlation</strong>（正相关）</td><td>As one variable goes up, the other goes up.</td><td>More revision hours → higher test marks.</td></tr>
+    <tr><td><strong>Negative correlation</strong>（负相关）</td><td>As one variable goes up, the other goes down.</td><td>More hours awake → lower reaction-time score.</td></tr>
+    <tr><td><strong>No correlation</strong>（零相关）</td><td>No clear pattern.</td><td>Shoe size and aggression.</td></tr>
+  </table>
+
+  <div class="exam-key">
+    <h4>🎯 Exam Key Point</h4>
+    <p>When writing a hypothesis for a correlation, <strong>never</strong> use the words "IV" or "DV". Use <strong>co-variable 1</strong> and <strong>co-variable 2</strong>, and say whether the correlation is positive, negative or just a relationship.</p>
+  </div>
+</div>
+
+<!-- SECTION 3 -->
+<div class="section" id="s3">
+  <h2>📊 Scatter Diagrams（散点图）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>A scatter diagram plots each participant’s two scores: one on the <strong>x-axis</strong>, one on the <strong>y-axis</strong>. The pattern of dots tells you the <strong>direction</strong> and <strong>strength</strong> of the correlation.</p>
+  </div>
+
+  <img src="assets/fig17-scatter.png" alt="Three scatter diagrams showing positive, negative and no correlation" class="fig">
+  <p class="fig-caption"><strong>Figure 17.1</strong> Three scatter diagrams: positive, negative and no correlation. 课本原图，考试要求你会读图。</p>
+
+  <h3>How to read a scatter diagram</h3>
+  <table>
+    <tr><th>Pattern</th><th>Direction</th><th>Strength</th></tr>
+    <tr><td>Dots slope <strong>upwards</strong> from left to right</td><td>Positive</td><td>How close dots are to an imaginary straight line: very close = strong; spread out = weak.</td></tr>
+    <tr><td>Dots slope <strong>downwards</strong> from left to right</td><td>Negative</td><td>Same rule: close to line = strong; scattered = weak.</td></tr>
+    <tr><td>Dots form a <strong>random cloud</strong></td><td>No correlation</td><td>—</td></tr>
+  </table>
+
+  <div class="math-box">
+    <strong>Simple rule of thumb for strength:</strong>
+    <ul>
+      <li><code>|r| = 0.00 – 0.30</code> → weak / little or no correlation</li>
+      <li><code>|r| = 0.30 – 0.70</code> → moderate correlation</li>
+      <li><code>|r| = 0.70 – 1.00</code> → strong correlation</li>
+      <li><code>|r| = 1.00</code> → perfect correlation（all dots on the line）</li>
+    </ul>
+    <p>记住：看绝对值，不看正负号。+0.85 和 −0.85 都是 <strong>strong</strong>。</p>
+  </div>
+
+  <h3>Levels of measurement</h3>
+  <p>To draw a scatter diagram, the data must be at least <strong>ordinal</strong>（等级/顺序数据）. This means the scores can be put in rank order. If your data are nominal（ categories only）, you cannot use a correlation or a scatter diagram.</p>
+
+  <div class="exam-key">
+    <h4>🎯 Exam Key Point</h4>
+    <p>If a question asks you to "describe the relationship shown in the scatter diagram", say <strong>two things</strong>: ① direction（positive/negative/none） and ② strength（strong/moderate/weak）. One sentence is not enough for full marks.</p>
+  </div>
+</div>
+
+<!-- SECTION 4 -->
+<div class="section" id="s4">
+  <h2>🧮 Spearman’s Rank Test: Step-by-Step（斯皮尔曼等级相关：一步步算）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>Spearman’s rank correlation coefficient（<code>r_s</code>）tells us whether two ordinal variables are related and whether the result is likely to be <strong>significant</strong>. It only works for correlation data.</p>
+  </div>
+
+  <div class="formula">
+    r_s = 1 − <span style="display:inline-block;text-align:center;">6Σd²<br><span style="border-top:1px solid #000;">n(n² − 1)</span></span>
+  </div>
+
+  <div class="math-box">
+    <strong>What each symbol means:</strong>
+    <ul>
+      <li><code>r_s</code> = Spearman’s rank correlation coefficient（结果）</li>
+      <li><code>d</code> = difference between the ranks for each pair of scores（同一行两个等级的差）</li>
+      <li><code>Σd²</code> = sum of all the squared differences（所有 d² 加起来的总和）</li>
+      <li><code>n</code> = number of pairs of scores（成对数据的数量，不是总人数的一半）</li>
+    </ul>
+  </div>
+
+  <h3>The textbook example: revision hours and test marks</h3>
+  <p>Table 17.1 shows 10 students. We will rank the hours, rank the marks, find the difference, square it, and then put everything into the formula.</p>
+
+  <table>
+    <tr><th>Student</th><th>Hours</th><th>Rank of hours</th><th>Mark /20</th><th>Rank of mark</th><th>d</th><th>d²</th></tr>
+    <tr><td>1</td><td>4</td><td>4</td><td>14</td><td>5</td><td>−1</td><td>1</td></tr>
+    <tr><td>2</td><td>2</td><td>7</td><td>11</td><td>7</td><td>0</td><td>0</td></tr>
+    <tr><td>3</td><td>1</td><td>9</td><td>8</td><td>8</td><td>1</td><td>1</td></tr>
+    <tr><td>4</td><td>3</td><td>6</td><td>7</td><td>9.5</td><td>−3.5</td><td>12.25</td></tr>
+    <tr><td>5</td><td>4</td><td>4</td><td>17</td><td>3</td><td>1</td><td>1</td></tr>
+    <tr><td>6</td><td>5</td><td>2</td><td>20</td><td>1</td><td>1</td><td>1</td></tr>
+    <tr><td>7</td><td>1</td><td>9</td><td>7</td><td>9.5</td><td>−0.5</td><td>0.25</td></tr>
+    <tr><td>8</td><td>1</td><td>9</td><td>12</td><td>6</td><td>3</td><td>9</td></tr>
+    <tr><td>9</td><td>6</td><td>1</td><td>18</td><td>2</td><td>−1</td><td>1</td></tr>
+    <tr><td>10</td><td>4</td><td>4</td><td>15</td><td>4</td><td>0</td><td>0</td></tr>
+    <tr><td colspan="6"><strong>Total Σd²</strong></td><td><strong>26.5</strong></td></tr>
+  </table>
+  <p class="fig-caption">Table 17.4 课本例题完整计算表。注意：3 名学生复习 4 小时（第 1、5、10 名）共享 rank 4；3 名学生复习 1 小时（第 3、7、8 名）共享 rank 9；第 4、7 名学生都考了 7 分，mark 共享 rank 9.5。</p>
+
+  <h3>Step-by-step calculation</h3>
+  <p><span class="step-number">1</span><strong>Rank both columns separately.</strong> Highest score gets rank 1, next gets rank 2, and so on.</p>
+  <p><span class="step-number">2</span><strong>Deal with tied ranks.</strong> If several scores are the same, give them the <strong>average</strong> of the ranks they would have taken. In this example: three students revised for 4 hours, so they share rank 4 (ranks 3, 4 and 5 averaged); three revised for 1 hour, so they share rank 9 (ranks 8, 9 and 10 averaged); two students scored 7/20, so they share rank 9.5 (ranks 9 and 10 averaged).</p>
+  <p><span class="step-number">3</span><strong>Find d for each row.</strong> d = rank of co-variable 1 − rank of co-variable 2.</p>
+  <p><span class="step-number">4</span><strong>Square every d</strong> to remove negative signs. d² 永远 ≥ 0。</p>
+  <p><span class="step-number">5</span><strong>Add up all d²</strong> to get Σd². Here Σd² = 26.5.</p>
+  <p><span class="step-number">6</span><strong>Put into the formula.</strong> n = 10.</p>
+
+  <div class="formula">
+    r_s = 1 − <span style="display:inline-block;text-align:center;">6 × 26.5<br><span style="border-top:1px solid #000;">10(100 − 1)</span></span>
+    = 1 − <span style="display:inline-block;text-align:center;">159<br><span style="border-top:1px solid #000;">990</span></span>
+    = 1 − 0.161
+    = <strong>0.839</strong> ≈ <strong>0.84</strong>
+  </div>
+
+  <div class="exam-key">
+    <h4>🎯 Exam Key Point</h4>
+    <p>Always give <code>r_s</code> to <strong>two decimal places</strong> if the question asks. In this example, 0.839 rounds to <strong>0.84</strong>, which suggests a <strong>strong positive correlation</strong>.</p>
+  </div>
+
+  <h3>What if the result is negative?</h3>
+  <p>The formula can give a negative number. A negative <code>r_s</code> means a <strong>negative correlation</strong>. When you compare it to the critical values table, <strong>ignore the sign</strong> — use the absolute value.</p>
+
+  <h3>Checking for significance</h3>
+  <p>After calculating <code>r_s</code>, compare it to a <strong>critical value</strong>（临界值） from the table. If your calculated value is <strong>equal to or larger than</strong> the critical value, the result is <strong>significant</strong>.</p>
+
+  <table>
+    <tr><th>n</th><th>p ≤ 0.05 one-tailed</th><th>p ≤ 0.05 two-tailed</th><th>p ≤ 0.01 one-tailed</th></tr>
+    <tr><td>5</td><td>0.900</td><td>1.000</td><td>1.000</td></tr>
+    <tr><td>6</td><td>0.829</td><td>0.886</td><td>0.943</td></tr>
+    <tr><td>7</td><td>0.714</td><td>0.786</td><td>0.893</td></tr>
+    <tr><td>8</td><td>0.643</td><td>0.738</td><td>0.833</td></tr>
+    <tr><td>9</td><td>0.600</td><td>0.700</td><td>0.783</td></tr>
+    <tr><td><strong>10</strong></td><td><strong>0.564</strong></td><td><strong>0.648</strong></td><td><strong>0.745</strong></td></tr>
+  </table>
+  <p class="fig-caption">Table 17.5 课本 Spearman 临界值表（节选）。注意：calculated value ≥ critical value 才 significant。</p>
+
+  <div class="math-box">
+    <strong>For the textbook example:</strong><br>
+    Calculated <code>r_s</code> = 0.84.<br>
+    For n = 10, two-tailed p ≤ 0.05 critical value = 0.648.<br>
+    0.84 > 0.648, so the result is <strong>significant at p ≤ 0.05</strong>.<br>
+    We accept the <strong>alternative hypothesis</strong> and reject the <strong>null hypothesis</strong>.
+  </div>
+
+  <h3>Common mistakes to avoid</h3>
+  <table>
+    <tr><th>Mistake</th><th>Why it loses marks</th></tr>
+    <tr><td>Ranking both columns together</td><td>Each variable must be ranked <strong>separately</strong>.</td></tr>
+    <tr><td>Forgetting tied ranks</td><td>Tied scores share the <strong>average</strong> rank.</td></tr>
+    <tr><td>Using n as number of participants in each variable</td><td>n is the number of <strong>paired scores</strong>.</td></tr>
+    <tr><td>Saying the sign matters when checking significance</td><td>Compare absolute value to the table, then interpret the sign separately.</td></tr>
+    <tr><td>Concluding causation from a significant correlation</td><td>Significance only means the relationship is unlikely to be due to chance; it does not prove cause.</td></tr>
+  </table>
+
+  <div class="exam-key">
+    <h4>🎯 Exam Key Point</h4>
+    <p>When asked to "justify why Spearman’s rank was used", give <strong>two separate marks</strong>: ① the study is looking for a <strong>correlation/relationship</strong> between two co-variables, and ② the data are at least <strong>ordinal</strong>（ranked/scores can be put in order）.</p>
+  </div>
+</div>
+
+<!-- SECTION 5 -->
+<div class="section" id="s5">
+  <h2>⚖️ Evaluating Correlation as a Research Method（评价相关研究法）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>Correlation is useful when experiments would be <strong>unethical</strong> or <strong>expensive</strong>, but its biggest weakness is that it cannot establish <strong>causation</strong>.</p>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>✅ Strengths</h4>
+      <ul>
+        <li><strong>Ethical:</strong> You can study relationships that it would be unethical to manipulate, e.g. stress and aggression.</li>
+        <li><strong>Cost-effective:</strong> Can use secondary data to see if a relationship exists before spending money on a full experiment.</li>
+        <li><strong>Natural:</strong> Measures behaviour as it occurs in real life, so high ecological validity.</li>
+        <li><strong>Useful pilot:</strong> A significant correlation may justify a later experimental study.</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>❌ Weaknesses</h4>
+      <ul>
+        <li><strong>Causation problem:</strong> Cannot tell which variable caused which, or if either caused the other.</li>
+        <li><strong>Third variable:</strong> Another factor may cause both co-variables to change. 例如：高温天气可能同时增加压力和攻击性。</li>
+        <li><strong>Directionality problem:</strong> Stress → aggression, or aggression → stress?</li>
+        <li><strong>Coincidence:</strong> Some correlations are spurious（虚假的）, e.g. mozzarella cheese consumption and civil engineering doctorates.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Third-variable problem in detail</h3>
+  <p>A study finds that stress is positively correlated with aggression. Three explanations are possible:</p>
+  <ol>
+    <li>Stress <strong>causes</strong> aggression.</li>
+    <li>Aggression <strong>causes</strong> stress.</li>
+    <li>A <strong>third variable</strong>（e.g. hot weather） causes both stress and aggression independently.</li>
+  </ol>
+  <p>This is why a significant correlation must never be described as “proving” causation.</p>
+
+  <div class="exam-key">
+    <h4>🎯 Exam Key Point</h4>
+    <p>In evaluation questions, use the phrase <strong>“correlation does not imply causation”</strong> and then give a concrete example from the topic, such as stress/aggression or violent video games/brain activity.</p>
+  </div>
+</div>
+
+
+<!-- SECTION 6 -->
+<div class="section" id="s6">
+  <h2>🧠 Brain-Scanning Techniques（脑扫描技术）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>Brain-scanning techniques let researchers see the <strong>structure</strong> and <strong>function</strong> of the brain. CAT shows <strong>structure</strong>; PET and fMRI show <strong>activity</strong>（function）.</p>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>🖥️ CAT / CT scan</h4>
+      <img src="assets/fig17-cat.png" alt="CAT scanner" class="fig">
+      <p><strong>What it does:</strong> Uses <strong>X-rays</strong> from multiple angles to create a detailed <strong>still image</strong> of brain structure.</p>
+      <p><strong>Best for:</strong> Detecting damage, tumours, structural abnormalities (e.g. damage to the prefrontal cortex linked to aggression).</p>
+      <p><strong>Strengths:</strong> Quick; accurate structural detail; helps surgeons plan procedures.</p>
+      <p><strong>Weaknesses:</strong> Uses radiation; not suitable for pregnant women; only shows structure, not function.</p>
+    </div>
+
+    <div class="compare-card">
+      <h4>🌈 PET scan</h4>
+      <img src="assets/fig17-pet.png" alt="PET scan image" class="fig">
+      <p><strong>What it does:</strong> Injects a radioactive tracer (<strong>FDG</strong>, a glucose-like substance). Active brain areas use more glucose and emit more gamma rays; the scanner detects these to show <strong>metabolic activity</strong>（新陈代谢活动）.</p>
+      <p><strong>Best for:</strong> Showing which areas are over- or under-active (e.g. Raine et al. 1997 — abnormal activity in violent murderers).</p>
+      <p><strong>Strengths:</strong> Shows brain function; colour-coded output makes interpretation easier.</p>
+      <p><strong>Weaknesses:</strong> Invasive (radioactive injection); lower resolution; possible long-term risk from repeated scans.</p>
+    </div>
+
+    <div class="compare-card">
+      <h4>🧲 fMRI scan</h4>
+      <img src="assets/fig17-fmri.png" alt="fMRI scan showing brain activation" class="fig">
+      <p><strong>What it does:</strong> Uses a powerful magnet to detect changes in <strong>blood oxygenation</strong>. Active brain areas receive more oxygenated blood; the scanner compares activity during a task vs. a baseline.</p>
+      <p><strong>Best for:</strong> Tracking real-time brain activity during tasks (e.g. Montag et al. 2011 — gamers showed less response to negative images).</p>
+      <p><strong>Strengths:</strong> No radiation; non-invasive; better resolution and accuracy than PET.</p>
+      <p><strong>Weaknesses:</strong> Noisy and claustrophobic; patients with pacemakers or metal implants cannot be scanned; hard to get a true baseline because the awake brain is always active.</p>
+    </div>
+  </div>
+
+  <h3>CAT vs PET vs fMRI: summary table</h3>
+  <table>
+    <tr><th>Technique</th><th>What it measures</th><th>Radiation?</th><th>Resolution</th><th>Example study</th></tr>
+    <tr><td><strong>CAT/CT</strong></td><td>Structure / anatomy</td><td>Yes (X-rays)</td><td>High for structure</td><td>Prefrontal cortex damage and aggression</td></tr>
+    <tr><td><strong>PET</strong></td><td>Metabolic activity (glucose use)</td><td>Yes (tracer)</td><td>Moderate</td><td>Raine et al. (1997) — murderers</td></tr>
+    <tr><td><strong>fMRI</strong></td><td>Blood oxygenation (BOLD signal)</td><td>No</td><td>High for function</td><td>Montag et al. (2011) — violent video gamers</td></tr>
+  </table>
+
+  <h3>Evaluating brain-scanning research</h3>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>✅ Strengths</h4>
+      <ul>
+        <li><strong>Objective images:</strong> Produce visual data that can be checked by other researchers, improving reliability.</li>
+        <li><strong>Precise localisation:</strong> Can pinpoint which brain areas are involved in aggression or other behaviours.</li>
+        <li><strong>Scientific credibility:</strong> Quantitative data; falsifiable hypotheses.</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>❌ Weaknesses</h4>
+      <ul>
+        <li><strong>Correlational:</strong> Brain scan studies usually compare groups or measure associations; they cannot prove that brain differences <em>cause</em> aggression.</li>
+        <li><strong>Directionality:</strong> Violent behaviour may change the brain, not the other way around.</li>
+        <li><strong>Artificial tasks:</strong> Laboratory tasks may lack ecological validity compared with real-life aggression.</li>
+        <li><strong>Ethical issues:</strong> Could lead to stigmatising labels such as “aggressive brain” and screening people for future violence.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exam-key">
+    <h4>🎯 Exam Key Point</h4>
+    <p>In a “describe and evaluate one scanning technique” question, give <strong>one mechanism</strong> (e.g. X-rays / radioactive tracer / magnetic field + blood oxygenation), <strong>one strength</strong> and <strong>one weakness</strong> with a named research example.</p>
+  </div>
+</div>
+
+<!-- SECTION 7 -->
+<div class="section" id="s7">
+  <h2>👯 Twin Studies（双生子研究）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>Twin studies compare how often MZ and DZ twins share a behaviour. If MZ concordance is higher, genetics may be involved.</p>
+  </div>
+
+  <img src="assets/fig17-twins.png" alt="Monozygotic twins" class="fig" style="max-width:420px;">
+  <p class="fig-caption"><strong>Figure 17.6</strong> Monozygotic（同卵） twins share 100% of their genes, but they may also be treated more similarly than dizygotic twins — this is the equal-environments problem.</p>
+
+  <h3>MZ vs DZ twins</h3>
+  <table>
+    <tr><th>Type</th><th>Also called</th><th>Genetic overlap</th><th>How formed</th></tr>
+    <tr><td><strong>MZ</strong></td><td>Monozygotic / identical</td><td>100%</td><td>One fertilised egg splits into two embryos.</td></tr>
+    <tr><td><strong>DZ</strong></td><td>Dizygotic / fraternal</td><td>~50%</td><td>Two separate eggs are fertilised by two separate sperm.</td></tr>
+  </table>
+
+  <h3>Concordance rate</h3>
+  <p><strong>Concordance rate</strong>（一致率） is the percentage of twin pairs where <strong>both</strong> twins show the behaviour being studied. Higher concordance in MZ than DZ suggests a genetic influence.</p>
+
+  <div class="study-card">
+    <div class="study-card-header"><span class="study-card-title">Gottesman & Shields (1966)</span><span class="study-card-year">Schizophrenia</span></div>
+    <ul>
+      <li><strong>Findings:</strong> MZ twins = 42% concordance; DZ twins = 9% concordance.</li>
+      <li><strong>Conclusion:</strong> Because MZ concordance was much higher, genetics may play a role in schizophrenia.</li>
+    </ul>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-header"><span class="study-card-title">Brendgen et al. (2005)</span><span class="study-card-year">Aggression</span></div>
+    <ul>
+      <li><strong>Findings:</strong> For <strong>physical aggression</strong>, MZ concordance was higher than DZ → suggests genetic influence.</li>
+      <li>For <strong>social aggression</strong>, MZ and DZ concordance were similar → suggests environmental influence.</li>
+    </ul>
+  </div>
+
+  <h3>Evaluation of twin studies</h3>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>✅ Strengths</h4>
+      <ul>
+        <li><strong>Natural manipulation:</strong> MZ and DZ twins provide a natural comparison of genetic similarity.</li>
+        <li><strong>Consistent evidence:</strong> Many twin studies find higher MZ concordance for aggression-related traits.</li>
+        <li><strong>Quantifiable:</strong> Concordance rates are easy to compare.</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>❌ Weaknesses</h4>
+      <ul>
+        <li><strong>Equal environments assumption:</strong> MZ twins may be treated more similarly than DZ twins, so the higher concordance may be due to environment, not genes.</li>
+        <li><strong>Epigenetics:</strong> Genes can be switched on or off by experience, so 100% shared DNA does not mean identical outcomes.</li>
+        <li><strong>Sample size:</strong> Large samples of MZ and DZ twins are hard to find, limiting generalisability.</li>
+        <li><strong>Nature–nurture:</strong> Twin studies cannot fully separate nature from nurture because twins usually share environments.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exam-key">
+    <h4>🎯 Exam Key Point</h4>
+    <p>If the exam asks you to interpret concordance data, remember: <strong>MZ > DZ → genetics may be involved</strong>; <strong>MZ ≈ DZ → environment may be more important</strong>. Always mention that this is a correlation, not proof of causation.</p>
+  </div>
+</div>
+
+<!-- SECTION 8 -->
+<div class="section" id="s8">
+  <h2>📝 Exam Practice（真题演练）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>This section contains a real Paper 3 Spearman question (Jan 2025) plus adapted questions from the textbook Exam Practice. Work through the calculation first, then check the answer.</p>
+  </div>
+
+  <div class="exam-practice">
+    <h4>Real Exam Question · January 2025 Paper 3, Q7 (8 marks)</h4>
+    <p><em>Becky is a forensic psychologist interested in the relationship between Cognitive Behavioural Therapy (CBT) sessions and aggressive incidents in offenders. She recorded the number of CBT sessions attended over six months and the number of aggressive incidents over the same period.</em></p>
+    <table>
+      <tr><th>CBT sessions</th><th>Rank 1</th><th>Aggressive incidents</th><th>Rank 2</th><th>d</th><th>d²</th></tr>
+      <tr><td>18</td><td>9</td><td>9</td><td>1</td><td>8</td><td>64</td></tr>
+      <tr><td>7</td><td>1</td><td>20</td><td>9</td><td>−8</td><td>64</td></tr>
+      <tr><td>16</td><td>8</td><td>13</td><td>3</td><td>5</td><td>25</td></tr>
+      <tr><td>15</td><td>7</td><td>12</td><td>2</td><td>5</td><td>25</td></tr>
+      <tr><td>10</td><td>3</td><td>15</td><td>5</td><td>−2</td><td>4</td></tr>
+      <tr><td>9</td><td>2</td><td>18</td><td>8</td><td>−6</td><td>36</td></tr>
+      <tr><td>14</td><td>6</td><td>17</td><td>7</td><td>−1</td><td>1</td></tr>
+      <tr><td>11</td><td>4</td><td>16</td><td>6</td><td>−2</td><td>4</td></tr>
+      <tr><td>13</td><td>5</td><td>14</td><td>4</td><td>1</td><td>1</td></tr>
+      <tr><td colspan="5"><strong>Total Σd²</strong></td><td><strong>224</strong></td></tr>
+    </table>
+    <p><strong>(a)</strong> Complete Table 2 and calculate Spearman’s rank correlation coefficient. Give your answer to two decimal places. (4)</p>
+    <p><strong>(b)</strong> Justify why Becky used a Spearman’s rank correlation coefficient on her data. (2)</p>
+    <p><strong>(c)</strong> Explain one improvement Becky could make to her investigation. (2)</p>
+  </div>
+
+  <div class="checkpoint">
+    <details>
+      <summary>Click to see full worked answer</summary>
+      <div style="margin-top:10px;">
+        <p><strong>(a) Calculation:</strong></p>
+        <div class="formula">
+          r_s = 1 − <span style="display:inline-block;text-align:center;">6 × 224<br><span style="border-top:1px solid #000;">9(81 − 1)</span></span>
+          = 1 − <span style="display:inline-block;text-align:center;">1344<br><span style="border-top:1px solid #000;">720</span></span>
+          = 1 − 1.8667
+          = <strong>−0.8667 ≈ −0.87</strong>
+        </div>
+        <p>This is a <strong>strong negative correlation</strong>: offenders who attended more CBT sessions tended to be involved in fewer aggressive incidents.</p>
+        <p><strong>(b) Justification:</strong></p>
+        <ul>
+          <li>Becky predicted a <strong>relationship/correlation</strong> between two co-variables (CBT sessions and aggressive incidents), not a difference between groups. (1)</li>
+          <li>The data are at least <strong>ordinal</strong> because the number of sessions and incidents can be ranked. (1)</li>
+        </ul>
+        <p><strong>(c) Improvement:</strong></p>
+        <p>For example: Becky could <strong>observe</strong> the number of aggressive acts the offenders take part in, rather than asking them to self-report. This improves the <strong>credibility</strong> of her data because offenders may under-report their aggressive incidents to appear better. (AO2 + AO3)</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="exam-practice">
+    <h4>Textbook Exam Practice Questions</h4>
+    <p><strong>1. Matilda</strong> correlated hours slept per night with calorie intake. She hypothesised that fewer hours slept = more calories consumed. She found r = −0.66 with n = 10.</p>
+    <ul>
+      <li>(a) What is meant by p &lt; 0.05?</li>
+      <li>(b) Using a critical-values table, is her result significant at p &lt; 0.05?</li>
+      <li>(c) Give two reasons for using Spearman’s rank test.</li>
+      <li>(d) Explain one weakness of using a correlation for this study.</li>
+    </ul>
+  </div>
+
+  <div class="checkpoint">
+    <details>
+      <summary>Click to see Matilda answer</summary>
+      <div style="margin-top:10px;">
+        <ul>
+          <li>(a) p &lt; 0.05 means there is <strong>less than 5% probability</strong> that the result happened by chance.</li>
+          <li>(b) For n = 10, two-tailed p = 0.05 critical value = 0.648. |−0.66| = 0.66 &gt; 0.648, so the result is <strong>significant</strong>.</li>
+          <li>(c) Reason 1: looking for a correlation/relationship; Reason 2: data are ordinal/ranked.</li>
+          <li>(d) Correlation does not show causation — a third variable (e.g. stress) could cause both poor sleep and high calorie intake.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <div class="exam-practice">
+    <p><strong>2. Kenneth</strong> wanted to investigate the relationship between number of concussions from contact sport and anger level. Describe how he would conduct a correlation.</p>
+  </div>
+  <div class="checkpoint">
+    <details>
+      <summary>Click to see Kenneth answer</summary>
+      <div style="margin-top:10px;">
+        <ol>
+          <li>Recruit a sample, e.g. male students at a local sports facility using <strong>opportunity sampling</strong>（机会抽样）.</li>
+          <li>Measure co-variable 1: number of concussions (from self-report or medical records).</li>
+          <li>Measure co-variable 2: anger level using a standardised anger questionnaire.</li>
+          <li>Plot scores on a <strong>scatter diagram</strong> to look for a trend.</li>
+          <li>Calculate a <strong>Spearman’s rank correlation coefficient</strong> to test significance.</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+
+  <div class="exam-key">
+    <h4>🎯 Exam Key Point</h4>
+    <p>For Spearman questions, <strong>method marks</strong> come from: correct ranks, correct d and d², correct Σd², correct formula substitution, correct final r_s. If your final answer is wrong, you can still get marks for showing the working.</p>
+  </div>
+</div>
+
+<!-- SECTION 9 -->
+<div class="section" id="s9">
+  <h2>🔑 Key Terms（术语表）</h2>
+  <table>
+    <tr><th>Term</th><th>Plain-English definition</th><th>中文</th></tr>
+    <tr><td><strong>Co-variables</strong></td><td>The two variables measured in a correlation study.</td><td>协变量</td></tr>
+    <tr><td><strong>Positive correlation</strong></td><td>As one variable increases, the other increases.</td><td>正相关</td></tr>
+    <tr><td><strong>Negative correlation</strong></td><td>As one variable increases, the other decreases.</td><td>负相关</td></tr>
+    <tr><td><strong>Scatter diagram</strong></td><td>A graph plotting co-variables on x- and y-axes.</td><td>散点图</td></tr>
+    <tr><td><strong>Spearman’s rank test</strong></td><td>An inferential test for relationships between two ordinal variables.</td><td>斯皮尔曼等级相关检验</td></tr>
+    <tr><td><strong>Correlation coefficient</strong></td><td>A number between −1 and +1 showing strength and direction of a relationship.</td><td>相关系数</td></tr>
+    <tr><td><strong>Critical value</strong></td><td>The table value used to decide if a result is statistically significant.</td><td>临界值</td></tr>
+    <tr><td><strong>p ≤ 0.05</strong></td><td>Less than 5% probability the result is due to chance.</td><td>显著性水平 0.05</td></tr>
+    <tr><td><strong>CAT/CT scan</strong></td><td>Uses X-rays to produce a structural image of the brain.</td><td>计算机轴向断层扫描</td></tr>
+    <tr><td><strong>PET scan</strong></td><td>Uses a radioactive tracer to measure metabolic activity.</td><td>正电子发射断层扫描</td></tr>
+    <tr><td><strong>fMRI</strong></td><td>Uses magnetic fields to detect blood-oxygen changes during brain activity.</td><td>功能性磁共振成像</td></tr>
+    <tr><td><strong>Concordance rate</strong></td><td>Percentage of twin pairs where both twins show the behaviour.</td><td>一致率</td></tr>
+    <tr><td><strong>MZ twins</strong></td><td>Monozygotic / identical; share 100% genes.</td><td>同卵双胞胎</td></tr>
+    <tr><td><strong>DZ twins</strong></td><td>Dizygotic / fraternal; share ~50% genes.</td><td>异卵双胞胎</td></tr>
+  </table>
+</div>
+
+</main>
+</div><!-- END PAGE LAYOUT -->
+
+<div class="footer-note">
+  Based on Edexcel IAL Psychology Topic C, Chapter 17 · Methods (syllabus 3.2.1–3.2.6).<br>
+  For Paper 3 (WPS03/01). Images from the official textbook are used under fair use for teaching purposes.
+</div>
+
+</div><!-- END CONTAINER -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function(){
+  const keyDark = 'edexcel-ch17-darkMode';
+  const keySize = 'edexcel-ch17-fontSize';
+  const root = document.documentElement;
+  if (localStorage.getItem(keyDark) === 'true') document.body.classList.add('dark-mode');
+  let size = parseFloat(localStorage.getItem(keySize)) || 16;
+  root.style.setProperty('--font-size', size + 'px');
+
+  window.toggleDarkMode = function(){
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem(keyDark, document.body.classList.contains('dark-mode'));
+  };
+  window.adjustFontSize = function(delta){
+    size = delta === 0 ? 16 : Math.max(12, Math.min(24, size + delta * 2));
+    root.style.setProperty('--font-size', size + 'px');
+    localStorage.setItem(keySize, size);
+  };
+
+  const topBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', function(){
+    topBtn.classList.toggle('show', window.scrollY > 400);
+  });
+
+  const sections = document.querySelectorAll('.section[id^="s"]');
+  const links = document.querySelectorAll('.sb-item a');
+  const observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting){
+        links.forEach(function(l){ l.classList.remove('active'); });
+        const active = document.querySelector('.sb-item a[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -60% 0px' });
+  sections.forEach(function(s){ observer.observe(s); });
+})();
+</script>
+
+</body>
+</html>
