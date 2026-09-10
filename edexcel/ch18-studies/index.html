@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edexcel Ch18 — Studies in Biological Psychology: Raine, Brendgen, McDermott & Hoefelmann</title>
+<style>
+:root {
+  --primary: #ea580c; --primary-light: #fff7ed; --primary-dark: #9a3412;
+  --secondary: #f97316; --accent: #fbbf24;
+  --bg: #fafaf9; --surface: #ffffff; --card: #ffffff;
+  --text: #1c1917; --text-secondary: #57534e; --muted: #a8a29e;
+  --border: #e7e5e4; --shadow: 0 4px 20px rgba(0,0,0,.06);
+  --radius: 14px; --sidebar-w: 190px;
+  --success: #16a34a; --warning: #d97706; --info: #2563eb; --danger: #dc2626;
+  --font-size: 16px;
+}
+.dark-mode {
+  --bg: #1c1917; --surface: #292524; --card: #44403c;
+  --text: #fafaf9; --text-secondary: #d6d3d1; --muted: #a8a29e;
+  --border: #57534e; --shadow: 0 4px 20px rgba(0,0,0,.25);
+  --primary-light: #431407;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: var(--font-size); line-height: 1.7;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* Navbar */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.dark-mode nav { background: rgba(41,37,36,.92); }
+.nav-inner { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
+.breadcrumb { font-size: .9em; color: var(--text-secondary); }
+.breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.breadcrumb a:hover { text-decoration: underline; }
+.nav-controls { display: flex; gap: 8px; align-items: center; }
+.nav-btn {
+  background: var(--primary-light); color: var(--primary-dark); border: 1px solid var(--border);
+  border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: .85em; font-weight: 600;
+  transition: .15s; text-decoration: none;
+}
+.nav-btn:hover { background: var(--primary); color: #fff; }
+
+/* Layout */
+.page-layout { display: grid; grid-template-columns: var(--sidebar-w) 1fr; gap: 28px; padding-top: 24px; }
+
+/* Sidebar */
+.sidebar {
+  position: sticky; top: 70px; align-self: start;
+  height: calc(100vh - 90px); overflow-y: auto;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 14px 10px;
+}
+.sb-header {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff; padding: 14px 10px; border-radius: 10px; text-align: center; margin-bottom: 12px;
+}
+.sb-header-title { font-weight: 700; font-size: 1.05em; }
+.sb-header-sub { font-size: .78em; opacity: .9; }
+.sb-list { list-style: none; margin: 0; padding: 0; }
+.sb-item a {
+  display: block; padding: 8px 10px; border-radius: 8px; color: var(--text-secondary);
+  text-decoration: none; font-size: .85em; margin-bottom: 4px; transition: .15s;
+}
+.sb-item a:hover, .sb-item a.active { background: var(--primary-light); color: var(--primary-dark); font-weight: 600; }
+.sb-divider { height: 1px; background: var(--border); margin: 10px 0; }
+
+/* Main */
+main { min-height: 100vh; padding-bottom: 60px; }
+
+/* Header card */
+.header-card {
+  background: linear-gradient(135deg, var(--primary), #fb923c); color: #fff;
+  border-radius: var(--radius); padding: 32px; margin-bottom: 28px; box-shadow: var(--shadow);
+}
+.header-card h1 { margin: 0 0 10px; font-size: 2em; }
+.subtitle { font-size: 1.1em; opacity: .95; margin-bottom: 18px; }
+.badges { display: flex; flex-wrap: wrap; gap: 10px; }
+.badge {
+  background: rgba(255,255,255,.22); color: #fff; padding: 5px 12px; border-radius: 20px;
+  font-size: .8em; font-weight: 600;
+}
+
+/* Sections */
+.section {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 28px; margin-bottom: 24px; box-shadow: var(--shadow);
+  scroll-margin-top: 80px;
+}
+.section h2 { color: var(--primary-dark); margin-top: 0; font-size: 1.45em; border-left: 5px solid var(--primary); padding-left: 14px; }
+.section h3 { color: var(--text); margin-top: 24px; font-size: 1.2em; }
+.section h4 { color: var(--primary-dark); margin-top: 20px; font-size: 1.05em; }
+
+/* Quick summary / exam key */
+.quick-summary {
+  background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 5px solid var(--primary);
+  border-radius: 10px; padding: 16px 18px; margin: 16px 0;
+}
+.dark-mode .quick-summary { background: linear-gradient(135deg, #431407, #7c2d12); }
+.quick-summary h4 { margin: 0 0 8px; color: var(--primary-dark); }
+.dark-mode .quick-summary h4 { color: #ffedd5; }
+.exam-key {
+  background: #f3e8ff; border-left: 5px solid #9333ea; border-radius: 10px; padding: 16px 18px; margin: 16px 0;
+}
+.dark-mode .exam-key { background: #3b0764; }
+.exam-key h4 { color: #7e22ce; margin: 0 0 8px; }
+.dark-mode .exam-key h4 { color: #e9d5ff; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .95em; }
+th, td { border: 1px solid var(--border); padding: 10px 12px; text-align: left; vertical-align: top; }
+th { background: var(--primary-light); color: var(--primary-dark); font-weight: 700; }
+tr:nth-child(even) { background: rgba(0,0,0,.02); }
+.dark-mode tr:nth-child(even) { background: rgba(255,255,255,.03); }
+
+/* Lists */
+ul, ol { padding-left: 22px; }
+li { margin-bottom: 6px; }
+
+/* Study card */
+.study-card {
+  border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin: 14px 0;
+  background: var(--card);
+}
+.study-card-header {
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;
+}
+.study-card-title { font-weight: 700; color: var(--primary-dark); font-size: 1.05em; }
+.study-card-year { font-size: .8em; color: var(--muted); }
+
+/* Images */
+.fig { max-width: 100%; border-radius: 10px; border: 1px solid var(--border); margin: 12px 0; }
+.fig-caption { font-size: .88em; color: var(--text-secondary); font-style: italic; margin-top: 4px; }
+
+/* Compare grid */
+.compare-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 14px 0; }
+.compare-card { border: 1px solid var(--border); border-radius: 10px; padding: 14px; background: var(--card); }
+.compare-card h4 { margin-top: 0; color: var(--primary-dark); }
+
+/* Exam practice */
+.exam-practice {
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 18px; margin: 16px 0;
+}
+.dark-mode .exam-practice { background: linear-gradient(135deg, #0c4a6e, #075985); border-color: #38bdf8; }
+.exam-practice h4 { color: #0d47a1; margin: 8px 0 4px; }
+.dark-mode .exam-practice h4 { color: #e0f2fe; }
+
+/* Checkpoint details */
+.checkpoint { margin: 16px 0; }
+details { border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; background: var(--surface); }
+summary { cursor: pointer; font-weight: 600; color: var(--primary-dark); }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--primary); color: #fff; padding: 8px 16px; border-radius: 8px;
+  text-decoration: none; font-weight: 600; font-size: .9em; margin-top: 8px;
+}
+.btn:hover { background: var(--primary-dark); }
+
+/* Footer */
+.footer-note { text-align: center; font-size: .85em; color: var(--muted); padding: 30px 0; }
+
+/* Back to top */
+.back-to-top {
+  position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px;
+  border-radius: 50%; border: none; background: var(--primary); color: #fff;
+  font-size: 1.2em; cursor: pointer; box-shadow: var(--shadow); opacity: 0; visibility: hidden; transition: .2s;
+}
+.back-to-top.show { opacity: 1; visibility: visible; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .header-card h1 { font-size: 1.6em; }
+}
+@media print {
+  nav, .sidebar, .back-to-top { display: none; }
+  .section { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="breadcrumb">🏠 <a href="/edexcel-psychology-courseware/">Home</a> / <a href="/edexcel-psychology-courseware/edexcel/">Edexcel</a> / Ch18 · Studies</div>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn" title="Toggle dark mode">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)" title="Decrease font size">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(0)" title="Reset font size">A</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)" title="Increase font size">A+</button>
+  </div>
+  </div>
+</nav>
+
+<div class="container">
+<div class="page-layout">
+
+<aside class="sidebar">
+  <div class="sb-header">
+    <div class="sb-header-title">Ch18 Contents</div>
+    <div class="sb-header-sub">Biological Studies</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s1">📚 Learning Objectives</a></li>
+    <li class="sb-item"><a href="#s2">🧠 Raine et al. (1997)</a></li>
+    <li class="sb-item"><a href="#s3">👯 Brendgen et al. (2005)</a></li>
+    <li class="sb-item"><a href="#s4">🧬 McDermott et al. (2008)</a></li>
+    <li class="sb-item"><a href="#s5">😴 Hoefelmann et al. (2006)</a></li>
+    <li class="sb-item"><a href="#s6">📝 Exam Practice</a></li>
+    <li class="sb-item"><a href="#s7">🔑 Key Terms</a></li>
+    <li class="sb-divider"></li>
+  </ul>
+</aside>
+
+<main>
+
+<div class="header-card">
+  <h1>Chapter 18 — Studies in Biological Psychology</h1>
+  <div class="subtitle">Classic & contemporary studies of aggression and sleep: Raine, Brendgen, McDermott and Hoefelmann</div>
+  <div class="badges">
+    <span class="badge">Topic C · Biological Psychology</span>
+    <span class="badge">Studies</span>
+    <span class="badge">Aggression · Sleep · PET · Twin · Gene</span>
+  </div>
+</div>
+
+<div class="section" id="s1">
+  <h2>📚 Learning Objectives & Syllabus Map</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>Chapter 18 is the <strong>Studies</strong> chapter in <strong>Topic C: Biological Psychology</strong>. It asks one classic study and one contemporary study, plus a second contemporary study that your teacher can choose. The exam almost always asks you to <strong>describe</strong> a study (aim, sample, procedure, results, conclusion) and <strong>evaluate</strong> it using issues such as validity, reliability, ethics and generalisability.</p>
+  </div>
+
+  <table>
+    <tr><th>Study</th><th>Focus</th><th>Method</th><th>Exam role</th></tr>
+    <tr><td><strong>Raine et al. (1997)</strong></td><td>Brain abnormalities in murderers pleading NGRI</td><td>Quasi-experiment / PET scan</td><td>Classic study — 8-mark evaluation</td></tr>
+    <tr><td><strong>Brendgen et al. (2005)</strong></td><td>Genetic vs environmental effects on physical and social aggression in 6-year-old twins</td><td>Twin study / teacher & peer ratings</td><td>Contemporary study — describe + evaluate</td></tr>
+    <tr><td><strong>McDermott et al. (2008)</strong></td><td>MAOA gene and aggression after provocation</td><td>Behavioural economics / hot-sauce paradigm</td><td>Contemporary choice A</td></tr>
+    <tr><td><strong>Hoefelmann et al. (2006)</strong></td><td>Sleep quality and lifestyle factors in Brazilian high-school students</td><td>Questionnaire / cross-sectional + prospective</td><td>Contemporary choice B</td></tr>
+  </table>
+
+  <div class="exam-key">
+    <h4>🎯 Exam Key Points</h4>
+    <ul>
+      <li>You must know one <strong>classic</strong> and one <strong>contemporary</strong> study in detail. The classic is fixed: <strong>Raine et al. (1997)</strong>. The contemporary is usually <strong>Brendgen et al. (2005)</strong>, unless your teacher chooses McDermott or Hoefelmann.</li>
+      <li>Exam questions usually follow <strong>AMSPRC</strong>: <strong>A</strong>im, <strong>M</strong>ethod, <strong>S</strong>ample, <strong>P</strong>rocedure, <strong>R</strong>esults, <strong>C</strong>onclusion.</li>
+      <li>For evaluation, use the textbook headings: <strong>validity, reliability, generalisability, objectivity/subjectivity, credibility, ethics</strong> and <strong>nature–nurture</strong>.</li>
+      <li>When you evaluate, always explain <em>why</em> the point is a strength or weakness — do not just name it. (AO3)</li>
+    </ul>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-header"><div class="study-card-title">How to read a study — the AMSPRC walkthrough</div></div>
+    <p>Each study section below follows the same six-step path. This is not random: it mirrors how examiners mark your answer.</p>
+    <ol>
+      <li><strong>Background & Aim:</strong> What question were the researchers trying to answer?</li>
+      <li><strong>Sample:</strong> Who took part? How many? What was special about them?</li>
+      <li><strong>Procedure:</strong> What exactly happened to the participants? What did they do?</li>
+      <li><strong>Results:</strong> What patterns did the data show? Use numbers where possible.</li>
+      <li><strong>Conclusion:</strong> What did the researchers conclude?</li>
+      <li><strong>Evaluation:</strong> What are the strengths and weaknesses, and why?</li>
+    </ol>
+  </div>
+
+</div>
+
+<div class="section" id="s2">
+  <h2>🧠 Classic Study — Raine et al. (1997)</h2>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <div class="study-card-title">Raine et al. (1997) — Brain Abnormalities in Murderers Indicated by PET</div>
+      <div class="study-card-year">Classic Study</div>
+    </div>
+    <p><strong>Key question:</strong> Do people who have committed murder show different patterns of brain activity from matched non-murderers?</p>
+  </div>
+
+  <h3>1. Background & Aim</h3>
+  <p>Previous research had suggested a link between dysfunction in the <strong>prefrontal cortex</strong>（前额叶皮层）and violent behaviour. Raine and colleagues wanted to test whether murderers who pleaded <strong>"not guilty by reason of insanity"</strong>（NGRI，因精神错乱而无罪）would show different brain activity from a control group of matched non-murderers.</p>
+  <div class="quick-summary">
+    <h4>⚡ Aim in one sentence</h4>
+    <p>To investigate whether brain activity in murderers differed from that in a control group of matched non-murderers.</p>
+  </div>
+
+  <h3>2. Sample</h3>
+  <ul>
+    <li><strong>Experimental group:</strong> 41 people (39 males, 2 females) convicted of murder or manslaughter and pleading NGRI.</li>
+    <li>Within this group:
+      <ul>
+        <li>6 had <strong>schizophrenia</strong>（精神分裂症）</li>
+        <li>23 had suffered <strong>organic brain damage</strong> or <strong>head injury</strong></li>
+        <li>3 were <strong>substance abusers</strong></li>
+        <li>2 had an <strong>affective disorder</strong>（情感障碍）</li>
+        <li>2 had <strong>epilepsy</strong>（癫痫）</li>
+        <li>3 had <strong>hyperactivity</strong> and/or learning disability</li>
+        <li>2 had been diagnosed with <strong>passive-aggressive disorder</strong> or <strong>paranoid personality disorder</strong></li>
+      </ul>
+    </li>
+    <li><strong>Control group:</strong> 41 people matched on age and gender (39 males, 2 females).</li>
+    <li>All participants were screened for general health, had a physical examination, gave access to medical history and had a psychiatric interview.</li>
+    <li>Controls were excluded if they had a history of seizures, head trauma or substance misuse.</li>
+    <li>All remained <strong>medication-free</strong> for two weeks before the PET scan.</li>
+  </ul>
+
+  <h3>3. Procedure</h3>
+  <ol>
+    <li>All participants were given a <strong>Continuous Performance Task (CPT)</strong>（持续执行任务）. This is a task where you have to focus on a sequence of blurred numbers — it keeps attention active so the researchers can compare brain activity.</li>
+    <li>Participants practised the CPT for 10 minutes.</li>
+    <li>They were injected with a radioactive glucose tracer called <strong>fluorodeoxyglucose (FDG)</strong>. This tracer is taken up by active brain cells, so areas with higher metabolic activity show more FDG.</li>
+    <li>After a further 32 minutes on the CPT, a <strong>PET scan</strong> was carried out.</li>
+    <li>The PET scan measured the <strong>metabolic rate</strong>（代谢率）in different brain areas — this is used as an indicator of activity level.</li>
+  </ol>
+  <div class="exam-key">
+    <h4>🎯 Exam Tip</h4>
+    <p>If a question asks you to <strong>describe the procedure</strong>, include: the CPT, the FDG injection, the 32-minute wait, and what the PET scan measured. If it asks you to <strong>describe the sample</strong>, give the numbers (41 + 41), the matching, and at least two exclusion criteria.</p>
+  </div>
+
+  <h3>4. Results</h3>
+  <p>The NGRI murderers showed several differences compared with controls:</p>
+  <table>
+    <tr><th>Brain area</th><th>What was found in murderers</th><th>What it might mean</th></tr>
+    <tr><td><strong>Prefrontal cortex</strong>（前额叶皮层）</td><td>Lower activity in both lateral and medial areas</td><td>Linked to impulsivity, poor self-control and inability to learn from consequences</td></tr>
+    <tr><td><strong>Parietal areas</strong>（顶叶区域）</td><td>Lower activity, especially in the left angular gyrus and bilateral superior parietal regions</td><td>Associated with attention and language processing</td></tr>
+    <tr><td><strong>Occipital lobe</strong>（枕叶）</td><td>Higher activity</td><td>Visual processing area — less directly related to violence</td></tr>
+    <tr><td><strong>Temporal lobe</strong>（颞叶）</td><td>Identical activity to controls</td><td>No difference found here</td></tr>
+    <tr><td><strong>Corpus callosum</strong>（胼胝体）</td><td>Lower activity</td><td>Reduced communication between the two brain hemispheres</td></tr>
+    <tr><td><strong>Amygdala</strong>（杏仁核）</td><td>Asymmetrical activity: lower in the left, higher in the right</td><td>Linked to emotional regulation and fear responses</td></tr>
+    <tr><td><strong>Medial temporal lobe / hippocampus</strong>（内侧颞叶/海马体）</td><td>Asymmetrical activity: lower in the left, higher in the right</td><td>Linked to learning and memory</td></tr>
+    <tr><td><strong>Thalamus</strong>（丘脑）</td><td>Higher activity on the right side</td><td>Involved in sensory relay and arousal</td></tr>
+  </table>
+
+  <h3>5. Conclusion</h3>
+  <p>Raine et al. concluded that:</p>
+  <ul>
+    <li>There was support for their hypothesis: murderers pleading NGRI showed brain dysfunction in areas previously linked to violent behaviour.</li>
+    <li><strong>Prefrontal cortex dysfunction</strong> may relate to impulsivity, lack of self-control and inability to learn from consequences.</li>
+    <li>The <strong>hippocampus</strong>, <strong>amygdala</strong> and <strong>thalamus</strong> are involved in learning and emotion; abnormal activity here could mean criminals cannot modify their behaviour by learning from consequences.</li>
+  </ul>
+
+  <h3>6. Evaluation</h3>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>✅ Strengths</h4>
+      <ul>
+        <li><strong>Large sample for this population:</strong> 41 severely violent offenders is the largest sample studied in this way at the time, and matched controls improve validity.</li>
+        <li><strong>Controlled confounds:</strong> Participants were medication-free for two weeks; researchers tried to rule out effects of handedness and head injury.</li>
+        <li><strong>Standardised procedure:</strong> All participants did the same CPT and PET protocol, allowing objective comparison.</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>❌ Weaknesses</h4>
+      <ul>
+        <li><strong>Unrepresentative sample:</strong> NGRI murderers are not typical of all violent offenders; findings cannot explain other types of violence or criminality.</li>
+        <li><strong>Correlation not causation:</strong> Lower brain activity might be a result of violent offending, substance use or head injury, not a cause.</li>
+        <li><strong>Ethical issues:</strong> PET involves a radioactive tracer. Controls did not need a PET scan for clinical reasons, so they were exposed to unnecessary harm. Withholding medication from schizophrenic participants may also have worsened symptoms.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-title">Nature–nurture and socially sensitive research</div>
+    <p>This study is socially sensitive: if criminality is seen as biologically determined, it may send the message that offenders are not responsible for their actions. Raine and colleagues insisted that their study was not intended for diagnosis or criminal responsibility — it only shows a correlation, not a cause.</p>
+  </div>
+
+</div>
+
+<div class="section" id="s3">
+  <h2>👯 Contemporary Study — Brendgen et al. (2005)</h2>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <div class="study-card-title">Brendgen et al. (2005) — Genetic and Environmental Effects on Social Aggression in 6-Year-Old Twins</div>
+      <div class="study-card-year">Contemporary Study</div>
+    </div>
+    <p><strong>Key question:</strong> Is social aggression caused more by genes or by environment, and how is it related to physical aggression?</p>
+  </div>
+
+  <h3>1. Background & Aims</h3>
+  <p>Much previous aggression research had focused on <strong>physical aggression</strong>. Brendgen and colleagues were interested in <strong>social aggression</strong>（社会性攻击）— behaviour such as ignoring others, spreading rumours or threatening to withdraw friendship. Social aggression can be <strong>overt</strong>（公开的）or <strong>covert</strong>（隐蔽的）.</p>
+  <p>The researchers had <strong>three aims</strong>:</p>
+  <ol>
+    <li>To see if social aggression could be caused by <strong>genes</strong> or the <strong>environment</strong>.</li>
+    <li>To see if social aggression shared the same cause as <strong>physical aggression</strong>.</li>
+    <li>To see if one type of aggression <strong>leads to</strong> another type.</li>
+  </ol>
+
+  <h3>2. Sample</h3>
+  <ul>
+    <li>Participants came from the <strong>Quebec Newborn Twin Study (QNTS)</strong>.</li>
+    <li>Twin pairs born between November 1995 and July 1998.</li>
+    <li>At the start of the study, <strong>322 pairs</strong> of twins were tested.</li>
+    <li>Complete data at all stages were gathered on <strong>234 twin pairs</strong>.</li>
+    <li>Breakdown of the 234 pairs:
+      <ul>
+        <li>44 pairs: <strong>MZ males</strong></li>
+        <li>50 pairs: <strong>MZ females</strong></li>
+        <li>41 pairs: <strong>DZ males</strong></li>
+        <li>32 pairs: <strong>DZ females</strong></li>
+        <li>67 pairs: <strong>mixed-sex DZ twins</strong></li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>3. Procedure</h3>
+  <p>Data were gathered <strong>longitudinally</strong>（纵向地）at:</p>
+  <ul>
+    <li>5, 18, 30, 48 and 60 months</li>
+    <li>and again at age <strong>six years</strong> — this final data set was the focus of the study.</li>
+  </ul>
+
+  <p>Two ratings of each twin's behaviour were collected:</p>
+  <ul>
+    <li><strong>Teacher ratings</strong> in the spring term of the school year.</li>
+    <li><strong>Peer ratings</strong> by classmates.</li>
+  </ul>
+
+  <p>The ratings used established scales:</p>
+  <ul>
+    <li><strong>Preschool Social Behaviour Scale (PSBS-T; Crick et al., 1997)</strong></li>
+    <li><strong>Direct and Indirect Aggression Scales (Björkvist, Lagerspetz et al., 1992)</strong></li>
+  </ul>
+
+  <p>Items included:</p>
+  <ul>
+    <li>Social aggression: <em>"To what extent does the child try to make others dislike a child?"</em></li>
+    <li>Physical aggression: <em>"To what extent does the child get into fights?"</em></li>
+  </ul>
+
+  <p>Each item was scored on a <strong>three-point scale</strong>: 0 = never; 1 = sometimes; 2 = often.</p>
+
+  <h3>4. Results</h3>
+  <table>
+    <tr><th>Finding</th><th>What the data showed</th><th>Interpretation</th></tr>
+    <tr><td><strong>Physical aggression</strong></td><td>MZ twin pairs were much more alike than same-sex DZ twin pairs in both teacher and peer ratings.</td><td>Physical aggression has a <strong>strong genetic component</strong>.</td></tr>
+    <tr><td><strong>Social aggression</strong></td><td>MZ and DZ twin pairs had roughly equal correlations.</td><td>Social aggression is better explained by <strong>shared environment</strong> than by genes.</td></tr>
+    <tr><td><strong>Relationship between the two</strong></td><td>A correlation was found between physical and social aggression, best explained by <strong>genetic factors</strong>.</td><td>The general tendency to be aggressive may be genetic, but the <em>way</em> it is expressed depends on environment.</td></tr>
+    <tr><td><strong>Direction of influence</strong></td><td>Physical aggression may lead to social aggression, but not the other way around.</td><td>As children grow and develop language/cognitive skills, they learn more "socially acceptable" ways to express aggression.</td></tr>
+  </table>
+
+  <h3>5. Conclusion</h3>
+  <p>There seems to be a <strong>strong genetic component to physical aggression</strong>, but <strong>not to social aggression</strong>, which is more likely due to environmental effects. Children who are physically aggressive are also more likely to show social aggression, probably because of an interaction between genes and environment. As children grow, they become more socially aggressive because of social conventions on physical violence and because they develop different ways to express themselves.</p>
+
+  <h3>6. Evaluation</h3>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>✅ Strengths</h4>
+      <ul>
+        <li><strong>Multiple sources of data:</strong> Both teachers and peers rated the children, which increases validity through triangulation.</li>
+        <li><strong>Longitudinal design:</strong> Data were collected from early childhood to age six, allowing researchers to track development over time.</li>
+        <li><strong>Large twin sample:</strong> 234 twin pairs with a clear MZ/DZ breakdown.</li>
+        <li><strong>Potential application:</strong> If physically aggressive behaviour can be identified early, parents and teachers can intervene before it becomes a habit.</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>❌ Weaknesses</h4>
+      <ul>
+        <li><strong>Small sub-group sizes:</strong> When split into MZ males, MZ females, DZ males, etc., each group is quite small, making generalisation difficult.</li>
+        <li><strong>Peer ratings by six-year-olds:</strong> Young children may not be reliable raters; asking them to judge classmates could lead to bias or labelling.</li>
+        <li><strong>Zygosity check:</strong> Only some twins had a DNA test; others were checked only by physical resemblance, which may reduce validity.</li>
+        <li><strong>Extraneous variables:</strong> Many factors in the children's lives could explain aggression, such as family environment or school context.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="section" id="s4">
+  <h2>🧬 Contemporary Choice A — McDermott et al. (2008)</h2>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <div class="study-card-title">McDermott et al. (2008) — MAOA Gene Predicts Behavioural Aggression Following Provocation</div>
+      <div class="study-card-year">Contemporary Choice A</div>
+    </div>
+    <p><strong>Key question:</strong> Does the <strong>MAOA gene</strong>（单胺氧化酶 A 基因）affect how aggressively people respond when provoked?</p>
+  </div>
+
+  <h3>1. Background & Aims</h3>
+  <p>McDermott combined two areas: <strong>genetics</strong> and <strong>behavioural economics</strong>（行为经济学）. Behavioural economics studies how people make decisions — especially when choices involve fairness, punishment and self-interest. The researchers wanted to see whether the MAOA gene influenced aggression after provocation.</p>
+  <ul>
+    <li><strong>MAOA-L</strong> = low-activity MAOA gene variant</li>
+    <li><strong>MAOA-H</strong> = high-activity MAOA gene variant</li>
+  </ul>
+  <p>Previous research suggested that MAOA-L individuals might be more likely to develop anti-social behaviour problems.</p>
+
+  <h3>2. Sample</h3>
+  <ul>
+    <li><strong>78 male college students</strong>.</li>
+    <li>Genetic samples determined whether they were MAOA-H or MAOA-L carriers.</li>
+    <li><strong>27%</strong> were MAOA-L; the rest were MAOA-H.</li>
+    <li>Women were excluded because MAOA activity is harder to assign in females (the gene is on the X chromosome).</li>
+  </ul>
+
+  <h3>3. Procedure — the "power-to-take" game</h3>
+  <p>Participants played a computerised game against an unseen "opponent". In reality, there was no opponent — the responses were computer-generated. This was a deception, but necessary to measure real aggressive behaviour.</p>
+  <ol>
+    <li><strong>Quiz phase:</strong> Participants answered 5 multiple-choice vocabulary questions. Each correct answer earned 20 points. Points could be exchanged for money (10 points = US$1). Maximum earnings: US$10.</li>
+    <li><strong>Stealing phase:</strong> After a short delay, the "opponent" decided to steal a percentage of the participant's earnings: either <strong>80%</strong> (high take) or <strong>20%</strong> (low take).</li>
+    <li><strong>Punishment phase:</strong> Participants could punish the opponent by forcing them to drink <strong>hot sauce</strong>. They could also trade their hot-sauce allocation for money. The more hot sauce they used, the more aggressive the response was assumed to be.</li>
+    <li>Participants played <strong>four rounds</strong>, each against a different "opponent".</li>
+  </ol>
+  <p><strong>Dependent variable:</strong> the amount of hot sauce allocated to the opponent.</p>
+
+  <img src="assets/fig18-hot-sauce-tables.png" alt="McDermott hot sauce results tables" class="fig">
+  <p class="fig-caption">Figure 18.1 — Percentage of MAOA-L and MAOA-H participants who gave some / maximum hot sauce when 80% or 20% of earnings were stolen.</p>
+
+  <h3>4. Results</h3>
+  <table>
+    <tr><th>Condition</th><th>MAOA-L</th><th>MAOA-H</th><th>Interpretation</th></tr>
+    <tr><td>80% earnings stolen — gave <strong>some</strong> hot sauce</td><td>75%</td><td>62%</td><td>MAOA-L more aggressive under high provocation</td></tr>
+    <tr><td>20% earnings stolen — gave <strong>some</strong> hot sauce</td><td>40%</td><td>34%</td><td>Smaller difference when provocation is low</td></tr>
+    <tr><td>80% earnings stolen — gave <strong>maximum</strong> hot sauce</td><td>44%</td><td>19%</td><td>Strong effect under high provocation</td></tr>
+    <tr><td>20% earnings stolen — gave <strong>maximum</strong> hot sauce</td><td>12%</td><td>6%</td><td>Weak effect under low provocation</td></tr>
+  </table>
+  <ul>
+    <li>A <strong>significant difference</strong> was found between MAOA-L and MAOA-H participants when 80% of earnings were stolen (<em>p</em> &lt; 0.01).</li>
+    <li>No significant difference was found when only 20% of earnings were stolen (<em>p</em> = 0.19).</li>
+  </ul>
+
+  <h3>5. Conclusion</h3>
+  <p>The greater the provocation, the more aggressive people became. MAOA-L participants were more aggressive than MAOA-H participants when provoked, especially under high provocation. This supports a <strong>gene–environment interaction</strong>（基因-环境交互作用）: genes alone do not cause aggression, but they may make some individuals more likely to respond aggressively in a provoking environment.</p>
+
+  <h3>6. Evaluation</h3>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>✅ Strengths</h4>
+      <ul>
+        <li><strong>Objective behavioural measure:</strong> Hot-sauce allocation is a behavioural measure rather than self-report, which reduces subjectivity.</li>
+        <li><strong>Controlled procedure:</strong> All participants played the same game with the same rules and point manipulations, increasing reliability.</li>
+        <li><strong>Gene–environment interaction:</strong> The study shows that provocation is needed for the MAOA effect to appear — this moves beyond simple genetic determinism.</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>❌ Weaknesses</h4>
+      <ul>
+        <li><strong>Ecological validity:</strong> Forcing an unseen opponent to drink hot sauce is not realistic everyday aggression.</li>
+        <li><strong>Deception:</strong> Participants were deceived about the opponent. Deception is ethically problematic and may have caused distress.</li>
+        <li><strong>Sample bias:</strong> Only male college students were studied, so findings may not apply to females or non-student populations.</li>
+        <li><strong>Operationalisation of aggression:</strong> Allocating hot sauce is an unusual measure of aggression; it may not represent real-life verbal or physical aggression.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="section" id="s5">
+  <h2>😴 Contemporary Choice B — Hoefelmann et al. (2006)</h2>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <div class="study-card-title">Hoefelmann et al. (2006) — Behaviours Associated with Sleep among High School Students</div>
+      <div class="study-card-year">Contemporary Choice B</div>
+    </div>
+    <p><strong>Key question:</strong> Which lifestyle factors are associated with sleep quality and duration in high-school students?</p>
+  </div>
+
+  <h3>1. Background & Aims</h3>
+  <p>Sleep is essential for memory and learning. It is also linked to hormonal and behavioural regulation. The researchers wanted to investigate factors affecting sleep in high-school students, including lifestyle variables such as physical activity, diet and screen time.</p>
+  <div class="quick-summary">
+    <h4>⚡ Aim in one sentence</h4>
+    <p>To investigate factors affecting the quality and duration of sleep among high-school students.</p>
+  </div>
+
+  <h3>2. Sample</h3>
+  <ul>
+    <li>Initially, approximately <strong>2,000 students</strong> were randomly selected from <strong>20 schools</strong> in Brazil.</li>
+    <li>Students were aged <strong>14–24 years</strong> and enrolled in night classes at public schools.</li>
+    <li>Schools were in two Brazilian cities: <strong>Florianópolis</strong> (southern Brazil) and <strong>Recife</strong> (northern Brazil).</li>
+    <li>Ten schools from each municipality were selected.</li>
+    <li><strong>989 students</strong> completed the initial assessment and the post-intervention assessment.</li>
+  </ul>
+
+  <h3>3. Procedure</h3>
+  <p>Data were collected at two time points:</p>
+  <ul>
+    <li><strong>March 2006</strong> (initial assessment)</li>
+    <li><strong>December 2006</strong> (9 months later)</li>
+  </ul>
+  <p>Students completed a questionnaire in their school classrooms. The questionnaire included questions on:</p>
+  <ul>
+    <li>Physical activity and exercise habits</li>
+    <li>Eating habits and snack/soft-drink consumption</li>
+    <li>Time spent watching television and playing computer games</li>
+    <li>Sleep quality and duration</li>
+  </ul>
+  <p>The sleep questions were:</p>
+  <ul>
+    <li><em>"How often do you think that you sleep well?"</em> — answered on a 5-point scale (always / almost always / sometimes / almost never / never). "Always" and "almost always" were judged as <strong>good</strong> sleep quality; the rest as <strong>poor</strong>.</li>
+    <li><em>"How many hours, on average, do you sleep per day?"</em> — answers under 8 hours were judged as <strong>insufficient</strong>; 8 hours or more as <strong>sufficient</strong>.</li>
+  </ul>
+
+  <div class="study-card">
+    <div class="study-card-title">Two research designs used</div>
+    <ul>
+      <li><strong>Cross-sectional design</strong>（横断设计）: compares different groups or variables at a single point in time — here, the initial questionnaire in March 2006.</li>
+      <li><strong>Prospective design</strong>（前瞻设计/纵向）: follows the same participants over time to observe changes — here, comparing March 2006 with December 2006.</li>
+    </ul>
+  </div>
+
+  <img src="assets/fig18-sleep-student.png" alt="Student sleeping" class="fig">
+  <p class="fig-caption">Figure 18.2 — Sleep is essential for learning and memory; poor sleep is linked to lifestyle factors such as diet and screen time.</p>
+
+  <h3>4. Results</h3>
+  <table>
+    <tr><th>Measure</th><th>Cross-sectional</th><th>Prospective</th><th>Key finding</th></tr>
+    <tr><td>Poor sleep quality</td><td>45.7%</td><td>45.8%</td><td>High and stable over nine months</td></tr>
+    <tr><td>Good sleep quality</td><td>54.3%</td><td>54.2%</td><td>High and stable over nine months</td></tr>
+    <tr><td>Sleep under 8 hours</td><td>76.7%</td><td>77.5%</td><td>Most students had insufficient sleep</td></tr>
+    <tr><td>Sleep 8 hours or more</td><td>23.3%</td><td>22.5%</td><td>Only a minority had sufficient sleep</td></tr>
+  </table>
+
+  <p><strong>Cross-sectional findings:</strong></p>
+  <ul>
+    <li>Students with lower physical activity were less likely to report poor sleep quality.</li>
+    <li>Higher snack consumption was significantly associated with poor sleep quality.</li>
+    <li>For sleep duration: higher muscular strength/endurance, higher snack consumption and more TV watching were less likely to report long sleep; more soft-drink consumption was associated with shorter sleep.</li>
+  </ul>
+
+  <p><strong>Prospective findings:</strong></p>
+  <ul>
+    <li>No behaviours were associated with sleep quality.</li>
+    <li>About 5 in 10 students reported poor quality sleep at both time points.</li>
+    <li>8 in 10 reported insufficient sleep at both time points.</li>
+  </ul>
+
+  <h3>5. Conclusion</h3>
+  <p>Poor sleep quality and insufficient sleep duration were common among these Brazilian students and remained stable over nine months. Some lifestyle factors were associated with poor sleep in the cross-sectional analysis, but the prospective analysis failed to confirm these associations. This suggests that the links may be correlational rather than causal.</p>
+
+  <h3>6. Evaluation</h3>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>✅ Strengths</h4>
+      <ul>
+        <li><strong>Large sample:</strong> Nearly 1,000 participants from 20 schools in two cities.</li>
+        <li><strong>Ethical permission:</strong> Approved by two ethics committees; negative consent was used for minors.</li>
+        <li><strong>Application:</strong> Findings could inform health campaigns to promote better sleep habits among young people.</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <h4>❌ Weaknesses</h4>
+      <ul>
+        <li><strong>Self-report data:</strong> Sleep duration, quality and lifestyle were all self-reported, which may be inaccurate (social desirability, poor recall).</li>
+        <li><strong>Night-school sample:</strong> Only students enrolled in night classes were included, limiting generalisability to day-school students.</li>
+        <li><strong>Short prospective period:</strong> Only nine months; more than 50% of the original sample was lost to follow-up.</li>
+        <li><strong>Correlational:</strong> Cannot establish causation between lifestyle and sleep quality.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="section" id="s6">
+  <h2>📝 Exam Practice & Model Answers</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ How to answer study questions</h4>
+    <p>For any 8-mark "evaluate" question, use a <strong>paragraph structure</strong>: Point → Evidence from the study → Why it is a strength/weakness (AO3). For describe questions, follow <strong>AMSPRC</strong> in order.</p>
+  </div>
+
+  <div class="exam-practice">
+    <h4>Exam Practice 1 — Raine et al. (1997) sample (2 marks)</h4>
+    <p><strong>Question:</strong> Describe the sample used by Raine et al. (1997).</p>
+    <details class="checkpoint"><summary>Model answer</summary>
+      <p>The sample consisted of two groups of 41 participants matched for age and gender (39 males and 2 females in each). The experimental group were murderers pleading NGRI; six had schizophrenia, 23 had brain damage/head injury, and the group included substance abusers and people with affective disorders. The control group were non-murderers screened for head trauma and substance misuse. (2 marks)</p>
+    </details>
+  </div>
+
+  <div class="exam-practice">
+    <h4>Exam Practice 2 — Improvement to Raine (2 marks)</h4>
+    <p><strong>Question:</strong> Explain one improvement that could be made to Raine et al.'s (1997) study of brain activity in murderers.</p>
+    <details class="checkpoint"><summary>Model answer</summary>
+      <p>One improvement would be to include a wider range of violent offenders, not just those pleading NGRI. This would increase the representativeness of the sample because NGRI murderers may have unusual characteristics (such as mental illness or head injury) that do not apply to all violent criminals. (2 marks)</p>
+    </details>
+  </div>
+
+  <div class="exam-practice">
+    <h4>Exam Practice 3 — Contemporary study procedure & validity (7 marks)</h4>
+    <p><strong>Question:</strong> During your studies of biological psychology, you will have learned about one of the following contemporary studies: McDermott et al. (2008) or Hoefelmann et al. (2006).</p>
+    <ol type="a">
+      <li>Describe the procedure of your chosen study. (3 marks)</li>
+      <li>Explain two weaknesses of your chosen contemporary study in terms of validity. (4 marks)</li>
+    </ol>
+    <details class="checkpoint"><summary>Model answer — McDermott et al. (2008)</summary>
+      <p><strong>(a)</strong> The procedure used a "power-to-take" game. Male participants answered vocabulary questions to earn points convertible to money. A computer-generated "opponent" then stole either 20% or 80% of the participant's earnings. Participants could punish the opponent by allocating hot sauce, with more hot sauce indicating greater aggression. They played four rounds.</p>
+      <p><strong>(b)</strong> One weakness is <strong>low ecological validity</strong>: forcing an unseen opponent to drink hot sauce is not like real-life aggression, which is usually verbal or physical. Therefore we cannot generalise the findings to everyday aggressive behaviour. Another weakness is <strong>deception</strong>: participants believed there was a real opponent. This raises ethical concerns and may have caused distress, while also making the task feel artificial. (4 marks)</p>
+    </details>
+    <details class="checkpoint"><summary>Model answer — Hoefelmann et al. (2006)</summary>
+      <p><strong>(a)</strong> Students in 20 Brazilian schools completed a questionnaire in March 2006 and again in December 2006. Questions measured sleep quality ("How often do you think you sleep well?"), sleep duration ("How many hours do you sleep per day?") and lifestyle factors such as physical activity, snack/soft-drink consumption and TV/computer time.</p>
+      <p><strong>(b)</strong> One weakness is <strong>subjectivity / self-report bias</strong>: all data about sleep and lifestyle came from self-report, which may be inaccurate or affected by social desirability, reducing validity. Another weakness is the <strong>night-school sample</strong>: only students enrolled in night classes took part, so the findings may not apply to day-school students, limiting population validity. (4 marks)</p>
+    </details>
+  </div>
+
+  <div class="exam-practice">
+    <h4>Exam Practice 4 — Evaluate Raine et al. (1997) (8 marks)</h4>
+    <details class="checkpoint"><summary>Model answer</summary>
+      <p>Raine et al. (1997) used PET scanning to compare brain activity in 41 murderers pleading NGRI with 41 matched controls. A strength is that the study used a relatively large sample for this difficult-to-access population and matched controls for age and gender, which increases internal validity. Another strength is the standardised CPT and PET procedure, allowing objective measurement of metabolic activity.</p>
+      <p>However, the sample is unrepresentative because NGRI murderers often have mental illness or brain injury; the findings cannot explain all types of violence or criminality. A further weakness is that the study is correlational: low brain activity might be a consequence of violent behaviour, substance abuse or head injury rather than a cause. Finally, there are ethical issues: PET scans expose participants to radiation, and controls did not clinically need a scan, raising concerns about harm.</p>
+      <p>Overall, the study provides useful evidence about biological factors in violence, but it cannot establish causation and must be interpreted cautiously. (8 marks)</p>
+    </details>
+  </div>
+
+  <div class="exam-key">
+    <h4>🎯 Mark-scheme logic</h4>
+    <ul>
+      <li><strong>2-mark describe:</strong> One clear fact = 1 mark; two facts = 2 marks. Always include a number if possible.</li>
+      <li><strong>4-mark evaluate:</strong> Two points, each with a reason why it is a strength/weakness. No generic AO1.</li>
+      <li><strong>8-mark evaluate:</strong> Around 4–5 evaluation points with AO3. Briefly describe the study first (1–2 sentences) but focus on evaluation. Mention both strengths and weaknesses.</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="section" id="s7">
+  <h2>🔑 Key Terms Glossary</h2>
+
+  <table>
+    <tr><th>Term</th><th>Definition</th></tr>
+    <tr><td><strong>Angular gyrus</strong>（角回）</td><td>Part of the parietal lobe associated with memory, language processing and attention.</td></tr>
+    <tr><td><strong>Corpus callosum</strong>（胼胝体）</td><td>A band of nerve fibres that joins the two brain hemispheres and allows communication between them.</td></tr>
+    <tr><td><strong>Schizophrenia</strong>（精神分裂症）</td><td>A major psychosis characterised by disturbances in thinking, hallucinations and delusions.</td></tr>
+    <tr><td><strong>Thalamus</strong>（丘脑）</td><td>Part of the brain associated with sensory perception and consciousness.</td></tr>
+    <tr><td><strong>Affective disorder</strong>（情感障碍）</td><td>Disturbances in mood or emotion, such as depression.</td></tr>
+    <tr><td><strong>Hyperactivity</strong>（多动）</td><td>Restlessness, impulsivity and excess physical activity.</td></tr>
+    <tr><td><strong>Passive-aggressive disorder</strong>（被动攻击型障碍）</td><td>Suspicion and distrust of others; an unwillingness to engage in social and occupational activity.</td></tr>
+    <tr><td><strong>PET scan</strong>（正电子发射断层扫描）</td><td>A brain-imaging technique that measures metabolic activity by detecting a radioactive tracer (FDG).</td></tr>
+    <tr><td><strong>Continuous Performance Task (CPT)</strong></td><td>A sustained-attention task used to keep brain activity stable during scanning.</td></tr>
+    <tr><td><strong>MZ twins</strong>（同卵双胞胎）</td><td>Monozygotic / identical twins; share 100% of genes.</td></tr>
+    <tr><td><strong>DZ twins</strong>（异卵双胞胎）</td><td>Dizygotic / non-identical twins; share about 50% of genes.</td></tr>
+    <tr><td><strong>Social aggression</strong>（社会性攻击）</td><td>Aggressive behaviour that harms relationships, such as spreading rumours or excluding others.</td></tr>
+    <tr><td><strong>Physical aggression</strong>（身体攻击）</td><td>Aggressive behaviour that causes physical harm, such as hitting or fighting.</td></tr>
+    <tr><td><strong>MAOA gene</strong>（单胺氧化酶 A 基因）</td><td>A gene that affects the breakdown of neurotransmitters such as serotonin and dopamine; low activity (MAOA-L) has been linked to aggression.</td></tr>
+    <tr><td><strong>Behavioural economics</strong>（行为经济学）</td><td>A field combining psychology and economics to study how individuals make decisions.</td></tr>
+    <tr><td><strong>Cross-sectional design</strong>（横断设计）</td><td>Collecting data from a population or sample at a single point in time.</td></tr>
+    <tr><td><strong>Prospective design</strong>（前瞻/纵向设计）</td><td>Collecting data from participants over a period of time to observe changes or trends.</td></tr>
+    <tr><td><strong>Negative consent</strong>（消极同意）</td><td>Participants are given the opportunity to decline to take part; if they do not opt out, they are included.</td></tr>
+  </table>
+
+</div>
+
+<div class="footer-note">Based on Pearson Edexcel International A Level Psychology (2021 specification) · Topic C · Chapter 18</div>
+
+</main>
+</div>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<script>
+let fontSize = 16;
+function adjustFontSize(delta) {
+  if (delta === 0) fontSize = 16;
+  else fontSize = Math.max(12, Math.min(22, fontSize + delta));
+  document.documentElement.style.setProperty('--font-size', fontSize + 'px');
+}
+function toggleDarkMode() {
+  document.body.classList.toggle('dark-mode');
+  localStorage.setItem('ch18_dark', document.body.classList.contains('dark-mode'));
+}
+if (localStorage.getItem('ch18_dark') === 'true') document.body.classList.add('dark-mode');
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  backToTop.classList.toggle('show', window.scrollY > 400);
+});
+const sbLinks = document.querySelectorAll('.sb-item a');
+const sections = document.querySelectorAll('.section');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+  sbLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+});
+</script>
+
+</body>
+</html>
