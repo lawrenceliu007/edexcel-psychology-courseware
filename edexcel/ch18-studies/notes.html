@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch18 Studies in Biological Psychology — Student Notes Workbook</title>
+<style>
+@page { size: A4; margin: 13mm 12mm 15mm 12mm; }
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif; color:#1a1a1a; font-size:10.5pt; line-height:1.5; margin:0; background:#f3f3f3; }
+.page { background:#fff; max-width: 800px; margin: 0 auto 10px auto; padding: 10mm 11mm; page-break-after: always; position: relative; min-height: 248mm; }
+@media print { body { background:#fff; } .page { margin:0; padding:0; max-width:none; box-shadow:none; } }
+.pg-head { display:flex; justify-content:space-between; align-items:baseline; border-bottom: 2px solid #333; padding-bottom:4px; margin-bottom:12px; }
+.pg-head .t { font-size:12pt; font-weight:700; }
+.pg-head .r { font-size:8pt; color:#777; letter-spacing:.04em; }
+.pg-foot { position:absolute; bottom:4mm; left:0; right:0; text-align:center; font-size:8pt; color:#999; }
+.sec { font-size:11.5pt; font-weight:700; margin:14px 0 6px 0; padding-left:7px; border-left:3.5px solid #444; }
+.sec:first-of-type { margin-top:4px; }
+.sub { font-size:10pt; font-weight:700; margin:10px 0 4px 0; }
+.bl { display:inline-block; border-bottom:1px solid #555; height:1em; vertical-align:baseline; min-width:60px; margin:0 2px; }
+.hint { font-size:8.5pt; color:#666; }
+.hint::before { content:"（"; } .hint::after { content:"）"; }
+.hint2 { font-size:8.5pt; color:#666; display:block; margin:2px 0 0 2px; }
+table.n { width:100%; border-collapse:collapse; margin:6px 0 10px 0; font-size:9.5pt; }
+table.n th, table.n td { border:1px solid #999; padding:4px 7px; text-align:left; vertical-align:top; }
+table.n th { background:#e9e9e9; font-size:9pt; }
+td.lbl { background:#f4f4f4; width:24%; font-weight:600; }
+.box { border:1px solid #aaa; border-left:4px solid #555; padding:7px 10px; margin:8px 0; border-radius:3px; }
+.box.grey { border:1px dashed #999; border-left:4px dashed #999; background:#fafafa; }
+.box .bx-t { font-size:9.5pt; font-weight:700; margin-bottom:3px; }
+.wl { border-bottom:1px solid #bbb; height:26pt; }
+.wl.short { height:30pt; }
+.kicker { font-size:8.5pt; font-weight:700; color:#555; text-transform:uppercase; letter-spacing:.05em; margin-bottom:2px; }
+ul.tight { margin:4px 0 8px 0; padding-left:18px; }
+ul.tight li { margin-bottom:3px; }
+ol.tight { margin:4px 0 8px 0; padding-left:18px; }
+ol.tight li { margin-bottom:4px; }
+.two { display:flex; gap:10px; } .two > div { flex:1; }
+.three { display:flex; gap:8px; } .three > div { flex:1; }
+.chk { font-size:9.5pt; }
+.chk .c { display:inline-block; width:11px; height:11px; border:1.3px solid #555; margin-right:6px; vertical-align:-1px; }
+.ao-tag { display:inline-block; font-size:8pt; font-weight:700; border:1px solid #444; padding:1px 6px; border-radius:2px; margin-left:6px; vertical-align:1px; }
+.q { font-style:italic; background:#f6f6f6; border:1px solid #ccc; padding:5px 9px; margin:5px 0; font-size:9.5pt; border-radius:3px; }
+.tag { display:inline-block; font-size:8pt; font-weight:700; background:#ea580c; color:#fff; padding:1px 7px; border-radius:3px; margin-right:4px; vertical-align:1px; }
+.tag.classic { background:#dc2626; }
+.tag.contemp { background:#2563eb; }
+.tag.choice { background:#7c3aed; }
+.tag.brain { background:#0d9488; }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1: COVER ================= -->
+<div class="page">
+  <div style="text-align:center; margin-top:5mm;">
+    <div style="font-size:9pt; letter-spacing:.25em; color:#666;">PEARSON EDEXCEL IAL PSYCHOLOGY · PAPER 3 (WPS03/01) · TOPIC C</div>
+    <div style="font-size:26pt; font-weight:800; margin:8px 0 2px 0;">Chapter 18 — Studies in Biological Psychology</div>
+    <div style="font-size:13pt; color:#444;">Student Notes Workbook · 学习笔记工作册</div>
+    <div style="font-size:9.5pt; color:#666; margin-top:4px;">Raine (1997) · Brendgen (2005) · McDermott (2008) · Hoefelmann (2006)</div>
+  </div>
+
+  <div style="display:flex; gap:14px; margin:10mm 0 6mm 0; font-size:9.5pt;">
+    <div style="flex:1;">Name 姓名: <span class="bl" style="min-width:150px;"></span></div>
+    <div style="flex:1;">Class 班级: <span class="bl" style="min-width:100px;"></span></div>
+    <div>Start date: <span class="bl" style="min-width:90px;"></span></div>
+  </div>
+
+  <div class="sec">How to use this workbook 使用方法</div>
+  <ol class="tight" style="line-height:1.45;">
+    <li><strong>Read one section</strong> of the courseware, then fill in the matching workbook page. 边读课件边填空。</li>
+    <li><strong>Write out AMSPRC</strong> for each study from memory after reading — Aim, Method, Sample, Procedure, Results, Conclusion.</li>
+    <li><strong>Check answers</strong> on p. 13 and tick the tracker below. 对答案并打卡。每页右上角标有对应课件章节。</li>
+  </ol>
+
+  <div class="sec">Syllabus map — what the exam can ask 大纲考点</div>
+  <table class="n">
+    <tr><th style="width:24%;">Syllabus</th><th>Content 内容</th><th style="width:28%;">Workbook pages</th></tr>
+    <tr><td><strong>AMSPRC</strong></td><td>Six-step structure: Aim · Method · Sample · Procedure · Results · Conclusion</td><td>p. 2</td></tr>
+    <tr><td><strong>Classic study</strong></td><td><span class="tag classic">CLASSIC</span> Raine et al. (1997) — PET scan of NGRI murderers</td><td>pp. 3–5</td></tr>
+    <tr><td><strong>Contemporary 1</strong></td><td><span class="tag contemp">CONTEMP</span> Brendgen et al. (2005) — twin study of aggression</td><td>pp. 6–7</td></tr>
+    <tr><td><strong>Contemporary 2</strong></td><td><span class="tag choice">CHOICE A</span> McDermott et al. (2008) — MAOA &amp; hot-sauce <strong>or</strong> <span class="tag choice">CHOICE B</span> Hoefelmann et al. (2006) — sleep &amp; lifestyle</td><td>pp. 8–9</td></tr>
+    <tr><td><strong>Exam skills</strong></td><td>AMSPRC answer writing · 2 / 4 / 8-mark structure · evaluation language</td><td>pp. 10–11</td></tr>
+    <tr><td><strong>Self-test</strong></td><td>Brain dump from memory · sentence patterns · answer key</td><td>pp. 12–13</td></tr>
+    <tr><td colspan="3" style="font-size:9pt; color:#555;">Exam format 考试形式: Paper 3 — one <strong>8-mark evaluate</strong> on Raine, one <strong>7-mark</strong> on a contemporary study (procedure 3 + evaluate 4). Always include numbers and named examples (AO3).</td></tr>
+  </table>
+
+  <div class="sec">Review tracker 复习打卡</div>
+  <div class="chk" style="line-height:2.0;">
+    <span class="c"></span>First pass — all blanks filled 第一遍填完 &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span><br>
+    <span class="c"></span>AMSPRC tables written from memory for all 4 studies 默写四篇研究的 AMSPRC &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span><br>
+    <span class="c"></span>Answer key checked — corrections in pen 对过答案并用笔订正 &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span><br>
+    <span class="c"></span>Brain dump page done from memory 合上笔记完成自测页 &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span>
+  </div>
+
+  <div class="pg-foot">Page 1 of 13</div>
+</div>
+
+<!-- ================= PAGE 2: §1 AMSPRC FRAMEWORK ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§1 · The AMSPRC framework 阅读研究论文的六字诀</span><span class="r">ANSWERS → 课件 §1</span></div>
+
+  <div class="box">
+    <div class="bx-t">What AMSPRC means 含义填空</div>
+    <strong>A</strong> = <span class="bl" style="min-width:140px;"></span><span class="hint">研究目的 Aim</span> — what were they trying to find out?<br>
+    <strong>M</strong> = <span class="bl" style="min-width:140px;"></span><span class="hint">研究方法 Method</span> — quasi-experiment / twin / questionnaire / etc.<br>
+    <strong>S</strong> = <span class="bl" style="min-width:140px;"></span><span class="hint">被试 Sample</span> — who took part, how many, how chosen<br>
+    <strong>P</strong> = <span class="bl" style="min-width:140px;"></span><span class="hint">实验流程 Procedure</span> — what they did, step by step<br>
+    <strong>R</strong> = <span class="bl" style="min-width:140px;"></span><span class="hint">结果 Results</span> — what they found (numbers!)<br>
+    <strong>C</strong> = <span class="bl" style="min-width:140px;"></span><span class="hint">结论 Conclusion</span> — what they said it meant
+  </div>
+
+  <p class="hint" style="margin:2px 0 8px 0;">黄金规则：无论 2 分 / 4 分 / 8 分题，写答案时永远按 AMSPRC 的顺序。考官改卷也是按这个顺序对照 mark scheme 的。</p>
+
+  <div class="sub">The four studies at a glance 四篇研究速览</div>
+  <table class="n">
+    <tr><th style="width:22%;">Study</th><th>Focus</th><th>Method</th><th>Exam role</th></tr>
+    <tr><td><span class="tag classic">Raine 1997</span></td><td>Brain abnormalities in NGRI murderers</td><td><span class="bl" style="min-width:80px;"></span><span class="hint">PET scan PET 扫描</span></td><td>Classic — 8-mark evaluation</td></tr>
+    <tr><td><span class="tag contemp">Brendgen 2005</span></td><td>Genes vs env in social &amp; physical aggression</td><td><span class="bl" style="min-width:80px;"></span><span class="hint">Twin study 双生子研究</span></td><td>Contemporary — describe + evaluate</td></tr>
+    <tr><td><span class="tag choice">McDermott 2008</span></td><td>MAOA gene + provocation</td><td><span class="bl" style="min-width:80px;"></span><span class="hint">Hot-sauce game 行为经济学</span></td><td>Contemporary choice A</td></tr>
+    <tr><td><span class="tag choice">Hoefelmann 2006</span></td><td>Lifestyle &amp; sleep in students</td><td><span class="bl" style="min-width:80px;"></span><span class="hint">Questionnaire 问卷</span></td><td>Contemporary choice B</td></tr>
+  </table>
+
+  <div class="sub">Mark-scheme logic — how marks map to AMSPRC 分数与 AMSPRC 的对应</div>
+  <table class="n">
+    <tr><th style="width:22%;">Question type</th><th>What you must do</th><th>AO1 (knowledge)</th><th>AO3 (evaluation)</th></tr>
+    <tr><td><strong>2-mark describe</strong></td><td>Pick any 2 of {Aim, Method, Sample, Procedure, Results, Conclusion}</td><td>2 marks</td><td>—</td></tr>
+    <tr><td><strong>3-mark procedure</strong></td><td>Just the Procedure step — 3 clear details</td><td>3 marks</td><td>—</td></tr>
+    <tr><td><strong>4-mark evaluate</strong></td><td>2 strengths/weaknesses, each with WHY (AO3)</td><td>—</td><td>4 marks</td></tr>
+    <tr><td><strong>7-mark evaluate</strong></td><td>(a) Procedure 3 marks + (b) 2 weaknesses with AO3 = 4 marks</td><td>3 marks</td><td>4 marks</td></tr>
+    <tr><td><strong>8-mark evaluate</strong></td><td>~4 evaluation points, each Point + Evidence + Why</td><td>1–2 marks</td><td>6–7 marks</td></tr>
+  </table>
+
+  <div class="box grey">
+    <div class="bx-t">Spot the AO3 trap 区分 AO1 和 AO3</div>
+    AO1 = <em>"Raine used a PET scan with 41 NGRI murderers."</em> (just stating a fact)<br>
+    AO3 = <em>"Using only NGRI murderers means the sample is unrepresentative of all violent offenders, so findings cannot generalise."</em> (fact + the implication)<br>
+    <span class="hint2">每写一条 evaluation 必须有 WHY；只罗列名词（如 "low ecological validity"）拿不到满分。</span>
+  </div>
+
+  <div class="pg-foot">Page 2 of 13</div>
+</div>
+
+<!-- ================= PAGE 3: §2a RAINE SAMPLE ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§2a · Raine (1997) — Sample &amp; design 被试与设计</span><span class="r">ANSWERS → 课件 §2</span></div>
+
+  <div class="box">
+    <div class="bx-t">One-line summary 一句话总结</div>
+    To investigate whether brain activity in <span class="bl" style="min-width:130px;"></span><span class="hint">NGRI murderers 因精神错杀人的凶手</span> differs from a control group of matched non-murderers, using a <span class="bl" style="min-width:80px;"></span><span class="hint">PET scan PET 扫描</span>.
+  </div>
+
+  <div class="sub">Sample breakdown — fill in the numbers 填空</div>
+  <table class="n">
+    <tr><th style="width:30%;"></th><th>Experimental group 实验组</th><th>Control group 对照组</th></tr>
+    <tr><td class="lbl">Who?</td><td>Murderers / <span class="bl" style="min-width:50px;"></span><span class="hint">manslaughter 误杀</span>, pleading NGRI</td><td>Non-murderers, <span class="bl" style="min-width:80px;"></span><span class="hint">matched 配对的</span> on age &amp; gender</td></tr>
+    <tr><td class="lbl">Total n</td><td><span class="bl" style="min-width:30px;"></span></td><td><span class="bl" style="min-width:30px;"></span></td></tr>
+    <tr><td class="lbl">Males / females</td><td><span class="bl" style="min-width:60px;"></span> / <span class="bl" style="min-width:30px;"></span></td><td><span class="bl" style="min-width:60px;"></span> / <span class="bl" style="min-width:30px;"></span></td></tr>
+    <tr><td class="lbl">Screened for</td><td>General health, physical exam, medical history, psychiatric interview</td><td>Excluded if history of <span class="bl" style="min-width:80px;"></span>, <span class="bl" style="min-width:80px;"></span><span class="hint">head trauma 头部创伤</span> or <span class="bl" style="min-width:80px;"></span></td></tr>
+  </table>
+
+  <div class="sub">Conditions inside the experimental group 实验组内部构成</div>
+  <table class="n">
+    <tr><th style="width:48%;">Diagnosis</th><th>How many</th><th style="width:30%;">Translation 中文</th></tr>
+    <tr><td><strong>Schizophrenia</strong></td><td><span class="bl" style="min-width:30px;"></span></td><td>精神分裂症</td></tr>
+    <tr><td><strong>Organic brain damage / head injury</strong></td><td><span class="bl" style="min-width:30px;"></span></td><td>器质性脑损伤/头部创伤</td></tr>
+    <tr><td><strong>Substance abusers</strong></td><td><span class="bl" style="min-width:30px;"></span></td><td>物质滥用者</td></tr>
+    <tr><td><strong>Affective disorder</strong></td><td><span class="bl" style="min-width:30px;"></span></td><td>情感障碍</td></tr>
+    <tr><td><strong>Epilepsy</strong></td><td><span class="bl" style="min-width:30px;"></span></td><td>癫痫</td></tr>
+    <tr><td><strong>Hyperactivity / learning disability</strong></td><td><span class="bl" style="min-width:30px;"></span></td><td>多动/学习障碍</td></tr>
+    <tr><td><strong>Passive-aggressive / paranoid personality disorder</strong></td><td><span class="bl" style="min-width:30px;"></span></td><td>被动攻击型/偏执型人格障碍</td></tr>
+  </table>
+  <p class="hint" style="margin:2px 0 0 0;">提示：加起来应该等于 41 ——核对一遍，错的就翻回课件 §2 改。</p>
+
+  <div class="sub">Standardisation — what was the same for everyone? 标准化（填空）</div>
+  <div class="box">
+    All participants remained <span class="bl" style="min-width:120px;"></span><span class="hint">medication-free 不用药</span> for <span class="bl" style="min-width:30px;"></span> weeks before the PET scan. This controls for the effect of <span class="bl" style="min-width:80px;"></span><span class="hint">medication 药物</span> on brain activity.
+  </div>
+
+  <div class="box grey">
+    <div class="bx-t">Exam practice 自己写 2 分 sample 题</div>
+    <em>"Describe the sample used by Raine et al. (1997)."</em> (2)<br>
+    写两句话，覆盖：① 每组人数 + 性别 + 配对 ② 实验组的 NGRI 身份（或对照组的排除标准）。<br>
+    <div class="wl"></div><div class="wl"></div>
+  </div>
+
+  <div class="pg-foot">Page 3 of 13</div>
+</div>
+
+<!-- ================= PAGE 4: §2b RAINE PROCEDURE ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§2b · Raine (1997) — Procedure 实验流程</span><span class="r">ANSWERS → 课件 §2</span></div>
+
+  <div class="box">
+    <div class="bx-t">What the PET scan actually measured PET 在量什么</div>
+    PET = <strong>Positron Emission Tomography</strong>（正电子发射断层扫描）. It measures the <span class="bl" style="min-width:90px;"></span><span class="hint">metabolic rate 代谢率</span> of different brain areas using a <span class="bl" style="min-width:110px;"></span><span class="hint">radioactive tracer 放射性示踪剂</span> (FDG). Active brain cells take up more glucose → more tracer → <span class="bl" style="min-width:80px;"></span><span class="hint">more signal 更多信号</span>.
+  </div>
+
+  <div class="sub">Put the procedure in order — number the steps 1–5 排序</div>
+  <table class="n">
+    <tr><th style="width:10%;">Order</th><th>Step</th></tr>
+    <tr><td style="text-align:center;"><span class="bl" style="min-width:24px;"></span></td><td><span class="bl" style="min-width:80px;"></span><span class="hint">CPT 持续执行任务</span> for 10 minutes — keeps attention active so brains are in the same state.</td></tr>
+    <tr><td style="text-align:center;"><span class="bl" style="min-width:24px;"></span></td><td>Practise the <span class="bl" style="min-width:80px;"></span> on a sequence of blurred numbers.</td></tr>
+    <tr><td style="text-align:center;"><span class="bl" style="min-width:24px;"></span></td><td>Inject the radioactive glucose tracer called <span class="bl" style="min-width:50px;"></span><span class="hint">FDG 氟脱氧葡萄糖</span>.</td></tr>
+    <tr><td style="text-align:center;"><span class="bl" style="min-width:24px;"></span></td><td>Continue on the CPT for another <span class="bl" style="min-width:30px;"></span> minutes.</td></tr>
+    <tr><td style="text-align:center;"><span class="bl" style="min-width:24px;"></span></td><td>Perform the <span class="bl" style="min-width:70px;"></span><span class="hint">PET scan PET 扫描</span> to measure metabolic rate.</td></tr>
+  </table>
+  <p class="hint" style="margin:2px 0 6px 0;">提示：答案在右边的 hint 区域里——但先自己排，再揭开看是否一致。</p>
+
+  <div class="sub">Why each step matters — match the reason 连线练习</div>
+  <table class="n">
+    <tr><th style="width:50%;">Step</th><th>Why it was done 目的</th></tr>
+    <tr><td>10-minute CPT practice</td><td>① So the brain is in a stable state during the scan → can compare <span class="bl" style="min-width:90px;"></span><span class="hint">fairly 公平地</span></td></tr>
+    <tr><td>FDG injection</td><td>② Radioactive tracer lights up <span class="bl" style="min-width:80px;"></span><span class="hint">active brain cells 活跃脑细胞</span></td></tr>
+    <tr><td>32-minute wait</td><td>③ Gives FDG time to be <span class="bl" style="min-width:80px;"></span><span class="hint">taken up 被吸收</span> by brain cells</td></tr>
+    <tr><td>PET scan</td><td>④ Measures <span class="bl" style="min-width:80px;"></span><span class="hint">metabolic rate 代谢率</span> (activity level) in each brain area</td></tr>
+  </table>
+
+  <div class="sub">Operationalisation — turn the concept into a number 把概念变成可测量的变量</div>
+  <div class="box">
+    The DV (因变量) was the <span class="bl" style="min-width:120px;"></span><span class="hint">metabolic rate 代谢率</span> in each brain area, measured in <span class="bl" style="min-width:90px;"></span><span class="hint">FDG uptake FDG 摄入量</span> units. The IV (自变量) was <span class="bl" style="min-width:90px;"></span><span class="hint">group membership 组别</span>: murderer vs control.
+  </div>
+
+  <div class="box grey">
+    <div class="bx-t">Exam sentence builder 必背句式</div>
+    "Participants were injected with FDG, a radioactive glucose analogue. Active brain cells absorb more FDG, so the PET scan indicates which brain areas are <em><span class="bl" style="min-width:110px;"></span></em> by showing where tracer <span class="bl" style="min-width:80px;"></span><span class="hint">accumulates 累积</span> is highest." (4 marks)
+    <div class="wl"></div>
+  </div>
+
+  <div class="pg-foot">Page 4 of 13</div>
+</div>
+
+<!-- ================= PAGE 5: §2c RAINE RESULTS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§2c · Raine (1997) — Results &amp; brain areas 结果与脑区</span><span class="r">ANSWERS → 课件 §2</span></div>
+
+  <div class="box">
+    <div class="bx-t">Direction of effect 方向填空</div>
+    Murderers showed <strong>lower</strong> activity in some areas, <strong>higher</strong> activity in others, and <strong>identical / asymmetric</strong> activity in yet others. The key brain area for self-control is the <span class="bl" style="min-width:120px;"></span><span class="hint">prefrontal cortex 前额叶皮层</span>.
+  </div>
+
+  <div class="sub">Brain-area results table — fill in direction 填方向</div>
+  <table class="n">
+    <tr><th style="width:30%;">Brain area</th><th>Direction in murderers</th><th>What it might mean</th></tr>
+    <tr><td><strong>Prefrontal cortex</strong>（前额叶皮层）</td><td><span class="bl" style="min-width:90px;"></span></td><td>Impulsivity, poor self-control, can't learn from consequences</td></tr>
+    <tr><td><strong>Parietal areas</strong>（顶叶）<br><span class="hint">incl. left angular gyrus</span></td><td><span class="bl" style="min-width:90px;"></span></td><td><span class="bl" style="min-width:90px;"></span><span class="hint">attention 注意 &amp; language 语言</span></td></tr>
+    <tr><td><strong>Occipital lobe</strong>（枕叶）</td><td><span class="bl" style="min-width:90px;"></span></td><td>Visual processing — less directly linked to violence</td></tr>
+    <tr><td><strong>Temporal lobe</strong>（颞叶）</td><td><span class="bl" style="min-width:90px;"></span></td><td>No difference found</td></tr>
+    <tr><td><strong>Corpus callosum</strong>（胼胝体）</td><td><span class="bl" style="min-width:90px;"></span></td><td>Reduced <span class="bl" style="min-width:90px;"></span><span class="hint">communication 沟通</span> between hemispheres</td></tr>
+    <tr><td><strong>Amygdala</strong>（杏仁核）</td><td><span class="bl" style="min-width:90px;"></span></td><td>Emotion &amp; <span class="bl" style="min-width:80px;"></span><span class="hint">fear 恐惧</span> regulation</td></tr>
+    <tr><td><strong>Hippocampus</strong>（海马）</td><td><span class="bl" style="min-width:90px;"></span></td><td>Learning &amp; <span class="bl" style="min-width:80px;"></span><span class="hint">memory 记忆</span></td></tr>
+    <tr><td><strong>Thalamus</strong>（丘脑）</td><td><span class="bl" style="min-width:90px;"></span><span class="hint">(right side)</span></td><td>Sensory relay, <span class="bl" style="min-width:80px;"></span><span class="hint">arousal 唤醒</span></td></tr>
+  </table>
+  <p class="hint" style="margin:2px 0 0 0;">填法提示：① Lower / Higher / Identical / Asymmetric。② Asymmetric = left 与 right 不一样（一边高一边低）。</p>
+
+  <div class="sub">Conclusion in one sentence 结论一句话</div>
+  <div class="box">
+    Raine concluded that NGRI murderers showed brain dysfunction in areas linked to <span class="bl" style="min-width:90px;"></span><span class="hint">impulsivity 冲动</span> and <span class="bl" style="min-width:90px;"></span><span class="hint">emotion regulation 情绪调节</span>. However, this is only a <span class="bl" style="min-width:80px;"></span><span class="hint">correlation 相关</span> — it does not prove brain differences <span class="bl" style="min-width:60px;"></span><span class="hint">cause 导致</span> murder.
+  </div>
+
+  <div class="two">
+    <div>
+      <div class="kicker">✅ Strengths 优点（写关键词）</div>
+      <ul class="tight">
+        <li><strong>Large sample:</strong> 41 NGRI murderers is <span class="bl" style="min-width:70px;"></span><span class="hint">large for this population 对这类人群算大</span>.</li>
+        <li><strong>Matched controls:</strong> same age &amp; gender → improves <span class="bl" style="min-width:80px;"></span><span class="hint">internal validity 内部效度</span>.</li>
+        <li><strong>Standardised:</strong> same CPT + PET → <span class="bl" style="min-width:80px;"></span><span class="hint">objective 客观</span> comparison.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="kicker">❌ Weaknesses 缺点</div>
+      <ul class="tight">
+        <li><strong>Unrepresentative:</strong> NGRI murderers are <span class="bl" style="min-width:80px;"></span><span class="hint">atypical 非典型的</span> violent offenders.</li>
+        <li><strong>Correlation:</strong> lower brain activity could be the <span class="bl" style="min-width:80px;"></span><span class="hint">result 结果</span> of violence, not the cause.</li>
+        <li><strong>Ethics:</strong> PET exposes controls to <span class="bl" style="min-width:80px;"></span><span class="hint">radiation 辐射</span> they didn't clinically need.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pg-foot">Page 5 of 13</div>
+</div>
+
+<!-- ================= PAGE 6: §3a BRENDGEN SAMPLE ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§3a · Brendgen (2005) — Twin design 双生子研究设计</span><span class="r">ANSWERS → 课件 §3</span></div>
+
+  <div class="box">
+    <div class="bx-t">Twin logic 核心逻辑（必背）</div>
+    MZ (identical, 同卵) share <span class="bl" style="min-width:40px;"></span><span class="hint">100%</span> of genes; DZ (non-identical, 异卵) share about <span class="bl" style="min-width:40px;"></span><span class="hint">50%</span>. If MZ twins are more <span class="bl" style="min-width:80px;"></span><span class="hint">similar 相似</span> on a trait than DZ twins, <span class="bl" style="min-width:80px;"></span><span class="hint">genes 基因</span> are likely involved. If MZ ≈ DZ, the trait is more <span class="bl" style="min-width:90px;"></span><span class="hint">environmental 环境</span>.
+  </div>
+
+  <div class="sub">Sample breakdown 样本构成（填空）</div>
+  <table class="n">
+    <tr><th style="width:42%;">Source</th><th colspan="2">Detail</th></tr>
+    <tr><td>Where did they come from?</td><td colspan="2"><span class="bl" style="min-width:90px;"></span><span class="hint">Quebec Newborn Twin Study (QNTS)</span></td></tr>
+    <tr><td>When were they born?</td><td colspan="2">November <span class="bl" style="min-width:30px;"></span> – July <span class="bl" style="min-width:30px;"></span></td></tr>
+    <tr><td>Initial sample</td><td colspan="2"><span class="bl" style="min-width:40px;"></span> twin pairs tested</td></tr>
+    <tr><td>Final sample with complete data</td><td colspan="2"><span class="bl" style="min-width:40px;"></span><span class="hint">234 pairs</span></td></tr>
+  </table>
+
+  <div class="sub">Breakdown of the 234 pairs — fill the 5 cells 五组样本构成</div>
+  <table class="n">
+    <tr><th style="width:42%;">Sub-group</th><th style="width:18%;">Pairs</th><th style="width:40%;">Genetic overlap 共享基因</th></tr>
+    <tr><td>MZ males</td><td><span class="bl" style="min-width:30px;"></span></td><td><span class="bl" style="min-width:50px;"></span><span class="hint">100%</span></td></tr>
+    <tr><td>MZ females</td><td><span class="bl" style="min-width:30px;"></span></td><td><span class="bl" style="min-width:50px;"></span><span class="hint">100%</span></td></tr>
+    <tr><td>DZ males (same sex)</td><td><span class="bl" style="min-width:30px;"></span></td><td><span class="bl" style="min-width:50px;"></span><span class="hint">~50%</span></td></tr>
+    <tr><td>DZ females (same sex)</td><td><span class="bl" style="min-width:30px;"></span></td><td><span class="bl" style="min-width:50px;"></span><span class="hint">~50%</span></td></tr>
+    <tr><td>DZ mixed-sex</td><td><span class="bl" style="min-width:30px;"></span></td><td><span class="bl" style="min-width:50px;"></span><span class="hint">~50%</span></td></tr>
+    <tr><td><strong>Total</strong></td><td><strong>234</strong></td><td>—</td></tr>
+  </table>
+
+  <div class="sub">Procedure — what they did 流程</div>
+  <ul class="tight">
+    <li><strong>Longitudinal design</strong>: data collected at <span class="bl" style="min-width:90px;"></span><span class="hint">5, 18, 30, 48, 60 months</span> + again at age <span class="bl" style="min-width:30px;"></span><span class="hint">6</span> (focus).</li>
+    <li><strong>Two rating sources:</strong> <span class="bl" style="min-width:90px;"></span><span class="hint">teacher 教师评分</span> ratings (spring term) + <span class="bl" style="min-width:90px;"></span><span class="hint">peer 同伴评分</span> ratings by classmates.</li>
+    <li><strong>Scales used:</strong> PSBS-T (Crick et al., 1997) + Direct &amp; Indirect Aggression Scales (Björkvist et al., 1992).</li>
+    <li><strong>Item scoring:</strong> <span class="bl" style="min-width:40px;"></span>-point scale: 0 = never, 1 = sometimes, 2 = <span class="bl" style="min-width:50px;"></span><span class="hint">often 经常</span>.</li>
+  </ul>
+
+  <div class="box grey">
+    <div class="bx-t">Why longitudinal matters 为什么是 longitudinal</div>
+    Collecting data at multiple time points lets researchers track <em><span class="bl" style="min-width:90px;"></span></em> over development, instead of just one snapshot. But it also means more participants drop out — here, 322 → <span class="bl" style="min-width:30px;"></span> pairs (about <span class="bl" style="min-width:30px;"></span>% lost).
+  </div>
+
+  <div class="pg-foot">Page 6 of 13</div>
+</div>
+
+<!-- ================= PAGE 7: §3b BRENDGEN RESULTS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§3b · Brendgen (2005) — Results 结果</span><span class="r">ANSWERS → 课件 §3</span></div>
+
+  <div class="box">
+    <div class="bx-t">Two types of aggression 两种攻击行为</div>
+    <strong>Physical aggression</strong>（身体攻击）= hitting, fighting, kicking.<br>
+    <strong>Social aggression</strong>（社会性攻击）= ignoring others, spreading rumours, threatening to withdraw friendship. Can be <strong>overt</strong>（公开的）or <strong>covert</strong>（隐蔽的）.
+  </div>
+
+  <div class="sub">MZ vs DZ correlations — fill the conclusion 填空</div>
+  <table class="n">
+    <tr><th style="width:32%;">Type of aggression</th><th>MZ similarity</th><th>DZ similarity</th><th>Conclusion</th></tr>
+    <tr>
+      <td><strong>Physical aggression</strong></td>
+      <td><span class="bl" style="min-width:80px;"></span><span class="hint">much higher 远高于</span></td>
+      <td>lower</td>
+      <td><span class="bl" style="min-width:80px;"></span><span class="hint">strong genetic component 强遗传成分</span></td>
+    </tr>
+    <tr>
+      <td><strong>Social aggression</strong></td>
+      <td><span class="bl" style="min-width:80px;"></span></td>
+      <td><span class="bl" style="min-width:80px;"></span></td>
+      <td>Better explained by <span class="bl" style="min-width:90px;"></span><span class="hint">shared environment 共同环境</span></td>
+    </tr>
+    <tr>
+      <td>Physical–social correlation</td>
+      <td colspan="2">Correlation found, best explained by <span class="bl" style="min-width:70px;"></span></td>
+      <td>General tendency to be aggressive may be <span class="bl" style="min-width:70px;"></span><span class="hint">genetic 遗传</span>, but <em>expression</em> is environmental</td>
+    </tr>
+  </table>
+
+  <div class="sub">Direction of influence 方向填空</div>
+  <div class="box">
+    <strong>Physical aggression</strong> may <span class="bl" style="min-width:80px;"></span><span class="hint">lead to 导致</span> social aggression, but <span class="bl" style="min-width:80px;"></span><span class="hint">not the other way round 反过来不会</span>.<br>
+    Reason: as children grow, they develop <span class="bl" style="min-width:80px;"></span><span class="hint">language/cognitive skills 语言与认知能力</span> and learn more <span class="bl" style="min-width:90px;"></span><span class="hint">socially acceptable 社交上可接受的</span> ways to express the same aggressive tendency.
+  </div>
+
+  <div class="sub">Evaluation 评价（填空）</div>
+  <div class="two">
+    <div>
+      <div class="kicker">✅ Strengths</div>
+      <ul class="tight">
+        <li><strong>Two rating sources</strong> (teacher + peer) → <span class="bl" style="min-width:80px;"></span><span class="hint">triangulation 三角互证</span> increases validity.</li>
+        <li><strong>Longitudinal</strong> data from <span class="bl" style="min-width:60px;"></span><span class="hint">early childhood 婴幼儿期</span> to age 6.</li>
+        <li><strong>Large sample:</strong> 234 twin pairs.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="kicker">❌ Weaknesses</div>
+      <ul class="tight">
+        <li><strong>Small sub-groups</strong> when split by sex → hard to <span class="bl" style="min-width:80px;"></span><span class="hint">generalise 推广</span>.</li>
+        <li><strong>Peer ratings</strong> by 6-year-olds may be <span class="bl" style="min-width:80px;"></span><span class="hint">unreliable 不可靠</span>.</li>
+        <li><strong>Zygosity check:</strong> not all twins had a <span class="bl" style="min-width:70px;"></span><span class="hint">DNA test DNA 检测</span>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box grey">
+    <div class="bx-t">Exam sentence builder 必背句式</div>
+    "Brendgen et al. (2005) found that MZ twins were <em><span class="bl" style="min-width:70px;"></span></em> more alike than DZ twins on teacher ratings of physical aggression, suggesting a <span class="bl" style="min-width:70px;"></span> influence. For social aggression, MZ and DZ similarities were <span class="bl" style="min-width:70px;"></span>, suggesting it is more <span class="bl" style="min-width:80px;"></span>."
+    <div class="wl"></div>
+  </div>
+
+  <div class="pg-foot">Page 7 of 13</div>
+</div>
+
+<!-- ================= PAGE 8: §4 McDERMOTT ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§4 · McDermott (2008) — MAOA &amp; hot sauce 行为经济学实验</span><span class="r">ANSWERS → 课件 §4</span></div>
+
+  <div class="box">
+    <div class="bx-t">MAOA in one sentence 一句话</div>
+    The <strong>MAOA gene</strong>（单胺氧化酶 A 基因）breaks down neurotransmitters like serotonin. There are two variants: <strong>MAOA-L</strong> (low activity, <span class="bl" style="min-width:90px;"></span><span class="hint">higher aggression 更高攻击性</span>) and <strong>MAOA-H</strong> (high activity, lower aggression).
+  </div>
+
+  <div class="sub">Sample — fill in the key numbers 关键数字</div>
+  <table class="n">
+    <tr><th style="width:30%;">Item</th><th>Detail</th></tr>
+    <tr><td class="lbl">Participants</td><td><span class="bl" style="min-width:40px;"></span> male college students</td></tr>
+    <tr><td class="lbl">Why only males?</td><td>MAOA is on the <span class="bl" style="min-width:40px;"></span><span class="hint">X chromosome X 染色体</span> — harder to assign activity in females</td></tr>
+    <tr><td class="lbl">MAOA-L carriers</td><td><span class="bl" style="min-width:50px;"></span><span class="hint">27%</span> of the sample</td></tr>
+    <tr><td class="lbl">MAOA-H carriers</td><td>remaining ~<span class="bl" style="min-width:50px;"></span><span class="hint">73%</span></td></tr>
+  </table>
+
+  <div class="sub">Procedure — order the 3 phases 排序</div>
+  <table class="n">
+    <tr><th style="width:10%;">Order</th><th>Phase</th><th>What happens</th></tr>
+    <tr><td style="text-align:center;"><span class="bl" style="min-width:24px;"></span></td><td><strong>Quiz phase</strong></td><td>5 vocab questions; 20 pts each; 10 pts = US$<span class="bl" style="min-width:30px;"></span>; max = US$10</td></tr>
+    <tr><td style="text-align:center;"><span class="bl" style="min-width:24px;"></span></td><td><strong>Stealing phase</strong></td><td>"Opponent" steals <span class="bl" style="min-width:30px;"></span><span class="hint">80%</span> (high take) or <span class="bl" style="min-width:30px;"></span> (low take) of earnings</td></tr>
+    <tr><td style="text-align:center;"><span class="bl" style="min-width:24px;"></span></td><td><strong>Punishment phase</strong></td><td>Force "opponent" to drink <span class="bl" style="min-width:80px;"></span><span class="hint">hot sauce 辣椒酱</span> — DV = amount allocated</td></tr>
+  </table>
+  <p class="hint" style="margin:2px 0 4px 0;">重要：所谓"opponent"其实根本不存在，是电脑生成的——这是 deception（欺骗）。每个被试玩 4 轮，每轮一个"对手"。</p>
+
+  <div class="sub">Results — fill in the %s (look at the figure embedded in the courseware §4)</div>
+  <table class="n">
+    <tr><th style="width:42%;">Condition</th><th style="width:14%;">MAOA-L</th><th style="width:14%;">MAOA-H</th><th>Interpretation</th></tr>
+    <tr><td>80% stolen — gave <strong>some</strong> hot sauce</td><td><span class="bl" style="min-width:40px;"></span>%</td><td><span class="bl" style="min-width:40px;"></span>%</td><td>MAOA-L more aggressive under high provocation</td></tr>
+    <tr><td>20% stolen — gave <strong>some</strong> hot sauce</td><td><span class="bl" style="min-width:40px;"></span>%</td><td><span class="bl" style="min-width:40px;"></span>%</td><td>Smaller difference under low provocation</td></tr>
+    <tr><td>80% stolen — gave <strong>maximum</strong> hot sauce</td><td><span class="bl" style="min-width:40px;"></span>%</td><td><span class="bl" style="min-width:40px;"></span>%</td><td><span class="bl" style="min-width:80px;"></span><span class="hint">Strong effect 大效应</span> under high provocation</td></tr>
+    <tr><td>20% stolen — gave <strong>maximum</strong> hot sauce</td><td><span class="bl" style="min-width:40px;"></span>%</td><td><span class="bl" style="min-width:40px;"></span>%</td><td>Weak effect under low provocation</td></tr>
+  </table>
+  <p class="hint" style="margin:2px 0 0 0;">提示：80% stolen 时的 p &lt; <span class="bl" style="min-width:30px;"></span>（significant），20% stolen 时 p = <span class="bl" style="min-width:30px;"></span>（not significant）。</p>
+
+  <div class="box">
+    <div class="bx-t">Conclusion — gene × environment interaction</div>
+    MAOA-L individuals are <em>not</em> automatically aggressive. They become more aggressive <strong>only when provoked</strong>. This is a <span class="bl" style="min-width:120px;"></span><span class="hint">gene–environment interaction 基因-环境交互</span>: genes + provocation together produce the effect, neither alone.
+  </div>
+
+  <div class="pg-foot">Page 8 of 13</div>
+</div>
+
+<!-- ================= PAGE 9: §5 HOEFELMANN ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§5 · Hoefelmann (2006) — Sleep &amp; lifestyle questionnaire 睡眠与生活方式</span><span class="r">ANSWERS → 课件 §5</span></div>
+
+  <div class="box">
+    <div class="bx-t">Aim in one sentence 目标一句话</div>
+    To investigate which <span class="bl" style="min-width:90px;"></span><span class="hint">lifestyle factors 生活方式因素</span> are associated with the quality and <span class="bl" style="min-width:90px;"></span><span class="hint">duration 时长</span> of sleep in high-school students.
+  </div>
+
+  <div class="sub">Sample — fill in the details</div>
+  <table class="n">
+    <tr><th style="width:38%;">Item</th><th>Detail</th></tr>
+    <tr><td class="lbl">Originally selected</td><td>~<span class="bl" style="min-width:50px;"></span> students from <span class="bl" style="min-width:30px;"></span> schools in Brazil</td></tr>
+    <tr><td class="lbl">Cities</td><td><span class="bl" style="min-width:80px;"></span><span class="hint">Florianópolis 南部</span> &amp; <span class="bl" style="min-width:60px;"></span><span class="hint">Recife 北部</span></td></tr>
+    <tr><td class="lbl">Age range</td><td><span class="bl" style="min-width:30px;"></span> – <span class="bl" style="min-width:30px;"></span> years</td></tr>
+    <tr><td class="lbl">Type of school</td><td><span class="bl" style="min-width:80px;"></span><span class="hint">night classes 夜校</span> at public schools</td></tr>
+    <tr><td class="lbl">Completed both assessments</td><td><span class="bl" style="min-width:40px;"></span> students</td></tr>
+  </table>
+
+  <div class="sub">Two research designs — fill the gaps 两种设计</div>
+  <table class="n">
+    <tr><th style="width:30%;">Design</th><th>When it was used</th><th>What it compared 比较什么</th></tr>
+    <tr><td><strong>Cross-sectional</strong>（横断）</td><td>March <span class="bl" style="min-width:30px;"></span></td><td>Variables at <span class="bl" style="min-width:80px;"></span><span class="hint">a single time point 单一时间点</span></td></tr>
+    <tr><td><strong>Prospective</strong>（前瞻/纵向）</td><td>March &amp; December <span class="bl" style="min-width:30px;"></span></td><td>Same participants <span class="bl" style="min-width:80px;"></span><span class="hint">over 9 months 9 个月内</span></td></tr>
+  </table>
+
+  <div class="sub">Results — fill the 4 cells 四个结果</div>
+  <table class="n">
+    <tr><th style="width:38%;">Measure</th><th style="width:18%;">Cross-sectional</th><th style="width:18%;">Prospective</th><th>Key finding</th></tr>
+    <tr><td><strong>Poor</strong> sleep quality</td><td><span class="bl" style="min-width:50px;"></span>%</td><td><span class="bl" style="min-width:50px;"></span>%</td><td>High &amp; stable</td></tr>
+    <tr><td><strong>Good</strong> sleep quality</td><td><span class="bl" style="min-width:50px;"></span>%</td><td><span class="bl" style="min-width:50px;"></span>%</td><td>High &amp; stable</td></tr>
+    <tr><td>Sleep <strong>&lt; 8</strong> hours</td><td><span class="bl" style="min-width:50px;"></span>%</td><td><span class="bl" style="min-width:50px;"></span>%</td><td>Most had <span class="bl" style="min-width:80px;"></span><span class="hint">insufficient sleep 睡眠不足</span></td></tr>
+    <tr><td>Sleep <strong>≥ 8</strong> hours</td><td><span class="bl" style="min-width:50px;"></span>%</td><td><span class="bl" style="min-width:50px;"></span>%</td><td>Only a minority had <span class="bl" style="min-width:80px;"></span><span class="hint">sufficient sleep 充足睡眠</span></td></tr>
+  </table>
+  <p class="hint" style="margin:2px 0 0 0;">提示：cross-sectional 看到 lifestyle ↔ sleep 有关联，但 prospective 9 个月后没有证实 → correlational, not causal.</p>
+
+  <div class="sub">Cross-sectional vs prospective — what changed? 设计差异导致结果差异</div>
+  <div class="box">
+    <strong>Cross-sectional</strong> found associations (e.g. higher <span class="bl" style="min-width:80px;"></span><span class="hint">snack consumption 零食摄入</span> → poor sleep).<br>
+    <strong>Prospective</strong> found <strong>none</strong> of these held up over 9 months. This means the cross-sectional links are probably <span class="bl" style="min-width:80px;"></span><span class="hint">correlational 相关的</span>, not <span class="bl" style="min-width:80px;"></span><span class="hint">causal 因果的</span>.
+  </div>
+
+  <div class="pg-foot">Page 9 of 13</div>
+</div>
+
+<!-- ================= PAGE 10: §6 EXAM PRACTICE 1 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§6 · Exam Practice 1 — Raine evaluation (8 marks) 8 分评价题</span><span class="r">采分点 → 课件 §6</span></div>
+
+  <div class="q">
+    <strong>Question (8 marks):</strong> Evaluate Raine et al.'s (1997) study of brain activity in murderers pleading NGRI. In your answer you should consider the strengths and weaknesses of the study.
+  </div>
+
+  <div class="sub">Plan first — 4 evaluation points × (Point + Evidence + Why) 4 个评价点框架</div>
+  <table class="n">
+    <tr><th style="width:8%;">#</th><th>Point 评价点</th><th>Evidence from Raine 证据</th><th>Why (AO3) 为什么是优/缺点</th></tr>
+    <tr><td>1</td><td><span class="bl" style="min-width:80px;"></span><span class="hint">strength 优点</span></td><td><span class="bl" style="min-width:120px;"></span></td><td><span class="bl" style="min-width:120px;"></span></td></tr>
+    <tr><td>2</td><td><span class="bl" style="min-width:80px;"></span></td><td><span class="bl" style="min-width:120px;"></span></td><td><span class="bl" style="min-width:120px;"></span></td></tr>
+    <tr><td>3</td><td><span class="bl" style="min-width:80px;"></span><span class="hint">weakness 缺点</span></td><td><span class="bl" style="min-width:120px;"></span></td><td><span class="bl" style="min-width:120px;"></span></td></tr>
+    <tr><td>4</td><td><span class="bl" style="min-width:80px;"></span></td><td><span class="bl" style="min-width:120px;"></span></td><td><span class="bl" style="min-width:120px;"></span></td></tr>
+  </table>
+
+  <div class="sub">Write the 8-mark answer on the lines below 用下面的空格写完整答案</div>
+  <div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div>
+
+  <div class="box grey">
+    <div class="bx-t">Method marks 方法分提醒</div>
+    考官按段落给分：① 一段 AO1 简要描述（study + sample）→ 1–2 分 ② 每段 Point + Evidence + Why → 1 分 ③ 全篇 ~4 段 AO3 + conclusion → 余下分数。<br>
+    <span class="hint2">每段至少三句话（POE 结构）才稳拿满分；只写"low ecological validity"这种关键词不算 AO3。</span>
+  </div>
+
+  <div class="sub">Self-mark 自评对照</div>
+  <div class="chk" style="line-height:2.0;">
+    <span class="c"></span>AO1: 1–2 句描述（含 41+41 + PET + NGRI）<br>
+    <span class="c"></span>AO3: 2 strengths × POE（large sample / matched / standardised）<br>
+    <span class="c"></span>AO3: 2 weaknesses × POE（unrepresentative / correlation / ethics）<br>
+    <span class="c"></span>Conclusion: "useful evidence but cannot establish causation"
+  </div>
+
+  <div class="pg-foot">Page 10 of 13</div>
+</div>
+
+<!-- ================= PAGE 11: §6 EXAM PRACTICE 2 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§6 · Exam Practice 2 — Contemporary study (7 marks) 7 分选择题</span><span class="r">采分点 → 课件 §6</span></div>
+
+  <div class="q">
+    During your studies of biological psychology, you will have learned about one of the following contemporary studies: McDermott et al. (2008) or Hoefelmann et al. (2006).<br>
+    <strong>(a)</strong> Describe the procedure of your chosen study. (3)<br>
+    <strong>(b)</strong> Explain two weaknesses of your chosen contemporary study in terms of validity. (4)
+  </div>
+
+  <div class="sub">Pick one 选一个 — circle or tick</div>
+  <div class="chk" style="line-height:2.0;">
+    <span class="c"></span>McDermott (2008) — MAOA &amp; hot sauce &nbsp;&nbsp; <span class="c"></span>Hoefelmann (2006) — sleep &amp; lifestyle
+  </div>
+
+  <div class="sub">(a) Describe the procedure (3 marks) — write 3 clear steps</div>
+  <div class="wl"></div><div class="wl"></div><div class="wl"></div>
+
+  <div class="sub">(b) Two weaknesses of validity (4 marks) — POE × 2</div>
+  <table class="n">
+    <tr><th style="width:8%;">#</th><th>Weakness</th><th>Why it reduces validity (AO3)</th></tr>
+    <tr><td>1</td><td><span class="bl" style="min-width:90px;"></span></td><td><span class="bl" style="min-width:160px;"></span></td></tr>
+    <tr><td>2</td><td><span class="bl" style="min-width:90px;"></span></td><td><span class="bl" style="min-width:160px;"></span></td></tr>
+  </table>
+
+  <div class="box grey">
+    <div class="bx-t">If you picked McDermott — 三个可选 weakness 提示</div>
+    ① <strong>Low ecological validity:</strong> forcing an unseen opponent to drink hot sauce is not real-life aggression → findings don't generalise to everyday behaviour.<br>
+    ② <strong>Deception:</strong> participants believed there was a real opponent → ethical issues, task feels artificial.<br>
+    ③ <strong>Sample bias:</strong> male college students only → cannot generalise to females or non-students.
+  </div>
+  <div class="box grey">
+    <div class="bx-t">If you picked Hoefelmann — 三个可选 weakness 提示</div>
+    ① <strong>Self-report bias:</strong> sleep &amp; lifestyle all self-reported → may be inaccurate (social desirability / poor recall).<br>
+    ② <strong>Night-school sample:</strong> only night-class students → not generalisable to day-school students.<br>
+    ③ <strong>Correlational:</strong> cannot establish causation between lifestyle &amp; sleep (cross-sectional links did not replicate in prospective analysis).
+  </div>
+
+  <div class="pg-foot">Page 11 of 13</div>
+</div>
+
+<!-- ================= PAGE 12: BRAIN DUMP ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Brain dump 自测 — close the courseware, use only the prompts 合上课件只看提示词</span><span class="r">CH18 NOTES</span></div>
+
+  <ul class="tight">
+    <li>AMSPRC — what does each letter stand for? <div class="wl" style="height:16pt;"></div></li>
+    <li>Raine — sample (n, gender, matching, exclusions): <div class="wl" style="height:16pt;"></div></li>
+    <li>Raine — procedure in 4 steps from CPT to PET: <div class="wl" style="height:16pt;"></div><div class="wl" style="height:16pt;"></div></li>
+    <li>Raine — 4 key brain areas and what was found (lower/higher/asymmetric): <div class="wl" style="height:16pt;"></div><div class="wl" style="height:16pt;"></div></li>
+    <li>Brendgen — MZ vs DZ logic (n, similarity rule, what each implies): <div class="wl" style="height:16pt;"></div></li>
+    <li>Brendgen — physical vs social aggression findings + direction: <div class="wl" style="height:16pt;"></div><div class="wl" style="height:16pt;"></div></li>
+    <li>McDermott — MAOA-L vs MAOA-H + the 3-phase hot-sauce procedure: <div class="wl" style="height:16pt;"></div></li>
+    <li>McDermott — 4 result cells (80%/20% stolen × some/max hot sauce): <div class="wl" style="height:16pt;"></div><div class="wl" style="height:16pt;"></div></li>
+    <li>Hoefelmann — sample (n, cities, age, type of school) + two designs: <div class="wl" style="height:16pt;"></div><div class="wl" style="height:16pt;"></div></li>
+    <li>Hoefelmann — why did cross-sectional results NOT replicate prospectively? <div class="wl" style="height:16pt;"></div></li>
+  </ul>
+
+  <div class="sec" style="margin-top:6px;">Exam sentences to memorise 背下来的句式</div>
+  <table class="n">
+    <tr><th style="width:34%;">When asked…</th><th>Sentence pattern 句式</th></tr>
+    <tr><td>Describe the sample (2)</td><td>"The sample consisted of <span class="bl" style="min-width:50px;"></span> [group A] and <span class="bl" style="min-width:50px;"></span> matched controls; participants were screened for <span class="bl" style="min-width:80px;"></span> and remained <span class="bl" style="min-width:80px;"></span>."</td></tr>
+    <tr><td>Describe the procedure (3)</td><td>"Participants first <span class="bl" style="min-width:80px;"></span>, then were given <span class="bl" style="min-width:80px;"></span>, and finally <span class="bl" style="min-width:80px;"></span>; the DV was <span class="bl" style="min-width:80px;"></span>."</td></tr>
+    <tr><td>Interpret twin data (Brendgen)</td><td>"MZ twins were <span class="bl" style="min-width:70px;"></span> more similar than DZ twins on <span class="bl" style="min-width:70px;"></span>, suggesting a <span class="bl" style="min-width:60px;"></span> influence; but MZ ≈ DZ on <span class="bl" style="min-width:70px;"></span> → <span class="bl" style="min-width:70px;"></span>."</td></tr>
+    <tr><td>Evaluate validity (4)</td><td>"A weakness is <span class="bl" style="min-width:70px;"></span> because <span class="bl" style="min-width:80px;"></span>, which means <span class="bl" style="min-width:80px;"></span>."</td></tr>
+  </table>
+
+  <div class="box grey">
+    <div class="bx-t">Final self-check 最后自问</div>
+    合上笔记,能否在 10 分钟内默写出: ① Raine 41+41 + CPT + FDG + 32 分钟 + PET? ② Brendgen MZ ≈ DZ (social) vs MZ &gt; DZ (physical)? ③ McDermott 80%-stolen L=75%/H=62%? ④ Hoefelmann 989 学生 + 54.3% 好眠 + 76.7% 不足? 卡住就回课件对应章节重看。
+  </div>
+
+  <div class="pg-foot">Page 12 of 13</div>
+</div>
+
+<!-- ================= PAGE 13: ANSWER KEY ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Answer key 答案速查（先做完再看！）</span><span class="r">CH18 NOTES</span></div>
+
+  <div style="font-size:8.5pt; line-height:1.6; columns:2; column-gap:14px;">
+    <p style="margin:0 0 5px 0;"><strong>p.1</strong> — 怎么用: 读一节填一页 · 默写 AMSPRC · 对答案打卡. 大纲: AMSPRC p.2 / Raine pp.3–5 / Brendgen pp.6–7 / McDermott p.8 / Hoefelmann p.9 / Exam pp.10–11 / Self-test pp.12–13.</p>
+
+    <p style="margin:0 0 5px 0;"><strong>p.2</strong> — Aim 研究目的 · Method 方法 · Sample 被试 · Procedure 流程 · Results 结果 · Conclusion 结论. 四研究: PET scan / Twin study / Hot-sauce game / Questionnaire. 经典 Raine · 当代 Brendgen · 选 McDermott 或 Hoefelmann.</p>
+
+    <p style="margin:0 0 5px 0;"><strong>p.3</strong> — NGRI · PET · 41 · 41 · 39 males / 2 females (both groups) · matched · seizures · head trauma · substance misuse · 内部构成: 6 (schizophrenia) · 23 (organic brain damage / head injury) · 3 (substance abusers) · 2 (affective disorder) · 2 (epilepsy) · 3 (hyperactivity / learning disability) · 2 (passive-aggressive / paranoid) → 加起来 = 41. medication-free · 2 weeks · medication. 2 分 sample 题答案: 一句话人数 + 配对, 一句话 NGRI / 排除.</p>
+
+    <p style="margin:0 0 5px 0;"><strong>p.4</strong> — 顺序: ② practise CPT (10 min) → ① CPT (10 min) → ③ FDG injection → ④ CPT another 32 min → ⑤ PET scan. 目的连线: practice → fairly; FDG → active brain cells; 32-min wait → taken up; PET → metabolic rate. DV = metabolic rate / FDG uptake. IV = group membership.</p>
+
+    <p style="margin:0 0 5px 0;"><strong>p.5</strong> — Prefrontal: lower. Parietal: lower · attention &amp; language. Occipital: higher. Temporal: identical. Corpus callosum: lower · communication between hemispheres. Amygdala: asymmetric · fear. Hippocampus: asymmetric · memory. Thalamus: higher (right) · arousal. 结论: impulsivity · emotion regulation · correlation · cause. 优点: large for this population · internal validity · objective. 缺点: atypical · result · radiation.</p>
+
+    <p style="margin:0 0 5px 0;"><strong>p.6</strong> — 100% · 50% · similar · genes · environmental. 来源: Quebec Newborn Twin Study (QNTS). 出生: 1995 – 1998. 初始: 322. 完整: 234. 5 子组: 44 MZ males · 50 MZ females · 41 DZ males · 32 DZ females · 67 DZ mixed-sex · 加起来 = 234. 时间点: 5, 18, 30, 48, 60 months · age 6. 评分源: teacher · peer. 量表: PSBS-T + Direct &amp; Indirect Aggression Scales. 计分: 3-point · 0=never · 1=sometimes · 2=often. 纵向: development · 234 · 27% lost.</p>
+
+    <p style="margin:0 0 5px 0;"><strong>p.7</strong> — 身体攻击: much higher (MZ) → strong genetic component. 社会攻击: similar (MZ ≈ DZ) · similar → shared environment. 相关: genetic · genetic · environmental. 方向: lead to · not the other way round · language/cognitive skills · socially acceptable. 优点: triangulation · early childhood · 234. 缺点: generalise · unreliable · DNA test.</p>
+
+    <p style="margin:0 0 5px 0;"><strong>p.8</strong> — MAOA-L · higher aggression. 样本: 78 · X chromosome · 27% · 73%. 顺序: ① Quiz · ② Stealing · ③ Punishment. 偷窃: 80% / 20%. 辣椒酱 · DV = amount. 4 cells: 75 / 62 · 40 / 34 · 44 / 19 · 12 / 6. 显著性: 0.01 (significant) · 0.19 (not significant). 结论: gene–environment interaction.</p>
+
+    <p style="margin:0 0 5px 0;"><strong>p.9</strong> — lifestyle factors · duration. 样本: ~2000 · 20 · Florianópolis · Recife · 14–24 · night classes · 989. 横断: 2006 · a single time point. 前瞻: 2006 · over 9 months. 4 cells: 45.7% / 45.8% · 54.3% / 54.2% · 76.7% / 77.5% · 23.3% / 22.5% · insufficient sleep · sufficient sleep. 关联: snack consumption · correlational · causal.</p>
+
+    <p style="margin:0 0 5px 0;"><strong>p.10</strong> — 4 evaluation points: ① Strength: large sample for this population — 41 NGRI murderers with matched controls improve validity. ② Strength: standardised procedure (CPT + PET) gives objective data. ③ Weakness: unrepresentative sample — NGRI murderers have unusual characteristics (mental illness / head injury), so cannot generalise. ④ Weakness: correlation not causation — lower brain activity could be the result of violence or substance use, not the cause. 5: ethics — radiation exposure to controls. 收尾: useful evidence but cannot establish causation.</p>
+
+    <p style="margin:0 0 5px 0;"><strong>p.11</strong> — McDermott: (a) 三步: ① Participants answered 5 vocab questions to earn points (10 pts = $1). ② A computer-generated "opponent" stole 20% or 80% of earnings. ③ Participants could punish the opponent by allocating hot sauce; DV = amount of hot sauce; 4 rounds. (b) ① Low ecological validity: forcing an unseen opponent to drink hot sauce is not like real-life aggression → cannot generalise. ② Deception: participants believed there was a real opponent → ethically problematic + task feels artificial. <br>Hoefelmann: (a) 三步: ① Students in 20 Brazilian schools completed a questionnaire in March 2006. ② Same students completed the questionnaire again in December 2006. ③ Questions measured sleep quality ("How often do you think you sleep well?" 5-point scale), sleep duration (hours/day), and lifestyle factors (activity / snacks / soft-drink / TV). (b) ① Self-report bias: all data self-reported → may be inaccurate (social desirability, poor recall) reducing validity. ② Night-school sample: only night-class students → not generalisable to day-school students (population validity).</p>
+
+    <p style="margin:0;"><strong>p.12</strong> — 背句模板填空答案: ① 41 · 41 · general health / head trauma · medication-free ② did X · Y · Z · DV = metabolic rate / hot sauce amount / sleep score ③ significantly · physical aggression · genetic · social aggression · environment ④ X · evidence · implication. Key numbers: Raine 41+41 / 39M+2F / 23 brain damage / 6 schizophrenia; Brendgen 234 pairs / 5 sub-groups / MZ ≈ DZ social / MZ &gt; DZ physical; McDermott 78 male / 27% MAOA-L / 75 vs 62 / 44 vs 19; Hoefelmann 989 / 20 schools / 54.3% good / 76.7% under 8h.</p>
+  </div>
+
+  <div class="box grey" style="margin-top:8px;">
+    <strong>最后提醒：</strong>Ch18 的核心是 AMSPRC——先把每个研究按 A/M/S/P/R/C 六字诀背一遍，再去记具体数字。每次写答案前先列关键词，再串成句。考官找的是 POE 三层结构（Point + Evidence + Why），缺一不可。
+  </div>
+
+  <div class="pg-foot">Page 13 of 13</div>
+</div>
+
+</body>
+</html>
