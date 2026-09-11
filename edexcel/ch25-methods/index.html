@@ -267,7 +267,7 @@ body.dark a:hover { color: #93c5fd; }
         <li class="sb-item"><a href="#s7">7. Conventions of Reports</a></li>
         <li class="sb-item"><a href="#s8">8. Peer Review</a></li>
         <li class="sb-item"><a href="#s9">9. HCPC Guidelines</a></li>
-        <li class="sb-item"><a href="#s10">10. Data &amp; Statistics</a></li>
+        <li class="sb-item"><a href="#s10">10. Data, Stats &amp; Analysis</a></li>
         <li class="sb-divider"></li>
         <li class="sb-group-label">4 · Evaluating Clinical Research</li>
         <li class="sb-item"><a href="#s11">11. Reliability</a></li>
@@ -1023,6 +1023,83 @@ body.dark a:hover { color: #93c5fd; }
     做推断统计题时记住流程：算出观察值 → 查临界值表（critical values）→ 比较两者 → 决定是否拒绝虚无假设。本章 Exam Practice 第 3 题（Wilcoxon）就是这个流程的完整演练。
   </div>
 
+  <h3>Chi-squared — the full worked table（卡方检验：完整计算表）</h3>
+  <p>The <span class="key-term">chi-squared test（卡方检验）</span> is used to test for a <strong>difference</strong> between two or more <strong>independent groups</strong> when the data are <strong>nominal</strong> (categories/frequencies) — exactly the situation produced by an observation or content analysis. The test compares the <strong>observed</strong> frequencies you collected with the <strong>expected</strong> frequencies you would predict if there were no difference.</p>
+
+  <h4>The five-column method</h4>
+  <table>
+    <tr><th>Column</th><th>What it is</th><th>How to get it</th></tr>
+    <tr><td>Observed (O)</td><td>The frequencies you actually counted.</td><td>Your raw data.</td></tr>
+    <tr><td>Expected (E)</td><td>The frequencies you would expect if the null hypothesis were true.</td><td>E = (row total × column total) ÷ grand total</td></tr>
+    <tr><td>O − E</td><td>The difference between observed and expected.</td><td>Subtract.</td></tr>
+    <tr><td>(O − E)²</td><td>Squares the differences so they do not cancel out.</td><td>Square the O − E value.</td></tr>
+    <tr><td>(O − E)² ÷ E</td><td>Each cell's contribution to chi-squared.</td><td>Divide the square by the expected value.</td></tr>
+  </table>
+  <p>You then <strong>sum the final column</strong> to get the observed value of chi-squared: <strong>χ² = Σ (O − E)² ÷ E</strong>.</p>
+
+  <h4>Worked example — Lisa's observation (WPS04/01 Q8)</h4>
+  <p>Lisa observed whether girls' and boys' first choice of play was with their <strong>peers</strong> or with <strong>older children</strong>. Her results: girls 18 peers / 9 older; boys 10 peers / 12 older.</p>
+  <table>
+    <tr><th>Category</th><th>Observed (O)</th><th>Expected (E)</th><th>O − E</th><th>(O − E)²</th><th>(O − E)² / E</th></tr>
+    <tr><td>Girls — peers first</td><td>18</td><td>15.43</td><td>2.57</td><td>6.61</td><td>0.43</td></tr>
+    <tr><td>Boys — peers first</td><td>10</td><td>12.57</td><td>−2.57</td><td>6.61</td><td>0.53</td></tr>
+    <tr><td>Girls — older first</td><td>9</td><td>11.57</td><td>−2.57</td><td>6.61</td><td>0.57</td></tr>
+    <tr><td>Boys — older first</td><td>12</td><td>9.43</td><td>2.57</td><td>6.61</td><td>0.70</td></tr>
+    <tr><td colspan="5" style="text-align:right;"><strong>Chi-squared (sum of last column)</strong></td><td><strong>2.23</strong></td></tr>
+  </table>
+  <p>All values are given to <strong>two decimal places</strong>, as the question requires. Notice the four (O − E)² values are all 6.61 — that is expected, because in a 2 × 2 table the differences are always the same size but alternate in sign.</p>
+
+  <h4>Interpreting the result</h4>
+  <ul>
+    <li><strong>Degrees of freedom:</strong> df = (number of rows − 1) × (number of columns − 1). For a 2 × 2 table, df = (2−1) × (2−1) = <strong>1</strong>.</li>
+    <li><strong>Critical value:</strong> for df = 1 at p ≤ 0.05, the critical value is <strong>3.84</strong> (from the chi-squared table printed in the exam paper).</li>
+    <li><strong>Decision:</strong> the observed value (2.23) is <strong>less than</strong> the critical value (3.84), so we <strong>retain the null hypothesis</strong> — there is <strong>no significant difference</strong> between girls and boys in their first choice of play partner.</li>
+  </ul>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>卡方检验的核心思路是"<strong>实际看到的人数 vs 如果没有差异应该看到的人数</strong>"。把每一格（O−E）²/E 算出来再加总，就得到 χ²。最后拿 χ² 和临界值比大小：<strong>χ² 大于临界值 → 有显著差异（拒绝虚无假设）；小于 → 无显著差异（保留虚无假设）</strong>。本题 χ²=2.23 &lt; 3.84，所以结论是"男孩女孩在选择玩伴上没有显著差别"。第 8(a) 题的比值也是同一份数据：18 : 10，化成最简是 <strong>9 : 5</strong>。
+  </div>
+
+  <h3>Ratios to their lowest form（比值化最简形式）</h3>
+  <p>A <span class="key-term">ratio（比值）</span> compares two quantities. To put a ratio in its <strong>lowest form</strong>, divide <em>both</em> sides by their <strong>highest common factor (HCF)</strong> until no common factor remains.</p>
+  <table>
+    <tr><th>Raw ratio</th><th>HCF</th><th>Lowest form</th></tr>
+    <tr><td>Girls : boys who played with peers first = 18 : 10</td><td>2</td><td><strong>9 : 5</strong></td></tr>
+    <tr><td>18 : 9</td><td>9</td><td>2 : 1</td></tr>
+    <tr><td>12 : 9</td><td>3</td><td>4 : 3</td></tr>
+    <tr><td>20 : 30</td><td>10</td><td>2 : 3</td></tr>
+  </table>
+  <div class="exam-tip">
+    <strong>Exam tip:</strong> WPS04 Q8(a) is worth <strong>1 mark</strong> simply for giving the ratio <strong>in its lowest form</strong>. Never leave it as 18 : 10 — reduce it. Always read whether the question asks for "girls to boys" (order matters).
+  </div>
+
+  <h3>Thematic analysis — qualitative data（主题分析：质性数据分析）</h3>
+  <p>Spec 9.1.14 requires <em>"Analysis of qualitative data — thematic analysis."</em> While chi-squared and the other tests handle <strong>quantitative</strong> data, <span class="key-term">thematic analysis（主题分析）</span> is how researchers make sense of <strong>qualitative</strong> material — interview transcripts, open-ended questionnaire answers, or the latent content of a text.</p>
+  <p>It is a <strong>bottom-up</strong> method: themes are not decided in advance; they <strong>emerge</strong> from the data as the researcher reads it.</p>
+
+  <h4>The six phases (Braun &amp; Clarke)</h4>
+  <ol>
+    <li><strong>Familiarisation:</strong> read and re-read the data, noting first impressions.</li>
+    <li><strong>Coding:</strong> tag meaningful pieces of text with short labels (codes).</li>
+    <li><strong>Generating themes:</strong> group related codes together into candidate themes.</li>
+    <li><strong>Reviewing themes:</strong> check each theme against the data — do they hold up? Merge or split as needed.</li>
+    <li><strong>Defining and naming themes:</strong> give each theme a clear, precise label.</li>
+    <li><strong>Writing up:</strong> present each theme with supporting quotes from the data.</li>
+  </ol>
+
+  <table>
+    <tr><th></th><th>Thematic analysis</th><th>Content analysis</th></tr>
+    <tr><td>Data type</td><td>Qualitative (words, meaning)</td><td>Usually quantitative (frequencies of codes)</td></tr>
+    <tr><td>Approach</td><td>Interpretive — themes emerge</td><td>Systematic — codes tallied</td></tr>
+    <tr><td>Output</td><td>Described themes + quotes</td><td>Counts, percentages, mode</td></tr>
+    <tr><td>Strength</td><td>Captures depth and meaning</td><td>Objective, replicable tallying</td></tr>
+    <tr><td>Weakness</td><td>Subjective; researcher bias</td><td>Can lose the meaning of the text</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>主题分析适合处理"受访者说的话"这类<strong>质性数据</strong>。它的逻辑是"<strong>先泡在数据里，再让主题自己浮出来</strong>"——不是事先定好要数什么，而是反复读、贴标签（coding）、把相关标签归成主题。它和内容分析的关键区别：内容分析重在"<strong>数</strong>"（某词出现几次），主题分析重在"<strong>懂</strong>"（这段话背后的意义是什么）。代价是主题分析更主观，所以good practice是双人编码、检查一致性。
+  </div>
+
   <div class="summary-card-header" onclick="toggleSummary(this)">
     <span class="arrow">▶</span>
     <span>Exam Key Points — Data &amp; Statistics</span>
@@ -1035,6 +1112,9 @@ body.dark a:hover { color: #93c5fd; }
       <li>Nominal (category) data from content analysis → frequencies, percentages and the <strong>mode</strong> (there can be more than one mode).</li>
       <li>Choosing a test: design (independent vs repeated) + level of measurement (nominal / ordinal / interval). Independent + nominal → <strong>chi-square</strong>; repeated + ordinal → <strong>Wilcoxon signed ranks</strong>; correlation + ordinal → Spearman's rho.</li>
       <li>Interpreting an inferential test: observed value vs critical value → reject or retain the null hypothesis.</li>
+      <li><strong>Chi-squared worked table</strong>: five columns (O / E / O−E / (O−E)² / (O−E)²/E); E = (row total × column total) ÷ grand total; sum the last column. Worked example χ² = <strong>2.23</strong> (WPS04 Q8), df = 1, critical value 3.84 → <strong>retain the null</strong>.</li>
+      <li><strong>Ratios in lowest form</strong>: divide both sides by the HCF (e.g. 18 : 10 → <strong>9 : 5</strong>). Worth 1 mark in WPS04 Q8(a).</li>
+      <li><strong>Thematic analysis</strong> (spec 9.1.14): bottom-up analysis of qualitative data in six phases — familiarise, code, generate, review, define, write up. Contrast with content analysis (which tallies).</li>
     </ol>
   </div>
 </section>

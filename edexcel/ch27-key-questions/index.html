@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edexcel Chapter 27 — Key Questions in Society（社会关键议题 · Unit 4 Section D）</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --card-bg: #FFFFFF;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --term-color: #ea580c;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; transition: background .15s; white-space: nowrap; }
+.nav-pill:hover { background: var(--primary-dark); }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; transition: color .15s; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; font-weight: 300; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); transition: all .15s; display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+body.dark .nav-btn:hover { border-color: #f97316; color: #f97316; }
+
+.page-layout { display: grid; grid-template-columns: 190px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 190px; flex-shrink: 0; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; transition: all .15s ease; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 600; background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; backdrop-filter: blur(6px); }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box strong { color: #b45309; }
+.key-term { display: inline-block; background: #e8eaf6; color: #283593; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: .9em; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box h4 { color: #991b1b; margin-bottom: 5px; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; }
+.syl-tag.ao1 { background: #dbeafe; color: #1e40af; }
+.syl-tag.ao2 { background: #dcfce7; color: #166534; }
+.syl-tag.ao3 { background: #fce7f3; color: #9d174d; }
+.syl-tag.syn { background: #fef3c7; color: #854d0e; }
+.activity-box { background: #f0f4f8; border: 2px solid #90a4ae; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+.activity-box h4 { color: #546e7a; margin-top: 0; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+tr:hover { background: #fff7ed; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.scenario-box { background: #f1f5f9; border: 2px solid #94a3b8; border-left: 6px solid #475569; border-radius: 8px; padding: 16px 20px; margin: 16px 0; font-size: .95em; }
+.scenario-box h4 { color: #334155; margin: 0 0 8px; }
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: opacity .2s; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.ao-badge { background: rgba(255,255,255,.25); padding: 2px 8px; border-radius: 10px; font-size: .72em; font-weight: 700; margin-left: auto; }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; animation: slideDown .25s ease; }
+.summary-card-body.hidden { display: none; }
+@keyframes slideDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
+.summary-card-body ol { margin: 0; padding-left: 20px; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.gold-standard-para { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 2px solid #fcd34d; border-radius: 10px; padding: 16px 18px; margin: 14px 0; }
+.gold-standard-para h4 { color: #92400e; margin: 0 0 8px; font-size: .95em; }
+.gold-standard-para p { font-size: .9em; line-height: 1.75; margin: 8px 0; }
+.level-table td:first-child { text-align: center; font-weight: 700; }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { box-shadow: 0 6px 20px rgba(234,88,12,.4); transform: translateY(-2px); }
+@media(max-width:900px){
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .main-content { max-width: 100%; }
+  .compare-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+body.dark { background: #0f172a; color: #e2e8f0; transition: background .3s, color .3s; }
+body.dark .nav-bar { background: #1a1a2e; border-bottom-color: var(--primary); }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider { background: #334155; }
+body.dark .sb-group-label { color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a:hover { color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.10), transparent); border-left-color: #f97316; }
+body.dark .sb-item a.sb-active { color: #fb923c; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); border-left-color: #f97316; }
+body.dark .section { background: #1a1a2e; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .warn-box h4 { color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .keyterm-box strong { color: #fbbf24; }
+body.dark .key-term { background: #2a2a4a; color: #a5b4fc; }
+body.dark strong { color: #fbbf24; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; color: white; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark tr:hover { background: rgba(234,88,12,.05); }
+body.dark td:first-child { color: #fb923c; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .activity-box { background: #1e293b; border-color: #475569; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark .scenario-box { background: #16213e; border-color: #334155; border-left-color: #94a3b8; }
+body.dark .scenario-box h4 { color: #cbd5e1; }
+body.dark .gold-standard-para { background: linear-gradient(135deg, rgba(245,158,11,.08), rgba(245,158,11,.04)); border-color: #f59e0b; }
+body.dark .gold-standard-para h4 { color: #fbbf24; }
+body.dark .gold-standard-para p { color: #d1d5db; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+body.dark a { color: #60a5fa; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="/edexcel-psychology-courseware/">Home</a> <span class="sep">›</span>
+    <a href="/edexcel-psychology-courseware/">Edexcel</a> <span class="sep">›</span>
+    <span>Chapter 27 — Key Questions in Society</span>
+  </div>
+  <span class="nav-pill">❓ Psychological Skills · Section D</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn" title="Toggle dark mode">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)" title="Decrease font size">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)" title="Increase font size">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">Chapter 27 Contents</div>
+        <div class="sb-header-sub">Psychological Skills · Section D</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">1 · Foundations</li>
+        <li class="sb-item"><a href="#s1" class="sb-active">1. Objectives &amp; Exam Form</a></li>
+        <li class="sb-item"><a href="#s2">2. What is a Key Question?</a></li>
+        <li class="sb-item"><a href="#s3">3. The KQ Answer Framework</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">2 · Worked Examples</li>
+        <li class="sb-item"><a href="#s4">4. Workplace Bullying (WPS04 Q10)</a></li>
+        <li class="sb-item"><a href="#s5">5. Model Answer — Bullying</a></li>
+        <li class="sb-item"><a href="#s6">6. Media &amp; Eating Disorders</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">3 · Practice</li>
+        <li class="sb-item"><a href="#s7">📝 KQ Question Bank</a></li>
+        <li class="sb-item"><a href="#s8">📚 Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>❓ CHAPTER 27: KEY QUESTIONS IN SOCIETY<br><span style="font-size:0.65em">社会关键议题 · Unit 4 Section D</span></h1>
+  <div class="subtitle">Edexcel International A Level Psychology · Psychological Skills (Synoptic)</div>
+  <div class="meta">
+    <span class="badge">📘 Pearson Edexcel International A Level</span>
+    <span class="badge">📋 Topic I · Spec 9.2.1</span>
+    <span class="badge">🎯 Section D · One 8-mark extended response</span>
+    <span class="badge">📝 AO1 (4) + AO2 (4)</span>
+  </div>
+</div>
+
+<!-- ============ SECTION 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Learning Objectives &amp; How Section D is Examined（学习目标与考试形式）</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary — 本节要学什么</h4>
+    <ol>
+      <li>Unit 4 的 <strong>Section D 是一道 8 分的 extended response</strong>，专门考查 <strong>key question（社会关键议题）</strong> 的分析能力。</li>
+      <li>题目会给你一个<strong>真实社会场景</strong>（如职场霸凌），然后让你用它背后的心理学概念、理论或研究来讨论这个问题。</li>
+      <li>核心技能是 <strong>AO2 = 把知识"套"到给定的情境上</strong>——不套情境，写得再多也拿不到分。</li>
+    </ol>
+  </div>
+
+  <div class="note-box blue-box">
+    <h4>🎯 By the end of this chapter you should be able to:</h4>
+    <ul>
+      <li>Explain what a <strong>key question in society</strong> is and how it differs from a research aim</li>
+      <li>Decode a Section D question: identify the <strong>key question</strong> and the <strong>given context</strong></li>
+      <li>Apply concepts, theories and research from <strong>one or more topics A–H</strong> to the context</li>
+      <li>Balance <strong>AO1 (knowledge, 4 marks)</strong> and <strong>AO2 (application, 4 marks)</strong> equally</li>
+      <li>Write a <strong>Level 4 (7–8)</strong> answer with a balanced, context-linked discussion</li>
+      <li>Answer the official <strong>WPS04 Q10</strong> workplace-bullying question at top-band standard</li>
+    </ul>
+  </div>
+
+  <h3>Where Section D sits in the paper</h3>
+  <table>
+    <tr><th>Section</th><th>Focus</th><th>Marks</th><th>AO split</th></tr>
+    <tr><td>A</td><td>Clinical psychology — short answer</td><td>32</td><td>AO1 + AO2 + AO3</td></tr>
+    <tr><td>B</td><td>Clinical psychology — one essay</td><td>16</td><td>AO1 + AO3</td></tr>
+    <tr><td>C</td><td>Psychological skills — short answer</td><td>20</td><td>AO1 + AO2 + AO3</td></tr>
+    <tr><td><strong>D</strong></td><td><strong>Psychological skills — key question</strong></td><td><strong>8</strong></td><td><strong>AO1 (4) + AO2 (4)</strong></td></tr>
+    <tr><td>E</td><td>Psychological skills — issues and debates</td><td>20</td><td>AO1 (8) + AO3 (12)</td></tr>
+  </table>
+
+  <div class="exam-tip">
+    <strong>Key rule of Section D:</strong> the mark scheme states <em>"Candidates must demonstrate an <strong>equal emphasis</strong> between knowledge and understanding vs application in their answer."</em> This is the only place on the paper where the two halves are weighted <strong>exactly 50:50</strong>. Half your answer must be <em>knowledge</em>; half must be that knowledge <em>applied to the given context</em>.
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>Section D 最难的地方不是"知道什么"，而是"会不会用"。8 分里有 4 分（AO2）专门奖励<strong>把知识扣到题目的情境上</strong>。很多同学把"社会支配倾向""规范影响"这些概念背得滚瓜烂熟，通篇却一次都没提到题目给的职场/霸凌场景——这样最多只能拿 4 分。记住口诀：<strong>每讲一个概念，就接一句"所以在题目描述的这个情境里……"</strong>。
+  </div>
+</section>
+
+<!-- ============ SECTION 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. What is a "Key Question in Society"?（什么是社会关键议题）</h2>
+
+  <p>Spec 9.2.1 defines the requirement in a single line:</p>
+  <div class="keyterm-box">
+    <strong>Spec 9.2.1:</strong> "Key questions for society using concepts, theories or research from <strong>one or more of topics A to H</strong> (except topics F and G)."
+  </div>
+
+  <p>A <span class="key-term">key question in society（社会关键议题）</span> is a <strong>real-world, socially important question</strong> that psychology can help to answer. It is not a laboratory hypothesis — it is the kind of question a government, employer, school or health service might actually ask.</p>
+
+  <table>
+    <tr><th>Topic</th><th>Example key question</th></tr>
+    <tr><td>A · Social</td><td>How can destructive obedience be prevented?</td></tr>
+    <tr><td>B · Cognitive</td><td>Can we trust eyewitness testimony?</td></tr>
+    <tr><td>C · Biological</td><td>Are criminals born or made?</td></tr>
+    <tr><td>D · Learning</td><td>Should conditioning be used to change behaviour?</td></tr>
+    <tr><td>E / H · Clinical</td><td>Can the media cause eating disorders? Can stigma against mental illness be reduced?</td></tr>
+    <tr><td>Organisational (WPS04)</td><td>Can workplace bullying be reduced through improved working relationships?</td></tr>
+  </table>
+
+  <div class="warn-box">
+    <h4>Key question ≠ research aim</h4>
+    <p>A <strong>research aim</strong> asks "what will this study find?" (e.g. "to see whether masculinity correlates with aggression"). A <strong>key question</strong> asks "what should society do / believe?" and demands you bring <em>multiple</em> areas of psychology to bear on it.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>"Key question" 直译是"关键问题"，但它不是随便一个问题。它有两个特征：<strong>(1) 面向社会、有现实意义</strong>（不是实验室里的假设）；<strong>(2) 能用课程里多个主题的知识来回答</strong>。比如"职场霸凌能不能靠改善人际关系来减少？"——这既是老板/HR 真实关心的，又能调用社会心理学的权威、规范、社会支配倾向等概念。所以 Section D 本质是在考："你能不能用心理学的工具箱，去回应一个真实世界的问题？"
+  </div>
+</section>
+
+<!-- ============ SECTION 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. The KQ Answer Framework — Four Moves（KQ 答题四步法）</h2>
+
+  <p>Every Section D answer can be built with the same four moves. Because the AO1 : AO2 split is 50:50, your plan should be roughly <strong>half knowledge, half application</strong>.</p>
+
+  <div class="essay-plan" style="background:#f0fdf4;border:2px solid #86efac;border-radius:10px;padding:16px 20px;margin:16px 0;">
+    <h4 style="color:#166534;margin:0 0 10px;">🧩 The four moves</h4>
+    <ol>
+      <li><strong>State the position (AO1/AO2).</strong> Briefly say what your answer will be — e.g. "Improved working relationships can reduce bullying, but only alongside structural change."</li>
+      <li><strong>Bring in concept #1 and apply it (AO1 + AO2).</strong> Introduce a concept/theory, then <em>immediately</em> apply it to the context in the question.</li>
+      <li><strong>Bring in concept #2 and apply it (AO1 + AO2).</strong> Choose a second idea — ideally from a <em>different</em> angle (e.g. individual vs organisational).</li>
+      <li><strong>Balance and conclude (AO2).</strong> Acknowledge the limitation or competing view, then give a reasoned judgement.</li>
+    </ol>
+  </div>
+
+  <h3>The application sentence — your AO2 engine</h3>
+  <p>AO2 marks are earned by a simple habit: after every concept, write a sentence of the form <strong>"In the context of [the scenario], this means…"</strong>. Examples:</p>
+  <table>
+    <tr><th>Knowledge (AO1)</th><th>Application (AO2)</th></tr>
+    <tr><td>Normative influence is conformity to a group's beliefs to gain acceptance.</td><td><em>"In a workplace, an employee may stay silent about bullying because they want to be accepted by colleagues who treat it as normal."</em></td></tr>
+    <tr><td>Social dominance orientation predicts egocentric behaviour.</td><td><em>"A manager high in social dominance orientation may bully to defend their position in the workplace hierarchy."</em></td></tr>
+  </table>
+
+  <div class="compare-grid">
+    <div class="compare-card red">
+      <h4>❌ All AO1 (max ~4/8)</h4>
+      <p style="font-size:.9em;">Accurate theory, accurate studies — but the workplace context is never mentioned. The examiner cannot award AO2.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>✅ Balanced AO1 + AO2 (7–8/8)</h4>
+      <p style="font-size:.9em;">Accurate theory <em>and</em> every point is tied back to the scenario, with a balanced judgement at the end.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Worked Example — Workplace Bullying (WPS04 Q10)（真题拆解）</h2>
+
+  <div class="exam-practice">
+    <h3>📝 The question (WPS04/01, Section D, Q10 — 8 marks)</h3>
+    <div class="scenario-box" style="margin-top:10px;">
+      <h4>Context given in the paper</h4>
+      <p style="margin:0 0 8px;">One key question for society is whether <strong>bullying in the workplace can be reduced through improved working relationships</strong>.</p>
+      <p style="margin:0 0 8px;"><strong>Fast and Chen (2009)</strong> claimed that workplace aggression appeared to be driven by <strong>ego defensiveness</strong>, when someone in power felt a sense of incompetence in their role. They claimed this aggressiveness was eliminated when the individual's sense of self-worth was boosted.</p>
+      <p style="margin:0;">It could be suggested that the nature of the relationships between people in the workplace is important in reducing experiences of bullying. Findings from a survey by <strong>O'Moore and Lynch (2007)</strong> showed that 72% of non-bullied respondents reported their work environment as friendly, but only 47% of bullied respondents did.</p>
+    </div>
+    <p><em>"Discuss the key question of whether bullying in the workplace can be reduced through improved working relationships. You should use concepts, theories and/or research studied in your psychology course. You must make reference to the context in your answer."</em> <strong>(8)</strong></p>
+  </div>
+
+  <h3>Step 1 — Decode the question</h3>
+  <ul>
+    <li><strong>Key question:</strong> can workplace bullying be reduced by improving working relationships?</li>
+    <li><strong>Context:</strong> Fast &amp; Chen's ego-defensiveness idea + O'Moore &amp; Lynch's friendly-environment survey.</li>
+    <li><strong>Command word:</strong> "Discuss" → give both sides, then judge.</li>
+    <li><strong>Topic base:</strong> social/organisational psychology (concepts like social dominance, normative influence) plus developmental theory (Erikson).</li>
+  </ul>
+
+  <h3>Step 2 — The official indicative content (AO1 + AO2)</h3>
+  <table>
+    <tr><th>AO</th><th>Point the examiner is looking for</th></tr>
+    <tr><td><span class="syl-tag ao1">AO1</span></td><td>Someone with a <strong>social dominance orientation</strong> is more likely to engage in egocentric behaviours that advance their personal interest.</td></tr>
+    <tr><td><span class="syl-tag ao1">AO1</span></td><td>Organisations that <strong>enhance hierarchies</strong> may instil ideologies that favour social dominance of one group above others.</td></tr>
+    <tr><td><span class="syl-tag ao1">AO1</span></td><td><strong>Erikson</strong> suggested that without positive feedback at <strong>Stage 7</strong> people may experience stagnation and become frustrated that they cannot succeed at work.</td></tr>
+    <tr><td><span class="syl-tag ao1">AO1</span></td><td><strong>Normative influence</strong> is when people are motivated to be accepted by other group members, so conform to the normative beliefs of a group.</td></tr>
+    <tr><td><span class="syl-tag ao2">AO2</span></td><td>Bullying may increase when someone in power <strong>felt incompetent in their role</strong> and needed to re-establish their position in the workplace hierarchy.</td></tr>
+    <tr><td><span class="syl-tag ao2">AO2</span></td><td>An organisation could <strong>change the nature of hierarchical relationships</strong> to encourage more positive experiences between employees and reduce bullying.</td></tr>
+    <tr><td><span class="syl-tag ao2">AO2</span></td><td>As <strong>Fast and Chen (2009)</strong> claimed, aggressiveness dissipated when the individual's <strong>self-worth was boosted</strong>, so positive feedback may help prevent bullying.</td></tr>
+    <tr><td><span class="syl-tag ao2">AO2</span></td><td>Where work environments were friendly, <strong>O'Moore and Lynch (2007)</strong> found less bullying, so establishing a belief that friendliness matters may encourage others to conform to friendly behaviour.</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>注意这张表——AO1 和 AO2 <strong>各占 4 条、完全对半</strong>。这就是 Section D 的评分逻辑：考官先看你知道多少概念（social dominance orientation、Erikson Stage 7、normative influence），再看你能不能把它们"翻译"回题目的职场场景（重新确立层级位置、提升自我价值感、营造友善氛围）。答题时最好<strong>一条概念配一条应用</strong>，成对出现。
+  </div>
+</section>
+
+<!-- ============ SECTION 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Model Answer — Workplace Bullying（范文）</h2>
+
+  <div class="gold-standard-para">
+    <h4>Level 4 model answer (7–8 marks)</h4>
+    <p><strong>Improved working relationships are likely to reduce workplace bullying, but only when the underlying power structure also changes.</strong></p>
+    <p>One explanation for bullying draws on <strong>social dominance orientation</strong> — the tendency to favour hierarchy and to advance one's own group above others. A manager high in social dominance orientation may engage in egocentric behaviour to protect their position, so <em>in this workplace context, bullying can be understood as a strategy for defending status rather than simple cruelty</em>. However, this means improving relationships alone may be insufficient: if the organisation still rewards hierarchy, the pressure to defend status remains.</p>
+    <p>A second explanation comes from <strong>Erikson's Stage 7</strong>. Erikson argued that without positive feedback at work people experience stagnation and become frustrated at their inability to succeed — and, as <strong>Fast and Chen (2009)</strong> claimed, aggression dissipated once the individual's self-worth was boosted. <em>Applied to the scenario, this suggests that giving employees genuine positive feedback could remove the ego threat that drives bullying</em>, which is exactly the "improved working relationship" the question describes.</p>
+    <p>The important qualification is <strong>normative influence</strong> — people conform to the beliefs of their group to be accepted. <em>In a workplace where bullying is treated as normal, individuals may conform to it even if relationships are superficially friendly.</em> Yet <strong>O'Moore and Lynch (2007)</strong> found that 72% of non-bullied workers described their environment as friendly, against only 47% of bullied workers — evidence that friendliness is genuinely protective.</p>
+    <p><strong>On balance, improving working relationships can reduce bullying, but it works best when it changes the group norms and power dynamics, not just individual interactions.</strong></p>
+  </div>
+
+  <h3>Why this earns the top band</h3>
+  <ul>
+    <li><span class="syl-tag ao1">AO1</span>Accurate concepts: social dominance orientation, Erikson Stage 7, normative influence, and both named studies.</li>
+    <li><span class="syl-tag ao2">AO2</span>Every concept is applied back to the workplace context in an italicised "in this context…" sentence.</li>
+    <li><span class="syl-tag syn">BAL</span>A competing argument (structure vs relationships) and a reasoned, balanced judgement.</li>
+  </ul>
+
+  <table class="level-table">
+    <tr><th>Level</th><th>Marks</th><th>What the examiner wants</th></tr>
+    <tr><td>1</td><td>1–2</td><td>Isolated knowledge; little or no reference to the context.</td></tr>
+    <tr><td>2</td><td>3–4</td><td>Mostly accurate knowledge; discussion imbalanced or superficial, occasionally applied.</td></tr>
+    <tr><td>3</td><td>5–6</td><td>Accurate knowledge; coherent chains of reasoning; grasp of competing arguments but imbalanced.</td></tr>
+    <tr><td><strong>4</strong></td><td><strong>7–8</strong></td><td><strong>Accurate and thorough knowledge; well-developed logical balanced discussion with sustained application to the context.</strong></td></tr>
+  </table>
+</section>
+
+<!-- ============ SECTION 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Worked Example 2 — Media and Eating Disorders（第二个范例）</h2>
+
+  <p>Key questions are not limited to the workplace. This example draws on the <strong>Clinical</strong> and <strong>Learning</strong> topics you have studied in Chapters 23 and 24.</p>
+
+  <div class="exam-practice">
+    <h3>📝 Practice key question (8 marks)</h3>
+    <div class="scenario-box" style="margin-top:10px;">
+      <h4>Context</h4>
+      <p style="margin:0;">One key question for society is whether <strong>the media can cause eating disorders</strong>. <strong>Becker et al. (2002)</strong> studied adolescent girls in Fiji before and after the introduction of television, and found a marked increase in disordered eating attitudes after TV arrived. Yet <strong>Hoek et al. (2005)</strong> found that anorexia nervosa was almost non-existent among the indigenous population of Curaçao, even though they were exposed to US and Dutch television.</p>
+    </div>
+    <p><em>"Discuss the key question of whether the media can cause eating disorders. You should use concepts, theories and/or research studied in your psychology course. You must make reference to the context in your answer."</em> <strong>(8)</strong></p>
+  </div>
+
+  <h3>Indicative content (AO1 + AO2)</h3>
+  <table>
+    <tr><th>AO</th><th>Point</th></tr>
+    <tr><td><span class="syl-tag ao1">AO1</span></td><td><strong>Social learning theory</strong>: people learn behaviour by observing and imitating role models, especially when they are rewarded (vicarious reinforcement).</td></tr>
+    <tr><td><span class="syl-tag ao1">AO1</span></td><td><strong>Sociocultural explanation</strong>: Western "thin ideals" promoted by media can create body dissatisfaction, a risk factor for anorexia.</td></tr>
+    <tr><td><span class="syl-tag ao1">AO1</span></td><td>Anorexia is <strong>multifactorial</strong> — biological, psychological and sociocultural risk factors interact (Dane &amp; Bhatia, 2023).</td></tr>
+    <tr><td><span class="syl-tag ao1">AO1</span></td><td><strong>Becker et al. (2002)</strong> supported a media effect; <strong>Hoek et al. (2005)</strong> (Curaçao) contradicted it.</td></tr>
+    <tr><td><span class="syl-tag ao2">AO2</span></td><td>Many girls who watch thin-ideal media <strong>do not</strong> develop eating disorders, so media is at most <em>one</em> contributing factor, not a sufficient cause.</td></tr>
+    <tr><td><span class="syl-tag ao2">AO2</span></td><td>Fiji was undergoing rapid <strong>globalisation</strong>, so the rise in disordered eating cannot be attributed to television alone.</td></tr>
+    <tr><td><span class="syl-tag ao2">AO2</span></td><td>The Curaçao finding — where being overweight was culturally desirable — shows that the <strong>same media exposure has different effects in different cultural contexts</strong>, so "the media causes eating disorders" is too strong.</td></tr>
+    <tr><td><span class="syl-tag ao2">AO2</span></td><td>A more defensible conclusion is that media <strong>increases risk</strong> in individuals who are already vulnerable, rather than causing the disorder directly.</td></tr>
+  </table>
+
+  <div class="gold-standard-para">
+    <h4>Model answer sketch (Level 4)</h4>
+    <p>Social learning theory suggests that people imitate the behaviour of attractive media role models, particularly when that behaviour appears rewarded — so images of extreme thinness being praised online could model disordered eating. However, this does not establish cause: the vast majority of people exposed to such content do not develop an eating disorder. Becker et al. (2002) supports a media effect in Fiji, yet Hoek et al. (2005) found anorexia almost absent in Curaçao despite media exposure, which shows the effect depends on the surrounding culture. <strong>On balance, the media is best understood as one risk factor that interacts with biological and psychological vulnerability, rather than a direct cause.</strong></p>
+  </div>
+</section>
+
+<!-- ============ SECTION 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. KQ Question Bank（练习题库）</h2>
+
+  <div class="checkpoint">
+    <h3>✅ Checkpoint — 6 quick questions</h3>
+    <ol>
+      <li>What is the AO split in Section D, and what must candidates demonstrate about it?</li>
+      <li>How does a key question differ from a research aim?</li>
+      <li>Which topics can a key question draw on, and which are excluded?</li>
+      <li>State the "application sentence" habit that earns AO2 marks.</li>
+      <li>In WPS04 Q10, what are the four AO1 points the examiner looks for?</li>
+      <li>Why does the Curaçao finding weaken a simple "media causes eating disorders" claim?</li>
+    </ol>
+  </div>
+
+  <div class="exam-practice">
+    <h3>📝 Exam Practice — Section D (8 marks each)</h3>
+
+    <p><strong>Question 1.</strong> One key question for society is whether <strong>the media is responsible for eating disorders</strong>. Discuss this key question, using concepts, theories and/or research studied in your course. Make reference to the context in your answer. <strong>(8)</strong></p>
+
+    <p><strong>Question 2.</strong> One key question for society is whether <strong>criminal behaviour is caused by biology</strong>. Discuss this key question, using concepts, theories and/or research studied in your course. Make reference to the context in your answer. <strong>(8)</strong></p>
+
+    <p><strong>Question 3.</strong> One key question for society is whether <strong>psychological research should be used to change people's behaviour</strong>. Discuss this key question, using concepts, theories and/or research studied in your course. Make reference to the context in your answer. <strong>(8)</strong></p>
+
+    <div class="essay-plan" style="background:#f0fdf4;border:2px solid #86efac;border-radius:10px;padding:16px 20px;margin:16px 0;">
+      <h4 style="color:#166534;margin:0 0 10px;">Planning scaffold (use for any KQ)</h4>
+      <ol>
+        <li><strong>Position</strong> — one sentence stating your answer.</li>
+        <li><strong>Concept 1 + application</strong> — knowledge, then "in this context…".</li>
+        <li><strong>Concept 2 + application</strong> — a second angle, again applied.</li>
+        <li><strong>Balance + judgement</strong> — acknowledge the competing view, reach a reasoned conclusion.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Key Terms（关键术语表）</h2>
+  <table>
+    <tr><th>Term</th><th>Definition</th></tr>
+    <tr><td>Key question in society</td><td>A real-world, socially important question that psychology can help answer, drawing on topics A–H.</td></tr>
+    <tr><td>AO2 (application)</td><td>Using knowledge in a new or given context — the second half of the Section D marks.</td></tr>
+    <tr><td>Social dominance orientation</td><td>The tendency to favour hierarchy and the dominance of one group over others.</td></tr>
+    <tr><td>Ego defensiveness</td><td>Protecting one's self-image when feeling incompetent — a proposed driver of workplace aggression (Fast &amp; Chen, 2009).</td></tr>
+    <tr><td>Normative influence</td><td>Conforming to a group's beliefs in order to be accepted by its members.</td></tr>
+    <tr><td>Erikson's Stage 7</td><td>Generativity vs stagnation — the stage where work success and positive feedback matter.</td></tr>
+    <tr><td>Social learning theory</td><td>Learning by observing and imitating role models, strengthened by vicarious reinforcement.</td></tr>
+    <tr><td>Curaçao study (Hoek et al., 2005)</td><td>Found anorexia almost absent where being overweight was culturally desirable, despite Western TV exposure.</td></tr>
+    <tr><td>Multifactorial explanation</td><td>Explaining a disorder through interacting biological, psychological and sociocultural risk factors.</td></tr>
+    <tr><td>Balanced judgement</td><td>A reasoned, qualified conclusion that weighs competing arguments — required for Level 4.</td></tr>
+  </table>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span> Exam Key Points — Whole Chapter
+    <span class="ao-badge">AO1 · AO2</span>
+  </div>
+  <div class="summary-card-body">
+    <ol>
+      <li>Section D = one <strong>8-mark extended response</strong> on a key question; <strong>AO1 (4) + AO2 (4)</strong>.</li>
+      <li>The mark scheme demands an <strong>equal emphasis</strong> between knowledge and application — the only 50:50 question on the paper.</li>
+      <li>A <strong>key question</strong> is a real-world, socially important question answerable from topics A–H (not F or G).</li>
+      <li>Structure: <strong>position → concept 1 + application → concept 2 + application → balance + judgement</strong>.</li>
+      <li>Earn AO2 with the habit: after every concept, write <strong>"in this context…"</strong>.</li>
+      <li>WPS04 Q10 (workplace bullying) draws on social dominance orientation, Erikson Stage 7, normative influence, Fast &amp; Chen (2009) and O'Moore &amp; Lynch (2007).</li>
+      <li>Bring in a <strong>competing argument</strong> (e.g. "media is one risk factor, not a cause") to reach the top band.</li>
+    </ol>
+  </div>
+</section>
+
+</main>
+</div><!-- END PAGE LAYOUT -->
+
+<div class="footer-note">
+  <p>📚 Edexcel IAL Psychology · Topic I: Psychological Skills · Chapter 27 — Key Questions in Society</p>
+  <p>Spec 9.2.1 · Unit 4 Section D (8 marks) · AO1 (4) + AO2 (4) · WPS04 Q10 worked example</p>
+</div>
+</div><!-- END CONTAINER -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<script>
+function toggleSummary(header) {
+  header.classList.toggle('open');
+  var body = header.nextElementSibling;
+  if (body && body.classList.contains('summary-card-body')) {
+    body.classList.toggle('hidden');
+  }
+}
+
+(function(){
+  var sections = document.querySelectorAll('.section[id^="s"]');
+  var links = document.querySelectorAll('.sb-item a');
+  function onScroll() {
+    var scrollPos = window.scrollY + 120;
+    var currentId = sections.length ? sections[0].id : null;
+    sections.forEach(function(sec) {
+      if (sec.offsetTop <= scrollPos) { currentId = sec.id; }
+    });
+    links.forEach(function(link) {
+      link.classList.toggle('sb-active', link.getAttribute('href') === '#' + currentId);
+    });
+    var btn = document.getElementById('backToTop');
+    if (btn) { btn.classList.toggle('show', window.scrollY > 400); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+function toggleDarkMode() {
+  document.body.classList.toggle('dark');
+  var isDark = document.body.classList.contains('dark');
+  localStorage.setItem('edexcel-ch27-darkMode', isDark ? '1' : '0');
+  var btn = document.getElementById('darkBtn');
+  if (btn) { btn.textContent = isDark ? '☀️ Light' : '🌙 Dark'; }
+}
+
+function adjustFontSize(delta) {
+  var current = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+  var next = Math.min(22, Math.max(12, current + delta));
+  document.documentElement.style.fontSize = next + 'px';
+  localStorage.setItem('edexcel-ch27-fontSize', String(next));
+}
+
+(function(){
+  if (localStorage.getItem('edexcel-ch27-darkMode') === '1') {
+    document.body.classList.add('dark');
+    var btn = document.getElementById('darkBtn');
+    if (btn) { btn.textContent = '☀️ Light'; }
+  }
+  var fs = localStorage.getItem('edexcel-ch27-fontSize');
+  if (fs) { document.documentElement.style.fontSize = fs + 'px'; }
+})();
+</script>
+</body>
+</html>

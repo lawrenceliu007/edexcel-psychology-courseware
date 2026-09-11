@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edexcel Chapter 28 — Issues and Debates（议题与争论 · Unit 4 Section E）</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --card-bg: #FFFFFF;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --term-color: #ea580c;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; transition: background .15s; white-space: nowrap; }
+.nav-pill:hover { background: var(--primary-dark); }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; transition: color .15s; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; font-weight: 300; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); transition: all .15s; display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+body.dark .nav-btn:hover { border-color: #f97316; color: #f97316; }
+
+.page-layout { display: grid; grid-template-columns: 190px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 190px; flex-shrink: 0; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; transition: all .15s ease; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 600; background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; backdrop-filter: blur(6px); }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box strong { color: #b45309; }
+.key-term { display: inline-block; background: #e8eaf6; color: #283593; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: .9em; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box h4 { color: #991b1b; margin-bottom: 5px; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; }
+.syl-tag.ao1 { background: #dbeafe; color: #1e40af; }
+.syl-tag.ao2 { background: #dcfce7; color: #166534; }
+.syl-tag.ao3 { background: #fce7f3; color: #9d174d; }
+.syl-tag.syn { background: #fef3c7; color: #854d0e; }
+.activity-box { background: #f0f4f8; border: 2px solid #90a4ae; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+.activity-box h4 { color: #546e7a; margin-top: 0; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+tr:hover { background: #fff7ed; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.debate-card { background: #fff7ed; border: 2px solid #fdba74; border-radius: 10px; padding: 16px 18px; margin: 16px 0; }
+.debate-card h4 { color: var(--primary-dark); margin: 0 0 8px; font-size: 1.02em; }
+.debate-card .spec-ref { font-size: .74em; font-weight: 700; color: #9a3412; background: #ffedd5; padding: 2px 8px; border-radius: 10px; }
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: opacity .2s; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.ao-badge { background: rgba(255,255,255,.25); padding: 2px 8px; border-radius: 10px; font-size: .72em; font-weight: 700; margin-left: auto; }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; animation: slideDown .25s ease; }
+.summary-card-body.hidden { display: none; }
+@keyframes slideDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
+.summary-card-body ol { margin: 0; padding-left: 20px; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.gold-standard-para { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 2px solid #fcd34d; border-radius: 10px; padding: 16px 18px; margin: 14px 0; }
+.gold-standard-para h4 { color: #92400e; margin: 0 0 8px; font-size: .95em; }
+.gold-standard-para p { font-size: .9em; line-height: 1.75; margin: 8px 0; }
+.level-table td:first-child { text-align: center; font-weight: 700; }
+.essay-plan { background: #f0fdf4; border: 2px solid #86efac; border-radius: 10px; padding: 16px 20px; margin: 16px 0; }
+.essay-plan h4 { color: #166534; margin: 0 0 10px; }
+.essay-plan ol { margin: 0; padding-left: 20px; }
+.essay-plan li { margin: 7px 0; font-size: .92em; }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { box-shadow: 0 6px 20px rgba(234,88,12,.4); transform: translateY(-2px); }
+@media(max-width:900px){
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .main-content { max-width: 100%; }
+  .compare-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+body.dark { background: #0f172a; color: #e2e8f0; transition: background .3s, color .3s; }
+body.dark .nav-bar { background: #1a1a2e; border-bottom-color: var(--primary); }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider { background: #334155; }
+body.dark .sb-group-label { color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a:hover { color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.10), transparent); border-left-color: #f97316; }
+body.dark .sb-item a.sb-active { color: #fb923c; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); border-left-color: #f97316; }
+body.dark .section { background: #1a1a2e; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .warn-box h4 { color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .keyterm-box strong { color: #fbbf24; }
+body.dark .key-term { background: #2a2a4a; color: #a5b4fc; }
+body.dark strong { color: #fbbf24; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; color: white; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark tr:hover { background: rgba(234,88,12,.05); }
+body.dark td:first-child { color: #fb923c; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .activity-box { background: #1e293b; border-color: #475569; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark .debate-card { background: rgba(251,146,60,.05); border-color: #9a3412; }
+body.dark .debate-card h4 { color: #fb923c; }
+body.dark .debate-card .spec-ref { background: rgba(251,146,60,.15); color: #fdba74; }
+body.dark .gold-standard-para { background: linear-gradient(135deg, rgba(245,158,11,.08), rgba(245,158,11,.04)); border-color: #f59e0b; }
+body.dark .gold-standard-para h4 { color: #fbbf24; }
+body.dark .gold-standard-para p { color: #d1d5db; }
+body.dark .essay-plan { background: rgba(22,163,74,.06); border-color: #16a34a; }
+body.dark .essay-plan h4 { color: #86efac; }
+body.dark .essay-plan li { color: #cbd5e1; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+body.dark a { color: #60a5fa; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="/edexcel-psychology-courseware/">Home</a> <span class="sep">›</span>
+    <a href="/edexcel-psychology-courseware/">Edexcel</a> <span class="sep">›</span>
+    <span>Chapter 28 — Issues and Debates</span>
+  </div>
+  <span class="nav-pill">🧠 Psychological Skills · Section E</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn" title="Toggle dark mode">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)" title="Decrease font size">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)" title="Increase font size">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">Chapter 28 Contents</div>
+        <div class="sb-header-sub">Psychological Skills · Section E</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">1 · Foundations</li>
+        <li class="sb-item"><a href="#s1" class="sb-active">1. Objectives &amp; Exam Form</a></li>
+        <li class="sb-item"><a href="#s2">2. The Synoptic Skill</a></li>
+        <li class="sb-item"><a href="#s3">3. The 11 Debates — Matrix</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">2 · Deep Dives</li>
+        <li class="sb-item"><a href="#s4">4. Psychology as a Science</a></li>
+        <li class="sb-item"><a href="#s5">5. Reductionism vs Holism</a></li>
+        <li class="sb-item"><a href="#s6">6. Nature, Nurture &amp; Time</a></li>
+        <li class="sb-item"><a href="#s7">7. Culture, Gender &amp; Sensitivity</a></li>
+        <li class="sb-item"><a href="#s8">8. Ethics &amp; Practical Issues</a></li>
+        <li class="sb-item"><a href="#s9">9. Social Control &amp; Society</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">3 · Mastering the Essay</li>
+        <li class="sb-item"><a href="#s10">10. The 20-Mark Toolkit</a></li>
+        <li class="sb-item"><a href="#s11">11. Worked Example (Q11)</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-item"><a href="#s12">📝 Checkpoint &amp; Exam Practice</a></li>
+        <li class="sb-item"><a href="#s13">📚 Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>🧠 CHAPTER 28: ISSUES AND DEBATES<br><span style="font-size:0.65em">议题与争论 · Unit 4 Section E</span></h1>
+  <div class="subtitle">Edexcel International A Level Psychology · Psychological Skills (Synoptic)</div>
+  <div class="meta">
+    <span class="badge">📘 Pearson Edexcel International A Level</span>
+    <span class="badge">📋 Topic I · Spec 9.3.1–9.3.11</span>
+    <span class="badge">🎯 Section E · One 20-mark synoptic essay</span>
+    <span class="badge">📝 AO1 (8) + AO3 (12)</span>
+  </div>
+</div>
+
+<!-- ============ SECTION 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Learning Objectives &amp; How Section E is Examined（学习目标与考试形式）</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary — 本节要学什么</h4>
+    <ol>
+      <li>Unit 4 的 <strong>Section E 是一道 20 分的 synoptic essay</strong>（综述题），全部围绕 <strong>issues and debates（议题与争论）</strong> 展开。</li>
+      <li>它的难点不是"背一个知识点"，而是<strong>把整个课程的知识跨主题调出来</strong>，去论证一个宏大的命题——例如"心理学算不算一门科学"。</li>
+      <li>本章把 spec 9.3 的 <strong>11 个议题</strong>逐个讲透，并教你怎么把它们组装成一篇拿高分的论文。</li>
+    </ol>
+  </div>
+
+  <div class="note-box blue-box">
+    <h4>🎯 By the end of this chapter you should be able to:</h4>
+    <ul>
+      <li>Explain <strong>why Section E exists</strong> and what "synoptic"（跨主题综合）means in practice</li>
+      <li>Recall and define all <strong>eleven issues and debates</strong> from spec 9.3.1–9.3.11</li>
+      <li><strong>Draw evidence from across topics A–H</strong> (Social, Cognitive, Biological, Learning, Clinical) to support each debate</li>
+      <li>Plan and write a <strong>balanced 20-mark essay</strong> with the correct AO1 : AO3 ratio (8 : 12)</li>
+      <li>Recognise the difference between <strong>describing</strong> a debate (AO1) and <strong>assessing</strong> it (AO3)</li>
+      <li>Answer the official WPS04 Q11 question on <strong>psychology as a science</strong> at Level 4 standard</li>
+    </ul>
+  </div>
+
+  <h3>Where Section E sits in the paper</h3>
+  <p>Unit 4 (<strong>WPS04/01</strong>) is a <strong>2-hour, 96-mark</strong> paper made of five sections. Section E is the final section and carries the joint-highest mark of any single question on the paper:</p>
+  <table>
+    <tr><th>Section</th><th>Focus</th><th>Marks</th></tr>
+    <tr><td>A</td><td>Clinical psychology — short answer</td><td>32</td></tr>
+    <tr><td>B</td><td>Clinical psychology — one extended essay</td><td>16</td></tr>
+    <tr><td>C</td><td>Psychological skills — short answer</td><td>20</td></tr>
+    <tr><td>D</td><td>Psychological skills — key question (8 marks)</td><td>8</td></tr>
+    <tr><td><strong>E</strong></td><td><strong>Psychological skills — issues and debates essay</strong></td><td><strong>20</strong></td></tr>
+  </table>
+
+  <div class="exam-tip">
+    <strong>Exam tip:</strong> Section E is <strong>synoptic</strong>（综述性的）. The examiner is not checking whether you remember Chapter 21. They are checking whether you can <strong>move freely across the whole qualification</strong> — Milgram from Social, Raine from Biological, Rosenhan from Clinical — and use that range to argue a position.
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>Section E 就像一场"毕业论文答辩"。前面 Section A–D 像"单元测验"，考你某一章的掌握；Section E 考的是"你有没有把整门课学通"。题目通常很大——"心理学算不算科学？""心理学该不该用于社会控制？"——你要自己决定从哪几个主题搬证据、怎么搭论证结构、最后给出一个<strong>有立场但承认反方的判断</strong>。这就是 <em>synoptic</em> 的含义：不是"很多知识"，而是"知识之间的连接"。
+  </div>
+</section>
+
+<!-- ============ SECTION 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. The Synoptic Skill — What Makes Section E Different（综述技能）</h2>
+
+  <p>Spec 9.3 opens with a sentence that defines the whole section: <em>"Students must consider issues and debates from across all topics in order to develop a general knowledge of key issues and debates."</em> The words <strong>from across all topics</strong> are the instruction.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card red">
+      <h4>❌ What a weak Section E answer does</h4>
+      <ul>
+        <li>Recalls one topic in depth and stops there</li>
+        <li>Describes a debate (AO1) but never assesses it</li>
+        <li>Uses only generic assertions ("science is good")</li>
+        <li>Ends with no judgement, or a one-sided one</li>
+      </ul>
+    </div>
+    <div class="compare-card green">
+      <h4>✅ What a strong Section E answer does</h4>
+      <ul>
+        <li>Pulls evidence from <strong>three or more topics</strong></li>
+        <li>Uses each example to <strong>advance an argument</strong> (AO3)</li>
+        <li>Weighs competing positions explicitly</li>
+        <li>Ends with a <strong>balanced, justified judgement</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>The AO1 : AO3 split — 8 marks vs 12 marks</h3>
+  <p>Every Section E question is worth 20 marks split <strong>AO1 (8) + AO3 (12)</strong>. Read that carefully: <strong>more than half the marks are for assessment, not knowledge.</strong></p>
+  <table>
+    <tr><th>Assessment objective</th><th>What it rewards</th><th>Marks</th></tr>
+    <tr><td><span class="syl-tag ao1">AO1</span>Knowledge &amp; understanding</td><td>Accurate, thorough, relevant knowledge — theories, studies, concepts, terminology.</td><td>8</td></tr>
+    <tr><td><span class="syl-tag ao3">AO3</span>Assessment</td><td>Logical chains of reasoning; weighing competing arguments; significance; a balanced judgement.</td><td>12</td></tr>
+  </table>
+
+  <div class="warn-box">
+    <h4>Common trap: AO1 overload</h4>
+    <p>The mark scheme states: <em>"Knowledge &amp; understanding is capped at maximum 8 marks."</em> This means a candidate can write four perfect textbook pages of description and still cannot score above an <strong>8/20</strong> unless they develop a genuine assessment. <strong>Describe less, weigh more.</strong></p>
+  </div>
+
+  <div class="quick-summary">
+    <h4>⚡ The Section E golden rule</h4>
+    <p style="margin:0;font-size:.9em;">For every piece of knowledge you introduce, immediately ask: <em>"So what does this show about the debate?"</em> If you cannot answer that in the same paragraph, the knowledge is doing no work for your AO3.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. The Eleven Issues and Debates — Master Matrix（11 大议题总表）</h2>
+
+  <p>Spec 9.3 lists exactly <strong>eleven</strong> issues and debates (9.3.1–9.3.11). Any of them — or a combination — can form the basis of the Section E question. The matrix below is your one-page map: what each one means, and which topics you can raid for evidence.</p>
+
+  <table>
+    <tr><th>#</th><th>Issue / debate</th><th>In one sentence</th><th>Where to find evidence</th></tr>
+    <tr><td>9.3.1</td><td><strong>Ethical issues</strong>（伦理议题）</td><td>Research must protect human and animal participants from harm.</td><td>Milgram, Rosenhan, Zimbardo, Piliavin; animal studies</td></tr>
+    <tr><td>9.3.2</td><td><strong>Practical issues</strong>（实操问题）</td><td>Real-world constraints shape what research can actually be done.</td><td>Piliavin field study; PET/fMRI cost; longitudinal attrition</td></tr>
+    <tr><td>9.3.3</td><td><strong>Reductionism vs holism</strong>（还原论 vs 整体论）</td><td>Break behaviour into parts, or study the whole person?</td><td>Dopamine hypothesis; MAOA gene; biopsychosocial model</td></tr>
+    <tr><td>9.3.4</td><td><strong>Ways of explaining behaviour</strong>（解释方式）</td><td>Different approaches give competing explanations of the same behaviour.</td><td>Aggression, depression, obedience, schizophrenia</td></tr>
+    <tr><td>9.3.5</td><td><strong>Psychology as a science</strong>（心理学作为科学）</td><td>Is psychology a science — or does it just borrow science's clothes?</td><td>Pavlov, Milgram, Raine, Freud, qualitative methods</td></tr>
+    <tr><td>9.3.6</td><td><strong>Cultural &amp; gender issues</strong>（文化与性别议题）</td><td>Findings may reflect one culture or one gender, not "people".</td><td>Rosenhan (US 1970s), Ma et al. (China), Becker (Fiji)</td></tr>
+    <tr><td>9.3.7</td><td><strong>Nature and nurture</strong>（先天与后天）</td><td>Is behaviour caused by biology, environment, or their interaction?</td><td>MAOA × environment; twin studies; SLT; Beck's triad</td></tr>
+    <tr><td>9.3.8</td><td><strong>Development over time</strong>（心理学的发展）</td><td>How has psychology — and its ideas — changed across history?</td><td>Wundt → behaviourism → cognitive; DSM-5; lobotomy → CBT</td></tr>
+    <tr><td>9.3.9</td><td><strong>Social control</strong>（社会控制）</td><td>Can psychological knowledge be used to control people's behaviour?</td><td>Token economies; conditioning; obedience research</td></tr>
+    <tr><td>9.3.10</td><td><strong>Knowledge in society</strong>（知识的社会应用）</td><td>How can psychology be applied to benefit society?</td><td>Mental health literacy; workplace bullying; health campaigns</td></tr>
+    <tr><td>9.3.11</td><td><strong>Socially sensitive research</strong>（社会敏感性研究）</td><td>Some findings may harm the groups they describe.</td><td>Genetic explanations; depression; race and IQ debates</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>把这 11 个议题想成 11 副"不同的眼镜"。同一条心理学知识，戴上"还原论眼镜"看是一种评价，戴上"文化议题眼镜"看又是另一种。Section E 的高分关键，就是<strong>能主动换眼镜</strong>——不只用一副。考题往往只点一个议题（如"科学"），但高分答案会顺带把相关议题（如"还原论""文化议题"）拉进来，形成层次。
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span> Exam Key Points — The Eleven Debates
+    <span class="ao-badge">AO1</span>
+  </div>
+  <div class="summary-card-body hidden">
+    <ol>
+      <li>Spec 9.3 lists <strong>eleven</strong> issues and debates; any can anchor a Section E question.</li>
+      <li>They are <strong>synoptic</strong> — each must be illustrated from topics A–H, never from a single chapter.</li>
+      <li>Ethical (9.3.1) and practical (9.3.2) issues are about <strong>how</strong> research is done.</li>
+      <li>Reductionism/holism (9.3.3), ways of explaining (9.3.4) and nature/nurture (9.3.7) are about <strong>what causes</strong> behaviour.</li>
+      <li>Science (9.3.5), culture/gender (9.3.6) and development over time (9.3.8) are about the <strong>status and history</strong> of psychology.</li>
+      <li>Social control (9.3.9), knowledge in society (9.3.10) and socially sensitive research (9.3.11) are about psychology's <strong>impact on people</strong>.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECTION 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Deep Dive — Psychology as a Science（心理学作为一门科学）</h2>
+
+  <div class="debate-card">
+    <h4>Debate 9.3.5 · The issue of psychology as a science <span class="spec-ref">spec 9.3.5</span></h4>
+    <p style="margin:0;">This is the single most-tested debate in Section E — it appeared as <strong>WPS04 Q11 (20 marks)</strong>. It asks whether psychology deserves the label "science", which forces you to define what a science <em>is</em>, then test psychology against that definition.</p>
+  </div>
+
+  <h3>What counts as "science"? (AO1 foundations)</h3>
+  <ul>
+    <li><strong>Empiricism</strong>（经验主义）: science studies physical evidence observable through the senses, rather than relying on opinion or introspection.</li>
+    <li><strong>Objectivity</strong>（客观性）: science requires an unbiased, value-free analysis of data.</li>
+    <li><strong>Falsification</strong>（可证伪性）: Popper argued that a scientific theory must be testable in a way that could <em>disprove</em> it — set out to disprove your hypothesis, not just confirm it.</li>
+    <li><strong>Replication</strong>（可重复性）: standardised controls and laboratory experiments allow others to repeat a study and check reliability.</li>
+    <li><strong>Universal laws</strong>（普遍规律）: science seeks a single general explanation for a phenomenon.</li>
+  </ul>
+
+  <h3>Testing psychology against those criteria</h3>
+  <table>
+    <tr><th>Criterion of science</th><th>Psychology meets it…</th><th>…but falls short</th></tr>
+    <tr><td>Observable evidence</td><td><strong>Pavlov (1927)</strong> measured salivation in dogs using a collection jar — a directly observable, measurable response.</td><td>Some theories are <strong>introspective</strong> and lack empirical testing of observable phenomena (e.g. Freud's unconscious).</td></tr>
+    <tr><td>Objectivity / value-free</td><td><strong>Raine et al. (1997)</strong> used PET scans — a value-free data-collection process.</td><td>The <strong>interpretation</strong> of those scans is subjective, so psychology is not fully scientific.</td></tr>
+    <tr><td>Falsification</td><td><strong>Bandura</strong> applied falsification to SLT, revising it into Social Cognitive Theory when his research did not fully explain learning.</td><td><strong>Psychoanalysis</strong> is introspective — its concepts cannot be falsified, yet the therapy still works.</td></tr>
+    <tr><td>Replication</td><td><strong>Milgram (1963)</strong> used standardised procedures, letting <strong>Burger (2009)</strong> replicate them and retest the findings.</td><td><strong>Bartlett (1932)</strong> used loose controls, reducing the scientific nature of his memory research.</td></tr>
+    <tr><td>Universal laws</td><td>Cognitive and biological approaches (<strong>nomothetic</strong>) seek universal laws, which is scientifically credible.</td><td>Those laws <strong>ignore the uniqueness of individuals</strong>; the dopamine hypothesis reduces complex behaviour unrealistically.</td></tr>
+  </table>
+
+  <div class="exam-tip">
+    <strong>How to use this in the essay:</strong> Do not list these like a checklist. Instead, take a <strong>criterion</strong>, apply it to <strong>two contrasting pieces of psychology</strong>, and reach a mini-conclusion — e.g. "On falsification, Bandura's revision of SLT suggests psychology <em>can</em> be scientific; but on the same criterion psychoanalysis fails, so the answer is 'partly'." That is AO3 in action.
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>这道题的核心陷阱是"只答一面"。很多同学一上来就写"心理学当然科学，因为 Milgram 用了标准化程序"——这只能拿到很低的分数。考官想看到的是：你<strong>先定义科学的标准</strong>（可观察、客观、可证伪、可重复），然后<strong>逐条检验心理学</strong>，发现它"有的达标、有的不达标"。比如脑扫描够客观，但解读扫描还是主观的；学习理论能证伪，但精神分析不能。最后结论应该是"心理学是<strong>部分科学</strong>"或"科学程度因分支而异"，而不是简单的"是"或"不是"。
+  </div>
+</section>
+
+<!-- ============ SECTION 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Deep Dive — Reductionism vs Holism（还原论与整体论）</h2>
+
+  <div class="debate-card">
+    <h4>Debate 9.3.3 · Reductionism versus holism <span class="spec-ref">spec 9.3.3</span></h4>
+    <p style="margin:0;"><strong>Reductionism</strong> explains complex behaviour by breaking it into smaller, simpler components (often biological or stimulus–response). <strong>Holism</strong> argues that behaviour can only be understood by studying the whole person in context.</p>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card red">
+      <h4>🔬 Reductionist explanations</h4>
+      <ul>
+        <li><strong>Depression:</strong> the monoamine hypothesis reduces depression to low serotonin/noradrenaline — a purely neurochemical account.</li>
+        <li><strong>Aggression:</strong> MAOA gene and testosterone reduce a social behaviour to biology alone.</li>
+        <li><strong>Schizophrenia:</strong> the dopamine hypothesis explains a whole disorder through one neurotransmitter.</li>
+        <li><strong>Learning:</strong> classical conditioning reduces fear or attachment to stimulus–response bonds.</li>
+      </ul>
+    </div>
+    <div class="compare-card green">
+      <h4>🌍 Holistic explanations</h4>
+      <ul>
+        <li><strong>Depression:</strong> Beck's cognitive triad adds thoughts; the <em>diathesis–stress</em> model adds life events.</li>
+        <li><strong>Schizophrenia:</strong> combining biology + family dysfunction + cognitive + social factors.</li>
+        <li><strong>Aggression:</strong> social learning theory locates the cause in observation, imitation and culture.</li>
+        <li><strong>Wellbeing:</strong> the biopsychosocial model, or the Māori <em>te whare tapa whā</em> view (mind, body, family, spirit).</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Assessment — how to weigh the debate (AO3)</h3>
+  <ul>
+    <li><strong>Reductionism is not a weakness by definition.</strong> Reducing behaviour to measurable variables is what <em>makes</em> psychology scientific and testable. The dopamine hypothesis became testable precisely <em>because</em> it was simplified.</li>
+    <li><strong>But reductionism can mislead.</strong> The dopamine hypothesis excludes interactions between the individual and the environment, giving a scientific explanation that is unrealistic when studying the complexity of human nature.</li>
+    <li><strong>Holism captures complexity</strong> but risks being untestable and vague — if everything matters, nothing can be isolated.</li>
+    <li><strong>Interactionist middle ground:</strong> the diathesis–stress model (a genetic vulnerability triggered by environment) keeps the rigour of reduction while acknowledging holism.</li>
+  </ul>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>用生活化比喻——还原论像把一台电脑"拆成零件"去理解它（CPU、内存、电源）；整体论像坚持"只有让电脑跑起来、看它和网络、用户怎么互动，才能真正理解它"。拆零件的好处是看得清、测得准（科学性强）；坏处是拆完之后"电脑"这个整体就不见了。心理学的两难就在这儿：想科学，就得拆；想真实，就得看整体。
+  </div>
+</section>
+
+<!-- ============ SECTION 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Deep Dive — Nature, Nurture &amp; Development over Time（先天后天与发展）</h2>
+
+  <h3>6.1 Nature and nurture（先天与后天）</h3>
+  <div class="debate-card">
+    <h4>Debate 9.3.7 · The role of both nature and nurture <span class="spec-ref">spec 9.3.7</span></h4>
+    <p style="margin:0;">Do genes, the environment, or their interaction cause behaviour? Modern psychology answers almost always: <strong>interaction</strong>.</p>
+  </div>
+  <table>
+    <tr><th>Behaviour</th><th>Nature evidence</th><th>Nurture evidence</th><th>Interaction</th></tr>
+    <tr><td>Aggression</td><td>MAOA gene; twin/adoption studies; Caspi et al.</td><td>Social learning theory; media models; culture</td><td>MAOA only raised aggression <strong>when combined with maltreatment</strong> (Caspi et al.)</td></tr>
+    <tr><td>Depression</td><td>Heritability from twin studies; serotonin system</td><td>Beck's cognitive triad; learned helplessness; life events</td><td>Diathesis–stress: genetic vulnerability + stressor</td></tr>
+    <tr><td>Eating disorders</td><td>Twin, linkage, GWAS and polygenic studies</td><td>Media/social media; cultural ideals (Becker, Fiji)</td><td>Genetic risk expressed only in a body-image-focused culture</td></tr>
+  </table>
+
+  <h3>6.2 How psychology has developed over time（心理学的发展）</h3>
+  <div class="debate-card">
+    <h4>Debate 9.3.8 · Understanding how psychology has developed over time <span class="spec-ref">spec 9.3.8</span></h4>
+    <p style="margin:0;">Psychology is not fixed: its methods, classifications and ideas have changed, and recognising that change is itself an evaluative point.</p>
+  </div>
+  <ul>
+    <li><strong>Method:</strong> from Wundt's introspection (1879) → behaviourism's objective observation → the cognitive revolution → today's brain imaging.</li>
+    <li><strong>Classification:</strong> diagnostic systems have evolved (DSM-I to DSM-5; ICD-11), and once-listed conditions (e.g. homosexuality) have been removed — showing classification reflects social values as well as science.</li>
+    <li><strong>Treatment:</strong> the prefrontal lobotomy of the 1930s–50s was replaced by drug therapy, then CBT — evidence that practice improves as knowledge does.</li>
+    <li><strong>Aetiology:</strong> explanations of schizophrenia have shifted from "schizophrenogenic mother" to the dopamine hypothesis to combined biopsychosocial models.</li>
+  </ul>
+
+  <div class="exam-tip">
+    <strong>Exam tip:</strong> "Development over time" is a gift for a conclusion. Even when a question is about a different debate, you can close by noting that <em>the debate itself has shifted</em> — e.g. "Early nature–nurture debates were polarised, but over time the field has moved toward interactionism."
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>"Nature vs nurture" 是入门级的老问题，但考试要的答案是<strong>升级版</strong>：不要停在"两者都重要"，而要给出<strong>交互机制</strong>——比如 Caspi 的研究发现，只有"MAOA 基因 + 童年受虐"同时出现时攻击性才升高。这就是"基因提供底稿，环境决定是否翻开"。
+  </div>
+</section>
+
+<!-- ============ SECTION 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Deep Dive — Cultural, Gender &amp; Socially Sensitive Issues（文化、性别与敏感性）</h2>
+
+  <h3>7.1 Cultural and gender issues（文化与性别议题）</h3>
+  <div class="debate-card">
+    <h4>Debate 9.3.6 · Cultural and gender issues <span class="spec-ref">spec 9.3.6</span></h4>
+    <p style="margin:0;"><strong>Ethnocentrism</strong> is judging other cultures by the standards of one's own; <strong>gender bias</strong> is treating one gender as the norm. Both threaten the claim that psychology studies "people" rather than "Western men".</p>
+  </div>
+  <ul>
+    <li><strong>Ethnocentric samples:</strong> Rosenhan (1973) was conducted in the USA in the 1970s — findings may not generalise; Ma et al. (2014) used only mainland Chinese undergraduates; Becker et al. (2002) studied Fijian girls but imported a Western "thin ideal".</li>
+    <li><strong>Cultural bias in diagnosis:</strong> what is "statistically infrequent" or "violates moral standards" varies between cultures — the DSM-5 added a Cultural Formulation Interview in response.</li>
+    <li><strong>Gender bias:</strong> anorexia research has historically used female samples (e.g. Reichel et al. 2014 included no males); Milgram's obedience samples were overwhelmingly male. Conclusions may not apply to the excluded group.</li>
+  </ul>
+
+  <h3>7.2 Socially sensitive research（社会敏感性研究）</h3>
+  <div class="debate-card">
+    <h4>Debate 9.3.11 · Issues relating to socially sensitive research <span class="spec-ref">spec 9.3.11</span></h4>
+    <p style="margin:0;">Research is <strong>socially sensitive</strong> when its findings could have consequences for a person, group or society — even when the research itself is methodologically sound.</p>
+  </div>
+  <ul>
+    <li><strong>Genetic explanations of aggression or mental illness</strong> risk being read as "born bad", fuelling stigma, discrimination or eugenic policies.</li>
+    <li><strong>Biological accounts of depression</strong> can shift blame onto the individual ("it's just your brain chemistry") and downplay social causes such as poverty.</li>
+    <li><strong>Labelling and diagnosis</strong> (Rosenhan) show how a label can change how others treat a person — a real social consequence of psychological findings.</li>
+    <li><strong>Researchers' responsibility:</strong> findings should be reported tentatively and scientifically, with attention to how they may be interpreted or misused.</li>
+  </ul>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>"社会敏感性"不是问研究"做得对不对"，而是问"结论传出去之后会不会伤人"。比如一篇研究发现"某个基因和暴力有关"，方法上可能很严谨，但如果被媒体简化成"暴力是天生的"，就可能变成对某些群体的歧视。所以心理学家有责任把话说得谨慎——这叫 scientific responsibility（科学责任）。
+  </div>
+</section>
+
+<!-- ============ SECTION 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Deep Dive — Ethical &amp; Practical Issues（伦理与实操问题）</h2>
+
+  <h3>8.1 Ethical issues in research（研究中的伦理议题）</h3>
+  <div class="debate-card">
+    <h4>Debate 9.3.1 · Ethical issues (animal and human) <span class="spec-ref">spec 9.3.1</span></h4>
+    <p style="margin:0;">Research with humans must meet the <strong>BPS Code of Ethics (2009)</strong> and, for practitioners, <strong>HCPC</strong> standards; research with animals is governed by the <strong>Scientific Procedures Act 1986</strong>.</p>
+  </div>
+  <table>
+    <tr><th>Principle</th><th>What it requires</th><th>Classic example</th></tr>
+    <tr><td>Informed consent</td><td>Participants agree to take part knowing what is involved.</td><td>Milgram's participants did not consent to "obedience" research</td></tr>
+    <tr><td>Deception</td><td>Misleading participants must be justified and minimised.</td><td>Rosenhan's pseudopatients feigned symptoms</td></tr>
+    <tr><td>Right to withdraw</td><td>Participants may leave at any time.</td><td>Milgram's "prods" discouraged withdrawal (an ethical issue)</td></tr>
+    <tr><td>Protection from harm</td><td>No physical or psychological harm beyond normal life.</td><td>Zimbardo's prison study was stopped early</td></tr>
+    <tr><td>Confidentiality / anonymity</td><td>Data must not identify individuals.</td><td>Content analyses use pseudonyms</td></tr>
+    <tr><td>Animal ethics</td><td>Justified by law; welfare promoted via the <strong>3Rs</strong> — Replace, Reduce, Refine.</td><td>Animal studies of rhythm and aggression</td></tr>
+  </table>
+
+  <h3>8.2 Practical issues in design and implementation（设计与实施中的实操问题）</h3>
+  <div class="debate-card">
+    <h4>Debate 9.3.2 · Practical issues <span class="spec-ref">spec 9.3.2</span></h4>
+    <p style="margin:0;">Even a perfect design can be impossible or impractical to run — and that shapes what psychology knows.</p>
+  </div>
+  <ul>
+    <li><strong>Time and cost:</strong> PET and fMRI scans are expensive and scarce, limiting sample size and replication.</li>
+    <li><strong>Access to samples:</strong> truly random sampling is often impossible, so research relies on volunteers (with their own bias).</li>
+    <li><strong>Attrition:</strong> longitudinal studies lose participants over time (e.g. Becker's prospective design).</li>
+    <li><strong>Control vs realism:</strong> laboratory control raises internal validity but lowers ecological validity; field studies (Piliavin) gain realism but lose control.</li>
+    <li><strong>Demand characteristics:</strong> participants may guess the aim and change their behaviour.</li>
+  </ul>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>伦理问题问"该不该这么做"，实操问题问"能不能这么做"。比如随机控制试验（RCT）是检验治疗效果的金标准，但你要把抑郁症患者随机分到"不接受治疗"的对照组，这在伦理上很难通过——于是只能用安慰剂对照。伦理和实操往往互相拉扯，这也是高分答案可以点出的张力。
+  </div>
+</section>
+
+<!-- ============ SECTION 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Deep Dive — Social Control &amp; Knowledge in Society（社会控制与知识应用）</h2>
+
+  <h3>9.1 The use of psychology in social control（社会控制）</h3>
+  <div class="debate-card">
+    <h4>Debate 9.3.9 · The use of psychology in social control <span class="spec-ref">spec 9.3.9</span></h4>
+    <p style="margin:0;">Psychological knowledge can be applied to <strong>shape and control behaviour</strong> — sometimes for care, sometimes as coercion.</p>
+  </div>
+  <ul>
+    <li><strong>Behaviour modification:</strong> <strong>token economies</strong> in schizophrenia care use operant conditioning to reinforce desirable behaviour — arguably therapeutic, arguably controlling.</li>
+    <li><strong>Persuasion and propaganda:</strong> learning theory explains how attitudes can be conditioned; researchers such as Packard warned of "hidden persuaders".</li>
+    <li><strong>Obedience to authority:</strong> Milgram showed how destructive obedience can be engineered — a warning about the power of situational control.</li>
+    <li><strong>Assessment:</strong> where does therapy end and coercion begin? Token economies may be seen as ethical treatment or as taking away patients' autonomy.</li>
+  </ul>
+
+  <h3>9.2 The use of psychological knowledge in society（知识的社会应用）</h3>
+  <div class="debate-card">
+    <h4>Debate 9.3.10 · The use of psychological knowledge in society <span class="spec-ref">spec 9.3.10</span></h4>
+    <p style="margin:0;">The positive counterpart to social control: psychology can be applied to <strong>improve</strong> society.</p>
+  </div>
+  <ul>
+    <li><strong>Health literacy:</strong> understanding mental health literacy can reduce stigma and encourage help-seeking (Chapter 26).</li>
+    <li><strong>Workplaces:</strong> O'Moore &amp; Lynch (2007) linked friendly work environments to lower bullying — an applied route to a social problem.</li>
+    <li><strong>Policy and education:</strong> evidence from eyewitness research, clinical trials and workplace studies informs real decisions.</li>
+    <li><strong>Assessment:</strong> application can be powerful, but only as reliable as the underlying research — weak or culture-bound findings can misguide policy.</li>
+  </ul>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>这两个议题是一枚硬币的两面。<strong>社会控制</strong>偏"操控"——用心理学让人听话、守规矩；<strong>知识应用</strong>偏"帮助"——用心理学让社会更好。同一项技术（比如行为矫正）可以被看作治疗，也可以被看作控制，取决于谁在用、用来干什么。Section E 里，能同时戴这两副眼镜看同一件事，就是高分的标志。
+  </div>
+</section>
+
+<!-- ============ SECTION 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. The 20-Mark Toolkit — Planning a Section E Essay（20 分论文工具箱）</h2>
+
+  <p>A 20-mark synoptic essay is not improvised. Use the same four-move structure every time.</p>
+
+  <div class="essay-plan">
+    <h4>🧩 The four-move structure</h4>
+    <ol>
+      <li><strong>Define the terms and set the frame (~3–4 marks AO1).</strong> Define the debate itself, then state how you will test it. E.g. "To assess whether psychology is a science, I first need criteria: falsifiability, objectivity, replication."</li>
+      <li><strong>Build the "for" case (AO1 + AO3).</strong> Bring evidence from <strong>at least two topics</strong> that supports one side. Always pair the evidence with an inference.</li>
+      <li><strong>Build the "against" case (AO1 + AO3).</strong> Bring contrasting evidence — ideally from <strong>different topics</strong> — and explain why it complicates the picture.</li>
+      <li><strong>Reach a balanced judgement (AO3).</strong> Weigh the two cases. Do not sit on the fence: give a <em>reasoned</em> position, qualified by what limits it.</li>
+    </ol>
+  </div>
+
+  <h3>The AO3 moves that earn the top level</h3>
+  <ul>
+    <li><strong>Chains of reasoning:</strong> "Because X, therefore Y, which suggests Z" — never a bare assertion.</li>
+    <li><strong>Competing arguments:</strong> explicitly acknowledge the opposing view rather than ignoring it.</li>
+    <li><strong>Significance:</strong> explain <em>why</em> the point matters to the debate, not just that it exists.</li>
+    <li><strong>Synoptic range:</strong> name the topic each piece of evidence comes from (a marker of genuine breadth).</li>
+    <li><strong>Balanced judgement:</strong> the Level 4 (17–20) descriptor requires "a full understanding and awareness of the significance of competing arguments/factors leading to a <strong>balanced judgement</strong>".</li>
+  </ul>
+
+  <table class="level-table">
+    <tr><th>Level</th><th>Marks</th><th>What the examiner wants</th></tr>
+    <tr><td>1</td><td>1–4</td><td>Isolated knowledge; generic assertions; limited attempt to address the question.</td></tr>
+    <tr><td>2</td><td>5–8</td><td>Mostly accurate knowledge; some development; a generic or superficial assessment.</td></tr>
+    <tr><td>3</td><td>9–12</td><td>Coherent chains of reasoning; considers a range of factors; a judgement, but imbalanced.</td></tr>
+    <tr><td>4</td><td>13–16</td><td>Logical assessment; competing arguments understood; judgement still somewhat imbalanced.</td></tr>
+    <tr><td><strong>5</strong></td><td><strong>17–20</strong></td><td><strong>Well-developed logical assessment; full awareness of the significance of competing arguments; a balanced judgement.</strong></td></tr>
+  </table>
+
+  <div class="warn-box">
+    <h4>Two killers of a Section E essay</h4>
+    <ul>
+      <li><strong>Description without assessment</strong> — capped at 8 marks however long you write.</li>
+      <li><strong>Single-topic answers</strong> — if all your evidence comes from one chapter, the answer is not synoptic and cannot reach the top levels.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SECTION 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Worked Example — WPS04 Q11 "Assess whether psychology can be considered a science"（真题范文）</h2>
+
+  <div class="exam-practice">
+    <h3>📝 The question (WPS04/01, Section E, Q11 — 20 marks)</h3>
+    <p style="font-size:1.05em;"><em>"Assess whether psychology can be considered a science."</em> <strong>(20)</strong></p>
+    <p style="margin-bottom:0;">AO1 (8 marks) · AO3 (12 marks)</p>
+  </div>
+
+  <h3>Step 1 — Decode the command word</h3>
+  <p><strong>"Assess"</strong> = weigh up both sides and reach a judgement. The question is not "describe the scientific method" — it is "make a case, then judge it".</p>
+
+  <h3>Step 2 — Plan the synoptic range</h3>
+  <table>
+    <tr><th>Topic</th><th>Evidence to use</th><th>Serves which side?</th></tr>
+    <tr><td>Learning (D)</td><td>Pavlov (1927) salivation in dogs — measurable, observable</td><td>✅ Science</td></tr>
+    <tr><td>Social (A)</td><td>Milgram (1963) standardised procedure → replicated by Burger (2009)</td><td>✅ Science</td></tr>
+    <tr><td>Biological (C)</td><td>Raine et al. (1997) PET scans — value-free data collection</td><td>✅ Science (with a limit)</td></tr>
+    <tr><td>Cognitive (B)</td><td>Bartlett (1932) loose controls; Peterson &amp; Peterson (1959) artificial trigrams</td><td>❌ Not fully scientific</td></tr>
+    <tr><td>Clinical / approaches</td><td>Qualitative data (natural observations); psychoanalysis is unfalsifiable</td><td>❌ Not fully scientific</td></tr>
+  </table>
+
+  <h3>Step 3 — Gold-standard model answer (Level 5 standard)</h3>
+
+  <div class="gold-standard-para">
+    <h4>Introduction — set the frame</h4>
+    <p>Whether psychology can be considered a science depends on what we mean by "science". A science is generally taken to require the <strong>empirical study of observable evidence</strong>, <strong>objectivity</strong> through value-free analysis, the possibility of <strong>falsification</strong>, and <strong>replication</strong> via standardised controls. Judged against these criteria, psychology is <strong>partly</strong> scientific — some of its methods meet the standard while others fall short.</p>
+  </div>
+
+  <div class="gold-standard-para">
+    <h4>For — psychology meets scientific criteria</h4>
+    <p>Learning theory demonstrates scientific principles: Pavlov (1927) measured dogs' salivation using a collection jar, producing <strong>directly observable, quantitative data</strong> — behaviour that could be recorded and repeated. Similarly, Milgram (1963) used a <strong>standardised procedure</strong> in his obedience studies, which allowed both himself and later researchers such as Burger (2009) to replicate the findings and retest their reliability. Replication is central to science, and here psychology delivers it. In the biological approach, Raine et al. (1997) used <strong>PET scans</strong>, a value-free data-collection process, to compare murderers pleading NGRI with controls. These examples suggest psychology can adopt the empirical, standardised methods of the natural sciences.</p>
+  </div>
+
+  <div class="gold-standard-para">
+    <h4>Against — psychology falls short of scientific criteria</h4>
+    <p>However, the same evidence reveals limits. Although Raine's scans were collected objectively, their <strong>interpretation is subjective</strong> — deciding what a pattern of activity "means" involves judgement, so psychology is not <em>fully</em> scientific. Some psychological theories are <strong>introspective</strong> and lack empirical testing of observable phenomena; psychoanalysis, for instance, is introspective and its concepts <strong>cannot be falsified</strong>, yet it is still used therapeutically — showing that not all psychology even aims for scientific status. Standardised methods can also buy rigour at the cost of realism: Peterson and Peterson (1959) tested short-term memory using <strong>nonsense trigrams</strong> that do not represent a realistic use of memory, creating a tension between science and real behaviour. Bartlett (1932), conversely, avoided strict controls in his memory research, reducing its scientific nature — though it may be a more valid representation of real-life memory. Finally, <strong>reductionism</strong>, such as the dopamine hypothesis, excludes interactions between the individual and the environment, giving a scientific but unrealistic account of human complexity, and <strong>nomothetic</strong> approaches seek universal laws that, however scientific, ignore the uniqueness of individuals.</p>
+  </div>
+
+  <div class="gold-standard-para">
+    <h4>Judgement — a balanced conclusion</h4>
+    <p>On balance, psychology can be considered <strong>partially scientific</strong>, and its scientific status varies by approach. Where it uses observable measures, standardised procedures and replication — as in behaviourist and some biological research — it meets the criteria of science. Where it relies on introspection, unfalsifiable concepts or artificial tasks, it does not. Crucially, the field itself has <strong>developed over time</strong>: <strong>Bandura</strong> applied falsification to SLT and revised it into Social Cognitive Theory when his research did not fully explain learning, making the theory <em>more</em> scientific. This suggests psychology is not fixed — it is becoming more scientific as its methods and theories mature, even if it cannot yet be described as a science in the same sense as physics.</p>
+  </div>
+
+  <h3>Why this scores Level 5</h3>
+  <ul>
+    <li><span class="syl-tag ao1">AO1</span>Accurate knowledge of criteria, studies and terminology across <strong>four topics</strong>.</li>
+    <li><span class="syl-tag ao3">AO3</span>Each example is used to <strong>advance an argument</strong>, not merely described.</li>
+    <li><span class="syl-tag syn">SYN</span>Evidence is drawn from Learning, Social, Biological, Cognitive and the approaches debate.</li>
+    <li><span class="syl-tag ao3">AO3</span>A <strong>balanced judgement</strong> that weighs both sides and gives a reasoned position.</li>
+  </ul>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>注意范文的结构是"定义标准 → 正方 2–3 个主题 → 反方 2–3 个主题 → 判断"。每一段都在做同一件事：<strong>先给证据，再解释这条证据对辩论意味着什么</strong>。结尾没有含糊地说"两边都有道理"，而是给出了明确立场——"<strong>部分科学</strong>，且科学程度因分支而异，并随时间提高"，同时点出"心理学还在进化"。这就是考官要的 balanced judgement。
+  </div>
+</section>
+
+<!-- ============ SECTION 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Checkpoint &amp; Exam Practice（自测与考试练习）</h2>
+
+  <div class="checkpoint">
+    <h3>✅ Checkpoint — 10 quick questions</h3>
+    <ol>
+      <li>How many marks is Section E worth, and what is the AO1 : AO3 split?</li>
+      <li>Why is Section E described as "synoptic"?</li>
+      <li>List the <strong>eleven</strong> issues and debates from spec 9.3.</li>
+      <li>State Popper's criterion for a scientific theory.</li>
+      <li>Give one piece of evidence that psychology <em>is</em> scientific, and one that it is <em>not</em>.</li>
+      <li>Define reductionism and holism, with an example of each.</li>
+      <li>What is the difference between ethnocentrism and gender bias?</li>
+      <li>What makes research "socially sensitive"? Give an example.</li>
+      <li>How can token economies be seen as either treatment or social control?</li>
+      <li>What does the Level 5 (17–20) descriptor require that Level 4 does not?</li>
+    </ol>
+  </div>
+
+  <div class="exam-practice">
+    <h3>📝 Exam Practice — Section E (20 marks each)</h3>
+
+    <p><strong>Question 1.</strong> <em>"Assess the extent to which psychological research can be considered reductionist."</em> <strong>(20)</strong></p>
+    <p><strong>Question 2.</strong> <em>"Discuss the role of both nature and nurture in explaining human behaviour."</em> <strong>(20)</strong></p>
+    <p><strong>Question 3.</strong> <em>"Evaluate the usefulness of psychological knowledge in society."</em> <strong>(20)</strong></p>
+
+    <div class="essay-plan">
+      <h4>Planning scaffold (use for any of the three)</h4>
+      <ol>
+        <li><strong>Define</strong> the debate and set your criteria.</li>
+        <li><strong>For</strong> — two pieces of evidence from <em>different</em> topics + inference.</li>
+        <li><strong>Against</strong> — two contrasting pieces + inference.</li>
+        <li><strong>Judgement</strong> — balanced position, qualified.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. Key Terms（关键术语表）</h2>
+  <table>
+    <tr><th>Term</th><th>Definition</th></tr>
+    <tr><td>Synoptic</td><td>Drawing on knowledge from across the whole qualification, not one topic.</td></tr>
+    <tr><td>Issue / debate</td><td>A recurring, contested question in psychology (e.g. is it a science?).</td></tr>
+    <tr><td>Reductionism</td><td>Explaining complex behaviour by breaking it into smaller, simpler components.</td></tr>
+    <tr><td>Holism</td><td>Explaining behaviour by studying the whole person in context.</td></tr>
+    <tr><td>Falsification</td><td>Popper's principle that a scientific theory must be testable in a way that could disprove it.</td></tr>
+    <tr><td>Replication</td><td>Repeating a study with standardised procedures to check reliability.</td></tr>
+    <tr><td>Objectivity</td><td>Value-free, unbiased data collection and analysis.</td></tr>
+    <tr><td>Nomothetic</td><td>Seeking universal laws that apply to all people.</td></tr>
+    <tr><td>Idiographic</td><td>Studying the unique individual rather than universal laws.</td></tr>
+    <tr><td>Ethnocentrism</td><td>Judging other cultures by the standards of one's own.</td></tr>
+    <tr><td>Gender bias</td><td>Treating one gender as the norm, so findings may not apply to the other.</td></tr>
+    <tr><td>Diathesis–stress</td><td>Model where a genetic vulnerability is triggered by environmental stress.</td></tr>
+    <tr><td>Social control</td><td>Using psychological knowledge to shape or direct people's behaviour.</td></tr>
+    <tr><td>Socially sensitive research</td><td>Research whose findings could have negative consequences for a group or society.</td></tr>
+    <tr><td>Balanced judgement</td><td>A reasoned, qualified conclusion that weighs competing arguments — required for Level 5.</td></tr>
+  </table>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span> Exam Key Points — Whole Chapter
+    <span class="ao-badge">AO1 · AO3 · Synoptic</span>
+  </div>
+  <div class="summary-card-body">
+    <ol>
+      <li>Section E = one <strong>20-mark synoptic essay</strong> on issues and debates; <strong>AO1 (8) + AO3 (12)</strong>.</li>
+      <li>Knowledge is capped at 8 marks — <strong>assessment, not description, earns the top levels</strong>.</li>
+      <li>Spec 9.3 lists <strong>eleven</strong> debates; draw evidence from <strong>paths A–H</strong>, never a single chapter.</li>
+      <li>Science (9.3.5) is the most-tested; use criteria (falsifiability, objectivity, replication) to test psychology.</li>
+      <li>Reductionism vs holism, nature vs nurture and ways of explaining are causal debates — favour interactionist conclusions.</li>
+      <li>Cultural/gender bias and socially sensitive research are about <strong>who</strong> research applies to and who it may harm.</li>
+      <li>Social control vs knowledge in society are two sides of psychology's impact on people.</li>
+      <li>Structure: <strong>define → for → against → balanced judgement</strong>; every example must carry an inference (AO3).</li>
+    </ol>
+  </div>
+</section>
+
+</main>
+</div><!-- END PAGE LAYOUT -->
+
+<div class="footer-note">
+  <p>📚 Edexcel IAL Psychology · Topic I: Psychological Skills · Chapter 28 — Issues and Debates</p>
+  <p>Spec 9.3.1–9.3.11 · Unit 4 Section E (20 marks) · Synoptic essay · WPS04 Q11 worked example</p>
+</div>
+</div><!-- END CONTAINER -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<script>
+function toggleSummary(header) {
+  header.classList.toggle('open');
+  var body = header.nextElementSibling;
+  if (body && body.classList.contains('summary-card-body')) {
+    body.classList.toggle('hidden');
+  }
+}
+
+(function(){
+  var sections = document.querySelectorAll('.section[id^="s"]');
+  var links = document.querySelectorAll('.sb-item a');
+  function onScroll() {
+    var scrollPos = window.scrollY + 120;
+    var currentId = sections.length ? sections[0].id : null;
+    sections.forEach(function(sec) {
+      if (sec.offsetTop <= scrollPos) { currentId = sec.id; }
+    });
+    links.forEach(function(link) {
+      link.classList.toggle('sb-active', link.getAttribute('href') === '#' + currentId);
+    });
+    var btn = document.getElementById('backToTop');
+    if (btn) { btn.classList.toggle('show', window.scrollY > 400); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+function toggleDarkMode() {
+  document.body.classList.toggle('dark');
+  var isDark = document.body.classList.contains('dark');
+  localStorage.setItem('edexcel-ch28-darkMode', isDark ? '1' : '0');
+  var btn = document.getElementById('darkBtn');
+  if (btn) { btn.textContent = isDark ? '☀️ Light' : '🌙 Dark'; }
+}
+
+function adjustFontSize(delta) {
+  var current = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+  var next = Math.min(22, Math.max(12, current + delta));
+  document.documentElement.style.fontSize = next + 'px';
+  localStorage.setItem('edexcel-ch28-fontSize', String(next));
+}
+
+(function(){
+  if (localStorage.getItem('edexcel-ch28-darkMode') === '1') {
+    document.body.classList.add('dark');
+    var btn = document.getElementById('darkBtn');
+    if (btn) { btn.textContent = '☀️ Light'; }
+  }
+  var fs = localStorage.getItem('edexcel-ch28-fontSize');
+  if (fs) { document.documentElement.style.fontSize = fs + 'px'; }
+})();
+</script>
+</body>
+</html>
