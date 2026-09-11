@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edexcel Ch19 — Practical Investigation: Design, Conduct & Evaluate a Correlational Study</title>
+<style>
+:root {
+  --primary: #ea580c; --primary-light: #fff7ed; --primary-dark: #9a3412;
+  --secondary: #f97316; --accent: #fbbf24;
+  --bg: #fafaf9; --surface: #ffffff; --card: #ffffff;
+  --text: #1c1917; --text-secondary: #57534e; --muted: #a8a29e;
+  --border: #e7e5e4; --shadow: 0 4px 20px rgba(0,0,0,.06);
+  --radius: 14px; --sidebar-w: 190px;
+  --success: #16a34a; --warning: #d97706; --info: #2563eb; --danger: #dc2626;
+  --font-size: 16px;
+}
+.dark-mode {
+  --bg: #1c1917; --surface: #292524; --card: #44403c;
+  --text: #fafaf9; --text-secondary: #d6d3d1; --muted: #a8a29e;
+  --border: #57534e; --shadow: 0 4px 20px rgba(0,0,0,.25);
+  --primary-light: #431407;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: var(--font-size); line-height: 1.7;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.dark-mode nav { background: rgba(41,37,36,.92); }
+.nav-inner { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
+.breadcrumb { font-size: .9em; color: var(--text-secondary); }
+.breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.breadcrumb a:hover { text-decoration: underline; }
+.nav-controls { display: flex; gap: 8px; align-items: center; }
+.nav-btn { background: var(--primary-light); color: var(--primary-dark); border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: .85em; font-weight: 600; transition: .15s; text-decoration: none; }
+.nav-btn:hover { background: var(--primary); color: #fff; }
+
+.page-layout { display: grid; grid-template-columns: var(--sidebar-w) 1fr; gap: 28px; padding-top: 24px; }
+
+.sidebar { position: sticky; top: 70px; align-self: start; height: calc(100vh - 90px); overflow-y: auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 14px 10px; }
+.sb-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; padding: 14px 10px; border-radius: 10px; text-align: center; margin-bottom: 12px; }
+.sb-header-title { font-weight: 700; font-size: 1.05em; }
+.sb-header-sub { font-size: .78em; opacity: .9; }
+.sb-list { list-style: none; margin: 0; padding: 0; }
+.sb-item a { display: block; padding: 8px 10px; border-radius: 8px; color: var(--text-secondary); text-decoration: none; font-size: .85em; margin-bottom: 4px; transition: .15s; }
+.sb-item a:hover, .sb-item a.active { background: var(--primary-light); color: var(--primary-dark); font-weight: 600; }
+.sb-divider { height: 1px; background: var(--border); margin: 10px 0; }
+
+main { min-height: 100vh; padding-bottom: 60px; }
+
+.header-card { background: linear-gradient(135deg, var(--primary), #fb923c); color: #fff; border-radius: var(--radius); padding: 32px; margin-bottom: 28px; box-shadow: var(--shadow); }
+.header-card h1 { margin: 0 0 10px; font-size: 2em; }
+.subtitle { font-size: 1.1em; opacity: .95; margin-bottom: 18px; }
+.badges { display: flex; flex-wrap: wrap; gap: 10px; }
+.badge { background: rgba(255,255,255,.22); color: #fff; padding: 5px 12px; border-radius: 20px; font-size: .8em; font-weight: 600; }
+
+.section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; margin-bottom: 24px; box-shadow: var(--shadow); scroll-margin-top: 80px; }
+.section h2 { color: var(--primary-dark); margin-top: 0; font-size: 1.45em; border-left: 5px solid var(--primary); padding-left: 14px; }
+.section h3 { color: var(--text); margin-top: 24px; font-size: 1.2em; }
+.section h4 { color: var(--primary-dark); margin-top: 20px; font-size: 1.05em; }
+
+.quick-summary { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 18px; margin: 16px 0; }
+.dark-mode .quick-summary { background: linear-gradient(135deg, #431407, #7c2d12); }
+.quick-summary h4 { margin: 0 0 8px; color: var(--primary-dark); }
+.dark-mode .quick-summary h4 { color: #ffedd5; }
+
+.exam-key { background: #f3e8ff; border-left: 5px solid #9333ea; border-radius: 10px; padding: 16px 18px; margin: 16px 0; }
+.dark-mode .exam-key { background: #3b0764; }
+.exam-key h4 { color: #7e22ce; margin: 0 0 8px; }
+.dark-mode .exam-key h4 { color: #e9d5ff; }
+
+.cn-box { background: #fef9c3; border-left: 5px solid #ca8a04; border-radius: 10px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.dark-mode .cn-box { background: #422006; }
+.cn-box h5 { margin: 0 0 6px; color: #854d0e; font-size: 1em; }
+.dark-mode .cn-box h5 { color: #fef3c7; }
+
+table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .95em; }
+th, td { border: 1px solid var(--border); padding: 10px 12px; text-align: left; vertical-align: top; }
+th { background: var(--primary-light); color: var(--primary-dark); font-weight: 700; }
+tr:nth-child(even) { background: rgba(0,0,0,.02); }
+.dark-mode tr:nth-child(even) { background: rgba(255,255,255,.03); }
+
+ul, ol { padding-left: 22px; }
+li { margin-bottom: 6px; }
+
+.study-card { border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin: 14px 0; background: var(--card); }
+.study-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.study-card-title { font-weight: 700; color: var(--primary-dark); font-size: 1.05em; }
+.study-card-year { font-size: .8em; color: var(--muted); }
+
+.fig { max-width: 100%; border-radius: 10px; border: 1px solid var(--border); margin: 12px 0; background: var(--card); padding: 14px; }
+.fig-caption { font-size: .88em; color: var(--text-secondary); font-style: italic; margin-top: 8px; }
+
+.compare-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 14px 0; }
+.compare-card { border: 1px solid var(--border); border-radius: 10px; padding: 14px; background: var(--card); }
+.compare-card h4 { margin-top: 0; color: var(--primary-dark); }
+
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 18px; margin: 16px 0; }
+.dark-mode .exam-practice { background: linear-gradient(135deg, #0c4a6e, #075985); border-color: #38bdf8; }
+.exam-practice h4 { color: #0d47a1; margin: 8px 0 4px; }
+.dark-mode .exam-practice h4 { color: #e0f2fe; }
+
+details { border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; background: var(--surface); margin: 8px 0; }
+summary { cursor: pointer; font-weight: 600; color: var(--primary-dark); }
+details[open] summary { margin-bottom: 8px; }
+
+.btn { display: inline-flex; align-items: center; gap: 6px; background: var(--primary); color: #fff; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: .9em; margin-top: 8px; }
+.btn:hover { background: var(--primary-dark); }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; }
+.syl-tag.v { background: #dcfce7; color: #166534; }
+.syl-tag.r { background: #dbeafe; color: #1e40af; }
+.syl-tag.g { background: #fce7f3; color: #9d174d; }
+.syl-tag.e { background: #fef3c7; color: #854d0e; }
+.dark-mode .syl-tag.v { background: #14532d; color: #bbf7d0; }
+.dark-mode .syl-tag.r { background: #1e3a8a; color: #bfdbfe; }
+.dark-mode .syl-tag.g { background: #831843; color: #fbcfe8; }
+.dark-mode .syl-tag.e { background: #713f12; color: #fef3c7; }
+
+.track-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 14px 0; }
+@media (max-width: 760px) { .track-grid { grid-template-columns: 1fr; } }
+.track-card { border: 2px solid var(--border); border-radius: 12px; padding: 16px; background: var(--card); }
+.track-card.aggr { border-color: #f97316; }
+.track-card.br { border-color: #6366f1; }
+.track-card h4 { margin: 0 0 8px; color: var(--primary-dark); }
+
+.footer-note { text-align: center; font-size: .85em; color: var(--muted); padding: 30px 0; }
+
+.back-to-top { position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%; border: none; background: var(--primary); color: #fff; font-size: 1.2em; cursor: pointer; box-shadow: var(--shadow); opacity: 0; visibility: hidden; transition: .2s; }
+.back-to-top.show { opacity: 1; visibility: visible; }
+
+@media (max-width: 900px) {
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .header-card h1 { font-size: 1.6em; }
+}
+@media print {
+  nav, .sidebar, .back-to-top { display: none; }
+  .section { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="breadcrumb">🏠 <a href="/edexcel-psychology-courseware/">Home</a> / <a href="/edexcel-psychology-courseware/edexcel/">Edexcel</a> / Ch19 · Practical Investigation</div>
+    <div class="nav-controls">
+      <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn" title="Toggle dark mode">🌙 Dark</button>
+      <button class="nav-btn" onclick="adjustFontSize(-1)" title="Decrease font size">A-</button>
+      <button class="nav-btn" onclick="adjustFontSize(0)" title="Reset font size">A</button>
+      <button class="nav-btn" onclick="adjustFontSize(1)" title="Increase font size">A+</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+<div class="page-layout">
+
+<aside class="sidebar">
+  <div class="sb-header">
+    <div class="sb-header-title">Ch19 Contents</div>
+    <div class="sb-header-sub">Practical Investigation</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s1">📚 Learning Objectives</a></li>
+    <li class="sb-item"><a href="#s2">🎯 Aim, Hypothesis & Variables</a></li>
+    <li class="sb-item"><a href="#s3">🔬 Design, Controls & Sampling</a></li>
+    <li class="sb-item"><a href="#s4">📜 Ethics & Consent</a></li>
+    <li class="sb-item"><a href="#s5">📋 Procedure & Example Report</a></li>
+    <li class="sb-item"><a href="#s6">📊 Data Analysis & Spearman's</a></li>
+    <li class="sb-item"><a href="#s7">⚖️ Significance & Evaluation</a></li>
+    <li class="sb-item"><a href="#s8">✍️ Report Writing & Exam Practice</a></li>
+    <li class="sb-divider"></li>
+  </ul>
+</aside>
+
+<main>
+
+<div class="header-card">
+  <h1>Chapter 19 — Practical Investigation in Biological Psychology</h1>
+  <div class="subtitle">Design, conduct, analyse and evaluate your own correlational study on aggression or body rhythms</div>
+  <div class="badges">
+    <span class="badge">Topic C · Biological Psychology</span>
+    <span class="badge">Practical Investigation</span>
+    <span class="badge">Spearman's Rank</span>
+    <span class="badge">Correlational Design</span>
+  </div>
+</div>
+
+<!-- ============ S1 ============ -->
+<div class="section" id="s1">
+  <h2>📚 Learning Objectives & Syllabus Map</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>Chapter 19 is the <strong>Practical Investigation</strong> chapter in <strong>Topic C: Biological Psychology</strong>. You must design and conduct your own <strong>correlational study</strong> (a study that measures the relationship between two co-variables) on <strong>aggression</strong> or <strong>body rhythms</strong>. The exam does not ask you to do the practical in the exam room, but it tests whether you actually did one — answers that are too generic score <strong>0 marks</strong>.</p>
+  </div>
+
+  <h3>5 syllabus learning objectives (p.216)</h3>
+  <ol>
+    <li><strong>Design and conduct</strong> a correlational study on aggression or body rhythms.</li>
+    <li><strong>Make design decisions</strong> when planning and gathering data.</li>
+    <li><strong>Analyse correlational data</strong> including conducting an inferential test for a relationship (Spearman's rank).</li>
+    <li><strong>Evaluate strengths and weaknesses</strong> of the correlation and suggest improvements.</li>
+    <li><strong>Write up</strong> the procedure, results and discussion section of a report.</li>
+  </ol>
+
+  <div class="exam-key">
+    <h4>🎯 Exam Key Points</h4>
+    <ul>
+      <li>The exam does not ask "write a brand new practical investigation." It asks you to <strong>describe your own practical</strong> (procedure / findings / validity improvements) and <strong>read other people's scenarios</strong> (e.g. WPS02/01 Q2 Hikaru) and pick holes in their design.</li>
+      <li>Mark scheme wording (WPS01/01 Q3): "Answers must relate to <strong>their</strong> practical. Generic answers score 0 marks." So memorise your own sample, sample size, sampling method, materials.</li>
+      <li>Your practical is treated by the examiner <strong>exactly like a named study</strong>: they expect Aim · Method · Sample · Procedure · Results · Conclusion · Evaluation. Use <strong>AMSPRC</strong> as the skeleton.</li>
+      <li>You must do a <strong>Spearman's rank</strong> test (Ch17 gives the mechanics) and write a <strong>conclusion sentence</strong> with 7 mandatory ingredients (see §7).</li>
+    </ul>
+  </div>
+
+  <h3>What this chapter will give you</h3>
+  <p>You will leave this chapter with:</p>
+  <ul>
+    <li>A <strong>pick-and-run</strong> practical: pick from 9 syllabus-approved topics (5 aggression + 4 body rhythms) and follow the worked example.</li>
+    <li>The <strong>textbook example</strong> (masculinity × aggression, n=10, rₛ = 0.318) fully walked through, so if you haven't done your own yet, you can write up this one.</li>
+    <li>A <strong>Spearman's rank</strong> scaffold that connects directly to Ch17 (you already know the formula).</li>
+    <li>A <strong>report template</strong> (procedure / results / discussion) plus model answers for the 3 standard exam questions.</li>
+  </ul>
+</div>
+
+<!-- ============ S2 ============ -->
+<div class="section" id="s2">
+  <h2>🎯 Aim, Hypothesis & Variables</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>A <strong>correlational study</strong> measures the relationship between <strong>two co-variables</strong> (both are measured, neither is manipulated). You start with a <strong>research question</strong>, turn it into an <strong>aim</strong>, write an <strong>operationalised hypothesis</strong> (directional or non-directional), and choose a <strong>target population</strong>.</p>
+  </div>
+
+  <h3>Step 1 — Pick your investigation</h3>
+  <p>The syllabus (p.216) gives 9 suggested titles. Pick one you can actually <strong>run</strong> in your school (you'll be tested on the details, so it needs to be one you remember).</p>
+
+  <div class="track-grid">
+    <div class="track-card aggr">
+      <h4>🟧 Aggression track (5 options)</h4>
+      <ul>
+        <li>Masculinity × aggression (the textbook example)</li>
+        <li>Height × self-reported aggression</li>
+        <li>Self-reported aggression × contact-sport injuries</li>
+        <li>Premenstrual tension × self-reported aggression</li>
+        <li>Age × self-reported aggression</li>
+      </ul>
+    </div>
+    <div class="track-card br">
+      <h4>🟦 Body rhythms track (4 options)</h4>
+      <ul>
+        <li>Age × sleep duration</li>
+        <li>Physical exercise × sleep quality</li>
+        <li>Severity of premenstrual tension × hours of sleep</li>
+        <li>Sleep quality × unhealthy snacking</li>
+        <li>Social media time × sleep duration</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Step 2 — Turn the title into an aim</h3>
+  <div class="study-card">
+    <div class="study-card-title">Worked example (textbook p.216)</div>
+    <p><strong>Research question:</strong> "Is there a link between the masculinity of a person and aggressive behaviour?"</p>
+    <p><strong>Aim:</strong> "To investigate whether there is a link between the masculinity of a person and aggressive behaviour."</p>
+  </div>
+
+  <div class="cn-box">
+    <h5>💡 理解小贴士</h5>
+    Aim = research question 用学术腔再说一遍。回答里必须出现 "to investigate whether..." 这个固定句式,阅卷一眼就认出结构化答案。
+  </div>
+
+  <h3>Step 3 — Hypotheses</h3>
+  <table>
+    <tr><th>Type</th><th>Format</th><th>When to use</th></tr>
+    <tr><td><strong>Alternative (H₁)</strong></td><td>"There will be a significant <em>positive/negative</em> correlation between X and Y."</td><td>You predict the <em>direction</em> (sign) of the relationship.</td></tr>
+    <tr><td><strong>Null (H₀)</strong></td><td>"There will be no relationship between X and Y. Any relationship found will be due to chance."</td><td>Always written alongside H₁, regardless of direction.</td></tr>
+    <tr><td><strong>Directional</strong></td><td>"positive correlation between masculinity and aggression"</td><td>Previous research or theory gives a clear prediction (textbook uses this).</td></tr>
+    <tr><td><strong>Non-directional</strong></td><td>"a relationship (could be positive or negative) between X and Y"</td><td>No clear prior — write the hypothesis without specifying sign, then run a <strong>two-tailed</strong> Spearman's test.</td></tr>
+  </table>
+
+  <div class="study-card">
+    <div class="study-card-title">Operationalised alternative hypothesis (textbook p.217)</div>
+    <p>"There will be a significant <strong>positive correlation</strong> between a participant's masculinity score on a quiz and their scores on a moderately violent video game."</p>
+    <p>This rewrites the abstract concept "masculinity" as "score on the quiz" and "aggression" as "score on the video game" — that is <strong>operationalisation</strong>.</p>
+  </div>
+
+  <h3>Step 4 — Variables checklist</h3>
+  <ul>
+    <li><strong>Co-variable 1 (IV of correlational design):</strong> measure of X (e.g. masculinity score 0–100).</li>
+    <li><strong>Co-variable 2 (DV of correlational design):</strong> measure of Y (e.g. aggression score 0–20).</li>
+    <li><strong>Target population:</strong> the wider group you want to generalise to (e.g. "the male general public").</li>
+    <li>Both variables must be at least <strong>ordinal level of measurement</strong> (rank-able), otherwise Spearman's rank won't work.</li>
+  </ul>
+
+  <div class="exam-key">
+    <h4>🎯 Exam Tip — avoid these slips</h4>
+    <ul>
+      <li>Don't call them IV and DV — they are <strong>co-variables</strong>. The exam mark scheme will downmark if you write "independent variable" for a correlation.</li>
+      <li>Always write the <strong>null hypothesis</strong> even if it feels obvious. The mark scheme specifically asks for both.</li>
+      <li>If your hypothesis is directional, run a <strong>one-tailed</strong> Spearman's test (textbook does this). If non-directional, run a <strong>two-tailed</strong> test.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ S3 ============ -->
+<div class="section" id="s3">
+  <h2>🔬 Design, Controls & Sampling</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>A correlational design <strong>measures</strong> two variables for the same participants — it does not <strong>manipulate</strong> anything. You still need <strong>standardised controls</strong> (same instructions, same testing conditions) and a <strong>sampling method</strong> you can defend at exam time. The textbook uses an <strong>opportunity sample</strong> of <strong>n = 10 males</strong>, aged 19–52.</p>
+  </div>
+
+  <h3>Design choice — why correlation, not experiment?</h3>
+  <table>
+    <tr><th></th><th>Experiment</th><th>Correlation (this chapter)</th></tr>
+    <tr><td>Manipulates a variable?</td><td>Yes (IV)</td><td>No — both measured</td></tr>
+    <tr><td>Can establish cause?</td><td>Yes (with controls)</td><td>No — third variable problem</td></tr>
+    <tr><td>Direction of relationship?</td><td>IV → DV</td><td>X ↔ Y (symmetric)</td></tr>
+    <tr><td>Test used in this topic</td><td>—</td><td><strong>Spearman's rank</strong></td></tr>
+    <tr><td>Design type</td><td>Repeated / independent measures</td><td><strong>Repeated measures</strong> (both vars recorded for every participant)</td></tr>
+  </table>
+
+  <h3>Controls you must put in place (textbook p.217)</h3>
+  <ul>
+    <li><strong>Same instructions</strong> for every participant — written, standardised, read aloud identically.</li>
+    <li><strong>Same testing environment</strong> — same room, same time of day, similar noise level.</li>
+    <li><strong>Objective measurement</strong> — use computerised tests where possible (masculinity quiz is computer-marked; video game score is logged by software).</li>
+    <li><strong>Equal proficiency</strong> at the task — give everyone the same practice session (textbook: 3-minute practice before the 5-minute data-gathering run).</li>
+    <li><strong>Eliminate extraneous variables</strong> — silence during the quiz; participants tested individually or in matched groups.</li>
+  </ul>
+
+  <h3>Sampling — which method and what to write</h3>
+  <div class="study-card">
+    <div class="study-card-title">Textbook choice (p.217-218)</div>
+    <p><strong>Method:</strong> opportunity sample of 10 male participants, recruited by advertising on the university/college noticeboard (so technically a <strong>volunteer sample</strong> through opportunity channels).</p>
+    <p><strong>Why this size?</strong> "about ten participants" — small but enough for Spearman's rank at p&lt;0.05 (critical value 0.564).</p>
+    <p><strong>Weakness to flag at exam time:</strong> not generalisable to the wider male population because (a) small n, (b) volunteer bias (volunteers tend to be more compliant), (c) all from one institution (ethnocentric, Western industrialised culture).</p>
+  </div>
+
+  <table>
+    <tr><th>Sampling method</th><th>Strength for your exam answer</th><th>Weakness to acknowledge</th></tr>
+    <tr><td><strong>Opportunity</strong></td><td>Quick, easy, realistic for school setting</td><td>Unrepresentative; only people available at the time</td></tr>
+    <tr><td><strong>Volunteer</strong></td><td>Participants are willing, fewer drop-outs</td><td>Self-selection bias — more compliant / more opinionated</td></tr>
+    <tr><td><strong>Random</strong></td><td>Every member of target population has equal chance → generalisable</td><td>Hard to do in a school; may produce uneven group sizes</td></tr>
+    <tr><td><strong>Stratified</strong></td><td>Ensures subgroups (e.g. year group) are represented</td><td>Need to know population proportions first; complex to organise</td></tr>
+  </table>
+
+  <div class="cn-box">
+    <h5>💡 理解小贴士</h5>
+    写抽样 weakness 时不要只说 "small sample" — 一定要把 weakness 链到 <strong>generalisability</strong> 或 <strong>representativeness</strong> 上,例如 "因为是 opportunity sample,所以样本只代表了这所学校的男生,无法推广到所有 18 岁以上男性。" 这才是 AO3 的得分点。
+  </div>
+</div>
+
+<!-- ============ S4 ============ -->
+<div class="section" id="s4">
+  <h2>📜 Ethics & Consent Form</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>You need to deal with ethics <strong>before</strong> participants start. Get written informed consent, tell them the <strong>true nature</strong> of the study (not just a vague cover story), guarantee <strong>withdrawal</strong> at any point, keep data <strong>confidential and anonymous</strong>, and <strong>pilot</strong> your materials on a friend first to surface issues you missed.</p>
+  </div>
+
+  <h3>Consent form — the 7 mandatory items (textbook p.218)</h3>
+  <ol>
+    <li><strong>Aim(s)</strong> of the study — what you are investigating.</li>
+    <li><strong>Exactly what they will be expected to do</strong> — full detail so they can decide.</li>
+    <li><strong>Any possible implications</strong> — e.g. they will play an aggressive video game.</li>
+    <li><strong>Right to withdraw</strong> at any point without consequence (and can take their data with them).</li>
+    <li><strong>Anonymisation & destruction</strong> of data — names replaced with numbers, data destroyed after a set date.</li>
+    <li><strong>Who else will see the findings</strong> and how the information will be distributed.</li>
+    <li><strong>Contact details</strong> — researcher + supervising teacher / school / college, plus <strong>signatures</strong> of researcher and participant.</li>
+  </ol>
+
+  <h3>Special considerations for aggression studies</h3>
+  <ul>
+    <li><strong>No one under 16</strong> — the video game may be age-inappropriate.</li>
+    <li><strong>Game must be age-appropriate</strong> for the sample.</li>
+    <li>All participants must be <strong>informed in advance</strong> that they will be expected to play a violent game.</li>
+    <li><strong>Protection from psychological harm</strong> — debrief must include a chance to discuss any discomfort.</li>
+  </ul>
+
+  <div class="exam-key">
+    <h4>🎯 Exam Tip</h4>
+    <p>When asked "explain one ethical issue Hikaru should have considered" (WPS02/01 Q2c, 2 marks), pick <strong>one specific BPS principle</strong> and link it to the study: e.g. <em>"Informed consent — participants should have been told <strong>before</strong> taking part that the food given would be measured against aggression scores, so they could decide whether to take part."</em> The mark scheme rewards: principle + application + link to study.</p>
+  </div>
+
+  <h3>Pilot study — what it is and isn't</h3>
+  <table>
+    <tr><th>Is</th><th>Isn't</th></tr>
+    <tr><td>A dry run of the procedure on 1–3 friends</td><td>A test of whether the variables work</td></tr>
+    <tr><td>A check that instructions are understood</td><td>A reliability or validity check</td></tr>
+    <tr><td>A way to surface timing / venue / ethical problems</td><td>A substitute for the main study</td></tr>
+  </table>
+</div>
+
+<!-- ============ S5 ============ -->
+<div class="section" id="s5">
+  <h2>📋 Procedure & Example Report</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>The textbook example is a 2-hour lab session: 10 males, 19–52 years old. They sit at numbered computers in silence for a masculinity quiz (25–42 min), wait in a lounge, then play a 3-min practice + 5-min data run on a bespoke moderately-aggressive video game, scored automatically. They are debriefed individually or in pairs.</p>
+  </div>
+
+  <h3>Step-by-step procedure (textbook p.219)</h3>
+  <ol>
+    <li><strong>Briefing & informed consent</strong> — researcher reads standard briefing, participants sign consent forms, allocate a participant number.</li>
+    <li><strong>Masculinity quiz</strong> — bank of computers in IT room; silence; supervised; computer records the score against the participant number.</li>
+    <li><strong>Lounge wait</strong> — refreshments; participants wait until called.</li>
+    <li><strong>Video game</strong> — individually in one of two small lab rooms; 3-min practice then 5-min data run; laptop preloaded with bespoke game; research assistant sets up and logs score; minimal interaction.</li>
+    <li><strong>Debrief</strong> — in another small room, individually or in pairs; reminded of right to withdraw; questions answered; offered to see results when available.</li>
+    <li><strong>Thank & release</strong> — thanks, optional insights, dismissed.</li>
+  </ol>
+
+  <div class="exam-key">
+    <h4>🎯 Exam Tip — describe the procedure (4 marks)</h4>
+    <p>The textbook exam question (p.226) asks for 4 marks. Mark scheme-style answer:</p>
+    <ol>
+      <li><strong>Sample:</strong> "An opportunity sample of 10 male participants aged 19–52 was recruited via university noticeboard."</li>
+      <li><strong>Apparatus & scoring:</strong> "A computerised masculinity quiz (0–100) and a bespoke video game that logged aggression as characters knocked down."</li>
+      <li><strong>Design:</strong> "A repeated-measures correlational design — both co-variables recorded for every participant."</li>
+      <li><strong>Procedure:</strong> "Participants sat in silence at numbered computers for the quiz (25–42 min), waited in a lounge, then played a 3-min practice + 5-min data run on the video game. Standardised instructions were used; all sessions were supervised; participants were debriefed individually and reminded of their right to withdraw."</li>
+    </ol>
+  </div>
+
+  <h3>Writing the procedure for your own study</h3>
+  <p>Use the textbook 8-point checklist (p.225):</p>
+  <ul>
+    <li>Who was used, how many, from where, and the <strong>sampling technique</strong>.</li>
+    <li>The <strong>apparatus</strong> used and how data was scored.</li>
+    <li>The <strong>design</strong> (typically repeated measures for correlation).</li>
+    <li>The <strong>brief, standardised instructions</strong> and debrief.</li>
+    <li>The <strong>location</strong> and who was present.</li>
+    <li>Whether participants were tested <strong>individually or in groups</strong>.</li>
+    <li>What the participants did during the investigation (procedure, <strong>timings</strong>).</li>
+    <li><strong>Controls</strong> put into place.</li>
+  </ul>
+</div>
+
+<!-- ============ S6 ============ -->
+<div class="section" id="s6">
+  <h2>📊 Data Analysis: Descriptive Stats + Scatter + Spearman's Rank</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>Three steps: (1) put the raw data in a table, (2) calculate mean / median / mode / range for each co-variable, (3) draw a scatter diagram and run Spearman's rank to test the relationship. Textbook gives n = 10, Σd² = 112.5, rₛ = 0.318.</p>
+  </div>
+
+  <h3>Table 19.1 — Raw data (textbook p.220)</h3>
+  <table>
+    <tr><th>Participant</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>
+    <tr><td>Gender</td><td>M</td><td>M</td><td>M</td><td>M</td><td>M</td><td>M</td><td>M</td><td>M</td><td>M</td><td>M</td></tr>
+    <tr><td><strong>Masculinity score</strong></td><td>56</td><td>69</td><td>30</td><td>88</td><td>80</td><td>87</td><td>95</td><td>67</td><td>77</td><td>45</td></tr>
+    <tr><td><strong>Aggression score</strong></td><td>17</td><td>18</td><td>10</td><td>10</td><td>15</td><td>16</td><td>17</td><td>15</td><td>14</td><td>6</td></tr>
+  </table>
+
+  <h3>Table 19.2 — Descriptive statistics</h3>
+  <table>
+    <tr><th>Statistic</th><th>Masculinity</th><th>Aggression</th></tr>
+    <tr><td>Mean</td><td>69.4</td><td>13.8</td></tr>
+    <tr><td>Median</td><td>73</td><td>15</td></tr>
+    <tr><td>Mode</td><td>— (no mode)</td><td>10, 15, 17 (not useful)</td></tr>
+    <tr><td>Range</td><td>65</td><td>12</td></tr>
+  </table>
+
+  <h3>Figure 19.1 — Scatter diagram (recreated as SVG)</h3>
+  <div class="fig">
+<svg viewBox="0 0 640 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Scatter diagram of masculinity versus aggression">
+  <rect x="0" y="0" width="640" height="380" fill="var(--surface)" />
+  <!-- Axes -->
+  <line x1="80" y1="320" x2="600" y2="320" stroke="currentColor" stroke-width="2" />
+  <line x1="80" y1="320" x2="80" y2="40" stroke="currentColor" stroke-width="2" />
+  <!-- X-axis ticks (masculinity 0-100) -->
+  <g font-size="12" fill="currentColor">
+    <line x1="80" y1="320" x2="80" y2="326" stroke="currentColor" /><text x="80" y="345" text-anchor="middle">0</text>
+    <line x1="184" y1="320" x2="184" y2="326" stroke="currentColor" /><text x="184" y="345" text-anchor="middle">20</text>
+    <line x1="288" y1="320" x2="288" y2="326" stroke="currentColor" /><text x="288" y="345" text-anchor="middle">40</text>
+    <line x1="392" y1="320" x2="392" y2="326" stroke="currentColor" /><text x="392" y="345" text-anchor="middle">60</text>
+    <line x1="496" y1="320" x2="496" y2="326" stroke="currentColor" /><text x="496" y="345" text-anchor="middle">80</text>
+    <line x1="600" y1="320" x2="600" y2="326" stroke="currentColor" /><text x="600" y="345" text-anchor="middle">100</text>
+  </g>
+  <!-- Y-axis ticks (aggression 0-20) -->
+  <g font-size="12" fill="currentColor">
+    <line x1="74" y1="320" x2="80" y2="320" stroke="currentColor" /><text x="64" y="324" text-anchor="end">0</text>
+    <line x1="74" y1="260" x2="80" y2="260" stroke="currentColor" /><text x="64" y="264" text-anchor="end">4</text>
+    <line x1="74" y1="200" x2="80" y2="200" stroke="currentColor" /><text x="64" y="204" text-anchor="end">8</text>
+    <line x1="74" y1="140" x2="80" y2="140" stroke="currentColor" /><text x="64" y="144" text-anchor="end">12</text>
+    <line x1="74" y1="80" x2="80" y2="80" stroke="currentColor" /><text x="64" y="84" text-anchor="end">16</text>
+    <line x1="74" y1="40" x2="80" y2="40" stroke="currentColor" /><text x="64" y="44" text-anchor="end">20</text>
+  </g>
+  <!-- Axis labels -->
+  <text x="340" y="370" font-size="14" font-weight="600" fill="currentColor" text-anchor="middle">Masculinity quiz score</text>
+  <text x="20" y="180" font-size="14" font-weight="600" fill="currentColor" transform="rotate(-90 20 180)" text-anchor="middle">Aggression score on video game</text>
+  <!-- Data points (x = masculinity 0-100, y = aggression 0-20) -->
+  <!-- (56,17): x=80+56*5.2=80+291.2=371.2; y=320-(17/20*280)=320-238=82 -->
+  <g fill="#ea580c">
+    <circle cx="371" cy="82" r="5" /><text x="380" y="78" font-size="10" fill="currentColor">1</text>
+    <circle cx="439" cy="68" r="5" /><text x="448" y="64" font-size="10" fill="currentColor">2</text>
+    <circle cx="236" cy="180" r="5" /><text x="245" y="176" font-size="10" fill="currentColor">3</text>
+    <circle cx="538" cy="180" r="5" /><text x="547" y="176" font-size="10" fill="currentColor">4</text>
+    <circle cx="496" cy="110" r="5" /><text x="505" y="106" font-size="10" fill="currentColor">5</text>
+    <circle cx="532" cy="96" r="5" /><text x="541" y="92" font-size="10" fill="currentColor">6</text>
+    <circle cx="574" cy="82" r="5" /><text x="560" y="76" font-size="10" fill="currentColor">7</text>
+    <circle cx="428" cy="110" r="5" /><text x="437" y="106" font-size="10" fill="currentColor">8</text>
+    <circle cx="480" cy="124" r="5" /><text x="489" y="120" font-size="10" fill="currentColor">9</text>
+    <circle cx="314" cy="236" r="5" /><text x="323" y="232" font-size="10" fill="currentColor">10</text>
+  </g>
+  <!-- Trend line annotation -->
+  <text x="320" y="60" font-size="13" font-style="italic" fill="currentColor" text-anchor="middle">Slight positive trend (bottom-left → top-right)</text>
+</svg>
+    <div class="fig-caption">Figure 19.1 — Scatter diagram showing the relationship between masculinity quiz score and aggression score on the video game (textbook p.220, recreated). No clear linear pattern, but a weak positive trend.</div>
+  </div>
+
+  <h3>Spearman's rank — 7-step recipe (textbook p.220-221)</h3>
+  <ol>
+    <li>Rank scores on <strong>co-variable A</strong> (1 = smallest).</li>
+    <li>Rank scores on <strong>co-variable B</strong> the same way.</li>
+    <li>Calculate the <strong>difference d</strong> between the ranks for each participant.</li>
+    <li><strong>Square</strong> each difference to get d².</li>
+    <li><strong>Sum</strong> the squared differences: Σd².</li>
+    <li>Count the number of participants <strong>n</strong>.</li>
+    <li>Plug into the formula.</li>
+  </ol>
+
+  <div class="study-card">
+    <div class="study-card-title">Spearman's rank formula</div>
+    <p style="font-family: ui-monospace, monospace; font-size: 1.05em; text-align: center; padding: 8px 0;">
+      r<sub>s</sub> = 1 − (6 × Σd²) ÷ (n(n² − 1))
+    </p>
+    <p>Applied to the textbook data:</p>
+    <p style="font-family: ui-monospace, monospace;">
+      r<sub>s</sub> = 1 − (6 × 112.5) ÷ (10 × (10² − 1)) = 1 − 675 ÷ 990 = 1 − 0.682 = <strong>0.318</strong>
+    </p>
+  </div>
+
+  <div class="cn-box">
+    <h5>💡 理解小贴士</h5>
+    Σd² = 112.5 这个数字课本里有 3 个相同的 scores(10 出现两次, 15 出现两次, 17 出现两次),排名时要用"位置平均值"——例如两个 10 排第 2、第 3 位,就都给 rank 2.5。这是 tied ranks 的标准处理,Ch17 Spearman 工作簿里有完整练习。
+  </div>
+
+  <h3>Handling tied ranks</h3>
+  <table>
+    <tr><th>Number position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>
+    <tr><td><strong>Score for B (ascending)</strong></td><td>6</td><td>10</td><td>10</td><td>14</td><td>15</td><td>15</td><td>16</td><td>17</td><td>17</td><td>18</td></tr>
+    <tr><td><strong>Rank for B</strong></td><td>1</td><td>2.5</td><td>2.5</td><td>4</td><td>5.5</td><td>5.5</td><td>7</td><td>8.5</td><td>8.5</td><td>10</td></tr>
+  </table>
+  <p>Two equal scores → average the number positions they occupy, then skip the next rank accordingly. e.g. 10s at positions 2 and 3 → both get (2+3)/2 = 2.5; the next score (14) gets rank 4 (not 3).</p>
+</div>
+
+<!-- ============ S7 ============ -->
+<div class="section" id="s7">
+  <h2>⚖️ Significance, Validity, Reliability & Generalisability</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>After you compute rₛ, compare it with the <strong>critical value</strong> for your n at p&lt;0.05. If rₛ &lt; critical value → <strong>accept null hypothesis</strong>. Then evaluate your study on three textbook axes: <strong>validity</strong>, <strong>reliability</strong>, <strong>generalisability</strong> — each with the textbook's actual critique ready to deploy.</p>
+  </div>
+
+  <h3>Determining significance (textbook p.222)</h3>
+  <table>
+    <tr><th>n</th><th>One-tailed p&lt;0.05</th><th>One-tailed p&lt;0.01</th><th>Two-tailed p&lt;0.05</th><th>Two-tailed p&lt;0.01</th></tr>
+    <tr><td>4</td><td>1.000</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td>7</td><td>0.714</td><td>0.893</td><td>0.786</td><td>0.929</td></tr>
+    <tr><td>8</td><td>0.643</td><td>0.833</td><td>0.738</td><td>0.881</td></tr>
+    <tr><td>9</td><td>0.600</td><td>0.783</td><td>0.700</td><td>0.833</td></tr>
+    <tr><td>10</td><td><strong>0.564</strong></td><td>0.745</td><td>0.648</td><td>0.794</td></tr>
+  </table>
+
+  <div class="study-card">
+    <div class="study-card-title">Worked significance decision (textbook)</div>
+    <p>rₛ calculated = <strong>0.318</strong>; n = 10; one-tailed test at p &lt; 0.05 → critical value = <strong>0.564</strong>.</p>
+    <p>0.318 &lt; 0.564 → calculated value is <strong>less than</strong> critical value → <strong>not significant</strong> → <strong>accept null hypothesis</strong>.</p>
+  </div>
+
+  <h3>Drawing conclusions — the 7 mandatory ingredients (textbook EXAM TIP p.223)</h3>
+  <p>When writing a statistical conclusion, the exam mark scheme expects all 7 of these:</p>
+  <ol>
+    <li>The <strong>calculated value</strong> (e.g. "rₛ = 0.318").</li>
+    <li>The <strong>critical value</strong> (e.g. "0.564").</li>
+    <li>The <strong>probability / level of significance</strong> (e.g. "p &lt; 0.05").</li>
+    <li>The <strong>number of participants</strong> (e.g. "n = 10").</li>
+    <li>Whether it was a <strong>one-tailed or two-tailed</strong> test.</li>
+    <li>Whether the calculated value was <strong>greater than, less than, or equal to</strong> the critical value.</li>
+    <li>What hypothesis is <strong>supported</strong> (restate it).</li>
+  </ol>
+
+  <div class="exam-key">
+    <h4>🎯 Model statistical conclusion sentence (textbook p.223)</h4>
+    <p><em>"The calculated value of the Spearman's rank test was r = 0.318. This was <strong>less than</strong> the critical value of 0.564 for a one-tailed test at p &lt; 0.05 with n = 10. Therefore the result is <strong>not significant</strong> and the <strong>null hypothesis can be supported</strong>, which states that there will be no relationship between masculinity and aggression, and any relationship found was due to chance."</em></p>
+  </div>
+
+  <h3>Validity — was the test a true measure?</h3>
+  <div class="study-card">
+    <div class="study-card-title">Textbook critique (p.224)</div>
+    <ul>
+      <li><strong>Masculinity quiz</strong> — "very superficial, ignores many other factors that influence masculinity, such as social roles and norms of behaviour" → low <strong>face validity</strong>.</li>
+      <li><strong>Video game aggression score</strong> — "lacking ecological validity" because hitting virtual characters does not necessarily translate to real-world aggression.</li>
+      <li>Could reflect <strong>gaming skill</strong> rather than aggression ("the number of times a character was hit was merely a reflection of the rules of the game").</li>
+      <li><strong>Third variable problem</strong> — correlation cannot establish causation; another unknown variable (e.g. family environment) could affect both.</li>
+    </ul>
+  </div>
+
+  <h3>Reliability — would the test give the same result again?</h3>
+  <div class="study-card">
+    <div class="study-card-title">Textbook critique (p.224-225)</div>
+    <ul>
+      <li><strong>Strength:</strong> Standardised procedure and objective measures (computer-marked quiz, auto-logged game score) → replicable.</li>
+      <li><strong>Weakness:</strong> Order of tasks varied — some did the quiz first, some had a longer gap → not all participants at the same level of focused attention.</li>
+      <li><strong>Weakness:</strong> Prior gaming experience varied → some had higher generic skill, not consistently measuring aggression.</li>
+      <li>If a questionnaire had been used to measure aggression, reliability would have been even lower (subjective interpretation).</li>
+    </ul>
+  </div>
+
+  <h3>Generalisability — can the findings leave the lab?</h3>
+  <div class="study-card">
+    <div class="study-card-title">Textbook critique (p.225)</div>
+    <ul>
+      <li>Small sample (n = 10) — low statistical power.</li>
+      <li>Volunteer sample — those who came forward may have a more compliant personality and could have altered their behaviour to meet expectations (demand characteristics).</li>
+      <li>Ethnocentric — sample from an industrialised Western culture; cultures differ in how aggression is nurtured or prohibited.</li>
+      <li>Single-sex (male only) — cannot explain female aggression.</li>
+    </ul>
+  </div>
+
+  <h3>Compare-grid: validity vs reliability vs generalisability</h3>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4><span class="syl-tag v">V</span>Validity</h4>
+      <p><em>"Were the variables a true measure of the concepts?"</em></p>
+      <p>Quiz is superficial; game measures gaming skill not real aggression; correlation cannot establish cause (third variable).</p>
+    </div>
+    <div class="compare-card">
+      <h4><span class="syl-tag r">R</span>Reliability</h4>
+      <p><em>"Were the procedures consistent?"</em></p>
+      <p>Standardised; computer-marked. But: order effects, varied gap between tasks, varied prior gaming experience.</p>
+    </div>
+    <div class="compare-card">
+      <h4><span class="syl-tag g">G</span>Generalisability</h4>
+      <p><em>"Can we apply this beyond the sample?"</em></p>
+      <p>Small n = 10; volunteer bias; Western industrialised; male-only → cannot apply to women or other cultures.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ S8 ============ -->
+<div class="section" id="s8">
+  <h2>✍️ Report Writing & Exam Practice</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>The report has three sections: <strong>procedure</strong> (what you did), <strong>results</strong> (what you found), <strong>discussion</strong> (what it means + strengths/weaknesses/improvements). The textbook gives explicit checklists for each section. The exam tests these via 3 standard 2/4-mark questions.</p>
+  </div>
+
+  <h3>The 3 textbook exam questions (p.226) + model answers</h3>
+
+  <details>
+    <summary>Q1 · Describe the procedure of your practical investigation in biological psychology (4 marks)</summary>
+    <p><strong>Mark scheme expects 4 distinct points. A model answer:</strong></p>
+    <ol>
+      <li><strong>Sample:</strong> "An opportunity sample of 10 male participants aged 19–52 was recruited via advertising on the university noticeboard."</li>
+      <li><strong>Apparatus / scoring:</strong> "A computerised masculinity quiz (scored 0–100) and a bespoke moderately-aggressive video game that logged aggression as the number of characters knocked down (0–20)."</li>
+      <li><strong>Design:</strong> "A repeated-measures correlational design — both co-variables were recorded for every participant."</li>
+      <li><strong>Procedure:</strong> "Participants sat in silence at numbered computers for the quiz (25–42 minutes), waited in a lounge, then played a 3-minute practice + 5-minute data run on the video game. Standardised instructions were read aloud; participants were supervised; debriefed individually and reminded of the right to withdraw."</li>
+    </ol>
+    <p><strong>Top band:</strong> Clear, detailed, sequential, includes sample size, location, timings.</p>
+  </details>
+
+  <details>
+    <summary>Q2 · Explain whether the findings of your practical investigation were statistically significant (2 marks)</summary>
+    <p><strong>Model answer (textbook n=10, rₛ=0.318):</strong></p>
+    <p>"The calculated value of Spearman's rank was rₛ = 0.318. This was <strong>less than</strong> the critical value of 0.564 for a one-tailed test at p &lt; 0.05 with n = 10. Therefore the result was <strong>not statistically significant</strong> and the null hypothesis was supported, meaning any relationship found between masculinity and aggression could be due to chance."</p>
+    <p><strong>Mark scheme:</strong> 1 mark for stating calculated vs critical value; 1 mark for correct decision (significant / not significant) + hypothesis supported.</p>
+  </details>
+
+  <details>
+    <summary>Q3 · Explain one improvement that could be made to the validity of your practical investigation (2 marks)</summary>
+    <p><strong>Model answer A (ecological validity):</strong> "The video game lacked ecological validity because hitting virtual characters does not translate to real-world aggressive behaviour. An improvement would be to use a more naturalistic measure of aggression, such as the <strong>Rosenzweig Picture-Frustration Test</strong> where participants respond to frustrating scenarios and aggressive responses are coded by a blind rater."</p>
+    <p><strong>Model answer B (face validity of masculinity):</strong> "The masculinity quiz was superficial and ignored social roles and norms. An improvement would be to use a more comprehensive masculinity scale that includes behavioural items (e.g. risk-taking, help-seeking refusal) as well as self-report attitudes."</p>
+    <p><strong>Mark scheme:</strong> 1 mark for identifying a validity weakness; 1 mark for explaining an improvement linked to that weakness.</p>
+  </details>
+
+  <h3>Discussion section — what to include (textbook p.225-226)</h3>
+  <ul>
+    <li><strong>Conclusions</strong> drawn from the data analysis.</li>
+    <li>Findings explained within the <strong>wider context</strong> of background theories and previous research.</li>
+    <li><strong>Limitations</strong> and strengths of the investigation.</li>
+    <li><strong>Possible improvements</strong> to the methodology.</li>
+    <li><strong>Practical uses</strong> of the findings and potential implications for organisations, education, clinical practice or society.</li>
+  </ul>
+
+  <h3>Improvement checklist (textbook p.226)</h3>
+  <table>
+    <tr><th>Question to ask</th><th>Linked improvement</th></tr>
+    <tr><td>Was the sample representative?</td><td>If not — use random or stratified sampling to broaden.</td></tr>
+    <tr><td>Was the procedure standardised?</td><td>If not — write a standardised script, give identical time slots.</td></tr>
+    <tr><td>Were there any control issues?</td><td>If yes — add controls (same time of day, same room, same practice length).</td></tr>
+    <tr><td>Were the variables operationalised effectively?</td><td>If no — use a more valid measure (e.g. real aggressive behaviour, validated scale).</td></tr>
+    <tr><td>Was data collection / analysis subjective?</td><td>If yes — use blind marking, computerised scoring, two independent raters.</td></tr>
+    <tr><td>Were there unforeseen ethical issues?</td><td>If yes — revise consent form, add debrief, tighten confidentiality.</td></tr>
+  </table>
+
+  <div class="exam-key">
+    <h4>🎯 Textbook EXAM TIP (p.226) — read this 3 times</h4>
+    <p><em>"Your practical investigation is like any other classic or contemporary study you have learned, so you need to know the <strong>aims, procedure, results, conclusions and improvements</strong> in addition to <strong>strengths and weaknesses</strong>. You could be asked to write an essay evaluating your practical investigation, so this should be prepared in the same way as preparing for evaluating a classic or contemporary study."</em></p>
+    <p>Treat your practical as <strong>the named study</strong> for any Unit 2 question that says "your practical investigation". AMSPRC skeleton + 3 evaluation axes (validity, reliability, generalisability) = full marks.</p>
+  </div>
+
+  <h3>Key Terms Glossary</h3>
+  <table>
+    <tr><th>Term</th><th>Definition</th></tr>
+    <tr><td><strong>Correlation</strong></td><td>A statistical technique measuring the strength and direction of a relationship between two co-variables.</td></tr>
+    <tr><td><strong>Co-variable</strong></td><td>One of the two variables measured in a correlational study. Neither is independent or dependent.</td></tr>
+    <tr><td><strong>Operationalisation</strong></td><td>Defining an abstract concept in terms of how it will be concretely measured.</td></tr>
+    <tr><td><strong>Directional hypothesis</strong></td><td>Predicts the specific nature (sign) of the relationship — paired with a one-tailed test.</td></tr>
+    <tr><td><strong>Non-directional hypothesis</strong></td><td>Predicts a relationship but not its sign — paired with a two-tailed test.</td></tr>
+    <tr><td><strong>Null hypothesis (H₀)</strong></td><td>States there is no relationship between the co-variables; any finding is due to chance.</td></tr>
+    <tr><td><strong>Alternative hypothesis (H₁)</strong></td><td>States there is a significant relationship between the co-variables.</td></tr>
+    <tr><td><strong>Spearman's rank (rₛ)</strong></td><td>Non-parametric test of correlation for ordinal data; produces a coefficient between −1 and +1.</td></tr>
+    <tr><td><strong>Critical value</strong></td><td>The value of rₛ that must be met or exceeded for the result to be significant at the chosen p level.</td></tr>
+    <tr><td><strong>p &lt; 0.05</strong></td><td>Conventional significance threshold — less than a 5% probability the result is due to chance.</td></tr>
+    <tr><td><strong>One-tailed test</strong></td><td>Tests for a relationship in one predicted direction only.</td></tr>
+    <tr><td><strong>Two-tailed test</strong></td><td>Tests for a relationship in either direction (used with non-directional hypotheses).</td></tr>
+    <tr><td><strong>Third variable problem</strong></td><td>An unmeasured variable that influences both co-variables, producing a spurious correlation.</td></tr>
+    <tr><td><strong>Ecological validity</strong></td><td>The extent to which findings generalise to real-life settings.</td></tr>
+    <tr><td><strong>Volunteer / opportunity sample</strong></td><td>Non-random sampling — participants self-select (volunteer) or are chosen because they are available (opportunity).</td></tr>
+    <tr><td><strong>Pilot study</strong></td><td>A small-scale trial run of the procedure to check instructions, timing, venue and ethics.</td></tr>
+    <tr><td><strong>Demand characteristics</strong></td><td>Cues in the study that lead participants to guess the aim and change behaviour accordingly.</td></tr>
+    <tr><td><strong>Ethnocentric</strong></td><td>Research that assumes the findings of one culture apply universally; biased toward the researcher's own culture.</td></tr>
+  </table>
+
+  <div class="quick-summary" style="margin-top: 24px;">
+    <h4>🚀 Your next 3 actions</h4>
+    <ol>
+      <li><strong>Pick your investigation</strong> from the 9 syllabus titles — pick one you can run in your school, not the easiest.</li>
+      <li><strong>Draft AMSPRC for your own practical</strong> (A · M · S · P · R · C) — even before collecting data, the examiner can mark procedure / aim / sample.</li>
+      <li><strong>Run a pilot study</strong> on 1 friend — fix instructions, fix timing, fix the consent form. Then run the full study and write up using the textbook procedure / results / discussion checklists.</li>
+    </ol>
+  </div>
+
+</div>
+
+<div class="footer-note">
+  Ch19 Practical Investigation · Topic C Biological Psychology · Edexcel A Level · 9 syllabus learning objectives covered
+</div>
+
+</main>
+
+</div>
+</div>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function(){
+  // Dark mode persistence
+  const saved = localStorage.getItem('ch19-dark');
+  if (saved === '1') document.body.classList.add('dark-mode');
+  const btn = document.getElementById('darkBtn');
+  btn.textContent = document.body.classList.contains('dark-mode') ? '☀️ Light' : '🌙 Dark';
+  window.toggleDarkMode = function(){
+    document.body.classList.toggle('dark-mode');
+    const on = document.body.classList.contains('dark-mode');
+    localStorage.setItem('ch19-dark', on ? '1' : '0');
+    btn.textContent = on ? '☀️ Light' : '🌙 Dark';
+  };
+
+  // Font size persistence
+  const fs = parseInt(localStorage.getItem('ch19-fs') || '16');
+  document.documentElement.style.setProperty('--font-size', fs + 'px');
+  window.adjustFontSize = function(dir){
+    let cur = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--font-size'));
+    if (dir === 0) cur = 16;
+    else cur = Math.max(12, Math.min(22, cur + dir));
+    document.documentElement.style.setProperty('--font-size', cur + 'px');
+    localStorage.setItem('ch19-fs', cur);
+  };
+
+  // Scroll spy for sidebar
+  const sections = document.querySelectorAll('.section');
+  const links = document.querySelectorAll('.sb-item a');
+  function spy(){
+    const y = window.scrollY + 100;
+    sections.forEach(sec => {
+      const top = sec.offsetTop;
+      const bot = top + sec.offsetHeight;
+      const id = sec.id;
+      if (y >= top && y < bot) {
+        links.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }
+  window.addEventListener('scroll', spy);
+  spy();
+
+  // Back to top
+  const btt = document.getElementById('btt');
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('show', window.scrollY > 400);
+  });
+})();
+</script>
+
+</body>
+</html>
