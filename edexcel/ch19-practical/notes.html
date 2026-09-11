@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch19 Practical Investigation — Student Notes Workbook (Diagnostic Training)</title>
+<style>
+@page { size: A4; margin: 13mm 12mm 15mm 12mm; }
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif; color:#1a1a1a; font-size:9.5pt; line-height:1.35; margin:0; background:#f3f3f3; }
+.page { background:#fff; max-width: 800px; margin: 0 auto 8px auto; padding: 6mm 11mm; page-break-after: always; position: relative; min-height: 200mm; }
+@media print { body { background:#fff; } .page { margin:0; padding:0; max-width:none; box-shadow:none; } }
+.pg-head { display:flex; justify-content:space-between; align-items:baseline; border-bottom: 2px solid #333; padding-bottom:4px; margin-bottom:12px; }
+.pg-head .t { font-size:12pt; font-weight:700; }
+.pg-head .r { font-size:8pt; color:#777; letter-spacing:.04em; }
+.pg-foot { position:absolute; bottom:4mm; left:0; right:0; text-align:center; font-size:8pt; color:#999; }
+.sec { font-size:10.5pt; font-weight:700; margin:8px 0 3px 0; padding-left:7px; border-left:3.5px solid #444; }
+.sec:first-of-type { margin-top:4px; }
+.sec.workflow { border-left-color:#ea580c; }
+.sec.hikaru { border-left-color:#7c3aed; }
+.sec.answer { border-left-color:#16a34a; }
+.sub { font-size:10pt; font-weight:700; margin:10px 0 4px 0; }
+.bl { display:inline-block; border-bottom:1px solid #555; height:1em; vertical-align:baseline; min-width:60px; margin:0 2px; }
+.hint { font-size:8.5pt; color:#666; }
+.hint::before { content:"（"; } .hint::after { content:"）"; }
+.hint2 { font-size:8.5pt; color:#666; display:block; margin:2px 0 0 2px; }
+table.n { width:100%; border-collapse:collapse; margin:6px 0 10px 0; font-size:9.5pt; }
+table.n th, table.n td { border:1px solid #999; padding:4px 7px; text-align:left; vertical-align:top; }
+table.n th { background:#e9e9e9; font-size:9pt; }
+td.lbl { background:#f4f4f4; width:24%; font-weight:600; }
+.box { border:1px solid #aaa; border-left:4px solid #555; padding:7px 10px; margin:8px 0; border-radius:3px; }
+.box.workflow { border:1.5px solid #ea580c; border-left:5px solid #ea580c; background:#fff7ed; }
+.box.hikaru { border:1.5px solid #7c3aed; border-left:5px solid #7c3aed; background:#ede9fe; }
+.box.try { border:1.5px dashed #16a34a; border-left:5px dashed #16a34a; background:#f0fdf4; }
+.box.answer { border:1.5px solid #16a34a; border-left:5px solid #16a34a; background:#f0fdf4; }
+.box .bx-t { font-size:9.5pt; font-weight:700; margin-bottom:3px; }
+.wl { border-bottom:1px solid #bbb; height:10pt; }
+.wl.short { height:14pt; }
+.wl.tall { height:20pt; }
+.kicker { font-size:8.5pt; font-weight:700; color:#555; text-transform:uppercase; letter-spacing:.05em; margin-bottom:2px; }
+ul.tight { margin:4px 0 8px 0; padding-left:18px; }
+ul.tight li { margin-bottom:3px; }
+ol.tight { margin:4px 0 8px 0; padding-left:18px; }
+ol.tight li { margin-bottom:4px; }
+.two { display:flex; gap:10px; } .two > div { flex:1; }
+.three { display:flex; gap:8px; } .three > div { flex:1; }
+.chk { font-size:9.5pt; }
+.chk .c { display:inline-block; width:11px; height:11px; border:1.3px solid #555; margin-right:6px; vertical-align:-1px; }
+.ao-tag { display:inline-block; font-size:8pt; font-weight:700; border:1px solid #444; padding:1px 6px; border-radius:2px; margin-left:6px; vertical-align:1px; }
+.q { font-style:italic; background:#f6f6f6; border:1px solid #ccc; padding:5px 9px; margin:5px 0; font-size:9.5pt; border-radius:3px; }
+.q.hikaru { background:#ede9fe; border-color:#a78bfa; }
+.tag { display:inline-block; font-size:8pt; font-weight:700; background:#ea580c; color:#fff; padding:1px 7px; border-radius:3px; margin-right:4px; vertical-align:1px; }
+.tag.hikaru { background:#7c3aed; }
+.tag.spec { background:#0d9488; }
+.tag.v { background:#16a34a; }
+.tag.r { background:#2563eb; }
+.tag.g { background:#db2777; }
+.tag.e { background:#d97706; }
+.tag.step { background:#fb923c; }
+.dot { display:inline-block; width:18px; height:18px; background:#ea580c; color:#fff; border-radius:50%; text-align:center; font-weight:700; font-size:10pt; line-height:18px; margin-right:5px; vertical-align:2px; }
+.dot.hikaru { background:#7c3aed; }
+.pomo { display:flex; gap:6px; margin:6px 0 4px 0; flex-wrap:wrap; }
+.pomo .s { display:inline-block; background:#fff; border:1px solid #999; padding:4px 10px; border-radius:14px; font-size:9pt; }
+.pomo .s.on { background:#ea580c; color:#fff; border-color:#ea580c; }
+.tracker { display:grid; grid-template-columns: repeat(13, 1fr); gap:2px; margin:5px 0 8px 0; font-size:7.5pt; }
+.tracker .b { aspect-ratio:1; border:1px solid #999; display:flex; align-items:center; justify-content:center; }
+.tracker .b.done { background:#16a34a; color:#fff; border-color:#16a34a; }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1: COVER ================= -->
+<div class="page">
+  <div style="text-align:center; margin-top:5mm;">
+    <div style="font-size:9pt; letter-spacing:.25em; color:#666;">PEARSON EDEXCEL IAL PSYCHOLOGY · PAPER 3 (WPS03/01) · TOPIC C</div>
+    <div style="font-size:26pt; font-weight:800; margin:8px 0 2px 0;">Chapter 19 — Practical Investigation</div>
+    <div style="font-size:13pt; color:#444;">Diagnostic Training Workbook · 诊断训练册</div>
+    <div style="font-size:9.5pt; color:#666; margin-top:4px;">Correlational study · Spearman's rank · V/R/G evaluation · Hikaru as running case</div>
+  </div>
+
+  <div style="display:flex; gap:14px; margin:10mm 0 6mm 0; font-size:9.5pt;">
+    <div style="flex:1;">Name 姓名: <span class="bl" style="min-width:150px;"></span></div>
+    <div style="flex:1;">Class 班级: <span class="bl" style="min-width:100px;"></span></div>
+    <div>Start date: <span class="bl" style="min-width:90px;"></span></div>
+  </div>
+
+  <div class="sec workflow">How to use this workbook 使用方法</div>
+  <ol class="tight" style="line-height:1.45;">
+    <li><strong>Workflow, not reference</strong>. Each page mirrors one Step of the courseware. Do the step first, then fill in the page. 不是参考册,是配合课件 7-step workflow 的训练册。</li>
+    <li><strong>Hikaru is the running case</strong>. Three pages (4, 6, 11) carry a diagnostic task — read Hikaru's scenario, then write your own criticism. Hikaru 是一个真实考试 scenario,每节诊断一次。</li>
+    <li><strong>Write out AMSPRC for your own practical</strong> (Aim · Method · Sample · Procedure · Results · Conclusion) before looking at p.13 answers.</li>
+    <li><strong>Pomodoro</strong>: 25 min on, 5 min off. Tick each pomodoro as you finish a page.</li>
+  </ol>
+
+  <div class="sec workflow">Pomodoro tracker</div>
+  <div class="pomo">
+    <span class="s on">🍅 P1</span><span class="s">🍅 P2</span><span class="s">🍅 P3</span><span class="s">🍅 P4</span>
+    <span class="s">🍅 P5</span><span class="s">🍅 P6</span><span class="s">🍅 P7</span><span class="s">🍅 P8</span>
+    <span class="s">🍅 P9</span><span class="s">🍅 P10</span><span class="s">🍅 P11</span><span class="s">🍅 P12</span>
+    <span class="s">🍅 P13</span>
+  </div>
+
+  <div class="sec workflow">Page tracker 完成度</div>
+  <div class="tracker">
+    <div class="b">1</div><div class="b">2</div><div class="b">3</div><div class="b">4</div>
+    <div class="b">5</div><div class="b">6</div><div class="b">7</div><div class="b">8</div>
+    <div class="b">9</div><div class="b">10</div><div class="b">11</div><div class="b">12</div>
+    <div class="b">13</div>
+  </div>
+
+  <div class="sec workflow">What this chapter covers 大纲考点 (Spec 3.4)</div>
+  <table class="n">
+    <tr><th style="width:24%;">Syllabus</th><th>Content</th><th style="width:24%;">Workbook pages</th></tr>
+    <tr><td><strong>Spec 3.4</strong> <span class="tag spec">SPEC</span></td><td>6 musts: correlational study + descriptive stats + non-parametric test; design decisions; scatter diagram; Spearman's + significance; V/R/G evaluation; report writing</td><td>p. 2</td></tr>
+    <tr><td><strong>Step 1</strong> <span class="tag step">STEP</span></td><td>Aim · hypothesis · operationalise co-variables</td><td>pp. 3–4</td></tr>
+    <tr><td><strong>Step 2</strong> <span class="tag step">STEP</span></td><td>Sampling · ethics (consent form) · controls · pilot</td><td>pp. 5–6</td></tr>
+    <tr><td><strong>Step 3</strong> <span class="tag step">STEP</span></td><td>Materials · 6-step procedure</td><td>p. 7</td></tr>
+    <tr><td><strong>Step 4</strong> <span class="tag step">STEP</span></td><td>Tabulate data · descriptive stats · scatter · Spearman's · significance</td><td>pp. 8–9</td></tr>
+    <tr><td><strong>Step 5</strong> <span class="tag v">V</span><span class="tag r">R</span><span class="tag g">G</span></td><td>Validity · Reliability · Generalisability</td><td>p. 10</td></tr>
+    <tr><td><strong>Step 6</strong> <span class="tag e">IMP</span></td><td>Improvements (each linked to a weakness)</td><td>p. 11</td></tr>
+    <tr><td><strong>Step 7</strong> <span class="tag spec">SPEC</span></td><td>Procedure · Results · Discussion + 3 textbook exam Qs</td><td>p. 12</td></tr>
+    <tr><td><strong>Brain dump</strong></td><td>Free recall + answer key</td><td>p. 13</td></tr>
+  </table>
+
+  <div class="sec">Courseware link 配套课件</div>
+  <p style="font-size:9.5pt; margin:4px 0;">Open in browser: <span style="font-family:monospace; font-size:9pt;">https://lawrenceliu007.github.io/edexcel-psychology-courseware/edexcel/ch19-practical/index.html</span></p>
+
+  <div class="pg-foot">Ch19 Practical Investigation — Diagnostic Training Workbook · Page 1 / 13</div>
+</div>
+
+<!-- ================= PAGE 2: SPEC 3.4 + WORKFLOW ================= -->
+<div class="page">
+  <div class="pg-head">
+    <div class="t">Spec 3.4 musts · 7-step workflow</div>
+    <div class="r">COURSES §1</div>
+  </div>
+
+  <div class="sec workflow">Spec 3.4 — fill in the 6 musts</div>
+  <p class="hint2">Read the courseware §1, then fill the 6 boxes in your own words.</p>
+  <ol class="tight">
+    <li>Design + conduct a <span class="bl" style="min-width:80px;"></span> study on aggression or body rhythms, with <span class="bl" style="min-width:80px;"></span> statistics + a non-parametric test.</li>
+    <li>Make design decisions: <span class="bl" style="min-width:80px;"></span>, operationalise, <span class="bl" style="min-width:60px;"></span>, formulate <span class="bl" style="min-width:60px;"></span>, controls.</li>
+    <li>Present findings with a <span class="bl" style="min-width:80px;"></span> diagram.</li>
+    <li>Conduct a <span class="bl" style="min-width:60px;"></span> test and decide on statistical <span class="bl" style="min-width:60px;"></span>.</li>
+    <li>Evaluate <span class="bl" style="min-width:60px;"></span> · <span class="bl" style="min-width:60px;"></span> · <span class="bl" style="min-width:60px;"></span>.</li>
+    <li>Write up <span class="bl" style="min-width:60px;"></span> · <span class="bl" style="min-width:60px;"></span> · <span class="bl" style="min-width:60px;"></span> of a report.</li>
+  </ol>
+
+  <div class="sec workflow">The 7-step workflow at a glance</div>
+  <table class="n">
+    <tr><th style="width:8%;">Step</th><th>What you do</th><th style="width:14%;">Workbook</th></tr>
+    <tr><td><span class="dot">0</span></td><td>Pick topic + understand exam format (Hikaru-style scenarios)</td><td>p. 2</td></tr>
+    <tr><td><span class="dot">1</span></td><td>Aim · hypothesis · operationalise co-variables</td><td>pp. 3–4</td></tr>
+    <tr><td><span class="dot">2</span></td><td>Sampling · consent form · controls · pilot study</td><td>pp. 5–6</td></tr>
+    <tr><td><span class="dot">3</span></td><td>Materials · 6-step procedure</td><td>p. 7</td></tr>
+    <tr><td><span class="dot">4</span></td><td>Tabulate data · descriptive stats · scatter · Spearman's · significance</td><td>pp. 8–9</td></tr>
+    <tr><td><span class="dot">5</span></td><td>V / R / G evaluation</td><td>p. 10</td></tr>
+    <tr><td><span class="dot">6</span></td><td>Improvements (linked to weaknesses)</td><td>p. 11</td></tr>
+    <tr><td><span class="dot">7</span></td><td>Report writing + 3 textbook exam questions</td><td>p. 12</td></tr>
+  </table>
+
+  <div class="sec workflow">The 5 syllabus learning objectives</div>
+  <ol class="tight">
+    <li>Design and conduct a correlational study on <span class="bl" style="min-width:80px;"></span> or <span class="bl" style="min-width:80px;"></span>.</li>
+    <li>Make design decisions when <span class="bl" style="min-width:60px;"></span> and gathering data.</li>
+    <li>Analyse correlational data including an <span class="bl" style="min-width:60px;"></span> test for a relationship.</li>
+    <li>Evaluate <span class="bl" style="min-width:60px;"></span> and weaknesses of the correlation and suggest <span class="bl" style="min-width:60px;"></span>.</li>
+    <li>Write up the <span class="bl" style="min-width:60px;"></span>, <span class="bl" style="min-width:60px;"></span> and <span class="bl" style="min-width:60px;"></span> section of a report.</li>
+  </ol>
+
+  <div class="box workflow">
+    <div class="bx-t">🎯 Exam reality check</div>
+    <ul class="tight" style="margin-top:2px;">
+      <li><strong>No "design from scratch"</strong> question. Every practical Q gives a scenario (Hikaru, Cyr, etc.). You patch the design or evaluate it. The exam tests <strong>diagnostic ability</strong>.</li>
+      <li><strong>No need to bring notes</strong>. Exam is closed-book. But you must remember your own design as a reference point when diagnosing scenarios.</li>
+      <li>Treat your practical like a <strong>named study</strong>: examiner expects AMSPRC + V/R/G.</li>
+    </ul>
+  </div>
+
+  <div class="sec workflow">Pick your topic — circle one to commit to</div>
+  <div class="two">
+    <div>
+      <p class="kicker" style="color:#f97316;">Aggression track</p>
+      <ul class="tight">
+        <li><span class="c"></span> Masculinity × aggression <span class="hint">textbook n=10</span></li>
+        <li><span class="c"></span> Height × self-reported aggression</li>
+        <li><span class="c"></span> Self-reported aggression × contact-sport injuries</li>
+        <li><span class="c"></span> Premenstrual tension × self-reported aggression</li>
+        <li><span class="c"></span> Age × self-reported aggression</li>
+      </ul>
+    </div>
+    <div>
+      <p class="kicker" style="color:#6366f1;">Body rhythms track</p>
+      <ul class="tight">
+        <li><span class="c"></span> Age × sleep duration</li>
+        <li><span class="c"></span> Physical exercise × sleep quality</li>
+        <li><span class="c"></span> Severity of premenstrual tension × hours of sleep</li>
+        <li><span class="c"></span> Sleep quality × unhealthy snacking</li>
+        <li><span class="c"></span> Social media time × sleep duration</li>
+      </ul>
+    </div>
+  </div>
+  <p style="font-size:9pt; color:#444; margin-top:4px;"><strong>My chosen topic:</strong> <span class="bl" style="min-width:300px;"></span></p>
+
+  <div class="pg-foot">Ch19 Practical Investigation — Diagnostic Training Workbook · Page 2 / 13</div>
+</div>
+
+<!-- ================= PAGE 3: STEP 1 FILL-IN ================= -->
+<div class="page">
+  <div class="pg-head">
+    <div class="t">Step 1 — Aim, hypothesis, variables</div>
+    <div class="r">COURSES §2</div>
+  </div>
+
+  <div class="sec workflow">Aim · hypotheses · operationalisation</div>
+  <p class="hint2">Read §2 first. Use the fixed phrase <em>"To investigate whether there is a link between X and Y"</em> for the aim.</p>
+
+  <p><strong>1 · My aim</strong> <span class="hint">一句话,To investigate whether...</span></p>
+  <div class="wl"></div>
+
+  <p><strong>2 · My alternative hypothesis</strong> <span class="hint">方向性/directional or 非方向性/non-directional</span></p>
+  <p style="font-size:9pt; margin:2px 0;"><span class="c"></span> Directional <span style="margin-left:14px;"><span class="c"></span> Non-directional</span> · <span class="hint">方向性配 one-tailed;非方向性配 two-tailed</span></p>
+  <div class="wl"></div>
+
+  <p><strong>3 · My null hypothesis</strong> <span class="hint">永远写,不管方向性</span></p>
+  <div class="wl"></div>
+
+  <div class="two">
+    <div>
+      <p><strong>4 · Operationalising co-variable 1</strong></p>
+      <table class="n">
+        <tr><td class="lbl">Abstract concept</td><td><span class="bl" style="min-width:200px;"></span></td></tr>
+        <tr><td class="lbl">Measure used</td><td><span class="bl" style="min-width:200px;"></span></td></tr>
+        <tr><td class="lbl">Score range</td><td><span class="bl" style="min-width:200px;"></span></td></tr>
+        <tr><td class="lbl">Data level</td><td><span class="hint">Must be at least ordinal</span> <span class="bl" style="min-width:80px;"></span></td></tr>
+      </table>
+    </div>
+    <div>
+      <p><strong>5 · Operationalising co-variable 2</strong></p>
+      <table class="n">
+        <tr><td class="lbl">Abstract concept</td><td><span class="bl" style="min-width:200px;"></span></td></tr>
+        <tr><td class="lbl">Measure used</td><td><span class="bl" style="min-width:200px;"></span></td></tr>
+        <tr><td class="lbl">Score range</td><td><span class="bl" style="min-width:200px;"></span></td></tr>
+        <tr><td class="lbl">Data level</td><td><span class="hint">Must be at least ordinal</span> <span class="bl" style="min-width:80px;"></span></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="box workflow">
+    <div class="bx-t">Verify against textbook pp.216-217</div>
+    <p style="font-size:9pt; margin:3px 0 5px 0;"><em>Masculinity × aggression</em>: use a <strong>computerised quiz</strong> (0–100) + a <strong>video game</strong> (0–20, 1 pt per character). Cross-check your 4–5 answers against these.</p>
+  </div>
+
+  <div class="box workflow">
+    <div class="bx-t">💡 Avoid these slips</div>
+    <ul class="tight" style="margin-top:2px;">
+      <li>Don't call them <strong>IV / DV</strong> — they are <strong>co-variables</strong>. Edexcel mark scheme downmarks IV/DV for a correlation.</li>
+      <li>Directional → <strong>one-tailed</strong> Spearman's. Spearman's needs <strong>ordinal</strong> data minimum.</li>
+    </ul>
+  </div>
+
+  <div class="pg-foot">Ch19 Practical Investigation — Diagnostic Training Workbook · Page 3 / 13</div>
+</div>
+
+<!-- ================= PAGE 4: HIKARU DIAGNOSTIC #1 ================= -->
+<div class="page">
+  <div class="pg-head">
+    <div class="t">🔍 Diagnose Hikaru · Step 1</div>
+    <div class="r">COURSES §2</div>
+  </div>
+
+  <div class="sec hikaru">Hikaru's scenario (running case study)</div>
+  <div class="box hikaru">
+    <div class="bx-t">Scenario — Hikaru's practical</div>
+    <p style="font-style:italic; margin:4px 0; font-size:10pt;">Hikaru is planning a study to see whether eating sugary food affects aggressive behaviour in <strong>12-year-old children</strong>. She plans to give 100 children a sugary snack and then ask them <strong>"Were you aggressive today?"</strong> She will compare their yes/no answers to a teacher rating of aggression (1–5).</p>
+  </div>
+
+  <div class="sec hikaru">Q1 — Data level mismatch</div>
+  <p><strong>What kind of variable is "Were you aggressive today?"</strong> <span class="hint">Yes/no = ?</span></p>
+  <div class="wl"></div>
+
+  <p><strong>What level of data does Spearman's rank need?</strong> <span class="hint">at least ?</span></p>
+  <div class="wl"></div>
+
+  <p><strong>Will Spearman's rank work on Hikaru's yes/no answers? Why or why not?</strong></p>
+  <div class="wl tall"></div>
+
+  <div class="sec hikaru">Q2 — Hypothesis direction</div>
+  <p><strong>Should Hikaru's hypothesis be directional or non-directional?</strong></p>
+  <div class="wl"></div>
+
+  <p><strong>Defend your choice in one sentence</strong> <span class="hint">cite prior literature or absence</span></p>
+  <div class="wl short"></div>
+
+  <div class="sec hikaru">Q3 — Ethics</div>
+  <p><strong>Is 12 a suitable age for this study?</strong></p>
+  <div class="wl"></div>
+
+  <p><strong>Which BPS ethical guideline is most at risk?</strong> <span class="hint">e.g. consent / protection / withdrawal / deception</span></p>
+  <div class="wl"></div>
+
+  <div class="sec hikaru">Q4 — Operationalisation (the deepest issue)</div>
+  <p><strong>What does "aggressive behaviour" actually mean in Hikaru's study? Is it the same thing when measured by a child's yes/no vs a teacher's 1–5 rating?</strong></p>
+  <div class="wl tall"></div>
+
+  <div class="box hikaru">
+    <div class="bx-t">🎯 The point of this diagnostic</div>
+    <p style="font-size:9.5pt; margin:4px 0;">Hikaru is a real exam-style scenario (WPS02/01 Q2). The exam <strong>never</strong> asks you to design from scratch — it gives a flawed scenario and asks you to spot the flaws. Practice spotting them on Hikaru now so you spot them in the exam room.</p>
+  </div>
+
+  <div class="pg-foot">Ch19 Practical Investigation — Diagnostic Training Workbook · Page 4 / 13</div>
+</div>
+
+<!-- ================= PAGE 5: STEP 2 FILL-IN ================= -->
+<div class="page">
+  <div class="pg-head">
+    <div class="t">Step 2 — Design decisions</div>
+    <div class="r">COURSES §3</div>
+  </div>
+
+  <div class="sec workflow">Sampling · ethics · controls · pilot</div>
+  <p class="hint2">Read §3 first. Fill in for your own topic.</p>
+
+  <p><strong>1 · My sampling method</strong> <span class="hint">circle one</span></p>
+  <p style="font-size:9pt; margin:2px 0;">
+    <span class="c"></span> Opportunity &nbsp; <span class="c"></span> Volunteer &nbsp; <span class="c"></span> Random &nbsp; <span class="c"></span> Stratified
+  </p>
+  <p><strong>Why this method?</strong> <span class="hint">1 sentence defence</span></p>
+  <div class="wl"></div>
+
+  <p><strong>2 · My sample</strong></p>
+  <table class="n">
+    <tr><td class="lbl">n (target)</td><td><span class="bl" style="min-width:80px;"></span></td></tr>
+    <tr><td class="lbl">Target population</td><td><span class="bl" style="min-width:240px;"></span></td></tr>
+    <tr><td class="lbl">Recruitment route</td><td><span class="hint">where you'll find them</span><span class="bl" style="min-width:240px;"></span></td></tr>
+  </table>
+
+  <div class="sec workflow">Consent form — 7 mandatory items (textbook p.218)</div>
+  <p class="hint2">Tick the items your consent form will include.</p>
+  <div class="chk">
+    <p><span class="c"></span> 1. <strong>Aim(s)</strong> of the study — what you are investigating</p>
+    <p><span class="c"></span> 2. <strong>Exactly what they will do</strong> — full detail so they can decide</p>
+    <p><span class="c"></span> 3. <strong>Any possible implications</strong> — e.g. playing a moderately aggressive game</p>
+    <p><span class="c"></span> 4. <strong>Right to withdraw</strong> at any point without consequence + take data with them</p>
+    <p><span class="c"></span> 5. <strong>Anonymisation & destruction</strong> — names → numbers, data destroyed after set date</p>
+    <p><span class="c"></span> 6. <strong>Who else sees findings</strong> + how information will be distributed</p>
+    <p><span class="c"></span> 7. <strong>Contact details</strong> (researcher + supervisor) + signatures</p>
+  </div>
+
+  <div class="sec workflow">Controls (textbook p.217)</div>
+  <p class="hint2">List the controls you will put in place. Aim for at least 4.</p>
+  <ol class="tight">
+    <li><span class="bl" style="min-width:300px;"></span></li>
+    <li><span class="bl" style="min-width:300px;"></span></li>
+    <li><span class="bl" style="min-width:300px;"></span></li>
+    <li><span class="bl" style="min-width:300px;"></span></li>
+  </ol>
+
+  <div class="sec workflow">Pilot study</div>
+  <p><strong>Purpose of my pilot</strong> <span class="hint">in 1 sentence</span></p>
+  <div class="wl"></div>
+
+  <p><strong>Pilot participants</strong> <span class="hint">how many, who</span></p>
+  <div class="wl"></div>
+
+  <div class="box workflow">
+    <div class="bx-t">💡 Writing sampling weakness for AO3</div>
+    <p style="font-size:9.5pt; margin:4px 0;">Link: <strong>"opportunity sample → only represents this school → cannot be generalised to the wider [target population]."</strong> The linkage is where AO3 marks come from.</p>
+  </div>
+
+  <div class="pg-foot">Ch19 Practical Investigation — Diagnostic Training Workbook · Page 5 / 13</div>
+</div>
+
+<!-- ================= PAGE 6: HIKARU DIAGNOSTIC #2 ================= -->
+<div class="page">
+  <div class="pg-head">
+    <div class="t">🔍 Diagnose Hikaru · Step 2</div>
+    <div class="r">COURSES §3</div>
+  </div>
+
+  <div class="box hikaru">
+    <div class="bx-t">Scenario — Hikaru's recruitment and method</div>
+    <p style="font-style:italic; margin:4px 0; font-size:10pt;">Hikaru recruits 100 children from <strong>one primary school</strong> whose parents returned a permission slip. She gives them a sugary snack, then asks <strong>"Were you aggressive today?"</strong> (yes/no), then a teacher rates their aggression 1–5.</p>
+  </div>
+
+  <div class="sec hikaru">Q1 — Sampling weakness</div>
+  <p><strong>Name ONE sampling weakness in Hikaru's design.</strong></p>
+  <div class="wl"></div>
+
+  <p><strong>How does this limit her findings?</strong> <span class="hint">link to generalisability</span></p>
+  <div class="wl"></div>
+
+  <div class="sec hikaru">Q2 — Ethical issue</div>
+  <p><strong>Name ONE ethical issue Hikaru should have addressed before the children took part.</strong></p>
+  <div class="wl"></div>
+
+  <p><strong>Which BPS principle does it violate?</strong> <span class="hint">e.g. informed consent / right to withdraw / protection from harm / debrief</span></p>
+  <div class="wl"></div>
+
+  <div class="sec hikaru">Q3 — Reliability of "Were you aggressive today?"</div>
+  <p><strong>Why is asking a 12-year-old "Were you aggressive today?" an unreliable measure?</strong> <span class="hint">think about how a child would interpret "aggressive"</span></p>
+  <div class="wl short"></div>
+
+  <div class="sec hikaru">Q4 — Demand characteristics</div>
+  <p><strong>After eating the sugary snack, do you think children might answer the question differently? Why?</strong></p>
+  <div class="wl short"></div>
+
+  <div class="sec hikaru">Q5 — Improve Hikaru's design (preview of Step 6)</div>
+  <p><strong>Suggest ONE improvement that would address the closed-question weakness. Be specific.</strong></p>
+  <div class="wl"></div>
+
+  <div class="box hikaru">
+    <div class="bx-t">📝 Self-check before moving on</div>
+    <p style="font-size:9.5pt; margin:4px 0;">Did you write at least <strong>2 lines per answer</strong> and link to AO3 vocabulary (generalisability, validity, BPS principle, demand characteristics)? If yes, move to p.7.</p>
+  </div>
+
+  <div class="pg-foot">Ch19 Practical Investigation — Diagnostic Training Workbook · Page 6 / 13</div>
+</div>
+
+<!-- ================= PAGE 7: STEP 3 PROCEDURE ================= -->
+<div class="page">
+  <div class="pg-head">
+    <div class="t">Step 3 — Materials & procedure</div>
+    <div class="r">COURSES §4</div>
+  </div>
+
+  <div class="sec workflow">Measurement tools</div>
+  <p class="hint2">Both co-variables must be at least ordinal. Choose one tool per variable.</p>
+
+  <div class="two">
+    <div>
+      <p><strong>Co-variable 1 tool</strong></p>
+      <p style="font-size:9pt; margin:2px 0;">
+        <span class="c"></span> Questionnaire / rating scale &nbsp;
+        <span class="c"></span> Computerised quiz &nbsp;
+        <span class="c"></span> Behavioural measure
+      </p>
+      <p class="hint2">strength:</p>
+      <div class="wl short"></div>
+      <p class="hint2">weakness:</p>
+      <div class="wl short"></div>
+    </div>
+    <div>
+      <p><strong>Co-variable 2 tool</strong></p>
+      <p style="font-size:9pt; margin:2px 0;">
+        <span class="c"></span> Questionnaire / rating scale &nbsp;
+        <span class="c"></span> Computerised quiz &nbsp;
+        <span class="c"></span> Behavioural measure
+      </p>
+      <p class="hint2">strength:</p>
+      <div class="wl short"></div>
+      <p class="hint2">weakness:</p>
+      <div class="wl short"></div>
+    </div>
+  </div>
+
+  <div class="sec workflow">6-step procedure (textbook p.219)</div>
+  <p class="hint2">Write your own 6 steps. Each step should be 1-2 sentences with timings where relevant.</p>
+
+  <p><strong>Step 1 · Briefing + informed consent</strong> <span class="hint">sign forms, allocate participant number</span></p>
+  <div class="wl"></div>
+
+  <p><strong>Step 2 · First measurement</strong> <span class="hint">where, what tool, how long</span></p>
+  <div class="wl"></div>
+
+  <p><strong>Step 3 · Waiting period</strong> <span class="hint">what happens between the two measures</span></p>
+  <div class="wl"></div>
+
+  <p><strong>Step 4 · Second measurement</strong> <span class="hint">where, what tool, practice + data run</span></p>
+  <div class="wl"></div>
+
+  <p><strong>Step 5 · Debrief</strong> <span class="hint">right to withdraw, questions, see results when available</span></p>
+  <div class="wl"></div>
+
+  <p><strong>Step 6 · Thank + release</strong> <span class="hint">thanks, optional insights, dismiss</span></p>
+  <div class="wl"></div>
+
+  <div class="sec workflow">Standardised instructions (write the opening script)</div>
+  <div class="wl tall"></div>
+
+  <div class="box workflow">
+    <div class="bx-t">🎯 This page feeds the 4-mark "Describe the procedure" Q</div>
+    <ul class="tight" style="margin-top:2px;">
+      <li>Your 6 steps must mention all 4: <strong>Sample</strong> (who, n, from where, technique) · <strong>Apparatus & scoring</strong> · <strong>Design</strong> (repeated measures) · <strong>Procedure</strong> (sequence + timings).</li>
+      <li>Don't call it "matched pairs" or "matched samples" — it's <strong>repeated measures</strong> (both vars recorded for every participant).</li>
+    </ul>
+  </div>
+
+  <div class="pg-foot">Ch19 Practical Investigation — Diagnostic Training Workbook · Page 7 / 13</div>
+</div>
+
+<!-- ================= PAGE 8: SPEARMAN RANKING ================= -->
+<div class="page">
+  <div class="pg-head">
+    <div class="t">Step 4 — Spearman's rank worked example</div>
+    <div class="r">COURSES §5</div>
+  </div>
+
+  <div class="sec workflow">Rank the textbook data (n=10)</div>
+  <p class="hint2">Read §5 first. We will redo Table 19.3 from memory. Fill the ranks for both co-variables, then d².</p>
+
+  <table class="n">
+    <tr><th>Participant</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>
+    <tr>
+      <td class="lbl">Masculinity (A)</td>
+      <td>56</td><td>69</td><td>30</td><td>88</td><td>80</td><td>87</td><td>95</td><td>67</td><td>77</td><td>45</td>
+    </tr>
+    <tr>
+      <td class="lbl">Aggression (B)</td>
+      <td>17</td><td>18</td><td>10</td><td>10</td><td>15</td><td>16</td><td>17</td><td>15</td><td>14</td><td>6</td>
+    </tr>
+    <tr>
+      <td class="lbl">Rank A</td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+    </tr>
+    <tr>
+      <td class="lbl">Rank B</td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+    </tr>
+    <tr>
+      <td class="lbl">d²</td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+      <td><span class="bl" style="min-width:30px;"></span></td>
+    </tr>
+  </table>
+
+  <div class="sec workflow">Tied ranks — practice with aggression scores</div>
+  <p class="hint2">Aggression scores in ascending order: 6, 10, 10, 14, 15, 15, 16, 17, 17, 18. Two 10s and two 15s and two 17s. Average the number positions they occupy.</p>
+  <table class="n">
+    <tr><th>Number position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>
+    <tr><td class="lbl">Score B (ascending)</td><td>6</td><td>10</td><td>10</td><td>14</td><td>15</td><td>15</td><td>16</td><td>17</td><td>17</td><td>18</td></tr>
+    <tr><td class="lbl">Rank for B</td><td>1</td><td><span class="bl" style="min-width:30px;"></span></td><td><span class="bl" style="min-width:30px;"></span></td><td><span class="bl" style="min-width:30px;"></span></td><td><span class="bl" style="min-width:30px;"></span></td><td><span class="bl" style="min-width:30px;"></span></td><td><span class="bl" style="min-width:30px;"></span></td><td><span class="bl" style="min-width:30px;"></span></td><td><span class="bl" style="min-width:30px;"></span></td><td><span class="bl" style="min-width:30px;"></span></td></tr>
+  </table>
+
+  <div class="sec workflow">Calculate rₛ</div>
+  <p class="hint2">Plug into the formula. r<sub>s</sub> = 1 − (6 × Σd²) ÷ (n(n² − 1))</p>
+  <p><strong>Σd² (sum of squared differences) =</strong> <span class="bl" style="min-width:60px;"></span></p>
+  <p><strong>n =</strong> <span class="bl" style="min-width:40px;"></span></p>
+  <p><strong>Calculation:</strong></p>
+  <div class="wl short"></div>
+  <p><strong>rₛ =</strong> <span class="bl" style="min-width:80px;"></span> <span class="hint">expected: 0.318</span></p>
+
+  <div class="box workflow">
+    <div class="bx-t">💡 Tied ranks rule</div>
+    <p style="font-size:9.5pt; margin:4px 0;">If two scores are equal, average the number positions they occupy. Two 10s at positions 2 and 3 → both get (2+3)/2 = <strong>2.5</strong>. The next score (14) then gets rank <strong>4</strong> (skip 3).</p>
+  </div>
+
+  <div class="pg-foot">Ch19 Practical Investigation — Diagnostic Training Workbook · Page 8 / 13</div>
+</div>
+
+<!-- ================= PAGE 9: SIGNIFICANCE + 7 INGREDIENTS ================= -->
+<div class="page">
+  <div class="pg-head">
+    <div class="t">Step 4 — Significance decision</div>
+    <div class="r">COURSES §5</div>
+  </div>
+
+  <div class="sec workflow">Significance decision (textbook p.222)</div>
+  <table class="n">
+    <tr><th>n</th><th>One-tailed p&lt;0.05</th><th>One-tailed p&lt;0.01</th><th>Two-tailed p&lt;0.05</th><th>Two-tailed p&lt;0.01</th></tr>
+    <tr><td>7</td><td>0.714</td><td>0.893</td><td>0.786</td><td>0.929</td></tr>
+    <tr><td>8</td><td>0.643</td><td>0.833</td><td>0.738</td><td>0.881</td></tr>
+    <tr><td>9</td><td>0.600</td><td>0.783</td><td>0.700</td><td>0.833</td></tr>
+    <tr><td><strong>10</strong></td><td><strong>0.564</strong></td><td>0.745</td><td>0.648</td><td>0.794</td></tr>
+  </table>
+
+  <div class="two">
+    <div>
+      <p><strong>Worked decision (textbook)</strong></p>
+      <p style="font-size:9.5pt;">calculated r<sub>s</sub> = <strong>0.318</strong>; n = 10; one-tailed test at p &lt; 0.05 → critical value = <strong>0.564</strong>.</p>
+      <p style="font-size:9.5pt;"><strong>0.318</strong> &lt; <strong>0.564</strong> → calculated is <strong>less than</strong> critical → <strong>not significant</strong> → <strong>accept null hypothesis</strong>.</p>
+    </div>
+    <div>
+      <p><strong>Fill in for your own study</strong></p>
+      <p>calculated r<sub>s</sub> = <span class="bl" style="min-width:60px;"></span>; n = <span class="bl" style="min-width:30px;"></span>; one/two-tailed = <span class="bl" style="min-width:50px;"></span>; p &lt; <span class="bl" style="min-width:20px;"></span> → critical value = <span class="bl" style="min-width:60px;"></span></p>
+      <p>Decision: <strong>significant</strong> <span class="c"></span> or <strong>not significant</strong> <span class="c"></span> · <span class="hint">circle one</span></p>
+    </div>
+  </div>
+
+  <div class="sec workflow">The 7 mandatory ingredients of a statistical conclusion</div>
+  <p class="hint2">EXAM TIP p.223. A statistical statement must include all 7 to score full marks.</p>
+  <ol class="tight">
+    <li>The <span class="bl" style="min-width:120px;"></span> value (e.g. "rₛ = 0.318")</li>
+    <li>The <span class="bl" style="min-width:80px;"></span> value (e.g. "0.564")</li>
+    <li>The probability / level of <span class="bl" style="min-width:80px;"></span> (e.g. "p &lt; 0.05")</li>
+    <li>The <span class="bl" style="min-width:80px;"></span> of participants (e.g. "n = 10")</li>
+    <li>Whether it was a <span class="bl" style="min-width:80px;"></span> or two-tailed test</li>
+    <li>Whether calculated was <span class="bl" style="min-width:80px;"></span> or equal to critical</li>
+    <li>What <span class="bl" style="min-width:80px;"></span> is supported (restate it)</li>
+  </ol>
+
+  <div class="sec workflow">Write the textbook's model conclusion (from memory first, then check p.13)</div>
+  <p class="hint2">"The calculated value of the Spearman's rank test was r = ___..." — write the full sentence.</p>
+  <div class="wl tall"></div>
+  <div class="wl tall"></div>
+
+  <div class="box workflow">
+    <div class="bx-t">🎯 Hikaru's mistake (preview of Step 4 diagnostic)</div>
+    <p style="font-size:9.5pt; margin:4px 0;">If Hikaru writes: <em>"The correlation is 0.18, so the food doesn't cause aggression"</em>, she has missed the critical value (0.18 vs n=100 critical) and used causal language. Always compare r<sub>s</sub> to critical value and use <strong>"due to chance"</strong> not <strong>"causes"</strong>.</p>
+  </div>
+
+  <div class="pg-foot">Ch19 Practical Investigation — Diagnostic Training Workbook · Page 9 / 13</div>
+</div>
+
+<!-- ================= PAGE 10: V/R/G ================= -->
+<div class="page">
+  <div class="pg-head">
+    <div class="t">Step 5 — V / R / G evaluation</div>
+    <div class="r">COURSES §6</div>
+  </div>
+
+  <div class="sec workflow">Validity (was the test a true measure?)</div>
+  <p class="hint2">Read §6 first. Fill in one weakness for your own study + link to WHY it matters.</p>
+
+  <p><strong>Validity weakness #1:</strong></p>
+  <div class="wl"></div>
+  <p><strong>WHY it matters (link to which kind of validity):</strong> <span class="hint">face / ecological / concurrent / third variable</span></p>
+  <div class="wl"></div>
+
+  <p><strong>Validity weakness #2:</strong></p>
+  <div class="wl"></div>
+  <p><strong>WHY it matters:</strong></p>
+  <div class="wl"></div>
+
+  <div class="sec workflow">Reliability (would it give the same result again?)</div>
+  <p><strong>Reliability weakness:</strong></p>
+  <div class="wl"></div>
+  <p><strong>WHY it matters (link to standardisation / order effects / subjectivity):</strong></p>
+  <div class="wl"></div>
+
+  <div class="sec workflow">Generalisability (can findings leave the lab?)</div>
+  <p><strong>Generalisability weakness #1:</strong> <span class="hint">sample-related</span></p>
+  <div class="wl"></div>
+  <p><strong>WHY it matters:</strong></p>
+  <div class="wl"></div>
+
+  <p><strong>Generalisability weakness #2:</strong> <span class="hint">culture / sex / age related</span></p>
+  <div class="wl"></div>
+  <p><strong>WHY it matters:</strong></p>
+  <div class="wl"></div>
+
+  <div class="sec workflow">Compare grid — the 3 axes</div>
+  <table class="n">
+    <tr><th style="width:18%;">Axis</th><th>Key question</th><th>Textbook critique of masculinity × aggression</th></tr>
+    <tr>
+      <td class="lbl"><span class="tag v">V</span> Validity</td>
+      <td>Were the variables a true measure?</td>
+      <td>Quiz is superficial; game measures gaming skill not real aggression; correlation cannot establish cause (third variable).</td>
+    </tr>
+    <tr>
+      <td class="lbl"><span class="tag r">R</span> Reliability</td>
+      <td>Were the procedures consistent?</td>
+      <td>Standardised but order effects, varied gap between tasks, varied prior gaming experience.</td>
+    </tr>
+    <tr>
+      <td class="lbl"><span class="tag g">G</span> Generalisability</td>
+      <td>Can we apply beyond the sample?</td>
+      <td>Small n=10; volunteer bias; Western industrialised; male-only → not women, not other cultures.</td>
+    </tr>
+  </table>
+
+  <div class="pg-foot">Ch19 Practical Investigation — Diagnostic Training Workbook · Page 10 / 13</div>
+</div>
+
+<!-- ================= PAGE 11: IMPROVEMENTS + HIKARU DIAGNOSTIC #3 ================= -->
+<div class="page">
+  <div class="pg-head">
+    <div class="t">Step 6 — Improvements + 🔍 Hikaru #3</div>
+    <div class="r">COURSES §7</div>
+  </div>
+
+  <div class="sec workflow">Improvement checklist (textbook p.226)</div>
+  <p class="hint2">Each weakness must be paired with an improvement. The improvement must address <em>that specific</em> weakness.</p>
+
+  <div class="two">
+    <div>
+      <p><strong>Validity improvement</strong> <span class="hint">link to which weakness on p.10</span></p>
+      <div class="wl"></div>
+      <p><strong>WHY this fixes it:</strong></p>
+      <div class="wl"></div>
+    </div>
+    <div>
+      <p><strong>Reliability improvement</strong> <span class="hint">link to which weakness</span></p>
+      <div class="wl"></div>
+      <p><strong>WHY this fixes it:</strong></p>
+      <div class="wl"></div>
+    </div>
+  </div>
+
+  <p><strong>Generalisability improvement</strong> <span class="hint">link to which weakness</span></p>
+  <div class="wl"></div>
+  <p><strong>WHY this fixes it:</strong></p>
+  <div class="wl"></div>
+
+  <div class="sec hikaru">🔍 Diagnose Hikaru — improvement question (WPS02/01 Q2e)</div>
+  <div class="box hikaru">
+    <div class="bx-t">Scenario — Hikaru's improvement</div>
+    <p style="font-style:italic; margin:4px 0; font-size:10pt;">A student writes: <strong>"Hikaru should improve her study by using a bigger sample."</strong></p>
+  </div>
+
+  <p><strong>Q1 · Is this a valid improvement? Why or why not?</strong></p>
+  <div class="wl tall"></div>
+
+  <p><strong>Q2 · Suggest an improvement for the <em>closed question</em> "Were you aggressive today?" (be specific, link to validity)</strong></p>
+  <div class="wl tall"></div>
+
+  <p><strong>Q3 · Suggest an improvement that would address the <em>single-school</em> generalisability weakness</strong></p>
+  <div class="wl tall"></div>
+
+  <div class="box hikaru">
+    <div class="bx-t">📝 Self-check before moving on</div>
+    <p style="font-size:9.5pt; margin:4px 0;">An "improvement" that doesn't address a specific weakness scores 0. Always write: <strong>weakness → improvement → WHY this fixes it</strong>. The "why" is the second mark.</p>
+  </div>
+
+  <div class="pg-foot">Ch19 Practical Investigation — Diagnostic Training Workbook · Page 11 / 13</div>
+</div>
+
+<!-- ================= PAGE 12: REPORT WRITING + 3 EXAM Qs ================= -->
+<div class="page">
+  <div class="pg-head">
+    <div class="t">Step 7 — Report writing + 3 exam Qs</div>
+    <div class="r">COURSES §8</div>
+  </div>
+
+  <div class="sec workflow">Report skeleton</div>
+  <p class="hint2">Fill the 3 sections from your own study. Use the textbook checklists on p.12 of the courseware.</p>
+
+  <p><strong>Procedure section</strong> <span class="hint">8-point checklist (sample, apparatus, design, brief/debrief, location, individual/group, procedure + timings, controls)</span></p>
+  <div class="wl"></div>
+
+  <p><strong>Results section</strong> <span class="hint">raw data table, descriptive stats, scatter diagram + interpretation, Spearman's + significance</span></p>
+  <div class="wl"></div>
+
+  <p><strong>Discussion section</strong> <span class="hint">conclusions, wider context, V/R/G, improvements, practical uses</span></p>
+  <div class="wl"></div>
+
+  <div class="sec workflow">3 textbook exam questions (p.226) — write model answers</div>
+
+  <p><strong>Q1 · Describe the procedure of your practical investigation (4 marks)</strong></p>
+  <p class="hint2">Mark scheme expects 4 distinct points: Sample · Apparatus & scoring · Design · Procedure.</p>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+
+  <p><strong>Q2 · Explain whether the findings were statistically significant (2 marks)</strong></p>
+  <p class="hint2">Mark scheme: 1 mark for calculated vs critical; 1 mark for correct decision + hypothesis supported.</p>
+  <div class="wl"></div>
+
+  <p><strong>Q3 · Explain one validity improvement (2 marks)</strong></p>
+  <p class="hint2">Mark scheme: 1 mark for validity weakness; 1 mark for linked improvement.</p>
+  <div class="wl"></div>
+
+  <div class="box workflow">
+    <div class="bx-t">🚀 EXAM TIP (p.226)</div>
+    <p style="font-size:9pt; margin:3px 0;">Treat your practical as the <strong>named study</strong>: AMSPRC + V/R/G = full marks.</p>
+  </div>
+
+  <div class="pg-foot">Ch19 Practical Investigation — Diagnostic Training Workbook · Page 12 / 13</div>
+</div>
+
+<!-- ================= PAGE 13: BRAIN DUMP + ANSWER KEY ================= -->
+<div class="page">
+  <div class="pg-head">
+    <div class="t">Brain dump + answer key</div>
+    <div class="r">FINAL CHECK</div>
+  </div>
+
+  <div class="sec">Brain dump — write everything you remember (5 min, no notes)</div>
+  <p class="hint2">Before checking the answer key below, set a 5-minute timer and write everything you remember about Ch19 here.</p>
+  <p class="hint2">Aim · hypothesis · operationalisation · sampling · ethics · controls · pilot · 6-step procedure · Spearman's rank · significance · V/R/G · improvements · 3 exam questions · AMSPRC</p>
+  <div class="wl tall"></div>
+  <div class="wl tall"></div>
+
+  <div class="sec answer">Answer key — verify your answers</div>
+
+  <p><strong>p.2 — Spec 3.4 musts</strong>: (1) correlational study + descriptive stats + non-parametric test (Spearman's); (2) design decisions (co-variables, operationalise, ethics, hypothesis, controls); (3) scatter diagram; (4) Spearman's + statistical significance; (5) V/R/G; (6) report writing (procedure/results/discussion).</p>
+
+  <p><strong>p.3 — Worked example (pp.216-217)</strong>: Aim = "To investigate whether there is a link between the masculinity of a person and aggressive behaviour." H₁ = directional positive correlation between quiz score and game score. H₀ = "There will be no relationship... any relationship found will be due to chance." Co-variable 1 = masculinity quiz 0–100 (ordinal). Co-variable 2 = characters knocked down in video game 0–20 (ordinal).</p>
+
+  <p><strong>p.4 — Hikaru Q1</strong>: "Were you aggressive today?" is <strong>nominal</strong> (yes/no). Spearman's needs at least ordinal. Q2: could be directional or non-directional; teacher rating supports either. Q3: 12 is below threshold; needs <strong>no one under 16</strong> + parental consent + child assent.</p>
+  <p><strong>p.6 — Hikaru</strong>: Q1 sampling = single school → unrepresentative, cannot generalise. Q2 ethics = informed consent alone not enough; child assent required; teacher rating risks protection from harm. Q3 reliability = 12-year-olds interpret "aggressive" inconsistently.</p>
+
+  <p><strong>p.8 — Spearman worked</strong>: Σd² = 112.5; n=10; rₛ = 1 − (6 × 112.5)/(10 × 99) = 1 − 0.682 = <strong>0.318</strong>.</p>
+  <p><strong>p.9 — Significance</strong>: calculated 0.318 < critical 0.564 → <strong>not significant</strong> → accept null. Model conclusion: "The calculated value of the Spearman's rank test was r = 0.318. This was less than the critical value of 0.564 for a one-tailed test at p &lt; 0.05 with n = 10. Therefore the result is not significant and the null hypothesis can be supported, which states that there will be no relationship between masculinity and aggression, and any relationship found was due to chance."</p>
+
+  <p><strong>p.10 — V/R/G textbook critiques</strong>: V — quiz superficial (face validity); game measures skill not aggression (ecological + concurrent); correlation ≠ cause (third variable). R — order effects; varied task gap; varied gaming experience. G — small n=10; volunteer bias; Western; male-only.</p>
+  <p><strong>p.11 — Improvements</strong>: V — Rosenzweig Picture-Frustration Test for ecological; comprehensive masculinity scale. R — identical time slot. G — random/stratified sampling; cross-cultural; both sexes.</p>
+
+  <p><strong>p.12 — Q1 procedure 4 marks</strong>: Sample + Apparatus + Design + Procedure (full in courseware §8). <strong>Q2 significance 2 marks</strong>: calculated vs critical (1) + correct decision + hypothesis supported (1). <strong>Q3 improvement 2 marks</strong>: validity weakness (1) + linked improvement (1).</p>
+
+  <div class="sec answer">📌 Final self-check before the exam</div>
+  <ul class="tight">
+    <li><span class="c"></span> I can write AMSPRC for my own practical from memory.</li>
+    <li><span class="c"></span> I can write the model conclusion with all 7 ingredients.</li>
+    <li><span class="c"></span> I can spot the closed-question / single-school / yes-no issues in Hikaru's design.</li>
+    <li><span class="c"></span> I can give one V, one R, one G weakness and a linked improvement for each.</li>
+    <li><span class="c"></span> I can describe my procedure in 4 distinct points (sample / apparatus / design / procedure).</li>
+  </ul>
+
+  <div class="pg-foot">Ch19 Practical Investigation — Diagnostic Training Workbook · Page 13 / 13 · END</div>
+</div>
+
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Edexcel Ch19 — Practical Investigation: Design, Conduct & Evaluate a Correlational Study</title>
+<title>Edexcel Ch19 — Practical Investigation: Step-by-Step Workflow for a Correlational Study</title>
 <style>
 :root {
   --primary: #ea580c; --primary-light: #fff7ed; --primary-dark: #9a3412;
@@ -11,15 +11,20 @@
   --bg: #fafaf9; --surface: #ffffff; --card: #ffffff;
   --text: #1c1917; --text-secondary: #57534e; --muted: #a8a29e;
   --border: #e7e5e4; --shadow: 0 4px 20px rgba(0,0,0,.06);
-  --radius: 14px; --sidebar-w: 190px;
+  --radius: 14px; --sidebar-w: 200px;
   --success: #16a34a; --warning: #d97706; --info: #2563eb; --danger: #dc2626;
+  --hikaru: #7c3aed; --hikaru-light: #ede9fe;
+  --step-bg: #fff7ed; --step-border: #fb923c;
+  --diag-bg: #ede9fe; --diag-border: #a78bfa;
+  --try-bg: #ecfdf5; --try-border: #34d399;
   --font-size: 16px;
 }
 .dark-mode {
   --bg: #1c1917; --surface: #292524; --card: #44403c;
   --text: #fafaf9; --text-secondary: #d6d3d1; --muted: #a8a29e;
   --border: #57534e; --shadow: 0 4px 20px rgba(0,0,0,.25);
-  --primary-light: #431407;
+  --primary-light: #431407; --hikaru-light: #3b0764;
+  --step-bg: #431407; --diag-bg: #3b0764; --try-bg: #064e3b;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -79,6 +84,33 @@ main { min-height: 100vh; padding-bottom: 60px; }
 .cn-box h5 { margin: 0 0 6px; color: #854d0e; font-size: 1em; }
 .dark-mode .cn-box h5 { color: #fef3c7; }
 
+/* Workflow step cards */
+.step-card { background: var(--step-bg); border: 2px solid var(--step-border); border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+.step-card .step-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.step-num { background: var(--primary); color: #fff; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: .95em; flex-shrink: 0; }
+.step-card h4 { margin: 0; color: var(--primary-dark); }
+.dark-mode .step-card h4 { color: #ffedd5; }
+.step-card p, .step-card ul, .step-card ol { margin: 6px 0; }
+.step-card ul, .step-card ol { padding-left: 22px; }
+
+/* Hikaru diagnostic card */
+.hikaru-card { background: var(--diag-bg); border: 2px solid var(--diag-border); border-radius: 12px; padding: 16px 20px; margin: 18px 0; position: relative; }
+.hikaru-card::before { content: "🔍 Diagnose Hikaru"; position: absolute; top: -12px; left: 14px; background: var(--hikaru); color: #fff; padding: 2px 10px; border-radius: 14px; font-size: .78em; font-weight: 700; letter-spacing: .04em; }
+.hikaru-card h4 { margin: 6px 0 8px; color: var(--hikaru); }
+.dark-mode .hikaru-card h4 { color: #ddd6fe; }
+.hikaru-card .scenario { background: rgba(255,255,255,.55); border-left: 3px solid var(--hikaru); padding: 10px 14px; border-radius: 6px; margin: 8px 0; font-size: .93em; font-style: italic; }
+.dark-mode .hikaru-card .scenario { background: rgba(0,0,0,.25); }
+.hikaru-card .diagnostic-q { font-weight: 600; color: var(--primary-dark); margin-top: 8px; }
+.dark-mode .hikaru-card .diagnostic-q { color: #ffedd5; }
+
+/* Try your own card */
+.try-card { background: var(--try-bg); border: 2px solid var(--try-border); border-radius: 12px; padding: 16px 20px; margin: 18px 0; position: relative; }
+.try-card::before { content: "✍️ Try your own"; position: absolute; top: -12px; left: 14px; background: var(--success); color: #fff; padding: 2px 10px; border-radius: 14px; font-size: .78em; font-weight: 700; letter-spacing: .04em; }
+.try-card h4 { margin: 6px 0 8px; color: var(--success); }
+.dark-mode .try-card h4 { color: #bbf7d0; }
+.try-card ol, .try-card ul { padding-left: 22px; }
+.try-card .answer-line { border-bottom: 1px solid var(--text-secondary); min-height: 28px; margin: 8px 0; padding-bottom: 4px; }
+
 table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .95em; }
 th, td { border: 1px solid var(--border); padding: 10px 12px; text-align: left; vertical-align: top; }
 th { background: var(--primary-light); color: var(--primary-dark); font-weight: 700; }
@@ -129,6 +161,11 @@ details[open] summary { margin-bottom: 8px; }
 .track-card.br { border-color: #6366f1; }
 .track-card h4 { margin: 0 0 8px; color: var(--primary-dark); }
 
+.workflow-map { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px; margin: 14px 0; }
+.workflow-map ol { counter-reset: step; list-style: none; padding: 0; }
+.workflow-map ol li { counter-increment: step; padding: 8px 0 8px 36px; position: relative; }
+.workflow-map ol li::before { content: counter(step); position: absolute; left: 0; top: 6px; width: 24px; height: 24px; background: var(--primary); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .8em; font-weight: 700; }
+
 .footer-note { text-align: center; font-size: .85em; color: var(--muted); padding: 30px 0; }
 
 .back-to-top { position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%; border: none; background: var(--primary); color: #fff; font-size: 1.2em; cursor: pointer; box-shadow: var(--shadow); opacity: 0; visibility: hidden; transition: .2s; }
@@ -164,19 +201,20 @@ details[open] summary { margin-bottom: 8px; }
 
 <aside class="sidebar">
   <div class="sb-header">
-    <div class="sb-header-title">Ch19 Contents</div>
+    <div class="sb-header-title">Ch19 Workflow</div>
     <div class="sb-header-sub">Practical Investigation</div>
   </div>
   <ul class="sb-list">
-    <li class="sb-item"><a href="#s1">📚 Learning Objectives</a></li>
-    <li class="sb-item"><a href="#s2">🎯 Aim, Hypothesis & Variables</a></li>
-    <li class="sb-item"><a href="#s3">🔬 Design, Controls & Sampling</a></li>
-    <li class="sb-item"><a href="#s4">📜 Ethics & Consent</a></li>
-    <li class="sb-item"><a href="#s5">📋 Procedure & Example Report</a></li>
-    <li class="sb-item"><a href="#s6">📊 Data Analysis & Spearman's</a></li>
-    <li class="sb-item"><a href="#s7">⚖️ Significance & Evaluation</a></li>
-    <li class="sb-item"><a href="#s8">✍️ Report Writing & Exam Practice</a></li>
+    <li class="sb-item"><a href="#s1">📋 Step 0 — What you will produce</a></li>
+    <li class="sb-item"><a href="#s2">🎯 Step 1 — Aim, hypothesis & variables</a></li>
+    <li class="sb-item"><a href="#s3">🔬 Step 2 — Design decisions</a></li>
+    <li class="sb-item"><a href="#s4">📋 Step 3 — Materials & procedure</a></li>
+    <li class="sb-item"><a href="#s5">📊 Step 4 — Data & Spearman's rank</a></li>
+    <li class="sb-item"><a href="#s6">⚖️ Step 5 — Evaluate (V / R / G)</a></li>
+    <li class="sb-item"><a href="#s7">🛠️ Step 6 — Suggest improvements</a></li>
+    <li class="sb-item"><a href="#s8">✍️ Step 7 — Report writing</a></li>
     <li class="sb-divider"></li>
+    <li class="sb-item"><a href="#glossary">📖 Key Terms Glossary</a></li>
   </ul>
 </aside>
 
@@ -184,70 +222,60 @@ details[open] summary { margin-bottom: 8px; }
 
 <div class="header-card">
   <h1>Chapter 19 — Practical Investigation in Biological Psychology</h1>
-  <div class="subtitle">Design, conduct, analyse and evaluate your own correlational study on aggression or body rhythms</div>
+  <div class="subtitle">A 7-step workflow for designing, conducting, analysing & evaluating your own correlational study on aggression or body rhythms</div>
   <div class="badges">
     <span class="badge">Topic C · Biological Psychology</span>
-    <span class="badge">Practical Investigation</span>
-    <span class="badge">Spearman's Rank</span>
     <span class="badge">Correlational Design</span>
+    <span class="badge">Spearman's Rank</span>
+    <span class="badge">Workflow + Diagnose</span>
   </div>
 </div>
 
-<!-- ============ S1 ============ -->
+<!-- ============ STEP 0 ============ -->
 <div class="section" id="s1">
-  <h2>📚 Learning Objectives & Syllabus Map</h2>
+  <h2>📋 Step 0 — What you will produce</h2>
 
   <div class="quick-summary">
     <h4>⚡ Quick Summary</h4>
-    <p>Chapter 19 is the <strong>Practical Investigation</strong> chapter in <strong>Topic C: Biological Psychology</strong>. You must design and conduct your own <strong>correlational study</strong> (a study that measures the relationship between two co-variables) on <strong>aggression</strong> or <strong>body rhythms</strong>. The exam does not ask you to do the practical in the exam room, but it tests whether you actually did one — answers that are too generic score <strong>0 marks</strong>.</p>
+    <p>This chapter is a <strong>workflow</strong>, not a reference document. You will follow 7 steps from picking a topic through to writing your report. At each step you will (a) complete the textbook action, (b) <strong>diagnose Hikaru</strong> — a real exam scenario where the design has weaknesses you must spot, and (c) try the same action on your own chosen study.</p>
   </div>
 
-  <h3>5 syllabus learning objectives (p.216)</h3>
+  <h3>Spec 3.4 — what the exam requires you to cover</h3>
+  <p>The Edexcel IAL Psychology specification (Issue 5, Feb 2021, p.30) sets the following musts for Topic C's practical investigation:</p>
   <ol>
-    <li><strong>Design and conduct</strong> a correlational study on aggression or body rhythms.</li>
-    <li><strong>Make design decisions</strong> when planning and gathering data.</li>
-    <li><strong>Analyse correlational data</strong> including conducting an inferential test for a relationship (Spearman's rank).</li>
-    <li><strong>Evaluate strengths and weaknesses</strong> of the correlation and suggest improvements.</li>
-    <li><strong>Write up</strong> the procedure, results and discussion section of a report.</li>
+    <li>Design and conduct a <strong>correlational study</strong> with descriptive statistics (mean, median, mode, range) and a <strong>non-parametric test of difference / correlation</strong>.</li>
+    <li>Make <strong>design decisions</strong>: choose co-variables, operationalise them, address ethics, formulate a hypothesis, put controls in place.</li>
+    <li>Present findings with a <strong>scatter diagram</strong>.</li>
+    <li>Conduct a <strong>Spearman's rank</strong> test and decide on <strong>statistical significance</strong>.</li>
+    <li>Evaluate <strong>validity</strong>, <strong>reliability</strong> and <strong>generalisability</strong>.</li>
+    <li>Write up the <strong>procedure</strong>, <strong>results</strong> and <strong>discussion</strong> sections of a report.</li>
+  </ol>
+
+  <h3>The 5 syllabus learning objectives (textbook p.216)</h3>
+  <ol>
+    <li>Design and conduct a correlational study on <strong>aggression</strong> or <strong>body rhythms</strong>.</li>
+    <li>Make design decisions when planning and gathering data.</li>
+    <li>Analyse correlational data including an inferential test for a relationship.</li>
+    <li>Evaluate strengths and weaknesses of the correlation and suggest improvements.</li>
+    <li>Write up the procedure, results and discussion section of a report on your investigation.</li>
   </ol>
 
   <div class="exam-key">
     <h4>🎯 Exam Key Points</h4>
     <ul>
-      <li>The exam does not ask "write a brand new practical investigation." It asks you to <strong>describe your own practical</strong> (procedure / findings / validity improvements) and <strong>read other people's scenarios</strong> (e.g. WPS02/01 Q2 Hikaru) and pick holes in their design.</li>
-      <li>Mark scheme wording (WPS01/01 Q3): "Answers must relate to <strong>their</strong> practical. Generic answers score 0 marks." So memorise your own sample, sample size, sampling method, materials.</li>
-      <li>Your practical is treated by the examiner <strong>exactly like a named study</strong>: they expect Aim · Method · Sample · Procedure · Results · Conclusion · Evaluation. Use <strong>AMSPRC</strong> as the skeleton.</li>
-      <li>You must do a <strong>Spearman's rank</strong> test (Ch17 gives the mechanics) and write a <strong>conclusion sentence</strong> with 7 mandatory ingredients (see §7).</li>
+      <li><strong>No "design from scratch" question.</strong> Every practical question gives a scenario (Hikaru, Cyr, etc.); you patch the design or evaluate it. So <strong>diagnostic ability</strong> is what the exam actually tests.</li>
+      <li><strong>No need to bring notes.</strong> The exam is closed-book, but mark scheme wording for Unit 1 ("Answers must relate to <em>their</em> practical") means you must remember <strong>your own</strong> design as a <strong>reference point</strong> when diagnosing scenarios.</li>
+      <li>Treat your practical like a <strong>named study</strong> — examiner expects Aim · Method · Sample · Procedure · Results · Conclusion · Evaluation (AMSPRC skeleton).</li>
+      <li>Spearman's rank scaffold lives in <strong>Ch17</strong>; this chapter feeds it your own data.</li>
     </ul>
   </div>
 
-  <h3>What this chapter will give you</h3>
-  <p>You will leave this chapter with:</p>
-  <ul>
-    <li>A <strong>pick-and-run</strong> practical: pick from 9 syllabus-approved topics (5 aggression + 4 body rhythms) and follow the worked example.</li>
-    <li>The <strong>textbook example</strong> (masculinity × aggression, n=10, rₛ = 0.318) fully walked through, so if you haven't done your own yet, you can write up this one.</li>
-    <li>A <strong>Spearman's rank</strong> scaffold that connects directly to Ch17 (you already know the formula).</li>
-    <li>A <strong>report template</strong> (procedure / results / discussion) plus model answers for the 3 standard exam questions.</li>
-  </ul>
-</div>
-
-<!-- ============ S2 ============ -->
-<div class="section" id="s2">
-  <h2>🎯 Aim, Hypothesis & Variables</h2>
-
-  <div class="quick-summary">
-    <h4>⚡ Quick Summary</h4>
-    <p>A <strong>correlational study</strong> measures the relationship between <strong>two co-variables</strong> (both are measured, neither is manipulated). You start with a <strong>research question</strong>, turn it into an <strong>aim</strong>, write an <strong>operationalised hypothesis</strong> (directional or non-directional), and choose a <strong>target population</strong>.</p>
-  </div>
-
-  <h3>Step 1 — Pick your investigation</h3>
-  <p>The syllabus (p.216) gives 9 suggested titles. Pick one you can actually <strong>run</strong> in your school (you'll be tested on the details, so it needs to be one you remember).</p>
-
+  <h3>Suggested topics from the syllabus (pick one)</h3>
   <div class="track-grid">
     <div class="track-card aggr">
       <h4>🟧 Aggression track (5 options)</h4>
       <ul>
-        <li>Masculinity × aggression (the textbook example)</li>
+        <li>Masculinity × aggression (the textbook example, n=10)</li>
         <li>Height × self-reported aggression</li>
         <li>Self-reported aggression × contact-sport injuries</li>
         <li>Premenstrual tension × self-reported aggression</li>
@@ -266,221 +294,280 @@ details[open] summary { margin-bottom: 8px; }
     </div>
   </div>
 
-  <h3>Step 2 — Turn the title into an aim</h3>
-  <div class="study-card">
-    <div class="study-card-title">Worked example (textbook p.216)</div>
-    <p><strong>Research question:</strong> "Is there a link between the masculinity of a person and aggressive behaviour?"</p>
-    <p><strong>Aim:</strong> "To investigate whether there is a link between the masculinity of a person and aggressive behaviour."</p>
+  <h3>The 7-step workflow you will follow</h3>
+  <div class="workflow-map">
+    <ol>
+      <li><strong>Aim, hypothesis & variables</strong> — pick the topic, write aim + hypotheses, operationalise both co-variables.</li>
+      <li><strong>Design decisions</strong> — sampling, ethics (consent + right to withdraw + debrief), controls, pilot study.</li>
+      <li><strong>Materials & procedure</strong> — measurement tools, standardised instructions, 6-step procedure.</li>
+      <li><strong>Data & Spearman's rank</strong> — tabulate raw data, calculate descriptive stats, draw scatter, rank + compute rₛ.</li>
+      <li><strong>Evaluate (V / R / G)</strong> — identify weaknesses on three textbook axes.</li>
+      <li><strong>Improvements</strong> — link each weakness to a specific improvement.</li>
+      <li><strong>Report writing</strong> — write procedure / results / discussion sections + 3 standard exam questions.</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ============ STEP 1 ============ -->
+<div class="section" id="s2">
+  <h2>🎯 Step 1 — Aim, hypothesis & variables</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>A <strong>correlational study</strong> measures the relationship between two <strong>co-variables</strong> — both are recorded, neither is manipulated. You start with a <strong>research question</strong>, turn it into an <strong>aim</strong>, write an <strong>operationalised hypothesis</strong>, and identify a <strong>target population</strong>. Spec must 2 starts here.</p>
   </div>
 
-  <div class="cn-box">
-    <h5>💡 理解小贴士</h5>
-    Aim = research question 用学术腔再说一遍。回答里必须出现 "to investigate whether..." 这个固定句式,阅卷一眼就认出结构化答案。
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">1</span><h4>Pick the topic you will commit to</h4></div>
+    <p>Don't pick the "easiest" topic — pick one you can actually <strong>run in your school</strong> and one you'll remember in two years. You will be tested on details of <em>your</em> practical, so familiarity beats cleverness.</p>
   </div>
 
-  <h3>Step 3 — Hypotheses</h3>
-  <table>
-    <tr><th>Type</th><th>Format</th><th>When to use</th></tr>
-    <tr><td><strong>Alternative (H₁)</strong></td><td>"There will be a significant <em>positive/negative</em> correlation between X and Y."</td><td>You predict the <em>direction</em> (sign) of the relationship.</td></tr>
-    <tr><td><strong>Null (H₀)</strong></td><td>"There will be no relationship between X and Y. Any relationship found will be due to chance."</td><td>Always written alongside H₁, regardless of direction.</td></tr>
-    <tr><td><strong>Directional</strong></td><td>"positive correlation between masculinity and aggression"</td><td>Previous research or theory gives a clear prediction (textbook uses this).</td></tr>
-    <tr><td><strong>Non-directional</strong></td><td>"a relationship (could be positive or negative) between X and Y"</td><td>No clear prior — write the hypothesis without specifying sign, then run a <strong>two-tailed</strong> Spearman's test.</td></tr>
-  </table>
-
-  <div class="study-card">
-    <div class="study-card-title">Operationalised alternative hypothesis (textbook p.217)</div>
-    <p>"There will be a significant <strong>positive correlation</strong> between a participant's masculinity score on a quiz and their scores on a moderately violent video game."</p>
-    <p>This rewrites the abstract concept "masculinity" as "score on the quiz" and "aggression" as "score on the video game" — that is <strong>operationalisation</strong>.</p>
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">2</span><h4>Write the aim</h4></div>
+    <p>Use the fixed phrase <strong>"To investigate whether there is a link between X and Y."</strong> The marker recognises the structure immediately.</p>
+    <p><em>Textbook example (p.216):</em> "To investigate whether there is a link between the masculinity of a person and aggressive behaviour."</p>
   </div>
 
-  <h3>Step 4 — Variables checklist</h3>
-  <ul>
-    <li><strong>Co-variable 1 (IV of correlational design):</strong> measure of X (e.g. masculinity score 0–100).</li>
-    <li><strong>Co-variable 2 (DV of correlational design):</strong> measure of Y (e.g. aggression score 0–20).</li>
-    <li><strong>Target population:</strong> the wider group you want to generalise to (e.g. "the male general public").</li>
-    <li>Both variables must be at least <strong>ordinal level of measurement</strong> (rank-able), otherwise Spearman's rank won't work.</li>
-  </ul>
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">3</span><h4>Write both hypotheses</h4></div>
+    <table>
+      <tr><th>Type</th><th>Format</th><th>Pairs with</th></tr>
+      <tr><td><strong>Alternative (H₁)</strong></td><td>"There will be a significant <em>positive/negative</em> correlation between X and Y."</td><td>Directional prediction → one-tailed test</td></tr>
+      <tr><td><strong>Null (H₀)</strong></td><td>"There will be no relationship between X and Y. Any relationship found will be due to chance."</td><td>Always written, regardless of direction</td></tr>
+      <tr><td><strong>Non-directional H₁</strong></td><td>"There will be a significant correlation (positive or negative) between X and Y."</td><td>No clear prior → two-tailed test</td></tr>
+    </table>
+    <p><em>Worked example (textbook p.217):</em> "There will be a significant positive correlation between a participant's masculinity score on a quiz and their scores on a moderately violent video game." — directional because prior literature predicts higher masculinity → higher aggression.</p>
+  </div>
 
-  <div class="exam-key">
-    <h4>🎯 Exam Tip — avoid these slips</h4>
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">4</span><h4>Operationalise both co-variables</h4></div>
+    <p>Turn abstract concepts into <strong>measurable scores</strong>. Spearman's rank only works on <strong>ordinal</strong> data (or higher ranked down to ordinal).</p>
+    <p><em>Textbook operationalisation:</em></p>
     <ul>
-      <li>Don't call them IV and DV — they are <strong>co-variables</strong>. The exam mark scheme will downmark if you write "independent variable" for a correlation.</li>
-      <li>Always write the <strong>null hypothesis</strong> even if it feels obvious. The mark scheme specifically asks for both.</li>
-      <li>If your hypothesis is directional, run a <strong>one-tailed</strong> Spearman's test (textbook does this). If non-directional, run a <strong>two-tailed</strong> test.</li>
+      <li><strong>Masculinity</strong> → score 0–100 on a computerised masculinity quiz.</li>
+      <li><strong>Aggression</strong> → number of characters knocked down (1 point each) in a moderately violent video game.</li>
     </ul>
   </div>
-</div>
-
-<!-- ============ S3 ============ -->
-<div class="section" id="s3">
-  <h2>🔬 Design, Controls & Sampling</h2>
-
-  <div class="quick-summary">
-    <h4>⚡ Quick Summary</h4>
-    <p>A correlational design <strong>measures</strong> two variables for the same participants — it does not <strong>manipulate</strong> anything. You still need <strong>standardised controls</strong> (same instructions, same testing conditions) and a <strong>sampling method</strong> you can defend at exam time. The textbook uses an <strong>opportunity sample</strong> of <strong>n = 10 males</strong>, aged 19–52.</p>
-  </div>
-
-  <h3>Design choice — why correlation, not experiment?</h3>
-  <table>
-    <tr><th></th><th>Experiment</th><th>Correlation (this chapter)</th></tr>
-    <tr><td>Manipulates a variable?</td><td>Yes (IV)</td><td>No — both measured</td></tr>
-    <tr><td>Can establish cause?</td><td>Yes (with controls)</td><td>No — third variable problem</td></tr>
-    <tr><td>Direction of relationship?</td><td>IV → DV</td><td>X ↔ Y (symmetric)</td></tr>
-    <tr><td>Test used in this topic</td><td>—</td><td><strong>Spearman's rank</strong></td></tr>
-    <tr><td>Design type</td><td>Repeated / independent measures</td><td><strong>Repeated measures</strong> (both vars recorded for every participant)</td></tr>
-  </table>
-
-  <h3>Controls you must put in place (textbook p.217)</h3>
-  <ul>
-    <li><strong>Same instructions</strong> for every participant — written, standardised, read aloud identically.</li>
-    <li><strong>Same testing environment</strong> — same room, same time of day, similar noise level.</li>
-    <li><strong>Objective measurement</strong> — use computerised tests where possible (masculinity quiz is computer-marked; video game score is logged by software).</li>
-    <li><strong>Equal proficiency</strong> at the task — give everyone the same practice session (textbook: 3-minute practice before the 5-minute data-gathering run).</li>
-    <li><strong>Eliminate extraneous variables</strong> — silence during the quiz; participants tested individually or in matched groups.</li>
-  </ul>
-
-  <h3>Sampling — which method and what to write</h3>
-  <div class="study-card">
-    <div class="study-card-title">Textbook choice (p.217-218)</div>
-    <p><strong>Method:</strong> opportunity sample of 10 male participants, recruited by advertising on the university/college noticeboard (so technically a <strong>volunteer sample</strong> through opportunity channels).</p>
-    <p><strong>Why this size?</strong> "about ten participants" — small but enough for Spearman's rank at p&lt;0.05 (critical value 0.564).</p>
-    <p><strong>Weakness to flag at exam time:</strong> not generalisable to the wider male population because (a) small n, (b) volunteer bias (volunteers tend to be more compliant), (c) all from one institution (ethnocentric, Western industrialised culture).</p>
-  </div>
-
-  <table>
-    <tr><th>Sampling method</th><th>Strength for your exam answer</th><th>Weakness to acknowledge</th></tr>
-    <tr><td><strong>Opportunity</strong></td><td>Quick, easy, realistic for school setting</td><td>Unrepresentative; only people available at the time</td></tr>
-    <tr><td><strong>Volunteer</strong></td><td>Participants are willing, fewer drop-outs</td><td>Self-selection bias — more compliant / more opinionated</td></tr>
-    <tr><td><strong>Random</strong></td><td>Every member of target population has equal chance → generalisable</td><td>Hard to do in a school; may produce uneven group sizes</td></tr>
-    <tr><td><strong>Stratified</strong></td><td>Ensures subgroups (e.g. year group) are represented</td><td>Need to know population proportions first; complex to organise</td></tr>
-  </table>
 
   <div class="cn-box">
-    <h5>💡 理解小贴士</h5>
-    写抽样 weakness 时不要只说 "small sample" — 一定要把 weakness 链到 <strong>generalisability</strong> 或 <strong>representativeness</strong> 上,例如 "因为是 opportunity sample,所以样本只代表了这所学校的男生,无法推广到所有 18 岁以上男性。" 这才是 AO3 的得分点。
-  </div>
-</div>
-
-<!-- ============ S4 ============ -->
-<div class="section" id="s4">
-  <h2>📜 Ethics & Consent Form</h2>
-
-  <div class="quick-summary">
-    <h4>⚡ Quick Summary</h4>
-    <p>You need to deal with ethics <strong>before</strong> participants start. Get written informed consent, tell them the <strong>true nature</strong> of the study (not just a vague cover story), guarantee <strong>withdrawal</strong> at any point, keep data <strong>confidential and anonymous</strong>, and <strong>pilot</strong> your materials on a friend first to surface issues you missed.</p>
+    <h5>💡 关键提醒</h5>
+    Don't call them <em>independent variable</em> and <em>dependent variable</em> — they are <strong>co-variables</strong>. The Edexcel mark scheme downmarks if you write "IV" / "DV" for a correlation.
   </div>
 
-  <h3>Consent form — the 7 mandatory items (textbook p.218)</h3>
-  <ol>
-    <li><strong>Aim(s)</strong> of the study — what you are investigating.</li>
-    <li><strong>Exactly what they will be expected to do</strong> — full detail so they can decide.</li>
-    <li><strong>Any possible implications</strong> — e.g. they will play an aggressive video game.</li>
-    <li><strong>Right to withdraw</strong> at any point without consequence (and can take their data with them).</li>
-    <li><strong>Anonymisation & destruction</strong> of data — names replaced with numbers, data destroyed after a set date.</li>
-    <li><strong>Who else will see the findings</strong> and how the information will be distributed.</li>
-    <li><strong>Contact details</strong> — researcher + supervising teacher / school / college, plus <strong>signatures</strong> of researcher and participant.</li>
-  </ol>
-
-  <h3>Special considerations for aggression studies</h3>
-  <ul>
-    <li><strong>No one under 16</strong> — the video game may be age-inappropriate.</li>
-    <li><strong>Game must be age-appropriate</strong> for the sample.</li>
-    <li>All participants must be <strong>informed in advance</strong> that they will be expected to play a violent game.</li>
-    <li><strong>Protection from psychological harm</strong> — debrief must include a chance to discuss any discomfort.</li>
-  </ul>
-
-  <div class="exam-key">
-    <h4>🎯 Exam Tip</h4>
-    <p>When asked "explain one ethical issue Hikaru should have considered" (WPS02/01 Q2c, 2 marks), pick <strong>one specific BPS principle</strong> and link it to the study: e.g. <em>"Informed consent — participants should have been told <strong>before</strong> taking part that the food given would be measured against aggression scores, so they could decide whether to take part."</em> The mark scheme rewards: principle + application + link to study.</p>
+  <div class="hikaru-card">
+    <h4>Hikaru — diagnosing Step 1</h4>
+    <div class="scenario">
+      "Hikaru is planning a study to see whether eating sugary food affects aggressive behaviour in 12-year-old children. She plans to give 100 children a sugary snack and then ask them <strong>'Were you aggressive today?'</strong> She will compare their yes/no answers to a teacher rating of aggression."
+    </div>
+    <p class="diagnostic-q">Q1 — What kind of variable is "Were you aggressive today?" What kind do you need for a Spearman's rank test?</p>
+    <p class="diagnostic-q">Q2 — Should Hikaru's hypothesis be directional or non-directional? Defend your choice in one sentence.</p>
+    <p class="diagnostic-q">Q3 — Is 12 a suitable age for this study? What ethical guideline is most at risk?</p>
   </div>
 
-  <h3>Pilot study — what it is and isn't</h3>
-  <table>
-    <tr><th>Is</th><th>Isn't</th></tr>
-    <tr><td>A dry run of the procedure on 1–3 friends</td><td>A test of whether the variables work</td></tr>
-    <tr><td>A check that instructions are understood</td><td>A reliability or validity check</td></tr>
-    <tr><td>A way to surface timing / venue / ethical problems</td><td>A substitute for the main study</td></tr>
-  </table>
-</div>
-
-<!-- ============ S5 ============ -->
-<div class="section" id="s5">
-  <h2>📋 Procedure & Example Report</h2>
-
-  <div class="quick-summary">
-    <h4>⚡ Quick Summary</h4>
-    <p>The textbook example is a 2-hour lab session: 10 males, 19–52 years old. They sit at numbered computers in silence for a masculinity quiz (25–42 min), wait in a lounge, then play a 3-min practice + 5-min data run on a bespoke moderately-aggressive video game, scored automatically. They are debriefed individually or in pairs.</p>
-  </div>
-
-  <h3>Step-by-step procedure (textbook p.219)</h3>
-  <ol>
-    <li><strong>Briefing & informed consent</strong> — researcher reads standard briefing, participants sign consent forms, allocate a participant number.</li>
-    <li><strong>Masculinity quiz</strong> — bank of computers in IT room; silence; supervised; computer records the score against the participant number.</li>
-    <li><strong>Lounge wait</strong> — refreshments; participants wait until called.</li>
-    <li><strong>Video game</strong> — individually in one of two small lab rooms; 3-min practice then 5-min data run; laptop preloaded with bespoke game; research assistant sets up and logs score; minimal interaction.</li>
-    <li><strong>Debrief</strong> — in another small room, individually or in pairs; reminded of right to withdraw; questions answered; offered to see results when available.</li>
-    <li><strong>Thank & release</strong> — thanks, optional insights, dismissed.</li>
-  </ol>
-
-  <div class="exam-key">
-    <h4>🎯 Exam Tip — describe the procedure (4 marks)</h4>
-    <p>The textbook exam question (p.226) asks for 4 marks. Mark scheme-style answer:</p>
+  <div class="try-card">
+    <h4>Try your own — fill in for your chosen topic</h4>
     <ol>
-      <li><strong>Sample:</strong> "An opportunity sample of 10 male participants aged 19–52 was recruited via university noticeboard."</li>
-      <li><strong>Apparatus & scoring:</strong> "A computerised masculinity quiz (0–100) and a bespoke video game that logged aggression as characters knocked down."</li>
-      <li><strong>Design:</strong> "A repeated-measures correlational design — both co-variables recorded for every participant."</li>
-      <li><strong>Procedure:</strong> "Participants sat in silence at numbered computers for the quiz (25–42 min), waited in a lounge, then played a 3-min practice + 5-min data run on the video game. Standardised instructions were used; all sessions were supervised; participants were debriefed individually and reminded of their right to withdraw."</li>
+      <li><strong>My chosen topic:</strong> _______________________ × _______________________</li>
+      <li><strong>My aim:</strong> To investigate whether there is a link between _____________________ and _____________________.</li>
+      <li><strong>My alternative hypothesis</strong> (directional / non-directional — circle one):<div class="answer-line"></div></li>
+      <li><strong>My null hypothesis:</strong><div class="answer-line"></div></li>
+      <li><strong>Operationalisation of co-variable 1:</strong><div class="answer-line"></div></li>
+      <li><strong>Operationalisation of co-variable 2:</strong><div class="answer-line"></div></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ============ STEP 2 ============ -->
+<div class="section" id="s3">
+  <h2>🔬 Step 2 — Design decisions (sampling, ethics, controls, pilot)</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>You are <strong>not</strong> manipulating anything (it's a correlation), but you still need a defensible <strong>sampling method</strong>, an <strong>ethics pack</strong>, and <strong>controls</strong>. The textbook uses an opportunity/volunteer sample of n=10 — quick but weak on generalisability. Spec must 2 is fully covered here.</p>
+  </div>
+
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">5</span><h4>Choose a sampling method and defend it</h4></div>
+    <table>
+      <tr><th>Sampling method</th><th>Strength</th><th>Weakness to acknowledge</th></tr>
+      <tr><td><strong>Opportunity</strong></td><td>Quick, easy, realistic for school</td><td>Unrepresentative; only people available</td></tr>
+      <tr><td><strong>Volunteer</strong></td><td>Participants willing, fewer drop-outs</td><td>Self-selection bias (more compliant / opinionated)</td></tr>
+      <tr><td><strong>Random</strong></td><td>Every member equal chance → generalisable</td><td>Hard to do in school</td></tr>
+      <tr><td><strong>Stratified</strong></td><td>Subgroups represented proportionally</td><td>Need population proportions first</td></tr>
+    </table>
+    <p><em>Textbook example (p.217):</em> opportunity sample of <strong>10 male</strong> participants aged 19–52, recruited by advertising on a university noticeboard. Bias explicitly acknowledged: not generalisable due to (a) small n, (b) volunteer bias, (c) Western industrialised, male-only.</p>
+  </div>
+
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">6</span><h4>Write the consent form — 7 mandatory items (p.218)</h4></div>
+    <ol>
+      <li><strong>Aim(s)</strong> of the study.</li>
+      <li><strong>Exactly what they will be expected to do</strong> — in full detail so they can decide.</li>
+      <li><strong>Any possible implications</strong> — e.g. playing a moderately aggressive game.</li>
+      <li><strong>Right to withdraw</strong> at any point without consequence + option to take their data with them.</li>
+      <li><strong>Anonymisation & destruction</strong> — names replaced with numbers, data destroyed after a set date.</li>
+      <li><strong>Who else will see the findings</strong> and how information will be distributed.</li>
+      <li><strong>Contact details</strong> (researcher + supervisor) and <strong>signatures</strong> of researcher and participant.</li>
     </ol>
   </div>
 
-  <h3>Writing the procedure for your own study</h3>
-  <p>Use the textbook 8-point checklist (p.225):</p>
-  <ul>
-    <li>Who was used, how many, from where, and the <strong>sampling technique</strong>.</li>
-    <li>The <strong>apparatus</strong> used and how data was scored.</li>
-    <li>The <strong>design</strong> (typically repeated measures for correlation).</li>
-    <li>The <strong>brief, standardised instructions</strong> and debrief.</li>
-    <li>The <strong>location</strong> and who was present.</li>
-    <li>Whether participants were tested <strong>individually or in groups</strong>.</li>
-    <li>What the participants did during the investigation (procedure, <strong>timings</strong>).</li>
-    <li><strong>Controls</strong> put into place.</li>
-  </ul>
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">7</span><h4>Put controls in place (textbook p.217)</h4></div>
+    <ul>
+      <li><strong>Same standardised instructions</strong> for every participant (written, read aloud identically).</li>
+      <li><strong>Same testing environment</strong> — same room, same time of day, similar noise.</li>
+      <li><strong>Objective measurement</strong> — computerised tests where possible.</li>
+      <li><strong>Equal proficiency</strong> at the task — same practice session length for everyone.</li>
+      <li><strong>Eliminate extraneous variables</strong> — silence during the quiz; matched groups if testing together.</li>
+    </ul>
+    <p><em>Special rule for aggression studies:</em> no one <strong>under 16</strong>; the game must be age-appropriate; participants must be told in advance they will play a violent game.</p>
+  </div>
+
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">8</span><h4>Run a pilot study</h4></div>
+    <p>A pilot is a <strong>dry run</strong> on 1–3 friends. It is NOT a validity or reliability check — it surfaces <strong>timing, instructions, venue, ethical problems</strong> before you commit your real sample.</p>
+  </div>
+
+  <div class="cn-box">
+    <h5>💡 关键提醒</h5>
+    When asked "explain one sampling weakness", don't just say <em>"small sample"</em>. Link it: <strong>"opportunity sample → only represents students at this school → findings cannot be generalised to the wider male population."</strong> That linkage is where AO3 marks come from.
+  </div>
+
+  <div class="hikaru-card">
+    <h4>Hikaru — diagnosing Step 2</h4>
+    <div class="scenario">
+      Hikaru recruits 100 children from <strong>one primary school</strong> whose parents returned a permission slip. She gives them a sugary snack, then asks <strong>"Were you aggressive today? (yes/no)"</strong>, then a teacher rates their aggression 1–5.
+    </div>
+    <p class="diagnostic-q">Q1 — Name one sampling weakness in Hikaru's design. How does it limit her findings?</p>
+    <p class="diagnostic-q">Q2 — Name one ethical issue Hikaru should have addressed before the children took part.</p>
+    <p class="diagnostic-q">Q3 — Why is asking a 12-year-old "Were you aggressive today?" an unreliable measure?</p>
+  </div>
+
+  <div class="try-card">
+    <h4>Try your own — fill in for your chosen topic</h4>
+    <ol>
+      <li><strong>My sampling method</strong> (circle one): opportunity / volunteer / random / stratified. <strong>Defence (1 sentence):</strong><div class="answer-line"></div></li>
+      <li><strong>My sample size and target population:</strong><div class="answer-line"></div></li>
+      <li><strong>Three controls I will put in place:</strong><div class="answer-line"></div><div class="answer-line"></div><div class="answer-line"></div></li>
+      <li><strong>One ethical issue specific to my topic</strong> (e.g. age, sensitive content):<div class="answer-line"></div></li>
+    </ol>
+  </div>
 </div>
 
-<!-- ============ S6 ============ -->
-<div class="section" id="s6">
-  <h2>📊 Data Analysis: Descriptive Stats + Scatter + Spearman's Rank</h2>
+<!-- ============ STEP 3 ============ -->
+<div class="section" id="s4">
+  <h2>📋 Step 3 — Materials & procedure</h2>
 
   <div class="quick-summary">
     <h4>⚡ Quick Summary</h4>
-    <p>Three steps: (1) put the raw data in a table, (2) calculate mean / median / mode / range for each co-variable, (3) draw a scatter diagram and run Spearman's rank to test the relationship. Textbook gives n = 10, Σd² = 112.5, rₛ = 0.318.</p>
+    <p>Design the measurement tools (questionnaire, rating scale, computer test, video game), write <strong>standardised instructions</strong>, then write the 6-step procedure. Spec must 6 (write-up) starts being assembled here — the procedure section is built from these steps.</p>
   </div>
 
-  <h3>Table 19.1 — Raw data (textbook p.220)</h3>
-  <table>
-    <tr><th>Participant</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>
-    <tr><td>Gender</td><td>M</td><td>M</td><td>M</td><td>M</td><td>M</td><td>M</td><td>M</td><td>M</td><td>M</td><td>M</td></tr>
-    <tr><td><strong>Masculinity score</strong></td><td>56</td><td>69</td><td>30</td><td>88</td><td>80</td><td>87</td><td>95</td><td>67</td><td>77</td><td>45</td></tr>
-    <tr><td><strong>Aggression score</strong></td><td>17</td><td>18</td><td>10</td><td>10</td><td>15</td><td>16</td><td>17</td><td>15</td><td>14</td><td>6</td></tr>
-  </table>
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">9</span><h4>Choose measurement tools</h4></div>
+    <p>For a correlational study both co-variables must be at least <strong>ordinal</strong>. Typical tools:</p>
+    <ul>
+      <li><strong>Questionnaire / rating scale</strong> (e.g. 5-point Likert: 1 = never, 5 = always) — easy to run with many participants, but subjective.</li>
+      <li><strong>Computerised quiz</strong> (e.g. masculinity quiz) — objective, computer-marked, harder to design.</li>
+      <li><strong>Behavioural measure</strong> (e.g. video game score, reaction time, hot-sauce paradigm) — objective, but may not reflect real-life behaviour (ecological validity).</li>
+    </ul>
+  </div>
 
-  <h3>Table 19.2 — Descriptive statistics</h3>
-  <table>
-    <tr><th>Statistic</th><th>Masculinity</th><th>Aggression</th></tr>
-    <tr><td>Mean</td><td>69.4</td><td>13.8</td></tr>
-    <tr><td>Median</td><td>73</td><td>15</td></tr>
-    <tr><td>Mode</td><td>— (no mode)</td><td>10, 15, 17 (not useful)</td></tr>
-    <tr><td>Range</td><td>65</td><td>12</td></tr>
-  </table>
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">10</span><h4>Write standardised instructions</h4></div>
+    <p>One script, read aloud identically to every participant. Cover: what they will do, how long it takes, that they can stop at any time, that their data is anonymous.</p>
+  </div>
 
-  <h3>Figure 19.1 — Scatter diagram (recreated as SVG)</h3>
-  <div class="fig">
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">11</span><h4>Write the 6-step procedure (textbook p.219)</h4></div>
+    <ol>
+      <li><strong>Briefing & informed consent</strong> — researcher reads standard briefing; participants sign consent forms; allocate a participant number.</li>
+      <li><strong>First measurement</strong> (e.g. masculinity quiz in IT room, silence, computer-marked).</li>
+      <li><strong>Waiting period</strong> — refreshments; participants wait until called.</li>
+      <li><strong>Second measurement</strong> (e.g. video game in lab room, 3-min practice + 5-min data run).</li>
+      <li><strong>Debrief</strong> — in another small room, individually or in pairs; reminded of right to withdraw; questions answered; offered to see results when available.</li>
+      <li><strong>Thank & release</strong> — thanks, optional insights, dismissed.</li>
+    </ol>
+  </div>
+
+  <div class="cn-box">
+    <h5>💡 关键提醒</h5>
+    Use <strong>repeated measures</strong> — both co-variables recorded for every participant. Don't call it "matched pairs" (that's for experiments) or "matched samples" (that's for quasi-experiments).
+  </div>
+
+  <div class="exam-key">
+    <h4>🎯 How this feeds the 4-mark "Describe the procedure" question</h4>
+    <p>For full marks, your procedure description must mention all 4:</p>
+    <ol>
+      <li><strong>Sample</strong> — who, how many, from where, sampling technique.</li>
+      <li><strong>Apparatus & scoring</strong> — what tools, how data is scored.</li>
+      <li><strong>Design</strong> — repeated-measures correlational.</li>
+      <li><strong>Procedure</strong> — what participants did, in sequence, with timings.</li>
+    </ol>
+  </div>
+
+  <div class="hikaru-card">
+    <h4>Hikaru — diagnosing Step 3</h4>
+    <div class="scenario">
+      Hikaru has written her procedure but forgot to include: a standardised instruction script, a practice session for the rating task, a clear statement of right to withdraw, and a separate quiet room for individual testing.
+    </div>
+    <p class="diagnostic-q">Q1 — Without a standardised script, what kind of validity threat becomes likely?</p>
+    <p class="diagnostic-q">Q2 — Why does Hikaru need a separate quiet room for individual testing?</p>
+    <p class="diagnostic-q">Q3 — What information must the consent form include about withdrawal?</p>
+  </div>
+
+  <div class="try-card">
+    <h4>Try your own — write your 6-step procedure</h4>
+    <ol>
+      <li>Step 1 — Briefing + consent:<div class="answer-line"></div></li>
+      <li>Step 2 — First measurement:<div class="answer-line"></div></li>
+      <li>Step 3 — Waiting period:<div class="answer-line"></div></li>
+      <li>Step 4 — Second measurement:<div class="answer-line"></div></li>
+      <li>Step 5 — Debrief:<div class="answer-line"></div></li>
+      <li>Step 6 — Thank + release:<div class="answer-line"></div></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ============ STEP 4 ============ -->
+<div class="section" id="s5">
+  <h2>📊 Step 4 — Data & Spearman's rank</h2>
+
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>Spec must 3–4: tabulate raw data, calculate descriptive statistics, draw a scatter diagram, conduct Spearman's rank, decide on significance. We'll use the textbook's worked example (n=10, Σd²=112.5, rₛ=0.318) as our running data.</p>
+  </div>
+
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">12</span><h4>Tabulate the raw data</h4></div>
+    <p>One row per participant, one column per co-variable. The textbook's Table 19.1 (p.220):</p>
+    <table>
+      <tr><th>Participant</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>
+      <tr><td>Gender</td><td>M</td><td>M</td><td>M</td><td>M</td><td>M</td><td>M</td><td>M</td><td>M</td><td>M</td><td>M</td></tr>
+      <tr><td><strong>Masculinity score</strong></td><td>56</td><td>69</td><td>30</td><td>88</td><td>80</td><td>87</td><td>95</td><td>67</td><td>77</td><td>45</td></tr>
+      <tr><td><strong>Aggression score</strong></td><td>17</td><td>18</td><td>10</td><td>10</td><td>15</td><td>16</td><td>17</td><td>15</td><td>14</td><td>6</td></tr>
+    </table>
+  </div>
+
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">13</span><h4>Calculate descriptive statistics (textbook p.220)</h4></div>
+    <table>
+      <tr><th>Statistic</th><th>Masculinity</th><th>Aggression</th></tr>
+      <tr><td>Mean</td><td>69.4</td><td>13.8</td></tr>
+      <tr><td>Median</td><td>73</td><td>15</td></tr>
+      <tr><td>Mode</td><td>— (no mode)</td><td>10, 15, 17 (not useful)</td></tr>
+      <tr><td>Range</td><td>65</td><td>12</td></tr>
+    </table>
+    <p>Descriptive stats are not strictly required for correlation, but the mark scheme rewards including them — they let you <strong>compare</strong> the two variables before testing the relationship.</p>
+  </div>
+
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">14</span><h4>Draw the scatter diagram (Figure 19.1)</h4></div>
+    <div class="fig">
 <svg viewBox="0 0 640 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Scatter diagram of masculinity versus aggression">
   <rect x="0" y="0" width="640" height="380" fill="var(--surface)" />
-  <!-- Axes -->
   <line x1="80" y1="320" x2="600" y2="320" stroke="currentColor" stroke-width="2" />
   <line x1="80" y1="320" x2="80" y2="40" stroke="currentColor" stroke-width="2" />
-  <!-- X-axis ticks (masculinity 0-100) -->
   <g font-size="12" fill="currentColor">
     <line x1="80" y1="320" x2="80" y2="326" stroke="currentColor" /><text x="80" y="345" text-anchor="middle">0</text>
     <line x1="184" y1="320" x2="184" y2="326" stroke="currentColor" /><text x="184" y="345" text-anchor="middle">20</text>
@@ -489,7 +576,6 @@ details[open] summary { margin-bottom: 8px; }
     <line x1="496" y1="320" x2="496" y2="326" stroke="currentColor" /><text x="496" y="345" text-anchor="middle">80</text>
     <line x1="600" y1="320" x2="600" y2="326" stroke="currentColor" /><text x="600" y="345" text-anchor="middle">100</text>
   </g>
-  <!-- Y-axis ticks (aggression 0-20) -->
   <g font-size="12" fill="currentColor">
     <line x1="74" y1="320" x2="80" y2="320" stroke="currentColor" /><text x="64" y="324" text-anchor="end">0</text>
     <line x1="74" y1="260" x2="80" y2="260" stroke="currentColor" /><text x="64" y="264" text-anchor="end">4</text>
@@ -498,11 +584,8 @@ details[open] summary { margin-bottom: 8px; }
     <line x1="74" y1="80" x2="80" y2="80" stroke="currentColor" /><text x="64" y="84" text-anchor="end">16</text>
     <line x1="74" y1="40" x2="80" y2="40" stroke="currentColor" /><text x="64" y="44" text-anchor="end">20</text>
   </g>
-  <!-- Axis labels -->
   <text x="340" y="370" font-size="14" font-weight="600" fill="currentColor" text-anchor="middle">Masculinity quiz score</text>
   <text x="20" y="180" font-size="14" font-weight="600" fill="currentColor" transform="rotate(-90 20 180)" text-anchor="middle">Aggression score on video game</text>
-  <!-- Data points (x = masculinity 0-100, y = aggression 0-20) -->
-  <!-- (56,17): x=80+56*5.2=80+291.2=371.2; y=320-(17/20*280)=320-238=82 -->
   <g fill="#ea580c">
     <circle cx="371" cy="82" r="5" /><text x="380" y="78" font-size="10" fill="currentColor">1</text>
     <circle cx="439" cy="68" r="5" /><text x="448" y="64" font-size="10" fill="currentColor">2</text>
@@ -515,124 +598,132 @@ details[open] summary { margin-bottom: 8px; }
     <circle cx="480" cy="124" r="5" /><text x="489" y="120" font-size="10" fill="currentColor">9</text>
     <circle cx="314" cy="236" r="5" /><text x="323" y="232" font-size="10" fill="currentColor">10</text>
   </g>
-  <!-- Trend line annotation -->
   <text x="320" y="60" font-size="13" font-style="italic" fill="currentColor" text-anchor="middle">Slight positive trend (bottom-left → top-right)</text>
 </svg>
-    <div class="fig-caption">Figure 19.1 — Scatter diagram showing the relationship between masculinity quiz score and aggression score on the video game (textbook p.220, recreated). No clear linear pattern, but a weak positive trend.</div>
+    <div class="fig-caption">Figure 19.1 — Scatter diagram showing masculinity × aggression (textbook p.220, recreated). No clear linear pattern, but a weak positive trend.</div>
+    </div>
   </div>
 
-  <h3>Spearman's rank — 7-step recipe (textbook p.220-221)</h3>
-  <ol>
-    <li>Rank scores on <strong>co-variable A</strong> (1 = smallest).</li>
-    <li>Rank scores on <strong>co-variable B</strong> the same way.</li>
-    <li>Calculate the <strong>difference d</strong> between the ranks for each participant.</li>
-    <li><strong>Square</strong> each difference to get d².</li>
-    <li><strong>Sum</strong> the squared differences: Σd².</li>
-    <li>Count the number of participants <strong>n</strong>.</li>
-    <li>Plug into the formula.</li>
-  </ol>
-
-  <div class="study-card">
-    <div class="study-card-title">Spearman's rank formula</div>
-    <p style="font-family: ui-monospace, monospace; font-size: 1.05em; text-align: center; padding: 8px 0;">
-      r<sub>s</sub> = 1 − (6 × Σd²) ÷ (n(n² − 1))
-    </p>
-    <p>Applied to the textbook data:</p>
-    <p style="font-family: ui-monospace, monospace;">
-      r<sub>s</sub> = 1 − (6 × 112.5) ÷ (10 × (10² − 1)) = 1 − 675 ÷ 990 = 1 − 0.682 = <strong>0.318</strong>
-    </p>
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">15</span><h4>Run Spearman's rank — the 7-step recipe (p.220-221)</h4></div>
+    <ol>
+      <li>Rank scores on <strong>co-variable A</strong> (1 = smallest).</li>
+      <li>Rank scores on <strong>co-variable B</strong> the same way.</li>
+      <li>Calculate <strong>difference d</strong> between the ranks for each participant.</li>
+      <li><strong>Square</strong> each difference to get d².</li>
+      <li><strong>Sum</strong> the squared differences: Σd².</li>
+      <li>Count <strong>n</strong>.</li>
+      <li>Plug into the formula.</li>
+    </ol>
+    <div class="study-card">
+      <div class="study-card-title">Spearman's rank formula</div>
+      <p style="font-family: ui-monospace, monospace; font-size: 1.05em; text-align: center; padding: 8px 0;">
+        r<sub>s</sub> = 1 − (6 × Σd²) ÷ (n(n² − 1))
+      </p>
+      <p>Applied to the textbook data:</p>
+      <p style="font-family: ui-monospace, monospace;">
+        r<sub>s</sub> = 1 − (6 × 112.5) ÷ (10 × (10² − 1)) = 1 − 675 ÷ 990 = 1 − 0.682 = <strong>0.318</strong>
+      </p>
+    </div>
+    <p><em>Tied ranks:</em> if two scores are equal (e.g. two 10s), average the number positions they occupy. e.g. 10s at positions 2 and 3 → both get rank 2.5; the next score gets rank 4 (skip 3).</p>
   </div>
 
-  <div class="cn-box">
-    <h5>💡 理解小贴士</h5>
-    Σd² = 112.5 这个数字课本里有 3 个相同的 scores(10 出现两次, 15 出现两次, 17 出现两次),排名时要用"位置平均值"——例如两个 10 排第 2、第 3 位,就都给 rank 2.5。这是 tied ranks 的标准处理,Ch17 Spearman 工作簿里有完整练习。
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">16</span><h4>Decide on significance (p.222)</h4></div>
+    <table>
+      <tr><th>n</th><th>One-tailed p&lt;0.05</th><th>One-tailed p&lt;0.01</th><th>Two-tailed p&lt;0.05</th><th>Two-tailed p&lt;0.01</th></tr>
+      <tr><td>7</td><td>0.714</td><td>0.893</td><td>0.786</td><td>0.929</td></tr>
+      <tr><td>8</td><td>0.643</td><td>0.833</td><td>0.738</td><td>0.881</td></tr>
+      <tr><td>9</td><td>0.600</td><td>0.783</td><td>0.700</td><td>0.833</td></tr>
+      <tr><td><strong>10</strong></td><td><strong>0.564</strong></td><td>0.745</td><td>0.648</td><td>0.794</td></tr>
+    </table>
+    <p><strong>Worked decision:</strong> calculated rₛ = 0.318; critical value (one-tailed, p&lt;0.05, n=10) = 0.564. Since <strong>0.318 &lt; 0.564</strong>, the result is <strong>not significant</strong> → <strong>accept null hypothesis</strong>.</p>
   </div>
 
-  <h3>Handling tied ranks</h3>
-  <table>
-    <tr><th>Number position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>
-    <tr><td><strong>Score for B (ascending)</strong></td><td>6</td><td>10</td><td>10</td><td>14</td><td>15</td><td>15</td><td>16</td><td>17</td><td>17</td><td>18</td></tr>
-    <tr><td><strong>Rank for B</strong></td><td>1</td><td>2.5</td><td>2.5</td><td>4</td><td>5.5</td><td>5.5</td><td>7</td><td>8.5</td><td>8.5</td><td>10</td></tr>
-  </table>
-  <p>Two equal scores → average the number positions they occupy, then skip the next rank accordingly. e.g. 10s at positions 2 and 3 → both get (2+3)/2 = 2.5; the next score (14) gets rank 4 (not 3).</p>
+  <div class="exam-key">
+    <h4>🎯 EXAM TIP — the 7 mandatory ingredients of a statistical conclusion (p.223)</h4>
+    <ol>
+      <li>The <strong>calculated value</strong> (e.g. "rₛ = 0.318").</li>
+      <li>The <strong>critical value</strong> (e.g. "0.564").</li>
+      <li>The <strong>probability / level of significance</strong> (e.g. "p &lt; 0.05").</li>
+      <li>The <strong>number of participants</strong> (e.g. "n = 10").</li>
+      <li>Whether it was a <strong>one-tailed or two-tailed</strong> test.</li>
+      <li>Whether the calculated value was <strong>greater than, less than, or equal to</strong> the critical value.</li>
+      <li>What hypothesis is <strong>supported</strong> (restate it).</li>
+    </ol>
+    <p><em>Model sentence:</em> "The calculated value of the Spearman's rank test was rₛ = 0.318. This was <strong>less than</strong> the critical value of 0.564 for a one-tailed test at p &lt; 0.05 with n = 10. Therefore the result is <strong>not significant</strong> and the <strong>null hypothesis can be supported</strong>, which states that there will be no relationship between masculinity and aggression, and any relationship found was due to chance."</p>
+  </div>
+
+  <div class="hikaru-card">
+    <h4>Hikaru — diagnosing Step 4</h4>
+    <div class="scenario">
+      Hikaru calculates Spearman's rank with n=100 and rₛ = 0.18. She writes: <strong>"The correlation is 0.18, which is small, so the food doesn't cause aggression."</strong>
+    </div>
+    <p class="diagnostic-q">Q1 — What is wrong with Hikaru's conclusion? What must she compare rₛ to before deciding?</p>
+    <p class="diagnostic-q">Q2 — Why must the conclusion say <em>"due to chance"</em> rather than <em>"the food doesn't cause aggression"</em>?</p>
+    <p class="diagnostic-q">Q3 — Does Spearman's rank establish causation? What is the alternative explanation Hikaru must mention?</p>
+  </div>
+
+  <div class="try-card">
+    <h4>Try your own — for your chosen topic</h4>
+    <ol>
+      <li><strong>Co-variable 1 (operationalised):</strong><div class="answer-line"></div></li>
+      <li><strong>Co-variable 2 (operationalised):</strong><div class="answer-line"></div></li>
+      <li><strong>Predicted sample size n:</strong> <div class="answer-line"></div> (aim for 10+ to make Spearman's meaningful)</li>
+      <li><strong>One-tailed or two-tailed test:</strong> _______ because my hypothesis is _______.</li>
+      <li><strong>Critical value at p&lt;0.05 for my n:</strong> _______ (look it up).</li>
+    </ol>
+  </div>
 </div>
 
-<!-- ============ S7 ============ -->
-<div class="section" id="s7">
-  <h2>⚖️ Significance, Validity, Reliability & Generalisability</h2>
+<!-- ============ STEP 5 ============ -->
+<div class="section" id="s6">
+  <h2>⚖️ Step 5 — Evaluate (Validity · Reliability · Generalisability)</h2>
 
   <div class="quick-summary">
     <h4>⚡ Quick Summary</h4>
-    <p>After you compute rₛ, compare it with the <strong>critical value</strong> for your n at p&lt;0.05. If rₛ &lt; critical value → <strong>accept null hypothesis</strong>. Then evaluate your study on three textbook axes: <strong>validity</strong>, <strong>reliability</strong>, <strong>generalisability</strong> — each with the textbook's actual critique ready to deploy.</p>
+    <p>Spec must 5: evaluate your study on three axes. For each axis, you need (a) what the textbook actually criticised in the worked example, (b) why it matters for AO3 marks, and (c) how to phrase it as a 2-mark exam answer.</p>
   </div>
 
-  <h3>Determining significance (textbook p.222)</h3>
-  <table>
-    <tr><th>n</th><th>One-tailed p&lt;0.05</th><th>One-tailed p&lt;0.01</th><th>Two-tailed p&lt;0.05</th><th>Two-tailed p&lt;0.01</th></tr>
-    <tr><td>4</td><td>1.000</td><td>—</td><td>—</td><td>—</td></tr>
-    <tr><td>7</td><td>0.714</td><td>0.893</td><td>0.786</td><td>0.929</td></tr>
-    <tr><td>8</td><td>0.643</td><td>0.833</td><td>0.738</td><td>0.881</td></tr>
-    <tr><td>9</td><td>0.600</td><td>0.783</td><td>0.700</td><td>0.833</td></tr>
-    <tr><td>10</td><td><strong>0.564</strong></td><td>0.745</td><td>0.648</td><td>0.794</td></tr>
-  </table>
-
-  <div class="study-card">
-    <div class="study-card-title">Worked significance decision (textbook)</div>
-    <p>rₛ calculated = <strong>0.318</strong>; n = 10; one-tailed test at p &lt; 0.05 → critical value = <strong>0.564</strong>.</p>
-    <p>0.318 &lt; 0.564 → calculated value is <strong>less than</strong> critical value → <strong>not significant</strong> → <strong>accept null hypothesis</strong>.</p>
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">17</span><h4><span class="syl-tag v">V</span>Validity — was the test a true measure?</h4></div>
+    <div class="study-card">
+      <div class="study-card-title">Textbook critique (p.224)</div>
+      <ul>
+        <li><strong>Face validity of masculinity quiz</strong> — "very superficial, ignores many other factors that influence masculinity, such as social roles and norms of behaviour".</li>
+        <li><strong>Ecological validity of video game</strong> — "hitting virtual characters does not necessarily translate into real-world aggressive tendencies, which are likely to be constrained by social regulations".</li>
+        <li><strong>Concurrent validity</strong> — "the number of times a character was hit in the game was merely a reflection of the rules of the video game and not an indication of aggression" → could be measuring <em>gaming skill</em>.</li>
+        <li><strong>Third variable problem</strong> — correlation cannot establish causation; an unknown variable (e.g. family environment, personality) could affect both.</li>
+      </ul>
+    </div>
   </div>
 
-  <h3>Drawing conclusions — the 7 mandatory ingredients (textbook EXAM TIP p.223)</h3>
-  <p>When writing a statistical conclusion, the exam mark scheme expects all 7 of these:</p>
-  <ol>
-    <li>The <strong>calculated value</strong> (e.g. "rₛ = 0.318").</li>
-    <li>The <strong>critical value</strong> (e.g. "0.564").</li>
-    <li>The <strong>probability / level of significance</strong> (e.g. "p &lt; 0.05").</li>
-    <li>The <strong>number of participants</strong> (e.g. "n = 10").</li>
-    <li>Whether it was a <strong>one-tailed or two-tailed</strong> test.</li>
-    <li>Whether the calculated value was <strong>greater than, less than, or equal to</strong> the critical value.</li>
-    <li>What hypothesis is <strong>supported</strong> (restate it).</li>
-  </ol>
-
-  <div class="exam-key">
-    <h4>🎯 Model statistical conclusion sentence (textbook p.223)</h4>
-    <p><em>"The calculated value of the Spearman's rank test was r = 0.318. This was <strong>less than</strong> the critical value of 0.564 for a one-tailed test at p &lt; 0.05 with n = 10. Therefore the result is <strong>not significant</strong> and the <strong>null hypothesis can be supported</strong>, which states that there will be no relationship between masculinity and aggression, and any relationship found was due to chance."</em></p>
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">18</span><h4><span class="syl-tag r">R</span>Reliability — would the test give the same result again?</h4></div>
+    <div class="study-card">
+      <div class="study-card-title">Textbook critique (p.224-225)</div>
+      <ul>
+        <li><strong>Strength:</strong> Standardised procedure and objective measures (computer-marked quiz, auto-logged game score) → replicable.</li>
+        <li><strong>Weakness — order effects:</strong> Some did the quiz first; some had a longer gap before the game → different levels of attention.</li>
+        <li><strong>Weakness — individual differences:</strong> Prior gaming experience varied → some had higher generic skill, not consistently measuring aggression.</li>
+        <li><strong>If questionnaire used</strong> instead of behavioural measure, subjective interpretation would further reduce reliability.</li>
+      </ul>
+    </div>
   </div>
 
-  <h3>Validity — was the test a true measure?</h3>
-  <div class="study-card">
-    <div class="study-card-title">Textbook critique (p.224)</div>
-    <ul>
-      <li><strong>Masculinity quiz</strong> — "very superficial, ignores many other factors that influence masculinity, such as social roles and norms of behaviour" → low <strong>face validity</strong>.</li>
-      <li><strong>Video game aggression score</strong> — "lacking ecological validity" because hitting virtual characters does not necessarily translate to real-world aggression.</li>
-      <li>Could reflect <strong>gaming skill</strong> rather than aggression ("the number of times a character was hit was merely a reflection of the rules of the game").</li>
-      <li><strong>Third variable problem</strong> — correlation cannot establish causation; another unknown variable (e.g. family environment) could affect both.</li>
-    </ul>
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">19</span><h4><span class="syl-tag g">G</span>Generalisability — can the findings leave the lab?</h4></div>
+    <div class="study-card">
+      <div class="study-card-title">Textbook critique (p.225)</div>
+      <ul>
+        <li><strong>Small n = 10</strong> — low statistical power, hard to detect a real effect.</li>
+        <li><strong>Volunteer sample</strong> — those who came forward may have a more compliant personality and could alter behaviour to meet expectations (demand characteristics).</li>
+        <li><strong>Ethnocentric</strong> — sample from an industrialised Western culture; cultures differ in how aggression is nurtured or prohibited.</li>
+        <li><strong>Single-sex</strong> (male only) — cannot explain female aggression.</li>
+      </ul>
+    </div>
   </div>
 
-  <h3>Reliability — would the test give the same result again?</h3>
-  <div class="study-card">
-    <div class="study-card-title">Textbook critique (p.224-225)</div>
-    <ul>
-      <li><strong>Strength:</strong> Standardised procedure and objective measures (computer-marked quiz, auto-logged game score) → replicable.</li>
-      <li><strong>Weakness:</strong> Order of tasks varied — some did the quiz first, some had a longer gap → not all participants at the same level of focused attention.</li>
-      <li><strong>Weakness:</strong> Prior gaming experience varied → some had higher generic skill, not consistently measuring aggression.</li>
-      <li>If a questionnaire had been used to measure aggression, reliability would have been even lower (subjective interpretation).</li>
-    </ul>
-  </div>
-
-  <h3>Generalisability — can the findings leave the lab?</h3>
-  <div class="study-card">
-    <div class="study-card-title">Textbook critique (p.225)</div>
-    <ul>
-      <li>Small sample (n = 10) — low statistical power.</li>
-      <li>Volunteer sample — those who came forward may have a more compliant personality and could have altered their behaviour to meet expectations (demand characteristics).</li>
-      <li>Ethnocentric — sample from an industrialised Western culture; cultures differ in how aggression is nurtured or prohibited.</li>
-      <li>Single-sex (male only) — cannot explain female aggression.</li>
-    </ul>
-  </div>
-
-  <h3>Compare-grid: validity vs reliability vs generalisability</h3>
   <div class="compare-grid">
     <div class="compare-card">
       <h4><span class="syl-tag v">V</span>Validity</h4>
@@ -650,72 +741,181 @@ details[open] summary { margin-bottom: 8px; }
       <p>Small n = 10; volunteer bias; Western industrialised; male-only → cannot apply to women or other cultures.</p>
     </div>
   </div>
+
+  <div class="hikaru-card">
+    <h4>Hikaru — diagnosing Step 5</h4>
+    <div class="scenario">
+      Hikaru used a <strong>single primary school</strong>, asked <strong>"Were you aggressive today?"</strong> (yes/no), had teachers rate 1–5, and ran Spearman's rank on 100 children. She says: "My study has high validity because 100 is a big sample."
+    </div>
+    <p class="diagnostic-q">Q1 — Identify <strong>one validity</strong> weakness in Hikaru's design. Why is it a validity issue, not a reliability issue?</p>
+    <p class="diagnostic-q">Q2 — Identify <strong>one generalisability</strong> weakness. (Hint: it's not just "small sample" — 100 is actually fine for Spearman's.)</p>
+    <p class="diagnostic-q">Q3 — Why is "big sample = high validity" a wrong claim?</p>
+  </div>
+
+  <div class="try-card">
+    <h4>Try your own — write one weakness for each axis</h4>
+    <ol>
+      <li><strong>Validity weakness</strong> (with WHY it matters):<div class="answer-line"></div></li>
+      <li><strong>Reliability weakness</strong> (with WHY it matters):<div class="answer-line"></div></li>
+      <li><strong>Generalisability weakness</strong> (with WHY it matters):<div class="answer-line"></div></li>
+    </ol>
+  </div>
 </div>
 
-<!-- ============ S8 ============ -->
-<div class="section" id="s8">
-  <h2>✍️ Report Writing & Exam Practice</h2>
+<!-- ============ STEP 6 ============ -->
+<div class="section" id="s7">
+  <h2>🛠️ Step 6 — Suggest improvements</h2>
 
   <div class="quick-summary">
     <h4>⚡ Quick Summary</h4>
-    <p>The report has three sections: <strong>procedure</strong> (what you did), <strong>results</strong> (what you found), <strong>discussion</strong> (what it means + strengths/weaknesses/improvements). The textbook gives explicit checklists for each section. The exam tests these via 3 standard 2/4-mark questions.</p>
+    <p>Every weakness needs a <strong>linked improvement</strong>. The textbook gives a 6-question improvement checklist (p.226). Spec must 5 is fully covered when each V/R/G weakness is paired with an improvement.</p>
   </div>
 
-  <h3>The 3 textbook exam questions (p.226) + model answers</h3>
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">20</span><h4>Textbook improvement checklist (p.226)</h4></div>
+    <table>
+      <tr><th>Question to ask</th><th>Linked improvement</th></tr>
+      <tr><td>Was the sample representative?</td><td>If not — use random or stratified sampling to broaden.</td></tr>
+      <tr><td>Was the procedure standardised?</td><td>If not — write a standardised script, give identical time slots.</td></tr>
+      <tr><td>Were there any control issues?</td><td>If yes — add controls (same time of day, same room, same practice length).</td></tr>
+      <tr><td>Were the variables operationalised effectively?</td><td>If no — use a more valid measure (e.g. real aggressive behaviour, validated scale).</td></tr>
+      <tr><td>Was data collection / analysis subjective?</td><td>If yes — use blind marking, computerised scoring, two independent raters.</td></tr>
+      <tr><td>Were there unforeseen ethical issues?</td><td>If yes — revise consent form, add debrief, tighten confidentiality.</td></tr>
+    </table>
+  </div>
 
-  <details>
-    <summary>Q1 · Describe the procedure of your practical investigation in biological psychology (4 marks)</summary>
-    <p><strong>Mark scheme expects 4 distinct points. A model answer:</strong></p>
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">21</span><h4>Model validity-improvement answers (textbook p.226)</h4></div>
+    <details>
+      <summary>Answer A — ecological validity of the game</summary>
+      <p>The video game <strong>lacked ecological validity</strong> because hitting virtual characters does not translate to real-world aggressive behaviour. An improvement would be to use a more naturalistic measure of aggression, such as the <strong>Rosenzweig Picture-Frustration Test</strong> where participants respond to frustrating scenarios and aggressive responses are coded by a blind rater.</p>
+    </details>
+    <details>
+      <summary>Answer B — face validity of the masculinity quiz</summary>
+      <p>The masculinity quiz was <strong>superficial</strong> and ignored social roles and norms. An improvement would be to use a more comprehensive masculinity scale that includes behavioural items (e.g. risk-taking, help-seeking refusal) as well as self-report attitudes.</p>
+    </details>
+    <p><em>Mark scheme (2 marks):</em> 1 mark for identifying a validity weakness; 1 mark for explaining an improvement linked to that weakness.</p>
+  </div>
+
+  <div class="cn-box">
+    <h5>💡 关键提醒</h5>
+    An "improvement" that doesn't address a specific weakness scores 0. Always write: <strong>weakness → improvement → WHY this fixes it</strong>. The "why" is the second mark.
+  </div>
+
+  <div class="hikaru-card">
+    <h4>Hikaru — diagnosing Step 6</h4>
+    <div class="scenario">
+      A student writes: <strong>"Hikaru should improve her study by using a bigger sample."</strong>
+    </div>
+    <p class="diagnostic-q">Q1 — Is this a valid improvement? Why or why not?</p>
+    <p class="diagnostic-q">Q2 — What improvement would you suggest for the <strong>closed question</strong> "Were you aggressive today?"? Explain why.</p>
+    <p class="diagnostic-q">Q3 — What improvement would address the <strong>single-school</strong> generalisability weakness?</p>
+  </div>
+
+  <div class="try-card">
+    <h4>Try your own — write 3 improvements, each linked to a weakness</h4>
     <ol>
-      <li><strong>Sample:</strong> "An opportunity sample of 10 male participants aged 19–52 was recruited via advertising on the university noticeboard."</li>
-      <li><strong>Apparatus / scoring:</strong> "A computerised masculinity quiz (scored 0–100) and a bespoke moderately-aggressive video game that logged aggression as the number of characters knocked down (0–20)."</li>
-      <li><strong>Design:</strong> "A repeated-measures correlational design — both co-variables were recorded for every participant."</li>
-      <li><strong>Procedure:</strong> "Participants sat in silence at numbered computers for the quiz (25–42 minutes), waited in a lounge, then played a 3-minute practice + 5-minute data run on the video game. Standardised instructions were read aloud; participants were supervised; debriefed individually and reminded of the right to withdraw."</li>
+      <li><strong>Validity improvement</strong> (linked to which weakness):<div class="answer-line"></div></li>
+      <li><strong>Reliability improvement</strong> (linked to which weakness):<div class="answer-line"></div></li>
+      <li><strong>Generalisability improvement</strong> (linked to which weakness):<div class="answer-line"></div></li>
     </ol>
-    <p><strong>Top band:</strong> Clear, detailed, sequential, includes sample size, location, timings.</p>
-  </details>
+  </div>
+</div>
 
-  <details>
-    <summary>Q2 · Explain whether the findings of your practical investigation were statistically significant (2 marks)</summary>
-    <p><strong>Model answer (textbook n=10, rₛ=0.318):</strong></p>
-    <p>"The calculated value of Spearman's rank was rₛ = 0.318. This was <strong>less than</strong> the critical value of 0.564 for a one-tailed test at p &lt; 0.05 with n = 10. Therefore the result was <strong>not statistically significant</strong> and the null hypothesis was supported, meaning any relationship found between masculinity and aggression could be due to chance."</p>
-    <p><strong>Mark scheme:</strong> 1 mark for stating calculated vs critical value; 1 mark for correct decision (significant / not significant) + hypothesis supported.</p>
-  </details>
+<!-- ============ STEP 7 ============ -->
+<div class="section" id="s8">
+  <h2>✍️ Step 7 — Report writing</h2>
 
-  <details>
-    <summary>Q3 · Explain one improvement that could be made to the validity of your practical investigation (2 marks)</summary>
-    <p><strong>Model answer A (ecological validity):</strong> "The video game lacked ecological validity because hitting virtual characters does not translate to real-world aggressive behaviour. An improvement would be to use a more naturalistic measure of aggression, such as the <strong>Rosenzweig Picture-Frustration Test</strong> where participants respond to frustrating scenarios and aggressive responses are coded by a blind rater."</p>
-    <p><strong>Model answer B (face validity of masculinity):</strong> "The masculinity quiz was superficial and ignored social roles and norms. An improvement would be to use a more comprehensive masculinity scale that includes behavioural items (e.g. risk-taking, help-seeking refusal) as well as self-report attitudes."</p>
-    <p><strong>Mark scheme:</strong> 1 mark for identifying a validity weakness; 1 mark for explaining an improvement linked to that weakness.</p>
-  </details>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary</h4>
+    <p>Spec must 6: report has three sections — <strong>procedure</strong> (what you did), <strong>results</strong> (what you found), <strong>discussion</strong> (what it means + strengths/weaknesses/improvements). The textbook gives explicit checklists for each. The exam tests these via 3 standard 2/4-mark questions.</p>
+  </div>
 
-  <h3>Discussion section — what to include (textbook p.225-226)</h3>
-  <ul>
-    <li><strong>Conclusions</strong> drawn from the data analysis.</li>
-    <li>Findings explained within the <strong>wider context</strong> of background theories and previous research.</li>
-    <li><strong>Limitations</strong> and strengths of the investigation.</li>
-    <li><strong>Possible improvements</strong> to the methodology.</li>
-    <li><strong>Practical uses</strong> of the findings and potential implications for organisations, education, clinical practice or society.</li>
-  </ul>
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">22</span><h4>Write the Procedure section (textbook p.225 checklist)</h4></div>
+    <ul>
+      <li><strong>Sample:</strong> who was used, how many, from where, sampling technique.</li>
+      <li><strong>Apparatus:</strong> what was used and how data was scored.</li>
+      <li><strong>Design:</strong> typically repeated measures for a correlation.</li>
+      <li><strong>Standardised brief and debrief:</strong> what participants were told, what they were told after.</li>
+      <li><strong>Location & presence:</strong> where the study took place and who was in the room.</li>
+      <li><strong>Individual or group testing:</strong> state explicitly.</li>
+      <li><strong>Procedure & timings:</strong> what participants did, in sequence, with time taken.</li>
+      <li><strong>Controls:</strong> what was kept the same to reduce extraneous variables.</li>
+    </ul>
+  </div>
 
-  <h3>Improvement checklist (textbook p.226)</h3>
-  <table>
-    <tr><th>Question to ask</th><th>Linked improvement</th></tr>
-    <tr><td>Was the sample representative?</td><td>If not — use random or stratified sampling to broaden.</td></tr>
-    <tr><td>Was the procedure standardised?</td><td>If not — write a standardised script, give identical time slots.</td></tr>
-    <tr><td>Were there any control issues?</td><td>If yes — add controls (same time of day, same room, same practice length).</td></tr>
-    <tr><td>Were the variables operationalised effectively?</td><td>If no — use a more valid measure (e.g. real aggressive behaviour, validated scale).</td></tr>
-    <tr><td>Was data collection / analysis subjective?</td><td>If yes — use blind marking, computerised scoring, two independent raters.</td></tr>
-    <tr><td>Were there unforeseen ethical issues?</td><td>If yes — revise consent form, add debrief, tighten confidentiality.</td></tr>
-  </table>
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">23</span><h4>Write the Results section</h4></div>
+    <ul>
+      <li>Raw data table (Table 19.1 style).</li>
+      <li>Descriptive statistics (Table 19.2 style).</li>
+      <li>Scatter diagram (Figure 19.1 style) + interpretation of strength and direction.</li>
+      <li>Spearman's rank calculation + statement of statistical significance (with all 7 mandatory ingredients).</li>
+    </ul>
+  </div>
+
+  <div class="step-card">
+    <div class="step-head"><span class="step-num">24</span><h4>Write the Discussion section</h4></div>
+    <ul>
+      <li>Conclusions drawn from the data analysis.</li>
+      <li>Findings explained within the wider context of background theories and previous research.</li>
+      <li>Limitations and strengths of the investigation (V/R/G).</li>
+      <li>Possible improvements to the methodology.</li>
+      <li>Practical uses of the findings and potential implications for organisations, education, clinical practice or society.</li>
+    </ul>
+  </div>
+
+  <div class="exam-practice">
+    <h4>🎯 The 3 textbook exam questions (p.226) — model answers</h4>
+
+    <details>
+      <summary>Q1 · Describe the procedure of your practical investigation in biological psychology (4 marks)</summary>
+      <p><strong>Mark scheme expects 4 distinct points. Model answer:</strong></p>
+      <ol>
+        <li><strong>Sample:</strong> "An opportunity sample of 10 male participants aged 19–52 was recruited via advertising on the university noticeboard."</li>
+        <li><strong>Apparatus / scoring:</strong> "A computerised masculinity quiz (scored 0–100) and a bespoke moderately-aggressive video game that logged aggression as the number of characters knocked down (0–20)."</li>
+        <li><strong>Design:</strong> "A repeated-measures correlational design — both co-variables were recorded for every participant."</li>
+        <li><strong>Procedure:</strong> "Participants sat in silence at numbered computers for the quiz (25–42 minutes), waited in a lounge, then played a 3-minute practice + 5-minute data run on the video game. Standardised instructions were read aloud; all sessions were supervised; participants were debriefed individually and reminded of their right to withdraw."</li>
+      </ol>
+      <p><strong>Top band:</strong> Clear, detailed, sequential, includes sample size, location, timings.</p>
+    </details>
+
+    <details>
+      <summary>Q2 · Explain whether the findings of your practical investigation were statistically significant (2 marks)</summary>
+      <p><strong>Model answer (textbook n=10, rₛ=0.318):</strong></p>
+      <p>"The calculated value of Spearman's rank was rₛ = 0.318. This was <strong>less than</strong> the critical value of 0.564 for a one-tailed test at p &lt; 0.05 with n = 10. Therefore the result was <strong>not statistically significant</strong> and the null hypothesis was supported, meaning any relationship found between masculinity and aggression could be due to chance."</p>
+      <p><strong>Mark scheme:</strong> 1 mark for stating calculated vs critical value; 1 mark for correct decision (significant / not significant) + hypothesis supported.</p>
+    </details>
+
+    <details>
+      <summary>Q3 · Explain one improvement that could be made to the validity of your practical investigation (2 marks)</summary>
+      <p><strong>Model answer A (ecological validity):</strong> "The video game lacked ecological validity because hitting virtual characters does not translate to real-world aggressive behaviour. An improvement would be to use a more naturalistic measure of aggression, such as the <strong>Rosenzweig Picture-Frustration Test</strong> where participants respond to frustrating scenarios and aggressive responses are coded by a blind rater."</p>
+      <p><strong>Model answer B (face validity of masculinity):</strong> "The masculinity quiz was superficial and ignored social roles and norms. An improvement would be to use a more comprehensive masculinity scale that includes behavioural items (e.g. risk-taking, help-seeking refusal) as well as self-report attitudes."</p>
+      <p><strong>Mark scheme:</strong> 1 mark for identifying a validity weakness; 1 mark for explaining an improvement linked to that weakness.</p>
+    </details>
+  </div>
+
+  <div class="hikaru-card">
+    <h4>Hikaru — diagnosing Step 7</h4>
+    <div class="scenario">
+      Hikaru submits her report. The procedure section mentions the sample but not the sampling technique. The results section lists raw data but no descriptive statistics. The discussion section has no weaknesses and no improvements.
+    </div>
+    <p class="diagnostic-q">Q1 — Which mark would Hikaru lose from the 4-mark "Describe the procedure" question? Why?</p>
+    <p class="diagnostic-q">Q2 — Why are descriptive statistics expected in the results even though they don't test the correlation?</p>
+    <p class="diagnostic-q">Q3 — Without weaknesses or improvements, how many marks can Hikaru get on Q3 (improvement question)?</p>
+  </div>
 
   <div class="exam-key">
-    <h4>🎯 Textbook EXAM TIP (p.226) — read this 3 times</h4>
+    <h4>🚀 Textbook EXAM TIP (p.226)</h4>
     <p><em>"Your practical investigation is like any other classic or contemporary study you have learned, so you need to know the <strong>aims, procedure, results, conclusions and improvements</strong> in addition to <strong>strengths and weaknesses</strong>. You could be asked to write an essay evaluating your practical investigation, so this should be prepared in the same way as preparing for evaluating a classic or contemporary study."</em></p>
     <p>Treat your practical as <strong>the named study</strong> for any Unit 2 question that says "your practical investigation". AMSPRC skeleton + 3 evaluation axes (validity, reliability, generalisability) = full marks.</p>
   </div>
+</div>
 
-  <h3>Key Terms Glossary</h3>
+<!-- ============ GLOSSARY ============ -->
+<div class="section" id="glossary">
+  <h2>📖 Key Terms Glossary</h2>
   <table>
     <tr><th>Term</th><th>Definition</th></tr>
     <tr><td><strong>Correlation</strong></td><td>A statistical technique measuring the strength and direction of a relationship between two co-variables.</td></tr>
@@ -746,11 +946,10 @@ details[open] summary { margin-bottom: 8px; }
       <li><strong>Run a pilot study</strong> on 1 friend — fix instructions, fix timing, fix the consent form. Then run the full study and write up using the textbook procedure / results / discussion checklists.</li>
     </ol>
   </div>
-
 </div>
 
 <div class="footer-note">
-  Ch19 Practical Investigation · Topic C Biological Psychology · Edexcel A Level · 9 syllabus learning objectives covered
+  Ch19 Practical Investigation · Topic C Biological Psychology · Edexcel A Level · 7-step workflow + Hikaru diagnostic tasks at every step
 </div>
 
 </main>
