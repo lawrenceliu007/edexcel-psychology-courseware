@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic C Review — Biological Psychology（生物心理学复习总览）</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --card-bg: #FFFFFF;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --note-bg: #fff7ed;
+  --note-border: #fb923c;
+  --term-color: #ea580c;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; transition: background .15s; white-space: nowrap; }
+.nav-pill:hover { background: var(--primary-dark); }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; transition: color .15s; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; font-weight: 300; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); transition: all .15s; display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+body.dark .nav-btn:hover { border-color: #f97316; color: #f97316; }
+
+.page-layout { display: grid; grid-template-columns: 190px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 190px; flex-shrink: 0; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; transition: all .15s ease; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 600; background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+.sb-item a.sb-sub { padding-left: 30px; font-size: .7em; opacity: .82; }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; backdrop-filter: blur(6px); }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box strong { color: #b45309; }
+.key-term { display: inline-block; background: #e8eaf6; color: #283593; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: .9em; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box h4 { color: #991b1b; margin-bottom: 5px; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.wider-issue { background: #fff8e1; border: 2px solid #fbc02d; border-radius: 8px; padding: 16px 20px; margin: 14px 0; }
+.wider-issue h4 { color: #f57f17; margin-top: 0; }
+.activity-box { background: #f0f4f8; border: 2px solid #90a4ae; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+.activity-box h4 { color: #546e7a; margin-top: 0; display: flex; align-items: center; gap: 8px; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+tr:hover { background: #fff7ed; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.figure { margin: 18px 0; text-align: center; }
+.figure img { max-width: 100%; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 3px 12px rgba(0,0,0,.08); }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.flowchart { background: #f6f7f9; border: 2px solid var(--border); border-radius: 12px; padding: 20px; margin: 18px 0; text-align: center; }
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: opacity .2s; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.ao-badge { background: rgba(255,255,255,.25); padding: 2px 8px; border-radius: 10px; font-size: .72em; font-weight: 700; margin-left: auto; }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; animation: slideDown .25s ease; }
+.summary-card-body.hidden { display: none; }
+@keyframes slideDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
+.summary-card-body ol { margin: 0; padding-left: 20px; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; display: flex; align-items: center; gap: 8px; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.study-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px 18px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.06); transition: all .25s ease; position: relative; }
+.study-card:hover { box-shadow: 0 4px 16px rgba(234,88,12,.15); border-color: #fb923c; transform: translateY(-2px); }
+.study-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid #fef3c7; }
+.study-icon { font-size: 1.3em; }
+.study-name { font-weight: 700; font-size: .95em; color: #ea580c; flex: 1; }
+.study-badge { font-size: .7em; font-weight: 600; padding: 3px 10px; border-radius: 12px; background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; white-space: nowrap; }
+.study-badge.classic { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: #9d174d; }
+.study-badge.contemp { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; }
+.study-badge.cross { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; }
+.study-badge.meta { background: linear-gradient(135deg, #ede9fe, #ddd6fe); color: #5b21b6; }
+.study-badge.corr { background: linear-gradient(135deg, #dcfce7, #bbf7d0); color: #166534; }
+.study-badge.natural { background: linear-gradient(135deg, #ffedd5, #fed7aa); color: #9a3412; }
+.study-badge.expt { background: linear-gradient(135deg, #cffafe, #a5f3fc); color: #155e75; }
+.study-card-body p { margin: 6px 0; line-height: 1.65; font-size: .9em; }
+.study-card-body ul { margin: 6px 0 6px 18px; padding: 0; }
+.study-card-body li { margin: 4px 0; font-size: .89em; line-height: 1.6; }
+.eval-tag { display: inline-block; background: #fef2f2; border-left: 3px solid #ef4444; padding: 4px 10px; margin-top: 6px; font-size: .85em; color: #991b1b; border-radius: 0 6px 6px 0; }
+.ao-zone-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 10px; margin: 20px 0 14px; font-weight: 700; font-size: 1.05em; }
+.ao-zone-header.ao1 { background: linear-gradient(135deg, #eff6ff, #dbeafe); border-left: 5px solid #2563eb; color: #1e40af; }
+.ao-zone-header.ao3 { background: linear-gradient(135deg, #fdf4ff, #fae8ff); border-left: 5px solid #c026d3; color: #a21caf; }
+.ao-zone-desc { font-size: .82em; font-weight: 400; opacity: .8; margin-left: auto; }
+.gold-standard-para { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 2px solid #fcd34d; border-radius: 10px; padding: 16px 18px; margin: 14px 0; }
+.gold-standard-para h4 { color: #92400e; margin: 0 0 8px; font-size: .95em; }
+.gold-standard-para p { font-size: .89em; line-height: 1.7; margin: 6px 0; }
+.gold-standard-para ul { font-size: .89em; margin: 6px 0; }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { box-shadow: 0 6px 20px rgba(234,88,12,.4); transform: translateY(-2px); }
+@media(max-width:900px){
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .main-content { max-width: 100%; }
+  .compare-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+body.dark { background: #0f172a; color: #e2e8f0; transition: background .3s, color .3s; }
+body.dark .container { background: #0f172a; }
+body.dark .nav-bar { background: #1a1a2e; border-bottom-color: var(--primary); }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+body.dark .sb-divider { background: #334155; }
+body.dark .sb-group-label { color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a:hover { color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.10), transparent); border-left-color: #f97316; }
+body.dark .sb-item a.sb-active { color: #fb923c; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); border-left-color: #f97316; }
+body.dark .header { background: linear-gradient(135deg, #c2410c, #ea580c, #f97316); }
+body.dark .section { background: #1a1a2e; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .warn-box h4 { color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .keyterm-box strong { color: #fbbf24; }
+body.dark .key-term { background: #2a2a4a; color: #a5b4fc; }
+body.dark strong { color: #fbbf24; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; color: white; border-color: #7f1d1d; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark tr:hover { background: rgba(234,88,12,.05); }
+body.dark td:first-child { color: #fb923c; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+body.dark .flowchart { background: #16213e; border-color: #334155; }
+body.dark .wider-issue { background: rgba(251,192,45,.06); border-color: #f59e0b; }
+body.dark .wider-issue h4 { color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .activity-box { background: #1e293b; border-color: #475569; }
+body.dark .activity-box h4 { color: #94a3b8; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark .study-card { background: #16213e; border-color: #334155; }
+body.dark .study-card:hover { border-color: #f97316; box-shadow: 0 4px 16px rgba(234,88,12,.2); }
+body.dark .study-card-header { border-bottom-color: #3f3f5e; }
+body.dark .study-name { color: #fb923c; }
+body.dark .study-card-body p, body.dark .study-card-body li { color: #cbd5e1; }
+body.dark .eval-tag { background: rgba(220,38,38,.08); color: #fca5a5; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .ao-zone-header.ao1 { background: linear-gradient(135deg, rgba(37,99,235,.15), rgba(37,99,235,.08)); border-left-color: #3b82f6; color: #93c5fd; }
+body.dark .ao-zone-header.ao3 { background: linear-gradient(135deg, rgba(192,38,211,.15), rgba(192,38,211,.08)); border-left-color: #c026d3; color: #e9d5ff; }
+body.dark .gold-standard-para { background: linear-gradient(135deg, rgba(245,158,11,.08), rgba(245,158,11,.04)); border-color: #f59e0b; }
+body.dark .gold-standard-para h4 { color: #fbbf24; }
+body.dark .gold-standard-para p, body.dark .gold-standard-para ul, body.dark .gold-standard-para li { color: #d1d5db; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+body.dark a { color: #60a5fa; }
+body.dark a:hover { color: #93c5fd; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="/edexcel-psychology-courseware/">Home</a> <span class="sep">›</span>
+    <a href="/edexcel-psychology-courseware/">Edexcel</a> <span class="sep">›</span>
+    <span>Topic C — Review &amp; Exam Patterns</span>
+  </div>
+  <span class="nav-pill">🧠 Topic C · Biological Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn" title="Toggle dark mode">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)" title="Decrease font size">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)" title="Increase font size">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">Topic C Review</div>
+        <div class="sb-header-sub">Biological Psychology</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">1 · Overview</li>
+        <li class="sb-item"><a href="#s1" class="sb-active">1. Topic C at a Glance</a></li>
+        <li class="sb-item"><a href="#s2">2. Where You Are Examined</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">2 · Coverage</li>
+        <li class="sb-item"><a href="#s3">3. Specification Coverage</a></li>
+        <li class="sb-item"><a href="#s4">4. The Five Chapters</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">3 · Exam Patterns</li>
+        <li class="sb-item"><a href="#s5">5. Paper 2 Blueprint</a></li>
+        <li class="sb-item"><a href="#s6">6. Section A — Five Slots</a></li>
+        <li class="sb-item"><a href="#s7">7. Section C — 12 &amp; 16 Marks</a></li>
+        <li class="sb-item"><a href="#s8">8. AO Allocation</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">4 · Revision</li>
+        <li class="sb-item"><a href="#s9">9. Most-Examined Content</a></li>
+        <li class="sb-item"><a href="#s10">10. Revision Checklist</a></li>
+        <li class="sb-item"><a href="#s11">11. Question Bank (5 Papers)</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>🔍 TOPIC C: REVIEW &amp; EXAM PATTERNS<br><span style="font-size:0.65em">生物心理学 · 复习总览与考法规律</span></h1>
+  <div class="subtitle">Edexcel International A Level Psychology · Unit 2 (WPS02/01) · Biological Psychology</div>
+  <div class="meta">
+    <span class="badge">📘 Pearson Edexcel International A Level</span>
+    <span class="badge">📋 Specification 3.1.1 – 3.4.1</span>
+    <span class="badge">🗂️ Built from 5 real papers (Jan 2024 → Jun 2026)</span>
+    <span class="badge">🎯 Coverage map · question slots · AO split · full question bank</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>⚡ How to use this page</h4>
+  <ol>
+    <li><strong>Coverage check</strong> — §3 and §4 confirm every specification point is taught somewhere in Chapters 15–19.</li>
+    <li><strong>Pattern learning</strong> — §5 to §8 show <em>where</em> each topic lands in the paper and <em>how many marks</em> each skill is worth.</li>
+    <li><strong>Revision</strong> — §9 ranks what comes up most often, §10 is a self-test, §11 is the complete question bank from five exam sessions.</li>
+  </ol>
+</div>
+
+<!-- ============ SECTION 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Topic C at a Glance（一页看懂 Topic C）</h2>
+
+  <p>Topic C is <strong>Biological psychology</strong>（生物心理学）. The specification introduces it like this:</p>
+
+  <div class="note-box">
+    <h4>📖 Topic overview (specification, p.22)</h4>
+    <p><em>“Students must show an understanding that biological psychology is about the mechanisms within our body and how they affect our behaviour, focusing on <strong>aggression</strong> and <strong>body rhythms</strong>.”</em></p>
+  </div>
+
+  <p>So Topic C splits into <strong>two content strands</strong>, plus <strong>three skill strands</strong> that sit underneath them:</p>
+
+  <table>
+    <tr><th>Strand</th><th>What it is about</th><th>Specification</th><th>Chapter</th></tr>
+    <tr>
+      <td>1. Aggression</td>
+      <td>The body as an explanation of aggressive behaviour — neurons, brain areas, hormones, genes</td>
+      <td>3.1.1 – 3.1.3</td>
+      <td>Ch 15</td>
+    </tr>
+    <tr>
+      <td>2. Body rhythms</td>
+      <td>Circadian and infradian rhythms — the sleep-wake cycle, the menstrual cycle, SAD and its therapies</td>
+      <td>3.1.4 – 3.1.6</td>
+      <td>Ch 16</td>
+    </tr>
+    <tr>
+      <td>3. Methods</td>
+      <td>Correlational research, Spearman’s rank, brain scanning (CAT / PET / fMRI), twin studies</td>
+      <td>3.2.1 – 3.2.7</td>
+      <td>Ch 17</td>
+    </tr>
+    <tr>
+      <td>4. Studies</td>
+      <td>One classic study (Raine) and three contemporary studies (Brendgen, McDermott, Hoefelmann)</td>
+      <td>3.3.1 – 3.3.4</td>
+      <td>Ch 18</td>
+    </tr>
+    <tr>
+      <td>5. Practical investigation</td>
+      <td>Design and run your own correlational study, analyse it with Spearman’s rank, write it up</td>
+      <td>3.4.1</td>
+      <td>Ch 19</td>
+    </tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>一句话逻辑</strong>：Topic C 的“内容”只有两条主线——<strong>攻击性</strong>（身体如何解释攻击行为）和<strong>人体节律</strong>（昼夜节律与亚昼夜节律）；但它们永远和“<strong>方法</strong>”（相关研究 + Spearman）、“<strong>研究</strong>”（4 篇指定研究）、“<strong>实践调查</strong>”绑在一起考。所以复习顺序应该是：先学攻击性与节律的内容，再用四篇研究把内容“落地”，最后用方法与实践调查把分数“兑现”。
+  </div>
+</section>
+
+<!-- ============ SECTION 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Where You Are Examined（Topic C 出现在哪里）</h2>
+
+  <p>Topic C belongs to <strong>Unit 2: Biological Psychology, Learning Theories and Development</strong>. The paper is <strong>WPS02/01 — Paper 2</strong>.</p>
+
+  <table>
+    <tr><th>Paper details</th><th>Value</th></tr>
+    <tr><td>Paper code</td><td>WPS02/01 · Unit 2</td></tr>
+    <tr><td>Length</td><td>2 hours</td></tr>
+    <tr><td>Total marks</td><td>96</td></tr>
+    <tr><td>Sections</td><td>Three — all compulsory</td></tr>
+    <tr><td>Section A</td><td>Biological psychology — <strong>34 marks</strong> — short answers + one 8-mark extended response</td></tr>
+    <tr><td>Section B</td><td>Learning theories and development — 34 marks</td></tr>
+    <tr><td>Section C</td><td>One 12-mark and one 16-mark extended response — <strong>28 marks</strong></td></tr>
+    <tr><td>Formulae &amp; statistical tables</td><td>Printed at the front of the paper (Spearman’s rank formula and critical-value table)</td></tr>
+    <tr><td>Calculator</td><td>Allowed</td></tr>
+  </table>
+
+  <div class="exam-tip">
+    <strong>🎯 How much of Paper 2 is Topic C?</strong>
+    <ul>
+      <li><strong>Section A = 34 marks</strong>, always 100% Topic C.</li>
+      <li><strong>Section C</strong>: the 12-mark question is usually Topic C (4 of our 5 papers), and the 16-mark question <em>always</em> combines Topic C with learning theories.</li>
+      <li>So a realistic Topic C share is <strong>34 + 12 = 46 marks</strong>, or <strong>34 + 8 = 42 marks</strong> when the 12-marker goes to learning theories instead.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>关键理解</strong>：Section A 是“纯 Topic C”，34 分，题目位置五年没变过（见 §6）。Section C 是“Topic C 与学习理论（Topic D）的合体卷”——12 分题多数时候考 Topic C，16 分题<strong>永远</strong>是两边各取一头（通常 Topic C 一边是<strong>基因</strong>或<strong>疗法</strong>，学习理论一边是<strong>社会学习理论</strong>或<strong>弗洛伊德</strong>）。
+  </div>
+</section>
+
+<!-- ============ SECTION 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Specification Coverage（大纲覆盖核对）</h2>
+
+  <p>Every specification point in Topic C is covered by one of the five chapters. Use this table as your checklist — the “Covered in” column tells you exactly which chapter to open.</p>
+
+  <table>
+    <tr><th>Spec</th><th>What you must be able to do</th><th>Covered in</th></tr>
+    <tr><td>3.1.1</td><td>CNS and neurotransmitters in behaviour — structure and role of the neuron, function of neurotransmitters, synaptic transmission</td><td>Ch 15 · Nervous System Overview, Neuron Structure, Action Potential, Synaptic Transmission, Neurotransmitters</td></tr>
+    <tr><td>3.1.2</td><td>Structure of the brain, brain areas including the pre-frontal cortex and limbic system, and brain functioning as an explanation of aggression</td><td>Ch 15 · Brain Lobes, Brain Areas, Neurotransmitters</td></tr>
+    <tr><td>3.1.3</td><td>The role of, and research into, hormones and genes in aggression</td><td>Ch 15 · Hormones &amp; Aggression, Genetics &amp; Aggression</td></tr>
+    <tr><td>3.1.4</td><td>Internal pacemakers (body clock) and external zeitgebers in the circadian sleep-wake cycle</td><td>Ch 16 · The Sleep-Wake Cycle, Variations in the Cycle, Eval: Internal Pacemakers, Eval: Exogenous Zeitgebers</td></tr>
+    <tr><td>3.1.5</td><td>Infradian rhythms — the menstrual cycle and seasonal affective disorder, and therapies including light therapy</td><td>Ch 16 · The Menstrual Cycle, Seasonal Affective Disorder, Light Therapy, Antidepressants (SSRIs)</td></tr>
+    <tr><td>3.1.6</td><td>Research into the circadian sleep-wake cycle and infradian rhythms</td><td>Ch 16 · The Sleep-Wake Cycle, Eval: Infradian Rhythms, Real-Life Applications</td></tr>
+    <tr><td>3.2.1</td><td>The correlational method, including co-variables</td><td>Ch 17 · What is Correlation?</td></tr>
+    <tr><td>3.2.2</td><td>Types of correlation — positive, negative — and scatter diagrams</td><td>Ch 17 · Scatter Diagrams</td></tr>
+    <tr><td>3.2.3</td><td>Issues with correlations — cause and effect, other variables</td><td>Ch 17 · Evaluating Correlation</td></tr>
+    <tr><td>3.2.4</td><td>List B from Topic B, focusing on the Spearman rank test</td><td>Ch 17 · Spearman’s Rank Test</td></tr>
+    <tr><td>3.2.5</td><td>Brain-scanning techniques (CAT, PET, fMRI) and their use to investigate behaviour including aggression</td><td>Ch 17 · Brain Scanning</td></tr>
+    <tr><td>3.2.6</td><td>Twin studies to investigate genetic relatedness and aggression</td><td>Ch 17 · Twin Studies</td></tr>
+    <tr><td>3.2.7</td><td>List A from Topic A (descriptive statistics and data handling)</td><td>Ch 17 · Learning Objectives table · applied throughout §5–§9</td></tr>
+    <tr><td>3.3.1</td><td><strong>Classic</strong> — Raine et al. (1997) Brain abnormalities in murderers indicated by positron emission tomography</td><td>Ch 18 · Raine et al. (1997)</td></tr>
+    <tr><td>3.3.2</td><td><strong>Contemporary</strong> — Brendgen et al. (2005) Examining genetic and environmental effects on social aggression: a study of 6-year-old twins</td><td>Ch 18 · Brendgen et al. (2005)</td></tr>
+    <tr><td>3.3.3</td><td>Choice — McDermott (2008) Monoamine oxidase A gene (MAOA) predicts behavioural aggression following provocation</td><td>Ch 18 · McDermott et al. (2008)</td></tr>
+    <tr><td>3.3.4</td><td>Choice — Hoefelmann et al. (2006) Behaviours associated to sleep among high school students</td><td>Ch 18 · Hoefelmann et al. (2006)</td></tr>
+    <tr><td>3.4.1</td><td>One practical research exercise — design and conduct a correlational study, use descriptive statistics and Spearman’s rank, write up procedure / results / discussion</td><td>Ch 19 · Steps 0–7</td></tr>
+  </table>
+
+  <div class="green-box">
+    <strong>✅ Result:</strong> all 18 specification points (3.1.1–3.1.6, 3.2.1–3.2.7, 3.3.1–3.3.4, 3.4.1) are covered. Nothing from the specification is missing.
+  </div>
+
+  <div class="note-box">
+    <h4>💡 Note on 3.2.7</h4>
+    <p>3.2.7 says “List A from Topic A” — that is the descriptive-statistics list (mean, median, mode, range, standard deviation, graphs, percentages). It is <em>reused</em> here rather than taught here. Chapter 17 applies it in practice: you collect data, choose a graph, and comment on percentages. Descriptive statistics also drive the early parts of Section A questions about data tables and scatter diagrams.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. The Five Chapters（五章分工）</h2>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-icon">🧠</span>
+      <span class="study-name">Chapter 15 — Biological Psychology: Brain Regions and Aggression</span>
+      <span class="study-badge classic">3.1.1 – 3.1.3</span>
+    </div>
+    <div class="study-card-body">
+      <ul>
+        <li>Nervous system overview, neuron structure, action potential, synaptic transmission</li>
+        <li>Brain lobes and brain areas; the pre-frontal cortex and the limbic system</li>
+        <li>Neurotransmitters (serotonin, dopamine, GABA) and aggression</li>
+        <li>Hormones — testosterone and cortisol; Genetics — MAOA, twin and adoption evidence, Caspi et al.</li>
+        <li>Wider issues and debates, plus a six-question Exam Practice set</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-icon">🌙</span>
+      <span class="study-name">Chapter 16 — Body Rhythms</span>
+      <span class="study-badge contemp">3.1.4 – 3.1.6</span>
+    </div>
+    <div class="study-card-body">
+      <ul>
+        <li>Circadian, ultradian, infradian and circannual rhythms; the sleep-waking cycle</li>
+        <li>SCN, melatonin and the pineal gland; internal pacemakers versus exogenous zeitgebers</li>
+        <li>Evidence: Siffre, Aschoff &amp; Wever, Folkard, DeCoursey, Ralph</li>
+        <li>The menstrual cycle and the HPG axis; PMS / PMDD; menstrual synchrony</li>
+        <li>Seasonal affective disorder; light therapy; SSRIs</li>
+        <li>Real-paper focus on May 2025 and May 2026 Section C questions with official mark schemes</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-icon">🔗</span>
+      <span class="study-name">Chapter 17 — Methods: Correlation, Spearman, Scanning and Twin Studies</span>
+      <span class="study-badge corr">3.2.1 – 3.2.7</span>
+    </div>
+    <div class="study-card-body">
+      <ul>
+        <li>Correlation and co-variables; positive, negative and zero correlations</li>
+        <li>Scatter diagrams — reading, describing and drawing them</li>
+        <li>Spearman’s rank test — step-by-step calculation, tied ranks, r<sub>s</sub>, critical values, significance</li>
+        <li>Evaluating correlations — cause and effect, third variables</li>
+        <li>CAT, PET and fMRI scanning — uses, strengths and weaknesses</li>
+        <li>Twin studies, concordance rates and the nature–nurture debate</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-icon">🔬</span>
+      <span class="study-name">Chapter 18 — Studies in Biological Psychology</span>
+      <span class="study-badge cross">3.3.1 – 3.3.4</span>
+    </div>
+    <div class="study-card-body">
+      <ul>
+        <li><strong>Raine et al. (1997)</strong> — PET scans of 41 NGRI murderers versus 41 controls; pre-frontal cortex, amygdala, hippocampus, thalamus</li>
+        <li><strong>Brendgen et al. (2005)</strong> — 234 six-year-old twin pairs; physical versus social aggression</li>
+        <li><strong>McDermott et al. (2008)</strong> — MAOA-L versus MAOA-H, the power-to-take game and the hot-sauce paradigm</li>
+        <li><strong>Hoefelmann et al. (2006)</strong> — Brazilian night-school students; sleep, lifestyle, cross-sectional and prospective analysis</li>
+        <li>Each study broken down with the AMSPRC six-step frame, plus evaluation and model answers</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-icon">🛠️</span>
+      <span class="study-name">Chapter 19 — Practical Investigation</span>
+      <span class="study-badge meta">3.4.1</span>
+    </div>
+    <div class="study-card-body">
+      <ul>
+        <li>A seven-step workflow: Aim → Design → Procedure → Data → Significance → Validity &amp; Improvements → Report writing</li>
+        <li>Your own correlational study into aggression or body rhythms, analysed with Spearman’s rank</li>
+        <li>Diagnostic Hikaru cases at every step, so you practise spotting weaknesses in a design</li>
+        <li>Three exam-style model answers on procedure, significance and validity</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Paper 2 Blueprint（五套真题的结构）</h2>
+
+  <p>All five papers use the identical structure — 34 / 34 / 28. What changes is <em>which</em> Topic C content lands where.</p>
+
+  <table>
+    <tr><th>Session</th><th>Question paper log number</th><th>Section A</th><th>Section C — 12 marks</th><th>Section C — 16 marks</th></tr>
+    <tr>
+      <td>January 2024</td><td>P72147RA</td><td>34 · Biological psychology</td>
+      <td>Social learning theory — <em>learning theories</em></td>
+      <td>Brendgen (2005) + Watson &amp; Rayner (1920) — <em>ethics and reliability</em></td>
+    </tr>
+    <tr>
+      <td>June 2024</td><td>P75832A</td><td>34 · Biological psychology</td>
+      <td>Research into the circadian sleep-wake cycle — <em>Topic C</em></td>
+      <td>Genes + social learning theory — <em>applied to Eliza and Fred</em></td>
+    </tr>
+    <tr>
+      <td>January 2025</td><td>P78482A</td><td>34 · Biological psychology</td>
+      <td>Evaluate your chosen contemporary study — <em>Topic C</em></td>
+      <td>Genes + Freud’s theory of development — <em>applied to Benjamin</em></td>
+    </tr>
+    <tr>
+      <td>June 2025</td><td>P78778A</td><td>34 · Biological psychology</td>
+      <td>Infradian rhythms and SAD — <em>Topic C</em></td>
+      <td>Genes + Freud’s psychosexual stages — <em>applied to Mila</em></td>
+    </tr>
+    <tr>
+      <td>June 2026</td><td>P79769A</td><td>34 · Biological psychology</td>
+      <td>Internal pacemakers and the sleep-wake cycle — <em>Topic C</em></td>
+      <td>Light therapy + systematic desensitisation — <em>two therapies</em></td>
+    </tr>
+  </table>
+
+  <div class="exam-tip">
+    <strong>🎯 Two stable habits in Section C</strong>
+    <ul>
+      <li>The <strong>12-mark question</strong> is a single-topic evaluation. It went to Topic C in <strong>4 of 5</strong> papers — and within Topic C, body rhythms (circadian, SAD, internal pacemakers) is the recurring favourite.</li>
+      <li>The <strong>16-mark question</strong> is <em>always</em> a two-strand synoptic essay: one biological strand + one learning-theory strand. Biology’s contribution is usually <strong>genes</strong> (3 of 5 papers) or a <strong>therapy</strong>. Also, every 16-marker carries the instruction <em>“You must refer to the context in your answer.”</em></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SECTION 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Section A — the Five Slots（Section A 的五个固定位置）</h2>
+
+  <p>Section A is 34 marks and its five questions occupy five predictable function slots. Once you see the slots, you can predict what is coming and revise accordingly.</p>
+
+  <table>
+    <tr><th>Slot</th><th>Function</th><th>Jan 2024</th><th>Jun 2024</th><th>Jan 2025</th><th>Jun 2025</th><th>Jun 2026</th></tr>
+    <tr>
+      <td>Q1</td>
+      <td>A named study — recall, conclusion, strength or weakness</td>
+      <td>Raine (1997) — conclusion + generalisability weakness</td>
+      <td>Your contemporary study — two conclusions + sample improvement</td>
+      <td>Brendgen (2005) — procedure, strength, improvement</td>
+      <td>Hormones — two named, two strengths</td>
+      <td>Raine (1997) — two aims, conclusion, strength</td>
+    </tr>
+    <tr>
+      <td>Q2</td>
+      <td>A research scenario — method, data handling, statistics</td>
+      <td>Sienna — IV, graph, conclusion, why mice</td>
+      <td>Herbert — hypothesis, <strong>Spearman</strong>, justification, weakness</td>
+      <td>Loreen — hypothesis, <strong>Spearman</strong>, critical value, weakness</td>
+      <td>Amadeus — design, sampling, level of measurement, qualitative data</td>
+      <td>Hikaru — closed question, sampling, ethics, conclusion, improvement</td>
+    </tr>
+    <tr>
+      <td>Q3</td>
+      <td>An explanation of aggression — describe plus evaluate</td>
+      <td>Hormones — describe + strength &amp; weakness</td>
+      <td>Infradian rhythms — Kaiko’s menstrual cycle</td>
+      <td>Brendgen (2005) — procedure, strength, improvement</td>
+      <td>Structure of the brain — describe + strength &amp; weakness</td>
+      <td>Brain functioning — Shaima scenario, describe + strength &amp; weakness</td>
+    </tr>
+    <tr>
+      <td>Q4</td>
+      <td>A technique or therapy — describe plus evaluate</td>
+      <td>Light therapy for SAD — describe, weakness, versus another therapy</td>
+      <td>Twin studies — how the method works + strength &amp; weakness</td>
+      <td>PET scans — describe + weakness</td>
+      <td>Sunshine — two variables, scatter conclusion, improvement</td>
+      <td>Huberta — operationalised IV, draw a graph</td>
+    </tr>
+    <tr>
+      <td>Q5</td>
+      <td>The 8-mark extended response</td>
+      <td>Brain functioning and aggression</td>
+      <td>Hormones and aggression</td>
+      <td>Hormones — the Remo scenario <em>(applied)</em></td>
+      <td>Effectiveness of Brendgen (2005)</td>
+      <td>Hormones and aggression</td>
+    </tr>
+  </table>
+
+  <div class="note-box">
+    <h4>📌 What the slot table tells you</h4>
+    <ul>
+      <li><strong>Q1 and Q3 rotate around the four named studies.</strong> Raine and Brendgen each appeared twice; the contemporary choice (McDermott or Hoefelmann) appeared in the Jun 2024 Q1 and the Jan 2025 12-marker. Learn all four — you cannot pick which one is asked.</li>
+      <li><strong>Q2 is always a method question</strong>, and it always carries the heaviest method marks of the section: graph drawing, an operationalised hypothesis, a Spearman calculation, or sampling and level of measurement.</li>
+      <li><strong>Q4 is the “equipment” slot</strong> — a therapy (light therapy), a scanning technique (PET) or a research design (twin studies).</li>
+      <li><strong>Q5 opens with Assess / Discuss / Evaluate</strong> and needs AO3 balance. Hormones has taken this slot in three of five papers.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文提示</strong>：Section A 的五道题不是随机排的。<strong>Q1 考“研究”，Q2 考“方法/统计”，Q3 考“解释”，Q4 考“技术或疗法”，Q5 是 8 分大论述</strong>。复习时按这个位置去准备，比按章节顺序背要有效得多——尤其 Q2，它几乎决定你 Section A 的一半方法分。
+  </div>
+</section>
+
+<!-- ============ SECTION 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Section C — the 12- and 16-Markers（Section C 的两道长题）</h2>
+
+  <h3>7.1 The 12-mark question</h3>
+  <table>
+    <tr><th>Session</th><th>Question</th><th>Topic</th></tr>
+    <tr><td>Jan 2024</td><td>Evaluate social learning theory as an explanation of Maud’s behaviour</td><td>Learning theories</td></tr>
+    <tr><td>Jun 2024</td><td>To what extent has research been effective in explaining the circadian sleep-wake cycle?</td><td><strong>Topic C</strong></td></tr>
+    <tr><td>Jan 2025</td><td>Evaluate your chosen contemporary study (McDermott or Hoefelmann)</td><td><strong>Topic C</strong></td></tr>
+    <tr><td>Jun 2025</td><td>Evaluate infradian rhythms as an explanation of Noah’s seasonal affective disorder</td><td><strong>Topic C</strong></td></tr>
+    <tr><td>Jun 2026</td><td>Assess the role of internal pacemakers in the regulation of Liesel’s sleep-wake cycle</td><td><strong>Topic C</strong></td></tr>
+  </table>
+
+  <div class="exam-tip">
+    <strong>🎯 Pattern</strong> — when Topic C takes the 12-marker, it has always come from <strong>body rhythms</strong> (circadian research, infradian rhythms and SAD, internal pacemakers) or from the <strong>contemporary studies</strong>. Aggression has never carried the 12-marker on its own.
+  </div>
+
+  <h3>7.2 The 16-mark question</h3>
+  <table>
+    <tr><th>Session</th><th>Question</th><th>Biological strand</th><th>Learning strand</th></tr>
+    <tr>
+      <td>Jan 2024</td>
+      <td>Evaluate Brendgen et al. (2005) and Watson and Rayner (1920) in terms of ethics and reliability</td>
+      <td>Brendgen (2005)</td><td>Watson &amp; Rayner (1920)</td>
+    </tr>
+    <tr>
+      <td>Jun 2024</td>
+      <td>Evaluate genes and social learning theory as an explanation of Eliza and Fred</td>
+      <td><strong>Genes</strong></td><td>Social learning theory</td>
+    </tr>
+    <tr>
+      <td>Jan 2025</td>
+      <td>To what extent can genes and Freud’s theory of development explain Benjamin’s behaviour?</td>
+      <td><strong>Genes</strong></td><td>Freud’s theory of development</td>
+    </tr>
+    <tr>
+      <td>Jun 2025</td>
+      <td>To what extent can genes and Freud’s psychosexual stages explain Mila’s aggressive behaviour?</td>
+      <td><strong>Genes</strong></td><td>Freud’s psychosexual stages</td>
+    </tr>
+    <tr>
+      <td>Jun 2026</td>
+      <td>Evaluate light therapy and systematic desensitisation as treatments/therapies</td>
+      <td>Light therapy</td><td>Systematic desensitisation</td>
+    </tr>
+  </table>
+
+  <div class="green-box">
+    <strong>✅ The strongest single prediction on this paper:</strong> the biological half of the 16-marker is either <strong>genes</strong> (three of the last five papers) or a <strong>therapy</strong>. Prepare the genetics material in Chapter 15 to a high standard — it is the most valuable half-page in the whole topic.
+  </div>
+
+  <div class="cn-note">
+    <strong>中文提示</strong>：16 分题的生物那一边，五套里三次是<strong>基因（genes）</strong>，一次是经典研究，一次是疗法。也就是说，Ch 15 的“基因与攻击性”这一节，是整章性价比最高的内容。另一边的学习理论，主要是<strong>社会学习理论</strong>和<strong>弗洛伊德</strong>轮流出现——那部分由 Topic D 的章节负责。
+  </div>
+</section>
+
+<!-- ============ SECTION 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. AO Allocation（分数怎么分到三个能力目标）</h2>
+
+  <h3>8.1 Section A — per question</h3>
+  <table>
+    <tr><th>Session</th><th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th><th>Q5 (8 marks)</th></tr>
+    <tr>
+      <td>Jan 2024</td>
+      <td>AO1 2 + AO3 1</td>
+      <td>AO2 6 + AO3 2</td>
+      <td>AO1 5 + AO3 2</td>
+      <td>AO1 6 + AO3 2</td>
+      <td>AO1 4 + AO3 4</td>
+    </tr>
+    <tr>
+      <td>Jun 2024</td>
+      <td>AO1 3 + AO3 1</td>
+      <td>AO2 8 + AO3 2</td>
+      <td>AO2 4</td>
+      <td>AO1 6 + AO3 2</td>
+      <td>AO1 4 + AO3 4</td>
+    </tr>
+    <tr>
+      <td>Jan 2025</td>
+      <td>AO1 3 + AO3 1</td>
+      <td>AO2 8 + AO3 1</td>
+      <td>AO1 6 + AO3 2</td>
+      <td>AO1 4 + AO3 1</td>
+      <td>AO1 4 + <strong>AO2</strong> 4</td>
+    </tr>
+    <tr>
+      <td>Jun 2025</td>
+      <td>AO1 4 + AO3 2</td>
+      <td>AO2 4 + AO3 2</td>
+      <td>AO1 6 + AO3 2</td>
+      <td>AO2 4 + AO3 2</td>
+      <td>AO1 4 + AO3 4</td>
+    </tr>
+    <tr>
+      <td>Jun 2026</td>
+      <td>AO1 4 + AO3 2</td>
+      <td>AO2 5 + AO3 4</td>
+      <td>AO2 5 + AO3 2</td>
+      <td>AO2 4</td>
+      <td>AO1 4 + AO3 4</td>
+    </tr>
+  </table>
+
+  <div class="note-box">
+    <h4>📌 Reading the table</h4>
+    <ul>
+      <li><strong>Q1 and Q3 are AO1-heavy</strong> — they ask you to <em>know</em> the study or the explanation. Describe accurately and you score. Add a strength or weakness for the AO3 mark.</li>
+      <li><strong>Q2 is AO2-dominated</strong> — this is the <em>apply</em> slot. Hypotheses, calculations, graph drawing, sampling decisions and ethics all live here.</li>
+      <li><strong>Q5 is a 4 + 4 balance</strong> — four marks for knowledge, four for evaluation. An answer that only describes and never weighs up cannot go beyond half marks. The one exception is Jan 2025, where Q5 was applied to a scenario and the second four marks were AO2.</li>
+      <li><strong>Jun 2026 is worth noting</strong>: Q3 and Q4 were both moved into AO2 by giving them a named scenario (Shaima, Huberta). Scenario framing pushes a question from “describe” into “apply”, even though the underlying content is unchanged.</li>
+    </ul>
+  </div>
+
+  <h3>8.2 Section C — the long answers</h3>
+  <table>
+    <tr><th>Session</th><th>12-mark question</th><th>16-mark question</th></tr>
+    <tr><td>Jan 2024</td><td>AO1 4 + AO2 4 + AO3 4</td><td>AO1 6 + AO3 10</td></tr>
+    <tr><td>Jun 2024</td><td>AO1 6 + AO3 6</td><td>AO1 6 + AO2 4 + AO3 6</td></tr>
+    <tr><td>Jan 2025</td><td>AO1 6 + AO3 6</td><td>AO1 6 + AO2 4 + AO3 6</td></tr>
+    <tr><td>Jun 2025</td><td>AO1 4 + AO2 4 + AO3 4</td><td>AO1 6 + AO2 4 + AO3 6</td></tr>
+    <tr><td>Jun 2026</td><td>AO1 4 + AO2 4 + AO3 4</td><td>AO1 6 + AO3 10</td></tr>
+  </table>
+
+  <div class="exam-tip">
+    <strong>🎯 What this means for how you write</strong>
+    <ul>
+      <li>The 16-marker always gives <strong>6 marks for knowledge and 10–12 for evaluation</strong>. Knowledge alone, however accurate, is capped at about a third. You must build a case, weigh both sides and reach a judgement.</li>
+      <li>Where AO2 appears (4 marks), it is asking you to <strong>apply the material to the named context</strong> in the question. Use the named person’s behaviour as your evidence, not generic textbook lines.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SECTION 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Most-Examined Content（按出现频率排序）</h2>
+
+  <p>Counting across the five papers, this is what actually gets asked, from most to least frequent.</p>
+
+  <table>
+    <tr><th>Rank</th><th>Content</th><th>Appears in</th><th>Where it shows up</th></tr>
+    <tr>
+      <td>1</td>
+      <td><strong>Methods and statistics</strong> — correlation, Spearman, graphs, sampling, level of measurement, twin studies, PET</td>
+      <td>5 / 5</td>
+      <td>Always Section A Q2 and Q4. This is the single most reliable block of marks on the paper.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><strong>Hormones and aggression</strong></td>
+      <td>5 / 5</td>
+      <td>Section A Q1, Q3 or Q5. Took the 8-mark extended response in three of five papers.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><strong>The four named studies</strong> — Raine, Brendgen, McDermott, Hoefelmann</td>
+      <td>5 / 5</td>
+      <td>Section A Q1 or Q3, and the Jun 2025 12-marker.</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><strong>Brain structure and brain functioning as an explanation of aggression</strong></td>
+      <td>4 / 5</td>
+      <td>Section A Q1, Q3 or Q5.</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><strong>Body rhythms</strong> — circadian research, infradian rhythms, SAD, internal pacemakers</td>
+      <td>3 / 5 in Section A, 3 / 5 in Section C</td>
+      <td>Section A Q2 or Q3, and heavily in the 12-mark extended response.</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><strong>Therapies</strong> — light therapy, SSRIs</td>
+      <td>2 / 5 in Section A, 1 / 5 in Section C</td>
+      <td>Section A Q4; and light therapy carried the biology half of the Jun 2026 16-marker.</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td><strong>Neuron structure and synaptic transmission</strong> (3.1.1)</td>
+      <td>0 / 5 directly</td>
+      <td>Not yet asked as a standalone question in these five papers. Still on the specification, and it underpins every explanation of how neurotransmitters affect aggression — know it, but do not spend disproportionate time on it.</td>
+    </tr>
+  </table>
+
+  <div class="wider-issue">
+    <h4>🔍 An honest note on what this table is</h4>
+    <p>These counts come from <strong>five</strong> exam sessions (January 2024 to June 2026). They show what has been asked, not what will be asked. Five papers is a small sample, and examiners deliberately rotate content — which is exactly why <strong>3.1.1 has not yet appeared</strong>. Treat the ranking as a guide to where to spend your revision time, not as a list of what you can safely skip.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Revision Checklist（自测清单）</h2>
+
+  <p>Tick each line only when you can do it <em>without notes</em>. The right-hand column tells you which section of the paper it feeds.</p>
+
+  <h3>Aggression — content</h3>
+  <table>
+    <tr><th>✓</th><th>Can you…</th><th>Feeds</th></tr>
+    <tr><td>☐</td><td>Describe the structure of a neuron and explain synaptic transmission in order</td><td>Underpins every neurotransmitter answer</td></tr>
+    <tr><td>☐</td><td>Name the brain areas involved in aggression and describe what each does</td><td>Section A Q1 / Q3 / Q5</td></tr>
+    <tr><td>☐</td><td>Describe the role of testosterone and cortisol in aggression, with a supporting study</td><td>Section A Q1 / Q3 / Q5</td></tr>
+    <tr><td>☐</td><td>Explain how genes influence aggression — MAOA, twin evidence, Caspi et al.</td><td><strong>The 16-mark question</strong></td></tr>
+    <tr><td>☐</td><td>Give one strength and one weakness of the hormone explanation, and the same for the genetic explanation</td><td>Section A Q1 / Q3 / Q5</td></tr>
+  </table>
+
+  <h3>Body rhythms — content</h3>
+  <table>
+    <tr><th>✓</th><th>Can you…</th><th>Feeds</th></tr>
+    <tr><td>☐</td><td>Describe the circadian sleep-wake cycle and the role of the SCN, melatonin and the pineal gland</td><td>Section C 12-mark</td></tr>
+    <tr><td>☐</td><td>Explain the difference between an internal pacemaker and an exogenous zeitgeber, with evidence</td><td>Section C 12-mark</td></tr>
+    <tr><td>☐</td><td>Describe the menstrual cycle as an infradian rhythm and explain the HPG axis</td><td>Section A Q3</td></tr>
+    <tr><td>☐</td><td>Explain SAD in terms of melatonin and serotonin, and describe light therapy</td><td>Section A Q4 · Section C 16-mark</td></tr>
+    <tr><td>☐</td><td>Evaluate light therapy against one other treatment, and name a weakness of each</td><td>Section A Q4 · Section C 16-mark</td></tr>
+  </table>
+
+  <h3>Methods and skills — content</h3>
+  <table>
+    <tr><th>✓</th><th>Can you…</th><th>Feeds</th></tr>
+    <tr><td>☐</td><td>Write a fully operationalised, non-directional hypothesis for a stated investigation</td><td>Section A Q2</td></tr>
+    <tr><td>☐</td><td>Complete a Spearman’s rank table, handle tied ranks, and give r<sub>s</sub> to two decimal places</td><td>Section A Q2</td></tr>
+    <tr><td>☐</td><td>Justify why Spearman was used (correlation predicted + at least ordinal data)</td><td>Section A Q2</td></tr>
+    <tr><td>☐</td><td>Find the critical value, state whether the result is significant, and write the conclusion</td><td>Section A Q2</td></tr>
+    <tr><td>☐</td><td>Draw and label a bar chart or scatter diagram from a data table, with a title and both axes</td><td>Section A Q2 / Q4</td></tr>
+    <tr><td>☐</td><td>Describe how a twin study is used and give one strength and one weakness</td><td>Section A Q4</td></tr>
+    <tr><td>☐</td><td>Describe PET and fMRI, and give one strength and one weakness of each</td><td>Section A Q4</td></tr>
+    <tr><td>☐</td><td>Describe your own practical investigation — aim, co-variables, procedure, result and one improvement</td><td>Any method slot</td></tr>
+    <tr><td>☐</td><td>Explain one ethical issue with reference to a named scenario</td><td>Section A Q2</td></tr>
+  </table>
+
+  <h3>Studies — content</h3>
+  <table>
+    <tr><th>✓</th><th>Can you…</th><th>Feeds</th></tr>
+    <tr><td>☐</td><td>Give the aim, sample, method, results and conclusion of Raine et al. (1997)</td><td>Section A Q1</td></tr>
+    <tr><td>☐</td><td>Give the same for Brendgen et al. (2005), including physical versus social aggression</td><td>Section A Q1 / Q3 / Q5</td></tr>
+    <tr><td>☐</td><td>Give the same for McDermott et al. (2008), including MAOA-L versus MAOA-H</td><td>Section A Q1 · Section C 12-mark</td></tr>
+    <tr><td>☐</td><td>Give the same for Hoefelmann et al. (2006), including the two time points</td><td>Section A Q1 · Section C 12-mark</td></tr>
+    <tr><td>☐</td><td>Explain one strength and one improvement for each of the four studies</td><td>Section A Q1 · Section C 12-mark</td></tr>
+  </table>
+</section>
+
+<!-- ============ SECTION 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Question Bank — 5 Papers（五年真题题库）</h2>
+
+  <p>Every Topic C question from the five available Paper 2 sessions, in order. Marks are in brackets. Use this as practice material, or as a checklist of the exact phrasing examiners use.</p>
+
+  <h3>January 2024 · Paper 2 (P72147RA)</h3>
+  <table>
+    <tr><th>Q</th><th>Question</th><th>Marks</th><th>Spec</th></tr>
+    <tr><td>1a</td><td>State one conclusion of Raine et al. (1997).</td><td>1</td><td>3.3.1</td></tr>
+    <tr><td>1b</td><td>Explain one weakness of Raine et al. (1997) in terms of generalisability.</td><td>2</td><td>3.3.1</td></tr>
+    <tr><td>2a</td><td>Identify the independent variable in Sienna’s investigation (mice, bright light and sleeping patterns).</td><td>1</td><td>3.1.4</td></tr>
+    <tr><td>2b</td><td>Draw a suitable graph for the sleeping patterns of the mice exposed to bright light between 7am and 7pm.</td><td>3</td><td>3.2.2</td></tr>
+    <tr><td>2c</td><td>Explain one conclusion that can be made from the data in Table 1.</td><td>2</td><td>3.1.4</td></tr>
+    <tr><td>2d</td><td>Explain one reason why Sienna used mice instead of humans as participants.</td><td>2</td><td>3.1.4 · ethics</td></tr>
+    <tr><td>3a</td><td>Describe the role of hormones in aggression.</td><td>3</td><td>3.1.3</td></tr>
+    <tr><td>3b</td><td>Explain one strength and one weakness of the role of hormones as an explanation of aggression.</td><td>4</td><td>3.1.3</td></tr>
+    <tr><td>4a</td><td>Describe light therapy as a treatment for seasonal affective disorder.</td><td>4</td><td>3.1.5</td></tr>
+    <tr><td>4b</td><td>Explain one weakness of light therapy as a treatment for seasonal affective disorder.</td><td>2</td><td>3.1.5</td></tr>
+    <tr><td>4c</td><td>Explain one reason why light therapy may be more effective than one other therapy for treating SAD.</td><td>2</td><td>3.1.5</td></tr>
+    <tr><td>5</td><td>Assess how well brain functioning can explain aggression as a human behaviour.</td><td>8</td><td>3.1.2</td></tr>
+    <tr><td>C Q10</td><td>Evaluate social learning theory as an explanation of Maud’s behaviour. <em>(learning theories)</em></td><td>12</td><td>—</td></tr>
+    <tr><td>C Q11</td><td>Evaluate Brendgen et al. (2005) and Watson and Rayner (1920) in terms of ethics and reliability.</td><td>16</td><td>3.3.2</td></tr>
+  </table>
+
+  <h3>June 2024 · Paper 2 (P75832A)</h3>
+  <table>
+    <tr><th>Q</th><th>Question</th><th>Marks</th><th>Spec</th></tr>
+    <tr><td>1a</td><td>State two conclusions of your chosen contemporary study (McDermott 2008 or Hoefelmann et al. 2006).</td><td>2</td><td>3.3.3 / 3.3.4</td></tr>
+    <tr><td>1b</td><td>Explain one improvement that could be made to the sample used in your chosen contemporary study.</td><td>2</td><td>3.3.3 / 3.3.4</td></tr>
+    <tr><td>2a</td><td>State a fully operationalised non-directional hypothesis for Herbert’s study into computer games and quality of sleep.</td><td>2</td><td>3.2.1</td></tr>
+    <tr><td>2b</td><td>Calculate Spearman’s rank for Herbert’s data by completing Table 1. Two decimal places.</td><td>4</td><td>3.2.4</td></tr>
+    <tr><td>2c</td><td>Explain one reason why Herbert used the Spearman’s rank test for his data.</td><td>2</td><td>3.2.4</td></tr>
+    <tr><td>2d</td><td>Explain one weakness of Herbert’s study about computer games and quality of sleep.</td><td>2</td><td>3.2.3</td></tr>
+    <tr><td>3</td><td>Describe the role of infradian rhythms on Kaiko’s menstrual cycle.</td><td>4</td><td>3.1.5</td></tr>
+    <tr><td>4a</td><td>Describe how a twin study research method could be used in biological psychology, such as when researching aggression.</td><td>4</td><td>3.2.6</td></tr>
+    <tr><td>4b</td><td>Explain one strength and one weakness of using a twin study research method in biological psychology.</td><td>4</td><td>3.2.6</td></tr>
+    <tr><td>5</td><td>Assess the role of hormones as an explanation of aggression.</td><td>8</td><td>3.1.3</td></tr>
+    <tr><td>C Q10</td><td>To what extent has research been effective in explaining the circadian sleep-wake cycle?</td><td>12</td><td>3.1.4 / 3.1.6</td></tr>
+    <tr><td>C Q11</td><td>Evaluate genes and social learning theory as an explanation of Eliza and Fred.</td><td>16</td><td>3.1.3</td></tr>
+  </table>
+
+  <h3>January 2025 · Paper 2 (P78482A)</h3>
+  <table>
+    <tr><th>Q</th><th>Question</th><th>Marks</th><th>Spec</th></tr>
+    <tr><td>1a</td><td>State two areas of the brain that play a role in human aggression.</td><td>2</td><td>3.1.2</td></tr>
+    <tr><td>1b</td><td>Explain one strength of brain functioning as an explanation of aggression.</td><td>2</td><td>3.1.2</td></tr>
+    <tr><td>2a</td><td>Give a fully operationalised, non-directional hypothesis for Loreen’s investigation into exercise and sleep.</td><td>2</td><td>3.2.1</td></tr>
+    <tr><td>2b</td><td>Calculate Spearman’s rank to three decimal places for Loreen’s data by completing Table 1.</td><td>4</td><td>3.2.4</td></tr>
+    <tr><td>2c</td><td>Identify the critical value Loreen would have used (two-tailed, p≤0.05).</td><td>1</td><td>3.2.4</td></tr>
+    <tr><td>2d</td><td>Explain one weakness of Loreen’s investigation.</td><td>2</td><td>3.2.3</td></tr>
+    <tr><td>3a</td><td>Describe the procedure of the study by Brendgen et al. (2005).</td><td>4</td><td>3.3.2</td></tr>
+    <tr><td>3b</td><td>Explain one strength of the study by Brendgen et al. (2005).</td><td>2</td><td>3.3.2</td></tr>
+    <tr><td>3c</td><td>Explain one improvement that could be made to the study by Brendgen et al. (2005).</td><td>2</td><td>3.3.2</td></tr>
+    <tr><td>4a</td><td>Describe PET scans as they are used in biological psychology.</td><td>3</td><td>3.2.5</td></tr>
+    <tr><td>4b</td><td>Explain one weakness of PET scans as they are used in biological psychology.</td><td>2</td><td>3.2.5</td></tr>
+    <tr><td>5</td><td>Discuss hormones as an explanation of Remo’s aggressive behaviour. <em>(scenario)</em></td><td>8</td><td>3.1.3</td></tr>
+    <tr><td>C Q11</td><td>Evaluate your chosen contemporary study (McDermott 2008 or Hoefelmann et al. 2006).</td><td>12</td><td>3.3.3 / 3.3.4</td></tr>
+    <tr><td>C Q12</td><td>To what extent can genes and Freud’s theory of development explain Benjamin’s behaviour?</td><td>16</td><td>3.1.3</td></tr>
+  </table>
+
+  <h3>June 2025 · Paper 2 (P78778A)</h3>
+  <table>
+    <tr><th>Q</th><th>Question</th><th>Marks</th><th>Spec</th></tr>
+    <tr><td>1a</td><td>State two hormones that play a role in human aggression.</td><td>2</td><td>3.1.3</td></tr>
+    <tr><td>1b</td><td>Explain two strengths of hormones as an explanation of aggression.</td><td>4</td><td>3.1.3</td></tr>
+    <tr><td>2a</td><td>Name the experimental design used by Amadeus in his experiment.</td><td>1</td><td>3.2.7</td></tr>
+    <tr><td>2b</td><td>Explain one weakness of Amadeus using a volunteer sampling technique.</td><td>2</td><td>3.2.7</td></tr>
+    <tr><td>2c</td><td>Identify the level of measurement used in Amadeus’s experiment.</td><td>1</td><td>3.2.7</td></tr>
+    <tr><td>2d</td><td>Explain one reason why Amadeus collected qualitative data in his follow-up investigation.</td><td>2</td><td>3.2.7</td></tr>
+    <tr><td>3a</td><td>Describe the structure of the brain as an explanation of aggression.</td><td>4</td><td>3.1.2</td></tr>
+    <tr><td>3b</td><td>Explain one strength and one weakness of the structure of the brain as an explanation of aggression.</td><td>4</td><td>3.1.2</td></tr>
+    <tr><td>4a</td><td>Identify the two fully operationalised variables in Sunshine’s correlation (lectures missed and exam grade).</td><td>2</td><td>3.2.1</td></tr>
+    <tr><td>4b</td><td>Explain one conclusion Sunshine could make using the data in Figure 1.</td><td>2</td><td>3.2.2</td></tr>
+    <tr><td>4c</td><td>Explain one improvement Sunshine could make to her investigation.</td><td>2</td><td>3.2.3</td></tr>
+    <tr><td>5</td><td>Assess the effectiveness of the study by Brendgen et al. (2005) in explaining aggression.</td><td>8</td><td>3.3.2</td></tr>
+    <tr><td>C Q11</td><td>Evaluate infradian rhythms as an explanation of Noah’s seasonal affective disorder.</td><td>12</td><td>3.1.5</td></tr>
+    <tr><td>C Q12</td><td>To what extent can genes and Freud’s psychosexual stages of development explain Mila’s aggressive behaviour?</td><td>16</td><td>3.1.3</td></tr>
+  </table>
+
+  <h3>June 2026 · Paper 2 (P79769A)</h3>
+  <table>
+    <tr><th>Q</th><th>Question</th><th>Marks</th><th>Spec</th></tr>
+    <tr><td>1a</td><td>State two aims of the study by Raine et al. (1997).</td><td>2</td><td>3.3.1</td></tr>
+    <tr><td>1b</td><td>Explain one conclusion from the study by Raine et al. (1997).</td><td>2</td><td>3.3.1</td></tr>
+    <tr><td>1c</td><td>Explain one strength of the study by Raine et al. (1997).</td><td>2</td><td>3.3.1</td></tr>
+    <tr><td>2a</td><td>Give one closed question Hikaru could have used in his experiment.</td><td>1</td><td>3.2.7</td></tr>
+    <tr><td>2b</td><td>Explain one weakness of the sampling technique used by Hikaru.</td><td>2</td><td>3.2.7</td></tr>
+    <tr><td>2c</td><td>Explain one ethical issue Hikaru should have considered when conducting his experiment.</td><td>2</td><td>ethics</td></tr>
+    <tr><td>2d</td><td>Explain one conclusion that could be made from the data in Table 1.</td><td>2</td><td>3.2</td></tr>
+    <tr><td>2e</td><td>Explain one improvement Hikaru could make to his investigation.</td><td>2</td><td>3.2</td></tr>
+    <tr><td>3a</td><td>Describe brain functioning as an explanation of Shaima’s aggression.</td><td>3</td><td>3.1.2</td></tr>
+    <tr><td>3b</td><td>Explain one strength and one weakness of brain functioning as an explanation of Shaima’s aggression.</td><td>4</td><td>3.1.2</td></tr>
+    <tr><td>4a</td><td>State the fully operationalised independent variable for Huberta’s investigation into sport and sleep.</td><td>1</td><td>3.2.1</td></tr>
+    <tr><td>4b</td><td>Draw an appropriate graph for the data shown in Table 2.</td><td>3</td><td>3.2.2</td></tr>
+    <tr><td>5</td><td>Evaluate the role of hormones in aggression.</td><td>8</td><td>3.1.3</td></tr>
+    <tr><td>C Q11</td><td>Assess the role of internal pacemakers in the regulation of Liesel’s sleep-wake cycle.</td><td>12</td><td>3.1.4</td></tr>
+    <tr><td>C Q12</td><td>Evaluate light therapy and systematic desensitisation as treatments/therapies.</td><td>16</td><td>3.1.5</td></tr>
+  </table>
+
+  <div class="wider-issue">
+    <h4>🔍 About this question bank</h4>
+    <p>These are the five Paper 2 sessions currently available: January 2024, June 2024, January 2025, June 2025 and June 2026. Earlier sessions (2023 and before) are not in the archive yet, and Unit 3 also carries method questions that overlap with Chapter 17. If further papers are added, this page should be re-checked against them.</p>
+  </div>
+</section>
+
+  </main>
+</div><!-- END PAGE LAYOUT -->
+
+<div class="footer-note">
+  <p>📚 Edexcel IAL Psychology · Topic C: Biological Psychology · Review &amp; Exam Patterns</p>
+  <p>Built from five Paper 2 sessions (WPS02/01: P72147RA · P75832A · P78482A · P78778A · P79769A) against Specification Issue 5 (February 2021). Chapter cross-references: Ch15 (3.1.1–3.1.3) · Ch16 (3.1.4–3.1.6) · Ch17 (3.2.1–3.2.7) · Ch18 (3.3.1–3.3.4) · Ch19 (3.4.1).</p>
+</div>
+</div><!-- END CONTAINER -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<script>
+function toggleSummary(header) {
+  header.classList.toggle('open');
+  var body = header.nextElementSibling;
+  if (body && body.classList.contains('summary-card-body')) {
+    body.classList.toggle('hidden');
+  }
+}
+
+// Scroll spy
+(function(){
+  var sections = document.querySelectorAll('.section[id^="s"]');
+  var links = document.querySelectorAll('.sb-item a');
+  function onScroll() {
+    var scrollPos = window.scrollY + 120;
+    var currentId = sections.length ? sections[0].id : null;
+    sections.forEach(function(sec) {
+      if (sec.offsetTop <= scrollPos) { currentId = sec.id; }
+    });
+    links.forEach(function(link) {
+      link.classList.toggle('sb-active', link.getAttribute('href') === '#' + currentId);
+    });
+    var btn = document.getElementById('backToTop');
+    if (btn) { btn.classList.toggle('show', window.scrollY > 400); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+// Dark mode
+function toggleDarkMode() {
+  document.body.classList.toggle('dark');
+  var isDark = document.body.classList.contains('dark');
+  localStorage.setItem('edexcel-topicc-darkMode', isDark ? '1' : '0');
+  var btn = document.getElementById('darkBtn');
+  if (btn) { btn.textContent = isDark ? '☀️ Light' : '🌙 Dark'; }
+}
+
+// Font size
+function adjustFontSize(delta) {
+  var current = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+  var next = Math.min(22, Math.max(12, current + delta));
+  document.documentElement.style.fontSize = next + 'px';
+  localStorage.setItem('edexcel-topicc-fontSize', String(next));
+}
+
+// Restore preferences
+(function(){
+  if (localStorage.getItem('edexcel-topicc-darkMode') === '1') {
+    document.body.classList.add('dark');
+    var btn = document.getElementById('darkBtn');
+    if (btn) { btn.textContent = '☀️ Light'; }
+  }
+  var fs = localStorage.getItem('edexcel-topicc-fontSize');
+  if (fs) { document.documentElement.style.fontSize = fs + 'px'; }
+})();
+</script>
+</body>
+</html>
