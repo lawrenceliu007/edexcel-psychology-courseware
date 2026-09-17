@@ -53,10 +53,11 @@ body.dark .nav-btn:hover { border-color: #f97316; color: #f97316; }
 .sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
 .sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
 .sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
-.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; transition: all .15s ease; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
-.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 600; background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
-.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
-.sb-item a.sb-sub { padding-left: 30px; font-size: .7em; opacity: .82; }
+.sb-item { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; transition: all .15s ease; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item:hover { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 600; background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+a.sb-sub { display: block; padding: 6px 14px 6px 30px; color: #475569; text-decoration: none; font-size: .7em; opacity: .82; transition: all .15s ease; line-height: 1.45; }
+a.sb-sub:hover { color: var(--primary-dark); opacity: 1; background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
 
 .main-content { min-width: 0; max-width: 900px; }
 .header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
@@ -167,9 +168,10 @@ body.dark .nav-breadcrumb span:last-child { color: #ddd; }
 body.dark .sidebar-inner { background: #16213e; border-color: #334155; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
 body.dark .sb-divider { background: #334155; }
 body.dark .sb-group-label { color: #64748b; }
-body.dark .sb-item a { color: #94a3b8; }
-body.dark .sb-item a:hover { color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.10), transparent); border-left-color: #f97316; }
-body.dark .sb-item a.sb-active { color: #fb923c; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); border-left-color: #f97316; }
+body.dark .sb-item { color: #94a3b8; }
+body.dark .sb-item:hover { color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.10), transparent); border-left-color: #f97316; }
+body.dark .sb-item.sb-active { color: #fb923c; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); border-left-color: #f97316; }
+body.dark a.sb-sub { color: #94a3b8; }
 body.dark .header { background: linear-gradient(135deg, #c2410c, #ea580c, #f97316); }
 body.dark .section { background: #1a1a2e; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
 body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
@@ -276,9 +278,9 @@ body.dark a:hover { color: #93c5fd; }
 
 /* 2) 侧栏序号 chip (1–9) */
 .sb-id { display: inline-block; min-width: 18px; padding: 1px 5px; margin-right: 7px; background: rgba(234,88,12,.12); color: var(--primary-dark); border-radius: 5px; font-weight: 700; font-size: .82em; text-align: center; vertical-align: 1px; }
-.sb-item a.sb-active .sb-id { background: rgba(234,88,12,.22); }
+.sb-item.sb-active .sb-id { background: rgba(234,88,12,.22); }
 body.dark .sb-id { background: rgba(234,88,12,.20); color: #fb923c; }
-body.dark .sb-item a.sb-active .sb-id { background: rgba(249,115,22,.30); }
+body.dark .sb-item.sb-active .sb-id { background: rgba(249,115,22,.30); }
 
 /* 3) study-badge 新增 3 种类型 (Brain / Experimental / Longitudinal) */
 .study-badge.biological { background: linear-gradient(135deg, #ede9fe, #ddd6fe); color: #5b21b6; }
@@ -1003,7 +1005,7 @@ function toggleSummary(header) {
 // Scroll spy
 (function(){
   var sections = document.querySelectorAll('.section[id^="s"]');
-  var links = document.querySelectorAll('.sb-item a');
+  var links = document.querySelectorAll('.sb-item');
   function onScroll() {
     var scrollPos = window.scrollY + 120;
     var currentId = sections.length ? sections[0].id : null;
