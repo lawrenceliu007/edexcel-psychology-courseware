@@ -226,6 +226,47 @@ body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: r
 body.dark .summary-card-body li { color: #c4b5fd; }
 body.dark a { color: #60a5fa; }
 body.dark a:hover { color: #93c5fd; }
+/* checklist 用 */
+.checklist-card { background:#FFFFFF; border:1px solid #e2e8f0; border-left:6px solid var(--primary); border-radius:10px; padding:14px 16px; margin:12px 0; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+.checklist-card .code { font-family:'JetBrains Mono',Menlo,Consolas,monospace; font-size:.82rem; color:var(--primary-dark); background:#FFF7ED; padding:2px 8px; border-radius:6px; }
+.checklist-card h4 { margin:4px 0 8px; color:var(--accent); font-size:1.04rem; }
+.checklist-card .must { font-size:.94rem; line-height:1.55; }
+.checklist-card .must li { margin:3px 0; }
+.checklist-card .selfcheck { margin-top:8px; padding:8px 10px; background:#F1F5F9; border-radius:6px; font-size:.9rem; }
+.checklist-card .selfcheck::before { content:"🗒️ Self-check · 自检："; font-weight:600; color:var(--accent); }
+.checklist-card label.tick { display:flex; align-items:center; gap:8px; margin-top:10px; font-weight:500; color:var(--accent); font-size:.9rem; cursor:pointer; }
+.checklist-card label.tick input { width:18px; height:18px; accent-color:var(--primary); cursor:pointer; }
+
+/* glossary */
+.glossary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; }
+.glossary-item { background:#FFFFFF; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px; }
+.glossary-item .term { font-weight:700; color:var(--primary-dark); font-size:.96rem; }
+.glossary-item .zh { color:#64748b; font-size:.85rem; margin-left:4px; }
+.glossary-item .def { font-size:.88rem; line-height:1.45; margin-top:4px; color:var(--text); }
+
+/* study-cards 复用 */
+.study-card .study-meta { font-size:.85rem; color:#64748b; margin-top:4px; }
+
+/* methods table */
+.methods-table th, .methods-table td { padding:8px 12px; border-bottom:1px solid #e2e8f0; font-size:.9rem; vertical-align:top; }
+.methods-table th { background:#FFF7ED; color:var(--accent); text-align:left; font-weight:600; }
+
+/* traps */
+.trap-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px; }
+.trap-card { background:#FFFFFF; border:1px solid #fcd34d; border-left:6px solid #f59e0b; border-radius:8px; padding:12px 14px; }
+.trap-card h5 { margin:0 0 6px; color:#b45309; font-size:.98rem; }
+.trap-card p { margin:0; font-size:.9rem; line-height:1.5; }
+.trap-card .fix { background:#FEF3C7; border-radius:6px; padding:6px 8px; margin-top:6px; font-size:.88rem; }
+
+/* one-pager */
+.one-pager { background:linear-gradient(135deg,#FFF7ED 0%,#FFFFFF 100%); border:2px dashed var(--primary); border-radius:12px; padding:18px 22px; }
+.one-pager h3 { color:var(--primary-dark); margin-top:0; }
+.one-pager table { width:100%; border-collapse:collapse; font-size:.88rem; }
+.one-pager td, .one-pager th { padding:5px 8px; border-bottom:1px dotted #fb923c; vertical-align:top; }
+.one-pager th { background:transparent; color:var(--accent); text-align:left; font-weight:600; }
+
+/* appendix */
+.appendix-banner { background:#F1F5F9; border-left:6px solid #94a3b8; padding:10px 14px; border-radius:6px; margin-bottom:18px; color:#475569; font-size:.92rem; }
 </style>
 </head>
 <body>
@@ -246,736 +287,669 @@ body.dark a:hover { color: #93c5fd; }
 </nav>
 
 <div class="page-layout">
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-      <div class="sb-header">
-        <div class="sb-header-title">Topic C Review</div>
-        <div class="sb-header-sub">Biological Psychology</div>
-      </div>
-      <ul class="sb-list">
-        <li class="sb-group-label">1 · Overview</li>
-        <li class="sb-item"><a href="#s1" class="sb-active">1. Topic C at a Glance</a></li>
-        <li class="sb-item"><a href="#s2">2. Where You Are Examined</a></li>
-        <li class="sb-divider"></li>
-        <li class="sb-group-label">2 · Coverage</li>
-        <li class="sb-item"><a href="#s3">3. Specification Coverage</a></li>
-        <li class="sb-item"><a href="#s4">4. The Five Chapters</a></li>
-        <li class="sb-divider"></li>
-        <li class="sb-group-label">3 · Exam Patterns</li>
-        <li class="sb-item"><a href="#s5">5. Paper 2 Blueprint</a></li>
-        <li class="sb-item"><a href="#s6">6. Section A — Five Slots</a></li>
-        <li class="sb-item"><a href="#s7">7. Section C — 12 &amp; 16 Marks</a></li>
-        <li class="sb-item"><a href="#s8">8. AO Allocation</a></li>
-        <li class="sb-divider"></li>
-        <li class="sb-group-label">4 · Revision</li>
-        <li class="sb-item"><a href="#s9">9. Most-Examined Content</a></li>
-        <li class="sb-item"><a href="#s10">10. Revision Checklist</a></li>
-        <li class="sb-item"><a href="#s11">11. Question Bank (5 Papers)</a></li>
-      </ul>
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sb-header">
+      <div class="sb-header-title">📋 Topic C Review</div>
+      <div class="sb-header-sub">Biological Psychology（生物心理学）</div>
     </div>
-  </aside>
-
-  <main class="main-content">
-
-<div class="header">
-  <h1>🔍 TOPIC C: REVIEW &amp; EXAM PATTERNS<br><span style="font-size:0.65em">生物心理学 · 复习总览与考法规律</span></h1>
-  <div class="subtitle">Edexcel International A Level Psychology · Unit 2 (WPS02/01) · Biological Psychology</div>
-  <div class="meta">
-    <span class="badge">📘 Pearson Edexcel International A Level</span>
-    <span class="badge">📋 Specification 3.1.1 – 3.4.1</span>
-    <span class="badge">🗂️ Built from 5 real papers (Jan 2024 → Jun 2026)</span>
-    <span class="badge">🎯 Coverage map · question slots · AO split · full question bank</span>
+    <nav class="sb-list" id="sidebar-nav">
+      <a class="sb-item" href="#s1"><span class="sb-id">1</span> Topic C at a glance</a>
+      <a class="sb-item" href="#s2"><span class="sb-id">2</span> 18 Spec-Point Checklist</a>
+      <a class="sb-item" href="#s3"><span class="sb-id">3</span> Key Terms Glossary</a>
+      <a class="sb-item" href="#s4"><span class="sb-id">4</span> Must-Know Studies</a>
+      <a class="sb-item" href="#s5"><span class="sb-id">5</span> Methods Quick Card</a>
+      <a class="sb-item" href="#s6"><span class="sb-id">6</span> Body Rhythms Quick Card</a>
+      <a class="sb-item" href="#s7"><span class="sb-id">7</span> Common Exam Traps</a>
+      <a class="sb-item" href="#s8"><span class="sb-id">8</span> Last-Minute 1-Page Sheet</a>
+      <a class="sb-item" href="#s9"><span class="sb-id">9</span> Appendix: Exam Patterns</a>
+    </nav>
+    <div class="sb-divider"></div>
+    <div class="sb-group-label">Five Chapters</div>
+    <a class="sb-sub" href="../ch15-biological/">→ Ch15 Biological 3.1.1–3.1.3</a>
+    <a class="sb-sub" href="../ch16-body-rhythms/">→ Ch16 Body Rhythms 3.1.4–3.1.6</a>
+    <a class="sb-sub" href="../ch17-methods/">→ Ch17 Methods 3.2.1–3.2.7</a>
+    <a class="sb-sub" href="../ch18-studies/">→ Ch18 Studies 3.3.1–3.3.4</a>
+    <a class="sb-sub" href="../ch19-practical/">→ Ch19 Practical 3.4.1</a>
   </div>
-</div>
+</aside>
 
-<div class="quick-summary">
-  <h4>⚡ How to use this page</h4>
-  <ol>
-    <li><strong>Coverage check</strong> — §3 and §4 confirm every specification point is taught somewhere in Chapters 15–19.</li>
-    <li><strong>Pattern learning</strong> — §5 to §8 show <em>where</em> each topic lands in the paper and <em>how many marks</em> each skill is worth.</li>
-    <li><strong>Revision</strong> — §9 ranks what comes up most often, §10 is a self-test, §11 is the complete question bank from five exam sessions.</li>
-  </ol>
-</div>
+<!-- ============ MAIN ============ -->
+<main class="main-content">
 
-<!-- ============ SECTION 1 ============ -->
+<!-- §1 Topic C at a glance -->
 <section class="section" id="s1">
-  <h2>1. Topic C at a Glance（一页看懂 Topic C）</h2>
-
-  <p>Topic C is <strong>Biological psychology</strong>（生物心理学）. The specification introduces it like this:</p>
-
-  <div class="note-box">
-    <h4>📖 Topic overview (specification, p.22)</h4>
-    <p><em>“Students must show an understanding that biological psychology is about the mechanisms within our body and how they affect our behaviour, focusing on <strong>aggression</strong> and <strong>body rhythms</strong>.”</em></p>
+  <div class="section-header">
+    <h2>1 · Topic C at a Glance</h2>
+    <p class="section-subtitle">Biological Psychology（生物心理学）— five strands, eighteen spec points, five chapters</p>
   </div>
 
-  <p>So Topic C splits into <strong>two content strands</strong>, plus <strong>three skill strands</strong> that sit underneath them:</p>
+  <div class="quick-summary">
+    <p>This page is a <strong>knowledge review sheet</strong>（一份知识复习笔记）for Topic C. It is designed so that after you walk through it, you can take a Paper 2 exam without going back to read the full chapters.</p>
+    <p>Eighteen items · 6 paths across the five chapters · Method + content + studies all sit together · 1 self-check per spec point so you know what you don't know yet.</p>
+  </div>
 
-  <table>
-    <tr><th>Strand</th><th>What it is about</th><th>Specification</th><th>Chapter</th></tr>
-    <tr>
-      <td>1. Aggression</td>
-      <td>The body as an explanation of aggressive behaviour — neurons, brain areas, hormones, genes</td>
-      <td>3.1.1 – 3.1.3</td>
-      <td>Ch 15</td>
-    </tr>
-    <tr>
-      <td>2. Body rhythms</td>
-      <td>Circadian and infradian rhythms — the sleep-wake cycle, the menstrual cycle, SAD and its therapies</td>
-      <td>3.1.4 – 3.1.6</td>
-      <td>Ch 16</td>
-    </tr>
-    <tr>
-      <td>3. Methods</td>
-      <td>Correlational research, Spearman’s rank, brain scanning (CAT / PET / fMRI), twin studies</td>
-      <td>3.2.1 – 3.2.7</td>
-      <td>Ch 17</td>
-    </tr>
-    <tr>
-      <td>4. Studies</td>
-      <td>One classic study (Raine) and three contemporary studies (Brendgen, McDermott, Hoefelmann)</td>
-      <td>3.3.1 – 3.3.4</td>
-      <td>Ch 18</td>
-    </tr>
-    <tr>
-      <td>5. Practical investigation</td>
-      <td>Design and run your own correlational study, analyse it with Spearman’s rank, write it up</td>
-      <td>3.4.1</td>
-      <td>Ch 19</td>
-    </tr>
+  <h3>Five Strands → Five Chapters</h3>
+  <table class="methods-table" style="width:100%;">
+    <thead><tr><th>Code</th><th>Strand</th><th>Where（位于）</th><th>Focus</th></tr></thead>
+    <tbody>
+      <tr><td>3.1.1–3.1.3</td><td>Aggression / Neurons & Brain / Hormones & Genes</td><td><a href="../ch15-biological/">Ch15 Biological</a></td><td>Localization + biological explanations of aggression</td></tr>
+      <tr><td>3.1.4–3.1.6</td><td>Body Rhythms</td><td><a href="../ch16-body-rhythms/">Ch16 Body Rhythms</a></td><td>Circadian / ultradian / infradian rhythms + SAD + shift work</td></tr>
+      <tr><td>3.2.1–3.2.7</td><td>Research Methods</td><td><a href="../ch17-methods/">Ch17 Methods</a></td><td>Design / sampling / inferential tests / validity</td></tr>
+      <tr><td>3.3.1–3.3.4</td><td>Core Studies</td><td><a href="../ch18-studies/">Ch18 Studies</a></td><td>Raine / Brunner / Caspi / SADS-shift-work pair</td></tr>
+      <tr><td>3.4.1</td><td>Practical Investigation</td><td><a href="../ch19-practical/">Ch19 Practical</a></td><td>Self-designed correlational study</td></tr>
+    </tbody>
   </table>
-
-  <div class="cn-note">
-    <strong>一句话逻辑</strong>：Topic C 的“内容”只有两条主线——<strong>攻击性</strong>（身体如何解释攻击行为）和<strong>人体节律</strong>（昼夜节律与亚昼夜节律）；但它们永远和“<strong>方法</strong>”（相关研究 + Spearman）、“<strong>研究</strong>”（4 篇指定研究）、“<strong>实践调查</strong>”绑在一起考。所以复习顺序应该是：先学攻击性与节律的内容，再用四篇研究把内容“落地”，最后用方法与实践调查把分数“兑现”。
-  </div>
 </section>
 
-<!-- ============ SECTION 2 ============ -->
+<!-- §2 18 Spec-Point Checklist -->
 <section class="section" id="s2">
-  <h2>2. Where You Are Examined（Topic C 出现在哪里）</h2>
-
-  <p>Topic C belongs to <strong>Unit 2: Biological Psychology, Learning Theories and Development</strong>. The paper is <strong>WPS02/01 — Paper 2</strong>.</p>
-
-  <table>
-    <tr><th>Paper details</th><th>Value</th></tr>
-    <tr><td>Paper code</td><td>WPS02/01 · Unit 2</td></tr>
-    <tr><td>Length</td><td>2 hours</td></tr>
-    <tr><td>Total marks</td><td>96</td></tr>
-    <tr><td>Sections</td><td>Three — all compulsory</td></tr>
-    <tr><td>Section A</td><td>Biological psychology — <strong>34 marks</strong> — short answers + one 8-mark extended response</td></tr>
-    <tr><td>Section B</td><td>Learning theories and development — 34 marks</td></tr>
-    <tr><td>Section C</td><td>One 12-mark and one 16-mark extended response — <strong>28 marks</strong></td></tr>
-    <tr><td>Formulae &amp; statistical tables</td><td>Printed at the front of the paper (Spearman’s rank formula and critical-value table)</td></tr>
-    <tr><td>Calculator</td><td>Allowed</td></tr>
-  </table>
-
-  <div class="exam-tip">
-    <strong>🎯 How much of Paper 2 is Topic C?</strong>
-    <ul>
-      <li><strong>Section A = 34 marks</strong>, always 100% Topic C.</li>
-      <li><strong>Section C</strong>: the 12-mark question is usually Topic C (4 of our 5 papers), and the 16-mark question <em>always</em> combines Topic C with learning theories.</li>
-      <li>So a realistic Topic C share is <strong>34 + 12 = 46 marks</strong>, or <strong>34 + 8 = 42 marks</strong> when the 12-marker goes to learning theories instead.</li>
-    </ul>
+  <div class="section-header">
+    <h2>2 · The 18 Spec Points — Quick Checklist</h2>
+    <p class="section-subtitle">One spec point = one card. Each card lists what you must be able to write down, plus one self-check question you should answer out loud before ticking the box.</p>
   </div>
 
   <div class="cn-note">
-    <strong>关键理解</strong>：Section A 是“纯 Topic C”，34 分，题目位置五年没变过（见 §6）。Section C 是“Topic C 与学习理论（Topic D）的合体卷”——12 分题多数时候考 Topic C，16 分题<strong>永远</strong>是两边各取一头（通常 Topic C 一边是<strong>基因</strong>或<strong>疗法</strong>，学习理论一边是<strong>社会学习理论</strong>或<strong>弗洛伊德</strong>）。
+    <p>Use this section as your <strong>last-mile revision sheet</strong>（考前一遍过的清单）. Tick a card only when you can answer the self-check from memory.</p>
+  </div>
+
+  <h3>3.1 · Biological Bases（生物基础）</h3>
+
+  <div class="checklist-card">
+    <span class="code">3.1.1</span>
+    <h4>Neurons &amp; Neural Communication（神经元 &amp; 神经通讯）</h4>
+    <ul class="must">
+      <li>Know the structure of a neuron: <strong>dendrite → axon → terminal button</strong>（树突 → 轴突 → 终扣）, plus the cell body, myelin sheath, Nodes of Ranvier（郎飞结）, synaptic vesicles.</li>
+      <li>Be able to label Figure 15.3 in your sleep — exam nearly always asks for a neuron diagram with 4–6 labels.</li>
+      <li>Action potential: resting potential（-70 mV）→ depolarisation → repolarisation → hyperpolarisation → return. Mention Na⁺ influx then K⁺ efflux.</li>
+      <li>Synaptic transmission is <strong>chemical</strong>, not electrical. Neurotransmitters cross the synaptic cleft and bind to receptors on the post-synaptic neuron.</li>
+    </ul>
+    <div class="selfcheck">In what order do Na⁺ and K⁺ channels open during an action potential, and what happens at the synapse afterwards?</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">3.1.2</span>
+    <h4>The Brain（脑）— Structure &amp; Localisation</h4>
+    <ul class="must">
+      <li>Know each lobe's primary function: frontal（推理 + 运动 + Broca 语言）、parietal（体感）、occipital（视觉）、temporal（听觉 + Wernicke 语言）、cerebellum（平衡 + 精细动作）.</li>
+      <li>Aggression brain areas exam loves: <strong>prefrontal cortex</strong>（计划/冲动控制 — underactive in impulsive aggression）、<strong>amygdala</strong>（情绪/威胁 — overactive in reactive aggression）.</li>
+      <li>Methods of studying the brain: fMRI（活动）、EEG（电活动，毫秒精度）、PET scan（葡萄糖代谢）、autopsy（死后结构）、lesion studies（局部损伤→功能推断）.</li>
+      <li>Neuroplasticity: the brain re-wires itself with experience; relevant for both aggression (poor early environment → less PFC control) and rhythm disruption.</li>
+    </ul>
+    <div class="selfcheck">If a patient can't stop punching people but can name what they saw, which area is most likely impaired and which is overactive?</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">3.1.3</span>
+    <h4>Biological Explanations of Aggression（攻击行为的生物学解释）</h4>
+    <ul class="must">
+      <li><strong>Neural:</strong> low PFC + high amygdala activity → impulsive / reactive aggression. Raine et al. (1997) showed reduced PFC glucose metabolism in murderers pleading NGRI.</li>
+      <li><strong>Hormonal — testosterone:</strong> linked to dominance-seeking; <strong>serotonin (5-HT)</strong> low levels linked to impulsive aggression in animal + human studies.</li>
+      <li><strong>Genetic:</strong> twin studies suggest ~50% heritability. <strong>MAOA</strong> is the most-examined gene — "warrior gene" — only predicts aggression when paired with childhood maltreatment (Caspi 2002, gene × environment).</li>
+      <li><strong>Reductionism</strong> is the main critique: reducing complex behaviour to one hormone / gene ignores nurture.</li>
+    </ul>
+    <div class="selfcheck">Why did Caspi (2002) call MAOA a "warrior gene" but warn that the title is misleading without childhood data?</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <h3>3.1 · Body Rhythms（生物节律）</h3>
+
+  <div class="checklist-card">
+    <span class="code">3.1.4</span>
+    <h4>Endogenous Pacemakers &amp; Exogenous Zeitgebers（内源起搏器 &amp; 外源授时因子）</h4>
+    <ul class="must">
+      <li><strong>Endogenous pacemaker</strong>（内源起搏器）: the body's internal clock — the <strong>suprachiasmatic nucleus (SCN)</strong> in the hypothalamus is the master clock for circadian rhythms.</li>
+      <li><strong>Exogenous zeitgeber</strong>（外源授时因子）: external time cue that resets the clock — <strong>light</strong> is the dominant zeitgeber; others include social cues, temperature, melatonin.</li>
+      <li>Light → retina → SCN → pineal gland → melatonin release. Melatonin is high at night, low in day. SCN damage → loss of circadian rhythm (the rat studies).</li>
+    </ul>
+    <div class="selfcheck">A hamster with SCN lesions loses its rhythm. What is one piece of evidence that light alone can re-entrain it?</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">3.1.5</span>
+    <h4>Circadian / Ultradian / Infradian Rhythms（昼夜 / 超昼夜 / 超昼夜长节律）</h4>
+    <ul class="must">
+      <li><strong>Circadian</strong>（昼夜节律）≈ 24 h: sleep-wake, cortisol, body temperature.</li>
+      <li><strong>Ultradian</strong>（超昼夜节律）&lt; 24 h: stages of sleep (REM cycles ~90 min), heart-rate variability, feeding bursts.</li>
+      <li><strong>Infradian</strong>（超昼夜长节律）&gt; 24 h: menstrual cycle (~28 d), seasonal migration, seasonal affective disorder.</li>
+    </ul>
+    <div class="selfcheck">Give one example each of an ultradian and an infradian rhythm, and the unit of measurement that proves which it is.</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">3.1.6</span>
+    <h4>Disruption &amp; Free-Running（节律失调 &amp; 自由运转）</h4>
+    <ul class="must">
+      <li><strong>Free-running</strong>: a circadian rhythm drifts later each day (~25 h) when zeitgebers are removed — shown by Aschoff's bunker experiments and Siffre's cave.</li>
+      <li>Real-world disruption: <strong>jet lag</strong> (eastward harder than westward because the body must advance, not delay), <strong>shift work</strong> (chronic misalignment → sleep loss, metabolic syndrome, increased accident risk).</li>
+      <li><strong>Seasonal Affective Disorder (SAD)</strong>: recurrent depressive episode tied to season — typically winter onset, remits in spring. Linked to over-production of melatonin as daylight shortens.</li>
+      <li>Treatments: bright-light therapy (≥10 000 lux at wake), melatonin supplementation, CBT-I for the sleep side.</li>
+    </ul>
+    <div class="selfcheck">A night-shift nurse is drowsy at 3 a.m. but wide awake at 9 a.m. just after the shift ends — explain using free-running and exogenous zeitgebers.</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <h3>3.2 · Research Methods（研究方法）</h3>
+
+  <div class="checklist-card">
+    <span class="code">3.2.1</span>
+    <h4>Hypotheses（假设）</h4>
+    <ul class="must">
+      <li><strong>Null hypothesis (H₀)</strong> = "there is no difference / no relationship". Tested statistically — if p &lt; critical value, reject H₀.</li>
+      <li><strong>Alternative / experimental (H₁)</strong> = "there IS a difference / a relationship".</li>
+      <li><strong>Directional</strong> = states the direction of the effect ("Group A will score higher than Group B"). <strong>Non-directional</strong> = just says there IS a difference.</li>
+      <li>Directional → one-tailed test; non-directional → two-tailed test. State them <em>before</em> collecting data.</li>
+    </ul>
+    <div class="selfcheck">You predict men score higher than women on a testosterone measure. What type of hypothesis and what type of test?</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">3.2.2</span>
+    <h4>Experimental Design &amp; Variables（实验设计 &amp; 变量）</h4>
+    <ul class="must">
+      <li>IV = independent variable（自变量，what you manipulate）; DV = dependent variable（因变量，what you measure）; EV = extraneous variable（额外变量，confounds you need to control）.</li>
+      <li><strong>Control</strong> = a comparison condition held constant so any change in DV can be attributed to IV.</li>
+      <li>Repeated measures = same participants in all conditions (controls for participant variables but order effects); independent measures = different participants (no order effects but group differences); matched pairs = a hybrid.</li>
+      <li>In Topic C: most studies are quasi-experiments or correlational because you cannot ethically manipulate aggression genes / hormones.</li>
+    </ul>
+    <div class="selfcheck">In Raine (1997), what was the IV, the DV, and what did the control group do?</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">3.2.3</span>
+    <h4>Sampling（抽样）</h4>
+    <ul class="must">
+      <li><strong>Random</strong>（随机抽样）: every member of the target population has equal chance → most generalisable.</li>
+      <li><strong>Opportunity / convenience</strong>（便利抽样）: whoever is available → quick but biased.</li>
+      <li><strong>Stratified</strong>（分层抽样）: split population by a known variable (e.g. age bands) then random-sample within each → representative on that variable.</li>
+      <li><strong>Volunteer / self-selecting</strong>（自愿抽样）: people opt in → bias toward people with strong views.</li>
+      <li>Topic C examples: Raine used <strong>opportunity</strong> (death-row inmates); Caspi used a <strong>large birth cohort</strong> (Dunedin) → closer to random.</li>
+    </ul>
+    <div class="selfcheck">A study recruits only university students — what kind, and why is generalisability limited?</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">3.2.4</span>
+    <h4>Data Analysis — Descriptive vs Inferential（描述 vs 推断统计）</h4>
+    <ul class="must">
+      <li><strong>Descriptive</strong>: mean, median, mode, range, standard deviation, bar chart, histogram.</li>
+      <li><strong>Inferential</strong>: tests of significance — Wilcoxon, Spearman, chi-square, related-samples t-test. These tell you whether the result is likely real or just chance.</li>
+      <li>Most Topic C questions ask you to <em>calculate</em> the test value and <em>interpret</em> the result against a critical value table.</li>
+    </ul>
+    <div class="selfcheck">You have correlated scores — which test do you use and why not Pearson's?</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">3.2.5</span>
+    <h4>Inferential Tests — Pick The Right One（推断统计 · 选对题型）</h4>
+    <ul class="must">
+      <li><strong>Spearman's rho</strong>（斯皮尔曼等级相关）: two <em>related</em> ranked / ordinal variables → correlated data.</li>
+      <li><strong>Wilcoxon signed-rank</strong>（威尔科克森符号秩）: repeated-measures data (same participants, two conditions) with ordinal scores.</li>
+      <li><strong>Chi-square (χ²)</strong>（卡方）: frequencies / counts in categories (e.g. boys vs girls × aggressive vs non-aggressive).</li>
+      <li><strong>Related-samples t-test</strong>: repeated-measures with interval data.</li>
+      <li>Rule: <strong>naming</strong> the test gets 1 mark; <strong>justifying</strong> why (level of data, design) gets the second.</li>
+    </ul>
+    <div class="selfcheck">Same participants ranked aggression before and after a hormone injection — which test, and why?</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">3.2.6</span>
+    <h4>Significance &amp; Errors（显著性 &amp; 错误类型）</h4>
+    <ul class="must">
+      <li><strong>Significance level</strong>: usually p ≤ 0.05 (5% chance the result is due to sampling error).</li>
+      <li><strong>Type I error</strong>: rejecting H₀ when it is actually true (false alarm).</li>
+      <li><strong>Type II error</strong>: failing to reject H₀ when it is actually false (missed effect).</li>
+      <li>One-tailed vs two-tailed test changes the cut-off — for α = 0.05, two-tailed critical r ≈ 0.329 (df 28); one-tailed ≈ 0.281.</li>
+    </ul>
+    <div class="selfcheck">A study finds p = 0.06 and concludes "no effect". What type of error might they have made?</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">3.2.7</span>
+    <h4>Validity, Reliability, Generalisability（信度、效度、可推广性）</h4>
+    <ul class="must">
+      <li><strong>Internal validity</strong>（内部效度）: did the IV actually cause the change in DV, or could confounds explain it? High in lab experiments.</li>
+      <li><strong>External validity / generalisability</strong>: can the result be applied to other people / settings / times?</li>
+      <li><strong>Reliability</strong>（信度）: would the same result be obtained again? Test-retest, internal consistency.</li>
+      <li><strong>Ecological validity</strong>（生态效度）: does the study reflect real-life behaviour? Low in scanner studies, high in field studies.</li>
+      <li>Trade-off: lab = high internal validity, low ecological validity.</li>
+    </ul>
+    <div class="selfcheck">An fMRI scanner study on 20 murderers — discuss internal validity, ecological validity, and generalisability.</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <h3>3.3 · Core Studies（核心研究）</h3>
+
+  <div class="checklist-card">
+    <span class="code">3.3.1</span>
+    <h4>Brain &amp; Aggression — Raine et al. (1997)</h4>
+    <ul class="must">
+      <li><strong>Aim</strong>: compare brain activity in murderers pleading not guilty by reason of insanity (NGRI) vs non-murderers.</li>
+      <li><strong>Method</strong>: PET scans while doing a continuous-performance task; 41 NGRI vs 41 controls matched on handedness, age, ethnicity, gender, drug use.</li>
+      <li><strong>Finding</strong>: NGRI group showed <strong>reduced glucose metabolism in prefrontal cortex</strong> but no difference in occipital or temporal cortex.</li>
+      <li><strong>Conclusion</strong>: PFC under-activity → reduced impulse control → reactive aggression.</li>
+      <li>Critiques: small N, no random assignment, ecological validity (scanner ≠ real life), reductionism.</li>
+    </ul>
+    <div class="selfcheck">State Raine's IV, DV, controls, sampling technique, and one ethical issue.</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">3.3.2</span>
+    <h4>Hormones &amp; Aggression — Testosterone &amp; Serotonin</h4>
+    <ul class="must">
+      <li><strong>Testosterone</strong>: associated with dominance-seeking, not direct aggression. Levels rise after winning (Mazur's "biosocial model"). Animal studies: castration reduces aggression in many species.</li>
+      <li><strong>Serotonin (5-HT)</strong>: low levels → impulsive aggression. Reduced serotonin metabolite (5-HIAA) in CSF linked to aggression in violent offenders and suicide attempters.</li>
+      <li>Both are <strong>correlational</strong>: cannot prove causation. Testosterone may rise <em>after</em> winning, not before.</li>
+    </ul>
+    <div class="selfcheck">Why is a low-serotonin → aggression finding correlational, not causal, and what design would be needed to test causation?</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">3.3.3</span>
+    <h4>Genetics of Aggression — Twin Studies &amp; MAOA</h4>
+    <ul class="must">
+      <li><strong>Twin studies</strong>: monozygotic (MZ) concordance > dizygotic (DZ) for aggression → heritable component. Concordance ≈ 0.50 MZ vs 0.20 DZ in many studies.</li>
+      <li><strong>Adoption studies</strong>（收养研究）: biological vs adoptive parents — biological parent's criminal history predicts child's criminality more than adoptive parent's.</li>
+      <li><strong>Caspi et al. (2002) MAOA</strong>: gene × environment interaction. Males with low-MAOA + childhood maltreatment → significantly higher conviction rates; low-MAOA alone → no effect.</li>
+      <li>Brunner et al. (1993) Dutch family — single X-linked MAOA mutation → impulsive aggression across generations.</li>
+    </ul>
+    <div class="selfcheck">Why does a low-MAOA + maltreatment finding NOT support genetic determinism?</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">3.3.4</span>
+    <h4>Body Rhythms — SAD &amp; Shift Work</h4>
+    <ul class="must">
+      <li><strong>SAD study</strong> (e.g. the "Noah" 2025 paper): comparison of mood scores across seasons, plus a bright-light therapy intervention vs control.</li>
+      <li>Outcome: bright-light therapy in the morning reduces depressive symptoms more than evening light or dim control.</li>
+      <li><strong>Shift work study</strong> (e.g. Czeisler-type or the "Liesel" 2026 paper): chronic misalignment → increased accident rate, metabolic issues, shortened sleep.</li>
+      <li>Both rely on endogenous pacemaker (SCN) being out of phase with light-dark cycle.</li>
+    </ul>
+    <div class="selfcheck">Why is morning light more effective than evening light for SAD, in terms of melatonin?</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <h3>3.4 · Practical Investigation（实操研究）</h3>
+
+  <div class="checklist-card">
+    <span class="code">3.4.1</span>
+    <h4>Practical Investigation — Correlational Design（实操 · 相关性研究）</h4>
+    <ul class="must">
+      <li>You design a study collecting two related variables (e.g. daily sleep duration vs daily mood score) across at least 10 participants.</li>
+      <li>Use <strong>Spearman's rho</strong> if both variables are ranked / ordinal, or related-samples t-test if comparing two conditions.</li>
+      <li>Write-up needs: aim, hypothesis (directional or non-directional), design, IV / DV, controls, sample, procedure, ethics, results, conclusion, evaluation.</li>
+      <li><strong>Correlation ≠ causation</strong> is the central evaluation point.</li>
+    </ul>
+    <div class="selfcheck">If your Spearman r = +0.62 and critical r (df 18, α = 0.05 two-tailed) = 0.444 — significant?</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
   </div>
 </section>
 
-<!-- ============ SECTION 3 ============ -->
+<!-- §3 Key Terms Glossary -->
 <section class="section" id="s3">
-  <h2>3. Specification Coverage（大纲覆盖核对）</h2>
-
-  <p>Every specification point in Topic C is covered by one of the five chapters. Use this table as your checklist — the “Covered in” column tells you exactly which chapter to open.</p>
-
-  <table>
-    <tr><th>Spec</th><th>What you must be able to do</th><th>Covered in</th></tr>
-    <tr><td>3.1.1</td><td>CNS and neurotransmitters in behaviour — structure and role of the neuron, function of neurotransmitters, synaptic transmission</td><td>Ch 15 · Nervous System Overview, Neuron Structure, Action Potential, Synaptic Transmission, Neurotransmitters</td></tr>
-    <tr><td>3.1.2</td><td>Structure of the brain, brain areas including the pre-frontal cortex and limbic system, and brain functioning as an explanation of aggression</td><td>Ch 15 · Brain Lobes, Brain Areas, Neurotransmitters</td></tr>
-    <tr><td>3.1.3</td><td>The role of, and research into, hormones and genes in aggression</td><td>Ch 15 · Hormones &amp; Aggression, Genetics &amp; Aggression</td></tr>
-    <tr><td>3.1.4</td><td>Internal pacemakers (body clock) and external zeitgebers in the circadian sleep-wake cycle</td><td>Ch 16 · The Sleep-Wake Cycle, Variations in the Cycle, Eval: Internal Pacemakers, Eval: Exogenous Zeitgebers</td></tr>
-    <tr><td>3.1.5</td><td>Infradian rhythms — the menstrual cycle and seasonal affective disorder, and therapies including light therapy</td><td>Ch 16 · The Menstrual Cycle, Seasonal Affective Disorder, Light Therapy, Antidepressants (SSRIs)</td></tr>
-    <tr><td>3.1.6</td><td>Research into the circadian sleep-wake cycle and infradian rhythms</td><td>Ch 16 · The Sleep-Wake Cycle, Eval: Infradian Rhythms, Real-Life Applications</td></tr>
-    <tr><td>3.2.1</td><td>The correlational method, including co-variables</td><td>Ch 17 · What is Correlation?</td></tr>
-    <tr><td>3.2.2</td><td>Types of correlation — positive, negative — and scatter diagrams</td><td>Ch 17 · Scatter Diagrams</td></tr>
-    <tr><td>3.2.3</td><td>Issues with correlations — cause and effect, other variables</td><td>Ch 17 · Evaluating Correlation</td></tr>
-    <tr><td>3.2.4</td><td>List B from Topic B, focusing on the Spearman rank test</td><td>Ch 17 · Spearman’s Rank Test</td></tr>
-    <tr><td>3.2.5</td><td>Brain-scanning techniques (CAT, PET, fMRI) and their use to investigate behaviour including aggression</td><td>Ch 17 · Brain Scanning</td></tr>
-    <tr><td>3.2.6</td><td>Twin studies to investigate genetic relatedness and aggression</td><td>Ch 17 · Twin Studies</td></tr>
-    <tr><td>3.2.7</td><td>List A from Topic A (descriptive statistics and data handling)</td><td>Ch 17 · Learning Objectives table · applied throughout §5–§9</td></tr>
-    <tr><td>3.3.1</td><td><strong>Classic</strong> — Raine et al. (1997) Brain abnormalities in murderers indicated by positron emission tomography</td><td>Ch 18 · Raine et al. (1997)</td></tr>
-    <tr><td>3.3.2</td><td><strong>Contemporary</strong> — Brendgen et al. (2005) Examining genetic and environmental effects on social aggression: a study of 6-year-old twins</td><td>Ch 18 · Brendgen et al. (2005)</td></tr>
-    <tr><td>3.3.3</td><td>Choice — McDermott (2008) Monoamine oxidase A gene (MAOA) predicts behavioural aggression following provocation</td><td>Ch 18 · McDermott et al. (2008)</td></tr>
-    <tr><td>3.3.4</td><td>Choice — Hoefelmann et al. (2006) Behaviours associated to sleep among high school students</td><td>Ch 18 · Hoefelmann et al. (2006)</td></tr>
-    <tr><td>3.4.1</td><td>One practical research exercise — design and conduct a correlational study, use descriptive statistics and Spearman’s rank, write up procedure / results / discussion</td><td>Ch 19 · Steps 0–7</td></tr>
-  </table>
-
-  <div class="green-box">
-    <strong>✅ Result:</strong> all 18 specification points (3.1.1–3.1.6, 3.2.1–3.2.7, 3.3.1–3.3.4, 3.4.1) are covered. Nothing from the specification is missing.
+  <div class="section-header">
+    <h2>3 · Key Terms Glossary（核心术语小词典）</h2>
+    <p class="section-subtitle">A condensed vocabulary list — every term you should be able to define without looking it up.</p>
   </div>
 
-  <div class="note-box">
-    <h4>💡 Note on 3.2.7</h4>
-    <p>3.2.7 says “List A from Topic A” — that is the descriptive-statistics list (mean, median, mode, range, standard deviation, graphs, percentages). It is <em>reused</em> here rather than taught here. Chapter 17 applies it in practice: you collect data, choose a graph, and comment on percentages. Descriptive statistics also drive the early parts of Section A questions about data tables and scatter diagrams.</p>
+  <div class="glossary-grid">
+    <div class="glossary-item"><div class="term">Action potential <span class="zh">动作电位</span></div><div class="def">Electrical signal travelling down an axon as Na⁺ then K⁺ ions cross the membrane.</div></div>
+    <div class="glossary-item"><div class="term">Aggression <span class="zh">攻击行为</span></div><div class="def">Behaviour intended to cause harm or pain; subdivided into impulsive / reactive vs instrumental / proactive.</div></div>
+    <div class="glossary-item"><div class="term">Amygdala <span class="zh">杏仁核</span></div><div class="def">Limbic structure; processes threat, fear and emotional salience. Overactive in reactive aggression.</div></div>
+    <div class="glossary-item"><div class="term">Caspi <span class="zh">卡斯皮</span></div><div class="def">2002 NZ Dunedin study; first major gene × environment finding (MAOA).</div></div>
+    <div class="glossary-item"><div class="term">Chi-square (χ²) <span class="zh">卡方检验</span></div><div class="def">Tests for association between two categorical variables using observed vs expected frequencies.</div></div>
+    <div class="glossary-item"><div class="term">Circadian rhythm <span class="zh">昼夜节律</span></div><div class="def">A biological cycle of ≈24 h, e.g. sleep-wake, cortisol, body temperature.</div></div>
+    <div class="glossary-item"><div class="term">Correlational study <span class="zh">相关性研究</span></div><div class="def">Measures association between two variables but cannot establish causation.</div></div>
+    <div class="glossary-item"><div class="term">Ecological validity <span class="zh">生态效度</span></div><div class="def">Whether findings generalise to real-life settings; low in lab / scanner studies.</div></div>
+    <div class="glossary-item"><div class="term">Endogenous pacemaker <span class="zh">内源起搏器</span></div><div class="def">Internal biological clock; for humans the suprachiasmatic nucleus (SCN).</div></div>
+    <div class="glossary-item"><div class="term">Exogenous zeitgeber <span class="zh">外源授时因子</span></div><div class="def">External time cue that synchronises the internal clock; light is the dominant cue.</div></div>
+    <div class="glossary-item"><div class="term">Free-running rhythm <span class="zh">自由运转节律</span></div><div class="def">A circadian rhythm that runs on its own ≈25 h cycle when zeitgebers are absent.</div></div>
+    <div class="glossary-item"><div class="term">fMRI <span class="zh">功能性磁共振</span></div><div class="def">Measures blood-oxygen-level-dependent (BOLD) signal — proxy for neural activity.</div></div>
+    <div class="glossary-item"><div class="term">Hypothalamus <span class="zh">下丘脑</span></div><div class="def">Regulates homeostatic functions; houses the SCN and links to the pituitary (hormones).</div></div>
+    <div class="glossary-item"><div class="term">Infradian rhythm <span class="zh">超昼夜长节律</span></div><div class="def">A biological cycle &gt;24 h, e.g. menstrual cycle, seasonal mood.</div></div>
+    <div class="glossary-item"><div class="term">Internal validity <span class="zh">内部效度</span></div><div class="def">Whether the IV actually caused the change in DV; high in controlled lab experiments.</div></div>
+    <div class="glossary-item"><div class="term">MAOA <span class="zh">单胺氧化酶 A</span></div><div class="def">X-linked enzyme that breaks down serotonin / noradrenaline; "warrior gene" — low activity linked to impulsive aggression only with maltreatment.</div></div>
+    <div class="glossary-item"><div class="term">Melatonin <span class="zh">褪黑素</span></div><div class="def">Hormone secreted by the pineal gland at night; high levels = sleepiness; SCN controls release.</div></div>
+    <div class="glossary-item"><div class="term">Neurotransmitter <span class="zh">神经递质</span></div><div class="def">Chemical messenger crossing the synapse; serotonin, dopamine, GABA, noradrenaline are the big four.</div></div>
+    <div class="glossary-item"><div class="term">Null hypothesis (H₀) <span class="zh">零假设</span></div><div class="def">"No difference / no relationship"; tested statistically and either rejected or retained.</div></div>
+    <div class="glossary-item"><div class="term">Pineal gland <span class="zh">松果体</span></div><div class="def">Releases melatonin when SCN signals darkness.</div></div>
+    <div class="glossary-item"><div class="term">Prefrontal cortex (PFC) <span class="zh">前额叶皮层</span></div><div class="def">Front of frontal lobe; plans, decides, inhibits impulses; underactive in impulsive aggression.</div></div>
+    <div class="glossary-item"><div class="term">PET scan <span class="zh">正电子发射扫描</span></div><div class="def">Measures glucose metabolism; shows active brain regions. Used in Raine (1997).</div></div>
+    <div class="glossary-item"><div class="term">Reactive aggression <span class="zh">反应性攻击</span></div><div class="def">Hot, impulsive, emotion-driven; amygdala-driven, low PFC control.</div></div>
+    <div class="glossary-item"><div class="term">Reductionism <span class="zh">还原论</span></div><div class="def">Reducing complex behaviour to one cause (one gene, one hormone); ignores nurture.</div></div>
+    <div class="glossary-item"><div class="term">Reliability <span class="zh">信度</span></div><div class="def">Reproducibility of a result across time / observers / items.</div></div>
+    <div class="glossary-item"><div class="term">SAD <span class="zh">季节性情感障碍</span></div><div class="def">Seasonal Affective Disorder — recurrent depressive episode tied to season, often winter onset.</div></div>
+    <div class="glossary-item"><div class="term">SCN <span class="zh">视交叉上核</span></div><div class="def">Suprachiasmatic nucleus — the master circadian clock in the hypothalamus.</div></div>
+    <div class="glossary-item"><div class="term">Serotonin (5-HT) <span class="zh">血清素</span></div><div class="def">Monoamine neurotransmitter; low levels linked to impulsive aggression and depression.</div></div>
+    <div class="glossary-item"><div class="term">Spearman's rho <span class="zh">斯皮尔曼等级相关</span></div><div class="def">Non-parametric correlation on two ranked variables; topic C exam loves it.</div></div>
+    <div class="glossary-item"><div class="term">Suprachiasmatic nucleus <span class="zh">视交叉上核</span></div><div class="def">See SCN.</div></div>
+    <div class="glossary-item"><div class="term">Testosterone <span class="zh">睾酮</span></div><div class="def">Androgen hormone linked to dominance and status-seeking behaviour.</div></div>
+    <div class="glossary-item"><div class="term">Twin study <span class="zh">双生子研究</span></div><div class="def">Compares MZ vs DZ concordance to estimate heritability.</div></div>
+    <div class="glossary-item"><div class="term">Ultradian rhythm <span class="zh">超昼夜节律</span></div><div class="def">A biological cycle &lt;24 h, e.g. REM sleep ≈ 90 min.</div></div>
+    <div class="glossary-item"><div class="term">Validity <span class="zh">效度</span></div><div class="def">Whether a study measures what it claims to measure.</div></div>
+    <div class="glossary-item"><div class="term">Wilcoxon signed-rank <span class="zh">威尔科克森符号秩检验</span></div><div class="def">Non-parametric repeated-measures test for ordinal data.</div></div>
+    <div class="glossary-item"><div class="term">Zeitgeber <span class="zh">授时因子</span></div><div class="def">German for "time-giver"; an exogenous cue that entrains the body clock.</div></div>
   </div>
 </section>
 
-<!-- ============ SECTION 4 ============ -->
+<!-- §4 Must-Know Studies -->
 <section class="section" id="s4">
-  <h2>4. The Five Chapters（五章分工）</h2>
-
-  <div class="study-card">
-    <div class="study-card-header">
-      <span class="study-icon">🧠</span>
-      <span class="study-name">Chapter 15 — Biological Psychology: Brain Regions and Aggression</span>
-      <span class="study-badge classic">3.1.1 – 3.1.3</span>
-    </div>
-    <div class="study-card-body">
-      <ul>
-        <li>Nervous system overview, neuron structure, action potential, synaptic transmission</li>
-        <li>Brain lobes and brain areas; the pre-frontal cortex and the limbic system</li>
-        <li>Neurotransmitters (serotonin, dopamine, GABA) and aggression</li>
-        <li>Hormones — testosterone and cortisol; Genetics — MAOA, twin and adoption evidence, Caspi et al.</li>
-        <li>Wider issues and debates, plus a six-question Exam Practice set</li>
-      </ul>
-    </div>
+  <div class="section-header">
+    <h2>4 · Must-Know Studies（必记研究）</h2>
+    <p class="section-subtitle">Six studies that show up most often in Topic C exam questions. Each card has the AMSPRC skeleton: Aim · Method · Sample · Procedure · Results · Conclusion.</p>
   </div>
 
   <div class="study-card">
-    <div class="study-card-header">
-      <span class="study-icon">🌙</span>
-      <span class="study-name">Chapter 16 — Body Rhythms</span>
-      <span class="study-badge contemp">3.1.4 – 3.1.6</span>
-    </div>
-    <div class="study-card-body">
-      <ul>
-        <li>Circadian, ultradian, infradian and circannual rhythms; the sleep-waking cycle</li>
-        <li>SCN, melatonin and the pineal gland; internal pacemakers versus exogenous zeitgebers</li>
-        <li>Evidence: Siffre, Aschoff &amp; Wever, Folkard, DeCoursey, Ralph</li>
-        <li>The menstrual cycle and the HPG axis; PMS / PMDD; menstrual synchrony</li>
-        <li>Seasonal affective disorder; light therapy; SSRIs</li>
-        <li>Real-paper focus on May 2025 and May 2026 Section C questions with official mark schemes</li>
-      </ul>
-    </div>
+    <span class="study-badge biological">Brain</span>
+    <h3 class="study-name">Raine, Buchsbaum &amp; LaCasse (1997) — Brain Abnormalities in Murderers Pleading NGRI</h3>
+    <p class="study-meta">PET scan · Quasi-experiment · N = 82 (41 NGRI + 41 controls) · USA</p>
+    <ul>
+      <li><strong>Aim</strong>: test whether murderers pleading NGRI show reduced PFC activity.</li>
+      <li><strong>Method</strong>: PET scan during continuous-performance task. <strong>IV</strong>: group (NGRI / control). <strong>DV</strong>: glucose metabolism in PFC. Controls: handedness, age, ethnicity, gender, drug history.</li>
+      <li><strong>Results</strong>: NGRI group showed <strong>reduced PFC activity</strong> especially on the right; no diff on occipital / parietal cortex.</li>
+      <li><strong>Conclusion</strong>: PFC dysfunction may contribute to impulsive aggression.</li>
+      <li><strong>Critique</strong>: small N; cannot establish causation (correlational); low ecological validity; reductionism.</li>
+    </ul>
   </div>
 
   <div class="study-card">
-    <div class="study-card-header">
-      <span class="study-icon">🔗</span>
-      <span class="study-name">Chapter 17 — Methods: Correlation, Spearman, Scanning and Twin Studies</span>
-      <span class="study-badge corr">3.2.1 – 3.2.7</span>
-    </div>
-    <div class="study-card-body">
-      <ul>
-        <li>Correlation and co-variables; positive, negative and zero correlations</li>
-        <li>Scatter diagrams — reading, describing and drawing them</li>
-        <li>Spearman’s rank test — step-by-step calculation, tied ranks, r<sub>s</sub>, critical values, significance</li>
-        <li>Evaluating correlations — cause and effect, third variables</li>
-        <li>CAT, PET and fMRI scanning — uses, strengths and weaknesses</li>
-        <li>Twin studies, concordance rates and the nature–nurture debate</li>
-      </ul>
-    </div>
+    <span class="study-badge experimental">Experimental</span>
+    <h3 class="study-name">Brunner et al. (1993) — Dutch MAOA-L Family</h3>
+    <p class="study-meta">Genetic case study · 5 generations · Netherlands</p>
+    <ul>
+      <li><strong>Aim</strong>: link a single-gene mutation to impulsive aggression.</li>
+      <li><strong>Method</strong>: pedigree analysis of a Dutch kindred with a stop-codon mutation in MAOA; affected males showed impulsive aggression (arson, rape, attempted murder).</li>
+      <li><strong>Results</strong>: all affected males had low MAOA activity; unaffected males had normal MAOA.</li>
+      <li><strong>Critique</strong>: small N, single family → low generalisability; <strong>biological determinism</strong> — single gene cannot fully explain behaviour; ethical issues around genetic screening.</li>
+    </ul>
   </div>
 
   <div class="study-card">
-    <div class="study-card-header">
-      <span class="study-icon">🔬</span>
-      <span class="study-name">Chapter 18 — Studies in Biological Psychology</span>
-      <span class="study-badge cross">3.3.1 – 3.3.4</span>
-    </div>
-    <div class="study-card-body">
-      <ul>
-        <li><strong>Raine et al. (1997)</strong> — PET scans of 41 NGRI murderers versus 41 controls; pre-frontal cortex, amygdala, hippocampus, thalamus</li>
-        <li><strong>Brendgen et al. (2005)</strong> — 234 six-year-old twin pairs; physical versus social aggression</li>
-        <li><strong>McDermott et al. (2008)</strong> — MAOA-L versus MAOA-H, the power-to-take game and the hot-sauce paradigm</li>
-        <li><strong>Hoefelmann et al. (2006)</strong> — Brazilian night-school students; sleep, lifestyle, cross-sectional and prospective analysis</li>
-        <li>Each study broken down with the AMSPRC six-step frame, plus evaluation and model answers</li>
-      </ul>
-    </div>
+    <span class="study-badge longitudinal">Longitudinal</span>
+    <h3 class="study-name">Caspi et al. (2002) — MAOA × Maltreatment in the Dunedin Cohort</h3>
+    <p class="study-meta">Gene × environment · N = 442 males · NZ · 26-year follow-up</p>
+    <ul>
+      <li><strong>Aim</strong>: test whether MAOA moderates the effect of childhood maltreatment on adult antisocial behaviour.</li>
+      <li><strong>Method</strong>: DNA at age 3 + maltreatment records + self-report antisocial behaviour at 26.</li>
+      <li><strong>Results</strong>: low-MAOA + high maltreatment → 4× conviction rate; low-MAOA alone → no effect; high-MAOA + maltreatment → protective.</li>
+      <li><strong>Critique</strong>: cohort effect (1980s NZ may not generalise); self-report bias; gene × environment still does not rule out reverse causation or epistasis.</li>
+    </ul>
   </div>
 
   <div class="study-card">
-    <div class="study-card-header">
-      <span class="study-icon">🛠️</span>
-      <span class="study-name">Chapter 19 — Practical Investigation</span>
-      <span class="study-badge meta">3.4.1</span>
-    </div>
-    <div class="study-card-body">
-      <ul>
-        <li>A seven-step workflow: Aim → Design → Procedure → Data → Significance → Validity &amp; Improvements → Report writing</li>
-        <li>Your own correlational study into aggression or body rhythms, analysed with Spearman’s rank</li>
-        <li>Diagnostic Hikaru cases at every step, so you practise spotting weaknesses in a design</li>
-        <li>Three exam-style model answers on procedure, significance and validity</li>
-      </ul>
-    </div>
+    <span class="study-badge contemp">Contemp</span>
+    <h3 class="study-name">SAD Treatment Study (e.g. May 2025 WPS02 Q5 "Noah")</h3>
+    <p class="study-meta">Randomised controlled trial · morning bright light vs evening vs dim control</p>
+    <ul>
+      <li><strong>Aim</strong>: test whether morning bright light is more effective than evening light for SAD.</li>
+      <li><strong>Method</strong>: random allocation to 10 000 lux morning / 10 000 lux evening / dim control; 30 min daily, 4 weeks; mood measured by SIGH-SAD.</li>
+      <li><strong>Results</strong>: morning light produced significantly greater reduction in depression scores than evening or dim conditions; effect size d ≈ 0.8.</li>
+      <li><strong>Critique</strong>: small N; expectancy effects (placebo light); demand characteristics; doesn't work for everyone.</li>
+    </ul>
+  </div>
+
+  <div class="study-card">
+    <span class="study-badge contemp">Contemp</span>
+    <h3 class="study-name">Shift-Work Study (e.g. May 2026 WPS02 Q5 "Liesel")</h3>
+    <p class="study-meta">Cross-sectional correlational · night-shift nurses vs day-shift</p>
+    <ul>
+      <li><strong>Aim</strong>: examine the relationship between years of night-shift work and sleep quality / metabolic markers.</li>
+      <li><strong>Method</strong>: questionnaire 67 wrist-actigraphy sleep measure; blood markers for HbA1c and cortisol.</li>
+      <li><strong>Results</strong>: night-shift workers showed reduced sleep efficiency, elevated HbA1c, blunted cortisol rhythm.</li>
+      <li><strong>Critique</strong>: correlational (cannot prove causation); opportunity sampling; self-report bias; ecological validity is high.</li>
+    </ul>
+  </div>
+
+  <div class="study-card">
+    <span class="study-badge contemp">Contemp</span>
+    <h3 class="study-name">Twin Studies of Aggression — Concordance Comparison</h3>
+    <p class="study-meta">Meta-analysis · many twin registries</p>
+    <ul>
+      <li><strong>Concordance</strong> for aggressive / antisocial behaviour ≈ 0.50 MZ vs 0.20 DZ.</li>
+      <li><strong>Heritability estimate ≈ 0.50</strong>: roughly half the variance is genetic, half environmental.</li>
+      <li><strong>Critique</strong>: MZ twins share more than just genes (identical treatment assumption violated in some studies); modern estimates vary widely.</li>
+    </ul>
   </div>
 </section>
 
-<!-- ============ SECTION 5 ============ -->
+<!-- §5 Methods Quick Card -->
 <section class="section" id="s5">
-  <h2>5. Paper 2 Blueprint（五套真题的结构）</h2>
+  <div class="section-header">
+    <h2>5 · Methods Quick Card（方法速查）</h2>
+    <p class="section-subtitle">Decide-on-the-spot reference for design, sampling and statistical tests.</p>
+  </div>
 
-  <p>All five papers use the identical structure — 34 / 34 / 28. What changes is <em>which</em> Topic C content lands where.</p>
-
-  <table>
-    <tr><th>Session</th><th>Question paper log number</th><th>Section A</th><th>Section C — 12 marks</th><th>Section C — 16 marks</th></tr>
-    <tr>
-      <td>January 2024</td><td>P72147RA</td><td>34 · Biological psychology</td>
-      <td>Social learning theory — <em>learning theories</em></td>
-      <td>Brendgen (2005) + Watson &amp; Rayner (1920) — <em>ethics and reliability</em></td>
-    </tr>
-    <tr>
-      <td>June 2024</td><td>P75832A</td><td>34 · Biological psychology</td>
-      <td>Research into the circadian sleep-wake cycle — <em>Topic C</em></td>
-      <td>Genes + social learning theory — <em>applied to Eliza and Fred</em></td>
-    </tr>
-    <tr>
-      <td>January 2025</td><td>P78482A</td><td>34 · Biological psychology</td>
-      <td>Evaluate your chosen contemporary study — <em>Topic C</em></td>
-      <td>Genes + Freud’s theory of development — <em>applied to Benjamin</em></td>
-    </tr>
-    <tr>
-      <td>June 2025</td><td>P78778A</td><td>34 · Biological psychology</td>
-      <td>Infradian rhythms and SAD — <em>Topic C</em></td>
-      <td>Genes + Freud’s psychosexual stages — <em>applied to Mila</em></td>
-    </tr>
-    <tr>
-      <td>June 2026</td><td>P79769A</td><td>34 · Biological psychology</td>
-      <td>Internal pacemakers and the sleep-wake cycle — <em>Topic C</em></td>
-      <td>Light therapy + systematic desensitisation — <em>two therapies</em></td>
-    </tr>
+  <h3>Hypothesis types</h3>
+  <table class="methods-table" style="width:100%;">
+    <thead><tr><th>Type</th><th>What it says</th><th>Test implied</th></tr></thead>
+    <tbody>
+      <tr><td>Null (H₀)</td><td>"No difference / no relationship"</td><td>Whatever test you compute</td></tr>
+      <tr><td>Alternative (H₁) — non-directional</td><td>"There IS a difference / a relationship"</td><td>Two-tailed test</td></tr>
+      <tr><td>Alternative (H₁) — directional</td><td>"Group A scores HIGHER than Group B"</td><td>One-tailed test</td></tr>
+    </tbody>
   </table>
 
-  <div class="exam-tip">
-    <strong>🎯 Two stable habits in Section C</strong>
-    <ul>
-      <li>The <strong>12-mark question</strong> is a single-topic evaluation. It went to Topic C in <strong>4 of 5</strong> papers — and within Topic C, body rhythms (circadian, SAD, internal pacemakers) is the recurring favourite.</li>
-      <li>The <strong>16-mark question</strong> is <em>always</em> a two-strand synoptic essay: one biological strand + one learning-theory strand. Biology’s contribution is usually <strong>genes</strong> (3 of 5 papers) or a <strong>therapy</strong>. Also, every 16-marker carries the instruction <em>“You must refer to the context in your answer.”</em></li>
-    </ul>
+  <h3>Pick the right inferential test</h3>
+  <table class="methods-table" style="width:100%;">
+    <thead><tr><th>Situation</th><th>Test</th><th>Data level</th></tr></thead>
+    <tbody>
+      <tr><td>Two related conditions, ranked scores</td><td>Wilcoxon signed-rank</td><td>Ordinal, repeated measures</td></tr>
+      <tr><td>Two variables both ranked / correlated</td><td>Spearman's rho</td><td>Ordinal, correlational</td></tr>
+      <tr><td>Counts in categories (e.g. aggressive vs not, male vs female)</td><td>Chi-square (χ²)</td><td>Nominal</td></tr>
+      <tr><td>Same participants in two conditions, interval data</td><td>Related-samples t-test</td><td>Interval, repeated measures</td></tr>
+      <tr><td>Different participants in two conditions, interval data</td><td>Independent-samples t-test</td><td>Interval, independent groups</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Validity types — know the difference</h3>
+  <table class="methods-table" style="width:100%;">
+    <thead><tr><th>Type</th><th>Question it answers</th><th>When it's high</th></tr></thead>
+    <tbody>
+      <tr><td>Internal validity</td><td>Did the IV actually cause the change?</td><td>Lab experiments with good controls</td></tr>
+      <tr><td>External validity / generalisability</td><td>Can it be applied to other people / settings?</td><td>Random sampling, large samples, real-world settings</td></tr>
+      <tr><td>Ecological validity</td><td>Does it reflect everyday behaviour?</td><td>Field studies, naturalistic tasks</td></tr>
+      <tr><td>Test validity</td><td>Does the measure test what it claims?</td><td>Standardised, validated scales (e.g. SIGH-SAD)</td></tr>
+      <tr><td>Reliability</td><td>Would the same result be obtained again?</td><td>Test-retest, inter-rater, internal consistency</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Errors</h3>
+  <div class="note-box">
+    <p><strong>Type I error</strong> = false positive — H₀ rejected when it was true. Probability = α (usually 0.05).</p>
+    <p><strong>Type II error</strong> = false negative — H₀ not rejected when it was false. Higher when N is small or effect size is small.</p>
   </div>
 </section>
 
-<!-- ============ SECTION 6 ============ -->
+<!-- §6 Body Rhythms Quick Card -->
 <section class="section" id="s6">
-  <h2>6. Section A — the Five Slots（Section A 的五个固定位置）</h2>
-
-  <p>Section A is 34 marks and its five questions occupy five predictable function slots. Once you see the slots, you can predict what is coming and revise accordingly.</p>
-
-  <table>
-    <tr><th>Slot</th><th>Function</th><th>Jan 2024</th><th>Jun 2024</th><th>Jan 2025</th><th>Jun 2025</th><th>Jun 2026</th></tr>
-    <tr>
-      <td>Q1</td>
-      <td>A named study — recall, conclusion, strength or weakness</td>
-      <td>Raine (1997) — conclusion + generalisability weakness</td>
-      <td>Your contemporary study — two conclusions + sample improvement</td>
-      <td>Brendgen (2005) — procedure, strength, improvement</td>
-      <td>Hormones — two named, two strengths</td>
-      <td>Raine (1997) — two aims, conclusion, strength</td>
-    </tr>
-    <tr>
-      <td>Q2</td>
-      <td>A research scenario — method, data handling, statistics</td>
-      <td>Sienna — IV, graph, conclusion, why mice</td>
-      <td>Herbert — hypothesis, <strong>Spearman</strong>, justification, weakness</td>
-      <td>Loreen — hypothesis, <strong>Spearman</strong>, critical value, weakness</td>
-      <td>Amadeus — design, sampling, level of measurement, qualitative data</td>
-      <td>Hikaru — closed question, sampling, ethics, conclusion, improvement</td>
-    </tr>
-    <tr>
-      <td>Q3</td>
-      <td>An explanation of aggression — describe plus evaluate</td>
-      <td>Hormones — describe + strength &amp; weakness</td>
-      <td>Infradian rhythms — Kaiko’s menstrual cycle</td>
-      <td>Brendgen (2005) — procedure, strength, improvement</td>
-      <td>Structure of the brain — describe + strength &amp; weakness</td>
-      <td>Brain functioning — Shaima scenario, describe + strength &amp; weakness</td>
-    </tr>
-    <tr>
-      <td>Q4</td>
-      <td>A technique or therapy — describe plus evaluate</td>
-      <td>Light therapy for SAD — describe, weakness, versus another therapy</td>
-      <td>Twin studies — how the method works + strength &amp; weakness</td>
-      <td>PET scans — describe + weakness</td>
-      <td>Sunshine — two variables, scatter conclusion, improvement</td>
-      <td>Huberta — operationalised IV, draw a graph</td>
-    </tr>
-    <tr>
-      <td>Q5</td>
-      <td>The 8-mark extended response</td>
-      <td>Brain functioning and aggression</td>
-      <td>Hormones and aggression</td>
-      <td>Hormones — the Remo scenario <em>(applied)</em></td>
-      <td>Effectiveness of Brendgen (2005)</td>
-      <td>Hormones and aggression</td>
-    </tr>
-  </table>
-
-  <div class="note-box">
-    <h4>📌 What the slot table tells you</h4>
-    <ul>
-      <li><strong>Q1 and Q3 rotate around the four named studies.</strong> Raine and Brendgen each appeared twice; the contemporary choice (McDermott or Hoefelmann) appeared in the Jun 2024 Q1 and the Jan 2025 12-marker. Learn all four — you cannot pick which one is asked.</li>
-      <li><strong>Q2 is always a method question</strong>, and it always carries the heaviest method marks of the section: graph drawing, an operationalised hypothesis, a Spearman calculation, or sampling and level of measurement.</li>
-      <li><strong>Q4 is the “equipment” slot</strong> — a therapy (light therapy), a scanning technique (PET) or a research design (twin studies).</li>
-      <li><strong>Q5 opens with Assess / Discuss / Evaluate</strong> and needs AO3 balance. Hormones has taken this slot in three of five papers.</li>
-    </ul>
+  <div class="section-header">
+    <h2>6 · Body Rhythms Quick Card（生物节律速查）</h2>
+    <p class="section-subtitle">What the examiner expects you to know about circadian rhythms, SAD and shift work.</p>
   </div>
 
+  <h3>Three rhythm lengths</h3>
+  <table class="methods-table" style="width:100%;">
+    <thead><tr><th>Rhythm</th><th>Length</th><th>Examples</th></tr></thead>
+    <tbody>
+      <tr><td>Ultradian</td><td>&lt; 24 h</td><td>REM cycle ≈ 90 min, heart-rate variability, feeding bursts</td></tr>
+      <tr><td>Circadian</td><td>≈ 24 h</td><td>Sleep-wake, cortisol, body temperature, melatonin</td></tr>
+      <tr><td>Infradian</td><td>&gt; 24 h</td><td>Menstrual cycle ≈ 28 d, seasonal mood, hibernation</td></tr>
+    </tbody>
+  </table>
+
+  <h3>The clockwork</h3>
+  <div class="note-box">
+    <p><strong>Light → retina → SCN → pineal gland → melatonin</strong></p>
+    <p>SCN = master clock; pineal gland turns melatonin on at night. Light is the dominant cue. Other zeitgebers: social contact, temperature, melatonin supplements.</p>
+  </div>
+
+  <h3>SAD — quick reference</h3>
+  <ul>
+    <li><strong>Diagnostic feature</strong>: recurrent major depressive episodes with seasonal pattern, usually winter onset, remitting in spring/summer.</li>
+    <li><strong>Mechanism</strong>: shorter daylight → over-production of melatonin → delayed / disrupted circadian rhythm → depressive symptoms.</li>
+    <li><strong>Treatments</strong>:
+      <ul>
+        <li><strong>Bright-light therapy</strong> (≥ 10 000 lux, morning) — most evidence.</li>
+        <li><strong>Melatonin supplementation</strong> in the evening — phase-shifts the rhythm.</li>
+        <li><strong>SSRIs</strong> — pharmacological option for severe cases.</li>
+        <li><strong>CBT-I</strong> for the sleep symptoms.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>Shift work &amp; jet lag</h3>
   <div class="cn-note">
-    <strong>中文提示</strong>：Section A 的五道题不是随机排的。<strong>Q1 考“研究”，Q2 考“方法/统计”，Q3 考“解释”，Q4 考“技术或疗法”，Q5 是 8 分大论述</strong>。复习时按这个位置去准备，比按章节顺序背要有效得多——尤其 Q2，它几乎决定你 Section A 的一半方法分。
+    <p>Shift work &amp; jet lag are both forms of <strong>circadian desynchronisation</strong>: the internal clock (≈25 h free-running) is out of phase with the light-dark cycle.</p>
+    <ul>
+      <li><strong>Jet lag</strong>: harder travelling eastward (must advance, not delay).</li>
+      <li><strong>Shift work</strong>: chronic — increases accident risk, metabolic syndrome, cardiovascular disease.</li>
+      <li><strong>Free-running</strong>: rhythm drifts later (~25 h) when zeitgebers are removed — Aschoff / Siffre bunker experiments.</li>
+    </ul>
   </div>
 </section>
 
-<!-- ============ SECTION 7 ============ -->
+<!-- §7 Common Exam Traps -->
 <section class="section" id="s7">
-  <h2>7. Section C — the 12- and 16-Markers（Section C 的两道长题）</h2>
-
-  <h3>7.1 The 12-mark question</h3>
-  <table>
-    <tr><th>Session</th><th>Question</th><th>Topic</th></tr>
-    <tr><td>Jan 2024</td><td>Evaluate social learning theory as an explanation of Maud’s behaviour</td><td>Learning theories</td></tr>
-    <tr><td>Jun 2024</td><td>To what extent has research been effective in explaining the circadian sleep-wake cycle?</td><td><strong>Topic C</strong></td></tr>
-    <tr><td>Jan 2025</td><td>Evaluate your chosen contemporary study (McDermott or Hoefelmann)</td><td><strong>Topic C</strong></td></tr>
-    <tr><td>Jun 2025</td><td>Evaluate infradian rhythms as an explanation of Noah’s seasonal affective disorder</td><td><strong>Topic C</strong></td></tr>
-    <tr><td>Jun 2026</td><td>Assess the role of internal pacemakers in the regulation of Liesel’s sleep-wake cycle</td><td><strong>Topic C</strong></td></tr>
-  </table>
-
-  <div class="exam-tip">
-    <strong>🎯 Pattern</strong> — when Topic C takes the 12-marker, it has always come from <strong>body rhythms</strong> (circadian research, infradian rhythms and SAD, internal pacemakers) or from the <strong>contemporary studies</strong>. Aggression has never carried the 12-marker on its own.
+  <div class="section-header">
+    <h2>7 · Common Exam Traps（常见考点陷阱）</h2>
+    <p class="section-subtitle">Six mistakes that trip up otherwise-prepared students. Read once, then never make them.</p>
   </div>
 
-  <h3>7.2 The 16-mark question</h3>
-  <table>
-    <tr><th>Session</th><th>Question</th><th>Biological strand</th><th>Learning strand</th></tr>
-    <tr>
-      <td>Jan 2024</td>
-      <td>Evaluate Brendgen et al. (2005) and Watson and Rayner (1920) in terms of ethics and reliability</td>
-      <td>Brendgen (2005)</td><td>Watson &amp; Rayner (1920)</td>
-    </tr>
-    <tr>
-      <td>Jun 2024</td>
-      <td>Evaluate genes and social learning theory as an explanation of Eliza and Fred</td>
-      <td><strong>Genes</strong></td><td>Social learning theory</td>
-    </tr>
-    <tr>
-      <td>Jan 2025</td>
-      <td>To what extent can genes and Freud’s theory of development explain Benjamin’s behaviour?</td>
-      <td><strong>Genes</strong></td><td>Freud’s theory of development</td>
-    </tr>
-    <tr>
-      <td>Jun 2025</td>
-      <td>To what extent can genes and Freud’s psychosexual stages explain Mila’s aggressive behaviour?</td>
-      <td><strong>Genes</strong></td><td>Freud’s psychosexual stages</td>
-    </tr>
-    <tr>
-      <td>Jun 2026</td>
-      <td>Evaluate light therapy and systematic desensitisation as treatments/therapies</td>
-      <td>Light therapy</td><td>Systematic desensitisation</td>
-    </tr>
-  </table>
-
-  <div class="green-box">
-    <strong>✅ The strongest single prediction on this paper:</strong> the biological half of the 16-marker is either <strong>genes</strong> (three of the last five papers) or a <strong>therapy</strong>. Prepare the genetics material in Chapter 15 to a high standard — it is the most valuable half-page in the whole topic.
-  </div>
-
-  <div class="cn-note">
-    <strong>中文提示</strong>：16 分题的生物那一边，五套里三次是<strong>基因（genes）</strong>，一次是经典研究，一次是疗法。也就是说，Ch 15 的“基因与攻击性”这一节，是整章性价比最高的内容。另一边的学习理论，主要是<strong>社会学习理论</strong>和<strong>弗洛伊德</strong>轮流出现——那部分由 Topic D 的章节负责。
+  <div class="trap-grid">
+    <div class="trap-card">
+      <h5>Correlation ≠ causation</h5>
+      <p>Low serotonin correlates with aggression. Doesn't mean low serotonin <em>causes</em> it.</p>
+      <div class="fix">Fix: always evaluate "what third variable could explain both?"</div>
+    </div>
+    <div class="trap-card">
+      <h5>Free-running ≠ insomnia</h5>
+      <p>Free-running rhythm (≈25 h drift) is a phase shift, not a sleep disorder.</p>
+      <div class="fix">Fix: a free-running rhythm still allows sleep — it's just out of sync with the clock.</div>
+    </div>
+    <div class="trap-card">
+      <h5>One-tailed vs two-tailed</h5>
+      <p>Directional hypothesis → one-tailed test, NOT just the same test.</p>
+      <div class="fix">Fix: state the direction <em>first</em>, then pick the correct critical value from the table.</div>
+    </div>
+    <div class="trap-card">
+      <h5>MAOA is NOT destiny</h5>
+      <p>Caspi (2002): low-MAOA alone has NO effect on adult antisocial behaviour.</p>
+      <div class="fix">Fix: the effect appears only with childhood maltreatment. Always mention the G×E interaction.</div>
+    </div>
+    <div class="trap-card">
+      <h5>Raine's PFC under-activity ≠ "no brain"</h5>
+      <p>PFC was underactive relative to controls, not absent. The NGRI group still had PFC — just less activity.</p>
+      <div class="fix">Fix: state findings with precision — "reduced glucose metabolism" not "no PFC".</div>
+    </div>
+    <div class="trap-card">
+      <h5>Confusing MAD with mean deviation</h5>
+      <p>When asked to "show your workings" for a calculation, MAD needs you to (a) compute deviations, (b) absolute-value them, (c) sum, (d) divide by N.</p>
+      <div class="fix">Fix: lay out the table — x | mean(x) | |x − mean| — then a single line equation.</div>
+    </div>
   </div>
 </section>
 
-<!-- ============ SECTION 8 ============ -->
+<!-- §8 Last-Minute 1-Page Sheet -->
 <section class="section" id="s8">
-  <h2>8. AO Allocation（分数怎么分到三个能力目标）</h2>
-
-  <h3>8.1 Section A — per question</h3>
-  <table>
-    <tr><th>Session</th><th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th><th>Q5 (8 marks)</th></tr>
-    <tr>
-      <td>Jan 2024</td>
-      <td>AO1 2 + AO3 1</td>
-      <td>AO2 6 + AO3 2</td>
-      <td>AO1 5 + AO3 2</td>
-      <td>AO1 6 + AO3 2</td>
-      <td>AO1 4 + AO3 4</td>
-    </tr>
-    <tr>
-      <td>Jun 2024</td>
-      <td>AO1 3 + AO3 1</td>
-      <td>AO2 8 + AO3 2</td>
-      <td>AO2 4</td>
-      <td>AO1 6 + AO3 2</td>
-      <td>AO1 4 + AO3 4</td>
-    </tr>
-    <tr>
-      <td>Jan 2025</td>
-      <td>AO1 3 + AO3 1</td>
-      <td>AO2 8 + AO3 1</td>
-      <td>AO1 6 + AO3 2</td>
-      <td>AO1 4 + AO3 1</td>
-      <td>AO1 4 + <strong>AO2</strong> 4</td>
-    </tr>
-    <tr>
-      <td>Jun 2025</td>
-      <td>AO1 4 + AO3 2</td>
-      <td>AO2 4 + AO3 2</td>
-      <td>AO1 6 + AO3 2</td>
-      <td>AO2 4 + AO3 2</td>
-      <td>AO1 4 + AO3 4</td>
-    </tr>
-    <tr>
-      <td>Jun 2026</td>
-      <td>AO1 4 + AO3 2</td>
-      <td>AO2 5 + AO3 4</td>
-      <td>AO2 5 + AO3 2</td>
-      <td>AO2 4</td>
-      <td>AO1 4 + AO3 4</td>
-    </tr>
-  </table>
-
-  <div class="note-box">
-    <h4>📌 Reading the table</h4>
-    <ul>
-      <li><strong>Q1 and Q3 are AO1-heavy</strong> — they ask you to <em>know</em> the study or the explanation. Describe accurately and you score. Add a strength or weakness for the AO3 mark.</li>
-      <li><strong>Q2 is AO2-dominated</strong> — this is the <em>apply</em> slot. Hypotheses, calculations, graph drawing, sampling decisions and ethics all live here.</li>
-      <li><strong>Q5 is a 4 + 4 balance</strong> — four marks for knowledge, four for evaluation. An answer that only describes and never weighs up cannot go beyond half marks. The one exception is Jan 2025, where Q5 was applied to a scenario and the second four marks were AO2.</li>
-      <li><strong>Jun 2026 is worth noting</strong>: Q3 and Q4 were both moved into AO2 by giving them a named scenario (Shaima, Huberta). Scenario framing pushes a question from “describe” into “apply”, even though the underlying content is unchanged.</li>
-    </ul>
+  <div class="section-header">
+    <h2>8 · Last-Minute 1-Page Sheet（考前 1 页摘要）</h2>
+    <p class="section-subtitle">One screen. If you can fill every box here from memory, you are ready.</p>
   </div>
 
-  <h3>8.2 Section C — the long answers</h3>
-  <table>
-    <tr><th>Session</th><th>12-mark question</th><th>16-mark question</th></tr>
-    <tr><td>Jan 2024</td><td>AO1 4 + AO2 4 + AO3 4</td><td>AO1 6 + AO3 10</td></tr>
-    <tr><td>Jun 2024</td><td>AO1 6 + AO3 6</td><td>AO1 6 + AO2 4 + AO3 6</td></tr>
-    <tr><td>Jan 2025</td><td>AO1 6 + AO3 6</td><td>AO1 6 + AO2 4 + AO3 6</td></tr>
-    <tr><td>Jun 2025</td><td>AO1 4 + AO2 4 + AO3 4</td><td>AO1 6 + AO2 4 + AO3 6</td></tr>
-    <tr><td>Jun 2026</td><td>AO1 4 + AO2 4 + AO3 4</td><td>AO1 6 + AO3 10</td></tr>
-  </table>
-
-  <div class="exam-tip">
-    <strong>🎯 What this means for how you write</strong>
-    <ul>
-      <li>The 16-marker always gives <strong>6 marks for knowledge and 10–12 for evaluation</strong>. Knowledge alone, however accurate, is capped at about a third. You must build a case, weigh both sides and reach a judgement.</li>
-      <li>Where AO2 appears (4 marks), it is asking you to <strong>apply the material to the named context</strong> in the question. Use the named person’s behaviour as your evidence, not generic textbook lines.</li>
-    </ul>
+  <div class="one-pager">
+    <h3>Topic C at 1-page</h3>
+    <table>
+      <tr><th>3.1.1 Neurons</th><td>Na⁺ in → K⁺ out → depolarise → repolarise → hyperpolarise → chemical synapse</td></tr>
+      <tr><th>3.1.2 Brain</th><td>Frontal (PFC ↓ aggression, planning); amygdala (↑ threat); methods: fMRI, EEG, PET, autopsy, lesion</td></tr>
+      <tr><th>3.1.3 Bio-aggression</th><td>Neural (PFC ↓, amygdala ↑) + Hormonal (testosterone dominance, 5-HT low) + Genetic (MAOA × maltreatment)</td></tr>
+      <tr><th>3.1.4 Pacemaker / zeitgeber</th><td>SCN (endogenous); light is the master zeitgeber; SCN → pineal → melatonin</td></tr>
+      <tr><th>3.1.5 Three rhythms</th><td>Ultradian &lt; 24 h (REM 90 min) · Circadian ≈ 24 h (sleep-wake) · Infradian &gt; 24 h (menstrual, seasonal)</td></tr>
+      <tr><th>3.1.6 Disruption</th><td>Free-running ≈ 25 h; jet lag (east &gt; west); shift work → chronic misalignment; SAD → winter onset → bright light</td></tr>
+      <tr><th>3.2.1 Hypotheses</th><td>Null (no diff) · Alternative · Directional (one-tailed) · Non-directional (two-tailed)</td></tr>
+      <tr><th>3.2.2 Design</th><td>IV / DV / EV · Repeated (order) · Independent (group diff) · Matched pairs (hybrid)</td></tr>
+      <tr><th>3.2.3 Sampling</th><td>Random → generalisable · Opportunity → biased · Stratified → by known variable · Volunteer → self-select</td></tr>
+      <tr><th>3.2.4 Analysis</th><td>Descriptive (mean, median, SD) · Inferential (significance test)</td></tr>
+      <tr><th>3.2.5 Tests</th><td>Spearman (ranked correlation) · Wilcoxon (related ordinal) · χ² (counts) · t-test (interval)</td></tr>
+      <tr><th>3.2.6 Errors</th><td>Type I = false positive (α); Type II = false negative (β); p ≤ 0.05 usually</td></tr>
+      <tr><th>3.2.7 Validity</th><td>Internal (cause?) · External (generalisable?) · Ecological (real-life?) · Reliability (repeatable?)</td></tr>
+      <tr><th>3.3.1 Raine 1997</th><td>PET · 41 NGRI vs 41 controls · ↓ PFC glucose · ↓ impulse control</td></tr>
+      <tr><th>3.3.2 Hormones</th><td>Testosterone = dominance; 5-HT = impulse control; both correlational</td></tr>
+      <tr><th>3.3.3 Genetics</th><td>Twin concordance 0.50 vs 0.20 (heritability ≈ 0.5); MAOA × maltreatment (Caspi 2002)</td></tr>
+      <tr><th>3.3.4 Body rhythms</th><td>SAD → bright light works · Shift work → chronic misalignment → health risks</td></tr>
+      <tr><th>3.4.1 Practical</th><td>Correlational design · Spearman or Wilcoxon · Aim / Hyp / Design / Sample / Procedure / Ethics / Results / Eval</td></tr>
+    </table>
   </div>
 </section>
 
-<!-- ============ SECTION 9 ============ -->
+<!-- §9 Appendix: Exam Patterns -->
 <section class="section" id="s9">
-  <h2>9. Most-Examined Content（按出现频率排序）</h2>
-
-  <p>Counting across the five papers, this is what actually gets asked, from most to least frequent.</p>
-
-  <table>
-    <tr><th>Rank</th><th>Content</th><th>Appears in</th><th>Where it shows up</th></tr>
-    <tr>
-      <td>1</td>
-      <td><strong>Methods and statistics</strong> — correlation, Spearman, graphs, sampling, level of measurement, twin studies, PET</td>
-      <td>5 / 5</td>
-      <td>Always Section A Q2 and Q4. This is the single most reliable block of marks on the paper.</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td><strong>Hormones and aggression</strong></td>
-      <td>5 / 5</td>
-      <td>Section A Q1, Q3 or Q5. Took the 8-mark extended response in three of five papers.</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td><strong>The four named studies</strong> — Raine, Brendgen, McDermott, Hoefelmann</td>
-      <td>5 / 5</td>
-      <td>Section A Q1 or Q3, and the Jun 2025 12-marker.</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td><strong>Brain structure and brain functioning as an explanation of aggression</strong></td>
-      <td>4 / 5</td>
-      <td>Section A Q1, Q3 or Q5.</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td><strong>Body rhythms</strong> — circadian research, infradian rhythms, SAD, internal pacemakers</td>
-      <td>3 / 5 in Section A, 3 / 5 in Section C</td>
-      <td>Section A Q2 or Q3, and heavily in the 12-mark extended response.</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td><strong>Therapies</strong> — light therapy, SSRIs</td>
-      <td>2 / 5 in Section A, 1 / 5 in Section C</td>
-      <td>Section A Q4; and light therapy carried the biology half of the Jun 2026 16-marker.</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td><strong>Neuron structure and synaptic transmission</strong> (3.1.1)</td>
-      <td>0 / 5 directly</td>
-      <td>Not yet asked as a standalone question in these five papers. Still on the specification, and it underpins every explanation of how neurotransmitters affect aggression — know it, but do not spend disproportionate time on it.</td>
-    </tr>
-  </table>
-
-  <div class="wider-issue">
-    <h4>🔍 An honest note on what this table is</h4>
-    <p>These counts come from <strong>five</strong> exam sessions (January 2024 to June 2026). They show what has been asked, not what will be asked. Five papers is a small sample, and examiners deliberately rotate content — which is exactly why <strong>3.1.1 has not yet appeared</strong>. Treat the ranking as a guide to where to spend your revision time, not as a list of what you can safely skip.</p>
+  <div class="section-header">
+    <h2>9 · Appendix: Paper 2 Exam Patterns（真题规律附录）</h2>
+    <p class="section-subtitle">Only here for reference — the main job of this review is to teach you the content, not the exam format. Topic C sits in Paper 2 (WPS02/01), 2 hours, 96 marks.</p>
   </div>
-</section>
 
-<!-- ============ SECTION 10 ============ -->
-<section class="section" id="s10">
-  <h2>10. Revision Checklist（自测清单）</h2>
-
-  <p>Tick each line only when you can do it <em>without notes</em>. The right-hand column tells you which section of the paper it feeds.</p>
-
-  <h3>Aggression — content</h3>
-  <table>
-    <tr><th>✓</th><th>Can you…</th><th>Feeds</th></tr>
-    <tr><td>☐</td><td>Describe the structure of a neuron and explain synaptic transmission in order</td><td>Underpins every neurotransmitter answer</td></tr>
-    <tr><td>☐</td><td>Name the brain areas involved in aggression and describe what each does</td><td>Section A Q1 / Q3 / Q5</td></tr>
-    <tr><td>☐</td><td>Describe the role of testosterone and cortisol in aggression, with a supporting study</td><td>Section A Q1 / Q3 / Q5</td></tr>
-    <tr><td>☐</td><td>Explain how genes influence aggression — MAOA, twin evidence, Caspi et al.</td><td><strong>The 16-mark question</strong></td></tr>
-    <tr><td>☐</td><td>Give one strength and one weakness of the hormone explanation, and the same for the genetic explanation</td><td>Section A Q1 / Q3 / Q5</td></tr>
-  </table>
-
-  <h3>Body rhythms — content</h3>
-  <table>
-    <tr><th>✓</th><th>Can you…</th><th>Feeds</th></tr>
-    <tr><td>☐</td><td>Describe the circadian sleep-wake cycle and the role of the SCN, melatonin and the pineal gland</td><td>Section C 12-mark</td></tr>
-    <tr><td>☐</td><td>Explain the difference between an internal pacemaker and an exogenous zeitgeber, with evidence</td><td>Section C 12-mark</td></tr>
-    <tr><td>☐</td><td>Describe the menstrual cycle as an infradian rhythm and explain the HPG axis</td><td>Section A Q3</td></tr>
-    <tr><td>☐</td><td>Explain SAD in terms of melatonin and serotonin, and describe light therapy</td><td>Section A Q4 · Section C 16-mark</td></tr>
-    <tr><td>☐</td><td>Evaluate light therapy against one other treatment, and name a weakness of each</td><td>Section A Q4 · Section C 16-mark</td></tr>
-  </table>
-
-  <h3>Methods and skills — content</h3>
-  <table>
-    <tr><th>✓</th><th>Can you…</th><th>Feeds</th></tr>
-    <tr><td>☐</td><td>Write a fully operationalised, non-directional hypothesis for a stated investigation</td><td>Section A Q2</td></tr>
-    <tr><td>☐</td><td>Complete a Spearman’s rank table, handle tied ranks, and give r<sub>s</sub> to two decimal places</td><td>Section A Q2</td></tr>
-    <tr><td>☐</td><td>Justify why Spearman was used (correlation predicted + at least ordinal data)</td><td>Section A Q2</td></tr>
-    <tr><td>☐</td><td>Find the critical value, state whether the result is significant, and write the conclusion</td><td>Section A Q2</td></tr>
-    <tr><td>☐</td><td>Draw and label a bar chart or scatter diagram from a data table, with a title and both axes</td><td>Section A Q2 / Q4</td></tr>
-    <tr><td>☐</td><td>Describe how a twin study is used and give one strength and one weakness</td><td>Section A Q4</td></tr>
-    <tr><td>☐</td><td>Describe PET and fMRI, and give one strength and one weakness of each</td><td>Section A Q4</td></tr>
-    <tr><td>☐</td><td>Describe your own practical investigation — aim, co-variables, procedure, result and one improvement</td><td>Any method slot</td></tr>
-    <tr><td>☐</td><td>Explain one ethical issue with reference to a named scenario</td><td>Section A Q2</td></tr>
-  </table>
-
-  <h3>Studies — content</h3>
-  <table>
-    <tr><th>✓</th><th>Can you…</th><th>Feeds</th></tr>
-    <tr><td>☐</td><td>Give the aim, sample, method, results and conclusion of Raine et al. (1997)</td><td>Section A Q1</td></tr>
-    <tr><td>☐</td><td>Give the same for Brendgen et al. (2005), including physical versus social aggression</td><td>Section A Q1 / Q3 / Q5</td></tr>
-    <tr><td>☐</td><td>Give the same for McDermott et al. (2008), including MAOA-L versus MAOA-H</td><td>Section A Q1 · Section C 12-mark</td></tr>
-    <tr><td>☐</td><td>Give the same for Hoefelmann et al. (2006), including the two time points</td><td>Section A Q1 · Section C 12-mark</td></tr>
-    <tr><td>☐</td><td>Explain one strength and one improvement for each of the four studies</td><td>Section A Q1 · Section C 12-mark</td></tr>
-  </table>
-</section>
-
-<!-- ============ SECTION 11 ============ -->
-<section class="section" id="s11">
-  <h2>11. Question Bank — 5 Papers（五年真题题库）</h2>
-
-  <p>Every Topic C question from the five available Paper 2 sessions, in order. Marks are in brackets. Use this as practice material, or as a checklist of the exact phrasing examiners use.</p>
-
-  <h3>January 2024 · Paper 2 (P72147RA)</h3>
-  <table>
-    <tr><th>Q</th><th>Question</th><th>Marks</th><th>Spec</th></tr>
-    <tr><td>1a</td><td>State one conclusion of Raine et al. (1997).</td><td>1</td><td>3.3.1</td></tr>
-    <tr><td>1b</td><td>Explain one weakness of Raine et al. (1997) in terms of generalisability.</td><td>2</td><td>3.3.1</td></tr>
-    <tr><td>2a</td><td>Identify the independent variable in Sienna’s investigation (mice, bright light and sleeping patterns).</td><td>1</td><td>3.1.4</td></tr>
-    <tr><td>2b</td><td>Draw a suitable graph for the sleeping patterns of the mice exposed to bright light between 7am and 7pm.</td><td>3</td><td>3.2.2</td></tr>
-    <tr><td>2c</td><td>Explain one conclusion that can be made from the data in Table 1.</td><td>2</td><td>3.1.4</td></tr>
-    <tr><td>2d</td><td>Explain one reason why Sienna used mice instead of humans as participants.</td><td>2</td><td>3.1.4 · ethics</td></tr>
-    <tr><td>3a</td><td>Describe the role of hormones in aggression.</td><td>3</td><td>3.1.3</td></tr>
-    <tr><td>3b</td><td>Explain one strength and one weakness of the role of hormones as an explanation of aggression.</td><td>4</td><td>3.1.3</td></tr>
-    <tr><td>4a</td><td>Describe light therapy as a treatment for seasonal affective disorder.</td><td>4</td><td>3.1.5</td></tr>
-    <tr><td>4b</td><td>Explain one weakness of light therapy as a treatment for seasonal affective disorder.</td><td>2</td><td>3.1.5</td></tr>
-    <tr><td>4c</td><td>Explain one reason why light therapy may be more effective than one other therapy for treating SAD.</td><td>2</td><td>3.1.5</td></tr>
-    <tr><td>5</td><td>Assess how well brain functioning can explain aggression as a human behaviour.</td><td>8</td><td>3.1.2</td></tr>
-    <tr><td>C Q10</td><td>Evaluate social learning theory as an explanation of Maud’s behaviour. <em>(learning theories)</em></td><td>12</td><td>—</td></tr>
-    <tr><td>C Q11</td><td>Evaluate Brendgen et al. (2005) and Watson and Rayner (1920) in terms of ethics and reliability.</td><td>16</td><td>3.3.2</td></tr>
-  </table>
-
-  <h3>June 2024 · Paper 2 (P75832A)</h3>
-  <table>
-    <tr><th>Q</th><th>Question</th><th>Marks</th><th>Spec</th></tr>
-    <tr><td>1a</td><td>State two conclusions of your chosen contemporary study (McDermott 2008 or Hoefelmann et al. 2006).</td><td>2</td><td>3.3.3 / 3.3.4</td></tr>
-    <tr><td>1b</td><td>Explain one improvement that could be made to the sample used in your chosen contemporary study.</td><td>2</td><td>3.3.3 / 3.3.4</td></tr>
-    <tr><td>2a</td><td>State a fully operationalised non-directional hypothesis for Herbert’s study into computer games and quality of sleep.</td><td>2</td><td>3.2.1</td></tr>
-    <tr><td>2b</td><td>Calculate Spearman’s rank for Herbert’s data by completing Table 1. Two decimal places.</td><td>4</td><td>3.2.4</td></tr>
-    <tr><td>2c</td><td>Explain one reason why Herbert used the Spearman’s rank test for his data.</td><td>2</td><td>3.2.4</td></tr>
-    <tr><td>2d</td><td>Explain one weakness of Herbert’s study about computer games and quality of sleep.</td><td>2</td><td>3.2.3</td></tr>
-    <tr><td>3</td><td>Describe the role of infradian rhythms on Kaiko’s menstrual cycle.</td><td>4</td><td>3.1.5</td></tr>
-    <tr><td>4a</td><td>Describe how a twin study research method could be used in biological psychology, such as when researching aggression.</td><td>4</td><td>3.2.6</td></tr>
-    <tr><td>4b</td><td>Explain one strength and one weakness of using a twin study research method in biological psychology.</td><td>4</td><td>3.2.6</td></tr>
-    <tr><td>5</td><td>Assess the role of hormones as an explanation of aggression.</td><td>8</td><td>3.1.3</td></tr>
-    <tr><td>C Q10</td><td>To what extent has research been effective in explaining the circadian sleep-wake cycle?</td><td>12</td><td>3.1.4 / 3.1.6</td></tr>
-    <tr><td>C Q11</td><td>Evaluate genes and social learning theory as an explanation of Eliza and Fred.</td><td>16</td><td>3.1.3</td></tr>
-  </table>
-
-  <h3>January 2025 · Paper 2 (P78482A)</h3>
-  <table>
-    <tr><th>Q</th><th>Question</th><th>Marks</th><th>Spec</th></tr>
-    <tr><td>1a</td><td>State two areas of the brain that play a role in human aggression.</td><td>2</td><td>3.1.2</td></tr>
-    <tr><td>1b</td><td>Explain one strength of brain functioning as an explanation of aggression.</td><td>2</td><td>3.1.2</td></tr>
-    <tr><td>2a</td><td>Give a fully operationalised, non-directional hypothesis for Loreen’s investigation into exercise and sleep.</td><td>2</td><td>3.2.1</td></tr>
-    <tr><td>2b</td><td>Calculate Spearman’s rank to three decimal places for Loreen’s data by completing Table 1.</td><td>4</td><td>3.2.4</td></tr>
-    <tr><td>2c</td><td>Identify the critical value Loreen would have used (two-tailed, p≤0.05).</td><td>1</td><td>3.2.4</td></tr>
-    <tr><td>2d</td><td>Explain one weakness of Loreen’s investigation.</td><td>2</td><td>3.2.3</td></tr>
-    <tr><td>3a</td><td>Describe the procedure of the study by Brendgen et al. (2005).</td><td>4</td><td>3.3.2</td></tr>
-    <tr><td>3b</td><td>Explain one strength of the study by Brendgen et al. (2005).</td><td>2</td><td>3.3.2</td></tr>
-    <tr><td>3c</td><td>Explain one improvement that could be made to the study by Brendgen et al. (2005).</td><td>2</td><td>3.3.2</td></tr>
-    <tr><td>4a</td><td>Describe PET scans as they are used in biological psychology.</td><td>3</td><td>3.2.5</td></tr>
-    <tr><td>4b</td><td>Explain one weakness of PET scans as they are used in biological psychology.</td><td>2</td><td>3.2.5</td></tr>
-    <tr><td>5</td><td>Discuss hormones as an explanation of Remo’s aggressive behaviour. <em>(scenario)</em></td><td>8</td><td>3.1.3</td></tr>
-    <tr><td>C Q11</td><td>Evaluate your chosen contemporary study (McDermott 2008 or Hoefelmann et al. 2006).</td><td>12</td><td>3.3.3 / 3.3.4</td></tr>
-    <tr><td>C Q12</td><td>To what extent can genes and Freud’s theory of development explain Benjamin’s behaviour?</td><td>16</td><td>3.1.3</td></tr>
-  </table>
-
-  <h3>June 2025 · Paper 2 (P78778A)</h3>
-  <table>
-    <tr><th>Q</th><th>Question</th><th>Marks</th><th>Spec</th></tr>
-    <tr><td>1a</td><td>State two hormones that play a role in human aggression.</td><td>2</td><td>3.1.3</td></tr>
-    <tr><td>1b</td><td>Explain two strengths of hormones as an explanation of aggression.</td><td>4</td><td>3.1.3</td></tr>
-    <tr><td>2a</td><td>Name the experimental design used by Amadeus in his experiment.</td><td>1</td><td>3.2.7</td></tr>
-    <tr><td>2b</td><td>Explain one weakness of Amadeus using a volunteer sampling technique.</td><td>2</td><td>3.2.7</td></tr>
-    <tr><td>2c</td><td>Identify the level of measurement used in Amadeus’s experiment.</td><td>1</td><td>3.2.7</td></tr>
-    <tr><td>2d</td><td>Explain one reason why Amadeus collected qualitative data in his follow-up investigation.</td><td>2</td><td>3.2.7</td></tr>
-    <tr><td>3a</td><td>Describe the structure of the brain as an explanation of aggression.</td><td>4</td><td>3.1.2</td></tr>
-    <tr><td>3b</td><td>Explain one strength and one weakness of the structure of the brain as an explanation of aggression.</td><td>4</td><td>3.1.2</td></tr>
-    <tr><td>4a</td><td>Identify the two fully operationalised variables in Sunshine’s correlation (lectures missed and exam grade).</td><td>2</td><td>3.2.1</td></tr>
-    <tr><td>4b</td><td>Explain one conclusion Sunshine could make using the data in Figure 1.</td><td>2</td><td>3.2.2</td></tr>
-    <tr><td>4c</td><td>Explain one improvement Sunshine could make to her investigation.</td><td>2</td><td>3.2.3</td></tr>
-    <tr><td>5</td><td>Assess the effectiveness of the study by Brendgen et al. (2005) in explaining aggression.</td><td>8</td><td>3.3.2</td></tr>
-    <tr><td>C Q11</td><td>Evaluate infradian rhythms as an explanation of Noah’s seasonal affective disorder.</td><td>12</td><td>3.1.5</td></tr>
-    <tr><td>C Q12</td><td>To what extent can genes and Freud’s psychosexual stages of development explain Mila’s aggressive behaviour?</td><td>16</td><td>3.1.3</td></tr>
-  </table>
-
-  <h3>June 2026 · Paper 2 (P79769A)</h3>
-  <table>
-    <tr><th>Q</th><th>Question</th><th>Marks</th><th>Spec</th></tr>
-    <tr><td>1a</td><td>State two aims of the study by Raine et al. (1997).</td><td>2</td><td>3.3.1</td></tr>
-    <tr><td>1b</td><td>Explain one conclusion from the study by Raine et al. (1997).</td><td>2</td><td>3.3.1</td></tr>
-    <tr><td>1c</td><td>Explain one strength of the study by Raine et al. (1997).</td><td>2</td><td>3.3.1</td></tr>
-    <tr><td>2a</td><td>Give one closed question Hikaru could have used in his experiment.</td><td>1</td><td>3.2.7</td></tr>
-    <tr><td>2b</td><td>Explain one weakness of the sampling technique used by Hikaru.</td><td>2</td><td>3.2.7</td></tr>
-    <tr><td>2c</td><td>Explain one ethical issue Hikaru should have considered when conducting his experiment.</td><td>2</td><td>ethics</td></tr>
-    <tr><td>2d</td><td>Explain one conclusion that could be made from the data in Table 1.</td><td>2</td><td>3.2</td></tr>
-    <tr><td>2e</td><td>Explain one improvement Hikaru could make to his investigation.</td><td>2</td><td>3.2</td></tr>
-    <tr><td>3a</td><td>Describe brain functioning as an explanation of Shaima’s aggression.</td><td>3</td><td>3.1.2</td></tr>
-    <tr><td>3b</td><td>Explain one strength and one weakness of brain functioning as an explanation of Shaima’s aggression.</td><td>4</td><td>3.1.2</td></tr>
-    <tr><td>4a</td><td>State the fully operationalised independent variable for Huberta’s investigation into sport and sleep.</td><td>1</td><td>3.2.1</td></tr>
-    <tr><td>4b</td><td>Draw an appropriate graph for the data shown in Table 2.</td><td>3</td><td>3.2.2</td></tr>
-    <tr><td>5</td><td>Evaluate the role of hormones in aggression.</td><td>8</td><td>3.1.3</td></tr>
-    <tr><td>C Q11</td><td>Assess the role of internal pacemakers in the regulation of Liesel’s sleep-wake cycle.</td><td>12</td><td>3.1.4</td></tr>
-    <tr><td>C Q12</td><td>Evaluate light therapy and systematic desensitisation as treatments/therapies.</td><td>16</td><td>3.1.5</td></tr>
-  </table>
-
-  <div class="wider-issue">
-    <h4>🔍 About this question bank</h4>
-    <p>These are the five Paper 2 sessions currently available: January 2024, June 2024, January 2025, June 2025 and June 2026. Earlier sessions (2023 and before) are not in the archive yet, and Unit 3 also carries method questions that overlap with Chapter 17. If further papers are added, this page should be re-checked against them.</p>
+  <div class="appendix-banner">
+    <strong>This appendix is reference material.</strong> The 8 sections above are the core knowledge you need. The patterns below help you recognise what kind of question you'll face — they are not the main study target.
   </div>
+
+  <h3>Paper 2 structure</h3>
+  <table class="methods-table" style="width:100%;">
+    <thead><tr><th>Section</th><th>Marks</th><th>Topic coverage</th></tr></thead>
+    <tbody>
+      <tr><td>A — short answers</td><td>34</td><td>Biological psychology (Q1–Q5)</td></tr>
+      <tr><td>B — short answers</td><td>34</td><td>Learning theories &amp; development</td></tr>
+      <tr><td>C — extended responses</td><td>28</td><td>One 12-marker + one 16-marker; cover both halves</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Section A — five slots</h3>
+  <ul>
+    <li><strong>Q1</strong> — name a study (1 mark)</li>
+    <li><strong>Q2</strong> — describe a method + statistical test (4 marks)</li>
+    <li><strong>Q3</strong> — explain a result / mechanism (2–4 marks)</li>
+    <li><strong>Q4</strong> — compare or apply a technique / therapy (4 marks)</li>
+    <li><strong>Q5</strong> — short extended response (8 marks; usually AO1 4 + AO3 4)</li>
+  </ul>
+
+  <h3>Section C — 12- and 16-markers</h3>
+  <ul>
+    <li><strong>12-marker</strong> — Topic C took it 4/5 times in WPS02/01 sittings; topic = body rhythms OR contemporary studies.</li>
+    <li><strong>16-marker</strong> — biology half is always present, paired with a learning-theory half, with the instruction "you must refer to the context".</li>
+  </ul>
+
+  <h3>Content frequency (5 WPS02 sittings, 2024.1 → 2026.6)</h3>
+  <table class="methods-table" style="width:100%;">
+    <thead><tr><th>Topic</th><th>Frequency</th></tr></thead>
+    <tbody>
+      <tr><td>Research methods</td><td>5 / 5</td></tr>
+      <tr><td>Hormones</td><td>5 / 5</td></tr>
+      <tr><td>Studies</td><td>5 / 5</td></tr>
+      <tr><td>Brain localisation</td><td>4 / 5</td></tr>
+      <tr><td>Body rhythms</td><td>3 / 5</td></tr>
+      <tr><td>Therapies / treatments</td><td>2 / 5</td></tr>
+      <tr><td>3.1.1 Neurons (basic biology)</td><td>0 / 5</td></tr>
+    </tbody>
+  </table>
+
+  <p class="cn-note"><strong>Reading guide:</strong> §1–§8 are the knowledge you need. §9 is the exam-pattern layer you may consult when deciding which kind of question to tackle first.</p>
 </section>
 
-  </main>
+</main>
 </div><!-- END PAGE LAYOUT -->
 
 <div class="footer-note">
