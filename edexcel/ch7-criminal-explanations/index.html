@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edexcel Chapter 7 — Explanations for Crime and Antisocial Behaviour（犯罪与反社会行为的解释）</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --card-bg: #FFFFFF;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --note-bg: #fff7ed;
+  --note-border: #fb923c;
+  --term-color: #ea580c;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; transition: background .15s; white-space: nowrap; }
+.nav-pill:hover { background: var(--primary-dark); }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; transition: color .15s; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; font-weight: 300; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); transition: all .15s; display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+body.dark .nav-btn:hover { border-color: #f97316; color: #f97316; }
+
+.page-layout { display: grid; grid-template-columns: 190px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 190px; flex-shrink: 0; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; transition: all .15s ease; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 600; background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+.sb-item a.sb-sub { padding-left: 30px; font-size: .7em; opacity: .82; }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; backdrop-filter: blur(6px); }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box strong { color: #b45309; }
+.key-term { display: inline-block; background: #e8eaf6; color: #283593; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: .9em; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box h4 { color: #991b1b; margin-bottom: 5px; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.wider-issue { background: #fff8e1; border: 2px solid #fbc02d; border-radius: 8px; padding: 16px 20px; margin: 14px 0; }
+.wider-issue h4 { color: #f57f17; margin-top: 0; }
+.activity-box { background: #f0f4f8; border: 2px solid #90a4ae; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+.activity-box h4 { color: #546e7a; margin-top: 0; display: flex; align-items: center; gap: 8px; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+tr:hover { background: #fff7ed; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.figure { margin: 18px 0; text-align: center; }
+.figure img { max-width: 100%; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 3px 12px rgba(0,0,0,.08); }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.flowchart { background: #f6f7f9; border: 2px solid var(--border); border-radius: 12px; padding: 20px; margin: 18px 0; text-align: center; }
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: opacity .2s; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.ao-badge { background: rgba(255,255,255,.25); padding: 2px 8px; border-radius: 10px; font-size: .72em; font-weight: 700; margin-left: auto; }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; animation: slideDown .25s ease; }
+.summary-card-body.hidden { display: none; }
+@keyframes slideDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
+.summary-card-body ol { margin: 0; padding-left: 20px; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; display: flex; align-items: center; gap: 8px; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.study-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px 18px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.06); transition: all .25s ease; position: relative; }
+.study-card:hover { box-shadow: 0 4px 16px rgba(234,88,12,.15); border-color: #fb923c; transform: translateY(-2px); }
+.study-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid #fef3c7; }
+.study-icon { font-size: 1.3em; }
+.study-name { font-weight: 700; font-size: .95em; color: #ea580c; flex: 1; }
+.study-badge { font-size: .7em; font-weight: 600; padding: 3px 10px; border-radius: 12px; background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; white-space: nowrap; }
+.study-badge.classic { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: #9d174d; }
+.study-badge.contemp { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; }
+.study-badge.cross { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; }
+.study-badge.meta { background: linear-gradient(135deg, #ede9fe, #ddd6fe); color: #5b21b6; }
+.study-badge.corr { background: linear-gradient(135deg, #dcfce7, #bbf7d0); color: #166534; }
+.study-badge.natural { background: linear-gradient(135deg, #ffedd5, #fed7aa); color: #9a3412; }
+.study-badge.expt { background: linear-gradient(135deg, #cffafe, #a5f3fc); color: #155e75; }
+.study-card-body p { margin: 6px 0; line-height: 1.65; font-size: .9em; }
+.study-card-body ul { margin: 6px 0 6px 18px; padding: 0; }
+.study-card-body li { margin: 4px 0; font-size: .89em; line-height: 1.6; }
+.eval-tag { display: inline-block; background: #fef2f2; border-left: 3px solid #ef4444; padding: 4px 10px; margin-top: 6px; font-size: .85em; color: #991b1b; border-radius: 0 6px 6px 0; }
+.ao-zone-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 10px; margin: 20px 0 14px; font-weight: 700; font-size: 1.05em; }
+.ao-zone-header.ao1 { background: linear-gradient(135deg, #eff6ff, #dbeafe); border-left: 5px solid #2563eb; color: #1e40af; }
+.ao-zone-header.ao3 { background: linear-gradient(135deg, #fdf4ff, #fae8ff); border-left: 5px solid #c026d3; color: #a21caf; }
+.ao-zone-desc { font-size: .82em; font-weight: 400; opacity: .8; margin-left: auto; }
+.gold-standard-para { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 2px solid #fcd34d; border-radius: 10px; padding: 16px 18px; margin: 14px 0; }
+.gold-standard-para h4 { color: #92400e; margin: 0 0 8px; font-size: .95em; }
+.gold-standard-para p { font-size: .89em; line-height: 1.7; margin: 6px 0; }
+.gold-standard-para ul { font-size: .89em; margin: 6px 0; }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { box-shadow: 0 6px 20px rgba(234,88,12,.4); transform: translateY(-2px); }
+@media(max-width:900px){
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .main-content { max-width: 100%; }
+  .compare-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+body.dark { background: #0f172a; color: #e2e8f0; transition: background .3s, color .3s; }
+body.dark .container { background: #0f172a; }
+body.dark .nav-bar { background: #1a1a2e; border-bottom-color: var(--primary); }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+body.dark .sb-divider { background: #334155; }
+body.dark .sb-group-label { color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a:hover { color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.10), transparent); border-left-color: #f97316; }
+body.dark .sb-item a.sb-active { color: #fb923c; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); border-left-color: #f97316; }
+body.dark .header { background: linear-gradient(135deg, #c2410c, #ea580c, #f97316); }
+body.dark .section { background: #1a1a2e; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .warn-box h4 { color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .keyterm-box strong { color: #fbbf24; }
+body.dark .key-term { background: #2a2a4a; color: #a5b4fc; }
+body.dark strong { color: #fbbf24; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; color: white; border-color: #7f1d1d; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark tr:hover { background: rgba(234,88,12,.05); }
+body.dark td:first-child { color: #fb923c; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+body.dark .flowchart { background: #16213e; border-color: #334155; }
+body.dark .wider-issue { background: rgba(251,192,45,.06); border-color: #f59e0b; }
+body.dark .wider-issue h4 { color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .activity-box { background: #1e293b; border-color: #475569; }
+body.dark .activity-box h4 { color: #94a3b8; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark .study-card { background: #16213e; border-color: #334155; }
+body.dark .study-card:hover { border-color: #f97316; box-shadow: 0 4px 16px rgba(234,88,12,.2); }
+body.dark .study-card-header { border-bottom-color: #3f3f5e; }
+body.dark .study-name { color: #fb923c; }
+body.dark .study-card-body p, body.dark .study-card-body li { color: #cbd5e1; }
+body.dark .eval-tag { background: rgba(220,38,38,.08); color: #fca5a5; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .ao-zone-header.ao1 { background: linear-gradient(135deg, rgba(37,99,235,.15), rgba(37,99,235,.08)); border-left-color: #3b82f6; color: #93c5fd; }
+body.dark .ao-zone-header.ao3 { background: linear-gradient(135deg, rgba(192,38,211,.15), rgba(192,38,211,.08)); border-left-color: #c026d3; color: #e9d5ff; }
+body.dark .gold-standard-para { background: linear-gradient(135deg, rgba(245,158,11,.08), rgba(245,158,11,.04)); border-color: #f59e0b; }
+body.dark .gold-standard-para h4 { color: #fbbf24; }
+body.dark .gold-standard-para p, body.dark .gold-standard-para ul, body.dark .gold-standard-para li { color: #d1d5db; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+body.dark a { color: #60a5fa; }
+body.dark a:hover { color: #93c5fd; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; }
+.syl-tag.ao1 { background: #dbeafe; color: #1e40af; }
+.syl-tag.ao2 { background: #dcfce7; color: #166534; }
+.syl-tag.ao3 { background: #fce7f3; color: #9d174d; }
+.syl-tag.syn { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag.ao1 { background: rgba(59,130,246,.15); color: #93c5fd; }
+body.dark .syl-tag.ao2 { background: rgba(22,163,74,.15); color: #86efac; }
+body.dark .syl-tag.ao3 { background: rgba(219,39,119,.15); color: #f9a8d4; }
+body.dark .syl-tag.syn { background: rgba(245,158,11,.15); color: #fcd34d; }
+
+/* ported from review template for ch7 */
+.glossary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; }
+.glossary-item { background:#FFFFFF; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px; }
+.glossary-item .term { font-weight:700; color:var(--primary-dark); font-size:.96rem; }
+.glossary-item .zh { color:#64748b; font-size:.85rem; margin-left:4px; }
+.glossary-item .def { font-size:.88rem; line-height:1.45; margin-top:4px; color:var(--text); }
+.methods-table th, .methods-table td { padding:8px 12px; border-bottom:1px solid #e2e8f0; font-size:.9rem; vertical-align:top; }
+.methods-table th { background:#FFF7ED; color:var(--accent); text-align:left; font-weight:600; }
+.section-subtitle { color: var(--text-secondary); font-size: .92em; font-style: italic; font-weight: 400; padding-bottom: 12px; border-bottom: 2px solid var(--border); margin: 0 0 14px 0; }
+.study-badge.biological { background: linear-gradient(135deg, #ede9fe, #ddd6fe); color: #5b21b6; }
+.study-badge.experimental { background: linear-gradient(135deg, #cffafe, #a5f3fc); color: #155e75; }
+.study-badge.longitudinal { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: #9d174d; }
+body.dark .study-badge.biological { background: rgba(91,33,182,.20); color: #c4b5fd; }
+body.dark .study-badge.experimental { background: rgba(21,94,117,.24); color: #67e8f9; }
+body.dark .study-badge.longitudinal { background: rgba(157,23,77,.20); color: #f9a8d4; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="/edexcel-psychology-courseware/">Home</a> <span class="sep">›</span>
+    <a href="/edexcel-psychology-courseware/">Edexcel</a> <span class="sep">›</span>
+    <span>Chapter 7 — Explanations for Crime</span>
+  </div>
+  <span class="nav-pill">🚔 Criminological Psychology · Explanations</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn" title="Toggle dark mode">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)" title="Decrease font size">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)" title="Increase font size">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+    <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">Chapter 7 Contents</div>
+        <div class="sb-header-sub">Criminological Psychology · Explanations</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">1 · Foundations</li>
+        <li class="sb-item"><a href="#s1">1. Learning Objectives</a></li>
+        <li class="sb-item"><a href="#s2">2. Getting Started</a></li>
+        <li class="sb-item"><a href="#s3">3. Crime vs Antisocial</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">2 · Self-Fulfilling Prophecy</li>
+        <li class="sb-item"><a href="#s4">4. The Theory</a></li>
+        <li class="sb-item"><a href="#s5">5. The Evidence</a></li>
+        <li class="sb-item"><a href="#s6">6. Evaluating SFP</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">3 · Social Learning from Media</li>
+        <li class="sb-item"><a href="#s7">7. The Theory</a></li>
+        <li class="sb-item"><a href="#s8">8. The Evidence</a></li>
+        <li class="sb-item"><a href="#s9">9. Evaluating SLT</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">4 · Antisocial Personality Disorder</li>
+        <li class="sb-item"><a href="#s10">10. The Disorder</a></li>
+        <li class="sb-item"><a href="#s11">11. The Evidence</a></li>
+        <li class="sb-item"><a href="#s12">12. Evaluating ASPD</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">5 · Wrap-Up</li>
+        <li class="sb-item"><a href="#s13">13. Three Theories Compared</a></li>
+        <li class="sb-item"><a href="#s14">📝 Checkpoint &amp; Exam Practice</a></li>
+        <li class="sb-item"><a href="#s15">📚 Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>🚔 CHAPTER 7: EXPLANATIONS FOR CRIME AND ANTISOCIAL BEHAVIOUR<br><span style="font-size:0.65em">犯罪与反社会行为的解释</span></h1>
+  <div class="subtitle">Edexcel International A Level Psychology · Topic F: Criminological Psychology</div>
+  <div class="meta">
+    <span class="badge">📘 Pearson Edexcel International A Level</span>
+    <span class="badge">🚔 Topic F · Criminological Psychology · Paper 3</span>
+    <span class="badge">🧩 Spec 6.1.1 · SFP · Media SLT · ASPD</span>
+    <span class="badge">📝 Checkpoint 9 Qs + Exam 4 Qs (incl. 8-mark)</span>
+  </div>
+</div>
+
+
+<!-- ============ SECTION 1: LEARNING OBJECTIVES ============ -->
+<section class="section" id="s1">
+  <h2>1. Learning Objectives（学习目标）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary — 本节要学什么</h4>
+    <p>Why do people commit crimes? Is it the label society pins on them, the violence they watch on a screen, or the way their brain is wired? This chapter builds <strong>three competing explanations</strong>（三种竞争性解释）— and by the end you will be able to argue for and against each one, exactly as the exam demands.</p>
+  </div>
+
+  <div class="note-box blue-box">
+    <h4>🎯 By the end of this chapter, you should be able to describe and evaluate (spec 6.1.1):</h4>
+    <ul>
+      <li><strong>Self-fulfilling prophecy</strong>（自证预言）as an explanation for antisocial/criminal behaviour — including the Rosenthal &amp; Jacobson (1968) and Jahoda (1954) evidence.</li>
+      <li><strong>Social learning from the media</strong>（从媒体的社会学习）as an explanation — including Bandura Ross &amp; Ross (1963), MacBeth Williams (1986) and Comstock &amp; Paik (1994).</li>
+      <li><strong>Antisocial personality disorder</strong>（反社会人格障碍，ASPD）as an explanation — including Hodgins &amp; Côté (1993), the twin-study evidence and Yang &amp; Raine (2009).</li>
+    </ul>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>这一章是 Topic F（犯罪心理学）的开篇。考试要求你对每个理论做到两件事：<strong>describe（描述）</strong>——说得清理论内容和证据；<strong>evaluate（评价）</strong>——说得出优点和缺点。三个理论代表三种完全不同的视角：<strong>社会贴标签 → 看来的 → 天生的</strong>。记住这条主线，整章就串起来了。</div>
+</section>
+
+<!-- ============ SECTION 2: GETTING STARTED ============ -->
+<section class="section" id="s2">
+  <h2>2. Getting Started — Can a Name Make You a Criminal?（开局思考：一个名字能让人犯罪吗？）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Think about this before you read on</h4>
+    <p>In a small group, list <strong>five different types of crime</strong>（五种不同类型的犯罪）. Now think of as many reasons as you can why people commit these crimes — you will have a long list. Which reason best explains <em>which</em> crime? There may be multiple reasons for one crime.</p>
+  </div>
+
+  <p>Explaining crime is difficult because of the <strong>large number of reasons</strong> why crimes are committed: some are <strong>social or economic</strong>（社会的或经济的）, some relate to <strong>mental disorders</strong>（精神障碍）, and others may be <strong>biological</strong>（生物的）. Criminal behaviour is challenging because it can be influenced by many factors.</p>
+
+  <div class="keyterm-box">
+    <p>🤔 <strong>The question we will answer in §5</strong>：In Ghana, some boys are named after the <strong>day of the week</strong> they were born on. Boys born on Wednesday are named <em>Kwadu</em> and are expected to be <strong>aggressive and short-tempered</strong>（好斗、急躁）. When researchers checked juvenile court records, they found that <strong>about 22 per cent of violent offences</strong> were committed by Wednesday-born boys — but only <strong>6.9 per cent</strong> by Monday-born boys（被期望「安静平和」）.</p>
+    <p style="margin-bottom:0;">Same country. Same courts. Only the <strong>expectation attached to their names</strong> was different. Keep that number in your head as you read.</p>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>先别急着背理论——犯罪解释之所以难，是因为原因太多样：有的来自社会和经济环境，有的来自精神障碍，有的来自生理。这一章给你三个透镜。而开头这个「星期三男孩」的数据先吊住你的胃口：<strong>名字带来的期待，竟然和暴力犯罪比例对得上</strong>——学完 §4 你就能解释它了。</div>
+</section>
+
+<!-- ============ SECTION 3: CRIMINAL VS ANTISOCIAL ============ -->
+<section class="section" id="s3">
+  <h2>3. Criminal and Antisocial Behaviour（犯罪行为与反社会行为）</h2>
+
+  <div class="methods-table">
+    <table style="width:100%;border-collapse:collapse;">
+      <thead><tr><th></th><th>Criminal behaviour（犯罪行为）</th><th>Antisocial behaviour（反社会行为）</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Definition</strong></td><td>You <strong>break the law</strong>（违反法律）.</td><td>Acting in a way that causes <strong>harassment, alarm or distress</strong>（骚扰、恐慌或困扰）to others — <strong>not in itself illegal</strong>（本身并不违法）.</td></tr>
+        <tr><td><strong>Examples</strong></td><td>Theft, assault, fraud.</td><td>Being excessively noisy, not controlling animals, intimidating others, making hoax calls.</td></tr>
+        <tr><td><strong>Consequence (UK)</strong></td><td>Prosecution（起诉）.</td><td>An <strong>antisocial behaviour order</strong>（反社会行为令，ASBO）listing what you cannot do; violating it can lead to prosecution.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The terms 'antisocial' and 'criminal' have <strong>different meanings</strong> but are often used interchangeably（经常被混用）. Psychologists aim to understand the circumstances of the individual on an <strong>individual basis</strong>（在个体层面上）, what changes need to be made for that person, and then look for <strong>patterns more prevalent among the offending population</strong>（在犯罪人群中更普遍的规律）.</p>
+
+  <div class="cn-note"><strong>中文理解：</strong>区分两个词：<strong>犯罪 = 违法</strong>（会被起诉）；<strong>反社会 = 让别人被骚扰、恐慌、困扰，但不违法</strong>（半夜大声放音乐、恐吓邻居——警察只能开 ASBO 限令你，不能直接起诉你）。类比：犯罪像「闯红灯被拍照扣分」，反社会像「在图书馆大声打电话」——都让人不舒服，但只有前者违法。考试若问 <em>describe what is meant by antisocial behaviour</em>，就答「causes harassment, alarm or distress to others, not in itself breaking any law」。</div>
+</section>
+
+<!-- ============ SECTION 4: SFP THEORY ============ -->
+<section class="section" id="s4">
+  <h2>4. Theory 1 · Self-Fulfilling Prophecy（自证预言）</h2>
+
+  <div class="keyterm-box">
+    <p><strong>KEY TERM — self-fulfilling prophecy（自证预言）</strong>：a theory that explains that a behaviour may result from a <strong>belief or expectation</strong> someone has. This expectation influences a person's behaviour in such a way that it <strong>causes the expectation to come true</strong>（期待最终自我实现）.</p>
+  </div>
+
+  <p><strong>How it works as a process（四步过程）</strong>：Self-fulfilling prophecy can best be described as a <strong>process</strong>. Initially a <strong>false expectation</strong> is believed about a person, so they are <strong>labelled</strong>（被贴标签）as being a particular type of person. The person is <strong>treated differently</strong>（被区别对待）according to the expectation/label. Any behaviour inconsistent with the expectation is <strong>ignored</strong>（与期待不符的行为被忽视）, and the person begins to <strong>internalise the label</strong>（把标签内化）they have been given — and eventually acts in a way consistent with that label: <strong>they fulfil the prophecy that has been set</strong>.</p>
+
+  <div class="figure">
+    <img src="images/sfp_cycle.png" alt="Figure 7.1 The self-fulfilling prophecy process (Pygmalion Effect): our beliefs influence our actions, which impact others' beliefs, which cause others' actions, which reinforce our beliefs">
+    <div class="figure-caption">Figure 7.1 — The self-fulfilling prophecy process (Pygmalion Effect 皮格马利翁效应): our beliefs → influence our actions → impact others' beliefs → cause others' actions → reinforce our beliefs.</div>
+  </div>
+
+  <p><strong>In the context of criminal behaviour（放到犯罪情境里）</strong>：a person may be <strong>falsely labelled as criminal or antisocial</strong>. People around them then treat them with <strong>suspicion or caution</strong>（怀疑与戒备）, ignoring good behaviour that is not consistent with the criminal label. Being treated differently may lead to the labelled individual being <strong>isolated from normal society</strong>（被正常社会孤立）and so they may be <strong>drawn into criminal groups</strong>（被拉进犯罪团伙）. The person begins to internalise this label and cause trouble <strong>because it is expected of them</strong>. Once they have committed an offence they have <strong>confirmed the expectation</strong> and become a criminal.</p>
+
+  <div class="note-box">
+    <h4>🌈 Wider Issues and Debates — Nature–nurture（天性 vs 教养）</h4>
+    <p>Self-fulfilling prophecy is a theory of criminality that emphasises <strong>environmental factors</strong>（环境因素）: people become antisocial/criminal <em>because of the way people treat them</em>. For example, a child from an antisocial family may be expected to engage in criminal behaviour and treated accordingly. This suggests <strong>upbringing can influence criminality</strong>. However, the theory <strong>ignores innate influences</strong>（忽视先天因素）, such as biological reasons for criminality like brain functioning or genetics.</p>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>自证预言就是「<strong>你信什么，什么就成真</strong>」。类比：老师认定你数学差 → 上课不点你回答难题、给你更低期待 → 你慢慢觉得自己真不是学数学的料 → 成绩真的越来越差 → 老师说「看吧，我早说过」。放到犯罪上：<strong>被贴上「小混混」标签的人被孤立、被怀疑，好人圈子进不去，只有犯罪团伙接纳他</strong>——最后他用犯罪「兑现」了标签。Figure 7.1 的循环图把这条闭环画得很清楚：beliefs → actions → 别人的 beliefs → 别人的 actions → 反过来强化你的 beliefs。这是典型的 <strong>nurture（教养）</strong>解释——记住它「忽视基因和大脑」，这是评价题的送分点。</div>
+</section>
+
+<!-- ============ SECTION 5: SFP EVIDENCE ============ -->
+<section class="section" id="s5">
+  <h2>5. SFP Evidence — Two Classic Studies（两大证据研究）</h2>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-badge experimental">Field experiment</span>
+      <span class="study-badge biological">Education</span>
+      <h4 style="margin:0;">Rosenthal &amp; Jacobson (1968) — the "Bloomers" study</h4>
+    </div>
+    <div class="study-card-body">
+      <p><strong>What they did</strong>：Robert Rosenthal and Lenore Jacobson's study explained the impact of self-fulfilling prophecy within an <strong>academic setting in San Francisco, USA</strong>. They wanted to find out if teachers would react differently to particular students. Some students were <strong>labelled as academic 'bloomers'（学术上的「快开之花」）with great potential</strong>. In fact, students were allocated to this group <strong>randomly</strong>（随机分配，并非真的按智商挑的）, not according to their level of intelligence.</p>
+      <p><strong>What they found</strong>：The study ran for <strong>a year</strong>, measuring IQ at the start and end. The IQ of students identified as 'bloomers' was <strong>significantly higher</strong> than the non-bloomers — despite the bloomers <strong>not necessarily being those with the highest IQ scores at the start</strong>. They concluded that <strong>teachers' expectations influenced their behaviour towards students, and it was this behaviour that influenced the change in IQ scores</strong>. The beliefs of teachers became self-fulfilling truth.</p>
+    </div>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-badge contemp">Archival</span>
+      <span class="study-badge longitudinal">Cross-cultural</span>
+      <h4 style="margin:0;">Gustav Jahoda (1954) — the Ashanti day-names study</h4>
+    </div>
+    <div class="study-card-body">
+      <p><strong>What he did</strong>：Gustav Jahoda (1954) provided support for the self-fulfilling prophecy and the application of labels to children in relation to <strong>antisocial behaviour</strong>. He studied the <strong>Ashanti people from Ghana</strong>, who name boys according to the <strong>day they were born</strong>. The Ashanti have <strong>expectations for the personality</strong> of boys born on each day: 'Monday' boys are considered <strong>quiet and placid</strong>（安静温和）, and 'Wednesday' boys are thought to be <strong>aggressive and short-tempered</strong>（好斗急躁）.</p>
+      <p><strong>What he found</strong>：After looking at <strong>five years of records at a local juvenile court</strong>（少管所法庭 5 年记录）, Jahoda found that <strong>nearly 22 per cent of violent offences</strong> were committed by boys born on Wednesday, but only <strong>6.9 per cent</strong> by boys born on Monday. This suggested that <strong>cultural expectations about the boys' natures and the explicit labels</strong> led to them being treated differently according to their day of birth (for example, the boys born on Wednesday would have been treated with greater suspicion). As a result, many conformed to the label set by their namesake.</p>
+      <p style="margin-bottom:0;">✅ <strong>That is the answer to the §2 teaser</strong> — the 22% vs 6.9% gap is Jahoda's evidence that labels attached to a name can bend real behaviour towards the expectation.</p>
+    </div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>两个研究要会配对：<strong>Rosenthal &amp; Jacobson = 教室里的期望（IQ 变了）</strong>；<strong>Jahoda = 名字里的期望（犯罪记录变了）</strong>。前者不直接研究犯罪，但证明了「期望 → 待遇 → 行为改变」这条链条；后者直接把链条接到反社会行为上。类比记忆：一个是「老师觉得你行你就行」，一个是「名字说你横你就横」。考试问 <em>who found a link between violent offending and the day of the week they were born?</em> — 答 <strong>Jahoda (1954)</strong>。</div>
+</section>
+
+<!-- ============ SECTION 6: EVALUATING SFP ============ -->
+<section class="section" id="s6">
+  <h2>6. Evaluating Self-Fulfilling Prophecy（评价自证预言）</h2>
+  <p class="section-subtitle">Read like a critic — every point below comes from the research itself, and each card tells you WHY it matters.</p>
+
+  <div class="methods-table">
+    <table style="width:100%;border-collapse:collapse;">
+      <thead><tr><th>Evaluation point</th><th>The evidence</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Ethical problems with the supporting study</strong></td>
+          <td>The Rosenthal &amp; Jacobson (1968) study was well controlled and helpful in explaining learning processes, but it was <strong>unethical</strong> — it allowed some students to <strong>receive less attention</strong> than others, interfering with their education. The teachers were also <strong>deceived</strong> about details of the study.</td>
+          <td>You can still use the study as evidence, but a balanced answer flags the cost: some children's education was compromised to prove the point.</td>
+        </tr>
+        <tr>
+          <td><strong>No proven direct link to criminality</strong></td>
+          <td>There is <strong>no proven direct link</strong> between an individual's IQ levels (Rosenthal and Jacobson, 1968) and criminality. The research is limited to self-fulfilling prophecy and crime, with the <strong>exception of Jahoda (1954)</strong>.</td>
+          <td>The strongest evidence is about school grades, not crime. One juvenile-court study carries the whole criminal claim — a thin evidence base.</td>
+        </tr>
+        <tr>
+          <td><strong>Ethics forbid experiments → correlation only</strong></td>
+          <td>The ethical and moral issues surrounding research into self-fulfilling prophecy and antisocial behaviour are so great that it <strong>prevents experiments</strong> — it would be unlikely that intentionally labelling children to cause antisocial behaviour could be proven (or disproven). As a result it is only possible to suggest a <strong>correlation</strong>（只能证明相关，不能证明因果）.</td>
+          <td>Correlation cannot rule out <strong>other variables</strong> influencing behaviour — so causation is always an assumption, never a demonstration.</td>
+        </tr>
+        <tr>
+          <td><strong>Evidence comes from education, not crime</strong></td>
+          <td>Much of the research has been in <strong>education</strong>, investigating the teacher–child relationship. Other relationships may not have the same effect. This makes the application of self-fulfilling prophecy to other behaviours such as criminality <strong>difficult</strong>.</td>
+          <td>Generalisability gap: what teachers do to pupils may not match what police, courts and neighbours do to labelled 'criminals'.</td>
+        </tr>
+        <tr>
+          <td><strong>False beliefs are hard to study</strong></td>
+          <td>It is also very difficult to study self-fulfilling prophecy because it is <strong>by definition a false belief</strong>. Beliefs are often studied using <strong>self-report measures</strong>, which rely on <strong>individual insight, self-disclosure and honesty</strong>.</td>
+          <td>If people don't know (or won't admit) their expectations, the core mechanism is hard to measure objectively.</td>
+        </tr>
+        <tr>
+          <td><strong>Ignores other explanations (reductionist in scope)</strong></td>
+          <td>All research demonstrates a <strong>correlation</strong> between antisocial behaviour and self-fulfilling prophecy, so the link <strong>cannot be accepted as causal</strong> as other variables may also influence behaviour, including <strong>biological factors</strong> such as brain functioning or genetics. Self-fulfilling prophecy fails to account for other factors: <strong>peer pressure, politics, biological factors and social or economic circumstances</strong>.</td>
+          <td>The theory is too narrow on its own — a complete explanation of crime needs these other pieces (which is exactly where SLT and ASPD come in, §7 and §10).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>评价题的答题骨架就三句话：①证据薄——直接支持犯罪的研究只有 Jahoda 一个，其余都是教育场景；②方法限——伦理不允许做「故意贴标签」的实验，所以只能证明相关不能证明因果；③视野窄——忽略同伴压力、政治、生物、社会经济因素。任何一题 <em>evaluate self-fulfilling prophecy</em>，这三条都是万能骨架，再按题目给的语境挑一两条展开。</div>
+</section>
+
+<!-- ============ SECTION 7: SLT THEORY ============ -->
+<section class="section" id="s7">
+  <h2>7. Theory 2 · Social Learning from the Media（从媒体的社会学习）</h2>
+
+  <div class="keyterm-box">
+    <p><strong>KEY TERM — social learning theory（社会学习理论）</strong>：a <strong>social-cognitive theory</strong>（社会认知理论）that explains criminal behaviour as being the result of <strong>modelling such behaviour from observing it via the media or watching other people</strong>.</p>
+    <p><strong>KEY TERM — vicarious（替代的/间接的）</strong>：learning through the <strong>consequence of another person's behaviour</strong>.</p>
+  </div>
+
+  <p>Social learning theory suggests that an individual <strong>cannot learn offending behaviour without observing</strong> someone commit a crime, either <strong>directly</strong> such as a peer, or <strong>indirectly</strong> through watching crime-related television programmes. The individual may be motivated to reproduce the observed behaviour, which occurs as a result of <strong>vicarious reinforcement</strong>（替代强化——看到别人干坏事得了好处）. If an individual watches a criminal <strong>getting away with an offence or reaping the rewards</strong>, this may act as vicarious reinforcement for the observer.</p>
+
+  <p>On television, antisocial behaviour and criminality are often <strong>glamorised</strong>（被美化）, and violence can be committed by '<strong>good guys</strong>'. Criminal characters from media may act as <strong>role models</strong>（榜样）as they are often people who have <strong>power</strong>, or they may be the <strong>same gender as us</strong>. These role models may provide vicarious reinforcement, particularly in the <strong>absence of punishment</strong> and with only the <strong>sanitised effects on the victims shown</strong>（受害者的痛苦被淡化处理）.</p>
+
+  <p>Social learning theory also highlights the importance of <strong>cognitive thinking processes</strong>（认知加工过程）of a person, as someone may choose <strong>not to commit a crime immediately</strong> after observing it: the behaviour can happen much later. If news or crime programmes document some of the <strong>negative consequences</strong> of committing an offence, this may work towards <strong>encouraging an individual not to try</strong> the offence to seek a positive outcome.</p>
+
+  <div class="note-box blue-box">
+    <h4>✍️ Activity 1 — Apply the key terms to stealing（课本 Activity 1）</h4>
+    <p>Social learning theory is a topic you will have studied before. It is important in the examination that you apply social learning theory to criminal and antisocial behaviour. Use as a concrete example: <strong>a teenager observed a friend shoplifting from a store</strong>. Fill in what each key term would look like in this example, then open the panel to check.</p>
+    <div class="methods-table">
+      <table style="width:100%;border-collapse:collapse;">
+        <thead><tr><th>Key term</th><th>Definition</th><th>Applying the key term to explain stealing</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Attention</strong></td><td>Observing someone perform a behaviour</td><td><em>Example given:</em> A teenager observed a friend shoplifting from a store.</td></tr>
+          <tr><td><strong>Retention</strong></td><td>Remembering the behaviour</td><td><em>Your turn — remembering how the friend did it.</em></td></tr>
+          <tr><td><strong>Role model</strong></td><td>Someone we look up to who may be of higher status and the same gender</td><td><em>Your turn — why the friend (not a stranger) matters here.</em></td></tr>
+          <tr><td><strong>Reproduction</strong></td><td>Copying the behaviour witnessed</td><td><em>Your turn — the teenager later steals too.</em></td></tr>
+          <tr><td><strong>Vicarious reinforcement</strong></td><td>Witnessing the role model receive a reward for a behaviour</td><td><em>Your turn — the friend got away with it / got cool items.</em></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="summary-card-header" onclick="toggleSummary(this)">
+      <span class="arrow">▶</span>
+      <span>Activity 1 — Model Answers（参考答案）</span>
+      <span class="ao-badge">AO2</span>
+    </div>
+    <div class="summary-card-body hidden">
+      <ol>
+        <li><strong>Retention</strong>：The teenager remembers the friend's method — how they concealed the item and walked past the tills.</li>
+        <li><strong>Role model</strong>：The friend is someone the teenager looks up to and identifies with (similar age, similar gender, higher status in the group) — so the behaviour is more likely to be copied than if a stranger did it.</li>
+        <li><strong>Reproduction</strong>：The teenager copies the witnessed behaviour and shoplifts in the same way on a later visit.</li>
+        <li><strong>Vicarious reinforcement</strong>：The teenager saw the friend get away with it and enjoy the stolen goods — no punishment, reward visible — making stealing seem worthwhile.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>社会学习理论一句话：「<strong>坏人不是天生的，是『看会』的</strong>」。类比：你本来没想点奶茶，看到朋友喝了、发朋友圈晒了、还夸好喝——下次你也买了。这就是 <strong>vicarious reinforcement</strong>（看到别人得到好处，自己被「替代强化」）。电视里的罪犯常被 <strong>glamorise（美化）</strong>：又是主角、又帅又有权力，还是「好人」人设，受害者痛苦还被淡化——看多了就觉得「犯罪也没什么代价」。注意理论里还有 <strong>cognitive（认知）</strong>成分：人可能<strong>过很久才模仿</strong>，而且如果新闻把犯罪后果拍得很惨，也可能吓住人不去犯——这一句是评价题里「SLT 也能解释为什么人不犯罪」的高级用法。</div>
+</section>
+
+<!-- ============ SECTION 8: SLT EVIDENCE ============ -->
+<section class="section" id="s8">
+  <h2>8. SLT Evidence — From Bobo Dolls to Whole Communities（从波波玩偶到整个社区）</h2>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-badge experimental">Lab experiment</span>
+      <span class="study-badge classic">Classic</span>
+      <h4 style="margin:0;">Bandura, Ross &amp; Ross (1963) — Bobo doll + cartoon cat</h4>
+    </div>
+    <div class="study-card-body">
+      <p>Studies into the portrayal of violence in the media have adopted a range of research methods to investigate its effects. Albert Bandura, Dorthea Ross and Sheila Ross (1963) found <strong>experimental evidence that children copied aggression from watching a video recording of adults behaving aggressively towards a Bobo doll</strong>（充气不倒翁玩偶）.</p>
+      <p>They also found that children were <strong>equally likely to copy aggression from a cartoon version</strong> where the aggressive adult was dressed as a <strong>black cat</strong>. This study offers evidence that children copy antisocial behaviour from television, although the <strong>long-term impact of witnessing aggression was not followed up</strong>, so we do not know whether the children developed antisocial behaviour beyond the experimental context.</p>
+    </div>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-badge experimental">Natural experiment</span>
+      <span class="study-badge longitudinal">Longitudinal</span>
+      <h4 style="margin:0;">Tannis MacBeth Williams (1986) — the town that got TV</h4>
+    </div>
+    <div class="study-card-body">
+      <p>Tannis MacBeth Williams (1986) used a <strong>natural experiment</strong>（自然实验）to investigate the introduction of television to a <strong>small community in British Columbia, Canada</strong>. Of the 16 young people that she studied, she found that after only <strong>two years of receiving television</strong>, these children were <strong>twice as aggressive</strong> as two control groups she studied in <strong>nearby communities</strong> who had been brought up with television in varying amounts.</p>
+      <p>This might offer some evidence for social learning theory as an explanation of criminality, although Williams herself suggested that the increased aggression was <strong>more likely to be a result of the increased value placed on materialistic lifestyles</strong> than the violence that they were exposed to in television programmes.</p>
+    </div>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-badge contemp">Meta-analysis</span>
+      <span class="study-badge biological">Correlational</span>
+      <h4 style="margin:0;">Comstock &amp; Paik (1994) — a meta-analysis with a weak correlation</h4>
+    </div>
+    <div class="study-card-body">
+      <p>Correlations have also been conducted to establish whether there is a relationship between watching violent media and aggressive behaviour. In a <strong>meta-analysis of correlational studies</strong>, George Comstock and Haejung Paik (1994) concluded that many reported a <strong>positive correlation between television violence and aggressive measures of behaviour</strong>, with an <strong>overall correlation coefficient of +0.19</strong>. This correlation is <strong>not particularly strong</strong> and is significantly affected by the <strong>large sample sizes</strong> used in some of the studies, which tend to make findings appear significant when they are not.</p>
+    </div>
+  </div>
+
+  <div class="figure">
+    <img src="images/tv_violence.png" alt="A young boy on a sofa watching television holding a remote control — how does watching violence on television affect children?">
+    <div class="figure-caption">How does watching violence on television affect children? The evidence is nowhere near as simple as the question suggests.</div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>三个证据一层比一层「降温」：<strong>Bandura = 实验室里小孩确实模仿</strong>（连卡通猫都模仿！）→ <strong>Williams = 真实社区通了电视后攻击性翻倍</strong>（但她自己都说可能是「物质至上价值观」的锅）→ <strong>Comstock &amp; Paik = 大规模相关只有 +0.19</strong>（弱相关，还被大样本「吹」显著）。类比：从「实验室实锤」到「现实存疑」再到「统计数据泼冷水」。<strong>记住 +0.19 这个数</strong>——考试写「weak correlation of only +0.19 (Comstock &amp; Paik, 1994)」立刻显得有据可依。</div>
+</section>
+
+<!-- ============ SECTION 9: EVALUATING SLT ============ -->
+<section class="section" id="s9">
+  <h2>9. Evaluating Social Learning Theory（评价社会学习理论）</h2>
+  <p class="section-subtitle">Read like a critic — the conclusion the textbook draws is surprisingly cautious.</p>
+
+  <div class="methods-table">
+    <table style="width:100%;border-collapse:collapse;">
+      <thead><tr><th>Evaluation point</th><th>The evidence</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Long-term effects unknown</strong></td>
+          <td>Bandura's evidence that children copy aggression from television is powerful, but the <strong>long-term impact of witnessing aggression was not followed up</strong> — we do not know whether the children developed antisocial behaviour beyond the experimental context.</td>
+          <td>Copying a bobo-doll punch in a lab is a long way from a criminal career. Short-term imitation ≠ long-term criminality.</td>
+        </tr>
+        <tr>
+          <td><strong>The natural experiment has a confounding variable</strong></td>
+          <td>Williams herself suggested the increased aggression in the TV town was more likely a result of the <strong>increased value placed on materialistic lifestyles</strong> than of the violence in programmes.</td>
+          <td>Even the best natural experiment cannot isolate the variable — a third factor may explain the whole effect.</td>
+        </tr>
+        <tr>
+          <td><strong>The correlation is weak and inflated</strong></td>
+          <td>The overall correlation coefficient of <strong>+0.19</strong> (Comstock &amp; Paik, 1994) is <strong>not particularly strong</strong> and is significantly affected by <strong>large sample sizes</strong>, which tend to make findings appear significant when they are not. Correlations <strong>only show relationships between measured variables</strong>: they do not establish causality, measure other variables that could affect aggression, nor indicate the <strong>direction</strong> of possible causality.</td>
+          <td>+0.19 leaves 96% of the variance unexplained. And direction could be reversed — see next point.</td>
+        </tr>
+        <tr>
+          <td><strong>The causation may run backwards</strong></td>
+          <td>It could be that <strong>aggressive children seek out and prefer violent programmes</strong>（是爱攻击的孩子主动选择看暴力节目）— the direction of cause and effect is unknown.</td>
+          <td>The media may reflect pre-existing aggression rather than create it.</td>
+        </tr>
+        <tr>
+          <td><strong>Third variables explain criminality better</strong></td>
+          <td>There may be the influence of a third, unmeasured variable, such as <strong>social class</strong>. Children from lower socio-economic status watch <strong>delinquent</strong>（倾向于违法的）television more than those in higher socio-economic groups, and are also more likely to be delinquent (Flood-Page et al., 2000). Other factors such as individual motivation, personality characteristics such as <strong>sensation seeking</strong>（寻求刺激）(Slater et al., 2004) and <strong>antisocial personality disorder</strong> may also account for criminality.</td>
+          <td>Social class, sensation seeking and ASPD could each produce both the TV habits and the behaviour — media is the bystander, not the cause.</td>
+        </tr>
+        <tr>
+          <td><strong>The overall conclusion is cautious</strong></td>
+          <td>What can we conclude from the research into social learning theory and antisocial behaviour? That there is <strong>no convincing evidence that criminality is a result of observational learning, particularly as a result of observing media portrayals of violence</strong>. Despite a phenomenal amount of research conducted using a range of research methods, there is <strong>no unequivocal evidence</strong> that links exposure to violence with aggression or antisocial behaviour. The relationship is <strong>neither simple nor straightforward</strong>.</td>
+          <td>In an essay, this balanced verdict is your AO3 conclusion: the theory is plausible but the evidence base does not yet prove it.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>SLT 的评价记住「<strong>三盆冷水</strong>」：①<strong>方向不明</strong>——可能不是暴力节目让孩子攻击，而是本来就好斗的孩子爱看暴力节目（因果方向反了）；②<strong>第三变量</strong>——社会阶层（Flood-Page 2000：底层孩子更多看「违法倾向」的电视、也更容易违法）、寻求刺激人格（Slater 2004）、ASPD，都能同时解释「看什么」和「做什么」；③<strong>效应弱</strong>——+0.19 的相关还被大样本吹成显著。所以课本结论措辞非常谨慎：「no convincing evidence / no unequivocal evidence」。写作文时敢于写「证据不支持强结论」比硬吹理论更能拿分。</div>
+</section>
+
+<!-- ============ SECTION 10: ASPD ============ -->
+<section class="section" id="s10">
+  <h2>10. Theory 3 · Antisocial Personality Disorder（反社会人格障碍，ASPD）</h2>
+
+  <div class="keyterm-box">
+    <p><strong>KEY TERM — personality disorder（人格障碍）</strong>：when an individual's way of <strong>thinking, feeling or relating to others</strong> differs significantly from that of a person without a personality disorder. It reflects <strong>extremes in people's personalities</strong>. A personality disorder requires a <strong>clinical diagnosis</strong>（临床诊断）.</p>
+    <p><strong>KEY TERM — comorbidity（共病）</strong>：the presence of <strong>more than one disorder in the same person</strong>.</p>
+  </div>
+
+  <p>Antisocial personality disorder (ASPD) can be diagnosed through official classifications such as the <strong>Diagnostic and Statistical Manual of Mental Disorders (DSM-V)</strong> and the <strong>International Statistical Classification of Diseases and Related Health Problems (ICD-11)</strong> — the same classification systems you met in Topic H. ASPD, sometimes referred to as <strong>dysocial personality disorder</strong>, is characterised by a <strong>persistent disregard for the rights of others</strong>（持续无视他人权利）.</p>
+
+  <div class="note-box blue-box">
+    <h4>📋 The seven diagnostic characteristics — a diagnosis requires three or more:</h4>
+    <ul style="margin-bottom:0;">
+      <li><strong>Disregard for social rules</strong> or respect for lawful behaviour, e.g. harassment, stealing</li>
+      <li><strong>Deceit and manipulation</strong>: lying, using aliases, conning others for personal or financial gain</li>
+      <li><strong>Impulsivity</strong> or failing to plan ahead</li>
+      <li><strong>Aggression and irritability</strong>, e.g. getting into fights</li>
+      <li><strong>Reckless disregard</strong> for their own or other people's safety, e.g. reckless driving</li>
+      <li><strong>Irresponsible behaviour</strong>, such as failing to honour work or financial obligations</li>
+      <li><strong>Lack of remorse</strong> for wrongdoing or harm（对伤害毫无悔意）</li>
+    </ul>
+  </div>
+
+  <div class="note-box">
+    <h4>✍️ Activity 2 — Link behaviours to a characteristic（课本 Activity 2）</h4>
+    <p>Link each behaviour below to a characteristic of antisocial personality disorder:</p>
+    <ul>
+      <li><strong>Tamara</strong> screams aggressively at the neighbours every time they walk by her house</li>
+      <li><strong>Sanya</strong> plays her music very loudly and insults people when they ask her to turn it down</li>
+      <li><strong>Demi</strong> steals money from her mother's purse</li>
+      <li><strong>Ruthie</strong> lies to her teachers</li>
+      <li><strong>Lola</strong> regularly fails to show up for work</li>
+    </ul>
+    <div class="summary-card-header" onclick="toggleSummary(this)">
+      <span class="arrow">▶</span>
+      <span>Activity 2 — Model Answers（参考答案）</span>
+      <span class="ao-badge">AO2</span>
+    </div>
+    <div class="summary-card-body hidden">
+      <ol>
+        <li><strong>Tamara</strong> → aggression and irritability, e.g. getting into fights.</li>
+        <li><strong>Sanya</strong> → disregard for social rules or respect for lawful behaviour (harassment of neighbours).</li>
+        <li><strong>Demi</strong> → deceit: stealing for personal gain (theft from her mother's purse).</li>
+        <li><strong>Ruthie</strong> → deceit and manipulation: lying to her teachers.</li>
+        <li><strong>Lola</strong> → irresponsible behaviour: failing to honour work obligations.</li>
+      </ol>
+    </div>
+  </div>
+
+  <p><strong>The four categories of offences（ASPD 患者的四类罪行）</strong>：People with antisocial personality disorder tend to commit one of four categories of offences:</p>
+  <ol>
+    <li><strong>Aggression</strong> towards people or animals</li>
+    <li><strong>Property offences</strong>（毁坏财物）</li>
+    <li><strong>Theft or deceit</strong></li>
+    <li><strong>Serious violation of rules</strong>（严重违规）</li>
+  </ol>
+
+  <p>People with ASPD are likely to get into trouble or be arrested because they fail to respect lawful behaviour. They may get involved in fights or assault another person and tend to disregard personal safety or the safety of others. They may also display indifference in harming or mistreating other people. Although ASPD is <strong>not diagnosed until the age of 18 years</strong>, evidence of <strong>conduct issues should be seen before the age of 15</strong>（15 岁前须有人品行为问题的证据）.</p>
+
+  <p>Other features of ASPD can include displays of <strong>arrogance</strong>, being <strong>superficially charming</strong>（表面魅力十足）, being <strong>exploitative</strong>（善于利用他人）and failing to properly care for children. The <strong>prevalence rate</strong> for ASPD is between <strong>1 and 4 per cent</strong> of the general population (Lenzenweger et al., 2007), although this is significantly higher in subgroups of the population (males with substance abuse in clinics or prison). It is <strong>much more common in males</strong> compared to females, but is thought to be <strong>under-diagnosed in females</strong> due to the emphasis on aggressive characteristics necessary for diagnosis. Individuals with ASPD may also suffer from other conditions, such as <strong>anxiety or depressive disorders, substance misuse or attention deficit/hyperactivity disorder (ADHD)</strong> — a <strong>comorbidity</strong> problem.</p>
+
+  <p>While an individual with ASPD has a <strong>higher risk of criminality</strong>, their offending should <strong>not be used to diagnose the disorder</strong>. To be clinically diagnosed, an individual should display antisocial characteristics which are <strong>inflexible, persistent and cause significant impairment</strong> in functioning or cause distress.</p>
+
+  <div class="cn-note"><strong>中文理解：</strong>ASPD 是「<strong>性格本身就是犯罪隐患</strong>」的解释——不是环境标签（SFP），不是学来的（SLT），而是<strong>人格结构出了问题</strong>。诊断规则要背准三条：<strong>①18 岁前不给诊断，但 15 岁前必须有人品问题（conduct issues）证据；②七条特征至少占三条；③光犯罪不够，必须「僵化、持续、造成功能损害」</strong>。患病率普通人群 <strong>1–4%</strong>（Lenzenweger 2007），监狱/物质滥用 subgroup 里高得多，男性远多于女性（女性可能被漏诊，因为诊断标准偏重攻击性）。最容易出考点的是「<strong>comorbidity 共病</strong>」：焦虑、抑郁、物质滥用、ADHD 都可能同时存在——让诊断和归因都变难。</div>
+</section>
+
+<!-- ============ SECTION 11: ASPD EVIDENCE ============ -->
+<section class="section" id="s11">
+  <h2>11. ASPD Evidence — From Childhood Records to Brain Scans（从童年记录到脑扫描）</h2>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-badge experimental">Offender comparison</span>
+      <span class="study-badge biological">Longitudinal</span>
+      <h4 style="margin:0;">Hodgins &amp; Côté (1993) — ASPD predicts offending careers</h4>
+    </div>
+    <div class="study-card-body">
+      <p>Shelly Hodgins and Gilles Côté (1993) investigated the link between mental disorders and offending by <strong>comparing offenders with antisocial personality disorder and those without</strong>. They found that offenders with a diagnosis of ASPD had a <strong>significant history of offending during childhood</strong>, and <strong>more convictions in adulthood</strong> than offenders who did not have ASPD. This research suggests that <strong>the disorder leads to a strong risk of offending</strong>.</p>
+    </div>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-badge biological">Genetic</span>
+      <span class="study-badge contemp">Twin &amp; meta-analysis</span>
+      <h4 style="margin:0;">The genetic case — Torgersen (2008), Mason &amp; Frick (1994), Ferguson (2010)</h4>
+    </div>
+    <div class="study-card-body">
+      <p>The cause of ASPD is still debated; however there is evidence for a <strong>genetic basis</strong> which comes from <strong>twin studies</strong>（双生子研究——比较同卵双生子与异卵双生子的相似度）:</p>
+      <ul>
+        <li><strong>Sven Torgersen et al. (2008)</strong> assessed the personality traits of <strong>1386 twin pairs</strong> in a Norwegian sample using a structured interview. Comparing their traits to the DSM IV criteria, they found that genetic heritability accounted for <strong>38 per cent of twin variation</strong> in antisocial personality traits.</li>
+        <li><strong>Dehryl Mason and Paul Frick (1994)</strong> describe <strong>12 twin and three adoption studies</strong> which suggest that <strong>over 50 per cent of the variance</strong> in measures of antisocial behaviour were attributable to genetic factors.</li>
+        <li><strong>Christopher Ferguson (2010)</strong> analysed the data of <strong>38 studies published between 1996 and 2006</strong>. Using a combined sample of <strong>96,918 participants</strong>, he found that genetic factors accounted for <strong>56 per cent of the variance</strong> in antisocial personality and behaviour. This offers credibility to the theory that criminality has a biological basis.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-badge biological">Brain imaging</span>
+      <span class="study-badge contemp">Meta-analysis</span>
+      <h4 style="margin:0;">Yang &amp; Raine (2009) — the prefrontal cortex story</h4>
+    </div>
+    <div class="study-card-body">
+      <p>Further biological evidence comes from <strong>brain imaging studies</strong>. Yaling Yang and Adrian Raine (2009) conducted a <strong>meta-analysis on 43 brain scanning studies</strong> (including structural and functional brain scans) and found <strong>significantly reduced grey matter and reduced function in the prefrontal cortex</strong> for individuals displaying antisocial behaviour. The <strong>prefrontal cortex</strong>（前额叶皮层）is known to <strong>moderate aggression</strong>（调节攻击性）, so an impairment in this area may explain antisocial behaviour. It has been suggested that the prefrontal cortex impairment could have been <strong>inherited or acquired through brain damage</strong>. Other brain differences have been found including the <strong>amygdala</strong> and <strong>temporal lobe</strong>. This research further supports a biological basis for criminal and antisocial behaviour.</p>
+      <div class="figure">
+        <img src="images/prefrontal_cortex.png" alt="Figure 7.2 Reduced grey matter and function in the prefrontal cortex may explain antisocial behaviour">
+        <div class="figure-caption">Figure 7.2 — Reduced grey matter and function in the prefrontal cortex (blue region) may explain antisocial behaviour.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exam-tip"><strong>Exam tip — the command word 'justify'</strong>：In the exam, you may be asked to <strong>'justify'</strong> why a theory, like antisocial personality theory, is a credible explanation for criminal/antisocial behaviour. The command word 'justify' requires you to <strong>rationalise a decision</strong>. The best way to justify whether a theory is credible is to <strong>offer evidence in the form of a research study that can be used to support the theory</strong>. Evidence makes a study more credible.（「justify = 用研究证据为你的判断辩护」——甩出一个具体研究 + 它支持理论的机制，就是满分动作。）</div>
+
+  <div class="cn-note"><strong>中文理解：</strong>ASPD 的证据链是「<strong>行为 → 基因 → 大脑</strong>」三层递进：<strong>Hodgins &amp; Côté</strong> 证明有 ASPD 的罪犯「从小就犯、成年判得更勤」；<strong>双生子研究</strong>证明遗传度 38%（Torgersen）→ 50%+（Mason &amp; Frick）→ 56%（Ferguson，96,918 人的大样本！）；<strong>Yang &amp; Raine</strong> 用 43 项脑扫描研究的元分析锁定<strong>前额叶灰质减少</strong>——前额叶是「刹车系统」，刹车坏了攻击性就没人管。考试 <em>justify why ASPD is credible</em> 的最优答案就是甩 Ferguson (2010) 或 Yang &amp; Raine (2009)。<strong>三个数字 38% / 56% / 43 项研究</strong>，值得像记比分一样记牢。</div>
+</section>
+
+<!-- ============ SECTION 12: EVALUATING ASPD ============ -->
+<section class="section" id="s12">
+  <h2>12. Evaluating ASPD（评价反社会人格障碍解释）</h2>
+  <p class="section-subtitle">Read like a critic — the strongest biological explanation still has loose threads.</p>
+
+  <div class="methods-table">
+    <table style="width:100%;border-collapse:collapse;">
+      <thead><tr><th>Evaluation point</th><th>The evidence</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Childhood roots: prediction and prevention</strong></td>
+          <td>ASPD has its roots in childhood and cannot be formally diagnosed without evidence of antisocial behaviour before the age of 15. A longitudinal study by <strong>Emily Simonoff et al. (2004)</strong> provides credibility: they interviewed <strong>225 childhood twin pairs diagnosed with conduct disorder</strong>（品行障碍）in childhood, which <strong>predicted antisocial personality disorder in adulthood</strong> in those who showed criminal behaviour 10–25 years later. This can have important implications for the identification of problem behaviour during childhood, and possible intervention programmes that could be used to prevent later criminal behaviour in adulthood.</td>
+          <td>Longitudinal prediction is the strongest design here: conduct disorder in childhood came <em>before</em> adult ASPD, supporting a developmental pathway.</td>
+        </tr>
+        <tr>
+          <td><strong>Comorbidity makes diagnosis problematic</strong></td>
+          <td>Investigating ASPD is complex, not least because diagnosis is problematic due to a high level of <strong>comorbidities</strong> that may exist. There are environmental factors also associated with ASPD, such as <strong>adverse childhood circumstances, low socio-economic class and urban living</strong>. While it could be that these factors contribute to the development of ASPD, it could instead be that this subgroup engages in protective behaviours or strategies which resemble antisocial personality disorder and therefore are <strong>misdiagnosed</strong>.</td>
+          <td>If environment can mimic the disorder, some diagnoses may be false positives — the label itself becomes unreliable.</td>
+        </tr>
+        <tr>
+          <td><strong>Elevated risk, not inevitability</strong></td>
+          <td>The risk of offending is <strong>significantly elevated</strong> in individuals with ASPD but it is <strong>not inevitable</strong>. Some people with ASPD may not commit criminal offences and can live functional lives in terms of employment and having relationships. The risk of offending varies with <strong>severity of symptoms, comorbid conditions like ADHD or substance misuse, and upbringing</strong>.</td>
+          <td>ASPD is a risk factor, not a destiny — an essay that treats it as deterministic loses the balance marks.</td>
+        </tr>
+        <tr>
+          <td><strong>Heritability figures disagree</strong></td>
+          <td>The genetic estimates vary: <strong>38%</strong> of twin variation (Torgersen et al., 2008), <strong>over 50%</strong> (Mason &amp; Frick, 1994), <strong>56%</strong> (Ferguson, 2010). Even the highest figure leaves a substantial share to the environment.</td>
+          <td>Genes load the gun; they are not the whole trigger. An inherited tendency still needs environmental conditions to be expressed.</td>
+        </tr>
+        <tr>
+          <td><strong>Brain evidence is correlational</strong></td>
+          <td>Yang and Raine's meta-analysis shows reduced grey matter <strong>associated with</strong> antisocial behaviour, but reduced prefrontal function could be inherited or <strong>acquired through brain damage</strong> — and scanning studies cannot show whether the brain difference caused the behaviour or resulted from lifestyle factors.</td>
+          <td>Causation remains open. Correlation between a brain feature and behaviour is not proof of mechanism.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>ASPD 评价的题眼是「<strong>风险高 ≠ 必然犯罪</strong>」。四个抓手：①<strong>Simonoff 2004 纵向研究</strong>（225 对双生子，童年品行障碍预测成年 ASPD）是它最硬的证据；②<strong>共病 + 环境混淆</strong>（低收入、城市生活、不良童年）让诊断可能误判；③很多 ASPD 患者过得好好的、有工作有关系——所以它是 risk factor 不是判决书；④遗传度数字 38%→56% 都不到 100%，脑扫描也只是相关。和 §6、§9 一样，评价永远「承认强度 + 指出裂缝」。</div>
+</section>
+
+<!-- ============ SECTION 13: THREE THEORIES COMPARED ============ -->
+<section class="section" id="s13">
+  <h2>13. The Three Theories Side by Side（三大理论对比速查）</h2>
+
+  <div class="methods-table">
+    <table style="width:100%;border-collapse:collapse;">
+      <thead><tr><th></th><th>Self-fulfilling prophecy（自证预言）</th><th>Social learning from media（媒体社会学习）</th><th>ASPD（反社会人格障碍）</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Type of explanation</strong></td><td>Social / environmental（社会标签）</td><td>Social-cognitive（观察学习）</td><td>Personality / biological（人格与生理）</td></tr>
+        <tr><td><strong>Core mechanism</strong></td><td>False expectation → labelled → treated differently → internalise → fulfil the label</td><td>Observe (media/peer) → vicarious reinforcement → reproduce, maybe much later</td><td>Persistent disregard for others' rights; 3+ of 7 characteristics; conduct issues before 15</td></tr>
+        <tr><td><strong>Key evidence</strong></td><td>Rosenthal &amp; Jacobson (1968) bloomers; Jahoda (1954) 22% vs 6.9%</td><td>Bandura Ross &amp; Ross (1963); Williams (1986) TV town; Comstock &amp; Paik (1994) r = +0.19</td><td>Hodgins &amp; Côté (1993); Torgersen 38% / Ferguson 56%; Yang &amp; Raine (2009) 43 scans</td></tr>
+        <tr><td><strong>Biggest weakness</strong></td><td>No direct IQ–crime link; ethics forbid experiments → correlation only</td><td>No convincing evidence of causation; third variables (class, sensation seeking, ASPD)</td><td>Comorbidity and misdiagnosis; risk elevated but not inevitable</td></tr>
+        <tr><td><strong>Nature–nurture stance</strong></td><td>Strong nurture（纯教养）</td><td>Mostly nurture, with cognitive processing（教养为主，含认知）</td><td>Both: genetic + environmental（先天与环境交互）</td></tr>
+        <tr><td><strong>Exam one-liner</strong></td><td>"The label becomes the behaviour."</td><td>"They learned it from a screen."</td><td>"The brakes were missing from birth."</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>这张表是整章的「考场地图」。三个理论的一句话记忆：<strong>SFP =「标签变成了行为」；SLT =「跟屏幕学的」；ASPD =「出厂就没装刹车」</strong>。8 分题如果问「discuss explanations for criminal behaviour」，最漂亮的写法是三个理论各写一段 + 指出它们可以互补：SFP 和 SLT 都是 nurture 视角（一个靠标签、一个靠观察），ASPD 则把基因和大脑拉进来——最后收在「单一解释都不够，犯罪是多因素共同作用」。</div>
+</section>
+
+<!-- ============ SECTION 14: CHECKPOINT & EXAM PRACTICE ============ -->
+<section class="section" id="s14">
+  <h2>14. Checkpoint &amp; Exam Practice（自测与考试练习）</h2>
+
+  <h3>Checkpoint — 9 quick questions（课本 Checkpoint）</h3>
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span>
+    <span>Checkpoint — Answers（点击核对答案）</span>
+    <span class="ao-badge">AO1</span>
+  </div>
+  <div class="summary-card-body hidden">
+    <ol>
+      <li><strong>Match the key terms to theories</strong>：Vicarious reinforcement → <em>social learning theory</em>; Labelling → <em>self-fulfilling prophecy</em>; Formal diagnosis → <em>ASPD</em>; Treated differently → <em>self-fulfilling prophecy</em>; Reckless behaviour → <em>ASPD</em>; Impulsivity → <em>ASPD</em>; Role model → <em>social learning theory</em>; Expectation → <em>self-fulfilling prophecy</em>; Attention → <em>social learning theory</em>.</li>
+      <li><strong>Jahoda (1954)</strong>：Among the Ashanti of Ghana, boys named after Wednesday (expected to be aggressive) accounted for nearly 22% of violent offences in five years of juvenile court records, compared with 6.9% for Monday-born boys (expected to be quiet) — labels led to different treatment and conformity to the label.</li>
+      <li><strong>Simonoff et al. (2004)</strong>：In a longitudinal study of 225 childhood twin pairs diagnosed with conduct disorder, childhood conduct disorder predicted antisocial personality disorder in adulthood in those who showed criminal behaviour 10–25 years later.</li>
+      <li><strong>Williams (1986)</strong>：In a natural experiment, after a small Canadian community received television, its 16 young people were twice as aggressive after two years as controls in nearby communities — though Williams suggested materialistic values were the more likely cause.</li>
+      <li><strong>Three characteristics of ASPD</strong>：any three of — disregard for social rules/lawful behaviour; deceit and manipulation; impulsivity; aggression and irritability; reckless disregard for safety; irresponsible behaviour; lack of remorse.</li>
+      <li><strong>Two possible sources of aggression children learn from</strong>：e.g. directly from a peer, or indirectly from crime-related television programmes (also: family, films, games).</li>
+      <li><strong>Who found the day-of-week link?</strong>：Jahoda (1954).</li>
+      <li><strong>Antisocial behaviour means</strong>：acting in a way that causes harassment, alarm or distress to others, which does not in itself break any law.</li>
+      <li><strong>Why can't SFP be experimentally tested?</strong>：Because intentionally labelling people to cause antisocial behaviour is unethical — experiments are prevented, so only correlational evidence is possible.</li>
+      <li><strong>Vicarious reinforcement means</strong>：learning through the consequence of another person's behaviour — watching someone be rewarded (or escape punishment) for an act. It explains aggression because observing a role model gain from violence, without punishment, motivates imitation.</li>
+    </ol>
+  </div>
+
+  <h3>Exam practice — the real thing（真题演练）</h3>
+
+  <div class="note-box blue-box">
+    <h4><span class="syl-tag ao1">AO1</span> Question 1a — Describe antisocial personality disorder (ASPD) as an explanation of criminal and antisocial behaviour. (4 marks)</h4>
+    <div class="summary-card-header" onclick="toggleSummary(this)">
+      <span class="arrow">▶</span>
+      <span>Mark scheme guidance（评分要点）</span>
+      <span class="ao-badge">4</span>
+    </div>
+    <div class="summary-card-body hidden">
+      <p>1 mark per accurate point, up to 4. Credit: ASPD is a <strong>personality disorder</strong> requiring clinical diagnosis via DSM-V / ICD-11; characterised by a <strong>persistent disregard for the rights of others</strong>; diagnosis requires <strong>three or more</strong> of the seven characteristics (disregard for rules, deceit/manipulation, impulsivity, aggression/irritability, recklessness, irresponsibility, lack of remorse); evidence of <strong>conduct issues before 15</strong>, diagnosis only from <strong>age 18</strong>; prevalence <strong>1–4%</strong> (Lenzenweger et al., 2007), more common in males; four categories of offences (aggression, property, theft/deceit, serious rule violation).</p>
+    </div>
+  </div>
+
+  <div class="note-box blue-box">
+    <h4><span class="syl-tag ao3">AO3</span> Question 1b — Justify how antisocial personality disorder (ASPD) can be considered a credible explanation of criminal and antisocial behaviour. (2 marks)</h4>
+    <div class="summary-card-header" onclick="toggleSummary(this)">
+      <span class="arrow">▶</span>
+      <span>Mark scheme guidance（评分要点）</span>
+      <span class="ao-badge">2</span>
+    </div>
+    <div class="summary-card-body hidden">
+      <p>'Justify' = rationalise the decision with <strong>evidence from a research study</strong>. E.g. Ferguson (2010) meta-analysed 38 studies with a combined sample of 96,918 participants and found genetic factors accounted for 56% of the variance in antisocial personality and behaviour — a large, replicated evidence base supports a biological basis, making the explanation credible. Also credit: Hodgins &amp; Côté (1993) — offenders with ASPD had more childhood offending and more adult convictions; Yang &amp; Raine (2009) — 43 brain-scanning studies show reduced prefrontal grey matter known to moderate aggression.</p>
+    </div>
+  </div>
+
+  <div class="note-box blue-box">
+    <h4><span class="syl-tag ao3">AO3</span> Question 2 — Justify self-fulfilling prophecy as an explanation for crime and antisocial behaviour. (2 marks)</h4>
+    <div class="summary-card-header" onclick="toggleSummary(this)">
+      <span class="arrow">▶</span>
+      <span>Mark scheme guidance（评分要点）</span>
+      <span class="ao-badge">2</span>
+    </div>
+    <div class="summary-card-body hidden">
+      <p>Use evidence: <strong>Jahoda (1954)</strong> — among the Ashanti, Wednesday-born boys (labelled aggressive) committed nearly 22% of violent offences versus 6.9% for Monday-born boys, supporting the claim that labels and expectations shape antisocial behaviour. Also credit: <strong>Rosenthal &amp; Jacobson (1968)</strong> — randomly labelled 'bloomers' gained significantly higher IQ, demonstrating that false expectations held by authority figures become self-fulfilling.</p>
+    </div>
+  </div>
+
+  <div class="note-box blue-box">
+    <h4><span class="syl-tag ao2">AO2</span> <span class="syl-tag ao3">AO3</span> Question 3 — the video-game question (8 marks)</h4>
+    <p><strong>Lucia enjoys playing violent video games. In these games Lucia has to fight other video game characters. Lucia is very good at winning these fights and has recently won an online competition for being the most successful player and winning fights. Lucia's parents have started to notice that he is becoming more aggressive at home, often getting into fights with his younger brother. He has also started getting in to trouble at school for fighting in the playground. Discuss how social learning theory could account for Lucia becoming aggressive. (8 marks)</strong></p>
+    <div class="summary-card-header" onclick="toggleSummary(this)">
+      <span class="arrow">▶</span>
+      <span>Essay plan（8 分题写作提纲）</span>
+      <span class="ao-badge">8</span>
+    </div>
+    <div class="summary-card-body hidden">
+      <ol>
+        <li><strong>Define SLT</strong> (AO1)：social-cognitive theory — criminal/antisocial behaviour is learned by observing models, via the media or directly, and reproduced when vicariously reinforced.</li>
+        <li><strong>Observation</strong> (AO2)：Lucia observes fighting in the violent video games (the media model).</li>
+        <li><strong>Vicarious reinforcement</strong> (AO2)：Lucia wins fights and gains rewards — winning the online competition for most successful player. Fighting is presented as rewarding and without punishment, which motivates reproduction of the behaviour.</li>
+        <li><strong>Role model identification</strong> (AO2)：the game characters act as role models — powerful, competent, the 'winner' position Lucia identifies with.</li>
+        <li><strong>Reproduction</strong> (AO2)：Lucia reproduces the observed aggression at home (fights with his younger brother) and at school (playground fighting).</li>
+        <li><strong>Evaluation</strong> (AO3)：Bandura Ross &amp; Ross (1963) supports the claim that children copy observed aggression, even from cartoons; but Comstock &amp; Paik (1994) found only a weak +0.19 correlation, and third variables (family, frustration) may explain aggression — so SLT is a plausible but not definitive account.</li>
+        <li><strong>Conclusion</strong>：SLT traces Lucia's aggression to observed, rewarded models — a coherent application, though evidence for media effects overall is not unequivocal.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 15: KEY TERMS ============ -->
+<section class="section" id="s15">
+  <h2>15. Key Terms（关键术语表）</h2>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><div class="term">Self-fulfilling prophecy <span class="zh">自证预言</span></div><div class="def">A behaviour may result from a belief or expectation someone has; the expectation influences behaviour so that it causes the expectation to come true.</div></div>
+    <div class="glossary-item"><div class="term">Pygmalion Effect <span class="zh">皮格马利翁效应</span></div><div class="def">The self-fulfilling prophecy process (Figure 7.1): beliefs → actions → others' beliefs → others' actions → reinforced beliefs.</div></div>
+    <div class="glossary-item"><div class="term">Antisocial behaviour <span class="zh">反社会行为</span></div><div class="def">Acting in a way that causes harassment, alarm or distress to others, which does not in itself break any law; in the UK can lead to an ASBO.</div></div>
+    <div class="glossary-item"><div class="term">Vicarious reinforcement <span class="zh">替代强化</span></div><div class="def">Learning through the consequence of another person's behaviour — observing a role model rewarded (or unpunished) motivates reproduction.</div></div>
+    <div class="glossary-item"><div class="term">Role model <span class="zh">榜样</span></div><div class="def">Someone we look up to who may be of higher status and the same gender; media criminals often fit this and glamorise violence.</div></div>
+    <div class="glossary-item"><div class="term">Bloomers <span class="zh">「快开之花」</span></div><div class="def">Rosenthal &amp; Jacobson's (1968) randomly labelled high-potential pupils whose IQ rose — teachers' expectations became self-fulfilling.</div></div>
+    <div class="glossary-item"><div class="term">Personality disorder <span class="zh">人格障碍</span></div><div class="def">An individual's way of thinking, feeling or relating to others differs significantly from normal, reflecting extremes of personality; requires clinical diagnosis.</div></div>
+    <div class="glossary-item"><div class="term">ASPD <span class="zh">反社会人格障碍</span></div><div class="def">Antisocial personality disorder (dysocial personality disorder): persistent disregard for the rights of others; 3+ of 7 DSM characteristics; conduct issues before 15, diagnosed from 18.</div></div>
+    <div class="glossary-item"><div class="term">Comorbidity <span class="zh">共病</span></div><div class="def">The presence of more than one disorder in the same person, e.g. ASPD with anxiety, depression, substance misuse or ADHD.</div></div>
+    <div class="glossary-item"><div class="term">Conduct disorder <span class="zh">品行障碍</span></div><div class="def">Childhood behavioural diagnosis; in Simonoff et al. (2004), 225 twin pairs with conduct disorder were followed into adulthood.</div></div>
+    <div class="glossary-item"><div class="term">Delinquent <span class="zh">倾向于违法的</span></div><div class="def">Tends to be involved in criminal activity; Flood-Page et al. (2000) link lower socio-economic status to both delinquent TV and delinquency.</div></div>
+    <div class="glossary-item"><div class="term">DSM-V / ICD-11 <span class="zh">诊断分类系统</span></div><div class="def">Official classification systems (American Psychiatric Association / WHO) providing consistent diagnosis of mental disorders including ASPD.</div></div>
+    <div class="glossary-item"><div class="term">Meta-analysis <span class="zh">元分析</span></div><div class="def">Statistical combination of many studies' results, e.g. Ferguson (2010) over 38 studies / 96,918 participants; Comstock &amp; Paik (1994) r = +0.19.</div></div>
+    <div class="glossary-item"><div class="term">Natural experiment <span class="zh">自然实验</span></div><div class="def">The IV changes naturally, not by researcher manipulation — e.g. Williams (1986) exploiting a community that gained television.</div></div>
+    <div class="glossary-item"><div class="term">Prefrontal cortex <span class="zh">前额叶皮层</span></div><div class="def">Brain region known to moderate aggression; Yang &amp; Raine (2009) found reduced grey matter and function here in antisocial individuals.</div></div>
+    <div class="glossary-item"><div class="term">Heritability <span class="zh">遗传度</span></div><div class="def">The share of variation explained by genetic factors: 38% (Torgersen et al., 2008); over 50% (Mason &amp; Frick, 1994); 56% (Ferguson, 2010).</div></div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>16 个术语就是本章的「词汇量底座」。背的时候抓三个 family：<strong>预言家族</strong>（self-fulfilling prophecy / Pygmalion / bloomers）、<strong>学习家族</strong>（vicarious reinforcement / role model / delinquent）、<strong>诊断家族</strong>（personality disorder / ASPD / comorbidity / conduct disorder / DSM-V / ICD-11）。考试 define 题直接照英文 def 写，一词一分。</div>
+</section>
+
+</main>
+
+</div><!-- END PAGE LAYOUT -->
+
+<div class="footer-note">
+  <p>📚 Edexcel IAL Psychology · Topic F: Criminological Psychology · Chapter 7 — Explanations for Crime and Antisocial Behaviour</p>
+  <p>Spec 6.1.1: Self-fulfilling prophecy (Rosenthal &amp; Jacobson 1968 · Jahoda 1954) · Social learning from the media (Bandura 1963 · Williams 1986 · Comstock &amp; Paik 1994) · Antisocial personality disorder (Hodgins &amp; Côté 1993 · Torgersen 2008 · Ferguson 2010 · Yang &amp; Raine 2009)</p>
+</div>
+</div><!-- END CONTAINER -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<script>
+function toggleSummary(header) {
+  header.classList.toggle('open');
+  var body = header.nextElementSibling;
+  if (body && body.classList.contains('summary-card-body')) {
+    body.classList.toggle('hidden');
+  }
+}
+
+// Scroll spy — highlight active sidebar item
+(function(){
+  var sections = document.querySelectorAll('.section[id^="s"]');
+  var links = document.querySelectorAll('.sb-item a');
+  function onScroll() {
+    var scrollPos = window.scrollY + 120;
+    var currentId = sections.length ? sections[0].id : null;
+    sections.forEach(function(sec) {
+      if (sec.offsetTop <= scrollPos) { currentId = sec.id; }
+    });
+    links.forEach(function(link) {
+      link.classList.toggle('sb-active', link.getAttribute('href') === '#' + currentId);
+    });
+    var btn = document.getElementById('backToTop');
+    if (btn) { btn.classList.toggle('show', window.scrollY > 400); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+// Dark mode
+function toggleDarkMode() {
+  document.body.classList.toggle('dark');
+  var isDark = document.body.classList.contains('dark');
+  localStorage.setItem('edexcel-ch7-darkMode', isDark ? '1' : '0');
+  var btn = document.getElementById('darkBtn');
+  if (btn) { btn.textContent = isDark ? '☀️ Light' : '🌙 Dark'; }
+}
+
+// Font size
+function adjustFontSize(delta) {
+  var current = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+  var next = Math.min(22, Math.max(12, current + delta));
+  document.documentElement.style.fontSize = next + 'px';
+  localStorage.setItem('edexcel-ch7-fontSize', String(next));
+}
+
+// Restore preferences
+(function(){
+  if (localStorage.getItem('edexcel-ch7-darkMode') === '1') {
+    document.body.classList.add('dark');
+    var btn = document.getElementById('darkBtn');
+    if (btn) { btn.textContent = '☀️ Light'; }
+  }
+  var fs = localStorage.getItem('edexcel-ch7-fontSize');
+  if (fs) { document.documentElement.style.fontSize = fs + 'px'; }
+})();
+</script>
+</body>
+</html>
