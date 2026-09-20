@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic I Review — Psychological Skills（心理技能复习总览）</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --card-bg: #FFFFFF;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --note-bg: #fff7ed;
+  --note-border: #fb923c;
+  --term-color: #ea580c;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; transition: background .15s; white-space: nowrap; }
+.nav-pill:hover { background: var(--primary-dark); }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; transition: color .15s; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; font-weight: 300; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); transition: all .15s; display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+body.dark .nav-btn:hover { border-color: #f97316; color: #f97316; }
+
+.page-layout { display: grid; grid-template-columns: 190px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 190px; flex-shrink: 0; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; transition: all .15s ease; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item:hover { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 600; background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+a.sb-sub { display: block; padding: 6px 14px 6px 30px; color: #475569; text-decoration: none; font-size: .7em; opacity: .82; transition: all .15s ease; line-height: 1.45; }
+a.sb-sub:hover { color: var(--primary-dark); opacity: 1; background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; backdrop-filter: blur(6px); }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box strong { color: #b45309; }
+.key-term { display: inline-block; background: #e8eaf6; color: #283593; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: .9em; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box h4 { color: #991b1b; margin-bottom: 5px; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.wider-issue { background: #fff8e1; border: 2px solid #fbc02d; border-radius: 8px; padding: 16px 20px; margin: 14px 0; }
+.wider-issue h4 { color: #f57f17; margin-top: 0; }
+.activity-box { background: #f0f4f8; border: 2px solid #90a4ae; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+.activity-box h4 { color: #546e7a; margin-top: 0; display: flex; align-items: center; gap: 8px; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+tr:hover { background: #fff7ed; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.figure { margin: 18px 0; text-align: center; }
+.figure img { max-width: 100%; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 3px 12px rgba(0,0,0,.08); }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.flowchart { background: #f6f7f9; border: 2px solid var(--border); border-radius: 12px; padding: 20px; margin: 18px 0; text-align: center; }
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: opacity .2s; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.ao-badge { background: rgba(255,255,255,.25); padding: 2px 8px; border-radius: 10px; font-size: .72em; font-weight: 700; margin-left: auto; }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; animation: slideDown .25s ease; }
+.summary-card-body.hidden { display: none; }
+@keyframes slideDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
+.summary-card-body ol { margin: 0; padding-left: 20px; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; display: flex; align-items: center; gap: 8px; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.study-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px 18px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.06); transition: all .25s ease; position: relative; }
+.study-card:hover { box-shadow: 0 4px 16px rgba(234,88,12,.15); border-color: #fb923c; transform: translateY(-2px); }
+.study-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid #fef3c7; }
+.study-icon { font-size: 1.3em; }
+.study-name { font-weight: 700; font-size: .95em; color: #ea580c; flex: 1; }
+.study-badge { font-size: .7em; font-weight: 600; padding: 3px 10px; border-radius: 12px; background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; white-space: nowrap; }
+.study-badge.classic { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: #9d174d; }
+.study-badge.contemp { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; }
+.study-badge.cross { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; }
+.study-badge.meta { background: linear-gradient(135deg, #ede9fe, #ddd6fe); color: #5b21b6; }
+.study-badge.corr { background: linear-gradient(135deg, #dcfce7, #bbf7d0); color: #166534; }
+.study-badge.natural { background: linear-gradient(135deg, #ffedd5, #fed7aa); color: #9a3412; }
+.study-badge.expt { background: linear-gradient(135deg, #cffafe, #a5f3fc); color: #155e75; }
+.study-card-body p { margin: 6px 0; line-height: 1.65; font-size: .9em; }
+.study-card-body ul { margin: 6px 0 6px 18px; padding: 0; }
+.study-card-body li { margin: 4px 0; font-size: .89em; line-height: 1.6; }
+.eval-tag { display: inline-block; background: #fef2f2; border-left: 3px solid #ef4444; padding: 4px 10px; margin-top: 6px; font-size: .85em; color: #991b1b; border-radius: 0 6px 6px 0; }
+.ao-zone-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 10px; margin: 20px 0 14px; font-weight: 700; font-size: 1.05em; }
+.ao-zone-header.ao1 { background: linear-gradient(135deg, #eff6ff, #dbeafe); border-left: 5px solid #2563eb; color: #1e40af; }
+.ao-zone-header.ao3 { background: linear-gradient(135deg, #fdf4ff, #fae8ff); border-left: 5px solid #c026d3; color: #a21caf; }
+.ao-zone-desc { font-size: .82em; font-weight: 400; opacity: .8; margin-left: auto; }
+.gold-standard-para { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 2px solid #fcd34d; border-radius: 10px; padding: 16px 18px; margin: 14px 0; }
+.gold-standard-para h4 { color: #92400e; margin: 0 0 8px; font-size: .95em; }
+.gold-standard-para p { font-size: .89em; line-height: 1.7; margin: 6px 0; }
+.gold-standard-para ul { font-size: .89em; margin: 6px 0; }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { box-shadow: 0 6px 20px rgba(234,88,12,.4); transform: translateY(-2px); }
+@media(max-width:900px){
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .main-content { max-width: 100%; }
+  .compare-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+body.dark { background: #0f172a; color: #e2e8f0; transition: background .3s, color .3s; }
+body.dark .container { background: #0f172a; }
+body.dark .nav-bar { background: #1a1a2e; border-bottom-color: var(--primary); }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+body.dark .sb-divider { background: #334155; }
+body.dark .sb-group-label { color: #64748b; }
+body.dark .sb-item { color: #94a3b8; }
+body.dark .sb-item:hover { color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.10), transparent); border-left-color: #f97316; }
+body.dark .sb-item.sb-active { color: #fb923c; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); border-left-color: #f97316; }
+body.dark a.sb-sub { color: #94a3b8; }
+body.dark .header { background: linear-gradient(135deg, #c2410c, #ea580c, #f97316); }
+body.dark .section { background: #1a1a2e; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .warn-box h4 { color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .keyterm-box strong { color: #fbbf24; }
+body.dark .key-term { background: #2a2a4a; color: #a5b4fc; }
+body.dark strong { color: #fbbf24; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; color: white; border-color: #7f1d1d; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark tr:hover { background: rgba(234,88,12,.05); }
+body.dark td:first-child { color: #fb923c; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+body.dark .flowchart { background: #16213e; border-color: #334155; }
+body.dark .wider-issue { background: rgba(251,192,45,.06); border-color: #f59e0b; }
+body.dark .wider-issue h4 { color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .activity-box { background: #1e293b; border-color: #475569; }
+body.dark .activity-box h4 { color: #94a3b8; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark .study-card { background: #16213e; border-color: #334155; }
+body.dark .study-card:hover { border-color: #f97316; box-shadow: 0 4px 16px rgba(234,88,12,.2); }
+body.dark .study-card-header { border-bottom-color: #3f3f5e; }
+body.dark .study-name { color: #fb923c; }
+body.dark .study-card-body p, body.dark .study-card-body li { color: #cbd5e1; }
+body.dark .eval-tag { background: rgba(220,38,38,.08); color: #fca5a5; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .ao-zone-header.ao1 { background: linear-gradient(135deg, rgba(37,99,235,.15), rgba(37,99,235,.08)); border-left-color: #3b82f6; color: #93c5fd; }
+body.dark .ao-zone-header.ao3 { background: linear-gradient(135deg, rgba(192,38,211,.15), rgba(192,38,211,.08)); border-left-color: #c026d3; color: #e9d5ff; }
+body.dark .gold-standard-para { background: linear-gradient(135deg, rgba(245,158,11,.08), rgba(245,158,11,.04)); border-color: #f59e0b; }
+body.dark .gold-standard-para h4 { color: #fbbf24; }
+body.dark .gold-standard-para p, body.dark .gold-standard-para ul, body.dark .gold-standard-para li { color: #d1d5db; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+body.dark a { color: #60a5fa; }
+body.dark a:hover { color: #93c5fd; }
+/* checklist 用 */
+.checklist-card { background:#FFFFFF; border:1px solid #e2e8f0; border-left:6px solid var(--primary); border-radius:10px; padding:14px 16px; margin:12px 0; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+.checklist-card .code { font-family:'JetBrains Mono',Menlo,Consolas,monospace; font-size:.82rem; color:var(--primary-dark); background:#FFF7ED; padding:2px 8px; border-radius:6px; }
+.checklist-card h4 { margin:4px 0 8px; color:var(--accent); font-size:1.04rem; }
+.checklist-card .must { font-size:.94rem; line-height:1.55; }
+.checklist-card .must li { margin:3px 0; }
+.checklist-card .selfcheck { margin-top:8px; padding:8px 10px; background:#F1F5F9; border-radius:6px; font-size:.9rem; }
+.checklist-card .selfcheck::before { content:"🗒️ Self-check · 自检："; font-weight:600; color:var(--accent); }
+.checklist-card label.tick { display:flex; align-items:center; gap:8px; margin-top:10px; font-weight:500; color:var(--accent); font-size:.9rem; cursor:pointer; }
+.checklist-card label.tick input { width:18px; height:18px; accent-color:var(--primary); cursor:pointer; }
+
+/* glossary */
+.glossary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; }
+.glossary-item { background:#FFFFFF; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px; }
+.glossary-item .term { font-weight:700; color:var(--primary-dark); font-size:.96rem; }
+.glossary-item .zh { color:#64748b; font-size:.85rem; margin-left:4px; }
+.glossary-item .def { font-size:.88rem; line-height:1.45; margin-top:4px; color:var(--text); }
+
+/* study-cards 复用 */
+.study-card .study-meta { font-size:.85rem; color:#64748b; margin-top:4px; }
+
+/* methods table */
+.methods-table th, .methods-table td { padding:8px 12px; border-bottom:1px solid #e2e8f0; font-size:.9rem; vertical-align:top; }
+.methods-table th { background:#FFF7ED; color:var(--accent); text-align:left; font-weight:600; }
+
+/* traps */
+.trap-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px; }
+.trap-card { background:#FFFFFF; border:1px solid #fcd34d; border-left:6px solid #f59e0b; border-radius:8px; padding:12px 14px; }
+.trap-card h5 { margin:0 0 6px; color:#b45309; font-size:.98rem; }
+.trap-card p { margin:0; font-size:.9rem; line-height:1.5; }
+.trap-card .fix { background:#FEF3C7; border-radius:6px; padding:6px 8px; margin-top:6px; font-size:.88rem; }
+
+/* one-pager */
+.one-pager { background:linear-gradient(135deg,#FFF7ED 0%,#FFFFFF 100%); border:2px dashed var(--primary); border-radius:12px; padding:18px 22px; }
+.one-pager h3 { color:var(--primary-dark); margin-top:0; }
+.one-pager table { width:100%; border-collapse:collapse; font-size:.88rem; }
+.one-pager td, .one-pager th { padding:5px 8px; border-bottom:1px dotted #fb923c; vertical-align:top; }
+.one-pager th { background:transparent; color:var(--accent); text-align:left; font-weight:600; }
+
+/* appendix */
+.appendix-banner { background:#F1F5F9; border-left:6px solid #94a3b8; padding:10px 14px; border-radius:6px; margin-bottom:18px; color:#475569; font-size:.92rem; }
+
+/* ============ 修复补丁 (2026-09-17) ============ */
+/* 1) section-header / section-subtitle — 让每个 section 标题下面有一行斜体描述 */
+.section-header { margin-bottom: 0; }
+.section-header h2 { border-bottom: none; padding-bottom: 4px; margin-bottom: 4px; }
+.section-subtitle { color: var(--text-secondary); font-size: .92em; font-style: italic; font-weight: 400; padding-bottom: 12px; border-bottom: 2px solid var(--border); margin: 0 0 14px 0; }
+
+/* 2) 侧栏序号 chip (1–9) */
+.sb-id { display: inline-block; min-width: 18px; padding: 1px 5px; margin-right: 7px; background: rgba(234,88,12,.12); color: var(--primary-dark); border-radius: 5px; font-weight: 700; font-size: .82em; text-align: center; vertical-align: 1px; }
+.sb-item.sb-active .sb-id { background: rgba(234,88,12,.22); }
+body.dark .sb-id { background: rgba(234,88,12,.20); color: #fb923c; }
+body.dark .sb-item.sb-active .sb-id { background: rgba(249,115,22,.30); }
+
+/* 3) study-badge 新增 3 种类型 (Brain / Experimental / Longitudinal) */
+.study-badge.biological { background: linear-gradient(135deg, #ede9fe, #ddd6fe); color: #5b21b6; }
+.study-badge.experimental { background: linear-gradient(135deg, #cffafe, #a5f3fc); color: #155e75; }
+.study-badge.longitudinal { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: #9d174d; }
+body.dark .study-badge.biological { background: rgba(91,33,182,.20); color: #c4b5fd; }
+body.dark .study-badge.experimental { background: rgba(21,94,117,.24); color: #67e8f9; }
+body.dark .study-badge.longitudinal { background: rgba(157,23,77,.20); color: #f9a8d4; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="/edexcel-psychology-courseware/">Home</a> <span class="sep">›</span>
+    <a href="/edexcel-psychology-courseware/">Edexcel</a> <span class="sep">›</span>
+    <span>Topic I — Review &amp; Exam Patterns</span>
+  </div>
+  <span class="nav-pill">🧠 Topic I · Psychological Skills</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn" title="Toggle dark mode">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)" title="Decrease font size">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)" title="Increase font size">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sb-header">
+      <div class="sb-header-title">🧠 Topic I Review</div>
+      <div class="sb-header-sub">Psychological Skills（心理技能）</div>
+    </div>
+    <nav class="sb-list" id="sidebar-nav">
+      <a class="sb-item" href="#s1"><span class="sb-id">1</span> Topic I at a glance</a>
+      <a class="sb-item" href="#s2"><span class="sb-id">2</span> Methods decision map</a>
+      <a class="sb-item" href="#s3"><span class="sb-id">3</span> The 3 statistical tests</a>
+      <a class="sb-item" href="#s4"><span class="sb-id">4</span> 17-Point methods checklist</a>
+      <a class="sb-item" href="#s5"><span class="sb-id">5</span> Methodological issues</a>
+      <a class="sb-item" href="#s6"><span class="sb-id">6</span> Key questions (9.2)</a>
+      <a class="sb-item" href="#s7"><span class="sb-id">7</span> Issues &amp; debates (9.3)</a>
+      <a class="sb-item" href="#s8"><span class="sb-id">8</span> Common exam traps</a>
+      <a class="sb-item" href="#s9"><span class="sb-id">9</span> Last-minute 1-page sheet</a>
+    </nav>
+    <div class="sb-divider"></div>
+    <div class="sb-group-label">Linked Chapters</div>
+    <a class="sb-sub" href="../ch27-key-questions/">→ Ch27 Key Questions</a>
+    <a class="sb-sub" href="../ch28-issues-debates/">→ Ch28 Issues &amp; Debates</a>
+    <a class="sb-sub" href="../ch25-methods/">→ Ch25 Clinical Methods</a>
+    <a class="sb-sub" href="../ch17-methods/">→ Ch17 Topic C Methods</a>
+    <a class="sb-sub" href="../ch19-practical/">→ Ch19 Practical</a>
+  </div>
+</aside>
+
+<!-- ============ MAIN ============ -->
+<main class="main-content">
+
+<div class="header">
+  <h1>🧠 Topic I Review — Psychological Skills<br><span style="font-size:0.65em">心理技能复习总览</span></h1>
+  <div class="subtitle">A knowledge-first review sheet · 17 methods · 3 stats tests · key questions · issues &amp; debates</div>
+  <div class="meta">
+    <span class="badge">📘 Pearson Edexcel International A Level</span>
+    <span class="badge">🧩 Topic I · Psychological Skills · Unit 4 (WPS04)</span>
+    <span class="badge">📊 Methods · Key Questions · Issues &amp; Debates</span>
+    <span class="badge">✅ 17-Point Checklist + 3 Worked Stats + 1-Page Sheet</span>
+  </div>
+</div>
+
+<!-- §1 Topic I at a glance -->
+<section class="section" id="s1">
+  <div class="section-header">
+    <h2>1 · Topic I at a Glance</h2>
+    <p class="section-subtitle">Psychological Skills（心理技能）— the synoptic section worth half of Paper 4</p>
+  </div>
+
+  <div class="quick-summary">
+    <p>This page is a <strong>knowledge review sheet</strong>（一份知识复习笔记）for Topic I. It collects the methods you met across Topics A–H into one place, so a student can answer the three "psychological skills" sections of Paper 4 without hunting through old chapters.</p>
+    <ul>
+      <li><strong>What "synoptic" means</strong>：Topic I draws on material from <strong>all other topics (A–H, except F and G)</strong>. Nothing here is brand-new content — it gathers skills you have already used, then asks you to apply them to new issues.</li>
+      <li><strong>Why it matters</strong>：Topic I is <strong>48 of the 96 marks</strong> on Paper 4 (WPS04). Half the paper.</li>
+      <li><strong>The three pillars</strong>：<strong>9.1 Methods</strong> (17 spec points) → <strong>9.2 Key questions</strong> (1) → <strong>9.3 Issues &amp; debates</strong> (11).</li>
+    </ul>
+  </div>
+
+  <div class="methods-table">
+    <table style="width:100%;border-collapse:collapse;">
+      <thead><tr><th>Paper 4 section</th><th>What it tests</th><th>Marks</th><th>Spec</th><th>Where to revise</th></tr></thead>
+      <tbody>
+        <tr><td>Section C</td><td>Research methods short-answer (incl. a stats table)</td><td><strong>20</strong></td><td>9.1</td><td>§2–§5 on this page</td></tr>
+        <tr><td>Section D</td><td>One 8-mark key question</td><td><strong>8</strong></td><td>9.2</td><td>§6 + Ch27</td></tr>
+        <tr><td>Section E</td><td>One 20-mark issues &amp; debates essay</td><td><strong>20</strong></td><td>9.3</td><td>§7 + Ch28</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>Topic I 是「心理技能」，是整张卷子里最「综合」的部分——它不考新知识，而是把你在 Topic A–H 里已经见过的研究方法、关键议题、争议辩论重新打包，让你应用到新情境。它占 Paper 4 的一半（48/96 分）。本页的核心目标：<strong>让你看完就能做 Section C 的统计题（20 分）、Section D 的 key question（8 分）、Section E 的 issues &amp; debates 作文（20 分）</strong>。</div>
+</section>
+
+<!-- §2 Methods decision map -->
+<section class="section" id="s2">
+  <div class="section-header">
+    <h2>2 · Methods Decision Map</h2>
+    <p class="section-subtitle">Before you can use a method, you must know which one fits — start here</p>
+  </div>
+
+  <h3>Step 1 · Levels of measurement（测量层次）</h3>
+  <p>Every dataset falls into one of three levels. This decides which statistical test you may use.</p>
+  <div class="methods-table">
+    <table style="width:100%;border-collapse:collapse;">
+      <thead><tr><th>Level</th><th>What it is</th><th>Everyday example</th><th>Feeds into</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Nominal</strong>（类别）</td><td>Named categories, <strong>no order</strong></td><td>Hair colour, gender, "peers vs older"</td><td>Chi-squared</td></tr>
+        <tr><td><strong>Ordinal</strong>（顺序）</td><td>Ranked order, but gaps <strong>not equal</strong></td><td>1st/2nd/3rd place, a rating 1–5</td><td>Spearman or Wilcoxon</td></tr>
+        <tr><td><strong>Interval</strong>（等距）</td><td>Equal gaps, a real zero</td><td>Seconds, a score out of 20</td><td>Ranked first, then Spearman/Wilcoxon</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Step 2 · Which of the three tests?（三个检验选哪个）</h3>
+  <div class="methods-table">
+    <table style="width:100%;border-collapse:collapse;">
+      <thead><tr><th>You want to test…</th><th>Data type</th><th>Design</th><th>Use this test</th></tr></thead>
+      <tbody>
+        <tr><td>A <strong>difference</strong> between two groups</td><td>Nominal (categories)</td><td>Independent groups</td><td><strong>Chi-squared</strong>（卡方）</td></tr>
+        <tr><td>A <strong>difference</strong> between two conditions</td><td>Ordinal (ranked)</td><td>Repeated measures / matched pairs</td><td><strong>Wilcoxon</strong>（符号秩）</td></tr>
+        <tr><td>A <strong>relationship / correlation</strong></td><td>Ordinal (ranked)</td><td>Correlation (two co-variables)</td><td><strong>Spearman</strong>（等级相关）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="flowchart">
+    <div style="display:inline-block;text-align:left;font-size:.9rem;">
+      <p><strong>Ask two questions, in order</strong>：</p>
+      <p>① <strong>Difference or correlation?</strong></p>
+      <p style="margin-left:20px;">→ Correlation → <span class="code">Spearman</span></p>
+      <p style="margin-left:20px;">→ Difference → go to ②</p>
+      <p>② <strong>Nominal or ordinal?</strong></p>
+      <p style="margin-left:20px;">→ Nominal (categories) → <span class="code">Chi-squared</span></p>
+      <p style="margin-left:20px;">→ Ordinal (ranked, related design) → <span class="code">Wilcoxon</span></p>
+    </div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>选检验就像点菜前先看菜单分类。先问「我比的是<strong>差异</strong>还是<strong>关系</strong>？」——比关系就用 Spearman；比差异再问「数据是<strong>分类</strong>（男/女、选A/选B）还是<strong>排序</strong>（第1名/第2名）？」——分类用卡方，排序（同一批人测两次）用 Wilcoxon。三步锁定，不用背。</div>
+</section>
+
+<!-- §3 The 3 statistical tests -->
+<section class="section" id="s3">
+  <div class="section-header">
+    <h2>3 · The 3 Statistical Tests — Step by Step</h2>
+    <p class="section-subtitle">The section that wins or loses Section C — each test with a fully worked example from our courseware</p>
+  </div>
+
+  <!-- Chi-squared -->
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-badge experimental">Difference</span>
+      <span class="study-badge biological">Nominal</span>
+      <h4 style="margin:0;">Chi-squared（卡方检验）</h4>
+    </div>
+    <div class="study-card-body">
+      <p><strong>When to use it</strong>：testing a <strong>difference</strong> between <strong>independent groups</strong> with <strong>nominal data</strong>（分类数据，如「选同伴 vs 选大孩子」）。</p>
+      <p><strong>The recipe（步骤）</strong>：</p>
+      <ol>
+        <li>State the <strong>null hypothesis</strong>（零假设：没有差异）。</li>
+        <li>Write the <strong>observed (O)</strong> frequencies you collected.</li>
+        <li>Calculate <strong>expected (E)</strong> for each cell = <span class="code">(row total × column total) ÷ grand total</span>.</li>
+        <li>For each cell: <span class="code">(O − E)² ÷ E</span>.</li>
+        <li>Sum them → <strong>χ²</strong> = Σ (O − E)² ÷ E.</li>
+        <li>Find <strong>df</strong> = (rows − 1) × (cols − 1).</li>
+        <li>Compare χ² to the <strong>critical value</strong> in the exam table (df=1 → 3.84 at p≤0.05).</li>
+        <li><strong>χ² ≥ critical → significant → reject null</strong>; χ² &lt; critical → not significant → retain null.</li>
+      </ol>
+      <p><strong>Worked example（WPS04 Q8，取自课件）</strong>：Lisa 观察女孩和男孩首选玩伴是「同龄人 peers」还是「大孩子 older」。结果：girls 18 peers / 9 older；boys 10 peers / 12 older。</p>
+      <div class="methods-table">
+        <table style="width:100%;border-collapse:collapse;">
+          <thead><tr><th>Cell</th><th>O</th><th>E</th><th>O − E</th><th>(O − E)²</th><th>(O − E)² ÷ E</th></tr></thead>
+          <tbody>
+            <tr><td>Girls–peers</td><td>18</td><td>15.43</td><td>+2.57</td><td>6.61</td><td>0.43</td></tr>
+            <tr><td>Girls–older</td><td>9</td><td>11.57</td><td>−2.57</td><td>6.61</td><td>0.57</td></tr>
+            <tr><td>Boys–peers</td><td>10</td><td>12.57</td><td>−2.57</td><td>6.61</td><td>0.53</td></tr>
+            <tr><td>Boys–older</td><td>12</td><td>9.43</td><td>+2.57</td><td>6.61</td><td>0.70</td></tr>
+            <tr><td colspan="5" style="text-align:right;"><strong>χ² = Σ (O − E)² ÷ E</strong></td><td><strong>2.23</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Conclusion</strong>：χ² = <strong>2.23</strong>, df = 1, critical value = <strong>3.84</strong>. Since 2.23 &lt; 3.84, we <strong>retain the null hypothesis</strong> — there is <strong>no significant difference</strong> between girls and boys in their first choice of play partner.</p>
+      <div class="keyterm-box"><strong>结论模板</strong>：「The observed value of χ² (2.23) is less than the critical value (3.84, df = 1, p ≤ 0.05), so we retain the null hypothesis — there is no significant difference between…」</div>
+      <div class="cn-note"><strong>中文理解：</strong>卡方就是「<strong>实际看到的人数 vs 假设没有差异时应看到的人数</strong>」。每一格都算 (O−E)²÷E 再加总，得到 χ²。χ² 比临界值<strong>大</strong>才显著（拒绝零假设），小就保留（无显著差异）。本题 2.23 &lt; 3.84，所以「男孩女孩选玩伴没有显著差异」。这题还考过最简比 18:10 = <strong>9:5</strong>。</div>
+    </div>
+  </div>
+
+  <!-- Spearman -->
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-badge contemp">Correlation</span>
+      <span class="study-badge longitudinal">Ordinal</span>
+      <h4 style="margin:0;">Spearman's Rank（斯皮尔曼等级相关）</h4>
+    </div>
+    <div class="study-card-body">
+      <p><strong>When to use it</strong>：testing a <strong>relationship / correlation</strong> between two <strong>co-variables</strong> with <strong>ordinal data</strong>（可排序）。</p>
+      <p><strong>The recipe（步骤）</strong>：</p>
+      <ol>
+        <li>Rank <strong>both columns separately</strong>（最高分排第 1，次高第 2…）。</li>
+        <li>For each participant: <strong>d = rank A − rank B</strong>.</li>
+        <li>Square every d → <strong>d²</strong>（消除负号）。</li>
+        <li>Sum → <strong>Σd²</strong>.</li>
+        <li>Substitute: <span class="code">r_s = 1 − (6Σd²) ÷ (n(n² − 1))</span>.</li>
+        <li>Give r_s to <strong>2 decimal places</strong>.</li>
+        <li>Compare <strong>|r_s|</strong>（看绝对值，不看正负）to the critical value in the table. <strong>|r_s| ≥ critical → significant</strong>.</li>
+      </ol>
+      <p><strong>Worked example（取自 ch17）</strong>：10 名学生，「复习小时数 hours」与「考试分数 mark /20」求相关。Σd² = 26.5, n = 10。</p>
+      <p style="text-align:center;">r_s = 1 − <span class="code">(6 × 26.5) ÷ (10 × (100 − 1))</span> = 1 − 159 ÷ 990 = <strong>0.839 ≈ 0.84</strong></p>
+      <p><strong>Interpretation</strong>：r_s = <strong>0.84</strong> is a <strong>strong positive correlation</strong>（复习越多，分数越高）。Compare 0.84 to the table's critical value for n = 10 (≈ 0.65 at p ≤ 0.05) — since 0.84 ≥ that, the result is <strong>significant</strong>, so we <strong>reject the null hypothesis</strong>.</p>
+      <div class="keyterm-box"><strong>结论模板</strong>：「The observed value of r_s (0.84) is greater than the critical value (0.648, n = 10, p ≤ 0.05), so we reject the null hypothesis — there is a significant positive correlation between hours of revision and test marks.」</div>
+      <div class="cn-note"><strong>中文理解：</strong>斯皮尔曼看的是「两个变量<strong>一起变</strong>」的程度。r_s 在 −1 到 +1 之间：越接近 +1 正相关越强，越接近 −1 负相关越强，接近 0 没相关。<strong>看绝对值</strong>，+0.84 和 −0.84 都算强。第二道题（CBT 次数 vs 攻击行为，Σd²=224, n=9）算出 r_s ≈ <strong>−0.87</strong>，就是强<strong>负</strong>相关。</div>
+    </div>
+  </div>
+
+  <!-- Wilcoxon -->
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-badge experimental">Difference</span>
+      <span class="study-badge biological">Ordinal</span>
+      <h4 style="margin:0;">Wilcoxon Signed Ranks（威尔科克森符号秩检验）</h4>
+    </div>
+    <div class="study-card-body">
+      <p><strong>When to use it</strong>：testing a <strong>difference</strong> between two conditions in a <strong>repeated measures</strong> (or matched pairs) design with <strong>ordinal data</strong>（同一批人测「之前 vs 之后」）。</p>
+      <p><strong>The recipe（步骤）</strong>：</p>
+      <ol>
+        <li>For each participant, find <strong>difference = after − before</strong>.</li>
+        <li>Remove any <strong>zero</strong> differences（这些参与者不计入 N）。</li>
+        <li><strong>Rank the differences by size</strong>（忽略正负号），最小的排 1。</li>
+        <li>Give each rank a <strong>+ or −</strong> sign according to the difference's direction.</li>
+        <li>Add the <strong>positive ranks</strong> → T⁺; add the <strong>negative ranks</strong> → T⁻.</li>
+        <li><strong>T = the smaller</strong> of T⁺ and T⁻.</li>
+        <li>Compare T to the <strong>critical value</strong> in the table. <strong>T ≤ critical → significant → reject null</strong>.</li>
+      </ol>
+      <p><strong>Worked example（取自 ch25）</strong>：Zuzanna 观察 9 名精神分裂症患者，在家人探访「之前」和「之后」各测一次症状（repeated measures）。她用非方向假设，做 Wilcoxon，得到 <strong>T = 4</strong>，且没有零差。</p>
+      <p><strong>N = 9</strong>（无人被剔除）。查表：双尾 p ≤ 0.05，N = 9 的临界值 <strong>T = 6</strong>。</p>
+      <p><strong>Conclusion</strong>：observed T (4) is <strong>less than or equal to</strong> the critical value (6) → the result is <strong>significant</strong> → she <strong>rejects the null hypothesis</strong>（家人探访对症状有显著影响）。</p>
+      <div class="keyterm-box"><strong>结论模板</strong>：「The observed value of T (4) is less than or equal to the critical value (6, N = 9, p ≤ 0.05), so we reject the null hypothesis — there is a significant difference in symptom severity before and after family visits.」</div>
+      <div class="warn-box"><h4>最容易记反的规则</h4><p>Wilcoxon 和卡方<strong>方向相反</strong>：Wilcoxon 的观察值 T 必须<strong>≤</strong>临界值才显著（越小越显著）；卡方和斯皮尔曼是观察值<strong>≥</strong>临界值才显著（越大越显著）。</p></div>
+      <div class="cn-note"><strong>中文理解：</strong>Wilcoxon 专门对付「<strong>同一批人测两次</strong>」的差异题。它把「变化的大小」排成秩，看正变化和负变化谁更强。记住：<strong>T 越小越显著</strong>，和卡方/斯皮尔曼反过来——这是学生最容易丢分的地方。</div>
+    </div>
+  </div>
+</section>
+
+<!-- §4 17-point methods checklist -->
+<section class="section" id="s4">
+  <div class="section-header">
+    <h2>4 · The 17-Point Methods Checklist（9.1.1–9.1.17）</h2>
+    <p class="section-subtitle">Every methods spec point, with a plain definition + a life analogy + a self-check</p>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">9.1.1</span>
+    <h4>Types of Data（数据类型）</h4>
+    <ul class="must">
+      <li><strong>Qualitative</strong>（质化）：文字/描述，如访谈记录。<strong>Quantitative</strong>（量化）：数字，如分数。</li>
+      <li><strong>Primary</strong>（一手）：研究者自己收集的。<strong>Secondary</strong>（二手）：别人收集好的（如已有报道、数据库）。</li>
+      <li>类比：qualitative 像「写日记」，quantitative 像「称体重」；primary 像「自己做菜」，secondary 像「分析别人做的菜」。</li>
+    </ul>
+    <div class="selfcheck">说出一个研究里 primary + qualitative 数据的例子。</div>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">9.1.2</span>
+    <h4>Sampling Techniques（抽样方法）</h4>
+    <ul class="must">
+      <li><strong>Random</strong>（随机）：每个人都有同等机会被抽中，像抽签。</li>
+      <li><strong>Stratified</strong>（分层）：按比例先分组再随机抽，像「先按班级比例再抽签」。</li>
+      <li><strong>Volunteer</strong>（自愿）：贴海报等人主动报名。</li>
+      <li><strong>Opportunity</strong>（机会）：选最容易抓到的人，像「路过就抓」。</li>
+    </ul>
+    <div class="selfcheck">哪种抽样最容易有「样本偏差 bias」？为什么？</div>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">9.1.3</span>
+    <h4>Experimental Designs（实验设计）</h4>
+    <ul class="must">
+      <li><strong>Independent groups</strong>（独立组）：两批不同的人各测一次。</li>
+      <li><strong>Repeated measures</strong>（重复测量）：同一批人测两次（有顺序效应 order effects）。</li>
+      <li><strong>Matched pairs</strong>（配对组）：两两配对，像双胞胎各进一组。</li>
+      <li>类比：独立组像「A 班和 B 班各考一次」，重复测量像「同一班考两次」，配对像「按水平结对再分组」。</li>
+    </ul>
+    <div class="selfcheck">Repeated measures 的一个弱点是什么？（提示：order effects）</div>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">9.1.4</span>
+    <h4>Hypotheses（假设）</h4>
+    <ul class="must">
+      <li><strong>Null</strong>（零假设）：预测「<strong>没有</strong>差异/关系」——是默认要被检验推翻的。</li>
+      <li><strong>Alternate / experimental</strong>（备择/实验假设）：预测「<strong>有</strong>差异/关系」——你想证明的。</li>
+      <li><strong>Directional</strong>（定向/单尾）：预测了方向（「A 组更高」）。<strong>Non-directional</strong>（非定向/双尾）：只预测「有区别」，不说方向。</li>
+      <li>类比：null 像「被告无罪」的默认立场，alternate 像「原告要证明有罪」。</li>
+    </ul>
+    <div class="selfcheck">写一个「睡眠影响记忆」实验的 null + alternate hypothesis。</div>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">9.1.5</span>
+    <h4>Questionnaires &amp; Interviews（问卷与访谈）</h4>
+    <ul class="must">
+      <li><strong>Open</strong>（开放式）问题：自由作答。<strong>Closed</strong>（封闭式）：固定选项，含 <strong>ranked scale</strong>（如 1–5 打分）。</li>
+      <li><strong>Structured</strong>（结构化）：照稿问。<strong>Semi-structured</strong>（半结构化）：有提纲但可追问。<strong>Unstructured</strong>（非结构化）：自由聊。</li>
+      <li>这些得到的都是 <strong>self-report data</strong>（自我报告数据）。</li>
+    </ul>
+    <div class="selfcheck">Closed question 的一个优点是「易量化」，说出它的一个缺点。</div>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">9.1.6</span>
+    <h4>Experiments（实验）</h4>
+    <ul class="must">
+      <li><strong>Laboratory</strong>（实验室）：控制强、可重复，但像「白大褂环境」生态效度低。</li>
+      <li><strong>Field</strong>（现场）：在真实场景做，更自然，但难控制。</li>
+      <li><strong>IV</strong>（自变量）＝研究者操纵的；<strong>DV</strong>（因变量）＝测量的结果。</li>
+      <li>类比：IV 是「你调的水温」，DV 是「水温影响下长出来的芽高」。</li>
+    </ul>
+    <div class="selfcheck">一个 field experiment 比 lab 好在哪、差在哪？</div>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">9.1.7</span>
+    <h4>Observations（观察）</h4>
+    <ul class="must">
+      <li><strong>Covert</strong>（隐蔽）vs <strong>overt</strong>（公开）；<strong>participant</strong>（参与）vs <strong>non-participant</strong>（不参与）；<strong>structured</strong>（结构化）vs <strong>naturalistic</strong>（自然）。</li>
+      <li><strong>Tallying</strong>（划记）：数行为出现次数。<strong>Event sampling</strong>（事件取样）：只记特定事件。<strong>Time sampling</strong>（时间取样）：固定间隔记一次。</li>
+      <li>既能收 qual 也能收 quant 数据。</li>
+    </ul>
+    <div class="selfcheck">Covert 观察的一个伦理问题是什么？</div>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">9.1.8</span>
+    <h4>Correlation（相关）</h4>
+    <ul class="must">
+      <li><strong>Positive</strong>（正相关）：同升同降。<strong>Negative</strong>（负相关）：一个升一个降。</li>
+      <li><strong>相关 ≠ 因果</strong>：相关不能证明一个变量导致另一个变量，可能有<strong>其他变量</strong>（第三变量）。</li>
+      <li>类比：冰淇淋销量和溺水人数都上升，不是冰淇淋导致溺水，而是「夏天」这个第三变量。</li>
+    </ul>
+    <div class="selfcheck">为什么相关研究「不能 claim causation」？</div>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">9.1.9</span>
+    <h4>Additional Methods（其他方法）</h4>
+    <ul class="must">
+      <li><strong>Twin studies</strong>（双生子，看基因 vs 环境）、<strong>animal experiments</strong>（动物实验）、<strong>case studies</strong>（个案，如脑损伤病人与记忆）。</li>
+      <li><strong>Brain scanning</strong>（CAT / PET / fMRI）、<strong>RCTs</strong>（随机对照试验）、<strong>content analysis</strong>（内容分析）。</li>
+      <li><strong>Clinical interviewing</strong>（临床访谈）、<strong>ethnographic fieldwork</strong>（民族志田野，如对儿童）、<strong>longitudinal / cross-sectional</strong>（纵向/横断）、<strong>cross-cultural</strong>（跨文化）、<strong>meta-analysis</strong>（元分析）。</li>
+    </ul>
+    <div class="selfcheck">Longitudinal 和 cross-sectional 研究各有什么优缺点？</div>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">9.1.10</span>
+    <h4>Control Issues（控制问题）</h4>
+    <ul class="must">
+      <li><strong>Counterbalancing</strong>（平衡法）：抵消 order effects（顺序效应）。<strong>Randomising</strong>（随机化）：随机分配条件。</li>
+      <li><strong>Demand characteristics</strong>（需求特征）：被试猜到目的就迎合。<strong>Social desirability</strong>（社会赞许）：说「好听的」答案。</li>
+      <li><strong>Experimenter / researcher effects</strong>（实验者效应）：研究者无意中影响结果。</li>
+      <li><strong>Participant / situational variables</strong>（被试/情境变量）、<strong>extraneous / confounding variables</strong>（额外/混淆变量）、<strong>operationalisation</strong>（操作化定义）。</li>
+      <li>类比：confounding variable 像「偷偷混进菜里的盐」，让你说不清味道到底来自哪一味。</li>
+    </ul>
+    <div class="selfcheck">「operationalise aggression」是什么意思？给个可测量的定义。</div>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">9.1.11</span>
+    <h4>Descriptive Statistics — List A（描述统计）</h4>
+    <ul class="must">
+      <li><strong>Central tendency</strong>（集中趋势）：mean（均值）/ median（中位数）/ mode（众数）。</li>
+      <li><strong>Dispersion</strong>（离散）：range（全距）/ standard deviation（标准差）。</li>
+      <li><strong>Graphs</strong>（图表）：bar chart（条形图）、histogram（直方图）、scatter diagram（散点图）。</li>
+      <li><strong>Normal distribution</strong>（正态分布）vs <strong>skewed</strong>（偏态）；<strong>percentages</strong>（百分比）；<strong>sense checking</strong>（合理性检查）。</li>
+      <li>注意：考试<strong>不需要背公式</strong>，但要会算步骤、会比较两组均值。</li>
+    </ul>
+    <div class="selfcheck">一组数据里有一个极端值，用 mean 还是 median 更能代表「典型」？为什么？</div>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">9.1.12</span>
+    <h4>Inferential Statistics — List B（推断统计）</h4>
+    <ul class="must">
+      <li>三个检验：<strong>Wilcoxon / Spearman / chi-squared</strong>（详见 §3）。</li>
+      <li><strong>Levels of significance</strong>（显著性水平）：p ≤ .10 / .05 / .01。<strong>One-tailed vs two-tailed</strong>（单尾/双尾）。</li>
+      <li><strong>Type I error</strong>（假阳性：错拒绝了真的零假设）vs <strong>Type II error</strong>（假阴性：没拒绝假的零假设）。</li>
+      <li><strong>Observed value vs critical value</strong>（观察值 vs 临界值）→ 决定 reject or retain null。</li>
+    </ul>
+    <div class="selfcheck">Type I 和 Type II error 各是什么？各举一个「误判」的类比。</div>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">9.1.13</span>
+    <h4>Methodological Issues（方法论议题）</h4>
+    <ul class="must">
+      <li><strong>Validity</strong>（效度：测得准不准）— internal（内部）/ predictive（预测）/ ecological（生态）。</li>
+      <li><strong>Reliability</strong>（信度：稳不稳定，重测结果是否一致）。</li>
+      <li><strong>Generalisability</strong>（泛化性）、<strong>objectivity</strong>（客观性）、<strong>subjectivity</strong>（主观性）、<strong>credibility</strong>（可信度）。</li>
+      <li>详见 §5 的完整对照表。</li>
+    </ul>
+    <div class="selfcheck">「有效度但没信度」可能吗？用「称体重」类比说明。</div>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">9.1.14</span>
+    <h4>Thematic Analysis（主题分析）</h4>
+    <ul class="must">
+      <li>处理<strong>质化数据</strong>的方法：通读文字材料 → 找出反复出现的<strong>主题 theme</strong> → 归类编码 → 总结。</li>
+      <li>类比：把一屋子散乱便利贴按主题归类，贴成几大块。</li>
+      <li>与 content analysis（内容分析）区别：thematic 更偏「归纳主题」，content 更偏「数出现次数」。</li>
+    </ul>
+    <div class="selfcheck">给一段访谈记录做 thematic analysis，第一步做什么？</div>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">9.1.15</span>
+    <h4>Conventions &amp; Peer Review（写作规范与同行评审）</h4>
+    <ul class="must">
+      <li>报告结构：<strong>abstract</strong>（摘要）→ <strong>introduction</strong>（引言）→ <strong>aims &amp; hypotheses</strong>（目的与假设）→ <strong>method</strong>（方法）→ <strong>results</strong>（结果）→ <strong>discussion</strong>（讨论）。</li>
+      <li><strong>Peer review</strong>（同行评审）：投稿前由领域专家匿名审稿，把关质量。</li>
+    </ul>
+    <div class="selfcheck">Peer review 的一个优点和一个局限？</div>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">9.1.16</span>
+    <h4>Ethics — Humans（人类伦理）</h4>
+    <ul class="must">
+      <li><strong>BPS Code of Ethics and Conduct (2009)</strong>：知情同意、保密、退出权、避免伤害、事后说明 debrief。</li>
+      <li><strong>Risk assessment</strong>（风险评估）在研究前必做。</li>
+      <li><strong>UNCRC</strong>（儿童权利公约）：研究儿童时 <strong>participation vs protection rights</strong>（参与权 vs 保护权）。</li>
+      <li><strong>HCPC</strong>（健康与护理专业委员会）：临床从业者的准则。</li>
+    </ul>
+    <div class="selfcheck">研究儿童时，为什么要特别强调「protection rights」？</div>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">9.1.17</span>
+    <h4>Ethics — Animals（动物伦理）</h4>
+    <ul class="must">
+      <li><strong>Scientific Procedures Act 1986</strong>（科学程序法）＋ <strong>Home Office Regulations</strong>（内政部条例）：控制动物实验。</li>
+      <li>核心原则：减少伤害、替代动物（3R：Replace / Reduce / Refine）。</li>
+    </ul>
+    <div class="selfcheck">「3R」是哪三个词？动物实验为什么要做「成本—收益」权衡？</div>
+  </div>
+</section>
+
+<!-- §5 Methodological issues -->
+<section class="section" id="s5">
+  <div class="section-header">
+    <h2>5 · Methodological Issues（方法论议题速查）</h2>
+    <p class="section-subtitle">The six evaluation words every "evaluate this study" answer needs — with a memory hook</p>
+  </div>
+
+  <div class="methods-table">
+    <table style="width:100%;border-collapse:collapse;">
+      <thead><tr><th>Issue</th><th>Question it asks</th><th>中文理解</th><th>Memory hook</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Validity</strong></td><td>Are we measuring what we think we measure?</td><td>测得<strong>准不准</strong></td><td>秤测的是「体重」还是「身高」？</td></tr>
+        <tr><td>· Internal</td><td>Is the effect due to the IV, not confounds?</td><td>内部：结果是不是 IV 造成的</td><td>没有混入「盐」</td></tr>
+        <tr><td>· Ecological</td><td>Does it generalise to real life?</td><td>生态：像不像真实世界</td><td>实验室里背单词 ≠ 考场背单词</td></tr>
+        <tr><td>· Predictive</td><td>Can it forecast future behaviour?</td><td>预测：能不能预言</td><td>今天的分能不能预言明天</td></tr>
+        <tr><td><strong>Reliability</strong></td><td>Is it consistent on repeat?</td><td>重测<strong>稳不稳定</strong></td><td>同一杆秤两次称，读数一致吗</td></tr>
+        <tr><td><strong>Generalisability</strong></td><td>Does it apply beyond this sample?</td><td>能不能<strong>推广</strong>到别人</td><td>20 个大学生 ≠ 全世界</td></tr>
+        <tr><td><strong>Objectivity</strong></td><td>Free from researcher bias?</td><td><strong>客观</strong>，不掺个人看法</td><td>机器读 vs 人读</td></tr>
+        <tr><td><strong>Subjectivity</strong></td><td>Influenced by interpretation?</td><td><strong>主观</strong>，靠人解读</td><td>同一幅画，两个人两种解读</td></tr>
+        <tr><td><strong>Credibility</strong></td><td>Is the source trustworthy?</td><td>来源<strong>可不可信</strong></td><td>朋友圈 vs 学术期刊</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>评价一个研究，只要把上面六个词轮着问一遍，答案自然就出来了。最常用的是 <strong>validity（准不准）+ reliability（稳不稳）+ generalisability（能不能推广）</strong>。背口诀：<strong>「准（validity）、稳（reliability）、广（generalisability）」</strong>。</div>
+</section>
+
+<!-- §6 Key questions -->
+<section class="section" id="s6">
+  <div class="section-header">
+    <h2>6 · Key Questions（9.2 关键议题速查）</h2>
+    <p class="section-subtitle">Section D · 8 marks · one key question in society</p>
+  </div>
+
+  <div class="quick-summary">
+    <p>One <strong>8-mark</strong> question (AO1 4 + AO2 4). The paper gives you a <strong>key question for society</strong>（社会关键议题）and two or three named studies. <strong>"Generic answers score 0 marks"</strong> — you must tie everything to the specific context given.</p>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>The four-move framework（四步法）</h4>
+      <ul style="margin:0;padding-left:18px;font-size:.89rem;line-height:1.6;">
+        <li><strong>① Define</strong>：说清这个 key question 是什么。</li>
+        <li><strong>② Apply theory</strong>：用相关理论/概念解释。</li>
+        <li><strong>③ Apply research</strong>：引用指定研究（AO2 关键）。</li>
+        <li><strong>④ Answer</strong>：回到问题，给出结论。</li>
+      </ul>
+    </div>
+    <div class="compare-card green">
+      <h4>AO2 — the part that scores</h4>
+      <ul style="margin:0;padding-left:18px;font-size:.89rem;line-height:1.6;">
+        <li>每引用一个研究，必须说清它<strong>如何</strong>帮助回答这个具体问题。</li>
+        <li>用「in the context of…」把理论和情境连起来。</li>
+        <li>Worked example：职场霸凌 + 媒体与进食障碍（见 Ch27）。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>Section D 是「给你一个社会议题 + 指定研究，让你用心理学去回答」。得分点在于<strong>把研究和议题挂钩</strong>——只背研究不联系议题，0 分。完整四步法 + 范文见 <strong>Ch27 Key Questions</strong>。</div>
+</section>
+
+<!-- §7 Issues & debates -->
+<section class="section" id="s7">
+  <div class="section-header">
+    <h2>7 · Issues &amp; Debates（9.3 议题与辩论速查）</h2>
+    <p class="section-subtitle">Section E · 20 marks · 11 debates — you must be able to argue both sides</p>
+  </div>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><span class="term">9.3.1 Ethics</span><span class="zh">伦理</span><div class="def">Human and animal research ethics.</div></div>
+    <div class="glossary-item"><span class="term">9.3.2 Practical issues</span><span class="zh">实践问题</span><div class="def">Design and implementation challenges in research.</div></div>
+    <div class="glossary-item"><span class="term">9.3.3 Reductionism vs holism</span><span class="zh">还原论 vs 整体论</span><div class="def">Explain by parts vs explain the whole person.</div></div>
+    <div class="glossary-item"><span class="term">9.3.4 Approaches</span><span class="zh">不同取向</span><div class="def">Explaining behaviour via different models/theories.</div></div>
+    <div class="glossary-item"><span class="term">9.3.5 Psychology as a science</span><span class="zh">心理学是否科学</span><div class="def">Is psychology objective/falsifiable?</div></div>
+    <div class="glossary-item"><span class="term">9.3.6 Culture &amp; gender</span><span class="zh">文化与性别</span><div class="def">Bias in research from cultural/gender assumptions.</div></div>
+    <div class="glossary-item"><span class="term">9.3.7 Nature vs nurture</span><span class="zh">天性 vs 教养</span><div class="def">Genes vs environment.</div></div>
+    <div class="glossary-item"><span class="term">9.3.8 Development over time</span><span class="zh">心理学的发展</span><div class="def">How psychology has changed across history.</div></div>
+    <div class="glossary-item"><span class="term">9.3.9 Social control</span><span class="zh">社会控制</span><div class="def">Using psychology to control behaviour.</div></div>
+    <div class="glossary-item"><span class="term">9.3.10 Knowledge in society</span><span class="zh">知识用于社会</span><div class="def">Applying psychological knowledge for social good.</div></div>
+    <div class="glossary-item"><span class="term">9.3.11 Socially sensitive research</span><span class="zh">社会敏感研究</span><div class="def">Research that may stigmatise or harm groups.</div></div>
+  </div>
+
+  <div class="exam-tip"><strong>Exam note</strong>：Section E 是 20 分 synoptic essay（AO1 8 + AO3 12）。Level 5 需要 <strong>balanced judgement</strong>（正反两面都要说，最后给出判断）。完整 11 项矩阵 + 范文见 <strong>Ch28 Issues &amp; Debates</strong>。</div>
+</section>
+
+<!-- §8 Common exam traps -->
+<section class="section" id="s8">
+  <div class="section-header">
+    <h2>8 · Common Exam Traps（常见考点陷阱）</h2>
+    <p class="section-subtitle">The six mistakes that cost methods marks — read before the exam</p>
+  </div>
+
+  <div class="trap-grid">
+    <div class="trap-card"><h5>① Correlation ≠ causation</h5><p>相关不能证明因果。总有第三变量（third variable）可能同时影响两者。</p><div class="fix">写结论时只说「有关联」，不说「导致」。</div></div>
+    <div class="trap-card"><h5>② Wilcoxon 方向记反</h5><p>Wilcoxon 的 T <strong>越小越显著</strong>（≤临界值才显著）；卡方和斯皮尔曼是<strong>越大越显著</strong>。</p><div class="fix">背口诀：W 小、卡/斯 大。</div></div>
+    <div class="trap-card"><h5>③ One-tailed vs two-tailed</h5><p>方向假设（「更高」）用单尾；只说「有差异」用双尾。用错会查错临界值。</p><div class="fix">先看假设有没有「more/less/higher」这类方向词。</div></div>
+    <div class="trap-card"><h5>④ Type I vs Type II error</h5><p>Type I＝误拒真零假设（假阳性）；Type II＝漏拒假零假设（假阴性）。</p><div class="fix">I＝「冤枉好人」，II＝「放过坏人」。</div></div>
+    <div class="trap-card"><h5>⑤ 选错检验</h5><p>数据是 nominal 却用了 Spearman，或 related design 却用了 chi-squared。</p><div class="fix">先跑 §2 的「两步判断法」再动笔。</div></div>
+    <div class="trap-card"><h5>⑥ 忘写结论</h5><p>算出统计值却不写「reject/retain null」＋「显著/不显著」，白丢 1 分。</p><div class="fix">套 §3 的结论模板，永远用完整句式。</div></div>
+  </div>
+</section>
+
+<!-- §9 Last-minute 1-page sheet -->
+<section class="section" id="s9">
+  <div class="section-header">
+    <h2>9 · Last-Minute 1-Page Sheet（考前 1 页摘要）</h2>
+    <p class="section-subtitle">The whole of Topic I on one printable page</p>
+  </div>
+
+  <div class="one-pager">
+    <h3>Topic I 一页纸（打印用）</h3>
+    <table>
+      <tbody>
+        <tr><td style="width:38%;"><strong>选检验两步法</strong></td><td>① 差异 or 相关？→ 相关 = Spearman；差异 = ②<br>② nominal or ordinal？→ nominal = 卡方；ordinal(related) = Wilcoxon</td></tr>
+        <tr><td><strong>卡方</strong></td><td>χ² = Σ(O−E)²÷E；df=(行−1)(列−1)；χ²≥临界值→显著。例：2.23 &lt; 3.84 → 保留 H0</td></tr>
+        <tr><td><strong>斯皮尔曼</strong></td><td>r_s = 1 − 6Σd²/n(n²−1)；看 |r_s|；|r_s|≥临界值→显著。例：0.84 强正相关</td></tr>
+        <tr><td><strong>威尔科克森</strong></td><td>T = 较小的秩和；T≤临界值→显著（方向相反！）。例：T=4 ≤ 6 → 拒绝 H0</td></tr>
+        <tr><td><strong>显著水平</strong></td><td>p ≤ .10 / .05 / .01；单尾=有方向，双尾=无方向</td></tr>
+        <tr><td><strong>两类错误</strong></td><td>Type I = 冤枉好人（误拒真 H0）；Type II = 放过坏人（漏拒假 H0）</td></tr>
+        <tr><td><strong>评价三宝</strong></td><td>validity（准）· reliability（稳）· generalisability（广）</td></tr>
+        <tr><td><strong>报告结构</strong></td><td>abstract → intro → aims/hypotheses → method → results → discussion</td></tr>
+        <tr><td><strong>伦理</strong></td><td>人类 = BPS 2009 + 知情同意/保密/退出/debrief；动物 = Scientific Procedures Act 1986 + 3R；儿童 = UNCRC</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="appendix-banner"><strong>提醒</strong>：本页是「复习笔记」，帮你把 Topic A–H 里已经学过的技能串起来。完整的方法学正文在 Ch17（Topic C 方法）、Ch25（临床方法）、Ch19（实操）；key question 在 Ch27；issues &amp; debates 在 Ch28。</div>
+</section>
+
+</main>
+</div><!-- END PAGE LAYOUT -->
+
+
+
+<div class="footer-note">
+  <p>📚 Edexcel IAL Psychology · Topic I: Psychological Skills · Review &amp; Exam Patterns</p>
+  <p>Built from the methods, key-question and issues-&amp;-debates chapters: Ch17 (Topic C methods) · Ch19 (practical) · Ch25 (clinical methods) · Ch27 (key questions) · Ch28 (issues &amp; debates).</p>
+</div>
+</div><!-- END CONTAINER -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<script>
+function toggleSummary(header) {
+  header.classList.toggle('open');
+  var body = header.nextElementSibling;
+  if (body && body.classList.contains('summary-card-body')) {
+    body.classList.toggle('hidden');
+  }
+}
+
+// Scroll spy
+(function(){
+  var sections = document.querySelectorAll('.section[id^="s"]');
+  var links = document.querySelectorAll('.sb-item');
+  function onScroll() {
+    var scrollPos = window.scrollY + 120;
+    var currentId = sections.length ? sections[0].id : null;
+    sections.forEach(function(sec) {
+      if (sec.offsetTop <= scrollPos) { currentId = sec.id; }
+    });
+    links.forEach(function(link) {
+      link.classList.toggle('sb-active', link.getAttribute('href') === '#' + currentId);
+    });
+    var btn = document.getElementById('backToTop');
+    if (btn) { btn.classList.toggle('show', window.scrollY > 400); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+// Dark mode
+function toggleDarkMode() {
+  document.body.classList.toggle('dark');
+  var isDark = document.body.classList.contains('dark');
+  localStorage.setItem('edexcel-topici-darkMode', isDark ? '1' : '0');
+  var btn = document.getElementById('darkBtn');
+  if (btn) { btn.textContent = isDark ? '☀️ Light' : '🌙 Dark'; }
+}
+
+// Font size
+function adjustFontSize(delta) {
+  var current = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+  var next = Math.min(22, Math.max(12, current + delta));
+  document.documentElement.style.fontSize = next + 'px';
+  localStorage.setItem('edexcel-topici-fontSize', String(next));
+}
+
+// Restore preferences
+(function(){
+  if (localStorage.getItem('edexcel-topici-darkMode') === '1') {
+    document.body.classList.add('dark');
+    var btn = document.getElementById('darkBtn');
+    if (btn) { btn.textContent = '☀️ Light'; }
+  }
+  var fs = localStorage.getItem('edexcel-topici-fontSize');
+  if (fs) { document.documentElement.style.fontSize = fs + 'px'; }
+})();
+</script>
+</body>
+</html>
