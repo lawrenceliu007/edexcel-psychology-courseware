@@ -252,6 +252,33 @@ body.dark .syl-tag.syn { background: rgba(245,158,11,.15); color: #fcd34d; }
 body.dark .study-badge.biological { background: rgba(91,33,182,.20); color: #c4b5fd; }
 body.dark .study-badge.experimental { background: rgba(21,94,117,.24); color: #67e8f9; }
 body.dark .study-badge.longitudinal { background: rgba(157,23,77,.20); color: #f9a8d4; }
+/* experience blocks（亲身体验环节） */
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; vertical-align: middle; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-controls select, .xp-controls input { padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: .92rem; background: #fff; color: #1f2937; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; transition: background .15s; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-result.warn .xp-verdict { color: var(--wrong); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; color: #1f2937; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; }
+body.dark .xp-result { color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc, body.dark .xp-checkbox label { color: #cbd5e1; }
+body.dark .xp-controls select, body.dark .xp-controls input { background: #1a1a2e; border-color: #334155; color: #cbd5e1; }
 </style>
 </head>
 <body>
@@ -434,6 +461,25 @@ body.dark .study-badge.longitudinal { background: rgba(157,23,77,.20); color: #f
   </div>
 
   <div class="cn-note"><strong>中文理解：</strong>两个研究要会配对：<strong>Rosenthal &amp; Jacobson = 教室里的期望（IQ 变了）</strong>；<strong>Jahoda = 名字里的期望（犯罪记录变了）</strong>。前者不直接研究犯罪，但证明了「期望 → 待遇 → 行为改变」这条链条；后者直接把链条接到反社会行为上。类比记忆：一个是「老师觉得你行你就行」，一个是「名字说你横你就横」。考试问 <em>who found a link between violent offending and the day of the week they were born?</em> — 答 <strong>Jahoda (1954)</strong>。</div>
+
+  <div class="xp-block">
+    <h4>🎂 Experience it · 如果你出生在加纳，你的名字会是什么「人设」？ <span class="xp-badge">亲身体验</span></h4>
+    <p class="xp-intro">Jahoda 研究里，加纳 Ashanti 族按<strong>出生星期</strong>给孩子起名，名字自带一套「人格期待」。选你的出生星期，看看如果你出生在加纳，你会被起什么名字、被贴上什么标签——以及这个标签在 Jahoda 的犯罪数据里意味着什么。</p>
+    <div class="xp-controls">
+      <select id="jahoda-day">
+        <option value="">—— 选你的出生星期 ——</option>
+        <option value="0">Sunday 星期日</option>
+        <option value="1">Monday 星期一</option>
+        <option value="2">Tuesday 星期二</option>
+        <option value="3">Wednesday 星期三</option>
+        <option value="4">Thursday 星期四</option>
+        <option value="5">Friday 星期五</option>
+        <option value="6">Saturday 星期六</option>
+      </select>
+      <button class="xp-btn" onclick="jahodaCheck()">看看我的名字</button>
+    </div>
+    <div id="jahoda-result" class="xp-result"></div>
+  </div>
 </section>
 
 <!-- ============ SECTION 6: EVALUATING SFP ============ -->
@@ -688,6 +734,39 @@ body.dark .study-badge.longitudinal { background: rgba(157,23,77,.20); color: #f
   <p>While an individual with ASPD has a <strong>higher risk of criminality</strong>, their offending should <strong>not be used to diagnose the disorder</strong>. To be clinically diagnosed, an individual should display antisocial characteristics which are <strong>inflexible, persistent and cause significant impairment</strong> in functioning or cause distress.</p>
 
   <div class="cn-note"><strong>中文理解：</strong>ASPD 是「<strong>性格本身就是犯罪隐患</strong>」的解释——不是环境标签（SFP），不是学来的（SLT），而是<strong>人格结构出了问题</strong>。诊断规则要背准三条：<strong>①18 岁前不给诊断，但 15 岁前必须有人品问题（conduct issues）证据；②七条特征至少占三条；③光犯罪不够，必须「僵化、持续、造成功能损害」</strong>。患病率普通人群 <strong>1–4%</strong>（Lenzenweger 2007），监狱/物质滥用 subgroup 里高得多，男性远多于女性（女性可能被漏诊，因为诊断标准偏重攻击性）。最容易出考点的是「<strong>comorbidity 共病</strong>」：焦虑、抑郁、物质滥用、ADHD 都可能同时存在——让诊断和归因都变难。</div>
+
+  <div class="xp-block">
+    <h4>🩺 Play psychiatrist · 你是精神科医生，给两位「病人」下诊断 <span class="xp-badge">亲身体验</span></h4>
+    <p class="xp-intro">用 DSM 的 7 条特征给下面两个病例做评估。记住两条<strong>硬门槛</strong>：①至少 <strong>3 条</strong>特征；②<strong>18 岁前不诊断</strong>，但必须有 <strong>15 岁前</strong>的行为问题（conduct issues）证据。勾选你观察到的特征，点「诊断」看结果。</p>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Case A · Jake，24 岁</div>
+      <div class="xp-case-desc">Jake 从 12 岁起就在学校打架、偷东西，多次被停学。成年后他频繁换工作、经常旷工，靠撒谎和用假名骗钱。他冲动消费、经常开快车闯红灯，对家人受到的伤害毫不在意、从不后悔。他说「规则是给老实人定的」。</div>
+      <div class="xp-checkbox"><input type="checkbox" id="j1"><label for="j1">Disregard for social rules / lawful behaviour（无视规则与合法行为）</label></div>
+      <div class="xp-checkbox"><input type="checkbox" id="j2"><label for="j2">Deceit and manipulation（撒谎、用假名骗钱）</label></div>
+      <div class="xp-checkbox"><input type="checkbox" id="j3"><label for="j3">Impulsivity / failing to plan ahead（冲动、不计划）</label></div>
+      <div class="xp-checkbox"><input type="checkbox" id="j4"><label for="j4">Aggression and irritability（攻击、打架）</label></div>
+      <div class="xp-checkbox"><input type="checkbox" id="j5"><label for="j5">Reckless disregard for safety（开快车闯红灯）</label></div>
+      <div class="xp-checkbox"><input type="checkbox" id="j6"><label for="j6">Irresponsible behaviour（旷工、不履行义务）</label></div>
+      <div class="xp-checkbox"><input type="checkbox" id="j7"><label for="j7">Lack of remorse（对伤害毫不在意、不后悔）</label></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="diagnose('jake')">给 Jake 下诊断</button></div>
+      <div id="jake-result" class="xp-result"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Case B · Maya，19 岁</div>
+      <div class="xp-case-desc">Maya 最近因为缺钱偷了妈妈钱包里的钱，偶尔对老师撒谎隐瞒迟到。但她事后很愧疚、主动还钱道歉。她有一份稳定的兼职、从不旷工，性格温和、没有暴力史，小时候是老师眼里的好学生。</div>
+      <div class="xp-checkbox"><input type="checkbox" id="m1"><label for="m1">Disregard for social rules（偷窃）</label></div>
+      <div class="xp-checkbox"><input type="checkbox" id="m2"><label for="m2">Deceit（对老师撒谎）</label></div>
+      <div class="xp-checkbox"><input type="checkbox" id="m3"><label for="m3">Impulsivity（冲动）</label></div>
+      <div class="xp-checkbox"><input type="checkbox" id="m4"><label for="m4">Aggression and irritability（攻击、打架）</label></div>
+      <div class="xp-checkbox"><input type="checkbox" id="m5"><label for="m5">Reckless disregard for safety（鲁莽）</label></div>
+      <div class="xp-checkbox"><input type="checkbox" id="m6"><label for="m6">Irresponsible behaviour（旷工）</label></div>
+      <div class="xp-checkbox"><input type="checkbox" id="m7"><label for="m7">Lack of remorse（无悔意）</label></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="diagnose('maya')">给 Maya 下诊断</button></div>
+      <div id="maya-result" class="xp-result"></div>
+    </div>
+  </div>
 </section>
 
 <!-- ============ SECTION 11: ASPD EVIDENCE ============ -->
@@ -982,6 +1061,71 @@ function adjustFontSize(delta) {
   var fs = localStorage.getItem('edexcel-ch7-fontSize');
   if (fs) { document.documentElement.style.fontSize = fs + 'px'; }
 })();
+
+// --- Experience ①: Jahoda day-name simulator ---
+function jahodaCheck() {
+  var sel = document.getElementById('jahoda-day');
+  var v = sel.value;
+  var r = document.getElementById('jahoda-result');
+  if (v === '') {
+    r.className = 'xp-result show';
+    r.innerHTML = '<p>先在上面选一个出生星期，再点「看看我的名字」。</p>';
+    return;
+  }
+  var names = {
+    '0': { m: 'Kwasi', f: 'Akosua' },
+    '1': { m: 'Kwadwo', f: 'Adwoa' },
+    '2': { m: 'Kwabena', f: 'Abenaa' },
+    '3': { m: 'Kwaku', f: 'Akua' },
+    '4': { m: 'Yaw', f: 'Yaa' },
+    '5': { m: 'Kofi', f: 'Afua' },
+    '6': { m: 'Kwame', f: 'Ama' }
+  };
+  var n = names[v];
+  var html = '<p><strong>你的加纳名字</strong>：' + n.m + '（男孩）/ ' + n.f + '（女孩）。</p>';
+  if (v === '3') {
+    html += '<p>你被期待是 <strong>aggressive &amp; short-tempered</strong>（好斗、急躁）。</p>';
+    html += '<p>📊 <strong>Jahoda (1954) 的数据</strong>：在少管所 5 年记录里，星期三出生的男孩占了约 <strong>22%</strong> 的暴力犯罪——是星期一男孩（6.9%）的 3 倍多。被期待「横」，就真的更容易「横」。</p>';
+    r.className = 'xp-result show warn';
+  } else if (v === '1') {
+    html += '<p>你被期待是 <strong>quiet &amp; placid</strong>（安静、温和）。</p>';
+    html += '<p>📊 <strong>Jahoda (1954) 的数据</strong>：星期一出生的男孩只占暴力犯罪的 <strong>6.9%</strong>。被期待「安静」，行为也更容易往安静靠。</p>';
+    r.className = 'xp-result show ok';
+  } else {
+    html += '<p>Jahoda 的课本记载主要对比了 <strong>Monday（安静温和）</strong>和 <strong>Wednesday（好斗急躁）</strong>这两个极端，你这个星期对应的「人格期待」没有详述。</p>';
+    html += '<p>💡 <strong>但核心原理不变</strong>：无论具体是什么标签，出生带来的名字会改变别人如何对待你——<strong>自证预言的关键在「标签」，不在标签的具体内容</strong>。</p>';
+    r.className = 'xp-result show';
+  }
+  r.innerHTML = html;
+}
+
+// --- Experience ②: ASPD diagnosis simulator ---
+function diagnose(caseId) {
+  var r = document.getElementById(caseId + '-result');
+  var prefix = (caseId === 'jake') ? 'j' : 'm';
+  var n = 0;
+  for (var i = 1; i <= 7; i++) {
+    var cb = document.getElementById(prefix + i);
+    if (cb && cb.checked) { n++; }
+  }
+  if (caseId === 'jake') {
+    if (n >= 3) {
+      r.className = 'xp-result show ok';
+      r.innerHTML = '<p><span class="xp-verdict">✅ 诊断正确</span>：你识别出 Jake 符合 <strong>' + n + ' 条</strong>特征（≥3，达到 DSM 门槛）。再核童年证据——Jake <strong>12 岁起</strong>就打架偷窃（15 岁前的 conduct issues 证据）→ 符合。<strong>可确诊 ASPD</strong>。</p><p>这正是 Hodgins &amp; Côté (1993) 描述的「从小犯到大」罪犯：童年就有行为问题，成年后判决更多。</p>';
+    } else {
+      r.className = 'xp-result show';
+      r.innerHTML = '<p>你只勾了 ' + n + ' 条（低于 3 条门槛）。再仔细看：Jake 还有哪些特征你漏了？提示——他<strong>用假名骗钱（deceit）</strong>、<strong>开快车（reckless）</strong>、<strong>从不后悔（lack of remorse）</strong>。</p>';
+    }
+  } else {
+    if (n < 3) {
+      r.className = 'xp-result show ok';
+      r.innerHTML = '<p><span class="xp-verdict">✅ 判断正确</span>：Maya 只表现出 <strong>' + n + ' 条</strong>特征（未达 3 条门槛），而且她的偷窃/撒谎是偶发、伴随悔意，最关键是<strong>没有 15 岁前的行为问题证据</strong> → <strong>不能诊断 ASPD</strong>。</p><p>记住这个考点：<strong>犯过错 ≠ 反社会人格障碍</strong>；风险因素 ≠ 必然诊断。</p>';
+    } else {
+      r.className = 'xp-result show warn';
+      r.innerHTML = '<p><span class="xp-verdict">❌ 别急着下诊断</span>：你勾了 ' + n + ' 条，但这样就掉进了考试陷阱——① Maya 的行为是<strong>偶发且伴随悔意</strong>，不是「persistent + 缺乏悔意」；② 最关键：她<strong>没有 15 岁前的 conduct issues 证据</strong>，而诊断硬性要求这一点。→ 按 DSM 门槛，<strong>Maya 不能确诊 ASPD</strong>。</p><p>这是诊断模拟的核心：<strong>光有零星不良行为远远不够</strong>。</p>';
+    }
+  }
+}
 </script>
 </body>
 </html>
