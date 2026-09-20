@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic H Review — Clinical Psychology（临床心理学复习总览）</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --card-bg: #FFFFFF;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --note-bg: #fff7ed;
+  --note-border: #fb923c;
+  --term-color: #ea580c;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; transition: background .15s; white-space: nowrap; }
+.nav-pill:hover { background: var(--primary-dark); }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; transition: color .15s; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; font-weight: 300; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); transition: all .15s; display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+body.dark .nav-btn:hover { border-color: #f97316; color: #f97316; }
+
+.page-layout { display: grid; grid-template-columns: 190px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 190px; flex-shrink: 0; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; transition: all .15s ease; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item:hover { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 600; background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+a.sb-sub { display: block; padding: 6px 14px 6px 30px; color: #475569; text-decoration: none; font-size: .7em; opacity: .82; transition: all .15s ease; line-height: 1.45; }
+a.sb-sub:hover { color: var(--primary-dark); opacity: 1; background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; backdrop-filter: blur(6px); }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box strong { color: #b45309; }
+.key-term { display: inline-block; background: #e8eaf6; color: #283593; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: .9em; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box h4 { color: #991b1b; margin-bottom: 5px; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.wider-issue { background: #fff8e1; border: 2px solid #fbc02d; border-radius: 8px; padding: 16px 20px; margin: 14px 0; }
+.wider-issue h4 { color: #f57f17; margin-top: 0; }
+.activity-box { background: #f0f4f8; border: 2px solid #90a4ae; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+.activity-box h4 { color: #546e7a; margin-top: 0; display: flex; align-items: center; gap: 8px; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+tr:hover { background: #fff7ed; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.figure { margin: 18px 0; text-align: center; }
+.figure img { max-width: 100%; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 3px 12px rgba(0,0,0,.08); }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.flowchart { background: #f6f7f9; border: 2px solid var(--border); border-radius: 12px; padding: 20px; margin: 18px 0; text-align: center; }
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: opacity .2s; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.ao-badge { background: rgba(255,255,255,.25); padding: 2px 8px; border-radius: 10px; font-size: .72em; font-weight: 700; margin-left: auto; }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; animation: slideDown .25s ease; }
+.summary-card-body.hidden { display: none; }
+@keyframes slideDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
+.summary-card-body ol { margin: 0; padding-left: 20px; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; display: flex; align-items: center; gap: 8px; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.study-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px 18px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.06); transition: all .25s ease; position: relative; }
+.study-card:hover { box-shadow: 0 4px 16px rgba(234,88,12,.15); border-color: #fb923c; transform: translateY(-2px); }
+.study-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid #fef3c7; }
+.study-icon { font-size: 1.3em; }
+.study-name { font-weight: 700; font-size: .95em; color: #ea580c; flex: 1; }
+.study-badge { font-size: .7em; font-weight: 600; padding: 3px 10px; border-radius: 12px; background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; white-space: nowrap; }
+.study-badge.classic { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: #9d174d; }
+.study-badge.contemp { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; }
+.study-badge.cross { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; }
+.study-badge.meta { background: linear-gradient(135deg, #ede9fe, #ddd6fe); color: #5b21b6; }
+.study-badge.corr { background: linear-gradient(135deg, #dcfce7, #bbf7d0); color: #166534; }
+.study-badge.natural { background: linear-gradient(135deg, #ffedd5, #fed7aa); color: #9a3412; }
+.study-badge.expt { background: linear-gradient(135deg, #cffafe, #a5f3fc); color: #155e75; }
+.study-card-body p { margin: 6px 0; line-height: 1.65; font-size: .9em; }
+.study-card-body ul { margin: 6px 0 6px 18px; padding: 0; }
+.study-card-body li { margin: 4px 0; font-size: .89em; line-height: 1.6; }
+.eval-tag { display: inline-block; background: #fef2f2; border-left: 3px solid #ef4444; padding: 4px 10px; margin-top: 6px; font-size: .85em; color: #991b1b; border-radius: 0 6px 6px 0; }
+.ao-zone-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 10px; margin: 20px 0 14px; font-weight: 700; font-size: 1.05em; }
+.ao-zone-header.ao1 { background: linear-gradient(135deg, #eff6ff, #dbeafe); border-left: 5px solid #2563eb; color: #1e40af; }
+.ao-zone-header.ao3 { background: linear-gradient(135deg, #fdf4ff, #fae8ff); border-left: 5px solid #c026d3; color: #a21caf; }
+.ao-zone-desc { font-size: .82em; font-weight: 400; opacity: .8; margin-left: auto; }
+.gold-standard-para { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 2px solid #fcd34d; border-radius: 10px; padding: 16px 18px; margin: 14px 0; }
+.gold-standard-para h4 { color: #92400e; margin: 0 0 8px; font-size: .95em; }
+.gold-standard-para p { font-size: .89em; line-height: 1.7; margin: 6px 0; }
+.gold-standard-para ul { font-size: .89em; margin: 6px 0; }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { box-shadow: 0 6px 20px rgba(234,88,12,.4); transform: translateY(-2px); }
+@media(max-width:900px){
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .main-content { max-width: 100%; }
+  .compare-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+body.dark { background: #0f172a; color: #e2e8f0; transition: background .3s, color .3s; }
+body.dark .container { background: #0f172a; }
+body.dark .nav-bar { background: #1a1a2e; border-bottom-color: var(--primary); }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+body.dark .sb-divider { background: #334155; }
+body.dark .sb-group-label { color: #64748b; }
+body.dark .sb-item { color: #94a3b8; }
+body.dark .sb-item:hover { color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.10), transparent); border-left-color: #f97316; }
+body.dark .sb-item.sb-active { color: #fb923c; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); border-left-color: #f97316; }
+body.dark a.sb-sub { color: #94a3b8; }
+body.dark .header { background: linear-gradient(135deg, #c2410c, #ea580c, #f97316); }
+body.dark .section { background: #1a1a2e; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .warn-box h4 { color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .keyterm-box strong { color: #fbbf24; }
+body.dark .key-term { background: #2a2a4a; color: #a5b4fc; }
+body.dark strong { color: #fbbf24; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; color: white; border-color: #7f1d1d; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark tr:hover { background: rgba(234,88,12,.05); }
+body.dark td:first-child { color: #fb923c; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+body.dark .flowchart { background: #16213e; border-color: #334155; }
+body.dark .wider-issue { background: rgba(251,192,45,.06); border-color: #f59e0b; }
+body.dark .wider-issue h4 { color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .activity-box { background: #1e293b; border-color: #475569; }
+body.dark .activity-box h4 { color: #94a3b8; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark .study-card { background: #16213e; border-color: #334155; }
+body.dark .study-card:hover { border-color: #f97316; box-shadow: 0 4px 16px rgba(234,88,12,.2); }
+body.dark .study-card-header { border-bottom-color: #3f3f5e; }
+body.dark .study-name { color: #fb923c; }
+body.dark .study-card-body p, body.dark .study-card-body li { color: #cbd5e1; }
+body.dark .eval-tag { background: rgba(220,38,38,.08); color: #fca5a5; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .ao-zone-header.ao1 { background: linear-gradient(135deg, rgba(37,99,235,.15), rgba(37,99,235,.08)); border-left-color: #3b82f6; color: #93c5fd; }
+body.dark .ao-zone-header.ao3 { background: linear-gradient(135deg, rgba(192,38,211,.15), rgba(192,38,211,.08)); border-left-color: #c026d3; color: #e9d5ff; }
+body.dark .gold-standard-para { background: linear-gradient(135deg, rgba(245,158,11,.08), rgba(245,158,11,.04)); border-color: #f59e0b; }
+body.dark .gold-standard-para h4 { color: #fbbf24; }
+body.dark .gold-standard-para p, body.dark .gold-standard-para ul, body.dark .gold-standard-para li { color: #d1d5db; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+body.dark a { color: #60a5fa; }
+body.dark a:hover { color: #93c5fd; }
+/* checklist 用 */
+.checklist-card { background:#FFFFFF; border:1px solid #e2e8f0; border-left:6px solid var(--primary); border-radius:10px; padding:14px 16px; margin:12px 0; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+.checklist-card .code { font-family:'JetBrains Mono',Menlo,Consolas,monospace; font-size:.82rem; color:var(--primary-dark); background:#FFF7ED; padding:2px 8px; border-radius:6px; }
+.checklist-card h4 { margin:4px 0 8px; color:var(--accent); font-size:1.04rem; }
+.checklist-card .must { font-size:.94rem; line-height:1.55; }
+.checklist-card .must li { margin:3px 0; }
+.checklist-card .selfcheck { margin-top:8px; padding:8px 10px; background:#F1F5F9; border-radius:6px; font-size:.9rem; }
+.checklist-card .selfcheck::before { content:"🗒️ Self-check · 自检："; font-weight:600; color:var(--accent); }
+.checklist-card label.tick { display:flex; align-items:center; gap:8px; margin-top:10px; font-weight:500; color:var(--accent); font-size:.9rem; cursor:pointer; }
+.checklist-card label.tick input { width:18px; height:18px; accent-color:var(--primary); cursor:pointer; }
+
+/* glossary */
+.glossary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; }
+.glossary-item { background:#FFFFFF; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px; }
+.glossary-item .term { font-weight:700; color:var(--primary-dark); font-size:.96rem; }
+.glossary-item .zh { color:#64748b; font-size:.85rem; margin-left:4px; }
+.glossary-item .def { font-size:.88rem; line-height:1.45; margin-top:4px; color:var(--text); }
+
+/* study-cards 复用 */
+.study-card .study-meta { font-size:.85rem; color:#64748b; margin-top:4px; }
+
+/* methods table */
+.methods-table th, .methods-table td { padding:8px 12px; border-bottom:1px solid #e2e8f0; font-size:.9rem; vertical-align:top; }
+.methods-table th { background:#FFF7ED; color:var(--accent); text-align:left; font-weight:600; }
+
+/* traps */
+.trap-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px; }
+.trap-card { background:#FFFFFF; border:1px solid #fcd34d; border-left:6px solid #f59e0b; border-radius:8px; padding:12px 14px; }
+.trap-card h5 { margin:0 0 6px; color:#b45309; font-size:.98rem; }
+.trap-card p { margin:0; font-size:.9rem; line-height:1.5; }
+.trap-card .fix { background:#FEF3C7; border-radius:6px; padding:6px 8px; margin-top:6px; font-size:.88rem; }
+
+/* one-pager */
+.one-pager { background:linear-gradient(135deg,#FFF7ED 0%,#FFFFFF 100%); border:2px dashed var(--primary); border-radius:12px; padding:18px 22px; }
+.one-pager h3 { color:var(--primary-dark); margin-top:0; }
+.one-pager table { width:100%; border-collapse:collapse; font-size:.88rem; }
+.one-pager td, .one-pager th { padding:5px 8px; border-bottom:1px dotted #fb923c; vertical-align:top; }
+.one-pager th { background:transparent; color:var(--accent); text-align:left; font-weight:600; }
+
+/* appendix */
+.appendix-banner { background:#F1F5F9; border-left:6px solid #94a3b8; padding:10px 14px; border-radius:6px; margin-bottom:18px; color:#475569; font-size:.92rem; }
+
+/* ============ 修复补丁 (2026-09-17) ============ */
+/* 1) section-header / section-subtitle — 让每个 section 标题下面有一行斜体描述 */
+.section-header { margin-bottom: 0; }
+.section-header h2 { border-bottom: none; padding-bottom: 4px; margin-bottom: 4px; }
+.section-subtitle { color: var(--text-secondary); font-size: .92em; font-style: italic; font-weight: 400; padding-bottom: 12px; border-bottom: 2px solid var(--border); margin: 0 0 14px 0; }
+
+/* 2) 侧栏序号 chip (1–9) */
+.sb-id { display: inline-block; min-width: 18px; padding: 1px 5px; margin-right: 7px; background: rgba(234,88,12,.12); color: var(--primary-dark); border-radius: 5px; font-weight: 700; font-size: .82em; text-align: center; vertical-align: 1px; }
+.sb-item.sb-active .sb-id { background: rgba(234,88,12,.22); }
+body.dark .sb-id { background: rgba(234,88,12,.20); color: #fb923c; }
+body.dark .sb-item.sb-active .sb-id { background: rgba(249,115,22,.30); }
+
+/* 3) study-badge 新增 3 种类型 (Brain / Experimental / Longitudinal) */
+.study-badge.biological { background: linear-gradient(135deg, #ede9fe, #ddd6fe); color: #5b21b6; }
+.study-badge.experimental { background: linear-gradient(135deg, #cffafe, #a5f3fc); color: #155e75; }
+.study-badge.longitudinal { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: #9d174d; }
+body.dark .study-badge.biological { background: rgba(91,33,182,.20); color: #c4b5fd; }
+body.dark .study-badge.experimental { background: rgba(21,94,117,.24); color: #67e8f9; }
+body.dark .study-badge.longitudinal { background: rgba(157,23,77,.20); color: #f9a8d4; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="/edexcel-psychology-courseware/">Home</a> <span class="sep">›</span>
+    <a href="/edexcel-psychology-courseware/">Edexcel</a> <span class="sep">›</span>
+    <span>Topic H — Review &amp; Exam Patterns</span>
+  </div>
+  <span class="nav-pill">🩺 Topic H · Clinical Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn" title="Toggle dark mode">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)" title="Decrease font size">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)" title="Increase font size">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sb-header">
+      <div class="sb-header-title">📋 Topic H Review</div>
+      <div class="sb-header-sub">Clinical Psychology（临床心理学）</div>
+    </div>
+    <nav class="sb-list" id="sidebar-nav">
+      <a class="sb-item" href="#s1"><span class="sb-id">1</span> Topic H at a glance</a>
+      <a class="sb-item" href="#s2"><span class="sb-id">2</span> 7-Chapter Checklist</a>
+      <a class="sb-item" href="#s3"><span class="sb-id">3</span> Key Terms Glossary</a>
+      <a class="sb-item" href="#s4"><span class="sb-id">4</span> Must-Know Studies</a>
+      <a class="sb-item" href="#s5"><span class="sb-id">5</span> Diagnosis Quick Card</a>
+      <a class="sb-item" href="#s6"><span class="sb-id">6</span> Explanations &amp; Treatments</a>
+      <a class="sb-item" href="#s7"><span class="sb-id">7</span> Common Exam Traps</a>
+      <a class="sb-item" href="#s8"><span class="sb-id">8</span> Last-Minute 1-Page Sheet</a>
+      <a class="sb-item" href="#s9"><span class="sb-id">9</span> Appendix: Exam Patterns</a>
+    </nav>
+    <div class="sb-divider"></div>
+    <div class="sb-group-label">Seven Chapters</div>
+    <a class="sb-sub" href="../ch20-diagnosis/">→ Ch20 Diagnosis</a>
+    <a class="sb-sub" href="../ch21-schizophrenia/">→ Ch21 Schizophrenia</a>
+    <a class="sb-sub" href="../ch22-depression/">→ Ch22 Depression</a>
+    <a class="sb-sub" href="../ch23-anorexia/">→ Ch23 Anorexia</a>
+    <a class="sb-sub" href="../ch24-studies/">→ Ch24 Studies</a>
+    <a class="sb-sub" href="../ch25-methods/">→ Ch25 Methods</a>
+    <a class="sb-sub" href="../ch26-clinical-practical/">→ Ch26 Clinical Practical</a>
+  </div>
+</aside>
+
+<!-- ============ MAIN ============ -->
+<main class="main-content">
+
+<div class="header">
+  <h1>🩺 Topic H Review — Clinical Psychology<br><span style="font-size:0.65em">临床心理学复习总览</span></h1>
+  <div class="subtitle">A knowledge-first review sheet · 7 chapters · 6 studies · 1-page summary</div>
+  <div class="meta">
+    <span class="badge">📘 Pearson Edexcel International A Level</span>
+    <span class="badge">📋 Topic H · Clinical Psychology · Unit 3 (WPS03) + Unit 4 (WPS04)</span>
+    <span class="badge">🧠 Diagnosis · Disorders · Studies · Methods · Practical</span>
+    <span class="badge">✅ 7 Chapter Cards + 6 Must-Know Studies + 1-Page Sheet</span>
+  </div>
+</div>
+
+<!-- §1 Topic H at a glance -->
+<section class="section" id="s1">
+  <div class="section-header">
+    <h2>1 · Topic H at a Glance</h2>
+    <p class="section-subtitle">Clinical Psychology（临床心理学）— five strands, seven chapters, one exam-ready knowledge chain</p>
+  </div>
+
+  <div class="quick-summary">
+    <p>This page is a <strong>knowledge review sheet</strong>（一份知识复习笔记）for Topic H. It is designed so that after you walk through it, you can take a clinical-psychology exam without going back to read the full chapters.</p>
+    <p>Seven chapters · how disorders are defined and diagnosed → three disorders in depth → the studies behind them → the methods clinicians use → your own practical investigation · 1 self-check per chapter so you know what you don't know yet.</p>
+  </div>
+
+  <h3>Five Strands → Seven Chapters</h3>
+  <table class="methods-table" style="width:100%;">
+    <thead><tr><th>Code</th><th>Strand</th><th>Where（位于）</th><th>Focus</th></tr></thead>
+    <tbody>
+      <tr><td>Foundations</td><td>Diagnosis &amp; Classification</td><td><a href="../ch20-diagnosis/">Ch20 Diagnosis</a></td><td>Four definitions of abnormality + ICD vs DSM + validity of diagnosis</td></tr>
+      <tr><td>Disorder 1</td><td>Schizophrenia</td><td><a href="../ch21-schizophrenia/">Ch21 Schizophrenia</a></td><td>Symptoms, dopamine hypothesis, genetics, antipsychotics, family therapy</td></tr>
+      <tr><td>Disorder 2</td><td>Unipolar Depression</td><td><a href="../ch22-depression/">Ch22 Depression</a></td><td>Symptoms, monoamine hypothesis, drug therapy, Beck's triad, CBT</td></tr>
+      <tr><td>Disorder 3</td><td>Anorexia Nervosa</td><td><a href="../ch23-anorexia/">Ch23 Anorexia</a></td><td>Symptoms, genetics, social learning theory, drug therapy, CBT-E</td></tr>
+      <tr><td>Studies</td><td>Core &amp; Contemporary Research</td><td><a href="../ch24-studies/">Ch24 Studies</a></td><td>Rosenhan (1973) classic + 5 contemporary studies</td></tr>
+      <tr><td>Methods</td><td>Clinical Research Methods</td><td><a href="../ch25-methods/">Ch25 Methods</a></td><td>RCTs, neuroimaging, research conventions, peer review, HCPC</td></tr>
+      <tr><td>Practical</td><td>Content Analysis Investigation</td><td><a href="../ch26-clinical-practical/">Ch26 Clinical Practical</a></td><td>Your own content analysis of attitudes to mental health</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- §2 Chapter Checklist -->
+<section class="section" id="s2">
+  <div class="section-header">
+    <h2>2 · The 7 Chapters — Quick Checklist</h2>
+    <p class="section-subtitle">One chapter = one card. Each card lists what you must be able to write down, plus one self-check question you should answer out loud before ticking the box.</p>
+  </div>
+
+  <div class="cn-note">
+    <p>Use this section as your <strong>last-mile revision sheet</strong>（考前一遍过的清单）. Tick a card only when you can answer the self-check from memory.</p>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">Ch20</span>
+    <h4>Definitions and Debates in Diagnosis（诊断的定义与辩论）</h4>
+    <ul class="must">
+      <li>Four definitions of abnormality（异常的四种定义）: <strong>statistical infrequency</strong>（统计稀有性）, <strong>failure to function adequately</strong>（无法正常生活）, <strong>deviation from ideal mental health</strong>（偏离理想心理健康）, <strong>deviation from social norms</strong>（偏离社会规范）. Know one strength + one limitation of each.</li>
+      <li>Statistical infrequency: 2 standard deviations from the mean（离均值两个标准差）; limitation — some rare behaviours are desirable (high IQ).</li>
+      <li>Failure to function: <strong>Rosenhan &amp; Seligman (1989)</strong> seven criteria of dysfunctional behaviour（功能失调行为的七条标准）.</li>
+      <li>Classification systems（分类系统）: <strong>ICD</strong> (WHO) vs <strong>DSM</strong> (APA). DSM-IV used a multi-axial system（多轴系统）; DSM-5 dropped the axes.</li>
+      <li>Culture-specific disorders（文化特定障碍）: some diagnostic categories do not travel across cultures.</li>
+      <li>Reliability vs validity of diagnosis: <strong>criterion validity</strong>（效标效度） and <strong>aetiological validity</strong>（病因效度）.</li>
+      <li>Medical model（医学模型） vs alternative approaches — be ready to argue both sides.</li>
+    </ul>
+    <div class="selfcheck">Name the four definitions of abnormality and give one limitation of statistical infrequency.</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">Ch21</span>
+    <h4>Schizophrenia（精神分裂症）</h4>
+    <ul class="must">
+      <li><strong>Positive symptoms</strong>（阳性症状） = experiences added to normal life: delusions（妄想 — grandiose / persecutory / referential）, thought insertion / withdrawal / broadcasting（思维插入/被夺/广播）, hallucinations（幻觉 — auditory, visual）, disorganised thinking, speech, behaviour and catatonia（紧张症）.</li>
+      <li><strong>Negative symptoms</strong>（阴性症状） = normal functions lost or reduced.</li>
+      <li>Features: lifetime prevalence <strong>0.3–0.7%</strong> (APA, 2013); onset early adulthood to mid-thirties; men diagnosed earlier than women; earlier onset = worse prognosis.</li>
+      <li>Biological explanations: <strong>dopamine hypothesis</strong>（多巴胺假说） + <strong>genetics</strong>（遗传）. Be ready to evaluate both, including reductionism vs holism（还原论 vs 整体论）.</li>
+      <li>Drug therapy: <strong>typical</strong>（第一代） vs <strong>atypical</strong>（第二代） antipsychotics — mechanism + evaluation.</li>
+      <li><strong>Family therapy</strong>（家庭治疗） as a psychological therapy.</li>
+      <li><strong>Treatment–aetiology fallacy</strong>（治疗–病因谬误）: a treatment working does NOT prove the cause.</li>
+    </ul>
+    <div class="selfcheck">Distinguish positive from negative symptoms with one example of each, and state the dopamine hypothesis in one sentence.</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">Ch22</span>
+    <h4>Unipolar Depression（单相抑郁）</h4>
+    <ul class="must">
+      <li>DSM-5 symptoms: at least five, including low mood or loss of interest, for two weeks; must cause significant distress or impairment.</li>
+      <li>Biological explanation: <strong>monoamine hypothesis</strong>（单胺假说） — low serotonin / noradrenaline activity; supported by drug action, challenged by the delay in drug effect.</li>
+      <li>Drug therapy: antidepressants (SSRIs, MAOIs, tricyclics) + evaluation (side effects, placebo effects, treats symptoms not causes).</li>
+      <li>Cognitive explanation: <strong>Beck's cognitive triad</strong>（贝克的认知三联征） — negative views of the self, the world and the future.</li>
+      <li><strong>CBT</strong>（认知行为疗法）: cognitive restructuring + behavioural activation; evaluation points include efficacy vs effectiveness and relapse prevention.</li>
+    </ul>
+    <div class="selfcheck">Draw Beck's cognitive triad and explain one strength and one weakness of the monoamine hypothesis.</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">Ch23</span>
+    <h4>Anorexia Nervosa（神经性厌食症）</h4>
+    <ul class="must">
+      <li>Symptoms &amp; features: restricted food intake leading to significantly low body weight (BMI &lt; 18.5 in adults / below the 5th percentile for age) + intense fear of gaining weight + distorted body image.</li>
+      <li>Two subtypes（两种亚型）: <strong>restricting</strong>（限制型） vs <strong>binge–purge</strong>（暴食–清除型）.</li>
+      <li>Onset most common in adolescence; relapse within 18 months is common; cultural differences in prevalence — a caveat for generalisability.</li>
+      <li>Biological explanation: <strong>role of genes</strong>（基因的作用） — twin studies, linkage studies, GWAS（全基因组关联研究） and polygenic findings.</li>
+      <li>Non-biological explanation: <strong>social learning theory</strong>（社会学习理论） — role models, vicarious reinforcement（替代强化）, media and social media.</li>
+      <li>Treatments: drug therapy + <strong>CBT-E</strong>（增强型认知行为疗法） — know one strength and one limitation of each.</li>
+    </ul>
+    <div class="selfcheck">Explain how social learning theory accounts for anorexia, and name one piece of biological evidence that challenges it.</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">Ch24</span>
+    <h4>Studies in Clinical Psychology（临床心理学研究）</h4>
+    <ul class="must">
+      <li><strong>One classic study: Rosenhan (1973)</strong> "On Being Sane in Insane Places" — 8 pseudopatients（假病人）, 12 hospitals, average 19 days — diagnosis is unreliable.</li>
+      <li><strong>Schizophrenia: Suzuki et al. (2014)</strong> — the contemporary study for this disorder.</li>
+      <li><strong>Depression: choose ONE of</strong> Hans &amp; Hiller (2013) <em>or</em> Ma, Quan &amp; Liu (2014).</li>
+      <li><strong>Anorexia: choose ONE of</strong> Becker et al. (2002) <em>or</em> Reichel et al. (2014).</li>
+      <li>For every study: Aim, Method, Sample, Procedure, Results, Conclusion — plus 3 evaluation points (validity, generalisability, ethics).</li>
+      <li>Concept: <strong>lived experience</strong>（亲历经验） — why first-person accounts matter in clinical psychology.</li>
+    </ul>
+    <div class="selfcheck">Which studies must you prepare for each disorder, and how many do you choose yourself?</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">Ch25</span>
+    <h4>Methods in Clinical Psychology（临床心理学研究方法）</h4>
+    <ul class="must">
+      <li><strong>RCTs</strong>（随机对照试验）: randomisation, placebos（安慰剂）, double-blind（双盲） — the gold standard for testing treatments.</li>
+      <li><strong>Neuroimaging</strong>（神经影像）: structural MRI vs functional fMRI; what each measures; evaluation of scanning research.</li>
+      <li><strong>Conventions of published research</strong>（研究报告规范）: the five-section structure — abstract, introduction, method, results, discussion.</li>
+      <li><strong>Peer review</strong>（同行评审）: the process and its weaknesses.</li>
+      <li><strong>HCPC guidelines</strong>（临床从业者准则） for clinical practitioners.</li>
+      <li>Decision making and interpretation of data; <strong>reliability</strong>（信度）, <strong>validity</strong>（效度）, <strong>generalisability</strong>（泛化性）, <strong>credibility, objectivity and subjectivity</strong>（可信度、客观性与主观性）.</li>
+    </ul>
+    <div class="selfcheck">What makes an RCT the gold standard, and what is the difference between MRI and fMRI?</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+
+  <div class="checklist-card">
+    <span class="code">Ch26</span>
+    <h4>Clinical Practical: Content Analysis（临床实操：内容分析）</h4>
+    <ul class="must">
+      <li>What <strong>content analysis</strong>（内容分析） is, and why it suits attitudes-to-mental-health research.</li>
+      <li>Design decisions: research question, gathering sources, <strong>secondary data</strong>（二手数据） and source credibility.</li>
+      <li>Ethical considerations: pseudonyms（化名）, managing harmful or distressing material.</li>
+      <li><strong>Manifest vs latent content</strong>（显性内容 vs 隐性内容） — the coding distinction.</li>
+      <li>Presenting results: <strong>nominal data</strong>（称名数据）, percentages, and <strong>inter-rater reliability</strong>（评分者间信度）.</li>
+      <li>Report writing: procedure, results, discussion + strengths, weaknesses and improvements of your investigation.</li>
+    </ul>
+    <div class="selfcheck">Distinguish manifest from latent content with one example from an online comment.</div>
+    <label class="tick"><input type="checkbox"> Confident — move on</label>
+  </div>
+</section>
+
+<!-- §3 Key Terms Glossary -->
+<section class="section" id="s3">
+  <div class="section-header">
+    <h2>3 · Key Terms Glossary（核心术语小词典）</h2>
+    <p class="section-subtitle">A condensed vocabulary list — every term you should be able to define without looking it up.</p>
+  </div>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><div class="term">Abnormality <span class="zh">异常</span></div><div class="def">Statistically rare, dysfunctional or norm-violating psychological state — definitions differ and each has weaknesses.</div></div>
+    <div class="glossary-item"><div class="term">Aetiological validity <span class="zh">病因效度</span></div><div class="def">A diagnosis is valid if all people with it share the same cause.</div></div>
+    <div class="glossary-item"><div class="term">Anorexia nervosa <span class="zh">神经性厌食症</span></div><div class="def">Restricted intake, significantly low weight, fear of gaining weight, distorted body image.</div></div>
+    <div class="glossary-item"><div class="term">Atypical antipsychotics <span class="zh">非典型抗精神病药</span></div><div class="def">Second-generation drugs (e.g. clozapine); act on dopamine and serotonin; fewer motor side effects.</div></div>
+    <div class="glossary-item"><div class="term">Beck's cognitive triad <span class="zh">认知三联征</span></div><div class="def">Negative views of self, world and future proposed to maintain depression.</div></div>
+    <div class="glossary-item"><div class="term">CBT <span class="zh">认知行为疗法</span></div><div class="def">Cognitive restructuring + behavioural activation; first-line psychological treatment for depression.</div></div>
+    <div class="glossary-item"><div class="term">CBT-E <span class="zh">增强型 CBT</span></div><div class="def">Enhanced CBT specially adapted for eating disorders.</div></div>
+    <div class="glossary-item"><div class="term">Content analysis <span class="zh">内容分析</span></div><div class="def">Systematic coding of qualitative material (e.g. comments) into categories for quantitative analysis.</div></div>
+    <div class="glossary-item"><div class="term">Criterion validity <span class="zh">效标效度</span></div><div class="def">A diagnosis is valid if people with it genuinely differ from those without on related measures.</div></div>
+    <div class="glossary-item"><div class="term">Culture-specific disorder <span class="zh">文化特定障碍</span></div><div class="def">A diagnostic category found mainly in one culture — evidence diagnosis is not universal.</div></div>
+    <div class="glossary-item"><div class="term">Delusion <span class="zh">妄想</span></div><div class="def">Fixed false belief — grandiose, persecutory or referential in schizophrenia.</div></div>
+    <div class="glossary-item"><div class="term">Deviation from ideal mental health <span class="zh">偏离理想心理健康</span></div><div class="def">Abnormality as falling short of positive mental-health criteria.</div></div>
+    <div class="glossary-item"><div class="term">Deviation from social norms <span class="zh">偏离社会规范</span></div><div class="def">Abnormality as violation of accepted standards of behaviour; culturally relative.</div></div>
+    <div class="glossary-item"><div class="term">Dopamine hypothesis <span class="zh">多巴胺假说</span></div><div class="def">Overactive dopamine transmission underlies positive symptoms of schizophrenia.</div></div>
+    <div class="glossary-item"><div class="term">Double-blind <span class="zh">双盲</span></div><div class="def">Neither participant nor researcher knows the condition — controls expectancy effects.</div></div>
+    <div class="glossary-item"><div class="term">DSM <span class="zh">精神障碍诊断与统计手册</span></div><div class="def">APA classification system; DSM-5 dropped the DSM-IV multi-axial system.</div></div>
+    <div class="glossary-item"><div class="term">Efficacy <span class="zh">效力</span></div><div class="def">How well a treatment works in ideal controlled conditions (RCTs).</div></div>
+    <div class="glossary-item"><div class="term">Effectiveness <span class="zh">效果</span></div><div class="def">How well a treatment works in routine clinical practice with real, complex patients.</div></div>
+    <div class="glossary-item"><div class="term">Failure to function adequately <span class="zh">无法正常生活</span></div><div class="def">Abnormality judged by Rosenhan &amp; Seligman's seven criteria of dysfunctional behaviour.</div></div>
+    <div class="glossary-item"><div class="term">Family therapy <span class="zh">家庭治疗</span></div><div class="def">Works with the family system to reduce expressed emotion and relapse in schizophrenia.</div></div>
+    <div class="glossary-item"><div class="term">fMRI <span class="zh">功能性磁共振</span></div><div class="def">Functional brain scanning; BOLD signal as a proxy for neural activity.</div></div>
+    <div class="glossary-item"><div class="term">GWAS <span class="zh">全基因组关联研究</span></div><div class="def">Scans millions of genetic markers for associations with a disorder; supports polygenic view of anorexia.</div></div>
+    <div class="glossary-item"><div class="term">Hallucination <span class="zh">幻觉</span></div><div class="def">Perceptual experience without external stimulus; auditory is most common in schizophrenia.</div></div>
+    <div class="glossary-item"><div class="term">HCPC <span class="zh">英国健康与照护专业委员会</span></div><div class="def">Regulator publishing standards of conduct, performance and ethics for clinical practitioners.</div></div>
+    <div class="glossary-item"><div class="term">ICD <span class="zh">国际疾病分类</span></div><div class="def">WHO classification system covering all diseases, including mental disorders.</div></div>
+    <div class="glossary-item"><div class="term">Inter-rater reliability <span class="zh">评分者间信度</span></div><div class="def">Two coders reaching the same judgements; the quality test of content analysis.</div></div>
+    <div class="glossary-item"><div class="term">Latent content <span class="zh">隐性内容</span></div><div class="def">Underlying meaning of a message — what it implies, not what it literally says.</div></div>
+    <div class="glossary-item"><div class="term">Lived experience <span class="zh">亲历经验</span></div><div class="def">First-person accounts of mental disorder; challenges the outsider view of diagnosis.</div></div>
+    <div class="glossary-item"><div class="term">Manifest content <span class="zh">显性内容</span></div><div class="def">The surface, directly observable content of a message.</div></div>
+    <div class="glossary-item"><div class="term">Medical model <span class="zh">医学模型</span></div><div class="def">Views mental disorder as illness with symptoms, diagnosis and treatment; rival approaches stress social and personal factors.</div></div>
+    <div class="glossary-item"><div class="term">Monoamine hypothesis <span class="zh">单胺假说</span></div><div class="def">Depression reflects low monoamine (serotonin / noradrenaline) activity.</div></div>
+    <div class="glossary-item"><div class="term">Negative symptoms <span class="zh">阴性症状</span></div><div class="def">Loss or reduction of normal functions in schizophrenia.</div></div>
+    <div class="glossary-item"><div class="term">Nominal data <span class="zh">称名数据</span></div><div class="def">Category counts — the data type produced by content analysis.</div></div>
+    <div class="glossary-item"><div class="term">Peer review <span class="zh">同行评审</span></div><div class="def">Expert scrutiny of research before publication; guards quality but is fallible.</div></div>
+    <div class="glossary-item"><div class="term">Placebo <span class="zh">安慰剂</span></div><div class="def">Inert condition controlling for expectancy; central to RCT design.</div></div>
+    <div class="glossary-item"><div class="term">Polygenic <span class="zh">多基因</span></div><div class="def">Influence of many genes of small effect — the genetic architecture of anorexia.</div></div>
+    <div class="glossary-item"><div class="term">Positive symptoms <span class="zh">阳性症状</span></div><div class="def">Experiences added to normal functioning — delusions, hallucinations, disorganised thinking.</div></div>
+    <div class="glossary-item"><div class="term">Prognosis <span class="zh">预后</span></div><div class="def">Expected course of a disorder; earlier onset of schizophrenia predicts worse outcome.</div></div>
+    <div class="glossary-item"><div class="term">RCT <span class="zh">随机对照试验</span></div><div class="def">Random allocation + control condition; the gold-standard treatment design.</div></div>
+    <div class="glossary-item"><div class="term">Reliability of diagnosis <span class="zh">诊断信度</span></div><div class="def">Same clinician / different clinicians reaching the same diagnosis for the same person.</div></div>
+    <div class="glossary-item"><div class="term">SSRI <span class="zh">选择性血清素再摄取抑制剂</span></div><div class="def">Antidepressant blocking serotonin reuptake; the most prescribed class.</div></div>
+    <div class="glossary-item"><div class="term">Statistical infrequency <span class="zh">统计稀有性</span></div><div class="def">Abnormality as more than 2 SD from the mean; fails for desirable rare traits.</div></div>
+    <div class="glossary-item"><div class="term">Treatment–aetiology fallacy <span class="zh">治疗–病因谬误</span></div><div class="def">Assuming that because a drug reduces symptoms, the disorder was caused by that neurotransmitter system.</div></div>
+    <div class="glossary-item"><div class="term">Typical antipsychotics <span class="zh">典型抗精神病药</span></div><div class="def">First-generation dopamine blockers; effective but with motor side effects.</div></div>
+    <div class="glossary-item"><div class="term">Vicarious reinforcement <span class="zh">替代强化</span></div><div class="def">Learning from seeing others rewarded — key SLT mechanism in anorexia explanations.</div></div>
+  </div>
+</section>
+
+<!-- §4 Must-Know Studies -->
+<section class="section" id="s4">
+  <div class="section-header">
+    <h2>4 · Must-Know Studies（必记研究）</h2>
+    <p class="section-subtitle">One classic + five contemporary studies. Each card has the AMSPRC skeleton: Aim · Method · Sample · Procedure · Results · Conclusion.</p>
+  </div>
+
+  <div class="study-card">
+    <span class="study-badge biological">Classic</span>
+    <h3 class="study-name">Rosenhan (1973) — On Being Sane in Insane Places</h3>
+    <p class="study-meta">Covert participant observation · 8 pseudopatients · 12 US hospitals · average 19 days</p>
+    <ul>
+      <li><strong>Aim</strong>: test whether psychiatrists can tell the sane from the insane in hospital settings.</li>
+      <li><strong>Method</strong>: sane volunteers presented themselves complaining of hearing voices; once admitted, behaved normally and took notes.</li>
+      <li><strong>Results</strong>: all but one admitted with schizophrenia; release took on average 19 days; notes were recorded as "patient engages in writing behaviour" (symptoms were "in remission", never "absent").</li>
+      <li><strong>Conclusion</strong>: psychiatric diagnosis is unreliable and labels distort staff perception of normal behaviour.</li>
+      <li><strong>Critique</strong>: only one symptom presented (voices) — psychiatrists may be warier with other disorders; 1970s USA — ethnocentric and dated; ethical issues (deception of hospitals).</li>
+    </ul>
+  </div>
+
+  <div class="study-card">
+    <span class="study-badge experimental">Schizophrenia</span>
+    <h3 class="study-name">Suzuki et al. (2014) — Underweight and Undernutrition in Japanese Inpatients with Schizophrenia</h3>
+    <p class="study-meta">Cross-sectional study · Japanese inpatients vs healthy controls · BMI + blood biomarkers</p>
+    <ul>
+      <li><strong>Aim</strong>: assess the prevalence of underweight and undernutrition in schizophrenia inpatients.</li>
+      <li><strong>Method</strong>: measured BMI and blood chemistry (nutritional markers) of inpatients with schizophrenia and controls.</li>
+      <li><strong>Results</strong>: being underweight was significantly more common in patients than controls (<strong>p &lt; 0.001</strong>) across all three BMI categories; blood markers showed undernutrition.</li>
+      <li><strong>Conclusion</strong>: underweight and undernutrition are highly prevalent among Japanese inpatients with schizophrenia.</li>
+      <li><strong>Critique</strong>: cross-sectional design — cannot say whether low weight is cause, consequence, or a side effect of antipsychotic medication; all patients were on medication (confound); inpatient sample limits generalisability.</li>
+    </ul>
+  </div>
+
+  <div class="study-card">
+    <span class="study-badge longitudinal">Depression</span>
+    <h3 class="study-name">Hans &amp; Hiller (2013) — Effectiveness of Outpatient CBT for Adult Unipolar Depression</h3>
+    <p class="study-meta">Meta-analysis · non-randomised effectiveness studies · outpatients</p>
+    <ul>
+      <li><strong>Aim</strong>: assess how well CBT works in routine outpatient practice, not just in RCTs.</li>
+      <li><strong>Method</strong>: meta-analysis of non-randomised effectiveness studies of outpatient CBT for adult unipolar depression; also analysed drop-out（脱落率）.</li>
+      <li><strong>Results</strong>: CBT showed substantial effectiveness in routine care; comparable to RCT efficacy benchmarks; drop-out was low to moderate.</li>
+      <li><strong>Conclusion</strong>: CBT is not only efficacious in the lab but effective in the real clinic.</li>
+      <li><strong>Critique</strong>: non-randomised designs — selection bias; heterogeneity between clinics and therapists; meta-analysis quality depends on the primary studies.</li>
+    </ul>
+  </div>
+
+  <div class="study-card">
+    <span class="study-badge experimental">Depression</span>
+    <h3 class="study-name">Ma, Quan &amp; Liu (2014) — Core Self-Evaluation, Social Support and Depression in Chinese Students</h3>
+    <p class="study-meta">Correlational study · N = 538 Chinese university students · online questionnaires</p>
+    <ul>
+      <li><strong>Aim</strong>: test how core self-evaluation and social support relate to depression, and whether support mediates the link.</li>
+      <li><strong>Method</strong>: three scales — <strong>CSES</strong> (core self-evaluation 核心自我评价) + <strong>MSPSS</strong> (perceived social support 感知社会支持) + <strong>Zung SDS</strong> (depression 抑郁).</li>
+      <li><strong>Results</strong>: core self-evaluation negatively correlated with depression (<strong>r = −0.636</strong>, strong negative); social support acted as a <strong>partial mediator</strong>（部分中介）, indirect effect −0.18.</li>
+      <li><strong>Conclusion</strong>: positive self-evaluators tend to gain more social support, which in turn protects against depression.</li>
+      <li><strong>Critique</strong>: correlational — no causal claims; self-report bias; students only — generalisability limited; single time point.</li>
+    </ul>
+  </div>
+
+  <div class="study-card">
+    <span class="study-badge contemp">Anorexia</span>
+    <h3 class="study-name">Becker et al. (2002) — Eating Behaviours and Attitudes after Prolonged TV Exposure, Fiji</h3>
+    <p class="study-meta">Natural experiment · ethnic Fijian adolescent girls · before-and-after TV introduction</p>
+    <ul>
+      <li><strong>Aim</strong>: test whether prolonged exposure to western television changes eating attitudes and behaviours in a previously media-naive population.</li>
+      <li><strong>Method</strong>: interviews and measures of eating attitudes with Fijian girls, comparing responses before and after television reached the area.</li>
+      <li><strong>Results</strong>: after TV exposure, girls showed more disordered eating attitudes and behaviours, self-induced vomiting and body-image concern; effects strongest in girls who identified with TV role models.</li>
+      <li><strong>Conclusion</strong>: media transmission of the thin ideal can change eating attitudes in a non-western culture — supports social learning explanations.</li>
+      <li><strong>Critique</strong>: no control group in the classic sense; other cultural changes may coincide with TV arrival; self-report measures.</li>
+    </ul>
+  </div>
+
+  <div class="study-card">
+    <span class="study-badge contemp">Anorexia</span>
+    <h3 class="study-name">Reichel et al. (2014) — "Glass Fairies" and "Bone Children": Startle Reflex in Anorexia</h3>
+    <p class="study-meta">Laboratory experiment · eye-blink startle reflex · EMG · emaciation vs neutral vs pleasant images</p>
+    <ul>
+      <li><strong>Aim</strong>: test whether patients with anorexia respond differently, at reflex level, to images of extreme thinness.</li>
+      <li><strong>Method</strong>: measured the <strong>eye-blink startle reflex</strong>（惊跳反射） via EMG magnitude and latency while patients and non-patients viewed emaciation (thin body), neutral, and pleasant images; pre-set rules for rejecting trials (e.g. latency &lt; 20 ms) removed researcher bias.</li>
+      <li><strong>Results</strong>: startle was greater for unpleasant than neutral images and greater for neutral than pleasant — true for both groups; for patients, the startle response towards emaciation images was <strong>less extreme</strong> than that created by unpleasant non-body images.</li>
+      <li><strong>Conclusion</strong>: patients with anorexia show a distinctive automatic affective response to thin-body images — consistent with a positive attitude to emaciation.</li>
+      <li><strong>Critique</strong>: small samples (two non-responders excluded); lab setting — low ecological validity; reflex is an indirect measure of attitude.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- §5 Diagnosis Quick Card -->
+<section class="section" id="s5">
+  <div class="section-header">
+    <h2>5 · Diagnosis Quick Card（诊断速查）</h2>
+    <p class="section-subtitle">The Chapter 20 core: how abnormality is defined and classified, in four tables you should be able to reproduce.</p>
+  </div>
+
+  <h3>Four definitions of abnormality</h3>
+  <table class="methods-table" style="width:100%;">
+    <thead><tr><th>Definition</th><th>Core idea</th><th>Limitation to quote</th></tr></thead>
+    <tbody>
+      <tr><td>Statistical infrequency（统计稀有性）</td><td>More than 2 SD from the mean = abnormal</td><td>Some rare traits are desirable (high IQ); some disorders are common</td></tr>
+      <tr><td>Failure to function adequately（无法正常生活）</td><td>Rosenhan &amp; Seligman's 7 criteria of dysfunction — e.g. personal distress, observer discomfort, irrationality</td><td>Some people function poorly without disorder; judgement is subjective</td></tr>
+      <tr><td>Deviation from ideal mental health（偏离理想心理健康）</td><td>Falling short of positive criteria for mental health</td><td>Culturally specific standards; most people fail at least one criterion</td></tr>
+      <tr><td>Deviation from social norms（偏离社会规范）</td><td>Violating accepted standards of behaviour</td><td>Norms vary by culture and era — risks labelling dissent as disorder</td></tr>
+    </tbody>
+  </table>
+
+  <h3>ICD vs DSM</h3>
+  <table class="methods-table" style="width:100%;">
+    <thead><tr><th></th><th>ICD</th><th>DSM</th></tr></thead>
+    <tbody>
+      <tr><td>Publisher</td><td>World Health Organization (WHO)</td><td>American Psychiatric Association (APA)</td></tr>
+      <tr><td>Scope</td><td>All diseases, including mental disorders</td><td>Mental disorders only</td></tr>
+      <tr><td>History</td><td>Current edition ICD-11</td><td>DSM-IV used multi-axial system; DSM-5 dropped the axes</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Is diagnosis any good?</h3>
+  <div class="note-box">
+    <p><strong>Reliability of diagnosis</strong>（诊断信度） = would different clinicians reach the same label? <strong>Validity of diagnosis</strong>（诊断效度） = does the label carve nature at its joints?</p>
+    <p><strong>Criterion validity</strong>: people with the diagnosis should differ from people without it on related measures. <strong>Aetiological validity</strong>: people with the diagnosis should share the same cause.</p>
+    <p><strong>Culture-specific disorders</strong> show that diagnostic categories do not always travel across cultures — a standing challenge to validity.</p>
+  </div>
+
+  <h3>The debate you must be able to run</h3>
+  <div class="cn-note">
+    <p><strong>Medical model</strong>（医学模型）: disorder = illness with symptoms, diagnosis and treatment — strengths: enables research, treatment, insurance. <strong>Alternatives</strong>: diagnosis ignores social and personal context, labels can stick (Rosenhan), and lived experience（亲历经验） matters.</p>
+  </div>
+</section>
+
+<!-- §6 Explanations & Treatments Quick Card -->
+<section class="section" id="s6">
+  <div class="section-header">
+    <h2>6 · Explanations &amp; Treatments Quick Card（解释与治疗速查）</h2>
+    <p class="section-subtitle">Three disorders × biological vs psychological, with the matching treatments — the master grid of Chapters 21–23.</p>
+  </div>
+
+  <h3>The master grid</h3>
+  <table class="methods-table" style="width:100%;">
+    <thead><tr><th>Disorder</th><th>Biological explanation</th><th>Psychological explanation</th><th>Drug treatment</th><th>Psychological treatment</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Schizophrenia</strong></td><td>Dopamine hypothesis; genetics</td><td>—</td><td>Typical vs atypical antipsychotics</td><td>Family therapy</td></tr>
+      <tr><td><strong>Unipolar depression</strong></td><td>Monoamine hypothesis</td><td>Beck's cognitive triad</td><td>SSRIs / MAOIs / tricyclics</td><td>CBT</td></tr>
+      <tr><td><strong>Anorexia nervosa</strong></td><td>Role of genes (twin / linkage / GWAS / polygenic)</td><td>Social learning theory</td><td>Drug therapy</td><td>CBT-E</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Evaluation hooks — always pair treatment with explanation</h3>
+  <ul>
+    <li><strong>Dopamine hypothesis</strong>: supported by antipsychotic action and amphetamine psychosis; challenged by the <strong>treatment–aetiology fallacy</strong>（治疗–病因谬误） — a drug reducing symptoms does not prove the cause.</li>
+    <li><strong>Genetics of schizophrenia and anorexia</strong>: both run in families, but concordance is never 100% — genes set risk, not destiny (diathesis–stress thinking).</li>
+    <li><strong>Monoamine hypothesis</strong>: drugs raise monoamine levels within hours but mood lifts weeks later — a serious timing problem.</li>
+    <li><strong>Beck's triad</strong> vs monoamine: nature–nurture（天性–教养） and reductionism vs holism（还原论 vs 整体论） essays can be run on this contrast.</li>
+    <li><strong>SLT for anorexia</strong>: Becker et al. (2002) Fiji evidence — media exposure changed attitudes in a previously media-naive culture.</li>
+    <li><strong>Drug vs psychological therapy</strong>: drugs act on symptoms and are cheap to deliver; CBT / CBT-E target the mechanism and protect against relapse — but depend on therapist skill and patient engagement.</li>
+  </ul>
+</section>
+
+<!-- §7 Common Exam Traps -->
+<section class="section" id="s7">
+  <div class="section-header">
+    <h2>7 · Common Exam Traps（常见考点陷阱）</h2>
+    <p class="section-subtitle">Six mistakes that trip up otherwise-prepared students. Read once, then never make them.</p>
+  </div>
+
+  <div class="trap-grid">
+    <div class="trap-card">
+      <h5>Efficacy ≠ effectiveness</h5>
+      <p>Efficacy = ideal RCT conditions; effectiveness = routine practice. Hans &amp; Hiller (2013) studied effectiveness.</p>
+      <div class="fix">Fix: use the two words precisely — they carry different marks.</div>
+    </div>
+    <div class="trap-card">
+      <h5>Treatment–aetiology fallacy</h5>
+      <p>Antipsychotics dampen dopamine and reduce symptoms — this does NOT prove schizophrenia is caused by dopamine.</p>
+      <div class="fix">Fix: name the fallacy explicitly when evaluating the dopamine hypothesis.</div>
+    </div>
+    <div class="trap-card">
+      <h5>Correlation ≠ causation</h5>
+      <p>Ma et al. (2014) found r = −0.636 — a strong negative correlation, not a causal pathway.</p>
+      <div class="fix">Fix: describe the mediation model as "consistent with", never "proves".</div>
+    </div>
+    <div class="trap-card">
+      <h5>Positive vs negative symptoms</h5>
+      <p>Positive = experiences ADDED (delusions, hallucinations). Negative = functions LOST (motivation, affect).</p>
+      <div class="fix">Fix: "positive" has nothing to do with "good" or "severe".</div>
+    </div>
+    <div class="trap-card">
+      <h5>Statistical infrequency cuts both ways</h5>
+      <p>2 SD below the mean is abnormal — but 2 SD ABOVE includes high IQ. The definition alone never suffices.</p>
+      <div class="fix">Fix: always pair the definition with its limitation.</div>
+    </div>
+    <div class="trap-card">
+      <h5>ICD vs DSM — cite the right system</h5>
+      <p>ICD (WHO) covers all diseases; DSM (APA) is mental-disorder only. DSM-5 dropped DSM-IV's multi-axial system.</p>
+      <div class="fix">Fix: don't write "DSM-11" or "ICD-5" — the two systems number differently.</div>
+    </div>
+  </div>
+</section>
+
+<!-- §8 Last-Minute 1-Page Sheet -->
+<section class="section" id="s8">
+  <div class="section-header">
+    <h2>8 · Last-Minute 1-Page Sheet（考前 1 页摘要）</h2>
+    <p class="section-subtitle">One screen. If you can fill every box here from memory, you are ready.</p>
+  </div>
+
+  <div class="one-pager">
+    <h3>Topic H at 1-page</h3>
+    <table>
+      <tr><th>Ch20 Definitions</th><td>Statistical infrequency (2 SD) · Failure to function (R&amp;S 7 criteria) · Ideal mental health · Social norms</td></tr>
+      <tr><th>Ch20 Classification</th><td>ICD (WHO, all diseases) vs DSM (APA, mental only); DSM-5 dropped multi-axial; culture-specific disorders</td></tr>
+      <tr><th>Ch20 Validity</th><td>Reliability = same diagnosis twice · Criterion validity · Aetiological validity</td></tr>
+      <tr><th>Ch21 Symptoms</th><td>Positive: delusions, thought insertion, hallucinations, disorganisation, catatonia · Negative: functions lost</td></tr>
+      <tr><th>Ch21 Features</th><td>Prevalence 0.3–0.7% · onset early adulthood–mid-30s · men earlier · early onset = worse prognosis</td></tr>
+      <tr><th>Ch21 Biology &amp; therapy</th><td>Dopamine hypothesis · genetics · typical vs atypical antipsychotics · family therapy · treatment–aetiology fallacy</td></tr>
+      <tr><th>Ch22 Depression</th><td>≥5 DSM-5 symptoms, 2 weeks · monoamine hypothesis · SSRIs · Beck's triad (self, world, future) · CBT</td></tr>
+      <tr><th>Ch23 Anorexia</th><td>Low weight (BMI &lt; 18.5 / 5th percentile) + fear of gain + distorted image · restricting vs binge–purge · genes (GWAS, polygenic) vs SLT (vicarious reinforcement, media) · CBT-E</td></tr>
+      <tr><th>Ch24 Studies</th><td>Rosenhan 1973 (8 pseudopatients, 12 hospitals, 19 days) · Suzuki 2014 (underweight p &lt; 0.001) · H&amp;H 2013 OR Ma 2014 · Becker 2002 OR Reichel 2014</td></tr>
+      <tr><th>Ch25 Methods</th><td>RCT = randomisation + placebo + double-blind · MRI (structure) vs fMRI (BOLD activity) · 5-section report · peer review · HCPC</td></tr>
+      <tr><th>Ch26 Practical</th><td>Content analysis · manifest vs latent content · nominal data + percentages · inter-rater reliability · procedure / results / discussion</td></tr>
+      <tr><th>Key numbers</th><td>r = −0.636 (Ma) · −0.18 indirect effect (social support) · 0.3–0.7% (schizophrenia) · p &lt; 0.001 (Suzuki) · 19 days (Rosenhan)</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- §9 Appendix: Exam Patterns -->
+<section class="section" id="s9">
+  <div class="section-header">
+    <h2>9 · Appendix: Clinical Exam Patterns（真题规律附录）</h2>
+    <p class="section-subtitle">Only here for reference — the main job of this review is to teach you the content, not the exam format.</p>
+  </div>
+
+  <div class="appendix-banner">
+    <strong>This appendix is reference material.</strong> The 8 sections above are the core knowledge you need. Use this page only to recognise what kind of question you are facing.
+  </div>
+
+  <h3>Where clinical psychology appears in the exams</h3>
+  <table class="methods-table" style="width:100%;">
+    <thead><tr><th>Paper</th><th>What is examined</th></tr></thead>
+    <tbody>
+      <tr><td>Unit 3 (WPS03/01)</td><td>Clinical psychology as the mandatory application — content from Ch20–Ch26 including your practical investigation</td></tr>
+      <tr><td>Unit 4 (WPS04/01) · Section A</td><td>32 marks of clinical short answers drawn from Topic H</td></tr>
+      <tr><td>Unit 4 (WPS04/01) · Section B</td><td>16-mark clinical extended response (essay)</td></tr>
+      <tr><td>Unit 4 · Sections D &amp; E</td><td>Key questions and issues &amp; debates — clinical content can be used as synoptic evidence (<a href="../ch27-key-questions/">Ch27</a> · <a href="../ch28-issues-debates/">Ch28</a>)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Question types to expect</h3>
+  <ul>
+    <li><strong>Outline / describe</strong> — a definition of abnormality, a symptom cluster, an explanation, a therapy (AO1).</li>
+    <li><strong>Discuss / evaluate</strong> — an explanation of a disorder, a therapy, or the validity of diagnosis (AO1 + AO3).</li>
+    <li><strong>Study-based questions</strong> — describe and evaluate Rosenhan, Suzuki, or your chosen contemporary study; be ready to apply reliability / validity / generalisability language.</li>
+    <li><strong>Methods questions</strong> — RCT design decisions, neuroimaging, peer review; often combined with a short scenario.</li>
+    <li><strong>Practical questions</strong> — your content analysis: design decisions, ethics, manifest vs latent coding, reliability and improvements.</li>
+  </ul>
+
+  <h3>Where to drill</h3>
+  <ul>
+    <li>Every chapter ends with a <strong>Checkpoint &amp; Exam Practice</strong> section — Ch20 §10–11, Ch21 §10–11, Ch22 §11, Ch23 §12, Ch24 §11, Ch25 §16, Ch26 §12.</li>
+    <li>Each study card in Ch24 carries <strong>Exam Key Points</strong> panels with the AO3 language examiners reward.</li>
+    <li>After this review sheet, go straight to past papers — that is what this page is built for.</li>
+  </ul>
+
+  <p class="cn-note"><strong>Reading guide:</strong> §1–§8 are the knowledge you need. §9 is the exam-pattern layer you may consult when deciding which kind of question to tackle first.</p>
+</section>
+
+</main>
+</div><!-- END PAGE LAYOUT -->
+
+
+<div class="footer-note">
+  <p>📚 Edexcel IAL Psychology · Topic H: Clinical Psychology · Review &amp; Exam Patterns</p>
+  <p>Built from the seven clinical chapters: Ch20 Diagnosis · Ch21 Schizophrenia · Ch22 Depression · Ch23 Anorexia · Ch24 Studies · Ch25 Methods · Ch26 Clinical Practical (content analysis).</p>
+</div>
+</div><!-- END CONTAINER -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<script>
+function toggleSummary(header) {
+  header.classList.toggle('open');
+  var body = header.nextElementSibling;
+  if (body && body.classList.contains('summary-card-body')) {
+    body.classList.toggle('hidden');
+  }
+}
+
+// Scroll spy
+(function(){
+  var sections = document.querySelectorAll('.section[id^="s"]');
+  var links = document.querySelectorAll('.sb-item');
+  function onScroll() {
+    var scrollPos = window.scrollY + 120;
+    var currentId = sections.length ? sections[0].id : null;
+    sections.forEach(function(sec) {
+      if (sec.offsetTop <= scrollPos) { currentId = sec.id; }
+    });
+    links.forEach(function(link) {
+      link.classList.toggle('sb-active', link.getAttribute('href') === '#' + currentId);
+    });
+    var btn = document.getElementById('backToTop');
+    if (btn) { btn.classList.toggle('show', window.scrollY > 400); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+// Dark mode
+function toggleDarkMode() {
+  document.body.classList.toggle('dark');
+  var isDark = document.body.classList.contains('dark');
+  localStorage.setItem('edexcel-topich-darkMode', isDark ? '1' : '0');
+  var btn = document.getElementById('darkBtn');
+  if (btn) { btn.textContent = isDark ? '☀️ Light' : '🌙 Dark'; }
+}
+
+// Font size
+function adjustFontSize(delta) {
+  var current = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+  var next = Math.min(22, Math.max(12, current + delta));
+  document.documentElement.style.fontSize = next + 'px';
+  localStorage.setItem('edexcel-topich-fontSize', String(next));
+}
+
+// Restore preferences
+(function(){
+  if (localStorage.getItem('edexcel-topich-darkMode') === '1') {
+    document.body.classList.add('dark');
+    var btn = document.getElementById('darkBtn');
+    if (btn) { btn.textContent = '☀️ Light'; }
+  }
+  var fs = localStorage.getItem('edexcel-topich-fontSize');
+  if (fs) { document.documentElement.style.fontSize = fs + 'px'; }
+})();
+</script>
+</body>
+</html>
