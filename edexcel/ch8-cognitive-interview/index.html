@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edexcel Chapter 8 — Understanding the Offender（理解罪犯：认知访谈与个案概念化）</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --card-bg: #FFFFFF;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --note-bg: #fff7ed;
+  --note-border: #fb923c;
+  --term-color: #ea580c;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; transition: background .15s; white-space: nowrap; }
+.nav-pill:hover { background: var(--primary-dark); }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; transition: color .15s; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; font-weight: 300; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); transition: all .15s; display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+body.dark .nav-btn:hover { border-color: #f97316; color: #f97316; }
+
+.page-layout { display: grid; grid-template-columns: 190px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 190px; flex-shrink: 0; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; transition: all .15s ease; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 600; background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+.sb-item a.sb-sub { padding-left: 30px; font-size: .7em; opacity: .82; }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; backdrop-filter: blur(6px); }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box strong { color: #b45309; }
+.key-term { display: inline-block; background: #e8eaf6; color: #283593; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: .9em; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box h4 { color: #991b1b; margin-bottom: 5px; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.wider-issue { background: #fff8e1; border: 2px solid #fbc02d; border-radius: 8px; padding: 16px 20px; margin: 14px 0; }
+.wider-issue h4 { color: #f57f17; margin-top: 0; }
+.activity-box { background: #f0f4f8; border: 2px solid #90a4ae; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+.activity-box h4 { color: #546e7a; margin-top: 0; display: flex; align-items: center; gap: 8px; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+tr:hover { background: #fff7ed; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.figure { margin: 18px 0; text-align: center; }
+.figure img { max-width: 100%; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 3px 12px rgba(0,0,0,.08); }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.flowchart { background: #f6f7f9; border: 2px solid var(--border); border-radius: 12px; padding: 20px; margin: 18px 0; text-align: center; }
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: opacity .2s; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.ao-badge { background: rgba(255,255,255,.25); padding: 2px 8px; border-radius: 10px; font-size: .72em; font-weight: 700; margin-left: auto; }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; animation: slideDown .25s ease; }
+.summary-card-body.hidden { display: none; }
+@keyframes slideDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
+.summary-card-body ol { margin: 0; padding-left: 20px; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; display: flex; align-items: center; gap: 8px; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.study-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px 18px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.06); transition: all .25s ease; position: relative; }
+.study-card:hover { box-shadow: 0 4px 16px rgba(234,88,12,.15); border-color: #fb923c; transform: translateY(-2px); }
+.study-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid #fef3c7; }
+.study-icon { font-size: 1.3em; }
+.study-name { font-weight: 700; font-size: .95em; color: #ea580c; flex: 1; }
+.study-badge { font-size: .7em; font-weight: 600; padding: 3px 10px; border-radius: 12px; background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; white-space: nowrap; }
+.study-badge.classic { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: #9d174d; }
+.study-badge.contemp { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; }
+.study-badge.cross { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; }
+.study-badge.meta { background: linear-gradient(135deg, #ede9fe, #ddd6fe); color: #5b21b6; }
+.study-badge.corr { background: linear-gradient(135deg, #dcfce7, #bbf7d0); color: #166534; }
+.study-badge.natural { background: linear-gradient(135deg, #ffedd5, #fed7aa); color: #9a3412; }
+.study-badge.expt { background: linear-gradient(135deg, #cffafe, #a5f3fc); color: #155e75; }
+.study-card-body p { margin: 6px 0; line-height: 1.65; font-size: .9em; }
+.study-card-body ul { margin: 6px 0 6px 18px; padding: 0; }
+.study-card-body li { margin: 4px 0; font-size: .89em; line-height: 1.6; }
+.eval-tag { display: inline-block; background: #fef2f2; border-left: 3px solid #ef4444; padding: 4px 10px; margin-top: 6px; font-size: .85em; color: #991b1b; border-radius: 0 6px 6px 0; }
+.ao-zone-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 10px; margin: 20px 0 14px; font-weight: 700; font-size: 1.05em; }
+.ao-zone-header.ao1 { background: linear-gradient(135deg, #eff6ff, #dbeafe); border-left: 5px solid #2563eb; color: #1e40af; }
+.ao-zone-header.ao3 { background: linear-gradient(135deg, #fdf4ff, #fae8ff); border-left: 5px solid #c026d3; color: #a21caf; }
+.ao-zone-desc { font-size: .82em; font-weight: 400; opacity: .8; margin-left: auto; }
+.gold-standard-para { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 2px solid #fcd34d; border-radius: 10px; padding: 16px 18px; margin: 14px 0; }
+.gold-standard-para h4 { color: #92400e; margin: 0 0 8px; font-size: .95em; }
+.gold-standard-para p { font-size: .89em; line-height: 1.7; margin: 6px 0; }
+.gold-standard-para ul { font-size: .89em; margin: 6px 0; }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { box-shadow: 0 6px 20px rgba(234,88,12,.4); transform: translateY(-2px); }
+@media(max-width:900px){
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .main-content { max-width: 100%; }
+  .compare-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+body.dark { background: #0f172a; color: #e2e8f0; transition: background .3s, color .3s; }
+body.dark .container { background: #0f172a; }
+body.dark .nav-bar { background: #1a1a2e; border-bottom-color: var(--primary); }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+body.dark .sb-divider { background: #334155; }
+body.dark .sb-group-label { color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a:hover { color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.10), transparent); border-left-color: #f97316; }
+body.dark .sb-item a.sb-active { color: #fb923c; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); border-left-color: #f97316; }
+body.dark .header { background: linear-gradient(135deg, #c2410c, #ea580c, #f97316); }
+body.dark .section { background: #1a1a2e; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .warn-box h4 { color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .keyterm-box strong { color: #fbbf24; }
+body.dark .key-term { background: #2a2a4a; color: #a5b4fc; }
+body.dark strong { color: #fbbf24; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; color: white; border-color: #7f1d1d; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark tr:hover { background: rgba(234,88,12,.05); }
+body.dark td:first-child { color: #fb923c; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+body.dark .flowchart { background: #16213e; border-color: #334155; }
+body.dark .wider-issue { background: rgba(251,192,45,.06); border-color: #f59e0b; }
+body.dark .wider-issue h4 { color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .activity-box { background: #1e293b; border-color: #475569; }
+body.dark .activity-box h4 { color: #94a3b8; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark .study-card { background: #16213e; border-color: #334155; }
+body.dark .study-card:hover { border-color: #f97316; box-shadow: 0 4px 16px rgba(234,88,12,.2); }
+body.dark .study-card-header { border-bottom-color: #3f3f5e; }
+body.dark .study-name { color: #fb923c; }
+body.dark .study-card-body p, body.dark .study-card-body li { color: #cbd5e1; }
+body.dark .eval-tag { background: rgba(220,38,38,.08); color: #fca5a5; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .ao-zone-header.ao1 { background: linear-gradient(135deg, rgba(37,99,235,.15), rgba(37,99,235,.08)); border-left-color: #3b82f6; color: #93c5fd; }
+body.dark .ao-zone-header.ao3 { background: linear-gradient(135deg, rgba(192,38,211,.15), rgba(192,38,211,.08)); border-left-color: #c026d3; color: #e9d5ff; }
+body.dark .gold-standard-para { background: linear-gradient(135deg, rgba(245,158,11,.08), rgba(245,158,11,.04)); border-color: #f59e0b; }
+body.dark .gold-standard-para h4 { color: #fbbf24; }
+body.dark .gold-standard-para p, body.dark .gold-standard-para ul, body.dark .gold-standard-para li { color: #d1d5db; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+body.dark a { color: #60a5fa; }
+body.dark a:hover { color: #93c5fd; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; }
+.syl-tag.ao1 { background: #dbeafe; color: #1e40af; }
+.syl-tag.ao2 { background: #dcfce7; color: #166534; }
+.syl-tag.ao3 { background: #fce7f3; color: #9d174d; }
+.syl-tag.syn { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag.ao1 { background: rgba(59,130,246,.15); color: #93c5fd; }
+body.dark .syl-tag.ao2 { background: rgba(22,163,74,.15); color: #86efac; }
+body.dark .syl-tag.ao3 { background: rgba(219,39,119,.15); color: #f9a8d4; }
+body.dark .syl-tag.syn { background: rgba(245,158,11,.15); color: #fcd34d; }
+
+/* ported from review template for ch7 */
+.glossary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; }
+.glossary-item { background:#FFFFFF; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px; }
+.glossary-item .term { font-weight:700; color:var(--primary-dark); font-size:.96rem; }
+.glossary-item .zh { color:#64748b; font-size:.85rem; margin-left:4px; }
+.glossary-item .def { font-size:.88rem; line-height:1.45; margin-top:4px; color:var(--text); }
+.methods-table th, .methods-table td { padding:8px 12px; border-bottom:1px solid #e2e8f0; font-size:.9rem; vertical-align:top; }
+.methods-table th { background:#FFF7ED; color:var(--accent); text-align:left; font-weight:600; }
+.section-subtitle { color: var(--text-secondary); font-size: .92em; font-style: italic; font-weight: 400; padding-bottom: 12px; border-bottom: 2px solid var(--border); margin: 0 0 14px 0; }
+.study-badge.biological { background: linear-gradient(135deg, #ede9fe, #ddd6fe); color: #5b21b6; }
+.study-badge.experimental { background: linear-gradient(135deg, #cffafe, #a5f3fc); color: #155e75; }
+.study-badge.longitudinal { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: #9d174d; }
+body.dark .study-badge.biological { background: rgba(91,33,182,.20); color: #c4b5fd; }
+body.dark .study-badge.experimental { background: rgba(21,94,117,.24); color: #67e8f9; }
+body.dark .study-badge.longitudinal { background: rgba(157,23,77,.20); color: #f9a8d4; }
+/* experience blocks（亲身体验环节） */
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; vertical-align: middle; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-controls select, .xp-controls input { padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: .92rem; background: #fff; color: #1f2937; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; transition: background .15s; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-result.warn .xp-verdict { color: var(--wrong); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; color: #1f2937; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; }
+body.dark .xp-result { color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc, body.dark .xp-checkbox label { color: #cbd5e1; }
+body.dark .xp-controls select, body.dark .xp-controls input { background: #1a1a2e; border-color: #334155; color: #cbd5e1; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="/edexcel-psychology-courseware/">Home</a> <span class="sep">›</span>
+    <a href="/edexcel-psychology-courseware/">Edexcel</a> <span class="sep">›</span>
+    <span>Chapter 8 — Understanding the Offender</span>
+  </div>
+  <span class="nav-pill">🚔 Criminological Psychology · Offender</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn" title="Toggle dark mode">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)" title="Decrease font size">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)" title="Increase font size">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+    <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">Chapter 8 Contents</div>
+        <div class="sb-header-sub">Criminological Psychology · Offender</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">1 · Foundations</li>
+        <li class="sb-item"><a href="#s1">1. Learning Objectives</a></li>
+        <li class="sb-item"><a href="#s2">2. Getting Started</a></li>
+        <li class="sb-item"><a href="#s3">3. Memory Foundations</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">2 · Cognitive Interview</li>
+        <li class="sb-item"><a href="#s4">4. Four Techniques</a></li>
+        <li class="sb-item"><a href="#s5">5. The Interview Flow</a></li>
+        <li class="sb-item"><a href="#s6">6. Key Evidence</a></li>
+        <li class="sb-item"><a href="#s7">7. More Evidence</a></li>
+        <li class="sb-item"><a href="#s8">8. Evaluating the CI</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">3 · Case Formulation</li>
+        <li class="sb-item"><a href="#s9">9. Witness → Offender</a></li>
+        <li class="sb-item"><a href="#s10">10. What is Formulation</a></li>
+        <li class="sb-item"><a href="#s11">11. Offence Analysis</a></li>
+        <li class="sb-item"><a href="#s12">12. Case Formulation</a></li>
+        <li class="sb-item"><a href="#s13">13. Evaluating Formulation</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">4 · Wrap-Up</li>
+        <li class="sb-item"><a href="#s14">📝 Checkpoint &amp; Exam Practice</a></li>
+        <li class="sb-item"><a href="#s15">📚 Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>🚔 CHAPTER 8: UNDERSTANDING THE OFFENDER<br><span style="font-size:0.65em">理解罪犯：认知访谈与个案概念化</span></h1>
+  <div class="subtitle">Edexcel International A Level Psychology · Topic F: Criminological Psychology</div>
+  <div class="meta">
+    <span class="badge">📘 Pearson Edexcel International A Level</span>
+    <span class="badge">🚔 Topic F · Criminological Psychology · Paper 3</span>
+    <span class="badge">🧩 Spec 6.1.2 · Cognitive Interview</span>
+    <span class="badge">🧩 Spec 6.1.3 · Case Formulation</span>
+    <span class="badge">📝 Checkpoint 9 Qs + Exam 3 Qs (incl. 8-mark)</span>
+  </div>
+</div>
+
+<!-- ============ SECTION 1: LEARNING OBJECTIVES ============ -->
+<section class="section" id="s1">
+  <h2>1. Learning Objectives（学习目标）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary — 本节要学什么</h4>
+    <p>A crime has happened. The police need answers to two very different questions: <strong>「What happened?」</strong> — asked to the <em>witnesses</em>; and <strong>「Why did <em>this</em> person do it?」</strong> — asked about the <em>offender</em>. This chapter gives you one psychological tool for each question.</p>
+  </div>
+
+  <div class="note-box blue-box">
+    <h4>🎯 By the end of this chapter, you should be able to describe and evaluate (spec 6.1.2 + 6.1.3):</h4>
+    <ul>
+      <li><strong>The cognitive interview</strong>（认知访谈）as it is used on witnesses — its two memory foundations, four techniques, the enhanced version, and the evidence for and against it.</li>
+      <li><strong>Psychological (case) formulation</strong>（心理个案概念化）of offending behaviour in the individual — offence analysis, criminogenic factors, core beliefs, and how a formulation is built and judged.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>这一章是 Ch7 的续集。Ch7 回答的是「<strong>人为什么会犯罪</strong>」（三个理论）；Ch8 回答的是两个更「实务」的问题：<strong>①怎么从证人嘴里拿到准确的信息？</strong>→ 认知访谈（cognitive interview）；<strong>②怎么理解「这一个」罪犯为什么犯罪、以后还会不会犯？</strong>→ 心理个案概念化（psychological formulation）。一个对付证人，一个对付罪犯——这就是全章的地图，两个工具各考 describe + evaluate。</div>
+</section>
+
+<!-- ============ SECTION 2: GETTING STARTED ============ -->
+<section class="section" id="s2">
+  <h2>2. Getting Started — You Are the Officer（开局思考：你是办案警官）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Think about this before you read on</h4>
+    <p>Read this extract about a crime from a newspaper.</p>
+  </div>
+
+  <div class="activity-box">
+    <h4>📰 The City Bank robbery（课本 Getting Started 原文）</h4>
+    <p>On Monday morning, the ordinary calm of the city was shattered when a group of masked individuals stormed into the City Bank in a daring bank robbery. The individuals were dressed in dark clothing, with concealed faces and armed with a variety of weapons. The customers were making their everyday banking transactions when the robbery took place. The menacing robbers herded the customers and staff to the back of the bank. The chaotic scene was commanded by a ringleader who created an air of fear. The robbery took place with precision and meticulous timing, as the criminals breached the bank's vault and filled their bags with stacks of currency. The criminals left swiftly, leaving behind trembling customers and bank staff unsettled by their ordeal. This brazen robbery occurred in daylight and the bank was surrounded by commuters travelling to work. Within minutes of the criminals disappearing on foot through the city streets, law enforcement officers arrived, swarming over the bank and gathering together the witnesses.</p>
+    <p style="margin-bottom:0;"><strong>Your task</strong>: imagine that you are police officers involved in gathering witness testimony. Write down <strong>seven questions</strong> that you will ask the witnesses about the crime. Then think about what you have learned about <strong>reconstructive memory</strong>（重构记忆）— would any of your questions <em>mislead</em> the witness or <em>activate schemas</em> that might alter the answers given? How could you change your questions to make them better?</p>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>先别往下读，真的拿纸写 7 个问题——这是本章最重要的预习动作。写完后自查：「我的问题是不是大多是 <em>did you see…? / was she wearing…?</em> 这种只答 yes/no 的封闭问题？有没有哪一问其实<strong>替证人编好了剧情</strong>（比如『那人拿刀了吧？』）？」带着你的 7 个问题往下读，读完 §4 你会想重写一半。<strong>这个开局任务不是装饰——考试真题（Olivia/Rhys, 8 分）问的就是同一件事</strong>：怎样用认知访谈技巧帮证人回忆。</div>
+</section>
+
+<!-- ============ SECTION 3: MEMORY FOUNDATIONS ============ -->
+<section class="section" id="s3">
+  <h2>3. Why Standard Interviews Fail — The Two Memory Foundations（两大记忆原理：全章的逻辑地基）</h2>
+  <p class="section-subtitle">The textbook jumps straight to the four techniques — but every technique is derived from two ideas about how memory works. Master this section and the four techniques stop being a list to memorise and become a logic you can reconstruct.</p>
+
+  <div class="keyterm-box">
+    <p><strong>KEY TERM — cognitive interview（认知访谈）</strong>：The cognitive interview (Fisher and Geiselman, et al., 1984) is a specific way of asking a witness questions about an incident. It is designed to <strong>maximise the accuracy of the information</strong> obtained.</p>
+    <p><strong>Why accuracy matters so much</strong>：If inaccurate information is taken during a police interview, the wrong person may be charged with an offence, leading to a <strong>wrongful conviction</strong>（冤枉定罪）. This also means that the actual offender has got away with the crime. Or it could mean that an offender has to be <strong>acquitted</strong>（被判无罪）of a crime because their testimony is found to be unreliable.</p>
+  </div>
+
+  <div class="note-box">
+    <h4>🏦 Before the cognitive interview: the standard interview（标准访谈）</h4>
+    <p>Before the development of the cognitive interview, standard interviewing typically involved a police officer asking a witness specific questions about what they had witnessed. The standard interview mainly consisted of <strong>'who, what, when, where?' type questions</strong>, with the <strong>interviewer directing the flow of the conversation</strong>（由警官主导对话节奏）. Psychologists have worked with the police to develop the cognitive interview using their knowledge of how memory works.</p>
+  </div>
+
+  <p>The cognitive interview is based on <strong>two principle concepts of cognitive psychology</strong>（认知心理学的两大原理）:</p>
+  <ol>
+    <li><strong>Memory for an event is not a faithful account</strong>（记忆不是忠实录像）of what was actually witnessed, as described by <strong>Frederick Bartlett's (1932) reconstructive memory theory</strong>（重构记忆理论）.</li>
+    <li>When we experience an event we <strong>encode all of the details about the environment/context</strong>（我们编码了环境的一切细节——sights, sounds, smells）<strong>and the emotional state</strong> we were in at the time of the event. This is based on <strong>Endel Tulving's (1974) context-dependent memory</strong>（情境依赖记忆）. Reinstating the context or state we were in can act as a <strong>cue to the memory</strong>（提取线索）.</li>
+  </ol>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 430" xmlns="http://www.w3.org/2000/svg" style="max-width:680px;width:100%;height:auto;">
+      <rect x="0" y="0" width="680" height="430" fill="#f8fafc" rx="12"/>
+      <text x="340" y="30" text-anchor="middle" font-size="15" font-weight="700" fill="#c2410c">Two memory foundations → Four CI techniques（原理 → 技巧的推导图）</text>
+      <rect x="20" y="55" width="250" height="130" fill="#ffffff" stroke="#dc2626" stroke-width="2.5" rx="10"/>
+      <text x="145" y="80" text-anchor="middle" font-size="13" font-weight="700" fill="#dc2626">Bartlett (1932)</text>
+      <text x="145" y="99" text-anchor="middle" font-size="12" font-weight="600" fill="#1e293b">Reconstructive memory 重构记忆</text>
+      <text x="145" y="120" text-anchor="middle" font-size="10.5" fill="#475569">Memory is rebuilt each time;</text>
+      <text x="145" y="136" text-anchor="middle" font-size="10.5" fill="#475569">schemas（图式）fill the gaps —</text>
+      <text x="145" y="152" text-anchor="middle" font-size="10.5" fill="#475569">the story feels complete but</text>
+      <text x="145" y="168" text-anchor="middle" font-size="10.5" fill="#475569">parts may be invented.</text>
+      <rect x="20" y="245" width="250" height="130" fill="#ffffff" stroke="#2563eb" stroke-width="2.5" rx="10"/>
+      <text x="145" y="270" text-anchor="middle" font-size="13" font-weight="700" fill="#2563eb">Tulving (1974)</text>
+      <text x="145" y="289" text-anchor="middle" font-size="12" font-weight="600" fill="#1e293b">Context-dependent memory 情境依赖记忆</text>
+      <text x="145" y="310" text-anchor="middle" font-size="10.5" fill="#475569">Context + emotional state are encoded;</text>
+      <text x="145" y="326" text-anchor="middle" font-size="10.5" fill="#475569">reinstating them acts as a cue</text>
+      <text x="145" y="342" text-anchor="middle" font-size="10.5" fill="#475569">that helps pull the memory back.</text>
+      <rect x="410" y="48" width="250" height="66" fill="#eff6ff" stroke="#2563eb" stroke-width="2" rx="10"/>
+      <text x="535" y="72" text-anchor="middle" font-size="12" font-weight="700" fill="#1e40af">1 · Reinstate the context / state</text>
+      <text x="535" y="90" text-anchor="middle" font-size="10" fill="#475569">mentally recreate the scene: weather, smells, feelings</text>
+      <text x="535" y="105" text-anchor="middle" font-size="10" fill="#2563eb">→ supports cue-dependent memory</text>
+      <rect x="410" y="122" width="250" height="66" fill="#eff6ff" stroke="#2563eb" stroke-width="2" rx="10"/>
+      <text x="535" y="146" text-anchor="middle" font-size="12" font-weight="700" fill="#1e40af">2 · Report everything</text>
+      <text x="535" y="164" text-anchor="middle" font-size="10" fill="#475569">free uninterrupted narrative, even trivial detail</text>
+      <text x="535" y="179" text-anchor="middle" font-size="10" fill="#2563eb">→ 'unimportant' detail can act as a memory cue</text>
+      <rect x="410" y="240" width="250" height="66" fill="#fef2f2" stroke="#dc2626" stroke-width="2" rx="10"/>
+      <text x="535" y="264" text-anchor="middle" font-size="12" font-weight="700" fill="#991b1b">3 · Change the order</text>
+      <text x="535" y="282" text-anchor="middle" font-size="10" fill="#475569">recall in reverse / different order</text>
+      <text x="535" y="297" text-anchor="middle" font-size="10" fill="#dc2626">→ interrupts schema activation &amp; story formation</text>
+      <rect x="410" y="314" width="250" height="66" fill="#fef2f2" stroke="#dc2626" stroke-width="2" rx="10"/>
+      <text x="535" y="338" text-anchor="middle" font-size="12" font-weight="700" fill="#991b1b">4 · Change the perspective</text>
+      <text x="535" y="356" text-anchor="middle" font-size="10" fill="#475569">recall from another witness's viewpoint</text>
+      <text x="535" y="371" text-anchor="middle" font-size="10" fill="#dc2626">→ discourages drawing on your own schema</text>
+      <path d="M 270 300 C 330 300, 340 165, 405 100" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="6 4"/>
+      <path d="M 270 310 C 340 320, 350 175, 405 160" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="6 4"/>
+      <path d="M 270 100 C 330 95, 340 255, 405 268" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4"/>
+      <path d="M 270 120 C 345 125, 355 325, 405 342" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4"/>
+      <text x="340" y="415" text-anchor="middle" font-size="10.5" fill="#64748b">蓝色 =「补线索」（Tulving）· 红色 =「防脑补」（Bartlett）— 四条技巧，两套逻辑，一条不落</text>
+    </svg>
+    <div class="figure-caption">Figure 8.0 — Every CI technique is derived from one of the two memory foundations. Techniques 1–2 add retrieval cues (Tulving); techniques 3–4 block schema-based guessing (Bartlett).</div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>课本只说「基于两个原理」就跳到了四技巧，这一步是全章最容易断的链条，补上这句人话：<strong>记忆有两个毛病——①它不是录像，是「脑补式重 build」；②它靠「现场感」才能被捞出来</strong>。所以对策刚好两路：<strong>补线索</strong>（把案发时的环境、情绪、所有细节都捞回来 → 技巧 1 和 2）＋<strong>防脑补</strong>（不让图式替证人编故事 → 技巧 3 和 4）。考试问 <em>the cognitive interview was designed from which two cognitive theories?</em> 答 Bartlett (1932) reconstructive memory + Tulving (1974) context-dependent memory——这是 Checkpoint 原题。</div>
+</section>
+
+<!-- ============ SECTION 4: FOUR TECHNIQUES ============ -->
+<section class="section" id="s4">
+  <h2>4. The Four Cognitive Interview Techniques（认知访谈四大技巧）</h2>
+  <p class="section-subtitle">There are four main techniques used within the cognitive interview, as guided by Geiselman et al. (1985). Each card below follows the same logic: What you do → Why it works → Which foundation it comes from.</p>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-badge contemp">Technique 1</span>
+      <span class="study-badge corr">Tulving 派</span>
+      <h4 style="margin:0;">Reinstate the context / state（重建情境）</h4>
+    </div>
+    <div class="study-card-body">
+      <p><strong>What you do</strong>：Encouraging witnesses to <strong>mentally recreate/relieve the event</strong>（在脑中重建案发场景）— such as <strong>how they felt, the weather, smells, time of day</strong>, etc. This helps to <strong>put the person back in time</strong> to the incident.</p>
+      <p><strong>Why it works</strong>：It may <strong>improve recall because context and state cues may jog their memory</strong> of the incident. This supports <strong>cue-dependent memory</strong>（线索依赖记忆）— the Tulving foundation.</p>
+    </div>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-badge contemp">Technique 2</span>
+      <span class="study-badge corr">Tulving 派</span>
+      <h4 style="margin:0;">Report everything（报告一切）</h4>
+    </div>
+    <div class="study-card-body">
+      <p><strong>What you do</strong>：Allowing the witness to <strong>freely recall a narrative</strong> of the situation — an initial account <strong>without interruption</strong>. The interviewer will encourage the witness to report <strong>everything, even if it seems trivial or unrelated</strong> to the event.</p>
+      <p><strong>Why it works</strong>：There is <strong>scope for the interviewer to ask further questions to clarify significant moments</strong> for more detail. Witnesses may exclude details they feel are irrelevant or trivial, <strong>but these unimportant details can act as a memory cue for key information about the event</strong> — again the cue logic (Tulving).</p>
+    </div>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-badge classic">Technique 3</span>
+      <span class="study-badge biological">Bartlett 派</span>
+      <h4 style="margin:0;">Change the order（改变顺序）</h4>
+    </div>
+    <div class="study-card-body">
+      <p><strong>What you do</strong>：Recall the event in <strong>reverse or a different order</strong>, not the order in which it happened.</p>
+      <p><strong>Why it works</strong>：As we tend to remember situations in the order in which they happened, we are <strong>more likely to reconstruct a story and draw on an existing schema</strong>（按套路「讲故事」）. This <strong>'story telling' can result in a witness embellishing the story or filling in gaps</strong> in the narrative with their schema, which can result in <strong>unreliable testimony</strong>. Recalling events in reverse or a different order can help to <strong>interrupt schema activation and prevent story formation</strong> — the Bartlett foundation.</p>
+    </div>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-badge classic">Technique 4</span>
+      <span class="study-badge biological">Bartlett 派</span>
+      <h4 style="margin:0;">Change the perspective（改变视角）</h4>
+    </div>
+    <div class="study-card-body">
+      <p><strong>What you do</strong>：Try to adopt the <strong>viewpoint of a different witness</strong> — for example a <strong>prominent character</strong> in the incident (e.g. the bank's ringleader, a security guard).</p>
+      <p><strong>Why it works</strong>：It can <strong>encourage recall of events that may otherwise be omitted</strong>, and <strong>discourage the witness from drawing on their own schema of what they would expect to have happened</strong>. <span class="eval-tag">It has to be made clear that the witness <strong>only reports what they know</strong>, and not what they think the other person would have seen.</span></p>
+    </div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>四条技巧一句话版：<strong>①「回到现场」②「想到啥说啥」③「倒着讲」④「换个人视角讲」</strong>。配两路逻辑记：<strong>补线索组</strong>（①②——把记忆捞出来）＋<strong>防脑补组</strong>（③④——不让图式编故事）。类比：记忆像一团缠住的毛线，①②是「找到线头轻轻拉」，③④是「防止你顺手编一段假线接上去」。考试 describe 题写出「what + why」两层就是满分结构：比如 change the order = 倒序回忆（what）+ 打断图式激活、防止故事化脑补（why）。</div>
+</section>
+
+<!-- ============ SECTION 5: INTERVIEW FLOW + ENHANCED CI + SIM ============ -->
+<section class="section" id="s5">
+  <h2>5. Running the Interview — From Free Recall to the Enhanced CI（访谈怎么跑：从自由回忆到增强版）</h2>
+
+  <p>Four techniques alone are not a script. The textbook describes <strong>how a real interview flows</strong> — and then a fuller version called the <strong>enhanced cognitive interview</strong>.</p>
+
+  <h3>The flow after the first testimony（首次陈述之后怎么做）</h3>
+  <p>To ensure accurate information is obtained, the police officer undertaking the interview should first <strong>establish a good rapport with the witness</strong>（先和证人建立信任关系）. Then the witness should be <strong>encouraged to report everything without being interrupted</strong>. Once the witness gives their initial testimony, the interviewer should ask questions that are aimed at <strong>clarifying details</strong> from the testimony. They should use techniques such as <strong>mentally reliving the incident, or recalling it from a different order</strong>. The interviewer needs to ensure that they <strong>do not ask leading questions</strong>（诱导性问题）that provide a hint about a desired answer. They should ask <strong>open questions</strong>（开放式问题）that do not imply a specific answer and <strong>encourage free recall</strong>（自由回忆）.</p>
+
+  <div class="keyterm-box">
+    <p><strong>KEY TERM — the enhanced cognitive interview（增强认知访谈）</strong>：The enhanced cognitive interview (Fisher and Geiselman, 1992) uses <strong>the same techniques as the cognitive interview, but incorporates more techniques</strong>. The main aim is to <strong>support the witness through reliving the event</strong> and ask questions <strong>appropriate to the witness's intellectual level</strong>（匹配证人智力水平）while <strong>minimising distractions</strong>（减少干扰）.</p>
+    <p>The first phase involves <strong>establishing a personal connection</strong> with the witness before they are asked to report everything they experienced. The context reinstatement and change order techniques are supported by <strong>open questions suitable to the intellectual level of the witness</strong>, <strong>taking into account their social and cultural background</strong>（考虑证人的社会文化背景）. The approach is intended to be <strong>witness-led</strong>（由证人主导）, rather than controlled by the interviewer; however it <strong>requires significant training in interpersonal skills</strong>（需要大量人际技能训练）.</p>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>标准 CI 和 enhanced CI 的关系一句话：<strong>enhanced = 同样的技巧 + 更完整的「以人为本」包装</strong>——先建立个人连接、按证人的智力水平和社文背景调整提问、减少干扰、全程证人主导。类比：标准 CI 是「菜谱」，enhanced CI 是「私人订制套餐」——菜一样，但按客人口味调整火候和上菜节奏。评价题可以直接用它最后半句：<strong>需要大量培训（requires significant training）</strong>——这是后面 Dando 研究里警官抱怨的点，前后呼应。</div>
+
+  <div class="xp-block">
+    <h4>🎙️ Be the interviewer · 你来当访谈官，帮 Rhys 回忆偷窃案 <span class="xp-badge">亲身体验</span></h4>
+    <p class="xp-intro">这是本章的「eyes test 时刻」——你亲手上场。<strong>案情</strong>：百货公司发生偷窃，<strong>Rhys</strong> 当时在场，看到一个女的冲出商店、被保安追赶。你是警官 Olivia，要对 Rhys 做认知访谈。每一轮选出<strong>你认为最好的一问</strong>——注意：有些选项是 <strong>leading questions（诱导性问题）</strong>，选了它会污染证人的记忆。四轮选完看你的访谈水平评级。</p>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Round 1 · 开场第一问</div>
+      <div class="xp-controls" style="flex-direction:column;align-items:stretch;">
+        <button class="xp-btn" style="text-align:left;" onclick="ciAnswer(1,'a')">A. "Tell me everything you can remember about what happened — even the small details that seem unimportant."</button>
+        <button class="xp-btn" style="text-align:left;" onclick="ciAnswer(1,'b')">B. "Did you get a clear look at the woman's face?"</button>
+        <button class="xp-btn" style="text-align:left;" onclick="ciAnswer(1,'c')">C. "The woman was carrying a stolen handbag, wasn't she?"</button>
+      </div>
+      <div id="ci-r1" class="xp-result"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Round 2 · 帮他捞记忆</div>
+      <div class="xp-controls" style="flex-direction:column;align-items:stretch;">
+        <button class="xp-btn" style="text-align:left;" onclick="ciAnswer(2,'a')">A. "What colour was the bag she was carrying?"</button>
+        <button class="xp-btn" style="text-align:left;" onclick="ciAnswer(2,'b')">B. "Close your eyes for a moment. Put yourself back in the store — what could you hear and smell, and how did you feel when you first noticed the commotion?"</button>
+        <button class="xp-btn" style="text-align:left;" onclick="ciAnswer(2,'c')">C. "She ran towards the car park, right?"</button>
+      </div>
+      <div id="ci-r2" class="xp-result"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Round 3 · 深挖细节</div>
+      <div class="xp-controls" style="flex-direction:column;align-items:stretch;">
+        <button class="xp-btn" style="text-align:left;" onclick="ciAnswer(3,'a')">A. "Why do you think she decided to steal?"</button>
+        <button class="xp-btn" style="text-align:left;" onclick="ciAnswer(3,'b')">B. "Are you absolutely sure about the time?"</button>
+        <button class="xp-btn" style="text-align:left;" onclick="ciAnswer(3,'c')">C. "Now try telling it backwards — start from her running out of the store, and work back to the very first thing you noticed."</button>
+      </div>
+      <div id="ci-r3" class="xp-result"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Round 4 · 最后一挖</div>
+      <div class="xp-controls" style="flex-direction:column;align-items:stretch;">
+        <button class="xp-btn" style="text-align:left;" onclick="ciAnswer(4,'a')">A. "Imagine you were the security guard chasing her. From where he stood, what do you think he would have seen? But only tell me what you actually know."</button>
+        <button class="xp-btn" style="text-align:left;" onclick="ciAnswer(4,'b')">B. "She looked like a professional shoplifter, didn't she?"</button>
+        <button class="xp-btn" style="text-align:left;" onclick="ciAnswer(4,'c')">C. "That's enough — I think we've got everything we need."</button>
+      </div>
+      <div id="ci-r4" class="xp-result"></div>
+    </div>
+
+    <div class="xp-controls"><button class="xp-btn" onclick="ciVerdict()">查看我的访谈评级</button></div>
+    <div id="ci-final" class="xp-result"></div>
+  </div>
+
+  <div class="note-box blue-box">
+    <h4>✍️ Activity 1 — Rewriting your seven questions（课本 Activity 1）</h4>
+    <p>Go back to the Getting Started feature at the beginning of this chapter. Reread the extract of the bank robbery and consider <strong>what questions you would ask the witnesses if you were using the cognitive interview techniques</strong> described. 逐条改造你开局的 7 个问题：封闭问题 → 开放问题；具体追问 → 先 report everything；顺序提问 → 试试倒序或换视角。改完的每一问都应该能说出「它用了哪条技巧」。</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 6: GEISELMAN EVIDENCE ============ -->
+<section class="section" id="s6">
+  <h2>6. Evidence for the CI — Geiselman et al. (1985)（关键证据）</h2>
+  <p class="section-subtitle">Does the cognitive interview actually beat the standard interview? Geiselman and colleagues put it head-to-head with two rivals.</p>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-badge experimental">Lab experiment</span>
+      <span class="study-badge classic">Classic</span>
+      <h4 style="margin:0;">Geiselman et al. (1985) — CI vs standard interview vs hypnosis</h4>
+    </div>
+    <div class="study-card-body">
+      <p><strong>Sample</strong>：<strong>89 undergraduate students</strong> from the <strong>University of California</strong>.</p>
+      <p><strong>Materials</strong>：Participants were shown a <strong>film of a violent crime</strong> lasting around four minutes. The film depicted one of: a <strong>bank robbery, a liquor store holdup, a family dispute, or a search through a warehouse</strong> — during which <strong>at least one individual was shot and killed</strong>.</p>
+      <p><strong>Interviewers</strong>：Each participant was interviewed by <strong>one of 17 interviewers</strong> recruited from a variety of professions: <strong>police detectives, Central Intelligence Agency investigators, polygraph specialists and private detectives</strong>. Each interviewer had <strong>completed a forensic hypnosis course</strong> and had <strong>field experience on hundreds of cases</strong>.</p>
+      <p><strong>Procedure</strong>：<strong>48 hours after watching the film</strong>, each participant was interviewed using <strong>one of three interview techniques</strong>:</p>
+      <ul>
+        <li><strong>Standard interview</strong> — asked to give a report of what they witnessed, then the interviewers asked them questions about their report as they normally would.</li>
+        <li><strong>Hypnosis</strong> — first asked to report what they witnessed, then were <strong>hypnotised</strong> and asked questions about their report.</li>
+        <li><strong>Cognitive interview</strong> — interviewed using the four CI techniques: <strong>report everything, reinstate context, recall the event in different orders, change perspectives</strong>.</li>
+      </ul>
+      <p style="margin-bottom:0;"><strong>Measures</strong>：The number of <strong>correctly and incorrectly recalled items</strong> were recorded, as well as items that were <strong>confabulated</strong>（虚构的）— <span class="eval-tag">KEY TERM: <strong>confabulated = falsely recalled</strong>（把没发生的事当真回忆出来）</span>.</p>
+    </div>
+  </div>
+
+  <h3>Results — Table 8.1: average number of items recalled（三种访谈的平均回忆量）</h3>
+  <table>
+    <thead><tr><th>Average number of items recalled</th><th>Hypnosis interview</th><th>Cognitive interview</th><th>Standard interview</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Correct items</strong>（正确条目）</td><td>38.00</td><td><strong style="color:#16a34a;">41.15</strong> ← 最高</td><td>29.40</td></tr>
+      <tr><td><strong>Incorrect items</strong>（错误条目）</td><td>5.90</td><td>7.30</td><td>6.10</td></tr>
+      <tr><td><strong>Confabulated items</strong>（虚构条目）</td><td>1.00</td><td><strong style="color:#16a34a;">0.70</strong> ← 最低</td><td>0.40</td></tr>
+    </tbody>
+  </table>
+
+  <div class="gold-standard-para">
+    <h4>🎯 Conclusion（课本结论原文拆解）</h4>
+    <p>They concluded that recall using the cognitive interview was <strong>significantly better than using a standard interview</strong> (Table 8.1). They also reported that <strong>hypnosis may have been effective because participants would have been encouraged to mentally recreate the context of the crime</strong>. There was <strong>no significant difference in errors</strong> made between the interview types. This suggests that the <strong>memory techniques employed during the cognitive interview facilitated better recall</strong>.</p>
+    <p style="margin-bottom:0;"><strong>读表三步法</strong>：① 看 correct —— CI 41.15 &gt; hypnosis 38.00 &gt; standard 29.40，CI 赢在「量」；② 看 confabulated —— CI 0.70 是三者中第二低（standard 0.40 最低，但它总量也少）；③ 看错误率 —— 三种访谈错误数差不多（5.90 / 7.30 / 6.10），所以 CI 的优势不是「瞎猜多了」，而是<strong>真材实料多了</strong>。</p>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>背这张表抓三个数就够：<strong>41.15（CI 正确回忆最高）、29.40（standard 最低）、错误数差不多</strong>。类比：三个侦探破同一起案子——standard 侦探只带回 29 条线索，CI 侦探带回 41 条，而且三人的「假线索」数量差不多——说明 CI 多带回来的不是猜的，是真线索。考试 <em>name one study which found that recall using the cognitive interview was significantly better than using a standard interview</em> — 答 <strong>Geiselman et al. (1985)</strong>（Checkpoint 原题第 4 题）。</div>
+</section>
+
+<!-- ============ SECTION 7: MORE EVIDENCE ============ -->
+<section class="section" id="s7">
+  <h2>7. More Evidence — Real Crimes, Meta-Analysis and Children（更多证据：真实案件 · 元分析 · 儿童）</h2>
+  <p class="section-subtitle">One lab study is never enough. Three further studies test the CI outside the lab — and one reveals a surprising limit.</p>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-badge contemp">Field</span>
+      <span class="study-badge corr">Real crimes</span>
+      <h4 style="margin:0;">Fisher et al. (1989) — does it work in real policing?</h4>
+    </div>
+    <div class="study-card-body">
+      <p>Other studies have shown a <strong>positive effect on recall when using the cognitive interview in more ecologically valid settings</strong>, such as in relation to <strong>real crimes</strong>. Fisher et al. (1989) found that after training, <strong>detectives gained as much as <strong>47 per cent more useful information</strong> from witnesses to real crimes compared to untrained officers</strong>.</p>
+      <p style="margin-bottom:0;"><span class="eval-tag">📌 Exam tip（课本原文）：In the exam, you could be asked to <strong>'justify'</strong> the use of the cognitive interview. You can use this research to justify the use of the cognitive interview by police and demonstrating how it can improve witness recall.（'justify' = 甩研究证据：Fisher 1989 的 +47% 就是现成的弹药。）</span></p>
+    </div>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-badge meta">Meta-analysis</span>
+      <span class="study-badge contemp">42 studies</span>
+      <h4 style="margin:0;">Gunter Köhnken et al. (1999) — the big meta-analysis</h4>
+    </div>
+    <div class="study-card-body">
+      <p>Köhnken et al. (1999) conducted a <strong>meta-analysis comprising 42 studies (involving 55 comparisons)</strong> of the effects of the cognitive interview and standard interview on correct and incorrect recall. From an analysis of the outcomes of <strong>2,447 interviews</strong>, the cognitive interview <strong>yielded significantly more correctly recalled details</strong> than the standard interview.</p>
+      <p>They also found that <strong>more incorrect details were reported from a cognitive interview</strong> compared to the standard interview, <strong>although this effect was smaller</strong> than the comparison of correctly recalled details. Further analysis looking at the <strong>overall accuracy rate</strong>（总体准确率——correct details relative to the total number of details recalled）found that the cognitive interview <strong>generates significantly more information being recalled</strong> and that this is <strong>no less accurate than the standard interview</strong>.</p>
+    </div>
+  </div>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-badge contemp">Children</span>
+      <span class="study-badge corr">Ages 4–5 &amp; 9–10</span>
+      <h4 style="margin:0;">Robyn Holliday (2003) — the age limit（儿童身上的意外发现）</h4>
+    </div>
+    <div class="study-card-body">
+      <p>Holliday (2003) examined the usefulness of the cognitive interview with <strong>young children aged 4–5 and 9–10 years of age</strong>. She found the cognitive interview <strong>yielded more correct information from the older children</strong>.</p>
+      <p style="margin-bottom:0;">She also found that <strong>older children presented with misleading information after the interview were less likely to be influenced by the misinformation if they had undergone the cognitive interview</strong>. This suggests that <strong>very young children may struggle with aspects of the cognitive interview</strong>, and also that a cognitive interview may <strong>'inoculate' older children against misinformation</strong>（像疫苗一样让年长儿童对误导信息产生抵抗力）because it <strong>strengthens the memory of the event</strong>.</p>
+    </div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>三个研究一句话版：<strong>Fisher 1989 = 真实案件里训练过的警探多挖 47% 有用信息</strong>（ecological validity 的回血）；<strong>Köhnken 1999 = 42 项研究、2,447 次访谈的大汇总——CI 正确回忆显著更多、准确率不降</strong>；<strong>Holliday 2003 = CI 对 9–10 岁有效、对 4–5 岁吃力，而且像「记忆疫苗」一样让大孩子抵抗误导信息</strong>。数字背诵优先级：47% &gt; 42 studies / 55 comparisons / 2,447 interviews &gt; 年龄分组。考 justify 题先甩 Fisher，再补 Köhnken「大样本可复现」，就是两条满分理由。</div>
+
+  <div class="figure">
+    <img src="images/crime_scene_tape.png" alt="Crime scene tape — police officers at a crime scene">
+    <div class="figure-caption">The cognitive interview may not be possible or useful when police officers are trying to establish immediate facts from a crime scene（课本图注原文）.</div>
+  </div>
+</section>
+
+<!-- ============ SECTION 8: EVALUATING CI ============ -->
+<section class="section" id="s8">
+  <h2>8. Evaluating the Cognitive Interview（评价认知访谈）</h2>
+  <p class="section-subtitle">Read like a critic — every point below comes from the research itself, and each card tells you WHY it matters.</p>
+
+  <div class="wider-issue">
+    <h4>🔬 Wider Issues and Debates — Psychology as a science（心理学作为科学）</h4>
+    <p>Laboratory-based research within eyewitness testimony is commonly used. This creates an <strong>artificial situation</strong> in which participants undertake tasks to determine their ability to recall <strong>artificially created film clips of crimes</strong>. The laboratory setting is <strong>very controlled to minimise extraneous variables</strong>, such as what the witness observes, or preventing witnesses from collaborating, affecting the findings of the research. In removing these extraneous variables and creating such a controlled setting, the study and its findings <strong>cannot be considered ecologically valid</strong>（生态效度存疑）. The participants might generate significantly different results if they were to observe a real crime, and be affected by all the additional variables present in a real-life situation.</p>
+  </div>
+
+  <div class="methods-table">
+    <table style="width:100%;border-collapse:collapse;">
+      <thead><tr><th>Evaluation point</th><th>The evidence</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Limited use in real policing（实践受限）</strong></td>
+          <td><strong>Coral Dando et al. (2008)</strong> conducted a <strong>survey on 221 less experienced police officers</strong> concerning their perception of police interviewing practices. They found that the <strong>benefits of the cognitive interview are not equally perceived</strong>, and that they <strong>felt inadequately trained</strong>（培训不足）. They also noted that <strong>time constraints often prevented them from applying the technique in real situations</strong>. A criminal investigation can be <strong>chaotic and busy</strong>, which is not always conducive to undertaking a cognitive interview approach. Also, using this approach is <strong>not always helpful at the scene of a crime</strong> when it is important that <strong>immediate information is obtained</strong> in order to try to catch the perpetrator.</td>
+          <td>Lab gains don't transfer automatically to the field: training, time and chaos are real-world constraints the lab never tests.</td>
+        </tr>
+        <tr>
+          <td><strong>Change perspective may invite speculation（换视角可能引发猜测）</strong></td>
+          <td>It is possible that asking a witness to consider another perspective may result in <strong>speculation</strong>（猜测）, despite instructions not to. <strong>Amina Memon et al. (1997)</strong> found that while participants <strong>recalled more information about a short clip of a shooting</strong>, they also made <strong>more errors in recall and confabulated details</strong>.</td>
+          <td>The technique that is supposed to block schema-guessing may itself encourage a subtler form of guessing — a real internal tension in the technique.</td>
+        </tr>
+        <tr>
+          <td><strong>Are all four components equal?（四组件贡献不明）</strong></td>
+          <td><strong>Further research is required to establish if all four components of the cognitive interview are required</strong>, or if one component has a <strong>greater contribution to success than another</strong>. This is particularly important when undertaking a cognitive interview <strong>on young children, who may find techniques such as 'changing perspective' challenging</strong>（与 Holliday 2003 的发现呼应）.</td>
+          <td>Without component analysis we can't streamline the interview — a costly, time-hungry technique may be doing redundant work.</td>
+        </tr>
+        <tr>
+          <td><strong>Artificial lab materials（人工实验材料）</strong></td>
+          <td>Geiselman's participants watched <strong>staged film clips</strong>, not real crimes; the controlled lab setting removes collaboration and other extraneous variables (see the wider issues box above).</td>
+          <td>Counterpoint to keep in the same essay: Fisher (1989) showed +47% on <em>real</em> crimes — a balanced answer weighs both sides.</td>
+        </tr>
+        <tr>
+          <td><strong>Ethics of interviewing witnesses（伦理考量）</strong></td>
+          <td>When being interviewed, witnesses are <strong>likely to be distressed at what they have seen</strong>. Witnesses can be <strong>of any age</strong>, so may not be adults, and therefore it may be necessary to think about how you would need to work differently with them — for example <strong>whether you might need to gain consent</strong>（伦理应当贯穿访谈工作：既追求准确信息，也要以支持性的方式进行）.</td>
+          <td>Thinking like a psychologist: techniques that maximise recall must also protect vulnerable people — a synoptic point usable in Issues &amp; Debates essays.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>CI 的评价抓「两强两弱」：<strong>强</strong>——Geiselman 41.15 vs 29.40 + Köhnken 元分析 + Fisher 真实案件 +47%（证据链从实验室到现场都硬）；<strong>弱</strong>——①Dando：221 名警探说培训不足、时间不够、犯罪现场 chaos 根本没条件慢慢聊；②Memon：change perspective 反而带来更多 errors 和 confabulations（防脑补的技巧自己引发脑补，这是最漂亮的一条批评）；③四组件贡献不明，幼儿做不了换视角。写作文时「实验室 vs 真实案件」这一对矛盾必写——它同时展示了科学性（control）和生态效度（real life）的张力，是 issues &amp; debates 的免费素材。</div>
+</section>
+
+<!-- ============ SECTION 9: WITNESS TO OFFENDER BRIDGE ============ -->
+<section class="section" id="s9">
+  <h2>9. The Bridge — From Witness to Offender（逻辑桥：从证人到罪犯）</h2>
+  <p class="section-subtitle">This is where the textbook changes topic without warning. Here is the missing link.</p>
+
+  <div class="note-box">
+    <h4>🧭 Why the chapter suddenly changes subject</h4>
+    <p>Sections 2–8 solved the <strong>witness problem</strong>: getting an accurate account of <em>what happened</em>. But an accurate account is only half of the criminal justice system's job. Once someone is caught, the system needs to understand <strong>the offender</strong>: Was this person capable of committing the offence? Are they likely to do it again? What treatment would actually help?</p>
+    <p>Answering those questions requires a <strong>second psychological tool</strong>: the <strong>psychological (case) formulation</strong>. Where the cognitive interview is a <em>technique for extracting information</em>, a formulation is a <em>framework for understanding a person</em>.</p>
+  </div>
+
+  <p><strong>The role of the psychologist（心理学家的角色）</strong>：The role of a psychologist is often that of a <strong>'consultant'</strong>（顾问）, helping to guide the work of other professionals such as the police. This can be through <strong>indirectly observing and reviewing the work practices of others</strong>, using psychological theories to inform any decision or suggestion they make. Additionally, in many situations the psychologist may <strong>speak to the offender directly</strong>, asking them questions to find out what influenced the individual to act in the way that they did. Once again, an understanding of psychological theories and approaches is essential to make sure that the work completed by the psychologist can be <strong>relied on as accurate</strong>.</p>
+
+  <p><strong>When is a formulation asked for?（什么时候需要它）</strong>：Psychologists are often asked <strong>why an individual committed a crime</strong>. This may be as part of the <strong>court process</strong> to decide if the individual was capable of committing the offence and to help <strong>decide their risk of reoffending</strong>（再犯风险）. They may also be asked similar questions when working with offenders <strong>after they have been convicted</strong>（定罪之后）. Usually, this is to help decide what <strong>rehabilitation/treatment</strong>（康复/治疗）would be appropriate or if the individual is <strong>safe to be released into the community</strong> if they were given a prison sentence.</p>
+
+  <div class="cn-note"><strong>中文理解：</strong>课本从「访谈证人」直接跳到「罪犯 formulate」，一句过渡都没有，这里补上：<strong>认知访谈解决「信息进得来」，formulation 解决「理解下得去」</strong>。类比：破案像看两场戏——第一场（§2–8）警察问目击者「发生了什么」；第二场（§9–13）心理学家坐在定罪的罪犯对面问「你为什么会走到这一步」。前者的产出是<strong>证词</strong>，后者的产出是<strong>一份「这个人为什么犯罪、多危险、怎么治」的分析报告</strong>。心理学家身份是 <strong>consultant（顾问）</strong>：要么间接评估警方的工作，要么直接和罪犯本人谈。</div>
+</section>
+
+<!-- ============ SECTION 10: WHAT IS FORMULATION ============ -->
+<section class="section" id="s10">
+  <h2>10. Psychological (Case) Formulation — The Definition and the Map（定义与全景图）</h2>
+
+  <div class="keyterm-box">
+    <p><strong>KEY TERM — psychological (case) formulation（心理个案概念化）</strong>：An analysis of a convicted offender, by looking at their <strong>relationships, biological and social circumstances, life events, and how they have interpreted the events that have happened to them</strong>.</p>
+    <p>A psychological formulation is <strong>a way of making sense of a person's difficulties</strong> by looking at these factors. It is almost like <strong>getting a personal story of the convicted offender</strong> so that a psychologist can understand <strong>how it all links to their offending</strong>. A formulation <strong>draws on all available psychological theories</strong> to understand behaviour. Any psychological treatment is <strong>based on a formulation</strong>, where the treatment aims to <strong>support the offender to develop skills in areas in which the formulation shows they need more support</strong>. Whenever any new information is gained, it can be helpful to <strong>add this to the formulation</strong>（formulation 是「活文档」，新信息随时补入）.</p>
+  </div>
+
+  <p>Psychologists will invariably undertake formulations that <strong>differ from each other and between offenders</strong>. There is <strong>no one fixed way</strong> of undertaking a formulation — but it is typically conducted in <strong>two phases</strong>（两个阶段）:</p>
+
+  <div class="flowchart">
+    <div style="display:inline-block;background:#eff6ff;border:2px solid #2563eb;border-radius:12px;padding:14px 22px;max-width:320px;">
+      <div style="font-weight:700;color:#1e40af;">PHASE 1 · Offence Analysis（罪行分析）</div>
+      <div style="font-size:.88em;margin-top:4px;">Assess the offender to understand their <strong>motivation</strong> — find <strong>contingencies</strong>（共性因素）and <strong>criminogenic factors</strong>（犯罪成因因素）</div>
+    </div>
+    <div style="font-size:1.6em;color:#94a3b8;margin:8px 0;">↓</div>
+    <div style="display:inline-block;background:#fef2f2;border:2px solid #dc2626;border-radius:12px;padding:14px 22px;max-width:320px;">
+      <div style="font-weight:700;color:#991b1b;">PHASE 2 · Case Formulation（个案概念化）</div>
+      <div style="font-size:.88em;margin-top:4px;">Apply <strong>psychological theory</strong> to form a <strong>hypothesis about the criminal's motivation</strong> — understand the <strong>function of offending</strong> and recommend treatment</div>
+    </div>
+    <div style="margin-top:10px;font-size:.85em;color:#64748b;">事实收集 → 理论解释：Phase 1 问「发生了什么、有什么共性」，Phase 2 问「用心理学理论怎么解释」</div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>formulation 一句话：<strong>给罪犯写一份「个人故事 + 为什么会走到这一步」的心理分析报告</strong>——看他的人际关系、生理和社会处境、人生事件、以及他<strong>怎么解读</strong>这些事件。两个类比帮你锁死定义：①像医生的「病历」——不只记症状，还要解释病因、指导治疗；②它是<strong>「活文档」</strong>——有新信息就补进去，没有标准做法，每个心理学家做的都不完全一样。考试 define 题就背 key term 第一段原文。两张阶段卡先混个脸熟，接下来两节逐个拆。</div>
+</section>
+
+<!-- ============ SECTION 11: OFFENCE ANALYSIS ============ -->
+<section class="section" id="s11">
+  <h2>11. Phase 1 · Offence Analysis — Contingencies and Criminogenic Factors（罪行分析）</h2>
+
+  <p>The first phase is known as <strong>offence analysis</strong> and involves <strong>assessing the offender to get a better understanding of their motivation to commit the crime</strong>.</p>
+
+  <h3>Two things the analysis looks for（分析的两条线索）</h3>
+  <table>
+    <thead><tr><th style="width:30%;">What</th><th>How it works</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Contingencies（共性因素）</strong><br><span style="font-weight:400;font-size:.88em;color:#475569;">KEY TERM: common factors associated with a specific offence</span></td>
+        <td>Find <strong>similar offences committed by different offenders</strong> to see if there are any behaviours or issues <strong>relevant to that offence</strong>. Comparing similar offences can <strong>uncover patterns or commonalities in criminal behaviour</strong> which gives an insight into the motives of an offender. <strong>Example</strong>: contingencies for theft can be <strong>financial difficulties or substance abuse</strong>. Drawing conclusions from an offence from its contingencies <strong>can be problematic because there are many factors associated with specific offences</strong>.</td>
+      </tr>
+      <tr>
+        <td><strong>Criminogenic factors（犯罪成因因素）</strong><br><span style="font-weight:400;font-size:.88em;color:#475569;">KEY TERM: factors associated with the individual that contributed to the criminal behaviour</span></td>
+        <td>This involves <strong>an analysis of criminogenic factors associated with the offender and their offence</strong> — done by <strong>interviewing the offender</strong> to find out what <strong>social and psychological factors contributed to their criminal behaviour</strong>. Psychologists need to consider a wide range of criminogenic factors to better understand the <strong>triggers and motives</strong> for an offence, such as <strong>personality traits, mental health issues, past experiences, family background, emotional state and socioeconomic status</strong>. Identifying these factors can be useful to <strong>assess the risk of reoffending and develop interventions</strong> to help offenders develop strategies to <strong>break the cycle of offending</strong>.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="figure">
+    <img src="images/criminogenic_factors.png" alt="Figure 8.1 Criminogenic factors associated with a specific offence — flow from early experiences to core beliefs, triggers, situation, thoughts, behaviour, feelings and physical symptoms">
+    <div class="figure-caption">Figure 8.1 — Criminogenic factors associated with a specific offence（课本原图）: early experiences → core beliefs → triggers → situation → thoughts / behaviour / feelings / physical symptoms.</div>
+  </div>
+
+  <p>The formulation in Figure 8.1 shows some of the <strong>background factors that may have influenced the individual's decision to hit the person</strong> in that specific situation. This includes the fact that some of their <strong>triggers may have been present in the situation</strong> (e.g. a crowded place). They may have felt a little out of control. The <strong>size of the person who was rude to them in the restaurant may have also been a factor</strong>. Their <strong>early experiences suggest that this person has been brought up to use violence to deal with situations, rather than talk about them</strong>. The situation may have triggered past memories of <strong>being bullied when younger</strong>. The individual's <strong>core beliefs</strong>, which are thoughts that drive us all in our behaviour, suggest that it is important to make sure people <strong>do not take advantage of them</strong>. This is likely to be driven by their past experiences, possibly within the family or due to being bullied. <strong>This is someone who believes that violence is a way to resolve situations</strong>. All of these thoughts are likely to have influenced the individual's decision to hit the person who was rude to them in front of their friends.</p>
+
+  <div class="keyterm-box">
+    <p><strong>KEY TERM — core beliefs（核心信念）</strong>：Underlying beliefs that make up the <strong>cognitive triad</strong>（认知三角）; developed in <strong>early childhood</strong>, they affect our <strong>conscious processing/interpretation of information</strong>. <strong>Cognitive behavioural therapy aims to reveal, test and ultimately modify these beliefs</strong>（CBT 的目标就是揭示、检验并修正这些信念）.</p>
+  </div>
+
+  <p>The formulation shows that <strong>while the offence itself may seem impulsive, spontaneous or out of the blue</strong>, as we start to understand the <strong>background of the individual</strong> it helps psychologists to see some of the important factors that may have contributed to and influenced the individual choosing to hit the person.</p>
+
+  <div class="cn-note"><strong>中文理解：</strong>Phase 1 两条线索别混：<strong>contingencies = 横向比「不同罪犯犯同类罪的共性」</strong>（偷窃犯常见于经济困难/物质滥用）；<strong>criminogenic factors = 纵向挖「这一个人的什么因素促成了犯罪」</strong>（人格特质、心理健康、过去经历、家庭背景、情绪状态、社会经济地位）。Figure 8.1 的「餐馆打人案」要会顺着读：<strong>童年被霸凌/家人用暴力解决问题 → 形成 core beliefs「不能让人占我便宜」→ 拥挤场所+有人对我无礼（trigger）→ 想法/情绪/身体反应连环启动 → 动手</strong>。考试最爱的点：看似 impulsive 的行为，背后其实有一条从童年铺过来的因果链——<strong>这就是 formulation 的价值</strong>。core beliefs 记住三件套：认知三角、童年形成、CBT 负责修正（和 Topic H 的 depression 治疗打通）。</div>
+</section>
+
+<!-- ============ SECTION 12: CASE FORMULATION + KAIA ============ -->
+<section class="section" id="s12">
+  <h2>12. Phase 2 · Case Formulation — From Facts to Theory（从事实到理论）</h2>
+
+  <p>Once an offence analysis has been compiled, <strong>psychological theory is applied to understand and form a hypothesis about the criminal's motivation</strong>. This is presented as a <strong>summary to understand the function of offending</strong>（犯罪行为对这个人起了什么「功能」）, going beyond the presentation of factual criminogenic factors. This case formulation can be used to:</p>
+  <ul>
+    <li>identify any <strong>potential risk</strong>（潜在风险）</li>
+    <li>estimate the <strong>likelihood of reoffending</strong>（再犯可能性）</li>
+    <li><strong>recommend possible treatments</strong>（推荐治疗方案）</li>
+  </ul>
+
+  <p><strong>Three theories, three lenses（三个理论视角——和 Ch7 打通）</strong>：Psychological theories that can be used in a case formulation include <strong>psychodynamic, cognitive and behavioural approaches</strong>:</p>
+  <table>
+    <thead><tr><th style="width:22%;">Approach</th><th>How it explains the offending（课本原文示例）</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Behavioural（行为）</strong></td><td>Understand how criminal behaviour can be <strong>maintained through operant conditioning</strong>（操作条件反射——例如偷窃带来的金钱奖励维持了犯罪行为）.</td></tr>
+      <tr><td><strong>Cognitive（认知）</strong></td><td>Suggest that an individual may have <strong>cognitive distortions</strong>（认知扭曲）that mean they <strong>process information in a faulty way</strong>, such as <strong>minimising the severity of harm they have caused their victim</strong>（把对受害者的伤害往轻了说）.</td></tr>
+      <tr><td><strong>Psychodynamic（精神动力）</strong></td><td><strong>Early childhood experiences</strong> would form the basis of a psychodynamic case formulation.</td></tr>
+    </tbody>
+  </table>
+  <p>The case formulation can then be used to <strong>tailor a management and rehabilitation programme for an offender</strong>（量身定制管理与康复方案）.</p>
+
+  <div class="note-box blue-box">
+    <h4>✍️ Activity 2 — The Kaia jewellery heist（课本 Activity 2 原案）</h4>
+    <p>Read the following case of a jewellery heist. <strong>Identify all of the criminogenic factors</strong> you think would be relevant to document in an offence analysis:</p>
+    <p><em>Kaia was arrested for the audacious theft of a ten-carat diamond during a party hosted at a prestigious jewellers. Kaia concealed her identity and outsmarted the modern security systems to enter the jewellers just before the party started. When she stole the diamond, she was arrested trying to leave the country with the diamond. A police report revealed that she had a history of financial difficulty, with current debts amounting to several thousand dollars. During an interview she demonstrated anger towards social injustice and unfair distribution of taxes. She believed that for society to be fair there should be an equal distribution of wealth. Kaia claimed that this was the reason for her stealing the diamond. When asked about her upbringing, Kaia reported that she spent her childhood moving from place to place, attending several schools and not really making friends. Her father was arrested and imprisoned for fraud when she was a teenager, so she was raised by her mother and grandmother. She visited her father in prison whenever she could.</em></p>
+    <p style="margin-bottom:0;"><strong>Your task</strong>: write a brief report documenting the criminogenic factors you have identified and consider <strong>which psychological theories you would use to analyse this case</strong>.</p>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>Phase 2 就是把 Phase 1 收集的「事实清单」<strong>升级成「理论解释」</strong>——产出一句话：<strong>「犯罪行为对这个人的功能是什么」</strong>（function of offending）。三个理论视角直接复用 Ch7 的知识：<strong>行为</strong> = 偷窃的钱是强化物（operant conditioning，和 Ch7 的 SLT 里 vicarious reinforcement 一个家族）；<strong>认知</strong> = cognitive distortions（「我没伤害谁」「富人的钱本来就不义」）；<strong>精神动力</strong> = 童年经历打底。<strong>Kaia 的案例是本章最好的练习材料</strong>——先自己列 criminogenic factors 清单，再做下面的互动核对。提示：她有经济困难（contingency 级）、Robin Hood 式信念（认知）、颠沛童年+罪犯父亲（精神动力/早期经历）——<strong>三个理论视角在这一案里全部有落点</strong>。</div>
+
+  <div class="xp-block">
+    <h4>🧩 Build the formulation · 你来给 Kaia 做罪行分析 <span class="xp-badge">亲身体验</span></h4>
+    <p class="xp-intro">你是接手 Kaia 案的法医心理学家。下面 8 条案件信息，<strong>勾选你认为属于 criminogenic factors（促成犯罪的个人因素）的条目</strong>——注意：有些条目只是「案件事实」，跟「她为什么走上这条路」无关。勾完点「提交分析报告」。</p>
+
+    <div class="xp-case">
+      <div class="xp-checkbox"><input type="checkbox" id="k1"><label for="k1">History of financial difficulty, with current debts of several thousand dollars（经济困难史 + 数千美元债务）</label></div>
+      <div class="xp-checkbox"><input type="checkbox" id="k2"><label for="k2">Anger at social injustice; belief that wealth should be distributed equally; claims a 'Robin Hood' motive（对社会不公的愤怒 + 平均财富信念 + 罗宾汉动机）</label></div>
+      <div class="xp-checkbox"><input type="checkbox" id="k3"><label for="k3">Childhood spent moving place to place, several schools, never really made friends（颠沛童年、多次转学、没有真朋友）</label></div>
+      <div class="xp-checkbox"><input type="checkbox" id="k4"><label for="k4">Father arrested and imprisoned for fraud when she was a teenager（父亲在她少年时因诈骗入狱）</label></div>
+      <div class="xp-checkbox"><input type="checkbox" id="k5"><label for="k5">She visited her father in prison whenever she could（她一有机会就去监狱探视父亲）</label></div>
+      <div class="xp-checkbox"><input type="checkbox" id="k6"><label for="k6">The stolen stone was a ten-carat diamond worth a large sum（被偷的是价值不菲的十克拉钻石）</label></div>
+      <div class="xp-checkbox"><input type="checkbox" id="k7"><label for="k7">She outsmarted the jewellers' modern security system（她骗过了珠宝行的现代安保系统）</label></div>
+      <div class="xp-checkbox"><input type="checkbox" id="k8"><label for="k8">She was arrested at the airport trying to leave the country（她在机场试图出境时被捕）</label></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="kaiaCheck()">提交分析报告</button></div>
+      <div id="kaia-result" class="xp-result"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 13: EVALUATING FORMULATION ============ -->
+<section class="section" id="s13">
+  <h2>13. Evaluating Psychological (Case) Formulation（评价个案概念化）</h2>
+  <p class="section-subtitle">Read like a critic — the formulation is only as good as the information that informs it.</p>
+
+  <div class="methods-table">
+    <table style="width:100%;border-collapse:collapse;">
+      <thead><tr><th>Evaluation point</th><th>The evidence</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>The data quality problem（数据质量：回忆 + 解读双重失真）</strong></td>
+          <td>A psychological formulation is <strong>only as good as the information that informs it</strong>. One issue is that a lot of information is gathered <strong>directly from the offender during interviews</strong>. This can involve the offender <strong>remembering events from their past</strong>, such as the crimes they have committed and their childhood experiences, <strong>which relies upon the accuracy of their memory</strong>. <strong>Retrospective data</strong> such as this may be unreliable. Once the information has been gathered, it is <strong>interpreted and summarised by a psychologist</strong> who conducts the case formulation. This interpretation means that <strong>some information in the offence analysis will be given more significance than others</strong>. It also means that the <strong>experience and training of the psychologist may introduce bias</strong>, as they may interpret the information in a certain way — perhaps <strong>preferring to explain criminal behaviour from a particular psychological theory</strong>.</td>
+          <td>Two layers of distortion stack up: the offender's memory and the psychologist's interpretation. The 'personal story' may be partly a construction.</td>
+        </tr>
+        <tr>
+          <td><strong>Multi-agency insight（多机构情报 = 强项）</strong></td>
+          <td>A strength is that the process can provide a <strong>detailed insight into offending behaviour and its causes</strong>. This detail is achieved through gathering forensic information from <strong>many different agencies</strong>, such as the police, mental health professionals, <strong>forensic psychologists</strong> and probation officers. As such, a psychological formulation is the <strong>best way of determining appropriate offender management and rehabilitation</strong> to reduce the risk of reoffending. <span class="eval-tag">KEY TERM: <strong>forensic psychologist</strong>（法医心理学家）— a specialist who works with offenders. They apply psychological theory to criminal investigation, understanding psychological problems associated with criminal behaviour and the treatment of those who have committed offences.</span></td>
+          <td>Pooling information across agencies offsets the single-interview data problem — the formulation triangulates.</td>
+        </tr>
+        <tr>
+          <td><strong>Measuring success is hard（再犯率这个尺子本身不准）</strong></td>
+          <td>The aim of a psychological formulation is to <strong>minimise the risk of reoffending</strong>, so looking at <strong>reoffending rates</strong> can tell us whether or not the formulation has been successful. The problem with this method of establishing the effectiveness is that it is <strong>dependent on being able to accurately record whether someone has reoffended</strong>. <strong>Reoffending can go undetected for many reasons</strong>, so we can only really look at whether someone has <strong>been caught and reconvicted</strong> of crime. This makes it <strong>difficult to establish the effectiveness</strong> of psychological formulations.</td>
+          <td>The outcome measure undercounts — undetected reoffending means effectiveness can be overstated.</td>
+        </tr>
+        <tr>
+          <td><strong>Case study support: Mr C（Whitehead et al., 2007）</strong></td>
+          <td><strong>Paul Whitehead et al. (2007)</strong> documented the case of <strong>Mr C, a high-risk, violent, repeat offender</strong>. The psychological formulation produced in this case documents how <strong>behavioural theories were used to explain learned criminal behaviour</strong>. Linking his <strong>criminogenic factors to underlying psychological theory</strong> was used to <strong>support his rehabilitation</strong> and help him create a <strong>more coherent sense of self with life goals</strong>. Case study evidence such as this can be used to <strong>support the use of psychological formulations</strong>.</td>
+          <td>A real documented case shows the mechanism working end-to-end — but n = 1, so generalisation is limited.</td>
+        </tr>
+        <tr>
+          <td><strong>Benefits beyond risk assessment（对罪犯本人和工作人员的额外价值）</strong></td>
+          <td>Psychological formulations can help professionals to <strong>make decisions about the individual's future</strong>. Most importantly it is a <strong>useful way of explaining to the offender themselves what led them to committing the offence</strong> — this can help them to <strong>understand how to manage future situations</strong>. Undertaking a formulation with a person can be an <strong>important first step in supporting them to make changes to their behaviour</strong>. It can also <strong>improve staff knowledge of offenders</strong>, giving them greater confidence in managing offender behaviour and working with them.</td>
+          <td>The formulation is not just a risk tool — it is itself an intervention (self-understanding) and a staff-training by-product.</td>
+        </tr>
+        <tr>
+          <td><strong>A snapshot in time（时点快照的局限）</strong></td>
+          <td>However, a formulation is <strong>conducted at one point in time, typically when an offender is convicted</strong>. <strong>Circumstances may change</strong> which can mean the formulation is <strong>no longer relevant</strong>.</td>
+          <td>Unless updated, the 'living document' freezes — risk assessments drift out of date as lives change.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>formulation 的评价记「一弱三强两补」：<strong>核心弱点</strong>——数据两层失真（罪犯的回忆本身不可靠 retrospective data + 心理学家的解读带 bias，可能偏心某个理论）；<strong>三个强项</strong>——多机构情报（forensic psychologists / police / probation 汇总，是目前决定管理康复方案的 best way）、Whitehead 2007 的 Mr C 案例实证（行为理论解释习得的犯罪行为 → 重建自我认同）、对罪犯本人也是干预（理解自己为什么犯罪 = 改变的第一步）；<strong>两个补刀</strong>——再犯率尺子不准（漏罪的抓不到 → 效果难验证）、formulation 是定罪时的快照（情况变了就过时）。和 CI 评价一样，写 essay 时「承认强度 + 指出裂缝」。</div>
+</section>
+
+<!-- ============ SECTION 14: CHECKPOINT & EXAM PRACTICE ============ -->
+<section class="section" id="s14">
+  <h2>14. Checkpoint &amp; Exam Practice（自测与考试练习）</h2>
+
+  <h3>Checkpoint — 9 quick questions（课本 Checkpoint）</h3>
+  <div class="checkpoint">
+    <ol style="margin-bottom:0;">
+      <li>Name the four techniques used in the cognitive interview.</li>
+      <li>The cognitive interview was designed from which two cognitive theories?</li>
+      <li>What is one weakness with using the cognitive interview by police in the field?</li>
+      <li>Name one study which found that recall using the cognitive interview was significantly better than using a standard interview.</li>
+      <li>Is a psychological formulation used to catch an offender?</li>
+      <li>Is an offence analysis an objective account of an offender?</li>
+      <li>Are reoffending rates a good measure of the effectiveness of a psychological formulation?</li>
+      <li>Is it true that psychological formulations increase staff knowledge and understanding of an offender?</li>
+      <li>What other uses are there for a psychological formulation?</li>
+    </ol>
+  </div>
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span>
+    <span>Checkpoint — Answers（点击核对答案）</span>
+    <span class="ao-badge">AO1</span>
+  </div>
+  <div class="summary-card-body hidden">
+    <ol>
+      <li><strong>Four techniques</strong>: reinstate the context/state; report everything; change the order; change the perspective.</li>
+      <li><strong>Two cognitive theories</strong>: Bartlett's (1932) reconstructive memory theory and Tulving's (1974) context-dependent memory.</li>
+      <li><strong>Field weakness</strong>: e.g. time constraints prevent applying it in real situations (Dando et al., 2008 — 221 officers felt inadequately trained; investigations are chaotic; not helpful when immediate information is needed to catch the perpetrator).</li>
+      <li><strong>Study</strong>: Geiselman et al. (1985) — cognitive interview 41.15 correct items vs 29.40 for standard interview; also credit Köhnken et al. (1999) meta-analysis.</li>
+      <li><strong>No</strong> — a formulation is used after an offender has been caught/convicted, to understand the function of their offending (risk, treatment), not to catch them.</li>
+      <li><strong>No</strong> — it involves interpretation by a psychologist whose experience and training may introduce bias; some information is given more significance than others.</li>
+      <li><strong>No</strong> — reoffending can go undetected; we can only measure being caught and reconvicted, so effectiveness is difficult to establish.</li>
+      <li><strong>Yes</strong> — it can improve staff knowledge of offenders, giving them greater confidence in managing offender behaviour and working with them.</li>
+      <li><strong>Other uses</strong>: explaining to the offender themselves what led them to offend (first step to change); deciding rehabilitation/treatment and release safety; assessing risk of reoffending; tailoring management programmes.</li>
+    </ol>
+  </div>
+
+  <h3>Exam practice — the real thing（课本真题演练）</h3>
+
+  <div class="note-box blue-box">
+    <h4><span class="syl-tag ao2">AO2</span> <span class="syl-tag ao3">AO3</span> Question 1 — Olivia and Rhys (12 marks)</h4>
+    <p><strong>Olivia has recently completed her training as a police officer. She has been asked to conduct a cognitive interview for the first time. She was trained to conduct a cognitive interview during her police officer training programme. She has been asked to interview a witness to a theft from a department store. Rhys was at the department store when the theft took place. He saw a woman running out of the store being chased by a security guard.</strong></p>
+    <p><strong>a) Discuss how Olivia could use cognitive interview techniques to help Rhys recall the incident. (8 marks)</strong><br>
+    <strong>b) Explain one strength and one weakness of Olivia using a cognitive interview with Rhys. (4 marks)</strong></p>
+    <div class="summary-card-header" onclick="toggleSummary(this)">
+      <span class="arrow">▶</span>
+      <span>Essay plan（8+4 分写作提纲）</span>
+      <span class="ao-badge">12</span>
+    </div>
+    <div class="summary-card-body hidden">
+      <p><strong>(a) 8 分 = 四技巧逐条应用到 Rhys 身上（AO1 定义 + AO2 应用各半）：</strong></p>
+      <ol>
+        <li><strong>Report everything</strong>: Olivia should let Rhys give a free, uninterrupted account of the woman running out of the store, encouraging him to include even trivial details — these may act as memory cues.</li>
+        <li><strong>Reinstate context</strong>: she should ask Rhys to mentally recreate the department store — what he could see and hear, the weather, how he felt when he first noticed the commotion — context cues may jog his memory (Tulving's context-dependent memory).</li>
+        <li><strong>Change the order</strong>: she could ask Rhys to recall the incident in a different order (e.g. from the woman running out backwards to the first thing he noticed), interrupting schema-based story formation (Bartlett).</li>
+        <li><strong>Change the perspective</strong>: she could ask him to report what he thinks the security guard chasing the woman would have seen — while making clear he only reports what he actually knows.</li>
+        <li>Throughout: <strong>no leading questions, open questions, free recall</strong>; establish rapport first (enhanced CI, Fisher &amp; Geiselman 1992).</li>
+      </ol>
+      <p><strong>(b) 4 分 = 一强一弱各带 WHY：</strong>strength — evidence shows CI increases accurate recall (Geiselman et al. 1985: 41.15 vs 29.40 correct items; Fisher et al. 1989: +47% in real crimes), so Rhys is likely to give more useful detail than in a standard interview. weakness — it takes more time and requires training (Dando et al. 2008: officers felt inadequately trained; time constraints), which a newly trained officer like Olivia may struggle with in a busy investigation.</p>
+    </div>
+  </div>
+
+  <div class="note-box blue-box">
+    <h4><span class="syl-tag ao2">AO2</span> Question 2 — Darian and the prisoner (3 marks)</h4>
+    <p><strong>Darian is a psychologist who works in a local prison. He has been asked to carry out a case formulation on a prisoner who is being considered for release. The prisoner has not been engaging in a treatment programme. Darian asks the prisoner about his childhood when he was neglected by his parents. He also asks about his current relationships, which are unstable. Darian finds out that the prisoner has an addiction and was homeless before going to prison. Explain how Darian may conduct a psychological formulation to understand the function of offending behaviour in the prisoner. (3 marks)</strong></p>
+    <div class="summary-card-header" onclick="toggleSummary(this)">
+      <span class="arrow">▶</span>
+      <span>Mark scheme guidance（评分要点）</span>
+      <span class="ao-badge">3</span>
+    </div>
+    <div class="summary-card-body hidden">
+      <p>1 mark per accurate point, up to 3. Credit: Darian gathers information about the prisoner's <strong>relationships, social circumstances and life events</strong> (neglect in childhood, unstable relationships, addiction, homelessness); he <strong>interviews the offender directly</strong> to find out what influenced his offending; he then <strong>applies psychological theory</strong> to this information to form a hypothesis about the <strong>function of the offending</strong> (e.g. what needs the offence met) in order to inform decisions about <strong>risk of reoffending and rehabilitation</strong> before release.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 15: KEY TERMS ============ -->
+<section class="section" id="s15">
+  <h2>15. Key Terms（关键术语表）</h2>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><div class="term">Cognitive interview <span class="zh">认知访谈</span></div><div class="def">A specific way of asking a witness questions about an incident (Fisher and Geiselman et al., 1984), designed to maximise the accuracy of the information obtained.</div></div>
+    <div class="glossary-item"><div class="term">Standard interview <span class="zh">标准访谈</span></div><div class="def">'Who, what, when, where?' type questions with the interviewer directing the flow of the conversation — the approach the CI replaced.</div></div>
+    <div class="glossary-item"><div class="term">Reconstructive memory <span class="zh">重构记忆</span></div><div class="def">Bartlett's (1932) theory that memory for an event is not a faithful account; schemas fill the gaps, so recall can be distorted.</div></div>
+    <div class="glossary-item"><div class="term">Context-dependent memory <span class="zh">情境依赖记忆</span></div><div class="def">Tulving's (1974) idea that context and emotional state are encoded with an event; reinstating them acts as a cue to the memory.</div></div>
+    <div class="glossary-item"><div class="term">Enhanced cognitive interview <span class="zh">增强认知访谈</span></div><div class="def">Fisher and Geiselman (1992): same techniques plus personal connection, witness's intellectual level and social/cultural background, minimal distractions; witness-led; needs significant interpersonal training.</div></div>
+    <div class="glossary-item"><div class="term">Confabulated <span class="zh">虚构的</span></div><div class="def">Falsely recalled — items reported as memory that did not actually happen; measured separately from incorrect items in Geiselman et al. (1985).</div></div>
+    <div class="glossary-item"><div class="term">Psychological (case) formulation <span class="zh">心理个案概念化</span></div><div class="def">An analysis of a convicted offender looking at relationships, biological and social circumstances, life events, and how they interpreted those events — a personal story linking it all to the offending.</div></div>
+    <div class="glossary-item"><div class="term">Offence analysis <span class="zh">罪行分析</span></div><div class="def">Phase 1: assessing the offender to better understand their motivation to commit the crime, via contingencies and criminogenic factors.</div></div>
+    <div class="glossary-item"><div class="term">Contingencies <span class="zh">共性因素</span></div><div class="def">Common factors associated with a specific offence, found by comparing similar offences by different offenders — e.g. financial difficulties or substance abuse in theft.</div></div>
+    <div class="glossary-item"><div class="term">Criminogenic factors <span class="zh">犯罪成因因素</span></div><div class="def">Factors associated with the individual that contributed to the criminal behaviour: personality traits, mental health, past experiences, family background, emotional state, socioeconomic status.</div></div>
+    <div class="glossary-item"><div class="term">Core beliefs <span class="zh">核心信念</span></div><div class="def">Underlying beliefs making up the cognitive triad; developed in early childhood, they shape interpretation of information; CBT aims to reveal, test and modify them.</div></div>
+    <div class="glossary-item"><div class="term">Forensic psychologist <span class="zh">法医心理学家</span></div><div class="def">A specialist working with offenders: applies psychological theory to criminal investigation, understanding psychological problems linked to criminal behaviour and treating offenders.</div></div>
+    <div class="glossary-item"><div class="term">Reoffending / recidivism <span class="zh">再犯</span></div><div class="def">Committing further offences after conviction; reoffending rates measure formulation effectiveness, but undetected reoffending makes the measure incomplete.</div></div>
+    <div class="glossary-item"><div class="term">Cognitive distortions <span class="zh">认知扭曲</span></div><div class="def">Faulty ways of processing information, e.g. minimising the severity of harm caused to a victim; the cognitive lens of a case formulation.</div></div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>14 个术语抓两个 family：<strong>访谈家族</strong>（cognitive interview / standard interview / reconstructive memory / context-dependent memory / enhanced CI / confabulated）和<strong>概念化家族</strong>（formulation / offence analysis / contingencies / criminogenic factors / core beliefs / forensic psychologist / reoffending / cognitive distortions）。最容易考 define 的是三个 key term 框原文：<strong>confabulated、psychological (case) formulation、criminogenic factors</strong>——照英文 def 一词一分。全章两条主线再串一遍：认知访谈 =「两大原理 → 四技巧 → 增强版 → 证据与评价」；个案概念化 =「Phase 1 事实 → Phase 2 理论 → 服务于风险评估与治疗」。</div>
+</section>
+
+
+</main>
+
+</div><!-- END PAGE LAYOUT -->
+
+<div class="footer-note">
+  <p>📚 Edexcel IAL Psychology · Topic F: Criminological Psychology · Chapter 8 — Understanding the Offender</p>
+  <p>Spec 6.1.2: Cognitive interview techniques with witnesses (Fisher &amp; Geiselman 1984 · Geiselman et al. 1985 · Fisher et al. 1989 · Kohnken et al. 1999 · Holliday 2003 · Dando et al. 2008 · Memon et al. 1997) · Spec 6.1.3: Psychological (case) formulation (offence analysis · criminogenic factors · core beliefs · Whitehead et al. 2007)</p>
+</div>
+</div><!-- END CONTAINER -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<script>
+function toggleSummary(header) {
+  header.classList.toggle('open');
+  var body = header.nextElementSibling;
+  if (body && body.classList.contains('summary-card-body')) {
+    body.classList.toggle('hidden');
+  }
+}
+
+// Scroll spy — highlight active sidebar item
+(function(){
+  var sections = document.querySelectorAll('.section[id^="s"]');
+  var links = document.querySelectorAll('.sb-item a');
+  function onScroll() {
+    var scrollPos = window.scrollY + 120;
+    var currentId = sections.length ? sections[0].id : null;
+    sections.forEach(function(sec) {
+      if (sec.offsetTop <= scrollPos) { currentId = sec.id; }
+    });
+    links.forEach(function(link) {
+      link.classList.toggle('sb-active', link.getAttribute('href') === '#' + currentId);
+    });
+    var btn = document.getElementById('backToTop');
+    if (btn) { btn.classList.toggle('show', window.scrollY > 400); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+// Dark mode
+function toggleDarkMode() {
+  document.body.classList.toggle('dark');
+  var isDark = document.body.classList.contains('dark');
+  localStorage.setItem('edexcel-ch8-darkMode', isDark ? '1' : '0');
+  var btn = document.getElementById('darkBtn');
+  if (btn) { btn.textContent = isDark ? '☀️ Light' : '🌙 Dark'; }
+}
+
+// Font size
+function adjustFontSize(delta) {
+  var current = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+  var next = Math.min(22, Math.max(12, current + delta));
+  document.documentElement.style.fontSize = next + 'px';
+  localStorage.setItem('edexcel-ch8-fontSize', String(next));
+}
+
+// Restore preferences
+(function(){
+  if (localStorage.getItem('edexcel-ch8-darkMode') === '1') {
+    document.body.classList.add('dark');
+    var btn = document.getElementById('darkBtn');
+    if (btn) { btn.textContent = '☀️ Light'; }
+  }
+  var fs = localStorage.getItem('edexcel-ch8-fontSize');
+  if (fs) { document.documentElement.style.fontSize = fs + 'px'; }
+})();
+
+// --- Experience ①: Be the interviewer simulator ---
+var ciChoices = {};
+
+var ciFeedback = {
+  1: {
+    a: ['ok', '✅ <strong>最优</strong>——这是 <strong>report everything（报告一切）</strong>：开放式 + 鼓励自由回忆 + 连「不重要的小细节」也邀请说出来。课本提醒：这些琐碎细节可能成为关键信息的 memory cue（Tulving）。'],
+    b: ['half', '🤔 <strong>能得分但不是最优</strong>——「Did you get a clear look…?」是封闭问题，只能得到 yes/no，Rhys 的记忆由你主导（standard interview 的毛病）。'],
+    c: ['lead', '❌ <strong>诱导性问题（leading question）</strong>——「wasn\'t she?」直接把「偷了手提包」这个情节塞给了 Rhys。如果包不存在，他可能「记」出一只包：这就是 Bartlett 警告的 schema 脑补被你亲手激活了。']
+  },
+  2: {
+    a: ['', '🤔 <strong>具体但太窄</strong>——问颜色能拿到一个细节，但你替他决定了什么重要。CP 的是先让他自由铺开，再顺着他的叙述追问。'],
+    b: ['ok', '✅ <strong>最优</strong>——这是 <strong>reinstate the context（重建情境）</strong>：把声音、气味、情绪都请回来。情境和情绪状态是编码时一起存进去的，恢复它们就是恢复提取线索（Tulving 1974）。'],
+    c: ['lead', '❌ <strong>诱导性问题</strong>——「right?」是在等一个 yes。你刚替 Rhys 写好了「她跑向停车场」的剧本，哪怕他没看清也可能附和——证词被污染。'],
+  },
+  3: {
+    a: ['spec', '🤔 <strong>危险</strong>——「Why do you think she decided to steal?」邀请 Rhys 猜测动机。访谈的目标是 <em>what happened</em>，不是 <em>why she did it</em>；猜测会变成「回忆」混进证词。动机分析是后续 formulation（§10–12）的工作，不是访谈官的。'],
+    b: ['', '🤔 <strong>施压式追问</strong>——「Are you absolutely sure?」给证人施加压力，可能让他为了迎合你而改口。'],
+    c: ['ok', '✅ <strong>最优</strong>——这是 <strong>change the order（改变顺序）</strong>：倒着讲打断「故事化」的惯性，逼大脑输出真实记忆而不是顺着 schema 补剧情（Bartlett 1932）。'],
+  },
+  4: {
+    a: ['ok', '✅ <strong>最优</strong>——这是 <strong>change the perspective（改变视角）</strong>：站到保安的位置可能想起本来会遗漏的细节。注意你加的那句「only tell me what you actually know」——课本强调：证人只报告 <em>他知道的</em>，不是他认为别人会看到什么。'],
+    b: ['lead', '❌ <strong>诱导 + 贴标签</strong>——「professional shoplifter, didn\'t she?」给了 Rhys 一个现成的人设，他之后的回忆会不自觉向这个形象靠拢。'],
+    c: ['', '🤔 <strong>提前收工</strong>——你觉得问完了，但 CI 的每一轮都是为了把线索捞干净。提前结束 = 主动放弃信息。'],
+  }
+};
+
+function ciAnswer(round, key) {
+  var r = document.getElementById('ci-r' + round);
+  var f = ciFeedback[round][key];
+  var kind = f[0];
+  var cls = kind === 'ok' ? 'xp-result show ok' : (kind === 'lead' || kind === 'spec' ? 'xp-result show warn' : 'xp-result show');
+  r.className = cls;
+  r.innerHTML = '<p><span class="xp-verdict">' + f[1] + '</span></p>';
+  var score = kind === 'ok' ? 2 : (kind === 'half' || kind === '' ? 1 : 0);
+  ciChoices[round] = { key: key, score: score };
+}
+
+function ciVerdict() {
+  var r = document.getElementById('ci-final');
+  if (!ciChoices[1] || !ciChoices[2] || !ciChoices[3] || !ciChoices[4]) {
+    r.className = 'xp-result show';
+    r.innerHTML = '<p>先把四轮都各选一问，再来看评级。（已选轮次：' + Object.keys(ciChoices).map(function(k){return 'R'+k;}).join('、') || '无' + '）</p>';
+    return;
+  }
+  var total = ciChoices[1].score + ciChoices[2].score + ciChoices[3].score + ciChoices[4].score;
+  var html;
+  if (total >= 7) {
+    html = '<p><span class="xp-verdict">🏆 <strong>' + total + '/8 · 课本级认知访谈官</strong></span></p>';
+    html += '<p>你选的都是 open questions + 四大技巧的正解：Rhys 的记忆被「捞」出来而不是被你「喂」出来。这正是真题里 Olivia 该做的全套动作——8 分题的四段就是你这四轮的书面版。</p>';
+    r.className = 'xp-result show ok';
+  } else if (total >= 4) {
+    html = '<p><span class="xp-verdict">📋 <strong>' + total + '/8 · 合格但有隐患</strong></span></p>';
+    html += '<p>你没有犯最严重的诱导错误，但错过了让 Rhys 自由回忆的机会。回到 §4 再看一遍四技巧的「what + why」，注意：<strong>先开放、再追问</strong>；specific 问题可以留到他自己讲完之后。</p>';
+    r.className = 'xp-result show';
+  } else {
+    html = '<p><span class="xp-verdict">🚨 <strong>' + total + '/8 · 标准访谈陷阱</strong></span></p>';
+    html += '<p>你落进了课本开头的坑：interviewer 主导 + leading questions。<strong>诱导性问题的代价</strong>：Rhys 可能「记」出根本不存在的细节——错误的人被起诉（wrongful conviction），真凶逍遥法外。重读 §3 的两大原理，再来一轮。</p>';
+    r.className = 'xp-result show warn';
+  }
+  html += '<p style="margin-top:8px;font-size:.88em;color:#64748b;">对应真题：Exam Practice Q1a (8 分) — 讨论四技巧如何帮 Rhys 回忆；你刚体验的就是它的「体验版」。</p>';
+  r.innerHTML = html;
+}
+
+// --- Experience ②: Kaia formulation builder ---
+function kaiaCheck() {
+  var r = document.getElementById('kaia-result');
+  var relevant = { k1: 'financial difficulties 是 theft 的典型 <strong>contingency</strong>（共性因素）——课本原文例子就是它',
+                   k2: 'Robin Hood 信念是典型的 <strong>cognitive 视角</strong>素材：core beliefs / cognitive distortion（「我拿的是不义之财」把伤害往轻了说）',
+                   k3: '颠沛童年、没有朋友 = <strong>early experiences / social circumstances</strong>——formulation 定义里「life events + relationships」的直接素材',
+                   k4: '父亲因诈骗入狱 = <strong>family background + 犯罪榜样</strong>（精神动力学视角的核心素材，也呼应 Ch7 SFP 的「标签与榜样」）',
+                   k5: '主动探监说明她<strong>认同父亲</strong>——强化了罪犯榜样的影响，属于关系与成长史的一部分' };
+  var traps = { k6: '钻石的价值是<strong>「案件事实」</strong>——它描述的是赃物，不是 Kaia 这个人。注意：行为理论关心的「偷窃的金钱奖励」指的是<strong>得手这个结果对她的强化</strong>，不是钻石的市价本身',
+                k7: '骗过安保系统描述的是<strong>「案怎么犯的」</strong>（手法），不是<strong>「她为什么犯」</strong>（动机）——offence analysis 问的是后者',
+                k8: '机场被捕是<strong>犯罪后果</strong>，发生在决策之后——它不可能是促成犯罪的因素' };
+  var hit = 0, missed = [], trapHit = [];
+  for (var i = 1; i <= 8; i++) {
+    var cb = document.getElementById('k' + i);
+    var id = 'k' + i;
+    if (cb.checked) {
+      if (relevant[id]) { hit++; } else { trapHit.push(id); }
+    } else if (relevant[id]) { missed.push(id); }
+  }
+  var html = '';
+  if (hit === 5 && trapHit.length === 0) {
+    html += '<p><span class="xp-verdict">✅ <strong>完美的 offence analysis</strong>：5 条 criminogenic factors 全部命中，3 个陷阱一个没踩。</span></p>';
+    r.className = 'xp-result show ok';
+  } else if (trapHit.length > 0) {
+    html += '<p><span class="xp-verdict">🤔 <strong>混入了 ' + trapHit.length + ' 条「案件事实」</strong></span></p>';
+    trapHit.forEach(function(id){ html += '<p>❌ <strong>选项 ' + id.toUpperCase() + '</strong>：' + traps[id] + '</p>'; });
+    html += '<p>记住分界线：<strong>criminogenic factors = 属于「这个人」的因素</strong>；案发细节、赃物价值、被捕经过都不算。</p>';
+    r.className = 'xp-result show warn';
+    if (missed.length > 0) {
+      html += '<p>你漏掉的 criminogenic factors：</p>';
+      missed.forEach(function(id){ html += '<p>💡 <strong>选项 ' + id.toUpperCase() + '</strong>：' + relevant[id] + '</p>'; });
+    }
+  } else {
+    html += '<p><span class="xp-verdict">📋 你命中了 ' + hit + '/5 条 criminogenic factors</span>，且没踩陷阱。</p>';
+    missed.forEach(function(id){ html += '<p>💡 漏了 <strong>选项 ' + id.toUpperCase() + '</strong>：' + relevant[id] + '</p>'; });
+    r.className = 'xp-result show';
+  }
+  html += '<p style="margin-top:8px;"><strong>下一步（Phase 2）</strong>：把这些事实接入理论——经济困难 → 行为视角（偷窃的金钱奖励 / operant conditioning）；Robin Hood 信念 → 认知视角（cognitive distortion）；颠沛童年 + 罪犯父亲 → 精神动力视角（early childhood experiences）。一份 formulation 就这样从事实长成了解释。</p>';
+  r.innerHTML = html;
+}
+</script>
+
+</body>
+</html>
