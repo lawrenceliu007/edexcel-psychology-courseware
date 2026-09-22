@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edexcel Topic D Chapter 20 — Classical and Operant Conditioning and Social Learning Theory（经典条件反射、操作条件反射与社会学习理论）</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --card-bg: #FFFFFF;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --note-bg: #fff7ed;
+  --note-border: #fb923c;
+  --term-color: #ea580c;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; transition: background .15s; white-space: nowrap; }
+.nav-pill:hover { background: var(--primary-dark); }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; transition: color .15s; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; font-weight: 300; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); transition: all .15s; display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+body.dark .nav-btn:hover { border-color: #f97316; color: #f97316; }
+
+.page-layout { display: grid; grid-template-columns: 190px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 190px; flex-shrink: 0; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; transition: all .15s ease; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 600; background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+.sb-item a.sb-sub { padding-left: 30px; font-size: .7em; opacity: .82; }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; backdrop-filter: blur(6px); }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box strong { color: #b45309; }
+.key-term { display: inline-block; background: #e8eaf6; color: #283593; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: .9em; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box h4 { color: #991b1b; margin-bottom: 5px; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.wider-issue { background: #fff8e1; border: 2px solid #fbc02d; border-radius: 8px; padding: 16px 20px; margin: 14px 0; }
+.wider-issue h4 { color: #f57f17; margin-top: 0; }
+.activity-box { background: #f0f4f8; border: 2px solid #90a4ae; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+.activity-box h4 { color: #546e7a; margin-top: 0; display: flex; align-items: center; gap: 8px; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+tr:hover { background: #fff7ed; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.figure { margin: 18px 0; text-align: center; }
+.figure img { max-width: 100%; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 3px 12px rgba(0,0,0,.08); }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.flowchart { background: #f6f7f9; border: 2px solid var(--border); border-radius: 12px; padding: 20px; margin: 18px 0; text-align: center; }
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: opacity .2s; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.ao-badge { background: rgba(255,255,255,.25); padding: 2px 8px; border-radius: 10px; font-size: .72em; font-weight: 700; margin-left: auto; }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; animation: slideDown .25s ease; }
+.summary-card-body.hidden { display: none; }
+@keyframes slideDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
+.summary-card-body ol { margin: 0; padding-left: 20px; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; display: flex; align-items: center; gap: 8px; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.study-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px 18px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.06); transition: all .25s ease; position: relative; }
+.study-card:hover { box-shadow: 0 4px 16px rgba(234,88,12,.15); border-color: #fb923c; transform: translateY(-2px); }
+.study-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid #fef3c7; }
+.study-icon { font-size: 1.3em; }
+.study-name { font-weight: 700; font-size: .95em; color: #ea580c; flex: 1; }
+.study-badge { font-size: .7em; font-weight: 600; padding: 3px 10px; border-radius: 12px; background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; white-space: nowrap; }
+.study-badge.classic { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: #9d174d; }
+.study-badge.contemp { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; }
+.study-badge.cross { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; }
+.study-badge.meta { background: linear-gradient(135deg, #ede9fe, #ddd6fe); color: #5b21b6; }
+.study-badge.corr { background: linear-gradient(135deg, #dcfce7, #bbf7d0); color: #166534; }
+.study-badge.natural { background: linear-gradient(135deg, #ffedd5, #fed7aa); color: #9a3412; }
+.study-badge.expt { background: linear-gradient(135deg, #cffafe, #a5f3fc); color: #155e75; }
+.study-card-body p { margin: 6px 0; line-height: 1.65; font-size: .9em; }
+.study-card-body ul { margin: 6px 0 6px 18px; padding: 0; }
+.study-card-body li { margin: 4px 0; font-size: .89em; line-height: 1.6; }
+.eval-tag { display: inline-block; background: #fef2f2; border-left: 3px solid #ef4444; padding: 4px 10px; margin-top: 6px; font-size: .85em; color: #991b1b; border-radius: 0 6px 6px 0; }
+.ao-zone-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 10px; margin: 20px 0 14px; font-weight: 700; font-size: 1.05em; }
+.ao-zone-header.ao1 { background: linear-gradient(135deg, #eff6ff, #dbeafe); border-left: 5px solid #2563eb; color: #1e40af; }
+.ao-zone-header.ao3 { background: linear-gradient(135deg, #fdf4ff, #fae8ff); border-left: 5px solid #c026d3; color: #a21caf; }
+.ao-zone-desc { font-size: .82em; font-weight: 400; opacity: .8; margin-left: auto; }
+.gold-standard-para { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 2px solid #fcd34d; border-radius: 10px; padding: 16px 18px; margin: 14px 0; }
+.gold-standard-para h4 { color: #92400e; margin: 0 0 8px; font-size: .95em; }
+.gold-standard-para p { font-size: .89em; line-height: 1.7; margin: 6px 0; }
+.gold-standard-para ul { font-size: .89em; margin: 6px 0; }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { box-shadow: 0 6px 20px rgba(234,88,12,.4); transform: translateY(-2px); }
+@media(max-width:900px){
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .main-content { max-width: 100%; }
+  .compare-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+body.dark { background: #0f172a; color: #e2e8f0; transition: background .3s, color .3s; }
+body.dark .container { background: #0f172a; }
+body.dark .nav-bar { background: #1a1a2e; border-bottom-color: var(--primary); }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+body.dark .sb-divider { background: #334155; }
+body.dark .sb-group-label { color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a:hover { color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.10), transparent); border-left-color: #f97316; }
+body.dark .sb-item a.sb-active { color: #fb923c; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); border-left-color: #f97316; }
+body.dark .header { background: linear-gradient(135deg, #c2410c, #ea580c, #f97316); }
+body.dark .section { background: #1a1a2e; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .warn-box h4 { color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .keyterm-box strong { color: #fbbf24; }
+body.dark .key-term { background: #2a2a4a; color: #a5b4fc; }
+body.dark strong { color: #fbbf24; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; color: white; border-color: #7f1d1d; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark tr:hover { background: rgba(234,88,12,.05); }
+body.dark td:first-child { color: #fb923c; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+body.dark .flowchart { background: #16213e; border-color: #334155; }
+body.dark .wider-issue { background: rgba(251,192,45,.06); border-color: #f59e0b; }
+body.dark .wider-issue h4 { color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .activity-box { background: #1e293b; border-color: #475569; }
+body.dark .activity-box h4 { color: #94a3b8; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark .study-card { background: #16213e; border-color: #334155; }
+body.dark .study-card:hover { border-color: #f97316; box-shadow: 0 4px 16px rgba(234,88,12,.2); }
+body.dark .study-card-header { border-bottom-color: #3f3f5e; }
+body.dark .study-name { color: #fb923c; }
+body.dark .study-card-body p, body.dark .study-card-body li { color: #cbd5e1; }
+body.dark .eval-tag { background: rgba(220,38,38,.08); color: #fca5a5; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .ao-zone-header.ao1 { background: linear-gradient(135deg, rgba(37,99,235,.15), rgba(37,99,235,.08)); border-left-color: #3b82f6; color: #93c5fd; }
+body.dark .ao-zone-header.ao3 { background: linear-gradient(135deg, rgba(192,38,211,.15), rgba(192,38,211,.08)); border-left-color: #c026d3; color: #e9d5ff; }
+body.dark .gold-standard-para { background: linear-gradient(135deg, rgba(245,158,11,.08), rgba(245,158,11,.04)); border-color: #f59e0b; }
+body.dark .gold-standard-para h4 { color: #fbbf24; }
+body.dark .gold-standard-para p, body.dark .gold-standard-para ul, body.dark .gold-standard-para li { color: #d1d5db; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+body.dark a { color: #60a5fa; }
+body.dark a:hover { color: #93c5fd; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; }
+.syl-tag.ao1 { background: #dbeafe; color: #1e40af; }
+.syl-tag.ao2 { background: #dcfce7; color: #166534; }
+.syl-tag.ao3 { background: #fce7f3; color: #9d174d; }
+.syl-tag.syn { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag.ao1 { background: rgba(59,130,246,.15); color: #93c5fd; }
+body.dark .syl-tag.ao2 { background: rgba(22,163,74,.15); color: #86efac; }
+body.dark .syl-tag.ao3 { background: rgba(219,39,119,.15); color: #f9a8d4; }
+body.dark .syl-tag.syn { background: rgba(245,158,11,.15); color: #fcd34d; }
+
+/* ported from review template for ch7 */
+.glossary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; }
+.glossary-item { background:#FFFFFF; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px; }
+.glossary-item .term { font-weight:700; color:var(--primary-dark); font-size:.96rem; }
+.glossary-item .zh { color:#64748b; font-size:.85rem; margin-left:4px; }
+.glossary-item .def { font-size:.88rem; line-height:1.45; margin-top:4px; color:var(--text); }
+.methods-table th, .methods-table td { padding:8px 12px; border-bottom:1px solid #e2e8f0; font-size:.9rem; vertical-align:top; }
+.methods-table th { background:#FFF7ED; color:var(--accent); text-align:left; font-weight:600; }
+.section-subtitle { color: var(--text-secondary); font-size: .92em; font-style: italic; font-weight: 400; padding-bottom: 12px; border-bottom: 2px solid var(--border); margin: 0 0 14px 0; }
+.study-badge.biological { background: linear-gradient(135deg, #ede9fe, #ddd6fe); color: #5b21b6; }
+.study-badge.experimental { background: linear-gradient(135deg, #cffafe, #a5f3fc); color: #155e75; }
+.study-badge.longitudinal { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: #9d174d; }
+body.dark .study-badge.biological { background: rgba(91,33,182,.20); color: #c4b5fd; }
+body.dark .study-badge.experimental { background: rgba(21,94,117,.24); color: #67e8f9; }
+body.dark .study-badge.longitudinal { background: rgba(157,23,77,.20); color: #f9a8d4; }
+/* experience blocks（亲身体验环节） */
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; vertical-align: middle; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-controls select, .xp-controls input { padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: .92rem; background: #fff; color: #1f2937; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; transition: background .15s; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-result.warn .xp-verdict { color: var(--wrong); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; color: #1f2937; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; }
+body.dark .xp-result { color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc, body.dark .xp-checkbox label { color: #cbd5e1; }
+body.dark .xp-controls select, body.dark .xp-controls input { background: #1a1a2e; border-color: #334155; color: #cbd5e1; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="/edexcel-psychology-courseware/">Home</a> <span class="sep">›</span>
+    <a href="/edexcel-psychology-courseware/">Edexcel</a> <span class="sep">›</span>
+    <span>Topic D · Chapter 20 — Conditioning &amp; Social Learning</span>
+  </div>
+  <span class="nav-pill">🐕 Learning Theories &amp; Development</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn" title="Toggle dark mode">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)" title="Decrease font size">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)" title="Increase font size">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+    <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">Topic D · Ch 20 Contents</div>
+        <div class="sb-header-sub">Learning Theories &amp; Development</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">1 · Foundations</li>
+        <li class="sb-item"><a href="#s1">1. Learning Objectives</a></li>
+        <li class="sb-item"><a href="#s2">2. Getting Started — Fears</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">2 · Classical Conditioning</li>
+        <li class="sb-item"><a href="#s3">3. Key Terms &amp; 3 Stages</a></li>
+        <li class="sb-item"><a href="#s4">4. Pavlov's Dogs</a></li>
+        <li class="sb-item"><a href="#s5">5. Beyond the Pairing</a></li>
+        <li class="sb-item"><a href="#s6">6. Evaluating CC</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">3 · Operant Conditioning</li>
+        <li class="sb-item"><a href="#s7">7. Thorndike → Skinner</a></li>
+        <li class="sb-item"><a href="#s8">8. ABC &amp; 4 Consequences</a></li>
+        <li class="sb-item"><a href="#s9">9. Reinforcers &amp; Token Economy</a></li>
+        <li class="sb-item"><a href="#s10">10. Schedules of Reinforcement</a></li>
+        <li class="sb-item"><a href="#s11">11. Evaluating OC</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">4 · Key Study &amp; SLT</li>
+        <li class="sb-item"><a href="#s12">12. Skinner (1948) Pigeons</a></li>
+        <li class="sb-item"><a href="#s13">13. Social Learning Theory</a></li>
+        <li class="sb-item"><a href="#s14">14. The Four Stages</a></li>
+        <li class="sb-item"><a href="#s15">15. Evaluating SLT</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">5 · Wrap-Up</li>
+        <li class="sb-item"><a href="#s16">📝 Checkpoint &amp; Exam Practice</a></li>
+        <li class="sb-item"><a href="#s17">📚 Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>🐕 CHAPTER 20: CLASSICAL &amp; OPERANT CONDITIONING AND SOCIAL LEARNING THEORY<br><span style="font-size:0.65em">经典条件反射、操作条件反射与社会学习理论</span></h1>
+  <div class="subtitle">Edexcel International A Level Psychology · Topic D: Learning Theories and Development</div>
+  <div class="meta">
+    <span class="badge">📘 Pearson Edexcel International A Level · AS Unit 2</span>
+    <span class="badge">🐶 Topic D · Learning Theories · Paper 2 Section B</span>
+    <span class="badge">🧩 Spec 4.1.1 Classical Conditioning</span>
+    <span class="badge">🧩 Spec 4.1.2 Operant Conditioning</span>
+    <span class="badge">🧩 Spec 4.1.3 Social Learning Theory</span>
+    <span class="badge">📝 Checkpoint 8 Qs + Exam 4 Qs (incl. 8-mark)</span>
+  </div>
+</div>
+
+<!-- ============ SECTION 1: LEARNING OBJECTIVES ============ -->
+<section class="section" id="s1">
+  <h2>1. Learning Objectives（学习目标）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary — 本节要学什么</h4>
+    <p>How do we <strong>learn</strong>? Three answers in this chapter: by <strong>association</strong>（联结——bell means food is coming）, by <strong>consequence</strong>（后果——press lever, get food）, and by <strong>watching others</strong>（观察——copy what works for someone else）. These are the three great learning theories: <strong>classical conditioning</strong>, <strong>operant conditioning</strong>, and <strong>social learning theory</strong>.</p>
+  </div>
+
+  <div class="note-box blue-box">
+    <h4>🎯 By the end of this chapter, you should be able to describe and evaluate (spec 4.1.1 – 4.1.3):</h4>
+    <ul>
+      <li><strong>Classical (Pavlovian) conditioning</strong>（经典条件反射）— its main principles: UCS, UCR, NS, CS, CR, plus extinction, spontaneous recovery, stimulus generalisation and discrimination.</li>
+      <li><strong>Operant conditioning</strong>（操作条件反射）— positive/negative reinforcement and punishment, primary/secondary reinforcers, schedules of reinforcement, and <strong>Skinner's (1948) 'Superstition in the pigeon'</strong> research.</li>
+      <li><strong>Social learning theory</strong>（社会学习理论）— observation, imitation, modelling, vicarious reinforcement, and the four processes: attention, retention, reproduction, motivation.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>Topic D 的主线是「<strong>行为从哪儿来</strong>」。三大理论就是三个答案：<strong>经典条件反射</strong>——两件事反复一起出现，大脑把它们「绑定」（铃声→食物→流口水）；<strong>操作条件反射</strong>——行为的后果决定行为会不会再来（按杠杆有吃的→继续按）；<strong>社会学习理论</strong>——不用自己试错，看别人（role model）的下场就学会了。考试规律：describe 题（写出机制的各个部分）+ evaluate 题（8 分大题最喜欢考「评价经典/操作条件反射作为人类行为的解释」）。本章还是 <strong>Watson &amp; Rayner (1920) Little Albert</strong>（classic study）和 <strong>Capafóns et al. (1998)</strong>（contemporary study）的理论地基——后面专门章节会展开。</div>
+</section>
+
+<!-- ============ SECTION 2: GETTING STARTED ============ -->
+<section class="section" id="s2">
+  <h2>2. Getting Started — Where Do Fears Come From?（开局思考：恐惧从哪来）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Think about this before you read on</h4>
+    <p>We acquire many behaviours through classical conditioning without even realising it. One such behaviour could be <strong>a fear of an object</strong>. If we have a frightening experience when an object is present, we may <strong>associate fear with that object</strong>. The next time we encounter it, we will show fear.</p>
+  </div>
+
+  <div class="activity-box">
+    <h4>🕷️ 课本 Getting Started 任务</h4>
+    <p>Here is a list of commonly feared animals. <strong>In pairs, discuss a situation which may have occurred which could result in a fear of each animal:</strong></p>
+    <ul style="columns:2;max-width:420px;">
+      <li>🕷️ spider（蜘蛛）</li>
+      <li>🐍 snake（蛇）</li>
+      <li>🐕 dog（狗）</li>
+      <li>🐴 horse（马）</li>
+    </ul>
+    <p style="margin-bottom:0;">Keep your stories in mind — by the end of §3 you will be able to label every step of how each fear was learned, using the proper psychological terms.</p>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>先别翻书，试着给每个动物编一个「被吓到」的小故事。例如蜘蛛：小时候伸手摸柜子，摸出一只蜘蛛，吓得大叫——从此看到蜘蛛（甚至看到类似的虫子）就心跳加速。<strong>注意这个故事的三个时间点</strong>：吓到之前（蜘蛛只是个东西）、吓的那一刻（蜘蛛和恐惧绑在一起）、吓到之后（蜘蛛=恐惧的信号）。这三个时间点正好对应经典条件反射的三个阶段——下一节你会给它们正式命名。</div>
+</section>
+
+<!-- ============ SECTION 3: KEY TERMS & THREE STAGES ============ -->
+<section class="section" id="s3">
+  <h2>3. Classical Conditioning — Key Terms &amp; the Three Stages（核心术语与三阶段）</h2>
+  <p class="section-subtitle">Classical conditioning is learning by association. When we pair a new stimulus with an existing stimulus–response link or reflex, we learn to associate the two stimuli and respond in a similar manner to both.</p>
+
+  <div class="note-box">
+    <h4>🍜 课本例子 — the restaurant</h4>
+    <p>For example, if you visited a restaurant and the food made you ill, you may associate the restaurant with feeling nauseous. Classical conditioning takes place when a <strong>neutral stimulus (NS)</strong> is paired with an <strong>unconditioned (unlearned) stimulus (UCS)</strong>. Once they are paired/associated, the neutral stimulus will elicit the same response as the UCS.</p>
+  </div>
+
+  <p>We think of classical conditioning as occurring in <strong>three distinct stages</strong>（三个阶段）:</p>
+  <ul>
+    <li><strong>Before conditioning</strong>: a neutral stimulus elicits <strong>no response</strong>. The unconditioned stimulus elicits an <strong>unconditioned response (UCR)</strong>.</li>
+    <li><strong>During conditioning</strong>: a neutral stimulus is <strong>paired</strong> with an unconditioned stimulus. This elicits an unconditioned response because the UCS is present.</li>
+    <li><strong>After conditioning</strong>: the neutral stimulus <strong>alone</strong> elicits the same response as the UCS; it is renamed a <strong>conditioned stimulus (CS)</strong>, which elicits the <strong>conditioned response (CR)</strong>.</li>
+  </ul>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 430" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;">
+      <rect x="0" y="0" width="680" height="430" fill="#f8fafc" rx="12"/>
+      <text x="340" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#1e293b">The three stages of classical conditioning 条件反射三阶段</text>
+      <text x="30" y="55" font-size="12.5" font-weight="700" fill="#94a3b8">BEFORE · 之前</text>
+      <rect x="30" y="65" width="180" height="46" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" rx="8"/>
+      <text x="120" y="84" text-anchor="middle" font-size="11.5" font-weight="700" fill="#475569">Neutral stimulus (NS)</text>
+      <text x="120" y="101" text-anchor="middle" font-size="10.5" fill="#64748b">metronome 节拍器</text>
+      <path d="M 214 88 L 258 88" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrG)"/>
+      <rect x="262" y="65" width="130" height="46" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5" rx="8"/>
+      <text x="327" y="93" text-anchor="middle" font-size="11.5" fill="#94a3b8">No response</text>
+      <rect x="430" y="65" width="180" height="46" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" rx="8"/>
+      <text x="520" y="84" text-anchor="middle" font-size="11.5" font-weight="700" fill="#475569">Unconditioned stimulus (UCS)</text>
+      <text x="520" y="101" text-anchor="middle" font-size="10.5" fill="#64748b">food 食物</text>
+      <path d="M 614 88 L 650 88" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrG)"/>
+      <text x="430" y="140" font-size="10.5" fill="#64748b">→ Unconditioned response (UCR) salivation 流口水</text>
+      <text x="30" y="175" font-size="12.5" font-weight="700" fill="#2563eb">DURING · 配对中</text>
+      <rect x="30" y="185" width="180" height="46" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8" rx="8"/>
+      <text x="120" y="204" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e40af">NS</text>
+      <text x="120" y="221" text-anchor="middle" font-size="10.5" fill="#475569">metronome</text>
+      <text x="222" y="213" text-anchor="middle" font-size="16" font-weight="700" fill="#2563eb">+</text>
+      <rect x="240" y="185" width="180" height="46" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8" rx="8"/>
+      <text x="330" y="204" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e40af">UCS</text>
+      <text x="330" y="221" text-anchor="middle" font-size="10.5" fill="#475569">food 食物</text>
+      <path d="M 424 208 L 468 208" stroke="#2563eb" stroke-width="2" marker-end="url(#arrB)"/>
+      <rect x="472" y="185" width="180" height="46" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8" rx="8"/>
+      <text x="562" y="204" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e40af">UCR</text>
+      <text x="562" y="221" text-anchor="middle" font-size="10.5" fill="#475569">salivation 流口水</text>
+      <text x="30" y="252" font-size="10.5" fill="#475569">Repeated pairings 反复配对 — the NS appears immediately before the food, over several learning trials</text>
+      <text x="30" y="287" font-size="12.5" font-weight="700" fill="#16a34a">AFTER · 之后</text>
+      <rect x="30" y="297" width="180" height="46" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8" rx="8"/>
+      <text x="120" y="316" text-anchor="middle" font-size="11.5" font-weight="700" fill="#166534">Conditioned stimulus (CS)</text>
+      <text x="120" y="333" text-anchor="middle" font-size="10.5" fill="#475569">metronome alone 只有节拍器</text>
+      <path d="M 214 320 L 258 320" stroke="#16a34a" stroke-width="2" marker-end="url(#arrGr)"/>
+      <rect x="262" y="297" width="180" height="46" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8" rx="8"/>
+      <text x="352" y="316" text-anchor="middle" font-size="11.5" font-weight="700" fill="#166534">Conditioned response (CR)</text>
+      <text x="352" y="333" text-anchor="middle" font-size="10.5" fill="#475569">salivation 流口水</text>
+      <path d="M 120 111 C 120 160, 120 165, 120 183" fill="none" stroke="#2563eb" stroke-width="1.6" stroke-dasharray="4 3"/>
+      <path d="M 120 231 C 120 260, 120 268, 120 295" fill="none" stroke="#16a34a" stroke-width="1.6" stroke-dasharray="4 3"/>
+      <text x="132" y="155" font-size="9.5" fill="#2563eb">becomes…</text>
+      <text x="132" y="278" font-size="9.5" fill="#16a34a">renamed…</text>
+      <text x="340" y="395" text-anchor="middle" font-size="11" fill="#334155" font-weight="600">KEY SHIFT: NS → CS（中性刺激升级为条件刺激）· UCR → CR（反应改名为条件反应）</text>
+      <text x="340" y="415" text-anchor="middle" font-size="10" fill="#64748b">Same behaviour, new name — the response is now triggered by learning, not by nature</text>
+      <defs>
+        <marker id="arrG" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/></marker>
+        <marker id="arrB" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#2563eb"/></marker>
+        <marker id="arrGr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#16a34a"/></marker>
+      </defs>
+    </svg>
+    <div class="figure-caption">The three conditioning stages (textbook Figures 20.1–20.3, redrawn). Before: NS means nothing. During: NS + UCS together → UCR. After: NS alone now works — it has become the CS producing the CR.</div>
+  </div>
+
+  <div class="exam-tip"><strong>Exam tip（课本 EXAM TIP 原文）</strong>: When answering an examination question about classical conditioning, remember that <strong>the neutral stimulus becomes the conditioned stimulus, and the unconditioned response becomes the conditioned response</strong>. This will help you check your answer.</div>
+
+  <div class="cn-note"><strong>中文理解：</strong>五个术语一句话记牢：<strong>UCS</strong> = 天生就能引起反应的东西（食物）；<strong>UCR</strong> = 天生的反应（流口水）；<strong>NS</strong> = 本来毫无意义的东西（节拍器）；<strong>CS</strong> = 配对后「继承」了威力的原 NS；<strong>CR</strong> = 由 CS 引起的同款反应。考点金句：<em>NS becomes the CS; the UCR becomes the CR</em>——判断题里最容易错的就是把 after 阶段写成 UCR。生活化例子：餐厅吃坏肚子（食物=UCS，恶心=UCR）→ 餐厅本身变成 CS → 路过就恶心（CR）。你的恐惧故事也能这样拆：蜘蛛吓到我的那一刻，蜘蛛（NS）和惊吓（UCS）同时出现 → 之后蜘蛛单独出现（CS）就引发害怕（CR）。</div>
+</section>
+<!-- ============ SECTION 4: PAVLOV'S DOGS ============ -->
+<section class="section" id="s4">
+  <h2>4. Pavlov's Dogs — the Original Experiment（巴甫洛夫的狗）</h2>
+  <p class="section-subtitle">Ivan Petrovich Pavlov — Russian physiologist, Nobel Prize in Physiology or Medicine 1904 — whose landmark discovery came from his experiment with salivation in dogs.</p>
+
+  <p>Pavlov had a principal interest in studying <strong>digestive processes</strong>. Saliva is required to make food easy to swallow and it contains enzymes to break down certain compounds in the food. While carrying out his experiments, Pavlov became involved in studying <strong>reflex reactions</strong> as he observed that the dogs drooled and produced saliva <strong>without the proper stimulus</strong>. Pavlov hypothesised that the dogs were reacting to <strong>the lab coats of his assistants</strong>: each time the dogs were presented with food, the assistant presenting the food was wearing a lab coat. The dogs were responding <em>as if food was on its way</em> in the presence of a person wearing a lab coat.</p>
+
+  <div class="keyterm-box">
+    <p><strong>The procedure</strong>: Pavlov created a <strong>soundproof lab</strong> to see if the presentation of precise stimuli would evoke a response in conditions that ensured no direct contact between the dogs and experimenter. Pavlov knew that food (UCS) would lead to salivation in the mouth of an animal (UCR). He then used a <strong>neutral stimulus</strong> — an item that in itself would not elicit a response — for example a <strong>metronome</strong>（节拍器）. Over several learning trials, the dog was presented with the ticking of the metronome <strong>immediately before the food appeared</strong>. If the metronome was ticking in close association with the meal, the dogs learned to associate the sound of the metronome with the sound of the food. After a while, <strong>just at the sound of the metronome, they responded by drooling</strong>.</p>
+  </div>
+
+  <div class="green-box">
+    <h4>✅ Conclusion（课本结论）</h4>
+    <p>Pavlov concluded that <strong>environmental stimuli that previously had no relation to a reflex action</strong>, for example the sound of a metronome, could, through <strong>repeated pairings</strong>, trigger the salivation reflex — and that through the process of <strong>associative learning (conditioning)</strong>, the conditioned stimulus leads to a conditioned response.</p>
+  </div>
+
+  <h3>Taking it further — higher-order conditioning（进阶：高级条件反射）</h3>
+  <p>Having identified the existence of this associative learning, Pavlov wished to establish the <strong>reliability</strong> of his findings. He set out to see if the same system of learning would work with <strong>other neutral stimuli</strong>: for example, the presentation of a <strong>vanilla odour</strong>, or a <strong>visual test involving a rotating disc</strong> being seen prior to food being given. Pavlov went on to <strong>pair a further neutral stimulus with the conditioned stimulus</strong> — for example, a shape or colour <strong>(CS2)</strong> with the sound of a metronome <strong>(CS1)</strong> — and found that <strong>higher order conditioning was possible</strong>. He also found that dogs showed <strong>stimulus generalisation</strong> to sounds of a similar tone but were able to <strong>discriminate between sounds that were of a quite different tone</strong>. The more similarity there was between a new neutral stimulus and the conditioned stimulus, <strong>the greater the amount of drooling from the dog</strong>.</p>
+
+  <div class="wider-issue">
+    <h4>🧠 Thinking Like a Psychologist（课本专栏）</h4>
+    <p>Being scared of going to the dentist is a common fear. <strong>How would you explain this fear using the principles of classical conditioning? How would you go about removing a fear of the dentist?</strong> (Hint for the second half: hold that thought — §6 introduces the therapies built on exactly this answer.)</p>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>Pavlov 本来是研究消化的（1904 诺贝尔奖），意外发现狗「见到白大褂就流口水」——因为白大褂总是和送饭一起出现。正式实验的三个细节值得背：<strong>①隔音实验室</strong>（排除人和狗的直接接触干扰）；<strong>②中性刺激用节拍器</strong>（本身不引起任何反应）；<strong>③节拍器先响、食物紧随</strong>（时间顺序是配对的关键）。<strong>Higher-order conditioning</strong> 是加分项：已经条件化的 CS1（节拍器声）可以再和新的 NS（形状/颜色）配对，造出 CS2——条件反射可以「套娃」。还有个量化的优雅发现：<strong>新声音和 CS 越相似，口水越多</strong>——这就是下一节 generalisation 的雏形。</div>
+</section>
+
+<!-- ============ SECTION 5: BEYOND THE PAIRING ============ -->
+<section class="section" id="s5">
+  <h2>5. Beyond the Pairing — Generalisation, Discrimination, Extinction &amp; Recovery（配对之后的四种现象）</h2>
+  <p class="section-subtitle">Four processes that take the basic three-stage model into the real world — and each is a favourite 2-mark "identify the term" exam question.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Stimulus generalisation（刺激泛化）</h4>
+      <p>The tendency to <strong>produce the same response to a stimulus which is similar</strong> to the conditioned stimulus. For example, you may be fearful of spiders, but also show the same fear response to <strong>other insects that look similar to spiders</strong>.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Stimulus discrimination（刺激辨别）</h4>
+      <p>A conditioned response occurs <strong>only in response to a specific conditioned stimulus and not to other stimuli</strong>, because other stimuli are sufficiently different from the CS to not produce a response. For example, you may be fearful of <strong>moths, but not other flying insects</strong>.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Extinction（消退）</h4>
+      <p>Pavlov showed that if the metronome (CS) is <strong>continually presented without any food (UCS)</strong> being paired with it, the dog will gradually learn to <strong>dissociate the two stimuli</strong> so will not salivate at the metronome.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Spontaneous recovery（自发恢复）</h4>
+      <p>If the metronome is <strong>once again paired with food following extinction</strong>, the dog will <strong>quickly</strong> learn to associate the food with the metronome and will salivate at the metronome alone once more. This <strong>accelerated form of learning</strong> means that extinction is <strong>not the same thing as unlearning</strong>. While the response may disappear, <strong>it has certainly not been eradicated</strong>.</p>
+    </div>
+  </div>
+
+  <div class="note-box blue-box">
+    <h4>🧬 Why generalisation and discrimination matter — the evolutionary angle（课本原文）</h4>
+    <p>The ability to generalise and discriminate between stimuli has <strong>important evolutionary implications</strong>. If our ancestors ate red berries while foraging and this made them seriously ill, they may have thought twice before eating some <strong>purple berries</strong>. Although the berries are strictly different, they are also <strong>similar</strong> and could therefore cause the same negative consequences. Such cautious behaviour would have helped to <strong>ensure their survival</strong>. Similarly, discrimination may also have proved useful to our ancestors' survival: if they took the risk of eating the purple berries and it produced no negative consequences, they would be able to make a <strong>similar distinction in future and provide the hunter-gatherers with another valuable food source</strong>, so enhancing their own survival.</p>
+  </div>
+
+  <div class="xp-block">
+    <h4>🧪 Name that phenomenon · 四现象判定练习 <span class="xp-badge">亲身体验</span></h4>
+    <p class="xp-intro">课本 Checkpoint Q1 的四个场景。每个场景对应一个术语：<strong>stimulus generalisation / stimulus discrimination / extinction / spontaneous recovery</strong>。先自己判断，再点选项核对。</p>
+    <div class="xp-case">
+      <div class="xp-case-name">a) 猫主人反复打开食柜门却不喂食，猫最终不再跑过来</div>
+      <div id="ph-a">
+        <button class="q-option" onclick="phenAnswer('a','gen')">Stimulus generalisation</button>
+        <button class="q-option" onclick="phenAnswer('a','dis')">Stimulus discrimination</button>
+        <button class="q-option" onclick="phenAnswer('a','ext')">Extinction</button>
+        <button class="q-option" onclick="phenAnswer('a','rec')">Spontaneous recovery</button>
+      </div>
+      <div id="ph-fba" class="xp-result"></div>
+    </div>
+    <div class="xp-case">
+      <div class="xp-case-name">b) 女孩被大红气球爆掉吓到，生日派对上见到粉色、紫色气球也害怕</div>
+      <div id="ph-b">
+        <button class="q-option" onclick="phenAnswer('b','gen')">Stimulus generalisation</button>
+        <button class="q-option" onclick="phenAnswer('b','dis')">Stimulus discrimination</button>
+        <button class="q-option" onclick="phenAnswer('b','ext')">Extinction</button>
+        <button class="q-option" onclick="phenAnswer('b','rec')">Spontaneous recovery</button>
+      </div>
+      <div id="ph-fbb" class="xp-result"></div>
+    </div>
+    <div class="xp-case">
+      <div class="xp-case-name">c) Sira 怕蚯蚓，但不怕毛毛虫和蛞蝓</div>
+      <div id="ph-c">
+        <button class="q-option" onclick="phenAnswer('c','gen')">Stimulus generalisation</button>
+        <button class="q-option" onclick="phenAnswer('c','dis')">Stimulus discrimination</button>
+        <button class="q-option" onclick="phenAnswer('c','ext')">Extinction</button>
+        <button class="q-option" onclick="phenAnswer('c','rec')">Spontaneous recovery</button>
+      </div>
+      <div id="ph-fbc" class="xp-result"></div>
+    </div>
+    <div class="xp-case">
+      <div class="xp-case-name">d) Leonne 小时候吃鱼生病很讨厌鱼，成年后能吃鱼了；最近点了鱼吃完又恶心，现在再也不吃鱼了</div>
+      <div id="ph-d">
+        <button class="q-option" onclick="phenAnswer('d','gen')">Stimulus generalisation</button>
+        <button class="q-option" onclick="phenAnswer('d','dis')">Stimulus discrimination</button>
+        <button class="q-option" onclick="phenAnswer('d','ext')">Extinction</button>
+        <button class="q-option" onclick="phenAnswer('d','rec')">Spontaneous recovery</button>
+      </div>
+      <div id="ph-fbd" class="xp-result"></div>
+    </div>
+    <div class="xp-controls"><button class="xp-btn" id="phen-final-btn" onclick="phenFinal()" style="display:none;">看总评</button></div>
+    <div id="phen-result" class="xp-result"></div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>四现象的判定口诀：<strong>「像不像」→ generalisation</strong>（类似的东西也引发反应）；<strong>「分得清」→ discrimination</strong>（只对特定的 CS 有反应，像的也不行）；<strong>「断供了」→ extinction</strong>（CS 反复单独出现、不再配 UCS，反应消失）；<strong>「复活了」→ spontaneous recovery</strong>（消退后重新配对一次，反应迅速回来）。最深的洞见是最后一句：<strong>extinction ≠ unlearning</strong>——消退只是把联结「按住」了，没有删除。这解释了为什么戒掉的恐惧、戒掉的瘾容易复发。另一个易错点：d 场景要读全——「小时候生病→讨厌鱼」是初始条件化，「成年后能吃」是消退，「点了鱼又恶心→再也不吃」是自发恢复（快速重新学会）。</div>
+</section>
+
+<!-- ============ SECTION 6: EVALUATING CC ============ -->
+<section class="section" id="s6">
+  <h2>6. Evaluating Classical Conditioning（评价经典条件反射）</h2>
+  <p class="section-subtitle">Read like a critic — this table is your 8-mark essay skeleton for "Evaluate classical conditioning as an explanation for human behaviour".</p>
+
+  <div class="methods-table">
+    <table style="width:100%;border-collapse:collapse;">
+      <thead><tr><th style="width:24%;">Evaluation point</th><th>The evidence</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Strength: strong experimental support</strong></td>
+          <td>Pavlov's experiments with dogs are <strong>evidence for classical conditioning as an explanation of how animals acquire behaviour</strong>. While we should be cautious when using animal research to explain human behaviour, a similar outcome was achieved with a human child: <strong>John Watson and Rosalie Rayner (1920)</strong> conditioned a small boy, <strong>Little Albert</strong>, to be scared of a white rat using the principles of classical conditioning. This offers <strong>experimental support</strong> for classical conditioning as an explanation for how we acquire behaviour.</td>
+          <td>Lab-controlled cause-and-effect evidence in animals <em>and</em> a human replication — the pairing mechanism is real.</td>
+        </tr>
+        <tr>
+          <td><strong>Limitation of that support</strong></td>
+          <td>However, Little Albert was described as a <strong>particularly unemotional child</strong>, so the way in which he was conditioned to fear a white rat <strong>may not be the same as for other children</strong>.</td>
+          <td>One unusual child is a thin base for generalising — a built-in counterweight to the strength above.</td>
+        </tr>
+        <tr>
+          <td><strong>Strength: explains phobias &amp; powers therapies</strong></td>
+          <td>Classical conditioning can explain a range of behaviours, <strong>notably phobias</strong>. A phobia is an <strong>irrational fear</strong> of an object or situation which can develop because we have <strong>associated the object with feeling scared</strong>. This knowledge has led to the development of treatments such as <strong>flooding</strong> and <strong>systematic desensitisation</strong>（系统脱敏——gradually facing up to the phobic object via a hierarchy of exposure, from least to most fearful, using relaxation techniques）. Juan Capafóns et al. (1998) found that <strong>systematic desensitisation did reduce a fear of flying</strong>, showing that classical conditioning can explain some human behaviours.</td>
+          <td>A theory that generates a working treatment which is proven effective has real explanatory power — the therapy's success loops back to support the theory.</td>
+        </tr>
+        <tr>
+          <td><strong>Strength: aversion therapy for addictions</strong></td>
+          <td>Classical conditioning has been used to <strong>treat people with addictions</strong> who learn to associate their addictive behaviour with something unpleasant. <strong>Aversion therapy</strong>（厌恶疗法）works by associating the undesirable behaviour with an aversive stimulus, such as <strong>an electric shock or a drug that makes you feel nauseous</strong>.</td>
+          <td>Same associative logic, run in reverse: instead of creating a fear, attach an unpleasant feeling to an existing behaviour.</td>
+        </tr>
+        <tr>
+          <td><strong>Weakness: narrow range of behaviour</strong></td>
+          <td>Classical conditioning <strong>can only explain how we acquire a narrow range of behaviours based on reflexive or involuntary responses</strong>. We learn to associate different stimuli with a limited number of reflex responses, <strong>but it cannot explain how we generate new voluntary responses</strong>. Furthermore, classical conditioning <strong>only explains learned responses, so fails to address the cognitive processes involved in learning</strong>. Complex forms of behaviour can be explained by <strong>decision-making and problem-solving</strong>. It also <strong>fails to account for biological factors</strong>, such as <strong>genetics and neurotransmitters</strong>, which are responsible for influencing some behaviours.</td>
+          <td>The scope problem: association handles reflexes (salivation, fear) but not choosing, planning or deciding — which is exactly where operant conditioning and SLT take over.</td>
+        </tr>
+        <tr>
+          <td><strong>Wider issue: nature–nurture debate</strong></td>
+          <td>Classical conditioning explains that behaviour is <strong>acquired through experiences we have</strong>, so is regarded as a <strong>nurture explanation</strong>. This suggests that <strong>all behaviour is learned, which ignores the role of nature</strong>. Some behaviours are influenced by biological/innate factors, such as being predisposed to being aggressive or sporty. Adopting an exclusively 'nurture approach' <strong>fails to account for factors from nature that influence behaviour</strong>.</td>
+          <td>A ready-made Issues &amp; Debates paragraph: CC sits firmly on the nurture side and, taken alone, overclaims.</td>
+        </tr>
+        <tr>
+          <td><strong>Wider issue: social control and ethics</strong></td>
+          <td>Aversion therapy has a <strong>controversial history</strong> of use on behaviours which were considered undesirable <em>at the time</em>. It is argued that it was used as a <strong>form of social control</strong> to remove behaviour viewed as undesirable by others. It also has significant <strong>ethical implications</strong> because the aversive stimulus is <strong>unpleasant or even harmful</strong>.</td>
+          <td>Whose definition of "undesirable" gets conditioned? A theory that can be weaponised needs ethical guardrails.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>评价 CC 记住「<strong>2 强 1 弱 2 辩论</strong>」：<strong>强①</strong> 实验证据（Pavlov 动物 + Watson &amp; Rayner 人类 Little Albert——但注意 Albert 情感反应特别低，代表性打折扣）；<strong>强②</strong> 应用价值（恐惧症解释 → systematic desensitisation / flooding 治疗有效，Capafóns 1998 怕飞症；成瘾 → aversion therapy 厌恶疗法）；<strong>弱</strong> 只能解释「反射性/不自主」的行为，解释不了<strong>主动的新行为</strong>，也忽略认知过程和生物因素（基因/神经递质）；<strong>辩论①</strong> nurture 极端化——「一切行为都靠学」忽略了天性；<strong>辩论②</strong> aversion therapy 的黑历史——曾被用来「矫正」当时被认为不合适的 behavior，是社会控制 + 痛苦刺激，伦理双重扣分。8 分大题的结构就是：1 个 strength + evidence、1 个 weakness + evidence、结尾 balanced conclusion。</div>
+</section>
+<!-- ============ SECTION 7: THORNDIKE TO SKINNER ============ -->
+<section class="section" id="s7">
+  <h2>7. Operant Conditioning — from Thorndike's Puzzle Box to Skinner's Box（从迷箱到斯金纳箱）</h2>
+  <p class="section-subtitle">Operant conditioning involves learning through <strong>consequence</strong> — an association is made between a behaviour and a consequence for that behaviour.</p>
+
+  <p>Put simply: if we get <strong>punished</strong> for a particular behaviour, according to the theory it is likely that we will <strong>not repeat</strong> that behaviour in future. However, if we show a behaviour that is followed by a <strong>positive experience</strong> — maybe praise or some physical reward — it is likely that this behaviour <strong>will be repeated</strong>.</p>
+
+  <div class="note-box">
+    <h4>🐦 课本例子 — the pigeon's buttons</h4>
+    <p style="margin-bottom:0;">When a laboratory pigeon taps a <strong>blue button</strong> with its beak, it receives a <strong>food pellet</strong> as a reward. However, when the pigeon taps a <strong>red button</strong> it receives a <strong>mild electric shock</strong>. As a result of learning these consequences, the pigeon learns to <strong>press the blue button but avoid the red button</strong> in future.</p>
+  </div>
+
+  <h3>Edward Thorndike (1911) — instrumental learning（工具性学习）</h3>
+  <p>It was Edward Thorndike (1911) who originally labelled this form of learning <strong>instrumental learning</strong>. His research involved what he called the <strong>puzzle box</strong>: a box in which he placed a kitten; the kitten had to solve the puzzle in order to escape the box to receive a food reward. Initially, he observed that the kitten would <strong>climb everywhere around the box — quite randomly — and accidentally hit the latch</strong> to open the door. Once the door opened and it was given food. However, after <strong>several trials the kitten escaped faster</strong>. The kitten had learned <strong>by trial and error</strong>（试误学习）, not by insight, that finding and opening the latch to get out meant it was <strong>rewarded by food</strong>.</p>
+
+  <div class="figure">
+    <img src="images/puzzle_box.png" alt="Figure 20.4 Thorndike used a puzzle box to train a cat to escape — pressing the lever opens the door">
+    <div class="figure-caption">Figure 20.4 — Thorndike used a puzzle box to train a cat to escape (textbook Figure 20.4).</div>
+  </div>
+
+  <div class="keyterm-box">
+    <p><strong>KEY TERM — the law of effect（效果律）</strong>, created by Thorndike: a behaviour followed by a <strong>nice consequence</strong> will lead to <strong>replication</strong> of that behaviour; a behaviour followed by an <strong>unpleasant consequence</strong> will lead to it being <strong>withdrawn</strong>. Moreover, according to Thorndike's law of effect, all things being equal, <strong>the more often a response is performed in a given situation, the more likely it is to be repeated</strong>.</p>
+  </div>
+
+  <h3>Burrhus Skinner — operant conditioning（操作条件反射）</h3>
+  <p>Burrhus Skinner renamed instrumental learning as <strong>operant conditioning</strong>. Skinner took a <strong>scientific approach</strong> and felt he could not study something that was <strong>not directly observable, such as the mind</strong>. He believed that to understand human behaviour, it was necessary to apply <strong>scientific principles and methods</strong>. He felt the description <strong>operant</strong> conditioning was more appropriate as with this form of learning you are <strong>'operating' on or being influenced by the environment</strong>. Skinner started his research in the 1930s, using lab experimentation with his <strong>'Skinner Box'</strong> — essentially a box that could <strong>dispense food and electric shocks</strong> to animals such as rats or pigeons.</p>
+
+  <div class="figure">
+    <img src="images/skinner_box.png" alt="Figure 20.5 A Skinner box — loudspeaker, lights, response lever, food dispenser and electrified grid">
+    <div class="figure-caption">Figure 20.5 — A Skinner box (textbook Figure 20.5): loudspeaker and lights as antecedent stimuli, a response lever, a food dispenser, and an electrified grid.</div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>这一节是一条「传承线」：<strong>Thorndike 的猫在迷箱里乱爬 → 偶然碰到开门闩 → 出去有吃的 → 下次更快开门</strong>——这叫 <strong>instrumental learning（工具性学习）</strong>，核心是 <strong>trial and error（试误）</strong>而不是「顿悟」。Thorndike 总结出 <strong>law of effect（效果律）</strong>：好后果→重复；坏后果→消失。<strong>Skinner</strong> 给它改名叫 <strong>operant conditioning</strong>——因为动物是在「操作（operate）」环境。Skinner 的立场也要会考：他只研究<strong>可直接观察的行为</strong>，拒绝研究「心智」——这是行为主义的科学化立场。斯金纳箱 = 一台自动投食+通电的「后果发生器」，让精确控制后果成为可能。</div>
+</section>
+
+<!-- ============ SECTION 8: ABC & FOUR CONSEQUENCES ============ -->
+<section class="section" id="s8">
+  <h2>8. The ABC Model &amp; the Four Consequences（ABC 模型与四种后果）</h2>
+
+  <div class="keyterm-box">
+    <p><strong>KEY TERM — the ABC model of operant conditioning</strong>: a way of explaining how operant conditioning works, showing how the consequence of a behaviour influences the replication of behaviour.</p>
+    <ul style="margin-bottom:0;">
+      <li><strong>Antecedent（前因）</strong>: the Skinner box would present a <strong>stimulus (lights/noise) that triggers a behaviour</strong>.</li>
+      <li><strong>Behaviour（行为）</strong>: a <strong>response made by the animal that can be observed (measured)</strong> as an outcome of the antecedent.</li>
+      <li><strong>Consequence（后果）</strong>: the <strong>reward/punishment following the behaviour</strong> (shock/food).</li>
+    </ul>
+  </div>
+
+  <h3>The four types of consequence（四种后果）</h3>
+  <p>The work of Thorndike and Skinner shows us that a stimulus–response association can be <strong>encouraged so the behaviour is repeated</strong>. This is known as <strong>reinforcement</strong>. It also shows us that a behaviour can be <strong>discouraged through punishment</strong>. Both reinforcement and punishment can be both positive and negative.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Positive reinforcement (R+)</h4>
+      <p>If a rat or pigeon is given <strong>something pleasurable like a food pellet</strong> following a desired behaviour, for example lever pressing, they are <strong>more likely to repeat this behaviour in future</strong>.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Negative reinforcement (R−)</h4>
+      <p><strong>The removal of something unpleasant</strong> in response to the desired behaviour. If a rat or pigeon is given an <strong>electric shock until a lever is pressed</strong>, they are more likely to press the lever again in future <strong>to avoid the unpleasant stimulus</strong>. This will also increase the likelihood of the behaviour being repeated.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Positive punishment (P+)</h4>
+      <p><strong>Adding an aversive stimulus</strong> that will reduce the showing of a behaviour. A child behaves badly at a party; the parents may <strong>scold the child</strong> — reducing the behaviour by presenting an unpleasant stimulus (scolding) when it occurs.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Negative punishment (P−)</h4>
+      <p><strong>The removal of a liked/desirable stimulus</strong> to reduce the appearance of a behaviour. The child at the party behaves badly and has their <strong>favourite toy taken away</strong> as a result. The removal of a desirable stimulus will reduce the frequency of the child's bad behaviour.</p>
+    </div>
+  </div>
+
+  <div class="note-box blue-box">
+    <h4>⚖️ Is punishment effective?（课本观点）</h4>
+    <p>Punishment is <strong>not considered an effective way of learning</strong> because it often only results in a <strong>temporary suppression</strong> of undesirable behaviour and <strong>only teaches you what you should not do</strong>. Reinforcement is a better form of learning as it <strong>teaches you what to do</strong>. Furthermore, punishment can be <strong>humiliating and create anxiety and fear</strong>.</p>
+  </div>
+
+  <div class="exam-tip"><strong>Exam tip（课本 EXAM TIP 原文）</strong>: It is important to notice how the words <strong>'positive' and 'negative'</strong> are used in this context. They have a particular meaning, used in the <strong>mathematical sense — of adding to or taking away</strong>. So punishment and reinforcement can be both negative and positive in terms of the stimulus provided (good things can be added or taken away). Working out which type is being used can be tricky. When answering an examination question on types of reinforcement and punishment: <strong>first work out whether the behaviour is likely to be repeated again; if it is repeated, then it has been reinforced, if it is not repeated it has been punished. Next, consider whether the individual has received something for their behaviour or had something taken away. If they have received something then it is positive; if they have had something taken away it is negative.</strong></div>
+
+  <div class="xp-block">
+    <h4>🎛️ Consequence classifier · 后果四分仪 <span class="xp-badge">亲身体验</span></h4>
+    <p class="xp-intro">课本 Activity 2 + Checkpoint Q2 的 11 个场景。两步判定法：<strong>①行为会重复吗？会 → reinforcement，不会 → punishment；②拿到了什么还是失去了什么？拿到 → positive，失去 → negative。</strong>小心 R− 和 P− 的陷阱——它们都涉及「不好的东西」，区别在于 R− 是<strong>移走坏东西来鼓励行为</strong>，P− 是<strong>拿走好东西来打击行为</strong>。</p>
+    <div id="cc-quiz"></div>
+    <div class="xp-controls"><button class="xp-btn" id="cc-final-btn" onclick="ccFinal()" style="display:none;">看总评</button></div>
+    <div id="cc-result" class="xp-result"></div>
+  </div>
+
+  <div class="wider-issue">
+    <h4>🔬 Wider Issues and Debates — practical issues in animal research（课本专栏）</h4>
+    <p>Psychologists like Pavlov and Skinner chose to study animals for a number of reasons. Undoubtedly, <strong>humans and animals share many biological characteristics</strong>, which allow researchers to draw conclusions from one species to another. Moreover, animals allow researchers a <strong>higher degree of experimental control and objectivity</strong> compared to human participants. Indeed, Pavlov's and Skinner's experiments, which were generalised to humans, have made a huge contribution to the understanding of human behaviour. Others, however, <strong>criticise animal research for its lack of generalisability</strong>, suggesting that <strong>extrapolating from one species to another is problematic</strong>. In biological terms, evolution has created very specific demands for each species, with its own set of unique behaviours. There are also <strong>significant brain differences</strong> between humans and non-human animals. Validity is also an issue given that animals are studied in an <strong>artificial laboratory setting</strong>. Researchers need to be aware of such issues when looking to extend the results garnered from animal studies to humans.</p>
+  </div>
+
+  <div class="wider-issue">
+    <h4>🐕 Thinking Like a Psychologist（课本专栏）</h4>
+    <p>Dog training is often based on the principles of operant conditioning. Using the different types of reinforcement and punishment, <strong>consider how you might go about training a dog for police search and rescue</strong>.</p>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>ABC 就是行为主义的「因果三段论」：<strong>前因（灯亮）→ 行为（按杠杆）→ 后果（食物/电击）</strong>。四种后果是本章<strong>最高频考点</strong>，判定口诀两步走：先看<strong>行为趋势</strong>（重复=reinforcement / 减少=punishment），再看<strong>刺激加减</strong>（获得=positive / 移除=negative）。特别注意：<strong>negative 不是「不好」</strong>，是数学意义上的「减去」——R−（移走电击→更爱按杠杆）和 P−（拿走玩具→捣乱减少）都涉及好/坏东西，但方向完全相反。punishment 的三连击也要会写：<strong>只是暂时压制、只教「不该做什么」没教「该做什么」、还会带来羞辱和焦虑恐惧</strong>——这是 evaluate 题的免费素材。</div>
+</section>
+<!-- ============ SECTION 9: REINFORCERS & TOKEN ECONOMY ============ -->
+<section class="section" id="s9">
+  <h2>9. Types of Reinforcer &amp; Token Economies（强化物类型与代币制）</h2>
+  <p class="section-subtitle">When reinforcing a behaviour it is important to use a stimulus that will encourage a behaviour to be repeated. In operant conditioning there are two types of reinforcer that increase the likelihood of a behaviour being learned.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Primary reinforcers（初级强化物）</h4>
+      <p>Occur <strong>naturally</strong> and satisfy <strong>basic human needs</strong> such as <strong>food, water and shelter</strong>. No learning needed — they work from birth.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Secondary reinforcers（次级强化物）</h4>
+      <p>On the other hand, only strengthen the behaviour <strong>because they are associated with a primary reinforcer</strong>: for example <strong>money</strong> can be used to buy food, accommodation, clothing and so on. Secondary reinforcers <strong>have no intrinsic value themselves</strong> but can be <strong>exchanged for a primary reinforcer</strong>.</p>
+    </div>
+  </div>
+
+  <div class="keyterm-box">
+    <p><strong>KEY TERM — a token economy（代币制）</strong>: a treatment method that provides <strong>secondary reinforcement for a desirable behaviour</strong> that can be <strong>saved up or exchanged for a primary reinforcer</strong>.</p>
+    <p style="margin-bottom:0;">A token economy system is based on the principles of operant conditioning. It has the aim of trying to <strong>encourage desirable behaviour through a system of reward</strong>. The tokens used in such a system are <strong>secondary reinforcers</strong> as it is these that will be <strong>exchanged for primary reinforcers</strong>. The tokens are <strong>only given in return for showing the desired behaviour</strong>. The more tokens saved, the better the reward; therefore through <strong>selective reinforcement, desirable behaviours</strong> are encouraged. Token economies have been <strong>implemented in institutions such as schools and prisons</strong>. For example, students may be allocated tokens for good behaviour, such as good attendance, punctuality, or high test scores. These can then be exchanged for items in the school shop or perhaps a school trip.</p>
+  </div>
+
+  <div class="figure">
+    <img src="images/star_chart.png" alt="Star chart — three children's weekly behaviour targets with star stickers and exchange rewards">
+    <div class="figure-caption">Star charts are secondary reinforcers used to encourage good effort at home: each child has weekly targets, earns stars, and exchanges them for a chosen reward when enough are saved — a token economy in family form.</div>
+  </div>
+
+  <div class="activity-box">
+    <h4>✍️ Activity 3 — Should we use token economies?（课本 Activity 3）</h4>
+    <p>One key question in society is <strong>whether it is appropriate to use token economies to promote desirable behaviour</strong>. Token economies are used in many different contexts, such as schools, prisons and clinical settings. For example, <strong>Paul and Lentz (1977)</strong> investigated the effectiveness of reinforcing appropriate behaviour with <strong>84 schizophrenic patients</strong>. Patients were given tokens as rewards when they behaved appropriately and these could be exchanged for luxury items. They found that the token economy <strong>reduced some schizophrenic symptoms</strong>, such as bizarre motor behaviours (for example rocking and blank staring), and was also successful in <strong>improving interpersonal skills and self-care skills</strong>. However, tokens were <strong>not effective in treating the cognitive symptoms</strong> of schizophrenia, such as <strong>delusions and hallucinations, nor hostile behaviour such as screaming and swearing</strong>. They found that <strong>11 per cent of token economy patients required drug treatment, compared to 100 per cent in their control group</strong>, and concluded that operant conditioning is an effective means of treating people with chronic schizophrenia.</p>
+    <p style="margin-bottom:0;">In pairs, discuss the key question: <strong>should we use token economies to promote desirable behaviour?</strong> Use concepts, theories and/or research studied in your psychology course.</p>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>两类强化物的区别一句话：<strong>primary 天生有效</strong>（食物/水/住所，满足基本需求）；<strong>secondary 靠「兑换」生效</strong>（钱本身没用，能换东西才有用）。<strong>Token economy = 行为主义的「积分商城」</strong>：代币是 secondary reinforcer，攒够了换 primary reinforcer；只在出现目标行为时发放——这就是 <strong>selective reinforcement（选择性强化）</strong>。star chart 就是最小的代币制。Paul &amp; Lentz (1977) 记住三个数字：<strong>84 名精神分裂症患者、11% vs 100% 需要药物治疗</strong>——证明代币制对行为症状有效（奇怪动作减少、自理与人际改善），但<strong>认知症状（妄想幻觉）无效</strong>——这是「适用边界」的完美素材。</div>
+</section>
+
+<!-- ============ SECTION 10: SCHEDULES OF REINFORCEMENT ============ -->
+<section class="section" id="s10">
+  <h2>10. Schedules of Reinforcement（强化程序）</h2>
+  <p class="section-subtitle">A schedule of reinforcement determines the time in which a behaviour will be reinforced.</p>
+
+  <p>In some situations a behaviour might be reinforced <strong>every time it is seen (continuous reinforcement 连续强化)</strong>; although more realistically in the context of day-to-day life, a behaviour might be reinforced <strong>some of the time (partial reinforcement 部分强化)</strong>. If Skinner had continuously reinforced the rats with food each time they pressed the lever, after a short while the rats would become <strong>sated</strong> and the motivation to press the lever would fall. <strong>Using a partial schedule of reinforcement Skinner found that the rats continued to press the lever.</strong> Interestingly, a behaviour that is acquired through partial reinforcement <strong>might take longer to learn, but is more resistant to extinction</strong>.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 470" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;">
+      <rect x="0" y="0" width="680" height="470" fill="#f8fafc" rx="12"/>
+      <text x="340" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#1e293b">The four partial schedules of reinforcement 四种部分强化程序</text>
+      <!-- 2x2 grid: axis labels -->
+      <text x="340" y="55" text-anchor="middle" font-size="11" fill="#64748b">Column = time（按时间） vs responses（按次数） · Row = fixed（固定） vs variable（变化）</text>
+      <!-- Quadrant 1: Fixed interval -->
+      <rect x="30" y="75" width="300" height="170" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8" rx="10"/>
+      <text x="180" y="100" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1e40af">1 · Fixed interval 固定时距</text>
+      <text x="180" y="122" text-anchor="middle" font-size="10.5" fill="#374151">Reward after a PRESET amount of time</text>
+      <text x="180" y="140" text-anchor="middle" font-size="10.5" fill="#374151">has passed（预设时间一到就奖励）</text>
+      <text x="180" y="162" text-anchor="middle" font-size="10" fill="#475569">Example: food pellet every ten seconds if the rat</text>
+      <text x="180" y="178" text-anchor="middle" font-size="10" fill="#475569">has pressed the lever at least once during that time</text>
+      <text x="180" y="200" text-anchor="middle" font-size="10" fill="#16a34a" font-weight="600">Learning takes longer; response rate is higher</text>
+      <text x="180" y="216" text-anchor="middle" font-size="10" fill="#16a34a" font-weight="600">towards the end of each interval（期末冲刺型）</text>
+      <text x="180" y="236" text-anchor="middle" font-size="10.5" fill="#64748b">Real life: 周薪 / 每周固定零花钱</text>
+      <!-- Quadrant 2: Variable interval -->
+      <rect x="350" y="75" width="300" height="170" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8" rx="10"/>
+      <text x="500" y="100" text-anchor="middle" font-size="13.5" font-weight="700" fill="#166534">2 · Variable interval 变化时距</text>
+      <text x="500" y="122" text-anchor="middle" font-size="10.5" fill="#374151">Reward after a SET amount of time has passed,</text>
+      <text x="500" y="140" text-anchor="middle" font-size="10.5" fill="#374151">THEN the interval CHANGES each time（时长每次变）</text>
+      <text x="500" y="162" text-anchor="middle" font-size="10" fill="#475569">Example: pellet after five seconds… then after ten</text>
+      <text x="500" y="178" text-anchor="middle" font-size="10" fill="#475569">seconds… each time the interval between pellets changes</text>
+      <text x="500" y="200" text-anchor="middle" font-size="10" fill="#16a34a" font-weight="600">Cannot predict when — steady responding</text>
+      <text x="500" y="216" text-anchor="middle" font-size="10" fill="#16a34a" font-weight="600">（不知道何时检查，只能一直保持）</text>
+      <text x="500" y="236" text-anchor="middle" font-size="10.5" fill="#64748b">Real life: 老师不定期抽查作业</text>
+      <!-- Quadrant 3: Fixed ratio -->
+      <rect x="30" y="265" width="300" height="170" fill="#fef7ed" stroke="#ea580c" stroke-width="1.8" rx="10"/>
+      <text x="180" y="290" text-anchor="middle" font-size="13.5" font-weight="700" fill="#c2410c">3 · Fixed ratio 固定比率</text>
+      <text x="180" y="312" text-anchor="middle" font-size="10.5" fill="#374151">Reward only after a FIXED NUMBER of responses</text>
+      <text x="180" y="330" text-anchor="middle" font-size="10.5" fill="#374151">（做满固定次数才奖励）</text>
+      <text x="180" y="352" text-anchor="middle" font-size="10" fill="#475569">Example: providing a food pellet to a rat after it</text>
+      <text x="180" y="368" text-anchor="middle" font-size="10" fill="#475569">presses the lever eight times</text>
+      <text x="180" y="390" text-anchor="middle" font-size="10" fill="#16a34a" font-weight="600">Countable goal — high effort near the target</text>
+      <text x="180" y="406" text-anchor="middle" font-size="10" fill="#16a34a" font-weight="600">（差两次就集满，干劲最足）</text>
+      <text x="180" y="426" text-anchor="middle" font-size="10.5" fill="#64748b">Real life: 买十送一 / 集满十个章换一杯</text>
+      <!-- Quadrant 4: Variable ratio -->
+      <rect x="350" y="265" width="300" height="170" fill="#fdf4ff" stroke="#c026d3" stroke-width="1.8" rx="10"/>
+      <text x="500" y="290" text-anchor="middle" font-size="13.5" font-weight="700" fill="#a21caf">4 · Variable ratio 变化比率 ★</text>
+      <text x="500" y="312" text-anchor="middle" font-size="10.5" fill="#374151">Reward after a set number of responses, but the</text>
+      <text x="500" y="330" text-anchor="middle" font-size="10.5" fill="#374151">NUMBER REQUIRED CHANGES each time（次数每次变）</text>
+      <text x="500" y="352" text-anchor="middle" font-size="10" fill="#475569">Example: pellet after three lever presses, then after five;</text>
+      <text x="500" y="368" text-anchor="middle" font-size="10" fill="#475569">the number of presses required to get food is different each time</text>
+      <text x="500" y="390" text-anchor="middle" font-size="10" fill="#c026d3" font-weight="600">Skinner argued this is GOOD for maintaining behaviour:</text>
+      <text x="500" y="406" text-anchor="middle" font-size="10" fill="#c026d3" font-weight="600">food is contingent on pressing, but the rat CANNOT anticipate</text>
+      <text x="500" y="422" text-anchor="middle" font-size="10" fill="#c026d3" font-weight="600">when food will arrive → extinction rate is LOW（最抗消退）</text>
+      <text x="500" y="442" text-anchor="middle" font-size="10.5" fill="#64748b">Real life: 老虎机 / 抽卡 / 刷社交媒体</text>
+    </svg>
+    <div class="figure-caption">The four partial reinforcement schedules (textbook §Schedules of Reinforcement). Fixed = predictable; variable = unpredictable. Skinner argued variable ratio is best for maintaining behaviour and most resistant to extinction.</div>
+  </div>
+
+  <div class="activity-box">
+    <h4>✍️ Activity 4 — Schedules all around us（课本 Activity 4）</h4>
+    <p style="margin-bottom:0;">Schedules of reinforcement are all around us: getting a treat each week we do household chores, being paid monthly by an employer, receiving a free drink if we collect a certain number of points at a café. <strong>In pairs, think of other ways in which our behaviour is reinforced using continuous and partial schedules of reinforcement.</strong></p>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>先记一个总原则：<strong>partial（部分）强化虽学得慢，但更抗消退</strong>——因为「不是每次都有」反而让动物更难判断强化已经停止。四象限记忆法：横轴看「按什么给」（时间= interval / 次数= ratio），竖轴看「固不固定」（fixed 固定 / variable 变化）。<strong>Fixed interval</strong>=期末冲刺型（时间快到才猛干）；<strong>Variable interval</strong>=随时待命型（不知何时被查，只能一直保持）；<strong>Fixed ratio</strong>=集章型（差一点就集满时最卖力）；<strong>Variable ratio</strong>=赌场型（永远不知道下一次会不会中）——<strong>最抗消退</strong>，所以老虎机和抽卡游戏让人停不下来。考题若问 <em>which schedule is most resistant to extinction and why</em>，答 variable ratio + 「行为仍会导致奖励但无法预测何时」。</div>
+</section>
+
+<!-- ============ SECTION 11: EVALUATING OC ============ -->
+<section class="section" id="s11">
+  <h2>11. Evaluating Operant Conditioning（评价操作条件反射）</h2>
+  <p class="section-subtitle">Read like a critic — paired evaluation cards, textbook order.</p>
+
+  <div class="methods-table">
+    <table style="width:100%;border-collapse:collapse;">
+      <thead><tr><th style="width:24%;">Evaluation point</th><th>The evidence</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Strength: scientific, controlled evidence</strong></td>
+          <td>Operant conditioning as an explanation of how we acquire behaviour is <strong>supported by highly controlled animal experiments</strong>. The rats and pigeons Skinner tested were observed in <strong>isolated boxes and cages to eliminate any other variables</strong> that could affect their behaviour other than the stimulus (food) being tested. This ensured that a <strong>cause-and-effect relationship could be made</strong> between the reinforcement and punishment given and the resulting behaviour. <strong>Photographs and videos were taken</strong> of the animals and their behaviours were <strong>precisely recorded by other observers</strong>. As only observable behaviour is measured, it can be argued that this is an <strong>objective measure</strong>. Moreover, such experiments can be <strong>replicated, allowing for reliability to be assessed</strong>.</td>
+          <td>Objective, replicable, cause-and-effect — the full scientific package. Lead your essay with this strength.</td>
+        </tr>
+        <tr>
+          <td><strong>Weakness: ecological validity &amp; species jump</strong></td>
+          <td>However, this controlled environment is <strong>not a natural way to observe behaviour</strong>. The <strong>contrived and artificial nature</strong> of such experiments questions the <strong>ecological validity of the findings</strong> and the extent they can be applied to real-life settings. However, we should also <strong>be cautious when drawing conclusions from animal research of this nature</strong>. While animals may use <strong>trial and error to work their way out of a puzzle box, humans are more likely to problem-solve</strong> to escape.</td>
+          <td>The mirror-image limitation: what happens in a box may stay in the box — and a rat guessing is not a human reasoning.</td>
+        </tr>
+        <tr>
+          <td><strong>Strength: real-life applications (token economies)</strong></td>
+          <td>Operant conditioning is used in <strong>many everyday contexts, so has real-life applications</strong>. The token economy has been used in <strong>psychiatry, clinical psychology and education</strong> using patterns of reward to shape behaviour. Some token economies may <strong>take tokens away as punishment</strong> for undesirable behaviour, such as aggression. <strong>Ayllon and Milan (1979)</strong> reviewed a number of such programmes and found that they were <strong>successful for promoting certain behaviours</strong>, for example keeping rules and control over aggression. However, research suggests that the benefits of token economies are <strong>relatively short-lived and tend not to generalise beyond the institution itself</strong>. They are also viewed as a <strong>violation of human rights</strong> because privileges are withheld until enough tokens are earned. This raises a question over the <strong>rehabilitative value and ethics of token economies</strong>.</td>
+          <td>Applications exist and work — but with a shelf life, an institution boundary, and an ethics question. Write both halves.</td>
+        </tr>
+        <tr>
+          <td><strong>Strength: explains a wide assortment of behaviours</strong></td>
+          <td>A major strength of operant conditioning is that it <strong>can explain a wide assortment of behaviours, from addiction to language acquisition</strong>. Skinner would argue that a child's correct utterances are positively reinforced: a child says <strong>'juice'</strong> and the parent <strong>smiles and gives the child some juice</strong> as a result. The child will find the outcome of saying this word <strong>rewarding</strong>, and this in turn will <strong>aid the child's language development</strong>.</td>
+          <td>Scope advantage over classical conditioning: OC handles voluntary, goal-directed behaviour — not just reflexes.</td>
+        </tr>
+        <tr>
+          <td><strong>Wider issue: social control</strong></td>
+          <td>Operant conditioning <strong>can be used to modify undesirable behaviour</strong>. Behaviour modification aims to extinguish undesirable behaviour (by removing the reinforcer) and replace the original behaviour with a desirable behaviour and reinforce it. Behaviour modification has been used in a variety of contexts — in <strong>parenting</strong>, for example, a parent might praise a child for tidying their room or sharing their toys, or might reduce television time for fighting with siblings. Using knowledge of operant conditioning can be viewed as <strong>helping support skill-building and improve well-being</strong>; however it could also be viewed as a <strong>form of social control used to manipulate desired behaviour</strong>. However, rewards and sanctions are a part of everyday life, and many would argue they are <strong>necessary for society to function</strong>. Skinner described a <strong>utopian society where citizens' behaviour was managed by operant conditioning in his fictional publication <em>Walden Two</em></strong>. However, behavioural engineering may be used to <strong>restrict individual autonomy and freedom of choice, which could violate civil liberty</strong>.</td>
+          <td>Same double edge as CC's aversion therapy: who decides which behaviour to reinforce? <em>Walden Two</em> is the named example to quote.</td>
+        </tr>
+        <tr>
+          <td><strong>Wider issue: reductionism</strong></td>
+          <td>Learning theorists such as Skinner are happy to <strong>explain all behaviour as an outcome of previous learning</strong>. We, like other learning theorists, would argue that we are organisms that behave the way we do due to <strong>the sum of our experiences</strong>. This is known as <strong>reductionism（还原论）</strong>. However, this approach <strong>ignores other influences on our behaviour, such as innate/biological factors, including genetic differences and instincts</strong>. It could be said that Skinner's observations <strong>only account for observable behaviours and do not account for any unobservable behaviours</strong> — for example <strong>mental and emotional states such as anger or happiness — making his explanations limited and oversimplified</strong>.</td>
+          <td>The classic Issues &amp; Debates paragraph: reducing rich behaviour to stimulus–response bonds throws away cognition, emotion and biology.</td>
+        </tr>
+        <tr>
+          <td><strong>Weakness: ethics of animal research</strong></td>
+          <td>The use of laboratory experiments with animals in classical and operant conditioning <strong>raises a number of ethical issues</strong>. It could be argued that Skinner's research, for instance, <strong>caused unnecessary suffering</strong> to the rats and pigeons in his experiments because they needed to be <strong>starved to around 75 per cent of their normal weight</strong> to be sufficiently motivated to perform. This needs to be <strong>weighed against the benefits of the research</strong> and whether or not the ends justify the means. Others may argue that the research was justified as it <strong>furthered our understanding of the behaviour</strong>.</td>
+          <td>The starvation detail (75% body weight) is the specific evidence — pair it with a cost–benefit judgement for full marks.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>评价 OC 同样是「强打辩论」套餐：<strong>强①</strong> 科学方法（隔离箱控制变量→因果、录像+多观察员→客观、可重复→信度）；<strong>强②</strong> 应用广（token economy 用于精神医学/临床/教育；Ayllon &amp; Milan 1979 综述有效——但注意三连但书：<strong>效果短暂、不出机构、有侵犯人权之嫌</strong>）；<strong>强③</strong> 解释面宽（从成瘾到语言习得——「juice」例子：孩子说 juice 妈妈微笑递 juice，正确发音被正强化）；<strong>弱①</strong> 生态效度（箱子里不自然）+ 物种跳跃（老鼠试误 vs 人类解决问题）；<strong>弱②</strong> 动物伦理（饿到标准体重的 75% 才肯配合实验——写出这个数字）；<strong>辩论①</strong> social control（行为矫正 vs 操纵；Skinner 的乌托邦小说 <em>Walden Two</em> 是点名素材）；<strong>辩论②</strong> reductionism（一切归因于经历的总和，忽略基因/本能/愤怒快乐等内心状态——「limited and oversimplified」是课本原话）。</div>
+</section>
+<!-- ============ SECTION 12: SKINNER 1948 ============ -->
+<section class="section" id="s12">
+  <h2>12. Key Research — Skinner (1948) 'Superstition in the Pigeon'（必修研究：鸽子迷信）</h2>
+  <p class="section-subtitle">Spec 4.1.2 explicitly requires researching Skinner (1948) Superstition in the pigeon — learn this study as a mini classic: AIM · METHOD · RESULTS · CONCLUSION + 3 evaluation angles.</p>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-badge expt">Lab experiment</span>
+      <span class="study-badge classic">Spec-required</span>
+      <h4 style="margin:0;">Skinner (1948) — Superstition in the pigeon</h4>
+    </div>
+    <div class="study-card-body">
+      <p><strong>Aim</strong>: Skinner devised a series of experiments using pigeons <strong>to test what would happen if the pigeon was reinforced with food without any desired behaviour being required</strong>.</p>
+      <p><strong>Method</strong>: Placed in a cage for a few minutes a day, the hungry pigeons were fed via a <strong>food hopper which appeared for five seconds</strong>. <strong>Food was presented at regular intervals regardless of how the bird behaved.</strong></p>
+      <p><strong>Results</strong>: In <strong>six out of eight pigeons</strong>, clearly defined behaviour developed:</p>
+      <ul>
+        <li>One pigeon began <strong>turning counterclockwise</strong>（逆时针转圈）</li>
+        <li>Another <strong>thrust its head towards the corner of the cage</strong></li>
+        <li>A third pigeon <strong>repeatedly tossed its head</strong>, and two pigeons began moving their head and body in a <strong>pendulum motion</strong>（钟摆式摆动）</li>
+        <li>The final pigeon developed <strong>brushing movements of the head towards the floor</strong></li>
+      </ul>
+      <p><strong>Conclusion</strong>: Skinner explained these behaviours as being a result of <strong>accidental reinforcement</strong>: the food reinforced <strong>whatever behaviour the bird displayed prior to food appearing</strong>. The bird behaves <strong>as if there is a relationship between its behaviour and the food appearing — even though there was not</strong>. This effect is more likely to occur if the food is presented in short intervals, such as <strong>every 15 seconds</strong>, because the bird can only perform a narrow range of behaviours within that time. However, once a behaviour was established, the intervals between the food appearing could be <strong>lengthened to up to two minutes</strong>.</p>
+      <p style="margin-bottom:0;"><strong>Everyday parallel</strong>: These behaviours are similar to those which we develop in everyday life. If you have a <strong>mascot you take to a sporting event</strong>, it may be because you had the mascot when your team won, and it acts as reinforcement to take it again. Skinner paralleled the nature of this <strong>incidental learning with superstitious behaviour we can all develop</strong>.</p>
+    </div>
+  </div>
+
+  <h3>Evaluation of Skinner (1948)（对鸽子迷信研究的评价）</h3>
+  <div class="methods-table">
+    <table style="width:100%;border-collapse:collapse;">
+      <thead><tr><th style="width:24%;">Evaluation point</th><th>The evidence</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Weakness: sample &amp; species</strong></td>
+          <td>Criticisms of Skinner's research include that he used a <strong>small number of pigeons</strong> to conduct his experiment, with <strong>six of eight pigeons</strong> demonstrating superstitious behaviour. Furthermore, pigeons are <strong>unlike humans</strong> because humans are <strong>more likely to use rational thinking</strong> when choosing to behave in response to reinforcement. Therefore, it may be <strong>unwise to generalise these findings</strong> to explain how humans develop superstitious behaviours.</td>
+          <td>Two-step criticism: n = 8 is tiny, and pigeons don't second-guess their luck the way humans can.</td>
+        </tr>
+        <tr>
+          <td><strong>Strength: control &amp; reliability</strong></td>
+          <td>The research was <strong>highly controlled and followed a standardised procedure with specific timings</strong>, such as the food appearing in specific intervals (five seconds, 15 seconds and two-minute intervals). In this way the behaviour of pigeons could be <strong>directly measured in different conditions</strong>, and we can be sure that the presentation of the food related directly to their behaviour. Furthermore, <strong>two observers had perfect agreement when counting the number and types of behaviours</strong> shown by the pigeons, which gives <strong>inter-rater reliability</strong>.</td>
+          <td>Standardised timings + two independent observers in perfect agreement = objective, replicable measurement.</td>
+        </tr>
+        <tr>
+          <td><strong>Weakness: ethics</strong></td>
+          <td>There are also ethical issues with this research. Pigeons are <strong>living vertebrate animals which are protected by legislation</strong> in many countries which regulates possible harm caused when conducting research using animals. The pigeons were <strong>starved to 75 per cent of their healthy body weight</strong>, which may be deemed unethical. However, Skinner <strong>minimised the number of pigeons used to just eight to ensure any harm was limited</strong>.</td>
+          <td>The starvation is the ethical flashpoint — but note the mitigation: minimum number of animals used.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>这个研究妙在「<strong>什么都不要求，迷信自己长出来</strong>」：食物按固定间隔自动掉落，和鸽子的行为毫无关系——但 8 只里有 6 只发展出了固定「仪式」（转圈、顶墙角、甩头、钟摆、刷地）。原理是 <strong>accidental reinforcement（偶然强化）</strong>：掉食物前一瞬间你碰巧在做什么，那个动作就被强化了。人mirror：比赛带的吉祥物、考好运穿的衣服——赢了那次你正巧带着它，它就被「强化」进你的仪式库。考试三件套：<strong>样本与泛化</strong>（8 只太少 + 鸽子不会像人类那样理性思考，不宜泛化）；<strong>控制与信度</strong>（标准化时间程序 5s/15s/2min + 两名观察员完美一致 = inter-rater reliability）；<strong>伦理</strong>（饿到健康体重 75%——但减到只用 8 只以最小化伤害）。这和 §11 的 OC 评价互相呼应，数位要记牢：<strong>6/8、15 秒、2 分钟、75%</strong>。</div>
+</section>
+
+<!-- ============ SECTION 13: SOCIAL LEARNING THEORY ============ -->
+<section class="section" id="s13">
+  <h2>13. Social Learning Theory — Learning from Others（社会学习理论：看别人学）</h2>
+  <p class="section-subtitle">Social learning theory differs from the principles of learning already examined earlier in this topic. For social learning theory, behaviour is explained not by simple association (classical) nor by consequence (operant), but by observation.</p>
+
+  <div class="bridge-box">
+    <h4>🌉 Why we need a third theory（为什么需要第三种理论）</h4>
+    <p style="margin-bottom:0;">CC explains reflexes; OC explains consequences. But think of <strong>learning to drive, to speak, to dance</strong> — you did not discover these by trial and error, and they are not reflexes. You <strong>watched someone</strong>. Social learning theory (largely attributed to the work of <strong>Albert Bandura</strong>) proposes that humans and animals <strong>learn by observing the others around them and subsequently imitating or copying the behaviour</strong>. This means that social learning theory <strong>does not ignore the role of cognition</strong> like classical and operant conditioning theories do — you must <strong>pay attention and remember</strong> what someone does in order to copy it.</p>
+  </div>
+
+  <div class="keyterm-box">
+    <p><strong>KEY TERMS</strong>:</p>
+    <ul style="margin-bottom:0;">
+      <li><strong>Models / modelling（榜样/示范）</strong>: Individuals that are observed are called models. Models <strong>demonstrate a behaviour in the presence of another person</strong>, which is known as modelling.</li>
+      <li><strong>Role models（角色榜样）</strong>: significant individuals in a person's life. <strong>You are more likely to imitate role models such as parents or teachers.</strong> Children are surrounded by many role models — parents, peers, teachers and television characters. On a daily basis, these models provide examples of behaviour for children to observe and imitate.</li>
+    </ul>
+  </div>
+
+  <h3>When is imitation more likely?（什么时候更愿意模仿）</h3>
+  <p>Behaviour is <strong>more likely to be imitated if the observer can identify with the role model</strong> and the observed behaviour is reinforced in some way. <strong>Effective role models are typically the same sex as the observer and/or can be admired for having status/power.</strong> Similarly, an observer is more likely to reproduce the model's behaviour if the <strong>consequences are rewarding rather than punishing</strong> for the role model.</p>
+
+  <div class="keyterm-box">
+    <p><strong>KEY TERM — vicarious reinforcement（替代强化）</strong>: learning through the <strong>consequence of another person's behaviour</strong> — essentially, <strong>learning from the successes or mistakes of others</strong>.</p>
+    <p style="margin-bottom:0;"><strong>课本例子</strong>: If a younger sibling is watching their older sibling eat their lunch and they get <strong>praised for not making a mess</strong>, they are more likely to copy this behaviour. They are <strong>unlikely to copy</strong> a behaviour that has previously been punished — for example an older sibling eating their lunch <strong>with their mouth open</strong>.</p>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>SLT 的分水岭在于<strong>认知进来了</strong>：CC/OC 里的学习者是「被动接收」，SLT 的学习者会<strong>注意→记住→评估</strong>再决定抄不抄。两个 model 别混：<strong>model</strong> 是「被观察示范的人」（泛指），<strong>role model</strong> 是「你认同并愿意模仿的重要他人」（父母/老师/偶像）。模仿的三种加分条件：<strong>同性别、有地位/权力、被 admire</strong>。<strong>Vicarious reinforcement 替代强化</strong>是高频考点——注意严格定义：<strong>奖励没有直接给你</strong>，你只是看到 role model 因某行为被奖励（哥哥吃饭干净被夸→弟弟也学）；看到被罚就不抄（哥哥张嘴嚼被骂→弟弟不学）。一句话：<strong>learn from the successes or mistakes of others</strong>。</div>
+</section>
+
+<!-- ============ SECTION 14: FOUR STAGES ============ -->
+<section class="section" id="s14">
+  <h2>14. The Four Stages of Social Learning（社会学习四阶段）</h2>
+  <p class="section-subtitle">Bandura theorised that social learning would only occur if the following four cognitive processes occurred: attention, retention, reproduction and motivation.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;">
+      <rect x="0" y="0" width="680" height="300" fill="#f8fafc" rx="12"/>
+      <text x="340" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#1e293b">Bandura's four cognitive processes 社会学习四阶段</text>
+      <rect x="25" y="60" width="145" height="150" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8" rx="10"/>
+      <text x="97" y="86" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1e40af">1 · Attention</text>
+      <text x="97" y="104" text-anchor="middle" font-size="10.5" fill="#374151">注意</text>
+      <text x="97" y="126" text-anchor="middle" font-size="9.5" fill="#475569">must be paid to the role</text>
+      <text x="97" y="141" text-anchor="middle" font-size="9.5" fill="#475569">model, or no learning occurs.</text>
+      <text x="97" y="162" text-anchor="middle" font-size="9.5" fill="#475569">Depends on distinctiveness of</text>
+      <text x="97" y="177" text-anchor="middle" font-size="9.5" fill="#475569">behaviour, arousal, same-sex models</text>
+      <path d="M 170 135 L 195 135" stroke="#2563eb" stroke-width="2.2" marker-end="url(#arrS1)"/>
+      <rect x="200" y="60" width="145" height="150" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8" rx="10"/>
+      <text x="272" y="86" text-anchor="middle" font-size="13.5" font-weight="700" fill="#166534">2 · Retention</text>
+      <text x="272" y="104" text-anchor="middle" font-size="10.5" fill="#374151">保持</text>
+      <text x="272" y="126" text-anchor="middle" font-size="9.5" fill="#475569">store what you attended to.</text>
+      <text x="272" y="147" text-anchor="middle" font-size="9.5" fill="#475569">Humans store observed behaviours</text>
+      <text x="272" y="162" text-anchor="middle" font-size="9.5" fill="#475569">and recall them later reproducing</text>
+      <text x="272" y="177" text-anchor="middle" font-size="9.5" fill="#475569">the behaviour — relies on MEMORY</text>
+      <path d="M 345 135 L 370 135" stroke="#16a34a" stroke-width="2.2" marker-end="url(#arrS2)"/>
+      <rect x="375" y="60" width="145" height="150" fill="#fef7ed" stroke="#ea580c" stroke-width="1.8" rx="10"/>
+      <text x="447" y="86" text-anchor="middle" font-size="13.5" font-weight="700" fill="#c2410c">3 · Reproduction</text>
+      <text x="447" y="104" text-anchor="middle" font-size="10.5" fill="#374151">再现</text>
+      <text x="447" y="126" text-anchor="middle" font-size="9.5" fill="#475569">imitation of the modelled</text>
+      <text x="447" y="141" text-anchor="middle" font-size="9.5" fill="#475569">behaviour — the reproduction</text>
+      <text x="447" y="162" text-anchor="middle" font-size="9.5" fill="#475569">of what has been observed.</text>
+      <text x="447" y="177" text-anchor="middle" font-size="9.5" fill="#475569">Physical capabilities matter</text>
+      <rect x="375" y="196" width="145" height="14" fill="none"/>
+      <path d="M 520 135 L 545 135" stroke="#ea580c" stroke-width="2.2" marker-end="url(#arrS3)"/>
+      <rect x="550" y="60" width="110" height="150" fill="#fdf4ff" stroke="#c026d3" stroke-width="1.8" rx="10"/>
+      <text x="605" y="86" text-anchor="middle" font-size="13.5" font-weight="700" fill="#a21caf">4 · Motivation</text>
+      <text x="605" y="104" text-anchor="middle" font-size="10.5" fill="#374151">动机</text>
+      <text x="605" y="126" text-anchor="middle" font-size="9.5" fill="#475569">the 'incentive'.</text>
+      <text x="605" y="147" text-anchor="middle" font-size="9.5" fill="#475569">Intrinsic / extrinsic /</text>
+      <text x="605" y="162" text-anchor="middle" font-size="9.5" fill="#475569">vicarious</text>
+      <text x="340" y="245" text-anchor="middle" font-size="11" fill="#334155" font-weight="600">If any ONE process fails, social learning does not occur（四关全过才会模仿）</text>
+      <text x="340" y="268" text-anchor="middle" font-size="10" fill="#64748b">All four are COGNITIVE processes — thinking, remembering, evaluating — which is what separates SLT from CC/OC</text>
+      <defs>
+        <marker id="arrS1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#2563eb"/></marker>
+        <marker id="arrS2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#16a34a"/></marker>
+        <marker id="arrS3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#ea580c"/></marker>
+      </defs>
+    </svg>
+    <div class="figure-caption">The four processes (ARRM). Attention and retention are about input (watching and remembering); reproduction and motivation are about output (performing and wanting to).</div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Attention（注意）</h4>
+      <p>Bandura argued that one of the required conditions for effective learning was 'attention'. This illustrates a <strong>clear cognitive element</strong> in his theory: one can copy or not. Attention must be paid to the role model <strong>or else learning will not take place</strong>. Attention could depend on many factors, such as the <strong>distinctiveness of the behaviour</strong> being modelled and factors <strong>within the person observing a model, such as their level of arousal</strong>. Bandura proposed that a child is <strong>more likely to attend to role models who are similar to themselves</strong> and so are more likely to attend to the behaviour of <strong>people of the same sex</strong>.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Retention（保持）</h4>
+      <p>Having focused on the modelled behaviour, the individual must then <strong>retain or store what they have attended to</strong>. Humans store the behaviours they observe and are then able to <strong>recall these later, reproducing the behaviour</strong>. This is a <strong>cognitive process which relies upon memory</strong>.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Reproduction（再现）</h4>
+      <p>Reproduction involves <strong>imitation</strong>（模仿——copying a behaviour that has been observed and remembered）of the modelled behaviour. Here Bandura made it clear that factors such as the <strong>physical capabilities of the individual can affect whether the behaviour can be imitated</strong>. If the behaviour is <strong>beyond our capabilities, then it cannot be reproduced</strong>.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Motivation（动机）</h4>
+      <p>The final process refers to the <strong>'incentive'</strong>. If a reward is offered, we are more likely to reproduce the behaviour. <strong>Intrinsic motivation</strong>（内在动机）refers to doing an activity where there might be <strong>inherent satisfaction</strong> rather than some physical outcome — a young boy imitates his dad's behaviour and 'feels good' about his copied behaviour because he feels it <strong>makes him more like his dad</strong>. <strong>Extrinsic motivation</strong>（外在动机）refers to a motivator that is not so much a feeling but rather <strong>something tangible with a separable outcome</strong>, for example a sportsperson receiving a trophy or medal for their performance. <strong>Vicarious reinforcement is a form of motivation</strong> that does not directly reward the individual: instead it is <strong>when the role model is seen to receive a reward</strong> — a child witnessing another child showing good behaviour and receiving praise. Notice here the observing child <strong>does not get a reward themselves</strong> — the reward is vicarious: <em>'If I act like that, I could get a reward too!'</em></p>
+    </div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>四阶段口诀 <strong>ARRM</strong>（Attention 注意 → Retention 保持 → Reproduction 再现 → Motivation 动机），前两关是「输入」（看见了吗？记住了吗？），后两关是「输出」（做得到吗？想不想做？）。<strong>任何一关掉链子，学习就不会发生</strong>——这是 describe 题的四个采分点。三种动机要分清：<strong>intrinsic</strong> = 活动本身爽（学爸爸的样子感觉「更像个大人」）；<strong>extrinsic</strong> = 有形奖品（奖杯奖牌）；<strong>vicarious</strong> = 看别人拿奖励（自己没拿，但心想「我那样做也能拿到」）。易错提醒：<strong>vicarious reinforcement 出现在 motivation 阶段</strong>——它是一种动机来源，不是一个独立阶段。</div>
+</section>
+
+<!-- ============ SECTION 15: EVALUATING SLT ============ -->
+<section class="section" id="s15">
+  <h2>15. Evaluating Social Learning Theory（评价社会学习理论）</h2>
+  <p class="section-subtitle">Read like a critic — evidence cards first, then the wider issues.</p>
+
+  <div class="methods-table">
+    <table style="width:100%;border-collapse:collapse;">
+      <thead><tr><th style="width:24%;">Evaluation point</th><th>The evidence</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Strength: scientific methods… but artificial</strong></td>
+          <td>As with other learning theories, a strength of social learning is its <strong>commitment to scientific research methods</strong>. The theory is based on <strong>laboratory-based research methods that ensure reliability and allow inferences about cause and effect</strong> to be made. This can <strong>also be viewed as a weakness</strong>, as the studies have taken place in <strong>rather artificial settings, bringing into question the generalisability and ecological validity</strong> of the research.</td>
+          <td>One card, two faces: lab rigour buys cause-and-effect and costs realism.</td>
+        </tr>
+        <tr>
+          <td><strong>Strength: recognises cognition &amp; individual differences</strong></td>
+          <td><strong>Unlike classical and operant conditioning, social learning theory does allow for individual differences and acknowledges that cognitive and motivational factors can influence behaviour</strong>, as reflected in the four processes suggested by Bandura — through attention, retention, reproduction and motivation.</td>
+          <td>SLT's structural advantage over CC/OC in this topic: the learner is a thinker, not a reflex machine.</td>
+        </tr>
+        <tr>
+          <td><strong>Strength: contribution to psychology &amp; therapies</strong></td>
+          <td>The theory has made a significant contribution to the <strong>psychology of aggression and gender development</strong>, and has formed the basis for a range of <strong>treatments such as phobias</strong>. <strong>Modelling-based therapies</strong> can be used with children or adults who may find behaviour therapies using direct conditioning difficult. Typically, modelling therapies involve <strong>learning through the observation and imitation of others</strong>. Having a positive role model can give individuals something to aim for, allowing them to <strong>change their behaviour in line with their role model</strong> — the role model may be the therapist or someone the individual already knows.</td>
+          <td>Application evidence: the theory powers real treatments (modelling therapy), especially for those who cannot handle direct conditioning.</td>
+        </tr>
+        <tr>
+          <td><strong>Strength: experimental support (the Bandura series)</strong></td>
+          <td>There is significant evidence for social learning theory from a series of experiments conducted on children attending <strong>Stanford University nursery</strong>. <strong>Bandura, Dorothea Ross and Sheila Ross (1961)</strong> found that children would <strong>imitate aggressive behaviour displayed by a same-sex adult role model</strong>. A further experiment showed that children would copy a role model <strong>modelling aggressive behaviour on film, and even a cartoon version</strong> (Bandura, Ross and Ross, 1963). A third experiment found that children were <strong>less likely to copy an aggressive role model who was punished; however, this was counteracted by the offer of a reward</strong> for imitating the role model (Bandura, 1965). These studies offer <strong>strong experimental support for social learning theory of aggression</strong>.</td>
+          <td>Three studies, one line of evidence: live model → film/cartoon → vicarious punishment and reward effects. Numbers to quote: 1961 / 1963 / 1965.</td>
+        </tr>
+        <tr>
+          <td><strong>Strength: real-life application (media regulation)</strong></td>
+          <td>Social learning theory has <strong>real-life application</strong>. During the 1960s, television was becoming commonplace in households and there was concern that children would be exposed to violent and age-inappropriate content. Social learning theory and Bandura's research informs us that <strong>children may learn from watching behaviour on television, so they should be protected with censorship regulations, such as age certification and pin-protected viewing</strong>.</td>
+          <td>The theory shaped broadcasting policy — age ratings and parental controls rest partly on SLT logic.</td>
+        </tr>
+        <tr>
+          <td><strong>Biological support: Olsson and Phelps (2007)</strong></td>
+          <td>There is also <strong>biological evidence for observational learning</strong>. Andreas Olsson and Elizabeth Phelps (2007) showed <strong>11 participants</strong> a short film clip of someone receiving a <strong>mild electric shock when a coloured square appeared</strong>. Using an <strong>fMRI brain scan</strong>, they showed that the <strong>amygdala was more active when witnessing the film and when they were shown the same coloured square and expecting to receive the same shock</strong>. This gives biological evidence that participants had <strong>learned to fear the shock that they had witnessed</strong>.</td>
+          <td>Watched fear becomes real, measurable fear — the amygdala data shows observational learning has a physical trace. Numbers: 11 participants, fMRI, amygdala.</td>
+        </tr>
+        <tr>
+          <td><strong>Animal evidence: Mineka &amp; Cook (1988); Nicol &amp; Pope (1999)</strong></td>
+          <td>There was evidence for social learning among animals. <strong>Susan Mineka and Michael Cook (1988)</strong> observed <strong>rhesus monkeys raised in captivity</strong>, who originally showed <strong>no fear of snakes</strong> but did show <strong>alert reactions to wild monkeys in the presence of snakes</strong>. After watching the modelling of anxious reactions of wild monkeys <strong>in the presence of snakes</strong>, the captive monkeys <strong>also showed fear of snakes</strong>. Furthermore, <strong>Christine Nicol and Stuart Pope (1999)</strong> taught <strong>dominant and subordinate chickens in a flock to peck at a key for food</strong>. The chickens were then released back into their flock. They found that the chickens were <strong>more likely to copy the key-pecking from a dominant member of the flock than a subordinate chicken</strong>. This offers support for the <strong>imitation of role models</strong>.</td>
+          <td>Observational learning crosses species: fear learned by watching (monkeys), and status determines whose behaviour gets copied (chickens).</td>
+        </tr>
+        <tr>
+          <td><strong>Supporting correlation: Prot et al. (2014) — and the challenge: Charlton (2000)</strong></td>
+          <td>In a <strong>large-scale study of media use across seven different countries</strong>, Sara Prot et al. (2014) found a <strong>positive correlation between prosocial media（亲社会媒体——media that encourages helpful or appropriate behaviour）use and prosocial behaviour</strong>. It could be suggested that people who engage with prosocial media are more likely to imitate prosocial behaviour. However, <strong>Tony Charlton (2000)</strong> conducted a <strong>natural experiment to observe the behaviour of children on the remote island of Saint Helena before and after the introduction of television</strong>. He found that there was <strong>no change in the children's behaviour, which questions the credibility of social learning theory</strong> because the children did not imitate role models on television.</td>
+          <td>The supporting–challenging pair: Prot's correlation fits SLT; Charlton's island result breaks it. Hold both for a balanced evaluation. (Prot et al. 2014 is discussed further as a contemporary study.)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>SLT 的评价弹药分三层。<strong>方法层</strong>：实验室科学（信度+因果）vs 人工场景（生态效度低）——一体两面一张卡写完；<strong>独有优势</strong>：只有 SLT 承认认知和个体差异（四阶段就是证据）。<strong>证据层</strong>（背年份数组 <strong>1961/1963/1965</strong>）：同性别真人榜样→攻击模仿；电影甚至卡通版也会被模仿（1963）；榜样被罚就不抄、但给奖励就抄（1965）。加分证据：<strong>Olsson &amp; Phelps (2007)</strong>——11 名被试看别人被电击，fMRI 显示<strong>杏仁核激活</strong>（观察习得的恐惧有生理痕迹）；动物证据：<strong>Mineka &amp; Cook (1988)</strong> 笼养猴看野猴怕蛇后也怕蛇、<strong>Nicol &amp; Pope (1999)</strong> 鸡更愿意模仿<strong>优势个体</strong>啄键（支持 role model 地位效应）。<strong>挑战证据</strong>：<strong>Charlton (2000)</strong> 圣赫勒拿岛装电视前后儿童行为无变化——直接质疑 SLT；与之相对 <strong>Prot et al. (2014)</strong> 七国大样本发现亲社会媒体与亲社会行为正相关。<strong>考试策略：把 Prot 和 Charlton 配对写</strong>，一正一反，balance 满分。</div>
+</section>
+<!-- ============ SECTION 16: CHECKPOINT & EXAM PRACTICE ============ -->
+<section class="section" id="s16">
+  <h2>16. Checkpoint &amp; Exam Practice（自测与考试练习）</h2>
+
+  <h3>Checkpoint — the textbook quick-fire（课本 Checkpoint）</h3>
+  <div class="checkpoint">
+    <p><strong>Q1 — Identify which example links to each key term relating to classical conditioning</strong>（已在 §5 互动中练习：<span class="key-term">stimulus generalisation · stimulus discrimination · extinction · spontaneous recovery</span>）:</p>
+    <ol>
+      <li>A cat owner repeatedly opened the food cupboard door but did not feed their cat. The cat eventually stopped coming over when the cupboard door was opened. <em>(extinction)</em></li>
+      <li>A child became scared when a large red balloon popped next to them. At her birthday party she was scared of the pink and purple balloons. <em>(generalisation)</em></li>
+      <li>Sira was scared of earthworms, but she was not scared of caterpillars or slugs. <em>(discrimination)</em></li>
+      <li>Leonne disliked eating fish when he was younger because it had once made him ill. However, he eats fish as an adult. Leonne recently ordered fish at a restaurant and it made him ill. He no longer eats fish because it makes him feel nauseous. <em>(spontaneous recovery)</em></li>
+    </ol>
+    <p><strong>Q2 — Look at the following examples and identify whether they are positive reinforcement, negative reinforcement, positive punishment or negative punishment</strong>（已在 §8 互动中练习）:</p>
+    <ol style="margin-bottom:0;">
+      <li>You give your parrot some sunflower seeds every time it whistles at you. <em>(positive reinforcement)</em></li>
+      <li>Your cat jumps on you every time you return home. You remove your attention from your cat by turning your back and not fussing over so it does not jump up again. <em>(negative punishment)</em></li>
+      <li>Your horse pulls on the reins to go home when it starts to rain. <em>(negative reinforcement — the rain stops when it goes home)</em></li>
+      <li>You sound an air horn every time your horse paws the ground. <em>(positive punishment)</em></li>
+    </ol>
+  </div>
+
+  <h3>Exam practice — the real thing（真题演练）</h3>
+
+  <div class="exam-practice">
+    <h4>Question 1 — Rhea and the star chart（操作条件反射 apply 题）</h4>
+    <p style="font-style:italic;">Rhea has recently started to pinch her brother. Her mother uses operant conditioning to teach Rhea not to pinch her brother. Every day that Rhea does not pinch her brother their mother gives her a star on a star chart. Once Rhea has ten stars on the star chart she can have a biscuit.</p>
+    <p><strong>(a)</strong> Identify the <strong>primary reinforcer</strong> that Rhea's mother uses with Rhea. <span class="syl-tag ao1">AO1</span> (1 mark)</p>
+    <p><strong>(b)</strong> Rhea no longer pinches her brother, but she recently started to pinch the family pet cat. Rhea's mother took away her favourite toy for a day as a punishment. <strong>State the type of punishment</strong> that Rhea's mother used. <span class="syl-tag ao1">AO1</span> (1 mark)</p>
+    <p style="margin-bottom:0;"><strong>(c)</strong> <strong>Explain why the punishment did not help Rhea learn how to play nicely with the cat.</strong> <span class="syl-tag ao2">AO2</span> (1 mark)</p>
+  </div>
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span>
+    <span>Q1 — Mark scheme guidance（评分要点）</span>
+    <span class="ao-badge">1+1+1</span>
+  </div>
+  <div class="summary-card-body hidden">
+    <ol>
+      <li><strong>(a)</strong> The biscuit（饼干）— it satisfies a basic need, unlike the star which is a secondary reinforcer exchanged for the biscuit.</li>
+      <li><strong>(b)</strong> Negative punishment — a desirable stimulus (favourite toy) is <em>removed</em> to reduce the behaviour.</li>
+      <li><strong>(c)</strong> Punishment only teaches Rhea what <em>not</em> to do — it does not teach her the desirable behaviour (playing nicely); it may also only temporarily suppress the behaviour and can create anxiety/fear.</li>
+    </ol>
+  </div>
+
+  <div class="exam-practice">
+    <h4 style="margin-top:0;">Question 2 — Aanya and the bread（社会学习理论 describe 题）</h4>
+    <p style="font-style:italic;">Aanya has seen her father make bread several times. Her mother always thanks Aanya's father by cooking his favourite meal after he has baked the bread. Aanya has made bread for the first time. She feels a sense of achievement and has decided to make bread for the family every week. <strong>Describe, using social learning theory, why Aanya makes her family bread.</strong> (4 marks)</p>
+  </div>
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span>
+    <span>Q2 — Essay plan（写作提纲）</span>
+    <span class="ao-badge">4</span>
+  </div>
+  <div class="summary-card-body hidden">
+    <ol>
+      <li><strong>Point 1 — Attention</strong>: Aanya paid attention to her father's bread-making behaviour — he is a same-family role model she can identify with.</li>
+      <li><strong>Point 2 — Retention</strong>: She stored/remembered what she observed over several occasions ("has seen her father make bread several times") and was able to recall it later.</li>
+      <li><strong>Point 3 — Reproduction</strong>: She had the physical capability to imitate the behaviour — she made bread for the first time.</li>
+      <li><strong>Point 4 — Motivation (vicarious reinforcement)</strong>: Her mother thanks the father by cooking his favourite meal — Aanya saw the model rewarded (vicarious reinforcement), and her own sense of achievement provided intrinsic motivation to repeat the behaviour weekly.</li>
+    </ol>
+  </div>
+
+  <div class="exam-practice">
+    <h4 style="margin-top:0;">Question 3 — the 8-marker（经典条件反射评价题）</h4>
+    <p><strong>Evaluate classical conditioning as an explanation for human behaviour.</strong> <span class="syl-tag ao3">AO3</span> (8 marks)</p>
+  </div>
+  <div class="summary-card-header" onclick="toggleSummary(this)">
+    <span class="arrow">▶</span>
+    <span>Q3 — Essay plan（写作提纲）</span>
+    <span class="ao-badge">8</span>
+  </div>
+  <div class="summary-card-body hidden">
+    <ol>
+      <li><strong>Strength 1 + evidence</strong>: Experimental support — Pavlov's controlled dog experiments demonstrate associative learning; Watson and Rayner (1920) replicated the effect with a human (Little Albert conditioned to fear a white rat).</li>
+      <li><strong>Counterweight</strong>: Little Albert was described as a particularly unemotional child, so conditioning him may not generalise to other children.</li>
+      <li><strong>Strength 2 + evidence</strong>: Practical applications — the theory explains phobias and underpins effective treatments (systematic desensitisation — Capafóns et al. 1998 reduced fear of flying; flooding) and aversion therapy for addictions.</li>
+      <li><strong>Weakness 1 + evidence</strong>: Narrow scope — only explains acquisition of reflexive/involuntary responses; cannot explain new voluntary responses, ignores cognitive processes (decision-making, problem-solving) and biological factors (genetics, neurotransmitters).</li>
+      <li><strong>Debate + evidence</strong>: Nature–nurture — a purely nurture explanation ignores innate/biological predispositions (e.g. aggression, sporting ability).</li>
+      <li><strong>Debate + evidence (ethics)</strong>: Aversion therapy's controversial history as social control, using unpleasant or harmful stimuli — ethical implications.</li>
+      <li><strong>Conclusion</strong>: Classical conditioning genuinely explains a subset of human behaviour (associative fears, tastes, phobias) and its therapies work — but as a complete explanation of human behaviour it is limited by its reflex-centred scope and its all-nurture stance.</li>
+    </ol>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>三道真题对应三种题型。<strong>Q1a</strong> 认准 primary reinforcer = <strong>饼干</strong>（star 是 secondary，能换饼干才有效）；<strong>Q1b</strong> 拿走玩具 = <strong>negative punishment</strong>；<strong>Q1c</strong> 用课本原文三连：<strong>只教不该做什么、只是暂时压制、带来羞辱焦虑</strong>。<strong>Q2</strong> 是标准 ARRM describe：每点 1 分，<strong>必须把场景细节焊在术语上</strong>（看了几次=attention+retention；第一次成功做出=reproduction；妈妈的感谢饭=vicarious reinforcement，成就感=intrinsic motivation）。<strong>Q3</strong> 8 分题直接用 §6 的表格骨架：<strong>强（实验支持）→ 转折（Albert 特殊性）→ 强（治疗应用）→ 弱（范围窄+忽略认知与生物）→ nurture 辩论 → 伦理 → balanced conclusion</strong>。评分核心是 AO3：每个点都要 <strong>point + evidence + 为什么这个 evidence 支持/削弱</strong>。</div>
+</section>
+
+<!-- ============ SECTION 17: KEY TERMS ============ -->
+<section class="section" id="s17">
+  <h2>17. Key Terms（关键术语表）</h2>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><div class="term">Classical conditioning <span class="zh">经典条件反射</span></div><div class="def">Learning by association: pairing a neutral stimulus with an unconditioned stimulus so the NS comes to elicit the same response.</div></div>
+    <div class="glossary-item"><div class="term">Neutral stimulus (NS) <span class="zh">中性刺激</span></div><div class="def">An environmental stimulus that does not by itself (without association) produce a response — e.g. the metronome before pairing.</div></div>
+    <div class="glossary-item"><div class="term">Unconditioned stimulus (UCS) <span class="zh">无条件刺激</span></div><div class="def">Any stimulus producing a natural, unlearned response (a reflex action) — e.g. food producing salivation.</div></div>
+    <div class="glossary-item"><div class="term">Unconditioned response (UCR) <span class="zh">无条件反应</span></div><div class="def">A behaviour shown in response to an unconditioned stimulus; occurs naturally without any learning.</div></div>
+    <div class="glossary-item"><div class="term">Conditioned stimulus (CS) <span class="zh">条件刺激</span></div><div class="def">The former NS after association with the UCS; it now produces the same response.</div></div>
+    <div class="glossary-item"><div class="term">Conditioned response (CR) <span class="zh">条件反应</span></div><div class="def">The behaviour shown in response to the conditioned stimulus — same behaviour as the UCR, new trigger.</div></div>
+    <div class="glossary-item"><div class="term">Stimulus generalisation <span class="zh">刺激泛化</span></div><div class="def">Producing the same response to stimuli similar to the CS (fear spiders → fear similar insects).</div></div>
+    <div class="glossary-item"><div class="term">Stimulus discrimination <span class="zh">刺激辨别</span></div><div class="def">The CR occurs only to the specific CS, not other sufficiently different stimuli (fear moths but not other flying insects).</div></div>
+    <div class="glossary-item"><div class="term">Extinction <span class="zh">消退</span></div><div class="def">The CS is repeatedly presented without the UCS, so the CR gradually disappears. Not the same as unlearning.</div></div>
+    <div class="glossary-item"><div class="term">Spontaneous recovery <span class="zh">自发恢复</span></div><div class="def">After extinction, re-pairing the CS with the UCS produces rapid re-learning — the accelerated return of the CR.</div></div>
+    <div class="glossary-item"><div class="term">Higher-order conditioning <span class="zh">高级条件反射</span></div><div class="def">Pairing a new NS with an established CS (CS2 + CS1) to build chains of conditioned stimuli.</div></div>
+    <div class="glossary-item"><div class="term">Instrumental learning <span class="zh">工具性学习</span></div><div class="def">Thorndike's original term for learning where the consequence dictates future behaviour — trial and error in the puzzle box.</div></div>
+    <div class="glossary-item"><div class="term">Law of effect <span class="zh">效果律</span></div><div class="def">Thorndike: behaviour followed by a pleasant consequence is repeated; followed by an unpleasant consequence, it is withdrawn.</div></div>
+    <div class="glossary-item"><div class="term">Operant conditioning <span class="zh">操作条件反射</span></div><div class="def">Skinner's term: learning through consequence, where the animal 'operates' on the environment; studied with the Skinner box.</div></div>
+    <div class="glossary-item"><div class="term">ABC model <span class="zh">ABC 模型</span></div><div class="def">Antecedent (trigger stimulus) → Behaviour (observable response) → Consequence (reward/punishment) explaining how consequences shape behaviour.</div></div>
+    <div class="glossary-item"><div class="term">Positive/negative reinforcement <span class="zh">正/负强化</span></div><div class="def">Adding something pleasurable (R+) or removing something unpleasant (R−) — both increase the likelihood of the behaviour being repeated.</div></div>
+    <div class="glossary-item"><div class="term">Positive/negative punishment <span class="zh">正/负惩罚</span></div><div class="def">Adding an aversive stimulus (P+, scolding) or removing a desirable stimulus (P−, toy taken away) — both reduce the behaviour.</div></div>
+    <div class="glossary-item"><div class="term">Primary/secondary reinforcer <span class="zh">初级/次级强化物</span></div><div class="def">Primary satisfies basic needs naturally (food, water, shelter); secondary works only by association/exchange with a primary (money, tokens).</div></div>
+    <div class="glossary-item"><div class="term">Token economy <span class="zh">代币制</span></div><div class="def">Treatment system providing secondary reinforcement (tokens) for desirable behaviour, exchangeable for primary reinforcers; used in schools, prisons, clinics.</div></div>
+    <div class="glossary-item"><div class="term">Continuous/partial reinforcement <span class="zh">连续/部分强化</span></div><div class="def">Reinforcing every occurrence vs only some; partial takes longer to learn but is more resistant to extinction.</div></div>
+    <div class="glossary-item"><div class="term">Schedules of reinforcement <span class="zh">强化程序</span></div><div class="def">Four partial schedules: fixed interval, variable interval, fixed ratio, variable ratio — variable ratio best maintains behaviour.</div></div>
+    <div class="glossary-item"><div class="term">Superstitious behaviour <span class="zh">迷信行为</span></div><div class="def">Skinner (1948): behaviour 'shaped' by accidental reinforcement — the bird acts as if its behaviour causes the food when it does not.</div></div>
+    <div class="glossary-item"><div class="term">Social learning theory <span class="zh">社会学习理论</span></div><div class="def">Bandura: learning through observing others and imitating/copying their behaviour — includes cognition, unlike CC/OC.</div></div>
+    <div class="glossary-item"><div class="term">Modelling <span class="zh">示范</span></div><div class="def">A model demonstrates a behaviour in the presence of another person, who may then imitate it.</div></div>
+    <div class="glossary-item"><div class="term">Role model <span class="zh">角色榜样</span></div><div class="def">A significant individual in a person's life (parents, teachers, same-sex admired figures) who is more likely to be imitated.</div></div>
+    <div class="glossary-item"><div class="term">Vicarious reinforcement <span class="zh">替代强化</span></div><div class="def">Learning through the consequence of another person's behaviour — the observer gets no reward, just sees the model's rewarded (or punished).</div></div>
+    <div class="glossary-item"><div class="term">Attention · Retention · Reproduction · Motivation <span class="zh">注意·保持·再现·动机</span></div><div class="def">Bandura's four cognitive processes — all four must occur for social learning to take place (ARRM).</div></div>
+    <div class="glossary-item"><div class="term">Intrinsic/extrinsic motivation <span class="zh">内在/外在动机</span></div><div class="def">Inherent satisfaction from the activity itself vs a tangible, separable outcome (trophy, medal).</div></div>
+    <div class="glossary-item"><div class="term">Imitation <span class="zh">模仿</span></div><div class="def">Copying a behaviour that has been observed and remembered; limited by physical capabilities.</div></div>
+    <div class="glossary-item"><div class="term">Reductionism <span class="zh">还原论</span></div><div class="def">Explaining behaviour only as the sum of previous learning (Skinner) — ignores innate factors, cognition and emotional states.</div></div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>30 个术语分三族记：<strong>CC 族</strong>（NS/UCS/CR + 四现象 + higher-order）——核心是「联结」；<strong>OC 族</strong>（law of effect、ABC、4 后果、强化物、4 程序、迷信）——核心是「后果」；<strong>SLT 族</strong>（modelling、role model、vicarious reinforcement、ARRM、两种动机）——核心是「观察」。最高频的混三点：① <strong>NS→CS / UCR→CR</strong>（改名规则）；② <strong>R− vs P−</strong>（都是拿走东西，看行为变多变少）；③ <strong>vicarious reinforcement 位置</strong>（SLT 的动机来源，不是独立阶段）。define 题直接按英文 def 作答。</div>
+</section>
+
+
+</main>
+
+</div><!-- END PAGE LAYOUT -->
+
+<div class="footer-note">
+  <p>📚 Edexcel IAL Psychology · Topic D: Learning Theories and Development · Chapter 20 — Classical and Operant Conditioning and Social Learning Theory</p>
+  <p>Spec 4.1.1 Classical conditioning (Pavlov) · Spec 4.1.2 Operant conditioning incl. Skinner (1948) Superstition in the pigeon · Spec 4.1.3 Social learning theory (Bandura) · Classic study link: Watson &amp; Rayner (1920) · Contemporary study link: Capafóns et al. (1998) · Prot et al. (2014)</p>
+</div>
+</div><!-- END CONTAINER -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<script>
+function toggleSummary(header) {
+  header.classList.toggle('open');
+  var body = header.nextElementSibling;
+  if (body && body.classList.contains('summary-card-body')) {
+    body.classList.toggle('hidden');
+  }
+}
+
+// Scroll spy
+(function(){
+  var sections = document.querySelectorAll('.section[id^="s"]');
+  var links = document.querySelectorAll('.sb-item a');
+  function onScroll() {
+    var scrollPos = window.scrollY + 120;
+    var currentId = sections.length ? sections[0].id : null;
+    sections.forEach(function(sec) {
+      if (sec.offsetTop <= scrollPos) { currentId = sec.id; }
+    });
+    links.forEach(function(link) {
+      link.classList.toggle('sb-active', link.getAttribute('href') === '#' + currentId);
+    });
+    var btn = document.getElementById('backToTop');
+    if (btn) {
+      if (window.scrollY > 500) { btn.classList.add('show'); } else { btn.classList.remove('show'); }
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+// Dark mode with localStorage
+function toggleDarkMode() {
+  document.body.classList.toggle('dark');
+  var dark = document.body.classList.contains('dark');
+  document.getElementById('darkBtn').textContent = dark ? '☀️ Light' : '🌙 Dark';
+  try { localStorage.setItem('d20_dark', dark ? '1' : '0'); } catch(e) {}
+}
+(function(){
+  try { if (localStorage.getItem('d20_dark') === '1') { document.body.classList.add('dark'); var b = document.getElementById('darkBtn'); if (b) b.textContent = '☀️ Light'; } } catch(e) {}
+})();
+
+function adjustFontSize(delta) {
+  var html = document.documentElement;
+  var current = parseFloat(window.getComputedStyle(html).fontSize) || 16;
+  var next = Math.min(22, Math.max(13, current + delta));
+  html.style.fontSize = next + 'px';
+}
+
+/* ============ Phenomenon quiz (§5) ============ */
+var PH_DATA = {
+  a: { correct: 'ext', label: 'Extinction（消退）', why: ' cupboard door (CS) 反复单独出现、不再伴随食物 (UCS)——CR（跑过来）逐渐消失。这正是 extinction 的定义：CS 持续单独呈现导致联结解离。' },
+  b: { correct: 'gen', label: 'Stimulus generalisation（刺激泛化）', why: ' 被「大红气球」吓到后，连「粉色、紫色气球」也怕——类似刺激引发同一恐惧反应，与 CS 越相似反应越强。' },
+  c: { correct: 'dis', label: 'Stimulus discrimination（刺激辨别）', why: ' 只对「蚯蚓」害怕，外形相似的毛毛虫、蛞蝓都不怕——CR 只针对特定 CS，其他刺激「分得清」。' },
+  d: { correct: 'rec', label: 'Spontaneous recovery（自发恢复）', why: ' 小时候的恐惧曾经消退（成年后能吃鱼），一次配对（吃鱼又吐）后恐惧迅速复活——消退后的加速重学，extinction ≠ unlearning。' }
+};
+var phenChoices = {};
+function phenAnswer(q, key) {
+  var d = PH_DATA[q];
+  var box = document.getElementById('ph-' + q);
+  var btns = box.querySelectorAll('.q-option');
+  btns.forEach(function(b){ b.disabled = true; b.style.opacity = '.75'; });
+  var fb = document.getElementById('ph-fb' + q);
+  if (key === d.correct) {
+    btns.forEach(function(b){ if (b.getAttribute('onclick').indexOf("'" + d.correct + "'") > -1) { b.className = 'q-option chosen-best'; b.style.opacity = '1'; } });
+    fb.className = 'xp-result show ok';
+    fb.innerHTML = '<p class="xp-verdict">✅ 答对了 — <strong>' + d.label + '</strong></p><p>' + d.why + '</p>';
+    phenChoices[q] = true;
+  } else {
+    btns.forEach(function(b){ if (b.getAttribute('onclick').indexOf("'" + d.correct + "'") > -1) { b.className = 'q-option chosen-best'; } else if (b.getAttribute('onclick').indexOf("'" + key + "'") > -1) { b.className = 'q-option chosen-bad'; } });
+    fb.className = 'xp-result show warn';
+    fb.innerHTML = '<p class="xp-verdict">🤔 正确答案是 <strong>' + d.label + '</strong></p><p>' + d.why + '</p>';
+    phenChoices[q] = false;
+  }
+  if (Object.keys(phenChoices).length === 4) { document.getElementById('phen-final-btn').style.display = 'inline-block'; }
+}
+function phenFinal() {
+  var score = Object.keys(phenChoices).filter(function(k){ return phenChoices[k]; }).length;
+  var box = document.getElementById('phen-result');
+  box.className = 'xp-result show ' + (score >= 3 ? 'ok' : 'warn');
+  box.innerHTML = '<p class="xp-verdict">' + (score === 4 ? '🏆 4/4 全对！四现象已经内化。' : (score >= 3 ? '👍 ' + score + '/4——错的那条再读一遍判定口诀。' : score + '/4——回到上面的判定口诀重读一遍：「像不像 / 分得清 / 断供了 / 复活了」。')) + '</p>';
+}
+
+/* ============ Consequence classifier (§8) ============ */
+var CC_ITEMS = [
+  { t: 'Always using suncream to prevent getting sunburn', a: 'nr', why: '涂防晒 → 防止晒伤（移除不愉快事件）。防晒霜不是「奖励」而是移除了晒伤这个坏结果 → negative reinforcement。' },
+  { t: 'Being told off because you have left your bedroom in a mess', a: 'pp', why: '被骂 = 被加入不愉快刺激（scolding），目的是减少乱放行为 → positive punishment。' },
+  { t: 'Getting a merit for producing a good essay, so you work hard on the next essay', a: 'pr', why: '拿到 merit（获得好东西）→ 写好文章的行为增加 → positive reinforcement。' },
+  { t: 'Getting a detention for not handing in your homework on time', a: 'pp', why: 'detention = 被加入不愉快后果，目的是减少迟交 → positive punishment。' },
+  { t: 'Not being allowed out with your friends because you have behaved badly', a: 'np', why: '被拿走好东西（出门玩的机会），目的是减少坏行为 → negative punishment。' },
+  { t: 'Getting a treat for helping around the house', a: 'pr', why: '拿到 treat（获得好东西）→ 帮忙行为增加 → positive reinforcement。' },
+  { t: 'Driving at the speed limit to avoid getting a speeding ticket', a: 'nr', why: '按限速开 → 避免罚单（移除坏结果的可能性）。行为因「避免不愉快」而增加 → negative reinforcement。' },
+  { t: 'You give your parrot some sunflower seeds every time it whistles at you', a: 'pr', why: '鹦鹉吹口哨 → 获得瓜子（好东西）→ 吹口哨行为增加 → positive reinforcement。' },
+  { t: 'Your cat jumps on you; you turn your back and remove your attention so it stops jumping', a: 'np', why: '移走好东西（你的关注），目的是减少跳扑行为 → negative punishment。注意：这是「惩罚猫的行为」而不是强化你自己的行为。' },
+  { t: 'Your horse pulls on the reins to go home when it starts to rain', a: 'nr', why: '回家 → 雨淋（不愉快）停止 → 拉缰绳回家的行为增加 → negative reinforcement。' },
+  { t: 'You sound an air horn every time your horse paws the ground', a: 'pp', why: '响号角 = 加入不愉快刺激，目的是减少刨地行为 → positive punishment。' }
+];
+var CC_LABELS = { pr: ['Positive reinforcement（正强化）', '获得好东西 → 行为增加'], nr: ['Negative reinforcement（负强化）', '移除坏东西 → 行为增加'], pp: ['Positive punishment（正惩罚）', '加入坏东西 → 行为减少'], np: ['Negative punishment（负惩罚）', '拿走好东西 → 行为减少'] };
+var ccIdx = 0, ccScore = 0;
+function ccBuild() {
+  var wrap = document.getElementById('cc-quiz');
+  if (ccIdx >= CC_ITEMS.length) { wrap.innerHTML = '<div class="xp-case"><div class="xp-case-name">全部场景完成</div><p class="xp-case-desc">点下方按钮查看总评。</p></div>'; document.getElementById('cc-final-btn').style.display = 'inline-block'; return; }
+  var it = CC_ITEMS[ccIdx];
+  wrap.innerHTML = '<div class="xp-case"><div class="xp-case-name">场景 ' + (ccIdx + 1) + ' / ' + CC_ITEMS.length + '</div>' +
+    '<p class="xp-case-desc">' + it.t + '</p>' +
+    '<div>' +
+    '<button class="q-option" onclick="ccAnswer(\'pr\')">Positive reinforcement · 正强化</button>' +
+    '<button class="q-option" onclick="ccAnswer(\'nr\')">Negative reinforcement · 负强化</button>' +
+    '<button class="q-option" onclick="ccAnswer(\'pp\')">Positive punishment · 正惩罚</button>' +
+    '<button class="q-option" onclick="ccAnswer(\'np\')">Negative punishment · 负惩罚</button>' +
+    '</div><div id="cc-fb" class="xp-result"></div>' +
+    '<div class="xp-controls" style="margin-top:10px;"><button class="xp-btn" id="cc-next" onclick="ccNext()" style="display:none;">下一题 →</button></div></div>';
+}
+function ccAnswer(key) {
+  var it = CC_ITEMS[ccIdx];
+  var btns = document.querySelectorAll('#cc-quiz .q-option');
+  btns.forEach(function(b){ b.disabled = true; });
+  btns.forEach(function(b){ if (b.getAttribute('onclick').indexOf("'" + it.a + "'") > -1) { b.className = 'q-option chosen-best'; } else if (b.getAttribute('onclick').indexOf("'" + key + "'") > -1) { b.className = 'q-option chosen-bad'; } });
+  var fb = document.getElementById('cc-fb');
+  if (key === it.a) { ccScore++; fb.className = 'xp-result show ok'; fb.innerHTML = '<p class="xp-verdict">✅ 正确 — <strong>' + CC_LABELS[it.a][0] + '</strong></p><p>' + it.why + '</p>'; }
+  else { fb.className = 'xp-result show warn'; fb.innerHTML = '<p class="xp-verdict">🤔 正确答案是 <strong>' + CC_LABELS[it.a][0] + '</strong>（' + CC_LABELS[it.a][1] + '）</p><p>' + it.why + '</p>'; }
+  document.getElementById('cc-next').style.display = 'inline-block';
+}
+function ccNext() { ccIdx++; ccBuild(); }
+function ccFinal() {
+  var box = document.getElementById('cc-result');
+  var pct = Math.round(ccScore / CC_ITEMS.length * 100);
+  box.className = 'xp-result show ' + (pct >= 80 ? 'ok' : 'warn');
+  box.innerHTML = '<p class="xp-verdict">' + (pct === 100 ? '🏆 ' + ccScore + '/' + CC_ITEMS.length + ' 满分！四种后果已经完全分清， exam 里 R−/P− 骗不到你了。' : (pct >= 80 ? '👍 ' + ccScore + '/' + CC_ITEMS.length + '（' + pct + '%）——错的那几条回看两步判定法：先定行为增减，再定刺激加减。' : ccScore + '/' + CC_ITEMS.length + '（' + pct + '%）——回到上面重读课本 EXAM TIP 的两步判定法，重点区分 R−（移坏 encouraging）和 P−（拿好 suppressing）。')) + '</p>';
+}
+ccBuild();
+</script>
+
+
+</body>
+</html>
