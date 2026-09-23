@@ -279,6 +279,14 @@ body.dark .xp-result { color: #cbd5e1; }
 body.dark .xp-case .xp-case-name { color: #fb923c; }
 body.dark .xp-case .xp-case-desc, body.dark .xp-checkbox label { color: #cbd5e1; }
 body.dark .xp-controls select, body.dark .xp-controls input { background: #1a1a2e; border-color: #334155; color: #cbd5e1; }
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .q-option:hover:not(:disabled) { border-color: #f97316; color: #fb923c; }
+body.dark .q-option.chosen-best { border-color: #4ade80; background: rgba(22,163,74,.12); color: #86efac; }
+body.dark .q-option.chosen-bad { border-color: #ef5350; background: rgba(220,38,38,.10); color: #fca5a5; }
 </style>
 </head>
 <body>

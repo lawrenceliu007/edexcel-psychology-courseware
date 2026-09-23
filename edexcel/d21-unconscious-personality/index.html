@@ -277,6 +277,8 @@ body.dark .xp-controls select, body.dark .xp-controls input { background: #1a1a2
   </div>
   <span class="nav-pill">🐶 Learning Theories &amp; Development</span>
   <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="Ch21-Unconscious-Personality-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
     <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn" title="Toggle dark mode">🌙 Dark</button>
     <button class="nav-btn" onclick="adjustFontSize(-1)" title="Decrease font size">A-</button>
     <button class="nav-btn" onclick="adjustFontSize(1)" title="Increase font size">A+</button>
@@ -909,7 +911,7 @@ function adjustFontSize(delta) {
 
 function toggleReveal(id) {
   const el = document.getElementById(id);
-  if (el) el.hidden = !el.hidden;
+  if (el) el.classList.toggle('show');
 }
 
 /* ============ Defence mechanism sorter (§9) ============ */
