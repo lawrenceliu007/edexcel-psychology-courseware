@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edexcel Topic D Chapter 21 — The Role of the Unconscious in Personality Development（潜意识在人格发展中的作用）</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --card-bg: #FFFFFF;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --note-bg: #fff7ed;
+  --note-border: #fb923c;
+  --term-color: #ea580c;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; transition: background .15s; white-space: nowrap; }
+.nav-pill:hover { background: var(--primary-dark); }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; transition: color .15s; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; font-weight: 300; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); transition: all .15s; display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+body.dark .nav-btn:hover { border-color: #f97316; color: #f97316; }
+
+.page-layout { display: grid; grid-template-columns: 190px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 190px; flex-shrink: 0; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; transition: all .15s ease; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 600; background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+.sb-item a.sb-sub { padding-left: 30px; font-size: .7em; opacity: .82; }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; backdrop-filter: blur(6px); }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box strong { color: #b45309; }
+.key-term { display: inline-block; background: #e8eaf6; color: #283593; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: .9em; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box h4 { color: #991b1b; margin-bottom: 5px; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.wider-issue { background: #fff8e1; border: 2px solid #fbc02d; border-radius: 8px; padding: 16px 20px; margin: 14px 0; }
+.wider-issue h4 { color: #f57f17; margin-top: 0; }
+.activity-box { background: #f0f4f8; border: 2px solid #90a4ae; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+.activity-box h4 { color: #546e7a; margin-top: 0; display: flex; align-items: center; gap: 8px; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+tr:hover { background: #fff7ed; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure img { max-width: 100%; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 3px 12px rgba(0,0,0,.08); }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.flowchart { background: #f6f7f9; border: 2px solid var(--border); border-radius: 12px; padding: 20px; margin: 18px 0; text-align: center; }
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: opacity .2s; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.ao-badge { background: rgba(255,255,255,.25); padding: 2px 8px; border-radius: 10px; font-size: .72em; font-weight: 700; margin-left: auto; }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; animation: slideDown .25s ease; }
+.summary-card-body.hidden { display: none; }
+@keyframes slideDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
+.summary-card-body ol { margin: 0; padding-left: 20px; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; display: flex; align-items: center; gap: 8px; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.study-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px 18px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.06); transition: all .25s ease; position: relative; }
+.study-card:hover { box-shadow: 0 4px 16px rgba(234,88,12,.15); border-color: #fb923c; transform: translateY(-2px); }
+.study-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid #fef3c7; }
+.study-icon { font-size: 1.3em; }
+.study-name { font-weight: 700; font-size: .95em; color: #ea580c; flex: 1; }
+.study-badge { font-size: .7em; font-weight: 600; padding: 3px 10px; border-radius: 12px; background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; white-space: nowrap; }
+.study-badge.classic { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: #9d174d; }
+.study-badge.case { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; }
+.study-card-body p { margin: 6px 0; line-height: 1.65; font-size: .9em; }
+.study-card-body ul { margin: 6px 0 6px 18px; padding: 0; }
+.study-card-body li { margin: 4px 0; font-size: .89em; line-height: 1.6; }
+.eval-tag { display: inline-block; background: #fef2f2; border-left: 3px solid #ef4444; padding: 4px 10px; margin-top: 6px; font-size: .85em; color: #991b1b; border-radius: 0 6px 6px 0; }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { box-shadow: 0 6px 20px rgba(234,88,12,.4); transform: translateY(-2px); }
+@media(max-width:900px){
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .main-content { max-width: 100%; }
+  .compare-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+body.dark { background: #0f172a; color: #e2e8f0; transition: background .3s, color .3s; }
+body.dark .container { background: #0f172a; }
+body.dark .nav-bar { background: #1a1a2e; border-bottom-color: var(--primary); }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+body.dark .sb-divider { background: #334155; }
+body.dark .sb-group-label { color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a:hover { color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.10), transparent); border-left-color: #f97316; }
+body.dark .sb-item a.sb-active { color: #fb923c; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); border-left-color: #f97316; }
+body.dark .header { background: linear-gradient(135deg, #c2410c, #ea580c, #f97316); }
+body.dark .section { background: #1a1a2e; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .warn-box h4 { color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .keyterm-box strong { color: #fbbf24; }
+body.dark .key-term { background: #2a2a4a; color: #a5b4fc; }
+body.dark strong { color: #fbbf24; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; color: white; border-color: #7f1d1d; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark tr:hover { background: rgba(234,88,12,.05); }
+body.dark td:first-child { color: #fb923c; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+body.dark .flowchart { background: #16213e; border-color: #334155; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .activity-box { background: #1e293b; border-color: #475569; }
+body.dark .activity-box h4 { color: #94a3b8; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark .study-card { background: #16213e; border-color: #334155; }
+body.dark .study-card:hover { border-color: #f97316; box-shadow: 0 4px 16px rgba(234,88,12,.2); }
+body.dark .study-card-header { border-bottom-color: #3f3f5e; }
+body.dark .study-name { color: #fb923c; }
+body.dark .study-card-body p, body.dark .study-card-body li { color: #cbd5e1; }
+body.dark .eval-tag { background: rgba(220,38,38,.08); color: #fca5a5; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+body.dark a { color: #60a5fa; }
+body.dark a:hover { color: #93c5fd; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; }
+.syl-tag.ao1 { background: #dbeafe; color: #1e40af; }
+.syl-tag.ao2 { background: #dcfce7; color: #166534; }
+.syl-tag.ao3 { background: #fce7f3; color: #9d174d; }
+.syl-tag.syn { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag.ao1 { background: rgba(59,130,246,.15); color: #93c5fd; }
+body.dark .syl-tag.ao2 { background: rgba(22,163,74,.15); color: #86efac; }
+body.dark .syl-tag.ao3 { background: rgba(219,39,119,.15); color: #f9a8d4; }
+body.dark .syl-tag.syn { background: rgba(245,158,11,.15); color: #fcd34d; }
+
+.glossary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; }
+.glossary-item { background:#FFFFFF; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px; }
+.glossary-item .term { font-weight:700; color:var(--primary-dark); font-size:.96rem; }
+.glossary-item .zh { color:#64748b; font-size:.85rem; margin-left:4px; }
+.glossary-item .def { font-size:.88rem; line-height:1.45; margin-top:4px; color:var(--text); }
+.section-subtitle { color: var(--text-secondary); font-size: .92em; font-style: italic; font-weight: 400; padding-bottom: 12px; border-bottom: 2px solid var(--border); margin: 0 0 14px 0; }
+
+/* quiz option buttons（互动答题按钮） */
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .q-option:hover:not(:disabled) { border-color: #f97316; color: #fb923c; }
+body.dark .q-option.chosen-best { border-color: #4ade80; background: rgba(22,163,74,.12); color: #86efac; }
+body.dark .q-option.chosen-bad { border-color: #ef5350; background: rgba(220,38,38,.10); color: #fca5a5; }
+
+/* experience blocks（亲身体验环节） */
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; vertical-align: middle; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-controls select, .xp-controls input { padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: .92rem; background: #fff; color: #1f2937; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; transition: background .15s; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-result.warn .xp-verdict { color: var(--wrong); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; color: #1f2937; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; }
+body.dark .xp-result { color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc, body.dark .xp-checkbox label { color: #cbd5e1; }
+body.dark .xp-controls select, body.dark .xp-controls input { background: #1a1a2e; border-color: #334155; color: #cbd5e1; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="/edexcel-psychology-courseware/">Home</a> <span class="sep">›</span>
+    <a href="/edexcel-psychology-courseware/">Edexcel</a> <span class="sep">›</span>
+    <span>Topic D · Chapter 21 — The Unconscious &amp; Personality</span>
+  </div>
+  <span class="nav-pill">🐶 Learning Theories &amp; Development</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn" title="Toggle dark mode">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)" title="Decrease font size">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)" title="Increase font size">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+    <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">Topic D · Ch 21 Contents</div>
+        <div class="sb-header-sub">Learning Theories &amp; Development</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">1 · Foundations</li>
+        <li class="sb-item"><a href="#s1">1. Learning Objectives</a></li>
+        <li class="sb-item"><a href="#s2">2. Getting Started — Unexplained Behaviour</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">2 · Freud &amp; the Unconscious</li>
+        <li class="sb-item"><a href="#s3">3. Freud: From Neurology to Psychology</a></li>
+        <li class="sb-item"><a href="#s4">4. The Three Levels of Mind</a></li>
+        <li class="sb-item"><a href="#s5">5. Eros &amp; Thanatos</a></li>
+        <li class="sb-item"><a href="#s6">6. Repression &amp; the Leaks</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">3 · Parts of Personality</li>
+        <li class="sb-item"><a href="#s7">7. Id, Ego &amp; Superego</a></li>
+        <li class="sb-item"><a href="#s8">8. The Dynamic Self + Role Play</a></li>
+        <li class="sb-item"><a href="#s9">9. Defence Mechanisms</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">4 · Evaluation</li>
+        <li class="sb-item"><a href="#s10">10. Evaluating Freud</a></li>
+        <li class="sb-item"><a href="#s11">11. Thinking Like a Psychologist</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">5 · Wrap-Up</li>
+        <li class="sb-item"><a href="#s12">📝 Checkpoint &amp; Exam Practice</a></li>
+        <li class="sb-item"><a href="#s13">📚 Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>🧠 CHAPTER 21: THE ROLE OF THE UNCONSCIOUS IN PERSONALITY DEVELOPMENT<br><span style="font-size:0.65em">潜意识在人格发展中的作用</span></h1>
+  <div class="subtitle">Edexcel International A Level Psychology · Topic D: Learning Theories and Development</div>
+  <div class="meta">
+    <span class="badge">📘 Pearson Edexcel International A Level · AS Unit 2</span>
+    <span class="badge">🐶 Topic D · Learning Theories · Paper 2 Section B</span>
+    <span class="badge">🧩 Spec 4.1.4 · The Unconscious &amp; Personality</span>
+    <span class="badge">🔍 Method: Clinical Case Study</span>
+    <span class="badge">🧠 Core Concept: The Unconscious（潜意识）</span>
+    <span class="badge">📝 Checkpoint 2 Qs + Exam 5 Qs (incl. 8-mark)</span>
+  </div>
+</div>
+
+<!-- ============ SECTION 1: LEARNING OBJECTIVES ============ -->
+<section class="section" id="s1">
+  <h2>1. Learning Objectives（学习目标）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Quick Summary — 本节要学什么</h4>
+    <p>Chapters 20 explained behaviour with <strong>learning</strong>: association, consequence, observation. But have you ever done something you <strong>cannot explain</strong> — shouted at someone for no reason, refused to see a sibling? Freud's answer: the cause is <strong>hidden in the unconscious mind</strong>（潜意识）. This chapter explains what the unconscious is, how it shapes <strong>personality</strong>（人格）, and how we evaluate such a theory.</p>
+  </div>
+
+  <div class="note-box blue-box">
+    <h4>🎯 By the end of this chapter, you should be able to describe and evaluate:</h4>
+    <ul>
+      <li><strong>The role of the unconscious in personality development</strong>（潜意识在人格发展中的作用）— the three levels of mind (conscious, preconscious, unconscious), the primal instincts (Eros &amp; Thanatos), repression, and the three parts of personality (id, ego, superego).</li>
+      <li><strong>Defence mechanisms</strong>（防御机制）— how the ego manages conflict, with displacement and denial as examples.</li>
+      <li><strong>The evaluation</strong>（评价）— Little Hans, subjective evidence and unfalsifiability, generalisability, and Freud's pioneering contribution.</li>
+    </ul>
+  </div>
+
+  <div class="note-box">
+    <h4>🗺️ Where this fits in spec 4.1.4</h4>
+    <p>Spec 4.1.4 has two halves: <strong>Freud's psychosexual stages</strong>（性心理发展阶段 — oral, anal, phallic, latent, genital）and <strong>the role of the unconscious in personality development</strong>. This chapter covers the <strong>unconscious &amp; personality</strong> half, exactly as the textbook does. The psychosexual stages belong to the next chapter（下一章再讲，配合课本对应章节的截图）.</p>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>前面章节用「学习」解释行为——联结、后果、观察。但有些行为看起来跟学习无关：明知没用还是怕、莫名其妙对某个人发火。Freud 说：原因不在外面，而在<strong>意识水面之下</strong>——你自己都不知道的地方（潜意识）。本章任务：① 把「心」分成三层（冰山图）；② 解释潜意识里装了什么（本能冲动）；③ 说明人格怎么被它塑造（id / ego / superego 的拉锯）；④ 最后学会评价这个理论——它出了名地「难以检验」，这本身就是重要考点。</div>
+</section>
+
+<!-- ============ SECTION 2: GETTING STARTED ============ -->
+<section class="section" id="s2">
+  <h2>2. Getting Started — Behaviour We Cannot Explain（开局思考：解释不了的行为）</h2>
+  <div class="quick-summary">
+    <h4>⚡ Think about this before you read on</h4>
+    <p>Have you ever had a feeling or done something which you cannot explain? You might have shouted at someone even when you were not cross with them, or felt angry without explanation. Freud tried to explain these feelings and behaviours by understanding the <strong>unconscious cause</strong>. However, we cannot access the unconscious cause directly, <strong>we must look for clues in the way people behave</strong>.</p>
+  </div>
+
+  <div class="activity-box">
+    <h4>💬 课本 Getting Started 任务</h4>
+    <p><strong>In pairs</strong>, discuss clues that explain these particular behaviours. Remember: you are <em>not</em> looking for an obvious explanation, but a <strong>motivation that may exist in the unconscious mind</strong>.</p>
+    <ol>
+      <li>A student failing to turn up for an exam</li>
+      <li>A parent not liking their teenage child's friend</li>
+      <li>A toddler pinching her baby brother</li>
+      <li>A person who refuses to see their siblings</li>
+    </ol>
+  </div>
+
+  <div class="xp-block">
+    <h4><span class="xp-badge">INTERACTIVE</span> 🤔 先自己想，再看 Freud 会怎么猜</h4>
+    <p class="xp-intro">Each behaviour above could have an obvious explanation — "overslept", "the friend is rude". But Freud digs one level deeper. Make your own guess <em>first</em>, then click a behaviour to see the kind of unconscious motivation a Freudian might propose.</p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="toggleReveal('gs1')">1 · Missed exam</button>
+      <button class="xp-btn" onclick="toggleReveal('gs2')">2 · Parent vs friend</button>
+      <button class="xp-btn" onclick="toggleReveal('gs3')">3 · Toddler pinches</button>
+      <button class="xp-btn" onclick="toggleReveal('gs4')">4 · Refuses siblings</button>
+    </div>
+    <div id="gs1" class="xp-result" hidden><p class="xp-verdict">A possible unconscious clue:</p><p>Maybe the student <strong>did not really "forget"</strong> — part of them is afraid of failing, so the mind quietly arranges an escape. The visible behaviour (absence) serves a hidden wish (avoid the failure that an exam would reveal).</p></div>
+    <div id="gs2" class="xp-result" hidden><p class="xp-verdict">A possible unconscious clue:</p><p>The parent may see <em>themselves</em> at that age in the friend — or resent the friend for "taking away" their child. The dislike is real, but its <strong>true target is not the friend's actual qualities</strong>; it comes from somewhere the parent cannot see.</p></div>
+    <div id="gs3" class="xp-result" hidden><p class="xp-verdict">A possible unconscious clue:</p><p>The toddler wants <strong>all of the parents' love and attention</strong> for herself. The new baby threatens that. She cannot put this into words — it leaks out as an action: pinching.</p></div>
+    <div id="gs4" class="xp-result" hidden><p class="xp-verdict">A possible unconscious clue:</p><p>Perhaps seeing the siblings stirs up <strong>old rivalry or painful memories</strong> that were pushed down long ago. Avoiding them keeps those buried feelings buried. Notice this connects to behaviour 1 — "forgetting" and "avoiding" can both be unconscious strategies.</p></div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>这四个例子的共同点：表面理由都说不通，或者理由和行为的强度对不上（一个朋友而已，至于那么讨厌吗？）。Freud 的假设是：真正的动机被压在意识够不着的地方，行为只是动机的「出口」。所以本章的方法论从一开始就定了：<strong>潜意识不能直接观察，只能通过行为线索倒推</strong>——记住这句话，§10 评价它的时候会回来算账。</div>
+</section>
+
+<!-- ============ SECTION 3: FREUD BIO ============ -->
+<section class="section" id="s3">
+  <h2>3. Freud: From Neurology to Psychology（Freud：从神经科到心理学）</h2>
+  <p class="section-subtitle">The theory of the unconscious did not appear out of nowhere — it grew out of Freud's frustration as a doctor. Patients had symptoms with no physical cause, so he had to look somewhere no microscope could reach: the mind.</p>
+
+  <div class="keyterm-box">
+    <p><span class="key-term">hysteria</span>（歇斯底里/癔症）— <strong>an outdated term today</strong>, but used by Freud to describe <strong>physical symptoms without a clear medical explanation</strong>.（身体上真实出现了症状——瘫痪、失明、抽搐——但查不出任何生理原因。）</p>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>🩺 Vienna — the puzzle（谜题）</h4>
+      <p>Freud was born in <strong>Moravia, Austria, in 1856</strong> and spent much of his life in Vienna working as a doctor. He mainly worked with patients with <strong>neurological disorders</strong>（神经疾病）, but suspected there was <strong>no biological cause</strong> for their symptoms.</p>
+    </div>
+    <div class="compare-card">
+      <h4>🎭 Paris — Charcot &amp; hypnosis（转折点）</h4>
+      <p>A turning point came when Freud went to Paris to work with <strong>Jean-Martin Charcot</strong>. Charcot treated hysteria patients and was able to <strong>alleviate symptoms using hypnosis</strong>（用催眠缓解症状）. This introduced Freud to the idea that these disorders may be <strong>explained by the mind rather than any biological cause</strong>.</p>
+    </div>
+    <div class="compare-card">
+      <h4>🗣️ Vienna again — Breuer &amp; Anna O（ talking cure 的雏形）</h4>
+      <p>On his return, Freud partnered with the physician <strong>Josef Breuer</strong>. Breuer had treated a patient named <strong>Anna O</strong> who suffered from a variety of symptoms. Breuer encouraged Anna O to <strong>talk about her symptoms</strong>, which seemed to offer relief — talking seemed to <strong>release hidden emotions</strong> thought to be the cause of her symptoms.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>🧩 So what?（这一段在讲什么逻辑）</h4>
+      <p>Body is fine → hypnosis (a <em>mental</em> technique) helps → talking helps → therefore the cause must be <strong>mental, and hidden</strong>. These early influences led Freud to develop his <strong>theories of mind and personality development</strong> — everything in §4–§9 grows from this clinical starting point.</p>
+    </div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>把这一节当成一个「侦探故事」读：Freud 原本是看神经病的医生，但他的病人身体查不出毛病（hysteria）。巴黎的 Charcot 用<strong>催眠</strong>就能减轻症状——催眠没碰身体，只动了「心」，说明病因在心。Breuer 的病人 Anna O 把症状<strong>说出来</strong>就好一点——说明那些情绪一直被「憋」（压抑）在某个说不出的地方。三条线索指向同一个结论：<strong>心里有一块我们自己都不知道的区域在作怪</strong>——这就是「潜意识」概念的出生证明。另外记住 Anna O 这个「说出来就好了」的思路，它就是后来 psychoanalysis（精神分析，spec 4.1.6）的种子。</div>
+</section>
+
+<!-- ============ SECTION 4: THREE LEVELS OF MIND ============ -->
+<section class="section" id="s4">
+  <h2>4. The Three Levels of Mind（心理的三个层面）</h2>
+  <p class="section-subtitle">Freud believed that there were three distinct levels of the human mind: the conscious, the preconscious and the unconscious. This is often pictured as an iceberg (Figure 21.1).</p>
+
+  <div class="keyterm-box">
+    <p><strong>Before you meet the iceberg, meet the three levels（先认识三层，再看图）</strong>. They are organised by one question: <strong>how close is this material to your awareness right now?</strong>（这段心理内容离「你现在知道」有多远？）Read the table top to bottom — each level is <em>deeper</em> and <em>harder to reach</em> than the one above.</p>
+  </div>
+
+  <table style="max-width:820px;">
+    <tr>
+      <th style="width:20%;">Level（层面）</th>
+      <th style="width:34%;">Awareness status（意识状态）</th>
+      <th style="width:26%;">What it contains（里面装什么）</th>
+      <th style="width:20%;">Everyday example（生活例子）</th>
+    </tr>
+    <tr>
+      <td><strong>Conscious</strong>（意识）</td>
+      <td>Thoughts and perceptions you are <strong>currently experiencing</strong>（此刻正在想的）</td>
+      <td>Present thoughts, perceptions</td>
+      <td>Reading this sentence right now</td>
+    </tr>
+    <tr>
+      <td><strong>Preconscious</strong>（前意识）</td>
+      <td>Not in immediate awareness, but <strong>can be brought into consciousness with effort</strong>（努力一下就能调出来）</td>
+      <td>Stored memories, stored knowledge</td>
+      <td>Your home address; what you ate yesterday</td>
+    </tr>
+    <tr>
+      <td><strong>Unconscious</strong>（潜意识）</td>
+      <td><strong>Inaccessible to the conscious mind</strong> — not directly reachable at all（完全够不着）</td>
+      <td><strong>Thoughts, conflicts, desires</strong> that are not accessible; instincts, fears, selfish motives</td>
+      <td>The real reason you "hate" that friend — you can't just recall it</td>
+    </tr>
+  </table>
+
+  <div class="figure">
+    <img src="images/iceberg.png" alt="Figure 21.1 Freud's theory of the structure of the mind pictured as an iceberg" style="max-width:420px;">
+    <div class="figure-caption">▲ Figure 21.1 Freud's theory of the structure of the mind can be pictured as an iceberg（课本原图）</div>
+  </div>
+
+  <div class="note-box blue-box">
+    <h4>🧊 How to read the iceberg（怎么读这张图）</h4>
+    <p>The <strong>tip above the water</strong> = the conscious mind: tiny, just what you are aware of now. The <strong>layer just below the waterline</strong> = the preconscious: memory stored knowledge, reachable if you dive a little. The <strong>huge mass at the bottom</strong> = the unconscious: instincts, fears, selfish motives — the <strong>largest part</strong>, and completely invisible. The picture's message is about <strong>size</strong>: what you are aware of is only a small fraction of what is going on in your mind.</p>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>冰山图回答「心有多大是我们看不见的」——答案是：绝大部分。意识是你此刻正在读的这些字；前意识是你家地址——不在脑子里「挂着」，但一问就能答（像手机里没打开的 app）；潜意识是水面下那一大块——本能、恐惧、自私的欲望，平时完全调不出来，但你做的很多事都是它在推。考试写 describe 时注意课本措辞：unconscious 是<strong>最大的部分</strong>（the largest part），装的是 <strong>thoughts, conflicts, and desires that are not accessible to the conscious mind</strong>。还有一个高频易错点：preconscious 的关键词是「<strong>with effort 可以进入意识</strong>」——它不是「半潜意识状态」那种模糊概念，而是「存着、能取、但要努力」的记忆库。</div>
+</section>
+
+<!-- ============ SECTION 5: EROS & THANATOS ============ -->
+<section class="section" id="s5">
+  <h2>5. What Powers the Unconscious: Eros &amp; Thanatos（潜意识靠什么运转：生本能与死本能）</h2>
+  <p class="section-subtitle">Despite being inaccessible to us, the unconscious exerts a powerful influence on our behaviour and emotions. It is influenced by two primal instincts（原始本能）.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card red">
+      <h4>💀 Thanatos — the death instinct（死本能）</h4>
+      <p><em>Textbook:</em> "Thanatos motivates <strong>aggression and destruction</strong>."<br>
+      <strong>In plain words:</strong> 推着我们去做破坏性、攻击性事情的原始力量。<br>
+      <strong>Everyday:</strong> the urge to slam a door, snap at someone, or want to smash something when frustrated.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>🌱 Eros — the life instinct（生本能）</h4>
+      <p><em>Textbook:</em> "Eros motivates <strong>creativity and preservation of life</strong>."<br>
+      <strong>In plain words:</strong> 推着我们创造、维系生命、让生活更好的原始力量。<br>
+      <strong>Everyday:</strong> making friends, cooking a meal, building something, caring for a pet.</p>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <h4>⚖️ Why both matter（两个都要记）</h4>
+    <p>Each primal instinct <strong>motivates us</strong> — every person carries both. Your behaviour at any moment can be read as the outcome of these two forces pulling from inside the unconscious. Hold this idea: it explains why the unconscious is not just a <em>storage room</em> but an <strong>engine</strong>（不是仓库，是发动机）.</p>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>上一节的冰山图说「潜意识最大」，这一节回答「这一大块里面装的动力是什么」：两股原始本能。<strong>Thanatos（死本能）</strong>名字唬人，其实就是攻击和破坏的冲动——想摔门、想骂人、想撕卷子；<strong>Eros（生本能）</strong>是创造和维持生命的冲动——做饭、交友、搞创作。名字不用死记，记配对：<strong>死本能→攻击/破坏，生本能→创造/维生</strong>，单词首字母 T=threat，E=energy，也勉强能当记忆钩子。考试如果问「according to Freud, what influences behaviour from within the unconscious」，答案就是这两个本能 + 各自驱动什么。</div>
+</section>
+
+<!-- ============ SECTION 6: REPRESSION ============ -->
+<section class="section" id="s6">
+  <h2>6. Repression &amp; How the Unconscious Leaks（压抑与潜意识的「泄漏」）</h2>
+  <p class="section-subtitle">If the unconscious is locked away, how does it still run the show? Freud's answer has two parts: repression keeps threatening material <em>down there</em> — but the buried material still leaks out sideways.</p>
+
+  <div class="keyterm-box">
+    <p><span class="key-term">repression</span>（压抑）— a <strong>defence mechanism</strong> which operates by <strong>keeping threatening, harmful or unacceptable thoughts out of our conscious awareness</strong>, keeping them hidden in the unconscious mind.</p>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>🌫️ Part 1 — Repression hides, but does not erase（藏起来 ≠ 消失）</h4>
+      <p>Repression <strong>does not diminish the intensity</strong> of these thoughts: even though we are unaware of them, <strong>they exert great influence</strong> and <strong>we expand energy trying to hold them in the unconscious</strong>.（被压下去的想法劲头不减，我们还在持续花「心理能量」按住它。）</p>
+    </div>
+    <div class="compare-card">
+      <h4>💧 Part 2 — The unconscious leaks out（潜意识会漏出来）</h4>
+      <p>Freud believed that <strong>the unconscious reveals itself through how we behave</strong> and <strong>the symbolic content of our dreams</strong>. These can be <strong>interpreted</strong> to reveal the nature of the unconscious mind.（行为和梦是潜意识的两扇窗户。）</p>
+    </div>
+  </div>
+
+  <div class="flowchart">
+    <svg viewBox="0 0 680 210" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;">
+      <rect x="10" y="10" width="660" height="190" fill="#ffffff" rx="10" stroke="#e2e8f0"/>
+      <text x="340" y="36" text-anchor="middle" font-size="14" font-weight="700" fill="#1e293b">Why behaviour needs interpreting（为什么行为需要「解读」）</text>
+      <rect x="35" y="60" width="170" height="64" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8" rx="9"/>
+      <text x="120" y="86" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e40af">Unconscious wish</text>
+      <text x="120" y="104" text-anchor="middle" font-size="10.5" fill="#475569">threatening thought 潜伏的念头</text>
+      <path d="M 209 92 L 253 92" stroke="#2563eb" stroke-width="2" marker-end="url(#arrB21)"/>
+      <text x="231" y="82" text-anchor="middle" font-size="9.5" fill="#2563eb">repression</text>
+      <rect x="257" y="60" width="156" height="64" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5" rx="9"/>
+      <text x="335" y="86" text-anchor="middle" font-size="11.5" font-weight="700" fill="#475569">Held below awareness</text>
+      <text x="335" y="104" text-anchor="middle" font-size="10.5" fill="#64748b">still full of energy 压而不消</text>
+      <path d="M 417 92 L 461 92" stroke="#dc2626" stroke-width="2" marker-end="url(#arrR21)"/>
+      <text x="439" y="82" text-anchor="middle" font-size="9.5" fill="#dc2626">leaks out</text>
+      <rect x="465" y="52" width="180" height="36" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5" rx="9"/>
+      <text x="555" y="75" text-anchor="middle" font-size="11" font-weight="600" fill="#991b1b">Behaviour 行为线索</text>
+      <rect x="465" y="98" width="180" height="36" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5" rx="9"/>
+      <text x="555" y="121" text-anchor="middle" font-size="11" font-weight="600" fill="#991b1b">Dreams 梦的象征内容</text>
+      <text x="340" y="172" text-anchor="middle" font-size="10.5" fill="#334155" font-weight="600">The psychologist interprets these clues to reveal the unconscious mind（心理学家通过解读线索倒推潜意识）</text>
+      <defs>
+        <marker id="arrB21" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#2563eb"/></marker>
+        <marker id="arrR21" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#dc2626"/></marker>
+      </defs>
+    </svg>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>「压抑」就像把一封不该看的信塞进抽屉最底层——信还在，而且你还得一直花力气<strong>按住抽屉</strong>（课本原话：we expand energy trying to hold them）。所以 Freud 说潜意识有两个出口：一是<strong>日常行为</strong>（说不清的火气、莫名其妙的小动作），二是<strong>梦</strong>（被压下去的愿望用象征的方式演出来）。这一节是全章的「传动轴」：§2 说「我们只能看行为线索」，§4-5 说「潜意识里有什么」，这一节把两头接上——<strong>正因为压抑，我们才看不到；正因为会泄漏，行为和梦才有得解读</strong>。§9 的防御机制就是压抑的「扩展版」，§10 评价时质疑的正是这套「解读」太主观。</div>
+</section>
+
+<!-- ============ SECTION 7: ID EGO SUPEREGO ============ -->
+<section class="section" id="s7">
+  <h2>7. The Three Parts of Personality: Id, Ego &amp; Superego（人格三我）</h2>
+  <p class="section-subtitle">Closely related to the concept of the unconscious is Freud's three parts of personality: the id, ego and the superego. The id, ego and superego interact in a dynamic way to determine our behaviour.</p>
+
+  <div class="keyterm-box">
+    <p><strong>Before you meet the cartoon, meet the three players（先认识三我，再看图）</strong>. Each part answers three questions: <strong>Where does it live?</strong> (which level of mind) · <strong>What rule does it follow?</strong> (its principle) · <strong>What does it want?</strong> Keep these three questions in mind and the definitions below read themselves.</p>
+  </div>
+
+  <table style="max-width:860px;">
+    <tr>
+      <th style="width:15%;">Part</th>
+      <th style="width:22%;">Where it lives（住在哪一层）</th>
+      <th style="width:20%;">Its principle（遵循的原则）</th>
+      <th style="width:43%;">What it wants / does（它要什么、做什么）</th>
+    </tr>
+    <tr>
+      <td><strong>Id</strong>（本我）</td>
+      <td>Operates <strong>entirely in the unconscious mind</strong></td>
+      <td>The <strong>pleasure principle</strong>（快乐原则）</td>
+      <td>The <strong>primitive part</strong>: contains drives and impulses, requires <strong>immediate gratification</strong>（立刻满足）</td>
+    </tr>
+    <tr>
+      <td><strong>Ego</strong>（自我）</td>
+      <td>Spans all levels — in touch with <strong>reality</strong></td>
+      <td>The <strong>reality principle</strong>（现实原则）</td>
+      <td>The <strong>rational part</strong>: works to satisfy the id's impulses in a realistic way — it makes rational decisions to <strong>prevent, modify or delay</strong> the id's impulses to make them more acceptable</td>
+    </tr>
+    <tr>
+      <td><strong>Superego</strong>（超我）</td>
+      <td>Developed from <strong>society's morals and values</strong></td>
+      <td>The <strong>moral conscience</strong>（道德原则）</td>
+      <td>Has <strong>internalised society's morals and values</strong>; acts as our moral conscience to guide behaviour about what is <strong>right and wrong</strong></td>
+    </tr>
+  </table>
+
+  <div class="figure">
+    <img src="images/id_ego_superego.png" alt="Figure 21.2 The parts of our personality" style="max-width:460px;">
+    <div class="figure-caption">▲ Figure 21.2 The parts of our personality — three voices in one head（课本原图）</div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card red">
+      <h4>😈 Id — "I want it now!"（现在就要！）</h4>
+      <p>The primitive part, entirely unconscious. It is like a demanding baby: drives and impulses only, and it wants them satisfied <strong>immediately</strong>. It does not care about consequences, reality, or morals — those are not its job.</p>
+    </div>
+    <div class="compare-card">
+      <h4>🧑‍💼 Ego — "I need a bit of planning to get it"（得计划一下）</h4>
+      <p>The rational part that negotiates between the id and reality. Note the direction: the ego does <em>not</em> crush the id — it works to <strong>satisfy</strong> the id's impulses, but in a <strong>realistic way</strong>, deciding when and how they can be released.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>👮 Superego — "You can't have it. It's not right!"（不行，这不道德！）</h4>
+      <p>The internalised voice of society: rules about right and wrong absorbed from parents and culture. It blocks or condemns impulses that violate morality — the source of guilt when you break your own moral code.</p>
+    </div>
+    <div class="compare-card">
+      <h4>🎭 The dynamic balance（动态平衡）</h4>
+      <p>The three interact <strong>dynamically</strong>: sometimes the id's demands are met, sometimes the superego is dominant. The <strong>ego tries to balance</strong> the demands of the id, reality and the superego. A <strong>weak ego can lead to impulse control issues</strong>（自我弱 → 管不住冲动）.</p>
+    </div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>课本那张图特别适合记忆：脑子里住着三个人。<strong>id 是任性小孩</strong>——"我现在就要吃蛋糕！"，完全待在潜意识里，讲快乐原则，要立刻满足；<strong>ego 是精明管家</strong>——"等 dinner 之后再吃，或者只吃一小块"，讲现实原则，注意 ego 不是消灭 id 的欲望，而是<strong>替它想办法在现实里实现（防止/修改/推迟）</strong>；<strong>superego 是道德警察</strong>——"不能拿，这不合适"，它是把社会的对错标准「内化」进了心里。三者的关系是<strong>动态</strong>的：谁占上风都可能，ego 负责居中调度，ego 太弱的人就管不住冲动。考试最爱的考法是给一个场景问「哪一部分在起作用」（§12 Checkpoint 的 Kaia/Willern/Rhys 就是原题）——判定口诀：看行为服从的是<strong>哪个原则</strong>：立刻爽=Id，划算/权衡=Ego，对错/内疚=Superego。</div>
+</section>
+
+<!-- ============ SECTION 8: DYNAMIC + ROLE PLAY ============ -->
+<section class="section" id="s8">
+  <h2>8. Conflict &amp; the Ego's Job — Role Play（冲突与自我的工作：角色扮演）</h2>
+  <p class="section-subtitle">Sometimes dynamics between the three parts of personality can lead to conflict which can cause internal tension. When conflict arises, the ego can use defence mechanisms to manage the tension.</p>
+
+  <div class="activity-box">
+    <h4>🍫 课本 ACTIVITY 1 — Teamwork, Collaboration, Creativity</h4>
+    <p>In a small group of three, consider the following scenario: <strong>You are at a party and you want to eat a big piece of chocolate cake before the other guests.</strong> Role play what the id, ego and superego would do in this situation:</p>
+    <ul>
+      <li>What would the id do?</li>
+      <li>What would the ego do?</li>
+      <li>What would the superego do?</li>
+    </ul>
+  </div>
+
+  <div class="xp-block">
+    <h4><span class="xp-badge">INTERACTIVE</span> 🎭 先分配角色演一遍，再对答案</h4>
+    <p class="xp-intro">In your group, each person takes one part (id / ego / superego) and says their line out loud. The cartoon voices from §7 are a good script. Then click to compare with our suggested lines.</p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="toggleReveal('rp1')">Id's line</button>
+      <button class="xp-btn" onclick="toggleReveal('rp2')">Ego's line</button>
+      <button class="xp-btn" onclick="toggleReveal('rp3')">Superego's line</button>
+    </div>
+    <div id="rp1" class="xp-result" hidden><p class="xp-verdict">Id（快乐原则）:</p><p>"Cake. Now. Big piece. Before anyone else takes it." — immediate gratification, no thought of guests, manners, or consequences. The id operates entirely in the unconscious: this urge just <em>happens</em> to you.</p></div>
+    <div id="rp2" class="xp-result" hidden><p class="xp-verdict">Ego（现实原则）:</p><p>"We can have cake — but let's wait until the host cuts it, and take a normal slice so we're invited back." — satisfies the id's impulse in a <strong>realistic way</strong>: prevent, modify, or delay.</p></div>
+    <div id="rp3" class="xp-result" hidden><p class="xp-verdict">Superego（道德原则）:</p><p>"Grabbing cake before the guests? That's greedy and rude. You know better." — the internalised moral voice, ready to make you feel guilty if you ignore it.</p></div>
+  </div>
+
+  <div class="note-box">
+    <h4>➡️ From tension to defence mechanisms（从紧张到防御机制）</h4>
+    <p>When the three parts clash, the result is <strong>internal tension</strong>（内在紧张）— anxiety. The ego cannot always solve this by planning alone, so it has a second toolkit: <strong>defence mechanisms</strong>, which we meet in §9.</p>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>Activity 1 就是把 §7 的表格「演」出来：同一个蛋糕，id 说现在就吃最大块，superego 说客人没吃你不能抢，ego 在中间找一条现实可行的路（等切好了拿正常的一块）。这个练习背后的考点是：<strong>冲突 → 紧张（焦虑）→ ego 出来收拾</strong>。注意递进关系：ego 平时用「计划」解决问题（推迟、修改欲望），当冲突太强、计划搞不定焦虑时，才动用第二套工具——<strong>防御机制</strong>。这一步是 §9 的入口。</div>
+</section>
+
+<!-- ============ SECTION 9: DEFENCE MECHANISMS ============ -->
+<section class="section" id="s9">
+  <h2>9. Defence Mechanisms: Displacement &amp; Denial（防御机制：转移与否认）</h2>
+  <p class="section-subtitle">Defence mechanisms are unconscious psychological strategies to help resolve anxiety experienced when we have internal conflict.（防御机制本身是无意识的——你意识不到自己在防御。）</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>↪️ Displacement（转移）</h4>
+      <p><em>Textbook:</em> one ego defence mechanism is displacement; this involves <strong>redirecting unacceptable impulses from one object to another which is less threatening</strong>.<br>
+      <strong>Textbook example:</strong> A student receives a <strong>low grade for an essay that they worked really hard on</strong>. The student feels angry and frustrated <strong>but cannot confront his teacher about it</strong>, so they instead <strong>get into an argument with their friend</strong>.（怒气从「不敢惹的老师」转移到「惹得起的朋友」——对象换了，冲动没变。）</p>
+    </div>
+    <div class="compare-card green">
+      <h4>🚫 Denial（否认）</h4>
+      <p><em>Textbook:</em> denial involves <strong>blocking unacceptable thoughts from the conscious mind</strong>.<br>
+      <strong>Textbook example:</strong> A student <strong>forgetting to turn up for an exam and claiming they did not know about it</strong>.（「忘」了考试还说没人通知我——把无法接受的事实挡在意识之外。对照 §2 第 1 条：这「忘记」可能不是偶然。）</p>
+    </div>
+  </div>
+
+  <div class="xp-block">
+    <h4><span class="xp-badge">INTERACTIVE</span> 🧭 Scenario sorter — displacement or denial?</h4>
+    <p class="xp-intro">Four scenarios. Decide which defence mechanism each one shows. Judging tip: displacement <strong>moves an impulse to a safer target</strong>; denial <strong>refuses to let the fact into consciousness at all</strong>.</p>
+    <div id="dm-quiz"></div>
+    <div class="xp-controls" style="margin-top:10px;">
+      <button class="xp-btn" id="dm-final-btn" onclick="dmFinal()" style="display:none;">查看总评 →</button>
+    </div>
+    <div id="dm-result" class="xp-result"></div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>两个机制一句话分清：<strong>displacement 是「换靶子」</strong>——冲动还在，但换个不构成威胁的对象发泄（不敢怼老师，回家怼朋友/弟弟/枕头）；<strong>denial 是「当没看见」</strong>——整个事实都被挡在意识外面（考试忘了=没通知我）。共同点也是考点：它们都是<strong>无意识的心理策略</strong>（unconscious psychological strategies），用来处理内在冲突引起的焦虑——也就是说，当事人自己并不知道在防御，旁边人反而看得见。§12 Exam Practice 的 Marta 场景题和这里直接挂钩。</div>
+</section>
+
+<!-- ============ SECTION 10: EVALUATION ============ -->
+<section class="section" id="s10">
+  <h2>10. Evaluating Freud's Theories（评价 Freud 的理论）</h2>
+  <p class="section-subtitle">Stay close to the textbook's four evaluation angles: the Little Hans evidence, the subjective nature of the evidence, generalisability, and the pioneering contribution.</p>
+
+  <div class="study-card">
+    <div class="study-card-header">
+      <span class="study-icon">🐴</span>
+      <span class="study-name">Little Hans — Freud's evidence for the unconscious</span>
+      <span class="study-badge case">Case study</span>
+    </div>
+    <div class="study-card-body">
+      <p>Freud largely based his theories on <strong>clinical case studies of his own patients</strong>. One of these was a child named <strong>Little Hans</strong>. Little Hans had a <strong>phobia of horses</strong>, and was particularly scared of horses <strong>wearing blinkers around their eyes</strong>. He also <strong>feared being bitten</strong>, and became particularly scared when <strong>seeing a horse collapse in the street</strong>.</p>
+      <p>Freud interpreted Little Hans' fear of horses as the <strong>Oedipus complex</strong>（俄狄浦斯情结）: his fear was actually an <strong>unconscious fear of his father</strong>. His fearfulness at seeing the horse collapse was interpreted as <strong>unconsciously wishing his father dead</strong>.（眼罩像父亲的眼镜；马倒地=盼父死去——整套解读都发生在潜意识层面。）</p>
+      <p><span class="eval-tag">Textbook's caution: while this may offer some evidence for the unconscious mind, it would be unwise to validate an entire theory of mind based on one single case. Freud only met Little Hans on a few occasions — much of the psychoanalysis was conducted by Hans' father.</span></p>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>🔍 1 · Subjective evidence（证据是主观的）</h4>
+      <p>A main objection: his methods used <strong>data are considered unscientific</strong>. Freud <strong>interpreted his patients' and his own behaviours and dreams</strong> to develop his theories. These are <strong>subjective interpretations</strong> — not reliable, as he may have <strong>paid attention to data that fitted his theories and ignored data that did not</strong>（只留意支持自己理论的证据）.</p>
+    </div>
+    <div class="compare-card">
+      <h4>🧪 2 · Unfalsifiable（不可证伪）</h4>
+      <p>There is <strong>no empirical evidence</strong> for the unconscious mind, and by definition it is <strong>inaccessible to direct study</strong>. We cannot test id, ego and superego — they are <strong>psychological constructs</strong>. If we cannot measure the constructs, the theory is <strong>unscientific</strong>: it is <strong>unfalsifiable</strong> — it <strong>cannot be proven or disproven</strong>. Being able to refute (prove false) a theory is an important principle of science.</p>
+    </div>
+    <div class="compare-card">
+      <h4>👥 3 · Generalisability（代表性不足）</h4>
+      <p>Freud gathered data from <strong>middle-class Viennese women during the late 1800s and early 1900s</strong> who suffered with hysteria. We <strong>cannot generalise</strong> a theory of the human mind and personality development from such a limited sample.（一小群特定时代、特定文化、特定问题的病人 → 全人类的心理理论。）</p>
+    </div>
+    <div class="compare-card green">
+      <h4>🌟 4 · However — the pioneering contribution（开创性贡献）</h4>
+      <p>His theories led to <strong>treating patients differently</strong> — gaining a deeper understanding of their <strong>unique experiences</strong> rather than focusing just on their symptoms. His research and therapy has also led to <strong>the development of modern psychotherapies</strong> used to treat mental illness.（从「只看症状」到「理解人」，心理治疗由此起步。）</p>
+    </div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>评价记「三批一赞」。<strong>批 1（证据主观）</strong>：Freud 的理论建立在对病人行为和梦的<strong>解读</strong>上，容易只挑支持自己的数据；<strong>批 2（不可证伪）</strong>：id/ego/superego 是心理建构，测不了，测不了的理论不算科学——「能被证明是错的」才是科学的资格线；<strong>批 3（样本窄）</strong>：证据来自 19 世纪末维也纳中产阶级癔症女病人，推不到全人类。<strong>一赞</strong>：尽管如此，Freud 是开山祖师——把治疗焦点从「症状」转到「独特经历」，现代心理治疗的源头。Little Hans 是必须会讲的例子：马匹恐惧 → Oedipus complex → 无意识层面怕父、盼父死；配套批评有两点——单一案例撑不起整个理论，而且分析大部分是<strong> Hans 的父亲做的</strong>（Freud 只见过孩子几次），连「数据采集者」都不中立。写 8 分大题时，each 批评后面接一句「为什么这削弱理论」才是 AO3。</div>
+</section>
+
+<!-- ============ SECTION 11: THINKING LIKE A PSYCHOLOGIST ============ -->
+<section class="section" id="s11">
+  <h2>11. Thinking Like a Psychologist（像心理学家一样思考）</h2>
+  <div class="activity-box">
+    <h4>🔬 课本 THINKING LIKE A PSYCHOLOGIST</h4>
+    <p>Psychology is a science which employs scientific methods when studying behaviour. <strong>In pairs, discuss whether the concept of the unconscious can be scientifically verified. List reasons for your justification.</strong></p>
+  </div>
+
+  <div class="xp-block">
+    <h4><span class="xp-badge">DISCUSSION</span> 💬 先讨论，再校对</h4>
+    <p class="xp-intro">Try to build <em>both</em> sides before clicking. Hint: one side is about the <strong>definition</strong> of the unconscious; the other side is about what scientists <em>do</em> with unobservable things elsewhere in science.</p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="toggleReveal('tlp1')">Reasons it CANNOT be verified</button>
+      <button class="xp-btn" onclick="toggleReveal('tlp2')">Reasons it might still be worth studying</button>
+    </div>
+    <div id="tlp1" class="xp-result" hidden><p class="xp-verdict">Cannot be verified:</p><p>By definition the unconscious is <strong>inaccessible to direct study</strong> — we cannot observe it, measure it, or test id/ego/superego. Unmeasurable constructs make the theory <strong>unfalsifiable</strong>: no possible observation could prove it wrong. Any behaviour can be "explained" after the fact by <em>some</em> unconscious motive — an explanation that can never fail explains nothing, scientifically speaking.</p></div>
+    <div id="tlp2" class="xp-result" hidden><p class="xp-verdict">Still worth studying:</p><p>Science does deal with unobservables (gravity was invisible too) — the issue is testable <em>predictions</em>, not visibility. And clinically, the concept led to <strong>modern psychotherapies</strong> and to treating patients as people with unique experiences, not just symptom-carriers. The honest position: a rich, historically powerful theory that sits <strong>outside</strong> strict scientific verification.</p></div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>这道课本讨论题就是 §10 批评 2 的「换装重现」：unconscious 按定义就<strong>没法直接研究</strong>（够不着、测不了），所以「科学验证」这关它天然过不去——这正好帮你把 unfalsifiable 这个词用熟。但反方也有话可说：科学里看不见的东西多了（引力最初也看不见），关键是能不能做出<strong>可检验的预测</strong>；而且临床上的功劳是真实的（现代心理治疗）。这个平衡结论本身就是 synoptic 素材——之后 issues &amp; debates 讲「psychology as a science」时直接复用。</div>
+</section>
+
+<!-- ============ SECTION 12: CHECKPOINT & EXAM PRACTICE ============ -->
+<section class="section" id="s12">
+  <h2>12. Checkpoint &amp; Exam Practice（关卡检查与真题演练）</h2>
+
+  <div class="checkpoint">
+    <h3>✅ CHECKPOINT — Skills: Interpretation, Adaptive Learning</h3>
+
+    <h4 style="margin-top:14px;">1 · Match the parts of mind and personality to the correct description（连一连）</h4>
+    <p style="font-size:.9em;">Pick the matching letter for each item, then press Check.（每项选出对应描述的字母，最后点 Check。）</p>
+    <table style="max-width:720px;">
+      <tr><th>Term</th><th>Your match</th></tr>
+      <tr><td>1 · Conscious</td><td>
+        <select id="cp-1" class="q-option" style="padding:6px 10px;"><option value="">— choose —</option><option value="e">e · Current awareness</option><option value="a">a · The moral conscience</option><option value="b">b · Hidden from view</option><option value="c">c · Past memories</option><option value="d">d · The realist</option><option value="f">f · The pleasure seeker</option></select>
+      </td></tr>
+      <tr><td>2 · Preconscious</td><td>
+        <select id="cp-2" class="q-option" style="padding:6px 10px;"><option value="">— choose —</option><option value="c">c · Past memories</option><option value="a">a · The moral conscience</option><option value="b">b · Hidden from view</option><option value="d">d · The realist</option><option value="e">e · Current awareness</option><option value="f">f · The pleasure seeker</option></select>
+      </td></tr>
+      <tr><td>3 · Unconscious</td><td>
+        <select id="cp-3" class="q-option" style="padding:6px 10px;"><option value="">— choose —</option><option value="b">b · Hidden from view</option><option value="a">a · The moral conscience</option><option value="c">c · Past memories</option><option value="d">d · The realist</option><option value="e">e · Current awareness</option><option value="f">f · The pleasure seeker</option></select>
+      </td></tr>
+      <tr><td>4 · Id</td><td>
+        <select id="cp-4" class="q-option" style="padding:6px 10px;"><option value="">— choose —</option><option value="f">f · The pleasure seeker</option><option value="a">a · The moral conscience</option><option value="b">b · Hidden from view</option><option value="c">c · Past memories</option><option value="d">d · The realist</option><option value="e">e · Current awareness</option></select>
+      </td></tr>
+      <tr><td>5 · Ego</td><td>
+        <select id="cp-5" class="q-option" style="padding:6px 10px;"><option value="">— choose —</option><option value="d">d · The realist</option><option value="a">a · The moral conscience</option><option value="b">b · Hidden from view</option><option value="c">c · Past memories</option><option value="e">e · Current awareness</option><option value="f">f · The pleasure seeker</option></select>
+      </td></tr>
+      <tr><td>6 · Superego</td><td>
+        <select id="cp-6" class="q-option" style="padding:6px 10px;"><option value="">— choose —</option><option value="a">a · The moral conscience</option><option value="b">b · Hidden from view</option><option value="c">c · Past memories</option><option value="d">d · The realist</option><option value="e">e · Current awareness</option><option value="f">f · The pleasure seeker</option></select>
+      </td></tr>
+    </table>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="cpCheck()">Check answers</button>
+    </div>
+    <div id="cp-fb" class="xp-result"></div>
+
+    <h4 style="margin-top:18px;">2 · Which part of the personality does each statement describe?（判断谁在起作用）</h4>
+    <div id="cpx-quiz"></div>
+    <div class="xp-controls" style="margin-top:10px;">
+      <button class="xp-btn" id="cpx-final-btn" onclick="cpxFinal()" style="display:none;">查看总评 →</button>
+    </div>
+    <div id="cpx-result" class="xp-result"></div>
+  </div>
+
+  <div class="exam-practice">
+    <h3>📝 EXAM PRACTICE — Skills: Critical Thinking, Reasoning</h3>
+
+    <p><strong>1. Marta is preparing a birthday meal with lots of sweet treats. She lays out the sweet treats on a table. Her younger sister and brother, Noore and Suresh, see the sweet treats and want to eat them before the birthday meal. Marta forbids them from eating before the meal. Noore cannot resist, and eats a handful of sweet treats in front of Marta. Suresh goes off and plays outside because he knows it would be wrong to eat any sweet treats.</strong></p>
+
+    <p><strong>a) Explain, using Freudian theory, which part of Noore's personality was responsible for his behaviour. (2 marks)</strong></p>
+    <div class="xp-controls"><button class="xp-btn" onclick="toggleReveal('exa')">Show answer</button></div>
+    <div id="exa" class="xp-result" hidden><p><span class="syl-tag ao1">AO1</span> Noore's behaviour was driven by the <strong>id</strong>（本我）. The id is the primitive part of personality which operates entirely in the unconscious mind and works on the <strong>pleasure principle</strong>, requiring <strong>immediate gratification</strong> of drives and impulses. <span class="syl-tag ao2">AO2</span> Noore "cannot resist" and eats the treats in front of Marta — he seeks immediate gratification of his desire despite knowing he was forbidden, which is the id demanding satisfaction now. <strong>(2)</strong></p></div>
+
+    <p><strong>b) Explain, using Freudian theory, which part of Suresh's personality was responsible for his behaviour. (2 marks)</strong></p>
+    <div class="xp-controls"><button class="xp-btn" onclick="toggleReveal('exb')">Show answer</button></div>
+    <div id="exb" class="xp-result" hidden><p><span class="syl-tag ao1">AO1</span> Suresh's behaviour was driven by his <strong>superego</strong>（超我）. The superego is the part of personality which has <strong>internalised society's morals and values</strong>, acting as our <strong>moral conscience</strong> to guide behaviour about what is right and wrong. <span class="syl-tag ao2">AO2</span> Suresh goes off to play <strong>because he knows it would be wrong</strong> to eat the sweet treats — his behaviour is guided by the internalised moral standard, not by desire (id) or practical negotiation (ego). <strong>(2)</strong></p></div>
+
+    <p><strong>c) A friend of Marta arrives with her daughter Lucy. Lucy wants the sweet treats before the birthday meal, but waits until her mother and Marta leave the room before taking one. Explain, using Freudian theory, which part of Lucy's personality was responsible for her behaviour. (2 marks)</strong></p>
+    <div class="xp-controls"><button class="xp-btn" onclick="toggleReveal('exc')">Show answer</button></div>
+    <div id="exc" class="xp-result" hidden><p><span class="syl-tag ao1">AO1</span> Lucy's behaviour was driven by her <strong>ego</strong>（自我）. The ego is the rational part of personality which operates on the <strong>reality principle</strong> — it works to satisfy the id's impulses in a realistic way by making rational decisions to <strong>prevent, modify or delay</strong> the id's impulses. <span class="syl-tag ao2">AO2</span> Lucy still <em>wants</em> the treats (the id's desire is intact), but she <strong>delays</strong> taking one until the adults have left — a realistic compromise rather than immediate gratification or moral refusal. <strong>(2)</strong></p></div>
+
+    <p><strong>2. Describe the role of the unconscious according to Freud. (2 marks)</strong></p>
+    <div class="xp-controls"><button class="xp-btn" onclick="toggleReveal('exd')">Show answer</button></div>
+    <div id="exd" class="xp-result" hidden><p><span class="syl-tag ao1">AO1</span> The unconscious is the <strong>largest part of the mind</strong>, containing <strong>thoughts, conflicts and desires that are not accessible to the conscious mind</strong>. Despite being inaccessible, it <strong>exerts a powerful influence on our behaviour and emotions</strong> — driven by the primal instincts Eros and Thanatos — and <strong>reveals itself through our behaviour and the symbolic content of our dreams</strong>. <strong>(2)</strong></p></div>
+
+    <p><strong>3. Evaluate the role of the unconscious in personality development. (8 marks)</strong></p>
+    <div class="summary-card-header" onclick="toggleSummary(this)"><span class="arrow">▶</span> 八分题写作计划 — click to unfold<span class="ao-badge">AO3 × 8</span></div>
+    <div class="summary-card-body hidden">
+      <ol>
+        <li><strong>Point 1 — 证据主观（subjective evidence）：</strong> Freud's theories rest on clinical case studies; he interpreted patients' (and his own) behaviours and dreams. These subjective interpretations are unreliable — he may have attended to data fitting his theories and ignored disconfirming data. <em>Why it matters:</em> the theory's evidence base cannot be checked by anyone else, so its conclusions about the unconscious are open to bias.</li>
+        <li><strong>Point 2 — 不可证伪（unfalsifiable）：</strong> id, ego and superego are psychological constructs that cannot be measured; the unconscious is by definition inaccessible to direct study, and there is no empirical evidence for it. A theory that can be neither proven nor disproven fails an important principle of science — so the claim that the unconscious shapes personality cannot be tested.</li>
+        <li><strong>Point 3 — 代表性不足（generalisability）：</strong> the data came mainly from middle-class Viennese women in the late 1800s/early 1900s suffering hysteria — a limited sample from which to build a theory of <em>all</em> human personality development.</li>
+        <li><strong>Point 4 — 支持证据的局限（Little Hans）：</strong> the Oedipus-complex interpretation of one child's horse phobia is a single case; Freud met Hans only a few times and much of the analysis was conducted by Hans' father, so even the case evidence is second-hand and unrepresentative.</li>
+        <li><strong>However — 开创性贡献（pioneering）：</strong> the theory shifted treatment towards understanding patients' unique experiences rather than just symptoms, and led to the development of modern psychotherapies used to treat mental illness today.</li>
+        <li><strong>Conclusion：</strong> the role of the unconscious is a rich, influential framework whose clinical legacy is real, but as a scientific account of personality development it fails the tests of objectivity, falsifiability and representativeness.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="cn-note"><strong>中文理解：</strong>先说 Checkpoint 连线题的记忆钩子：Conscious=「现在」、Preconscious=「过去存的」、Unconscious=「看不见的」；Id=快乐追求者、Ego=现实主义者、Superego=道德良心。Kaia 乱花钱买外套=Id（冲动没被拦）；Willern 两场派对都去但都待得短=Ego（现实的折中：两边都兼顾）；Rhys 留下复习=Superego（「应该做的事」赢了）。再看真题：Marta 场景三问是「三我判定」的标准考法——Noore 忍不住当面吃=Id，Suresh 知道不对去外面玩=Superego，Lucy <strong>想要但等到大人离开才拿</strong>=Ego（注意 Lucy 和 Noore 的欲望一样，差别只在处理方式——这正是「同一冲动、不同部分主导」的出题逻辑）。2 分题公式永远是：<strong>一句 AO1 定义 + 一句 AO2 场景对应</strong>。8 分题四批一赞照 §10 的计划写，每点都要有「为什么这削弱/支持理论」。</div>
+</section>
+
+<!-- ============ SECTION 13: KEY TERMS ============ -->
+<section class="section" id="s13">
+  <h2>13. Key Terms（核心术语表）</h2>
+  <div class="glossary-grid">
+    <div class="glossary-item"><span class="term">hysteria</span><span class="zh">癔症</span><div class="def">An outdated term today, but used by Freud to describe physical symptoms without a clear medical explanation.</div></div>
+    <div class="glossary-item"><span class="term">conscious</span><span class="zh">意识</span><div class="def">The part of the mind containing the thoughts and perceptions that you are currently experiencing.</div></div>
+    <div class="glossary-item"><span class="term">preconscious</span><span class="zh">前意识</span><div class="def">Contains what is not in your immediate awareness but can be brought into conscious awareness with effort, such as stored memories.</div></div>
+    <div class="glossary-item"><span class="term">unconscious</span><span class="zh">潜意识</span><div class="def">The largest part of the mind, containing thoughts, conflicts, and desires that are not accessible to the conscious mind.</div></div>
+    <div class="glossary-item"><span class="term">Thanatos</span><span class="zh">死本能</span><div class="def">The primal death instinct; motivates aggression and destruction.</div></div>
+    <div class="glossary-item"><span class="term">Eros</span><span class="zh">生本能</span><div class="def">The primal life instinct; motivates creativity and preservation of life.</div></div>
+    <div class="glossary-item"><span class="term">repression</span><span class="zh">压抑</span><div class="def">A defence mechanism which keeps threatening, harmful or unacceptable thoughts out of conscious awareness, hidden in the unconscious mind.</div></div>
+    <div class="glossary-item"><span class="term">id</span><span class="zh">本我</span><div class="def">The primitive part of personality operating entirely in the unconscious; works on the pleasure principle, requiring immediate gratification.</div></div>
+    <div class="glossary-item"><span class="term">ego</span><span class="zh">自我</span><div class="def">The rational part of personality; operates on the reality principle, satisfying the id's impulses in a realistic way by preventing, modifying or delaying them.</div></div>
+    <div class="glossary-item"><span class="term">superego</span><span class="zh">超我</span><div class="def">The part of personality that has internalised society's morals and values; acts as our moral conscience guiding right and wrong.</div></div>
+    <div class="glossary-item"><span class="term">defence mechanism</span><span class="zh">防御机制</span><div class="def">An unconscious psychological strategy to help resolve anxiety experienced when we have internal conflict.</div></div>
+    <div class="glossary-item"><span class="term">displacement</span><span class="zh">转移</span><div class="def">Redirecting unacceptable impulses from one object to another which is less threatening.</div></div>
+    <div class="glossary-item"><span class="term">denial</span><span class="zh">否认</span><div class="def">Blocking unacceptable thoughts from the conscious mind.</div></div>
+    <div class="glossary-item"><span class="term">Oedipus complex</span><span class="zh">俄狄浦斯情结</span><div class="def">Freud's interpretation of Little Hans' horse phobia: an unconscious fear of his father, including unconsciously wishing his father dead.</div></div>
+    <div class="glossary-item"><span class="term">unfalsifiable</span><span class="zh">不可证伪</span><div class="def">A theory that cannot be proven or disproven; being able to refute a theory is an important principle of science.</div></div>
+  </div>
+</section>
+
+</main>
+
+</div><!-- END PAGE LAYOUT -->
+
+<div class="footer-note">
+  <p>📚 Edexcel IAL Psychology · Topic D: Learning Theories and Development · Chapter 21 — The Role of the Unconscious in Personality Development</p>
+  <p>Spec 4.1.4 The unconscious in personality development · Evidence: clinical case studies (Little Hans) · Evaluation: subjective evidence · unfalsifiability · generalisability · pioneering contribution · Next chapter: Freud's psychosexual stages（性心理发展阶段）</p>
+</div>
+</div><!-- END CONTAINER -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<script>
+function toggleSummary(header) {
+  header.classList.toggle('open');
+  var body = header.nextElementSibling;
+  if (body && body.classList.contains('summary-card-body')) {
+    body.classList.toggle('hidden');
+  }
+}
+
+// Scroll spy
+(function(){
+  var sections = document.querySelectorAll('.section[id^="s"]');
+  var links = document.querySelectorAll('.sb-item a');
+  function onScroll() {
+    var scrollPos = window.scrollY + 120;
+    var currentId = sections.length ? sections[0].id : null;
+    sections.forEach(function(sec) {
+      if (sec.offsetTop <= scrollPos) { currentId = sec.id; }
+    });
+    links.forEach(function(link) {
+      link.classList.toggle('sb-active', link.getAttribute('href') === '#' + currentId);
+    });
+    var btn = document.getElementById('backToTop');
+    if (btn) {
+      if (window.scrollY > 500) { btn.classList.add('show'); } else { btn.classList.remove('show'); }
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+// Dark mode with localStorage
+function toggleDarkMode() {
+  document.body.classList.toggle('dark');
+  var dark = document.body.classList.contains('dark');
+  document.getElementById('darkBtn').textContent = dark ? '☀️ Light' : '🌙 Dark';
+  try { localStorage.setItem('d21_dark', dark ? '1' : '0'); } catch(e) {}
+}
+(function(){
+  try { if (localStorage.getItem('d21_dark') === '1') { document.body.classList.add('dark'); var b = document.getElementById('darkBtn'); if (b) b.textContent = '☀️ Light'; } } catch(e) {}
+})();
+
+function adjustFontSize(delta) {
+  var html = document.documentElement;
+  var current = parseFloat(window.getComputedStyle(html).fontSize) || 16;
+  var next = Math.min(22, Math.max(13, current + delta));
+  html.style.fontSize = next + 'px';
+}
+
+function toggleReveal(id) {
+  const el = document.getElementById(id);
+  if (el) el.hidden = !el.hidden;
+}
+
+/* ============ Defence mechanism sorter (§9) ============ */
+var DM_ITEMS = [
+  { t: 'After being told off by your manager at work, you shout at your little brother at home', a: 'dis', why: '怒气（冲动）原目标是经理，但经理有威胁性，于是转移到「不那么有威胁」的弟弟——redirecting unacceptable impulses from one object to another which is less threatening = displacement。' },
+  { t: 'Someone who drinks heavily every day insists "I do not have a problem with alcohol"', a: 'den', why: '把无法接受的事实挡在意识之外（blocking unacceptable thoughts from the conscious mind）——坚持「我没问题」= denial。' },
+  { t: 'A student who is bullied at school takes it out on younger children in the neighbourhood', a: 'dis', why: '冲动对象从「不敢反抗的欺凌者」换成「更弱小的孩子」——典型的 displacement：对象换了，攻击冲动没变。' },
+  { t: 'A person whose partner has left them keeps talking about them as if the relationship is fine', a: 'den', why: '拒绝让「关系已结束」这个事实进入意识——表现得好像一切如常 = denial。对照课本例子：忘考试/说没通知，都是把不可接受的现实挡在门外。' }
+];
+var DM_LABELS = { dis: 'Displacement（转移）', den: 'Denial（否认）' };
+var dmIdx = 0, dmScore = 0;
+function dmBuild() {
+  var wrap = document.getElementById('dm-quiz');
+  if (dmIdx >= DM_ITEMS.length) { wrap.innerHTML = '<div class="xp-case"><div class="xp-case-name">全部场景完成</div><p class="xp-case-desc">点下方按钮查看总评。</p></div>'; document.getElementById('dm-final-btn').style.display = 'inline-block'; return; }
+  var it = DM_ITEMS[dmIdx];
+  wrap.innerHTML = '<div class="xp-case"><div class="xp-case-name">场景 ' + (dmIdx + 1) + ' / ' + DM_ITEMS.length + '</div>' +
+    '<p class="xp-case-desc">' + it.t + '</p>' +
+    '<div>' +
+    '<button class="q-option" onclick="dmAnswer(\'dis\')">Displacement · 转移</button>' +
+    '<button class="q-option" onclick="dmAnswer(\'den\')">Denial · 否认</button>' +
+    '</div><div id="dm-fb" class="xp-result"></div>' +
+    '<div class="xp-controls" style="margin-top:10px;"><button class="xp-btn" id="dm-next" onclick="dmNext()" style="display:none;">下一题 →</button></div></div>';
+}
+function dmAnswer(key) {
+  var it = DM_ITEMS[dmIdx];
+  var btns = document.querySelectorAll('#dm-quiz .q-option');
+  btns.forEach(function(b){ b.disabled = true; });
+  btns.forEach(function(b){ if (b.getAttribute('onclick').indexOf("'" + it.a + "'") > -1) { b.className = 'q-option chosen-best'; } else if (b.getAttribute('onclick').indexOf("'" + key + "'") > -1) { b.className = 'q-option chosen-bad'; } });
+  var fb = document.getElementById('dm-fb');
+  if (key === it.a) { dmScore++; fb.className = 'xp-result show ok'; fb.innerHTML = '<p class="xp-verdict">✅ 正确 — <strong>' + DM_LABELS[it.a] + '</strong></p><p>' + it.why + '</p>'; }
+  else { fb.className = 'xp-result show warn'; fb.innerHTML = '<p class="xp-verdict">🤔 正确答案是 <strong>' + DM_LABELS[it.a] + '</strong></p><p>' + it.why + '</p>'; }
+  document.getElementById('dm-next').style.display = 'inline-block';
+}
+function dmNext() { dmIdx++; dmBuild(); }
+function dmFinal() {
+  var box = document.getElementById('dm-result');
+  var pct = Math.round(dmScore / DM_ITEMS.length * 100);
+  box.className = 'xp-result show ' + (pct >= 75 ? 'ok' : 'warn');
+  box.innerHTML = '<p class="xp-verdict">' + (pct === 100 ? '🏆 4/4 满分！判定口诀已内化：换靶子=displacement，当没看见=denial。' : (pct >= 75 ? '👍 ' + dmScore + '/4——再背一遍口诀：「换靶子 vs 当没看见」。' : dmScore + '/4——回到 §9 的两张卡重读定义：displacement 是冲动的对象换掉，denial 是事实本身进不来。')) + '</p>';
+}
+dmBuild();
+
+/* ============ Checkpoint Q2: personality part scenarios (§12) ============ */
+var CPX_DATA = {
+  a: { correct: 'id', label: 'Id（本我）', why: 'Kaia 压力大 → 没考虑钱就直接买下贵外套——追求立刻满足的冲动直接兑现，id 的快乐原则主导，ego 没来得及「防止/修改/推迟」。' },
+  b: { correct: 'ego', label: 'Ego（自我）', why: 'Willern 两场都想去（id 的欲望），但两边都只待一会儿（现实的折中）——在欲望和现实之间做理性权衡 = ego 的现实原则。' },
+  c: { correct: 'superego', label: 'Superego（超我）', why: 'Rhys 想去派对（id），但决定留下复习——「应该做的事」（内化的对错标准）赢了 = superego 的道德良心主导。' }
+};
+var cpxChoices = {};
+function cpxAnswer(q, key) {
+  var d = CPX_DATA[q];
+  var box = document.getElementById('cpx-' + q);
+  var btns = box.querySelectorAll('.q-option');
+  btns.forEach(function(b){ b.disabled = true; b.style.opacity = '.75'; });
+  var fb = document.getElementById('cpx-fb' + q);
+  if (key === d.correct) {
+    btns.forEach(function(b){ if (b.getAttribute('onclick').indexOf("'" + d.correct + "'") > -1) { b.className = 'q-option chosen-best'; b.style.opacity = '1'; } });
+    fb.className = 'xp-result show ok';
+    fb.innerHTML = '<p class="xp-verdict">✅ 答对了 — <strong>' + d.label + '</strong></p><p>' + d.why + '</p>';
+    cpxChoices[q] = true;
+  } else {
+    btns.forEach(function(b){ if (b.getAttribute('onclick').indexOf("'" + d.correct + "'") > -1) { b.className = 'q-option chosen-best'; } else if (b.getAttribute('onclick').indexOf("'" + key + "'") > -1) { b.className = 'q-option chosen-bad'; } });
+    fb.className = 'xp-result show warn';
+    fb.innerHTML = '<p class="xp-verdict">🤔 正确答案是 <strong>' + d.label + '</strong></p><p>' + d.why + '</p>';
+    cpxChoices[q] = false;
+  }
+  if (Object.keys(cpxChoices).length === 3) { document.getElementById('cpx-final-btn').style.display = 'inline-block'; }
+}
+function cpxFinal() {
+  var score = Object.keys(cpxChoices).filter(function(k){ return cpxChoices[k]; }).length;
+  var box = document.getElementById('cpx-result');
+  box.className = 'xp-result show ' + (score >= 2 ? 'ok' : 'warn');
+  box.innerHTML = '<p class="xp-verdict">' + (score === 3 ? '🏆 3/3 全对！判定口诀：立刻爽=Id，划算/权衡=Ego，对错/内疚=Superego。' : (score >= 2 ? '👍 ' + score + '/3——口诀再背一遍：立刻爽=Id，划算=Ego，应该=Superego。' : score + '/3——回到 §7 的三问表格重读：住哪层？什么原则？要什么？')) + '</p>';
+}
+
+/* ============ Checkpoint matching check ============ */
+var CP_KEYS = { 'cp-1': 'e', 'cp-2': 'c', 'cp-3': 'b', 'cp-4': 'f', 'cp-5': 'd', 'cp-6': 'a' };
+var CP_NAMES = { 'cp-1': 'Conscious → e (Current awareness)', 'cp-2': 'Preconscious → c (Past memories)', 'cp-3': 'Unconscious → b (Hidden from view)', 'cp-4': 'Id → f (The pleasure seeker)', 'cp-5': 'Ego → d (The realist)', 'cp-6': 'Superego → a (The moral conscience)' };
+function cpCheck() {
+  var good = 0, msgs = [];
+  for (var k in CP_KEYS) {
+    var sel = document.getElementById(k);
+    if (sel.value === CP_KEYS[k]) { good++; msgs.push('✅ ' + CP_NAMES[k]); }
+    else { msgs.push('🤔 ' + CP_NAMES[k] + (sel.value ? '（你选了 ' + sel.value + '）' : '（未作答）')); }
+  }
+  var fb = document.getElementById('cp-fb');
+  fb.className = 'xp-result show ' + (good === 6 ? 'ok' : 'warn');
+  fb.innerHTML = '<p class="xp-verdict">' + good + ' / 6 正确</p>' + msgs.map(function(m){ return '<p style="margin:4px 0;">' + m + '</p>'; }).join('');
+}
+</script>
+
+<!-- Build the checkpoint scenario quiz -->
+<script>
+(function(){
+  var CPX_ITEMS = [
+    { q: 'a', name: 'a) Kaia', desc: 'Kaia has had a very stressful test at school. On her way home she buys a really expensive jacket without considering that she doesn\'t have the funds to pay for it.' },
+    { q: 'b', name: 'b) Willern', desc: 'Willern has been invited to two different parties on the same evening. He really wants to go to one of the parties but instead spends less time at both parties.' },
+    { q: 'c', name: 'c) Rhys', desc: 'Rhys wants to go to a party on the weekend but has an important psychology test to revise for. He decides to stay at home and revise instead of going to the party.' }
+  ];
+  var wrap = document.getElementById('cpx-quiz');
+  var html = '';
+  CPX_ITEMS.forEach(function(it) {
+    html += '<div class="xp-case" id="cpx-' + it.q + '"><div class="xp-case-name">' + it.name + '</div>' +
+      '<p class="xp-case-desc">' + it.desc + '</p>' +
+      '<div>' +
+      '<button class="q-option" onclick="cpxAnswer(\'' + it.q + '\', \'id\')">Id · 本我</button>' +
+      '<button class="q-option" onclick="cpxAnswer(\'' + it.q + '\', \'ego\')">Ego · 自我</button>' +
+      '<button class="q-option" onclick="cpxAnswer(\'' + it.q + '\', \'superego\')">Superego · 超我</button>' +
+      '</div><div id="cpx-fb' + it.q + '" class="xp-result"></div></div>';
+  });
+  wrap.innerHTML = html;
+})();
+</script>
+
+</body>
+</html>
