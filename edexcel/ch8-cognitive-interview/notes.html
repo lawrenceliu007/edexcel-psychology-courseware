@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch8 Cognitive Interview & Psychological (Case) Formulation — Student Notes Workbook</title>
+<style>
+@page { size: A4; margin: 13mm 12mm 15mm 12mm; }
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif; color:#1a1a1a; font-size:10.5pt; line-height:1.5; margin:0; background:#f3f3f3; }
+.page { background:#fff; max-width: 800px; margin: 0 auto 10px auto; padding: 10mm 11mm; page-break-after: always; position: relative; min-height: 248mm; }
+@media print { body { background:#fff; } .page { margin:0; padding:0; max-width:none; box-shadow:none; } }
+.pg-head { display:flex; justify-content:space-between; align-items:baseline; border-bottom: 2px solid #333; padding-bottom:4px; margin-bottom:12px; }
+.pg-head .t { font-size:12pt; font-weight:700; }
+.pg-head .r { font-size:8pt; color:#777; letter-spacing:.04em; }
+.pg-foot { position:absolute; bottom:4mm; left:0; right:0; text-align:center; font-size:8pt; color:#999; }
+.sec { font-size:11.5pt; font-weight:700; margin:14px 0 6px 0; padding-left:7px; border-left:3.5px solid #444; }
+.sec:first-of-type { margin-top:4px; }
+.sub { font-size:10pt; font-weight:700; margin:10px 0 4px 0; }
+.bl { display:inline-block; border-bottom:1px solid #555; height:1em; vertical-align:baseline; min-width:60px; margin:0 2px; }
+.hint { font-size:8.5pt; color:#666; }
+.hint::before { content:"（"; } .hint::after { content:"）"; }
+table.n { width:100%; border-collapse:collapse; margin:7px 0 10px 0; font-size:9.5pt; }
+table.n th, table.n td { border:1px solid #999; padding:4px 7px; text-align:left; vertical-align:top; }
+table.n th { background:#e9e9e9; font-size:9pt; }
+td.lbl { background:#f4f4f4; width:24%; font-weight:600; }
+.box { border:1px solid #aaa; border-left:4px solid #555; padding:7px 10px; margin:8px 0; border-radius:3px; }
+.box.grey { border:1px dashed #999; border-left:4px dashed #999; background:#fafafa; }
+.box.ci { border-left-color:#2563eb; }
+.box.form { border-left-color:#7c3aed; }
+.box.evid { border-left-color:#16a34a; }
+.box.exam { border-left-color:#ea580c; }
+.box .bx-t { font-size:9.5pt; font-weight:700; margin-bottom:3px; }
+.wl { border-bottom:1px solid #bbb; height:26pt; }
+.wl.short { height:30pt; }
+ul.tight { margin:4px 0 8px 0; padding-left:18px; }
+ul.tight li { margin-bottom:3px; }
+ol.tight { margin:4px 0 8px 0; padding-left:18px; }
+ol.tight li { margin-bottom:4px; }
+.two { display:flex; gap:10px; } .two > div { flex:1; }
+.chk { font-size:9.5pt; }
+.chk .c { display:inline-block; width:11px; height:11px; border:1.3px solid #555; margin-right:6px; vertical-align:-1px; }
+.ao-tag { display:inline-block; font-size:8pt; font-weight:700; border:1px solid #444; padding:1px 6px; border-radius:2px; margin-left:6px; vertical-align:1px; }
+.q { font-style:italic; background:#f6f6f6; border:1px solid #ccc; padding:5px 9px; margin:5px 0; font-size:9.5pt; border-radius:3px; }
+.tag { display:inline-block; font-size:8pt; font-weight:700; background:#ea580c; color:#fff; padding:1px 7px; border-radius:3px; margin-right:4px; vertical-align:1px; }
+.tag.ci { background:#2563eb; }
+.tag.form { background:#7c3aed; }
+.tag.evid { background:#16a34a; }
+.tag.exam { background:#ea580c; }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1: COVER ================= -->
+<div class="page">
+  <div style="text-align:center; margin-top:5mm;">
+    <div style="font-size:9pt; letter-spacing:.25em; color:#666;">PEARSON EDEXCEL IAL PSYCHOLOGY · PAPER 3 (WPS03/01) · TOPIC F CRIMINAL</div>
+    <div style="font-size:24pt; font-weight:800; margin:8px 0 2px 0;">Chapter 8 — Cognitive Interview &amp; Psychological (Case) Formulation</div>
+    <div style="font-size:13pt; color:#444;">Student Notes Workbook · 学习笔记工作册</div>
+    <div style="font-size:9.5pt; color:#666; margin-top:4px;">From eyewitness recall to understanding the offender · 从证人回忆到理解罪犯</div>
+  </div>
+
+  <div style="display:flex; gap:14px; margin:10mm 0 6mm 0; font-size:9.5pt;">
+    <div style="flex:1;">Name 姓名: <span class="bl" style="min-width:150px;"></span></div>
+    <div style="flex:1;">Class 班级: <span class="bl" style="min-width:100px;"></span></div>
+    <div>Start date: <span class="bl" style="min-width:90px;"></span></div>
+  </div>
+
+  <div class="sec">How to use this workbook 使用方法</div>
+  <ol class="tight" style="line-height:1.45;">
+    <li><strong>Read one section</strong> of the courseware, then fill in the matching workbook page. 边读课件边填空。</li>
+    <li><strong>The numbers &amp; names are gold.</strong> Every theory page asks for the key studies (Geiselman 41.15/29.40 · Köhnken 42 studies · Holliday ages 5-10/11+) and definitions — examiners reward them. 数字和命名研究是采分点。</li>
+    <li><strong>Check answers</strong> on the last page and tick the tracker below. 对答案并打卡。每页右上角标有对应课件章节。</li>
+  </ol>
+
+  <div class="sec">Syllabus map — what the exam can ask 大纲考点 (spec 6.1.2 + 6.1.3)</div>
+  <table class="n">
+    <tr><th style="width:26%;">Syllabus</th><th>Content 内容</th><th style="width:26%;">Workbook pages</th></tr>
+    <tr><td><strong>Theory 1 (CI)</strong></td><td><span class="tag ci">CI</span> Cognitive interview — four techniques + Geiselman (1985)</td><td>pp. 3–6</td></tr>
+    <tr><td><strong>Evidence</strong></td><td><span class="tag evid">EVID</span> Geiselman · Fisher (1989) · Köhnken (1999) meta · Holliday (2003)</td><td>p. 6</td></tr>
+    <tr><td><strong>Theory 2 (Formulation)</strong></td><td><span class="tag form">FORM</span> Case formulation — gathering, theory, function, decisions</td><td>pp. 7–9</td></tr>
+    <tr><td><strong>Compare</strong></td><td>CI vs Formulation — when each is used, who uses it</td><td>p. 9</td></tr>
+    <tr><td><strong>Exam skills</strong></td><td>Define (AO1) · Justify with named study (AO3) · 8-mark application essay (AO2/AO3) · 4-mark strengths/weaknesses</td><td>p. 11</td></tr>
+    <tr><td><strong>Self-test</strong></td><td>Brain dump from memory · sentence patterns · answer key</td><td>pp. 13–14</td></tr>
+    <tr><td colspan="3" style="font-size:9pt; color:#555;">Exam format 考试形式: Paper 3 Section B — <strong>8-mark "discuss how Olivia could use…" questions</strong> need four CI techniques each linked to a foundation; <strong>3-mark "explain how Darian may conduct a formulation"</strong> needs gathering + interpretation + function + decision. Generic answers score low marks.</td></tr>
+  </table>
+
+  <div class="sec">Review tracker 复习打卡</div>
+  <div class="chk" style="line-height:2.0;">
+    <span class="c"></span>First pass — all blanks filled 第一遍填完 &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span><br>
+    <span class="c"></span>CI four techniques + two foundations from memory 四技巧两原理一句话默写 &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span><br>
+    <span class="c"></span>Formulation four steps from memory 四步骤一句话默写 &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span><br>
+    <span class="c"></span>Answer key checked — corrections in pen 对过答案并用笔订正 &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span><br>
+    <span class="c"></span>Brain dump page done from memory 合上笔记完成自测页 &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span>
+  </div>
+
+  <div class="pg-foot">Page 1 of 15</div>
+</div>
+
+</body>
+</html>
+
+<!-- ================= PAGE 2: WARM-UP / GETTING STARTED ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Warm-up — You Are the Officer · 开局热身</span><span class="r">ANSWERS → 课件 §2</span></div>
+
+  <div class="box">
+    <div class="bx-t">The one-line map of the chapter 全章地图</div>
+    This chapter runs in <strong>two stages</strong>: stage 1 (<span class="tag ci">CI</span> cognitive interview) helps <em>witnesses</em> remember a crime; stage 2 (<span class="tag form">FORM</span> psychological formulation) helps <em>the system</em> understand a caught offender. Memorise: <strong>CI = before trial</strong> (police interviewing a witness) · <strong>Formulation = after conviction</strong> (psychologist understanding an offender in prison).
+  </div>
+
+  <div class="sub">Getting Started — write your seven questions 开局思考</div>
+  <p style="margin:4px 0 6px 0;">课本 The City Bank robbery 原文：a group of masked individuals stormed the City Bank in a daring bank robbery ... the menacing robbers herded the customers and staff to the back ... the criminals left swiftly. Read the extract again on the courseware, then write down <strong>seven questions</strong> you would ask the witnesses as a police officer.</p>
+
+  <table class="n">
+    <tr><th style="width:6%;">#</th><th>Your seven questions · 你的 7 问</th></tr>
+    <tr><td>1.</td><td><div class="wl" style="height:22pt;"></div></td></tr>
+    <tr><td>2.</td><td><div class="wl" style="height:22pt;"></div></td></tr>
+    <tr><td>3.</td><td><div class="wl" style="height:22pt;"></div></td></tr>
+    <tr><td>4.</td><td><div class="wl" style="height:22pt;"></div></td></tr>
+    <tr><td>5.</td><td><div class="wl" style="height:22pt;"></div></td></tr>
+    <tr><td>6.</td><td><div class="wl" style="height:22pt;"></div></td></tr>
+    <tr><td>7.</td><td><div class="wl" style="height:22pt;"></div></td></tr>
+  </table>
+
+  <div class="sub">Self-check before moving on 自检（写完 7 问再走）</div>
+  <div class="chk" style="line-height:1.85;">
+    <span class="c"></span> My 7 questions are <strong>open</strong>（e.g. "Tell me everything you saw"）rather than yes/no（e.g. "Did she wear a mask?"）<br>
+    <span class="c"></span> None of my questions <strong>lead</strong> the witness（e.g. "Didn't she run towards the door?"）— I haven't pre-loaded the answer<br>
+    <span class="c"></span> I have <strong>not asked</strong> the witness to <em>guess why</em> the offenders did it — only <em>what they did</em>
+  </div>
+
+  <div class="box exam">
+    <div class="bx-t">Why this matters for the exam · 考试为什么考这个</div>
+    The whole chapter's <strong>8-mark exam question</strong> (Olivia &amp; Rhys) tests exactly this: take a standard question a junior officer might ask and rewrite it as a CI-friendly one. Your 7 questions here become your starting point for §6 Activity 1.
+  </div>
+
+  <div class="pg-foot">Page 2 of 15</div>
+</div>
+
+<!-- ================= PAGE 3: §3 TWO MEMORY FOUNDATIONS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t"><span class="tag ci">CI</span> The two memory foundations · 两大记忆原理</span><span class="r">ANSWERS → 课件 §3</span></div>
+
+  <div class="box ci">
+    <div class="bx-t">The chapter's hinge 章节枢纽</div>
+    The cognitive interview wasn't invented by accident. It is built on <strong>two cognitive theories</strong> about how memory works — and understanding those two theories is what makes the four techniques make sense (rather than feel like four arbitrary tricks). Memorise these two foundations before reading §4.
+  </div>
+
+  <div class="sub">Foundation 1 — Bartlett (1932) reconstructive memory · 重构记忆</div>
+  <table class="n">
+    <tr><td class="lbl">What does it claim?</td><td>Memory is <span class="bl" style="min-width:80px;"></span><span class="hint">not a recording 不是录像</span>, but an active <span class="bl" style="min-width:100px;"></span><span class="hint">re-building 重新构建</span>. When we recall, we <strong>fill in gaps</strong> using our <span class="bl" style="min-width:80px;"></span><span class="hint">schemas 图式</span> — pre-existing expectations about how the world works.</td></tr>
+    <tr><td class="lbl">Key study</td><td>Bartlett (1932) — "War of the Ghosts" story. Participants <span class="bl" style="min-width:80px;"></span><span class="hint">mis-remembered 误记</span> details to fit their own culture (e.g. "canoe" → <span class="bl" style="min-width:60px;"></span><span class="hint">boat 船</span>).</td></tr>
+    <tr><td class="lbl">Witness risk</td><td>A witness's recall may be <strong>contaminated</strong> by what <span class="bl" style="min-width:90px;"></span><span class="hint">they expect to have seen 他们期待看到的</span>, not what they actually saw.</td></tr>
+    <tr><td class="lbl">Interview fix</td><td>Break the witness out of <span class="bl" style="min-width:60px;"></span><span class="hint">story mode 故事模式</span> — reverse the order, change perspective → prevents schema from filling in details.</td></tr>
+  </table>
+
+  <div class="sub">Foundation 2 — Tulving (1974) context-dependent memory · 情境依赖记忆</div>
+  <table class="n">
+    <tr><td class="lbl">What does it claim?</td><td>Memory is best retrieved in the <span class="bl" style="min-width:90px;"></span><span class="hint">same context 同等情境</span> in which it was encoded. Mood, surroundings, sounds, and <span class="bl" style="min-width:70px;"></span><span class="hint">weather 天气</span> at encoding act as retrieval cues.</td></tr>
+    <tr><td class="lbl">Key study</td><td>Godden &amp; Baddeley (1975) — divers recalled words <strong>better on land if learned on land</strong> and <strong>better underwater if learned underwater</strong> (the textbook uses Tulving's principle; Godden &amp; Baddeley is the most cited test).</td></tr>
+    <tr><td class="lbl">Witness risk</td><td>A witness is being interviewed in a <span class="bl" style="min-width:80px;"></span><span class="hint">quiet police station 安静的警局</span> — nothing like the noisy, chaotic crime scene. Cues are gone, retrieval <strong>drops</strong>.</td></tr>
+    <tr><td class="lbl">Interview fix</td><td>Ask the witness to <strong>mentally rebuild</strong> the original scene — what they could see, hear, smell, how they <span class="bl" style="min-width:80px;"></span><span class="hint">felt 感受</span> at the time. Cue the context back.</td></tr>
+  </table>
+
+  <div class="box exam">
+    <div class="bx-t">Exam tip · 自己回答"designed from which two theories?"</div>
+    The Checkpoint answer is <strong>exactly</strong>: <em>Bartlett's (1932) reconstructive memory theory and Tulving's (1974) context-dependent memory.</em> Don't say "Loftus &amp; Palmer" (that's misleading questions — tested elsewhere) and don't say "Godden &amp; Baddeley" (it tested Tulving but isn't the theory itself).
+  </div>
+
+  <div class="pg-foot">Page 3 of 15</div>
+</div>
+
+<!-- ================= PAGE 4: §4 FOUR TECHNIQUES ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t"><span class="tag ci">CI</span> The four techniques of the cognitive interview</span><span class="r">ANSWERS → 课件 §4</span></div>
+
+  <div class="sub">Fill in the four techniques — what they do and <em>why</em> 对抗哪个记忆毛病</div>
+  <table class="n">
+    <tr><th style="width:24%;">Technique 技巧</th><th>What the officer does 警官做什么</th><th>Fights which foundation problem 对抗哪个毛病</th></tr>
+    <tr>
+      <td><strong>1. Report everything</strong><br><em>报告一切</em></td>
+      <td>Let the witness give a <span class="bl" style="min-width:70px;"></span><span class="hint">free / uninterrupted 自由 / 不打断</span> account. Even trivial details ("the man had a red shoelace") can act as <span class="bl" style="min-width:80px;"></span><span class="hint">memory cues 记忆线索</span>.</td>
+      <td>Fights <span class="bl" style="min-width:60px;"></span><span class="hint">Bartlett's 巴图效应</span> — by saying "report everything" you <strong>invite more raw detail</strong> that the schema would otherwise skip.</td>
+    </tr>
+    <tr>
+      <td><strong>2. Reinstate the context / mental state</strong><br><em>重建情境与心境</em></td>
+      <td>Ask the witness to <span class="bl" style="min-width:80px;"></span><span class="hint">mentally rebuild 心理重建</span> the crime scene — sights, sounds, smells, weather, how they felt.</td>
+      <td>Fights <span class="bl" style="min-width:60px;"></span><span class="hint">Tulving's 塔文宁效应</span> — restores the <strong>encoding context</strong> so retrieval cues come back.</td>
+    </tr>
+    <tr>
+      <td><strong>3. Change the order</strong><br><em>改变顺序</em></td>
+      <td>Ask the witness to recall the event <span class="bl" style="min-width:80px;"></span><span class="hint">backwards / in a different sequence 倒序或换序</span> — start from the end, then work backwards.</td>
+      <td>Fights <span class="bl" style="min-width:60px;"></span><span class="hint">Bartlett's 巴图效应</span> — breaks <strong>story mode</strong>; the schema can't "fill in" because the narrative is rearranged.</td>
+    </tr>
+    <tr>
+      <td><strong>4. Change the perspective</strong><br><em>改变视角</em></td>
+      <td>Ask the witness to report the event from <span class="bl" style="min-width:90px;"></span><span class="hint">another person's standpoint 另一个人的视角</span> — e.g. the security guard's, the cashier's.</td>
+      <td>Fights <span class="bl" style="min-width:60px;"></span><span class="hint">Bartlett's 巴图效应</span> — forces a <strong>different retrieval route</strong>, recalling details normally filtered out by the witness's own view.</td>
+    </tr>
+  </table>
+
+  <div class="sub">Apply it · 立刻应用（用课本 The City Bank robbery）</div>
+  <p style="margin:4px 0;">Take your Q1 from page 2. Which foundation problem does it most likely trigger? Rewrite it using ONE of the four techniques above.</p>
+  <p style="margin:6px 0 2px 0;"><strong>Your original Q1:</strong> <span class="bl" style="min-width:240px;"></span></p>
+  <p style="margin:6px 0 2px 0;"><strong>Risk it triggers:</strong> <span class="bl" style="min-width:160px;"></span></p>
+  <p style="margin:6px 0 2px 0;"><strong>CI rewrite + which technique:</strong></p>
+  <div class="wl" style="height:34pt;"></div>
+
+  <div class="box exam">
+    <div class="bx-t">Sentence pattern for AO2 application · 考试动笔句型</div>
+    <em>"Olivia should <strong>[TECHNIQUE]</strong> by asking Rhys to <strong>[WHAT HE IS BY]</strong>, because <strong>[WHY IT FIGHTS THE PROBLEM] </strong>(Bartlett / Tulving)."</em> — every one of the 4 marks in the 8-mark essay should follow this shape.
+  </div>
+
+  <div class="pg-foot">Page 4 of 15</div>
+</div>
+
+<!-- ================= PAGE 5: §5 INTERVIEW FLOW + §6 GEISELMAN ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t"><span class="tag ci">CI</span> Interview flow &amp; Geiselman (1985) · 访谈流程与关键证据</span><span class="r">ANSWERS → 课件 §5–§6</span></div>
+
+  <div class="sub">§5 — The 5-step interview flow · 访谈五步流程</div>
+  <table class="n">
+    <tr><th style="width:6%;">Step</th><th>What happens</th><th style="width:30%;">Why it matters</th></tr>
+    <tr><td>1.</td><td>Transfer the rapport from the first officer to the interviewer.<br>把关系从第一位警员交接给访谈官。</td><td><span class="bl" style="min-width:140px;"></span><span class="hint">witness feels safe 证人感到安全</span></td></tr>
+    <tr><td>2.</td><td><span class="bl" style="min-width:80px;"></span><span class="hint">open question / free recall 开放问题 / 自由回忆</span> — let the witness tell their story without interruption.</td><td><span class="bl" style="min-width:140px;"></span><span class="hint">the cues &amp; raw detail come out 线索和原始细节浮出</span></td></tr>
+    <tr><td>3.</td><td>Apply the four CI techniques (page 4) in turn.</td><td><span class="bl" style="min-width:140px;"></span><span class="hint">each targets a foundation problem 每个技巧针对一个原理</span></td></tr>
+    <tr><td>4.</td><td><span class="bl" style="min-width:80px;"></span><span class="hint">specific questions / follow-ups 具体追问</span> — based on what the witness already said.</td><td><span class="bl" style="min-width:140px;"></span><span class="hint">probe the gaps 填补空白</span></td></tr>
+    <tr><td>5.</td><td>Return the witness to a normal emotional state before leaving.</td><td><span class="bl" style="min-width:140px;"></span><span class="hint">ethical duty / avoid re-traumatisation 避免二次创伤</span></td></tr>
+  </table>
+
+  <div class="sub">§6 — Geiselman et al. (1985): the headline numbers · 关键数字</div>
+  <table class="n">
+    <tr><th style="width:34%;"></th><th style="width:33%;"><strong>Standard interview</strong> 标准访谈</th><th style="width:33%;"><strong>Cognitive interview</strong> 认知访谈</th></tr>
+    <tr><td class="lbl">Correct items recalled 正确回忆</td><td><span class="bl" style="min-width:60px;"></span><span class="hint">29.40</span></td><td><span class="bl" style="min-width:60px;"></span><span class="hint">41.15</span></td></tr>
+    <tr><td class="lbl">Confabulations 编造细节数</td><td>about the same for both — no more false memories in the CI group.</td><td>about the same — CI doesn't increase errors.</td></tr>
+    <tr><td class="lbl">What this proves · 证明什么</td><td colspan="2">CI retrieves <strong>more</strong> correct detail from witnesses <strong>without</strong> inventing more errors. The extra items are <em>real</em>, not <span class="bl" style="min-width:70px;"></span><span class="hint">guesses 猜测</span>.</td></tr>
+  </table>
+
+  <div class="box grey">
+    <div class="bx-t">Number-memorisation hint · 数字背诵技巧</div>
+    Examiners reward the two numbers <strong>41.15</strong> (CI) and <strong>29.40</strong> (standard). Write them as "CI ≈ 41 vs standard ≈ 29" if memory fails — the comparison is what scores, not the decimal. Remember also: <strong>errors are roughly equal</strong>, so the gain isn't from making things up.
+  </div>
+
+  <div class="pg-foot">Page 5 of 15</div>
+</div>
+
+<!-- ================= PAGE 6: §7-§8 EVIDENCE & EVALUATION ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t"><span class="tag evid">EVID</span> More evidence + evaluating the CI</span><span class="r">ANSWERS → 课件 §7–§8</span></div>
+
+  <div class="sub">§7 — Four pieces of evidence · 四项证据（必背）</div>
+  <table class="n">
+    <tr><th style="width:22%;">Study 研究</th><th>Design &amp; sample 设计/样本</th><th>Finding 结果</th></tr>
+    <tr>
+      <td><strong>Geiselman et al. (1985)</strong></td>
+      <td>Lab study, <span class="bl" style="min-width:70px;"></span><span class="hint">detectives / students 侦探 / 学生</span> watched a video of a crime, recalled 1 day later.</td>
+      <td>CI: <span class="bl" style="min-width:50px;"></span> correct items vs standard: <span class="bl" style="min-width:50px;"></span>. Confabulations <span class="bl" style="min-width:70px;"></span><span class="hint">roughly equal 大致相同</span>.</td>
+    </tr>
+    <tr>
+      <td><strong>Fisher et al. (1989)</strong></td>
+      <td>Field study — <span class="bl" style="min-width:70px;"></span><span class="hint">real crimes 真实案件</span> in Florida, USA.</td>
+      <td>Real detectives using CI recovered <strong>+47%</strong> more correct info than standard.</td>
+    </tr>
+    <tr>
+      <td><strong>Köhnken et al. (1999)</strong></td>
+      <td>Meta-analysis of <span class="bl" style="min-width:50px;"></span> studies.</td>
+      <td>CI reliably <span class="bl" style="min-width:60px;"></span><span class="hint">outperforms 胜过</span> standard across many contexts — but the size of the gain varies.</td>
+    </tr>
+    <tr>
+      <td><strong>Holliday (2003)</strong></td>
+      <td>Field study on <strong>child</strong> witnesses, ages <span class="bl" style="min-width:70px;"></span><span class="hint">5–10</span> vs <span class="bl" style="min-width:50px;"></span><span class="hint">11+</span>.</td>
+      <td>CI works well for <strong>older children (11+)</strong>, but only modest gains for younger ones.</td>
+    </tr>
+  </table>
+
+  <div class="sub">§8 — Evaluating the CI · 评价（三段：strength + evidence + why it matters）</div>
+  <table class="n">
+    <tr><th style="width:22%;">Point 评价点</th><th>Evidence 证据</th><th>Why it matters 为什么重要</th></tr>
+    <tr>
+      <td><strong>Strength 1</strong> — more accurate recall</td>
+      <td><span class="bl" style="min-width:60px;"></span><span class="hint">Geiselman 1985</span>: 41.15 vs 29.40 correct.</td>
+      <td>Witness testimony is the most common form of evidence in court; CI makes it <span class="bl" style="min-width:60px;"></span><span class="hint">more reliable 更可靠</span>.</td>
+    </tr>
+    <tr>
+      <td><strong>Strength 2</strong> — works in real field settings</td>
+      <td><span class="bl" style="min-width:60px;"></span><span class="hint">Fisher 1989</span>: +47% in real crimes.</td>
+      <td>Lab results <span class="bl" style="min-width:70px;"></span><span class="hint">generalise 推广</span> to real policing — supports ecological validity.</td>
+    </tr>
+    <tr>
+      <td><strong>Limitation 1</strong> — time-consuming</td>
+      <td>CI typically takes <span class="bl" style="min-width:60px;"></span><span class="hint">~ 60 min</span> vs 15 min for standard.</td>
+      <td>Officers under time pressure in active investigations may not be able to <span class="bl" style="min-width:70px;"></span><span class="hint">apply the full protocol 跑完完整流程</span>.</td>
+    </tr>
+    <tr>
+      <td><strong>Limitation 2</strong> — training demands</td>
+      <td>Dando et al. (2008): 221 officers reported feeling <span class="bl" style="min-width:60px;"></span><span class="hint">inadequately trained 训练不足</span>.</td>
+      <td>Poorly applied CI can still mislead witnesses — <span class="bl" style="min-width:80px;"></span><span class="hint">applicability depends on training 应用取决于训练</span>.</td>
+    </tr>
+    <tr>
+      <td><strong>Limitation 3</strong> — limited for young children</td>
+      <td><span class="bl" style="min-width:60px;"></span><span class="hint">Holliday 2003</span>: only modest gains under age 11.</td>
+      <td>CI is not a one-size-fits-all tool — children below ~11 may need other methods.</td>
+    </tr>
+  </table>
+
+  <div class="box exam">
+    <div class="bx-t">AO3 essay pattern · 评价写作句型</div>
+    <em>"One strength is that <strong>[point]</strong>, as shown by <strong>[named study]</strong>, which found that <strong>[numbers]</strong>. This matters because <strong>[real-world consequence]</strong>."</em> — always name the study, always use the number, always finish with the "so what".
+  </div>
+
+  <div class="pg-foot">Page 6 of 15</div>
+</div>
+
+<!-- ================= PAGE 7: §10 FORMULATION + §11 OFFENCE ANALYSIS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t"><span class="tag form">FORM</span> What is formulation? · 什么是心理/个案概念化</span><span class="r">ANSWERS → 课件 §10–§11</span></div>
+
+  <div class="sub">§10 — Case formulation: definition &amp; purpose 定义与目的</div>
+  <table class="n">
+    <tr><td class="lbl">One-line definition</td><td>A psychological formulation is the process by which a psychologist <span class="bl" style="min-width:80px;"></span><span class="hint">gathers information 收集信息</span> about an offender's life (relationships, social circumstances, life events) and then <span class="bl" style="min-width:80px;"></span><span class="hint">applies psychological theory 应用心理学理论</span> to form a <span class="bl" style="min-width:80px;"></span><span class="hint">hypothesis 假设</span> about the <strong>function</strong> of their offending.</td></tr>
+    <tr><td class="lbl">When it happens</td><td><strong>After</strong> an offender is caught and convicted. It is <span class="bl" style="min-width:60px;"></span><span class="hint">not 不用于</span> used to catch the offender — that's the police's job, using the CI and other clues.</td></tr>
+    <tr><td class="lbl">Who does it</td><td>A qualified <span class="bl" style="min-width:80px;"></span><span class="hint">forensic psychologist 司法心理学家</span> (often in prison or community probation), not a police officer.</td></tr>
+    <tr><td class="lbl">What it informs</td><td><span class="bl" style="min-width:80px;"></span><span class="hint">risk of reoffending 再犯风险</span> · appropriate <span class="bl" style="min-width:70px;"></span><span class="hint">rehabilitation programme 康复方案</span> · safe release planning · explaining the offending to the offender themselves (first step toward change).</td></tr>
+  </table>
+
+  <div class="sub">§11 — Offence analysis · 罪行分析 (different from formulation)</div>
+  <table class="n">
+    <tr><th style="width:30%;"></th><th><strong>Offence analysis</strong> 罪行分析</th><th><strong>Case formulation</strong> 个案概念化</th></tr>
+    <tr>
+      <td class="lbl">What it studies</td>
+      <td>The <strong>facts of the crime</strong> 案件事实本身 — what happened, where, when, how, who was killed/harmed.</td>
+      <td>The <strong>person who did it</strong> 罪犯本人 — their life, relationships, beliefs, what the offence <em>functioned</em> for.</td>
+    </tr>
+    <tr>
+      <td class="lbl">Used for</td>
+      <td>Investigating similar cases, linking crimes.</td>
+      <td>Treatment, risk assessment, release decisions.</td>
+    </tr>
+    <tr>
+      <td class="lbl">Done by</td>
+      <td>Police / investigators.</td>
+      <td><span class="bl" style="min-width:80px;"></span><span class="hint">forensic psychologist 司法心理学家</span>.</td>
+    </tr>
+    <tr>
+      <td class="lbl">Is it objective?</td>
+      <td>Closer to objective — describing <span class="bl" style="min-width:70px;"></span><span class="hint">events 事件</span>.</td>
+      <td><span class="bl" style="min-width:70px;"></span><span class="hint">Subjective 主观</span> — involves the psychologist's <strong>interpretation</strong> and theory choice.</td>
+    </tr>
+  </table>
+
+  <div class="box form">
+    <div class="bx-t">The form of a formulation · 概念化的结构</div>
+    A good formulation connects three layers: <strong>① triggers / antecedents</strong> (what was happening just before) → <strong>② function</strong> (what need the offending met: control? intimacy? status?) → <strong>③ consequences</strong> (what the offender got out of it: relief? excitement? respect?). The psychologist then chooses a treatment that targets the function.
+  </div>
+
+  <div class="pg-foot">Page 7 of 15</div>
+</div>
+
+<!-- ================= PAGE 8: §12 CASE STUDIES (Kaia + Darian) ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t"><span class="tag form">FORM</span> Two case studies · 两个案例</span><span class="r">ANSWERS → 课件 §12</span></div>
+
+  <div class="sub">Case A — The Kaia jewellery heist (课本 Activity 2)</div>
+  <p style="margin:4px 0;">Background: Kaia, a young woman, broke into a high-end jewellery shop and stole a large quantity of diamonds. Read the full case on the courseware, then check which items are <strong>criminogenic factors</strong> (belong to <em>Kaia the person</em>) vs <strong>trap items</strong> (describe the crime itself, not the person). One row has been filled as an example.</p>
+
+  <table class="n">
+    <tr><th style="width:6%;"></th><th>Item 资料</th><th style="width:18%;">Mark tick 勾选</th><th>If you ticked it — which layer? 属于哪一层</th></tr>
+    <tr><td>k1</td><td>Kaia had severe financial difficulties.</td><td style="text-align:center;"><span class="c"></span></td><td>Contingency (what the theft <em>got</em> her)</td></tr>
+    <tr><td>k2</td><td>She justified theft as "Robin Hood" — taking from the rich.</td><td style="text-align:center;"><span class="c"></span></td><td><span class="bl" style="min-width:90px;"></span><span class="hint">Cognitive distortion 认知歪曲</span></td></tr>
+    <tr><td>k3</td><td>Tumultuous childhood; no stable friends.</td><td style="text-align:center;"><span class="c"></span></td><td>Early experiences / social circumstances</td></tr>
+    <tr><td>k4</td><td>Father was imprisoned for fraud.</td><td style="text-align:center;"><span class="c"></span></td><td><span class="bl" style="min-width:90px;"></span><span class="hint">Family criminal model 家庭犯罪榜样</span></td></tr>
+    <tr><td>k5</td><td>Kaia continued visiting her father in prison.</td><td style="text-align:center;"><span class="c"></span></td><td>Identification with father / relationship</td></tr>
+    <tr><td>k6</td><td>The diamonds were worth £2 million.</td><td style="text-align:center;"><span class="c"></span></td><td><span class="bl" style="min-width:90px;"></span><span class="hint">TRAP — case fact, not a factor 案件事实</span></td></tr>
+    <tr><td>k7</td><td>She bypassed a sophisticated alarm system.</td><td style="text-align:center;"><span class="c"></span></td><td><span class="bl" style="min-width:90px;"></span><span class="hint">TRAP — method, not motive 手法而非动机</span></td></tr>
+    <tr><td>k8</td><td>She was arrested at the airport.</td><td style="text-align:center;"><span class="c"></span></td><td><span class="bl" style="min-width:90px;"></span><span class="hint">TRAP — outcome, not cause 后果而非成因</span></td></tr>
+  </table>
+
+  <div class="sub">Now connect each criminogenic factor to a perspective · 接上视角</div>
+  <table class="n">
+    <tr><th style="width:6%;">Item</th><th>Perspective 视角</th><th style="width:6%;">Item</th><th>Perspective 视角</th></tr>
+    <tr><td>k1</td><td><span class="bl" style="min-width:140px;"></span><span class="hint">behavioural</span></td><td>k3</td><td><span class="bl" style="min-width:140px;"></span><span class="hint">psychodynamic</span></td></tr>
+    <tr><td>k2</td><td><span class="bl" style="min-width:140px;"></span><span class="hint">cognitive</span></td><td>k4-k5</td><td><span class="bl" style="min-width:140px;"></span><span class="hint">SLT / psychodynamic</span></td></tr>
+  </table>
+
+  <div class="sub">Case B — Darian &amp; the prisoner (3-mark exam item)</div>
+  <div class="q">Darian asks the prisoner about his childhood when he was neglected by his parents. He also asks about his current relationships (unstable), his addiction, and homelessness. <em>Explain how Darian may conduct a psychological formulation.</em> (3 marks)</div>
+  <p style="margin:4px 0;">List the 3 key marking points (one mark each):</p>
+  <ol class="tight">
+    <li><span class="wl" style="height:22pt;"></span></li>
+    <li><span class="wl" style="height:22pt;"></span></li>
+    <li><span class="wl" style="height:22pt;"></span></li>
+  </ol>
+  <p class="hint">Mark scheme: ① gathers information about relationships, social circumstances, life events · ② interviews the offender directly · ③ applies theory to form a hypothesis about the <em>function</em> of offending to inform decisions about risk / rehabilitation.</p>
+
+  <div class="pg-foot">Page 8 of 15</div>
+</div>
+
+<!-- ================= PAGE 9: §13 EVALUATING FORMULATION ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t"><span class="tag form">FORM</span> Evaluating formulation · 评价</span><span class="r">ANSWERS → 课件 §13</span></div>
+
+  <div class="sub">§13 — Strengths &amp; limitations of formulation · 优缺点</div>
+  <table class="n">
+    <tr><th style="width:22%;">Point 评价点</th><th>Why</th><th>Mark-scheme echo 评分要点</th></tr>
+    <tr>
+      <td><strong>Strength 1</strong> — tailored to the individual</td>
+      <td>Unlike statistical risk tools (e.g. actuarial risk scales), a formulation captures the offender's <span class="bl" style="min-width:80px;"></span><span class="hint">unique life history 独特的人生经历</span> and the specific <span class="bl" style="min-width:80px;"></span><span class="hint">function 功能</span> their offending served.</td>
+      <td>AO3 — evaluation.</td>
+    </tr>
+    <tr>
+      <td><strong>Strength 2</strong> — improves staff understanding</td>
+      <td>Prison staff who understand <em>why</em> an offender behaves a certain way are better placed to <span class="bl" style="min-width:80px;"></span><span class="hint">manage them safely 安全管理</span> and build rapport.</td>
+      <td>AO3 — application.</td>
+    </tr>
+    <tr>
+      <td><strong>Strength 3</strong> — first step to change</td>
+      <td>Explaining the formulation <em>to</em> the offender themselves gives them a non-judgemental account of what led them to offend — can be the first step in <span class="bl" style="min-width:80px;"></span><span class="hint">rehabilitation 康复</span>.</td>
+      <td>AO3 — application.</td>
+    </tr>
+    <tr>
+      <td><strong>Limitation 1</strong> — subjective</td>
+      <td>The psychologist <span class="bl" style="min-width:80px;"></span><span class="hint">interprets 解释</span> the information; different psychologists may emphasise different things. There is <span class="bl" style="min-width:80px;"></span><span class="hint">inter-rater variability 评分者间差异</span>.</td>
+      <td>AO3 — evaluation.</td>
+    </tr>
+    <tr>
+      <td><strong>Limitation 2</strong> — hard to measure effectiveness</td>
+      <td>You cannot simply count "did they reoffend?" because many reoffenders are <span class="bl" style="min-width:80px;"></span><span class="hint">never caught 从未被抓</span>. So <em>reoffending rate</em> underestimates real reoffending.</td>
+      <td>AO3 — evaluation (a Checkpoint answer too).</td>
+    </tr>
+    <tr>
+      <td><strong>Limitation 3</strong> — depends on information given</td>
+      <td>An offender may <span class="bl" style="min-width:80px;"></span><span class="hint">hide / distort 隐瞒 / 歪曲</span> their history. The formulation is only as good as what the offender (and the files) reveal.</td>
+      <td>AO3 — evaluation.</td>
+    </tr>
+  </table>
+
+  <div class="box">
+    <div class="bx-t">CI vs Formulation at a glance · 一图对照</div>
+    <table class="n" style="margin:0;">
+      <tr><th style="width:30%;"></th><th><span class="tag ci">CI</span> Cognitive interview</th><th><span class="tag form">FORM</span> Case formulation</th></tr>
+      <tr><td class="lbl">Stage</td><td><strong>Before</strong> trial (witness is recalling a crime).</td><td><strong>After</strong> conviction (offender is being understood).</td></tr>
+      <tr><td class="lbl">Done by</td><td>Police officer / detective.</td><td>Forensic psychologist.</td></tr>
+      <tr><td class="lbl">Aim</td><td>Get <strong>more accurate recall</strong>.</td><td>Understand <strong>why</strong> the offence happened.</td></tr>
+      <tr><td class="lbl">Output</td><td>Witness statement.</td><td>Risk assessment + treatment plan.</td></tr>
+    </table>
+  </div>
+
+  <div class="box exam">
+    <div class="bx-t">Checkpoint wording to watch · 考试易错点</div>
+    <strong>"Is a psychological formulation used to catch an offender?"</strong> — answer <strong>No</strong>. It's used after the catch. <strong>"Is offence analysis an objective account?"</strong> — <strong>No</strong>, it involves interpretation. <strong>"Are reoffending rates a good measure of effectiveness?"</strong> — <strong>No</strong>, many reoffenders aren't caught.
+  </div>
+
+  <div class="pg-foot">Page 9 of 15</div>
+</div>
+
+<!-- ================= PAGE 10: §14 CHECKPOINT (HAND-WRITTEN) ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t"><span class="tag exam">EXAM</span> Checkpoint 9 quick questions · 课本自测</span><span class="r">ANSWERS → p. 14</span></div>
+
+  <div class="box exam">
+    <div class="bx-t">How to use this page · 用法</div>
+    On the courseware these are interactive (Q1-Q9 with click-to-reveal feedback). On this paper workbook, <strong>write your answer first</strong>, then check against the answer key on page 14. Don't peek.
+  </div>
+
+  <div class="sub">Q1 — Name the four techniques used in the cognitive interview.</div>
+  <ol class="tight">
+    <li><span class="wl" style="height:18pt;"></span></li>
+    <li><span class="wl" style="height:18pt;"></span></li>
+    <li><span class="wl" style="height:18pt;"></span></li>
+    <li><span class="wl" style="height:18pt;"></span></li>
+  </ol>
+
+  <div class="sub">Q2 — The cognitive interview was designed from which two cognitive theories?</div>
+  <p style="margin:4px 0;"><span class="bl" style="min-width:170px;"></span><span class="hint">(year + name + one-line)</span> and <span class="bl" style="min-width:170px;"></span><span class="hint">(year + name + one-line)</span></p>
+
+  <div class="sub">Q3 — What is one weakness with using the cognitive interview by police in the field?</div>
+  <p style="margin:4px 0;"><span class="wl" style="height:34pt;"></span></p>
+
+  <div class="sub">Q4 — Name one study which found that recall using the cognitive interview was significantly better than using a standard interview.</div>
+  <p style="margin:4px 0;"><span class="bl" style="min-width:170px;"></span><span class="hint">researcher + year</span> — also note one number: <span class="bl" style="min-width:90px;"></span></p>
+
+  <div class="sub">Q5–Q8 — Tick True (T) or False (F), then justify in one line.</div>
+  <table class="n">
+    <tr><th style="width:8%;">#</th><th>Statement</th><th style="width:6%;">T/F</th><th>Justification (one line)</th></tr>
+    <tr><td>5</td><td>A psychological formulation is used to catch an offender.</td><td style="text-align:center;"><span class="c"></span></td><td><span class="wl" style="height:18pt;"></span></td></tr>
+    <tr><td>6</td><td>An offence analysis is an objective account of an offender.</td><td style="text-align:center;"><span class="c"></span></td><td><span class="wl" style="height:18pt;"></span></td></tr>
+    <tr><td>7</td><td>Reoffending rates are a good measure of the effectiveness of a psychological formulation.</td><td style="text-align:center;"><span class="c"></span></td><td><span class="wl" style="height:18pt;"></span></td></tr>
+    <tr><td>8</td><td>Psychological formulations increase staff knowledge and understanding of an offender.</td><td style="text-align:center;"><span class="c"></span></td><td><span class="wl" style="height:18pt;"></span></td></tr>
+  </table>
+
+  <div class="sub">Q9 — What other uses are there for a psychological formulation? (List at least 2.)</div>
+  <p style="margin:4px 0;"><span class="wl" style="height:24pt;"></span></p>
+  <p style="margin:4px 0;"><span class="wl" style="height:24pt;"></span></p>
+
+  <div class="pg-foot">Page 10 of 15</div>
+</div>
+
+<!-- ================= PAGE 11: REAL EXAM QUESTIONS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t"><span class="tag exam">EXAM</span> Exam practice · 课本真题演练</span><span class="r">ANSWERS → p. 14</span></div>
+
+  <div class="box exam">
+    <div class="bx-t">Question 1 — Olivia &amp; Rhys · 12 marks (AO2/AO3)</div>
+    <p style="margin:4px 0;"><em>Olivia has recently completed her training as a police officer. She has been asked to conduct a cognitive interview for the first time. Rhys was at the department store when the theft took place. He saw a woman running out of the store being chased by a security guard.</em></p>
+    <p style="margin:4px 0;"><strong>(a) Discuss how Olivia could use cognitive interview techniques to help Rhys recall the incident. (8 marks)</strong></p>
+    <p style="margin:4px 0;"><strong>(b) Explain one strength and one weakness of Olivia using a cognitive interview with Rhys. (4 marks)</strong></p>
+  </div>
+
+  <div class="sub">Plan (a) — 8 marks · four CI techniques × 2 marks each</div>
+  <table class="n">
+    <tr><th style="width:6%;">#</th><th>Technique 技巧</th><th style="width:30%;">What Olivia says 实际问法</th><th style="width:30%;">Why it works 对抗哪个问题 (Bartlett / Tulving)</th></tr>
+    <tr><td>1</td><td>Report everything</td><td><span class="wl" style="height:34pt;"></span></td><td><span class="wl" style="height:34pt;"></span></td></tr>
+    <tr><td>2</td><td>Reinstate context</td><td><span class="wl" style="height:34pt;"></span></td><td><span class="wl" style="height:34pt;"></span></td></tr>
+    <tr><td>3</td><td>Change order</td><td><span class="wl" style="height:34pt;"></span></td><td><span class="wl" style="height:34pt;"></span></td></tr>
+    <tr><td>4</td><td>Change perspective</td><td><span class="wl" style="height:34pt;"></span></td><td><span class="wl" style="height:34pt;"></span></td></tr>
+  </table>
+
+  <div class="sub">Plan (b) — 4 marks · one strength + one weakness with WHY</div>
+  <div class="two">
+    <div>
+      <strong>Strength</strong> <span class="hint">(named study + number)</span>
+      <div class="wl" style="height:48pt;"></div>
+    </div>
+    <div>
+      <strong>Weakness</strong> <span class="hint">(named study + number)</span>
+      <div class="wl" style="height:48pt;"></div>
+    </div>
+  </div>
+
+  <div class="box exam">
+    <div class="bx-t">Question 2 — Darian &amp; the prisoner · 3 marks (AO1/AO2)</div>
+    <p style="margin:4px 0;"><em>Darian is a psychologist who works in a local prison. He has been asked to carry out a case formulation on a prisoner being considered for release. The prisoner has not been engaging in a treatment programme. Darian asks about the prisoner's childhood (neglected by parents), current relationships (unstable), an addiction, and homelessness before prison. <strong>Explain how Darian may conduct a psychological formulation to understand the function of offending behaviour. (3 marks)</strong></em></p>
+    <ol class="tight">
+      <li><span class="wl" style="height:30pt;"></span></li>
+      <li><span class="wl" style="height:30pt;"></span></li>
+      <li><span class="wl" style="height:30pt;"></span></li>
+    </ol>
+    <p class="hint">3 marks = 1 each for gathering info · interviewing offender · applying theory to find <em>function</em> to inform risk / rehab decisions.</p>
+  </div>
+
+  <div class="pg-foot">Page 11 of 15</div>
+</div>
+
+<!-- ================= PAGE 12: KEY TERMS REVISION ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Key terms revision · 词条默写</span><span class="r">ANSWERS → p. 14</span></div>
+
+  <div class="sub">Write the textbook definition for each term · 默写课本定义 (key words only — fill the gaps)</div>
+
+  <table class="n">
+    <tr><th style="width:22%;">Term 词条</th><th>Definition (fill the gaps) 定义填空</th></tr>
+    <tr><td><strong>Cognitive interview</strong></td><td>A way of interviewing a <span class="bl" style="min-width:70px;"></span> to <span class="bl" style="min-width:80px;"></span> the amount of correct information they recall, using four specific techniques.</td></tr>
+    <tr><td><strong>Reconstructive memory</strong></td><td>Memory is an active <span class="bl" style="min-width:80px;"></span>, not a recording; recall is filled in using <span class="bl" style="min-width:60px;"></span>. <span class="hint">Bartlett 1932</span></td></tr>
+    <tr><td><strong>Context-dependent memory</strong></td><td>Memory is best retrieved when the <span class="bl" style="min-width:80px;"></span> at retrieval matches the context at <span class="bl" style="min-width:60px;"></span>. <span class="hint">Tulving 1974 / Godden &amp; Baddeley 1975</span></td></tr>
+    <tr><td><strong>Schema</strong></td><td>A mental <span class="bl" style="min-width:70px;"></span> of how things usually work, used to fill in gaps in recall.</td></tr>
+    <tr><td><strong>Report everything</strong></td><td>CI technique: witness gives a <span class="bl" style="min-width:70px;"></span> account without interruption.</td></tr>
+    <tr><td><strong>Reinstate context</strong></td><td>CI technique: witness <span class="bl" style="min-width:80px;"></span> rebuilds the crime scene mentally.</td></tr>
+    <tr><td><strong>Change order</strong></td><td>CI technique: witness recalls the event in a <span class="bl" style="min-width:70px;"></span> sequence.</td></tr>
+    <tr><td><strong>Change perspective</strong></td><td>CI technique: witness recalls the event from <span class="bl" style="min-width:80px;"></span><span class="hint">another person's view</span>.</td></tr>
+    <tr><td><strong>Enhanced CI</strong></td><td>An updated version adding rapport, <span class="bl" style="min-width:60px;"></span> transfer, and non-leading follow-up questions. <span class="hint">Fisher &amp; Geiselman 1992</span></td></tr>
+    <tr><td><strong>Misleading question</strong></td><td>A question that suggests a particular <span class="bl" style="min-width:60px;"></span> and may contaminate recall. <span class="hint">Loftus &amp; Palmer 1974</span> — not CI but tested in the same chapter.</td></tr>
+    <tr><td><strong>Offence analysis</strong></td><td>Studying the <span class="bl" style="min-width:70px;"></span> of a crime to understand what happened and possibly link cases.</td></tr>
+    <tr><td><strong>Psychological (case) formulation</strong></td><td>Gathering information about an offender and <span class="bl" style="min-width:70px;"></span> theory to form a hypothesis about the <strong>function</strong> of their offending.</td></tr>
+    <tr><td><strong>Function of offending</strong></td><td>What <span class="bl" style="min-width:70px;"></span> the offending met for the offender — control, status, intimacy, relief.</td></tr>
+    <tr><td><strong>Criminogenic factors</strong></td><td>Personal/background factors that increase the <span class="bl" style="min-width:70px;"></span> of offending (vs. facts of the crime itself).</td></tr>
+    <tr><td><strong>Risk assessment</strong></td><td>A judgement of how <span class="bl" style="min-width:70px;"></span> an offender is to reoffend, used for release / treatment decisions.</td></tr>
+  </table>
+
+  <div class="box grey">
+    <div class="bx-t">Why these terms? · 为什么背这些</div>
+    The exam rewards <strong>using the textbook's word</strong>, not paraphrasing. A 4-mark question that includes the wrong term (e.g. "interview" instead of "cognitive interview") loses marks even if the rest is right.
+  </div>
+
+  <div class="pg-foot">Page 12 of 15</div>
+</div>
+
+<!-- ================= PAGE 13: BRAIN DUMP FROM MEMORY ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Brain dump · 合上笔记默写</span><span class="r">9 lines · no peeking</span></div>
+
+  <div class="box exam">
+    <div class="bx-t">How to use · 用法</div>
+    Close the workbook. Set a timer for 5 minutes. Write as much as you can remember of the chapter in the lines below. No peeking. Then open to page 14 and tick what you remembered, mark what you missed in red. Repeat until you score 9/9.
+  </div>
+
+  <div class="sub">Section 1 — The cognitive interview (CI) · 认知访谈</div>
+  <div class="wl" style="height:30pt;"></div>
+  <div class="wl" style="height:30pt;"></div>
+  <div class="wl" style="height:30pt;"></div>
+
+  <div class="sub">Section 2 — Two memory foundations · 两大原理</div>
+  <div class="wl" style="height:30pt;"></div>
+  <div class="wl" style="height:30pt;"></div>
+  <div class="wl" style="height:30pt;"></div>
+
+  <div class="sub">Section 3 — Psychological formulation · 心理/个案概念化</div>
+  <div class="wl" style="height:30pt;"></div>
+  <div class="wl" style="height:30pt;"></div>
+
+  <div class="pg-foot">Page 13 of 15</div>
+</div>
+
+<!-- ================= PAGE 14: ANSWER KEY ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Answer key · 答案速查</span><span class="r">Check &amp; tick</span></div>
+
+  <div class="two">
+    <div>
+      <div class="sub" style="margin-top:0;">p.3 — Two memory foundations</div>
+      <p style="margin:2px 0; font-size:8.5pt; line-height:1.4;"><strong>Bartlett (1932):</strong> memory is not a recording but an active <em>re-building</em>; recall is filled in using <em>schemas</em>. <em>Risk:</em> a witness's recall may be contaminated by what they <em>expect to have seen</em>. <em>Fix:</em> break the witness out of story mode — reverse the order, change perspective.</p>
+      <p style="margin:2px 0; font-size:8.5pt; line-height:1.4;"><strong>Tulving (1974):</strong> memory is best retrieved when the <em>context</em> at retrieval matches the context at encoding (mood, surroundings, sounds, weather). <em>Risk:</em> a witness in a quiet police station has lost the cues. <em>Fix:</em> ask the witness to mentally rebuild the original scene.</p>
+
+      <div class="sub">p.4 — Four techniques</div>
+      <p style="margin:2px 0; font-size:8.5pt; line-height:1.4;"><strong>Report everything</strong> — let the witness give a free, uninterrupted account; trivial details can act as memory cues. Fights <em>Bartlett</em> — invites raw detail schemas would skip.</p>
+      <p style="margin:2px 0; font-size:8.5pt; line-height:1.4;"><strong>Reinstate context</strong> — ask the witness to mentally rebuild the scene. Fights <em>Tulving</em> — restores encoding cues.</p>
+      <p style="margin:2px 0; font-size:8.5pt; line-height:1.4;"><strong>Change order</strong> — recall the event in reverse / a different sequence. Fights <em>Bartlett</em> — breaks story mode.</p>
+      <p style="margin:2px 0; font-size:8.5pt; line-height:1.4;"><strong>Change perspective</strong> — recall from another person's standpoint (security guard, cashier). Fights <em>Bartlett</em> — different retrieval route, different detail.</p>
+
+      <div class="sub">p.5 — Interview flow (5 steps)</div>
+      <p style="margin:2px 0; font-size:8.5pt; line-height:1.4;">① Transfer rapport from first officer → ② Open question / free recall → ③ Apply 4 CI techniques → ④ Specific follow-up questions → ⑤ Return witness to a normal emotional state.</p>
+
+      <div class="sub">p.5 — Geiselman (1985) numbers</div>
+      <p style="margin:2px 0; font-size:8.5pt; line-height:1.4;">CI = 41.15 correct items; Standard = 29.40. Confabulations <em>roughly equal</em> — extra items are real, not guesses.</p>
+    </div>
+
+    <div>
+      <div class="sub" style="margin-top:0;">p.6 — Evidence table</div>
+      <p style="margin:2px 0; font-size:8.5pt; line-height:1.4;"><strong>Fisher (1989):</strong> field study on real crimes in Florida; real detectives recovered +47% more correct info with CI.</p>
+      <p style="margin:2px 0; font-size:8.5pt; line-height:1.4;"><strong>Köhnken (1999):</strong> meta-analysis of 42 studies; CI reliably outperforms standard.</p>
+      <p style="margin:2px 0; font-size:8.5pt; line-height:1.4;"><strong>Holliday (2003):</strong> children aged 5-10 vs 11+; CI works well for 11+, only modest gains for younger.</p>
+
+      <div class="sub">p.7 — Formulation &amp; offence analysis</div>
+      <p style="margin:2px 0; font-size:8.5pt; line-height:1.4;"><strong>Formulation:</strong> psychologist gathers information about offender's life (relationships, social circumstances, life events) and applies psychological theory to form a hypothesis about the <em>function</em> of offending — informs risk assessment, rehab programme, release.</p>
+      <p style="margin:2px 0; font-size:8.5pt; line-height:1.4;"><strong>Offence analysis</strong> studies the facts of the crime; <strong>formulation</strong> studies the person who did it. Offence analysis is closer to objective; formulation is <em>subjective</em>.</p>
+
+      <div class="sub">p.8 — Kaia marks &amp; Darian</div>
+      <p style="margin:2px 0; font-size:8.5pt; line-height:1.4;"><strong>Kaia criminogenic factors</strong> (5): k1 financial / k2 Robin Hood / k3 chaotic childhood / k4 father imprisoned / k5 visits father. <strong>Traps (not factors):</strong> k6 diamond value / k7 alarm bypass / k8 airport arrest.</p>
+      <p style="margin:2px 0; font-size:8.5pt; line-height:1.4;"><strong>Darian 3 marks:</strong> ① gather info on relationships, social circumstances, life events · ② interview the offender directly · ③ apply theory to form a hypothesis about the function of offending, to inform risk / rehab decisions.</p>
+
+      <div class="sub">p.10 — Checkpoint</div>
+      <p style="margin:2px 0; font-size:8.5pt; line-height:1.4;">1: four techniques. 2: Bartlett (1932) reconstructive + Tulving (1974) context-dependent. 3: time-consuming / inadequate training (Dando 2008 — 221 officers). 4: Geiselman (1985) — 41.15 vs 29.40. 5: False. 6: False. 7: False. 8: True. 9: risk / rehabilitation / explaining to offender.</p>
+    </div>
+  </div>
+
+  <div class="pg-foot">Page 14 of 15</div>
+</div>
+
+<!-- ================= PAGE 15: ANSWER KEY PT 2 — EXAM MODEL + KEY TERMS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Answer key (cont.) · 答案速查 — exam &amp; terms</span><span class="r">Check &amp; tick</span></div>
+
+  <div class="sub">p.11 — Exam model (Olivia &amp; Rhys)</div>
+  <p style="margin:2px 0; font-size:8.5pt; line-height:1.4;"><strong>(a) Report everything:</strong> Olivia should let Rhys give a free, uninterrupted account — even trivial details may act as memory cues. <strong>Reinstate context:</strong> she should ask him to mentally rebuild the store — what he saw, heard, how he felt — restoring encoding cues (Tulving). <strong>Change order:</strong> ask him to recall in reverse, breaking story formation (Bartlett). <strong>Change perspective:</strong> ask what the security guard chasing the woman would have seen — only what he actually knows.</p>
+  <p style="margin:2px 0; font-size:8.5pt; line-height:1.4;"><strong>(b) Strength:</strong> Geiselman (1985) CI 41.15 vs 29.40 — Rhys is likely to give more useful detail. <strong>Weakness:</strong> takes more time and needs training (Dando 2008) — a newly trained officer in a busy investigation may struggle.</p>
+
+  <div class="sub">p.12 — Key terms (key words)</div>
+  <p style="margin:2px 0; font-size:8.5pt; line-height:1.4;"><strong>Cognitive interview:</strong> interview a <em>witness</em> to <em>maximise</em> correct info. <strong>Reconstructive memory:</strong> active <em>re-building</em> using <em>schemas</em> (Bartlett 1932). <strong>Context-dependent memory:</strong> best when retrieval context matches encoding context (Tulving 1974). <strong>Schema:</strong> a mental <em>expectation</em>. <strong>Report everything:</strong> <em>uninterrupted</em> account. <strong>Reinstate context:</strong> <em>mentally rebuild</em> scene. <strong>Change order:</strong> <em>different</em> sequence. <strong>Change perspective:</strong> another person's view. <strong>Enhanced CI:</strong> <em>rapport</em> transfer. <strong>Misleading question:</strong> suggests a particular <em>answer</em>. <strong>Offence analysis:</strong> <em>facts</em> of crime. <strong>Formulation:</strong> apply <em>theory</em> to find <strong>function</strong>. <strong>Function of offending:</strong> <em>need</em> the offending met. <strong>Criminogenic factors:</strong> <em>risk</em> factors. <strong>Risk assessment:</strong> how <em>likely</em> to reoffend.</p>
+
+  <div class="box exam">
+    <div class="bx-t">Final scoring check · 考前 1 分钟</div>
+    <p style="margin:4px 0;">Walk through this list in your head before the exam. You should be able to say the answer in one sentence to each:</p>
+    <ol class="tight" style="font-size:9pt;">
+      <li>Two CI foundations = Bartlett (1932) reconstructive + Tulving (1974) context-dependent.</li>
+      <li>Four CI techniques = Report everything · Reinstate context · Change order · Change perspective.</li>
+      <li>Geiselman headline number = 41.15 vs 29.40; confabulations roughly equal.</li>
+      <li>Formulation = gather life info + apply theory → hypothesis about <strong>function</strong> of offending → inform risk / rehab.</li>
+      <li>Formulation is used <strong>after</strong> the offender is caught — not to catch them.</li>
+      <li>Offence analysis is <strong>not</strong> objective; formulation is <strong>subjective</strong>.</li>
+      <li>Reoffending rates are <strong>not</strong> a good measure of formulation effectiveness (many reoffenders aren't caught).</li>
+    </ol>
+  </div>
+
+  <div class="pg-foot">Page 15 of 15</div>
+</div>
+
+</body>
+</html>
