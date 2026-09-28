@@ -268,6 +268,25 @@ body.dark .study-badge.longitudinal { background: rgba(157,23,77,.20); color: #f
 .xp-result.warn .xp-verdict { color: var(--wrong); }
 .xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
 .xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+/* Checkpoint interactive items */
+.cp-item { background: rgba(255,255,255,.55); border: 1px solid rgba(46,125,50,.25); border-radius: 8px; padding: 10px 12px; margin: 10px 0; }
+.cp-item > p { margin: 0 0 6px; font-size: 9pt; line-height: 1.55; color: #1f2937; }
+.cp-opts { display: grid; grid-template-columns: 1fr; gap: 4px 8px; margin: 4px 0 2px; }
+.cp-opts label { display: flex; align-items: flex-start; gap: 6px; font-size: 8.5pt; line-height: 1.45; color: #334155; cursor: pointer; padding: 2px 4px; border-radius: 4px; }
+.cp-opts label:hover { background: rgba(46,125,50,.10); }
+.cp-opts input[type=checkbox], .cp-opts input[type=radio] { margin-top: 2px; accent-color: #2e7d32; cursor: pointer; }
+.cp-tf { grid-template-columns: 1fr 1fr; max-width: 240px; }
+.cp-opts input, .cp-opts select { font: inherit; }
+#gs-loaded p { margin: 2px 0; font-size: 8.5pt; line-height: 1.45; color: #334155; }
+#gs-loaded p strong { color: #1f2937; margin-right: 6px; }
+#gs-loaded .gs-empty { color: #64748b; font-style: italic; }
+.xp-block textarea, .xp-block input[type=text], .xp-block input:not([type]) { width: 100%; padding: 4px 6px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 8.5pt; line-height: 1.4; background: #fff; color: #1f2937; resize: vertical; font-family: inherit; }
+.xp-block textarea { min-height: 22px; }
+.xp-block select { font-size: 8.5pt; padding: 4px 6px; border: 1px solid #cbd5e1; border-radius: 4px; background: #fff; color: #1f2937; cursor: pointer; }
+body.dark .cp-item { background: rgba(22,38,54,.65); border-color: rgba(74,222,128,.35); }
+body.dark .cp-item > p, body.dark .cp-opts label, body.dark #gs-loaded p { color: #cbd5e1; }
+body.dark .cp-opts label:hover { background: rgba(74,222,128,.12); }
+body.dark .xp-block textarea, body.dark .xp-block input, body.dark .xp-block select { background: #16213e; border-color: #334155; color: #cbd5e1; }
 .xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
 .xp-checkbox { margin: 6px 0; }
 .xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; color: #1f2937; }
@@ -380,6 +399,25 @@ body.dark .xp-controls select, body.dark .xp-controls input { background: #1a1a2
   </div>
 
   <div class="cn-note"><strong>中文理解：</strong>先别往下读，真的拿纸写 7 个问题——这是本章最重要的预习动作。写完后自查：「我的问题是不是大多是 <em>did you see…? / was she wearing…?</em> 这种只答 yes/no 的封闭问题？有没有哪一问其实<strong>替证人编好了剧情</strong>（比如『那人拿刀了吧？』）？」带着你的 7 个问题往下读，读完 §4 你会想重写一半。<strong>这个开局任务不是装饰——考试真题（Olivia/Rhys, 8 分）问的就是同一件事</strong>：怎样用认知访谈技巧帮证人回忆。</div>
+
+  <div class="xp-block">
+    <h4>📝 Write your seven questions here（写下 7 问 · 给 Activity 1 用）</h4>
+    <p style="margin:2px 0 6px 0;font-size:8.5pt;color:#475569;">先在下面写下你想问证人的 7 个问题。点 <strong>💾 Save</strong> 后浏览器会帮你记住——读到 §6 Activity 1 时会自动载回来，方便你逐条改成 CI 版本。</p>
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 8px;align-items:center;">
+      <strong style="font-size:9pt;">Q1.</strong><textarea id="gs-q1" rows="1" placeholder="你的第 1 问…"></textarea>
+      <strong style="font-size:9pt;">Q2.</strong><textarea id="gs-q2" rows="1" placeholder="你的第 2 问…"></textarea>
+      <strong style="font-size:9pt;">Q3.</strong><textarea id="gs-q3" rows="1" placeholder="你的第 3 问…"></textarea>
+      <strong style="font-size:9pt;">Q4.</strong><textarea id="gs-q4" rows="1" placeholder="你的第 4 问…"></textarea>
+      <strong style="font-size:9pt;">Q5.</strong><textarea id="gs-q5" rows="1" placeholder="你的第 5 问…"></textarea>
+      <strong style="font-size:9pt;">Q6.</strong><textarea id="gs-q6" rows="1" placeholder="你的第 6 问…"></textarea>
+      <strong style="font-size:9pt;">Q7.</strong><textarea id="gs-q7" rows="1" placeholder="你的第 7 问…"></textarea>
+    </div>
+    <div class="xp-controls" style="margin-top:6px;">
+      <button class="xp-btn" onclick="gsSave()">💾 Save（之后 §6 会自动载入）</button>
+      <button class="xp-btn" onclick="gsClear()">🗑 Clear</button>
+    </div>
+    <div id="gs-toast" class="xp-result" style="margin-top:6px;"></div>
+  </div>
 </section>
 
 <!-- ============ SECTION 3: MEMORY FOUNDATIONS ============ -->
@@ -571,6 +609,37 @@ body.dark .xp-controls select, body.dark .xp-controls input { background: #1a1a2
   <div class="note-box blue-box">
     <h4>✍️ Activity 1 — Rewriting your seven questions（课本 Activity 1）</h4>
     <p>Go back to the Getting Started feature at the beginning of this chapter. Reread the extract of the bank robbery and consider <strong>what questions you would ask the witnesses if you were using the cognitive interview techniques</strong> described. 逐条改造你开局的 7 个问题：封闭问题 → 开放问题；具体追问 → 先 report everything；顺序提问 → 试试倒序或换视角。改完的每一问都应该能说出「它用了哪条技巧」。</p>
+
+    <div class="xp-block">
+      <h4>📥 My seven questions from §2（开局写下的 7 问）</h4>
+      <div id="gs-loaded" class="xp-intro" style="font-size:8.5pt;line-height:1.55;">（点 Load 自动从 §2 载入你写下的 7 问。）</div>
+      <div class="xp-controls"><button class="xp-btn" onclick="gsLoad()">📥 Load from §2</button></div>
+
+      <h4 style="margin-top:10px;">✏️ Rewrite each one as an open, CI-friendly question（逐条改写）</h4>
+      <p style="margin:2px 0 6px 0;font-size:8.5pt;color:#475569;">每条新版问题后面点 <em>用哪条技巧</em>。改完回头对照 §2 原始版本，能讲出差别就过关。</p>
+      <div style="display:grid;grid-template-columns:auto 1fr 130px;gap:4px 8px;align-items:center;">
+        <strong style="font-size:9pt;">Q1 →</strong><input id="r-q1" placeholder="改写第 1 问…"/>
+        <select id="r-t1"><option value="">用哪条技巧?</option><option>Report everything</option><option>Reinstate context</option><option>Change order</option><option>Change perspective</option></select>
+        <strong style="font-size:9pt;">Q2 →</strong><input id="r-q2" placeholder="改写第 2 问…"/>
+        <select id="r-t2"><option value="">用哪条技巧?</option><option>Report everything</option><option>Reinstate context</option><option>Change order</option><option>Change perspective</option></select>
+        <strong style="font-size:9pt;">Q3 →</strong><input id="r-q3" placeholder="改写第 3 问…"/>
+        <select id="r-t3"><option value="">用哪条技巧?</option><option>Report everything</option><option>Reinstate context</option><option>Change order</option><option>Change perspective</option></select>
+        <strong style="font-size:9pt;">Q4 →</strong><input id="r-q4" placeholder="改写第 4 问…"/>
+        <select id="r-t4"><option value="">用哪条技巧?</option><option>Report everything</option><option>Reinstate context</option><option>Change order</option><option>Change perspective</option></select>
+        <strong style="font-size:9pt;">Q5 →</strong><input id="r-q5" placeholder="改写第 5 问…"/>
+        <select id="r-t5"><option value="">用哪条技巧?</option><option>Report everything</option><option>Reinstate context</option><option>Change order</option><option>Change perspective</option></select>
+        <strong style="font-size:9pt;">Q6 →</strong><input id="r-q6" placeholder="改写第 6 问…"/>
+        <select id="r-t6"><option value="">用哪条技巧?</option><option>Report everything</option><option>Reinstate context</option><option>Change order</option><option>Change perspective</option></select>
+        <strong style="font-size:9pt;">Q7 →</strong><input id="r-q7" placeholder="改写第 7 问…"/>
+        <select id="r-t7"><option value="">用哪条技巧?</option><option>Report everything</option><option>Reinstate context</option><option>Change order</option><option>Change perspective</option></select>
+      </div>
+      <div class="xp-controls" style="margin-top:8px;">
+        <button class="xp-btn" onclick="actCheck()">✅ Check my rewrites</button>
+        <button class="xp-btn" onclick="actClear()">🗑 Clear</button>
+      </div>
+      <div id="act-result" class="xp-result" style="margin-top:8px;"></div>
+      <p style="margin-top:6px;font-size:8.5pt;color:#475569;">💡 真题里 8 分那道题考的正是这件事——把每条改造后的问题配上「用的是哪条 CI 技巧 + 为什么」，就是答案。</p>
+    </div>
   </div>
 </section>
 
@@ -897,17 +966,110 @@ body.dark .xp-controls select, body.dark .xp-controls input { background: #1a1a2
 
   <h3>Checkpoint — 9 quick questions（课本 Checkpoint）</h3>
   <div class="checkpoint">
-    <ol style="margin-bottom:0;">
-      <li>Name the four techniques used in the cognitive interview.</li>
-      <li>The cognitive interview was designed from which two cognitive theories?</li>
-      <li>What is one weakness with using the cognitive interview by police in the field?</li>
-      <li>Name one study which found that recall using the cognitive interview was significantly better than using a standard interview.</li>
-      <li>Is a psychological formulation used to catch an offender?</li>
-      <li>Is an offence analysis an objective account of an offender?</li>
-      <li>Are reoffending rates a good measure of the effectiveness of a psychological formulation?</li>
-      <li>Is it true that psychological formulations increase staff knowledge and understanding of an offender?</li>
-      <li>What other uses are there for a psychological formulation?</li>
-    </ol>
+    <p style="margin:0 0 8px 0;font-size:9pt;color:#475569;">在下面直接选/勾，然后按 <em>Check my answers</em>。每题都有反馈——不是用来「跳过思考直接看答案」的。</p>
+
+    <!-- Q1 — multi-checkbox（4 个全选） -->
+    <div class="cp-item">
+      <p><strong>1.</strong> Name the four techniques used in the cognitive interview. <span style="color:#64748b;font-weight:400;">（勾出所有 4 条）</span></p>
+      <div class="cp-opts">
+        <label><input type="checkbox" name="cp-q1" value="report"> Report everything（让证人先讲所有细节，不打断）</label>
+        <label><input type="checkbox" name="cp-q1" value="reinstate"> Reinstate the context / mental state（复原案发时的环境与情绪）</label>
+        <label><input type="checkbox" name="cp-q1" value="order"> Change the order（倒序或换顺序回忆，打破图式）</label>
+        <label><input type="checkbox" name="cp-q1" value="perspective"> Change the perspective（换他人视角或事发现场不同位置）</label>
+      </div>
+      <div id="cp-fb1" class="xp-result"></div>
+    </div>
+
+    <!-- Q2 — multi-checkbox（2 个全选） -->
+    <div class="cp-item">
+      <p><strong>2.</strong> The cognitive interview was designed from which two cognitive theories? <span style="color:#64748b;font-weight:400;">（勾出 2 条）</span></p>
+      <div class="cp-opts">
+        <label><input type="checkbox" name="cp-q2" value="bartlett"> Bartlett (1932) reconstructive memory</label>
+        <label><input type="checkbox" name="cp-q2" value="tulving"> Tulving (1974) encoding specificity / context-dependent memory</label>
+        <label><input type="checkbox" name="cp-q2" value="loftus"> Loftus &amp; Palmer (1974) misleading questions</label>
+        <label><input type="checkbox" name="cp-q2" value="godden"> Godden &amp; Baddeley (1975) context-dependent recall</label>
+      </div>
+      <div id="cp-fb2" class="xp-result"></div>
+    </div>
+
+    <!-- Q3 — multi-checkbox（实务弱点） -->
+    <div class="cp-item">
+      <p><strong>3.</strong> What is one weakness with using the cognitive interview by police in the field? <span style="color:#64748b;font-weight:400;">（勾出 1–2 条）</span></p>
+      <div class="cp-opts">
+        <label><input type="checkbox" name="cp-q3" value="time"> Takes much longer than a standard interview</label>
+        <label><input type="checkbox" name="cp-q3" value="training"> Officers feel inadequately trained to apply it (Dando et al., 2008)</label>
+        <label><input type="checkbox" name="cp-q3" value="law"> Not admissible as evidence in court</label>
+        <label><input type="checkbox" name="cp-q3" value="memory"> Witnesses forget faster because it's longer</label>
+      </div>
+      <div id="cp-fb3" class="xp-result"></div>
+    </div>
+
+    <!-- Q4 — radio（单选研究） -->
+    <div class="cp-item">
+      <p><strong>4.</strong> Name <em>one</em> study which found that recall using the cognitive interview was significantly better than using a standard interview.</p>
+      <div class="cp-opts">
+        <label><input type="radio" name="cp-q4" value="geiselman"> Geiselman et al. (1985)</label>
+        <label><input type="radio" name="cp-q4" value="kohnken"> Köhnken et al. (1999) meta-analysis</label>
+        <label><input type="radio" name="cp-q4" value="fisher"> Fisher et al. (1989)</label>
+        <label><input type="radio" name="cp-q4" value="holliday"> Holliday (2003)</label>
+      </div>
+      <div id="cp-fb4" class="xp-result"></div>
+    </div>
+
+    <!-- Q5–Q8 — True/False -->
+    <div class="cp-item">
+      <p><strong>5.</strong> Is a psychological formulation used to catch an offender?</p>
+      <div class="cp-opts cp-tf">
+        <label><input type="radio" name="cp-q5" value="true"> True</label>
+        <label><input type="radio" name="cp-q5" value="false"> False</label>
+      </div>
+      <div id="cp-fb5" class="xp-result"></div>
+    </div>
+
+    <div class="cp-item">
+      <p><strong>6.</strong> Is an offence analysis an objective account of an offender?</p>
+      <div class="cp-opts cp-tf">
+        <label><input type="radio" name="cp-q6" value="true"> True</label>
+        <label><input type="radio" name="cp-q6" value="false"> False</label>
+      </div>
+      <div id="cp-fb6" class="xp-result"></div>
+    </div>
+
+    <div class="cp-item">
+      <p><strong>7.</strong> Are reoffending rates a good measure of the effectiveness of a psychological formulation?</p>
+      <div class="cp-opts cp-tf">
+        <label><input type="radio" name="cp-q7" value="true"> True</label>
+        <label><input type="radio" name="cp-q7" value="false"> False</label>
+      </div>
+      <div id="cp-fb7" class="xp-result"></div>
+    </div>
+
+    <div class="cp-item">
+      <p><strong>8.</strong> Is it true that psychological formulations increase staff knowledge and understanding of an offender?</p>
+      <div class="cp-opts cp-tf">
+        <label><input type="radio" name="cp-q8" value="true"> True</label>
+        <label><input type="radio" name="cp-q8" value="false"> False</label>
+      </div>
+      <div id="cp-fb8" class="xp-result"></div>
+    </div>
+
+    <!-- Q9 — multi-checkbox（其它用途） -->
+    <div class="cp-item">
+      <p><strong>9.</strong> What other uses are there for a psychological formulation? <span style="color:#64748b;font-weight:400;">（勾出所有适用项）</span></p>
+      <div class="cp-opts">
+        <label><input type="checkbox" name="cp-q9" value="risk"> Assessing the risk of reoffending</label>
+        <label><input type="checkbox" name="cp-q9" value="rehab"> Deciding rehabilitation / treatment programmes</label>
+        <label><input type="checkbox" name="cp-q9" value="explain"> Explaining to the offender what led them to offend</label>
+        <label><input type="checkbox" name="cp-q9" value="catch"> Helping police catch the offender</label>
+      </div>
+      <div id="cp-fb9" class="xp-result"></div>
+    </div>
+
+    <div class="xp-controls" style="margin-top:10px;">
+      <button class="xp-btn" onclick="cpCheck()">✅ Check my answers</button>
+      <button class="xp-btn" onclick="cpClear()">🗑 Reset</button>
+    </div>
+    <div id="cp-final" class="xp-result" style="margin-top:8px;"></div>
   </div>
   <div class="summary-card-header" onclick="toggleSummary(this)">
     <span class="arrow">▶</span>
@@ -1164,6 +1326,219 @@ function kaiaCheck() {
   html += '<p style="margin-top:8px;"><strong>下一步（Phase 2）</strong>：把这些事实接入理论——经济困难 → 行为视角（偷窃的金钱奖励 / operant conditioning）；Robin Hood 信念 → 认知视角（cognitive distortion）；颠沛童年 + 罪犯父亲 → 精神动力视角（early childhood experiences）。一份 formulation 就这样从事实长成了解释。</p>';
   r.innerHTML = html;
 }
+
+// ===== GS seven-questions localStorage =====
+function gsRead() {
+  try { return JSON.parse(localStorage.getItem('ch8_gs_questions') || '{}'); }
+  catch(e) { return {}; }
+}
+function gsWrite(obj) {
+  try { localStorage.setItem('ch8_gs_questions', JSON.stringify(obj)); }
+  catch(e) {}
+}
+function gsSave() {
+  var data = {};
+  for (var i = 1; i <= 7; i++) {
+    var el = document.getElementById('gs-q' + i);
+    data['q' + i] = el ? el.value.trim() : '';
+  }
+  var filled = Object.values(data).filter(function(v){ return v.length > 0; }).length;
+  gsWrite(data);
+  var t = document.getElementById('gs-toast');
+  t.className = 'xp-result show ok';
+  t.innerHTML = '<p><span class="xp-verdict">💾 已保存 ' + filled + '/7 问</span>。读 §6 Activity 1 时会自动载回。</p>';
+}
+function gsClear() {
+  for (var i = 1; i <= 7; i++) {
+    var el = document.getElementById('gs-q' + i);
+    if (el) el.value = '';
+  }
+  gsWrite({});
+  var t = document.getElementById('gs-toast');
+  t.className = 'xp-result show';
+  t.innerHTML = '<p>已清空 §2 输入框。</p>';
+}
+function gsLoad() {
+  var data = gsRead();
+  var box = document.getElementById('gs-loaded');
+  var html = '';
+  var any = false;
+  for (var i = 1; i <= 7; i++) {
+    var v = data['q' + i] || '';
+    if (v) {
+      html += '<p><strong>Q' + i + '.</strong> ' + escapeHtml(v) + '</p>';
+      any = true;
+    }
+  }
+  if (!any) html = '<p class="gs-empty">§2 还没保存任何问题。先回到 <a href="#s2">§2 Getting Started</a> 写完 7 问、点 Save，再回来点 Load。</p>';
+  box.innerHTML = html;
+}
+
+// ===== Activity 1 rewrite checker =====
+function actCheck() {
+  var r = document.getElementById('act-result');
+  var filled = 0, techniqueMatch = 0;
+  var gaps = [];
+  for (var i = 1; i <= 7; i++) {
+    var q = document.getElementById('r-q' + i).value.trim();
+    var t = document.getElementById('r-t' + i).value;
+    if (q.length > 0) filled++;
+    if (t) techniqueMatch++;
+    // Quality heuristic
+    var isLeading = /(did (he|she|they|you) (have|wear|see)|was (he|she|they) (wearing|holding)|didn't (he|she))/i.test(q);
+    var isYesNo = /^(did|was|were|is|are|do|does|can|could|will|would)\b.+\?$/i.test(q);
+    if (isLeading) gaps.push('Q' + i + ' 像是 leading question（"didn\'t she?" / "was he wearing…"），这会激活 schema。换成「Tell me everything you noticed about…」');
+    else if (isYesNo) gaps.push('Q' + i + ' 是 yes/no 问题，CI 不鼓励。改成 open question：「Describe… / What happened next…」');
+  }
+  var html = '<p><span class="xp-verdict">已写 ' + filled + '/7 问 · 已选 ' + techniqueMatch + '/7 技巧</span></p>';
+  if (filled < 7) html += '<p>⚠️ 还有 ' + (7-filled) + ' 个没写。7 问全改才算完整——也对应考试 8 分那道题的完整版。</p>';
+  if (gaps.length > 0) {
+    html += '<p style="margin-top:6px;"><strong>质量反馈（可能的问题）</strong>：</p><ul style="margin:4px 0 0 18px;font-size:8.5pt;line-height:1.55;">';
+    gaps.forEach(function(g){ html += '<li>' + g + '</li>'; });
+    html += '</ul>';
+    r.className = 'xp-result show warn';
+  } else if (filled === 7 && techniqueMatch === 7) {
+    html += '<p style="margin-top:6px;">✅ 七条都标了技巧、没侦测到 yes/no 或 leading 痕迹。</p>';
+    r.className = 'xp-result show ok';
+  } else {
+    r.className = 'xp-result show';
+  }
+  html += '<p style="margin-top:6px;font-size:8.5pt;color:#475569;">💡 真正的考试不看你给几个分——你只要写出 <strong>每条 CI 技巧 + 它在 Rhys 案里怎么用</strong>，8 分拿稳（参考右栏 Essay plan）。</p>';
+  r.innerHTML = html;
+}
+function actClear() {
+  for (var i = 1; i <= 7; i++) {
+    document.getElementById('r-q' + i).value = '';
+    document.getElementById('r-t' + i).selectedIndex = 0;
+  }
+  document.getElementById('act-result').className = 'xp-result';
+  document.getElementById('act-result').innerHTML = '';
+}
+
+// ===== Checkpoint 9 questions =====
+var cpKey = {
+  q1: { type: 'multi', correct: ['report','reinstate','order','perspective'],
+        okMsg: '四条全对：report everything / reinstate context / change order / change perspective。' },
+  q2: { type: 'multi', correct: ['bartlett','tulving'],
+        okMsg: '两条都对：Bartlett (1932) reconstructive memory + Tulving (1974) context-dependent memory。Loftus & Palmer 是 misleading questions 研究，不直接用于 CI 设计；Godden & Baddeley 验证了 Tulving 的原则，但课本强调的是这两条原始理论。' },
+  q3: { type: 'multi', correct: ['time','training'],
+        allow: 1, // accept either single (the question says "one weakness")
+        okMsg: '对。课本要点：Dando et al. (2008) 221 名警员反映训练不够；CI 耗时远多于标准访谈；现场混乱时警察没条件按部就班。' },
+  q4: { type: 'radio', correct: 'geiselman',
+        okMsg: 'Geiselman et al. (1985) 是课本核心证据：CI 41.15 vs standard 29.40 正确回忆。其它也支持 CI，但题目问 "significantly better than standard"，首选 Geiselman。' },
+  q5: { type: 'tf', correct: false,
+        okMsg: 'False — formulation 是罪犯已被捕/定罪之后做的，用来理解其行为功能和风险，不是用来抓人。',
+        whyMsg: 'false — 课本要点：formulation 是事后理解，不能直接帮人抓人。' },
+  q6: { type: 'tf', correct: false,
+        okMsg: 'False — offence analysis 涉及心理学家解释，主观性不可避免；不同经验的人可能给同一信息不同权重。',
+        whyMsg: 'false — 主观解释，不是客观报告。' },
+  q7: { type: 'tf', correct: false,
+        okMsg: 'False — 累犯可能没被抓、没被再起诉，所以「再犯率」不等于「再犯」，无法可靠衡量 formulation 是否有效。',
+        whyMsg: 'false — 漏报使累犯率偏低，无法反映真实有效性。' },
+  q8: { type: 'tf', correct: true,
+        okMsg: 'True — formulation 让工作人员更懂罪犯的行为模式，提升管理信心和工作质量。',
+        whyMsg: 'true — 课本明确：提升 staff knowledge & confidence in managing offenders。' },
+  q9: { type: 'multi', correct: ['risk','rehab','explain'],
+        okMsg: '对：风险评估、决定康复方案、向罪犯本人解释成因（这是改变的第一步）。' +
+                '「helping police catch」不算 — 那属于 offence analysis 的目的，不是 formulation 的后续用途。' }
+};
+
+function cpShow(qid, cls, html) {
+  var el = document.getElementById('cp-fb' + qid.replace('q',''));
+  el.className = 'xp-result show ' + cls;
+  el.innerHTML = '<p><span class="xp-verdict">' + html + '</span></p>';
+}
+
+function cpCheck() {
+  var score = 0, total = 9;
+  Object.keys(cpKey).forEach(function(qid) {
+    var k = cpKey[qid];
+    var picked;
+    var ok = false;
+    if (k.type === 'multi') {
+      picked = Array.prototype.slice.call(document.querySelectorAll('input[name="cp-'+qid+'"]:checked')).map(function(b){return b.value;});
+      if (k.allow === 1) {
+        // accept any single correct pick OR all-correct
+        ok = picked.length === 1 && k.correct.includes(picked[0]);
+      } else {
+        ok = picked.length === k.correct.length && k.correct.every(function(c){return picked.includes(c);});
+      }
+      if (ok) { score++; cpShow(qid, 'ok', '✅ ' + k.okMsg); }
+      else if (picked.length === 0) cpShow(qid, 'warn', '❓ 没选——再读一遍题目。');
+      else {
+        var extra = picked.filter(function(p){return !k.correct.includes(p);});
+        var missing = k.correct.filter(function(p){return !picked.includes(p);});
+        var msg = '❌ 不全对。';
+        if (extra.length) msg += ' 多选/误选：' + extra.join('、') + '。';
+        if (missing.length) msg += ' 漏选：' + missing.join('、') + '。';
+        msg += ' 课本答案：' + k.okMsg;
+        cpShow(qid, 'warn', msg);
+      }
+    } else if (k.type === 'radio') {
+      var sel = document.querySelector('input[name="cp-'+qid+'"]:checked');
+      picked = sel ? sel.value : null;
+      if (picked === k.correct) { score++; cpShow(qid, 'ok', '✅ ' + k.okMsg); }
+      else if (!picked) cpShow(qid, 'warn', '❓ 没选。');
+      else cpShow(qid, 'warn', '❌ 不是首选。' + k.okMsg);
+    } else if (k.type === 'tf') {
+      var t = document.querySelector('input[name="cp-'+qid+'"]:checked');
+      picked = t ? t.value === 'true' : null;
+      if (picked === k.correct) { score++; cpShow(qid, 'ok', '✅ ' + k.okMsg); }
+      else if (picked === null) cpShow(qid, 'warn', '❓ 没选。');
+      else cpShow(qid, 'warn', '❌ ' + k.whyMsg);
+    }
+  });
+  var f = document.getElementById('cp-final');
+  if (score >= 8) {
+    f.className = 'xp-result show ok';
+    f.innerHTML = '<p><span class="xp-verdict">🏆 ' + score + '/' + total + ' · 课本 Checkpoint 满分级</span></p>' +
+                  '<p>9 道都答得清清楚楚——可以进入下一题的 essay plan 阶段。</p>';
+  } else if (score >= 6) {
+    f.className = 'xp-result show';
+    f.innerHTML = '<p><span class="xp-verdict">📋 ' + score + '/' + total + ' · 接近满分级</span></p>' +
+                  '<p>看上面红色提示的题，记住正确答案再走。</p>';
+  } else if (score >= 3) {
+    f.className = 'xp-result show warn';
+    f.innerHTML = '<p><span class="xp-verdict">⚠️ ' + score + '/' + total + ' · 还要补一下</span></p>' +
+                  '<p>回 §3-§13 把卡片内容看一遍，Checkpoint 是主线。</p>';
+  } else {
+    f.className = 'xp-result show warn';
+    f.innerHTML = '<p><span class="xp-verdict">🚨 ' + score + '/' + total + ' · 课本知识还没过</span></p>' +
+                  '<p>逐题回看反馈，按章节顺序复习 §3-§13，再来一遍。</p>';
+  }
+}
+
+function cpClear() {
+  document.querySelectorAll('input[name^="cp-q"]').forEach(function(el){
+    el.checked = false;
+  });
+  for (var i = 1; i <= 9; i++) {
+    var el = document.getElementById('cp-fb' + i);
+    el.className = 'xp-result';
+    el.innerHTML = '';
+  }
+  var f = document.getElementById('cp-final');
+  f.className = 'xp-result';
+  f.innerHTML = '';
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, function(c){
+    return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+  });
+}
+
+// Auto-load GS into §6 Activity 1 when scrolled into view (one-shot)
+(function(){
+  var box = document.getElementById('gs-loaded');
+  if (!box || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting) { gsLoad(); io.disconnect(); }
+    });
+  }, { threshold: 0.1 });
+  io.observe(box);
+})();
 </script>
 
 </body>
