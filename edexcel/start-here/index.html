@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start Here · How This Psychology Course Works</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 210px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 210px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.five-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+
+.ms-box { background: #fff; border: 1.5px dashed #94a3b8; border-radius: 10px; padding: 14px 16px; margin: 12px 0; font-size: .92rem; line-height: 1.7; }
+.ms-box .ms-head { font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+body.dark .ms-box { background: #16213e; border-color: #475569; color: #cbd5e1; }
+body.dark .ms-box .ms-head { color: #93c5fd; }
+
+.cmd-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px,1fr)); gap: 10px; margin: 14px 0; }
+.cmd-card { background: #fafafa; border: 1px solid #e2e8f0; border-left: 4px solid var(--accent); border-radius: 8px; padding: 11px 14px; }
+.cmd-card .cw { font-weight: 700; color: var(--accent); font-size: .98rem; }
+.cmd-card .cd { font-size: .88rem; line-height: 1.55; color: #475569; margin-top: 3px; }
+.cmd-card.warn { border-left-color: #dc2626; }
+.cmd-card.warn .cw { color: #991b1b; }
+body.dark .cmd-card { background: #16213e; border-color: #334155; }
+body.dark .cmd-card .cd { color: #cbd5e1; }
+body.dark .cmd-card .cw { color: #93c5fd; }
+body.dark .cmd-card.warn .cw { color: #fca5a5; }
+
+.time-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 10px 0; }
+select.time-sel, input.time-in { border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; font-family: inherit; font-size: .92rem; }
+body.dark select.time-sel, body.dark input.time-in { background: #16213e; border-color: #334155; color: #cbd5e1; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel Psychology</a> <span class="sep">›</span>
+    <span>Start Here · How This Course Works</span>
+  </div>
+  <span class="nav-pill">🚀 Start here</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">Start Here · Contents</div>
+        <div class="sb-header-sub">Read this page first</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">Why this subject</li>
+        <li class="sb-item"><a href="#s1">1. Three Questions First</a></li>
+        <li class="sb-item"><a href="#s2">2. What Psychology Studies</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">The exams</li>
+        <li class="sb-item"><a href="#s3">3. The Papers You Will Sit</a></li>
+        <li class="sb-item"><a href="#s4">4. Three Kinds of Thinking</a></li>
+        <li class="sb-item"><a href="#s5">5. Command Words</a></li>
+        <li class="sb-item"><a href="#s6">6. How Big Questions Are Marked</a></li>
+        <li class="sb-item"><a href="#s7">7. Planning Your Time</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Using these pages</li>
+        <li class="sb-item"><a href="#s8">8. How Each Page Works</a></li>
+        <li class="sb-item"><a href="#s9">9. Check Yourself</a></li>
+        <li class="sb-item"><a href="#s10">10. Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>START HERE<br><span style="font-size:0.62em">开始前先读这一页</span></h1>
+  <div class="subtitle">What this psychology course covers, what the exams look like, and how marks are won or lost</div>
+  <div class="meta">
+    <span class="badge">📄 Two written papers</span>
+    <span class="badge">⏱ 1h 30m + 2h</span>
+    <span class="badge">🎯 160 marks in total</span>
+  </div>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Three Questions First</h2>
+
+  <p>Answer these three questions honestly before you read anything else. Each one has been tested in a real experiment, and in each case most people predict the wrong answer — including people who later took part in the study.</p>
+
+  <div class="xp-block">
+    <h4><span class="xp-badge">TRY IT</span> Your predictions</h4>
+    <p class="xp-intro">Pick the answer you believe. Nothing is scored as right or wrong yet — the point is to see what you assume before you know anything.</p>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Question 1 · A group and a wrong answer</div>
+      <div class="xp-case-desc">You are in a room with six people. They are shown three lines and asked which matches a fourth line. The answer is obvious. But all six confidently give the same wrong answer. You are asked last. What do you do?</div>
+      <div class="xp-controls">
+        <button class="q-option" onclick="predict(1,'a',this)">I give the correct answer. Being right is easy here.</button>
+        <button class="q-option" onclick="predict(1,'b',this)">I start to doubt myself and may go with the group.</button>
+      </div>
+      <div class="xp-result" id="p1"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Question 2 · A person in a coat</div>
+      <div class="xp-case-desc">A researcher in a lab coat tells you to give a stranger an electric shock every time they get a question wrong. The shocks get stronger, and the stranger starts screaming and then goes silent. You want to stop. He says, &ldquo;Please continue.&rdquo; How far do you go?</div>
+      <div class="xp-controls">
+        <button class="q-option" onclick="predict(2,'a',this)">I stop early, probably before the screams start.</button>
+        <button class="q-option" onclick="predict(2,'b',this)">I keep going to the end of the scale.</button>
+      </div>
+      <div class="xp-result" id="p2"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Question 3 · A story you retell</div>
+      <div class="xp-case-desc">You read a strange folk tale once. Weeks later you are asked to retell it to someone else. What happens to your version?</div>
+      <div class="xp-controls">
+        <button class="q-option" onclick="predict(3,'a',this)">It stays close to the original, maybe with a few words changed.</button>
+        <button class="q-option" onclick="predict(3,'b',this)">It changes — bits get dropped and unfamiliar details quietly turn into familiar ones.</button>
+      </div>
+      <div class="xp-result" id="p3"></div>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <h4>What these three have in common</h4>
+    <p>In all three, people&rsquo;s confident predictions about themselves did not match what they actually did. That gap between <em>what we think we would do</em> and <em>what we do</em> is exactly what psychology measures. Every topic in this course is an attempt to close that gap with evidence instead of intuition.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：</strong>这三道题都对应课程里真实的研究（从众、服从、记忆重构）。绝大多数人在"预测自己会怎样"和"实际会怎样"之间差距很大。心理学这门课不是教你"人性常识"，而是用实验数据替换掉你的直觉。<em>The gap between what you think you would do and what you actually do is what this whole course measures.</em>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. What Psychology Studies</h2>
+
+  <p>Your course is built from four topics. Two of them are examined in one paper, two in the other. Knowing which topic a fact belongs to tells you which half of which paper it can appear in.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four topics of the course and which unit examines them">
+      <text x="340" y="24" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a5f">P S Y C H O L O G Y</text>
+      <text x="340" y="42" text-anchor="middle" font-size="11" fill="#64748b">the scientific study of behaviour and experience</text>
+
+      <line x1="340" y1="50" x2="340" y2="76" stroke="#cbd5e1" stroke-width="2"/>
+      <line x1="120" y1="76" x2="560" y2="76" stroke="#cbd5e1" stroke-width="2"/>
+      <line x1="170" y1="76" x2="170" y2="100" stroke="#cbd5e1" stroke-width="2"/>
+      <line x1="510" y1="76" x2="510" y2="100" stroke="#cbd5e1" stroke-width="2"/>
+
+      <rect x="90" y="100" width="160" height="26" rx="6" fill="#ea580c"/>
+      <text x="170" y="118" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Unit 1 paper</text>
+
+      <rect x="430" y="100" width="160" height="26" rx="6" fill="#2563eb"/>
+      <text x="510" y="118" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Unit 2 paper</text>
+
+      <line x1="170" y1="126" x2="170" y2="148" stroke="#ea580c" stroke-width="2"/>
+      <line x1="510" y1="126" x2="510" y2="148" stroke="#2563eb" stroke-width="2"/>
+      <line x1="25" y1="148" x2="315" y2="148" stroke="#ea580c" stroke-width="2"/>
+      <line x1="365" y1="148" x2="655" y2="148" stroke="#2563eb" stroke-width="2"/>
+      <line x1="89" y1="148" x2="89" y2="172" stroke="#ea580c" stroke-width="2"/>
+      <line x1="245" y1="148" x2="245" y2="172" stroke="#ea580c" stroke-width="2"/>
+      <line x1="429" y1="148" x2="429" y2="172" stroke="#2563eb" stroke-width="2"/>
+      <line x1="585" y1="148" x2="585" y2="172" stroke="#2563eb" stroke-width="2"/>
+
+      <rect x="15" y="172" width="148" height="96" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="89" y="194" text-anchor="middle" font-size="12" font-weight="700" fill="#c2410c">Topic A</text>
+      <text x="89" y="212" text-anchor="middle" font-size="11" font-weight="600" fill="#1e293b">Social psychology</text>
+      <text x="89" y="230" text-anchor="middle" font-size="10" fill="#475569">how other people change</text>
+      <text x="89" y="244" text-anchor="middle" font-size="10" fill="#475569">what you do</text>
+      <text x="89" y="262" text-anchor="middle" font-size="10" fill="#64748b">社会心理学</text>
+
+      <rect x="165" y="172" width="160" height="96" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="245" y="194" text-anchor="middle" font-size="12" font-weight="700" fill="#c2410c">Topic B</text>
+      <text x="245" y="212" text-anchor="middle" font-size="11" font-weight="600" fill="#1e293b">Cognitive psychology</text>
+      <text x="245" y="230" text-anchor="middle" font-size="10" fill="#475569">how you take in, store</text>
+      <text x="245" y="244" text-anchor="middle" font-size="10" fill="#475569">and use information</text>
+      <text x="245" y="262" text-anchor="middle" font-size="10" fill="#64748b">认知心理学</text>
+
+      <rect x="355" y="172" width="148" height="96" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+      <text x="429" y="194" text-anchor="middle" font-size="12" font-weight="700" fill="#1d4ed8">Topic C</text>
+      <text x="429" y="212" text-anchor="middle" font-size="11" font-weight="600" fill="#1e293b">Biological psychology</text>
+      <text x="429" y="230" text-anchor="middle" font-size="10" fill="#475569">how the brain and body</text>
+      <text x="429" y="244" text-anchor="middle" font-size="10" fill="#475569">shape behaviour</text>
+      <text x="429" y="262" text-anchor="middle" font-size="10" fill="#64748b">生物心理学</text>
+
+      <rect x="505" y="172" width="160" height="96" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+      <text x="585" y="194" text-anchor="middle" font-size="12" font-weight="700" fill="#1d4ed8">Topic D</text>
+      <text x="585" y="212" text-anchor="middle" font-size="11" font-weight="600" fill="#1e293b">Learning theories</text>
+      <text x="585" y="226" text-anchor="middle" font-size="11" font-weight="600" fill="#1e293b">and development</text>
+      <text x="585" y="244" text-anchor="middle" font-size="10" fill="#475569">how experience shapes you</text>
+      <text x="585" y="262" text-anchor="middle" font-size="10" fill="#64748b">学习理论与发展</text>
+
+      <rect x="15" y="288" width="310" height="38" rx="8" fill="#ea580c" opacity="0.10" stroke="#ea580c" stroke-width="1"/>
+      <text x="170" y="305" text-anchor="middle" font-size="11" font-weight="700" fill="#c2410c">Unit 1 paper · 1h 30m · 64 marks</text>
+      <text x="170" y="320" text-anchor="middle" font-size="10" fill="#475569">January and June sittings</text>
+
+      <rect x="355" y="288" width="310" height="38" rx="8" fill="#2563eb" opacity="0.10" stroke="#2563eb" stroke-width="1"/>
+      <text x="510" y="305" text-anchor="middle" font-size="11" font-weight="700" fill="#1d4ed8">Unit 2 paper · 2h · 96 marks</text>
+      <text x="510" y="320" text-anchor="middle" font-size="10" fill="#475569">January and June sittings</text>
+    </svg>
+    <div class="figure-caption">The four topics of your course, and which written paper each one is examined in.</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Topic</th><th>The question it asks</th><th>The kind of evidence it uses</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Topic A · Social psychology</td>
+        <td>How do other people — real, imagined or implied — change what an individual does?</td>
+        <td>Laboratory experiments with groups, questionnaires, cross-cultural comparisons</td>
+      </tr>
+      <tr>
+        <td>Topic B · Cognitive psychology</td>
+        <td>How is information taken in, stored, retrieved and sometimes distorted?</td>
+        <td>Laboratory experiments, case studies of brain-damaged patients, memory tests</td>
+      </tr>
+      <tr>
+        <td>Topic C · Biological psychology</td>
+        <td>How do the brain, nerves, hormones and genes shape behaviour?</td>
+        <td>Brain scanning, hormone levels, twin and family studies, case studies</td>
+      </tr>
+      <tr>
+        <td>Topic D · Learning theories and development</td>
+        <td>How do consequences, observation and maturation shape behaviour?</td>
+        <td>Animal and human experiments, longitudinal studies, case studies</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="cn-note">
+    <strong>怎么记：</strong>四个 topic 是按"行为从哪来解释"分的 —— <strong>Social</strong> 说"是别人"，<strong>Cognitive</strong> 说"是你的信息加工"，<strong>Biological</strong> 说"是你的身体"，<strong>Learning</strong> 说"是过去的经验"。同一件事会被这四个角度给出四套不同答案，这套 parallele 的思维方式会在后面每一次"评价某理论"时反复用到。
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. The Papers You Will Sit</h2>
+
+  <p>Both papers must be answered in full — there is no choice of questions to skip, except one part of the second paper. Here is exactly how each paper is built.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Structure of the two written papers by section and marks">
+      <text x="20" y="22" font-size="13" font-weight="700" fill="#c2410c">Unit 1 paper</text>
+      <text x="560" y="22" text-anchor="end" font-size="11" fill="#64748b">1h 30m · 64 marks</text>
+
+      <rect x="20" y="34" width="223" height="54" rx="6" fill="#ea580c" opacity="0.85"/>
+      <text x="131" y="56" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Section A</text>
+      <text x="131" y="73" text-anchor="middle" font-size="11" fill="#ffffff">Social psychology · 26</text>
+
+      <rect x="243" y="34" width="223" height="54" rx="6" fill="#f97316" opacity="0.85"/>
+      <text x="354" y="56" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Section B</text>
+      <text x="354" y="73" text-anchor="middle" font-size="11" fill="#ffffff">Cognitive psychology · 26</text>
+
+      <rect x="466" y="34" width="104" height="54" rx="6" fill="#fdba74" stroke="#ea580c" stroke-width="1.5"/>
+      <text x="518" y="56" text-anchor="middle" font-size="12" font-weight="700" fill="#7c2d12">Section C</text>
+      <text x="518" y="73" text-anchor="middle" font-size="11" fill="#7c2d12">Either topic · 12</text>
+
+      <text x="131" y="104" text-anchor="middle" font-size="10" fill="#64748b">ends with an 8-mark question</text>
+      <text x="354" y="104" text-anchor="middle" font-size="10" fill="#64748b">ends with an 8-mark question</text>
+      <text x="518" y="104" text-anchor="middle" font-size="10" fill="#64748b">one essay question</text>
+
+      <line x1="20" y1="126" x2="660" y2="126" stroke="#e2e8f0" stroke-width="2"/>
+
+      <text x="20" y="152" font-size="13" font-weight="700" fill="#1d4ed8">Unit 2 paper</text>
+      <text x="560" y="152" text-anchor="end" font-size="11" fill="#64748b">2h · 96 marks</text>
+
+      <rect x="20" y="164" width="195" height="54" rx="6" fill="#2563eb" opacity="0.85"/>
+      <text x="117" y="186" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Section A</text>
+      <text x="117" y="203" text-anchor="middle" font-size="11" fill="#ffffff">Biological · 34</text>
+
+      <rect x="215" y="164" width="195" height="54" rx="6" fill="#3b82f6" opacity="0.85"/>
+      <text x="312" y="186" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Section B</text>
+      <text x="312" y="203" text-anchor="middle" font-size="11" fill="#ffffff">Learning and development · 34</text>
+
+      <rect x="410" y="164" width="69" height="54" rx="6" fill="#bfdbfe" stroke="#2563eb" stroke-width="1.5"/>
+      <text x="444" y="186" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">12</text>
+      <text x="444" y="203" text-anchor="middle" font-size="10" fill="#1e3a8a">one topic</text>
+
+      <rect x="479" y="164" width="91" height="54" rx="6" fill="#bfdbfe" stroke="#2563eb" stroke-width="1.5"/>
+      <text x="524" y="186" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">16</text>
+      <text x="524" y="203" text-anchor="middle" font-size="10" fill="#1e3a8a">both topics</text>
+
+      <text x="117" y="234" text-anchor="middle" font-size="10" fill="#64748b">ends with an 8-mark question</text>
+      <text x="312" y="234" text-anchor="middle" font-size="10" fill="#64748b">ends with an 8-mark question</text>
+      <text x="487" y="234" text-anchor="middle" font-size="10" fill="#64748b">Section C · two essays</text>
+
+      <rect x="20" y="252" width="640" height="34" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+      <text x="340" y="274" text-anchor="middle" font-size="11" fill="#475569">Each section of each paper also tests research methods: experiments, questionnaires, sampling, data analysis, ethics</text>
+    </svg>
+    <div class="figure-caption">Both papers split into sections by topic; each topic section ends with its own extended-answer question.</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th></th><th>Unit 1 paper</th><th>Unit 2 paper</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Time</td><td>1 hour 30 minutes</td><td>2 hours</td></tr>
+      <tr><td>Marks</td><td>64</td><td>96</td></tr>
+      <tr><td>Topics examined</td><td>A and B</td><td>C and D</td></tr>
+      <tr><td>Questions you must answer</td><td>All of them</td><td>All of them</td></tr>
+      <tr><td>Long questions</td><td>8 + 8 + 12</td><td>8 + 8 + 12 + 16</td></tr>
+      <tr><td>A calculator is allowed</td><td>Yes</td><td>Yes, and the statistical tables are printed in the paper</td></tr>
+      <tr><td>Topics A and B methods can appear</td><td>Yes</td><td>Yes — <strong>this surprises people</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="warn-box">
+    <h4 style="margin-top:0;color:#991b1b">The one you are most likely to miss</h4>
+    <p style="margin-bottom:0">Everything you learn about research methods while studying Topics A and B — questionnaires, sampling, descriptive statistics, ethics — can be examined again in the Unit 2 paper. It is not left behind when you move topics.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>一句话记住：</strong>Unit 1 短而快（90 分钟 64 分，平均每题停留时间短），Unit 2 长而重（120 分钟 96 分，最后还有一道横跨两个 topic 的 16 分题）。两张卷都考研究方法，所以<em>方法不是"某一章的内容"，而是贯穿全年的技能</em>。
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Three Kinds of Thinking: AO1, AO2, AO3</h2>
+
+  <p>Every mark on every paper belongs to one of three assessment objectives. This matters more than anything else on this page, because it tells you <strong>what kind of sentence earns the next mark</strong>.</p>
+
+  <div class="keyterm-box">
+    <span class="kt">Assessment objective（评分目标）</span> — one of three categories of skill that exam marks are awarded for, printed on every long question in the mark scheme.
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Objective</th><th>What it rewards</th><th>The sentence that earns it</th><th>Share of your total</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="syl-tag">AO1</span> Knowledge and understanding</td>
+        <td>You know the theory, study, term or procedure accurately</td>
+        <td>&ldquo;Agency theory proposes that people obey when they enter an agentic state.&rdquo;</td>
+        <td>35–40%</td>
+      </tr>
+      <tr>
+        <td><span class="syl-tag app">AO2</span> Application</td>
+        <td>You can use that knowledge in a new situation, or handle and present data</td>
+        <td>&ldquo;In the scenario Adjoa agrees because she wants to stay in the group, which is compliance.&rdquo;</td>
+        <td>30–35%</td>
+      </tr>
+      <tr>
+        <td><span class="syl-tag crit">AO3</span> Analysis and evaluation</td>
+        <td>You judge it: strengths, weaknesses, comparisons, conclusions</td>
+        <td>&ldquo;This is limited because it ignores differences between individuals, so it cannot explain defiance.&rdquo;</td>
+        <td>30–35%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note-box">
+    <h4>The practical version</h4>
+    <p>A 2-mark &ldquo;describe&rdquo; question may be pure AO1. A 2-mark &ldquo;explain one strength&rdquo; question is deliberately split: one AO1 mark for naming the strength, one AO3 mark for saying why it is a strength. An 8-mark question is half AO1 and half AO3. An AO2-only question gives you a scenario you have never seen and asks you to bring the theory to it.</p>
+  </div>
+
+  <div class="xp-block">
+    <h4><span class="xp-badge">TRY IT</span> Which objective is being asked for?</h4>
+    <p class="xp-intro">Read each question and decide which objective is being rewarded. This is the skill that stops people writing the right fact in the wrong place.</p>
+
+    <div class="q-row" id="ao1row">
+      <div class="q-stem">1. &ldquo;State what is meant by the term &lsquo;range&rsquo; as a measure of dispersion.&rdquo;</div>
+      <label class="q-opt"><input type="radio" name="aoq1" value="x"> AO1 — recall the definition</label>
+      <label class="q-opt"><input type="radio" name="aoq1" value="y"> AO2 — apply it to data</label>
+      <label class="q-opt"><input type="radio" name="aoq1" value="z"> AO3 — judge whether it is good</label>
+      <div class="q-fb" id="ao1fb"></div>
+    </div>
+
+    <div class="q-row" id="ao2row">
+      <div class="q-stem">2. &ldquo;Explain one strength of using standard deviation to analyse quantitative data.&rdquo;</div>
+      <label class="q-opt"><input type="radio" name="aoq2" value="x"> AO1 only</label>
+      <label class="q-opt"><input type="radio" name="aoq2" value="y"> AO1 + AO3</label>
+      <label class="q-opt"><input type="radio" name="aoq2" value="z"> AO2 only</label>
+      <div class="q-fb" id="ao2fb"></div>
+    </div>
+
+    <div class="q-row" id="ao3row">
+      <div class="q-stem">3. &ldquo;A new restaurant had recently opened in town... Describe, using conformity, why Adjoa agreed to go and eat at the restaurant.&rdquo;</div>
+      <label class="q-opt"><input type="radio" name="aoq3" value="x"> AO1 — just define conformity</label>
+      <label class="q-opt"><input type="radio" name="aoq3" value="y"> AO2 — link conformity to the scenario</label>
+      <label class="q-opt"><input type="radio" name="aoq3" value="z"> AO3 — evaluate conformity research</label>
+      <div class="q-fb" id="ao3fb"></div>
+    </div>
+
+    <div class="q-row" id="ao4row">
+      <div class="q-stem">4. &ldquo;Evaluate how well social power theory can account for obedience.&rdquo; <span style="font-weight:400;color:#64748b">(8 marks)</span></div>
+      <label class="q-opt"><input type="radio" name="aoq4" value="x"> AO1 8 marks</label>
+      <label class="q-opt"><input type="radio" name="aoq4" value="y"> AO1 4 marks + AO3 4 marks</label>
+      <label class="q-opt"><input type="radio" name="aoq4" value="z"> AO3 8 marks</label>
+      <div class="q-fb" id="ao4fb"></div>
+    </div>
+
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="checkAO()">Mark my answers</button>
+    </div>
+    <div class="xp-result" id="aoResult"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>关键判断技巧：</strong>看到 <em>State / Define / Describe</em> → 大概率 AO1（给事实）；看到 <em>Explain one strength / Evaluate / Assess / Discuss</em> → 一定有 AO3（给判断）；看到 <strong>一个你没见过的小故事 + "using X, why did..."</strong> → AO2（把知识套到新情境）。<em>答非所问是这个考试丢分最常见的原因，不是记不住，而是没看清楚题目要哪一类思维。</em>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Command Words</h2>
+
+  <p>Every question begins with an instruction verb. It tells you precisely how much development your answer needs. Two students can know exactly the same psychology and get very different marks because one of them answered the wrong verb.</p>
+
+  <div class="cmd-grid">
+    <div class="cmd-card">
+      <div class="cw">State / Name / Give</div>
+      <div class="cd">Recall one or more pieces of information. One clear sentence is usually enough. Do not add explanation — it costs time and earns nothing.</div>
+    </div>
+    <div class="cmd-card">
+      <div class="cw">Define</div>
+      <div class="cd">Provide a definition. For anything in this course the examiner expects the technical definition, not a loose everyday description.</div>
+    </div>
+    <div class="cmd-card">
+      <div class="cw">Describe</div>
+      <div class="cd">Give an account of something. Your statements should be developed and linked, but no justification or reason is required.</div>
+    </div>
+    <div class="cmd-card warn">
+      <div class="cw">Explain</div>
+      <div class="cd">Requires justification or reasoning — the answer must contain some element of reasoning, not just facts. This is where most students leave marks behind.</div>
+    </div>
+    <div class="cmd-card">
+      <div class="cw">Suggest</div>
+      <div class="cd">Make a proposal or propose an idea in written form. Used when there is no single right answer but it must be psychologically sensible.</div>
+    </div>
+    <div class="cmd-card">
+      <div class="cw">Complete</div>
+      <div class="cd">Fill in or write all the details asked for. Often a table or a calculation grid.</div>
+    </div>
+    <div class="cmd-card">
+      <div class="cw">Calculate</div>
+      <div class="cd">Obtain a numerical answer showing relevant working. If the answer has a unit, include it.</div>
+    </div>
+    <div class="cmd-card">
+      <div class="cw">Identify</div>
+      <div class="cd">Select key information from a stimulus or resource you have been given.</div>
+    </div>
+    <div class="cmd-card">
+      <div class="cw">Compare</div>
+      <div class="cd">Look for similarities and differences. You must include at least one of each, and you must address both things named.</div>
+    </div>
+    <div class="cmd-card warn">
+      <div class="cw">Discuss</div>
+      <div class="cd">Explore the issue, articulating different or contrasting viewpoints. Both sides, then where you land.</div>
+    </div>
+    <div class="cmd-card warn">
+      <div class="cw">Evaluate</div>
+      <div class="cd">Review information then bring it together to form a conclusion, drawing on strengths, weaknesses, alternative explanations or relevant data, and come to a supported judgement.</div>
+    </div>
+    <div class="cmd-card warn">
+      <div class="cw">Assess / To what extent</div>
+      <div class="cd">Consider all the factors and identify which are the most important, then reach a conclusion. &ldquo;To what extent&rdquo; requires a balanced and reasoned argument before the judgement.</div>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <h4>One verb per question</h4>
+    <p>Each item uses a single command word. Old habits like &ldquo;describe and evaluate&rdquo; are no longer used, so if a question says <em>evaluate</em>, do not spend the first half of your answer describing — that half scores nothing beyond what the evaluation itself contains.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>记住这条：</strong>动词决定了你要写多深。<em>State</em> 一句话；<em>Describe</em> 连成一段；<em>Explain</em> 必须出现"因为/所以"；<em>Evaluate / Assess / Discuss</em> 必须出现两方观点加你自己的结论。<strong>把动词翻译错，写再多都是零分的方向。</strong>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. How Big Questions Are Marked</h2>
+
+  <p>Short questions are marked point by point — the examiner ticks off each accurate statement. Long questions (8, 12 and 16 marks) are marked with <strong>levels</strong>: your whole answer is placed in a band, then given a mark within it.</p>
+
+  <div class="keyterm-box">
+    <span class="kt">Levels-based marking（等级评分）</span> — the examiner reads your whole answer, decides which level of quality it belongs to, then awards a mark inside that level. It rewards the overall quality of your argument, not the number of separate points you listed.
+  </div>
+
+  <p>Here are the real levels used for an 8-mark question. Notice what separates each level from the one below.</p>
+
+  <table>
+    <thead>
+      <tr><th>Level</th><th>Marks</th><th>What your answer looks like</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Level 4</td><td>7–8</td><td>Accurate and thorough knowledge. Well-developed logical evaluation throughout, awareness of competing arguments, and a balanced conclusion.</td></tr>
+      <tr><td>Level 3</td><td>5–6</td><td>Accurate knowledge. Arguments developed in mostly coherent chains of reasoning, a conclusion presented, awareness of competing arguments but evaluation may be imbalanced.</td></tr>
+      <tr><td>Level 2</td><td>3–4</td><td>Mostly accurate knowledge. Statements with some development, leading to a superficial conclusion.</td></tr>
+      <tr><td>Level 1</td><td>1–2</td><td>Isolated elements of knowledge. A conclusion may be presented but it is generic, supporting evidence is limited, and there is limited attempt to address the question.</td></tr>
+      <tr><td>Level 0</td><td>0</td><td>No rewardable material.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="warn-box">
+    <h4 style="margin-top:0;color:#991b1b">The rule printed at the bottom of real mark schemes</h4>
+    <p style="margin-bottom:0">&ldquo;<strong>Generic answers score 0 marks.</strong>&rdquo; A generic answer is one that could be written about any theory or any study — it never names this one&rsquo;s specific machinery. It is not the same as a wrong answer; a wrong answer often still contains rewardable material.</p>
+  </div>
+
+  <div class="xp-block">
+    <h4><span class="xp-badge">TRY IT</span> Be the examiner</h4>
+    <p class="xp-intro">Below is a real 2-mark question, and two real-style answers. Decide which one earns the marks before revealing the mark scheme.</p>
+
+    <div class="ms-box">
+      <div class="ms-head">The question (2 marks)</div>
+      A new restaurant had recently opened in town and Adjoa&rsquo;s group of friends were excited as it had a reputation for tasty, spicy food. They decided to go to the restaurant for a meal. Adjoa does not like spicy food so did not want to eat at the restaurant. However, she agreed to go and eat with them.<br>
+      <strong>Describe, using conformity, why Adjoa agreed to go and eat at the restaurant.</strong>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Candidate A</div>
+      <div class="xp-case-desc">&ldquo;Adjoa agreed to go because she did not want to argue with her friends and she probably wanted to be polite. People often do things they do not really want to do when they are in a group, and she may have felt a bit of pressure from the others. Also the restaurant sounded popular so maybe she was curious about it and wanted to try something new anyway.&rdquo;</div>
+      <div class="xp-controls">
+        <button class="q-option" onclick="markAnswer('A','2',this)">This answer scores 2 marks</button>
+        <button class="q-option" onclick="markAnswer('A','0',this)">This answer scores 0 marks</button>
+      </div>
+      <div class="q-fb" id="mA"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Candidate B</div>
+      <div class="xp-case-desc">&ldquo;Adjoa decided to go with her friends to the restaurant as she wanted to be part of the group and not be isolated. Adjoa changed her behaviour to fit into the group although she did not change her belief that she would not enjoy the food.&rdquo;</div>
+      <div class="xp-controls">
+        <button class="q-option" onclick="markAnswer('B','2',this)">This answer scores 2 marks</button>
+        <button class="q-option" onclick="markAnswer('B','0',this)">This answer scores 0 marks</button>
+      </div>
+      <div class="q-fb" id="mB"></div>
+    </div>
+
+    <div class="xp-result" id="markResult"></div>
+  </div>
+
+  <div class="green-box">
+    <h4 style="margin-top:0;color:#166534">What Candidate B did that A did not</h4>
+    <ul style="margin-bottom:0">
+      <li><strong>Used the scenario.</strong> Every sentence is about Adjoa, not about people in general.</li>
+      <li><strong>Used the concept <em>structurally</em>.</strong> It separates outward behaviour (she went) from private belief (she still dislikes spicy food), which is exactly what the theory is built to explain.</li>
+      <li><strong>Stayed inside the question.</strong> Nothing about curiosity, politeness or arguing — those could be pasted into a thousand answers, which is what makes them generic.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>答题公式（8 分题适用）：</strong>先花一两句把理论/研究说准（<em>AO1</em>），再用同样的篇幅做评价（<em>AO3</em>）—— 各占一半分。<em>AO3</em> 的每一条都要写成"观点 + 为什么这是个 Strengths/弱点"。<strong>最危险的不是说错，而是说得太笼统 —— 因为 mark scheme 底部印的那句话是 "Generic answers score 0 marks"。</strong>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Planning Your Time</h2>
+
+  <p>Almost nobody runs out of psychology knowledge in an exam. People run out of minutes, then give a five-line answer to a twelve-mark question. Use this rule so that never happens to you.</p>
+
+  <div class="xp-block">
+    <h4><span class="xp-badge">TRY IT</span> What is this question worth in minutes?</h4>
+    <p class="xp-intro">Choose the question and see how long you should spend on it. Compare it with how long you usually spend.</p>
+    <div class="time-row">
+      <select class="time-sel" id="timeSel">
+        <option value="u1-1">Unit 1 paper · a 1-mark question</option>
+        <option value="u1-2">Unit 1 paper · a 2-mark question</option>
+        <option value="u1-3">Unit 1 paper · a 3-mark question</option>
+        <option value="u1-8">Unit 1 paper · the 8-mark question</option>
+        <option value="u1-12">Unit 1 paper · the 12-mark question</option>
+        <option value="u2-1">Unit 2 paper · a 1-mark question</option>
+        <option value="u2-2">Unit 2 paper · a 2-mark question</option>
+        <option value="u2-4">Unit 2 paper · a 4-mark question</option>
+        <option value="u2-8">Unit 2 paper · the 8-mark question</option>
+        <option value="u2-12">Unit 2 paper · the 12-mark question</option>
+        <option value="u2-16">Unit 2 paper · the 16-mark question</option>
+      </select>
+      <button class="xp-btn" onclick="planTime()">Show me the timing</button>
+    </div>
+    <div class="xp-result" id="timeResult"></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th></th><th>Unit 1 paper (90 min)</th><th>Unit 2 paper (120 min)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Reading and checking at the end</td><td>8 minutes</td><td>10 minutes</td></tr>
+      <tr><td>Short questions</td><td>about 1.3 minutes per mark</td><td>about 1 minute per mark</td></tr>
+      <tr><td>Each 8-mark question</td><td>10 minutes</td><td>12 minutes</td></tr>
+      <tr><td>The 12-mark question</td><td>15 minutes</td><td>16 minutes</td></tr>
+      <tr><td>The 16-mark question</td><td>—</td><td>20 minutes</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note-box">
+    <h4>Where the extra time comes from</h4>
+    <p>A 10-minute limit on an 8-mark question feels brutal at first. It works if you plan before writing: one or two minutes deciding which two or three points you will make, and which one you will conclude with. Writing without planning is what turns an 8-mark question into a 15-minute one, taken from the 12-mark question at the end.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>换算口诀：</strong>Unit 1 是 <em>1 分 ≈ 1.3 分钟</em>，Unit 2 是 <em>1 分 ≈ 1 分钟</em>；但大题不能按这个比例算 —— 8 分题（Unit 1）给 10 分钟，12 分题给 15 分钟，Unit 2 的 16 分题给 20 分钟。<strong>最后一大题一定要留够时间，因为它是 levels-based，写不完直接掉一个 level，等于一次丢 3–4 分。</strong>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. How Each Page Works</h2>
+
+  <p>Every topic page in this course is built in the same order, so once you learn the pattern you can move through any of them without guessing what comes next.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>1 · Getting Started</h4>
+      <p style="font-size:.9rem;margin:0">A short situation to react to. Answer before you read the theory — comparing your instinct with the finding is what makes the idea stick.</p>
+    </div>
+    <div class="compare-card">
+      <h4>2 · Key terms in the margin</h4>
+      <p style="font-size:.9rem;margin:0">Every technical term appears with its definition the first time it is used, before any later idea depends on it.</p>
+    </div>
+    <div class="compare-card">
+      <h4>3 · The explanation itself</h4>
+      <p style="font-size:.9rem;margin:0">Figures and tables carry the structure; the text carries the reasoning. Each abstract idea has a plain-language box in Chinese underneath it.</p>
+    </div>
+    <div class="compare-card">
+      <h4>4 · Evaluation</h4>
+      <p style="font-size:.9rem;margin:0">Supporting points and criticisms, each tagged with the reason it matters. This is AO3 material, and it is what long questions are built from.</p>
+    </div>
+    <div class="compare-card">
+      <h4>5 · Checkpoint</h4>
+      <p style="font-size:.9rem;margin:0">Classification and matching tasks with instant feedback. Use them to find out which part you cannot yet explain to someone else.</p>
+    </div>
+    <div class="compare-card">
+      <h4>6 · Exam Lab</h4>
+      <p style="font-size:.9rem;margin:0">Real past questions for that same topic, with the marking points and a model answer you can compare your own writing against.</p>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <h4>The order that works when revising</h4>
+    <ol style="margin-bottom:0">
+      <li><strong>Cover the page and write what you remember</strong> — a page of headings from memory beats reading the whole page twice.</li>
+      <li><strong>Check the Key Terms list at the bottom.</strong> Any term you cannot define accurately without looking is the one to study next.</li>
+      <li><strong>Attempt the Exam Lab question before reading its model answer.</strong> Comparing afterwards teaches you more than reading does.</li>
+      <li><strong>Return to the Checkpoint for anything you got wrong</strong>, then redo that one item a day later.</li>
+    </ol>
+  </div>
+
+  <div class="cn-note">
+    <strong>给基础薄弱同学的建议：</strong>不要从头到尾通读。<em>先只看每张页最后的 Key Terms</em>，把中文遮住能说出意思的划掉，剩下的才是你这页真正要学的；然后再回去读那几段。<strong>Key Terms 是你的地图，不是附录。</strong>
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Check Yourself</h2>
+
+  <p>Five questions on what you have just read. These are about the exam itself, so you can use them straight away.</p>
+
+  <div class="checkpoint">
+    <h3>Self-check</h3>
+
+    <div class="q-row">
+      <div class="q-stem">1. How many topics are examined in the Unit 1 paper?</div>
+      <label class="q-opt"><input type="radio" name="sc1" value="a"> One</label>
+      <label class="q-opt"><input type="radio" name="sc1" value="b"> Two</label>
+      <label class="q-opt"><input type="radio" name="sc1" value="c"> Four</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">2. A question says &ldquo;Explain one strength&rdquo;. Which two objectives does it reward?</div>
+      <label class="q-opt"><input type="radio" name="sc2" value="a"> AO1 and AO2</label>
+      <label class="q-opt"><input type="radio" name="sc2" value="b"> AO1 and AO3</label>
+      <label class="q-opt"><input type="radio" name="sc2" value="c"> AO2 and AO3</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">3. In an 8-mark question, how many marks come from evaluation?</div>
+      <label class="q-opt"><input type="radio" name="sc3" value="a"> Two</label>
+      <label class="q-opt"><input type="radio" name="sc3" value="b"> Four</label>
+      <label class="q-opt"><input type="radio" name="sc3" value="c"> Six</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">4. Why does a generic answer score zero?</div>
+      <label class="q-opt"><input type="radio" name="sc4" value="a"> Because it contains factual errors</label>
+      <label class="q-opt"><input type="radio" name="sc4" value="b"> Because it could be written about any theory, so it shows no knowledge of this one</label>
+      <label class="q-opt"><input type="radio" name="sc4" value="c"> Because it is too short</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">5. The Unit 2 paper finishes with a 16-mark question. What does it cover?</div>
+      <label class="q-opt"><input type="radio" name="sc5" value="a"> Only biological psychology</label>
+      <label class="q-opt"><input type="radio" name="sc5" value="b"> Both biological psychology and learning theories and development</label>
+      <label class="q-opt"><input type="radio" name="sc5" value="c"> Only research methods</label>
+    </div>
+
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="selfCheck()">Mark my answers</button>
+    </div>
+    <div class="xp-result" id="scResult"></div>
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Key Terms</h2>
+  <p class="figure-caption" style="margin-top:0">These are the terms used on this page. Each one is also re-taught inside the topic page where it first becomes useful.</p>
+
+  <div class="glossary-grid">
+    <div class="glossary-item">
+      <div class="term">Assessment objective<span class="zh">评分目标</span></div>
+      <div class="def">One of three skill categories that exam marks are awarded for: AO1 knowledge and understanding, AO2 application, AO3 analysis and evaluation.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="term">AO1<span class="zh">知识与理解</span></div>
+      <div class="def">Demonstrate knowledge and understanding of scientific ideas, processes, techniques and procedures.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="term">AO2<span class="zh">应用</span></div>
+      <div class="def">Apply knowledge and understanding in a theoretical context, in a practical context, and when handling qualitative and quantitative data.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="term">AO3<span class="zh">分析与评价</span></div>
+      <div class="def">Analyse, interpret and evaluate scientific information, ideas and evidence to make judgements, reach conclusions, and develop practical design and procedures.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="term">Command word<span class="zh">指令词</span></div>
+      <div class="def">The verb at the start of a question that tells you exactly how much development your answer needs.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="term">Levels-based marking<span class="zh">等级评分</span></div>
+      <div class="def">Long-question marking in which the whole answer is placed in a quality band, then given a mark within that band.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="term">Generic answer<span class="zh">笼统答案</span></div>
+      <div class="def">An answer that could be written about any theory or study. Real mark schemes state this scores zero.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="term">Extended open-response question<span class="zh">开放式长答题</span></div>
+      <div class="def">The 8-, 12- and 16-mark questions at the end of each topic section, marked using levels.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="term">Research methods<span class="zh">研究方法</span></div>
+      <div class="def">Experiments, self-report methods, sampling, data analysis and ethics. Assessed in both papers, not tied to one topic.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="term">Qualitative data<span class="zh">定性数据</span></div>
+      <div class="def">Data expressed in words rather than numbers, often analysed using thematic analysis.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="term">Quantitative data<span class="zh">定量数据</span></div>
+      <div class="def">Data expressed as numbers, analysed using measures of central tendency, dispersion and graphs.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="term">Mark scheme<span class="zh">评分方案</span></div>
+      <div class="def">The examiner&rsquo;s document listing the acceptable answers, the objectives each question targets, and any restrictions such as generic answers scoring zero.</div>
+    </div>
+  </div>
+
+  <div class="summary-card-header" onclick="toggleSummary(this)" style="margin-top:22px">
+    <span class="arrow">▸</span> Exam key points
+  </div>
+  <div class="summary-card-body hidden" id="examKey">
+    <ul>
+      <li><strong>Unit 1 paper:</strong> 1h 30m, 64 marks, Topics A and B. Section A 26 marks, Section B 26 marks, Section C one 12-mark question.</li>
+      <li><strong>Unit 2 paper:</strong> 2h, 96 marks, Topics C and D. Section A 34 marks, Section B 34 marks, Section C a 12-mark and a 16-mark question covering both topics.</li>
+      <li><strong>Each topic section ends with its own 8-mark question.</strong> Plan it before you write it.</li>
+      <li><strong>AO weightings:</strong> AO1 35–40%, AO2 30–35%, AO3 30–35%.</li>
+      <li><strong>An 8-mark question is AO1 4 marks plus AO3 4 marks.</strong> Equal emphasis on knowledge and evaluation is required.</li>
+      <li><strong>Each question uses one command word only.</strong> Answer the verb you were given.</li>
+      <li><strong>&ldquo;Generic answers score 0 marks&rdquo;</strong> is printed in real mark schemes. Name the theory&rsquo;s actual machinery and keep it inside the scenario.</li>
+      <li><strong>Levels-based marking:</strong> Level 4 (7–8) thorough knowledge plus balanced logical evaluation with a conclusion; Level 1 (1–2) isolated knowledge with a generic conclusion.</li>
+      <li><strong>Timing:</strong> Unit 1 — 10 minutes per 8-mark, 15 for the 12-mark. Unit 2 — 12 minutes per 8-mark, 16 for the 12-mark, 20 for the 16-mark.</li>
+      <li><strong>Research methods appear in both papers.</strong> Methods learned with Topics A and B can be re-examined in the Unit 2 paper.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="footer-note">
+  <p>Read this page once before Topic A, then come back to Section 7 before each practice paper.</p>
+</div>
+
+  </main>
+</div>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+</div>
+
+<script>
+(function () {
+  var fs = 1;
+  window.adjustFontSize = function (d) {
+    fs = Math.min(1.5, Math.max(0.75, fs + d * 0.1));
+    document.documentElement.style.setProperty('font-size', (16 * fs) + 'px');
+  };
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark'; }
+  };
+  window.toggleSummary = function (el) {
+    el.classList.toggle('open');
+    var body = document.getElementById('examKey');
+    if (body) { body.classList.toggle('hidden'); }
+  };
+
+  var predData = {
+    1: {
+      a: 'You chose your own judgement. In the real study, most people did too — some of the time. Across the critical trials roughly a third of answers matched the group’s wrong answer, and about three out of four people went along with the group at least once. Almost nobody conforms every time, and almost nobody never conforms.',
+      b: 'You expected yourself to waver. That matches the result: across the critical trials roughly a third of answers matched the group’s wrong answer, and about three out of four people went along with the group at least once. You will study who conforms, why, and how a minority can push back.'
+    },
+    2: {
+      a: 'You expect to stop early. Almost everyone predicts this — including psychiatrists asked before the study ran. In the actual experiment every participant went to 300V, and 65% continued to the maximum 450V. The gap between prediction and behaviour is the finding.',
+      b: 'You predicted obedience to the end. That is what the majority actually did: all participants reached 300V and 65% went on to 450V. The interesting part of the study is not the number, it is discovering which details of the situation changed that number.'
+    },
+    3: {
+      a: 'You expect memory to be fairly faithful. It is not. Recalled versions got shorter and were reshaped: unfamiliar details were quietly replaced with things familiar to the person recalling, so the story became more conventional each time it was retold.',
+      b: 'You expected change, and that is what happened. Recall grew shorter and unfamiliar details were replaced with familiar ones, so the story was reshaped to fit what the person already knew. Memory is rebuilt each time, not replayed.'
+    }
+  };
+
+  window.predict = function (n, chosen, btn) {
+    var box = document.getElementById('p' + n);
+    if (!box) { return; }
+    box.innerHTML = '<span class="xp-verdict">What the research found</span><br>' + predData[n][chosen];
+    box.classList.add('show');
+    var parent = btn.parentNode;
+    var all = parent.querySelectorAll('.q-option');
+    for (var i = 0; i < all.length; i++) {
+      all[i].classList.remove('chosen-best', 'chosen-bad');
+    }
+    btn.classList.add('chosen-best');
+  };
+
+  window.checkAO = function () {
+    var ans = { aoq1: 'x', aoq2: 'y', aoq3: 'y', aoq4: 'y' };
+    var exp = {
+      aoq1: 'Pure recall of a definition, so AO1. The mark scheme for this exact question credits one accurate statement — nothing more.',
+      aoq2: 'The mark scheme reads AO1 for identifying a strength plus AO3 for justifying it. Naming one without explaining gets you only half.',
+      aoq3: 'The scenario is new and the question says “using conformity”, which makes this AO2 — you must bring the concept to Adjoa. Defining conformity alone earns nothing here.',
+      aoq4: 'Every 8-mark question is AO1 4 marks and AO3 4 marks. Equal emphasis between knowledge and evaluation.'
+    };
+    var score = 0, out = [];
+    for (var k in ans) {
+      var picked = document.querySelector('input[name="' + k + '"]:checked');
+      var fb = document.getElementById(k.replace('aoq', 'ao') + 'fb');
+      if (!fb) { continue; }
+      if (picked) {
+        if (picked.value === ans[k]) { score++; fb.innerHTML = '<strong>Correct.</strong> ' + exp[k]; fb.className = 'q-fb show'; }
+        else { fb.innerHTML = '<strong>Not quite.</strong> ' + exp[k]; fb.className = 'q-fb show'; }
+      } else {
+        fb.innerHTML = '<strong>No answer chosen.</strong> ' + exp[k];
+        fb.className = 'q-fb show';
+      }
+      out.push(picked ? picked.value : '-');
+    }
+    var r = document.getElementById('aoResult');
+    if (r) {
+      r.innerHTML = '<span class="xp-verdict">You scored ' + score + ' out of 4.</span> The pattern to notice: questions that simply ask for a fact target AO1; questions that add “explain one strength”, “evaluate” or “assess” add AO3; questions that hand you a new scenario and say “using X” target AO2.';
+      r.classList.add('show');
+      if (score === 4) { r.classList.add('ok'); } else { r.classList.remove('ok'); }
+    }
+  };
+
+  var markDone = {};
+  window.markAnswer = function (who, guess, btn) {
+    var fb = document.getElementById(who === 'A' ? 'mA' : 'mB');
+    if (!fb) { return; }
+    var right = (who === 'A' && guess === '0') || (who === 'B' && guess === '2');
+    if (right) {
+      fb.innerHTML = '<strong>Correct.</strong>' + (who === 'A'
+        ? ' Candidate A earns nothing. Nothing in it uses conformity, and every sentence could be pasted under any other social situation. Real mark schemes print “Generic answers score 0 marks” for exactly this kind of writing.'
+        : ' Candidate B earns both marks. It stays inside the scenario, and it separates Adjoa’s outward behaviour — she went — from her private belief — she still does not like spicy food. That split is what the theory exists to explain.');
+    } else {
+      fb.innerHTML = '<strong>Not this one.</strong>' + (who === 'A'
+        ? ' Read Candidate B first, then come back and ask yourself what A has to do with conformity. The answer A gives about politeness and curiosity could be written without opening a psychology textbook.'
+        : ' Look again at what it does with the scenario. It names a reason tied to the group, and it notes that her private belief did not change. Both sentences are doing work.');
+    }
+    fb.className = 'q-fb show';
+    var parent = btn.parentNode;
+    var all = parent.querySelectorAll('.q-option');
+    for (var i = 0; i < all.length; i++) { all[i].classList.remove('chosen-best', 'chosen-bad'); }
+    if (right) { btn.classList.add('chosen-best'); } else { btn.classList.add('chosen-bad'); }
+    markDone[who] = right;
+    var r = document.getElementById('markResult');
+    if (r && markDone.A && markDone.B) {
+      r.className = 'xp-result show ok';
+      r.innerHTML = '<span class="xp-verdict">You have read both correctly.</span><br><br>The mark scheme credits up to two marks for an accurate description in relation to the scenario, and gives exactly Candidate B’s kind of answer: Adjoa wanted to be part of the group and not be isolated, and she changed her behaviour to fit in while not changing her belief about the food.<br><br>It also prints “<strong>Generic answers score 0 marks</strong>”. Candidate A talks about politeness, curiosity and pressure — reasonable things someone might feel, but none of them is conformity. An answer like that could sit under a hundred different questions, which is why it earns nothing. Notice too that Candidate B is shorter. Two precise sentences beat five vague ones.';
+    }
+  };
+
+  var timing = {
+    'u1-1': ['1 minute', 'One sentence. Write it and move on. Spending three minutes here is three minutes taken from the last question.'],
+    'u1-2': ['2 minutes', 'Two distinct points, each in one sentence. Do not write a paragraph.'],
+    'u1-3': ['4 minutes', 'Three separate developed points, or two strong ones plus their reasoning.'],
+    'u1-8': ['10 minutes', 'Half description, half evaluation. Plan your two points and your conclusion before writing — that plan is what keeps you to ten minutes.'],
+    'u1-12': ['15 minutes', 'The last question of the paper and worth the most per minute. Leave time for it even if it means shortening earlier answers.'],
+    'u2-1': ['1 minute', 'One sentence.'],
+    'u2-2': ['2 minutes', 'Two distinct points. Watch out for questions asking for a strength plus its justification — that is two separate marks.'],
+    'u2-4': ['5 minutes', 'Often a practical-reflection question about your own investigation. Four separate points, each tied to something you actually did.'],
+    'u2-8': ['12 minutes', 'Same structure as the Unit 1 eight-mark question, slightly more room for development.'],
+    'u2-12': ['16 minutes', 'Choose carefully between the options before you start. Changing your mind halfway is expensive.'],
+    'u2-16': ['20 minutes', 'The longest question in either paper, and it deliberately crosses both Topics C and D. Draw material from both or you cap yourself below the top level.']
+  };
+
+  window.planTime = function () {
+    var sel = document.getElementById('timeSel');
+    var r = document.getElementById('timeResult');
+    if (!sel || !r || !timing[sel.value]) { return; }
+    var d = timing[sel.value];
+    r.className = 'xp-result show ok';
+    r.innerHTML = '<span class="xp-verdict">Spend about ' + d[0] + '.</span><br>' + d[1];
+  };
+
+  window.selfCheck = function () {
+    var ans = { sc1: 'b', sc2: 'b', sc3: 'b', sc4: 'b', sc5: 'b' };
+    var exp = {
+      sc1: 'Topics A (social) and B (cognitive).',
+      sc2: 'AO1 for identifying the strength, AO3 for justifying why it is a strength.',
+      sc3: 'Four. Every 8-mark question is AO1 4 plus AO3 4.',
+      sc4: 'It could be written about any theory, so it does not show knowledge of this one.',
+      sc5: 'It deliberately covers both topics from the Unit 2 paper.'
+    };
+    var score = 0;
+    for (var k in ans) {
+      var picked = document.querySelector('input[name="' + k + '"]:checked');
+      if (picked && picked.value === ans[k]) { score++; }
+    }
+    var r = document.getElementById('scResult');
+    if (r) {
+      var msg = '<span class="xp-verdict">You scored ' + score + ' out of 5.</span><br>';
+      if (score === 5) { msg += 'You can now say what each section of each paper does and where the marks come from. That is enough to start Topic A.'; r.className = 'xp-result show ok'; }
+      else if (score >= 3) { msg += 'Close. Re-read Section 4 on the three objectives and Section 6 on levels-based marking — those two decide most marks in this course.'; r.className = 'xp-result show'; }
+      else { msg += 'Go back to Section 3 for the paper structure and Section 4 for AO1, AO2 and AO3. Everything else in this course builds on knowing which one a question wants.'; r.className = 'xp-result show'; }
+      r.innerHTML = msg;
+    }
+  };
+
+  var sidebarLinks = Array.prototype.slice.call(document.querySelectorAll('.sb-item a'));
+  var sections = [];
+  sidebarLinks.forEach(function (a) {
+    var id = a.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if (el) { sections.push({ link: a, el: el }); }
+  });
+  function highlight() {
+    var scroll = window.pageYOffset + 130;
+    var current = null;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].el.offsetTop <= scroll) { current = sections[i]; }
+    }
+    for (var j = 0; j < sections.length; j++) { sections[j].link.classList.remove('sb-active'); }
+    if (current) { current.link.classList.add('sb-active'); }
+  }
+  window.addEventListener('scroll', highlight);
+  highlight();
+
+  var btt = document.getElementById('btt');
+  window.addEventListener('scroll', function () {
+    if (window.pageYOffset > 500) { btt.classList.add('show'); } else { btt.classList.remove('show'); }
+  });
+})();
+</script>
+</body>
+</html>

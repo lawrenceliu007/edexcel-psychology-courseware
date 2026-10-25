@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.1.3 Factors affecting obedience（影响服从的因素）</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.five-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <a href="../l01-obedience-agency/index.html">Obedience &amp; Agency Theory</a> <span class="sep">›</span>
+    <span>Topic A · Obedience — Factors affecting obedience</span>
+  </div>
+  <span class="nav-pill">🧑‍🤝‍🧑 Social Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">1.1.3 · Contents</div>
+        <div class="sb-header-sub">Factors affecting obedience</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">Before we start</li>
+        <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+        <li class="sb-item"><a href="#s2">2. Four Families of Factors</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Individual differences</li>
+        <li class="sb-item"><a href="#s3">3. Authoritarian Personality</a></li>
+        <li class="sb-item"><a href="#s4">4. Locus of Control</a></li>
+        <li class="sb-item"><a href="#s5">5. Gender</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Beyond the person</li>
+        <li class="sb-item"><a href="#s6">6. Situational Factors</a></li>
+        <li class="sb-item"><a href="#s7">7. Cultural Factors</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Practice</li>
+        <li class="sb-item"><a href="#s8">8. Checkpoint</a></li>
+        <li class="sb-item"><a href="#s9">9. Exam Lab</a></li>
+        <li class="sb-item"><a href="#s10">10. Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>1.1.3 FACTORS AFFECTING OBEDIENCE<br><span style="font-size:0.65em">影响服从的因素</span></h1>
+  <div class="subtitle">Social Psychology · individual differences, situation &amp; culture（个体差异、情境与文化）</div>
+  <div class="meta">
+    <span class="badge">🧠 Three factor families</span>
+    <span class="badge">🔑 Personality · situation · culture</span>
+    <span class="badge">📖 Textbook: Chapter 1, pages 10–19</span>
+  </div>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started</h2>
+
+  <div class="xp-block">
+    <h4>🎭 Same order, three outcomes <span class="xp-badge">Textbook activity</span></h4>
+    <p class="xp-intro">A manager gives the same instruction to three people: stay late tonight and finish the stock check. One person obeys at once. One refuses. One obeys in the shop and ignores the instruction once they are at home. The words never changed — so what did?</p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="openChoice('person')">The three people are different</button>
+      <button class="xp-btn" onclick="openChoice('place')">The places are different</button>
+      <button class="xp-btn" onclick="openChoice('country')">The countries are different</button>
+    </div>
+    <div id="openResult" class="xp-result"></div>
+  </div>
+
+  <p>Three answers, and none of them cancels the others out. Each one points at a different <strong>family</strong> of factors: something about the <strong>person</strong>, something about the <strong>situation</strong>, something about the <strong>culture</strong> they grew up in. This chapter sorts the evidence for each family — and asks how firm that evidence really is.</p>
+
+  <div class="cn-note">
+    <strong>这一节要解决的核心问题：</strong>理论说明服从<strong>通常</strong>是怎么发生的，但同一个人换个房间、换个国家，服从率就会改变。<strong>哪些变量在起作用</strong>，就是 factors affecting obedience。读下去时请带着一个判断习惯：每看到一项证据就问两句 —— 这项证据是用什么方法得到的？这个差异真的来自那个变量本身吗？很多题的分数就藏在这两问里。
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Four Families of Factors</h2>
+
+  <p>Milgram's participants were not identical machines: some went to the end of the shock scale and some refused. That is where the second half of the chapter starts. Obedience and <strong>dissent / resistance</strong>（异议与抵抗）depend on four families of factors.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 260" role="img" aria-label="Four families of factors affecting obedience and dissent">
+      <defs>
+        <marker id="ar2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 z" fill="#ea580c"></path>
+        </marker>
+      </defs>
+      <rect x="246" y="8" width="190" height="44" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="2"></rect>
+      <text x="341" y="30" text-anchor="middle" font-size="14" fill="#1e293b">Factors affecting obedience</text>
+      <text x="341" y="46" text-anchor="middle" font-size="12" fill="#475569">and dissent / resistance</text>
+
+      <path d="M341 52 V88 H111 V108" fill="none" stroke="#ea580c" stroke-width="2" marker-end="url(#ar2)"></path>
+      <path d="M341 52 V108" fill="none" stroke="#ea580c" stroke-width="2" marker-end="url(#ar2)"></path>
+      <path d="M341 52 V88 H571 V108" fill="none" stroke="#ea580c" stroke-width="2" marker-end="url(#ar2)"></path>
+
+      <rect x="16" y="110" width="190" height="44" rx="8" fill="#eff6ff" stroke="#1e3a5f" stroke-width="2"></rect>
+      <text x="111" y="137" text-anchor="middle" font-size="13" fill="#1e3a5f">Individual differences:</text>
+      <text x="111" y="151" text-anchor="middle" font-size="12" fill="#475569">personality and gender</text>
+
+      <rect x="246" y="110" width="190" height="44" rx="8" fill="#eff6ff" stroke="#1e3a5f" stroke-width="2"></rect>
+      <text x="341" y="137" text-anchor="middle" font-size="13" fill="#1e3a5f">Situational factors:</text>
+      <text x="341" y="151" text-anchor="middle" font-size="12" fill="#475569">features of the setting</text>
+
+      <rect x="476" y="110" width="190" height="44" rx="8" fill="#eff6ff" stroke="#1e3a5f" stroke-width="2"></rect>
+      <text x="571" y="137" text-anchor="middle" font-size="13" fill="#1e3a5f">Cultural factors:</text>
+      <text x="571" y="151" text-anchor="middle" font-size="12" fill="#475569">how authority is seen</text>
+
+      <path d="M111 154 V178" fill="none" stroke="#f97316" stroke-width="2" marker-end="url(#ar2)"></path>
+      <path d="M341 154 V178" fill="none" stroke="#f97316" stroke-width="2" marker-end="url(#ar2)"></path>
+      <path d="M571 154 V178" fill="none" stroke="#f97316" stroke-width="2" marker-end="url(#ar2)"></path>
+
+      <rect x="16" y="180" width="190" height="48" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"></rect>
+      <text x="111" y="200" text-anchor="middle" font-size="12" fill="#334155">Authoritarian personality</text>
+      <text x="111" y="216" text-anchor="middle" font-size="12" fill="#334155">and locus of control</text>
+
+      <rect x="246" y="180" width="190" height="48" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"></rect>
+      <text x="341" y="200" text-anchor="middle" font-size="12" fill="#334155">Strength, immediacy</text>
+      <text x="341" y="216" text-anchor="middle" font-size="12" fill="#334155">and number</text>
+
+      <rect x="476" y="180" width="190" height="48" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"></rect>
+      <text x="571" y="200" text-anchor="middle" font-size="12" fill="#334155">Individualistic versus</text>
+      <text x="571" y="216" text-anchor="middle" font-size="12" fill="#334155">collectivistic cultures</text>
+    </svg>
+    <div class="figure-caption">The map for the rest of the chapter: every study you meet belongs in one of these boxes.</div>
+  </div>
+
+  <div class="exam-tip">
+    <h4>Keep the four apart</h4>
+    <p><strong>Individual differences</strong> means personality and gender. It is <em>not</em> the same as <strong>situation</strong> and it is <em>not</em> the same as <strong>culture</strong>. In an exam answer, naming the wrong family costs the mark even when the study you describe is correct.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>四个盒子怎么记：</strong>问自己一句 "差异来自哪里" —— 来自<strong>人本身</strong>（性格、性别）→ individual differences；来自<strong>现场布置</strong>（权威离得远不远、有没有制服、几个人在催）→ situational；来自<strong>长大的环境</strong>（国家/文化对权威的看法）→ cultural。考试常见陷阱：把 "在两个不同国家做" 写成 situational —— 那是 cultural。
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Individual Differences: The Authoritarian Personality</h2>
+
+  <div class="keyterm-box">
+    <span class="kt">personality（人格）</span> — a set of relatively stable psychological traits which can influence how we think and act.<br>
+    <span class="kt">authoritarian personality（权威主义人格）</span> — a person who is typically <strong>submissive to authority</strong>, because they may have been raised in a strict household and punished for non-compliance.
+  </div>
+
+  <h3>How it is measured: the F-Scale</h3>
+  <p><strong>Theodor Adorno et al. (1950)</strong> devised the <strong>F-Scale (Fascism Scale)</strong>（F 量表）, a questionnaire used to detect the authoritarian personality.</p>
+  <div class="keyterm-box">
+    <span class="kt">fascism（法西斯主义）</span> — a very nationalist and authoritarian position, intolerant of others' views, based on an extreme right-wing political position.
+  </div>
+  <p>The authoritarian personality has been associated with <strong>higher levels of obedience</strong>, because people with this type tend to maintain social rules and order.</p>
+
+  <h3>The evidence</h3>
+  <table>
+    <tr><th style="width:170px">Study</th><th>What was done</th><th>What was found</th></tr>
+    <tr>
+      <td>Milgram &amp; Elms (1966)</td>
+      <td>Compared the F-Scale scores of <strong>20 obedient</strong> and <strong>20 dissenting</strong> participants from Milgram's experiments.</td>
+      <td>Obedient participants had a <strong>higher F-Scale score</strong>, indicating an authoritarian personality type, compared with the dissenters.</td>
+    </tr>
+    <tr>
+      <td>Dambrun &amp; Vatiné (2010)</td>
+      <td>A <strong>computer simulation / virtual environment</strong> replication of Milgram's procedure.</td>
+      <td>Authoritarianism was linked to obedience: people with high authoritarian scores were <strong>less likely to withdraw</strong> from the study.</td>
+    </tr>
+  </table>
+
+  <div class="warn-box">
+    <h4>Why this evidence is weaker than it looks</h4>
+    <ul>
+      <li>The F-Scale is a <strong>self-reported measure</strong>（自我报告）— people describe themselves, and those answers can be shaped by how they want to be seen.</li>
+      <li>The link between authoritarianism and obedience is a <strong>correlation</strong>（相关）, so we cannot be sure that one causes the other. A third variable may be responsible.</li>
+      <li>Dambrun and Vatiné offered two readings of the same result: those participants were submissive to the authority of the experimenter, <em>or</em> they showed a desire to punish the failing learner — the design cannot tell these apart.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>这一节最值钱的一句话：</strong>"F-Scale is self-reported and the link is a correlation, so we cannot be sure it causes obedience." 只要是 questionnaire + 得出两个变量一起变，就套这句。它同时踩中两个常考的评价点（自我报告不可靠、相关不等于因果），比再写一段研究过程更有分。
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Individual Differences: Locus of Control</h2>
+
+  <div class="keyterm-box">
+    <span class="kt">locus of control（控制点）</span> — Rotter's (1966) personality theory, which outlines two types:
+    <ul style="margin:6px 0 0">
+      <li><strong>internal locus of control</strong> — people believe they are <strong>responsible for their own actions</strong> and are less influenced by others.</li>
+      <li><strong>external locus of control</strong> — people believe their behaviour is largely <strong>beyond their control</strong> and due to external factors, so they are more influenced by the people around them.</li>
+    </ul>
+  </div>
+
+  <h3>Milgram's responsibility disc</h3>
+  <p>Milgram followed up <strong>118 participants from Experiments 1–4</strong>, both obedient and disobedient, and asked them to judge who was responsible for the shocks. Three hands were moved around a round disc to show the proportionate responsibility of the experimenter, the teacher (themselves) and the learner.</p>
+
+  <table>
+    <tr><th>Who was blamed</th><th>Dissenting participants</th><th>Obedient participants</th></tr>
+    <tr><td>Themselves</td><td><strong>48%</strong></td><td>lower</td></tr>
+    <tr><td>The experimenter</td><td>39%</td><td>lower</td></tr>
+    <tr><td>The learner</td><td>12%</td><td><strong>25%</strong></td></tr>
+  </table>
+
+  <p>Dissenters took more of the blame themselves; obedient people were more likely to <strong>displace blame</strong> onto someone else. Obedient participants also fit the pattern of an <strong>external locus of control</strong>: not only were they more influenced by the authority figure, they believed they were not responsible for what happened.</p>
+
+  <h3>Blass (1991): the interaction</h3>
+  <p>Albert Blass investigated the relationship between locus of control and how participants behaved in Milgram's research. He found that people with an <strong>external locus of control were more likely to obey</strong> the instruction to shock the learner, and were <strong>more likely to blame the experimenter</strong>. But he also pointed out that the situation had an important role to play: obedience should be considered as an <strong>interaction between situation and personality</strong> — some individuals with an external locus of control may be more susceptible to obedience <em>in particular situations</em>.</p>
+
+  <div class="note-box">
+    <h4>Why Blass matters more than the others</h4>
+    <p>Every other study in this chapter tries to show that one factor wins. Blass refuses to pick a winner. That "both matter, and they combine" position is usually the strongest way to end an evaluation: it uses all the evidence instead of throwing half of it away.</p>
+  </div>
+
+  <div class="xp-block">
+    <h4>📝 Activity: complete the table <span class="xp-badge">Textbook activity</span></h4>
+    <p class="xp-intro">Write the belief that goes with each type of locus of control, and say whether it is linked with obedience or dissent.</p>
+    <table>
+      <tr><th style="width:150px">Locus of control</th><th>What is the belief?</th><th>Obedient or dissenting?</th></tr>
+      <tr>
+        <td>External</td>
+        <td><textarea class="answer-box" id="lc1" placeholder="My behaviour is caused by..."></textarea></td>
+        <td><textarea class="answer-box" id="lc2" placeholder="..."></textarea></td>
+      </tr>
+      <tr>
+        <td>Internal</td>
+        <td><textarea class="answer-box" id="lc3" placeholder="My behaviour is caused by..."></textarea></td>
+        <td><textarea class="answer-box" id="lc4" placeholder="..."></textarea></td>
+      </tr>
+    </table>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('locusModel')">Show a model table</button></div>
+    <div id="locusModel" class="xp-result">
+      <p><span class="xp-verdict">Model table</span></p>
+      <ul>
+        <li><strong>External:</strong> my behaviour is caused by things outside me — luck, fate, other people. Linked with <strong>obedience</strong>, because I am more influenced by the people around me and I do not hold myself responsible.</li>
+        <li><strong>Internal:</strong> my behaviour is caused by my own decisions and effort. Linked with <strong>dissent</strong>, because I take personal responsibility for what I do, so I am more resistant to authority.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>一句话区分：</strong>external = "都是命/都是别人"（所以服从）；internal = "是我自己决定的"（所以更敢反抗）。数据记忆法：<strong>反抗者把 48% 的责任给了自己</strong> —— 四自己 -> internal -> dissent。
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Individual Differences: Gender</h2>
+
+  <p>Most of Milgram's participants were male, but he ran one variation (<strong>Experiment 8</strong>) with <strong>40 women</strong>. Earlier research suggested women were more compliant, yet traditional beliefs picture women as more empathetic and less aggressive, which would predict the opposite — so the two predictions cancel out.</p>
+
+  <table>
+    <tr><th style="width:190px">Study</th><th>Finding about gender</th></tr>
+    <tr><td>Milgram (Experiment 8)</td><td>Women were <strong>virtually identical to men</strong> in obedience (<strong>65%</strong>), with 27.5% breaking off at the 300-volt level. Obedient women showed <strong>much higher rated anxiety</strong> than obedient men — a pattern also seen in Burger's (2009) replication.</td></tr>
+    <tr><td>Sheridan &amp; King (1972)</td><td>A live puppy received genuine shocks. <strong>All 13 women</strong> delivered the maximum shock, compared with only about <strong>half of the men</strong>.</td></tr>
+    <tr><td>Blass (1999) review</td><td>Across a review of <strong>ten obedience experiments</strong>, obedience levels for men and women were <strong>consistent in nine</strong> of them.</td></tr>
+    <tr><td>Kilham &amp; Mann (1974)</td><td>A partial replication in Australia: women were <strong>far less obedient (16%)</strong> than men (<strong>40%</strong>) — the one exception in Blass's set.</td></tr>
+  </table>
+
+  <div class="green-box">
+    <h4>What the textbook concludes</h4>
+    <p>Obedience research has used <strong>different procedures</strong> and produced <strong>inconsistent outcomes</strong>. Rather than proving a difference, the pattern suggests there are <strong>few gender differences in obedience</strong>, despite traditional beliefs that women would be more compliant to authority.</p>
+    <p>In an answer, the gender evidence is strongest when you write it as two sides — a study that found a difference (Sheridan &amp; King) and reviews that found none (Blass) — and then say why the results are hard to compare.</p>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Situational Factors</h2>
+
+  <div class="keyterm-box">
+    <span class="kt">social impact theory（社会影响理论）</span> — <strong>Latané (1981)</strong>: three factors determine the impact of an authority figure upon a target — <strong>strength</strong>, <strong>immediacy</strong> and <strong>number</strong>. These are features of the situation, and they predict the level of obedience observed.
+  </div>
+
+  <table>
+    <tr><th style="width:140px">Factor</th><th>What it means</th><th>What it predicts</th></tr>
+    <tr><td>Strength</td><td>The authority figure's legitimate status or power.</td><td>The stronger they are seen to be, the more authority they exert over the target.</td></tr>
+    <tr><td>Immediacy</td><td>How proximal / close they are to the target.</td><td>Influence is greater when they are close than when there is distance.</td></tr>
+    <tr><td>Number</td><td>How many authority figures there are relative to targets.</td><td>More sources of influence relative to targets means greater influence.</td></tr>
+  </table>
+
+  <h3>Milgram's own test of these three</h3>
+  <ul>
+    <li><strong>Distance acts as a buffer.</strong> Obedience rose and fell depending on whether the authority figure was close to or far from the target — most clearly in the <strong>telephonic instruction</strong> condition, where the experimenter gave orders by telephone from another room.</li>
+    <li><strong>Legitimacy matters.</strong> Milgram claimed obedience could only be established when the authority figure was <strong>perceived to be legitimate</strong>. Obedience was found at Yale University, and it fell when the experiment moved to <strong>Bridgeport</strong> or was conducted by an <strong>ordinary man</strong> instead of a scientist.</li>
+  </ul>
+
+  <h3>Support from a partial replication</h3>
+  <p><strong>Wim Meeus and Quinten Raaijmakers (1986)</strong> tested whether participants would follow orders to be psychologically cruel to someone they believed was applying for a job. The experimenter instructed the participant to make the applicant nervous and disturb the test; because of this, the applicant failed and was not offered the job.</p>
+  <ul>
+    <li>Experimenter <strong>close</strong> to the participant: <strong>more than 90%</strong> were cruel to the applicant.</li>
+    <li>Experimenter <strong>gave the orders and left the room</strong>: this fell to around <strong>36%</strong>.</li>
+  </ul>
+  <p>Proximity（距离近）is therefore an important situational factor in determining the level of obedience achieved — and the effect appears outside Milgram's laboratory too.</p>
+
+  <div class="cn-note">
+    <strong>情境因素一句话定理：</strong>权威<strong>越近</strong>、<strong>越强</strong>、<strong>越多</strong>，服从越高。Meeus 与 Raaijmakers 的 90% → 36% 是最好用的数字：同一个实验者、同一句话，只是走了出房间，服从率直接砍三分之二。
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Cultural Factors</h2>
+
+  <p>Obedience varies across cultures because culture affects the way we perceive authority. <strong>Smith and Bond (1998)</strong> describe two broad types:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Individualistic cultures（个人主义文化）</h4>
+      <p>People tend to behave more <strong>independently</strong> and tolerate <strong>dissent</strong>, which suggests they resist conformity or obedience.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Collectivistic cultures（集体主义文化）</h4>
+      <p>People behave as a collective group based on <strong>interdependence and cooperation</strong>, meaning compliance is important for the stability of the group.</p>
+    </div>
+  </div>
+
+  <p>The obvious prediction is that collectivistic cultures will be more obedient and less tolerant of dissent. <strong>Thomas Blass (1999)</strong> reviewed obedience research carried out 35 years after Milgram's first studies, using procedures similar enough to compare.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 350" role="img" aria-label="Percentage of participants giving the maximum shock in obedience studies across countries">
+      <line x1="210" y1="14" x2="210" y2="326" stroke="#94a3b8" stroke-width="1.5"></line>
+      <line x1="590" y1="14" x2="590" y2="326" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4"></line>
+      <text x="590" y="16" text-anchor="middle" font-size="11" fill="#64748b">100%</text>
+
+      <text x="204" y="41" text-anchor="end" font-size="11" fill="#334155">US · Milgram (1962)</text>
+      <rect x="210" y="26" width="247" height="22" fill="#f97316"></rect>
+      <text x="465" y="41" font-size="11" fill="#334155">65%</text>
+
+      <text x="204" y="75" text-anchor="end" font-size="11" fill="#334155">South Africa · Edwards et al. (1969)</text>
+      <rect x="210" y="60" width="332.5" height="22" fill="#f97316"></rect>
+      <text x="551" y="75" font-size="11" fill="#334155">87.5%</text>
+
+      <text x="204" y="109" text-anchor="end" font-size="11" fill="#334155">US · Bock (1972)</text>
+      <rect x="210" y="94" width="152" height="22" fill="#f97316"></rect>
+      <text x="370" y="109" font-size="11" fill="#334155">40%</text>
+
+      <text x="204" y="143" text-anchor="end" font-size="11" fill="#334155">Australia · Kilham &amp; Mann (1974)</text>
+      <rect x="210" y="128" width="106.4" height="22" fill="#f97316"></rect>
+      <text x="324" y="143" font-size="11" fill="#334155">28%</text>
+
+      <text x="204" y="177" text-anchor="end" font-size="11" fill="#334155">Jordan · Shanab &amp; Yahya (1977)</text>
+      <rect x="210" y="162" width="277.4" height="22" fill="#f97316"></rect>
+      <text x="495" y="177" font-size="11" fill="#334155">73%</text>
+
+      <text x="204" y="211" text-anchor="end" font-size="11" fill="#334155">Spain · Miranda et al. (1981)</text>
+      <rect x="210" y="196" width="190" height="22" fill="#f97316"></rect>
+      <text x="408" y="211" font-size="11" fill="#334155">50%</text>
+
+      <text x="204" y="245" text-anchor="end" font-size="11" fill="#334155">Austria · Schurz (1985)</text>
+      <rect x="210" y="230" width="304" height="22" fill="#f97316"></rect>
+      <text x="522" y="245" font-size="11" fill="#334155">80%</text>
+
+      <text x="204" y="279" text-anchor="end" font-size="11" fill="#334155">Italy · Ancona &amp; Pareyson (1968)</text>
+      <rect x="210" y="264" width="323" height="22" fill="#60a5fa"></rect>
+      <text x="541" y="279" font-size="11" fill="#334155">85%</text>
+
+      <text x="204" y="313" text-anchor="end" font-size="11" fill="#334155">UK · Burley &amp; McGuiness (1977)</text>
+      <rect x="210" y="298" width="190" height="22" fill="#60a5fa"></rect>
+      <text x="408" y="313" font-size="11" fill="#334155">50%</text>
+    </svg>
+    <div class="figure-caption">Obedience research reviewed by Blass (1999): percentage of participants giving the maximum shock. The two blue rows used procedures that differed from Milgram's.</div>
+  </div>
+
+  <h3>Why the table is harder to read than it looks</h3>
+  <div class="warn-box">
+    <h4>Procedure differences masquerading as culture differences</h4>
+    <ul>
+      <li><strong>Ancona and Pareyson (1968), Italy:</strong> the maximum shock level was only <strong>330 volts</strong> compared with Milgram's 450, and only <strong>student participants</strong> were used — a group Milgram actively avoided because of their compliant and competitive nature. 330 volts may simply have seemed less dangerous.</li>
+      <li><strong>Burley and McGuiness (1977), UK:</strong> just <strong>20 students</strong> and a maximum of <strong>225 volts</strong>.</li>
+      <li>Milgram's own proximity studies found <strong>73%</strong>, which is closer to Italy's 85% than his famous 65% is — so the comparison depends heavily on which condition you compare.</li>
+    </ul>
+  </div>
+
+  <h3>A modern, naturally occurring comparison</h3>
+  <p><strong>Carl-Benedikt Frey (2020)</strong> analysed the contact tracing data collected during lockdown in the COVID-19 pandemic. Collectivistic countries recorded <strong>less in-country mobility</strong> than individualistic countries, even though the countries compared had similarly stringent lockdown policies. Individualistic countries appear to have been more defiant of the rules — or at least less compliant.</p>
+
+  <div class="green-box">
+    <h4>Where this leaves us</h4>
+    <p>The impact of culture on obedience is <strong>complex and unclear</strong>, and understanding it is hindered by a lack of research in certain cultures and by a lack of studies that can genuinely be compared country to country. This is why "culture affects obedience, so collectivistic cultures obey more" is a weak conclusion, while "the research does not let us isolate culture from procedure" is a strong one.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>本节最有价值的句子：</strong>"看起来是文化差异，其实可能是程序差异。" 意大利 85% 用的最高电压只有 330V（比 Milgram 少 120V）而且只招学生 —— 电压更低自然更容易按到底。写文化因素的答案时，先说<strong>理论预测</strong>（collectivistic 更服从），再说<strong>为什么数据支持不了</strong>（程序不一致），最后给结论（complex and unclear），比背书式地列九个国家好得多。
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Checkpoint</h2>
+
+  <div class="checkpoint">
+    <h3>✅ Task 1 — which factor family is it?</h3>
+    <p>Match each scenario to the factor it describes. Each family is used once: <strong>personality</strong>, <strong>gender</strong>, <strong>situation</strong>, <strong>culture</strong>.</p>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Scenario 1</div>
+      <p class="xp-case-desc">Joshua is always obedient to his parents, but his little sister Jane is always disobedient.</p>
+      <div class="xp-controls">
+        <button class="q-option" onclick="matchFactor(this,'personality','A')">Personality</button>
+        <button class="q-option" onclick="matchFactor(this,'gender','A')">Gender</button>
+        <button class="q-option" onclick="matchFactor(this,'situation','A')">Situation</button>
+        <button class="q-option" onclick="matchFactor(this,'culture','A')">Culture</button>
+      </div>
+      <div id="resA" class="xp-result"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Scenario 2</div>
+      <p class="xp-case-desc">School children in one country are reported to have more school detentions than in a different country.</p>
+      <div class="xp-controls">
+        <button class="q-option" onclick="matchFactor(this,'personality','B')">Personality</button>
+        <button class="q-option" onclick="matchFactor(this,'gender','B')">Gender</button>
+        <button class="q-option" onclick="matchFactor(this,'situation','B')">Situation</button>
+        <button class="q-option" onclick="matchFactor(this,'culture','B')">Culture</button>
+      </div>
+      <div id="resB" class="xp-result"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Scenario 3</div>
+      <p class="xp-case-desc">Temi is a very independent young person. When asked to do something by her employer, she refused because she did not agree with the request, and she firmly stuck by her decision.</p>
+      <div class="xp-controls">
+        <button class="q-option" onclick="matchFactor(this,'personality','C')">Personality</button>
+        <button class="q-option" onclick="matchFactor(this,'gender','C')">Gender</button>
+        <button class="q-option" onclick="matchFactor(this,'situation','C')">Situation</button>
+        <button class="q-option" onclick="matchFactor(this,'culture','C')">Culture</button>
+      </div>
+      <div id="resC" class="xp-result"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Scenario 4</div>
+      <p class="xp-case-desc">Noorie completed her schoolwork at school but refused to do any schoolwork at home.</p>
+      <div class="xp-controls">
+        <button class="q-option" onclick="matchFactor(this,'personality','D')">Personality</button>
+        <button class="q-option" onclick="matchFactor(this,'gender','D')">Gender</button>
+        <button class="q-option" onclick="matchFactor(this,'situation','D')">Situation</button>
+        <button class="q-option" onclick="matchFactor(this,'culture','D')">Culture</button>
+      </div>
+      <div id="resD" class="xp-result"></div>
+    </div>
+  </div>
+
+  <div class="checkpoint">
+    <h3>✅ Task 2 — five questions</h3>
+    <div class="q-row">
+      <div class="q-stem">1. A manager gives the order from the same room instead of by email. Which factor family does that describe?</div>
+      <label class="q-opt"><input type="radio" name="q1" value="a"> Individual differences</label>
+      <label class="q-opt"><input type="radio" name="q1" value="b"> Situational factors</label>
+      <label class="q-opt"><input type="radio" name="q1" value="c"> Cultural factors</label>
+      <div id="fb1" class="q-fb"></div>
+    </div>
+    <div class="q-row">
+      <div class="q-stem">2. A person with an external locus of control believes their behaviour is caused by things outside themselves. Are they linked with obedience or dissent?</div>
+      <label class="q-opt"><input type="radio" name="q2" value="a"> Obedience</label>
+      <label class="q-opt"><input type="radio" name="q2" value="b"> Dissent</label>
+      <div id="fb2" class="q-fb"></div>
+    </div>
+    <div class="q-row">
+      <div class="q-stem">3. True or false? Latané's social impact theory lists strength, immediacy and number as situational factors.</div>
+      <label class="q-opt"><input type="radio" name="q3" value="t"> True</label>
+      <label class="q-opt"><input type="radio" name="q3" value="f"> False</label>
+      <div id="fb3" class="q-fb"></div>
+    </div>
+    <div class="q-row">
+      <div class="q-stem">4. In Meeus and Raaijmakers' (1986) study, how did obedience change when the experimenter left the room?</div>
+      <label class="q-opt"><input type="radio" name="q4" value="a"> It rose from 36% to more than 90%</label>
+      <label class="q-opt"><input type="radio" name="q4" value="b"> It fell from more than 90% to around 36%</label>
+      <label class="q-opt"><input type="radio" name="q4" value="c"> It stayed the same, because personality decides obedience</label>
+      <div id="fb4" class="q-fb"></div>
+    </div>
+    <div class="q-row">
+      <div class="q-stem">5. Why is Blass's (1999) review of cross-cultural obedience research difficult to interpret?</div>
+      <label class="q-opt"><input type="radio" name="q5" value="a"> The studies were carried out in the same year by the same researcher</label>
+      <label class="q-opt"><input type="radio" name="q5" value="b"> The studies used different procedures, such as lower maximum voltages and student-only samples, so culture and procedure cannot be separated</label>
+      <label class="q-opt"><input type="radio" name="q5" value="c"> Culture has been proven to have no effect at all</label>
+      <div id="fb5" class="q-fb"></div>
+    </div>
+    <div class="xp-controls"><button class="xp-btn" onclick="checkQuiz()">Mark my answers</button></div>
+    <div id="quizResult" class="xp-result"></div>
+  </div>
+</section>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Exam Lab</h2>
+
+  <div class="exam-tip">
+    <h4>🧭 The shape of almost every answer in this section</h4>
+    <ul>
+      <li><strong>What:</strong> name the factor accurately — the family first (individual difference, situation, culture), then the specific factor and the study behind it.</li>
+      <li><strong>Why:</strong> say why it counts — what the evidence shows, or what the evidence fails to show.</li>
+      <li><strong>Limit:</strong> most of the evidence here is <strong>self-reported</strong> and <strong>correlational</strong>, so cause cannot be claimed. Adding that sentence is often the second mark.</li>
+    </ul>
+    <p>A sentence that only names the factor earns one mark; the same sentence plus the reason earns two.</p>
+  </div>
+
+  <div class="exam-practice">
+    <h3>✍️ Practice 1 — 6 marks</h3>
+    <p><strong>(a)</strong> Explain <strong>one</strong> reason why personality may affect obedience.<br>
+       <strong>(b)</strong> Explain <strong>two</strong> reasons why personality may <strong>not</strong> affect obedience.</p>
+    <textarea class="answer-box" id="pa" placeholder="One developed point for (a), two for (b): what the reason is, and the evidence or argument behind it."></textarea>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ma')">Show a model answer</button></div>
+    <div id="ma" class="xp-result">
+      <p><span class="xp-verdict">Model answer</span></p>
+      <ul>
+        <li><strong>(a) Reason it may:</strong> people with an <strong>external locus of control</strong> believe their behaviour is caused by things outside themselves, so they take less responsibility for their actions and obey more. This is supported by <strong>Miller (1975)</strong>, who found that "externals" obeyed a high-status experimenter more than a low-status one, while "internals" showed no difference.</li>
+        <li><strong>(b) Reason 1:</strong> many studies find little or no difference between people with an external and an internal locus of control — <strong>Schutz (1985)</strong> found no difference in obedience to administering painful shocks, which suggests personality is not influential.</li>
+        <li><strong>(b) Reason 2:</strong> it is difficult to separate personality from <strong>upbringing, gender and situational influences</strong>, so personality is hard to isolate as a variable and test scientifically; those other variables may be producing the result.</li>
+      </ul>
+      <p><strong>Why this scores:</strong> one mark is for identifying each reason and a second for justifying or exemplifying it. Every point above carries a study or an argument, not just a claim.</p>
+    </div>
+  </div>
+
+  <div class="exam-practice">
+    <h3>✍️ Practice 2 — 8 marks (planning only)</h3>
+    <p><strong>Assess whether individual differences (personality and gender) can influence obedience.</strong></p>
+    <p>Half the marks come from describing the research accurately and half from weighing it up. Plan four paragraphs:</p>
+    <table>
+      <tr><th style="width:90px">Paragraph</th><th>What goes in it</th></tr>
+      <tr><td>1</td><td>Personality: authoritarian personality and Adorno's F-Scale; Milgram and Elms (1966) found the 20 obedient participants scored higher on the F-Scale than the 20 who defied. Note the method — a questionnaire given afterwards, so the link is a correlation.</td></tr>
+      <tr><td>2</td><td>Locus of control: Rotter's dimension of internals and externals; Miller (1975) found externals obeyed a high-status experimenter more, but Schutz (1985) found no difference — evidence on both sides is what an assessment needs.</td></tr>
+      <tr><td>3</td><td>Gender: Exp 8 found women obeyed at a similar rate to men; Sheridan and King (1972) found a very high rate with real puppies; Blass's review of ten studies found no consistent difference, and Kilham and Mann found women less obedient than men in one sample.</td></tr>
+      <tr><td>4</td><td>A conclusion that answers the question asked: can individual differences influence obedience? Weigh the mixed findings and say whether Blass's interactionist position — personality matters most when the situation leaves room for it — explains the evidence better than personality alone.</td></tr>
+    </table>
+    <p>Two conclusions are available: the findings conflict, and almost all of them come from self-report measures. Either conclusion has to be argued, not merely stated.</p>
+  </div>
+
+  <div class="exam-practice">
+    <h3>✍️ Practice 3 — 12 marks (planning only)</h3>
+    <p><strong>To what extent do individual differences (personality and gender) influence obedience?</strong></p>
+    <p>This shape of question wants the same content but a longer chain of reasoning. Aim for five paragraphs, and notice that the last one is what separates the top levels from the middle ones.</p>
+    <table>
+      <tr><th style="width:90px">Paragraph</th><th>What goes in it</th></tr>
+      <tr><td>1</td><td>State the case <em>for</em> personality: authoritarian personality (Adorno's F-Scale, Milgram and Elms' 20 obedient versus 20 defiant participants) and locus of control (Miller's externals obeying a high-status experimenter).</td></tr>
+      <tr><td>2</td><td>State the case <em>against</em>: Schutz found no difference; Dambrun and Vatiné (2010) used a virtual simulation and found a link in the opposite direction for men. The evidence points both ways.</td></tr>
+      <tr><td>3</td><td>Gender: Exp 8, Sheridan and King, Blass's review of ten studies, and the Kilham and Mann exception.</td></tr>
+      <tr><td>4</td><td>Method criticism running through all of it: the measures are <strong>self-report questionnaires</strong>, so answers may be affected by social desirability; the designs are <strong>correlational</strong>, so no cause can be claimed; and situational factors vary alongside personality, which makes personality hard to isolate.</td></tr>
+      <tr><td>5</td><td>A sustained conclusion: to what <em>extent</em>? Take a position — for example that individual differences explain part of the variation but interact with the situation, exactly as the <strong>interactionist</strong> position argues — and defend it against the evidence you have just given.</td></tr>
+    </table>
+    <p>The paragraph that weighs rather than lists is the one that earns the difference between a middling answer and a strong one.</p>
+  </div>
+
+  <div style="margin-top:22px">
+    <div class="summary-card-header" onclick="togglePanel(this,'kp')">
+      <span>🔑 Exam key points — what a strong answer contains</span>
+      <span class="arrow">›</span>
+    </div>
+    <div class="summary-card-body hidden" id="kp">
+      <ol>
+        <li>Three families, and exam questions expect you to keep them apart: <strong>individual differences</strong> = personality and gender; that is not the same as <strong>situation</strong>, and it is not the same as <strong>culture</strong>.</li>
+        <li>Personality has two named factors: <strong>authoritarian personality</strong> (Adorno's F-Scale) and <strong>locus of control</strong> (Rotter, internals and externals).</li>
+        <li>Situational factors come from <strong>Latané's social impact theory</strong>: strength, immediacy and number; Meeus and Raaijmakers took obedience from over 90% down to around 36% by removing one of them.</li>
+        <li>Culture compares <strong>individualistic</strong> with <strong>collectivistic</strong> cultures — but cross-cultural differences may be <strong>procedure differences</strong> in disguise, since studies used different maximum voltages and student-only samples.</li>
+        <li>The two limitations that fit almost any study here: the data are <strong>self-reported</strong>, and the link found is a <strong>correlation</strong>, so cause cannot be claimed.</li>
+        <li>Every factor needs a study behind it, and every study needs its finding — a named study with no result earns nothing.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Key Terms</h2>
+  <div class="glossary-grid">
+    <div class="glossary-item"><span class="term">individual differences</span><span class="zh">个体差异</span><div class="def">Aspects such as personality and gender; not the same as situation or culture.</div></div>
+    <div class="glossary-item"><span class="term">personality</span><span class="zh">人格</span><div class="def">A set of relatively stable psychological traits which can influence how we think and act.</div></div>
+    <div class="glossary-item"><span class="term">authoritarian personality</span><span class="zh">权威主义人格</span><div class="def">Submissive to authority, typically raised in a strict household and punished for non-compliance; associated with higher obedience.</div></div>
+    <div class="glossary-item"><span class="term">F-Scale (Fascism Scale)</span><span class="zh">F 量表</span><div class="def">A questionnaire devised by Adorno et al. (1950) used to detect the authoritarian personality.</div></div>
+    <div class="glossary-item"><span class="term">fascism</span><span class="zh">法西斯主义</span><div class="def">A very nationalist and authoritarian position, intolerant of others' views, based on an extreme right-wing political position.</div></div>
+    <div class="glossary-item"><span class="term">locus of control</span><span class="zh">控制点</span><div class="def">Rotter's (1966) personality dimension: whether people see the causes of their behaviour as internal or external.</div></div>
+    <div class="glossary-item"><span class="term">internal locus of control</span><span class="zh">内控</span><div class="def">Believing you are responsible for your own actions, so you are less influenced by others.</div></div>
+    <div class="glossary-item"><span class="term">external locus of control</span><span class="zh">外控</span><div class="def">Believing your behaviour is beyond your control and due to external factors, so you are more influenced by others.</div></div>
+    <div class="glossary-item"><span class="term">dissent / resistance</span><span class="zh">异议 / 抵抗</span><div class="def">Refusing to obey; dissenters take more personal responsibility for their actions.</div></div>
+    <div class="glossary-item"><span class="term">social impact theory</span><span class="zh">社会影响理论</span><div class="def">Latané (1981): strength, immediacy and number determine the impact of an authority figure on a target.</div></div>
+    <div class="glossary-item"><span class="term">proximity</span><span class="zh">接近性</span><div class="def">How physically or psychologically close the authority figure is to the target; greater distance acts as a buffer to obedience.</div></div>
+    <div class="glossary-item"><span class="term">number</span><span class="zh">数量</span><div class="def">How many authority figures there are relative to targets; more sources means greater influence.</div></div>
+    <div class="glossary-item"><span class="term">individualistic culture</span><span class="zh">个人主义文化</span><div class="def">A culture whose members behave more independently and tolerate dissent (Smith and Bond, 1998).</div></div>
+    <div class="glossary-item"><span class="term">collectivistic culture</span><span class="zh">集体主义文化</span><div class="def">A culture whose members behave as an interdependent group, where compliance supports the stability of the group.</div></div>
+    <div class="glossary-item"><span class="term">reductionist</span><span class="zh">还原论的</span><div class="def">Explaining a complex behaviour by a single cause, which ignores other important factors.</div></div>
+    <div class="glossary-item"><span class="term">gender</span><span class="zh">性别</span><div class="def">Whether someone identifies as male, female or otherwise; treated here as an individual difference that may affect obedience.</div></div>
+    <div class="glossary-item"><span class="term">strength</span><span class="zh">强度</span><div class="def">In Latané’s social impact theory, how important or high-status the authority figure is perceived to be.</div></div>
+    <div class="glossary-item"><span class="term">immediacy</span><span class="zh">即时性</span><div class="def">In Latané’s social impact theory, how close in time and space the authority figure is to the target when the order is given.</div></div>
+  </div>
+</section>
+
+
+<div class="footer-note">1.1.3 Factors affecting obedience · Social Psychology · back: <a href="../1.1.1-theories-of-obedience/">← 1.1.1 theories of obedience</a></div>
+  </main>
+</div>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var baseFont = 16;
+
+  window.openChoice = function (c) {
+    var notes = {
+      person: 'Something inside the people: their personality, whether they were raised to defer to authority, their gender. Psychology calls these <strong>individual differences</strong>.',
+      place: 'Something about where the order arrives: whether the manager is standing next to them, whether anyone else is watching. These are <strong>situational factors</strong>, and Latané gave them three names.',
+      country: 'Something they learned growing up in one part of the world rather than another: whether the group or the individual comes first. That is <strong>culture</strong>.'
+    };
+    var el = document.getElementById('openResult');
+    if (!el) { return; }
+    el.innerHTML = '<p><span class="xp-verdict">A different family of factors.</span> ' + notes[c] + '</p>';
+    el.classList.add('show');
+  };
+
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark'; }
+  };
+
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  var powNotes = {
+    legit: 'Your head of year holds a recognised position in the school, and that position alone is a reason to do what they ask. That is <strong>legitimate power</strong>（法定权）— power that comes from an official position.',
+    coerc: 'This teacher can make things worse for you if you refuse. That is <strong>coercive power</strong>（强制权）— the ability to impose a punishment, such as a detention.',
+    reward: 'This teacher controls something you want, so doing the task buys you a chance at it. That is <strong>reward power</strong>（奖励权）— the ability to give a reward or incentive.',
+    expert: 'Everyone goes to this teacher because they know what they are doing, so their instructions feel like instructions worth following. That is <strong>expert power</strong>（专家权）— superior knowledge held by a credible influence.',
+    refer: 'You do not owe the athlete anything and they cannot punish you; you simply admire them and want their approval. That is <strong>referent power</strong>（感召权）— respect or admiration.'
+  };
+
+  window.powChoice = function (c) {
+    var el = document.getElementById('powResult');
+    if (!el) { return; }
+    el.innerHTML = '<p>' + powNotes[c] + '</p><p style="color:#64748b">Same sentence, same you — only the source of the power changed.</p>';
+    el.classList.add('show');
+  };
+
+  var ctxNotes = {
+    during: 'During the match the referee has <strong>legitimate power</strong>: an official position recognised by everyone on the pitch, and the player leaves immediately.',
+    after: 'An hour later the referee still has the whistle, but not the position. Off the field the same instruction is just an opinion — showing that power is <strong>contingent upon context</strong>.'
+  };
+
+  window.ctxShow = function (c) {
+    var el = document.getElementById('ctxResult');
+    if (!el) { return; }
+    el.innerHTML = '<p>' + ctxNotes[c] + '</p>';
+    el.classList.add('show');
+  };
+
+  var factorKey = { A: 'gender', B: 'culture', C: 'personality', D: 'situation' };
+  var factorWhy = {
+    A: 'Two siblings in the same household behave differently, so the difference is not the setting or the country — the comparison set up here is between a boy and a girl, which is <strong>gender</strong>.',
+    B: 'The comparison is between two countries, so this is <strong>culture</strong>. Watch this one: comparing countries always points to culture, never to situation.',
+    C: 'Temi is described as independent and as someone who sticks to her own judgement — a description of her <strong>personality</strong>, not of the setting or her country.',
+    D: 'The same person does the work in one place and refuses it in another. When behaviour changes between settings, that is <strong>situation</strong>.'
+  };
+
+  window.matchFactor = function (btn, choice, id) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    sibs.forEach(function (s) { s.classList.remove('chosen-best', 'chosen-bad'); });
+    var ok = (choice === factorKey[id]);
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById('res' + id);
+    if (!el) { return; }
+    el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + factorWhy[id] + '</p>';
+    el.classList.add('show');
+    el.classList.toggle('ok', ok);
+  };
+
+  var powerKey = { A: 'referent', B: 'legitimate', C: 'coercive', D: 'expert', E: 'reward' };
+  var powerWhy = {
+    A: 'Nothing is offered and nothing threatens; the staff do it because he is well liked. Being liked is <strong>referent power</strong>.',
+    B: 'The surgeon\'s seniority in the hospital hierarchy is doing the work here — an official position is <strong>legitimate power</strong>. Notice it is being used outside the job itself, which is exactly why the example is uncomfortable.',
+    C: 'Removing freedom for not doing chores is a punishment. The ability to impose one is <strong>coercive power</strong>.',
+    D: 'The instruction is followed because of advanced specialist knowledge. That is <strong>expert power</strong>.',
+    E: 'The employer offers something the workers want in exchange for compliance — that is <strong>reward power</strong>, and it only works because they want the extra pay.'
+  };
+
+  window.matchPower = function (btn, choice, id) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    sibs.forEach(function (s) { s.classList.remove('chosen-best', 'chosen-bad'); });
+    var ok = (choice === powerKey[id]);
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById('pow' + id);
+    if (!el) { return; }
+    el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + powerWhy[id] + '</p>';
+    el.classList.add('show');
+    el.classList.toggle('ok', ok);
+  };
+
+  var quizKey = { q1: 'Being in the same room is immediacy, one of Latané’s situational factors. Personality and gender are individual differences, and the country you grew up in is culture.', q2: 'a', q3: 't', q4: 'b', q5: 'b' };
+  var quizFb = {
+    q1: 'Legitimate power is an official or recognised position. Coercive is the ability to punish and referent is admiration.',
+    q2: 'External locus of control means the causes of behaviour are seen as outside the self, so the person is more influenced by others and more likely to obey.',
+    q3: 'True. Strength, immediacy and number are the three situational factors in Latané\'s social impact theory.',
+    q4: 'Proximity matters: more than 90% were cruel with the experimenter present, falling to about 36% once he left the room.',
+    q5: 'Because the studies differed in procedure — lower maximum voltages and student-only samples — culture and procedure cannot be separated.'
+  };
+
+  window.checkQuiz = function () {
+    var score = 0;
+    Object.keys(quizKey).forEach(function (q) {
+      var picked = document.querySelector('input[name="' + q + '"]:checked');
+      var fb = document.getElementById('fb' + q.charAt(1));
+      if (!fb) { return; }
+      var val = picked ? picked.value : null;
+      var ok = (val === quizKey[q]);
+      if (ok) { score += 1; }
+      fb.innerHTML = '<strong>' + (ok ? 'Correct' : (val ? 'Not quite' : 'Not answered')) + '.</strong> ' + quizFb[q];
+      fb.style.color = ok ? '#166534' : '#991b1b';
+      fb.classList.add('show');
+    });
+    var el = document.getElementById('quizResult');
+    if (!el) { return; }
+    el.innerHTML = '<p><span class="xp-verdict">Score: ' + score + ' / 5</span> — ' + (score === 5 ? 'all correct.' : 'revisit the ones in red before moving on.') + '</p>';
+    el.classList.add('show');
+  };
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.toggle('show'); }
+  };
+
+  window.togglePanel = function (header, id) {
+    var body = document.getElementById(id);
+    if (!body) { return; }
+    body.classList.toggle('hidden');
+    header.classList.toggle('open');
+  };
+
+  window.addEventListener('scroll', function () {
+    var btt = document.getElementById('btt');
+    if (btt) { btt.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  var links = document.querySelectorAll('.sb-item a');
+  var sections = [];
+  links.forEach(function (a) {
+    var sec = document.querySelector(a.getAttribute('href'));
+    if (sec) { sections.push({ link: a, sec: sec }); }
+  });
+  window.addEventListener('scroll', function () {
+    var pos = window.scrollY + 140;
+    var current = null;
+    sections.forEach(function (s) { if (s.sec.offsetTop <= pos) { current = s; } });
+    links.forEach(function (a) { a.classList.remove('sb-active'); });
+    if (current) { current.link.classList.add('sb-active'); }
+  });
+})();
+</script>
+</body>
+</html>
