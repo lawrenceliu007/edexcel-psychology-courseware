@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edexcel IAL Psychology AS｜课程设计总蓝图</title>
+<style>
+:root{
+  --edx:#ea580c; --edx-dark:#c2410c; --ink:#1f2937; --muted:#6b7280;
+  --line:#e5e7eb; --bg:#f8fafc; --card:#fff;
+  --a:#2563eb; --b:#dc2626; --c:#16a34a; --d:#7c3aed; --skills:#0891b2;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'PingFang SC','Hiragino Sans GB',sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.5rem 5rem}
+header.top{background:linear-gradient(135deg,#c2410c 0%,#ea580c 45%,#fb923c 100%);color:#fff;padding:3rem 2rem 2.6rem;text-align:center}
+header.top h1{font-size:2.2rem;font-weight:800;letter-spacing:-.5px}
+header.top p{opacity:.94;margin-top:.5rem;font-size:1.05rem}
+.kpis{display:flex;justify-content:center;gap:2.4rem;flex-wrap:wrap;margin-top:1.8rem}
+.kpi .n{font-size:1.9rem;font-weight:800;line-height:1.1}
+.kpi .l{font-size:.8rem;opacity:.85}
+h2{font-size:1.45rem;font-weight:800;margin:3rem 0 .2rem;padding-bottom:.55rem;border-bottom:3px solid var(--edx);display:flex;align-items:center;gap:.6rem;scroll-margin-top:1rem}
+h2 .num{background:var(--edx);color:#fff;font-size:.8rem;padding:.15rem .6rem;border-radius:20px;font-weight:700}
+h3{font-size:1.1rem;font-weight:750;margin:1.8rem 0 .5rem}
+h4{font-size:.98rem;font-weight:700;margin:1.1rem 0 .35rem;color:var(--edx-dark)}
+p{margin:.55rem 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.5rem 1.6rem;margin:1.2rem 0;box-shadow:0 1px 3px rgba(15,23,42,.05)}
+.card.a{border-left:5px solid var(--a)}
+.card.b{border-left:5px solid var(--b)}
+.card.tight{padding:1.1rem 1.3rem}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem;background:#fff}
+th{background:#fff7ed;color:#9a3412;font-weight:700;text-align:left;padding:.6rem .7rem;border:1px solid var(--line);font-size:.85rem}
+td{padding:.55rem .7rem;border:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even)td{background:#fffbf7}
+td.c,th.c{text-align:center}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.82rem}
+ul,ol{margin:.5rem 0 .5rem 1.3rem}
+li{margin:.3rem 0}
+.small{font-size:.85rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.72rem;font-weight:700;color:#fff;padding:.1rem .5rem;border-radius:11px;vertical-align:middle}
+.tag.a{background:var(--a)}.tag.b{background:var(--b)}.tag.c{background:var(--c)}.tag.d{background:var(--d)}.tag.edx{background:var(--edx)}
+.decision{background:#fff;border:1px solid #fed7aa;border-left:6px solid var(--edx);border-radius:12px;padding:1.2rem 1.4rem;margin:1rem 0}
+.decision .q{font-weight:800;color:var(--edx-dark);font-size:1rem}
+.decision .a{margin-top:.4rem}
+.bar{height:22px;background:linear-gradient(90deg,#fb923c,#ea580c);border-radius:5px;display:flex;align-items:center;color:#fff;font-size:.75rem;font-weight:700;padding-left:.5rem;white-space:nowrap}
+.bars div{margin:.35rem 0}
+.bars .lab{font-size:.82rem;color:var(--muted);display:flex;justify-content:space-between}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:820px){.split{grid-template-columns:1fr}}
+.yes{color:#15803d;font-weight:700}.no{color:#b91c1c;font-weight:700}
+.warn{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:1rem 1.2rem;margin:1rem 0;font-size:.92rem}
+.warn b{color:#1d4ed8}
+blockquote{background:#fffbeb;border-left:4px solid #f59e0b;padding:.7rem 1rem;margin:.8rem 0;font-size:.9rem;color:#78350f}
+.foot{text-align:center;color:var(--muted);font-size:.82rem;padding:2rem 0 0;border-top:1px solid var(--line);margin-top:3rem}
+.toc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.4rem;margin:2rem 0}
+.toc a{color:var(--edx-dark);text-decoration:none;font-size:.92rem}
+.toc a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <h1>Edexcel IAL Psychology · AS 课程设计总蓝图</h1>
+  <p>Unit 1 (WPS01) Social &amp; Cognitive ＋ Unit 2 (WPS02) Biological, Learning &amp; Development</p>
+  <div class="kpis">
+    <div class="kpi"><div class="n">2</div><div class="l">考试单元 Units</div></div>
+    <div class="kpi"><div class="n">4</div><div class="l">Topic A / B / C / D</div></div>
+    <div class="kpi"><div class="n">160</div><div class="l">卷面总分 64 + 96</div></div>
+    <div class="kpi"><div class="n">16</div><div class="l">真题套数（已入库）</div></div>
+    <div class="kpi"><div class="n">32</div><div class="l">建议课时 (90 min)</div></div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="toc">
+  <strong style="font-size:.95rem">目录</strong>
+  <ol>
+    <li><a href="#d1">四个决策：这轮课到底怎么上</a></li>
+    <li><a href="#d2">我依据的证据（考纲 ＋ 真题）</a></li>
+    <li><a href="#d3">考试地图：学生必须先建立的那张图</a></li>
+    <li><a href="#d4">真题规律：11 套 WPS01 拆出来的结构</a></li>
+    <li><a href="#d5">第一课怎么上（90 分钟逐段教案）</a></li>
+    <li><a href="#d6">课程骨架：为什么是这个顺序</a></li>
+    <li><a href="#d7">32 讲课时表</a></li>
+    <li><a href="#d8">练习机制：讲完就能练</a></li>
+    <li><a href="#d9">需要你拍板的 5 件事</a></li>
+  </ol>
+</div>
+
+<!-- ============ 1 ============ -->
+<h2 id="d1"><span class="num">01</span>四个决策：这轮课到底怎么上</h2>
+
+<div class="decision">
+  <div class="q">决策 1 · 第一节课讲考试，还是直接讲考纲内容？</div>
+  <div class="a"><strong>答：两件都做，但顺序是「先给一个能记住的现象，再给地图，最后看卷子」。不建议整整一节纯讲考纲。</strong>
+  <br>理由：学生对「考试结构」没有既有图式（schema）。先讲 15 分钟 Unit / Section / AO / command word，他们能记住的比例很低；但「65% 的普通人会把一个陌生人电到致死电压」这句话有极强图式。所以第一节课用现象做钩子（hook），把考试地图挂在这件事上面，学生才有地方放这些信息。</div>
+</div>
+
+<div class="decision">
+  <div class="q">决策 2 · 教学顺序照考纲走吗？</div>
+  <div class="a"><strong>答：Topic 顺序照考纲（A→B→C→D），但每个 Topic 内部要重排三处。</strong>
+  <br>照 Topic 顺序，是因为 Unit 1 就是 A+B、Unit 2 就是 C+D，而且 method 的依赖链刚好顺着走（List A 在 Topic A 教 → List B 在 Topic B 教 → Topic C 复用 List A → Topic D 复用 List A+B）。
+  <br>重排的三处是：① 方法提到内容后面、实操前面，而不是放在每个 Topic 的最后一块；② Topic B 的推断统计（Wilcoxon）前置到 Sec B 计算类题训练之前；③ 实操（practical）必须在课内真做一遍，不能只讲。</div>
+</div>
+
+<div class="decision">
+  <div class="q">决策 3 · 要不要先啃真题再写课件？</div>
+  <div class="a"><strong>答：要，而且已经做完了。</strong>11 套 WPS01（2019 Jan – 2025 Jun）+ 5 套 WPS02 已经拉到本地并逐题结构化。设计里的每一个课时配比，都由这几个数字决定，不靠直觉。</div>
+</div>
+
+<div class="decision">
+  <div class="q">决策 4 · 重心放哪里？</div>
+  <div class="a"><strong>答：放在「定量数据」和「应用题（scenario application）」，而不是只堆理论背诵。</strong>
+  <br>11 套 WPS01 里，涉及定量数据处理（集中趋势、离差、图表、百分比、正态分布）的题 43 处，平均每套 3.9 处，是全卷覆盖面最大的一块。这类题答案是确定的，英语基础弱的学生也能练到满；而纯理论背诵题对他们性价比最低。</div>
+</div>
+
+<!-- ============ 2 ============ -->
+<h2 id="d2"><span class="num">02</span>我依据的证据</h2>
+
+<table>
+<thead><tr><th>来源</th><th>内容</th><th>用来决定什么</th></tr></thead>
+<tbody>
+<tr><td>Pearson Edexcel IAL Psychology Specification, Issue 5（你给的 PDF）</td><td>Unit 1 / Unit 2 的 content、methods、studies、practical 全部条目编号；Unit 描述、AO 权重、Appendix 7 数学技能、Appendix 9 命令词定义</td><td>知识点清单、条目标号、AO 与命令词教学口径</td></tr>
+<tr><td>WPS01 真题 11 套（QP + MS）<br><span class="small">Jan 2019 / Jan 2020 / Jan 2021 / Jun 2021 / Jan 2022 / Jun 2022 / Jan 2023 / Jun 2023 / Jan 2024 / Jun 2024 / Jan 2025 / Jun 2025</span></td><td>逐题抽出：题号、Section、分值、命令词、题干；配套 mark scheme</td><td>卷面结构、每 Topic 的真题频次、每节课配什么练习</td></tr>
+<tr><td>WPS02 真题 5 套</td><td>Q1–Q12 结构与 Section C 的 12 + 16 分配置</td><td>Unit 2 的重心、16 分跨 Topic 综合题的训练安排</td></tr>
+<tr><td>January 2025 WPS01 mark scheme</td><td>8 分题是 levels-based：AO1 4 分 + AO3 4 分，Level 1 = 1–2 分 … Level 4 = 7–8 分，且明确写「Generic answers score 0 marks」</td><td>第一课就要教的「什么叫一个得分点」</td></tr>
+</tbody>
+</table>
+
+<p class="small">一个诚实的说明：下面所有「出现 N 处」的数字，是<strong>题干中出现该术语家族</strong>的题数，用来衡量<strong>覆盖面</strong>，不是精确的考点归属。比如一道考 WMM 的题里顺便给了柱状图让你描述趋势，会计入「定量数据」和「WMM」两处。</p>
+
+<!-- ============ 3 ============ -->
+<h2 id="d3"><span class="num">03</span>考试地图：学生必须先建立的那张图</h2>
+
+<p>AS（International Advanced Subsidiary）= 两张卷。两张卷都<strong>全部必答</strong>，没有选做题（studies 的当代研究除外，学生在备考时就选定一个）。</p>
+
+<table>
+<thead><tr><th>Unit</th><th>卷号</th><th>时长</th><th>总分</th><th>Section A</th><th>Section B</th><th>Section C</th></tr></thead>
+<tbody>
+<tr><td><span class="tag a">Unit 1</span> Social &amp; Cognitive</td><td class="mono">WPS01</td><td class="c">1 h 30</td><td class="c">64</td><td class="c">Social 26 分</td><td class="c">Cognitive 26 分</td><td class="c">1 题 × 12 分</td></tr>
+<tr><td><span class="tag b">Unit 2</span> Biological, Learning &amp; Development</td><td class="mono">WPS02</td><td class="c">2 h</td><td class="c">96</td><td class="c">Biological 34 分</td><td class="c">Learning 34 分</td><td class="c">1 题 × 12 分 ＋ 1 题 × 16 分</td></tr>
+</tbody>
+</table>
+
+<h3>四个 Topic 的结构完全对称</h3>
+<p>这是整个课程的骨架，也是我建议的排课逻辑来源——每个 Topic 都是同一个四件套：</p>
+
+<table>
+<thead><tr><th></th><th><span class="tag a">Topic A Social</span></th><th><span class="tag b">Topic B Cognitive</span></th><th><span class="tag c">Topic C Biological</span></th><th><span class="tag d">Topic D Learning</span></th></tr></thead>
+<tbody>
+<tr><th>Content 内容</th><td>服从 / 从众 / 少数派影响</td><td>记忆三模型</td><td>攻击的脑与生物机制 / 人体节律</td><td>条件反射 / SLT /  Freud</td></tr>
+<tr><th>Method 方法</th><td>自陈报告 + 抽样 + List A 定量</td><td>实验 + 实验设计 + List B 推断统计</td><td>相关 + 扫描 + 双生子</td><td>观察 + 内容分析 + 卡方</td></tr>
+<tr><th>Studies 研究</th><td>Moscovici (1969) / Burger (2009) / Yi Huang 或 Haun</td><td>Bartlett (1932) / Schmolck (2002) / Darling 或 Sacchi</td><td>Raine (1997) / Brendgen (2005) / McDermott 或 Hoefelmann</td><td>Watson &amp; Rayner (1920) / Capafóns (1998) / Prot 或 Bastian</td></tr>
+<tr><th>Practical 实操</th><td>问卷（定性 + 定量）</td><td>实验室实验 · 重复测量 + Wilcoxon</td><td>相关研究 + Spearman</td><td>观察 ×2 + 卡方</td></tr>
+<tr><th>配套推断统计</th><td>—（只做描述统计）</td><td><strong>Wilcoxon</strong></td><td><strong>Spearman</strong></td><td><strong>卡方</strong></td></tr>
+</tbody>
+</table>
+
+<div class="warn">
+<b>三个统计测试分散在三个 Topic 里，各自绑定一个实操。</b>这件事决定了：统计不能集中到一个"方法论星期"里教完，必须是 Topic B 教 Wilcoxon → 当场做 Lab 实验 → Topic C 教 Spearman → 当场做相关 → Topic D 教卡方 → 当场做观察。教完立刻用，是这个考纲自己设计的节奏，我们照着走就行。
+</div>
+
+<h3>AO 权重与命令词（这两件事第一节课就要讲）</h3>
+
+<table>
+<thead><tr><th>AO</th><th>含义</th><th>AS 占比</th><th>Unit 1</th><th>Unit 2</th><th>对应命令词</th></tr></thead>
+<tbody>
+<tr><td><strong>AO1</strong></td><td>知道、理解并描述 scientific ideas / procedures</td><td class="c">35–40%</td><td class="c">14–18%</td><td class="c">20–24%</td><td>Describe / State / Name / Outline</td></tr>
+<tr><td><strong>AO2</strong></td><td>把知识应用到新情境（含处理定量与定性数据）</td><td class="c">30–35%</td><td class="c">12–16%</td><td class="c">18–22%</td><td>Calculate / 情境 apply 题（如「Describe, using X, why…」）</td></tr>
+<tr><td><strong>AO3</strong></td><td>分析、评价、得出结论</td><td class="c">30–35%</td><td class="c">12–16%</td><td class="c">18–22%</td><td>Evaluate / Assess / Discuss / To what extent</td></tr>
+</tbody>
+</table>
+
+<blockquote>
+spec 的 Appendix 9 明确：<strong>每题只用一个命令词</strong>，不再出现「describe and evaluate」这种双指令。<br>
+→ 教学含义：学生答题前第一件事就是圈命令词，然后按命令词决定写什么。<code>Describe</code> = 给叙述，points need to be developed but no justification；<code>Explain</code> = 要有因果链条；<code>Evaluate / Assess / Discuss</code> = 要给 judgement + conclusion，且<strong>泛泛而谈的答案 0 分</strong>。
+</blockquote>
+
+<!-- ============ 4 ============ -->
+<h2 id="d4"><span class="num">04</span>真题规律：11 套 WPS01 拆出来的结构</h2>
+
+<h3>4.1 卷面铁律（11 套全部符合）</h3>
+<table>
+<thead><tr><th>规律</th><th>命中</th><th>教学含义</th></tr></thead>
+<tbody>
+<tr><td>Section A = 26 分，4–6 题，<strong>最后一题固定是 8 分大题</strong></td><td class="c">11 / 11</td><td>8 分 essay 是必须专项训练的题型，不能指望学生自然就会</td></tr>
+<tr><td>Section B = 26 分，4 题（多数），<strong>最后一题固定是 8 分大题</strong></td><td class="c">11 / 11</td><td>同上，每 Topic 都要练</td></tr>
+<tr><td>Section C = 1 题 × 12 分</td><td class="c">11 / 11</td><td>一张卷三次写长答案的机会</td></tr>
+<tr><td>8 分题命令词：<code>Evaluate</code> 6 次 / <code>Assess</code> 4 次 / <code>Discuss</code> 4 次</td><td class="c">11 / 11</td><td>三者本质同构（都要 judgement + conclusion），可以合并成一种写法教</td></tr>
+<tr><td>每套至少一道「<em>In your studies… you will have conducted a practical investigation</em>」反思题</td><td class="c">8 / 11</td><td><strong>送分题</strong>，但前提是课内真做过实操</td></tr>
+<tr><td>每套至少一道 application 情境题（给一段生活场景，要求用某个理论 explain / describe）</td><td class="c">11 / 11</td><td>AO2 主战场，也是学生最弱的一块</td></tr>
+</tbody>
+</table>
+
+<p><strong>时间预算：</strong>90 分钟写 64 分 ≈ 每分 1.4 分钟。学生常犯的错误是 8 分题写 25 分钟，导致后面的 2 分、3 分题来不及——而那些小题恰恰是最好拿分的。</p>
+
+<h3>4.2 Section A（Social）／ Section B（Cognitive）命令词分布</h3>
+<div class="bars">
+  <div><div class="lab"><span>Section A · Explain</span><span class="mono">25 处</span></div><div class="bar" style="width:100%">Explain</div></div>
+  <div><div class="lab"><span>Section A · Describe</span><span class="mono">17 处</span></div><div class="bar" style="width:68%">Describe</div></div>
+  <div><div class="lab"><span>Section A · Discuss / Evaluate / Assess / Calculate</span><span class="mono">各 4 处</span></div><div class="bar" style="width:16%"></div></div>
+  <div style="height:.6rem"></div>
+  <div><div class="lab"><span>Section B · Explain</span><span class="mono">24 处</span></div><div class="bar" style="width:95%">Explain</div></div>
+  <div><div class="lab"><span>Section B · Describe</span><span class="mono">9 处</span></div><div class="bar" style="width:36%">Describe</div></div>
+  <div><div class="lab"><span>Section B · Evaluate / Discuss / Assess / Calculate</span><span class="mono">6 / 4 / 2 / 2 处</span></div><div class="bar" style="width:24%"></div></div>
+</div>
+<p class="small">结论：<code>Explain</code> 是绝对主力。<code>Explain</code> 的要求是把点写成「claim → because → 所以对本研究/本情境的意义」，这正是我们要在每节课练的句式。</p>
+
+<h3>4.3 考点覆盖（11 套 WPS01，Section A + B）</h3>
+<table>
+<thead><tr><th>考点群</th><th class="c">出现题数</th><th class="c">平均每套</th><th>Spec 编号</th><th>备注</th></tr></thead>
+<tbody>
+<tr><td><strong>定量数据处理</strong>（集中趋势、离差、图表、百分比、正态/偏态）</td><td class="c">43</td><td class="c">3.9</td><td class="mono">1.2.6 / 1.2.7 / 2.2.11</td><td>其中明确 <code>Calculate</code> 6 处，其余是读表、作图、<code>Describe findings</code></td></tr>
+<tr><td><strong>Obedience</strong>（理论 + Milgram + 变式 + 影响因素）</td><td class="c">27</td><td class="c">2.5</td><td class="mono">1.1.1 – 1.1.3</td><td>Section A 第一主力，几乎每套 2 处以上</td></tr>
+<tr><td><strong>实验与实验设计</strong></td><td class="c">19</td><td class="c">1.7</td><td class="mono">2.2.1 – 2.2.10</td><td>Section B 的方法主干</td></tr>
+<tr><td><strong>Conformity</strong>（类型、解释、Asch、影响因素）</td><td class="c">15</td><td class="c">1.4</td><td class="mono">1.1.4 / 1.1.5 / 1.1.7</td><td>Section A 第二主力</td></tr>
+<tr><td><strong>Working Memory Model</strong></td><td class="c">11</td><td class="c">1.0</td><td class="mono">2.1.2</td><td>Section B 第一主力内容点</td></tr>
+<tr><td><strong>Multi-Store Model</strong></td><td class="c">9</td><td class="c">0.8</td><td class="mono">2.1.1</td><td>常出现在 Section C 的 12 分题</td></tr>
+<tr><td>自陈报告（问卷 / 访谈）</td><td class="c">8</td><td class="c">0.7</td><td class="mono">1.2.1 – 1.2.3</td><td>Section A 方法主干</td></tr>
+<tr><td><strong>重构记忆 / Bartlett</strong></td><td class="c">8</td><td class="c">0.7</td><td class="mono">2.1.3 / 2.3.1</td><td>3 次出现在 Section C 12 分题</td></tr>
+<tr><td>自己的实操反思题</td><td class="c">8</td><td class="c">0.7</td><td class="mono">1.4.1 / 2.4.1</td><td>课内做过就能拿，没做过就白丢</td></tr>
+<tr><td>抽样 + 一手/二手数据</td><td class="c">7</td><td class="c">0.6</td><td class="mono">1.2.5 / 1.2.2</td><td></td></tr>
+<tr><td>少数派影响 + Moscovici</td><td class="c">6</td><td class="c">0.5</td><td class="mono">1.1.6 / 1.3.1</td><td>classic study，几乎每年一题</td></tr>
+<tr><td>推断统计（Wilcoxon / 显著性 / 临界值）</td><td class="c">6</td><td class="c">0.5</td><td class="mono">2.2.12</td><td>必配实操</td></tr>
+<tr><td>BPS 伦理</td><td class="c">4</td><td class="c">0.4</td><td class="mono">1.2.9</td><td></td></tr>
+<tr><td>Burger (2009)</td><td class="c">3</td><td class="c">0.3</td><td class="mono">1.3.2</td><td>当代研究，有时直接升到 12 分 Section C</td></tr>
+<tr><td>Darling / Sacchi</td><td class="c">3</td><td class="c">0.3</td><td class="mono">2.3.3 / 2.3.4</td><td>二选一，选定后集中练</td></tr>
+<tr><td>Schmolck / HM</td><td class="c">2</td><td class="c">0.2</td><td class="mono">2.3.2 / 2.2.13</td><td></td></tr>
+<tr><td>Yi Huang / Haun</td><td class="c">2</td><td class="c">0.2</td><td class="mono">1.3.3 / 1.3.4</td><td>二选一</td></tr>
+<tr><td><strong>主题分析 Thematic analysis</strong></td><td class="c"><strong>0</strong></td><td class="c">0</td><td class="mono">1.2.8</td><td>在 WPS01 里从不单独命题；它是实操报告的组成部分，应嵌入 workshop 而不是单开一节课</td></tr>
+</tbody>
+</table>
+
+<div class="warn">
+<b>两个反直觉的地方，值得你在备课会时记住：</b>
+<ul>
+<li><b>thematic analysis 从不单独出考题（0/11）。</b>它是 spec 的正式条目，学生必须会用，但不要在它身上花整节课——放进问卷实操课当其中一个环节就好。</li>
+<li><b>Section B 里「数据处理」的比重（28 处）远高于「记忆模型」本身（MSM 9 + WMM 11）。</b>学生如果 WMM/MSM 背得很熟但不认得柱状图、不会算 mean/range，Section B 一样撑不住。</li>
+</ul>
+</div>
+
+<!-- ============ 5 ============ -->
+<h2 id="d5"><span class="num">05</span>第一课怎么上（90 分钟逐段教案）</h2>
+
+<p><strong>第一课的目标不是讲完一个知识点，而是让学生同时拿到三样东西：</strong>一个记得住的现象、一张能定位自己的考试地图、一个「什么叫得分点」的判据。</p>
+
+<table>
+<thead><tr><th class="c">时间</th><th>环节</th><th>做什么</th><th>为什么这么排</th></tr></thead>
+<tbody>
+<tr><td class="c">0–15′</td><td><strong>Hook：你会按到多少伏？</strong></td><td>不讲定义。给出场景：一个陌生人答错词，你要按 15V…450V 的电钮。<ol><li>先让学生<strong>匿名写下自己会停在第几档</strong>；</li><li>再报真实数据：Milgram baseline 里 65% 的人按到最高档 450V；</li><li>只问一句：是这些人是坏人吗？</li></ol></td><td>制造一个强图式锚点。学生带着「我刚刚预测错了吗？」进入整门课，后面所有内容都能挂在这上面</td></tr>
+<tr><td class="c">15–35′</td><td><strong>考试地图（20 分钟讲完，不多讲）</strong></td><td>一张图讲清：AS = 两张卷（WPS01 64 分 / WPS02 96 分）→ 四个 Topic（A 社会 / B 认知 / C 生物 / D 学习）→ 每个 Topic 都是「内容 + 方法 + 研究 + 实操」四件套 → 每张卷都是 Section A + B + 一个大题 Section C。<br>再给时间换算：<em>90 分钟 / 64 分 ≈ 每分 1.4 分钟</em></td><td>现在才介绍考试，因为学生已经有了「服从」这个具体例子，知道「这门课学的是这种行为」，地图就有地方挂了</td></tr>
+<tr><td class="c">35–55′</td><td><strong>什么叫一个得分点</strong></td><td>用 January 2025 Q5(2 分) 做示范：Adjoa 不喜欢辣但还是跟朋友去了辣餐厅，要求「Describe, using conformity, why…」。<ol><li>给学生看<strong>两份真答：</strong>A 份 0 分（"She conformed because she wanted to fit in with her friends"）；B 份 2 分（点出 normative social influence + 紧扣她不想被群体排斥）；</li><li>让学生自己说出差别：<em>A 是泛论（generic），B 把理论接到了具体细节上</em>；</li><li>念 mark scheme 原文给他们听：<strong>"Generic answers score 0 marks"</strong>。</li></ol></td><td>这是全学年最重要的一次评分体验。学生必须亲眼看到「写得像人话 ≠ 有分」，后面所有答题训练才有抓手</td></tr>
+<tr><td class="c">55–80′</td><td><strong>正式进内容：Obedience 的定义 + Milgram baseline</strong></td><td>术语先教后用：obedience（服从）的定义 → 三层区分（obedience vs conformity vs compliance）→ Milgram 1963 baseline 的程序（40 人 / 电击器 / learner-teacher / 四句 prods）→ 回到开头的锚点：65% 意味着什么</td><td>第一节课的内容部分不要贪多。只做定义 + baseline 程序，把 variation studies 留给第 3 讲</td></tr>
+<tr><td class="c">80–90′</td><td><strong>收束 + 作业</strong></td><td>发 guided notes workbook 第 1 页；作业是 workbook 上的 2 道小题（一道 define，一道 application），10 分钟内能完成</td><td>第一节课的作业要能做完。做不完的作业会让学生第二次课就不交</td></tr>
+</tbody>
+</table>
+
+<h4>第一课不建议做的事</h4>
+<ul>
+<li><span class="no">不建议</span>整节课串讲考纲条目——11 套真题已经证明，真正频繁出现的条目不到 20 条，重复率很高，可以在用到时再给编号。</li>
+<li><span class="no">不建议</span>第一节就讲 Agency Theory / Social Power Theory 两套理论——学生在没有 baseline 细节的情况下无法理解理论在解释什么。</li>
+<li><span class="no">不建议</span>第一节就布置 8 分 essay——会直接劝退。</li>
+</ul>
+
+<!-- ============ 6 ============ -->
+<h2 id="d6"><span class="num">06</span>课程骨架：为什么是这个顺序</h2>
+
+<h3>6.1 大顺序：A → B → C → D</h3>
+<table>
+<thead><tr><th>理由</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>试卷就是这么排的</td><td>WPS01 = Topic A + Topic B，WPS02 = Topic C + Topic D。上课顺序和答卷顺序一致，学生每次模考都能对应到"这块我学过"。</td></tr>
+<tr><td>方法课的依赖链顺着走</td><td>List A（描述统计）在 Topic A 教 → List B（推断统计）在 Topic B 教 → Topic C 明确只要 List A → Topic D 明确只要 List A + List B。考纲自己就是按这个依赖写的。</td></tr>
+<tr><td>语言难度递增</td><td>Social 最贴近日常经验，认知词汇适中，Biological 是纯术语（hippocampus / suprachiasmatic nucleus / zeitgeber），Learning 的概念最抽象（vicarious reinforcement / countertransference）。从易到难，学生在遇到最难的术语时已经有了答题习惯。</td></tr>
+</tbody>
+</table>
+
+<svg viewBox="0 0 940 400" style="width:100%;height:auto;margin:1rem 0;background:#fff;border:1px solid var(--line);border-radius:12px">
+  <text x="470" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#1f2937">AS 双单元路线图：每个 Topic 都是同一个「四件套」</text>
+
+  <!-- Unit 1 band -->
+  <rect x="20" y="44" width="900" height="146" rx="10" fill="#fff7ed" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="34" y="66" font-size="13" font-weight="700" fill="#c2410c">Unit 1 · WPS01 · 1h30 · 64分</text>
+
+  <!-- A -->
+  <rect x="40" y="80" width="410" height="94" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="54" y="100" font-size="13" font-weight="700" fill="#2563eb">Topic A · Social（Section A · 26分）</text>
+  <text x="54" y="120" font-size="11.5" fill="#334155"> obed 服从 · conformity 从众 · minority influence 少数派影响</text>
+  <text x="54" y="138" font-size="11.5" fill="#475569"> method：自陈报告 + 抽样 + List A 定量</text>
+  <text x="54" y="156" font-size="11.5" fill="#475569"> studies：Moscovici 1969 / Burger 2009 / Yi Huang 或 Haun</text>
+  <text x="54" y="168" font-size="11.5" font-weight="700" fill="#1d4ed8"> practical：问卷 → 描述统计 + 主题分析</text>
+
+  <!-- B -->
+  <rect x="470" y="80" width="430" height="94" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="484" y="100" font-size="13" font-weight="700" fill="#dc2626">Topic B · Cognitive（Section B · 26分）</text>
+  <text x="484" y="120" font-size="11.5" fill="#334155"> MSM 多重存储 · WMM 工作记忆 · reconstructive memory 重构记忆</text>
+  <text x="484" y="138" font-size="11.5" fill="#475569"> method：实验与实验设计 + List B 推断统计</text>
+  <text x="484" y="156" font-size="11.5" fill="#475569"> studies：Bartlett 1932 / Schmolck 2002 / Darling 或 Sacchi</text>
+  <text x="484" y="168" font-size="11.5" font-weight="700" fill="#b91c1c"> practical：重复测量实验 → Wilcoxon</text>
+
+  <!-- arrow down -->
+  <path d="M470 190 L470 214" stroke="#94a3b8" stroke-width="2"/>
+  <polygon points="470,220 465,210 475,210" fill="#94a3b8"/>
+
+  <!-- Unit 2 band -->
+  <rect x="20" y="226" width="900" height="150" rx="10" fill="#f5f3ff" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="34" y="248" font-size="13" font-weight="700" fill="#6d28d9">Unit 2 · WPS02 · 2h · 96分（含 Section C 的 12 分 + 16 分两道大题）</text>
+
+  <!-- C -->
+  <rect x="40" y="262" width="410" height="98" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="54" y="282" font-size="13" font-weight="700" fill="#16a34a">Topic C · Biological（Section A · 34分）</text>
+  <text x="54" y="302" font-size="11.5" fill="#334155"> aggression 攻击：神经元 / 神经递质 / 脑区 / 激素 / 基因</text>
+  <text x="54" y="320" font-size="11.5" fill="#475569"> body rhythms：昼夜节律 / 月经周期 / SAD</text>
+  <text x="54" y="338" font-size="11.5" fill="#475569"> method：相关 + 扫描技术 + 双生子研究</text>
+  <text x="54" y="352" font-size="11.5" font-weight="700" fill="#15803d"> practical：相关研究 → Spearman</text>
+
+  <!-- D -->
+  <rect x="470" y="262" width="430" height="98" rx="8" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="484" y="282" font-size="13" font-weight="700" fill="#7c3aed">Topic D · Learning &amp; Development（Section B · 34分）</text>
+  <text x="484" y="302" font-size="11.5" fill="#334155"> classical / operant conditioning · SLT · Freud 性心理阶段</text>
+  <text x="484" y="320" font-size="11.5" fill="#475569"> therapy：系统脱敏 / 精神分析；method：观察 + 内容分析</text>
+  <text x="484" y="338" font-size="11.5" fill="#475569"> studies：Watson &amp; Rayner 1920 / Capafóns 1998 / Prot 或 Bastian</text>
+  <text x="484" y="352" font-size="11.5" font-weight="700" fill="#6d28d9"> practical：观察 ×2 → 卡方</text>
+</svg>
+
+<h3>6.2 每个 Topic 内部的六个阶段（不是考纲给的排列顺序）</h3>
+<p>考纲里每个 Topic 的顺序是 Content → Methods → Studies → Practical。我建议每个 Topic 内部改成这个节奏：</p>
+
+<table>
+<thead><tr><th class="c">阶段</th><th>做什么</th><th>对应考纲块</th><th>理由</th></tr></thead>
+<tbody>
+<tr><td class="c">① 现象</td><td>先给具体行为/现象（一个真实现场、一段视频、一个小互动）</td><td>Content 的一半</td><td>具体到抽象。Topic A 从 Milgram 数字开始，Topic B 从"你能同时听歌和背单词吗"开始</td></tr>
+<tr><td class="c">② 解释</td><td>理论 / 模型 / 类型学</td><td>Content 的另一半</td><td>有了①的具体素材，模型和抽象概念才有依附</td></tr>
+<tr><td class="c">③ 方法</td><td>这个 Topic 专属的方法 + 配套统计</td><td>Methods</td><td>必须先于⑤学会这套工具，否则实操做不出来</td></tr>
+<tr><td class="c">④ 研究</td><td>Classic study + Contemporary study 各一篇</td><td>Studies</td><td> studies 的作用是"给前面 ③ 的方法一个真实的样板"，放这里让学生看到方法真的长什么样</td></tr>
+<tr><td class="c">⑤ 实操</td><td>课内真做一次 + 写 Procedure / Results / Discussion</td><td>Practical</td><td>evidence：8/11 套卷有一道实操反思题；不做就白丢 4–8 分</td></tr>
+<tr><td class="c">⑥ 考试实验室</td><td>只练题：8 分 essay + 2 道 application + 配套真题</td><td>—</td><td>把上面的知识转成得分能力，这是每 Topic 的收口</td></tr>
+</tbody>
+</table>
+
+<!-- ============ 7 ============ -->
+<h2 id="d7"><span class="num">07</span>32 讲课时表</h2>
+
+<p>默认每讲 90 分钟（连堂）。这是<strong>标准版</strong>；如果课时只有 22 讲，见本节最后的压缩方案。</p>
+
+<h3>Unit 1 · WPS01（18 讲）</h3>
+<table>
+<thead><tr><th class="c">讲</th><th>主题</th><th>Spec 编号</th><th>可用的真题练习（← 真实题号）</th></tr></thead>
+<tbody>
+<tr><td class="c">L1</td><td><strong>第一节：考试地图 + Obedience 定义 + Milgram baseline</strong></td><td class="mono">1.1.2 (partial)</td><td>Jan 2025 Q2(3m) · Jun 2024 Q2(3m) · Jun 2022 Q2(2m)</td></tr>
+<tr><td class="c">L2</td><td>Obedience 理论：Agency Theory + Social Power Theory + 个体差异 / 情境 / 文化</td><td class="mono">1.1.1 / 1.1.3</td><td>Jun 2023 Q2(6m) · Jan 2024 Q3(4m) · Jan 2020 Q1(6m) · Jun 2024 Q5(8m)</td></tr>
+<tr><td class="c">L3</td><td>Milgram 三个变式 + 伦理 + 研究方法复现</td><td class="mono">1.1.2</td><td>Jun 2025 Q1(6m) · Jan 2023 Q1(6m) · Jun 2021 Q2(8m) · Jan 2019 Q2(6m)</td></tr>
+<tr><td class="c">L4</td><td>Conformity：类型与解释 + Asch 与其变式</td><td class="mono">1.1.4 / 1.1.5</td><td>Jan 2021 Q1(6m) · Jan 2023 Q3(8m) · Jan 2019 Q1(4m) · Jun 2021 Q1(4m)</td></tr>
+<tr><td class="c">L5</td><td>Minority influence + <strong>Moscovici classic study</strong> + 从众/少数派的影响因素</td><td class="mono">1.1.6 / 1.1.7 / 1.3.1</td><td>Jan 2025 Q1(6m) · Jun 2025 Q4(4m) · Jun 2021 Q3(4m) · Jan 2020 Q4(8m)</td></tr>
+<tr><td class="c">L6</td><td>Contemporary study：<strong>Burger (2009)</strong> + Yi Huang (2014) 或 Haun (2014)</td><td class="mono">1.3.2 / 1.3.3–4</td><td>Jan 2022 Q1(6m) · Jun 2024 Q1(6m) · Jun 2022 Q1(6m) · Jun 2023 Q9(12m)</td></tr>
+<tr><td class="c">L7</td><td>Methods I：自陈报告（问卷 / 访谈类型 / 开放与封闭题 / 等级量表）+ 抽样 + 一手二手数据 + BPS 伦理</td><td class="mono">1.2.1–1.2.5 / 1.2.9</td><td>Jun 2021 Q5(8m) · Jun 2023 Q3(8m) · Jun 2022 Q4(3m) · Jan 2021 Q4(4m)</td></tr>
+<tr><td class="c">L8</td><td>Methods II：List A 定量（集中趋势 / 离差 / 图表 / 百分比）+ 正态与偏态分布</td><td class="mono">1.2.6 / 1.2.7</td><td>Jan 2025 Q4(3m) · Jun 2025 Q3(2m) · Jan 2022 Q3(2m) · Jan 2020 Q2(8m)</td></tr>
+<tr><td class="c">L9</td><td><strong>Social practical workshop</strong>：设计问卷 → 收集数据 → 描述统计 → 主题分析（含 1.2.8）</td><td class="mono">1.4.1</td><td>Jan 2025 Q3(4m) · Jun 2023 Q3(8m) · Jan 2021 Q2(6m)</td></tr>
+<tr><td class="c">L10</td><td><strong>Social 考试实验室</strong>：Section A 8 分 essay 写法 + 情境 application 题集训</td><td class="mono">Section A 综合</td><td>Jun 2022 Q6(8m Assess) · Jan 2025 Q6(8m Evaluate) · Jun 2025 Q5(8m Discuss)</td></tr>
+<tr><td class="c">L11</td><td>Multi-Store Model（Atkinson &amp; Shiffrin, 1968）</td><td class="mono">2.1.1</td><td>Jan 2025 Q7(4m) · Jun 2024 Q9(8m) · Jan 2024 Q9(8m) · Jun 2023 Q8(8m)</td></tr>
+<tr><td class="c">L12</td><td>Working Memory Model（Baddeley &amp; Hitch, 1974）</td><td class="mono">2.1.2</td><td>Jan 2025 Q8(6m) · Jun 2025 Q6(4m) · Jun 2023 Q5(6m) · Jan 2019 Q5(6m)</td></tr>
+<tr><td class="c">L13</td><td>Reconstructive memory + schema theory + <strong>Bartlett (1932) classic study</strong></td><td class="mono">2.1.3 / 2.3.1</td><td>Jan 2025 Q11(12m) · Jun 2022 Q8(6m) · Jun 2024 Q7(4m) · Jan 2021 Q8(8m)</td></tr>
+<tr><td class="c">L14</td><td>Methods III：实验与实验设计（变量 / 假设 / 三组设计 / 顺序效应 / 控制 / 效度信度 / 需求特征）</td><td class="mono">2.2.1–2.2.10</td><td>Jun 2022 Q10(8m) · Jun 2025 Q7(6m) · Jan 2024 Q7(5m) · Jun 2023 Q7(6m)</td></tr>
+<tr><td class="c">L15</td><td>Methods IV：测量水平 + <strong>Wilcoxon</strong> + 显著性 / 临界值 / 一型二型错误</td><td class="mono">2.2.12</td><td>Jan 2023 Q6(8m) · Jan 2024 Q8(9m) · Jun 2023 Q6(6m) · Jan 2022 Q8(8m)</td></tr>
+<tr><td class="c">L16</td><td>HM 病例研究 + Schmolck (2002) + Darling (2007) 或 Sacchi (2007)</td><td class="mono">2.2.13 / 2.3.2 / 2.3.3–4</td><td>Jan 2025 Q10(8m) · Jan 2019 Q7(4m) · Jan 2024 Q10(12m) · Jun 2021 Q9(8m)</td></tr>
+<tr><td class="c">L17</td><td><strong>Cognitive practical workshop</strong>：重复测量实验室实验 → Wilcoxon → 报告</td><td class="mono">2.4.1</td><td>Jan 2020 Q7(4m) · Jan 2019 Q8(8m) · Jun 2025 Q8(8m)</td></tr>
+<tr><td class="c">L18</td><td><strong>Cognitive 考试实验室</strong>：Section B 8 分 essay + 12 分 Section C</td><td class="mono">Section B + C</td><td>Jun 2024 Q9(8m) · Jan 2025 Q11(12m) · Jun 2022 Q11(12m) · Jan 2020 Q9(12m)</td></tr>
+</tbody>
+</table>
+
+<h3>Unit 2 · WPS02（14 讲）</h3>
+<table>
+<thead><tr><th class="c">讲</th><th>主题</th><th>Spec 编号</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td class="c">L19</td><td>神经元结构与突触传递 + 神经递质</td><td class="mono">3.1.1</td><td rowspan="6">Topic C 已有 <span class="mono">ch15-biological</span> 与 <span class="mono">ch16-body-rhythms</span> 两套课件，可直接挂进这个框架；缺的部分主要是 <strong>Raine / Brendgen 的 studies 精读</strong>与 <strong>相关 + Spearman 实操</strong></td></tr>
+<tr><td class="c">L20</td><td>脑结构与攻击：前额叶皮质 + 边缘系统 + 扫描技术（CAT / PET / fMRI）</td><td class="mono">3.1.2 / 3.2.5</td></tr>
+<tr><td class="c">L21</td><td>激素与基因对攻击的影响 + <strong>Raine (1997)</strong> + Brendgen (2005) / McDermott (2008)</td><td class="mono">3.1.3 / 3.3.1–3.3.4</td></tr>
+<tr><td class="c">L22</td><td>昼夜节律：内部起搏器 vs 外部 zeitgeber（SCN / 褪黑素 / Siffre / DeCoursey）</td><td class="mono">3.1.4 / 3.1.6</td></tr>
+<tr><td class="c">L23</td><td>Infradian 节律：月经周期 + SAD + 光疗 / SSRI</td><td class="mono">3.1.5</td></tr>
+<tr><td class="c">L24</td><td>相关研究 + <strong>Spearman</strong> + 双生子研究 + <strong>Biological practical</strong></td><td class="mono">3.2.1–3.2.7 / 3.4.1</td></tr>
+<tr><td class="c">L25</td><td>经典条件反射 + <strong>Watson &amp; Rayner (1920)</strong></td><td class="mono">4.1.1 / 4.3.1</td><td rowspan="6">Topic D 已有 <span class="mono">d20-conditioning-slt</span>（CC + OC + SLT，含 Skinner 1948）与 <span class="mono">d21-unconscious-personality</span>（Freud）；<strong>还缺：</strong>Freud 性心理阶段、系统脱敏、精神分析疗法、观察法 / 内容分析 / 动物伦理、卡方、Topic D 三个 studies、Topic D 实操</td></tr>
+<tr><td class="c">L26</td><td>操作性条件反射 + Skinner (1948) Superstition in the Pigeon</td><td class="mono">4.1.2</td></tr>
+<tr><td class="c">L27</td><td>Social Learning Theory + Prot (2014) 或 Bastian (2011)</td><td class="mono">4.1.3 / 4.3.3–4</td></tr>
+<tr><td class="c">L28</td><td>Freud 性心理阶段 + 无意识与人格</td><td class="mono">4.1.4</td></tr>
+<tr><td class="c">L29</td><td>疗法：系统脱敏 + 精神分析（含 Capafóns 1998）</td><td class="mono">4.1.5 / 4.1.6 / 4.3.2</td></tr>
+<tr><td class="c">L30</td><td>观察法 + 内容分析 + 个案研究 + 动物伦理 + <strong>卡方</strong> + <strong>Learning practical</strong></td><td class="mono">4.2.1–4.2.8 / 4.4.1</td></tr>
+<tr><td class="c">L31</td><td><strong>Unit 1 全卷模考</strong>：完整一套 WPS01 计时 90 分钟</td><td class="mono">WPS01</td><td>最新两套（Jan 2025 / Jun 2025）留作真模考</td></tr>
+<tr><td class="c">L32</td><td><strong>Unit 2 全卷模考 + 16 分跨 Topic 综合题专项</strong></td><td class="mono">WPS02</td><td>WPS02 的 Section C 有一道同时横跨 Topic C 和 Topic D 的 16 分题，必须单独练</td></tr>
+</tbody>
+</table>
+
+<h4>如果只有 22 讲（压缩方案）</h4>
+<table>
+<thead><tr><th>砍掉 / 合并</th><th>省出</th><th>代价</th></tr></thead>
+<tbody>
+<tr><td>L3 Milgram 变式并入 L2；L6 当代研究并入各自 Classic study 讲次</td><td class="c">2 讲</td><td>Studies 的深度下降，Section C 12 分题会吃力</td></tr>
+<tr><td>L7 + L8 合并成一次「Methods 密集日」（延长到 180 分钟）</td><td class="c">1 讲</td><td>描述统计练习量不够，需要靠 workbook 补足</td></tr>
+<tr><td>L9 Social practical 改为课后完成 + 一次讲评</td><td class="c">1 讲</td><td><span class="no">不建议</span>——8/11 套卷有实操反思题，砍掉等于弃分</td></tr>
+<tr><td>L11–L18 的 Cognitive 模块压缩：MSM + WMM 合并为一讲，L15 Wilcoxon 并入 L17 实操</td><td class="c">2 讲</td><td>WMM/MSM 各自都在 Section C 出过 12 分题，合并后需要靠真题补课</td></tr>
+<tr><td>L19–L30 Topic C / D 各压缩 1 讲（复用已有课件自学 + 讲评）</td><td class="c">3 讲</td><td>可行，因为 Topic C/D 已有现成课件</td></tr>
+<tr><td>L31 / L32 模考改为家庭作业 + 半讲讲评</td><td class="c">1 讲</td><td>失去一次计时训练</td></tr>
+</tbody>
+</table>
+
+<!-- ============ 8 ============ -->
+<h2 id="d8"><span class="num">08</span>练习机制：讲完就能练</h2>
+
+<p>要做到「讲完某个知识点立刻有对应真题」，靠的不是每节课手挑，而是一套固定的结构：</p>
+
+<h3>8.1 已经完成的部分</h3>
+<table>
+<thead><tr><th>资产</th><th>位置</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td>真题原件</td><td class="mono">_edx_papers/wps01/</td><td>11 套 WPS01 的 QP + MS 原 PDF（2019–2025）</td></tr>
+<tr><td>逐题结构化题库</td><td class="mono">_edx_papers/wps01/wps01_questions.json</td><td>117 题，每题带：paper、题号、Section、分值、命令词、<strong>spec 编号标签</strong>、题干全文</td></tr>
+<tr><td>知识点 → 题号映射</td><td>本文档第 07 节课时表最后一列</td><td>每讲直接对应 3–4 道真题</td></tr>
+</tbody>
+</table>
+
+<h3>8.2 每节课的页面结构（沿用你已经验证的模板）</h3>
+<table>
+<thead><tr><th class="c">顺序</th><th>区块</th><th>作用</th></tr></thead>
+<tbody>
+<tr><td class="c">1</td><td>术语定义（课本 KEY TERMS 原文 + 大白话 + 例子）</td><td>先教后用，绝不把定义寄存到末尾 glossary</td></tr>
+<tr><td class="c">2</td><td>结构图 / 矩阵 / 流程（SVG）</td><td>按概念本质选：维度交叉 → 矩阵；时间序列 → 流程；特征清单 → 卡片表</td></tr>
+<tr><td class="c">3</td><td>中文理解框 + 生活化类比</td><td>学生基础较弱，抽象概念必须配中文框</td></tr>
+<tr><td class="c">4</td><td><strong>互动练习</strong>（判定器 / 分类器 / 填空）</td><td>localStorage 保存作答</td></tr>
+<tr><td class="c">5</td><td><strong>Exam Practice：本讲对应的 3–4 道真题</strong></td><td>题干 + 输入框 + 「看评分要点」按钮（要点来自真实 mark scheme）</td></tr>
+<tr><td class="c">6</td><td>配套 <span class="mono">notes.html</span> 印刷版 workbook（A4 PDF）</td><td>填空 + 答题线 + 答案速查页</td></tr>
+</tbody>
+</table>
+
+<h3>8.3 还差的一步：统一的 Past Paper Index 页</h3>
+<p>建议做一个独立页面，左边是 11 套卷的列表，右边可按 Topic / 命令词 / 分值筛选，点开看到完整题干与配套 mark scheme 要点。这样一个页面同时服务三个用途：</p>
+<ul>
+<li>学生自主刷某个高频考点（比如「我 WMM 弱」→ 筛出全部 11 道 WMM 题）；</li>
+<li>课后作业的题源（老师直接发筛选链接）；</li>
+<li>总复习时按卷子刷（备考最后一月）。</li>
+</ul>
+
+<!-- ============ 9 ============ -->
+<h2 id="d9"><span class="num">09</span>需要你拍板的 5 件事</h2>
+
+<div class="decision">
+  <div class="q">1 · 总课时是多少？</div>
+  <div class="a">上面的课时表按 <strong>32 讲 × 90 分钟</strong>设计。如果你的实际排课是 24 讲或 20 讲，我按第 07 节末尾的压缩方案调整，但要你确认哪些 Topic 可以砍深度。</div>
+</div>
+
+<div class="decision">
+  <div class="q">2 · Topic A 的 <span class="mono">ch1-obedience</span> 怎么处理？</div>
+  <div class="a">现有 <span class="mono">ch1-obedience</span> 已经覆盖了 1.1.1–1.1.3。三个选项：
+  <br><strong>(a)</strong> 保留，新增 <span class="mono">a2-conformity</span> 等其余章节与之并列（编号不统一）；
+  <br><strong>(b)</strong> 把 ch1 按新的 L1–L3 结构重拆（编号统一为 a1 / a2 / a3，内容与现有最新版一致，从最新 commit 起做）；
+  <br><strong>(c)</strong> ch1 原样不动，只按新结构增补 conformity 之后的章节。
+  <br>我倾向 <strong>(b)</strong>，理由是课时表要能直接对应 courseware 目录，编号混乱会让后续接力变贵。</div>
+</div>
+
+<div class="decision">
+  <div class="q">3 · 四个 Topic 的「当代研究二选一」选哪边？</div>
+  <div class="a">必须现在定，因为整个班的教材、题库、作业都围绕选定的那一篇：
+  <br>Topic A：<strong>Yi Huang (2014)</strong> 还是 <strong>Haun (2014)</strong>｜Topic B：<strong>Darling (2007)</strong> 还是 <strong>Sacchi (2007)</strong>｜Topic C：<strong>McDermott (2008)</strong> 还是 <strong>Hoefelmann (2006)</strong>｜Topic D：<strong>Prot (2014)</strong> 还是 <strong>Bastian (2011)</strong>。
+  <br>真题里两者都出现过（例如 Yi Huang 2 处 / Haun 0 处；Darling+Sacchi 共 3 处），选定后我把另一篇从题库里标为「不练」。</div>
+</div>
+
+<div class="decision">
+  <div class="q">4 · 本轮先做哪些讲？</div>
+  <div class="a">建议先把 <strong>L1（第一课）+ L4（Conformity）+ L7（Methods I）</strong> 三讲做出来跑一轮课堂：
+  <br>· L1 是新流程的第一个样本，上完才知道地图那 20 分钟够不够；
+  <br>· L4 是 Topic A 最大的缺口（conformity 目前完全没有课件）；
+  <br>· L7 的方法课决定了后面每个 Topic 实操能不能落地。
+  <br>跑完一轮反馈后我再批量做 L5–L10。你要一次性做完 Topic A 全 10 讲也可以，那就等 <strong>上面的 (2)(3) 两题先定了</strong>。</div>
+</div>
+
+<div class="decision">
+  <div class="q">5 · 每讲是否都配一本印刷版 workbook（notes.html + PDF）？</div>
+  <div class="a">前面几章（ch7 / ch8 / ch16–21 / d20 / d21）都是「教学页 + workbook PDF」双份。双份的质量最好，但产出成本大概翻倍。是否继续沿用，还是本轮先出教学页、workbook 留待二轮？</div>
+</div>
+
+<div class="foot">
+  Edexcel IAL Psychology (XPS01 / YPS01) · Specification Issue 5 · AS 课程设计总蓝图<br>
+  数据来源：考纲 PDF ＋ WPS01 真题 11 套（2019 Jan – 2025 Jun）＋ WPS02 真题 5 套
+</div>
+
+</div>
+</body>
+</html>

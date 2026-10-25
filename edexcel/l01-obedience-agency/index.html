@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 1 · Obedience（服从）— Agency Theory</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.activity-box { background: #f0f4f8; border: 2px solid #90a4ae; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+.activity-box h4 { color: #546e7a; margin-top: 0; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .activity-box { background: #1e293b; border-color: #475569; }
+body.dark .activity-box h4 { color: #94a3b8; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic A · Chapter 1 — Obedience &amp; Agency Theory</span>
+  </div>
+  <span class="nav-pill">🧑‍🤝‍🧑 Social Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">Chapter 1 · Contents</div>
+        <div class="sb-header-sub">Obedience &amp; Agency Theory</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">Before we start</li>
+        <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+        <li class="sb-item"><a href="#s2">2. What Is Psychology?</a></li>
+        <li class="sb-item"><a href="#s3">3. Theory, Study, Methodology</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Social influence</li>
+        <li class="sb-item"><a href="#s4">4. Where Social Psychology Began</a></li>
+        <li class="sb-item"><a href="#s5">5. Three Forms of Social Influence</a></li>
+        <li class="sb-item"><a href="#s6">6. Obedience</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Agency theory</li>
+        <li class="sb-item"><a href="#s7">7. Two States of Mind</a></li>
+        <li class="sb-item"><a href="#s8">8. The Evidence</a></li>
+        <li class="sb-item"><a href="#s9">9. Evaluating the Theory</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Practice</li>
+        <li class="sb-item"><a href="#s10">10. Checkpoint</a></li>
+        <li class="sb-item"><a href="#s11">11. Exam Lab</a></li>
+        <li class="sb-item"><a href="#s12">12. Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>CHAPTER 1 · OBEDIENCE<br><span style="font-size:0.65em">服从</span></h1>
+  <div class="subtitle">Social Psychology · Agency theory（代理理论）</div>
+  <div class="meta">
+    <span class="badge">🧠 Core idea: social influence</span>
+    <span class="badge">🔑 Key theory: agency theory</span>
+    <span class="badge">📖 Textbook: Introduction + Chapter 1</span>
+  </div>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started</h2>
+
+  <div class="xp-block">
+    <h4>📚 The library chair <span class="xp-badge">Textbook activity</span></h4>
+    <p class="xp-intro">You are in the library studying for an important examination. There are a few other students in the library and the librarian asks you if you would mind moving to another area of the library, because your chair is needed in the hall for an important lecture. <strong>Do you move?</strong></p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="libChoice('move')">I move</button>
+      <button class="xp-btn" onclick="libChoice('stay')">I stay where I am</button>
+    </div>
+    <div id="libResult" class="xp-result"></div>
+  </div>
+
+  <p>Whichever you picked, the interesting part is not the answer but the <strong>reasons</strong> behind it. Tick the things that would change your decision:</p>
+
+  <div class="xp-block">
+    <h4>🔍 What changes the answer?</h4>
+    <div class="xp-checkbox"><input type="checkbox" class="lib-f" id="f1" value="uniform"><label for="f1">The librarian is wearing a staff uniform and a name badge.</label></div>
+    <div class="xp-checkbox"><input type="checkbox" class="lib-f" id="f2" value="others"><label for="f2">You notice that three other students have already moved.</label></div>
+    <div class="xp-checkbox"><input type="checkbox" class="lib-f" id="f3" value="reason"><label for="f3">The librarian explains why the chair is needed.</label></div>
+    <div class="xp-checkbox"><input type="checkbox" class="lib-f" id="f4" value="stranger"><label for="f4">The request comes from another student instead of the librarian.</label></div>
+    <div class="xp-controls"><button class="xp-btn" onclick="libFactors()">Show what psychology notices</button></div>
+    <div id="libFactorsResult" class="xp-result"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>这一节的重点：</strong>你刚才列出的每一个理由，心理学都有一个名字。<strong>who asks</strong>（谁开口）指向服从 obedience，<strong>what everyone else does</strong>（别人怎么做）指向从众 conformity。这一章研究第一件事：当开口的人是<strong>权威</strong>时，我们为什么会照做。
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. What Is Psychology?</h2>
+
+  <div class="note-box">
+    <h4>🌳 One garden, several ways of looking</h4>
+    <p>Imagine a garden. A biologist studies the plants, insects and soil. An artist studies the colours, shapes and light. A child sees somewhere to play. A poet sees beauty. The garden has not changed — what changes is <strong>the way of looking at it</strong>.</p>
+    <p>Psychology works the same way. One person, one behaviour, and several different explanations. Each way of explaining behaviour is called an <strong>approach</strong>（研究取向）. Psychology studies behaviour from four main approaches.</p>
+  </div>
+
+  <table>
+    <tr><th style="width:130px">Approach</th><th>How it explains behaviour</th><th style="width:230px">Methods it typically uses</th></tr>
+    <tr><td>Biological<br><span style="font-weight:400;color:#64748b">生物取向</span></td><td>Behaviour is explained by biological structures and processes: the brain, the nervous system, hormones and genes.</td><td>Experiments, brain scans, twin studies</td></tr>
+    <tr><td>Cognitive<br><span style="font-weight:400;color:#64748b">认知取向</span></td><td>Behaviour is explained by internal mental processes: memory, perception, attention, thinking and language.</td><td>Experiments, case studies</td></tr>
+    <tr><td>Learning<br><span style="font-weight:400;color:#64748b">学习取向</span></td><td>Behaviour is explained by experience: what we associate, what we are rewarded or punished for, and what we observe others do.</td><td>Experiments, observations</td></tr>
+    <tr><td>Social<br><span style="font-weight:400;color:#64748b">社会取向</span></td><td>Behaviour is explained by the presence of others — or by their real or imagined pressure.</td><td>Experiments, observations, questionnaires, interviews, correlations</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>我们现在站在哪个角？</strong>Social approach。它不问"你脑子里发生了什么"，而问"<strong>谁在你身边、谁在对你说话</strong>"。图书馆里的那把椅子，用生物取向解释会很荒谬，用社会取向解释就很自然 —— 这就是取向的意义：先选镜头，再拍照片。
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Theory, Study, Methodology</h2>
+  <p>Every topic in this course is built from the same three pieces. Learn these three words once and the rest of the course becomes much easier to organise.</p>
+
+  <div class="keyterm-box">
+    <p><span class="kt">theory（理论）</span> — a set of principles that attempt to explain behaviour.</p>
+    <p><span class="kt">study（研究）</span> — a piece of research carried out to test a theory, or to explore behaviour.</p>
+    <p><span class="kt">methodology（方法学）</span> — the method used to collect data, and how the study is designed.</p>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Theory, study and methodology cycle">
+      <defs>
+        <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#ea580c"/>
+        </marker>
+      </defs>
+      <rect x="30" y="45" width="170" height="62" rx="10" fill="#eff6ff" stroke="#1e3a5f" stroke-width="2"/>
+      <text x="115" y="70" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a5f">Theory</text>
+      <text x="115" y="88" text-anchor="middle" font-size="12" fill="#334155">a proposed explanation</text>
+      <rect x="255" y="45" width="170" height="62" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="340" y="70" text-anchor="middle" font-size="15" font-weight="700" fill="#c2410c">Study</text>
+      <text x="340" y="88" text-anchor="middle" font-size="12" fill="#334155">research that tests it</text>
+      <rect x="480" y="45" width="170" height="62" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+      <text x="565" y="70" text-anchor="middle" font-size="15" font-weight="700" fill="#6d28d9">Methodology</text>
+      <text x="565" y="88" text-anchor="middle" font-size="12" fill="#334155">how data is collected</text>
+      <line x1="200" y1="76" x2="255" y2="76" stroke="#ea580c" stroke-width="2" marker-end="url(#ar)"/>
+      <text x="224" y="66" text-anchor="middle" font-size="11" fill="#c2410c">tested by</text>
+      <line x1="425" y1="76" x2="480" y2="76" stroke="#ea580c" stroke-width="2" marker-end="url(#ar)"/>
+      <text x="449" y="66" text-anchor="middle" font-size="11" fill="#c2410c">using</text>
+      <path d="M 565 107 C 565 138 115 138 115 111" fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+      <text x="340" y="142" text-anchor="middle" font-size="11" fill="#c2410c">evidence supports, weakens or changes the theory</text>
+    </svg>
+    <div class="figure-caption">Figure 1 · How the three pieces fit together</div>
+  </div>
+
+  <div class="blue-box">
+    <h4>📌 What you are asked to do with each one</h4>
+    <ul>
+      <li><strong>Describe</strong> the theory — say what it claims.</li>
+      <li><strong>Evaluate</strong> it — judge it with evidence: what supports it, what it cannot explain.</li>
+      <li><strong>Use</strong> it — apply it to a situation you have never seen before.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Where Social Psychology Began</h2>
+  <p>Social psychology did not start in a laboratory. It started with a crowd.</p>
+  <ul>
+    <li><strong>Gustave Le Bon (1895)</strong> watched how people behave in <strong>crowds</strong> and described how individuals seem to lose themselves in a group. His work was observational and descriptive rather than scientific.</li>
+    <li><strong>Floyd Allport (1924)</strong> argued that social psychology should use <strong>experimental methods</strong> — that claims about how people influence each other should be tested, not just described.</li>
+  </ul>
+  <p>That argument was won. Social psychology today studies how our thoughts, feelings and behaviour are influenced by the real or imagined presence of others, and it does so with experiments, observations and self-reports.</p>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Three Forms of Social Influence</h2>
+
+  <div class="keyterm-box">
+    <p><span class="kt">social influence（社会影响）</span> — how our opinions, beliefs and behaviour are influenced by the real or imagined pressure of an individual or a group.</p>
+  </div>
+
+  <p>Social influence comes in three forms. They differ in one thing only: <strong>who influences whom</strong>.</p>
+
+  <table>
+    <tr><th style="width:170px">Form</th><th style="width:150px">Who influences whom</th><th>Definition</th><th style="width:220px">Everyday example</th></tr>
+    <tr><td>Conformity<br><span style="font-weight:400;color:#64748b">从众</span></td><td>a majority → you</td><td>A form of social influence where our opinions, beliefs and/or behaviour are influenced by a <strong>majority</strong>.</td><td>Everyone in your class wears the same trainers, so you buy the same pair.</td></tr>
+    <tr><td>Minority influence<br><span style="font-weight:400;color:#64748b">少数派影响</span></td><td>a minority → the majority</td><td>A form of social influence where the opinions, beliefs and/or behaviour of the <strong>majority</strong> are influenced by a <strong>minority</strong> (an individual or a small group).</td><td>One student starts a recycling habit; slowly the whole form follows.</td></tr>
+    <tr><td>Obedience<br><span style="font-weight:400;color:#64748b">服从</span></td><td>an authority figure → you</td><td><strong>Complying to the orders of an authority figure.</strong></td><td>A lifeguard blows the whistle and you get out of the pool.</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>三者的分界线：</strong>看"压力来自谁"。来自<strong>大多数人</strong>是 conformity；来自<strong>少数人</strong>却改变了多数人是 minority influence；来自<strong>有权力的人</strong>是 obedience。考试给情境时，先找"那个人凭什么让你做" —— 凭人多还是凭职位 —— 答案就分出来了。
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Obedience</h2>
+
+  <div class="keyterm-box">
+    <p><span class="kt">obedience（服从）</span> — complying to the orders of an authority figure.</p>
+    <p><span class="kt">hierarchical（等级制的）</span> — a system of social organisation where there are leaders and those who follow.</p>
+    <p><span class="kt">socialisation（社会化）</span> — the process by which we learn the rules and norms of society through socialising agents, such as parents and teachers.</p>
+  </div>
+
+  <h3>We are trained to obey</h3>
+  <p>Most of us live in a <strong>hierarchical</strong> society: there are people who give instructions and people who follow them. From early childhood, <strong>socialisation</strong> teaches us the rule — parents, teachers and police officers give instructions, and we are rewarded for obeying and corrected for refusing. By adulthood, obeying is close to a habit.</p>
+
+  <div class="cn-note">
+    <strong>为什么这件事值得学？</strong>训练出来的服从让社会能运转 —— 红灯停、排队、交作业，都靠它。但同一套机制也解释了最黑暗的事：当发命令的人要你伤害别人时，你还会照做吗？
+  </div>
+
+  <h3>The dark side</h3>
+  <p>In the twentieth century, ordinary people in hierarchical societies — soldiers, clerks, railway workers — took part in the systematic murder of millions. When the perpetrators were put on trial, the same defence was repeated again and again: <strong>"I was only following orders."</strong></p>
+  <p>Stanley Milgram, a psychologist in the United States, wanted to know whether this defence means anything. His question was not "are these people evil?" but:</p>
+  <div class="warn-box">
+    <h4>❓ Milgram's question</h4>
+    <p>How far will an ordinary person go when someone in authority tells them to hurt another person?</p>
+  </div>
+  <p>To answer it, Milgram ran a series of experiments — and then proposed <strong>agency theory</strong> to explain what he saw.</p>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Agency Theory: Two States of Mind</h2>
+
+  <p>Milgram's agency theory says that we can be in one of two psychological states, and that obedience happens when we move from the first into the second.</p>
+
+  <div class="keyterm-box">
+    <p><span class="kt">autonomy（自主）</span> — acting on one's own free will, exercising self-determination.</p>
+    <p><span class="kt">agency（代理）</span> — when we act as an agent for another, for example when we obey orders.</p>
+    <p><span class="kt">moral strain（道德紧张）</span> — experiencing anxiety because you are asked to do something that goes against your moral judgement.</p>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Agency theory flow diagram">
+      <defs>
+        <marker id="ar2" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#ea580c"/>
+        </marker>
+      </defs>
+      <rect x="150" y="14" width="380" height="56" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="340" y="38" text-anchor="middle" font-size="14" font-weight="700" fill="#c2410c">Childhood socialisation in a hierarchical society</text>
+      <text x="340" y="57" text-anchor="middle" font-size="12" fill="#334155">we are rewarded for obeying, corrected for refusing</text>
+      <line x1="250" y1="70" x2="180" y2="110" stroke="#ea580c" stroke-width="2" marker-end="url(#ar2)"/>
+
+      <rect x="40" y="110" width="250" height="86" rx="10" fill="#eff6ff" stroke="#1e3a5f" stroke-width="2"/>
+      <text x="165" y="134" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a5f">Autonomous state</text>
+      <text x="165" y="156" text-anchor="middle" font-size="11.5" fill="#334155">acting on your own free will</text>
+      <text x="165" y="173" text-anchor="middle" font-size="11.5" fill="#334155">guided by your own conscience</text>
+      <text x="165" y="190" text-anchor="middle" font-size="11.5" fill="#334155">you carry the responsibility</text>
+
+      <rect x="390" y="110" width="250" height="86" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="515" y="134" text-anchor="middle" font-size="14" font-weight="700" fill="#c2410c">Agentic state</text>
+      <text x="515" y="156" text-anchor="middle" font-size="11.5" fill="#334155">acting as an agent for another</text>
+      <text x="515" y="173" text-anchor="middle" font-size="11.5" fill="#334155">responsibility passed to the authority</text>
+      <text x="515" y="190" text-anchor="middle" font-size="11.5" fill="#334155">you only carry out the order</text>
+
+      <text x="340" y="138" text-anchor="middle" font-size="11.5" fill="#c2410c">an authority figure</text>
+      <text x="340" y="152" text-anchor="middle" font-size="11.5" fill="#c2410c">gives an order</text>
+      <line x1="290" y1="165" x2="390" y2="165" stroke="#ea580c" stroke-width="2" marker-end="url(#ar2)"/>
+      <text x="340" y="185" text-anchor="middle" font-size="11" fill="#64748b">agentic shift</text>
+
+      <line x1="515" y1="196" x2="515" y2="232" stroke="#ea580c" stroke-width="2" marker-end="url(#ar2)"/>
+      <rect x="390" y="232" width="250" height="56" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+      <text x="515" y="256" text-anchor="middle" font-size="14" font-weight="700" fill="#6d28d9">Moral strain</text>
+      <text x="515" y="275" text-anchor="middle" font-size="11.5" fill="#334155">anxiety: the order clashes with your morals</text>
+    </svg>
+    <div class="figure-caption">Figure 2 · Agency theory: the agentic shift and moral strain</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>两态怎么理解：</strong>自主态是"我自己决定，出了事我负责"；代理态是"我只是替他执行，出事他负责"。这个把责任交给别人的动作叫 <strong>displacement of responsibility（责任转移）</strong>，是代理态的核心 —— 人不是突然变坏，而是悄悄把"负责的人"换掉了。
+  </div>
+
+  <div class="note-box">
+    <h4>🔁 Why the shift is so easy</h4>
+    <p>Because socialisation has already prepared us for it. A hierarchical society trains the move long before anyone gives us a harmful order: teacher says sit down, coach says run, manager says sign. The agentic state is not a rare state of mind — for most of us it is a well-rehearsed one.</p>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. The Evidence</h2>
+
+  <div class="keyterm-box">
+    <p><span class="kt">confederate（同谋者）</span> — a researcher or actor who pretends to be a participant in a study.</p>
+  </div>
+
+  <p>In Milgram's first experiment, participants believed they were taking part in a study about learning and memory. Each participant was given the role of <em>teacher</em> and was told to give an electric shock to a <em>learner</em> every time the learner made a mistake, increasing the shock each time. The learner was in another room — and the learner was a <strong>confederate</strong>. No real shocks were given, but the participant believed they were.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Shock scale results of Milgram's first experiment">
+      <defs>
+        <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#86efac"/>
+          <stop offset="55%" stop-color="#fcd34d"/>
+          <stop offset="100%" stop-color="#ef4444"/>
+        </linearGradient>
+      </defs>
+      <text x="433" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#166534">every participant (100%)</text>
+      <text x="433" y="36" text-anchor="middle" font-size="12" fill="#166534">reached 300 V</text>
+      <line x1="433" y1="42" x2="433" y2="64" stroke="#166534" stroke-width="2"/>
+      <text x="640" y="20" text-anchor="end" font-size="12" font-weight="700" fill="#991b1b">65% went all the way</text>
+      <text x="640" y="36" text-anchor="end" font-size="12" fill="#991b1b">to 450 V</text>
+      <line x1="640" y1="42" x2="640" y2="64" stroke="#991b1b" stroke-width="2"/>
+      <rect x="40" y="64" width="600" height="16" rx="4" fill="url(#grad)" stroke="#94a3b8" stroke-width="1"/>
+      <text x="40" y="98" text-anchor="start" font-size="11.5" fill="#334155">15 V — Slight shock</text>
+      <text x="640" y="98" text-anchor="end" font-size="11.5" fill="#991b1b">Danger: severe shock — XXX</text>
+      <text x="340" y="118" text-anchor="middle" font-size="11.5" font-weight="600" fill="#334155">the shock generator: 30 switches, 15 V apart</text>
+    </svg>
+    <div class="figure-caption">Figure 3 · How far participants went in Milgram's first experiment</div>
+  </div>
+
+  <h3>Signs of moral strain</h3>
+  <p>The theory predicts that people caught between "I must obey" and "this is wrong" will show distress — and that is what was observed:</p>
+  <ul>
+    <li><strong>nervous laughter</strong> while giving the shocks</li>
+    <li><strong>sweating, trembling and stuttering</strong></li>
+    <li>three participants had <strong>seizures</strong></li>
+    <li>in the debrief afterwards, participants rated the shocks they believed they had given as extremely painful — and said the <strong>experimenter</strong>, not themselves, was responsible</li>
+  </ul>
+
+  <div class="cn-note">
+    <strong>这条证据为什么关键：</strong>如果人真的完全进入了代理态、内心毫无波澜，我们不应该看到笑、抖、抽搐这些反应。正因为看到了，Milgram 才说：人不是"变成了坏人"，而是<strong>一边照做一边承受冲突</strong> —— 这就是 moral strain。
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Evaluating Agency Theory</h2>
+
+  <h3>Support</h3>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Research support: the numbers</h4>
+      <p>In Milgram's first experiment, <strong>65%</strong> of participants continued to the highest shock level. Most people did make the agentic shift.</p>
+      <p><span class="syl-tag ev">Evidence</span> a theory is stronger when the thing it predicts is what actually happens.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Moral strain was visible</h4>
+      <p>Nervous laughter, sweating, trembling and seizures were observed. Agency theory predicts exactly this inner conflict.</p>
+      <p><span class="syl-tag ev">Evidence</span> the theory explains a detail it was not built to explain.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Displacement of responsibility</h4>
+      <p>In the debrief, participants said the experimenter was responsible for what happened, not themselves — the defining feature of the agentic state.</p>
+      <p><span class="syl-tag ev">Evidence</span> the mechanism itself was reported by the participants.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Real-life support</h4>
+      <p>At the My Lai massacre, Lieutenant William Calley and his men killed unarmed civilians; his defence was that he was <strong>following orders</strong>.</p>
+      <p><span class="syl-tag app">Application</span> the theory explains obedience outside the laboratory too.</p>
+    </div>
+  </div>
+
+  <h3>Criticisms</h3>
+  <div class="compare-grid">
+    <div class="compare-card red">
+      <h4>It cannot explain individual differences</h4>
+      <p><strong>35%</strong> of Milgram's participants refused to continue. If the agentic shift were automatic, this should not happen. Some people resist: one participant, known as <strong>Brandt</strong>, had grown up in Nazi Germany and refused to obey.</p>
+      <p><span class="syl-tag crit">Individual differences</span> <strong>Why it matters:</strong> personality and upbringing must be part of the explanation, not just the state you are in.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>It ignores situational factors</h4>
+      <p><strong>Latané (1981)</strong> argued that obedience depends on the <strong>strength</strong>, <strong>immediacy</strong> and <strong>number</strong> of the sources of influence. Whether the authority is close by, important to you, and how many people are pressing you matters more than a shift of state.</p>
+      <p><span class="syl-tag crit">Situational factors</span> <strong>Why it matters:</strong> the same person obeys in one setting and refuses in another, so the setting has to be explained.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>It is reductionist</h4>
+      <p><strong>reductionist（还原论的）</strong> — a theory that explains a complex behaviour by isolated factors, or a single cause, which ignores other important factors; such a theory can be argued to be simplistic. Agency theory explains obedience with one mechanism and leaves out culture, personality, mood and the situation.</p>
+      <p><span class="syl-tag crit">Reductionism</span> <strong>Why it matters:</strong> a single-cause explanation will always fit some cases badly.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Useful application</h4>
+      <p>If obedience comes from passing responsibility upwards, then organisations can be designed to hand responsibility back: clear rules that a harmful order can be refused, and protection for people who report one — <strong>whistleblowing</strong> — instead of treating refusal as disobedience.</p>
+      <p><span class="syl-tag app">Application</span> understanding <strong>malevolent authority</strong> — someone who uses their authority for harmful purposes — helps institutions limit the damage it does.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>评价的写法套路：</strong>每一条批评都由两块组成 —— <strong>说什么不对</strong>（理论解释不了个体差异）+ <strong>为什么这是个问题</strong>（因为 35% 的人拒绝了，个体差异必须被解释）。只写第一块只能算说了一半；两块都写完整，才是评价题要的答案。
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Checkpoint</h2>
+
+  <div class="checkpoint">
+    <h3>✅ Task 1 — Which state of mind?</h3>
+    <p>Read each situation and decide. One of them is <strong>not</strong> obedience at all.</p>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Situation A</div>
+      <div class="xp-case-desc">Your coach tells the team to run ten laps. You are already exhausted, but you run them because she told you to.</div>
+      <button class="q-option" onclick="stateAns(this,'auto','A')">Autonomous state</button>
+      <button class="q-option" onclick="stateAns(this,'agent','A')">Agentic state</button>
+      <button class="q-option" onclick="stateAns(this,'other','A')">Neither — not obedience</button>
+      <div id="resA" class="xp-result"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Situation B</div>
+      <div class="xp-case-desc">You decide to revise on Sunday evening because you have decided that your own grade matters to you.</div>
+      <button class="q-option" onclick="stateAns(this,'auto','B')">Autonomous state</button>
+      <button class="q-option" onclick="stateAns(this,'agent','B')">Agentic state</button>
+      <button class="q-option" onclick="stateAns(this,'other','B')">Neither — not obedience</button>
+      <div id="resB" class="xp-result"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Situation C</div>
+      <div class="xp-case-desc">Everyone in your class wears the same trainers, so you buy the same pair.</div>
+      <button class="q-option" onclick="stateAns(this,'auto','C')">Autonomous state</button>
+      <button class="q-option" onclick="stateAns(this,'agent','C')">Agentic state</button>
+      <button class="q-option" onclick="stateAns(this,'other','C')">Neither — not obedience</button>
+      <div id="resC" class="xp-result"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Situation D</div>
+      <div class="xp-case-desc">A police officer signals you to stop the car. You stop, even though you are already late.</div>
+      <button class="q-option" onclick="stateAns(this,'auto','D')">Autonomous state</button>
+      <button class="q-option" onclick="stateAns(this,'agent','D')">Agentic state</button>
+      <button class="q-option" onclick="stateAns(this,'other','D')">Neither — not obedience</button>
+      <div id="resD" class="xp-result"></div>
+    </div>
+  </div>
+
+  <div class="checkpoint">
+    <h3>✅ Task 2 — Five questions</h3>
+
+    <div class="q-row">
+      <div class="q-stem">1. Obedience is best defined as…</div>
+      <label class="q-opt"><input type="radio" name="q1" value="a"> behaviour influenced by a majority</label>
+      <label class="q-opt"><input type="radio" name="q1" value="b"> complying to the orders of an authority figure</label>
+      <label class="q-opt"><input type="radio" name="q1" value="c"> a majority being influenced by a small minority</label>
+      <div id="fb1" class="q-fb"></div>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">2. In the agentic state, a person…</div>
+      <label class="q-opt"><input type="radio" name="q2" value="a"> acts on their own free will and keeps responsibility</label>
+      <label class="q-opt"><input type="radio" name="q2" value="b"> acts for someone else and passes responsibility to the authority</label>
+      <label class="q-opt"><input type="radio" name="q2" value="c"> feels no conflict at all about what they are doing</label>
+      <div id="fb2" class="q-fb"></div>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">3. True or false? Moral strain is the anxiety a person feels when an order goes against their own moral judgement.</div>
+      <label class="q-opt"><input type="radio" name="q3" value="t"> True</label>
+      <label class="q-opt"><input type="radio" name="q3" value="f"> False</label>
+      <div id="fb3" class="q-fb"></div>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">4. In Milgram's first experiment, what proportion of participants continued to the highest shock level?</div>
+      <label class="q-opt"><input type="radio" name="q4" value="a"> 35%</label>
+      <label class="q-opt"><input type="radio" name="q4" value="b"> 65%</label>
+      <label class="q-opt"><input type="radio" name="q4" value="c"> 100%</label>
+      <div id="fb4" class="q-fb"></div>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">5. Which criticism says that agency theory explains a complex behaviour using one single cause?</div>
+      <label class="q-opt"><input type="radio" name="q5" value="a"> it ignores individual differences</label>
+      <label class="q-opt"><input type="radio" name="q5" value="b"> it is reductionist</label>
+      <label class="q-opt"><input type="radio" name="q5" value="c"> it cannot be applied to real life</label>
+      <div id="fb5" class="q-fb"></div>
+    </div>
+
+    <div class="xp-controls"><button class="xp-btn" onclick="checkQuiz()">Mark my answers</button></div>
+    <div id="quizResult" class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Exam Lab</h2>
+
+  <div class="exam-tip">
+    <h4>🧭 IDEA — how to answer a question with a scenario</h4>
+    <ul>
+      <li><strong>I — Identify:</strong> decide which piece of psychology the scenario is about (here: agency theory, and the two states).</li>
+      <li><strong>E — Explain:</strong> state that piece of psychology accurately, using its terms.</li>
+      <li><strong>A — Apply:</strong> link it to the <strong>details</strong> of the scenario — name the people, say who is the authority, say what the person actually did.</li>
+    </ul>
+    <p>An answer that only repeats the theory and never touches the scenario earns nothing, even if the theory is described perfectly.</p>
+  </div>
+
+  <div class="exam-practice">
+    <h3>✍️ Practice 1 — 2 marks</h3>
+    <p>Brandon works in a warehouse. The manager came to speak to him and instructed him to load 10 boxes of goods onto a collection van by 11:00 am. Brandon followed the instructions and completed the task. The manager had to leave the warehouse for a meeting at another site. He emailed Brandon to ask him to unpack five boxes by 3:00 pm. Brandon did not complete this task on time, finishing the unpacking at 4:00 pm.</p>
+    <p><strong>Describe, using agency theory, why Brandon may have behaved in this way.</strong></p>
+    <textarea class="answer-box" id="p1" placeholder="Write two applied points here..."></textarea>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('m1')">Show a model answer</button></div>
+    <div id="m1" class="xp-result">
+      <p><span class="xp-verdict">Model answer</span></p>
+      <ul>
+        <li>Brandon loaded the boxes because he was in the <strong>agentic state</strong> in the presence of his manager, an authority figure who could give him an instruction, and he passed responsibility for the task to the manager.</li>
+        <li>When the instruction arrived by email instead, the manager was no longer <strong>immediate</strong>: without the authority figure present, Brandon slipped back towards the <strong>autonomous state</strong> and did not finish unpacking on time.</li>
+      </ul>
+      <p><strong>Why this scores:</strong> each point names the state <em>and</em> ties it to a detail of the scenario (the manager present / the manager away).</p>
+    </div>
+  </div>
+
+  <div class="exam-practice">
+    <h3>✍️ Practice 2 — 2 marks</h3>
+    <p>Katrina is a nurse. One of the doctors on the hospital ward tells Katrina to give a patient a higher dose of their medication than they would normally have. Katrina is worried about the increase in the medication, but she gives the higher dose of medication to the patient anyway.</p>
+    <p><strong>Describe, using agency theory, why Katrina gives the higher dose of medication to the patient.</strong></p>
+    <textarea class="answer-box" id="p2" placeholder="Write two applied points here..."></textarea>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('m2')">Show a model answer</button></div>
+    <div id="m2" class="xp-result">
+      <p><span class="xp-verdict">Model answer</span></p>
+      <ul>
+        <li>The doctor is an <strong>authority figure</strong> on the ward, so Katrina shifted from the autonomous state into the <strong>agentic state</strong> and acted as the doctor's agent rather than on her own judgement.</li>
+        <li>She experienced <strong>moral strain</strong> — she was worried about the dose, which shows the order went against her own moral judgement — but she displaced responsibility onto the doctor and carried out the order anyway.</li>
+      </ul>
+      <p><strong>Why this scores:</strong> the worry in the scenario is evidence of moral strain, and it is used instead of ignored.</p>
+    </div>
+  </div>
+
+  <div class="exam-practice">
+    <h3>✍️ Practice 3 — 8 marks (planning only)</h3>
+    <p><strong>Assess how well agency theory can explain obedience in society.</strong></p>
+    <p>Half the marks come from <strong>outlining the theory accurately</strong> and half from <strong>judging it with evidence</strong>. Plan four paragraphs:</p>
+    <table>
+      <tr><th style="width:90px">Paragraph</th><th>What goes in it</th></tr>
+      <tr><td>1</td><td>Outline agency theory: socialisation in a hierarchical society, the autonomous state, the agentic state, displacement of responsibility, moral strain.</td></tr>
+      <tr><td>2</td><td>Support: 65% reached the highest shock level, visible signs of moral strain, participants blamed the experimenter, My Lai and "following orders".</td></tr>
+      <tr><td>3</td><td>Criticisms: 35% refused and Brandt resisted (individual differences), Latané's strength/immediacy/number (situational factors), reductionist.</td></tr>
+      <tr><td>4</td><td>A conclusion that answers the question asked: how well does it explain obedience in society? Weigh support against criticism and say which side is stronger.</td></tr>
+    </table>
+    <p>A generic answer — one that could be written without reading the question — scores nothing. The conclusion is what makes the answer an assessment rather than a description.</p>
+  </div>
+
+  <div style="margin-top:22px">
+    <div class="summary-card-header" onclick="togglePanel(this,'kp')">
+      <span>🔑 Exam key points — what a strong answer contains</span>
+      <span class="arrow">›</span>
+    </div>
+    <div class="summary-card-body hidden" id="kp">
+      <ol>
+        <li>Obedience is complying to the orders of an <strong>authority figure</strong> — not just doing what most people do.</li>
+        <li>Agency theory: <strong>autonomous state</strong> (own free will, own responsibility) versus <strong>agentic state</strong> (acting for another, responsibility displaced).</li>
+        <li><strong>Moral strain</strong> is the evidence that the shift is uncomfortable: laughter, sweating, trembling.</li>
+        <li>Every criticism needs a <strong>why it matters</strong> sentence, not just a statement that the theory is limited.</li>
+        <li>In any scenario answer, name the people in the scenario — the authority figure and the person obeying — and say what each one did.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Key Terms</h2>
+  <div class="glossary-grid">
+    <div class="glossary-item"><span class="term">social influence</span><span class="zh">社会影响</span><div class="def">How our opinions, beliefs and behaviour are influenced by the real or imagined pressure of an individual or group.</div></div>
+    <div class="glossary-item"><span class="term">conformity</span><span class="zh">从众</span><div class="def">A form of social influence where our opinions, beliefs and/or behaviour are influenced by a majority.</div></div>
+    <div class="glossary-item"><span class="term">minority influence</span><span class="zh">少数派影响</span><div class="def">A form of social influence where the opinions, beliefs and/or behaviour of the majority are influenced by a minority (individual or small group).</div></div>
+    <div class="glossary-item"><span class="term">obedience</span><span class="zh">服从</span><div class="def">Complying to the orders of an authority figure.</div></div>
+    <div class="glossary-item"><span class="term">hierarchical</span><span class="zh">等级制的</span><div class="def">A system of social organisation where there are leaders and those who follow.</div></div>
+    <div class="glossary-item"><span class="term">socialisation</span><span class="zh">社会化</span><div class="def">The process by which we learn the rules and norms of society through socialising agents, such as parents and teachers.</div></div>
+    <div class="glossary-item"><span class="term">autonomy</span><span class="zh">自主</span><div class="def">Acting on one's own free will, exercising self-determination.</div></div>
+    <div class="glossary-item"><span class="term">agency</span><span class="zh">代理</span><div class="def">When we act as an agent for another, for example when we obey orders.</div></div>
+    <div class="glossary-item"><span class="term">moral strain</span><span class="zh">道德紧张</span><div class="def">Experiencing anxiety because you are asked to do something that goes against your moral judgement.</div></div>
+    <div class="glossary-item"><span class="term">confederate</span><span class="zh">同谋者</span><div class="def">A researcher or actor who pretends to be a participant in a study.</div></div>
+    <div class="glossary-item"><span class="term">displacement of responsibility</span><span class="zh">责任转移</span><div class="def">Passing responsibility for your own actions to the person who gave the order.</div></div>
+    <div class="glossary-item"><span class="term">individual differences</span><span class="zh">个体差异</span><div class="def">Natural variation in human characteristics — here, the fact that some people obey and some refuse.</div></div>
+    <div class="glossary-item"><span class="term">malevolent authority</span><span class="zh">恶意权威</span><div class="def">Someone who uses their authority for harmful purposes.</div></div>
+    <div class="glossary-item"><span class="term">reductionist</span><span class="zh">还原论的</span><div class="def">Explaining a complex behaviour by isolated factors or a single cause, which ignores other important factors; such a theory can be argued to be simplistic.</div></div>
+    <div class="glossary-item"><span class="term">theory</span><span class="zh">理论</span><div class="def">A set of principles that attempt to explain behaviour.</div></div>
+    <div class="glossary-item"><span class="term">study</span><span class="zh">研究</span><div class="def">A piece of research carried out to test a theory, or to explore behaviour.</div></div>
+    <div class="glossary-item"><span class="term">methodology</span><span class="zh">方法学</span><div class="def">The method used to collect data, and how the study is designed.</div></div>
+  </div>
+</section>
+
+<div class="footer-note">Chapter 1 · Obedience &amp; Agency Theory · Social Psychology</div>
+
+  </main>
+</div>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var baseFont = 16;
+
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark'; }
+  };
+
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  window.libChoice = function (c) {
+    var el = document.getElementById('libResult');
+    if (!el) { return; }
+    if (c === 'move') {
+      el.innerHTML = '<p><span class="xp-verdict">You moved.</span> Most people do. The interesting question is not whether you moved, but what it was about the request that made moving feel automatic — the person asking, the reason given, or what everyone else did.</p>';
+    } else {
+      el.innerHTML = '<p><span class="xp-verdict">You stayed.</span> Also common. Now imagine the same request from a police officer, or a teacher you need a reference from. If your answer changes, something about the <strong>person asking</strong> is doing the work — and that is what this chapter is about.</p>';
+    }
+    el.classList.add('show');
+  };
+
+  window.libFactors = function () {
+    var notes = {
+      uniform: 'A uniform and a name badge signal that the person has a <strong>position</strong>, not just an opinion. Requests from someone with authority are a different phenomenon from requests from a peer — that is <strong>obedience</strong>.',
+      others: 'Watching three other students move is pressure from a <strong>majority</strong>. That is <strong>conformity</strong>, a different form of social influence, and it is studied in a later chapter.',
+      reason: 'A reason changes how legitimate the request feels. Agency theory argues that perceived legitimacy is what allows a person to hand responsibility to the person giving the order.',
+      stranger: 'Remove the authority and the same words carry far less weight. This is the heart of the topic: the <strong>source</strong> of the pressure decides which form of social influence we are looking at.'
+    };
+    var boxes = document.querySelectorAll('.lib-f');
+    var picked = [];
+    boxes.forEach(function (b) { if (b.checked) { picked.push(b.value); } });
+    var el = document.getElementById('libFactorsResult');
+    if (!el) { return; }
+    if (picked.length === 0) {
+      el.innerHTML = '<p>Tick at least one factor, then press the button again.</p>';
+    } else {
+      var html = '';
+      picked.forEach(function (v) { html += '<p style="margin:6px 0">' + notes[v] + '</p>'; });
+      el.innerHTML = html;
+    }
+    el.classList.add('show');
+  };
+
+  var stateKey = { A: 'agent', B: 'auto', C: 'other', D: 'agent' };
+  var stateWhy = {
+    A: 'The coach is an authority figure and you run because she said so — that is the agentic state. Note that you are exhausted: the discomfort is moral strain.',
+    B: 'You decided this yourself and carry the responsibility for it — that is the autonomous state.',
+    C: 'No authority figure is involved. The pressure comes from a <strong>majority</strong>, so this is conformity, not obedience.',
+    D: 'A police officer has the authority to stop traffic, so you are acting as an agent carrying out an order, even though it costs you.'
+  };
+
+  window.stateAns = function (btn, choice, id) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    sibs.forEach(function (s) { s.classList.remove('chosen-best', 'chosen-bad'); });
+    var ok = (choice === stateKey[id]);
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById('res' + id);
+    if (!el) { return; }
+    el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + stateWhy[id] + '</p>';
+    el.classList.add('show');
+    el.classList.toggle('ok', ok);
+  };
+
+  var quizKey = { q1: 'b', q2: 'b', q3: 't', q4: 'b', q5: 'b' };
+  var quizFb = {
+    q1: 'Obedience is complying to the orders of an authority figure. The first option is conformity and the third is minority influence.',
+    q2: 'In the agentic state the person acts for another and the responsibility moves to the authority. Feeling no conflict would rule out moral strain.',
+    q3: 'True. Moral strain is exactly that clash between what you are told to do and what you believe is right.',
+    q4: '65% continued to 450 V; every participant (100%) reached 300 V, and 35% refused to go further.',
+    q5: 'Reductionist means explaining a complex behaviour by a single cause and ignoring other important factors.'
+  };
+
+  window.checkQuiz = function () {
+    var score = 0;
+    Object.keys(quizKey).forEach(function (q) {
+      var picked = document.querySelector('input[name="' + q + '"]:checked');
+      var fb = document.getElementById('fb' + q.charAt(1));
+      if (!fb) { return; }
+      var val = picked ? picked.value : null;
+      var ok = (val === quizKey[q]);
+      if (ok) { score += 1; }
+      fb.innerHTML = '<strong>' + (ok ? 'Correct' : (val ? 'Not quite' : 'Not answered')) + '.</strong> ' + quizFb[q];
+      fb.style.color = ok ? '#166534' : '#991b1b';
+      fb.classList.add('show');
+    });
+    var el = document.getElementById('quizResult');
+    if (!el) { return; }
+    el.innerHTML = '<p><span class="xp-verdict">Score: ' + score + ' / 5</span> — ' + (score === 5 ? 'all correct.' : 'revisit the ones in red before moving on.') + '</p>';
+    el.classList.add('show');
+  };
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.toggle('show'); }
+  };
+
+  window.togglePanel = function (header, id) {
+    var body = document.getElementById(id);
+    if (!body) { return; }
+    body.classList.toggle('hidden');
+    header.classList.toggle('open');
+  };
+
+  window.addEventListener('scroll', function () {
+    var btt = document.getElementById('btt');
+    if (btt) { btt.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  var links = document.querySelectorAll('.sb-item a');
+  var sections = [];
+  links.forEach(function (a) {
+    var sec = document.querySelector(a.getAttribute('href'));
+    if (sec) { sections.push({ link: a, sec: sec }); }
+  });
+  window.addEventListener('scroll', function () {
+    var pos = window.scrollY + 140;
+    var current = null;
+    sections.forEach(function (s) { if (s.sec.offsetTop <= pos) { current = s; } });
+    links.forEach(function (a) { a.classList.remove('sb-active'); });
+    if (current) { current.link.classList.add('sb-active'); }
+  });
+})();
+</script>
+</body>
+</html>
