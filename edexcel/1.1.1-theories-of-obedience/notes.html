@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1.1.1 Theories of Obedience — Student Notes Workbook</title>
+<style>
+@page { size: A4; margin: 13mm 12mm 15mm 12mm; }
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif; color:#1a1a1a; font-size:10pt; line-height:1.5; margin:0; background:#f3f3f3; }
+.page { background:#fff; max-width: 800px; margin: 0 auto 10px auto; padding: 10mm 11mm; page-break-after: always; position: relative; min-height: 248mm; }
+@media print { body { background:#fff; } .page { margin:0; padding:0; max-width:none; box-shadow:none; } }
+.pg-head { display:flex; justify-content:space-between; align-items:baseline; border-bottom: 2px solid #333; padding-bottom:4px; margin-bottom:10px; }
+.pg-head .t { font-size:11.5pt; font-weight:700; }
+.pg-head .r { font-size:8pt; color:#777; letter-spacing:.04em; }
+.pg-foot { position:absolute; bottom:4mm; left:0; right:0; text-align:center; font-size:8pt; color:#999; }
+.sec { font-size:10pt; font-weight:700; margin:12px 0 5px 0; padding-left:7px; border-left:3.5px solid #444; }
+.sec:first-of-type { margin-top:2px; }
+.sub { font-size:9.5pt; font-weight:700; margin:9px 0 3px 0; }
+.bl { display:inline-block; border-bottom:1px solid #555; height:1em; vertical-align:baseline; min-width:60px; margin:0 2px; }
+.hint { font-size:8.5pt; color:#666; }
+.hint::before { content:"（"; } .hint::after { content:"）"; }
+table.n { width:100%; border-collapse:collapse; margin:6px 0 9px 0; font-size:9pt; }
+table.n th, table.n td { border:1px solid #999; padding:4px 6px; text-align:left; vertical-align:top; }
+table.n th { background:#e9e9e9; font-size:8.8pt; }
+td.lbl { background:#f4f4f4; width:22%; font-weight:600; }
+.box { border:1px solid #aaa; border-left:4px solid #555; padding:6px 9px; margin:7px 0; border-radius:3px; }
+.box.grey { border:1px dashed #999; border-left:4px dashed #999; background:#fafafa; }
+.box.purple { border-left-color:#7c3aed; background:#faf5ff; }
+.box.blue { border-left-color:#2563eb; background:#f5f9ff; }
+.box.green { border-left-color:#16a34a; background:#f3faf5; }
+.box .bx-t { font-size:9.3pt; font-weight:700; margin-bottom:3px; }
+.wl { border-bottom:1px solid #bbb; height:24pt; }
+.wl.s { height:18pt; }
+ul.tight { margin:4px 0 8px 0; padding-left:17px; }
+ul.tight li { margin-bottom:3px; }
+ol.tight { margin:4px 0 8px 0; padding-left:17px; }
+ol.tight li { margin-bottom:4px; }
+.two { display:flex; gap:8px; } .two > div { flex:1; }
+.chk { font-size:9.3pt; }
+.chk .c { display:inline-block; width:11px; height:11px; border:1.3px solid #555; margin-right:6px; vertical-align:-1px; }
+.q { font-style:italic; background:#f6f6f6; border:1px solid #ccc; padding:5px 9px; margin:5px 0; font-size:9.3pt; border-radius:3px; }
+.tag { display:inline-block; font-size:8pt; font-weight:700; color:#fff; padding:1px 6px; border-radius:3px; margin-right:4px; vertical-align:1px; }
+.tag.th { background:#7c3aed; }
+.tag.tm { background:#2563eb; }
+.tag.ev { background:#16a34a; }
+.tag.exam { background:#ea580c; }
+.small { font-size:8.6pt; line-height:1.35; }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1: COVER ================= -->
+<div class="page">
+  <div style="text-align:center; margin-top:6mm;">
+    <div style="font-size:9pt; letter-spacing:.22em; color:#666;">PEARSON EDEXCEL IAL PSYCHOLOGY · TOPIC A · SOCIAL PSYCHOLOGY</div>
+    <div style="font-size:21pt; font-weight:800; margin:8px 0 2px 0; line-height:1.2;">1.1.1 — Theories of Obedience</div>
+    <div style="font-size:13pt; color:#444;">Student Notes Workbook · 学习笔记工作册</div>
+    <div style="font-size:9.5pt; color:#666; margin-top:4px;">agency theory（代理理论）· social power theory（社会权力理论）</div>
+  </div>
+
+  <div style="display:flex; gap:14px; margin:9mm 0 6mm 0; font-size:9.5pt;">
+    <div style="flex:1;">Name 姓名: <span class="bl" style="min-width:150px;"></span></div>
+    <div style="flex:1;">Class 班级: <span class="bl" style="min-width:100px;"></span></div>
+    <div>Start date: <span class="bl" style="min-width:90px;"></span></div>
+  </div>
+
+  <div class="sec" style="margin:6px 0 3px 0;">How to use this workbook 使用方法</div>
+  <ol class="tight">
+    <li><strong>Read one section of the courseware, then fill the matching page.</strong> 边读课件边填空，不要一口气填完——填空的价值在于"想不起来"的那一刻。</li>
+    <li><strong>Learn the definitions word for word.</strong> 定义本身就是采分点：obedience、agentic state、moral strain、五个 power 的说法都要能原样写出来。</li>
+    <li><strong>Every evaluation point needs two halves.</strong> 评价 = <em>理论漏掉了什么</em> + <em>为什么这是个问题</em>。只写前半句是描述，两块一起才是评价。</li>
+    <li><strong>Check your answers at the back, correct in pen, then do the brain dump page from memory.</strong> 对答案 → 用笔订正 → 合上笔记自测。</li>
+  </ol>
+
+  <div class="sec" style="margin:6px 0 3px 0;">What this topic covers 内容地图</div>
+  <table class="n">
+    <tr><th style="width:24%;">Syllabus 考纲</th><th>Content 内容</th><th style="width:22%;">Workbook pages</th></tr>
+    <tr><td><strong>1.1.1</strong></td><td><span class="tag tm">term</span> social influence · obedience · <span class="tag th">theory</span> agency theory · <span class="tag th">theory</span> French &amp; Raven's five bases of power</td><td>pp. 2–10</td></tr>
+    <tr><td><strong>Evaluation 评价</strong></td><td><span class="tag ev">eval</span> strengths and weaknesses of each theory · reductionism · individual differences · situational factors</td><td>pp. 6–7, 9–10</td></tr>
+    <tr><td><strong>Exam skills 考试</strong></td><td><span class="tag exam">exam</span> IDEA for scenario questions · command words · 2 / 6 / 8-mark answers</td><td>pp. 11–14</td></tr>
+    <tr><td><strong>Self-test 自测</strong></td><td>Brain dump from memory · answer key</td><td>pp. 15–17</td></tr>
+  </table>
+
+  <div class="box purple">
+    <div class="bx-t">The one-line map of the whole topic 全章一句话</div>
+    Two theories try to explain the <strong>same</strong> event — an ordinary person doing what an authority figure tells them to do:<br>
+    <strong>① <span class="tag th">theory</span> agency theory</strong> 看<em>服从的人</em>：责任从自己身上移走（agentic shift），人一边照做一边承受冲突（moral strain）。<br>
+    <strong>② <span class="tag th">theory</span> social power theory</strong> 看<em>下命令的人</em>：对方被<em>认为</em>拥有哪种权力（coercive / reward / legitimate / expert / referent）。
+  </div>
+
+  <div class="sec" style="margin:8px 0 3px 0;">Review tracker 复习打卡</div>
+  <div class="chk" style="line-height:2.0;">
+    <span class="c"></span>First pass — all blanks filled 第一遍填完 &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span><br>
+    <span class="c"></span>Five bases of power written from memory 五种权力默写 &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span><br>
+    <span class="c"></span>Two 8-mark plans written 两篇 8 分题提纲 &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span><br>
+    <span class="c"></span>Brain dump done with the book closed 合上笔记完成自测 &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span>
+  </div>
+
+  <div class="pg-foot">Page 1 of 17</div>
+</div>
+
+<!-- ================= PAGE 2: FOUNDATIONS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§1 · Foundations — where this topic sits · 基础定位</span><span class="r">ANSWERS → 课件 §2–§4</span></div>
+
+  <div class="box purple">
+    <div class="bx-t">The approach we are standing in 我们用的研究取向</div>
+    Psychology explains the same behaviour in several ways; each way is called an <strong>approach</strong>（研究取向）. This topic uses the <strong>social approach</strong>: behaviour is explained by <span class="bl" style="min-width:150px;"></span>.<span class="hint">the real or imagined presence / pressure of others 他人在场或想象中的压力</span>
+  </div>
+
+  <div class="sub">The four approaches — one line each 四个取向一句话</div>
+  <table class="n">
+    <tr><th style="width:16%;">Approach</th><th>How it explains behaviour 怎么解释行为</th></tr>
+    <tr><td class="lbl">Biological<br><span class="hint">生物</span></td><td>By biological structures and processes: the brain, the nervous system, hormones and genes.</td></tr>
+    <tr><td class="lbl">Cognitive<br><span class="hint">认知</span></td><td>By internal mental processes: memory, perception, attention, thinking and language.</td></tr>
+    <tr><td class="lbl">Learning<br><span class="hint">学习</span></td><td>By experience: what we associate, what we are rewarded or punished for, what we observe.</td></tr>
+    <tr><td class="lbl">Social<br><span class="hint">社会</span></td><td>By the presence of others, or by their real or imagined pressure. <strong>← this topic</strong></td></tr>
+  </table>
+
+  <div class="sub">Three words used all year 全年都在用的三个词</div>
+  <table class="n">
+    <tr><td class="lbl">theory 理论</td><td>A set of principles that attempt to <span class="bl" style="min-width:110px;"></span>.<span class="hint">explain behaviour 解释行为</span></td></tr>
+    <tr><td class="lbl">study 研究</td><td>A piece of research carried out to <span class="bl" style="min-width:110px;"></span> a theory, or to explore behaviour.<span class="hint">test 检验</span></td></tr>
+    <tr><td class="lbl">methodology 方法学</td><td>The method used to <span class="bl" style="min-width:110px;"></span>, and how the study is designed.<span class="hint">collect data 收集数据</span></td></tr>
+  </table>
+
+  <div class="sub">Three forms of social influence 社会影响的三种形式</div>
+  <table class="n">
+    <tr><th style="width:19%;">Form 形式</th><th style="width:21%;">Who influences whom 谁影响谁</th><th>Definition 定义</th></tr>
+    <tr><td class="lbl">Conformity<br><span class="hint">从众</span></td><td>a <span class="bl" style="min-width:70px;"></span> → you<span class="hint">majority 多数人</span></td><td>Opinions, beliefs and/or behaviour influenced by a <span class="bl" style="min-width:80px;"></span>.<span class="hint">majority 多数人</span></td></tr>
+    <tr><td class="lbl">Minority influence<br><span class="hint">少数派影响</span></td><td>a <span class="bl" style="min-width:70px;"></span> → the majority<span class="hint">minority 少数人</span></td><td>The opinions, beliefs and/or behaviour of the <strong>majority</strong> influenced by a <span class="bl" style="min-width:80px;"></span>.<span class="hint">minority 少数人</span></td></tr>
+    <tr><td class="lbl">Obedience<br><span class="hint">服从</span></td><td>an <span class="bl" style="min-width:70px;"></span> → you<span class="hint">authority figure 权威人物</span></td><td><span class="bl" style="min-width:80px;"></span>.<span class="hint">complying to the orders of an authority figure 服从权威的命令</span></td></tr>
+  </table>
+
+  <div class="box grey">
+    <div class="bx-t">How to tell them apart in an exam 考试怎么区分</div>
+    Ask one question: <strong>where does the pressure come from?</strong> 压力来自<strong>人多</strong> → conformity；来自<strong>人少却改变了多数</strong> → minority influence；来自<strong>有职位/有权力的人</strong> → obedience。
+  </div>
+
+  <div class="sub">Where social psychology began 社会心理学的起点</div>
+  <ul class="tight">
+    <li><strong>Gustave Le Bon (1895)</strong> — observed behaviour in <strong>crowds</strong>; descriptive rather than scientific.</li>
+    <li><strong>Floyd Allport (1924)</strong> — argued social psychology should use <span class="bl" style="min-width:90px;"></span> methods, so claims about influence could be tested.<span class="hint">experimental 实验</span></li>
+  </ul>
+
+  <div class="pg-foot">Page 2 of 17</div>
+</div>
+
+<!-- ================= PAGE 3: OBEDIENCE ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§2 · <span class="tag tm">term</span> Obedience — the behaviour we are explaining</span><span class="r">ANSWERS → 课件 §6</span></div>
+
+  <div class="box blue">
+    <div class="bx-t">The definition — learn it word for word 定义，一字不差地背</div>
+    <strong>obedience（服从）</strong>: <span class="bl" style="min-width:230px;"></span>.<span class="hint">complying to the orders of an authority figure 服从权威人物的命令</span>
+  </div>
+
+  <div class="sub">Two terms that explain why obeying feels normal 为什么服从像本能</div>
+  <table class="n">
+    <tr><td class="lbl">hierarchical<br><span class="hint">等级制的</span></td><td>A system of social organisation where there are <span class="bl" style="min-width:110px;"></span> and those who follow.<span class="hint">leaders 领导者</span></td></tr>
+    <tr><td class="lbl">socialisation<br><span class="hint">社会化</span></td><td>The process by which we learn the <span class="bl" style="min-width:120px;"></span> of society through socialising agents such as parents and teachers.<span class="hint">rules and norms 规则与规范</span></td></tr>
+  </table>
+
+  <div class="box">
+    <div class="bx-t">The mechanism in three steps 机制三步</div>
+    <ol class="tight" style="margin-bottom:2px;">
+      <li>We grow up in a <strong>hierarchical</strong> society — some people give instructions, others follow them.</li>
+      <li><strong>Socialisation</strong> rewards us for obeying and corrects us for refusing.</li>
+      <li>By adulthood obeying is close to a <span class="bl" style="min-width:60px;"></span>.<span class="hint">habit 习惯</span></li>
+    </ol>
+  </div>
+
+  <div class="box grey">
+    <div class="bx-t">Why this is worth studying 为什么值得学</div>
+    The same training that makes society work — stopping at red lights, queueing, handing in homework — also explains the darkest events of the twentieth century, where ordinary soldiers, clerks and railway workers took part in systematic murder and repeated the same defence: <strong>"I was only following orders."</strong>
+  </div>
+
+  <div class="sub">The question that started it all 一切的起点</div>
+  <div class="q">How far will an ordinary person go when someone in authority tells them to hurt another person?</div>
+  <p style="margin:3px 0; font-size:9.3pt;">Milgram's question was <strong>not</strong> "are these people evil?" — it was a question about the <strong>situation</strong>. He ran a series of experiments and then proposed <strong>agency theory</strong> to explain what he saw.<span class="hint">实验本身的细节在另一个专题页完整学习；这里只把它当作理论的证据来源</span></p>
+
+  <div class="sub">Think-write · 想一想（3–4 行）</div>
+  <div class="wl" style="height:40pt;">"I was only following orders" — is this an excuse or an explanation? Write what psychology can say about it that a court cannot.</div>
+
+  <div class="box" style="border-left-color:#ea580c;">
+    <div class="bx-t">Exam tip 考点提示</div>
+    A definition question is the cheapest mark on the paper — and the one most often thrown away. <strong>"Doing what you are told"</strong> scores nothing; <strong>"complying to the orders of an authority figure"</strong> scores full marks. The word <strong>authority</strong> is what carries the mark.
+  </div>
+
+  <div class="pg-foot">Page 3 of 17</div>
+</div>
+
+<!-- ================= PAGE 4: AGENCY THEORY ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§3 · <span class="tag th">theory</span> Agency Theory — two states of mind</span><span class="r">ANSWERS → 课件 §7</span></div>
+
+  <div class="box purple">
+    <div class="bx-t">Key terms 术语填空</div>
+    <table class="n">
+      <tr><td class="lbl">autonomy 自主</td><td>Acting on one's own <span class="bl" style="min-width:80px;"></span>, exercising self-determination.<span class="hint">free will 自由意志</span></td></tr>
+      <tr><td class="lbl">agency 代理</td><td>When we act as an <span class="bl" style="min-width:80px;"></span> for another, for example when we obey orders.<span class="hint">agent 代理人</span></td></tr>
+      <tr><td class="lbl">moral strain 道德紧张</td><td>Experiencing <span class="bl" style="min-width:70px;"></span> because you are asked to do something that goes against your <span class="bl" style="min-width:90px;"></span>.<span class="hint">anxiety · moral judgement 焦虑 · 道德判断</span></td></tr>
+    </table>
+  </div>
+
+  <div class="sub">The model 模型图</div>
+  <svg viewBox="0 0 660 205" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Agency theory: from socialisation through the agentic shift to moral strain" style="width:100%;height:auto;">
+    <defs>
+      <marker id="arA" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#ea580c"/>
+      </marker>
+    </defs>
+    <rect x="170" y="6" width="320" height="42" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+    <text x="330" y="25" text-anchor="middle" font-size="12" font-weight="700" fill="#c2410c">Childhood socialisation in a hierarchical society</text>
+    <text x="330" y="41" text-anchor="middle" font-size="10.5" fill="#334155">rewarded for obeying, corrected for refusing</text>
+    <line x1="258" y1="48" x2="122" y2="78" stroke="#ea580c" stroke-width="2" marker-end="url(#arA)"/>
+
+    <rect x="20" y="80" width="200" height="64" rx="8" fill="#eff6ff" stroke="#1e3a5f" stroke-width="2"/>
+    <text x="120" y="101" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e3a5f">Autonomous state</text>
+    <text x="120" y="118" text-anchor="middle" font-size="10.5" fill="#334155">acting on your own free will</text>
+    <text x="120" y="132" text-anchor="middle" font-size="10.5" fill="#334155">guided by your own conscience</text>
+
+    <rect x="440" y="80" width="200" height="64" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+    <text x="540" y="101" text-anchor="middle" font-size="12.5" font-weight="700" fill="#c2410c">Agentic state</text>
+    <text x="540" y="118" text-anchor="middle" font-size="10.5" fill="#334155">acting as an agent for another</text>
+    <text x="540" y="132" text-anchor="middle" font-size="10.5" fill="#334155">responsibility passed upward</text>
+
+    <text x="330" y="98" text-anchor="middle" font-size="10.5" fill="#c2410c">an authority figure gives an order</text>
+    <line x1="238" y1="112" x2="438" y2="112" stroke="#ea580c" stroke-width="2" marker-end="url(#arA)"/>
+    <text x="330" y="128" text-anchor="middle" font-size="10" fill="#64748b">agentic shift</text>
+
+    <line x1="540" y1="144" x2="540" y2="164" stroke="#ea580c" stroke-width="2" marker-end="url(#arA)"/>
+    <rect x="440" y="166" width="200" height="36" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+    <text x="540" y="189" text-anchor="middle" font-size="11.5" font-weight="700" fill="#6d28d9">Moral strain</text>
+  </svg>
+
+  <div class="sub">The two states side by side 两态对照</div>
+  <table class="n">
+    <tr><th style="width:24%;"></th><th style="width:38%;">Autonomous state 自主态</th><th style="width:38%;">Agentic state 代理态</th></tr>
+    <tr><td class="lbl">Whose will? 谁的决定</td><td><span class="bl" style="min-width:110px;"></span><span class="hint">your own free will 自己的</span></td><td>Acting for <span class="bl" style="min-width:110px;"></span><span class="hint">someone else 别人</span></td></tr>
+    <tr><td class="lbl">Who is responsible? 谁负责</td><td><span class="bl" style="min-width:110px;"></span><span class="hint">you are 你自己</span></td><td><span class="bl" style="min-width:110px;"></span><span class="hint">the authority figure 权威人物</span></td></tr>
+    <tr><td class="lbl">What does the person feel? 感受</td><td>Guided by conscience.</td><td><span class="bl" style="min-width:110px;"></span> if the order clashes with their morals.<span class="hint">moral strain 道德紧张</span></td></tr>
+  </table>
+
+  <div class="box blue">
+    <div class="bx-t">The name of the move 这个动作叫什么</div>
+    <strong>agentic shift（代理转移）</strong> — the move from the autonomous state into the agentic state.<br>
+    <strong>displacement of responsibility（责任转移）</strong> — <span class="bl" style="min-width:200px;"></span>.<span class="hint">passing responsibility for your own actions to the person who gave the order 把责任交给下令的人</span><br>
+    <span class="small">人不是突然变坏，而是悄悄把"负责的人"换掉了。这是 agentic state 最核心的一句。</span>
+  </div>
+
+  <div class="box grey">
+    <div class="bx-t">Why the shift is so easy 为什么这个转移很容易发生</div>
+    Because socialisation has rehearsed it long before anyone gives us a harmful order: teacher says sit down, coach says run, manager says sign. The agentic state is not a rare state of mind — for most of us it is a <span class="bl" style="min-width:90px;"></span> one.<span class="hint">well-rehearsed 反复演练过的</span>
+  </div>
+
+  <div class="pg-foot">Page 4 of 17</div>
+</div>
+
+<!-- ================= PAGE 5: THE EVIDENCE ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§4 · <span class="tag ev">eval</span> The Evidence Milgram Used · 理论的证据</span><span class="r">ANSWERS → 课件 §8</span></div>
+
+  <div class="box grey">
+    <div class="bx-t">What happened, in four lines 实验四句话</div>
+    <ol class="tight" style="margin-bottom:2px;">
+      <li>Participants believed they were in a study about <strong>learning and memory</strong>; each one was given the role of <span class="bl" style="min-width:70px;"></span>.<span class="hint">teacher 老师</span></li>
+      <li>They were told to give an electric shock to a <span class="bl" style="min-width:70px;"></span> every time a mistake was made, increasing the shock each time.<span class="hint">learner 学习者</span></li>
+      <li>The learner was in another room and was a <strong>confederate</strong>（同谋者）— <span class="bl" style="min-width:150px;"></span> were given, but the participant believed they were.<span class="hint">no real shocks 没有真的电击</span></li>
+      <li>The shock generator had <strong>30 switches</strong>, from 15 V to <strong>450 V</strong>, labelled up to "Danger: severe shock".</li>
+    </ol>
+  </div>
+
+  <div class="sub">The two numbers you must know 必须记住的两个数字</div>
+  <table class="n">
+    <tr><td class="lbl">100%</td><td>Every participant continued to <span class="bl" style="min-width:60px;"></span> V.<span class="hint">300 V</span></td></tr>
+    <tr><td class="lbl">65%</td><td>…and <span class="bl" style="min-width:60px;"></span> of participants continued all the way to <span class="bl" style="min-width:60px;"></span> V.<span class="hint">65% · 450 V</span></td></tr>
+    <tr><td class="lbl">35%</td><td>The proportion who <strong>refused</strong> to continue — the number every criticism of the theory starts from.</td></tr>
+  </table>
+
+  <div class="sub">Signs of moral strain 道德紧张的证据（填空）</div>
+  <table class="n">
+    <tr><th style="width:34%;">What was observed 观察到的</th><th>Why it matters for the theory 为什么重要</th></tr>
+    <tr><td><span class="bl" style="min-width:100px;"></span><span class="hint">nervous laughter 紧张的笑</span></td><td rowspan="4">如果人真的完全进入代理态、心里毫无波澜，这些反应都不该出现。正因为出现了，Milgram 才说：人不是"变成了坏人"，而是<strong>一边照做一边承受冲突</strong>。</td></tr>
+    <tr><td>sweating, trembling and <span class="bl" style="min-width:90px;"></span><span class="hint">stuttering 口吃</span></td></tr>
+    <tr><td>three participants had <span class="bl" style="min-width:80px;"></span><span class="hint">seizures 抽搐</span></td></tr>
+    <tr><td>in the debrief, participants said the <span class="bl" style="min-width:90px;"></span>, not themselves, was responsible<span class="hint">experimenter 实验者</span></td></tr>
+  </table>
+
+  <div class="box green">
+    <div class="bx-t">The evidence in one sentence 证据一句话总结</div>
+    Most people made the agentic shift (<strong>65%</strong> went to the highest shock level), but their bodies showed <span class="bl" style="min-width:80px;"></span> — so the shift is real, and it is <em>uncomfortable</em>.<span class="hint">moral strain 道德紧张</span>
+  </div>
+
+  <div class="sub">Beyond the laboratory 实验室之外</div>
+  <p style="margin:3px 0; font-size:9.3pt;">At the <strong>My Lai massacre</strong>, Lieutenant <span class="bl" style="min-width:80px;"></span> and his men killed unarmed civilians; his defence was that he was <strong>following orders</strong>.<span class="hint">William Calley 威廉·凯利</span> Agency theory is used to explain obedience outside the laboratory too.</p>
+
+  <div class="sub">Think-write · 想一想</div>
+  <div class="wl" style="height:34pt;">If 35% refused, the agentic shift cannot be automatic. What else — inside the person or in the situation — must be doing some of the work? Write 3–4 lines.</div>
+
+  <div class="pg-foot">Page 5 of 17</div>
+</div>
+
+<!-- ================= PAGE 6: EVALUATING AGENCY — SUPPORT ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§5 · <span class="tag ev">eval</span> Evaluating Agency Theory — support</span><span class="r">ANSWERS → 课件 §9</span></div>
+
+  <div class="box" style="border-left-color:#ea580c;">
+    <div class="bx-t">The rule for every evaluation point 评价点的写法规则</div>
+    <strong>Point = what + why.</strong> 先说"理论做对了/漏掉了什么"，再给一句"<strong>why it matters</strong>"。只写前半句，8 分题只能拿一半的分。
+  </div>
+
+  <div class="sub">Four strengths 四点支持</div>
+  <table class="n">
+    <tr><th style="width:22%;">Strength</th><th style="width:44%;">What it says 内容</th><th>Why it matters 为什么算支持</th></tr>
+    <tr><td class="lbl">Research support: the numbers</td><td>In Milgram's first experiment, <span class="bl" style="min-width:45px;"></span>% continued to the highest shock level, so most people did make the agentic shift.<span class="hint">65%</span></td><td>A theory is stronger when the thing it <span class="bl" style="min-width:80px;"></span> is what actually happens.<span class="hint">predicts 预测</span></td></tr>
+    <tr><td class="lbl">Moral strain was visible</td><td>Nervous laughter, sweating, trembling, seizures — the theory predicts exactly this inner conflict.</td><td>The theory explains a detail it was <span class="bl" style="min-width:110px;"></span>.<span class="hint">not built to explain 并非专为它而设计的</span></td></tr>
+    <tr><td class="lbl">Displacement of responsibility</td><td>In the debrief, participants said the <span class="bl" style="min-width:80px;"></span> was responsible, not themselves.<span class="hint">experimenter 实验者</span></td><td>The mechanism itself was <span class="bl" style="min-width:110px;"></span> by the participants.<span class="hint">reported 亲口说出</span></td></tr>
+    <tr><td class="lbl">Real-life support</td><td>My Lai: Lieutenant Calley killed unarmed civilians and said he was <span class="bl" style="min-width:90px;"></span>.<span class="hint">following orders 只是服从命令</span></td><td>The theory explains obedience <span class="bl" style="min-width:90px;"></span>.<span class="hint">outside the laboratory 实验室之外</span></td></tr>
+  </table>
+
+  <div class="sub">Write it out · 把第一条写完整（2–3 行）</div>
+  <div class="wl" style="height:32pt;">Strength: agency theory is supported by research evidence. In Milgram's first experiment…</div>
+
+  <div class="box green">
+    <div class="bx-t">Sentence pattern · 可套用的句式</div>
+    <ul class="tight" style="margin-bottom:2px;">
+      <li><strong>Strength:</strong> "A strength is <span class="bl" style="min-width:70px;"></span>; for example, <span class="bl" style="min-width:110px;"></span> . This supports the theory because <span class="bl" style="min-width:110px;"></span> ."</li>
+      <li><strong>Applied:</strong> "In the scenario, <span class="bl" style="min-width:70px;"></span> obeyed because they were in the <strong>agentic state</strong>: responsibility was <strong>displaced onto</strong> <span class="bl" style="min-width:90px;"></span> ."</li>
+    </ul>
+  </div>
+
+  <div class="sub">Useful application 理论能用来做什么</div>
+  <p style="margin:3px 0; font-size:9.3pt;">If obedience comes from passing responsibility upwards, organisations can be designed to <strong>hand it back</strong>: clear rules that a harmful order can be refused, and protection for people who report one — <span class="bl" style="min-width:80px;"></span> — instead of treating refusal as disobedience.<span class="hint">whistleblowing 举报</span> This matters for limiting the damage done by <strong>malevolent authority</strong>（恶意权威）: someone who uses their authority for harmful purposes.</p>
+
+  <div class="pg-foot">Page 6 of 17</div>
+</div>
+
+<!-- ================= PAGE 7: EVALUATING AGENCY — CRITICISMS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§6 · <span class="tag ev">eval</span> Evaluating Agency Theory — criticisms</span><span class="r">ANSWERS → 课件 §9</span></div>
+
+  <div class="sub">Four criticisms 四点批评（填空）</div>
+  <table class="n">
+    <tr><th style="width:22%;">Criticism</th><th style="width:40%;">What it says 内容</th><th>Why it matters 为什么这是个问题</th></tr>
+    <tr><td class="lbl">It cannot explain individual differences</td><td><span class="bl" style="min-width:45px;"></span>% of Milgram's participants refused to continue; one participant, <span class="bl" style="min-width:60px;"></span>, had grown up in Nazi Germany and refused to obey.<span class="hint">35% · Brandt</span></td><td>If the shift were automatic this should not happen — <strong>personality and upbringing</strong> must be part of the explanation.</td></tr>
+    <tr><td class="lbl">It ignores situational factors</td><td><strong>Latané (1981)</strong>: obedience depends on the <span class="bl" style="min-width:60px;"></span>, <span class="bl" style="min-width:60px;"></span> and <span class="bl" style="min-width:60px;"></span> of the sources of influence.<span class="hint">strength 强度 · immediacy 即时性 · number 人数</span></td><td>The same person obeys in one setting and <span class="bl" style="min-width:80px;"></span> in another, so the setting must be explained.<span class="hint">refuses 拒绝</span></td></tr>
+    <tr><td class="lbl">It is reductionist</td><td><strong>reductionist</strong>: explaining a complex behaviour by <span class="bl" style="min-width:90px;"></span>, which ignores other important factors.<span class="hint">isolated factors / a single cause 单一原因</span></td><td>A single-cause explanation will always fit some cases badly.</td></tr>
+    <tr><td class="lbl">Useful application</td><td>Knowing the mechanism lets organisations design protection: refusal rules and <strong>whistleblowing</strong> policies.</td><td><span class="bl" style="min-width:130px;"></span><span class="hint">understanding malevolent authority helps institutions limit the damage 理解恶意权威能帮助机构减少伤害</span></td></tr>
+  </table>
+
+  <div class="box grey">
+    <div class="bx-t">Two weaknesses that point forward 两条批评预告了下一节</div>
+    "It ignores the <strong>situation</strong>" and "it ignores <strong>individual differences</strong>" are the two gaps that the <strong>factors affecting obedience</strong> topic fills: <em>who the person is</em> and <em>where the order is given</em>. Every criticism of social power theory (pp. 9–10) is built from the same two gaps.
+  </div>
+
+  <div class="sub">Write it out · 写一条完整的批评（3–4 行）</div>
+  <div class="wl" style="height:36pt;">Weakness 1: agency theory cannot explain individual differences. In Milgram's study…</div>
+  <div class="wl" style="height:36pt;">Weakness 2: agency theory ignores situational factors. Latané argues that…</div>
+
+  <div class="box purple">
+    <div class="bx-t">The reductionist paragraph — ready to use 还原论那一段（可直接用）</div>
+    <span class="small">Agency theory can be argued to be <strong>reductionist</strong>, because it explains a complex behaviour — obedience — using one single mechanism, the agentic shift, and leaves out culture, personality, mood and the situation. This matters because a single-cause explanation always fits some cases badly, and those cases are the ones exam questions ask about.</span>
+  </div>
+
+  <div class="sub">Self-check 自查</div>
+  <div class="chk" style="line-height:1.7;">
+    <span class="c"></span>I can give <strong>two</strong> strengths, each with a why-it-matters sentence.<br>
+    <span class="c"></span>I can give <strong>two</strong> weaknesses, each with a why-it-matters sentence.<br>
+    <span class="c"></span>I can define <strong>reductionist</strong> without looking.
+  </div>
+
+  <div class="pg-foot">Page 7 of 17</div>
+</div>
+
+<!-- ================= PAGE 8: SOCIAL POWER THEORY ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§7 · <span class="tag th">theory</span> Social Power Theory — five bases</span><span class="r">ANSWERS → 课件 §11–§12</span></div>
+
+  <div class="sub">Two theories, one behaviour 两个理论，同一个行为</div>
+  <table class="n">
+    <tr><th style="width:22%;"></th><th style="width:39%;">Agency theory</th><th style="width:39%;">Social power theory</th></tr>
+    <tr><td class="lbl">Who is explained? 解释谁</td><td><span class="bl" style="min-width:110px;"></span><span class="hint">the person obeying 服从的人</span></td><td><span class="bl" style="min-width:110px;"></span><span class="hint">the authority figure 下命令的人</span></td></tr>
+    <tr><td class="lbl">One sentence 一句话</td><td>"They obeyed because responsibility moved from them to the person in charge."</td><td>"They obeyed because of the <span class="bl" style="min-width:110px;"></span> that person was seen to hold."<span class="hint">kind of power 哪种权力</span></td></tr>
+  </table>
+  <p class="small" style="margin:2px 0 6px 0;">两个解释可以同时成立：一个人之所以进入代理态，<em>正因为</em>那位权威看起来很正当。评价题的高分答案会说出两者，并说明在这个情境里哪个更合适。</p>
+
+  <div class="box purple">
+    <div class="bx-t">The theory 理论原文</div>
+    <strong>social power theory</strong> — <strong>French and Raven (1959)</strong> identified <span class="bl" style="min-width:40px;"></span> bases of power, which are said to motivate and influence behaviour.<span class="hint">five 五种</span><br>
+    The key word is <strong>perceived</strong>: the power does not have to be <span class="bl" style="min-width:50px;"></span> — it has to be believed to be there.<span class="hint">real 真实的</span>
+  </div>
+
+  <div class="sub">The five bases 五种权力（填空）</div>
+  <table class="n">
+    <tr><th style="width:20%;">Base</th><th style="width:32%;">Source of the power 权力来源</th><th>照做是因为…（一句话）</th><th style="width:24%;">Example 例子</th></tr>
+    <tr><td class="lbl">Coercive<br><span class="hint">强制权</span></td><td>The ability to impose a <span class="bl" style="min-width:80px;"></span>.<span class="hint">punishment 惩罚</span></td><td><span class="bl" style="min-width:130px;"></span><span class="hint">不听话会变糟</span></td><td>A teacher can issue a detention.</td></tr>
+    <tr><td class="lbl">Reward<br><span class="hint">奖励权</span></td><td>The ability to give a <span class="bl" style="min-width:80px;"></span>.<span class="hint">reward or incentive 奖励</span></td><td><span class="bl" style="min-width:130px;"></span><span class="hint">照做有好处</span></td><td>A parent can give pocket money.</td></tr>
+    <tr><td class="lbl">Legitimate<br><span class="hint">法定权</span></td><td>An <span class="bl" style="min-width:90px;"></span> position.<span class="hint">official / recognised 官方认可</span></td><td><span class="bl" style="min-width:130px;"></span><span class="hint">这个位置本就该被服从</span></td><td>A police officer; an elected official.</td></tr>
+    <tr><td class="lbl">Expert<br><span class="hint">专家权</span></td><td><span class="bl" style="min-width:100px;"></span> held by a credible influence.<span class="hint">superior knowledge / expertise 专业知识</span></td><td><span class="bl" style="min-width:130px;"></span><span class="hint">对方比我懂</span></td><td>A college professor; a car specialist.</td></tr>
+    <tr><td class="lbl">Referent<br><span class="hint">感召权</span></td><td><span class="bl" style="min-width:100px;"></span>.<span class="hint">respect or admiration 尊敬或崇拜</span></td><td><span class="bl" style="min-width:130px;"></span><span class="hint">我想成为/被那样的人接纳</span></td><td>A celebrity; a charismatic leader.</td></tr>
+  </table>
+
+  <div class="box grey">
+    <div class="bx-t">How to identify a base in a scenario 场景里怎么判断是哪种 power</div>
+    找场景里的<strong>具体动作</strong>，不要找形容词：有人会被罚 → coercive；有人会得到东西 → reward；有人戴制服/有头衔 → legitimate；有人说的话别人听不懂 → expert；有人被崇拜 → referent。
+  </div>
+
+  <div class="pg-foot">Page 8 of 17</div>
+</div>
+
+<!-- ================= PAGE 9: CONTEXT + SUPPORT FOR SOCIAL POWER ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§8 · <span class="tag th">theory</span> Power Depends on Context · support</span><span class="r">ANSWERS → 课件 §13–§14</span></div>
+
+  <div class="box blue">
+    <div class="bx-t">The rule 规则</div>
+    The five bases are <strong>contingent upon context</strong>（取决于情境）— the same person holds power in one setting and <span class="bl" style="min-width:60px;"></span> in the next.<span class="hint">none 一点也没有</span><br>
+    Example: a football referee holds <span class="bl" style="min-width:80px;"></span> power on the field during a game, but not off the field afterwards.<span class="hint">legitimate 法定</span> Reward power only works if the target actually <span class="bl" style="min-width:90px;"></span> the reward on offer.<span class="hint">wants 想要</span>
+  </div>
+  <p class="small" style="margin:2px 0 6px 0;">失分点：写 "the manager has legitimate power" 却不说明<strong>在什么情境下</strong>成立。情境一变，权力就消失——这正是评价题里 "fails to take account of context" 这条批评的来源。</p>
+
+  <div class="sub">Four strengths 四点支持（填空）</div>
+  <table class="n">
+    <tr><th style="width:22%;">Strength</th><th style="width:42%;">What it says 内容</th><th>Why it matters 为什么算支持</th></tr>
+    <tr><td class="lbl">Organisations create obedience</td><td>Corporations and the military use <strong>hierarchies</strong>: senior officers hold <span class="bl" style="min-width:70px;"></span> power over lower ranks, plus <strong>reward</strong> and <span class="bl" style="min-width:70px;"></span> power.<span class="hint">legitimate 法定 · coercive 强制</span></td><td>The theory reaches outside the laboratory and into real institutions — it may explain why <strong>malevolent authority</strong> is implicated in war crimes.</td></tr>
+    <tr><td class="lbl">It can become protection</td><td>Because it says where power comes from, it can train soldiers to <span class="bl" style="min-width:90px;"></span> malevolent authority and promote <strong>whistleblowing policies</strong>.<span class="hint">resist 抵抗</span></td><td>A good theory is not only descriptive — it says where to intervene.</td></tr>
+    <tr><td class="lbl">Milgram's own study fits it</td><td>The study ran at <span class="bl" style="min-width:70px;"></span>, a highly regarded university (legitimate power), and <strong>Mr Williams</strong> wore a lab coat (<span class="bl" style="min-width:70px;"></span> power).<span class="hint">Yale 耶鲁 · expert 专家</span></td><td>The same data supports a second explanation — exactly what an evaluation wants.</td></tr>
+    <tr><td class="lbl">Two sources at once</td><td>Institution (Yale) and expertise (lab coat) acted <strong>together</strong>.</td><td>People rarely obey for one reason, and this theory can <span class="bl" style="min-width:110px;"></span>.<span class="hint">handle several bases at once 同时处理多种权力</span></td></tr>
+  </table>
+
+  <div class="sub">Write it out · 把 Milgram 那一条写完整（3 行）</div>
+  <div class="wl" style="height:34pt;">Strength: Milgram's own study fits social power theory, because participants may have perceived…</div>
+
+  <div class="box green">
+    <div class="bx-t">Sentence pattern · 可套用的句式</div>
+    "<span class="bl" style="min-width:70px;"></span> obeyed because <span class="bl" style="min-width:70px;"></span> was <strong>perceived</strong> to hold <span class="bl" style="min-width:70px;"></span> power: <span class="bl" style="min-width:110px;"></span> . In this context the power holds because <span class="bl" style="min-width:110px;"></span> ."
+  </div>
+
+  <div class="pg-foot">Page 9 of 17</div>
+</div>
+
+<!-- ================= PAGE 10: CRITICISMS OF SOCIAL POWER ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§9 · <span class="tag ev">eval</span> Evaluating Social Power Theory — criticisms</span><span class="r">ANSWERS → 课件 §14</span></div>
+
+  <div class="sub">Four points 四点评价（填空）</div>
+  <table class="n">
+    <tr><th style="width:22%;">Point</th><th style="width:40%;">What it says 内容</th><th>Why it matters 为什么这是个问题</th></tr>
+    <tr><td class="lbl">It ignores the circumstances of the order</td><td>The theory fails to take account of the <span class="bl" style="min-width:70px;"></span> in which the order is given. Latané: <span class="bl" style="min-width:50px;"></span>, <span class="bl" style="min-width:50px;"></span> and <span class="bl" style="min-width:50px;"></span> matter.<span class="hint">context 情境 · proximity 距离 · strength 强度 · number 人数</span></td><td>The same person obeys an order shouted across the room and refuses it over the telephone, so the setting has to be part of the explanation.</td></tr>
+    <tr><td class="lbl">It ignores individual differences</td><td>It cannot explain differences in obedience and <span class="bl" style="min-width:60px;"></span>; obedience and dissent occur for reasons of personality type, <span class="bl" style="min-width:60px;"></span> and culture.<span class="hint">dissent 异议 · gender 性别</span></td><td>Two people facing the same authority with the same power make <span class="bl" style="min-width:80px;"></span> choices.<span class="hint">opposite 相反的</span></td></tr>
+    <tr><td class="lbl">It is therefore reductionist</td><td>It traces obedience back to one thing — the <strong>perceived power</strong> of the authority figure.</td><td>A single-cause explanation always fits some cases badly, and those cases are the ones questions ask about.</td></tr>
+    <tr><td class="lbl">Wider issue: social control</td><td><strong>social control</strong>: psychological knowledge may be used to <span class="bl" style="min-width:90px;"></span> other people's behaviour.<span class="hint">manage or control 管理或控制</span></td><td>The same knowledge that protects can also <span class="bl" style="min-width:70px;"></span> — especially if coercive measures command obedience.<span class="hint">oppress 压迫</span></td></tr>
+  </table>
+
+  <div class="sub">Write it out · 写两条完整的批评（每条 3 行）</div>
+  <div class="wl" style="height:32pt;">Weakness 1: social power theory fails to take account of the context…</div>
+  <div class="wl" style="height:32pt;">Weakness 2: social power theory ignores individual differences such as…</div>
+
+  <div class="box purple">
+    <div class="bx-t">One comparison worth memorising 值得背下来的一句对比</div>
+    <span class="small">Both theories draw the <strong>same two criticisms</strong> — they ignore the <strong>context</strong> of the order and they ignore <strong>individual differences</strong> — which is why both can be called <strong>reductionist</strong>. Being able to say "the same weakness applies to both" is what turns a list into a conclusion.</span>
+  </div>
+
+  <div class="sub">Summary table · 两个理论一张表收口</div>
+  <table class="n">
+    <tr><th style="width:24%;"></th><th style="width:38%;">Agency theory</th><th style="width:38%;">Social power theory</th></tr>
+    <tr><td class="lbl">Core claim 核心主张</td><td>Obedience = the agentic shift; responsibility is displaced onto the authority.</td><td>Obedience = the perceived power the authority figure holds.</td></tr>
+    <tr><td class="lbl">Key evidence 关键证据</td><td>Milgram: 65% to 450 V; visible moral strain; My Lai.</td><td>Yale setting + lab coat; hierarchies in the military and corporations.</td></tr>
+    <tr><td class="lbl">Main weaknesses 主要批评</td><td>Cannot explain individual differences; ignores situational factors; reductionist.</td><td>Ignores the context of the order; ignores individual differences; reductionist.</td></tr>
+  </table>
+
+  <div class="pg-foot">Page 10 of 17</div>
+</div>
+
+<!-- ================= PAGE 11: EXAM SKILLS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§10 · <span class="tag exam">exam</span> Exam Skills — how answers are marked</span><span class="r">ANSWERS → 课件 §16</span></div>
+
+  <div class="box" style="border-left-color:#ea580c;">
+    <div class="bx-t">IDEA — 回答带情境的题目</div>
+    <ul class="tight" style="margin-bottom:2px;">
+      <li><strong>I — Identify:</strong> decide which piece of psychology the scenario is about (agency theory, or one of the five bases).</li>
+      <li><strong>E — Explain:</strong> state that piece of psychology accurately, in its own terms.</li>
+      <li><strong>A — Apply:</strong> link it to the <strong>details</strong> — name the people, say who holds the power, say what the person actually did.</li>
+    </ul>
+    <span class="small">只复述理论、完全不碰情境，写得再标准也是 0 分。说<em>是什么</em>得 1 分；同一句加上<em>为什么重要</em>得 2 分。</span>
+  </div>
+
+  <div class="sub">Command words 指令词</div>
+  <table class="n">
+    <tr><th style="width:26%;">Command word</th><th>What it asks for 要求你做什么</th></tr>
+    <tr><td class="lbl">Outline / Describe</td><td>Say what the theory claims — accurate content, using its own terms. <strong>No judgement needed.</strong></td></tr>
+    <tr><td class="lbl">Explain</td><td>Say what it claims <em>and</em> why it works that way — one step further than describe.</td></tr>
+    <tr><td class="lbl">Evaluate / Assess / Discuss</td><td><strong>Two halves:</strong> describe the theory accurately, then judge it with evidence — strengths, weaknesses, and a conclusion.</td></tr>
+    <tr><td class="lbl">"using…" / "with reference to the context"</td><td>The scenario is compulsory. Every point must touch a named detail of it.</td></tr>
+  </table>
+
+  <div class="sub">How the big question splits 大题的分怎么分</div>
+  <ul class="tight">
+    <li><strong>6-mark</strong> (one strength + two weaknesses): three developed points. Each = <em>what</em> + <em>why it matters</em>.</li>
+    <li><strong>8-mark</strong> (evaluate / assess / discuss): <strong>half the marks for outlining the theory accurately, half for judging it</strong>. Four paragraphs: outline → support → criticisms → conclusion.</li>
+    <li><strong>A generic answer scores nothing.</strong> An answer that could be written without reading the question — or a conclusion that never answers the question asked — stays in the middle levels.</li>
+  </ul>
+
+  <div class="sub">Sentence templates · 考试句式（填空后就能用）</div>
+  <div class="box grey">
+    <ul class="tight" style="margin-bottom:2px;">
+      <li><strong>Theory + application:</strong> "In the scenario, <span class="bl" style="min-width:60px;"></span> is an authority figure, so <span class="bl" style="min-width:60px;"></span> shifted into the <strong>agentic state</strong> and <strong>displaced responsibility</strong> onto them."</li>
+      <li><strong>Power + context:</strong> "<span class="bl" style="min-width:60px;"></span> is <strong>perceived</strong> to hold <span class="bl" style="min-width:60px;"></span> power because <span class="bl" style="min-width:100px;"></span> — and in this context that perception is what produces obedience."</li>
+      <li><strong>Strength:</strong> "A strength is <span class="bl" style="min-width:70px;"></span>; for example <span class="bl" style="min-width:100px;"></span> . This supports the theory because <span class="bl" style="min-width:100px;"></span> ."</li>
+      <li><strong>Weakness:</strong> "A limitation is <span class="bl" style="min-width:70px;"></span>; in this study <span class="bl" style="min-width:100px;"></span> . This weakens the theory because <span class="bl" style="min-width:100px;"></span> ."</li>
+      <li><strong>Conclusion:</strong> "Overall, <span class="bl" style="min-width:120px;"></span> , because <span class="bl" style="min-width:120px;"></span> ."</li>
+    </ul>
+  </div>
+
+  <div class="pg-foot">Page 11 of 17</div>
+</div>
+
+<!-- ================= PAGE 12: 8-MARK PLANS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§11 · <span class="tag exam">exam</span> Two 8-mark essay plans · 八分题提纲</span><span class="r">Fill in, then write in full on p.14</span></div>
+
+  <div class="sub">Plan A — "Assess how well agency theory can explain obedience"</div>
+  <table class="n">
+    <tr><th style="width:12%;">¶</th><th style="width:52%;">What goes in it 内容</th><th>My notes 我的要点</th></tr>
+    <tr><td class="lbl">1</td><td><strong>Outline</strong>: socialisation in a hierarchical society → autonomous state → agentic shift → agentic state → displacement of responsibility → moral strain.</td><td></td></tr>
+    <tr><td class="lbl">2</td><td><strong>Support</strong>: 65% reached the highest shock level; visible moral strain; participants blamed the experimenter; My Lai and "following orders".</td><td></td></tr>
+    <tr><td class="lbl">3</td><td><strong>Criticisms</strong>: 35% refused and Brandt resisted (individual differences); Latané's strength / immediacy / number (situational factors); reductionist.</td><td></td></tr>
+    <tr><td class="lbl">4</td><td><strong>Conclusion</strong> that answers the question asked: how <em>well</em>? Weigh support against criticism and say which side is stronger.</td><td></td></tr>
+  </table>
+
+  <div class="sub">Plan B — "Evaluate how well social power theory can account for obedience"</div>
+  <table class="n">
+    <tr><th style="width:12%;">¶</th><th style="width:52%;">What goes in it 内容</th><th>My notes 我的要点</th></tr>
+    <tr><td class="lbl">1</td><td><strong>Outline</strong>: French and Raven (1959) — coercive, reward, legitimate, expert, referent; perceived power gives influence over the target.</td><td></td></tr>
+    <tr><td class="lbl">2</td><td><strong>Support</strong>: hierarchies in the military and corporations; reward power at work; legitimate power and the Holocaust.</td><td></td></tr>
+    <tr><td class="lbl">3</td><td><strong>Criticisms</strong>: ignores individual differences (personality, gender, culture); ignores the circumstances of the order (Latané: strength, immediacy, number).</td><td></td></tr>
+    <tr><td class="lbl">4</td><td><strong>Conclusion</strong>: how <em>well</em> does it account for obedience? Weigh it up — and say whether an <strong>interactionist</strong> position (person × situation) explains the evidence better.</td><td></td></tr>
+  </table>
+
+  <div class="box grey">
+    <div class="bx-t">What separates a middle-band answer from a top-band one 中档与高档的分界</div>
+    <ul class="tight" style="margin-bottom:2px;">
+      <li>Middle: accurate description, then a list of "a weakness is…" with no reason attached.</li>
+      <li>Top: every point carries its <strong>why it matters</strong>, the scenario details are used rather than ignored, and the conclusion actually answers the question word (<em>how well?</em>).</li>
+    </ul>
+  </div>
+
+  <div class="sub">Sentence I will reuse 我最想记住的一句</div>
+  <div class="wl"></div>
+
+  <div class="pg-foot">Page 12 of 17</div>
+</div>
+
+<!-- ================= PAGE 13: EXAM PRACTICE A ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§12 · <span class="tag exam">exam</span> Practice A — short answers</span><span class="r">Model answers → p.16</span></div>
+
+  <div class="q">Q1 · 2 marks — Brandon works in a warehouse. His manager instructs him to load 10 boxes onto a van by 11:00 am; Brandon completes the task. The manager then leaves for a meeting at another site and <strong>emails</strong> Brandon to unpack five boxes by 3:00 pm. Brandon finishes at 4:00 pm.<br><strong>Describe, using agency theory, why Brandon may have behaved in this way.</strong></div>
+  <div class="wl s"></div><div class="wl s"></div><div class="wl s"></div>
+
+  <div class="q">Q2 · 2 marks — Katrina is a nurse. A doctor tells her to give a patient a higher dose of medication than normal. Katrina is worried about the increase, but gives the higher dose anyway.<br><strong>Describe, using agency theory, why Katrina gives the higher dose.</strong></div>
+  <div class="wl s"></div><div class="wl s"></div><div class="wl s"></div>
+
+  <div class="q">Q3 · 2 marks — Name the type of social power each definition describes.<br>(a) The authority figure can <strong>punish</strong> a person for disobedience. (b) The authority figure has <strong>superior knowledge and / or skills</strong>.</div>
+  <div class="wl s"></div>
+
+  <div class="q">Q4 · 6 marks — (a) Explain <strong>one strength</strong> of social power theory as an explanation of obedience.<br>(b) Explain <strong>two weaknesses</strong> of social power theory as an explanation of obedience.</div>
+  <div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div>
+
+  <div class="box grey">
+    <div class="bx-t">Before you write 动笔前先检查</div>
+    <span class="chk"><span class="c"></span> 每个 point 都写了 <strong>what</strong> 和 <strong>why it matters</strong></span> &nbsp;
+    <span class="chk"><span class="c"></span> 用了术语原文</span> &nbsp;
+    <span class="chk"><span class="c"></span> Q1 / Q2 提到了场景里的细节</span>
+  </div>
+
+  <div class="pg-foot">Page 13 of 17</div>
+</div>
+
+<!-- ================= PAGE 14: EXAM PRACTICE B ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§13 · <span class="tag exam">exam</span> Practice B — the 8-mark applied question</span><span class="r">Model answer → p.17</span></div>
+
+  <div class="q">Q5 · 8 marks — Jorge has recently bought a car. He notices an unusual noise when he drives fast. His friends hear the noise but tell him it is nothing to worry about and that he should still drive fast. Jorge is concerned, so he speaks to the car specialist at his local garage. He has known the specialist for a long time and trusts their advice. The specialist tells him to bring the car in the next day and only drive at a slow speed.<br><strong>Discuss, using social power theory, why Jorge obeys the car specialist and not his friends. You must make reference to the context in your answer.</strong></div>
+
+  <div class="sub">Plan the four points first 先列四点</div>
+  <table class="n">
+    <tr><th style="width:24%;">Point</th><th style="width:38%;">Which base / what it says 用哪种权力</th><th>Which detail of the scenario it uses 用上哪个细节</th></tr>
+    <tr><td class="lbl">1</td><td><span class="bl" style="min-width:110px;"></span><span class="hint">expert power 专家权</span></td><td></td></tr>
+    <tr><td class="lbl">2</td><td><span class="bl" style="min-width:110px;"></span><span class="hint">referent power 感召权</span></td><td></td></tr>
+    <tr><td class="lbl">3</td><td><span class="bl" style="min-width:110px;"></span><span class="hint">legitimate power 法定权</span></td><td></td></tr>
+    <tr><td class="lbl">4</td><td><strong>Comparison:</strong> why not the friends? 为什么朋友不行</td><td></td></tr>
+  </table>
+
+  <div class="sub">Now write it up 写成答案</div>
+  <div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div>
+
+  <div class="box" style="border-left-color:#ea580c;">
+    <div class="bx-t">Self-mark 打分自测</div>
+    <span class="small">Tick what you produced: <span class="chk"><span class="c"></span> 4 developed points</span> &nbsp; <span class="chk"><span class="c"></span> each uses a scenario detail</span> &nbsp; <span class="chk"><span class="c"></span> "perceived" power explained</span> &nbsp; <span class="chk"><span class="c"></span> context referenced</span> &nbsp; <span class="chk"><span class="c"></span> the friends are used</span></span><br>
+    <strong>Score /8: <span class="bl" style="min-width:34px;"></span></strong> &nbsp; <span class="small">If 3 or below, re-write it in full from memory tomorrow.</span>
+  </div>
+
+  <div class="pg-foot">Page 14 of 17</div>
+</div>
+
+<!-- ================= PAGE 15: BRAIN DUMP ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§14 · Brain Dump — close the book · 合上笔记盲测</span><span class="r">10 minutes · timer on</span></div>
+
+  <div class="box purple" style="padding:5px 9px;">
+    <div class="bx-t">The honest self-test 自测说明</div>
+    <strong>Close the workbook. Set a 10-minute timer.</strong> Without looking back, write everything you remember. Short phrases are fine — the lines you cannot fill are exactly the topics to revisit.
+  </div>
+
+  <div class="sub">A · Definitions 定义默写</div>
+  <table class="n">
+    <tr><td class="lbl">obedience 服从</td><td></td></tr>
+    <tr><td class="lbl">moral strain 道德紧张</td><td></td></tr>
+    <tr><td class="lbl">agentic state 代理态</td><td></td></tr>
+    <tr><td class="lbl">displacement of responsibility 责任转移</td><td></td></tr>
+    <tr><td class="lbl">reductionist 还原论的</td><td></td></tr>
+  </table>
+
+  <div class="sub">B · The five bases 五种权力（只写名字 + 一句话来源）</div>
+  <div style="display:flex; gap:6px;"><div style="flex:1;"><span class="wl s" style="display:block;"></span></div><div style="flex:1;"><span class="wl s" style="display:block;"></span></div></div>
+  <div style="display:flex; gap:6px; margin-top:2px;"><div style="flex:1;"><span class="wl s" style="display:block;"></span></div><div style="flex:1;"><span class="wl s" style="display:block;"></span></div></div>
+  <div style="display:flex; gap:6px; margin-top:2px;"><div style="flex:1;"><span class="wl s" style="display:block;"></span></div><div style="flex:1;"><span class="wl s" style="display:block;"></span></div></div>
+
+  <div class="sub">C · Evaluation 评价（每个理论各写两条 + why it matters）</div>
+  <div style="display:flex; gap:8px;">
+    <div style="flex:1;">
+      <div style="font-size:8.8pt; font-weight:700;">Agency theory</div>
+      <div class="wl s"></div><div class="wl s"></div><div class="wl s"></div><div class="wl s"></div>
+    </div>
+    <div style="flex:1;">
+      <div style="font-size:8.8pt; font-weight:700;">Social power theory</div>
+      <div class="wl s"></div><div class="wl s"></div><div class="wl s"></div><div class="wl s"></div>
+    </div>
+  </div>
+
+  <div class="sub">D · Two numbers and one study 数字与研究</div>
+  <div class="wl s"></div><div class="wl s"></div>
+
+  <div class="sub">Self-mark 自评</div>
+  <div class="chk" style="line-height:1.7; margin-top:4px;">
+    <span class="c"></span> Wrote <strong>5/5 definitions</strong> and all <strong>5 bases</strong> — strong, go to past papers.<br>
+    <span class="c"></span> Wrote 3–4 of each — one more pass on pp. 4–10.<br>
+    <span class="c"></span> Wrote fewer than 3 — re-read pp. 4–10 first, then try again tomorrow.
+  </div>
+
+  <div class="pg-foot">Page 15 of 17</div>
+</div>
+
+<!-- ================= PAGE 16: ANSWER KEY 1 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Answer Key · Part 1 — fill-in answers 答案速查（一）</span><span class="r">Check &amp; tick the tracker on p.1</span></div>
+
+  <div class="two">
+    <div>
+      <div class="sec" style="margin:4px 0 3px 0;">p.2 — Foundations</div>
+      <p class="small"><strong>Social approach:</strong> the real or imagined presence / pressure of others.<br>
+      <strong>theory</strong> = explain behaviour · <strong>study</strong> = test a theory · <strong>methodology</strong> = collect data.<br>
+      <strong>Conformity:</strong> majority → you (majority). <strong>Minority influence:</strong> minority → majority (minority). <strong>Obedience:</strong> authority figure → you (complying to the orders of an authority figure).<br>
+      <strong>Allport:</strong> experimental methods.</p>
+
+      <div class="sec" style="margin:8px 0 3px 0;">p.3 — Obedience</div>
+      <p class="small"><strong>obedience</strong> = complying to the orders of an authority figure.<br>
+      <strong>hierarchical</strong> = leaders and those who follow. <strong>socialisation</strong> = rules and norms of society (parents, teachers).<br>
+      Step 3: obeying is close to a <strong>habit</strong>.</p>
+
+      <div class="sec" style="margin:8px 0 3px 0;">p.4 — Agency theory</div>
+      <p class="small"><strong>autonomy</strong> = own free will · <strong>agency</strong> = an agent for another · <strong>moral strain</strong> = anxiety … against your moral judgement.<br>
+      <strong>Autonomous:</strong> your own will / you are responsible. <strong>Agentic:</strong> for someone else / the authority figure is responsible / moral strain.<br>
+      <strong>displacement of responsibility</strong> = passing responsibility for your own actions to the person who gave the order. "Well-rehearsed" state.</p>
+
+      <div class="sec" style="margin:8px 0 3px 0;">p.5 — The evidence</div>
+      <p class="small"><strong>teacher / learner</strong>; the learner was a confederate; <strong>no real shocks</strong> were given.<br>
+      <strong>100%</strong> reached 300 V; <strong>65%</strong> reached 450 V; 35% refused.<br>
+      Signs: <strong>nervous laughter</strong>; sweating, trembling, <strong>stuttering</strong>; three <strong>seizures</strong>; blamed the <strong>experimenter</strong>.<br>
+      My Lai: Lieutenant <strong>William Calley</strong>.</p>
+    </div>
+
+    <div>
+      <div class="sec" style="margin:4px 0 3px 0;">p.6 — Agency theory: support</div>
+      <p class="small"><strong>65%</strong> continued to the highest level. A theory is stronger when what it <strong>predicts</strong> is what happens.<br>
+      Moral strain: a detail it was <strong>not built to explain</strong>.<br>
+      Debrief: the <strong>experimenter</strong> was responsible — the mechanism was <strong>reported</strong> by participants.<br>
+      My Lai: <strong>following orders</strong>; explains obedience <strong>outside the laboratory</strong>.<br>
+      Application: <strong>whistleblowing</strong>.</p>
+
+      <div class="sec" style="margin:8px 0 3px 0;">p.7 — Agency theory: criticisms</div>
+      <p class="small"><strong>35%</strong> refused; <strong>Brandt</strong> (grew up in Nazi Germany) resisted.<br>
+      Latané: <strong>strength, immediacy, number</strong>; the same person <strong>refuses</strong> in another setting.<br>
+      <strong>reductionist</strong> = explaining a complex behaviour by isolated factors / a single cause.<br>
+      Application: understanding <strong>malevolent authority</strong> helps institutions limit the damage.</p>
+
+      <div class="sec" style="margin:8px 0 3px 0;">p.8 — Five bases</div>
+      <p class="small">French and Raven (1959) — <strong>five</strong> bases; power need not be <strong>real</strong>, only <strong>perceived</strong>.<br>
+      <strong>Coercive</strong> = punish (不听话会变糟). <strong>Reward</strong> = reward / incentive (照做有好处). <strong>Legitimate</strong> = official / recognised position (这个位置本就该被服从). <strong>Expert</strong> = superior knowledge or expertise (对方比我懂). <strong>Referent</strong> = respect or admiration (我想成为 / 被那样的人接纳).<br>
+      Bridge table: agency = the person obeying; social power = the authority figure / the <strong>kind of power</strong>.</p>
+
+      <div class="sec" style="margin:8px 0 3px 0;">p.9 — Context &amp; support</div>
+      <p class="small">Power is <strong>contingent upon context</strong>: none in the next setting; referee holds <strong>legitimate</strong> power on the field; reward power works only if the target <strong>wants</strong> the reward.<br>
+      Hierarchies: <strong>legitimate</strong> + <strong>coercive</strong> power. Protection: train soldiers to <strong>resist</strong>. Milgram: <strong>Yale</strong> (legitimate) + lab coat / Mr Williams (<strong>expert</strong>). Handles <strong>several bases at once</strong>.</p>
+
+      <div class="sec" style="margin:8px 0 3px 0;">p.10 — Social power: criticisms</div>
+      <p class="small">Ignores the <strong>context</strong> / circumstances of the order; Latané: <strong>proximity, strength, number</strong>.<br>
+      Ignores individual differences: <strong>dissent</strong>, personality type, <strong>gender</strong>, culture — two people make <strong>opposite</strong> choices.<br>
+      <strong>Social control</strong>: manage or control others' behaviour; the same knowledge can <strong>oppress</strong>.</p>
+    </div>
+  </div>
+
+  <div class="pg-foot">Page 16 of 17</div>
+</div>
+
+<!-- ================= PAGE 17: ANSWER KEY 2 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Answer Key · Part 2 — exam models &amp; brain dump 答案速查（二）</span><span class="r">Mark honestly, then re-write in full</span></div>
+
+  <div class="sec" style="margin:4px 0 3px 0;">p.13 · Q1 — Brandon (2 marks)</div>
+  <p class="small">Brandon loaded the boxes because he was in the <strong>agentic state</strong> in the presence of his manager — an authority figure who could give him an instruction — and he <strong>displaced responsibility</strong> for the task onto the manager. When the instruction arrived <strong>by email</strong> instead, the manager was no longer <strong>immediate</strong>: without the authority figure present, Brandon slipped back towards the <strong>autonomous state</strong> and did not finish unpacking on time. <em>Each point names the state and ties it to a detail (present / away).</em></p>
+
+  <div class="sec" style="margin:8px 0 3px 0;">p.13 · Q2 — Katrina (2 marks)</div>
+  <p class="small">The doctor is an <strong>authority figure</strong> on the ward, so Katrina shifted into the <strong>agentic state</strong> and acted as the doctor's agent rather than on her own judgement. She experienced <strong>moral strain</strong> — she was worried about the dose, which shows the order went against her own moral judgement — but displaced responsibility onto the doctor and carried out the order anyway.</p>
+
+  <div class="sec" style="margin:8px 0 3px 0;">p.13 · Q3 — naming the bases (2 marks)</div>
+  <p class="small">(a) <strong>Coercive power</strong> (punishment). (b) <strong>Expert power</strong> (superior knowledge). One word in the question decides which of the five it is.</p>
+
+  <div class="sec" style="margin:8px 0 3px 0;">p.13 · Q4 — social power theory, 1 strength + 2 weaknesses (6 marks)</div>
+  <p class="small"><strong>Strength:</strong> it can be applied in training military personnel in <strong>whistleblowing policies</strong> if they believe a superior is abusing a position of <strong>legitimate power</strong> — which could reduce atrocities committed by soldiers carrying out orders without question. <em>Why:</em> a theory that tells you where to intervene is worth more than one that only describes.<br>
+  <strong>Weakness 1:</strong> French and Raven claim obedience is a direct result of the power the authority figure is <em>perceived</em> to possess, which <strong>ignores individual differences</strong> of personality — for example, individuals with an internal locus of control may be more likely to <strong>dissent</strong> because they take personal responsibility for their actions. <em>Why:</em> two people facing the same authority make opposite choices.<br>
+  <strong>Weakness 2:</strong> the theory fails to take account of the <strong>circumstances</strong> in which the order is given — Latané shows that <strong>proximity, strength and number</strong> change obedience, so the same authority giving the same order gets different results in different settings. <em>Why:</em> the setting itself must be part of any explanation.</p>
+
+  <div class="sec" style="margin:8px 0 3px 0;">p.14 · Q5 — Jorge (8 marks)</div>
+  <p class="small"><strong>Expert power.</strong> The specialist has superior knowledge and expertise; Jorge believes he knows whether the noise is dangerous, so he slows down on his advice and ignores his friends, who have no such knowledge.<br>
+  <strong>Referent power.</strong> Jorge has known the specialist a long time and admires his work, so he identifies with him and wants his approval — the relationship is why the advice is taken seriously.<br>
+  <strong>Legitimate power.</strong> The specialist's qualifications place him in an acknowledged role about whether a car is roadworthy, so his instruction carries the weight of the position as well as of the person.<br>
+  <strong>The comparison that answers the question.</strong> The friends give the same advice in the opposite direction, but hold none of these bases — no expertise, no recognised position, no admired status. <strong>Perceived power is what separates two identical messages.</strong></p>
+
+  <div class="sec" style="margin:8px 0 3px 0;">p.15 · Brain dump — the checklist you are aiming for 自测达标清单</div>
+  <p class="small">obedience · moral strain · agentic state · displacement of responsibility · reductionist (5 definitions) · coercive / reward / legitimate / expert / referent (5 bases) · two strengths and two weaknesses per theory, each with a why-it-matters · <strong>65% / 35%</strong> and Milgram's first experiment.</p>
+
+  <div class="box grey" style="margin-top:8px;">
+    <div class="bx-t" style="font-size:9pt;">The last three things to check before an exam 考前最后三件事</div>
+    <ol class="tight" style="margin-bottom:2px;">
+      <li>Can you write the <strong>definition of obedience</strong> word for word? 定义是最便宜的分。</li>
+      <li>Can you name all <strong>five bases</strong> and identify each one from a one-line scenario? 五种权力是必考。</li>
+      <li>Does every evaluation point you write have a <strong>why it matters</strong> sentence? 没有 why 的评价只能拿一半分。</li>
+    </ol>
+  </div>
+
+  <div class="pg-foot">Page 17 of 17</div>
+</div>
+
+</body>
+</html>
