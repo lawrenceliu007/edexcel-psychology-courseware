@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6.1.5 Factors Influencing Jury Decision-Making — Student Notes Workbook</title>
+<style>
+@page { size: A4; margin: 13mm 12mm 15mm 12mm; }
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif; color:#1a1a1a; font-size:10pt; line-height:1.5; margin:0; background:#f3f3f3; }
+.page { background:#fff; max-width: 800px; margin: 0 auto 10px auto; padding: 10mm 11mm; page-break-after: always; position: relative; min-height: 248mm; }
+@media print { body { background:#fff; } .page { margin:0; padding:0; max-width:none; box-shadow:none; } }
+.pg-head { display:flex; justify-content:space-between; align-items:baseline; border-bottom: 2px solid #333; padding-bottom:4px; margin-bottom:10px; }
+.pg-head .t { font-size:11.5pt; font-weight:700; }
+.pg-head .r { font-size:8pt; color:#777; letter-spacing:.04em; }
+.pg-foot { position:absolute; bottom:4mm; left:0; right:0; text-align:center; font-size:8pt; color:#999; }
+.sec { font-size:10pt; font-weight:700; margin:12px 0 5px 0; padding-left:7px; border-left:3.5px solid #444; }
+.sec:first-of-type { margin-top:2px; }
+.sub { font-size:9.5pt; font-weight:700; margin:9px 0 3px 0; }
+.bl { display:inline-block; border-bottom:1px solid #555; height:1em; vertical-align:baseline; min-width:60px; margin:0 2px; }
+.hint { font-size:8.5pt; color:#666; }
+.hint::before { content:"（"; } .hint::after { content:"）"; }
+table.n { width:100%; border-collapse:collapse; margin:6px 0 9px 0; font-size:9pt; }
+table.n th, table.n td { border:1px solid #999; padding:4px 6px; text-align:left; vertical-align:top; }
+table.n th { background:#e9e9e9; font-size:8.8pt; }
+td.lbl { background:#f4f4f4; width:22%; font-weight:600; }
+.box { border:1px solid #aaa; border-left:4px solid #555; padding:6px 9px; margin:7px 0; border-radius:3px; }
+.box.grey { border:1px dashed #999; border-left:4px dashed #999; background:#fafafa; }
+.box.purple { border-left-color:#7c3aed; background:#faf5ff; }
+.box.blue { border-left-color:#2563eb; background:#f5f9ff; }
+.box.green { border-left-color:#16a34a; background:#f3faf5; }
+.box.orange { border-left-color:#ea580c; background:#fff7ed; }
+.box .bx-t { font-size:9.3pt; font-weight:700; margin-bottom:3px; }
+.wl { border-bottom:1px solid #bbb; height:24pt; }
+.wl.s { height:18pt; }
+ul.tight { margin:4px 0 8px 0; padding-left:17px; }
+ul.tight li { margin-bottom:3px; }
+ol.tight { margin:4px 0 8px 0; padding-left:17px; }
+ol.tight li { margin-bottom:4px; }
+.two { display:flex; gap:8px; } .two > div { flex:1; }
+.chk { font-size:9.3pt; }
+.chk .c { display:inline-block; width:11px; height:11px; border:1.3px solid #555; margin-right:6px; vertical-align:-1px; }
+.q { font-style:italic; background:#f6f6f6; border:1px solid #ccc; padding:5px 9px; margin:5px 0; font-size:9.3pt; border-radius:3px; }
+.tag { display:inline-block; font-size:8pt; font-weight:700; color:#fff; padding:1px 6px; border-radius:3px; margin-right:4px; vertical-align:1px; }
+.tag.th { background:#7c3aed; }
+.tag.tm { background:#2563eb; }
+.tag.ev { background:#16a34a; }
+.tag.exam { background:#ea580c; }
+.small { font-size:8.6pt; line-height:1.35; }
+.pg-tight table.n { font-size:8.5pt; margin:5px 0 7px 0; }
+.pg-tight table.n th, .pg-tight table.n td { padding:2.5px 5px; }
+.pg-tight .sub { margin:7px 0 2px 0; }
+.pg-tight .box { padding:5px 8px; margin:6px 0; }
+.pg-tight .small { line-height:1.24; }
+.pg-tight p.small, .pg-tight .sec { font-size:7.9pt; }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1: COVER ================= -->
+<div class="page">
+  <div style="text-align:center; margin-top:6mm;">
+    <div style="font-size:9pt; letter-spacing:.22em; color:#666;">PEARSON EDEXCEL IAL PSYCHOLOGY · TOPIC F · CRIMINOLOGICAL PSYCHOLOGY</div>
+    <div style="font-size:21pt; font-weight:800; margin:8px 0 2px 0; line-height:1.2;">6.1.5 — Factors Influencing Jury Decision-Making</div>
+    <div style="font-size:13pt; color:#444;">Student Notes Workbook · 学习笔记工作册</div>
+    <div style="font-size:9.5pt; color:#666; margin-top:4px;">characteristics of the defendant（被告特征）· pre-trial publicity（审前报道）· expert testimony（专家证词）· Penrod and Cutler (1989)</div>
+  </div>
+
+  <div style="display:flex; gap:14px; margin:9mm 0 6mm 0; font-size:9.5pt;">
+    <div style="flex:1;">Name 姓名: <span class="bl" style="min-width:150px;"></span></div>
+    <div style="flex:1;">Class 班级: <span class="bl" style="min-width:100px;"></span></div>
+    <div>Start date: <span class="bl" style="min-width:90px;"></span></div>
+  </div>
+
+  <div class="sec" style="margin:6px 0 3px 0;">How to use this workbook 使用方法</div>
+  <ol class="tight">
+    <li><strong>Read one section of the courseware, then fill the matching page.</strong> 边读课件边填空——填空的价值在于"想不起来"的那一刻。</li>
+    <li><strong>Every study = who · what · number.</strong> 每个研究记三样：谁（被试）、操纵了什么、得到什么数字。数字就是答案里的 Evidence。</li>
+    <li><strong>Every criticism needs two halves.</strong> 评价 = <em>哪里有问题</em> + <em>为什么这是个问题</em>。只写前半句只拿一半分。</li>
+    <li><strong>Check the answer key, correct in pen, then do the brain dump page from memory.</strong> 对答案 → 用笔订正 → 合上笔记自测。</li>
+  </ol>
+
+  <div class="sec" style="margin:6px 0 3px 0;">What this topic covers 内容地图</div>
+  <table class="n">
+    <tr><th style="width:26%;">Syllabus 考纲</th><th>Content 内容</th><th style="width:20%;">Workbook pages</th></tr>
+    <tr><td><strong>6.1.5</strong></td><td><span class="tag tm">term</span> jury · mock jury · <span class="tag th">factor</span> defendant characteristics (race, attractiveness, accent) · pre-trial publicity · expert testimony</td><td>pp. 2–18</td></tr>
+    <tr><td><strong>Key studies 关键研究</strong></td><td><span class="tag ev">evid</span> Mitchell et al. · Sigall &amp; Ostrove · Steblay et al. · Ruva et al. · Jones et al. · Benton et al. · <strong>Penrod &amp; Cutler (1989)</strong></td><td>throughout</td></tr>
+    <tr><td><strong>Exam skills 考试</strong></td><td><span class="tag exam">exam</span> mock jury strengths/weaknesses · 3-mark describe · 2-mark justify · 8-mark evaluate plan</td><td>pp. 19–20</td></tr>
+    <tr><td><strong>Self-test 自测</strong></td><td>Brain dump from memory · answer key</td><td>pp. 20–22</td></tr>
+  </table>
+
+  <div class="box purple">
+    <div class="bx-t">The one-line map of the whole topic 全章一句话</div>
+    A jury is meant to weigh <em>only the evidence</em> — but three things get in:<br>
+    <strong>① pre-trial publicity</strong> 在开庭<em>之前</em>就把观点塞给了未来的陪审员（还可能被误当成法庭上的证据）。<br>
+    <strong>② defendant characteristics</strong> 在法庭<em>上</em>触发刻板印象：种族、外表、口音。<br>
+    <strong>③ expert testimony</strong> 是一次<em>纠错尝试</em>：把心理学对记忆的发现搬进法庭——但它自己也可能带来新偏差。
+  </div>
+
+  <div class="sec" style="margin:8px 0 3px 0;">Review tracker 复习打卡</div>
+  <div class="chk" style="line-height:2.0;">
+    <span class="c"></span>Three factors placed on the timeline 三个因素按时间轴归类 &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span><br>
+    <span class="c"></span>Key numbers written from memory 关键数字默写（59% vs 45% · 73% vs 27% · 60% vs 95% · 30% vs 81% · 128 experiments · 538 students） &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span><br>
+    <span class="c"></span>Penrod and Cutler's three studies matched to method and finding 三个研究配对 &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span><br>
+    <span class="c"></span>8-mark essay written with evidence on both sides 双边证据的 8 分题写完 &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span><br>
+    <span class="c"></span>Brain dump done with the book closed 合上笔记完成自测 &nbsp;&nbsp; Date: <span class="bl" style="min-width:70px;"></span>
+  </div>
+
+  <div class="pg-foot">Page 1 of 22</div>
+</div>
+
+<!-- ================= PAGE 2: FOUNDATIONS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§1 · Foundations — what a jury is, and why we study mock juries · 基础定位</span><span class="r">ANSWERS → 课件 §1–§2</span></div>
+
+  <div class="box blue">
+    <div class="bx-t">Key terms 术语填空 — learn word for word 一字不差地背</div>
+    <table class="n">
+      <tr><td class="lbl">mock jury<br><span class="hint">模拟陪审团</span></td><td>A study involving participants experiencing a trial using a <span class="bl" style="min-width:90px;"></span> or <span class="bl" style="min-width:110px;"></span>, upon which the participant comes to a verdict about the defendant on trial.<span class="hint">video · transcript 录像 · 文字记录</span></td></tr>
+      <tr><td class="lbl">line-up<br><span class="hint">列队辨认</span></td><td>A method used by <span class="bl" style="min-width:70px;"></span> to help witnesses identify criminals; witnesses are shown a series of <span class="bl" style="min-width:90px;"></span> and asked to identify the suspect.<span class="hint">police · images 警方 · 图片</span></td></tr>
+      <tr><td class="lbl">deliberation<br><span class="hint">评议</span></td><td>The stage where the jury <span class="bl" style="min-width:100px;"></span> the evidence and <span class="bl" style="min-width:100px;"></span> the case together to reach a verdict. It is completely <span class="bl" style="min-width:100px;"></span> and cannot be recorded.<span class="hint">review · discuss · confidential 复审 · 讨论 · 保密</span></td></tr>
+      <tr><td class="lbl">foreperson<br><span class="hint">陪审团发言人</span></td><td>The jury member appointed to <span class="bl" style="min-width:130px;"></span> back to the judge.<span class="hint">present the decision 宣布决定</span></td></tr>
+    </table>
+  </div>
+
+  <div class="sub">How a jury works 陪审团怎么运作</div>
+  <ol class="tight">
+    <li>Typically <span class="bl" style="min-width:40px;"></span> jurors, selected <span class="bl" style="min-width:110px;"></span> from an electoral roll of local people.<span class="hint">12 · randomly 12 人 · 随机</span></li>
+    <li>Strict rules: jurors must not <span class="bl" style="min-width:120px;"></span> with anyone outside the jury, and must avoid <span class="bl" style="min-width:120px;"></span> of the case.<span class="hint">discuss the case · media coverage 讨论案件 · 媒体报道</span></li>
+    <li>The judge instructs the jury on the law but <span class="bl" style="min-width:170px;"></span> — the judge relies entirely on the jury.<span class="hint">cannot decide guilt 不能定罪</span></li>
+    <li>In court jurors hear evidence from both sides, witness testimony, the defendant's statement, and sometimes <span class="bl" style="min-width:130px;"></span>.<span class="hint">expert testimony 专家证词</span></li>
+  </ol>
+
+  <div class="box grey">
+    <div class="bx-t">The research problem 研究困境 — 一句话分清</div>
+    评议室<strong>谁都不能进、不能录音</strong> → 真实陪审团<strong>无法被直接研究</strong> → 所以本章几乎所有研究都用 <strong>mock jury</strong>。<br>
+    这既是本章一切研究的来源，也是最重要的<strong>评价武器</strong>（§16）。
+  </div>
+
+  <div class="box purple">
+    <div class="bx-t">The first exam move 考场第一步</div>
+    给一个场景，先问：<strong>这个影响是什么时候到达陪审员的？</strong> 开庭前 → pre-trial publicity；开庭中（看到/听到被告）→ defendant characteristics；有人解释证据 → expert testimony。这一步直接把选项从 3 个砍到 1 个。
+  </div>
+
+  <div class="pg-foot">Page 2 of 22</div>
+</div>
+
+<!-- ================= PAGE 3: RACE CONCEPT ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§2 · <span class="tag th">factor</span> Factor 1a · Race — the concept</span><span class="r">ANSWERS → 课件 §4</span></div>
+
+  <div class="sub">The mechanism 机制</div>
+  <p style="margin:3px 0; font-size:9.3pt;">During a trial jurors can see and hear the defendant. Characteristics such as <span class="bl" style="min-width:150px;"></span> can trigger <span class="bl" style="min-width:110px;"></span> that jurors already hold.<span class="hint">race, gender, attractiveness, accent · stereotypes 种族、性别、外表、口音 · 刻板印象</span></p>
+
+  <div class="box">
+    <div class="bx-t">How a stereotype becomes a verdict 刻板印象怎么变成判决</div>
+    看到某一类人 → 脑子自动归类（categorise）→ 自动带上"这类人更可能犯罪"的预期 → 影响对证据的解读。<strong>陪审员不是故意的——这就是为什么它危险。</strong>
+  </div>
+
+  <div class="sub">Why researchers take race seriously 为什么认真对待</div>
+  <ul class="tight">
+    <li><strong>Human Rights Watch (2000)</strong> reported that minorities are <span class="bl" style="min-width:130px;"></span> imprisoned in America — a larger share of the prison population than of the general population.<span class="hint">disproportionately 不成比例地</span></li>
+    <li>Juries are randomly selected, but problems arise when the defendant's race <span class="bl" style="min-width:150px;"></span>.<span class="hint">differs from the majority of jurors 与陪审员多数不同</span></li>
+    <li>In <strong>voir dire</strong>（陪审员遴选）, lawyers may question potential jurors. Selecting by race directly is <span class="bl" style="min-width:70px;"></span>, but lawyers can ask <span class="bl" style="min-width:100px;"></span> about racial bias.<span class="hint">not permitted · indirectly 不被允许 · 间接地</span></li>
+  </ul>
+
+  <div class="sub">The common finding from mock trials 模拟审判的常见发现</div>
+  <p style="margin:3px 0; font-size:9.3pt;">White jurors in mock trials show <span class="bl" style="min-width:110px;"></span> bias to Black defendants: giving them <span class="bl" style="min-width:90px;"></span> sentences, and finding <span class="bl" style="min-width:90px;"></span> Black defendants guilty than white defendants.<span class="hint">negative · harsher · more 负面 · 更重 · 更多</span></p>
+
+  <div class="box green">
+    <div class="bx-t">Vocabulary to use in answers 答案用词</div>
+    <strong>bias 偏向</strong>（不是 prejudice 也可以）· <strong>leniency 宽大</strong>（判得轻）· <strong>lenient</strong>（形容词）· <strong>guilty verdict 有罪判决</strong>。写评价时用 "showed leniency to defendants of their own race" 比 "was nicer" 专业得多。
+  </div>
+
+  <div class="pg-foot">Page 3 of 22</div>
+</div>
+
+<!-- ================= PAGE 4: RACE EVIDENCE ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§3 · <span class="tag ev">evid</span> Factor 1a · Race — the evidence（填关键数字）</span><span class="r">ANSWERS → 课件 §5</span></div>
+
+  <table class="n">
+    <tr><th style="width:24%;">Study</th><th>Key finding 关键发现</th></tr>
+    <tr><td class="lbl">Bradbury and Williams (2013)</td><td>Real jury data across US states. Black defendants were <span class="bl" style="min-width:90px;"></span> likely to be convicted by juries with a higher proportion of <span class="bl" style="min-width:90px;"></span> jurors, and <span class="bl" style="min-width:90px;"></span> likely to be convicted by juries with more <span class="bl" style="min-width:110px;"></span> jurors.<span class="hint">less · Black · white and Hispanic 更少 · 黑人 · 白人和拉美裔</span></td></tr>
+    <tr><td class="lbl">Skolnick and Shaw (1997)</td><td>Mock jury, students at <span class="bl" style="min-width:130px;"></span>. Black and white jurors read a murder trial with a <span class="bl" style="min-width:100px;"></span> defendant with high or low <span class="bl" style="min-width:100px;"></span> status.<span class="hint">California State University · Black or white · celebrity 名人</span></td></tr>
+    <tr><td class="lbl">Skolnick and Shaw — results</td><td><span class="bl" style="min-width:90px;"></span> jurors judged the Black defendant more favourably and gave <span class="bl" style="min-width:90px;"></span> sentences; <span class="bl" style="min-width:90px;"></span> jurors did not differentiate. Celebrity status had <span class="bl" style="min-width:70px;"></span> effect — race was the main factor.<span class="hint">Black · more lenient · white · no</span></td></tr>
+    <tr><td class="lbl">Skolnick and Shaw — interpretation</td><td>A Black defendant received <span class="bl" style="min-width:70px;"></span> guilty verdicts regardless of the jury's race — possibly because white jurors feared <span class="bl" style="min-width:130px;"></span>.<span class="hint">fewer · being called racist 被指为种族主义者</span></td></tr>
+    <tr><td class="lbl">Abwender and Hough (2001)</td><td><span class="bl" style="min-width:50px;"></span> participants from education programmes; Black, white and <span class="bl" style="min-width:90px;"></span> defendants. Black participants showed <span class="bl" style="min-width:80px;"></span> to their own race; Hispanics showed <span class="bl" style="min-width:70px;"></span>; white participants showed <span class="bl" style="min-width:70px;"></span> bias.<span class="hint">207 · Hispanic · leniency · the opposite · no</span></td></tr>
+    <tr><td class="lbl">Mitchell et al. (2005)</td><td><span class="bl" style="min-width:90px;"></span> of <span class="bl" style="min-width:50px;"></span> data samples from <span class="bl" style="min-width:50px;"></span> studies. A <span class="bl" style="min-width:100px;"></span> but <span class="bl" style="min-width:90px;"></span> racial bias: more guilty verdicts when the defendant was a <span class="bl" style="min-width:130px;"></span> race from the juror.<span class="hint">meta-analysis · 46 · 34 · small · significant · different</span></td></tr>
+    <tr><td class="lbl">Mitchell et al. — moderators</td><td>Bias was stronger when the juror was <span class="bl" style="min-width:70px;"></span>; affected by whether the jury received <span class="bl" style="min-width:90px;"></span>, and by the <span class="bl" style="min-width:100px;"></span> of the research.<span class="hint">Black · instructions · publication date 指示 · 发表年份</span></td></tr>
+  </table>
+
+  <div class="box purple">
+    <div class="bx-t">Read the four rows as one sentence 四行读成一句</div>
+    单个研究<strong>方向不一致</strong>（有的更重、有的更轻、有的没差别）→ <strong>Mitchell 的元分析收口</strong>：偏向确实存在，但<strong>小</strong>，且取决于条件。<br>
+    答案句式："There is a <em>small but significant</em> racial bias (Mitchell et al., 2005) — stronger than saying 'juries are racist'."
+  </div>
+
+  <div class="pg-foot">Page 4 of 22</div>
+</div>
+
+<!-- ================= PAGE 5: RACE EVALUATION ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§4 · <span class="tag th">eval</span> Evaluating race as a defendant characteristic</span><span class="r">ANSWERS → 课件 §6</span></div>
+
+  <div class="sub">Evaluation 评价 — 每条都要写"为什么这是问题/为什么有价值"</div>
+  <table class="n">
+    <tr><th style="width:24%;">Point</th><th>What + why 内容 + 为什么</th></tr>
+    <tr><td class="lbl">Strength: meta-analysis</td><td>Mitchell et al. (2005) combined <span class="bl" style="min-width:60px;"></span> samples and still found an effect — so the bias is not a <span class="bl" style="min-width:90px;"></span>.<span class="hint">46 · one-off 偶然</span></td></tr>
+    <tr><td class="lbl">Strength: some evidence is real</td><td>Bradbury and Williams used <span class="bl" style="min-width:90px;"></span> data; Human Rights Watch documented real <span class="bl" style="min-width:110px;"></span> patterns — not just mock juries.<span class="hint">real conviction · imprisonment 真实定罪 · 监禁</span></td></tr>
+    <tr><td class="lbl">Weakness: inconsistent findings</td><td>Skolnick and Shaw found <span class="bl" style="min-width:90px;"></span>; Abwender and Hough found <span class="bl" style="min-width:110px;"></span> — so the bias "may not be consistent among racial groups".<span class="hint">leniency · no white bias 宽大 · 白人无偏向</span></td></tr>
+    <tr><td class="lbl">Weakness: mostly mock juries</td><td>Students reading a summary do not decide a real person's <span class="bl" style="min-width:70px;"></span>, so the effect may be different in reality.<span class="hint">freedom 自由</span></td></tr>
+    <tr><td class="lbl">Weakness: ecological validity</td><td>Mitchell et al. found bias <span class="bl" style="min-width:90px;"></span> in more realistic procedures, and was <span class="bl" style="min-width:70px;"></span> significant when guilty/not-guilty was the measure and jury instructions were given.<span class="hint">reduced · not 减少 · 不</span></td></tr>
+  </table>
+
+  <div class="sub">The application: debiasing a jury 应用：给陪审团"去偏见"</div>
+  <div class="box green">
+    <div class="bx-t">Ingriselli (2014)</div>
+    Tested a <strong>debiasing jury instruction</strong>: telling jurors before the trial not to be influenced by <span class="bl" style="min-width:110px;"></span>.<br>
+    Result: a <span class="bl" style="min-width:90px;"></span> number of guilty verdicts for Black defendants from <span class="bl" style="min-width:110px;"></span> juries.<span class="hint">bias, prejudice or sympathy · lower · majority-white 偏见、歧视或同情 · 更少 · 多数白人</span>
+  </div>
+
+  <div class="box orange">
+    <div class="bx-t">Why Ingriselli is exam gold 为什么这个例子值钱</div>
+    考题问「研究有什么用 / 怎么改进司法制度」时，Ingriselli 是<strong>唯一直接给出解决方案</strong>的研究——写成现成的 practical application 段。
+  </div>
+
+  <div class="pg-foot">Page 5 of 22</div>
+</div>
+
+<!-- ================= PAGE 6: ATTRACTIVENESS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§5 · <span class="tag th">factor</span> Factor 1b · Attractiveness — Sigall and Ostrove (1975)</span><span class="r">ANSWERS → 课件 §7</span></div>
+
+  <div class="sub">The design 设计（填数字）</div>
+  <ul class="tight">
+    <li><span class="bl" style="min-width:40px;"></span> participants, asked to recommend a prison sentence between <span class="bl" style="min-width:40px;"></span> and <span class="bl" style="min-width:40px;"></span> years.<span class="hint">120 · 1 · 15</span></li>
+    <li>Each received a card with a crime — <span class="bl" style="min-width:70px;"></span> or <span class="bl" style="min-width:70px;"></span> — and a photograph of a woman called <span class="bl" style="min-width:90px;"></span>.<span class="hint">burglary · fraud · Barbara Helms</span></li>
+    <li><span class="bl" style="min-width:40px;"></span> groups of <span class="bl" style="min-width:40px;"></span> participants: attractive / unattractive / <span class="bl" style="min-width:80px;"></span> photograph × the two crimes.<span class="hint">6 · 20 · no (control)</span></li>
+  </ul>
+
+  <div class="sub">The results matrix 结果矩阵</div>
+  <table class="n">
+    <tr><th style="width:20%;">Photo shown</th><th style="width:40%;">Burglary 入室盗窃</th><th>Fraud 诈骗</th></tr>
+    <tr><td class="lbl">Attractive 好看</td><td><span class="bl" style="min-width:60px;"></span> sentence — attractiveness is not associated with burglary.<span class="hint">shorter 更短</span></td><td><span class="bl" style="min-width:60px;"></span> sentence — the assumption that an attractive person uses their looks to <span class="bl" style="min-width:100px;"></span>.<span class="hint">longer · con money out of people 用外表骗钱</span></td></tr>
+    <tr><td class="lbl">Unattractive 不好看</td><td colspan="2">Similar length to the <span class="bl" style="min-width:80px;"></span> condition for both crimes.<span class="hint">no photograph (control) 无照片对照</span></td></tr>
+    <tr><td class="lbl">No photo 无照片</td><td colspan="2">Control condition — baseline for comparison.</td></tr>
+  </table>
+
+  <div class="box purple">
+    <div class="bx-t">The key understanding 关键理解</div>
+    不是"好看就判得轻"。<strong>好看和罪名会交互（interact）</strong>：诈骗时好看判得更重（觉得她在用外表骗钱），盗窃时好看判得轻。<br>
+    "不好看"和"无照片"结果差不多 → 起作用的是<strong>好看本身</strong>，不是"有照片"。
+  </div>
+
+  <div class="sub">Two ready-made criticisms 两条现成批评</div>
+  <ol class="tight">
+    <li>The study does not reflect what a real jury does: participants recommended a <span class="bl" style="min-width:100px;"></span>, but a real jury only decides <span class="bl" style="min-width:70px;"></span> — the <span class="bl" style="min-width:60px;"></span> sets the sentence.<span class="hint">sentence length · guilt · judge 刑期 · 有罪 · 法官</span></li>
+    <li><span class="bl" style="min-width:90px;"></span> is highly subjective — hard to control as a variable.<span class="hint">Attractiveness 外表吸引力</span></li>
+  </ol>
+
+  <div class="box blue">
+    <div class="bx-t">Key term 术语</div>
+    <strong>Halo effect 光环效应</strong> — a cognitive bias in which the <span class="bl" style="min-width:80px;"></span> of a person influences our judgements of their <span class="bl" style="min-width:80px;"></span>.<span class="hint">appearance · character 外表 · 品格</span>
+  </div>
+
+  <div class="pg-foot">Page 6 of 22</div>
+</div>
+
+<!-- ================= PAGE 7: ACCENT ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§6 · <span class="tag th">factor</span> Factor 1c · Accent 口音</span><span class="r">ANSWERS → 课件 §7</span></div>
+
+  <table class="n">
+    <tr><th style="width:24%;">Study</th><th>Key finding 关键发现</th></tr>
+    <tr><td class="lbl">Lev-Ari and Keysar (2010)</td><td>Participants judged the truth of statements by a <span class="bl" style="min-width:90px;"></span> speaker (American-English), a <span class="bl" style="min-width:90px;"></span> non-native speaker (Polish, Turkish, German) or a <span class="bl" style="min-width:90px;"></span> non-native speaker (Korean, Turkish, Italian).<span class="hint">native · mild · strong</span></td></tr>
+    <tr><td class="lbl">Lev-Ari and Keysar — result</td><td>Strong non-natives were judged <span class="bl" style="min-width:80px;"></span> truthful — probably due to the <span class="bl" style="min-width:120px;"></span> of processing their speech.<span class="hint">less · difficulty 困难</span></td></tr>
+    <tr><td class="lbl">Dixon and Mahoney (1997)</td><td>UK study. Participants heard a suspect talking to a police officer in either a <span class="bl" style="min-width:100px;"></span> accent or a <span class="bl" style="min-width:110px;"></span> accent (Birmingham). The regional accent was rated <span class="bl" style="min-width:70px;"></span> guilty.<span class="hint">standard English · regional · more</span></td></tr>
+    <tr><td class="lbl">Seggie (1983)</td><td>Australian participants heard <span class="bl" style="min-width:90px;"></span> accents across two crimes (assault or theft). Accent <span class="bl" style="min-width:90px;"></span> with the type of crime: broad Australian = more guilty of <span class="bl" style="min-width:70px;"></span>; British = more guilty of <span class="bl" style="min-width:70px;"></span>.<span class="hint">three · interacted · assault · theft</span></td></tr>
+  </table>
+
+  <div class="box purple">
+    <div class="bx-t">The pattern across both characteristics 两个特征的共同模式</div>
+    外表和口音的发现<strong>都不是"一刀切"</strong>：<br>
+    · Sigall &amp; Ostrove：好看的效果<strong>取决于罪名</strong>。<br>
+    · Seggie：口音的效果<strong>取决于罪名</strong>（assault vs theft）。<br>
+    考场口诀：<strong>"效果取决于它和什么搭配"</strong> — 这一句就能撑起一个评价点。
+  </div>
+
+  <div class="sub">Quick self-test 快速自测</div>
+  <ol class="tight">
+    <li>Name the two crimes in Sigall and Ostrove (1975): <span class="bl" style="min-width:150px;"></span><span class="hint">burglary and fraud</span></li>
+    <li>Name the two crimes in Seggie (1983): <span class="bl" style="min-width:150px;"></span><span class="hint">assault and theft</span></li>
+    <li>Which accent did Dixon and Mahoney use as the regional accent? <span class="bl" style="min-width:120px;"></span><span class="hint">Birmingham 伯明翰</span></li>
+    <li>Why did Lev-Ari and Keysar think strong non-native speakers seemed less truthful? <span class="bl" style="min-width:200px;"></span><span class="hint">processing difficulty 理解起来费劲</span></li>
+  </ol>
+
+  <div class="pg-foot">Page 7 of 22</div>
+</div>
+
+<!-- ================= PAGE 8: PTP CONCEPT ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§7 · <span class="tag th">factor</span> Factor 2 · Pre-trial Publicity — the concept</span><span class="r">ANSWERS → 课件 §8</span></div>
+
+  <div class="box blue">
+    <div class="bx-t">Key term 术语填空</div>
+    <strong>pre-trial publicity (PTP) 审前报道：</strong> information about a case and the people in it that reaches <span class="bl" style="min-width:120px;"></span> through the <span class="bl" style="min-width:70px;"></span> <span class="bl" style="min-width:60px;"></span> the trial starts.<span class="hint">potential jurors · media · before 未来的陪审员 · 媒体 · 开庭前</span>
+  </div>
+
+  <div class="sub">Two mechanisms 两个机制</div>
+  <table class="n">
+    <tr><th style="width:26%;">Mechanism</th><th>How it works 怎么起作用</th></tr>
+    <tr><td class="lbl">Schema<br><span class="hint">图式</span></td><td>A juror's own mental framework influences how they process pre-trial information, and later <span class="bl" style="min-width:130px;"></span> their perception of the evidence in court.<span class="hint">alters 改变</span></td></tr>
+    <tr><td class="lbl">Source monitoring error<br><span class="hint">来源监控错误</span></td><td>PTP is <span class="bl" style="min-width:110px;"></span> with information presented in court: the juror believes they heard something as evidence when they actually <span class="bl" style="min-width:90px;"></span> it in the news.<span class="hint">confused · read 混淆 · 读到</span></td></tr>
+  </table>
+
+  <div class="box grey">
+    <div class="bx-t">One-line version 一句话版</div>
+    来源监控错误 = "我<strong>记得</strong>这件事，但<strong>记错了从哪儿听来的</strong>。" 新闻细节被当成法庭证词。<br>
+    上一章 Crombag 的幻影电视画面就是同一个机制——两个考点可以互相支援。
+  </div>
+
+  <div class="sub">Two types of publicity 两类报道</div>
+  <table class="n">
+    <tr><th style="width:22%;">Type</th><th style="width:40%;">What it contains</th><th>How long it lasts</th></tr>
+    <tr><td class="lbl">Factual 事实型</td><td><span class="bl" style="min-width:110px;"></span> information about the defendant or the case, such as what happened during the crime.<span class="hint">Incriminating 定罪的</span></td><td><span class="bl" style="min-width:70px;"></span>-lived — it can be redressed as the trial presents more information.<span class="hint">shorter 短</span></td></tr>
+    <tr><td class="lbl">Emotional 情绪型</td><td>No incriminating information, but content that arouses <span class="bl" style="min-width:100px;"></span> — e.g. the defendant's or victim's <span class="bl" style="min-width:50px;"></span>.<span class="hint">negative emotions · past 负面情绪 · 过去</span></td><td><span class="bl" style="min-width:70px;"></span>-lasting — it is not about facts, so facts in court do not undo it.<span class="hint">longer 长</span></td></tr>
+  </table>
+
+  <div class="box orange">
+    <div class="bx-t">Exam move 考场动作</div>
+    题目问 "explain one aspect of pre-trial publicity"：先选类型（factual / emotional），再配一个机制（schema / source monitoring error），最后落到场景里的人身上。
+  </div>
+
+  <div class="pg-foot">Page 8 of 22</div>
+</div>
+
+<!-- ================= PAGE 9: PTP EVIDENCE ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§8 · <span class="tag ev">evid</span> Factor 2 · Pre-trial Publicity — the evidence（填关键数字）</span><span class="r">ANSWERS → 课件 §9</span></div>
+
+  <table class="n">
+    <tr><th style="width:24%;">Study</th><th>Key finding 关键发现</th></tr>
+    <tr><td class="lbl">Ruva, McEvoy and Bryant (2007)</td><td>Negative PTP made the defendant seem <span class="bl" style="min-width:70px;"></span> guilty and <span class="bl" style="min-width:70px;"></span> credible. <span class="bl" style="min-width:40px;"></span>% of collaborating jurors voted guilty, versus <span class="bl" style="min-width:40px;"></span>% exposed to no PTP.<span class="hint">more · less · 73 · 27</span></td></tr>
+    <tr><td class="lbl">Ruva et al. — after deliberation</td><td>The effect was <span class="bl" style="min-width:80px;"></span> after jury deliberation — but jurors still <span class="bl" style="min-width:90px;"></span> pre-trial information with case evidence.<span class="hint">reduced · confused 减少 · 混淆</span></td></tr>
+    <tr><td class="lbl">Steblay et al. (1999)</td><td><span class="bl" style="min-width:90px;"></span> of <span class="bl" style="min-width:40px;"></span> empirical tests representing <span class="bl" style="min-width:60px;"></span> subjects. Negative PTP: <span class="bl" style="min-width:40px;"></span>% guilty versus <span class="bl" style="min-width:40px;"></span>% with less or no negative PTP.<span class="hint">meta-analysis · 44 · 5,755 · 59 · 45</span></td></tr>
+    <tr><td class="lbl">Steblay et al. — when stronger</td><td>Murder and other <span class="bl" style="min-width:90px;"></span> offences; <span class="bl" style="min-width:90px;"></span> pieces of negative information; greater <span class="bl" style="min-width:70px;"></span> between exposure and judgement.<span class="hint">serious · multiple · length of time 严重 · 多条 · 时间间隔</span></td></tr>
+    <tr><td class="lbl">Ogloff and Vidmar (1994)</td><td>Studied <span class="bl" style="min-width:60px;"></span> as PTP. Potential jurors showed negative bias and were <span class="bl" style="min-width:90px;"></span> of it. TV alone, or TV plus print, had more influence than <span class="bl" style="min-width:70px;"></span> alone.<span class="hint">television · unaware · print 电视 · 没意识到 · 印刷媒体</span></td></tr>
+    <tr><td class="lbl">Kovera (2002)</td><td>Assault/rape cases with <span class="bl" style="min-width:90px;"></span>, <span class="bl" style="min-width:110px;"></span> and neutral coverage. Pro-defence viewers said they needed <span class="bl" style="min-width:70px;"></span> evidence before convicting.<span class="hint">pro-defence · pro-prosecution · more 有利辩方 · 有利控方 · 更多</span></td></tr>
+    <tr><td class="lbl">Ruva and LeVasseur (2012)</td><td><span class="bl" style="min-width:100px;"></span> of 30 mock-jury deliberations. Exposed jurors discussed ambiguous facts in ways that supported the <span class="bl" style="min-width:80px;"></span>, rarely the defence — and were <span class="bl" style="min-width:120px;"></span> instructions not to mention PTP.<span class="hint">content analysis · prosecution · unwilling to follow 内容分析 · 控方 · 不愿遵守</span></td></tr>
+  </table>
+
+  <div class="box purple">
+    <div class="bx-t">Five studies in five words 五个研究各记五个字</div>
+    Ruva 2007 = <strong>73 比 27</strong> · Steblay 1999 = <strong>元分析最硬</strong> · Ogloff &amp; Vidmar = <strong>电视更狠</strong> · Kovera = <strong>好报道也偏</strong> · Ruva 2012 = <strong>评议还在偏</strong>。
+  </div>
+
+  <div class="pg-foot">Page 9 of 22</div>
+</div>
+
+<!-- ================= PAGE 10: PTP EVALUATION ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§9 · <span class="tag th">eval</span> Evaluating pre-trial publicity</span><span class="r">ANSWERS → 课件 §10</span></div>
+
+  <div class="sub">Evaluation 评价</div>
+  <table class="n">
+    <tr><th style="width:26%;">Point</th><th>What + why 内容 + 为什么</th></tr>
+    <tr><td class="lbl">Strength: two meta-analyses</td><td>Steblay et al. (1999) — <span class="bl" style="min-width:60px;"></span> tests, <span class="bl" style="min-width:70px;"></span> subjects — and the wider literature both find a <span class="bl" style="min-width:80px;"></span> effect.<span class="hint">44 · 5,755 · reliable 可靠的</span></td></tr>
+    <tr><td class="lbl">Strength: methods converge</td><td><span class="bl" style="min-width:110px;"></span> (Ruva et al.), <span class="bl" style="min-width:120px;"></span> of real discussion (Ruva and LeVasseur) and surveys (Ogloff and Vidmar) all find bias.<span class="hint">experiments · content analysis 实验 · 内容分析</span></td></tr>
+    <tr><td class="lbl">Strength: real legal problem</td><td>It explains why courts already instruct jurors to avoid <span class="bl" style="min-width:100px;"></span> of the case.<span class="hint">media coverage 媒体报道</span></td></tr>
+    <tr><td class="lbl">Weakness: real jurors cannot be used</td><td>Researchers cannot <span class="bl" style="min-width:110px;"></span> negative publicity to real jurors — it might bias them — so nearly all studies are <span class="bl" style="min-width:80px;"></span>.<span class="hint">deliberately expose · mock juries 故意让 · 模拟陪审团</span></td></tr>
+    <tr><td class="lbl">Weakness: deliberation reduces it</td><td>Ruva et al. (2007) found the bias was <span class="bl" style="min-width:80px;"></span> after deliberation — mock studies with individual verdicts may <span class="bl" style="min-width:90px;"></span> the effect.<span class="hint">reduced · overstate 减少 · 高估</span></td></tr>
+    <tr><td class="lbl">Weakness: student samples</td><td>Most studies use students reading a <span class="bl" style="min-width:80px;"></span> — very different from weeks of real news consumption.<span class="hint">short summary 短摘要</span></td></tr>
+  </table>
+
+  <div class="sub">What the justice system does 司法系统的对策</div>
+  <ul class="tight">
+    <li>Jurors are instructed to <span class="bl" style="min-width:100px;"></span> media coverage and must not <span class="bl" style="min-width:100px;"></span> the case with others.<span class="hint">avoid · discuss 回避 · 讨论</span></li>
+    <li>Where publicity is extreme: the case may be <span class="bl" style="min-width:90px;"></span> to a different area, or the trial <span class="bl" style="min-width:70px;"></span>.<span class="hint">moved · delayed 异地审理 · 延期</span></li>
+    <li>Why safeguards are questioned: jurors are <span class="bl" style="min-width:100px;"></span> their own bias (Ogloff and Vidmar), and Ruva and LeVasseur found they <span class="bl" style="min-width:100px;"></span> the rules anyway.<span class="hint">unaware of · ignore 没意识到 · 无视</span></li>
+  </ul>
+
+  <div class="pg-foot">Page 10 of 22</div>
+</div>
+
+<!-- ================= PAGE 11: EXPERT TESTIMONY CONCEPT ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§10 · <span class="tag th">factor</span> Factor 3 · Expert Testimony — the concept</span><span class="r">ANSWERS → 课件 §11</span></div>
+
+  <div class="box blue">
+    <div class="bx-t">Key term 术语填空</div>
+    <strong>expert testimony 专家证词：</strong> evidence given in court by an <span class="bl" style="min-width:90px;"></span> witness, providing <span class="bl" style="min-width:80px;"></span> and <span class="bl" style="min-width:80px;"></span> specialist knowledge that may be beyond the understanding of a juror.<span class="hint">expert · objective · unbiased 专家 · 客观 · 无偏</span>
+  </div>
+
+  <div class="sub">Two kinds of expert 两种专家</div>
+  <table class="n">
+    <tr><th style="width:30%;">Kind</th><th>What they explain</th></tr>
+    <tr><td class="lbl">General experts</td><td>Complex <span class="bl" style="min-width:100px;"></span>, <span class="bl" style="min-width:80px;"></span>, <span class="bl" style="min-width:80px;"></span> or technological evidence.<span class="hint">forensic · clinical · financial 法医 · 临床 · 金融</span></td></tr>
+    <tr><td class="lbl">Eyewitness expert</td><td>Educates the jury about the <span class="bl" style="min-width:100px;"></span> of witness testimony: memory is <span class="bl" style="min-width:90px;"></span>, not a recording; plus case-specific factors like <span class="bl" style="min-width:120px;"></span> and the impact of <span class="bl" style="min-width:60px;"></span>.<span class="hint">credibility · reconstructive · cross-racial identification · stress 可信度 · 重构的 · 跨种族辨认 · 压力</span></td></tr>
+  </table>
+
+  <div class="box grey">
+    <div class="bx-t">Why an expert might be needed 为什么需要专家</div>
+    陪审员凭<strong>常识</strong>判断证人可信吗——但常识对记忆是<strong>错的</strong>（多数人以为记忆像录像）。专家的作用 = 把心理学发现搬进法庭。<br>
+    <strong>下一节的问题：搬进去了，陪审员真的会用吗？</strong>
+  </div>
+
+  <div class="sub">The controversy 争议（三条都要会说）</div>
+  <ol class="tight">
+    <li>Experts may be <span class="bl" style="min-width:90px;"></span> in their opinion, or unfairly bias a jury <span class="bl" style="min-width:90px;"></span> a witness.<span class="hint">biased · against 有偏 · 不利于</span></li>
+    <li>Safeguards already exist: <span class="bl" style="min-width:110px;"></span> of the witness and <span class="bl" style="min-width:90px;"></span>.<span class="hint">cross-examination · jury instructions 交叉询问 · 陪审团指示</span></li>
+    <li>Researchers reply that those safeguards are <span class="bl" style="min-width:80px;"></span>.<span class="hint">ineffective 无效</span></li>
+  </ol>
+
+  <div class="pg-foot">Page 11 of 22</div>
+</div>
+
+<!-- ================= PAGE 12: DOES IT HELP ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§11 · <span class="tag ev">evid</span> Factor 3 · Does expert testimony actually help?（填关键数字）</span><span class="r">ANSWERS → 课件 §12</span></div>
+
+  <table class="n">
+    <tr><th style="width:22%;">Study</th><th>Key finding 关键发现</th></tr>
+    <tr><td class="lbl">Jones et al. (2017)</td><td>Mock jury, <span class="bl" style="min-width:50px;"></span> participants, comparing <span class="bl" style="min-width:100px;"></span> with <span class="bl" style="min-width:100px;"></span>. Jurors were already <span class="bl" style="min-width:80px;"></span> to witnessing conditions on their own. Expert testimony raised <span class="bl" style="min-width:90px;"></span> — less likely to convict <span class="bl" style="min-width:80px;"></span> of the conditions.<span class="hint">452 · jury instructions · expert testimony · alert · scepticism · regardless</span></td></tr>
+    <tr><td class="lbl">Jones et al. — conclusion</td><td><span class="bl" style="min-width:70px;"></span> instructions <span class="bl" style="min-width:70px;"></span> expert testimony helped jurors tell good evidence from bad. Expert testimony lowers <span class="bl" style="min-width:70px;"></span> but does not improve <span class="bl" style="min-width:90px;"></span>.<span class="hint">neither · nor · trust · discrimination 既不…也不 · 信任 · 分辨力</span></td></tr>
+    <tr><td class="lbl">Benton et al. (2006)</td><td>Surveyed <span class="bl" style="min-width:50px;"></span> ordinary people versus experts. Believing memory can be influenced by post-event information: <span class="bl" style="min-width:40px;"></span>% of ordinary people versus <span class="bl" style="min-width:40px;"></span>% of experts. Believing misidentification can occur: <span class="bl" style="min-width:40px;"></span>% versus <span class="bl" style="min-width:40px;"></span>.<span class="hint">111 · 60 · 95 · 30 · 81</span></td></tr>
+    <tr><td class="lbl">Benton et al. — meaning</td><td>Ordinary people are <span class="bl" style="min-width:80px;"></span> trusting of eyewitnesses than research would advise — evidence that an expert <span class="bl" style="min-width:60px;"></span> be useful.<span class="hint">more · could 更信任 · 有可能</span></td></tr>
+    <tr><td class="lbl">Helm (2021)</td><td>Murder case with <span class="bl" style="min-width:70px;"></span> or weak witness testimony; jurors given no instructions, <span class="bl" style="min-width:70px;"></span> information about memory, or <span class="bl" style="min-width:80px;"></span> information about false memory.<span class="hint">strong · general · detailed 强 · 一般 · 详细</span></td></tr>
+    <tr><td class="lbl">Helm — result</td><td>Detailed false-memory information <span class="bl" style="min-width:80px;"></span> guilty verdicts when the evidence was <span class="bl" style="min-width:50px;"></span>, but <span class="bl" style="min-width:50px;"></span> when it was strong. So expert information helps jurors spot <span class="bl" style="min-width:70px;"></span> evidence rather than making them blindly sceptical.<span class="hint">reduced · weak · not · weak 减少 · 弱 · 没有 · 弱</span></td></tr>
+  </table>
+
+  <div class="box purple">
+    <div class="bx-t">The tension you must be able to state 三个研究的张力（必考评价素材）</div>
+    Benton：普通人<strong>不懂</strong>记忆 → 专家<strong>有必要</strong>。<br>
+    Jones：专家<strong>没用</strong>——整体更怀疑，分不出好坏。<br>
+    Helm：专家<strong>有用</strong>——证据弱时少判，证据强时不变。<br>
+    <strong>结论句：</strong>专家证词的效果取决于<strong>给的是什么信息</strong>，不是"有没有专家"。
+  </div>
+
+  <div class="sub">Helm's own limitations（现成的评价点）</div>
+  <ul class="tight">
+    <li>Mock jurors read a <span class="bl" style="min-width:90px;"></span> transcript and heard <span class="bl" style="min-width:70px;"></span> cross-examination.<span class="hint">simplified · no 简化的 · 没有</span></li>
+    <li>They knew the verdict was <span class="bl" style="min-width:100px;"></span> real.<span class="hint">not 没有真实后果</span></li>
+    <li>No opportunity to <span class="bl" style="min-width:80px;"></span> with other jurors.<span class="hint">deliberate 评议</span></li>
+  </ul>
+
+  <div class="pg-foot">Page 12 of 22</div>
+</div>
+
+<!-- ================= PAGE 13: PC STUDY 1 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§12 · <span class="tag ev">evid</span> Penrod and Cutler (1989) · Study One</span><span class="r">ANSWERS → 课件 §13</span></div>
+
+  <div class="box orange">
+    <div class="bx-t">Why three studies matter 为什么要记三个</div>
+    考纲点名这篇研究。三个研究是<strong>接力</strong>的：Study 1 铺路 → Study 2 发现问题 → Study 3 测试解决方案。<br>
+    记住逻辑链，三个研究就都不容易忘。
+  </div>
+
+  <div class="sub">The purpose 目的</div>
+  <p style="margin:3px 0; font-size:9.3pt;">Study One asked whether research on human memory is good enough to draw <span class="bl" style="min-width:100px;"></span> conclusions about <span class="bl" style="min-width:100px;"></span> eyewitness testimony. If not, an expert in court would be useless — or could even <span class="bl" style="min-width:80px;"></span> the jury.<span class="hint">valid · real-life · impair 有效 · 真实 · 损害</span></p>
+
+  <div class="sub">What they re-examined 重新分析了什么</div>
+  <ul class="tight">
+    <li>The meta-analysis by <span class="bl" style="min-width:110px;"></span>.<span class="hint">Shapiro and Penrod (1986)</span></li>
+    <li><span class="bl" style="min-width:40px;"></span> eyewitness identification and facial recognition experiments.<span class="hint">128</span></li>
+    <li><span class="bl" style="min-width:50px;"></span> participants in total.<span class="hint">16,950</span></li>
+    <li>Factors included <span class="bl" style="min-width:110px;"></span> identification and <span class="bl" style="min-width:100px;"></span>.<span class="hint">cross-racial · context reinstatement 跨种族辨认 · 情境重现</span></li>
+  </ul>
+
+  <div class="sub">The finding 发现</div>
+  <p style="margin:3px 0; font-size:9.3pt;">Several factors had <span class="bl" style="min-width:80px;"></span> effects on eyewitness memory in <span class="bl" style="min-width:70px;"></span> and <span class="bl" style="min-width:60px;"></span> settings. So laboratory-based memory research <span class="bl" style="min-width:60px;"></span> explain eyewitness memory — which gives <span class="bl" style="min-width:90px;"></span> for using expert testimony in court.<span class="hint">reliable · laboratory · field · can · grounds 可靠 · 实验室 · 现场 · 能 · 理由</span></p>
+
+  <div class="box green">
+    <div class="bx-t">The logic chain 逻辑链（写答案照着走）</div>
+    实验室研究可靠 → 专家讲的东西是真的 → 专家证词<strong>有存在理由</strong>。<br>
+    Study One 本身没碰陪审团——它是给后面两个研究<strong>铺路</strong>的。
+  </div>
+
+  <div class="pg-foot">Page 13 of 22</div>
+</div>
+
+<!-- ================= PAGE 14: PC STUDY 2 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§13 · <span class="tag ev">evid</span> Penrod and Cutler (1989) · Study Two</span><span class="r">ANSWERS → 课件 §14</span></div>
+
+  <div class="sub">The design 设计</div>
+  <table class="n">
+    <tr><th style="width:26%;">Element</th><th>Detail（填空）</th></tr>
+    <tr><td class="lbl">Participants</td><td><span class="bl" style="min-width:40px;"></span> students plus <span class="bl" style="min-width:40px;"></span> jury-eligible or experienced jurors.<span class="hint">321 · 129</span></td></tr>
+    <tr><td class="lbl">Materials</td><td>A <span class="bl" style="min-width:50px;"></span>-minute videotaped <span class="bl" style="min-width:80px;"></span> trial resembling a real one: opening statements, examination and cross-examination, closing arguments, judge's instructions.<span class="hint">45 · armed robbery 持械抢劫</span></td></tr>
+    <tr><td class="lbl">Central evidence</td><td>The victim's positive <span class="bl" style="min-width:100px;"></span> of the robber in a line-up, at <span class="bl" style="min-width:40px;"></span>% confidence.<span class="hint">identification · 80</span></td></tr>
+    <tr><td class="lbl">The four witnesses</td><td>The <span class="bl" style="min-width:70px;"></span> (victim); a <span class="bl" style="min-width:70px;"></span> officer; a <span class="bl" style="min-width:90px;"></span> of the defendant (weak alibi); the <span class="bl" style="min-width:80px;"></span> himself.<span class="hint">store clerk · police · friend · defendant</span></td></tr>
+    <tr><td class="lbl">Manipulation</td><td><span class="bl" style="min-width:40px;"></span> factors across <span class="bl" style="min-width:40px;"></span> versions of the trial footage.<span class="hint">ten · 64</span></td></tr>
+  </table>
+
+  <div class="sub">The ten factors 十个变量（能说出 5 个以上就很稳）</div>
+  <p class="small" style="margin:2px 0 6px 0;">hat or no hat · weapon pointed or concealed · threatened and pushed or calm demand · identification after 2 or 14 days · mugshot search in between · chance to reject the line-up · line-up of 6 or 12 · members similar in appearance · heard the robber speak or not · 80% or 100% confidence</p>
+  <p style="margin:2px 0; font-size:9.3pt;">From memory, write five: <span class="bl" style="min-width:250px;"></span> <span class="bl" style="min-width:250px;"></span></p>
+
+  <div class="sub">The finding — and why it is alarming 发现</div>
+  <ul class="tight">
+    <li>Jurors were <span class="bl" style="min-width:90px;"></span> influenced by the ten factors.<span class="hint">not significantly 没有显著</span></li>
+    <li>Only <span class="bl" style="min-width:90px;"></span> had a statistically significant effect on verdicts.<span class="hint">witness confidence 证人自信度</span></li>
+    <li>So jurors are <span class="bl" style="min-width:60px;"></span> to potential witness errors, and place <span class="bl" style="min-width:100px;"></span> weight on confidence — which is not a useful predictor of accuracy.<span class="hint">naïve · disproportionate 无知 · 不成比例</span></li>
+    <li><span class="bl" style="min-width:60px;"></span> difference between students and eligible/experienced jurors → findings from students <span class="bl" style="min-width:80px;"></span> to all potential jurors.<span class="hint">no · generalise 可以推广</span></li>
+  </ul>
+
+  <div class="box purple">
+    <div class="bx-t">One-line version 一句话版</div>
+    陪审员对<strong>真正重要的条件</strong>（蒙脸、隔几天、列队公平性）<strong>无感</strong>，却对<strong>最没用的东西</strong>（证人有多自信）<strong>极度敏感</strong> → 所以需要专家（Study 3 测试）。
+  </div>
+
+  <div class="pg-foot">Page 14 of 22</div>
+</div>
+
+<!-- ================= PAGE 15: PC STUDY 3 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§14 · <span class="tag ev">evid</span> Penrod and Cutler (1989) · Study Three</span><span class="r">ANSWERS → 课件 §15</span></div>
+
+  <div class="sub">The design 设计</div>
+  <ul class="tight">
+    <li>Researchers: <span class="bl" style="min-width:120px;"></span>; participants: <span class="bl" style="min-width:40px;"></span> students.<span class="hint">Cutler, Penrod and Dexter · 538</span></li>
+    <li>Same trial variations as Study Two, now with <span class="bl" style="min-width:110px;"></span> added.<span class="hint">expert eyewitness testimony 专家证词</span></li>
+    <li>The expert explained the <span class="bl" style="min-width:90px;"></span> nature of memory, plus the effects of <span class="bl" style="min-width:60px;"></span>, <span class="bl" style="min-width:80px;"></span>, <span class="bl" style="min-width:90px;"></span> procedures, and the <span class="bl" style="min-width:90px;"></span> relationship.<span class="hint">reconstructive · stress · weapon presence · line-up · confidence–accuracy</span></li>
+    <li>The prosecution <span class="bl" style="min-width:80px;"></span> the expert — claiming he had only testified for the <span class="bl" style="min-width:70px;"></span> and that research cannot apply to real eyewitnesses.<span class="hint">cross-examined and discredited · defence 交叉诘问 · 辩方</span></li>
+  </ul>
+
+  <div class="sub">Four independent variables 四个自变量（八个条件）</div>
+  <table class="n">
+    <tr><th style="width:32%;">Variable</th><th style="width:34%;">Level 1</th><th>Level 2</th></tr>
+    <tr><td class="lbl">Witnessing and identification conditions</td><td><span class="bl" style="min-width:40px;"></span>: disguise, weapon present, recall after 14 days, suggestive line-up.<span class="hint">poor 差</span></td><td><span class="bl" style="min-width:40px;"></span>: no disguise, concealed weapon, recall after 2 days, non-suggestive line-up.<span class="hint">good 好</span></td></tr>
+    <tr><td class="lbl">Witness confidence</td><td><span class="bl" style="min-width:40px;"></span> per cent<span class="hint">80</span></td><td><span class="bl" style="min-width:40px;"></span> per cent<span class="hint">100</span></td></tr>
+    <tr><td class="lbl">Form of testimony</td><td><span class="bl" style="min-width:80px;"></span>: describes the research<span class="hint">descriptive 描述性</span></td><td>descriptive plus <span class="bl" style="min-width:80px;"></span> with facts and figures<span class="hint">quantitative 量化</span></td></tr>
+    <tr><td class="lbl">Expert opinion on accuracy</td><td>Rating on a <span class="bl" style="min-width:40px;"></span>–<span class="bl" style="min-width:30px;"></span> scale; rated <span class="bl" style="min-width:30px;"></span> in the poor condition.<span class="hint">0 · 25 · 7</span></td><td>Same scale; rated <span class="bl" style="min-width:30px;"></span> in the strong condition.<span class="hint">20</span></td></tr>
+  </table>
+
+  <div class="sub">The findings 发现</div>
+  <ol class="tight">
+    <li>Expert testimony <span class="bl" style="min-width:100px;"></span> juror sensitivity to witnessing and identification conditions.<span class="hint">improved 提高</span></li>
+    <li>Jurors gave <span class="bl" style="min-width:60px;"></span> weight to witness confidence.<span class="hint">less 更少</span></li>
+    <li><span class="bl" style="min-width:80px;"></span> testimony was more effective than descriptive and quantitative testimony.<span class="hint">Descriptive 描述性</span></li>
+    <li><span class="bl" style="min-width:70px;"></span> scepticism effect: neither presence nor type of testimony affected credibility ratings or verdicts.<span class="hint">No 没有</span></li>
+  </ol>
+
+  <div class="box purple">
+    <div class="bx-t">Two counter-intuitive points 两个反直觉发现</div>
+    ① "no scepticism effect" — 专家<strong>没有</strong>让陪审员无差别怀疑所有人（反驳 Jones 一类批评）。<br>
+    ② 信息<strong>不是越多越好</strong>：纯描述 &gt; 描述 + 数据。
+  </div>
+
+  <div class="pg-foot">Page 15 of 22</div>
+</div>
+
+<!-- ================= PAGE 16: PC EVALUATION ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§15 · <span class="tag th">eval</span> Evaluating Penrod and Cutler (1989)</span><span class="r">ANSWERS → 课件 §16</span></div>
+
+  <div class="sub">Study-to-fact match 研究配对（先自测再对答案）</div>
+  <table class="n">
+    <tr><th style="width:16%;">Study</th><th style="width:36%;">Method 方法</th><th>Key finding 关键发现</th></tr>
+    <tr><td class="lbl">One</td><td><span class="bl" style="min-width:160px;"></span><span class="hint">reassessment of meta-analysis data 重新分析元分析</span></td><td>Lab research holds in the field → expert testimony has grounds.</td></tr>
+    <tr><td class="lbl">Two</td><td><span class="bl" style="min-width:160px;"></span><span class="hint">experiment: mock jury 模拟陪审团实验</span></td><td>Only witness confidence mattered → jurors are naïve.</td></tr>
+    <tr><td class="lbl">Three</td><td><span class="bl" style="min-width:160px;"></span><span class="hint">experiment: mock jury + expert testimony 加专家证词的模拟陪审团实验</span></td><td>Sensitivity improved, less weight on confidence, no scepticism effect.</td></tr>
+  </table>
+
+  <div class="sub">Evaluation 评价</div>
+  <table class="n">
+    <tr><th style="width:26%;">Point</th><th>What + why 内容 + 为什么</th></tr>
+    <tr><td class="lbl">Strength: builds logically</td><td>Three studies <span class="bl" style="min-width:80px;"></span> on each other: justify → find the problem → test the <span class="bl" style="min-width:70px;"></span>.<span class="hint">build · solution 解决方案</span></td></tr>
+    <tr><td class="lbl">Strength: realistic materials</td><td>A 45-minute trial video with cross-examination and judge's instructions is far more <span class="bl" style="min-width:80px;"></span> than a written summary.<span class="hint">realistic 真实</span></td></tr>
+    <tr><td class="lbl">Strength: two samples</td><td>Students <span class="bl" style="min-width:70px;"></span> jury-eligible/experienced jurors gave the same judgements (Study Two) → supports <span class="bl" style="min-width:100px;"></span>.<span class="hint">and · generalisability 可推广性</span></td></tr>
+    <tr><td class="lbl">Strength: practical use</td><td>Tells courts <span class="bl" style="min-width:100px;"></span> form of expert testimony helps.<span class="hint">which 哪种</span></td></tr>
+    <tr><td class="lbl">Weakness: still mock</td><td>No real <span class="bl" style="min-width:90px;"></span>, and in Study Three no <span class="bl" style="min-width:80px;"></span>.<span class="hint">consequences · deliberation 后果 · 评议</span></td></tr>
+    <tr><td class="lbl">Weakness: students</td><td>Study Three used <span class="bl" style="min-width:40px;"></span> students only.<span class="hint">538</span></td></tr>
+    <tr><td class="lbl">Weakness: contradicted</td><td><span class="bl" style="min-width:90px;"></span> et al. (2017), with 452 participants, found expert testimony raised scepticism without helping jurors <span class="bl" style="min-width:100px;"></span> good from bad evidence.<span class="hint">Jones · distinguish 分辨</span></td></tr>
+    <tr><td class="lbl">Weakness: staged attack</td><td>The cross-examination that <span class="bl" style="min-width:80px;"></span> the expert was staged, so real courtroom <span class="bl" style="min-width:90px;"></span> may differ.<span class="hint">discredited · dynamics 抹黑 · 动态</span></td></tr>
+  </table>
+
+  <div class="pg-foot">Page 16 of 22</div>
+</div>
+
+<!-- ================= PAGE 17: MOCK JURY TOOLKIT ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§16 · <span class="tag th">eval</span> The mock jury evaluation toolkit 模拟陪审团评价工具箱</span><span class="r">ANSWERS → 课件 §17</span></div>
+
+  <div class="box orange">
+    <div class="bx-t">Why this page is powerful 为什么这页最强</div>
+    本章<strong>几乎所有研究</strong>都是 mock jury → 这一页的每条评价都能<strong>嫁接</strong>到任何研究上。8 分题的评价段落基本从这里出。
+  </div>
+
+  <table class="n">
+    <tr><th style="width:26%;">Issue</th><th>The evidence about the issue 证据（填空）</th></tr>
+    <tr><td class="lbl">Students are not representative</td><td><span class="bl" style="min-width:100px;"></span> (1999) meta-analysis: little difference between student and non-student mock juries; where differences appear, students tend to be more <span class="bl" style="min-width:70px;"></span>.<span class="hint">Bornstein · lenient 宽大</span></td></tr>
+    <tr><td class="lbl">Written summaries unrealistic</td><td><span class="bl" style="min-width:80px;"></span> (1977): no difference between written summaries and trials <span class="bl" style="min-width:70px;"></span> — the format alone does not change the outcome.<span class="hint">Nemeth · staged live 现场演出</span></td></tr>
+    <tr><td class="lbl">No real consequences</td><td>A real jury decides whether a person <span class="bl" style="min-width:70px;"></span>; a mock juror does not — so participants may not take the task <span class="bl" style="min-width:70px;"></span>.<span class="hint">goes to prison · seriously 入狱 · 认真</span></td></tr>
+    <tr><td class="lbl">Too few variables</td><td>Labs isolate variables well, but real jurors face a <span class="bl" style="min-width:90px;"></span> of influences at once.<span class="hint">wider range 更广的范围</span></td></tr>
+    <tr><td class="lbl">Real jurors can be asked</td><td>Real jurors complete <span class="bl" style="min-width:100px;"></span> after trials. Self-report has limits, but real jurors report what they <span class="bl" style="min-width:50px;"></span> decide, whereas a mock trial only records what a participant <span class="bl" style="min-width:60px;"></span> do.<span class="hint">self-report questionnaires · did · would 事后问卷 · 实际 · 会</span></td></tr>
+    <tr><td class="lbl">Cross-country differences</td><td>Legal processes vary — some US states use the <span class="bl" style="min-width:80px;"></span>, which may change how a guilty verdict feels. Findings may not <span class="bl" style="min-width:80px;"></span> across jurisdictions.<span class="hint">death penalty · transfer 死刑 · 迁移</span></td></tr>
+  </table>
+
+  <div class="box purple">
+    <div class="bx-t">万能三组（背下来）</div>
+    ① <strong>样本</strong> — 学生不代表公众（但 Bornstein 说差别不大，学生还更宽容）。<br>
+    ② <strong>生态效度</strong> — 文字摘要 / 没有真实后果 / 没有评议（但 Nemeth 说形式本身不影响结果）。<br>
+    ③ <strong>跨文化</strong> — 法律制度不同，美国有死刑，结论不能直接搬。
+  </div>
+
+  <div class="pg-foot">Page 17 of 22</div>
+</div>
+
+<!-- ================= PAGE 18: KEY NUMBERS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§17 · <span class="tag ev">evid</span> Every number on one page 全部数字一页收口</span><span class="r">Cover the right column and test yourself</span></div>
+
+  <table class="n">
+    <tr><th style="width:34%;">Study</th><th style="width:24%;">Factor 因素</th><th>The number 数字</th></tr>
+    <tr><td class="lbl">Mitchell et al. (2005)</td><td>Race</td><td><span class="bl" style="min-width:40px;"></span> samples from <span class="bl" style="min-width:40px;"></span> studies; small but significant bias<span class="hint">46 · 34</span></td></tr>
+    <tr><td class="lbl">Abwender and Hough (2001)</td><td>Race</td><td><span class="bl" style="min-width:40px;"></span> participants<span class="hint">207</span></td></tr>
+    <tr><td class="lbl">Sigall and Ostrove (1975)</td><td>Attractiveness</td><td><span class="bl" style="min-width:40px;"></span> participants; <span class="bl" style="min-width:30px;"></span> groups of <span class="bl" style="min-width:30px;"></span>; sentence 1–<span class="bl" style="min-width:30px;"></span> years<span class="hint">120 · 6 · 20 · 15</span></td></tr>
+    <tr><td class="lbl">Ruva, McEvoy and Bryant (2007)</td><td>Pre-trial publicity</td><td><span class="bl" style="min-width:40px;"></span>% guilty with negative PTP vs <span class="bl" style="min-width:40px;"></span>% without<span class="hint">73 · 27</span></td></tr>
+    <tr><td class="lbl">Steblay et al. (1999)</td><td>Pre-trial publicity</td><td>meta-analysis: <span class="bl" style="min-width:30px;"></span> tests, <span class="bl" style="min-width:50px;"></span> subjects; <span class="bl" style="min-width:40px;"></span>% vs <span class="bl" style="min-width:40px;"></span>%<span class="hint">44 · 5,755 · 59 · 45</span></td></tr>
+    <tr><td class="lbl">Ruva and LeVasseur (2012)</td><td>Pre-trial publicity</td><td>content analysis of <span class="bl" style="min-width:40px;"></span> deliberations<span class="hint">30</span></td></tr>
+    <tr><td class="lbl">Jones et al. (2017)</td><td>Expert testimony</td><td><span class="bl" style="min-width:40px;"></span> participants<span class="hint">452</span></td></tr>
+    <tr><td class="lbl">Benton et al. (2006)</td><td>Expert testimony</td><td><span class="bl" style="min-width:40px;"></span> ordinary people; <span class="bl" style="min-width:40px;"></span>% vs <span class="bl" style="min-width:40px;"></span>% (post-event); <span class="bl" style="min-width:40px;"></span>% vs <span class="bl" style="min-width:40px;"></span>% (misidentification)<span class="hint">111 · 60 · 95 · 30 · 81</span></td></tr>
+    <tr><td class="lbl">Shapiro and Penrod (1986)</td><td>P&amp;C Study One</td><td><span class="bl" style="min-width:40px;"></span> experiments, <span class="bl" style="min-width:50px;"></span> participants<span class="hint">128 · 16,950</span></td></tr>
+    <tr><td class="lbl">Penrod and Cutler Study Two</td><td>Juror sensitivity</td><td><span class="bl" style="min-width:40px;"></span> students + <span class="bl" style="min-width:40px;"></span> jurors; <span class="bl" style="min-width:30px;"></span> factors, <span class="bl" style="min-width:30px;"></span> versions; <span class="bl" style="min-width:60px;"></span> minute trial<span class="hint">321 · 129 · 10 · 64 · 45</span></td></tr>
+    <tr><td class="lbl">Penrod and Cutler Study Three</td><td>Expert testimony</td><td><span class="bl" style="min-width:40px;"></span> students; opinion scale <span class="bl" style="min-width:30px;"></span>–<span class="bl" style="min-width:30px;"></span>; poor = <span class="bl" style="min-width:30px;"></span>, strong = <span class="bl" style="min-width:30px;"></span><span class="hint">538 · 0 · 25 · 7 · 20</span></td></tr>
+  </table>
+
+  <div class="box green">
+    <div class="bx-t">The two pairs most worth memorising 最值得背的两组</div>
+    <strong>59% vs 45%</strong>（Steblay，元分析）和 <strong>73% vs 27%</strong>（Ruva）——考 PTP 几乎必带其中一个。<br>
+    <strong>60% vs 95%</strong> 和 <strong>30% vs 81%</strong>（Benton）——考"普通人不懂记忆"时直接引用。
+  </div>
+
+  <div class="pg-foot">Page 18 of 22</div>
+</div>
+
+<!-- ================= PAGE 19: PRACTICE A ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§18 · <span class="tag exam">exam</span> Practice A — short answers</span><span class="r">Model answers → pp. 21–22</span></div>
+
+  <div class="q">ZsaZsi used a mock jury study to investigate the impact of witness confidence on jurors' perception of the accuracy of eyewitness testimony. She created two videos of the same murder trial, one where the witness stated they were 70 per cent confident in their identification and one where the witness was 100 per cent confident. She gathered participants from her university common room to watch the video and rate whether the murderer was guilty or not guilty.</div>
+
+  <div class="sec" style="margin:6px 0 3px 0;">Q1a — Explain two strengths of ZsaZsi using a mock jury research method (4 marks)</div>
+  <p class="small" style="margin:2px 0;">Each strength = <strong>what</strong> + <strong>why it matters for her study</strong>. Two marks per point.</p>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl s"></div>
+
+  <div class="sec" style="margin:8px 0 3px 0;">Q1b — Explain two weaknesses of ZsaZsi using a mock jury research method (4 marks)</div>
+  <p class="small" style="margin:2px 0;">Each weakness = <strong>what</strong> + <strong>why it matters</strong>. Pull from §16: consequences, deliberation, sample.</p>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl s"></div>
+
+  <div class="sec" style="margin:8px 0 3px 0;">Q2 — Describe pre-trial publicity as a factor that influences jury decision-making (3 marks)</div>
+  <p class="small" style="margin:2px 0;">Three marks = three developed points: definition · two types · the mechanism (source monitoring error).</p>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl s"></div>
+
+  <div class="sec" style="margin:8px 0 3px 0;">Q3 — Justify race as a factor that affects jury decision-making (2 marks)</div>
+  <p class="small" style="margin:2px 0;">Two marks = two pieces of <strong>named evidence with numbers</strong>. Not opinions.</p>
+  <div class="wl"></div>
+  <div class="wl s"></div>
+
+  <div class="box grey">
+    <div class="bx-t">Command words 快速对照</div>
+    <strong>Describe</strong> = 讲清楚是什么、怎么运作（AO1，不需要评价）。<br>
+    <strong>Explain</strong> = 给出原因/机制，要落到"为什么"。 <br>
+    <strong>Justify</strong> = 用证据支持这个说法成立（AO3，引研究带数字）。<br>
+    <strong>Evaluate</strong> = 强弱两面 + 结论（8 分题，见下一页）。
+  </div>
+
+  <div class="pg-foot">Page 19 of 22</div>
+</div>
+
+<!-- ================= PAGE 20: PRACTICE B ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§19 · <span class="tag exam">exam</span> Practice B — the 8-mark essay + brain dump</span><span class="r">Model answer → p. 22</span></div>
+
+  <div class="sec" style="margin:2px 0 3px 0;">Q4 — Evaluate Penrod and Cutler's (1989) research into eyewitness expert testimony (8 marks)</div>
+  <p class="small" style="margin:2px 0;"><strong>Half the marks for accurate content, half for judgement with evidence.</strong> Plan four paragraphs first.</p>
+  <table class="n">
+    <tr><th style="width:10%;">¶</th><th style="width:56%;">What goes in it 内容</th><th>My notes 我的要点</th></tr>
+    <tr><td class="lbl">1</td><td><strong>Study One:</strong> re-analysis of Shapiro and Penrod (1986) — 128 experiments, 16,950 participants; lab findings hold in the field → expert testimony has grounds.</td><td></td></tr>
+    <tr><td class="lbl">2</td><td><strong>Study Two:</strong> 321 students + 129 eligible jurors; ten factors across 64 versions; only witness confidence mattered — jurors are naïve.</td><td></td></tr>
+    <tr><td class="lbl">3</td><td><strong>Study Three:</strong> 538 students; expert testimony improved sensitivity, less weight on confidence, descriptive better than quantitative, no scepticism effect.</td><td></td></tr>
+    <tr><td class="lbl">4</td><td><strong>Evaluation:</strong> strengths (logical build, realistic video, two samples) vs weaknesses (mock, students, contradicted by Jones et al. 2017).</td><td></td></tr>
+  </table>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl s"></div>
+
+  <div class="sec" style="margin:8px 0 3px 0;">Brain dump — close the book 合上笔记盲测</div>
+  <p class="small" style="margin:2px 0 4px 0;">10 minutes. Write everything you can remember from this workbook, from memory only. 合上册子，凭记忆写下本章全部内容。</p>
+  <div class="wl s"></div>
+  <div class="wl s"></div>
+  <div class="wl s"></div>
+  <div class="wl s"></div>
+  <div class="wl s"></div>
+  <div class="wl s"></div>
+
+  <div class="pg-foot">Page 20 of 22</div>
+</div>
+
+<!-- ================= PAGE 21: ANSWER KEY 1 ================= -->
+<div class="page pg-tight">
+  <div class="pg-head"><span class="t">Answer Key · Part 1 — fill-in answers 答案速查（一）</span><span class="r">Check &amp; tick the tracker on p.1</span></div>
+
+  <div class="sec" style="margin:4px 0 3px 0;">pp.2–3 — Foundations and race</div>
+  <p class="small">jury terms: video or transcript; police; images; review; discuss; confidential; present the decision. Jury of 12, selected randomly; discuss the case; media coverage; cannot decide guilt; expert testimony.<br>
+  Race mechanism: race, gender, attractiveness and accent trigger stereotypes. HRW (2000): disproportionately imprisoned. Voir dire: not permitted directly; indirectly. Common finding: negative bias, harsher sentences, more guilty verdicts for Black defendants.</p>
+
+  <div class="sec" style="margin:4px 0 3px 0;">pp.4–5 — Race evidence and evaluation</div>
+  <p class="small">Bradbury &amp; Williams: less likely convicted (more Black jurors); more likely (more white and Hispanic). Skolnick &amp; Shaw: California State University; Black or white defendant; celebrity status; Black jurors more favourable and more lenient; white jurors did not differentiate; no effect of celebrity; fewer guilty verdicts; feared being called racist. Abwender &amp; Hough: 207; Hispanic; leniency; the opposite; no bias. Mitchell et al.: meta-analysis; 46; 34; small but significant; different race; Black jurors; instructions; publication date.<br>
+  Evaluation: 46; one-off; real conviction; imprisonment; leniency; no white bias; freedom; reduced; not.<br>
+  Ingriselli: bias, prejudice or sympathy; lower; majority-white juries.</p>
+
+  <div class="sec" style="margin:4px 0 3px 0;">pp.6–7 — Attractiveness and accent</div>
+  <p class="small">Sigall &amp; Ostrove: 120; 1 and 15 years; burglary or fraud; Barbara Helms; 6 groups of 20; no photograph (control). Attractive+fraud = longer (use looks to con money); attractive+burglary = shorter; unattractive and no-photo similar to control. Criticisms: sentence length (jury only decides guilt; the judge sets the sentence); attractiveness subjective. Halo effect: appearance; character.<br>
+  Accent: Lev-Ari &amp; Keysar — native; mild; strong; less truthful; difficulty processing. Dixon &amp; Mahoney — standard English; regional (Birmingham); more guilty. Seggie — three accents; interacted; assault; theft.</p>
+
+  <div class="sec" style="margin:4px 0 3px 0;">pp.8–10 — Pre-trial publicity</div>
+  <p class="small">Definition: potential jurors; media; before. Schema: alters. Source monitoring: confused; read. Factual: incriminating; shorter-lived. Emotional: negative emotions; past; longer-lasting.<br>
+  Ruva 2007: more; less; 73; 27; reduced; confused. Steblay 1999: meta-analysis; 44; 5,755; 59; 45; serious; multiple; length of time. Ogloff &amp; Vidmar: television; unaware; print. Kovera: pro-defence; pro-prosecution; more. Ruva &amp; LeVasseur: content analysis; prosecution; unwilling to follow.<br>
+  Evaluation: 44; 5,755; reliable; experiments; content analysis; media coverage; deliberately expose; mock juries; reduced; overstate; short summary. Safeguards: avoid; discuss; moved; delayed; unaware of; ignore.</p>
+
+  <div class="pg-foot">Page 21 of 22</div>
+</div>
+
+<!-- ================= PAGE 22: ANSWER KEY 2 ================= -->
+<div class="page pg-tight">
+  <div class="pg-head"><span class="t">Answer Key · Part 2 — expert testimony, Penrod &amp; Cutler, exam models 答案速查（二）</span><span class="r">Mark honestly, then re-write in full</span></div>
+
+  <div class="sec" style="margin:4px 0 3px 0;">pp.11–12 — Expert testimony</div>
+  <p class="small">Definition: expert; objective; unbiased. Kinds: forensic, clinical, financial; credibility; reconstructive; cross-racial identification; stress. Controversy: biased; against; cross-examination; jury instructions; ineffective.<br>
+  Jones et al. (2017): 452; jury instructions; expert testimony; alert; scepticism; regardless; neither; nor; trust; discrimination. Benton et al. (2006): 111; 60; 95; 30; 81; more; could. Helm (2021): strong; general; detailed; reduced; weak; not; weak. Helm limitations: simplified; no; not; deliberate.</p>
+
+  <div class="sec" style="margin:4px 0 3px 0;">pp.13–17 — Penrod and Cutler, toolkit</div>
+  <p class="small">Study One: valid; real-life; impair; Shapiro and Penrod (1986); 128; 16,950; cross-racial identification; context reinstatement; reliable; laboratory; field; can; grounds.<br>
+  Study Two: 321; 129; 45; armed robbery; identification; 80; store clerk; police; friend; defendant; ten; 64. Finding: not significantly; witness confidence; naïve; disproportionate; no; generalise.<br>
+  Study Three: Cutler, Penrod and Dexter; 538; expert eyewitness testimony; reconstructive; stress; weapon presence; line-up; confidence–accuracy; cross-examined and discredited; defence. IVs: poor; good; 80; 100; descriptive; quantitative; 0; 25; 7; 20. Findings: improved; less; descriptive; no.<br>
+  Toolkit: Bornstein; lenient; Nemeth; staged live; goes to prison; seriously; wider range; self-report questionnaires; did; would; death penalty; transfer.</p>
+
+  <div class="sec" style="margin:6px 0 3px 0;">p.19 — Q1a/Q1b model (4 + 4 marks)</div>
+  <p class="small"><strong>Strengths.</strong> ① Control: ZsaZsi keeps the trial identical and varies only witness confidence, so confidence is the likely cause of any verdict difference. ② Generalisability of mock juries: Bornstein (1999) found little difference between student and non-student mock juries, and Penrod and Cutler (1989) found students judged the same as jury-eligible jurors — so common-room students may still represent jurors.</p>
+  <p class="small"><strong>Weaknesses.</strong> ① Low ecological validity: participants know no one will really go to prison, and there is no deliberation, yet Ruva et al. (2007) showed deliberation changes the effect of bias. ② Sample: students from one common room are unrepresentative; Bornstein notes that where differences appear, students tend to be more lenient, which could underestimate guilty verdicts.</p>
+
+  <div class="sec" style="margin:6px 0 3px 0;">p.19 — Q2 model (3 marks)</div>
+  <p class="small">① Pre-trial publicity is information about a case that reaches potential jurors through the media — internet, television, newspapers, social media — before the trial begins. ② Factual publicity contains incriminating information and can be corrected as the trial presents evidence, whereas emotional publicity arouses negative emotion (e.g. about the defendant's past) and is longer-lasting. ③ It works through schemas and through source monitoring error: jurors mistake media reports for evidence heard in court.</p>
+
+  <div class="sec" style="margin:6px 0 3px 0;">p.19 — Q3 model (2 marks)</div>
+  <p class="small">① Mitchell et al. (2005) meta-analysed 46 data samples from 34 studies and found a small but significant racial bias — more guilty verdicts when the defendant was a different race from the juror. ② Bradbury and Williams (2013) found Black defendants were more likely to be convicted by juries with a higher proportion of white and Hispanic jurors.</p>
+
+  <div class="sec" style="margin:6px 0 3px 0;">p.20 — Q4 model (8 marks) — key numbers to have used</div>
+  <p class="small">¶1 Study One: 128 experiments, 16,950 participants — lab findings hold in the field, so expert testimony has grounds. ¶2 Study Two: 321 + 129; ten factors, 64 versions; only witness confidence mattered — jurors naïve. ¶3 Study Three: 538 students; sensitivity improved; less weight on confidence; descriptive better than descriptive-and-quantitative; no scepticism effect. ¶4 Evaluation: builds logically, realistic video, two samples — but still mock with no consequences, students only, and contradicted by Jones et al. (2017), who found expert testimony did not help jurors distinguish good from bad evidence.</p>
+
+  <div class="pg-foot">Page 22 of 22</div>
+</div>
+
+</body>
+</html>

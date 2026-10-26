@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.1.5 Factors influencing jury decision-making（影响陪审团决策的因素）</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.five-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+
+.mat2x2 { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 6px; margin: 14px 0; }
+.mat2x2 .mh { background: var(--primary); color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
+body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic F · Criminological psychology — Factors influencing jury decision-making</span>
+  </div>
+  <span class="nav-pill">⚖️ Criminal Psychology</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="6.1.5-Jury-Decision-Making-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">6.1.5 · Contents</div>
+        <div class="sb-header-sub">Jury decision-making</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">Before we start</li>
+        <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+        <li class="sb-item"><a href="#s2">2. What a Jury Does</a></li>
+        <li class="sb-item"><a href="#s3">3. The Three Factors</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Factor 1 · defendant characteristics</li>
+        <li class="sb-item"><a href="#s4">4. Race — the Claim</a></li>
+        <li class="sb-item"><a href="#s5">5. Race — the Evidence</a></li>
+        <li class="sb-item"><a href="#s6">6. Race — Evaluation</a></li>
+        <li class="sb-item"><a href="#s7">7. Attractiveness &amp; Accent</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Factor 2 · pre-trial publicity</li>
+        <li class="sb-item"><a href="#s8">8. What PTP Is</a></li>
+        <li class="sb-item"><a href="#s9">9. PTP Evidence</a></li>
+        <li class="sb-item"><a href="#s10">10. PTP Evaluation</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Factor 3 · expert testimony</li>
+        <li class="sb-item"><a href="#s11">11. What Experts Do</a></li>
+        <li class="sb-item"><a href="#s12">12. Does It Help?</a></li>
+        <li class="sb-item"><a href="#s13">13. Penrod &amp; Cutler · Study 1</a></li>
+        <li class="sb-item"><a href="#s14">14. Penrod &amp; Cutler · Study 2</a></li>
+        <li class="sb-item"><a href="#s15">15. Penrod &amp; Cutler · Study 3</a></li>
+        <li class="sb-item"><a href="#s16">16. Evaluating P &amp; C</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Practice</li>
+        <li class="sb-item"><a href="#s17">17. Mock Jury Research</a></li>
+        <li class="sb-item"><a href="#s18">18. Checkpoint</a></li>
+        <li class="sb-item"><a href="#s19">19. Exam Lab</a></li>
+        <li class="sb-item"><a href="#s20">20. Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>6.1.5 FACTORS INFLUENCING JURY DECISION-MAKING<br><span style="font-size:0.65em">影响陪审团决策的因素</span></h1>
+  <div class="subtitle">Criminological Psychology · characteristics of the defendant（被告特征）· pre-trial publicity（审前报道）· expert testimony（专家证词）</div>
+  <div class="meta">
+    <span class="badge">🧠 Core idea: a verdict should rest on evidence — but other things get in</span>
+    <span class="badge">🔑 Real juries cannot be studied, so nearly all evidence is mock juries</span>
+    <span class="badge">📖 Textbook: Chapter 10</span>
+  </div>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started</h2>
+
+  <p>Twelve ordinary people are chosen at random, told to look only at the evidence, and asked to decide whether someone goes to prison. It sounds like the fairest system anyone could design. The question this chapter asks is simple and uncomfortable: <strong>does the verdict actually depend only on the evidence?</strong></p>
+
+  <div class="xp-block">
+    <h4><span class="xp-badge">TRY THIS</span> The same case, five different verdicts</h4>
+    <p class="xp-intro">Imagine a robbery trial. The evidence is <em>identical</em> in every version below — same witness, same facts, same lawyer. Researchers changed one thing in each version and measured the verdict. Tick the ones you think would actually change the outcome.</p>
+
+    <div class="xp-checkbox"><input type="checkbox" class="jw" value="race" id="jw1"> <label for="jw1">The defendant is described as Black rather than white.</label></div>
+    <div class="xp-checkbox"><input type="checkbox" class="jw" value="look" id="jw2"> <label for="jw2">The defendant's photograph is attractive rather than unattractive.</label></div>
+    <div class="xp-checkbox"><input type="checkbox" class="jw" value="news" id="jw3"> <label for="jw3">Jurors read negative newspaper reports about the case a week earlier.</label></div>
+    <div class="xp-checkbox"><input type="checkbox" class="jw" value="expert" id="jw4"> <label for="jw4">A memory expert explains to the jury how eyewitnesses can be wrong.</label></div>
+    <div class="xp-checkbox"><input type="checkbox" class="jw" value="conf" id="jw5"> <label for="jw5">The witness says she is 100% confident instead of 80% confident.</label></div>
+
+    <div class="xp-controls"><button class="xp-btn" onclick="juryShow()">Show me what research found</button></div>
+    <div id="jwResult" class="xp-result"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>先记住这一句话：</strong>陪审团制度的设计目标是「只看证据」。心理学研究的问题是——<strong>人做不到只看证据</strong>。这一章的三个因素，都是「不该影响判决、但确实影响了判决」的东西。
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. What a Jury Actually Does</h2>
+
+  <p>Before we can ask what <em>biases</em> a jury, we need to know what a jury is meant to do. If someone is accused of a serious offence they receive a <strong>trial by jury</strong>.</p>
+
+  <table>
+    <tr><th style="width:26%;">Feature</th><th>What happens</th></tr>
+    <tr><td>Who</td><td>Typically <strong>12 jurors</strong>, selected at random from an electoral roll or similar list of local people.</td></tr>
+    <tr><td>The rules</td><td>Jurors must not discuss the case with anyone outside the jury, and must avoid media coverage of the case. This protects them from influences other than the evidence.</td></tr>
+    <tr><td>The judge</td><td>The judge instructs the jury on the law, but <strong>cannot decide guilt</strong> and cannot tell the jury what to decide. The judge relies entirely on the jury.</td></tr>
+    <tr><td>In court</td><td>Jurors hear evidence from prosecution and defence lawyers, witness testimony, the defendant's statement — and sometimes <strong>expert testimony</strong>.</td></tr>
+    <tr><td>Deliberation</td><td>The jury leaves the room to review the evidence and discuss it. Deliberation is <strong>completely confidential</strong>: nobody else may enter and it cannot be recorded. A <strong>foreperson</strong> gives the verdict back to the judge.</td></tr>
+  </table>
+
+  <div class="note-box">
+    <h4>Why this matters for psychology</h4>
+    <p>Because the jury's only job is to weigh evidence, anything that shifts that weighing <em>without</em> being evidence is a problem. Psychologists have found such influences at several points in the process: before the trial even starts, during the trial, and in how evidence is explained.</p>
+  </div>
+
+  <h3>The research problem: we cannot watch real juries</h3>
+
+  <p>If you wanted to study bias in real juries, you would need to sit in the deliberation room. That is <strong>not permitted</strong> — deliberations are confidential and cannot be recorded. So researchers use something else.</p>
+
+  <div class="keyterm-box">
+    <span class="kt">mock jury:</span> a study involving participants experiencing a trial using a video or transcript, upon which the participant comes to a verdict about the defendant on trial.
+  </div>
+
+  <div class="cn-note">
+    <strong>大白话：</strong>不能进真实陪审团的房间，就让普通人<strong>看一段假审判</strong>（录像或文字记录），然后让他们判有罪无罪。<br>
+    这一章<strong>几乎所有研究都是 mock jury</strong>——这一点后面会变成最重要的评价点（见 §17）。
+  </div>
+
+  <div class="blue-box">
+    <h4>Other vocabulary you will meet</h4>
+    <ul>
+      <li><strong>Voir dire</strong>（陪审员遴选）— in some countries lawyers may question potential jurors about their suitability, including indirectly about racial bias.</li>
+      <li><strong>Line-up</strong>（列队辨认）— a method used by police to help witnesses identify criminals; witnesses are shown a series of images and asked to identify the suspect.</li>
+      <li><strong>Deliberation</strong>（评议）— the private discussion in which the jury reviews evidence and reaches a verdict.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. The Three Factors on a Timeline</h2>
+
+  <p>The specification lists three factors. They are not three random topics — they arrive at <strong>different moments</strong> in the same case. Putting them on a timeline makes the whole chapter much easier to hold in your head.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Timeline of the three factors">
+      <defs>
+        <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto">
+          <path d="M0,0 L7,3.2 L0,6.4 z" fill="#c2410c"/>
+        </marker>
+      </defs>
+
+      <rect x="25" y="26" width="180" height="86" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="115" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#c2410c">BEFORE THE TRIAL</text>
+      <text x="115" y="72" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Pre-trial publicity</text>
+      <text x="115" y="90" text-anchor="middle" font-size="10.5" fill="#475569">news, TV, social media</text>
+      <text x="115" y="104" text-anchor="middle" font-size="10.5" fill="#475569">form an opinion early</text>
+
+      <rect x="250" y="26" width="180" height="86" rx="8" fill="#eff6ff" stroke="#1e3a5f" stroke-width="2"/>
+      <text x="340" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a5f">IN THE COURTROOM</text>
+      <text x="340" y="72" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Defendant characteristics</text>
+      <text x="340" y="90" text-anchor="middle" font-size="10.5" fill="#475569">race, attractiveness,</text>
+      <text x="340" y="104" text-anchor="middle" font-size="10.5" fill="#475569">accent, gender</text>
+
+      <rect x="475" y="26" width="180" height="86" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+      <text x="565" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">EXPLAINING EVIDENCE</text>
+      <text x="565" y="72" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Expert testimony</text>
+      <text x="565" y="90" text-anchor="middle" font-size="10.5" fill="#475569">an attempt to reduce</text>
+      <text x="565" y="104" text-anchor="middle" font-size="10.5" fill="#475569">juror error</text>
+
+      <line x1="205" y1="69" x2="248" y2="69" stroke="#c2410c" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="430" y1="69" x2="473" y2="69" stroke="#c2410c" stroke-width="2" marker-end="url(#ar)"/>
+
+      <line x1="115" y1="112" x2="115" y2="168" stroke="#94a3b8" stroke-width="1.6"/>
+      <line x1="340" y1="112" x2="340" y2="168" stroke="#94a3b8" stroke-width="1.6"/>
+      <line x1="565" y1="112" x2="565" y2="168" stroke="#94a3b8" stroke-width="1.6"/>
+      <line x1="115" y1="168" x2="565" y2="168" stroke="#94a3b8" stroke-width="1.6"/>
+      <line x1="340" y1="168" x2="340" y2="203" stroke="#c2410c" stroke-width="2.2" marker-end="url(#ar)"/>
+
+      <text x="340" y="188" text-anchor="middle" font-size="10.5" fill="#64748b">all three can shift the same decision</text>
+
+      <rect x="215" y="205" width="250" height="58" rx="8" fill="#1e293b" stroke="#1e293b"/>
+      <text x="340" y="229" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">THE VERDICT</text>
+      <text x="340" y="248" text-anchor="middle" font-size="11.5" fill="#e2e8f0">guilty or not guilty</text>
+
+      <text x="25" y="284" font-size="11" fill="#64748b">Figure 1 — the three factors arrive at different moments, but act on the same decision.</text>
+    </svg>
+    <div class="figure-caption">Figure 1 — Three factors, one verdict. Note that expert testimony is the only one designed to <em>reduce</em> error.</div>
+  </div>
+
+  <table>
+    <tr><th style="width:22%;">Factor</th><th style="width:24%;">When it acts</th><th>The claim 主张</th></tr>
+    <tr><td>Characteristics of the defendant</td><td>During the trial</td><td>Jurors hold stereotypes about race, attractiveness, accent and gender, and these bias the verdict.</td></tr>
+    <tr><td>Pre-trial publicity</td><td>Before the trial</td><td>Media coverage before the trial creates an opinion, and jurors later confuse it with court evidence.</td></tr>
+    <tr><td>Expert testimony</td><td>During the trial</td><td>An expert can teach jurors how memory works — but may also just make them sceptical.</td></tr>
+  </table>
+
+  <div class="quick-summary">
+    <h4>Quick summary</h4>
+    <ol>
+      <li>A jury of <strong>12</strong> random people decides guilt — the judge cannot.</li>
+      <li>Real deliberations are <strong>confidential and cannot be recorded</strong>, so research uses <strong>mock juries</strong>.</li>
+      <li>Factor 1 acts <strong>in the courtroom</strong>; factor 2 acts <strong>before</strong> the trial; factor 3 is an attempt to <strong>fix</strong> juror error.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Factor 1a · Race — the Claim</h2>
+
+  <p>During a trial, jurors can see and hear the defendant. Characteristics such as race, gender, attractiveness and accent can trigger <strong>stereotypes</strong> that jury members already hold.</p>
+
+  <div class="note-box">
+    <h4>The mechanism 机制</h4>
+    <p>A stereotype is a shortcut: it tells us how to categorise a person before we know anything about them. Stereotypes are triggered by how someone <strong>sounds</strong>, how they <strong>look</strong>, or how they <strong>behave</strong>. In a courtroom that shortcut can quietly become a judgement of guilt.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>大白话：</strong>刻板印象就是「看到某一类人，脑子里自动跳出一个结论」。陪审员不是坏人——他们只是也带着这些自动反应进了法庭。
+  </div>
+
+  <h3>Why researchers take this seriously</h3>
+
+  <p><strong>Human Rights Watch (2000)</strong> reported that minorities are <strong>disproportionately imprisoned</strong> in America — a larger share of the prison population than their share of the general population. The same pattern appears elsewhere with marginalised castes and tribal groups. This shows people are treated differently in the justice system because of their race.</p>
+
+  <p>Two more things make race especially hard to study:</p>
+  <ul>
+    <li><strong>Juries are randomly selected</strong>, so most contain a mix of races — but problems arise when the defendant's race differs from the majority of jurors.</li>
+    <li>In countries using <strong>voir dire</strong>, lawyers may question potential jurors. Selecting jurors directly by race is not permitted, but lawyers can ask indirectly about racial bias.</li>
+  </ul>
+
+  <p>A common finding from mock trials: white jurors show <strong>negative bias to Black defendants</strong>, giving harsher sentences and returning more guilty verdicts than for white defendants.</p>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Factor 1a · Race — the Evidence</h2>
+
+  <p>The studies do <strong>not</strong> all agree — and that disagreement is itself a finding you can use in an exam.</p>
+
+  <table>
+    <tr><th style="width:24%;">Study</th><th>What was done and what was found</th></tr>
+    <tr><td>Bradbury and Williams (2013)</td><td>Real jury data across several US states. Black defendants were <strong>less likely to be convicted</strong> by juries with a higher proportion of Black jurors, and <strong>more likely to be convicted</strong> by juries with a higher proportion of white and Hispanic jurors.</td></tr>
+    <tr><td>Skolnick and Shaw (1997)</td><td>Mock jury, students at California State University. Black and white jurors read a murder trial describing a <strong>Black or white defendant</strong> with high or low celebrity status. <strong>Black jurors judged the Black defendant more favourably</strong> and gave more lenient sentences; <strong>white jurors did not differentiate</strong>. Celebrity status had no effect, so race was the main factor. Overall a Black defendant received fewer guilty verdicts regardless of jury race — possibly because white jurors feared being called racist.</td></tr>
+    <tr><td>Abwender and Hough (2001)</td><td>Mock jury, <strong>207 participants</strong> from education programmes across the USA; Black, white and Hispanic defendants; race and attractiveness both studied. <strong>Black participants showed leniency to their own race; Hispanics showed the opposite; white participants showed no ethnic bias.</strong></td></tr>
+    <tr><td>Mitchell et al. (2005)</td><td><strong>Meta-analysis</strong> of <strong>46 data samples from 34 studies</strong>. A <strong>small but significant</strong> racial bias: participants were more likely to return a guilty verdict when the defendant was a <strong>different race from themselves</strong>. Bias was stronger when the juror was Black, and was affected by whether the jury received instructions and by the publication date of the study.</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>把上面四行读成一句话：</strong>证据方向不一致。有的研究说黑人被告更吃亏（Bradbury &amp; Williams），有的说黑人被告反而判得更轻（Skolnick &amp; Shaw），有的说白人陪审员根本没区别（Abwender &amp; Hough）。<br>
+    <strong>Mitchell 的元分析是收口</strong>：把所有研究放一起看，偏向<strong>确实存在但很小</strong>，而且取决于条件。
+  </div>
+
+  <div class="exam-tip">
+    <strong>How to use this in an answer.</strong> "There is a small but significant racial bias" is a stronger sentence than "juries are racist". Mitchell et al. (2005) gives you the exact wording, and the inconsistent single studies give you a criticism.
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Factor 1a · Race — Evaluation</h2>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>✓ Strengths</h4>
+      <ul>
+        <li><strong>A meta-analysis supports it.</strong> Mitchell et al. (2005) combined 46 samples from 34 studies and still found a significant effect — so the bias is not a one-off.</li>
+        <li><strong>Some evidence is real, not mock.</strong> Bradbury and Williams (2013) used real conviction data, and Human Rights Watch (2000) documented real imprisonment patterns.</li>
+        <li><strong>Methods converge.</strong> Real-data studies, mock juries and meta-analysis point in a broadly similar direction.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>✗ Weaknesses</h4>
+      <ul>
+        <li><strong>Findings are inconsistent.</strong> Skolnick and Shaw found leniency; Abwender and Hough found no white bias. Mitchell et al. concluded bias "may not be consistent among racial groups".</li>
+        <li><strong>Mostly mock juries.</strong> Students reading a summary do not face a real person's freedom, so the effect may be larger or smaller in reality.</li>
+        <li><strong>Ecological validity.</strong> Mitchell et al. found bias was <strong>reduced in studies using more realistic procedures</strong>, and was <strong>not significant when guilty/not-guilty was the measure and jury instructions were given</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>An application: can you debias a jury?</h3>
+
+  <div class="green-box">
+    <h4>Ingriselli (2014) — the debiasing instruction</h4>
+    <p>She tested the impact of a <strong>debiasing jury instruction</strong>: telling jurors before the trial not to be influenced by bias, prejudice or sympathy. The result — a <strong>lower number of guilty verdicts for Black defendants</strong> from majority-white juries.</p>
+    <p>Since the race of a defendant should be irrelevant in any court case, this is psychological knowledge put straight to practical use.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>为什么这个例子值钱：</strong>考题问「研究有什么用 / 怎么改进司法制度」时，Ingriselli 是唯一一个<strong>直接给出解决方案</strong>的研究。写评价题时它是现成的 practical application 段。
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Factor 1b · Attractiveness and Accent</h2>
+
+  <h3>Attractiveness: Sigall and Ostrove (1975)</h3>
+
+  <div class="xp-case">
+    <div class="xp-case-name">The Barbara study</div>
+    <div class="xp-case-desc">
+      <strong>120 participants</strong> were asked to recommend a prison sentence (between <strong>1 and 15 years</strong>) for a defendant. Each received a card with a crime on it — <strong>burglary</strong> or <strong>fraud</strong> — and a photograph of a woman called Barbara Helms. There were <strong>six groups of 20</strong>: attractive photo, unattractive photo, or <strong>no photograph</strong> (control), crossed with the two crimes.
+    </div>
+
+    <div class="xp-block" style="margin:12px 0 0 0;">
+      <h4><span class="xp-badge">PREDICT</span> In which condition do you think Barbara got the longest sentence?</h4>
+      <div class="xp-controls">
+        <button class="q-option" onclick="sigall(this,'fraud')">Attractive photo + fraud</button>
+        <button class="q-option" onclick="sigall(this,'burg')">Attractive photo + burglary</button>
+        <button class="q-option" onclick="sigall(this,'same')">Attractiveness makes no difference</button>
+      </div>
+      <div id="sigResult" class="xp-result"></div>
+    </div>
+  </div>
+
+  <div class="mat2x2">
+    <div class="mh">Photo shown</div>
+    <div class="mh">Burglary 入室盗窃</div>
+    <div class="mh">Fraud 诈骗</div>
+
+    <div class="mv">Attractive 好看</div>
+    <div class="cell"><strong>Shorter</strong> sentence. Attractiveness is not associated with burglary.</div>
+    <div class="cell"><strong>Longer</strong> sentence — the assumption that an attractive person uses their looks to con money out of people.</div>
+
+    <div class="mv">Unattractive 不好看</div>
+    <div class="cell">Similar length to the control.</div>
+    <div class="cell">Similar length to the control.</div>
+
+    <div class="mv">No photo 无照片</div>
+    <div class="cell">Control condition.</div>
+    <div class="cell">Control condition.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>关键理解：</strong>不是「好看就判得轻」这么简单。<strong>好看和罪名会交互</strong>——诈骗时好看反而判得更重（因为人们觉得她在用外表骗钱），盗窃时好看判得轻（因为好看和盗窃不搭）。<br>
+    <strong>没有照片组和不好看组结果差不多</strong> → 说明起作用的是「好看」本身，而不是「有照片」。
+  </div>
+
+  <div class="warn-box">
+    <h4>Two ready-made criticisms of this study</h4>
+    <ul>
+      <li><strong>It does not reflect what a real jury does.</strong> Participants recommended a <em>sentence length</em>, but a real jury only decides guilt — the <strong>judge</strong> sets the sentence.</li>
+      <li><strong>Attractiveness is subjective.</strong> What one juror finds attractive another may not, which makes the variable hard to control.</li>
+    </ul>
+  </div>
+
+  <div class="keyterm-box">
+    <span class="kt">halo effect:</span> a cognitive bias in which the appearance of a person influences our judgements of their character — for example judging an attractive defendant as more trustworthy.
+  </div>
+
+  <h3>Accent</h3>
+
+  <table>
+    <tr><th style="width:24%;">Study</th><th>What was found</th></tr>
+    <tr><td>Lev-Ari and Keysar (2010)</td><td>Participants judged the truth of statements spoken by a <strong>native</strong> speaker (American-English), a <strong>mild non-native</strong> speaker (Polish, Turkish, German) or a <strong>strong non-native</strong> speaker (Korean, Turkish, Italian). Strong non-natives were judged <strong>less truthful</strong> — probably because their speech is harder to process, and difficulty feels like dishonesty.</td></tr>
+    <tr><td>Dixon and Mahoney (1997)</td><td>UK study. Participants heard a recording of a suspect talking to a police officer, in either a <strong>standard English</strong> accent or a <strong>regional (Birmingham)</strong> accent. The regional accent was rated <strong>more guilty</strong>.</td></tr>
+    <tr><td>Seggie (1983)</td><td>Australian participants heard <strong>British, broad Australian or Asian</strong> accents across two crimes. Accent <strong>interacted with the type of crime</strong>: broad Australian was rated more guilty of <strong>assault</strong>; British was rated more guilty of <strong>theft</strong>.</td></tr>
+  </table>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Factor 2 · What Pre-trial Publicity Is</h2>
+
+  <p>Internet, television and social media mean a criminal case is often documented for a long time <strong>before</strong> it reaches court. Members of the public — including future jurors — may form an opinion about the case and any suspects long before the trial begins.</p>
+
+  <div class="keyterm-box">
+    <span class="kt">pre-trial publicity (PTP):</span> information about a case and the people in it that reaches potential jurors through the media <em>before</em> the trial starts.
+  </div>
+
+  <h3>Two mechanisms 两个机制</h3>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>1 · Schema 图式</h4>
+      <p>A juror's own <strong>schema</strong> — their mental framework of expectations — influences how they process pre-trial information, and later <strong>alters their perception of the evidence</strong> presented in court.</p>
+    </div>
+    <div class="compare-card">
+      <h4>2 · Source monitoring error 来源监控错误</h4>
+      <p>Pre-trial publicity can be <strong>confused with information presented in court</strong>. A juror believes they heard something as evidence when they actually read it in the news — a <strong>source monitoring error</strong>.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>来源监控错误（一句话版）：</strong>「我<strong>记得</strong>这件事，但<strong>记错了是从哪儿听来的</strong>。」新闻看来的细节，被当成了法庭上听到的证词。<br>
+    这个术语在上一章（6.1.4 stress &amp; trauma）也出现过——Crombag 的幻影电视画面就是同一个机制。
+  </div>
+
+  <h3>Two types of publicity 两类报道</h3>
+
+  <div class="mat2x2">
+    <div class="mh">Type</div>
+    <div class="mh">What it contains</div>
+    <div class="mh">How long it lasts</div>
+
+    <div class="mv">Factual 事实型</div>
+    <div class="cell">Incriminating information about the defendant or the case, such as what happened during the crime.</div>
+    <div class="cell"><strong>Shorter-lived.</strong> As the trial presents more information about what actually happened, factual errors can be corrected.</div>
+
+    <div class="mv">Emotional 情绪型</div>
+    <div class="cell">No incriminating information, but content that arouses negative emotion — for example the defendant's or victim's past.</div>
+    <div class="cell"><strong>Longer-lasting.</strong> It is not about facts, so presenting facts in court does not undo it.</div>
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Factor 2 · Pre-trial Publicity Evidence</h2>
+
+  <table>
+    <tr><th style="width:24%;">Study</th><th>What was found</th></tr>
+    <tr><td>Ruva, McEvoy and Bryant (2007)</td><td>Negative PTP made the defendant seem <strong>more guilty and less credible</strong>. In their data <strong>73% of collaborating jurors voted guilty</strong>, compared with <strong>27%</strong> of those exposed to no PTP. The effect was <strong>reduced after deliberation</strong> — but jurors still confused pre-trial information with case evidence.</td></tr>
+    <tr><td>Steblay et al. (1999)</td><td><strong>Meta-analysis</strong> of <strong>44 empirical tests</strong> representing <strong>5,755 subjects</strong>. Negative PTP: <strong>59% guilty</strong> versus <strong>45%</strong> with less or no negative PTP. Stronger for <strong>murder and serious offences</strong>, when there were <strong>multiple pieces</strong> of negative information, and when <strong>more time</strong> passed between exposure and judgement.</td></tr>
+    <tr><td>Ogloff and Vidmar (1994)</td><td>Looked at <strong>television</strong> as PTP. Potential jurors showed negative bias — and were <strong>unaware they held it</strong>. <strong>Television alone, or television plus print, had more influence than print alone</strong> — worrying in an era of 24-hour news.</td></tr>
+    <tr><td>Kovera (2002)</td><td>Showed that <strong>any</strong> media exposure matters, not only negative. Using assault cases with <strong>pro-defence</strong>, <strong>pro-prosecution</strong> and <strong>neutral</strong> coverage: jurors who saw pro-defence coverage said they needed <strong>more evidence before convicting</strong> than those who saw pro-prosecution coverage.</td></tr>
+    <tr><td>Ruva and LeVasseur (2012)</td><td><strong>Content analysis of 30 mock-jury deliberations.</strong> PTP changed how evidence was <strong>discussed</strong>, not just how it was judged. Exposed jurors discussed ambiguous facts in ways that <strong>supported the prosecution</strong> and rarely in ways that supported the defence — and were <strong>unwilling or unable to follow instructions</strong> not to mention PTP, rarely correcting others who did.</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>五个研究怎么记：</strong><br>
+    Ruva 2007 = 数字最大（73% vs 27%）· Steblay 1999 = 元分析最硬（59% vs 45%）· Ogloff &amp; Vidmar = 电视比报纸更狠 · Kovera = 好报道也会偏（不只是负面）· Ruva 2012 = 评议时也在偏，而且不听指挥。
+  </div>
+
+  <div class="exam-tip">
+    <strong>Scenario questions.</strong> The textbook gives you a template: name the study, give the number, then tie it back to the person in the scenario. For example — "Ruva et al. (2007) found negative pre-trial publicity can bias a jury towards a guilty decision, with 73% of collaborating jurors voting guilty compared with 27% of those not exposed; this suggests Lois's client may be convicted because of the news coverage rather than the evidence."
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Factor 2 · Pre-trial Publicity Evaluation</h2>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>✓ Strengths</h4>
+      <ul>
+        <li><strong>Two meta-analyses agree.</strong> Steblay et al. (1999, 44 tests, 5,755 subjects) and the broader literature both find a reliable effect.</li>
+        <li><strong>Different methods agree.</strong> Experiments (Ruva et al.), content analysis of real discussion (Ruva and LeVasseur) and surveys of potential jurors (Ogloff and Vidmar) all find bias.</li>
+        <li><strong>It explains a real legal problem</strong> — which is why courts instruct juries to avoid media coverage in the first place.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>✗ Weaknesses</h4>
+      <ul>
+        <li><strong>Real jurors cannot be deliberately exposed.</strong> Researchers cannot show negative publicity to real jurors before they serve, because it might bias them — so nearly all studies are mock juries.</li>
+        <li><strong>Deliberation reduces the effect.</strong> Ruva et al. (2007) found the bias was <em>reduced after jury deliberation</em>, which mock studies with individual verdicts may miss.</li>
+        <li><strong>Most studies use students</strong> reading a short summary, which is very different from weeks of real news consumption.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="blue-box">
+    <h4>What the justice system does about it</h4>
+    <p>Jurors are instructed to avoid media coverage of the case and must not discuss it with others. Where publicity is extreme, a case may be moved to a different area, or the trial delayed. The persistence of the effect in research — and jurors' <strong>unawareness</strong> of their own bias — is why these safeguards are questioned.</p>
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Factor 3 · What Expert Testimony Is</h2>
+
+  <div class="keyterm-box">
+    <span class="kt">expert testimony:</span> evidence given in court by an expert witness, providing objective and unbiased specialist knowledge that may be beyond the understanding of a juror.
+  </div>
+
+  <p>Experts may be used to explain complex <strong>forensic, clinical, financial or technological</strong> evidence. But the type that matters in this chapter is different: an <strong>eyewitness expert</strong>, who educates the jury about the <strong>credibility of witness testimony</strong>.</p>
+
+  <div class="note-box">
+    <h4>What an eyewitness expert actually says</h4>
+    <ul>
+      <li>Basic memory processes — for example that memory is <strong>reconstructive</strong>, not a recording.</li>
+      <li>Factors specific to the case — <strong>cross-racial identification</strong>, or the <strong>impact of stress</strong> on memory.</li>
+    </ul>
+    <p>Since mistaken eyewitness accounts are a leading cause of wrongful conviction, alerting jurors to this could prevent miscarriages of justice.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>为什么需要专家：</strong>陪审员凭常识判断「这个证人可信吗」，但<strong>常识对记忆是错的</strong>——多数人以为记忆像录像。专家的作用就是把心理学发现搬进法庭。<br>
+    下一节的问题是：<strong>搬进去了，陪审员真的会用吗？</strong>
+  </div>
+
+  <h3>The controversy 争议</h3>
+  <ul>
+    <li>Critics argue experts can be <strong>biased in their opinion</strong>, or can unfairly bias a jury against a witness.</li>
+    <li>Others point out that safeguards already exist — <strong>cross-examination</strong> of the witness and <strong>jury instructions</strong> — so an expert is unnecessary.</li>
+    <li>Researchers reply that those safeguards are <strong>ineffective</strong>.</li>
+  </ul>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Factor 3 · Does Expert Testimony Actually Help?</h2>
+
+  <table>
+    <tr><th style="width:24%;">Study</th><th>What was found</th></tr>
+    <tr><td>Jones et al. (2017)</td><td>Mock jury, <strong>452 participants</strong>, comparing <strong>jury instructions</strong> with <strong>expert testimony</strong>. Jurors were <strong>already alert</strong> to the quality of witnessing and identification conditions on their own. Expert testimony <strong>raised scepticism</strong> and made them <strong>less likely to convict regardless</strong> of the conditions. Conclusion: <strong>neither</strong> instructions <strong>nor</strong> expert testimony helped jurors tell good evidence from bad — expert testimony lowers trust but does not improve discrimination.</td></tr>
+    <tr><td>Benton et al. (2006)</td><td>Surveyed <strong>111 ordinary people</strong> and compared them with experts. <strong>60% of ordinary people</strong> believed memory can be influenced by post-event information, versus <strong>95% of experts</strong>. <strong>30% of ordinary people</strong> believed misidentification can occur, versus <strong>81% of experts</strong>. Ordinary people are therefore <strong>more trusting of eyewitnesses than research would advise</strong> — evidence that an expert could be useful.</td></tr>
+    <tr><td>Helm (2021)</td><td>Mock jury, murder case with <strong>strong or weak</strong> witness testimony; jurors given <strong>no instructions</strong>, <strong>general</strong> information about memory, or <strong>detailed</strong> information about false memory. Detailed false-memory information <strong>reduced guilty verdicts when the evidence was weak</strong>, but <strong>not when it was strong</strong>. So expert information does not make jurors blindly sceptical — it helps them spot weak evidence.</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>三个研究的张力（必考的评价素材）：</strong><br>
+    Benton：普通人<strong>不懂</strong>记忆 → 专家<strong>有必要</strong>。<br>
+    Jones：专家<strong>没用</strong>——只是让陪审员整体更怀疑，分辨不出好坏证据。<br>
+    Helm：专家<strong>有用</strong>——证据弱时确实少判有罪，证据强时不变。<br>
+    <strong>结论写法：</strong>专家证词的效果取决于<strong>给的是什么信息</strong>，不是「有或没有专家」。
+  </div>
+
+  <div class="warn-box">
+    <h4>Helm's own limitations (useful for evaluation)</h4>
+    <ul>
+      <li>Mock jurors read a <strong>simplified transcript</strong> and heard <strong>no cross-examination</strong>.</li>
+      <li>They knew a guilty verdict would <strong>not really send anyone to prison</strong>.</li>
+      <li>They had <strong>no opportunity to deliberate</strong> with other jurors.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. Penrod and Cutler (1989) · Study One</h2>
+
+  <p>The specification names this paper directly, so you need all three studies. They were built in order: each one answers the question the previous one raised.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 342" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The three studies of Penrod and Cutler">
+      <defs>
+        <marker id="ar2" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto">
+          <path d="M0,0 L7,3.2 L0,6.4 z" fill="#c2410c"/>
+        </marker>
+      </defs>
+
+      <rect x="40" y="12" width="600" height="88" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="60" y="36" font-size="13" font-weight="700" fill="#c2410c">STUDY ONE</text>
+      <text x="60" y="56" font-size="12.5" font-weight="700" fill="#1e293b">Can laboratory memory research tell us anything about real eyewitnesses?</text>
+      <text x="60" y="74" font-size="11" fill="#475569">Re-analysis of Shapiro and Penrod (1986): 128 experiments, 16,950 participants.</text>
+      <text x="60" y="92" font-size="11" fill="#166534">Finding: yes — lab findings hold in the field, so expert testimony has grounds.</text>
+
+      <line x1="340" y1="100" x2="340" y2="118" stroke="#c2410c" stroke-width="2.2" marker-end="url(#ar2)"/>
+
+      <rect x="40" y="120" width="600" height="88" rx="8" fill="#eff6ff" stroke="#1e3a5f" stroke-width="2"/>
+      <text x="60" y="144" font-size="13" font-weight="700" fill="#1e3a5f">STUDY TWO</text>
+      <text x="60" y="164" font-size="12.5" font-weight="700" fill="#1e293b">Do jurors notice the factors that make an identification unreliable?</text>
+      <text x="60" y="182" font-size="11" fill="#475569">Mock jury, 321 students plus 129 eligible or experienced jurors; ten factors across 64 versions.</text>
+      <text x="60" y="200" font-size="11" fill="#991b1b">Finding: no — only witness confidence changed verdicts.</text>
+
+      <line x1="340" y1="208" x2="340" y2="226" stroke="#c2410c" stroke-width="2.2" marker-end="url(#ar2)"/>
+
+      <rect x="40" y="228" width="600" height="88" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+      <text x="60" y="252" font-size="13" font-weight="700" fill="#166534">STUDY THREE</text>
+      <text x="60" y="272" font-size="12.5" font-weight="700" fill="#1e293b">Can expert testimony make jurors sensitive to those factors?</text>
+      <text x="60" y="290" font-size="11" fill="#475569">538 students; expert testimony added to the same trial footage, then discredited in cross-examination.</text>
+      <text x="60" y="308" font-size="11" fill="#166534">Finding: yes — more attention to conditions, less weight on confidence, no scepticism effect.</text>
+    </svg>
+    <div class="figure-caption">Figure 2 — Penrod and Cutler (1989): each study sets up the next.</div>
+  </div>
+
+  <h3>Study One in detail</h3>
+
+  <p>Study One was a <strong>quantitative re-analysis</strong> of existing experiments into eyewitness identification. The question was whether research on human memory is good enough to draw <strong>valid conclusions about real-life eyewitness testimony</strong>. If it is not, an expert witness in court would be useless — and could even impair the jury.</p>
+
+  <div class="blue-box">
+    <h4>What they actually re-examined</h4>
+    <p>They re-analysed the meta-analysis by <strong>Shapiro and Penrod (1986)</strong>: <strong>128 eyewitness identification and facial recognition experiments</strong> involving <strong>16,950 participants</strong>, covering factors such as <strong>cross-racial identification</strong> and <strong>context reinstatement</strong>.</p>
+  </div>
+
+  <div class="green-box">
+    <h4>The finding</h4>
+    <p>Several factors had <strong>reliable effects on eyewitness memory in the laboratory and in field settings</strong>. So laboratory-based memory research <em>can</em> explain eyewitness memory — which gives grounds for using expert testimony in court.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>逻辑链（写答案时照着走）：</strong>实验室研究可靠 → 专家讲的东西是真的 → 专家证词<strong>有存在理由</strong>。<br>
+    这一研究本身没碰陪审团，它是<strong>给后面两个研究铺路</strong>的。
+  </div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="section" id="s14">
+  <h2>14. Penrod and Cutler (1989) · Study Two</h2>
+
+  <p>Study Two asked whether jurors are <strong>aware</strong> of the factors that make an identification unreliable. Mock jurors watched realistic <strong>videotaped court trials of an armed robbery</strong> in which the central evidence was the victim's positive identification of the robber.</p>
+
+  <table>
+    <tr><th style="width:30%;">Design</th><th>Detail</th></tr>
+    <tr><td>Participants</td><td><strong>321 students</strong> and <strong>129 jury-eligible or experienced jurors</strong>.</td></tr>
+    <tr><td>Materials</td><td>A <strong>45-minute</strong> trial video closely resembling a real trial: opening statements, examination and cross-examination, closing arguments, judge's instructions.</td></tr>
+    <tr><td>The four witnesses</td><td>The <strong>store clerk</strong> (victim, identified the robber in a line-up, 80% confident); a <strong>police officer</strong> (conditions of the identification); a <strong>friend of the defendant</strong> (weak alibi); the <strong>defendant</strong> (denied the charges).</td></tr>
+    <tr><td>Ten factors manipulated</td><td>Across <strong>64 versions</strong>: hat or no hat; weapon pointed or concealed; victim threatened and pushed or calm demand; identification after 2 or 14 days; mugshot search in between; chance to reject the line-up; line-up of 6 or 12; members similar in appearance; heard the robber speak or not; 80% or 100% confidence.</td></tr>
+    <tr><td>Dependent variables</td><td>Guilty or not guilty; probability the identification was correct; perceived strength of the case; fairness of the line-up; how frightened the witness was; probability an average person could have made the identification.</td></tr>
+  </table>
+
+  <div class="warn-box">
+    <h4>The finding — and why it is alarming</h4>
+    <p>Jurors were <strong>not significantly influenced</strong> by these ten factors. Of all ten, <strong>only witness confidence</strong> had a statistically significant effect on verdicts and on judged accuracy.</p>
+    <p>So jurors are <strong>insensitive to the factors that actually influence eyewitness identification</strong> — they are <em>naïve</em> to potential witness errors. Worse, they place <strong>disproportionate weight on witness confidence</strong>, which is not a useful predictor of accuracy.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>一句话版：</strong>陪审员对<strong>真正重要的条件</strong>（有没有蒙脸、隔了几天、列队公不公平）<strong>完全无感</strong>，却对<strong>最没用的东西</strong>（证人有多自信）<strong>极度敏感</strong>。<br>
+    这就是为什么要请专家——§15 测试专家能不能修好这个问题。
+  </div>
+
+  <div class="green-box">
+    <h4>A useful extra finding</h4>
+    <p>There was <strong>no difference between the students and the eligible or experienced jurors</strong>. Penrod and Cutler concluded that evidence from student populations can be generalised to all potential jury members — a rare piece of good news for mock jury research.</p>
+  </div>
+</section>
+
+<!-- ============ 15 ============ -->
+<section class="section" id="s15">
+  <h2>15. Penrod and Cutler (1989) · Study Three</h2>
+
+  <p>Studies One and Two established two things: laboratory research <em>can</em> explain eyewitness memory, and potential jurors are <em>unaware</em> of the factors that affect it. Study Three tested the fix: <strong>would expert testimony make jurors more sensitive?</strong></p>
+
+  <p><strong>Cutler, Penrod and Dexter</strong> used <strong>538 students</strong> who watched the same trial variations as Study Two — this time with <strong>expert eyewitness testimony</strong> added.</p>
+
+  <div class="note-box">
+    <h4>What the expert did</h4>
+    <ul>
+      <li>Explained the <strong>reconstructive nature of memory</strong>.</li>
+      <li>Educated the jury on <strong>stress, weapon presence, line-up procedures</strong>, and the <strong>confidence–accuracy relationship</strong>.</li>
+      <li>Was then <strong>cross-examined by the prosecution</strong>, which tried to discredit him — claiming he had only ever testified for the defence, and that psychological research cannot be applied to real eyewitness testimony.</li>
+    </ul>
+  </div>
+
+  <h3>Four independent variables across eight conditions</h3>
+
+  <div class="mat2x2">
+    <div class="mh">Variable</div>
+    <div class="mh">Level 1</div>
+    <div class="mh">Level 2</div>
+
+    <div class="mv">Witnessing and identification conditions</div>
+    <div class="cell"><strong>Poor:</strong> disguise, weapon present, recall after 14 days, suggestive line-up procedures.</div>
+    <div class="cell"><strong>Good:</strong> no disguise, concealed weapon, recall after two days, non-suggestive line-up procedures.</div>
+
+    <div class="mv">Witness confidence</div>
+    <div class="cell">80 per cent.</div>
+    <div class="cell">100 per cent.</div>
+
+    <div class="mv">Form of testimony</div>
+    <div class="cell"><strong>Descriptive:</strong> the expert describes the memory research.</div>
+    <div class="cell"><strong>Descriptive and quantitative:</strong> the research plus facts and figures.</div>
+
+    <div class="mv">Expert opinion on accuracy</div>
+    <div class="cell">Given as a rating on a <strong>0–25</strong> scale — rated <strong>7</strong> in the poor condition.</div>
+    <div class="cell">Same scale — rated <strong>20</strong> in the strong condition.</div>
+  </div>
+
+  <div class="green-box">
+    <h4>The findings</h4>
+    <ul>
+      <li>Expert testimony <strong>improved juror sensitivity</strong> to witnessing and identification conditions — jurors took those factors into account more.</li>
+      <li>Jurors gave <strong>less weight to witness confidence</strong> — exactly the problem Study Two identified.</li>
+      <li><strong>Descriptive testimony was more effective</strong> than descriptive <em>and</em> quantitative testimony.</li>
+      <li><strong>No scepticism effect:</strong> neither the presence nor the type of expert testimony affected credibility ratings of the witness or the verdict.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>「no scepticism effect」为什么重要：</strong>批评者说专家会让陪审员<strong>无差别怀疑</strong>所有证人（见 §12 的 Jones）。Penrod 和 Cutler 说<strong>不会</strong>——专家让陪审员<strong>更会分辨</strong>，而不是更怀疑。<br>
+    另一个反直觉发现：<strong>信息不是越多越好</strong>。纯描述比「描述 + 数据」更有效。
+  </div>
+</section>
+
+<!-- ============ 16 ============ -->
+<section class="section" id="s16">
+  <h2>16. Evaluating Penrod and Cutler</h2>
+
+  <div class="xp-block">
+    <h4><span class="xp-badge">MATCH</span> Complete the table</h4>
+    <p class="xp-intro">Match each study to its research method. Click your answer for each row.</p>
+
+    <div class="q-row">
+      <div class="q-stem">Study One — research method</div>
+      <button class="q-option" onclick="pcMatch(this,'t1','a')">Experiment: mock jury</button>
+      <button class="q-option" onclick="pcMatch(this,'t1','b')">Reassessment of meta-analysis data</button>
+      <button class="q-option" onclick="pcMatch(this,'t1','c')">Content analysis of deliberations</button>
+      <div class="q-fb" id="res-t1"></div>
+    </div>
+    <div class="q-row">
+      <div class="q-stem">Study Two — how many of the ten manipulated factors significantly affected verdicts?</div>
+      <button class="q-option" onclick="pcMatch(this,'t2','a')">All ten</button>
+      <button class="q-option" onclick="pcMatch(this,'t2','b')">Only one: witness confidence</button>
+      <button class="q-option" onclick="pcMatch(this,'t2','c')">None of them</button>
+      <div class="q-fb" id="res-t2"></div>
+    </div>
+    <div class="q-row">
+      <div class="q-stem">Study Three — which form of expert testimony worked better?</div>
+      <button class="q-option" onclick="pcMatch(this,'t3','a')">Descriptive and quantitative</button>
+      <button class="q-option" onclick="pcMatch(this,'t3','b')">Descriptive only</button>
+      <button class="q-option" onclick="pcMatch(this,'t3','c')">Neither made any difference</button>
+      <div class="q-fb" id="res-t3"></div>
+    </div>
+    <div class="q-row">
+      <div class="q-stem">Study Three — did expert testimony make jurors sceptical of the witness?</div>
+      <button class="q-option" onclick="pcMatch(this,'t4','a')">Yes — credibility ratings fell</button>
+      <button class="q-option" onclick="pcMatch(this,'t4','b')">No — there was no scepticism effect</button>
+      <div class="q-fb" id="res-t4"></div>
+    </div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>✓ Strengths</h4>
+      <ul>
+        <li><strong>Three studies that build on each other.</strong> Study One justifies the research, Study Two finds the problem, Study Three tests the solution.</li>
+        <li><strong>High ecological validity for a mock jury.</strong> A 45-minute trial video with cross-examination and judge's instructions is far more realistic than a written summary.</li>
+        <li><strong>Two samples in Study Two.</strong> Students <em>and</em> jury-eligible/experienced jurors produced the same judgements, supporting generalisability.</li>
+        <li><strong>Practical application.</strong> The findings tell courts which form of expert testimony helps.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>✗ Weaknesses</h4>
+      <ul>
+        <li><strong>Still mock juries.</strong> Participants knew no one would go to prison, and in Study Three there was no deliberation.</li>
+        <li><strong>Student samples dominate</strong> — Study Three used 538 students only.</li>
+        <li><strong>Conflicting evidence.</strong> Jones et al. (2017) found expert testimony did <em>not</em> help jurors discriminate good from bad evidence, contradicting Study Three.</li>
+        <li><strong>Artificial discrediting.</strong> The cross-examination that attacked the expert was staged, so real courtroom dynamics may differ.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 17 ============ -->
+<section class="section" id="s17">
+  <h2>17. How Good Is Mock Jury Research?</h2>
+
+  <p>This section is your evaluation toolkit. Almost every study in this chapter is a mock jury — so the strengths and weaknesses of that method can be attached to <strong>any</strong> of them.</p>
+
+  <table>
+    <tr><th style="width:26%;">Issue</th><th>The evidence about the issue</th></tr>
+    <tr><td>Students are not representative</td><td><strong>Bornstein (1999)</strong> meta-analysis of mock jury research: there is <strong>little difference</strong> between the decisions of student and non-student mock juries. Where differences appear, students tend to be <strong>more lenient</strong>.</td></tr>
+    <tr><td>Written summaries are unrealistic</td><td><strong>Nemeth (1977)</strong> found <strong>no difference</strong> in decision-making between trials presented as a written summary and trials <strong>staged live</strong> — reassuring, because it means the format alone does not change the outcome.</td></tr>
+    <tr><td>No real consequences</td><td>A real jury decides whether a person goes to prison; a mock juror does not. This may affect how seriously the task is taken, so laboratory findings <strong>lack the realism of a real trial</strong>.</td></tr>
+    <tr><td>Too few variables</td><td>Laboratory research isolates variables well, but real jurors face a <strong>wider range of influences</strong> at once.</td></tr>
+    <tr><td>Real jurors can be asked</td><td>Real jury members have completed <strong>self-report questionnaires</strong> after trials. Self-report has limitations, but it is a rare chance to study real decision-making, and is likely more reliable than a mock trial: real jurors report what they <em>did</em> decide, whereas a mock trial only records what a participant <em>would</em> do.</td></tr>
+    <tr><td>Different countries differ</td><td>Legal processes vary — some US states use the <strong>death penalty</strong>, which may make a guilty verdict feel different. Findings from one jurisdiction may not transfer to another.</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>评价题万能三组：</strong><br>
+    ① <strong>样本</strong>——学生不代表公众（但 Bornstein 说差别不大，学生还更宽容）。<br>
+    ② <strong>生态效度</strong>——文字摘要 / 没有真实后果 / 没有评议（但 Nemeth 说形式本身不影响结果）。<br>
+    ③ <strong>跨文化</strong>——法律制度不同，美国有死刑，结论不能直接搬。
+  </div>
+</section>
+
+<!-- ============ 18 ============ -->
+<section class="section" id="s18">
+  <h2>18. Checkpoint</h2>
+
+  <div class="checkpoint">
+    <h3>Task 1 · Eight quick questions</h3>
+    <div class="q-row">
+      <div class="q-stem">Q1. Why can psychologists not study real juries making their decision?</div>
+      <label class="q-opt"><input type="radio" name="q1" value="a"> Because juries refuse to take part in research.</label>
+      <label class="q-opt"><input type="radio" name="q1" value="b"> Because deliberation is confidential, nobody may enter the room and it cannot be recorded.</label>
+      <label class="q-opt"><input type="radio" name="q1" value="c"> Because defendants do not give consent.</label>
+    </div>
+    <div class="q-row">
+      <div class="q-stem">Q2. Mitchell et al. (2005) analysed...</div>
+      <label class="q-opt"><input type="radio" name="q2" value="a"> 46 data samples drawn from 34 studies.</label>
+      <label class="q-opt"><input type="radio" name="q2" value="b"> 128 experiments with 16,950 participants.</label>
+      <label class="q-opt"><input type="radio" name="q2" value="c"> 30 mock-jury deliberations.</label>
+    </div>
+    <div class="q-row">
+      <div class="q-stem">Q3. Which study used 452 participants to compare jury instructions with expert testimony?</div>
+      <label class="q-opt"><input type="radio" name="q3" value="a"> Benton et al. (2006)</label>
+      <label class="q-opt"><input type="radio" name="q3" value="b"> Helm (2021)</label>
+      <label class="q-opt"><input type="radio" name="q3" value="c"> Jones et al. (2017)</label>
+    </div>
+    <div class="q-row">
+      <div class="q-stem">Q4. Steblay et al. (1999) found guilty verdicts of...</div>
+      <label class="q-opt"><input type="radio" name="q4" value="a"> 59% with negative PTP, versus 45% without.</label>
+      <label class="q-opt"><input type="radio" name="q4" value="b"> 73% with negative PTP, versus 27% without.</label>
+      <label class="q-opt"><input type="radio" name="q4" value="c"> 60% with negative PTP, versus 30% without.</label>
+    </div>
+    <div class="q-row">
+      <div class="q-stem">Q5. Which type of pre-trial publicity is said to have the longer-lasting influence?</div>
+      <label class="q-opt"><input type="radio" name="q5" value="a"> Factual publicity</label>
+      <label class="q-opt"><input type="radio" name="q5" value="b"> Emotional publicity</label>
+      <label class="q-opt"><input type="radio" name="q5" value="c"> They last equally long</label>
+    </div>
+    <div class="q-row">
+      <div class="q-stem">Q6. In Sigall and Ostrove (1975), the attractive photograph produced the longest sentence for...</div>
+      <label class="q-opt"><input type="radio" name="q6" value="a"> burglary</label>
+      <label class="q-opt"><input type="radio" name="q6" value="b"> fraud</label>
+      <label class="q-opt"><input type="radio" name="q6" value="c"> neither — attractiveness made no difference</label>
+    </div>
+    <div class="q-row">
+      <div class="q-stem">Q7. Benton et al. (2006) found that ordinary people, compared with experts,...</div>
+      <label class="q-opt"><input type="radio" name="q7" value="a"> trust eyewitness evidence more than research would advise.</label>
+      <label class="q-opt"><input type="radio" name="q7" value="b"> are more sceptical about eyewitness evidence than experts.</label>
+      <label class="q-opt"><input type="radio" name="q7" value="c"> understand memory in exactly the same way as experts.</label>
+    </div>
+    <div class="q-row">
+      <div class="q-stem">Q8. Nemeth (1977) found...</div>
+      <label class="q-opt"><input type="radio" name="q8" value="a"> live trials produce harsher verdicts than written ones.</label>
+      <label class="q-opt"><input type="radio" name="q8" value="b"> no difference between written summaries and staged live trials.</label>
+      <label class="q-opt"><input type="radio" name="q8" value="c"> written summaries produce more guilty verdicts.</label>
+    </div>
+    <div class="xp-controls"><button class="xp-btn" onclick="checkQuiz()">Mark my answers</button></div>
+    <div id="quizResult" class="xp-result"></div>
+  </div>
+
+  <div class="checkpoint">
+    <h3>Task 2 · Which factor is this?</h3>
+    <p>For each scenario, choose the factor it illustrates.</p>
+
+    <div class="q-row">
+      <div class="q-stem">A. Before jury selection, a local newspaper runs three weeks of articles describing the defendant's previous convictions.</div>
+      <button class="q-option" onclick="factorAns(this,'race','fac-a')">Defendant characteristics</button>
+      <button class="q-option" onclick="factorAns(this,'ptp','fac-a')">Pre-trial publicity</button>
+      <button class="q-option" onclick="factorAns(this,'expert','fac-a')">Expert testimony</button>
+      <div class="q-fb" id="fac-a"></div>
+    </div>
+    <div class="q-row">
+      <div class="q-stem">B. Jurors give longer sentences to a defendant whose photograph is rated as attractive, but only when the charge is fraud.</div>
+      <button class="q-option" onclick="factorAns(this,'race','fac-b')">Defendant characteristics</button>
+      <button class="q-option" onclick="factorAns(this,'ptp','fac-b')">Pre-trial publicity</button>
+      <button class="q-option" onclick="factorAns(this,'expert','fac-b')">Expert testimony</button>
+      <div class="q-fb" id="fac-b"></div>
+    </div>
+    <div class="q-row">
+      <div class="q-stem">C. A psychologist tells the jury that memory is reconstructed rather than recorded, and explains how stress affects recall.</div>
+      <button class="q-option" onclick="factorAns(this,'race','fac-c')">Defendant characteristics</button>
+      <button class="q-option" onclick="factorAns(this,'ptp','fac-c')">Pre-trial publicity</button>
+      <button class="q-option" onclick="factorAns(this,'expert','fac-c')">Expert testimony</button>
+      <div class="q-fb" id="fac-c"></div>
+    </div>
+    <div class="q-row">
+      <div class="q-stem">D. A juror is sure she heard the confession in court, but she actually read about it online a fortnight earlier.</div>
+      <button class="q-option" onclick="factorAns(this,'race','fac-d')">Defendant characteristics</button>
+      <button class="q-option" onclick="factorAns(this,'ptp','fac-d')">Pre-trial publicity</button>
+      <button class="q-option" onclick="factorAns(this,'expert','fac-d')">Expert testimony</button>
+      <div class="q-fb" id="fac-d"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 19 ============ -->
+<section class="section" id="s19">
+  <h2>19. Exam Lab</h2>
+
+  <div class="exam-practice">
+    <h3>Question 1 · Mock jury method (4 + 4 marks)</h3>
+    <p>ZsaZsi used a mock jury study to investigate the impact of witness confidence on jurors' perception of the accuracy of eyewitness testimony. She created two videos of the same murder trial, one where the witness stated they were <strong>70% confident</strong> and one where they were <strong>100% confident</strong>. She gathered participants from her university common room to watch the video and rate whether the murderer was guilty or not guilty.</p>
+    <p><strong>a)</strong> Explain <strong>two strengths</strong> of ZsaZsi using a mock jury research method. (4 marks)<br>
+       <strong>b)</strong> Explain <strong>two weaknesses</strong> of ZsaZsi using a mock jury research method. (4 marks)</p>
+    <textarea class="answer-box" id="p1" placeholder="Write two developed points for each part..."></textarea>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('m1')">Show a model answer</button></div>
+    <div id="m1" class="xp-result">
+      <p><span class="xp-verdict">Model answer</span></p>
+      <p><strong>a) Strengths.</strong> First, a mock jury allows the researcher to <strong>control variables</strong> — ZsaZsi can keep the trial identical and change only witness confidence, so she can be confident that confidence caused any difference in verdicts. Second, <strong>Bornstein (1999)</strong> found little difference between student and non-student mock juries, so using students from a common room may still generalise to real jurors; <strong>Penrod and Cutler (1989)</strong> also found no difference between students and jury-eligible jurors.</p>
+      <p><strong>b) Weaknesses.</strong> First, <strong>low ecological validity</strong>: participants know a guilty verdict will not send anyone to prison, so they may not take the decision as seriously as a real jury, and here there was <strong>no deliberation</strong> at all — yet <strong>Ruva et al. (2007)</strong> found deliberation changes the effect of bias. Second, the <strong>sample</strong> is students from one common room, which is not representative of the population; Bornstein notes that where differences do appear, students tend to be <strong>more lenient</strong>, which could underestimate guilty verdicts.</p>
+      <p><strong>Why this scores:</strong> every point says what the problem <em>is</em> and <em>why it matters</em> for the conclusion.</p>
+    </div>
+  </div>
+
+  <div class="exam-practice">
+    <h3>Question 2 · Describe pre-trial publicity (3 marks)</h3>
+    <p>Describe pre-trial publicity as a factor that influences jury decision-making.</p>
+    <textarea class="answer-box" id="p2" placeholder="Three developed points..."></textarea>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('m2')">Show a model answer</button></div>
+    <div id="m2" class="xp-result">
+      <p><span class="xp-verdict">Model answer</span></p>
+      <ul>
+        <li><strong>What it is:</strong> pre-trial publicity is information about a case that reaches potential jurors through the media — internet, television, newspapers and social media — <strong>before</strong> the trial begins.</li>
+        <li><strong>Two types:</strong> <em>factual</em> publicity contains incriminating information about the case, whereas <em>emotional</em> publicity arouses negative emotion, for example about the defendant's past. Emotional publicity is held to have a <strong>longer-lasting</strong> influence, because factual errors can be corrected as the trial presents evidence.</li>
+        <li><strong>How it works:</strong> it can cause a <strong>source monitoring error</strong>, where a juror believes they heard something as evidence in court when they actually read it in the media.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exam-practice">
+    <h3>Question 3 · Justify race (2 marks)</h3>
+    <p>Justify race as a factor that affects jury decision-making.</p>
+    <textarea class="answer-box" id="p3" placeholder="Two marks = two points..."></textarea>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('m3')">Show a model answer</button></div>
+    <div id="m3" class="xp-result">
+      <p><span class="xp-verdict">Model answer</span></p>
+      <p>Race is justified as a factor because <strong>Mitchell et al. (2005)</strong> carried out a meta-analysis of 46 data samples from 34 studies and found a <strong>small but significant</strong> effect: participants were more likely to return a guilty verdict when the defendant was a <strong>different race from themselves</strong>. This is supported by real-world data — <strong>Bradbury and Williams (2013)</strong> found Black defendants were more likely to be convicted by juries with a higher proportion of white and Hispanic jurors.</p>
+      <p><strong>Why this scores:</strong> two marks means two pieces of evidence, and both are named with numbers.</p>
+    </div>
+  </div>
+
+  <div class="exam-practice">
+    <h3>Question 4 · Evaluate Penrod and Cutler (1989) (8 marks)</h3>
+    <p>Evaluate Penrod and Cutler's (1989) research into eyewitness expert testimony.</p>
+    <table>
+      <tr><th style="width:8%;">¶</th><th>What goes in it</th></tr>
+      <tr><td>1</td><td>Study One: re-analysis of Shapiro and Penrod (1986) — 128 experiments, 16,950 participants; lab findings hold in the field, so expert testimony has grounds.</td></tr>
+      <tr><td>2</td><td>Study Two: 321 students plus 129 eligible/experienced jurors; ten factors across 64 versions; only witness confidence mattered — jurors are naïve.</td></tr>
+      <tr><td>3</td><td>Study Three: 538 students; expert testimony improved sensitivity to conditions, reduced weight on confidence, descriptive better than quantitative, no scepticism effect.</td></tr>
+      <tr><td>4</td><td>Evaluation: strengths (ecological validity, two samples, builds logically) against weaknesses (still mock, students, contradicted by Jones et al. 2017).</td></tr>
+    </table>
+    <textarea class="answer-box" id="p4" placeholder="Plan four paragraphs here, then write them up..."></textarea>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('m4')">Show a model answer</button></div>
+    <div id="m4" class="xp-result">
+      <p><span class="xp-verdict">Model answer — four developed points</span></p>
+      <ul>
+        <li><strong>Study One justifies the approach.</strong> Penrod and Cutler re-analysed Shapiro and Penrod's (1986) meta-analysis of 128 eyewitness identification and facial recognition experiments involving 16,950 participants. They found several factors — such as cross-racial identification and context reinstatement — had reliable effects in both laboratory and field settings, so laboratory memory research can explain real eyewitness memory. This gives grounds for using expert testimony in court.</li>
+        <li><strong>Study Two finds the problem.</strong> Mock jurors watched realistic 45-minute videotaped armed robbery trials; 321 students and 129 jury-eligible or experienced jurors saw ten factors manipulated across 64 versions, such as whether a weapon was visible and whether identification took place after 2 or 14 days. Only <strong>witness confidence</strong> significantly affected verdicts, showing jurors are insensitive to the factors that actually influence identification accuracy and place disproportionate weight on confidence, which does not predict accuracy.</li>
+        <li><strong>Study Three tests the solution.</strong> Cutler, Penrod and Dexter used 538 students who saw the same variations with expert testimony added, and the expert was discredited in cross-examination. Expert testimony improved juror sensitivity to witnessing and identification conditions and reduced the weight given to confidence; descriptive testimony was more effective than descriptive and quantitative testimony, and there was <strong>no scepticism effect</strong> on credibility ratings or verdicts.</li>
+        <li><strong>Evaluation.</strong> A strength is that the three studies build logically on each other, and the trial footage is far more realistic than a written summary; using both students and experienced jurors also supports generalisability. However, these remain <strong>mock juries</strong> with no real consequences and no deliberation, and Study Three used students only. Most seriously, <strong>Jones et al. (2017)</strong>, with 452 participants, found that expert testimony raised scepticism without helping jurors distinguish good from bad evidence — directly contradicting Study Three. This means the value of expert testimony remains contested.</li>
+      </ul>
+      <p><strong>Why this scores:</strong> all three studies are described with numbers, and the fourth paragraph weighs evidence against evidence rather than just listing criticisms.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:22px">
+    <div class="summary-card-header" onclick="togglePanel(this,'kp')">
+      <span>🔑 Exam key points — what a strong answer contains</span>
+      <span class="arrow">›</span>
+    </div>
+    <div class="summary-card-body hidden" id="kp">
+      <ol>
+        <li>The jury decides <strong>guilt</strong> — 12 random people; the judge cannot. Deliberation is confidential and cannot be recorded, so researchers use <strong>mock juries</strong>.</li>
+        <li><strong>Race:</strong> Mitchell et al. (2005) meta-analysis — 46 samples, 34 studies, small but significant bias when defendant and juror differ in race. Single studies disagree (Skolnick and Shaw: leniency; Abwender and Hough: no white bias).</li>
+        <li><strong>Attractiveness:</strong> Sigall and Ostrove (1975) — attractive photo meant <em>longer</em> sentences for fraud but <em>shorter</em> for burglary. Criticise it: juries do not set sentences, and attractiveness is subjective.</li>
+        <li><strong>Pre-trial publicity:</strong> factual versus emotional; <strong>source monitoring error</strong>. Steblay et al. (1999): 59% versus 45%. Ruva et al. (2007): 73% versus 27%, reduced after deliberation.</li>
+        <li><strong>Expert testimony:</strong> Benton et al. (2006) shows ordinary people under-understand memory (60% vs 95%; 30% vs 81%); Jones et al. (2017) says it does not help discrimination; Helm (2021) says it helps with weak evidence.</li>
+        <li><strong>Penrod and Cutler:</strong> Study One justifies, Study Two finds jurors naïve (only confidence mattered), Study Three shows expert testimony improves sensitivity with no scepticism effect.</li>
+        <li>Every criticism needs a <strong>why it matters</strong> sentence — and the recurring ones here are mock juries, student samples and cross-country legal differences.</li>
+        <li>In scenario answers, first ask: did this influence arrive <strong>before</strong> the trial or <strong>during</strong> it?</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 20 ============ -->
+<section class="section" id="s20">
+  <h2>20. Key Terms</h2>
+  <div class="glossary-grid">
+    <div class="glossary-item"><span class="term">jury</span><span class="zh">陪审团</span><div class="def">A group, typically of 12, randomly selected from an electoral roll, who decide whether the defendant is guilty.</div></div>
+    <div class="glossary-item"><span class="term">deliberation</span><span class="zh">评议</span><div class="def">The private stage where the jury reviews the evidence and discusses the case to reach a verdict; confidential and never recorded.</div></div>
+    <div class="glossary-item"><span class="term">foreperson</span><span class="zh">陪审团发言人</span><div class="def">The jury member appointed to present the jury's decision back to the judge.</div></div>
+    <div class="glossary-item"><span class="term">voir dire</span><span class="zh">陪审员遴选</span><div class="def">A process in some countries where lawyers may question the suitability of potential jurors, including indirectly about racial bias.</div></div>
+    <div class="glossary-item"><span class="term">line-up</span><span class="zh">列队辨认</span><div class="def">A method used by police to help witnesses identify criminals by showing a series of images.</div></div>
+    <div class="glossary-item"><span class="term">mock jury</span><span class="zh">模拟陪审团</span><div class="def">A study in which participants experience a trial through a video or transcript and then reach a verdict.</div></div>
+    <div class="glossary-item"><span class="term">stereotype</span><span class="zh">刻板印象</span><div class="def">A belief about the characteristics of a group, which can bias how an individual defendant is judged.</div></div>
+    <div class="glossary-item"><span class="term">halo effect</span><span class="zh">光环效应</span><div class="def">A cognitive bias in which a person's appearance influences judgements of their character.</div></div>
+    <div class="glossary-item"><span class="term">pre-trial publicity</span><span class="zh">审前报道</span><div class="def">Media information about a case that reaches potential jurors before the trial begins.</div></div>
+    <div class="glossary-item"><span class="term">factual publicity</span><span class="zh">事实型报道</span><div class="def">Publicity containing incriminating information about the case; can be corrected as the trial presents evidence.</div></div>
+    <div class="glossary-item"><span class="term">emotional publicity</span><span class="zh">情绪型报道</span><div class="def">Publicity that arouses negative emotion rather than stating facts; considered longer-lasting than factual publicity.</div></div>
+    <div class="glossary-item"><span class="term">source monitoring error</span><span class="zh">来源监控错误</span><div class="def">Mistaking where information was learned, so media reports are remembered as court evidence.</div></div>
+    <div class="glossary-item"><span class="term">schema</span><span class="zh">图式</span><div class="def">A mental framework of expectations that shapes how pre-trial information and court evidence are interpreted.</div></div>
+    <div class="glossary-item"><span class="term">expert testimony</span><span class="zh">专家证词</span><div class="def">Evidence from an expert witness giving specialist knowledge beyond a juror's understanding.</div></div>
+    <div class="glossary-item"><span class="term">debiasing instruction</span><span class="zh">去偏见指示</span><div class="def">An instruction telling jurors not to be influenced by bias, prejudice or sympathy (Ingriselli, 2014).</div></div>
+    <div class="glossary-item"><span class="term">meta-analysis</span><span class="zh">元分析</span><div class="def">A statistical combination of many studies, e.g. Mitchell et al. (2005); Steblay et al. (1999); Bornstein (1999).</div></div>
+    <div class="glossary-item"><span class="term">content analysis</span><span class="zh">内容分析</span><div class="def">A method of analysing what people actually say, e.g. Ruva and LeVasseur's (2012) analysis of 30 deliberations.</div></div>
+    <div class="glossary-item"><span class="term">ecological validity</span><span class="zh">生态效度</span><div class="def">Whether findings from artificial settings, such as a mock trial, apply to real courtrooms.</div></div>
+    <div class="glossary-item"><span class="term">miscarriage of justice</span><span class="zh">司法误判</span><div class="def">A wrongful conviction; mistaken eyewitness accounts are a leading cause.</div></div>
+  </div>
+</section>
+
+<div class="footer-note">6.1.5 Factors influencing jury decision-making · Criminological Psychology · next: 6.1.6 Cognitive Behavioural Therapy as a therapy for offenders</div>
+  </main>
+</div>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var baseFont = 16;
+
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark'; }
+  };
+
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  window.juryShow = function () {
+    var notes = {
+      race: 'Race: Mitchell et al. (2005) combined 46 data samples from 34 studies and found a small but significant bias — jurors were more likely to convict a defendant of a different race from themselves.',
+      look: 'Attractiveness: Sigall and Ostrove (1975) found the attractive photograph changed the sentence — but in opposite directions depending on the crime.',
+      news: 'Pre-trial publicity: Steblay et al. (1999) meta-analysis found 59% guilty verdicts after negative publicity versus 45% without it.',
+      expert: 'Expert testimony: Penrod and Cutler (1989) Study Three found expert testimony made jurors more sensitive to the conditions of the identification.',
+      conf: 'Witness confidence: in Penrod and Cutler Study Two, confidence was the ONLY one of ten factors that significantly changed verdicts — even though confidence is a poor predictor of accuracy.'
+    };
+    var picked = [];
+    var boxes = document.querySelectorAll('.jw');
+    for (var i = 0; i < boxes.length; i++) { if (boxes[i].checked) { picked.push(boxes[i].value); } }
+    var el = document.getElementById('jwResult');
+    if (!el) { return; }
+    if (picked.length === 0) {
+      el.innerHTML = '<p><span class="xp-verdict">Tick at least one box first</span> — have a guess, there are no wrong answers here.</p>';
+    } else {
+      var html = '<p><span class="xp-verdict">Research says: all five change the verdict.</span></p>';
+      picked.forEach(function (v) { html += '<p style="margin:6px 0">' + notes[v] + '</p>'; });
+      html += '<p style="margin:6px 0"><strong>The first four are exactly the factors in this chapter. The fifth — confidence — is the finding that made Penrod and Cutler famous.</strong></p>';
+      el.innerHTML = html;
+    }
+    el.classList.add('show');
+  };
+
+  window.sigall = function (btn, c) {
+    var el = document.getElementById('sigResult');
+    if (!el) { return; }
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === 'fraud');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var msg = ok
+      ? 'The attractive photograph produced the <strong>longest sentence in the fraud condition</strong> — participants seemed to assume an attractive woman would use her looks to con money out of people. In the burglary condition the same photograph produced a <strong>shorter</strong> sentence, because attractiveness is not associated with burglary.'
+      : 'The attractive photograph did make a difference — but its direction depended on the crime. It produced the <strong>longest sentence for fraud</strong> and a <strong>shorter sentence for burglary</strong>. The unattractive and no-photograph conditions gave similar sentences for both crimes, which shows it was attractiveness doing the work.';
+    el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + msg + '</p>';
+    el.classList.add('show');
+  };
+
+  var pcKey = { t1: 'b', t2: 'b', t3: 'b', t4: 'b' };
+  var pcFb = {
+    t1: 'Study One was a reassessment of meta-analysis data — Penrod and Cutler re-analysed Shapiro and Penrod (1986), covering 128 experiments and 16,950 participants.',
+    t2: 'Only one of the ten factors mattered: witness confidence. Jurors were insensitive to disguise, weapon visibility, delay, line-up fairness and the rest.',
+    t3: 'Descriptive testimony was more effective than descriptive and quantitative testimony — adding facts and figures made it less effective.',
+    t4: 'There was no scepticism effect. Neither the presence nor the type of expert testimony affected credibility ratings of the witness or the verdict — which answers the critics who feared experts would just make jurors distrust everyone.'
+  };
+
+  window.pcMatch = function (btn, q, choice) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (choice === pcKey[q]);
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById('res-' + q);
+    if (el) {
+      el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + pcFb[q] + '</p>';
+      el.classList.add('show');
+    }
+  };
+
+  var facFb = {
+    race: 'Defendant characteristics — race, attractiveness, accent and gender act during the trial through the stereotypes jurors already hold.',
+    ptp: 'Pre-trial publicity — information reaching jurors through the media before the trial.',
+    expert: 'Expert testimony — an expert witness explaining specialist knowledge, such as how memory works.'
+  };
+  var facKey = { a: 'ptp', b: 'race', c: 'expert', d: 'ptp' };
+  var facWhy = {
+    a: 'This is emotional pre-trial publicity: information about the defendant\'s past that arouses negative feeling rather than stating facts.',
+    b: 'This is the Sigall and Ostrove (1975) interaction — attractiveness only mattered because of the type of crime.',
+    c: 'This is an eyewitness expert explaining the reconstructive nature of memory and the effect of stress.',
+    d: 'This is a textbook source monitoring error caused by pre-trial publicity — she remembered the information but misremembered where it came from.'
+  };
+
+  window.factorAns = function (btn, choice, id) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var q = id.replace('fac-', '');
+    var ok = (choice === facKey[q]);
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById(id);
+    if (el) {
+      var body = ok ? (facFb[choice] + ' ' + facWhy[q]) : facFb[choice] + ' Look again at when this influence arrived.';
+      el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + body + '</p>';
+      el.classList.add('show');
+    }
+  };
+
+  var quizKey = { q1: 'b', q2: 'a', q3: 'c', q4: 'a', q5: 'b', q6: 'b', q7: 'a', q8: 'b' };
+  var quizWhy = {
+    q1: 'Deliberations are confidential: nobody may enter the room and it cannot be recorded. That is why mock juries exist.',
+    q2: 'Mitchell et al. (2005) analysed 46 data samples from 34 studies. The 128 experiments belong to Shapiro and Penrod (1986); the 30 deliberations belong to Ruva and LeVasseur (2012).',
+    q3: 'Jones et al. (2017) used 452 participants. Benton et al. (2006) surveyed 111 ordinary people; Helm (2021) gave jurors different levels of memory information.',
+    q4: 'Steblay et al. (1999): 59% versus 45% across 44 tests and 5,755 subjects. The 73% versus 27% figure is Ruva et al. (2007).',
+    q5: 'Emotional publicity is considered longer-lasting, because factual errors can be corrected as the trial presents real evidence.',
+    q6: 'Fraud. The attractive photograph meant a longer sentence for fraud but a shorter one for burglary.',
+    q7: 'Ordinary people trust eyewitnesses more than research would advise: 60% versus 95% on post-event information, and 30% versus 81% on misidentification.',
+    q8: 'Nemeth (1977) found no difference between written summaries and staged live trials, which reassures researchers about their method.'
+  };
+
+  window.checkQuiz = function () {
+    var el = document.getElementById('quizResult');
+    if (!el) { return; }
+    var score = 0;
+    var html = '';
+    Object.keys(quizKey).forEach(function (q) {
+      var sel = document.querySelector('input[name="' + q + '"]:checked');
+      var chosen = sel ? sel.value : null;
+      var ok = (chosen === quizKey[q]);
+      if (ok) { score++; }
+      html += '<p style="margin:6px 0"><strong>' + q.toUpperCase() + ':</strong> ' +
+        (chosen ? (ok ? '✅ correct' : '❌ not quite') : 'not answered') +
+        ' — ' + quizWhy[q] + '</p>';
+    });
+    el.innerHTML = '<p><span class="xp-verdict">Score: ' + score + ' / 8</span></p>' + html;
+    el.classList.add('show');
+    if (score === 8) { el.classList.add('ok'); } else { el.classList.remove('ok'); }
+  };
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.toggle('show'); }
+  };
+
+  window.togglePanel = function (header, id) {
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    el.classList.toggle('hidden');
+    header.classList.toggle('open');
+  };
+
+  var secs = document.querySelectorAll('.section');
+  var links = document.querySelectorAll('.sb-item a');
+  function highlight() {
+    var best = null;
+    var bestTop = -99999;
+    for (var i = 0; i < secs.length; i++) {
+      var r = secs[i].getBoundingClientRect();
+      if (r.top <= 140 && r.top > bestTop) { bestTop = r.top; best = secs[i]; }
+    }
+    if (!best && secs.length) { best = secs[0]; }
+    for (var j = 0; j < links.length; j++) { links[j].classList.remove('sb-active'); }
+    if (best) {
+      var target = best.getAttribute('id');
+      for (var k = 0; k < links.length; k++) {
+        if (links[k].getAttribute('href') === '#' + target) { links[k].classList.add('sb-active'); }
+      }
+    }
+  }
+  window.addEventListener('scroll', highlight);
+  highlight();
+
+  var btt = document.getElementById('btt');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 400) { btt.classList.add('show'); } else { btt.classList.remove('show'); }
+  });
+})();
+</script>
+</body>
+</html>
