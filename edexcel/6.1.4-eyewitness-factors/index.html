@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.1.4 Factors influencing eyewitness memory（目击证词可靠性的影响因素）</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.five-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+
+.mat2x2 { display: grid; grid-template-columns: 120px 1fr 1fr; gap: 6px; margin: 14px 0; }
+.mat2x2 .mh { background: var(--primary); color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
+body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic F · Criminological psychology — Factors influencing the identification of offenders</span>
+  </div>
+  <span class="nav-pill">⚖️ Criminal Psychology</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="6.1.4-Eyewitness-Memory-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">6.1.4 · Contents</div>
+        <div class="sb-header-sub">Eyewitness memory</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">Before we start</li>
+        <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+        <li class="sb-item"><a href="#s2">2. Why Eyewitnesses Matter</a></li>
+        <li class="sb-item"><a href="#s3">3. The Four Factors</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Factor 1 · post-event information</li>
+        <li class="sb-item"><a href="#s4">4. Post-event Information</a></li>
+        <li class="sb-item"><a href="#s5">5. Lab Evidence</a></li>
+        <li class="sb-item"><a href="#s6">6. Real-life Evidence</a></li>
+        <li class="sb-item"><a href="#s7">7. Evaluating Factor 1</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Factor 2 · stress &amp; trauma</li>
+        <li class="sb-item"><a href="#s8">8. Stress and the Mind</a></li>
+        <li class="sb-item"><a href="#s9">9. Stress Evidence</a></li>
+        <li class="sb-item"><a href="#s10">10. Evaluating Factor 2</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Factor 3 · weapon focus</li>
+        <li class="sb-item"><a href="#s11">11. Weapon Focus</a></li>
+        <li class="sb-item"><a href="#s12">12. Weapon Focus Evidence</a></li>
+        <li class="sb-item"><a href="#s13">13. Evaluating Factor 3</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Factor 4 · other-race effect</li>
+        <li class="sb-item"><a href="#s14">14. The Other-race Effect</a></li>
+        <li class="sb-item"><a href="#s15">15. Other-race Evidence</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Practice</li>
+        <li class="sb-item"><a href="#s16">16. Checkpoint</a></li>
+        <li class="sb-item"><a href="#s17">17. Exam Lab</a></li>
+        <li class="sb-item"><a href="#s18">18. Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>6.1.4 FACTORS INFLUENCING EYEWITNESS MEMORY<br><span style="font-size:0.65em">目击证词可靠性的影响因素</span></h1>
+  <div class="subtitle">Criminological Psychology · post-event information（事件后信息）· stress &amp; trauma（压力与创伤）· weapon focus（武器聚焦）· other-race effect（异族效应）</div>
+  <div class="meta">
+    <span class="badge">🧠 Core idea: memory is evidence — and evidence can fail</span>
+    <span class="badge">🔑 Four factors, one question: can you trust a witness?</span>
+    <span class="badge">📖 Textbook: Chapter 9</span>
+  </div>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started</h2>
+
+  <div class="xp-block">
+    <h4>🎪 The concert <span class="xp-badge">Textbook scenario</span></h4>
+    <p class="xp-intro">You are at a loud outdoor concert in a public park with friends. It is getting dark; the stage lights flicker on and off. A fight breaks out. Someone gets hurt, security guards rush over, and panic spreads. They carry the victim away. A guard reaches your group and asks: <strong>What did you see?</strong></p>
+    <p style="font-size:.9rem;color:#4b5563;margin-top:6px;">Before reading anything else — tick everything in this story that might make remembering <em>harder</em>:</p>
+    <div class="xp-checkbox"><input type="checkbox" class="cf" id="cf1" value="dark"><label for="cf1">It was getting dark, and the lights flickered.</label></div>
+    <div class="xp-checkbox"><input type="checkbox" class="cf" id="cf2" value="loud"><label for="cf2">The music was loud, so you could not hear what people said.</label></div>
+    <div class="xp-checkbox"><input type="checkbox" class="cf" id="cf3" value="panic"><label for="cf3">You were scared and panicked when the fight broke out.</label></div>
+    <div class="xp-checkbox"><input type="checkbox" class="cf" id="cf4" value="talk"><label for="cf4">Afterwards, you and your friends kept discussing what happened.</label></div>
+    <div class="xp-controls"><button class="xp-btn" onclick="cfShow()">Show what psychology notices</button></div>
+    <div id="cfResult" class="xp-result"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>这一章的全部内容就藏在这个场景里：</strong>天黑、灯光闪 = <strong>看不清</strong>（压力太大影响记忆）；吓到了 = <strong>stress &amp; trauma</strong>；事后大家一直讨论 = <strong>post-event information</strong>。而"保安来问话"之所以重要，是因为你的回答会变成法庭上的证据。这一章要回答一个问题：<strong>目击证人的记忆，到底有多可靠？什么会把它弄坏？</strong>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Why Eyewitnesses Matter</h2>
+
+  <div class="keyterm-box">
+    <p><span class="kt">eyewitness（目击证人）</span> — an individual who sees an event, such as a crime, occurring.</p>
+    <p><span class="kt">eyewitness testimony（目击证人证词）</span> — the account an eyewitness gives of what they saw, usually to the police and later in court.</p>
+  </div>
+
+  <p>An eyewitness sees a crime happen. The police interview them, they document everything they can remember, and later they may be required to <strong>attend court</strong> and recount the event to the judge and jury. The eyewitness is often the <strong>most common form of evidence</strong> in criminal trials — and juries tend to find it very convincing.</p>
+
+  <div class="warn-box">
+    <h4>❗ The problem</h4>
+    <p>Our memories are not as accurate as we might want or expect them to be. Incorrect eyewitness accounts have been identified as the <strong>leading cause of miscarriages of justice</strong>（司法误判）. An innocent person can be convicted because a witness — honest, confident, and completely wrong — picked them out.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>为什么这一章值得学：</strong>目击证人是法庭上最常见、也最被陪审团相信的证据。但"我很确定"和"我是对的"是两回事。<strong>诚实 ≠ 准确</strong> —— 证人没有说谎，只是记忆本身被弄坏了。这一章就是研究弄坏记忆的四种方式。
+  </div>
+
+  <div class="note-box">
+    <h4>📎 One more thing before we start</h4>
+    <p>You already know one tool designed to protect eyewitness memory: the <strong>cognitive interview</strong>（认知访谈，spec 6.1.2）。It uses open, non-leading questions precisely because leading questions can contaminate memory. Everything in this chapter explains <em>why</em> that technique matters.</p>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. The Four Factors — One Map</h2>
+  <p>This chapter teaches four factors. Before learning any of them, notice <strong>when</strong> each one does its damage:</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Timeline map of the four factors">
+      <defs>
+        <marker id="arT" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#ea580c"/>
+        </marker>
+      </defs>
+      <line x1="40" y1="40" x2="640" y2="40" stroke="#ea580c" stroke-width="2.5" marker-end="url(#arT)"/>
+      <text x="120" y="26" text-anchor="middle" font-size="12.5" font-weight="700" fill="#c2410c">1 · during the event</text>
+      <text x="120" y="26" text-anchor="middle" font-size="12.5" font-weight="700" fill="#c2410c"></text>
+      <text x="450" y="26" text-anchor="middle" font-size="12.5" font-weight="700" fill="#c2410c">2 · after the event</text>
+
+      <rect x="20" y="58" width="290" height="130" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="165" y="82" text-anchor="middle" font-size="13.5" font-weight="700" fill="#c2410c">What happens while watching</text>
+      <text x="40" y="108" font-size="12" fill="#334155">• stress and trauma（吓到了）</text>
+      <text x="40" y="130" font-size="12" fill="#334155">• weapon focus（眼睛盯住了武器）</text>
+      <text x="40" y="152" font-size="12" fill="#334155">• other-race effect（认不准外族面孔）</text>
+      <text x="40" y="174" font-size="10.5" fill="#64748b">→ memory may already be wrong here</text>
+
+      <line x1="310" y1="123" x2="378" y2="123" stroke="#ea580c" stroke-width="2" marker-end="url(#arT)"/>
+
+      <rect x="380" y="58" width="280" height="130" rx="10" fill="#eff6ff" stroke="#1e3a5f" stroke-width="2"/>
+      <text x="520" y="82" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1e3a5f">What happens afterwards</text>
+      <text x="398" y="108" font-size="12" fill="#334155">• post-event information（事后信息）</text>
+      <text x="398" y="130" font-size="12" fill="#334155">— talking to other witnesses</text>
+      <text x="398" y="152" font-size="12" fill="#334155">— police questions · media coverage</text>
+      <text x="398" y="174" font-size="10.5" fill="#64748b">→ the original memory gets rewritten</text>
+
+      <line x1="340" y1="188" x2="340" y2="220" stroke="#ea580c" stroke-width="2" marker-end="url(#arT)"/>
+      <rect x="140" y="222" width="400" height="50" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+      <text x="340" y="243" text-anchor="middle" font-size="13" font-weight="700" fill="#6d28d9">In court: the witness testifies — and the jury believes it</text>
+      <text x="340" y="261" text-anchor="middle" font-size="11" fill="#334155">honest, confident… and possibly wrong</text>
+    </svg>
+    <div class="figure-caption">Figure 1 · The four factors on a timeline — three strike while watching, one strikes after</div>
+  </div>
+
+  <table>
+    <tr><th style="width:180px">Factor 因素</th><th style="width:110px">When 何时</th><th>The damage it does 它怎么弄坏记忆</th></tr>
+    <tr><td>Post-event information<br><span style="font-weight:400;color:#64748b">事件后信息</span></td><td>After 事后</td><td>New information reaches the witness after the event and gets mixed into — or overwrites — the original memory.</td></tr>
+    <tr><td>Stress and trauma<br><span style="font-weight:400;color:#64748b">压力与创伤</span></td><td>During 事发时</td><td>High arousal narrows what gets encoded; the witness may feel they remember vividly but important details were never stored.</td></tr>
+    <tr><td>Weapon focus<br><span style="font-weight:400;color:#64748b">武器聚焦</span></td><td>During 事发时</td><td>Attention locks onto the weapon; the face and other details are missed.</td></tr>
+    <tr><td>Other-race effect<br><span style="font-weight:400;color:#64748b">异族效应</span></td><td>During 事发时</td><td>Same-race faces are recognised more accurately than other-race faces.</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>记这张地图的方法：</strong>三个因素发生在<strong>看的时候</strong>（当时你的眼睛和大脑就没存好），一个因素发生在<strong>看之后</strong>（存好的记忆被新信息改写）。考试给一个场景，先问"这个问题出在事发时还是事发后？"—— 答案立刻缩到 1-3 个因素里。
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Factor 1 · Post-event Information</h2>
+
+  <div class="keyterm-box">
+    <p><span class="kt">post-event information（事件后信息）</span> — any information after the witnessed event which may influence the original memory of the incident.</p>
+    <p><span class="kt">leading question（引导性问题）</span> — a question that suggests the answer it wants, e.g. "How tall was the person?" implies the person was tall.</p>
+  </div>
+
+  <p>Post-event information can <strong>introduce new information</strong> that gets incorporated into the memory, or it can <strong>alter</strong> the original memory. It can even activate <strong>schemas</strong>（图式）— expectations about what usually happens in an event — which then alter how the incident is recalled later.</p>
+
+  <h3>Where does it come from? 事后信息从哪来？</h3>
+  <ul>
+    <li><strong>Talking to other witnesses</strong> — discussions before the police interview</li>
+    <li><strong>Being questioned by the police or lawyers</strong> — leading questions, sometimes used unintentionally, sometimes deliberately in court to confuse a witness</li>
+    <li><strong>Watching media coverage</strong> — especially if the case is high-profile</li>
+  </ul>
+  <p>And this matters because witnesses are interviewed over a period of time, and it can take <strong>a long time before a case goes to court</strong>. What the witness experiences in that gap changes what they remember.</p>
+
+  <div class="blue-box">
+    <h4>🌳 The mechanism: reconstructive memory 重构记忆</h4>
+    <p>We do not replay memories like video. <strong>Reconstructive memory</strong> means we rebuild the scene using the main points and our interpretation — influenced by our cultural norms and expectations. That is why post-event information can blend in so smoothly: the memory is already a reconstruction, so new details slot right in. <em>(This links back to encoding and schemas, Student Book 1, page 96.)</em></p>
+  </div>
+
+  <div class="cn-note">
+    <strong>一个类比：</strong>记忆不像硬盘里的录像文件，更像一篇<strong>每次重讲都会改写的作文</strong>。你朋友说了一句"那人戴了帽子吧？"——下次你回忆时，"帽子"可能就真的出现在你的画面里了。不是你撒谎，是作文被补写了一笔。<strong>misinformation effect（错误信息效应）</strong>：记忆因为接触事后信息而变得不准确。
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. The Lab Evidence 实验室证据</h2>
+
+  <h3>Gabbert, Memon and Allen (2003) — memory conformity 记忆从众</h3>
+  <ul>
+    <li><strong>120 students</strong> watched a video of a girl returning a book to a university office — placed in <strong>pairs</strong>, and each partner saw a <strong>slightly different version</strong>. One saw the book returned; the other saw the girl <strong>stealing</strong> it.</li>
+    <li>One condition recalled <strong>without discussion</strong>; the other <strong>discussed first</strong>.</li>
+    <li><strong>71%</strong> of witnesses who discussed recalled items that were <strong>not in their own video</strong> but came from the discussion.</li>
+    <li><strong>60%</strong> who discussed said the girl was guilty <strong>even though their own version never showed a theft</strong>.</li>
+  </ul>
+
+  <div class="cn-note">
+    <strong>这个实验妙在哪：</strong>两位"目击者"看的是<strong>不同的视频</strong>——所以讨论后说出对方视频里的细节，就能<strong>证明</strong>信息是从讨论里来的，不是从记忆里来的。这叫 <strong>memory conformity（记忆从众）</strong>：讨论让证词变得像一个模子刻出来的。
+  </div>
+
+  <h3>Poole and Lindsay (1995) — children and leading questions 儿童与引导性问题</h3>
+  <ul>
+    <li>Children aged <strong>3–4</strong> and <strong>5–7</strong> took part in a science activity with a character called <strong>Mr Science</strong>. Initially interviewed with no misinformation, they were <strong>generally accurate</strong>.</li>
+    <li><strong>Three months later</strong>, parents read them a story about Mr Science that included <strong>two activities the child never did</strong>.</li>
+    <li>In a second interview with misleading questions: <strong>95%</strong> of children answered at least one leading question incorrectly about an activity they had not experienced.</li>
+    <li>They could not distinguish what they <em>experienced</em> from what they were <em>read in the story</em>.</li>
+  </ul>
+  <p>Most post-event research uses adults — but children are <strong>highly suggestible</strong>（易受暗示的）when post-event information arrives as leading questions.</p>
+
+  <div class="cn-note">
+    <strong>读研究的技巧：</strong>每个实验记三样就够 —— <strong>谁（被试）· 做了什么（ manipulated 什么）· 得到什么数字</strong>。Gabbert 记 <strong>71% / 60%</strong>，Poole &amp; Lindsay 记 <strong>95%</strong>。数字就是答案里的"Evidence"。
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. The Real-life Evidence 真实世界证据</h2>
+
+  <p>Laboratory findings look scary. But witnesses of <strong>real crimes</strong> sometimes hold up much better — and that contradiction is exactly what an evaluation question wants from you.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Yuille and Cutshall (1986) — a real shooting</h4>
+      <p>Case study of a real <strong>shop robbery and shooting</strong> in Canada. Real witnesses were interviewed about the incident, and their accounts were compared with <strong>police records</strong>. The witnesses had <strong>detailed memories</strong> and were <strong>not misled</strong> by two leading questions — about a "busted headlight" (it was not broken) and a "yellow quarter panel" (it was blue).</p>
+    </div>
+    <div class="compare-card">
+      <h4>Odinot (2008) — a real supermarket robbery</h4>
+      <p><strong>28 employees</strong> of a Dutch supermarket were interviewed <strong>three months</strong> after two armed robbers hit the safe. Compared with <strong>CCTV footage</strong>, <strong>84%</strong> of remembered information was accurate. Many had watched a televised reconstruction five weeks later, containing errors — yet it <strong>did not alter</strong> their memories.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>两条线并排记：</strong>实验室说"事后信息会污染记忆"（Gabbert 71% 被带偏）；真实案件说"未必"（Yuille &amp; Cutshall 没被带偏，Odinot 84% 准确）。<strong>谁对？大概率都对——区别在场景：</strong>实验室里看视频不紧张、不投入；真实罪案里证人亲眼在场，记得牢。<strong>真实世界的研究生态效度更高，实验室的控制更好</strong>——这是 7 节评价的核心。
+  </div>
+
+  <div class="note-box">
+    <h4>⚠️ But read the small print 细节也很重要</h4>
+    <p>Field studies have limits too: Yuille and Cutshall used only a <strong>small sample</strong> of witnesses, and it is likely Odinot's witnesses <strong>reconciled</strong>（互相核对纠正）any errors from the TV reconstruction during discussions at work — so the misinformation may simply never have survived.</p>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Evaluating Factor 1 · Post-event Information</h2>
+
+  <h3>Support 支持</h3>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>The Loftus misinformation effect</h4>
+      <p>Elizabeth Loftus has pioneered eyewitness research since the 1970s. Her <strong>misinformation effect</strong>: memory becomes less accurate because of exposure to post-event information.</p>
+      <p><span class="syl-tag ev">Evidence</span> a large body of research supports the claim that post-event information influences eyewitness reliability.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>It explains real harm</h4>
+      <p>False convictions have been traced to contaminated memory. If leading questions are detected, the testimony can be ruled inadmissible; if not, <strong>false testimony can convict a suspect</strong>.</p>
+      <p><span class="syl-tag app">Application</span> the cognitive interview (open, non-leading questions) is a direct fix built on this research.</p>
+    </div>
+  </div>
+
+  <h3>Criticisms 批评</h3>
+  <div class="compare-grid">
+    <div class="compare-card red">
+      <h4>Laboratory vs real life — psychology as a science</h4>
+      <p>Lab studies yield <strong>different results from real-life witnesses</strong>. Lab experiments arguably <strong>minimise emotional stress</strong> — participants know the crime is not real — so they may be less invested in remembering. High control creates an artificial environment: no noise, no real danger, no real stakes.</p>
+      <p><span class="syl-tag crit">Ecological validity</span> <strong>Why it matters:</strong> the lab may overstate how fragile real memories are — real witnesses (Yuille and Cutshall; Odinot) resisted contamination.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Ethical issues 伦理问题</h4>
+      <p>Investigating eyewitness memory can involve <strong>exposing participants to a traumatic event</strong> or film footage that may cause distress. Using <strong>real witnesses</strong> to a crime raises another issue: questioning forces them to <strong>relive the incident</strong>.</p>
+      <p><span class="syl-tag crit">Ethics</span> <strong>Why it matters:</strong> protection from psychological harm limits what researchers are allowed to do.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>评价的写作套路（和 1.1.1 一样）：</strong>每条 = <strong>说什么有问题</strong> + <strong>为什么这是个问题</strong>。"实验室结果和真实案件不一致"只算半句；补上"因为实验室过度控制、被试知道不是真的，可能夸大了记忆的脆弱性"，才是完整评价。
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Factor 2 · Stress and the Mind</h2>
+
+  <div class="keyterm-box">
+    <p><span class="kt">arousal（唤醒）</span> — the level of physiological and psychological alertness a person is experiencing, from sleepy to highly stressed.</p>
+    <p><span class="kt">Yerkes–Dodson Law（耶克斯–多德森定律）(1908)</span> — performance increases with arousal up to an optimum point, then declines as arousal gets too high.</p>
+  </div>
+
+  <p>Eyewitnesses are placed under great emotional stress when witnessing an event. Research suggests that as we become stressed about a situation, our performance — including remembering information — is <strong>impaired when we get too aroused</strong>. Being <em>too relaxed</em> does not help either: there is an <strong>optimum amount of arousal</strong>, and it is very easy to go beyond it.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 265" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Yerkes-Dodson inverted-U curve">
+      <rect x="285" y="55" width="110" height="170" fill="#16a34a" opacity="0.10"/>
+      <path d="M 60 225 Q 340 -105 620 225" fill="none" stroke="#ea580c" stroke-width="3"/>
+      <line x1="40" y1="225" x2="655" y2="225" stroke="#334155" stroke-width="2"/>
+      <line x1="40" y1="225" x2="40" y2="30" stroke="#334155" stroke-width="2"/>
+      <path d="M 655 225 l -9 -4 v 8 z" fill="#334155"/>
+      <path d="M 40 30 l -4 9 h 8 z" fill="#334155"/>
+      <text x="347" y="252" text-anchor="middle" font-size="12.5" fill="#334155">Arousal (stress) 唤醒 / 压力</text>
+      <text x="58" y="45" font-size="12.5" fill="#334155">Performance 表现</text>
+      <text x="340" y="100" text-anchor="middle" font-size="11.5" font-weight="700" fill="#166534">optimum 最佳区间</text>
+      <text x="150" y="170" text-anchor="middle" font-size="11.5" fill="#64748b">too relaxed 太放松</text>
+      <text x="150" y="188" text-anchor="middle" font-size="10.5" fill="#94a3b8">not paying attention</text>
+      <text x="530" y="170" text-anchor="middle" font-size="11.5" fill="#64748b">too stressed 太慌</text>
+      <text x="530" y="188" text-anchor="middle" font-size="10.5" fill="#94a3b8">overloaded</text>
+      <text x="340" y="24" text-anchor="middle" font-size="11.5" font-weight="600" fill="#c2410c">Yerkes–Dodson Law (1908)</text>
+    </svg>
+    <div class="figure-caption">Figure 2 · The inverted-U: a little stress helps, too much wrecks performance</div>
+  </div>
+
+  <h3>Three ideas in this section 三个机制</h3>
+  <div class="five-grid">
+    <div class="compare-card">
+      <h4>① The Yerkes–Dodson Law</h4>
+      <p>Optimum arousal exists; a very stressful event pushes arousal past the optimum, and <strong>recall of the incident is impaired</strong>.</p>
+    </div>
+    <div class="compare-card">
+      <h4>② Attentional narrowing</h4>
+      <p><strong>Easterbrook hypothesis (1959)</strong>: under high emotional arousal, attention narrows. Stressed people <strong>focus on fewer details</strong> and do not encode the rest — like a camera zooming in and losing the edges of the frame.</p>
+    </div>
+    <div class="compare-card">
+      <h4>③ Source monitoring problems</h4>
+      <p>Traumatic events get rehearsed — police statements, media, conversations. People may <strong>confuse information encoded after the event</strong> with what actually happened, because they <strong>fail to distinguish the source</strong> of the information. Traumatic memories are therefore more prone to distortion.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>三者怎么连起来：</strong>压力太大（Yerkes–Dodson 过了顶点）→ 注意变窄（Easterbrook，只盯住核心细节，边缘信息根本没存进去）→ 事后反复回想、看电视、聊天（来源监控失灵，把"后来听说的"当成"亲眼看过的"）。<strong>注意"主观感觉"这个陷阱：</strong>证人往往觉得自己记忆栩栩如生（vivid memory），但压力恰恰<strong>损害了编码</strong>——感觉越真实，越要警惕。
+  </div>
+
+  <div class="xp-block">
+    <h4>📺 The phantom footage <span class="xp-badge">Crombag et al. (1996)</span></h4>
+    <p class="xp-intro">A Boeing 747 crashed into apartment buildings in Amsterdam. Soon afterwards, researchers asked people: <strong>did you see the television footage of the moment of impact?</strong> What would you say? Pick one:</p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="crombag('yes')">Yes, I saw the footage</button>
+      <button class="xp-btn" onclick="crombag('no')">No, I never saw any footage</button>
+      <button class="xp-btn" onclick="crombag('unsure')">Not sure</button>
+    </div>
+    <div id="cromResult" class="xp-result"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>为什么这个实验经典：</strong>根本<strong>没有</strong>电视拍过撞击画面。但 <strong>60%</strong> 的被试声称自己看过。他们不是撒谎——创伤性事件让记忆特别容易被事后信息（谈话、想象、媒体）污染，来源监控完全失灵。这直接演示了机制 ③。
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Stress Evidence 压力研究的证据</h2>
+
+  <h3>Lab and field: stress impairs recall 实验证据：压力损害记忆</h3>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Morgan III et al. (2004) — survival training</h4>
+      <p><strong>509 people</strong> in a survival training exercise: each experienced either a <strong>low-stress</strong> or <strong>high-stress interrogation</strong> lasting over 30 minutes, then tried to identify their interrogator in a line-up or photo identification. A <strong>large number</strong> in the high-stress condition could not make a correct identification.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Morgan III et al. (2007) — the follow-up</h4>
+      <p><strong>53 personnel</strong> exposed to acute interrogation stress in a mock captivity exercise: <strong>1 in 3</strong> incorrectly identified their interrogator <strong>48 hours</strong> later. Facial recognition is impaired by stress and trauma.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Valentine and Mesout (2009) — the London Dungeon</h4>
+      <p>A <strong>classic study into arousal and recall</strong>: visitors to the London Dungeon were genuinely stressed by the horror attraction — participants did <strong>not know</strong> they would be asked to recall what they saw. Eyewitness <strong>identification was impaired by arousal</strong>.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Deffenbacher et al. (2004) — the meta-analysis</h4>
+      <p>Taken as a whole body of research: stress has <strong>more of a negative impact</strong> on eyewitness recall than a positive one — true for both <strong>eyewitness identification</strong> of a perpetrator and <strong>recall of event details</strong>.</p>
+    </div>
+  </div>
+
+  <h3>Real life: stress sometimes leaves memory intact 真实世界：记忆有时完好</h3>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Thompson et al. (1997) — the Marchioness</h4>
+      <p>Survivors of the <em>Marchioness</em> ferry sinking, a highly traumatic event: <strong>74 out of 86</strong> statements were confirmed as accurate.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Rinolo et al. (2003) — the Titanic</h4>
+      <p>Survivor statements of the <em>Titanic</em> sinking: <strong>15 out of 20</strong> eyewitnesses reported the ship breaking apart while on the surface — consistent with <strong>forensic evidence</strong>.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Yuille and Cutshall (1986) — again</h4>
+      <p>Witnesses who reported <strong>high stress</strong> during the shooting recalled with <strong>greater accuracy</strong> than those who reported less. But note the catch: those most stressed were also <strong>closest to the incident</strong> — that may account for their greater accuracy.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>考试最爱的"但是"：</strong>实验室一边倒说压力有害，真实幸存者却记得很准。Deffenbacher (2004) 的元分析给出裁决：<strong>总体上压力是负面的</strong>。为什么结果不一致？—— 有趣的方法学批评：有的研究里的唤醒来自<strong>焦虑和恐惧</strong>（像真目击者），有的只来自<strong>警觉和注意</strong>（实验室条件）。<strong>"arousal"这个词在不同研究里含义不同，所以比较研究很困难</strong>。这句话写进 10 分/12 分题就是高级评价点。
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Evaluating Factor 2 · Stress and Trauma</h2>
+
+  <h3>Support 支持</h3>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>The meta-analysis settles it</h4>
+      <p>Deffenbacher et al. (2004) shows that across the whole research base, <strong>stress impairs</strong> both identification and recall of event details.</p>
+      <p><span class="syl-tag ev">Evidence</span> many separate studies point the same way.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Real witnesses in real settings</h4>
+      <p>Valentine and Mesout (2009) caught genuine arousal — participants did not know they would be tested. Morgan's participants faced genuinely stressful interrogations.</p>
+      <p><span class="syl-tag ev">Evidence</span> some studies do capture real stress rather than a classroom imitation.</p>
+    </div>
+  </div>
+
+  <h3>Criticisms 批评</h3>
+  <div class="compare-grid">
+    <div class="compare-card red">
+      <h4>Laboratory arousal is not eyewitness arousal</h4>
+      <p>Lab studies of this area may not reach the <strong>critical level of arousal</strong> — participants know what they see is not real, and the artificial setting produces <strong>under-arousal</strong>. Arousal could mean anxiety or fear (as for real witnesses) or simply <strong>heightened alertness</strong> (in the lab). This confusion in the term <em>arousal</em> makes comparing studies complex.</p>
+      <p><span class="syl-tag crit">Validity</span> <strong>Why it matters:</strong> the experiments may measure the wrong thing entirely.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Real-life studies contradict the lab — and each other</h4>
+      <p>Thompson (74/86 accurate), Rinolo (15/20 accurate) and Yuille and Cutshall (high stress = more accurate) clash with Morgan and Deffenbacher. And Yuille and Cutshall's most stressed witnesses were also the <strong>closest</strong> to the incident — stress was tangled up with viewing distance.</p>
+      <p><span class="syl-tag crit">Contradictory findings</span> <strong>Why it matters:</strong> a factor that helps in one study and harms in another has not yet been pinned down.</p>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <h4>📌 Practical issues in research 设计与实施的实际问题</h4>
+    <p>The Yerkes–Dodson curve warns researchers: lab participants may sit in the <em>under-aroused</em> flat part of the curve while a real witness sits past the peak. You cannot ethically create a genuine trauma in a laboratory — so the very studies that are most controlled are the least true to life. This trade-off reappears in every factor of this chapter.</p>
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Factor 3 · Weapon Focus</h2>
+
+  <div class="keyterm-box">
+    <p><span class="kt">weapon focus（武器聚焦）</span> — refers to an eyewitness's concentration on a weapon to the exclusion of other details of a crime.</p>
+  </div>
+
+  <p>One specific factor proven to affect recall of an event — and therefore eyewitness accuracy — is whether a <strong>weapon</strong> was used in the offence. There are <strong>two possible explanations</strong>, and being able to name both is what the exam rewards:</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 275" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two routes from weapon presence to poor identification">
+      <defs>
+        <marker id="arW" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#ea580c"/>
+        </marker>
+      </defs>
+      <rect x="200" y="10" width="280" height="44" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="340" y="38" text-anchor="middle" font-size="13.5" font-weight="700" fill="#c2410c">A weapon appears at the scene</text>
+
+      <line x1="255" y1="54" x2="165" y2="98" stroke="#ea580c" stroke-width="2" marker-end="url(#arW)"/>
+      <line x1="425" y1="54" x2="515" y2="98" stroke="#ea580c" stroke-width="2" marker-end="url(#arW)"/>
+
+      <rect x="20" y="100" width="290" height="104" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+      <text x="165" y="124" text-anchor="middle" font-size="13" font-weight="700" fill="#991b1b">Route 1 · the stress route 压力路线</text>
+      <text x="35" y="148" font-size="11.5" fill="#334155">The weapon frightens you → arousal shoots</text>
+      <text x="35" y="168" font-size="11.5" fill="#334155">past the Yerkes–Dodson optimum →</text>
+      <text x="35" y="188" font-size="11.5" fill="#334155">encoding is impaired.</text>
+
+      <rect x="370" y="100" width="290" height="104" rx="10" fill="#eff6ff" stroke="#1e3a5f" stroke-width="2"/>
+      <text x="515" y="124" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a5f">Route 2 · the attention route 注意路线</text>
+      <text x="385" y="148" font-size="11.5" fill="#334155">Attention narrows onto the weapon itself;</text>
+      <text x="385" y="168" font-size="11.5" fill="#334155">other important details are never encoded.</text>
+      <text x="385" y="188" font-size="11.5" fill="#334155">Not stress — a focus of attention.</text>
+
+      <line x1="165" y1="204" x2="285" y2="230" stroke="#ea580c" stroke-width="2" marker-end="url(#arW)"/>
+      <line x1="515" y1="204" x2="395" y2="230" stroke="#ea580c" stroke-width="2" marker-end="url(#arW)"/>
+
+      <rect x="140" y="232" width="400" height="38" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+      <text x="340" y="256" text-anchor="middle" font-size="12" font-weight="700" fill="#6d28d9">Same result: the weapon is remembered, the face is not</text>
+    </svg>
+    <div class="figure-caption">Figure 3 · Two routes, one outcome — you remember the weapon and not the perpetrator</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>两条路线的区别是考点：</strong>路线 1 说"记忆差是因为<strong>吓</strong>"（stress，接 Yerkes–Dodson）；路线 2 说"记忆差是因为<strong>只顾看</strong>"（attention，不需要害怕也会发生）。哪条对？下一节 Pickel 的生鸡肉实验会给你答案 —— 高威胁但平常的东西（剪刀）不伤记忆，低威胁但奇怪的东西（生鸡肉）伤记忆 → <strong>unusualness 奇怪程度比 threat 威胁程度更像元凶</strong>。
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Weapon Focus Evidence</h2>
+
+  <h3>Loftus et al. (1987) — the eye-tracking experiment</h3>
+  <p><strong>36 participants</strong> watched a series of slides of a customer in a restaurant. One version: the customer was <strong>armed</strong>; the other: the same customer held a <strong>chequebook</strong>. Eye movements were recorded. Participants who saw the weapon <strong>tended to focus their gaze on the weapon</strong>. As a result they were <strong>less likely to identify</strong> the customer in an identity parade (<strong>11%</strong> vs <strong>39%</strong>) and had a <strong>worse memory for the event</strong>.</p>
+
+  <h3>Maass and Köhnken (1989) — the field experiment</h3>
+  <p><strong>86 students</strong> were approached by a woman holding either a <strong>pen</strong> or a <strong>syringe</strong>. When asked to identify the woman from a line-up, <strong>two-thirds</strong> of participants in the syringe condition made an incorrect identification — supporting the weapon effect in a more real-life situation.</p>
+
+  <h3>Pickel (1998) — is it threat or unusualness? 威胁还是奇怪？</h3>
+  <p>Video of a hair salon: a man walks up to the receptionist and hands her money. Only the object in his hand changes. Participants completed a 10-minute filler task, then answered recall questions. She found the presence of either a <strong>weapon</strong> or <strong>raw chicken</strong> produced the <strong>poorest recall</strong> of the man, while the <strong>wallet and scissors</strong> had less effect.</p>
+
+  <div class="mat2x2">
+    <div></div>
+    <div class="mh">Low threat 低威胁</div>
+    <div class="mh">High threat 高威胁</div>
+    <div class="mv">Low unusualness<br>不奇怪</div>
+    <div class="cell">💵 wallet 钱包<br><strong>recall was better</strong></div>
+    <div class="cell">✂️ scissors 剪刀<br><strong>recall was better</strong> — normal in a salon!</div>
+    <div class="mv">High unusualness<br>很奇怪</div>
+    <div class="cell">🍗 raw chicken 生鸡肉<br><strong>poorest recall</strong> — nobody brings chicken to a salon</div>
+    <div class="cell">🔫 weapon 武器<br><strong>poorest recall</strong> — both threatening <em>and</em> unusual</div>
+  </div>
+
+  <div class="xp-block">
+    <h4>🧪 Your prediction <span class="xp-badge">Quick check</span></h4>
+    <p class="xp-intro">Both the weapon and the scissors are high-threat items — yet the scissors did not damage recall (you would expect them to in a hair salon… or not?). Which conclusion did Pickel draw?</p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="pickel('threat')">Threat alone causes the effect</button>
+      <button class="xp-btn" onclick="pickel('unusual')">Unusualness draws attention and causes the effect</button>
+    </div>
+    <div id="pickelResult" class="xp-result"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>这张 2×2 矩阵是本章最好用的工具：</strong>纵轴"奇不奇怪"，横轴"吓不吓人"。伤记忆的是<strong>奇怪的</strong>那两个（武器、生鸡肉），不奇怪的两个（钱包、剪刀）都还行 → <strong>unusualness（奇怪程度）才是拉开注意力的东西</strong>。Pickel 认为正是武器的"不寻常"抓住了我们的注意。记住：生鸡肉听起来荒谬，但它在实验里和武器一样有效 —— 这就是它经典的原因。
+  </div>
+
+  <h3>Pickel et al. (2006) — can training overcome it? 训练能克服吗？</h3>
+  <p>Participants watched a staged scene in a small classroom, first hearing one of two lectures: (a) about <strong>weapon focus</strong> — teaching them to attend to perpetrator features instead of dwelling on any weapon; or (b) about eyewitness confidence (neutral). A man then burst in carrying either a <strong>book</strong> or a <strong>weapon</strong>. For those given lecture (b), the weapon produced fewer correct details. But those who had the <strong>weapon-focus lecture were protected</strong>: object type had no effect on them. Pickel concluded that <strong>with proper instruction, the weapon-focus effect could be overcome</strong>.</p>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. Evaluating Factor 3 · Weapon Focus</h2>
+
+  <h3>Support 支持</h3>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Multiple methods agree</h4>
+      <p>Lab eye-tracking (Loftus 1987), field approach (Maass and Köhnken 1989) and simulation (Pickel 1998) all show poorer identification or recall when an unusual object appears.</p>
+      <p><span class="syl-tag ev">Evidence</span> the effect survives changes of method.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>The meta-analysis confirms it</h4>
+      <p><strong>Fawcett et al. (2013)</strong> concluded that weapon presence consistently demonstrated a <strong>negative effect on both feature accuracy and identification accuracy</strong> under controlled conditions and in real-life situations.</p>
+      <p><span class="syl-tag ev">Evidence</span> the strongest form of support — a whole body of research.</p>
+    </div>
+  </div>
+
+  <h3>Criticisms 批评</h3>
+  <div class="compare-grid">
+    <div class="compare-card red">
+      <h4>Real police data found no effect</h4>
+      <p><strong>Wagstaff et al. (2003)</strong> coded <strong>real police interviews</strong> of witnesses and victims of robberies and assaults (two UK police forces) and compared them against the primary suspect's description. They found <strong>no evidence of any effect of weapon presence on feature accuracy</strong>. Yuille and Cutshall's real witnesses were not affected by the weapon either.</p>
+      <p><span class="syl-tag crit">Ecological validity</span> <strong>Why it matters:</strong> the laboratory effect may simply not appear in real crimes.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Lab slides are not real crimes</h4>
+      <p>Loftus's slides do not emulate the real experience of being in a restaurant and seeing a weapon. And Fawcett notes real-world research is complicated by factors labs control easily — such as <strong>how long the witness was exposed to the weapon</strong>.</p>
+      <p><span class="syl-tag crit">Artificiality</span> <strong>Why it matters:</strong> a slide of a weapon is not a threat to you.</p>
+    </div>
+  </div>
+
+  <div class="green-box">
+    <h4>🌍 Wider issue: psychology in society 心理学知识在社会中的应用</h4>
+    <p>Pickel's studies suggest we should <strong>carefully consider the reliability of an eyewitness in court if the crime involved a weapon</strong> — and recent studies suggest the effect can be <strong>overcome</strong>. It has particular application to <strong>police officers</strong>, who routinely face these situations: if officers can be trained in the area of weapon focus, their recall of events when a weapon was present could improve.</p>
+  </div>
+
+  <div class="exam-tip">
+    <h4>📝 Exam tip（课本原文要点）</h4>
+    <p>If you are using a number of studies to evaluate a topic — such as weapon focus — it is <strong>not always necessary to describe every stage of each study in detail</strong>. The emphasis of your written work is on showing your <strong>understanding of the studies</strong> and using that to <strong>evaluate</strong> whether they support the topic or not.</p>
+  </div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="section" id="s14">
+  <h2>14. Factor 4 · The Other-race Effect</h2>
+
+  <div class="keyterm-box">
+    <p><span class="kt">other-race effect / cross-race effect（异族效应）</span> — same-race faces are more accurately recognised than faces of a different race.</p>
+    <p><span class="kt">in-group（内群体）</span> — a group to which we have membership.</p>
+    <p><span class="kt">out-group（外群体）</span> — a group to which we do not have membership.</p>
+  </div>
+
+  <p>The difficulty in recognising other-race faces compared to own-race faces is <strong>one of the most researched issues</strong> in criminological research on eyewitness identification. It matters because since the advent of <strong>DNA testing</strong>, we now know many people were convicted of crimes they did not commit based on <strong>false eyewitness identification</strong>.</p>
+
+  <div class="warn-box">
+    <h4>⛓️ Ronald Cotton (1984) — the case that defines the issue</h4>
+    <p>In 1984, a white woman, <strong>Jennifer Thompson</strong>, was assaulted by a man who gained entry to her apartment. Despite considerable effort to remember the face of the Black assailant, she <strong>misidentified Ronald Cotton</strong>. He was convicted of assault and spent <strong>more than ten years in prison</strong> before being exonerated — because of later <strong>DNA evidence</strong>. Thompson was a motivated, honest witness who tried her hardest. She was still wrong.</p>
+  </div>
+
+  <h3>Two explanations 两个解释</h3>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>① Encoding differences — Valentine (1991)</h4>
+      <p>We encode faces by attending to features that discriminate <strong>between faces of our own race</strong>. We are experienced at discriminating own-race facial features, but not other-race ones. Problem: this fails to explain why the effect occurs even in individuals with <strong>high exposure</strong> to other-race faces.</p>
+    </div>
+    <div class="compare-card">
+      <h4>② In-group / out-group processing — social-cognitive theories</h4>
+      <p>We quickly group individuals as in-group or out-group members. <strong>In-group</strong> faces are visually processed as individuals — discriminated one from another. <strong>Out-group</strong> faces are only processed as a way to categorise them. Prediction: own-race faces are encoded qualitatively better.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>两个解释一句话区分：</strong>解释 ① 说"练习问题"——你练的是分辨本族面孔的能力；解释 ② 说"归类问题"——你把外族人脸当成"一类"，把本族人脸当成"一个人"。注意 ① 的漏洞：如果只是练习，那接触外族人多的人就不该有异族效应 —— 但证据（下一节 Sangrigoli 的收养研究）显示练习/接触<strong>确实</strong>能减弱效应，这恰好反过来支持了"经验可以改变编码"。
+  </div>
+</section>
+
+<!-- ============ 15 ============ -->
+<section class="section" id="s15">
+  <h2>15. Other-race Evidence and Evaluation</h2>
+
+  <h3>The evidence 证据</h3>
+  <table>
+    <tr><th style="width:200px">Study 研究</th><th>Findings 发现</th></tr>
+    <tr><td>Scheck, Neufeld and Dwyer (2000)</td><td>Looked at <strong>77 mistaken eyewitness identifications</strong>: <strong>35%</strong> were white victim witnesses misidentifying Black suspects — the other-race effect influences eyewitness reliability.</td></tr>
+    <tr><td>Smith (2004)</td><td><strong>161 white participants</strong> watched staged theft footage (thief white or Black). White participants were <strong>more accurate</strong> identifying the white thief — and their <strong>confidence was higher</strong> for the white thief. Confidence and accuracy move together only for own-race faces.</td></tr>
+    <tr><td>Brigham et al. (1982)</td><td>Field study: convenience store cashiers (64 white, 9 Black) identified a customer from a photo line-up. Only a <strong>small own-race effect</strong> in accuracy — but white cashiers' recognition of the Black customer related to <strong>self-reported cross-racial experiences</strong>. Supports the theory that experience influences recognition.</td></tr>
+    <tr><td>Platz and Hosch (1988)</td><td>Replication of Brigham's field study: the other-race effect <strong>extended to identification of Hispanic customers</strong> too.</td></tr>
+    <tr><td>Hourihan et al. (2012)</td><td><strong>102 participants</strong> (white n=50, Asian n=52): white participants were superior at recognising white and East Asian faces; East Asian participants were better at recognising different faces. Possibly due to <strong>media exposure</strong> — American shows aired in China, few Chinese shows in America. <strong>Pre-ratings of likely recognition predicted accuracy</strong>.</td></tr>
+    <tr><td>Hancock and Rhodes (2008)</td><td>Higher contact with other-race groups (living in an other-race country) was associated with <strong>increased other-race facial recognition</strong> — exposure reduces the effect.</td></tr>
+    <tr><td>Sangrigoli et al. (2005)</td><td>Adult <strong>Koreans adopted by European white families as children</strong> were better at identifying white faces; non-adopted Koreans were better at identifying East Asian faces. <strong>Early childhood exposure</strong> to other-race faces can reduce own-race bias.</td></tr>
+    <tr><td>Meissner and Brigham (2001)</td><td>Meta-analysis of <strong>39 cross-race identification articles</strong> across three decades: own-race faces were <strong>1.40 times more likely</strong> to be correctly identified and <strong>1.56 times less likely</strong> to be falsely identified.</td></tr>
+  </table>
+
+  <h3>Evaluation 评价</h3>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>It converges from many directions</h4>
+      <p>Archival data (Scheck), field studies (Brigham, Platz and Hosch), lab recognition tests (Hourihan, Smith), natural experiments (Sangrigoli) and a meta-analysis (Meissner and Brigham) all point to the same effect.</p>
+      <p><span class="syl-tag ev">Evidence</span> archival + field + lab + natural experiment = unusually strong support.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>The experience finding is useful</h4>
+      <p>Brigham (cross-racial experience), Hancock and Rhodes (contact) and Sangrigoli (adoption) all suggest <strong>experience with other-race faces improves recognition</strong>.</p>
+      <p><span class="syl-tag app">Application</span> the effect is not fixed — exposure and training can reduce it.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Lack of ecological validity</h4>
+      <p>Much of the research is conducted in <strong>laboratory settings using isolated photographs of faces</strong>. It does not involve real witnesses to real crimes, so it may tell us little about how the other-race effect <strong>influences real eyewitness testimony</strong>.</p>
+      <p><span class="syl-tag crit">Ecological validity</span> <strong>Why it matters:</strong> recognising a photo and identifying a criminal are not the same task.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Confidence is not accuracy</h4>
+      <p>Smith (2004) found white participants felt <strong>more confident</strong> about identifying the white thief. Juries are swayed by confidence — but this chapter has shown confidence and accuracy can come apart.</p>
+      <p><span class="syl-tag crit">Misapplied in court</span> <strong>Why it matters:</strong> a confident witness of an other-race perpetrator may be precisely the least reliable one.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>四因素全部讲完，回头看这张总结：</strong>post-event information（事后的信息改写记忆）→ stress &amp; trauma（当时的唤醒让编码变窄）→ weapon focus（注意被武器吸走）→ other-race effect（编码外族面孔的能力天生不足）。前三个有"实验室说有害、真实世界说未必"的拉扯，第四个是四种方法一起指向同一结论。评价题里能指出"每个因素的证据强弱不同"，就已经是高分答案。
+  </div>
+</section>
+
+<!-- ============ 16 ============ -->
+<section class="section" id="s16">
+  <h2>16. Checkpoint</h2>
+
+  <div class="checkpoint">
+    <h3>✅ Task 1 — which study is it? 研究配对</h3>
+
+    <div class="xp-case">
+      <div class="xp-case-name">a) "74 out of 86 statements given by survivors of the Marchioness ferry sinking were accurate."</div>
+      <div class="xp-controls">
+        <button class="q-option" onclick="matchStudy(this,'t1','a')">Valentine and Mesout (2009)</button>
+        <button class="q-option" onclick="matchStudy(this,'t1','b')">Morgan III et al. (2007)</button>
+        <button class="q-option" onclick="matchStudy(this,'t1','c')">Thompson et al. (1997)</button>
+        <button class="q-option" onclick="matchStudy(this,'t1','d')">Rinolo et al. (2003)</button>
+      </div>
+      <div id="res-t1" class="xp-result"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">b) "High arousal experienced in the London Dungeon led to poor identification."</div>
+      <div class="xp-controls">
+        <button class="q-option" onclick="matchStudy(this,'t2','a')">Valentine and Mesout (2009)</button>
+        <button class="q-option" onclick="matchStudy(this,'t2','b')">Gabbert, Memon and Allen (2003)</button>
+        <button class="q-option" onclick="matchStudy(this,'t2','c')">Deffenbacher et al. (2004)</button>
+        <button class="q-option" onclick="matchStudy(this,'t2','d')">Odinot (2008)</button>
+      </div>
+      <div id="res-t2" class="xp-result"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">c) "71% of witnesses who discussed the event recalled items that were not on their video."</div>
+      <div class="xp-controls">
+        <button class="q-option" onclick="matchStudy(this,'t3','a')">Poole and Lindsay (1995)</button>
+        <button class="q-option" onclick="matchStudy(this,'t3','b')">Gabbert, Memon and Allen (2003)</button>
+        <button class="q-option" onclick="matchStudy(this,'t3','c')">Crombag et al. (1996)</button>
+        <button class="q-option" onclick="matchStudy(this,'t3','d')">Loftus et al. (1987)</button>
+      </div>
+      <div id="res-t3" class="xp-result"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">d) "95% of children responded incorrectly to at least one leading question about an activity they had not experienced."</div>
+      <div class="xp-controls">
+        <button class="q-option" onclick="matchStudy(this,'t4','a')">Poole and Lindsay (1995)</button>
+        <button class="q-option" onclick="matchStudy(this,'t4','b')">Scheck, Neufeld and Dwyer (2000)</button>
+        <button class="q-option" onclick="matchStudy(this,'t4','c')">Maass and Köhnken (1989)</button>
+        <button class="q-option" onclick="matchStudy(this,'t4','d')">Meissner and Brigham (2001)</button>
+      </div>
+      <div id="res-t4" class="xp-result"></div>
+    </div>
+  </div>
+
+  <div class="checkpoint">
+    <h3>✅ Task 2 — eight quick questions 八道快问快答</h3>
+
+    <div class="q-row">
+      <div class="q-stem">1. Eyewitness testimony is…</div>
+      <label class="q-opt"><input type="radio" name="q1" value="a"> always accurate because witnesses are honest</label>
+      <label class="q-opt"><input type="radio" name="q1" value="b"> the account a witness gives of what they saw — and it can be wrong</label>
+      <label class="q-opt"><input type="radio" name="q1" value="c"> physical evidence such as DNA</label>
+      <div id="fb1" class="q-fb"></div>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">2. When does the other-race effect occur?</div>
+      <label class="q-opt"><input type="radio" name="q2" value="a"> same-race faces are recognised more accurately than other-race faces</label>
+      <label class="q-opt"><input type="radio" name="q2" value="b"> other-race faces are recognised more accurately than same-race faces</label>
+      <label class="q-opt"><input type="radio" name="q2" value="c"> all faces are recognised equally well</label>
+      <div id="fb2" class="q-fb"></div>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">3. Which factor affects eyewitness testimony after the event has been witnessed?</div>
+      <label class="q-opt"><input type="radio" name="q3" value="a"> weapon focus</label>
+      <label class="q-opt"><input type="radio" name="q3" value="b"> post-event information</label>
+      <label class="q-opt"><input type="radio" name="q3" value="c"> other-race effect</label>
+      <div id="fb3" class="q-fb"></div>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">4. What interviewing technique do police use to reduce post-event contamination?</div>
+      <label class="q-opt"><input type="radio" name="q4" value="a"> the cognitive interview — open, non-leading questions</label>
+      <label class="q-opt"><input type="radio" name="q4" value="b"> asking leading questions quickly</label>
+      <label class="q-opt"><input type="radio" name="q4" value="c"> group interviews with all witnesses together</label>
+      <div id="fb4" class="q-fb"></div>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">5. True or false? Pickel (1998) found that raw chicken damaged recall as much as a weapon, suggesting unusualness rather than threat is what draws attention.</div>
+      <label class="q-opt"><input type="radio" name="q5" value="t"> True</label>
+      <label class="q-opt"><input type="radio" name="q5" value="f"> False</label>
+      <div id="fb5" class="q-fb"></div>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">6. According to the Yerkes–Dodson Law, performance is best when arousal is…</div>
+      <label class="q-opt"><input type="radio" name="q6" value="a"> as low as possible</label>
+      <label class="q-opt"><input type="radio" name="q6" value="b"> as high as possible</label>
+      <label class="q-opt"><input type="radio" name="q6" value="c"> at an optimum middle level</label>
+      <div id="fb6" class="q-fb"></div>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">7. In Meissner and Brigham's (2001) meta-analysis, own-race faces were…</div>
+      <label class="q-opt"><input type="radio" name="q7" value="a"> 1.40 times more likely to be correctly identified</label>
+      <label class="q-opt"><input type="radio" name="q7" value="b"> 1.40 times less likely to be correctly identified</label>
+      <label class="q-opt"><input type="radio" name="q7" value="c"> recognised equally as well as other-race faces</label>
+      <div id="fb7" class="q-fb"></div>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">8. True or false? Yuille and Cutshall's real witnesses of a shooting were easily misled by two leading questions.</div>
+      <label class="q-opt"><input type="radio" name="q8" value="t"> True</label>
+      <label class="q-opt"><input type="radio" name="q8" value="f"> False</label>
+      <div id="fb8" class="q-fb"></div>
+    </div>
+
+    <div class="xp-controls"><button class="xp-btn" onclick="checkQuiz()">Mark my answers</button></div>
+    <div id="quizResult" class="xp-result"></div>
+  </div>
+
+  <div class="checkpoint">
+    <h3>✅ Task 3 — name the factor 情境判断</h3>
+
+    <div class="xp-case">
+      <div class="xp-case-name">a) After a robbery, witnesses talked about the case together for hours before the police interviewed them. By the interview, their accounts were almost identical — including a detail none of them actually saw.</div>
+      <div class="xp-controls">
+        <button class="q-option" onclick="factorAns(this,'post','a')">Post-event information</button>
+        <button class="q-option" onclick="factorAns(this,'stress','a')">Stress and trauma</button>
+        <button class="q-option" onclick="factorAns(this,'weapon','a')">Weapon focus</button>
+        <button class="q-option" onclick="factorAns(this,'race','a')">Other-race effect</button>
+      </div>
+      <div id="fac-a" class="xp-result"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">b) A bank robber pointed a gun at the teller. She later described the gun vividly but could not describe his face at all.</div>
+      <div class="xp-controls">
+        <button class="q-option" onclick="factorAns(this,'post','b')">Post-event information</button>
+        <button class="q-option" onclick="factorAns(this,'stress','b')">Stress and trauma</button>
+        <button class="q-option" onclick="factorAns(this,'weapon','b')">Weapon focus</button>
+        <button class="q-option" onclick="factorAns(this,'race','b')">Other-race effect</button>
+      </div>
+      <div id="fac-b" class="xp-result"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">c) A witness who survived a ferry disaster insisted she clearly remembered watching the ship break apart on the evening news — but no such footage exists.</div>
+      <div class="xp-controls">
+        <button class="q-option" onclick="factorAns(this,'post','c')">Post-event information</button>
+        <button class="q-option" onclick="factorAns(this,'stress','c')">Stress and trauma (source monitoring)</button>
+        <button class="q-option" onclick="factorAns(this,'weapon','c')">Weapon focus</button>
+        <button class="q-option" onclick="factorAns(this,'race','c')">Other-race effect</button>
+      </div>
+      <div id="fac-c" class="xp-result"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">d) A witness studied the assailant's face carefully but still picked the wrong man from the line-up; DNA later proved someone else did it.</div>
+      <div class="xp-controls">
+        <button class="q-option" onclick="factorAns(this,'post','d')">Post-event information</button>
+        <button class="q-option" onclick="factorAns(this,'stress','d')">Stress and trauma</button>
+        <button class="q-option" onclick="factorAns(this,'weapon','d')">Weapon focus</button>
+        <button class="q-option" onclick="factorAns(this,'race','d')">Other-race effect</button>
+      </div>
+      <div id="fac-d" class="xp-result"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 17 ============ -->
+<section class="section" id="s17">
+  <h2>17. Exam Lab</h2>
+
+  <div class="exam-tip">
+    <h4>🧭 IDEA — how to answer a question with a scenario</h4>
+    <ul>
+      <li><strong>I — Identify:</strong> which factor is the scenario showing? (Check the timeline: while watching, or afterwards?)</li>
+      <li><strong>E — Explain:</strong> state the factor and its mechanism in its own terms.</li>
+      <li><strong>A — Apply:</strong> tie it to the details — name the object, the person, the timing.</li>
+    </ul>
+    <p>A sentence that says <em>what</em> earns one mark; the same sentence plus <em>why it matters</em> earns two.</p>
+  </div>
+
+  <div class="exam-practice">
+    <h3>✍️ Practice 1 — 2 marks</h3>
+    <p><strong>Describe how stress may influence the reliability of eyewitness memory.</strong></p>
+    <textarea class="answer-box" id="p1" placeholder="Write two points: mechanism + consequence..."></textarea>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('m1')">Show a model answer</button></div>
+    <div id="m1" class="xp-result">
+      <p><span class="xp-verdict">Model answer</span></p>
+      <ul>
+        <li>Stress increases arousal; according to the <strong>Yerkes–Dodson Law</strong>, once arousal passes the optimum level, performance — including recall of an event — declines.</li>
+        <li>Stress also <strong>narrows attention</strong> (Easterbrook, 1959): the witness encodes only central details and misses peripheral information, so their testimony is incomplete even if it feels vivid.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exam-practice">
+    <h3>✍️ Practice 2 — 1 mark</h3>
+    <p><strong>State what is meant by the term 'weapon focus' as a factor that influences eyewitness memory.</strong></p>
+    <textarea class="answer-box" id="p2" placeholder="One sentence — the definition..."></textarea>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('m2')">Show the answer</button></div>
+    <div id="m2" class="xp-result">
+      <p><span class="xp-verdict">Weapon focus</span> is an eyewitness's concentration on a weapon to the <strong>exclusion of other details</strong> of a crime.</p>
+    </div>
+  </div>
+
+  <div class="exam-practice">
+    <h3>✍️ Practice 3 — 1 mark</h3>
+    <p><strong>Define 'post-event information' as a factor that influences eyewitness memory.</strong></p>
+    <textarea class="answer-box" id="p3" placeholder="One sentence — the definition..."></textarea>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('m3')">Show the answer</button></div>
+    <div id="m3" class="xp-result">
+      <p>Post-event information is <strong>any information after the witnessed event</strong> which may influence the <strong>original memory</strong> of the incident.</p>
+    </div>
+  </div>
+
+  <div class="exam-practice">
+    <h3>✍️ Practice 4 — 2 marks</h3>
+    <p><strong>Explain one reason why weapon focus may influence eyewitness memory.</strong></p>
+    <textarea class="answer-box" id="p4" placeholder="Name the mechanism, then say why it reduces accuracy..."></textarea>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('m4')">Show a model answer</button></div>
+    <div id="m4" class="xp-result">
+      <p><span class="xp-verdict">Model answer</span></p>
+      <p>The presence of a weapon <strong>narrowes the witness's attention</strong> onto the weapon itself, so other important details — especially the perpetrator's face — are <strong>never encoded</strong> into memory. Because those details were never stored, the witness cannot later identify the offender: Loftus et al. (1987) found only 11% of weapon-viewers identified the customer, versus 39% with a chequebook.</p>
+    </div>
+  </div>
+
+  <div class="exam-practice">
+    <h3>✍️ Practice 5 — 2 marks</h3>
+    <p><strong>Explain one ethical issue that should be considered when researching factors that influence eyewitness memory.</strong></p>
+    <textarea class="answer-box" id="p5" placeholder="Name the issue, then say why it is a problem..."></textarea>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('m5')">Show a model answer</button></div>
+    <div id="m5" class="xp-result">
+      <p><span class="xp-verdict">Model answer</span></p>
+      <p>Research may involve <strong>exposing participants to a traumatic event or distressing film footage</strong>, which risks <strong>psychological harm</strong>. Using real witnesses raises the same issue differently: questioning forces them to <strong>relive the incident</strong>, which may cause distress — so researchers must weigh the value of the findings against protection from harm.</p>
+    </div>
+  </div>
+
+  <div class="exam-practice">
+    <h3>✍️ Practice 6 — 8 marks</h3>
+    <p><strong>Evaluate the reliability of eyewitness testimony.</strong></p>
+    <p style="font-size:.9rem;color:#4b5563;">Half the marks come from <strong>accurate content</strong>, half from <strong>judgement with evidence</strong>. Plan four paragraphs:</p>
+    <table>
+      <tr><th style="width:90px">Paragraph</th><th>What goes in it</th></tr>
+      <tr><td>1</td><td>Why EWT matters: the most common form of evidence, trusted by juries — yet incorrect eyewitness accounts are the leading cause of miscarriages of justice.</td></tr>
+      <tr><td>2</td><td>Evidence that it is unreliable: lab studies of post-event information (Gabbert 71%), stress (Morgan 1 in 3; Deffenbacher meta-analysis), weapon focus (Loftus 11% vs 39%; Fawcett meta-analysis), other-race effect (Meissner and Brigham 1.40×).</td></tr>
+      <tr><td>3</td><td>Evidence it can be reliable: real-life witnesses were not misled (Yuille and Cutshall), stayed accurate after trauma (Thompson 74/86; Rinolo 15/20; Odinot 84%), the effect can be overcome (Pickel 2006), and lab findings may overstate fragility because they lack real stress (ecological validity).</td></tr>
+      <tr><td>4</td><td>A conclusion that answers the question: EWT is sometimes reliable and sometimes not — reliability depends on the factor involved, the stressfulness of the event and the witness's experience. Courts should treat confidence as separate from accuracy.</td></tr>
+    </table>
+    <textarea class="answer-box" id="p6" placeholder="Plan three developed points here, then write them up..."></textarea>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('m6')">Show a model answer</button></div>
+    <div id="m6" class="xp-result">
+      <p><span class="xp-verdict">Model answer — four developed points</span></p>
+      <ul>
+        <li><strong>Unreliable — post-event information.</strong> Memory is reconstructive, so information after the event can alter it. Gabbert, Memon and Allen (2003) found 71% of witnesses who discussed the event recalled items not in their own video. This suggests testimony can be contaminated long before it reaches court.</li>
+        <li><strong>Unreliable — stress and weapon focus.</strong> High arousal narrows attention onto central details: Morgan III et al. (2007) found 1 in 3 personnel could not identify their interrogator after acute stress, and Loftus et al. (1987) found weapon viewers identified the customer only 11% of the time. Deffenbacher et al.'s (2004) meta-analysis confirms stress overall impairs recall.</li>
+        <li><strong>Reliable — real-life evidence.</strong> Witnesses of real events resist the effects predicted by the lab: Yuille and Cutshall's (1986) witnesses were not misled by leading questions; Thompson et al. (1997) confirmed 74 of 86 statements from the Marchioness sinking; Odinot (2008) found 84% of recall accurate. This suggests laboratory studies — lacking genuine stress — may overstate unreliability.</li>
+        <li><strong>Conclusion.</strong> EWT is not unreliable in general; it is <em>conditionally</em> reliable. Stress, weapons and post-event information measurably degrade it in controlled research, but real witnesses with close, meaningful involvement often remember well. The practical implication is that courts should weigh the conditions of the witness — and remember that confidence is not the same as accuracy.</li>
+      </ul>
+      <p><strong>Why this scores:</strong> each point names evidence with numbers, and the conclusion answers "how reliable" rather than repeating the description.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:22px">
+    <div class="summary-card-header" onclick="togglePanel(this,'kp')">
+      <span>🔑 Exam key points — what a strong answer contains</span>
+      <span class="arrow">›</span>
+    </div>
+    <div class="summary-card-body hidden" id="kp">
+      <ol>
+        <li>Eyewitness testimony is the most common evidence in court — and incorrect eyewitness accounts are the <strong>leading cause of miscarriages of justice</strong>.</li>
+        <li><strong>Post-event information</strong> = information <em>after</em> the event that alters the original memory: discussions (Gabbert: 71%, memory conformity), leading questions (Poole and Lindsay: 95% of children), media.</li>
+        <li>Real-life witnesses resist: <strong>Yuille and Cutshall</strong> (not misled), <strong>Odinot</strong> (84% accurate) — lab vs real life is the central evaluation.</li>
+        <li><strong>Stress:</strong> Yerkes–Dodson (optimum arousal), Easterbrook (attentional narrowing), source monitoring (Crombag: 60% "saw" footage that never existed).</li>
+        <li><strong>Weapon focus</strong> has two explanations — <em>stress</em> and <em>attention</em> — and Pickel's salon study shows <strong>unusualness</strong> beats threat (raw chicken!).</li>
+        <li><strong>Other-race effect:</strong> same-race faces recognised more accurately (Meissner and Brigham: 1.40×); explained by encoding differences (Valentine 1991) and in-group/out-group processing; experience reduces it (Sangrigoli).</li>
+        <li>Every criticism needs a <strong>why it matters</strong> sentence — and the recurring ones here are ecological validity, ethics and the meaning of "arousal".</li>
+        <li>In scenario answers, first ask: did the problem happen <em>while watching</em> or <em>afterwards</em>?</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 18 ============ -->
+<section class="section" id="s18">
+  <h2>18. Key Terms</h2>
+  <div class="glossary-grid">
+    <div class="glossary-item"><span class="term">eyewitness</span><span class="zh">目击证人</span><div class="def">An individual who sees an event such as a crime occurring.</div></div>
+    <div class="glossary-item"><span class="term">eyewitness testimony</span><span class="zh">目击证人证词</span><div class="def">The account an eyewitness gives of what they saw, to the police and in court.</div></div>
+    <div class="glossary-item"><span class="term">post-event information</span><span class="zh">事件后信息</span><div class="def">Any information after the witnessed event which may influence the original memory of the incident.</div></div>
+    <div class="glossary-item"><span class="term">leading question</span><span class="zh">引导性问题</span><div class="def">A question that suggests the answer it wants, e.g. "How tall was the person?".</div></div>
+    <div class="glossary-item"><span class="term">reconstructive memory</span><span class="zh">重构记忆</span><div class="def">We rebuild memories using main points and interpretation, influenced by schemas and cultural expectations.</div></div>
+    <div class="glossary-item"><span class="term">schema</span><span class="zh">图式</span><div class="def">A mental framework of expectations about what usually happens in an event.</div></div>
+    <div class="glossary-item"><span class="term">misinformation effect</span><span class="zh">错误信息效应</span><div class="def">Memory becomes less accurate because of exposure to post-event information (Loftus).</div></div>
+    <div class="glossary-item"><span class="term">memory conformity</span><span class="zh">记忆从众</span><div class="def">Witness memories become similar to one another because of discussion (Gabbert, Memon and Allen, 2003).</div></div>
+    <div class="glossary-item"><span class="term">arousal</span><span class="zh">唤醒</span><div class="def">The level of physiological and psychological alertness, from sleepy to highly stressed.</div></div>
+    <div class="glossary-item"><span class="term">Yerkes–Dodson Law</span><span class="zh">耶克斯–多德森定律</span><div class="def">Performance rises with arousal to an optimum point, then declines as arousal gets too high (1908).</div></div>
+    <div class="glossary-item"><span class="term">attentional narrowing</span><span class="zh">注意狭窄</span><div class="def">Under high emotional arousal, attention narrows and peripheral details are not encoded (Easterbrook, 1959).</div></div>
+    <div class="glossary-item"><span class="term">source monitoring</span><span class="zh">来源监控</span><div class="def">Distinguishing where information came from; trauma survivors may confuse post-event information with what actually happened.</div></div>
+    <div class="glossary-item"><span class="term">weapon focus</span><span class="zh">武器聚焦</span><div class="def">An eyewitness's concentration on a weapon to the exclusion of other details of a crime.</div></div>
+    <div class="glossary-item"><span class="term">other-race effect</span><span class="zh">异族效应</span><div class="def">Same-race faces are recognised more accurately than faces of a different race; also called the cross-race effect.</div></div>
+    <div class="glossary-item"><span class="term">in-group</span><span class="zh">内群体</span><div class="def">A group to which we have membership; in-group faces are processed as individuals.</div></div>
+    <div class="glossary-item"><span class="term">out-group</span><span class="zh">外群体</span><div class="def">A group to which we do not have membership; out-group faces are only categorised, not individuated.</div></div>
+    <div class="glossary-item"><span class="term">ecological validity</span><span class="zh">生态效度</span><div class="def">Whether findings from artificial settings apply to real-life situations.</div></div>
+    <div class="glossary-item"><span class="term">miscarriage of justice</span><span class="zh">司法误判</span><div class="def">A wrongful conviction; incorrect eyewitness accounts are its leading cause.</div></div>
+    <div class="glossary-item"><span class="term">meta-analysis</span><span class="zh">元分析</span><div class="def">A statistical combination of many studies, e.g. Deffenbacher et al. (2004); Meissner and Brigham (2001).</div></div>
+    <div class="glossary-item"><span class="term">cognitive interview</span><span class="zh">认知访谈</span><div class="def">Police technique using open, non-leading questions, designed to reduce post-event contamination of memory.</div></div>
+  </div>
+</section>
+
+
+<div class="footer-note">6.1.4 Factors influencing eyewitness memory · Criminological Psychology · next: <a href="#" style="color:inherit">6.2.1 Loftus and Palmer (1974) — classic study</a></div>
+  </main>
+</div>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var baseFont = 16;
+
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark'; }
+  };
+
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  window.cfShow = function () {
+    var notes = {
+      dark: 'Dark and flickering lights = poor encoding conditions. Seeing badly is the first way memory gets damaged.',
+      loud: 'Loud music = you could not hear. Some information never even reached you.',
+      panic: 'Scared and panicking = high arousal → stress and trauma. This is Factor 2.',
+      talk: 'Discussing it afterwards with friends = post-event information. Their version of events can rewrite yours. This is Factor 1.'
+    };
+    var picked = [];
+    document.querySelectorAll('.cf').forEach(function (b) { if (b.checked) { picked.push(b.value); } });
+    var el = document.getElementById('cfResult');
+    if (!el) { return; }
+    if (picked.length === 0) {
+      el.innerHTML = '<p><span class="xp-verdict">Tick at least one box first</span> — every line in that story is doing psychological work.</p>';
+    } else {
+      var html = '<p><span class="xp-verdict">Here is what psychology notices:</span></p>';
+      picked.forEach(function (v) { html += '<p style="margin:6px 0">' + notes[v] + '</p>'; });
+      html += '<p style="margin:6px 0"><strong>All four factors of this chapter are hiding in one concert.</strong></p>';
+      el.innerHTML = html;
+    }
+    el.classList.add('show');
+  };
+
+  window.crombag = function (c) {
+    var el = document.getElementById('cromResult');
+    if (!el) { return; }
+    var msgs = {
+      yes: 'You just did what <strong>60% of participants</strong> did: claimed to have seen television footage of the crash — footage that <strong>does not exist</strong>. Your memory combined the event with an imagined / discussed version, and the source got lost. This is a source monitoring failure.',
+      no: 'Correct scepticism — but in the real study, <strong>60% of participants</strong> said yes to footage that <strong>does not exist</strong>. Traumatic memories are especially prone to this kind of contamination.',
+      unsure: 'A careful answer — and safer than most: in the real study, <strong>60% of participants</strong> confidently said yes to footage that <strong>does not exist</strong>. Source monitoring failed for most people.'
+    };
+    el.innerHTML = '<p><span class="xp-verdict">Crombag et al. (1996):</span></p><p style="margin:6px 0">' + msgs[c] + '</p>';
+    el.classList.add('show');
+  };
+
+  window.pickel = function (c) {
+    var el = document.getElementById('pickelResult');
+    if (!el) { return; }
+    var ok = (c === 'unusual');
+    var verdict = ok ? 'Correct.' : 'Not quite.';
+    var msg = ok
+      ? 'Pickel argued it is the <strong>unusualness</strong> of an object that draws our attention — in a hair salon, scissors are normal (so they did not damage recall), but a weapon and raw chicken are bizarre (so both produced the poorest recall). Threat alone cannot explain the pattern.'
+      : 'If threat alone caused the effect, the scissors (also high threat) should have damaged recall — but they did not, because scissors are normal in a hair salon. Pickel argued it is the <strong>unusualness</strong> of the object that draws attention: weapon and raw chicken (both highly unusual) produced the poorest recall.';
+    el.innerHTML = '<p><span class="xp-verdict">' + verdict + '</span> ' + msg + '</p>';
+    el.classList.add('show');
+  };
+
+  var studyKey = { t1: 'c', t2: 'a', t3: 'b', t4: 'a' };
+  var studyWhy = {
+    t1: 'Thompson et al. (1997) examined survivors of the Marchioness ferry sinking: 74 of 86 statements were accurate.',
+    t2: 'Valentine and Mesout (2009) measured arousal in the London Dungeon and found identification was impaired.',
+    t3: 'Gabbert, Memon and Allen (2003) — the memory conformity study with 120 students and 71% contamination.',
+    t4: 'Poole and Lindsay (1995) — the Mr Science study with children aged 3 to 7.'
+  };
+  window.matchStudy = function (btn, q, choice) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    sibs.forEach(function (s) { s.classList.remove('chosen-best', 'chosen-bad'); });
+    var ok = (choice === studyKey[q]);
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById('res-' + q);
+    if (!el) { return; }
+    el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not this one.') + '</span> ' + studyWhy[q] + '</p>';
+    el.classList.add(ok ? 'ok' : 'show');
+    el.classList.add('show');
+  };
+
+  var quizKey = { q1: 'b', q2: 'a', q3: 'b', q4: 'a', q5: 't', q6: 'c', q7: 'a', q8: 'f' };
+  var quizFb = {
+    q1: 'Honesty is not the issue — an honest witness can still have a memory that was never accurate.',
+    q2: 'The effect means we recognise faces of our own race better than faces of a different race.',
+    q3: 'Weapon focus, stress and the other-race effect all operate while watching; only post-event information arrives afterwards.',
+    q4: 'The cognitive interview uses open, non-leading questions precisely to avoid contaminating memory.',
+    q5: 'True. Raw chicken is low threat but highly unusual in a salon — and it damaged recall as much as the weapon, pointing to unusualness as the key.',
+    q6: 'The inverted-U: too little or too much arousal both impair performance; there is an optimum middle level.',
+    q7: 'Own-race faces were 1.40 times more likely to be correctly identified — and 1.56 times less likely to be falsely identified.',
+    q8: 'False. The real witnesses had detailed memories and were NOT misled by the two leading questions about the busted headlight and the yellow quarter panel.'
+  };
+  window.checkQuiz = function () {
+    var names = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8'];
+    var score = 0;
+    names.forEach(function (q) {
+      var picked = document.querySelector('input[name="' + q + '"]:checked');
+      var fb = document.getElementById('fb' + q.charAt(1));
+      if (!fb) { return; }
+      var val = picked ? picked.value : null;
+      var ok = (val === quizKey[q]);
+      if (ok) { score += 1; }
+      fb.innerHTML = '<strong>' + (ok ? 'Correct' : (val ? 'Not quite' : 'Not answered')) + '.</strong> ' + quizFb[q];
+      fb.style.color = ok ? '#166534' : '#991b1b';
+      fb.classList.add('show');
+    });
+    var el = document.getElementById('quizResult');
+    if (!el) { return; }
+    el.innerHTML = '<p><span class="xp-verdict">Score: ' + score + ' / ' + names.length + '</span> \u2014 ' + (score === names.length ? 'all correct.' : 'revisit the ones in red before moving on.') + '</p>';
+    el.classList.add('show');
+  };
+
+  var factorWhy = {
+    post: 'Post-event information — the discussion before the interview rewrote the shared memory (memory conformity, Gabbert et al. 2003).',
+    stress: 'Stress and trauma — high arousal narrows attention and, if the memory is traumatic, source monitoring fails.',
+    weapon: 'Weapon focus — attention locked onto the weapon, so the face was never encoded.',
+    race: 'Other-race effect — same-race faces are recognised more accurately; even a motivated witness can misidentify an other-race face (the Ronald Cotton case).'
+  };
+  window.factorAns = function (btn, choice, id) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    sibs.forEach(function (s) { s.classList.remove('chosen-best', 'chosen-bad'); });
+    var keys = { a: 'post', b: 'weapon', c: 'stress', d: 'race' };
+    var ok = (choice === keys[id]);
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById('fac-' + id);
+    if (!el) { return; }
+    el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Try again.') + '</span> ' + factorWhy[keys[id]] + '</p>';
+    el.classList.add('show');
+  };
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.toggle('show'); }
+  };
+
+  window.togglePanel = function (header, id) {
+    var body = document.getElementById(id);
+    if (!body) { return; }
+    body.classList.toggle('hidden');
+    header.classList.toggle('open');
+  };
+
+  window.addEventListener('scroll', function () {
+    var btt = document.getElementById('btt');
+    if (btt) { btt.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  var links = document.querySelectorAll('.sb-item a');
+  var sections = [];
+  links.forEach(function (a) {
+    var sec = document.querySelector(a.getAttribute('href'));
+    if (sec) { sections.push({ link: a, sec: sec }); }
+  });
+  window.addEventListener('scroll', function () {
+    var pos = window.scrollY + 140;
+    var current = null;
+    sections.forEach(function (s) { if (s.sec.offsetTop <= pos) { current = s; } });
+    links.forEach(function (a) { a.classList.remove('sb-active'); });
+    if (current) { current.link.classList.add('sb-active'); }
+  });
+})();
+</script>
+</body>
+</html>
