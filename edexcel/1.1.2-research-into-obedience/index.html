@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.1.2 Research into obedience（服从的研究 · Milgram 1963）</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.five-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+
+.mat2x2 { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 6px; margin: 14px 0; }
+.mat2x2 .mh { background: var(--primary); color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
+body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic A · Obedience — Research into obedience (Milgram, 1963)</span>
+  </div>
+  <span class="nav-pill">🧑‍🤝‍🧑 Social Psychology</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="1.1.2-Research-into-Obedience-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">1.1.2 · Contents</div>
+        <div class="sb-header-sub">Milgram (1963) + 3 variations</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">Before we start</li>
+        <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+        <li class="sb-item"><a href="#s2">2. Why Milgram Did It</a></li>
+        <li class="sb-item"><a href="#s3">3. Nobody Predicted It</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">The baseline study</li>
+        <li class="sb-item"><a href="#s4">4. How It Worked</a></li>
+        <li class="sb-item"><a href="#s5">5. The Shock Machine</a></li>
+        <li class="sb-item"><a href="#s6">6. What the Learner Said</a></li>
+        <li class="sb-item"><a href="#s7">7. The Four Prods</a></li>
+        <li class="sb-item"><a href="#s8">8. What Happened</a></li>
+        <li class="sb-item"><a href="#s9">9. Moral Strain</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Was it real / was it right</li>
+        <li class="sb-item"><a href="#s10">10. Did They Believe It?</a></li>
+        <li class="sb-item"><a href="#s11">11. Was It Ethical?</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">The three variations</li>
+        <li class="sb-item"><a href="#s12">12. The Plan</a></li>
+        <li class="sb-item"><a href="#s13">13. Exp 7 · Telephone</a></li>
+        <li class="sb-item"><a href="#s14">14. Exp 10 · Rundown Office</a></li>
+        <li class="sb-item"><a href="#s15">15. Exp 13 · Ordinary Man</a></li>
+        <li class="sb-item"><a href="#s16">16. Side by Side</a></li>
+        <li class="sb-item"><a href="#s17">17. What They Prove</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Practice</li>
+        <li class="sb-item"><a href="#s18">18. Evaluating Milgram</a></li>
+        <li class="sb-item"><a href="#s19">19. Checkpoint</a></li>
+        <li class="sb-item"><a href="#s20">20. Exam Lab</a></li>
+        <li class="sb-item"><a href="#s21">21. Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>1.1.2 RESEARCH INTO OBEDIENCE<br><span style="font-size:0.65em">服从的研究</span></h1>
+  <div class="subtitle">Social Psychology · Milgram (1963) 基线研究 + 三个变式实验（7 / 10 / 13）</div>
+  <div class="meta">
+    <span class="badge">🧠 Core idea: the situation, not the person</span>
+    <span class="badge">⚡ 65% to 450 V</span>
+    <span class="badge">📖 Textbook: Chapter 1</span>
+  </div>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started</h2>
+
+  <div class="xp-block">
+    <h4>⚡ You are in the chair <span class="xp-badge">Think first</span></h4>
+    <p class="xp-intro">You have volunteered for what you were told is a study about memory. You are the <strong>teacher</strong>. Every time the learner in the next room gets an answer wrong, you press a switch that gives him an electric shock — and each wrong answer means a slightly bigger shock than the last one.</p>
+    <p class="xp-intro">By now he has shouted that the shocks hurt, then screamed that he wants to stop, then said his heart is bothering him. At the next wrong answer you reach <strong>300 volts</strong> — and he starts <strong>banging on the wall</strong> and demanding to be let out.</p>
+    <p class="xp-intro">A man in a grey lab coat stands beside you and says: <em>“The experiment requires that you continue.”</em></p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="chairChoice('go')">I press the switch</button>
+      <button class="xp-btn" onclick="chairChoice('stop')">I refuse to go on</button>
+    </div>
+    <div class="xp-result" id="chairResult"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解</strong><br>
+    先看清楚这个场景里<strong>没有</strong>什么：没有人拿枪指着你，没有威胁，没有好处可拿。只有一个人，穿着白大褂，说了<strong>一句话</strong>。<br>
+    1963 年，真有 40 个人坐在这把椅子上。这就是本章要讲的研究。它想回答的问题是：<strong>一个普通人，会不会仅仅因为被命令，就去伤害另一个人？</strong>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Why Milgram Did It</h2>
+
+  <p>Stanley Milgram was a social psychologist at Yale University. He began his study in 1961 — sixteen years after the end of the Second World War.</p>
+
+  <div class="blue-box">
+    <h4>The question behind the study</h4>
+    <p>During the Nuremberg trials, Nazi officers accused of mass murder used the same defence again and again: <strong>“I was only following orders.”</strong> The world’s reaction was that this was an excuse — that the people who did these things must have been unusually cruel, or mentally ill, or somehow a different kind of person.</p>
+    <p>Milgram was not convinced. He wanted to test a different idea: that <strong>ordinary, mentally healthy people</strong> would obey orders to hurt a stranger, and that the cause lay in the <strong>situation</strong> rather than in their <strong>personality</strong>.</p>
+  </div>
+
+  <div class="note-box">
+    <h4>Two words you must not confuse</h4>
+    <table>
+      <tr><th style="width:26%">Term</th><th>What it means</th></tr>
+      <tr><td>obedience（服从）</td><td>Following a direct order from someone perceived to have <strong>authority</strong>.</td></tr>
+      <tr><td>conformity（从众）</td><td>Changing your behaviour to match a <strong>majority or group</strong> — no order is given. Covered in 1.1.4–1.1.7.</td></tr>
+    </table>
+    <p style="margin:6px 0 0">In Milgram’s study there is no group to match and no vote to join. There is one man giving one order. That is why it is obedience.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>为什么这一点会决定整章？</strong><br>
+    如果服从来自<strong>人格</strong>（personality），那么只有“某种人”才会做坏事。如果服从来自<strong>情境</strong>（situation），那么任何人都可能 —— 只要情境对。<br>
+    Milgram 的三个变式实验就是为了证明第二种：他不停<strong>改情境</strong>，看服从会不会跟着变。
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Nobody Predicted It</h2>
+
+  <p>Before running the study, Milgram described the procedure to <strong>40 psychiatrists</strong> — doctors whose job is to understand disturbed behaviour — and asked them how far participants would go.</p>
+
+  <div class="xp-block">
+    <h4>🔮 Your prediction <span class="xp-badge">Guess first</span></h4>
+    <p class="xp-intro">There are 40 participants. The machine goes up to <strong>450 volts</strong>, labelled <em>“Danger: severe shock”</em> and then <em>“XXX”</em>. The victim has been screaming and has stopped responding at all. <strong>How many do you think will go all the way to 450 V?</strong></p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="guessAns(this,'a','g')">A. almost nobody (0–5)</button>
+      <button class="q-option" onclick="guessAns(this,'b','g')">B. a few (6–15)</button>
+      <button class="q-option" onclick="guessAns(this,'c','g')">C. about half (16–25)</button>
+      <button class="q-option" onclick="guessAns(this,'d','g')">D. most of them (26–40)</button>
+    </div>
+    <div class="xp-result" id="resg"></div>
+  </div>
+
+  <div class="keyterm-box">
+    <span class="kt">moral strain（道德压力）</span> — the distress a person feels when what they are told to do clashes with what they believe is right. In Milgram’s terms it is the conflict between <strong>obeying the authority</strong> and <strong>avoiding harm to the victim</strong>.
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解</strong><br>
+    精神科医生预测的比例是 <strong>千分之一</strong> —— 也就是 40 个人里，大概 0 个。<br>
+    记住这个预测，因为它说明了 Milgram 的真正发现：<strong>连专家都低估了情境的力量</strong>。评价题里写“专家预测与实际结果差距巨大”是很好的一条。
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. How It Worked</h2>
+
+  <p>Seven steps. Read them in order — this is the version you have to be able to <strong>describe</strong> in the exam.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The seven steps of Milgram's baseline study">
+      <defs>
+        <marker id="arm" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto">
+          <path d="M0,0 L7,3.2 L0,6.4 z" fill="#c2410c"/>
+        </marker>
+      </defs>
+
+      <rect x="20" y="14" width="150" height="72" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+      <text x="35" y="36" font-size="12" font-weight="700" fill="#c2410c">1 · RECRUITMENT</text>
+      <text x="35" y="54" font-size="10.5" fill="#1e293b">Newspaper advert:</text>
+      <text x="35" y="69" font-size="10.5" fill="#1e293b">40 men, 20–50 yrs,</text>
+      <text x="35" y="81" font-size="10.5" fill="#475569">paid $4.50 to attend.</text>
+
+      <rect x="190" y="14" width="150" height="72" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+      <text x="205" y="36" font-size="12" font-weight="700" fill="#c2410c">2 · THE SETTING</text>
+      <text x="205" y="54" font-size="10.5" fill="#1e293b">A laboratory at Yale.</text>
+      <text x="205" y="69" font-size="10.5" fill="#1e293b">Cover story: a study</text>
+      <text x="205" y="81" font-size="10.5" fill="#475569">of memory and learning.</text>
+
+      <rect x="360" y="14" width="150" height="72" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+      <text x="375" y="36" font-size="12" font-weight="700" fill="#c2410c">3 · THE DRAW</text>
+      <text x="375" y="54" font-size="10.5" fill="#1e293b">A rigged draw: both</text>
+      <text x="375" y="69" font-size="10.5" fill="#1e293b">slips say “teacher”.</text>
+      <text x="375" y="81" font-size="10.5" fill="#475569">You are always teacher.</text>
+
+      <rect x="530" y="14" width="130" height="72" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+      <text x="545" y="36" font-size="12" font-weight="700" fill="#c2410c">4 · SET-UP</text>
+      <text x="545" y="54" font-size="10.5" fill="#1e293b">Learner strapped</text>
+      <text x="545" y="69" font-size="10.5" fill="#1e293b">to a chair. You get</text>
+      <text x="545" y="81" font-size="10.5" fill="#475569">a real 45 V sample.</text>
+
+      <line x1="172" y1="50" x2="188" y2="50" stroke="#c2410c" stroke-width="2.2" marker-end="url(#arm)"/>
+      <line x1="342" y1="50" x2="358" y2="50" stroke="#c2410c" stroke-width="2.2" marker-end="url(#arm)"/>
+      <line x1="512" y1="50" x2="528" y2="50" stroke="#c2410c" stroke-width="2.2" marker-end="url(#arm)"/>
+
+      <path d="M595,88 L595,108 L95,108 L95,128" fill="none" stroke="#c2410c" stroke-width="2.2" marker-end="url(#arm)"/>
+
+      <rect x="20" y="130" width="150" height="72" rx="8" fill="#eff6ff" stroke="#1e3a5f" stroke-width="1.8"/>
+      <text x="35" y="152" font-size="12" font-weight="700" fill="#1e3a5f">5 · THE TASK</text>
+      <text x="35" y="170" font-size="10.5" fill="#1e293b">You read word pairs.</text>
+      <text x="35" y="185" font-size="10.5" fill="#1e293b">He picks from four</text>
+      <text x="35" y="197" font-size="10.5" fill="#475569">options after each.</text>
+
+      <rect x="190" y="130" width="150" height="72" rx="8" fill="#eff6ff" stroke="#1e3a5f" stroke-width="1.8"/>
+      <text x="205" y="152" font-size="12" font-weight="700" fill="#1e3a5f">6 · THE RULE</text>
+      <text x="205" y="170" font-size="10.5" fill="#1e293b">Every wrong answer:</text>
+      <text x="205" y="185" font-size="10.5" fill="#1e293b">one switch higher,</text>
+      <text x="205" y="197" font-size="10.5" fill="#475569">+15 V each time.</text>
+
+      <rect x="360" y="130" width="150" height="72" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8"/>
+      <text x="375" y="152" font-size="12" font-weight="700" fill="#991b1b">7 · THE PRESSURE</text>
+      <text x="375" y="170" font-size="10.5" fill="#1e293b">If you hesitate, four</text>
+      <text x="375" y="185" font-size="10.5" fill="#1e293b">standard prods from</text>
+      <text x="375" y="197" font-size="10.5" fill="#475569">the experimenter.</text>
+
+      <rect x="530" y="130" width="130" height="72" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+      <text x="545" y="152" font-size="12" font-weight="700" fill="#166534">THEN</text>
+      <text x="545" y="170" font-size="10.5" fill="#1e293b">Debriefing, and a</text>
+      <text x="545" y="185" font-size="10.5" fill="#1e293b">reunion with the</text>
+      <text x="545" y="197" font-size="10.5" fill="#475569">unharmed “learner”.</text>
+
+      <line x1="172" y1="166" x2="188" y2="166" stroke="#c2410c" stroke-width="2.2" marker-end="url(#arm)"/>
+      <line x1="342" y1="166" x2="358" y2="166" stroke="#c2410c" stroke-width="2.2" marker-end="url(#arm)"/>
+      <line x1="512" y1="166" x2="528" y2="166" stroke="#c2410c" stroke-width="2.2" marker-end="url(#arm)"/>
+    </svg>
+    <div class="figure-caption">Figure 1 — the seven steps of the baseline study. Memorise the sequence, not the wording.</div>
+  </div>
+
+  <div class="note-box">
+    <h4>Four details examiners look for</h4>
+    <ul>
+      <li><strong>40 male participants</strong> from the New Haven area, recruited by newspaper advert and paid $4.50 for turning up.</li>
+      <li>The <strong>learner</strong> was a confederate — an actor, Mr Wallace, working with Milgram. He received <strong>no shocks at all</strong>.</li>
+      <li>The draw was <strong>fixed</strong>, so the real participant was always the teacher. This is <strong>deception</strong>.</li>
+      <li>The experimenter wore a <strong>grey lab coat</strong> and gave no threats and no rewards — only verbal prods.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. The Shock Machine</h2>
+
+  <p>The generator had <strong>30 switches</strong>, from 15 V up to 450 V in <strong>15 V steps</strong>. Crucially, the switches were not just numbers — they carried <strong>written labels</strong>, so participants knew how serious each level was supposed to be.</p>
+
+  <table>
+    <tr><th style="width:24%">Voltage range</th><th style="width:34%">Label on the panel</th><th>Why it matters</th></tr>
+    <tr><td>15–60 V</td><td>Slight shock</td><td>Participants were given a real 45 V sample so the machine felt genuine.</td></tr>
+    <tr><td>75–120 V</td><td>Moderate shock</td><td>The learner begins to grunt and then complains.</td></tr>
+    <tr><td>135–180 V</td><td>Strong shock</td><td>He demands to be released — the first clear refusal.</td></tr>
+    <tr><td>195–240 V</td><td>Very strong shock</td><td>Screaming begins.</td></tr>
+    <tr><td>255–300 V</td><td>Intense shock</td><td><strong>300 V: he bangs on the wall</strong> and then stops responding.</td></tr>
+    <tr><td>315–360 V</td><td>Extreme intensity shock</td><td>Silence from the learner — no answer, no protest.</td></tr>
+    <tr><td>375–420 V</td><td>Danger: severe shock</td><td>Continuing past this point is continuing against a written warning.</td></tr>
+    <tr><td>435–450 V</td><td>XXX</td><td>The top of the scale. 450 V is the maximum — and the number in the results.</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：机器是“道具”，但学生答题时最容易写错的是它</strong><br>
+    三件事必须写准：① 30 个开关；② 每档 <strong>15 伏</strong>；③ 最高 <strong>450 伏</strong>。<br>
+    很多学生写“电击是真的” —— <strong>错</strong>。电击是假的，只有那一下 45 伏的“样品电击”是真的，用来让参与者相信机器。学习者（Mr Wallace）是演员，从没受过电击。
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. What the Learner Said</h2>
+
+  <p>The learner’s reactions were <strong>scripted</strong> — every participant heard exactly the same sequence at exactly the same voltages. This is what makes the study a controlled comparison.</p>
+
+  <table>
+    <tr><th style="width:18%">Voltage</th><th>What the teacher heard</th></tr>
+    <tr><td>75 V</td><td>A grunt.</td></tr>
+    <tr><td>120 V</td><td>Shouts that the shocks were becoming painful.</td></tr>
+    <tr><td>150 V</td><td>“Get me out of here! I refuse to go on. My heart is starting to bother me.”</td></tr>
+    <tr><td>180 V</td><td>“I can’t stand the pain!”</td></tr>
+    <tr><td>270 V</td><td>An agonised scream.</td></tr>
+    <tr><td>300 V</td><td>Refuses to answer; <strong>bangs on the wall</strong> and demands to be released.</td></tr>
+    <tr><td>315 V onward</td><td><strong>Silence.</strong> No further answers and no further protests.</td></tr>
+  </table>
+
+  <div class="xp-block">
+    <h4>🔇 The hardest moment <span class="xp-badge">Check yourself</span></h4>
+    <p class="xp-intro">After which voltage did the learner stop responding <strong>completely</strong> — so the teacher heard nothing at all, not even a protest?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="quietAns(this,'a','q')">A. after 150 V</button>
+      <button class="q-option" onclick="quietAns(this,'b','q')">B. after 300 V</button>
+      <button class="q-option" onclick="quietAns(this,'c','q')">C. after 315 V</button>
+      <button class="q-option" onclick="quietAns(this,'d','q')">D. after 450 V</button>
+    </div>
+    <div class="xp-result" id="resq"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>为什么“沉默”比“尖叫”更可怕？</strong><br>
+    尖叫至少还说明那个人<strong>活着、在反应</strong>。300 伏之后什么都没有了 —— 参与者完全不知道隔壁是晕过去了，还是更糟。<br>
+    考试里写这个细节，能说明参与者是在<strong>极大的不确定和不安下</strong>继续按开关的，而不是因为麻木。
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. The Four Prods</h2>
+
+  <p>When a participant hesitated or said they wanted to stop, the experimenter replied with one of <strong>four standard prods</strong>, always in this order. He was not allowed to add anything else.</p>
+
+  <table>
+    <tr><th style="width:10%">Order</th><th style="width:44%">The prod</th><th>What is doing the work</th></tr>
+    <tr><td>1</td><td>“Please continue.” / “Please go on.”</td><td>A polite request.</td></tr>
+    <tr><td>2</td><td>“The experiment requires that you continue.”</td><td>The <strong>study</strong> needs it — not the man personally.</td></tr>
+    <tr><td>3</td><td>“It is absolutely essential that you continue.”</td><td>Escalation, but still no threat.</td></tr>
+    <tr><td>4</td><td>“You have no other choice, you must go on.”</td><td>The strongest prod. After this, refusal ended the session.</td></tr>
+  </table>
+
+  <div class="warn-box">
+    <h4>Two things students get wrong</h4>
+    <p><strong>Wrong:</strong> “Milgram <em>ordered</em> them or threatened them.” — He did not. There was no punishment for stopping and no reward for continuing.</p>
+    <p><strong>Wrong:</strong> “They could not leave.” — They could. The door was not locked, the money was already theirs, and 14 of the 40 did stop. The pressure was entirely <strong>verbal</strong>.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解</strong><br>
+    把四句话读一遍，你会发现它们<strong>没有一句是威胁</strong>。没有“不然我报警”，没有“不给钱”。<br>
+    这正是 Milgram 最想证明的：服从不需要暴力，只需要<strong>一个被认可的权威在旁边持续说话</strong>。
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. What Happened</h2>
+
+  <div class="five-grid">
+    <div class="compare-card">
+      <h4>100% reached 300 V</h4>
+      <p style="font-size:.88em;margin:0">Every single one of the 40 participants went at least as far as the point where the learner banged on the wall.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>65% reached 450 V</h4>
+      <p style="font-size:.88em;margin:0">26 of the 40 went to the very top of the scale, past “Danger: severe shock” to “XXX”.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>35% defied</h4>
+      <p style="font-size:.88em;margin:0">14 participants refused to complete the series. Five stopped at 300 V, four at 315 V.</p>
+    </div>
+    <div class="compare-card">
+      <h4>368 V average</h4>
+      <p style="font-size:.88em;margin:0">The mean maximum shock delivered was around 368 V — well into the danger zone.</p>
+    </div>
+    <div class="compare-card">
+      <h4>1.2% predicted</h4>
+      <p style="font-size:.88em;margin:0">The psychiatrists had estimated that barely one person in a thousand would reach 450 V.</p>
+    </div>
+  </div>
+
+  <div class="blue-box">
+    <h4>What Milgram concluded</h4>
+    <p>Ordinary people will follow the orders of an authority figure even when the orders conflict with their own conscience. The behaviour was produced by the <strong>situation</strong> — the setting, the lab coat, the prestigous university and the step-by-step escalation — and not by any unusual cruelty in the participants.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：三个数字必须背</strong><br>
+    <strong>100%</strong> 到 300 伏 · <strong>65%</strong>（26/40）到 450 伏 · <strong>35%</strong>（14/40）反抗。<br>
+    答题时不要只写“很多人服从”，要写<strong>具体数字</strong>。Edexcel 的评分标准奖励具体证据。
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Moral Strain</h2>
+
+  <p>The important part is <em>how</em> participants obeyed. Milgram recorded that they did not obey calmly.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card red">
+      <h4>Signs of distress observed</h4>
+      <ul style="font-size:.88em;margin:4px 0 0">
+        <li>Sweating, trembling and stuttering</li>
+        <li>Biting their lips until they bled</li>
+        <li>Digging their fingernails into their own flesh</li>
+        <li>Nervous laughing fits</li>
+        <li>Three participants had full-blown, uncontrollable <strong>seizures</strong></li>
+      </ul>
+    </div>
+    <div class="compare-card green">
+      <h4>Why this detail wins marks</h4>
+      <p style="font-size:.88em;margin:0">It shows they were <strong>not</strong> indifferent or sadistic. They were caught in a conflict between two pressures — <strong>obey the authority</strong> and <strong>stop hurting the victim</strong>. That conflict is exactly what the term <strong>moral strain</strong> names, and it is the reason obedience was so uncomfortable for them.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解</strong><br>
+    如果参与者都面无表情地按到底，那 Milgram 的结论会是“有些人天生残忍”。<br>
+    但他们<strong>出汗、发抖、咬破嘴唇</strong> —— 说明他们<strong>不想做，却停不下来</strong>。这就是 moral strain：心里知道不对，手却继续按。这直接支持“情境压过了良心”的说法。
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Did They Believe It?</h2>
+
+  <div class="note-box">
+    <h4>The criticism: demand characteristics</h4>
+    <p><strong>Orne and Holland (1968)</strong> argued that participants did not really believe the shocks were real. If they guessed the learner was an actor, then their behaviour was not obedience at all — it was <strong>going along with what they thought the researcher wanted</strong>. That is <strong>demand characteristics</strong>（需求特征）: cues in a study that tell participants what is expected of them.</p>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Evidence they DID believe it</h4>
+      <ul style="font-size:.88em;margin:4px 0 0">
+        <li>Participants showed unmistakable <strong>distress</strong> — trembling, sweating, seizures.</li>
+        <li>In post-experiment interviews, most said they <strong>believed</strong> the shocks were real.</li>
+        <li><strong>84%</strong> said they were glad to have taken part; only about 1% regretted it.</li>
+        <li>A follow-up a year later found <strong>no lasting psychological harm</strong>.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Evidence some did NOT</h4>
+      <ul style="font-size:.88em;margin:4px 0 0">
+        <li>Re-analysis of Milgram’s <strong>archived tape recordings</strong> (<strong>Perry, 2013</strong>) found that a number of participants openly <strong>questioned whether the shocks were real</strong> during the session.</li>
+        <li>Some hesitated in ways that suggest they were testing the experimenter rather than obeying him.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：答题怎么写才不偏？</strong><br>
+    不要只写“研究无效”或“研究完全真实”。最好的写法是<strong>两边都写，再给判断</strong>：<br>
+    “有批评者认为参与者看穿了（Orne &amp; Holland），但参与者的痛苦反应和事后访谈支持他们相信了电击。Perry (2013) 重新听录音带后发现部分人确实怀疑过 —— 因此这个争议<strong>到今天没有完全解决</strong>。”
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Was It Ethical?</h2>
+
+  <p>Milgram’s study is the most famous ethics debate in psychology. You need both sides.</p>
+
+  <table>
+    <tr><th style="width:22%">Ethical issue</th><th style="width:39%">What happened</th><th>How Milgram defended it</th></tr>
+    <tr><td>Deception（欺骗）</td><td>The draw was fixed; the learner was an actor; the shocks were fake.</td><td>Deception was necessary — without it there is no obedience to study.</td></tr>
+    <tr><td>Informed consent（知情同意）</td><td>Participants did not know the real aim and could not truly consent.</td><td><strong>Presumptive consent</strong>: Milgram asked other people whether they would agree to take part; most said yes.</td></tr>
+    <tr><td>Right to withdraw（退出权）</td><td>The four prods made stopping feel difficult.</td><td>Participants <em>could</em> leave, and 14 of them did.</td></tr>
+    <tr><td>Protection from harm（免受伤害）</td><td>Severe distress; three seizures.</td><td>Full debriefing, a reunion with the unharmed learner, and a one-year follow-up showing no lasting harm.</td></tr>
+  </table>
+
+  <div class="blue-box">
+    <h4>What happened in the debriefing</h4>
+    <p>Afterwards, each participant was told the truth, introduced to Mr Wallace to see he was unharmed, and interviewed about the experience. Milgram reported that <strong>84% were glad to have participated</strong> and only around <strong>1% regretted</strong> it. A questionnaire a year later found no evidence of long-term harm.</p>
+  </div>
+
+  <div class="exam-tip">
+    <strong>Exam habit.</strong> When a question asks you to “evaluate” Milgram, an ethical point on its own scores little. You must <strong>say why it matters</strong>: e.g. “the deception means we cannot be certain participants were responding to real obedience rather than demand characteristics, which weakens the conclusion.”
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. The Plan Behind the Variations</h2>
+
+  <p>Milgram ran <strong>more than thirty variations</strong> of the same basic procedure. The specification asks you to know <strong>three</strong> of them — Experiments 7, 10 and 13.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：这一节是整章的骨架，先建立坐标</strong><br>
+    别把三个变式当成三个独立的故事去背。它们其实是<strong>同一个实验，每次拆掉一样东西</strong>：<br>
+    权威靠三条腿站着 —— <strong>在不在场</strong>（presence）、<strong>有没有名望</strong>（prestige）、<strong>是不是真权威</strong>（legitimacy）。<br>
+    Milgram 的做法是：一次抽掉一条腿，看服从会不会塌。
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 265" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Each variation removes one support of the authority figure">
+      <defs>
+        <marker id="arv" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto">
+          <path d="M0,0 L7,3.2 L0,6.4 z" fill="#c2410c"/>
+        </marker>
+      </defs>
+
+      <rect x="30" y="16" width="190" height="66" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8"/>
+      <text x="45" y="37" font-size="12" font-weight="700" fill="#991b1b">EXPERIMENT 7</text>
+      <text x="45" y="55" font-size="10.5" fill="#1e293b">Orders arrive by telephone</text>
+      <text x="45" y="70" font-size="10.5" fill="#475569">from another room.</text>
+
+      <line x1="222" y1="49" x2="248" y2="49" stroke="#c2410c" stroke-width="2.2" marker-end="url(#arv)"/>
+
+      <rect x="252" y="16" width="398" height="66" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+      <text x="268" y="37" font-size="12" font-weight="700" fill="#c2410c">REMOVES: PRESENCE</text>
+      <text x="268" y="55" font-size="10.5" fill="#1e293b">The authority figure is no longer in the room. The orders are</text>
+      <text x="268" y="70" font-size="10.5" fill="#475569">identical — only the body is missing. Obedience drops sharply.</text>
+
+      <rect x="30" y="98" width="190" height="66" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8"/>
+      <text x="45" y="119" font-size="12" font-weight="700" fill="#991b1b">EXPERIMENT 10</text>
+      <text x="45" y="137" font-size="10.5" fill="#1e293b">Moved out of Yale into a</text>
+      <text x="45" y="152" font-size="10.5" fill="#475569">rundown office block.</text>
+
+      <line x1="222" y1="131" x2="248" y2="131" stroke="#c2410c" stroke-width="2.2" marker-end="url(#arv)"/>
+
+      <rect x="252" y="98" width="398" height="66" rx="8" fill="#eff6ff" stroke="#1e3a5f" stroke-width="1.8"/>
+      <text x="268" y="119" font-size="12" font-weight="700" fill="#1e3a5f">REMOVES: PRESTIGE</text>
+      <text x="268" y="137" font-size="10.5" fill="#1e293b">Everything is the same except the address and the name on the</text>
+      <text x="268" y="152" font-size="10.5" fill="#475569">door. Obedience falls — but far less than you might expect.</text>
+
+      <rect x="30" y="180" width="190" height="66" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8"/>
+      <text x="45" y="201" font-size="12" font-weight="700" fill="#991b1b">EXPERIMENT 13</text>
+      <text x="45" y="219" font-size="10.5" fill="#1e293b">The experimenter leaves;</text>
+      <text x="45" y="234" font-size="10.5" fill="#475569">an "ordinary man" takes over.</text>
+
+      <line x1="222" y1="213" x2="248" y2="213" stroke="#c2410c" stroke-width="2.2" marker-end="url(#arv)"/>
+
+      <rect x="252" y="180" width="398" height="66" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+      <text x="268" y="201" font-size="12" font-weight="700" fill="#166534">REMOVES: LEGITIMACY</text>
+      <text x="268" y="219" font-size="10.5" fill="#1e293b">No uniform, no title and no recognised position — he is just</text>
+      <text x="268" y="234" font-size="10.5" fill="#475569">another participant. Obedience collapses.</text>
+    </svg>
+    <div class="figure-caption">Figure 2 — one study, three removals. Each variation takes away one thing that made the authority powerful.</div>
+  </div>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. Experiment 7 · Telephonic Instructions</h2>
+
+  <div class="note-box">
+    <h4>What changed</h4>
+    <p>The experimenter left the room and gave the orders over a <strong>telephone</strong> from another room. Everything else — the machine, the learner, the prods — stayed exactly the same. <strong>40 participants.</strong></p>
+  </div>
+
+  <div class="five-grid">
+    <div class="compare-card red">
+      <h4>Result: 20.5%</h4>
+      <p style="font-size:.88em;margin:0">Only about 9 of the 40 participants went all the way to 450 V — down from 65% in the baseline.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Something else happened</h4>
+      <p style="font-size:.88em;margin:0">Several participants <strong>cheated</strong>: they gave shocks smaller than they were told to, or claimed to be following instructions when they were not.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>What it shows</h4>
+      <p style="font-size:.88em;margin:0">Take the authority figure <strong>out of the room</strong> and obedience drops by two thirds — even though the words spoken are identical.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：作弊行为反而证明了结论</strong><br>
+    有趣的是：当实验者<strong>看不见</strong>他们在做什么时，很多人偷偷<strong>不按要求</strong>按 —— 说明他们<strong>在乎</strong>学习者，只是不敢当面违抗。<br>
+    考试里这是一条很漂亮的证据：它说明参与者不是冷血，而是<strong>被在场的人压住了</strong>。权威一走，他们的真实想法立刻回来了。
+  </div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="section" id="s14">
+  <h2>14. Experiment 10 · Rundown Office Block</h2>
+
+  <div class="note-box">
+    <h4>What changed</h4>
+    <p>The whole study moved out of Yale. It was run in a <strong>rundown office block</strong> in Bridgeport, Connecticut, under the made-up name <strong>“Research Associates of Bridgeport”</strong> — with no university connection at all. <strong>40 participants.</strong></p>
+  </div>
+
+  <div class="five-grid">
+    <div class="compare-card">
+      <h4>Result: 47.5%</h4>
+      <p style="font-size:.88em;margin:0">19 of the 40 still went to 450 V. Lower than Yale’s 65%, but <strong>far above half of the drop seen in Experiment 7</strong>.</p>
+    </div>
+    <div class="compare-card">
+      <h4>The comparison that matters</h4>
+      <p style="font-size:.88em;margin:0">Removing the authority’s <strong>body</strong> cost 44.5 points. Removing the university’s <strong>name</strong> cost only 17.5.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>What it shows</h4>
+      <p style="font-size:.88em;margin:0">Prestige matters, but much less than presence. Nearly half still obeyed a stranger in a shabby office.</p>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <h4>Do not over-read this one</h4>
+    <p>A tempting wrong conclusion is “people only obeyed because it was Yale.” The data says otherwise: <strong>47.5% still obeyed with Yale’s name completely removed.</strong> The honest conclusion is that prestige <strong>contributes</strong> but does not <strong>create</strong> obedience.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解</strong><br>
+    想象一下：你在一个破旧写字楼里，一个自称“Bridgeport 研究协会”的人让你电击陌生人。近一半人还是照做了。<br>
+    这说明服从<strong>不是耶鲁的招牌造出来的</strong>。这是评价题里可以用来反驳“Milgram 的结论只是名校光环”的那一类批评。
+  </div>
+</section>
+
+<!-- ============ 15 ============ -->
+<section class="section" id="s15">
+  <h2>15. Experiment 13 · Ordinary Man Gives Orders</h2>
+
+  <div class="note-box">
+    <h4>What changed</h4>
+    <p>The experimenter was called away on a pretended telephone call. An <strong>“ordinary man”</strong> — a confederate pretending to be another participant — then took over and suggested raising the shock by 15 V after each wrong answer. No uniform, no lab coat, no recognised position. <strong>20 participants.</strong></p>
+  </div>
+
+  <div class="five-grid">
+    <div class="compare-card red">
+      <h4>Result: 20%</h4>
+      <p style="font-size:.88em;margin:0">Only 4 of the 20 participants obeyed fully — the lowest of the three variations.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Typical response</h4>
+      <p style="font-size:.88em;margin:0">Many used the lowest possible shocks, argued with him, or went through the motions without really following his suggestions.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>What it shows</h4>
+      <p style="font-size:.88em;margin:0">Obedience depends on <strong>who is seen as entitled to give orders</strong>. The same words from someone with no authority have very little power.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：这一条最贴近“我不是听你的，我是听那个位置的”</strong><br>
+    “普通人”说的<strong>话完全一样</strong>，但他没有制服、没有头衔、不代表任何机构。<br>
+    结果：几乎没人听他的。这说明服从的对象是<strong>那个被认可的权威身份</strong>，而不是任何一张嘴。
+  </div>
+</section>
+
+<!-- ============ 16 ============ -->
+<section class="section" id="s16">
+  <h2>16. Side by Side</h2>
+
+  <table>
+    <tr>
+      <th style="width:20%">Study</th>
+      <th style="width:26%">What was changed</th>
+      <th style="width:16%">Obeyed to 450 V</th>
+      <th>Situational factor removed</th>
+    </tr>
+    <tr>
+      <td>Baseline (1963)</td>
+      <td>Nothing — this is the reference point</td>
+      <td><strong>65%</strong> (26 of 40)</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>Experiment 10</td>
+      <td>Rundown office block, no Yale name</td>
+      <td><strong>47.5%</strong> (19 of 40)</td>
+      <td><strong>Prestige</strong> of the institution</td>
+    </tr>
+    <tr>
+      <td>Experiment 7</td>
+      <td>Orders given by telephone</td>
+      <td><strong>20.5%</strong> (9 of 40)</td>
+      <td><strong>Physical presence</strong> of the authority</td>
+    </tr>
+    <tr>
+      <td>Experiment 13</td>
+      <td>An ordinary man gives the orders</td>
+      <td><strong>20%</strong> (4 of 20)</td>
+      <td><strong>Legitimacy</strong> of the authority</td>
+    </tr>
+  </table>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 255" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart comparing obedience rates across the baseline and three variations">
+      <line x1="55" y1="205" x2="660" y2="205" stroke="#64748b" stroke-width="1.6"/>
+      <line x1="55" y1="25" x2="55" y2="205" stroke="#64748b" stroke-width="1.6"/>
+
+      <text x="18" y="29" font-size="10" fill="#64748b">70%</text>
+      <text x="18" y="106" font-size="10" fill="#64748b">40%</text>
+      <text x="18" y="183" font-size="10" fill="#64748b">10%</text>
+      <text x="18" y="203" font-size="10" fill="#64748b">0%</text>
+
+      <rect x="90" y="36" width="100" height="169" rx="4" fill="#dc2626"/>
+      <text x="140" y="30" font-size="13" font-weight="700" fill="#991b1b" text-anchor="middle">65%</text>
+      <text x="140" y="222" font-size="11" font-weight="600" fill="#1e293b" text-anchor="middle">Baseline</text>
+      <text x="140" y="237" font-size="9.5" fill="#475569" text-anchor="middle">Yale, present, real authority</text>
+
+      <rect x="250" y="82" width="100" height="123" rx="4" fill="#ea580c"/>
+      <text x="300" y="76" font-size="13" font-weight="700" fill="#c2410c" text-anchor="middle">47.5%</text>
+      <text x="300" y="222" font-size="11" font-weight="600" fill="#1e293b" text-anchor="middle">Experiment 10</text>
+      <text x="300" y="237" font-size="9.5" fill="#475569" text-anchor="middle">rundown office — no prestige</text>
+
+      <rect x="410" y="156" width="100" height="49" rx="4" fill="#16a34a"/>
+      <text x="460" y="150" font-size="13" font-weight="700" fill="#166534" text-anchor="middle">20.5%</text>
+      <text x="460" y="222" font-size="11" font-weight="600" fill="#1e293b" text-anchor="middle">Experiment 7</text>
+      <text x="460" y="237" font-size="9.5" fill="#475569" text-anchor="middle">telephone — no presence</text>
+
+      <rect x="550" y="157" width="100" height="48" rx="4" fill="#1e3a5f"/>
+      <text x="600" y="151" font-size="13" font-weight="700" fill="#1e3a5f" text-anchor="middle">20%</text>
+      <text x="600" y="222" font-size="11" font-weight="600" fill="#1e293b" text-anchor="middle">Experiment 13</text>
+      <text x="600" y="237" font-size="9.5" fill="#475569" text-anchor="middle">ordinary man — no legitimacy</text>
+    </svg>
+    <div class="figure-caption">Figure 3 — the same study with one thing removed at a time. Every change is in the situation; nothing about the participants changed.</div>
+  </div>
+</section>
+
+<!-- ============ 17 ============ -->
+<section class="section" id="s17">
+  <h2>17. What They Prove</h2>
+
+  <div class="keyterm-box">
+    <span class="kt">dissent（不从 / 抗拒）</span> — refusing to obey an order or resisting the pressure to continue. The specification asks you to treat these three variations as evidence about <strong>situational factors that encourage dissent</strong>.
+  </div>
+
+  <div class="blue-box">
+    <h4>The single most important sentence in this chapter</h4>
+    <p>In all three variations the <strong>participants were the same kind of people</strong>, recruited the same way, doing the same task on the same machine. <strong>Only the situation changed — and obedience changed with it.</strong> That is why the conclusion is about situations, not personalities.</p>
+  </div>
+
+  <div class="xp-block">
+    <h4>🔗 Match the factor <span class="xp-badge">Check yourself</span></h4>
+    <p class="xp-intro">Each scenario removes one of the three supports. Choose which one.</p>
+
+    <div class="q-row">
+      <div class="q-stem">A prison officer is delivering a reprimand by loudspeaker from the control room rather than standing in front of the prisoner. Compliance is noticeably lower.</div>
+      <button class="q-option" onclick="legAns(this,'presence','a')">presence</button>
+      <button class="q-option" onclick="legAns(this,'prestige','a')">prestige</button>
+      <button class="q-option" onclick="legAns(this,'legitimacy','a')">legitimacy</button>
+      <div class="q-fb" id="res-a"></div>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">The same training course is delivered by a world-famous university instead of an unknown local college. Attendees follow the instructions far more closely.</div>
+      <button class="q-option" onclick="legAns(this,'presence','b')">presence</button>
+      <button class="q-option" onclick="legAns(this,'prestige','b')">prestige</button>
+      <button class="q-option" onclick="legAns(this,'legitimacy','b')">legitimacy</button>
+      <div class="q-fb" id="res-b"></div>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">A passenger with no uniform or badge starts directing traffic at a junction during a power cut. Almost nobody follows him.</div>
+      <button class="q-option" onclick="legAns(this,'presence','c')">presence</button>
+      <button class="q-option" onclick="legAns(this,'prestige','c')">prestige</button>
+      <button class="q-option" onclick="legAns(this,'legitimacy','c')">legitimacy</button>
+      <div class="q-fb" id="res-c"></div>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：把三个变式收成一句话</strong><br>
+    权威的“三条腿”被抽掉任何一条，服从就下降；因此<strong>鼓励 dissent 的方法就是削弱这些情境因素</strong>：<br>
+    让权威<strong>不在场</strong>（7）、<strong>去掉机构的名望</strong>（10）、<strong>让下令的人没有合法性</strong>（13）。<br>
+    这正好接上 1.1.1 的代理理论：进入代理状态需要一个<strong>被认可的权威</strong>——三个变式证明了这一点。
+  </div>
+
+  <div class="note-box">
+    <h4>How to phrase it in an exam answer</h4>
+    <p>“Milgram’s variations show that <strong>dissent is encouraged by removing the supports of the authority figure</strong>. When orders were given by telephone (Experiment 7), obedience fell from 65% to 20.5%, showing that the <strong>physical presence</strong> of the authority is a powerful situational factor. When the study moved to a rundown office block (Experiment 10) obedience fell to 47.5%, showing that <strong>institutional prestige</strong> contributes but is not essential. When an ordinary man gave the orders (Experiment 13) obedience fell to 20%, showing that obedience depends on the <strong>perceived legitimacy</strong> of the person giving them.”</p>
+  </div>
+</section>
+
+<!-- ============ 18 ============ -->
+<section class="section" id="s18">
+  <h2>18. Evaluating Milgram’s Research</h2>
+
+  <div class="summary-card-header" onclick="togglePanel(this,'evgen')">
+    <span class="arrow">▶</span> Strengths — why the research is still worth taking seriously
+  </div>
+  <div class="summary-card-body" id="evgen">
+    <ul>
+      <li><span class="syl-tag ev">CONTROL</span> 高度控制：A laboratory experiment with a standardised script — every participant heard the same protests at the same voltages, so comparisons are meaningful.</li>
+      <li><span class="syl-tag ev">REPLICATION</span> 可重复：<strong>Burger (2009)</strong> replicated a modified version and found 70% continued at 150 V, close to Milgram’s 82% at the same point — the effect has not simply disappeared with time.</li>
+      <li><span class="syl-tag ev">CULTURE</span> 跨文化的元分析：<strong>Blass (1999)</strong> analysed replications in several countries outside the USA and found obedience rates broadly similar, suggesting the finding is not uniquely American.</li>
+      <li><span class="syl-tag ev">INTERNAL</span> 内部效度：The variations change one feature at a time, which lets us identify <em>which</em> situational feature is doing the work.</li>
+    </ul>
+  </div>
+
+  <div class="summary-card-header" onclick="togglePanel(this,'evlim')" style="margin-top:14px;">
+    <span class="arrow">▶</span> Limitations — what the research cannot tell us
+  </div>
+  <div class="summary-card-body" id="evlim">
+    <ul>
+      <li><span class="syl-tag crit">ETHICS</span> 伦理：Deception, no informed consent, pressure against withdrawal, and severe distress including three seizures. <strong>Baumrind (1964)</strong> argued the costs to participants were unacceptable.</li>
+      <li><span class="syl-tag crit">VALIDITY</span> 生态效度：Pressing switches on a machine in a laboratory is not the same as carrying out orders in a real institution, so the findings may not generalise to real-world atrocities.</li>
+      <li><span class="syl-tag crit">SAMPLE</span> 样本：40 American men, all volunteers from one city who replied to an advert and were paid. <strong>Androcentric</strong> and unlikely to represent women or other cultures.</li>
+      <li><span class="syl-tag crit">DEMAND</span> 需求特征：<strong>Orne and Holland (1968)</strong> argued participants were play-acting; <strong>Perry (2013)</strong> found archive recordings in which participants voiced doubts about the shocks.</li>
+      <li><span class="syl-tag crit">INTERPRETATION</span> 另一种解释：<strong>Haslam, Reicher and Birney (2014)</strong> re-examined Milgram’s own data and argued participants obeyed because they <strong>identified with the scientific goals</strong> of the research, not because they switched off their conscience — a different explanation of the same behaviour.</li>
+    </ul>
+  </div>
+
+  <div class="exam-tip">
+    <strong>How to get top marks on “Evaluate Milgram”.</strong> Do not list criticisms. Take each point and say <strong>what it does to the conclusion</strong>. For example: “Because the sample was 40 male volunteers, we cannot generalise the 65% figure to women, which limits the claim that <em>everyone</em> would obey.”
+  </div>
+</section>
+
+<!-- ============ 19 ============ -->
+<section class="section" id="s19">
+  <h2>19. Checkpoint</h2>
+
+  <div class="xp-block">
+    <h4>🎯 Eight quick questions <span class="xp-badge">Check yourself</span></h4>
+
+    <div class="q-row">
+      <div class="q-stem">1. How many participants were in Milgram’s baseline study?</div>
+      <label class="q-opt"><input type="radio" name="q1" value="a"> 20</label>
+      <label class="q-opt"><input type="radio" name="q1" value="b"> 40</label>
+      <label class="q-opt"><input type="radio" name="q1" value="c"> 100</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">2. What percentage of participants went all the way to 450 V?</div>
+      <label class="q-opt"><input type="radio" name="q2" value="a"> 35%</label>
+      <label class="q-opt"><input type="radio" name="q2" value="b"> 65%</label>
+      <label class="q-opt"><input type="radio" name="q2" value="c"> 100%</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">3. At which voltage did the learner stop responding altogether?</div>
+      <label class="q-opt"><input type="radio" name="q3" value="a"> 150 V</label>
+      <label class="q-opt"><input type="radio" name="q3" value="b"> 300 V</label>
+      <label class="q-opt"><input type="radio" name="q3" value="c"> 315 V</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">4. In Experiment 10 (rundown office block), what was the obedience rate?</div>
+      <label class="q-opt"><input type="radio" name="q4" value="a"> 20%</label>
+      <label class="q-opt"><input type="radio" name="q4" value="b"> 20.5%</label>
+      <label class="q-opt"><input type="radio" name="q4" value="c"> 47.5%</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">5. Which variation is described as “an ordinary man gives orders”?</div>
+      <label class="q-opt"><input type="radio" name="q5" value="a"> Experiment 7</label>
+      <label class="q-opt"><input type="radio" name="q5" value="b"> Experiment 10</label>
+      <label class="q-opt"><input type="radio" name="q5" value="c"> Experiment 13</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">6. “Moral strain” means…</div>
+      <label class="q-opt"><input type="radio" name="q6" value="a"> feeling nothing while obeying</label>
+      <label class="q-opt"><input type="radio" name="q6" value="b"> distress caused by the clash between obeying and not wanting to harm</label>
+      <label class="q-opt"><input type="radio" name="q6" value="c"> obeying because you agree with the order</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">7. Orne and Holland (1968) argued that Milgram’s participants…</div>
+      <label class="q-opt"><input type="radio" name="q7" value="a"> did not really believe the shocks were real</label>
+      <label class="q-opt"><input type="radio" name="q7" value="b"> were paid too little to take it seriously</label>
+      <label class="q-opt"><input type="radio" name="q7" value="c"> all suffered lasting psychological harm</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">8. Burger (2009) is useful in an evaluation because he…</div>
+      <label class="q-opt"><input type="radio" name="q8" value="a"> replicated a modified version and found obedience was still high</label>
+      <label class="q-opt"><input type="radio" name="q8" value="b"> proved the shocks were real</label>
+      <label class="q-opt"><input type="radio" name="q8" value="c"> ran the study with women only</label>
+    </div>
+
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="checkQuiz()">Mark my answers</button>
+    </div>
+    <div class="xp-result" id="quizResult"></div>
+  </div>
+</section>
+
+<!-- ============ 20 ============ -->
+<section class="section" id="s20">
+  <h2>20. Exam Lab</h2>
+
+  <div class="exam-practice">
+    <h3>How to read the question</h3>
+    <ul>
+      <li><strong>Describe</strong> — say what happened. Aim for <strong>who, where, what they did, and the key numbers</strong>.</li>
+      <li><strong>Explain</strong> — say <em>why</em>, or say what something means. One point plus one reason per mark.</li>
+      <li><strong>Evaluate</strong> — give strengths <em>and</em> limitations, and say what each one does to the conclusion.</li>
+    </ul>
+  </div>
+
+  <div class="q-row">
+    <div class="q-stem">Q1 · Describe Milgram’s (1963) research into obedience. <span class="syl-tag">4 marks</span></div>
+    <p style="font-size:.9em">Write your answer first, then compare.</p>
+    <textarea class="answer-box" placeholder="40 male participants... recruited... teacher and learner... 15 V increments... results..."></textarea>
+    <button class="xp-btn" style="margin-top:8px" onclick="revealAns('m1')">Show a model answer</button>
+    <div class="xp-result" id="m1">
+      <p>Milgram recruited <strong>40 male participants</strong> through a newspaper advert, telling them the study was about <strong>memory and learning</strong>. At a Yale laboratory each participant was assigned the role of <strong>teacher</strong> through a <strong>rigged draw</strong>, while a confederate played the learner. The teacher read word pairs and gave the learner an electric shock for every wrong answer, increasing the shock by <strong>15 V</strong> each time, from 15 V up to <strong>450 V</strong>. If the teacher hesitated, the experimenter used four standard prods such as “the experiment requires that you continue”. <strong>100%</strong> of participants reached 300 V and <strong>65%</strong> continued to the maximum 450 V.</p>
+    </div>
+  </div>
+
+  <div class="q-row">
+    <div class="q-stem">Q2 · Explain what is meant by moral strain, and give one piece of evidence from Milgram’s study. <span class="syl-tag">2 marks</span></div>
+    <textarea class="answer-box" placeholder="Moral strain is..."></textarea>
+    <button class="xp-btn" style="margin-top:8px" onclick="revealAns('m2')">Show a model answer</button>
+    <div class="xp-result" id="m2">
+      <p><strong>Moral strain</strong> is the distress a person experiences when following an order conflicts with their own judgement about what is right. In Milgram’s study participants showed it through sweating, trembling, stuttering, nervous laughter and biting their lips, and three participants experienced full-blown seizures — showing they continued while deeply uncomfortable rather than obeying calmly.</p>
+    </div>
+  </div>
+
+  <div class="q-row">
+    <div class="q-stem">Q3 · From Milgram’s variation studies, explain ONE situational factor that encourages dissent. <span class="syl-tag">2 marks</span></div>
+    <textarea class="answer-box" placeholder="One situational factor is..."></textarea>
+    <button class="xp-btn" style="margin-top:8px" onclick="revealAns('m3')">Show a model answer</button>
+    <div class="xp-result" id="m3">
+      <p>One situational factor is the <strong>physical presence of the authority figure</strong>. In Experiment 7 the experimenter gave his orders by <strong>telephone</strong> instead of standing in the room, and obedience fell from <strong>65% to 20.5%</strong>. Because nothing else changed, the drop shows that removing the authority figure’s presence makes <strong>dissent far more likely</strong> — people are much readier to refuse someone they do not have to face.</p>
+    </div>
+  </div>
+
+  <div class="q-row">
+    <div class="q-stem">Q4 · Evaluate Milgram’s (1963) research into obedience. <span class="syl-tag">8 marks</span></div>
+    <p style="font-size:.9em">Plan four paragraphs first:</p>
+    <table>
+      <tr><th style="width:16%">Paragraph</th><th>Job of that paragraph</th></tr>
+      <tr><td>¶1 Method</td><td>Standardised laboratory procedure — and why that is both a strength and a limitation.</td></tr>
+      <tr><td>¶2 Ethics</td><td>Deception, consent, distress — and what the deception does to the conclusion.</td></tr>
+      <tr><td>¶3 Sample &amp; validity</td><td>40 male volunteers; androcentric, ethnocentric, ecological validity.</td></tr>
+      <tr><td>¶4 Conclusion</td><td>Alternative explanations and replications; say whether the conclusion survives.</td></tr>
+    </table>
+    <textarea class="answer-box" placeholder="Plan your four paragraphs here..."></textarea>
+    <button class="xp-btn" style="margin-top:8px" onclick="revealAns('m4')">Show a model answer</button>
+    <div class="xp-result" id="m4">
+      <p><strong>¶1.</strong> A strength is that the procedure was highly <strong>standardised</strong>: every participant heard the same protests at the same voltages and faced the same four prods, so the study is replicable and the variations are genuinely comparable. However, this control was bought at the cost of <strong>ecological validity</strong> — pressing switches in a laboratory is not the same as carrying out orders inside a real institution.</p>
+      <p><strong>¶2.</strong> The study raises serious <strong>ethical</strong> problems. Participants were <strong>deceived</strong> about the aim, the draw and the shocks, could not give informed consent, and were pressured not to withdraw; several showed extreme distress and three had seizures. This matters beyond welfare: the deception means we cannot be sure participants were showing real obedience rather than responding to <strong>demand characteristics</strong>, as <strong>Orne and Holland (1968)</strong> argued. Milgram replied that participants were distressed precisely because they believed it — and 84% later said they were glad to have taken part.</p>
+      <p><strong>¶3.</strong> The <strong>sample</strong> limits the conclusion: 40 male volunteers from one American city, recruited by advert and paid $4.50. This makes the research <strong>androcentric</strong> and culturally narrow, so the 65% figure cannot be generalised to women. <strong>Blass (1999)</strong> partly answers this, finding broadly similar rates in other countries.</p>
+      <p><strong>¶4.</strong> The conclusion is <strong>contested</strong>. <strong>Haslam, Reicher and Birney (2014)</strong> argue participants obeyed because they identified with the scientific goals rather than because they abandoned their conscience. Yet <strong>Burger (2009)</strong> found 70% still continued at 150 V decades later, and the three variations all show obedience shifting with the <strong>situation</strong> alone. On balance the situational explanation is well supported for the laboratory task, but should not be stretched to explain real-world atrocities on its own.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 21 ============ -->
+<section class="section" id="s21">
+  <h2>21. Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><span class="term">obedience</span><span class="zh">服从</span><div class="def">Following a direct order from someone perceived to have authority.</div></div>
+    <div class="glossary-item"><span class="term">conformity</span><span class="zh">从众</span><div class="def">Changing behaviour to match a majority — no order is given. Different from obedience.</div></div>
+    <div class="glossary-item"><span class="term">dissent</span><span class="zh">不从 / 抗拒</span><div class="def">Refusing to obey or resisting the pressure to continue.</div></div>
+    <div class="glossary-item"><span class="term">moral strain</span><span class="zh">道德压力</span><div class="def">Distress from the clash between obeying an order and not wanting to cause harm.</div></div>
+    <div class="glossary-item"><span class="term">confederate</span><span class="zh">同谋者</span><div class="def">An actor working for the researcher — in Milgram’s study, the learner Mr Wallace.</div></div>
+    <div class="glossary-item"><span class="term">deception</span><span class="zh">欺骗</span><div class="def">Misleading participants about the true aim or nature of a study.</div></div>
+    <div class="glossary-item"><span class="term">informed consent</span><span class="zh">知情同意</span><div class="def">Agreeing to take part after being told what the study really involves.</div></div>
+    <div class="glossary-item"><span class="term">presumptive consent</span><span class="zh">推定同意</span><div class="def">Asking a similar group whether they would consent, used when the real participants cannot be asked.</div></div>
+    <div class="glossary-item"><span class="term">right to withdraw</span><span class="zh">退出权</span><div class="def">The right to leave a study at any point without penalty.</div></div>
+    <div class="glossary-item"><span class="term">debriefing</span><span class="zh">事后说明</span><div class="def">Telling participants the true aim afterwards and checking their wellbeing.</div></div>
+    <div class="glossary-item"><span class="term">demand characteristics</span><span class="zh">需求特征</span><div class="def">Cues that tell participants what is expected, leading them to act accordingly.</div></div>
+    <div class="glossary-item"><span class="term">ecological validity</span><span class="zh">生态效度</span><div class="def">Whether findings from a laboratory setting apply to real-life settings.</div></div>
+    <div class="glossary-item"><span class="term">population validity</span><span class="zh">总体效度</span><div class="def">Whether the sample allows the findings to be generalised to a wider population.</div></div>
+    <div class="glossary-item"><span class="term">androcentric</span><span class="zh">男性中心</span><div class="def">Based on men only, so the findings may not apply to women.</div></div>
+    <div class="glossary-item"><span class="term">situational factor</span><span class="zh">情境因素</span><div class="def">A feature of the surroundings or setting that influences behaviour, rather than a feature of the person.</div></div>
+    <div class="glossary-item"><span class="term">prestige</span><span class="zh">名望</span><div class="def">The status of the institution behind the authority — tested in Experiment 10.</div></div>
+    <div class="glossary-item"><span class="term">legitimacy</span><span class="zh">合法性</span><div class="def">Whether the person giving orders is seen as entitled to do so — tested in Experiment 13.</div></div>
+    <div class="glossary-item"><span class="term">standardised procedure</span><span class="zh">标准化程序</span><div class="def">Every participant experiences exactly the same script and conditions.</div></div>
+  </div>
+</section>
+
+<div class="footer-note">1.1.2 Research into obedience · Social Psychology · previous: <a href="../1.1.1-theories-of-obedience/">1.1.1 theories of obedience</a> · next: <a href="../1.1.3-factors-affecting-obedience/">1.1.3 factors affecting obedience →</a></div>
+  </main>
+</div>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var baseFont = 16;
+
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark'; }
+  };
+
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  window.chairChoice = function (c) {
+    var el = document.getElementById('chairResult');
+    if (!el) { return; }
+    if (c === 'go') {
+      el.innerHTML = '<p><span class="xp-verdict">You pressed it.</span> You are in the majority: in the real study, every participant reached 300 V and 65% went on to 450 V.</p>';
+    } else {
+      el.innerHTML = '<p><span class="xp-verdict">You refused.</span> You are in a minority that is larger than most people expect — 35% of the real participants refused to complete the series.</p>';
+    }
+    el.innerHTML += '<p>Whichever you chose, hold on to <em>why</em> you chose it. If your reason was something about the <strong>person standing next to you</strong>, you have already spotted the thing Milgram was testing.</p>';
+    el.classList.add('show');
+  };
+
+  var guessKey = 'd';
+  var guessWhy = {
+    a: 'Almost nobody is what the psychiatrists predicted — they estimated barely one person in a thousand would go that far.',
+    b: 'A few is closer to the psychiatrists’ estimate, but still far below what happened.',
+    c: 'About half is a big improvement on the expert prediction, but the real figure was higher still.',
+    d: 'Correct — 26 of the 40 participants (65%) went to the top of the scale. The experts were wrong by a huge margin, which is precisely why the study became famous.'
+  };
+  window.guessAns = function (btn, c, id) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === guessKey);
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById('res' + id);
+    if (!el) { return; }
+    el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + guessWhy[c] + '</p>';
+    el.classList.add('show');
+    el.classList.toggle('ok', ok);
+  };
+
+  var quietKey = 'c';
+  var quietWhy = {
+    a: 'At 150 V he was still answering — he demanded to be let out and mentioned his heart.',
+    b: 'At 300 V he banged on the wall and refused to answer. Loud, but not silent.',
+    c: 'Correct — from 315 V onwards the learner made no response at all. Participants continued pressing switches while hearing complete silence.',
+    d: '450 V was the end of the scale, not the point where silence began.'
+  };
+  window.quietAns = function (btn, c, id) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === quietKey);
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById('res' + id);
+    if (!el) { return; }
+    el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + quietWhy[c] + '</p>';
+    el.classList.add('show');
+    el.classList.toggle('ok', ok);
+  };
+
+  var legKey = { a: 'presence', b: 'prestige', c: 'legitimacy' };
+  var legFb = {
+    presence: 'Physical presence — the authority is still legitimate and still has the institution behind them, but they are no longer standing in front of the person.',
+    prestige: 'Prestige — the same role and the same words, but now backed by a famous institution. That is Experiment 10 in reverse.',
+    legitimacy: 'Legitimacy — he may be close by and polite, but he has no recognised position, so almost nobody follows him. That is Experiment 13.'
+  };
+  var legWhy = {
+    a: 'This is Experiment 7: the same orders arrive from someone who is not in the room. The authority is still real and still institutional — only the body is missing.',
+    b: 'This is Experiment 10 reversed: nothing about the person changed, only the status of the organisation behind them.',
+    c: 'This is Experiment 13 almost exactly: a person with no uniform and no recognised position giving instructions that would normally be obeyed.'
+  };
+  window.legAns = function (btn, choice, id) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (choice === legKey[id]);
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById('res-' + id);
+    if (!el) { return; }
+    el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + legFb[choice] + ' ' + (ok ? legWhy[id] : 'Try again: think about which of the three supports has been removed.') + '</p>';
+    el.classList.add('show');
+  };
+
+  var quizKey = { q1: 'b', q2: 'b', q3: 'c', q4: 'c', q5: 'c', q6: 'b', q7: 'a', q8: 'a' };
+  var quizWhy = {
+    q1: '40 male participants in the baseline study. Experiment 13 used 20; the others used 40.',
+    q2: '65% (26 of 40) reached 450 V. 35% defied, and 100% reached 300 V.',
+    q3: 'From 315 V onwards there was silence. At 300 V he banged on the wall, which is a response, not silence.',
+    q4: 'Experiment 10 gave 47.5%. Experiment 7 gave 20.5% and Experiment 13 gave 20%.',
+    q5: 'Experiment 13 is the ordinary man. Experiment 7 is the telephone and Experiment 10 is the rundown office.',
+    q6: 'Moral strain is the clash itself, not indifference and not agreement.',
+    q7: 'Orne and Holland argued participants were responding to demand characteristics because they did not believe the shocks were real.',
+    q8: 'Burger (2009) ran a modified replication and found 70% still continued at 150 V, close to Milgram’s 82% at the same point.'
+  };
+  window.checkQuiz = function () {
+    var el = document.getElementById('quizResult');
+    if (!el) { return; }
+    var score = 0;
+    var html = '';
+    Object.keys(quizKey).forEach(function (q) {
+      var sel = document.querySelector('input[name="' + q + '"]:checked');
+      var chosen = sel ? sel.value : null;
+      var ok = (chosen === quizKey[q]);
+      if (ok) { score++; }
+      html += '<p style="margin:6px 0"><strong>' + q.toUpperCase() + ':</strong> ' +
+        (chosen ? (ok ? 'correct' : 'not quite') : 'not answered') + ' — ' + quizWhy[q] + '</p>';
+    });
+    el.innerHTML = '<p><span class="xp-verdict">Score: ' + score + ' / 8</span></p>' + html;
+    el.classList.add('show');
+    el.classList.toggle('ok', score === 8);
+  };
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.toggle('show'); }
+  };
+
+  window.togglePanel = function (header, id) {
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    el.classList.toggle('hidden');
+    header.classList.toggle('open');
+  };
+
+  var secs = document.querySelectorAll('.section');
+  var links = document.querySelectorAll('.sb-item a');
+  function highlight() {
+    var best = null;
+    var bestTop = -99999;
+    for (var i = 0; i < secs.length; i++) {
+      var r = secs[i].getBoundingClientRect();
+      if (r.top <= 140 && r.top > bestTop) { bestTop = r.top; best = secs[i]; }
+    }
+    if (!best && secs.length) { best = secs[0]; }
+    for (var j = 0; j < links.length; j++) { links[j].classList.remove('sb-active'); }
+    if (best) {
+      var target = best.getAttribute('id');
+      for (var k = 0; k < links.length; k++) {
+        if (links[k].getAttribute('href') === '#' + target) { links[k].classList.add('sb-active'); }
+      }
+    }
+  }
+  window.addEventListener('scroll', highlight);
+  highlight();
+
+  var btt = document.getElementById('btt');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 400) { btt.classList.add('show'); } else { btt.classList.remove('show'); }
+  });
+})();
+</script>
+</body>
+</html>
