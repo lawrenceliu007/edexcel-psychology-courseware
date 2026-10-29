@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.1.5 Research into Conformity（从众的研究 · Asch 1951/1952/1956）</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.five-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+
+.mat2x2 { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 6px; margin: 14px 0; }
+.mat2x2 .mh { background: var(--primary); color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
+body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic A · Conformity — Research into conformity: Asch (1951, 1952, 1956)</span>
+  </div>
+  <span class="nav-pill">🧑‍🤝‍🧑 Social Psychology</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="1.1.5-Research-into-Conformity-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">1.1.5 · Contents</div>
+        <div class="sb-header-sub">Asch 1951 · 1952 · 1956</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">Before we start</li>
+        <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+        <li class="sb-item"><a href="#s2">2. Why Asch Studied It</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Asch 1951 — the baseline</li>
+        <li class="sb-item"><a href="#s3">3. How It Worked</a></li>
+        <li class="sb-item"><a href="#s4">4. What Happened</a></li>
+        <li class="sb-item"><a href="#s5">5. Broken Majorities</a></li>
+        <li class="sb-item"><a href="#s6">6. Majority Size</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Asch 1952 — the dissenter</li>
+        <li class="sb-item"><a href="#s7">7. The 1952 Study</a></li>
+        <li class="sb-item"><a href="#s8">8. The 1952 Variations</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Asch 1956 — the classic</li>
+        <li class="sb-item"><a href="#s9">9. The 1956 Study</a></li>
+        <li class="sb-item"><a href="#s10">10. Discs and Privacy</a></li>
+        <li class="sb-item"><a href="#s11">11. Side by Side</a></li>
+        <li class="sb-item"><a href="#s12">12. What They Show</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Practice</li>
+        <li class="sb-item"><a href="#s13">13. Evaluating Asch</a></li>
+        <li class="sb-item"><a href="#s14">14. Improving the Study</a></li>
+        <li class="sb-item"><a href="#s15">15. Checkpoint</a></li>
+        <li class="sb-item"><a href="#s16">16. Exam Lab</a></li>
+        <li class="sb-item"><a href="#s17">17. Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>1.1.5 RESEARCH INTO CONFORMITY<br><span style="font-size:0.65em">从众的研究 · Asch (1951, 1952, 1956)</span></h1>
+  <div class="subtitle">Social Psychology · 线段判断实验：基线 + 每一个变式 + 三年研究的对照与评价</div>
+  <div class="meta">
+    <span class="badge">🧠 Core idea: wrong, but unanimous</span>
+    <span class="badge">📏 32% of answers were wrong on purpose</span>
+    <span class="badge">📖 Textbook: Chapter 2</span>
+  </div>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started</h2>
+
+  <div class="xp-block">
+    <h4>📏 You are the seventh person to answer <span class="xp-badge">Look carefully</span></h4>
+    <p class="xp-intro">The experimenter shows the room a <strong>standard line</strong> and asks a simple question: which comparison line — X, Y or Z — is the <strong>same length</strong> as the standard?</p>
+    <div class="figure">
+      <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Asch line judgement task: match the standard line to one of three comparison lines">
+        <rect x="30" y="20" width="180" height="200" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="1.6"/>
+        <text x="120" y="44" font-size="12.5" font-weight="700" fill="#334155" text-anchor="middle">Standard line</text>
+        <line x1="120" y1="70" x2="120" y2="196" stroke="#1e293b" stroke-width="6"/>
+        <text x="120" y="236" font-size="10.5" fill="#475569" text-anchor="middle">about 9 cm tall</text>
+
+        <rect x="240" y="20" width="410" height="170" rx="10" fill="#fff" stroke="#94a3b8" stroke-width="1.6"/>
+        <text x="300" y="44" font-size="12" font-weight="700" fill="#334155">X</text>
+        <line x1="300" y1="62" x2="300" y2="117" stroke="#1e293b" stroke-width="6"/>
+        <text x="445" y="44" font-size="12" font-weight="700" fill="#334155">Y</text>
+        <line x1="445" y1="62" x2="445" y2="152" stroke="#1e293b" stroke-width="6"/>
+        <text x="590" y="44" font-size="12" font-weight="700" fill="#334155">Z</text>
+        <line x1="590" y1="52" x2="590" y2="162" stroke="#1e293b" stroke-width="6"/>
+        <text x="300" y="182" font-size="10.5" fill="#475569" text-anchor="middle">clearly shorter</text>
+        <text x="445" y="182" font-size="10.5" font-weight="700" fill="#166534" text-anchor="middle">same length</text>
+        <text x="590" y="182" font-size="10.5" fill="#475569" text-anchor="middle">clearly taller</text>
+        <text x="445" y="216" font-size="10.5" fill="#475569" text-anchor="middle">One of the three matches the standard exactly. The answer is obvious —</text>
+        <text x="445" y="234" font-size="10.5" fill="#475569" text-anchor="middle">but six people answer before you, and one by one, all six say: “X.”</text>
+      </svg>
+      <div class="figure-caption">The Asch line task. You can see the correct answer — but six people before you have just said something else.</div>
+    </div>
+    <p class="xp-intro" style="margin-top:10px"><strong>It is your turn.</strong> The answer you can see is Y. Everyone before you said X. What do you say?</p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="seatChoice('truth')">I say Y — I can see it</button>
+      <button class="xp-btn" onclick="seatChoice('group')">I say X — like everyone else</button>
+    </div>
+    <div class="xp-result" id="seatResult"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解</strong><br>
+    这个任务的答案<strong>明显得不能再明显</strong> —— 没有任何模糊空间。Sherif 的光点实验（1.1.4）里人们从众，可以说“因为我真的不知道答案”；但在这里，答案就摆在眼前。<br>
+    如果你还跟着大家说错话，那就只剩一种解释：<strong>不是信息问题，是压力问题</strong>。这正是 Asch 设计这个实验的原因。
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Why Asch Studied Conformity</h2>
+
+  <p>Solomon Asch conducted a range of laboratory experiments to test <strong>majority influence</strong> on conformity, and to investigate the various factors which affect conformity levels. While procedures vary slightly between his variation studies, typically <strong>one naive participant was placed in a group of confederates</strong> to see whether they would conform to the group norm.</p>
+
+  <div class="blue-box">
+    <h4>The clever design choice</h4>
+    <p>Asch used a <strong>perception task with an obvious answer</strong>. In 1.1.4 you saw Sherif use an <em>ambiguous</em> task — nobody knew the answer, so conformity could be informational. Asch did the opposite: the answer is unmistakable, so any conformity must be <strong>normative social influence</strong> — yielding to pressure, not seeking information.</p>
+  </div>
+
+  <div class="note-box">
+    <h4>Key term</h4>
+    <p><span class="kt">confederate（同谋者）</span> — an actor working for the researcher. In Asch's studies the confederates gave wrong answers on purpose, on the researcher's instructions.</p>
+    <p><span class="kt">control group（控制组）</span> — a group that does not experience the experimental situation but acts as a <strong>baseline</strong> against which to judge any change.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：三个年份不要背混</strong><br>
+    考纲要求三个研究：<strong>1951</strong>（基线 + 破裂多数 + 多数规模）、<strong>1952</strong>（熟人群体 + 异议者）、<strong>1956</strong>（123 人的经典版本 + 圆盘实验）。<br>
+    它们用的是<strong>同一个基本程序</strong>，每次改一样东西 —— 和 Milgram 的三个变式（1.1.2）思路完全一样：改情境，看行为跟着怎么变。
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Asch (1951) — How It Worked</h2>
+
+  <p><strong>Fifty male college students</strong> were put into groups of <strong>eight</strong> and asked to match the length of a standard line with one of three comparison lines of unequal length — one of which matched the standard line.</p>
+
+  <div class="note-box">
+    <h4>The procedure, step by step</h4>
+    <ul>
+      <li>Each group member judged which line matched, <strong>publicly</strong>, one after another.</li>
+      <li>Unknown to <strong>one participant</strong>, the other <strong>seven</strong> were <strong>confederates</strong> who responded with a wrong answer.</li>
+      <li>The naive participant was therefore confronted with a group that <strong>unanimously selected the incorrect line</strong>.</li>
+      <li>There were <strong>12 critical trials</strong> in which the group answered wrongly.</li>
+      <li>The <strong>frequency of incorrect responses</strong> made by the participant was calculated as the measure of conformity.</li>
+      <li>Afterwards, the participant was immediately <strong>interviewed and debriefed</strong> about the true nature of the study.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：四个必须写准的细节</strong><br>
+    ① 50 名男大学生；② 每组 8 人，其中 <strong>7 个是同谋者</strong>、只有 1 个真被试；③ 答案<strong>公开说出</strong>（这是压力来源）；④ 12 次“关键试验”里全员故意说错。<br>
+    从众的测量方式 = <strong>错误回答的次数/比例</strong> —— 这个“客观测量”是 1.1.5 评价里的一条优点。
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Asch (1951) — What Happened</h2>
+
+  <div class="blue-box">
+    <h4>The headline numbers</h4>
+    <p>Over the 12 critical trials, <strong>32 per cent of estimates</strong> made were errors in line with the majority's incorrect response. Despite the majority pressure, <strong>68 per cent of estimates were correct</strong>.</p>
+  </div>
+
+  <div class="note-box">
+    <h4>The finding hidden inside the average</h4>
+    <p>There were strong <strong>individual differences</strong>: some participants conformed in <strong>almost every trial</strong>, and some <strong>never conformed</strong>. Observations suggested those who kept their independence did so because they were <strong>confident</strong>, maintained <strong>individuality</strong>, or kept <strong>task focus</strong>. Those who conformed were thought to <strong>lack confidence in their perception</strong> or to want to <strong>fit into the group</strong>.</p>
+    <p><strong>Asch's conclusion:</strong> conformity can only be explained by a <strong>combination of situational pressure and the individual's response</strong> in that situation. To investigate further, he designed a set of experiments to test different situations.</p>
+  </div>
+
+  <div class="keyterm-box">
+    <span class="kt"> Exam trap 考试陷阱：</span> the result is “<strong>32% of responses</strong> given were errors” — <em>not</em> 32% of participants and <em>not</em> 32% of trials. The textbook checkpoint question tests exactly this distinction.
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：怎么读 32% 这个数字</strong><br>
+    正着读：三分之一的回答跟着多数人错 —— 压力真实存在。<br>
+    反着读：68% 的回答是对的 —— 大多数时候人们顶住了。两个方向都要会写，评价题常考“结果其实显示人们大部分时间没从众”。
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Asch (1951) — Broken Majorities</h2>
+
+  <p>Asch then tested what happens when the majority is <strong>not unanimous</strong> — when it “breaks”.</p>
+
+  <table class="n">
+    <tr><th style="width:44%;">Variation</th><th style="width:20%;">Error rate</th><th>What it shows</th></tr>
+    <tr><td><strong>Two naive participants</strong> in the group (both answering against six confederates).</td><td><strong>10.4%</strong></td><td>A broken majority reduces conformity.</td></tr>
+    <tr><td><strong>One naive participant + one confederate giving the correct answer</strong>, against six wrong ones.</td><td><strong>5.5%</strong></td><td>A partner acts as <strong>social support</strong> against the majority.</td></tr>
+    <tr><td>The partner <strong>leaves midway</strong> through the trials.</td><td>conformity <strong>returns</strong></td><td>Losing support causes the participant to <strong>lose their independence</strong>.</td></tr>
+    <tr><td>The partner <strong>starts conforming</strong>, then breaks off midway and answers correctly.</td><td>reduced — but <strong>hard to switch</strong></td><td>People find it difficult to change from conforming to independent behaviour.</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：只要一个人站在你这边</strong><br>
+    七个人说错、你一个人说对 → 32% 从众。但有<strong>一个人</strong>跟你一起说对 → 从众掉到 <strong>5.5%</strong>。<br>
+    一个盟友就能抵掉大半压力 —— 这就是 <strong>social support（社会支持）</strong>的力量。考试问“how could Asch's findings be applied”，这是最好的应用点。
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Asch (1951) — Majority Size</h2>
+
+  <p>In a final series, Asch placed participants into groups with a <strong>unanimous majority of 1, 2, 3, 4, 8 or 16</strong> confederates — all giving the same wrong answer.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 265" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Conformity rises with majority size up to three, then levels off">
+      <line x1="70" y1="30" x2="70" y2="196" stroke="#64748b" stroke-width="1.6"/>
+      <line x1="70" y1="196" x2="640" y2="196" stroke="#64748b" stroke-width="1.6"/>
+      <text x="34" y="44" font-size="10" fill="#64748b">high</text>
+      <text x="34" y="120" font-size="10" fill="#64748b">rising</text>
+      <text x="34" y="192" font-size="10" fill="#64748b">0</text>
+
+      <rect x="105" y="192" width="60" height="4" rx="3" fill="#cbd5e1"/>
+      <text x="135" y="182" font-size="11" font-weight="600" fill="#475569" text-anchor="middle">no real effect</text>
+      <text x="135" y="216" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">1</text>
+
+      <rect x="205" y="158" width="60" height="38" rx="3" fill="#fdba74"/>
+      <text x="235" y="150" font-size="11.5" font-weight="700" fill="#c2410c" text-anchor="middle">12.8%</text>
+      <text x="235" y="216" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">2</text>
+
+      <rect x="305" y="66" width="60" height="130" rx="3" fill="#ea580c"/>
+      <text x="335" y="58" font-size="11.5" font-weight="700" fill="#c2410c" text-anchor="middle">greatest error rate</text>
+      <text x="335" y="216" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">3</text>
+
+      <rect x="405" y="70" width="60" height="126" rx="3" fill="#fdba74"/>
+      <text x="435" y="62" font-size="11" font-weight="600" fill="#475569" text-anchor="middle">no greater</text>
+      <text x="435" y="216" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">4</text>
+
+      <rect x="505" y="70" width="50" height="126" rx="3" fill="#fdba74"/>
+      <text x="530" y="216" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">8</text>
+
+      <rect x="575" y="70" width="50" height="126" rx="3" fill="#fdba74"/>
+      <text x="600" y="216" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">16</text>
+
+      <text x="355" y="244" font-size="11" fill="#475569" text-anchor="middle">Size of the unanimous, wrong-answering majority</text>
+      <text x="355" y="260" font-size="10.5" font-style="italic" fill="#64748b" text-anchor="middle">One confederate had no real influence; three was the peak; larger majorities added nothing.</text>
+    </svg>
+    <div class="figure-caption">Figure 1 — the force of Number from social impact theory, seen in Asch's data.</div>
+  </div>
+
+  <div class="note-box">
+    <h4>What the numbers say</h4>
+    <ul>
+      <li><strong>1 confederate:</strong> did not really influence the naive participant's decision.</li>
+      <li><strong>2 confederates:</strong> participants selected the wrong line <strong>12.8%</strong> of the time.</li>
+      <li><strong>3 confederates:</strong> the <strong>greatest error rate</strong>.</li>
+      <li><strong>4, 8, 16:</strong> larger majorities produced <strong>no greater effect</strong> than a majority of three.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：灯泡定律的实验版</strong><br>
+    这正是 1.1.4 里 Latané 灯泡类比的数据版：从 1 到 3 增长最快，3 之后几乎不涨。考试把 1.1.4 的理论和 1.1.5 的数据连起来写，是 AO3 的高级操作。
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Asch (1952) — The Dissenter Study</h2>
+
+  <div class="blue-box">
+    <h4>What was different</h4>
+    <p>Male college students were placed in groups of <strong>seven to nine</strong> — and this time the participants were <strong>acquaintances</strong>, chosen as such by the confederate majority. The majority gave the correct answer for the first two trials. On the third trial, an individual in the group <strong>claims the majority's answer is wrong</strong>. From time to time he repeats his dissent — and sometimes he agrees with the incorrect response.</p>
+  </div>
+
+  <div class="note-box">
+    <h4>Results and conclusion</h4>
+    <ul>
+      <li><strong>33.2%</strong> of the naive participants' responses were incorrect and consistent with the majority — a similar rate to 1951.</li>
+      <li>The <strong>control group</strong> wrote their answers <strong>in private</strong>: only <strong>7.4%</strong> of responses were in error.</li>
+      <li>The dissenter had <strong>questioned the majority's judgement</strong> — so participants could not be conforming because they believed the majority was right. They were <strong>yielding to social pressure</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：这组对照为什么值钱</strong><br>
+    公开回答：33.2% 错；私下写答案：7.4% 错。<strong>同一批人、同一套题</strong>，唯一区别是要不要当众说 —— 差距就是 NSI 的直接证据。<br>
+    再加一层：这次明明有人<strong>公开质疑过</strong>多数人的判断（说明答案可疑），大家还是照样从众 —— “我不知道”这条借口被彻底排除了。
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Asch (1952) — The Variations</h2>
+
+  <table class="n">
+    <tr><th style="width:44%;">Variation</th><th style="width:22%;">Result</th><th>What it shows</th></tr>
+    <tr><td>The majority chose a comparison line <strong>very obviously different</strong> from the standard.</td><td>errors fell slightly to <strong>27.2%</strong></td><td>Obvious wrongness barely dents majority influence.</td></tr>
+    <tr><td>The majority reduced to <strong>one single person</strong>.</td><td>effect <strong>completely abolished</strong></td><td>One person is not a majority — the participant actually <strong>challenged</strong> them.</td></tr>
+    <tr><td><strong>One group member consistently</strong> gave the correct answer against the majority.</td><td>conformity fell to <strong>13%</strong></td><td>A consistent ally breaks the majority's power — though some abandoned the partner for the majority.</td></tr>
+    <tr><td>A majority of <strong>16 naive participants</strong> with a <strong>single wrong responder</strong>.</td><td>no impact — the minority member was <strong>mocked</strong> and suspected of deliberate error</td><td>A lone minority has no power over a naive majority. (Seeds of minority influence — 1.1.6.)</td></tr>
+  </table>
+
+  <div class="note-box">
+    <h4>Asch's conclusion (1952)</h4>
+    <p>We are still likely to <strong>yield to majority influence when it is questioned and when it is obviously wrong</strong>.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：四个变式一句话收</strong><br>
+    错得离谱照样跟（27.2%）；一个人不算多数（归零）；有一个坚定盟友减半（13%）；反过来一个人对十六个真被试，只会被嘲笑 —— <strong>力量全在“多数”这两个字上</strong>。<br>
+    最后一个变式留个钩子：一个人怎么才能反过来影响多数？那是 1.1.6 Moscovici 少数派影响的问题。
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Asch (1956) — The Classic Version</h2>
+
+  <div class="blue-box">
+    <h4>Procedure</h4>
+    <p>Asch ran the basic procedure on <strong>123 college students</strong> in groups of <strong>seven to nine</strong>. The single naive participant sat in the <strong>second-to-last chair</strong>. Across <strong>12 critical trials</strong> where the majority answered wrongly, the wrong comparison line was either <strong>moderately</strong> or <strong>extremely</strong> different from the standard. Public answers were compared against a <strong>control group</strong> who wrote their judgements privately.</p>
+  </div>
+
+  <div class="note-box">
+    <h4>Results</h4>
+    <ul>
+      <li>The <strong>control group of 37</strong> private responders gave only <strong>three incorrect</strong> judgements in total — versus about <strong>one third</strong> wrong in the experimental group.</li>
+      <li>When the majority chose a <strong>moderately</strong> different line, naive participants also made a <strong>moderate</strong> selection.</li>
+      <li>When the majority chose an <strong>extreme</strong> line, <strong>four-fifths modelled</strong> the judgement and <strong>one-fifth compromised</strong> — picking the moderately different line instead.</li>
+      <li>Again: considerable individual variation — some maintained absolute independence, some yielded completely.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：“妥协”这个细节最值钱</strong><br>
+    多数人指着一个极端错的答案，五分之一的人不是照抄、而是选了个<strong>折中的错误</strong> —— 说明压力之下人真的会<strong>扭曲自己的判断</strong>，不是简单复制别人的答案。写 evaluation 或 application 时这是很鲜活的细节。
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Discs and Privacy (1956 continued)</h2>
+
+  <div class="blue-box">
+    <h4>Beyond lines: the coloured discs</h4>
+    <p>To test whether conformity would extend to other perceived stimuli, Asch asked participants to judge whether a comparison <strong>coloured disc</strong> was brighter or darker than a standard disc. Over 12 trials where the group deliberately judged wrongly, <strong>39%</strong> of the naive participants' responses were incorrect.</p>
+  </div>
+
+  <div class="note-box">
+    <h4>The privacy variation</h4>
+    <p>When the group gave <strong>public</strong> judgements but the naive participant answered <strong>in private</strong>, conformity dropped to just <strong>12.5%</strong> incorrect estimates.</p>
+    <p><strong>Conclusions (1956):</strong> the experiments demonstrate the power of the majority — participants were complying because of <strong>normative social influence</strong>. <strong>Situational factors</strong> (social support, size of the majority) influence conformity rates, but <strong>individual differences</strong> also affect how people respond.</p>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Error rates across Asch's conditions: public, supported, obvious, private">
+      <line x1="80" y1="30" x2="80" y2="190" stroke="#64748b" stroke-width="1.6"/>
+      <line x1="80" y1="190" x2="640" y2="190" stroke="#64748b" stroke-width="1.6"/>
+      <rect x="120" y="58" width="90" height="132" rx="4" fill="#ea580c"/>
+      <text x="165" y="50" font-size="13" font-weight="700" fill="#c2410c" text-anchor="middle">33.2%</text>
+      <text x="165" y="210" font-size="10.5" font-weight="600" fill="#1e293b" text-anchor="middle">Public, unanimous</text>
+      <text x="165" y="226" font-size="9.5" fill="#64748b" text-anchor="middle">1952, acquaintances</text>
+
+      <rect x="255" y="128" width="90" height="62" rx="4" fill="#fdba74"/>
+      <text x="300" y="120" font-size="13" font-weight="700" fill="#c2410c" text-anchor="middle">13%</text>
+      <text x="300" y="210" font-size="10.5" font-weight="600" fill="#1e293b" text-anchor="middle">One consistent ally</text>
+      <text x="300" y="226" font-size="9.5" fill="#64748b" text-anchor="middle">1952 variation</text>
+
+      <rect x="390" y="75" width="90" height="115" rx="4" fill="#fb923c"/>
+      <text x="435" y="67" font-size="13" font-weight="700" fill="#c2410c" text-anchor="middle">27.2%</text>
+      <text x="435" y="210" font-size="10.5" font-weight="600" fill="#1e293b" text-anchor="middle">Obviously wrong line</text>
+      <text x="435" y="226" font-size="9.5" fill="#64748b" text-anchor="middle">1952 variation</text>
+
+      <rect x="525" y="156" width="90" height="34" rx="4" fill="#86efac"/>
+      <text x="570" y="148" font-size="13" font-weight="700" fill="#166534" text-anchor="middle">7.4%</text>
+      <text x="570" y="210" font-size="10.5" font-weight="600" fill="#1e293b" text-anchor="middle">Private written</text>
+      <text x="570" y="226" font-size="9.5" fill="#64748b" text-anchor="middle">1952 control group</text>
+
+      <text x="360" y="244" font-size="10.5" font-style="italic" fill="#64748b" text-anchor="middle">The difference between the orange and green bars is the pressure of answering in public.</text>
+    </svg>
+    <div class="figure-caption">Figure 2 — the same task produces wildly different error rates depending on the social situation.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：一张图记住 1952 的四个数字</strong><br>
+    33.2（公开·全体说错）→ 27.2（错得离谱）→ 13（有一个盟友）→ 7.4（私下写）。<br>
+    这四个柱子就是 Asch 研究的骨架 —— 任何 describe / evaluate 题都从这里取材。
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Side by Side — 1951 · 1952 · 1956</h2>
+
+  <table class="n">
+    <tr><th style="width:16%;"></th><th style="width:28%;">Asch (1951)</th><th style="width:28%;">Asch (1952)</th><th>Asch (1956)</th></tr>
+    <tr><td class="lbl">Sample</td><td>50 male students, groups of 8</td><td>Male students, groups of 7–9, <strong>acquaintances</strong></td><td><strong>123</strong> college students, groups of 7–9</td></tr>
+    <tr><td class="lbl">Aim focus</td><td>Does a unanimous wrong majority produce conformity?</td><td>Does conformity survive when the majority is <strong>questioned</strong>?</td><td>Does conformity survive when the answer is <strong>extreme</strong>? Does it extend to other stimuli?</td></tr>
+    <tr><td class="lbl">Key result</td><td><strong>32%</strong> of responses were errors; 68% correct</td><td><strong>33.2%</strong> errors vs <strong>7.4%</strong> in the private control</td><td>≈ one third errors; control of 37 gave only <strong>3 errors</strong></td></tr>
+    <tr><td class="lbl">Variations</td><td>Two naive → <strong>10.4%</strong>; one ally → <strong>5.5%</strong>; majority of 3 = peak; 2 confederates → <strong>12.8%</strong></td><td>Obvious line → <strong>27.2%</strong>; majority of 1 → abolished; one ally → <strong>13%</strong>; lone wrong responder vs 16 → mocked</td><td>Extreme line → 4/5 copied, 1/5 compromised; discs → <strong>39%</strong>; private answer → <strong>12.5%</strong></td></tr>
+    <tr><td class="lbl">Conclusion</td><td>Situation + individual together explain conformity</td><td>People yield to majority influence even when it is questioned and obviously wrong</td><td>Compliance via NSI; situational factors and individual differences both matter</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：这张表就是本章</strong><br>
+    考试最容易混的是三个年份的数字。记锚点：<strong>1951 = 32%（基线）· 1952 = 33.2% vs 7.4%（异议者 + 私下对照）· 1956 = 123 人 + 圆盘 39%</strong>。变式数字都挂在各自的锚点下面。
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. What the Three Studies Show Together</h2>
+
+  <div class="blue-box">
+    <h4>Three conclusions that build on each other</h4>
+    <ul>
+      <li><strong>People yield to pressure, not information.</strong> In 1952 the dissenter openly questioned the majority's judgement — yet 33.2% still conformed. The private control groups (7.4%; 3 errors out of 37) show the true error rate is almost zero.</li>
+      <li><strong>The situation can be tuned.</strong> Unanimity, ally support, majority size, obviousness, public vs private — each factor moves the error rate in a predictable direction.</li>
+      <li><strong>The individual still matters.</strong> Every study found some participants who never conformed and some who conformed almost always — conformity is not automatic.</li>
+    </ul>
+  </div>
+
+  <div class="xp-block">
+    <h4>🔗 Match the variation to its result <span class="xp-badge">Check yourself</span></h4>
+    <p class="xp-intro">Which result belongs to which variation?</p>
+    <p class="xp-intro"><strong>1.</strong> One confederate consistently gives the correct answer (1952).</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="varMatch(this,'a','v1')">5.5% errors</button>
+      <button class="q-option" onclick="varMatch(this,'b','v1')">13% errors</button>
+      <button class="q-option" onclick="varMatch(this,'c','v1')">27.2% errors</button>
+    </div>
+    <div class="xp-result" id="res-v1"></div>
+    <p class="xp-intro"><strong>2.</strong> Two naive participants face six confederates (1951).</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="varMatch(this,'a','v2')">10.4% errors</button>
+      <button class="q-option" onclick="varMatch(this,'b','v2')">12.8% errors</button>
+      <button class="q-option" onclick="varMatch(this,'c','v2')">12.5% errors</button>
+    </div>
+    <div class="xp-result" id="res-v2"></div>
+    <p class="xp-intro"><strong>3.</strong> The naive participant answers privately while the group answers publicly (1956).</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="varMatch(this,'a','v3')">7.4% errors</button>
+      <button class="q-option" onclick="varMatch(this,'b','v3')">3 errors total</button>
+      <button class="q-option" onclick="varMatch(this,'c','v3')">12.5% errors</button>
+    </div>
+    <div class="xp-result" id="res-v3"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：别把三个“12”开头的数字弄混</strong><br>
+    <strong>12.8%</strong> = 两个同谋者（1951 多数规模）；<strong>10.4%</strong> = 两个真被试（1951 破裂多数）；<strong>12.5%</strong> = 真被试私下作答（1956）。三个都跟“12”有关但完全是三件事 —— 用情境来记，不要用数字背。
+  </div>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. Evaluating Asch's Studies</h2>
+
+  <div class="summary-card-header" onclick="togglePanel(this,'asev1')">
+    <span class="arrow">▶</span> Strengths — why the research is still trusted
+  </div>
+  <div class="summary-card-body" id="asev1">
+    <ul>
+      <li><span class="syl-tag ev">STANDARDISED</span> 高度标准化：All participants were given the same line-judgement tasks in exactly the same way, allowing researchers to precisely measure conformity using the <strong>objective measure of error rate</strong> — so the study can be retested to check <strong>reliability</strong>.</li>
+      <li><span class="syl-tag ev">VALIDITY</span> 内部效度：The highly standardised, controlled nature also increases <strong>internal validity</strong> — the error rates were affected only by the majority, and not by any other variable.</li>
+    </ul>
+  </div>
+
+  <div class="summary-card-header" onclick="togglePanel(this,'asev2')" style="margin-top:14px;">
+    <span class="arrow">▶</span> Limitations — and the evidence that sharpens them
+  </div>
+  <div class="summary-card-body" id="asev2">
+    <ul>
+      <li><span class="syl-tag crit">ECOLOGICAL</span> 生态效度：We cannot be sure the findings extend beyond a laboratory. Conformity to a <strong>trivial line judgement</strong> may occur in the lab, but real-life decisions carry greater importance — the pressure may not exist, or may be stronger. This is a problem of <strong>ecological validity</strong>.</li>
+      <li><span class="syl-tag crit">ETHICS</span> 伦理：Participants were not fully informed — they were <strong>deceived</strong> about the other group members and put under considerable <strong>stress</strong> when giving public judgements against the majority. However, these breaches were a <strong>necessary part of the procedure</strong>: had participants known the true nature, they would have acted very differently.</li>
+      <li><span class="syl-tag crit">STRANGERS</span> 真实群体是熟人：Conformity usually exists within groups of <strong>familiar people</strong> — family and friends — not among strangers. <strong>Mori and Arai (2010)</strong> partially replicated Asch using participants who <strong>knew the confederates</strong>: <strong>males (but not females) were less likely</strong> to be swayed by the incorrect answers. This offers more useful insight into everyday conformity.</li>
+      <li><span class="syl-tag crit">STABILITY</span> 跨时代文化不稳定：Asch tested <strong>American male university students in the 1950s</strong>. Research with different populations in different decades has <strong>not produced the same conformity rates</strong> — suggesting conformity may not be a stable human characteristic.</li>
+    </ul>
+  </div>
+
+  <div class="exam-tip">
+    <strong>How to get top marks.</strong> Do not list — judge. “Because Asch tested only American male students in the 1950s, and later studies with other populations found different rates, we cannot treat 32% as a fixed human constant — the figure is time- and culture-bound.”
+  </div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="section" id="s14">
+  <h2>14. Improving the Study — the exam's favourite question</h2>
+
+  <div class="note-box">
+    <h4>The exam tip, turned into a method</h4>
+    <p>For any named study you may be asked <strong>how it could be improved</strong>. Take a weakness → turn it into an improvement → <strong>justify why it is an improvement</strong>.</p>
+  </div>
+
+  <table class="n">
+    <tr><th style="width:33%;">Improvement 改进</th><th>Justification 理由（课本原文句式）</th></tr>
+    <tr><td>Use a more <strong>representative sample</strong> that also includes <strong>female participants</strong> instead of just the 50 male students.</td><td>This would make his findings about conformity to a majority group more <strong>generalisable</strong> to a wider target population.</td></tr>
+    <tr><td>Use a more <strong>realistic task</strong>, such as providing photographs of real objects, to test conformity.</td><td>This would increase the <strong>validity</strong> of Asch's findings about conformity in real-life situations.</td></tr>
+    <tr><td>Use <strong>familiar groups</strong> (friends) rather than strangers — as Mori and Arai (2010) did.</td><td>This would better reflect how conformity operates in <strong>everyday</strong> group settings.</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：改进题的三段套路</strong><br>
+    <strong>弱点 → 改进 → 理由</strong>。弱点必须是“真弱点”（不能是伦理——伦理难以既保留程序又消除），改进要可操作，理由落到 <strong>generalisability / validity</strong> 这类评价词上。背熟课本给的两个例句，考场上换内容即可。
+  </div>
+</section>
+
+<!-- ============ 15 ============ -->
+<section class="section" id="s15">
+  <h2>15. Checkpoint</h2>
+
+  <div class="xp-block">
+    <h4>🎯 Eight quick questions <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro"><strong>Q1.</strong> Select the correct result of Asch's (1951) study:</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q1" value="a"> 32% of participants made errors</label>
+      <label class="q-option"><input type="radio" name="q1" value="b"> 32% of responses given were errors</label>
+      <label class="q-option"><input type="radio" name="q1" value="c"> 32% of trials were errors</label>
+    </div>
+    <p class="xp-intro"><strong>Q2.</strong> In the 1951 baseline, how many confederates faced each naive participant?</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q2" value="a"> 3</label>
+      <label class="q-option"><input type="radio" name="q2" value="b"> 7</label>
+      <label class="q-option"><input type="radio" name="q2" value="c"> 15</label>
+    </div>
+    <p class="xp-intro"><strong>Q3.</strong> With one confederate giving the correct answer (1951 variation), errors fell to…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q3" value="a"> 5.5%</label>
+      <label class="q-option"><input type="radio" name="q3" value="b"> 10.4%</label>
+      <label class="q-option"><input type="radio" name="q3" value="c"> 13%</label>
+    </div>
+    <p class="xp-intro"><strong>Q4.</strong> The greatest error rate in the majority-size series occurred with…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q4" value="a"> 2 confederates</label>
+      <label class="q-option"><input type="radio" name="q4" value="b"> 3 confederates</label>
+      <label class="q-option"><input type="radio" name="q4" value="c"> 16 confederates</label>
+    </div>
+    <p class="xp-intro"><strong>Q5.</strong> In the 1952 study, the private control group's error rate was…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q5" value="a"> 7.4%</label>
+      <label class="q-option"><input type="radio" name="q5" value="b"> 12.5%</label>
+      <label class="q-option"><input type="radio" name="q5" value="c"> 27.2%</label>
+    </div>
+    <p class="xp-intro"><strong>Q6.</strong> In 1956, when the line was obviously extremely different, what did one-fifth of participants do?</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q6" value="a"> answered correctly</label>
+      <label class="q-option"><input type="radio" name="q6" value="b"> compromised with a moderately wrong line</label>
+      <label class="q-option"><input type="radio" name="q6" value="c"> refused to answer</label>
+    </div>
+    <p class="xp-intro"><strong>Q7.</strong> The coloured discs variation produced an error rate of…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q7" value="a"> 32%</label>
+      <label class="q-option"><input type="radio" name="q7" value="b"> 39%</label>
+      <label class="q-option"><input type="radio" name="q7" value="c"> 33.2%</label>
+    </div>
+    <p class="xp-intro"><strong>Q8.</strong> Mori and Arai (2010) found that with familiar confederates…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q8" value="a"> females (but not males) resisted the wrong answers</label>
+      <label class="q-option"><input type="radio" name="q8" value="b"> males (but not females) were less likely to be swayed</label>
+      <label class="q-option"><input type="radio" name="q8" value="c"> nobody conformed at all</label>
+    </div>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="checkQuiz()">Mark my answers</button>
+    </div>
+    <div class="xp-result" id="quizResult"></div>
+  </div>
+</section>
+
+<!-- ============ 16 ============ -->
+<section class="section" id="s16">
+  <h2>16. Exam Lab</h2>
+
+  <div class="note-box">
+    <h4>How to read the question</h4>
+    <p><strong>Describe</strong> — who, where, what they did, and the key numbers.<br>
+    <strong>Explain</strong> — why, or what it means. One point plus one reason per mark.<br>
+    <strong>Evaluate</strong> — strengths and limitations, each with a consequence, plus a judgement.</p>
+  </div>
+
+  <div class="blue-box">
+    <h4>Q1 · Describe Asch's (1951) study into conformity. (4 marks)</h4>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am1')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am1">
+      <p>Asch placed <strong>50 male college students</strong> in groups of <strong>eight</strong> and asked them to publicly judge which of three comparison lines matched the length of a standard line. Unknown to <strong>one naive participant</strong>, the other <strong>seven group members were confederates</strong> who deliberately gave the same wrong answer, so the participant faced a <strong>unanimous incorrect majority</strong> across <strong>12 critical trials</strong>. The frequency of the participant's incorrect responses was used as the measure of conformity: <strong>32% of estimates followed the majority's error</strong>, while 68% were correct. Participants were interviewed and debriefed immediately afterwards.</p>
+    </div>
+  </div>
+
+  <div class="blue-box">
+    <h4>Q2 · Explain one conclusion that can be drawn from Asch's (1952) control group. (2 marks)</h4>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am2')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am2">
+      <p>The control group wrote their answers <strong>in private</strong> and made errors on only <strong>7.4%</strong> of responses, compared with 33.2% when answering publicly against a unanimous wrong majority. This difference shows that the errors in the experimental group were caused by <strong>social pressure rather than the difficulty of the task</strong> — the task itself was almost never misjudged when no majority was watching.</p>
+    </div>
+  </div>
+
+  <div class="blue-box">
+    <h4>Q3 · Explain how one variation of Asch's research demonstrates the power of social support. (2 marks)</h4>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am3')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am3">
+      <p>When <strong>one confederate consistently gave the correct answer</strong> alongside the naive participant, conformity fell from around 32% to <strong>13%</strong> of estimates. Because the only change was the presence of one ally, the drop shows that a partner acts as <strong>social support</strong> against majority pressure — breaking the unanimity of the group removes most of its power.</p>
+    </div>
+  </div>
+
+  <div class="blue-box">
+    <h4>Q4 · Evaluate Asch's (1951) research into conformity. (8 marks)</h4>
+    <p style="margin:6px 0 2px"><strong>Plan four paragraphs first:</strong></p>
+    <table>
+      <tr><th style="width:8%;">¶</th><th>Job of that paragraph</th></tr>
+      <tr><td><strong>1</strong></td><td>Method: standardised procedure, objective error measure — strength (reliability, internal validity).</td></tr>
+      <tr><td><strong>2</strong></td><td>Ecological validity: trivial task, laboratory — what that does to the conclusion.</td></tr>
+      <tr><td><strong>3</strong></td><td>Ethics: deception and stress — and why they were necessary.</td></tr>
+      <tr><td><strong>4</strong></td><td>Sample and stability: American males, 1950s; Mori and Arai (2010); balanced conclusion.</td></tr>
+    </table>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am4')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am4">
+      <p><strong>¶1.</strong> A strength of Asch's research is that the procedure was highly <strong>standardised and controlled</strong>: every participant faced the same line judgements in exactly the same way, and conformity was measured objectively through the error rate. This means the study is replicable, so <strong>reliability</strong> can be checked, and the high control increases <strong>internal validity</strong> — the error rates were affected only by the majority's answers and no other variable.</p>
+      <p><strong>¶2.</strong> However, the findings may not extend beyond the laboratory. Conformity to a <strong>trivial line judgement</strong> may occur under laboratory pressure, but real-life conformity involves decisions of greater importance, where the pressure may not exist or may be even stronger. This limits the <strong>ecological validity</strong> of the research, so we cannot be confident that 32% reflects everyday conformity.</p>
+      <p><strong>¶3.</strong> The research also raises ethical problems: participants were <strong>deceived</strong> about the true nature of the study and the identity of the group members, and experienced <strong>stress</strong> when giving public answers against a unanimous majority. Asch defended this because the deception was a <strong>necessary part of the procedure</strong> — participants who knew the truth would have acted very differently — but it still means participants could not give informed consent.</p>
+      <p><strong>¶4.</strong> Finally, the sample — <strong>American male university students in the 1950s</strong> — limits generalisation, and research with different populations in later decades has <strong>not produced the same conformity rates</strong>, suggesting conformity is not a stable human characteristic. <strong>Mori and Arai (2010)</strong> used familiar groups and found males, but not females, were less likely to be swayed, further showing the effect depends on who the group is. On balance, Asch's research remains a convincing demonstration of normative influence, but its figures should be treated as specific to its time, task and sample.</p>
+    </div>
+  </div>
+
+  <div class="exam-tip">
+    <strong>Exam tip from the textbook.</strong> Review the <strong>weaknesses</strong> of any named study — they are the areas for improvement. Identify an improvement, then <strong>justify</strong> why it improves on the original (generalisability, validity…).
+  </div>
+</section>
+
+<!-- ============ 17 ============ -->
+<section class="section" id="s17">
+  <h2>17. Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><div class="term">confederate <span class="zh">同谋者</span></div><div class="def">An actor working for the researcher — in Asch's studies, the group members giving wrong answers on purpose.</div></div>
+    <div class="glossary-item"><div class="term">naive participant <span class="zh">真被试</span></div><div class="def">The one real participant in each group, unaware the others are confederates.</div></div>
+    <div class="glossary-item"><div class="term">critical trials <span class="zh">关键试验</span></div><div class="def">The 12 trials in which the confederate majority unanimously gave the wrong answer.</div></div>
+    <div class="glossary-item"><div class="term">unanimous <span class="zh">一致的</span></div><div class="def">When the whole majority gives the same (wrong) answer — the condition that produced most conformity.</div></div>
+    <div class="glossary-item"><div class="term">broken majority <span class="zh">破裂多数</span></div><div class="def">A majority whose unanimity is destroyed by a dissenting or correct-answering member.</div></div>
+    <div class="glossary-item"><div class="term">social support <span class="zh">社会支持</span></div><div class="def">The presence of an ally answering correctly, which acts as a buffer against majority pressure.</div></div>
+    <div class="glossary-item"><div class="term">control group <span class="zh">控制组</span></div><div class="def">A group not experiencing the experimental situation — a baseline against which change is judged (e.g. private written answers).</div></div>
+    <div class="glossary-item"><div class="term">error rate <span class="zh">错误率</span></div><div class="def">The objective measure of conformity: the percentage of responses matching the majority's deliberate error.</div></div>
+    <div class="glossary-item"><div class="term">dissent / dissenter <span class="zh">异议 / 异议者</span></div><div class="def">Disagreeing with the majority; the group member who questions the majority's judgement.</div></div>
+    <div class="glossary-item"><div class="term">compromise response <span class="zh">妥协反应</span></div><div class="def">Selecting a moderately wrong line under pressure from an extremely wrong majority — one-fifth did this in 1956.</div></div>
+    <div class="glossary-item"><div class="term">ecological validity <span class="zh">生态效度</span></div><div class="def">Whether laboratory findings apply to real-life settings — a key criticism of the trivial line task.</div></div>
+    <div class="glossary-item"><div class="term">internal validity <span class="zh">内部效度</span></div><div class="def">Confidence that only the majority influenced the error rate — a strength of the standardised design.</div></div>
+    <div class="glossary-item"><div class="term">deception <span class="zh">欺骗</span></div><div class="def">Misleading participants about the study's nature — the main ethical issue in Asch's research.</div></div>
+    <div class="glossary-item"><div class="term">normative social influence <span class="zh">规范性社会影响</span></div><div class="def">Conforming to be accepted and avoid rejection — the explanation Asch's studies demonstrate.</div></div>
+    <div class="glossary-item"><div class="term">majority influence <span class="zh">多数派影响</span></div><div class="def">The power of a numerical majority to shape an individual's judgements and behaviour.</div></div>
+    <div class="glossary-item"><div class="term">individual differences <span class="zh">个体差异</span></div><div class="def">Stable personal characteristics — Asch found some participants never conformed, others did so in nearly every trial.</div></div>
+  </div>
+</section>
+
+<div class="footer-note">1.1.5 Research into conformity (Asch) · Social Psychology · previous: <a href="../1.1.4-types-and-explanations-of-conformity/">1.1.4 types and explanations</a></div>
+  </main>
+</div>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+</div>
+
+<script>
+(function () {
+  var baseFont = 16;
+
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark'; }
+  };
+
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  window.seatChoice = function (c) {
+    var el = document.getElementById('seatResult');
+    if (!el) { return; }
+    if (c === 'truth') {
+      el.innerHTML = '<p><span class="xp-verdict">You said Y.</span> That was the right answer — and in the control conditions almost nobody got it wrong when writing privately. But in the public trials, about a third of all answers followed the majority\u2019s mistake anyway.</p>';
+    } else {
+      el.innerHTML = '<p><span class="xp-verdict">You said X.</span> You just did what a third of Asch\u2019s recorded responses did: followed a unanimous majority into an obviously wrong answer. You knew it was wrong — that is exactly why this is <strong>normative</strong> social influence, not missing information.</p>';
+    }
+    el.innerHTML += '<p>Notice there was <strong>no order</strong> given and no authority figure present — only a group of equals. That is what makes this conformity, and what made Asch\u2019s design so clean.</p>';
+    el.classList.add('show');
+  };
+
+  var varKey = { v1: 'b', v2: 'a', v3: 'c' };
+  var varWhy = {
+    v1: 'One consistent correct-answering ally (1952) cut conformity to 13% — social support in action. (5.5% was the 1951 ally variation; 27.2% was the obviously-wrong line.)',
+    v2: 'Two naive participants against six confederates (1951) gave 10.4% errors. (12.8% was two confederates as the majority; 12.5% was the private-answer variation in 1956.)',
+    v3: 'With the group answering publicly and the naive participant answering privately (1956), errors fell to 12.5%. (7.4% was the 1952 written control; the 1956 written control gave only 3 errors total.)'
+  };
+  window.varMatch = function (btn, choice, id) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (choice === varKey[id]);
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById('res-' + id);
+    if (!el) { return; }
+    el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + varWhy[id] + '</p>';
+    el.classList.add('show');
+    el.classList.toggle('ok', ok);
+  };
+
+  var quizKey = { q1: 'b', q2: 'b', q3: 'a', q4: 'b', q5: 'a', q6: 'b', q7: 'b', q8: 'b' };
+  var quizWhy = {
+    q1: 'The measure was the error rate: 32% of responses followed the majority\u2019s error. Not participants, not trials.',
+    q2: 'Groups of eight: seven confederates plus one naive participant.',
+    q3: 'One correct-answering confederate (1951) cut errors to 5.5%. The 13% figure was the 1952 version.',
+    q4: 'Three confederates produced the greatest error rate; 4, 8 and 16 added nothing significant.',
+    q5: 'The 1952 private control group made errors on 7.4% of responses.',
+    q6: 'One-fifth compromised — selecting the moderately different line instead of copying the extreme wrong answer.',
+    q7: 'The coloured discs judgement produced 39% incorrect responses.',
+    q8: 'Mori and Arai (2010) used friends as confederates and found males, but not females, were less likely to be swayed.'
+  };
+  window.checkQuiz = function () {
+    var el = document.getElementById('quizResult');
+    if (!el) { return; }
+    var score = 0;
+    var html = '';
+    Object.keys(quizKey).forEach(function (q) {
+      var sel = document.querySelector('input[name="' + q + '"]:checked');
+      var chosen = sel ? sel.value : null;
+      var ok = (chosen === quizKey[q]);
+      if (ok) { score++; }
+      html += '<p style="margin:6px 0"><strong>' + q.toUpperCase() + ':</strong> ' +
+        (chosen ? (ok ? 'correct' : 'not quite') : 'not answered') + ' — ' + quizWhy[q] + '</p>';
+    });
+    el.innerHTML = '<p><span class="xp-verdict">Score: ' + score + ' / 8</span></p>' + html;
+    el.classList.add('show');
+    el.classList.toggle('ok', score === 8);
+  };
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.toggle('show'); }
+  };
+
+  window.togglePanel = function (header, id) {
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    el.classList.toggle('hidden');
+    header.classList.toggle('open');
+  };
+
+  var secs = document.querySelectorAll('.section');
+  var links = document.querySelectorAll('.sb-item a');
+  function highlight() {
+    var best = null;
+    var bestTop = -99999;
+    for (var i = 0; i < secs.length; i++) {
+      var r = secs[i].getBoundingClientRect();
+      if (r.top <= 140 && r.top > bestTop) { bestTop = r.top; best = secs[i]; }
+    }
+    if (!best && secs.length) { best = secs[0]; }
+    for (var j = 0; j < links.length; j++) { links[j].classList.remove('sb-active'); }
+    if (best) {
+      var target = best.getAttribute('id');
+      for (var k = 0; k < links.length; k++) {
+        if (links[k].getAttribute('href') === '#' + target) { links[k].classList.add('sb-active'); }
+      }
+    }
+  }
+  window.addEventListener('scroll', highlight);
+  highlight();
+
+  var btt = document.getElementById('btt');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 400) { btt.classList.add('show'); } else { btt.classList.remove('show'); }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.1.4 Types and Explanations of Conformity（从众的类型与解释）</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.five-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+
+.mat2x2 { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 6px; margin: 14px 0; }
+.mat2x2 .mh { background: var(--primary); color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
+body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic A · Conformity — Types and explanations of conformity</span>
+  </div>
+  <span class="nav-pill">🧑‍🤝‍🧑 Social Psychology</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="1.1.4-Types-and-Explanations-of-Conformity-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">1.1.4 · Contents</div>
+        <div class="sb-header-sub">Types &amp; explanations</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">Before we start</li>
+        <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+        <li class="sb-item"><a href="#s2">2. What Conformity Is</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Kelman's three types</li>
+        <li class="sb-item"><a href="#s3">3. The Three Types</a></li>
+        <li class="sb-item"><a href="#s4">4. Compliance</a></li>
+        <li class="sb-item"><a href="#s5">5. Internalisation</a></li>
+        <li class="sb-item"><a href="#s6">6. Identification</a></li>
+        <li class="sb-item"><a href="#s7">7. Spot the Type</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Why we conform</li>
+        <li class="sb-item"><a href="#s8">8. Informational Influence</a></li>
+        <li class="sb-item"><a href="#s9">9. Normative Influence</a></li>
+        <li class="sb-item"><a href="#s10">10. Evaluating ISI &amp; NSI</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Roles and impact</li>
+        <li class="sb-item"><a href="#s11">11. Conformity to Social Roles</a></li>
+        <li class="sb-item"><a href="#s12">12. The Prison Studies</a></li>
+        <li class="sb-item"><a href="#s13">13. Social Impact Theory</a></li>
+        <li class="sb-item"><a href="#s14">14. SIT Applied</a></li>
+        <li class="sb-item"><a href="#s15">15. Evaluating SIT</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Practice</li>
+        <li class="sb-item"><a href="#s16">16. Checkpoint</a></li>
+        <li class="sb-item"><a href="#s17">17. Exam Lab</a></li>
+        <li class="sb-item"><a href="#s18">18. Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>1.1.4 TYPES AND EXPLANATIONS OF CONFORMITY<br><span style="font-size:0.65em">从众的类型与解释</span></h1>
+  <div class="subtitle">Social Psychology · Kelman 三类型 + Deutsch &amp; Gerrard 双解释 + 社会角色 + Latané 社会影响理论</div>
+  <div class="meta">
+    <span class="badge">🧠 Core idea: the group, not an order</span>
+    <span class="badge">👥 Three types, two explanations</span>
+    <span class="badge">📖 Textbook: Chapter 2</span>
+  </div>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started</h2>
+
+  <div class="xp-block">
+    <h4>🫙 The jar of beans <span class="xp-badge">Try it on yourself</span></h4>
+    <p class="xp-intro">Your teacher holds up a jar full of coloured beans and asks everyone to <strong>write down privately</strong> how many beans it holds. You write your estimate. Then the class discusses it and agrees on a <strong>group estimate</strong> — say, most people are saying “about 850”.</p>
+    <p class="xp-intro">Now the teacher asks everyone to write a <strong>second private estimate</strong>. Your first guess was 600. What happens to your second one?</p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="beansChoice('moved')">It moves toward 850</button>
+      <button class="xp-btn" onclick="beansChoice('stayed')">It stays at 600</button>
+      <button class="xp-btn" onclick="beansChoice('away')">It moves further away</button>
+    </div>
+    <div class="xp-result" id="beansResult"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解</strong><br>
+    没有人命令你改答案。没有老师施压、没有惩罚、没有奖励 —— 你只是<strong>听到别人怎么想</strong>，然后自己悄悄改了。这就是从众（conformity）和服从（obedience）最大的区别：<strong>服从有人下命令，从众没有人下命令</strong>，只有一群人和他们的影响。<br>
+    1932 年心理学家 Jenness 用真的豆子瓶做过这个实验 —— 结果大多数人的第二次估计都向小组的估计靠近了。
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. What Conformity Is</h2>
+
+  <div class="blue-box">
+    <h4>The definition 背下来</h4>
+    <p><strong>Conformity（从众）</strong> is when individuals change their behaviour or attitudes to <strong>align with those of the majority</strong>. The pressure to conform may be <strong>real or imagined</strong> — nobody has to say anything out loud.</p>
+  </div>
+
+  <div class="note-box">
+    <h4>Two words you must not confuse（接 1.1.2）</h4>
+    <table>
+      <tr><th style="width:26%">Term</th><th>What it means</th></tr>
+      <tr><td>obedience（服从）</td><td>Following a <strong>direct order</strong> from someone perceived to have authority. One man, one order.</td></tr>
+      <tr><td>conformity（从众）</td><td>Changing your behaviour to match a <strong>majority or group</strong> — <strong>no order is given</strong>.</td></tr>
+    </table>
+  </div>
+
+  <div class="keyterm-box">
+    <span class="kt">private acceptance（私下接受）</span> — genuinely adopting the behaviours or values of the majority; you really believe it.<br>
+    <span class="kt">public acceptance（公开顺从）</span> — simply going along with the majority even if you do not agree with them.
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：先记住这两根轴</strong><br>
+    判断任何一种从众，问两个问题：<br>
+    ① 你心里<strong>真的信了吗</strong>？（私下接受 vs 公开顺从）<br>
+    ② 离开这个群体后<strong>改变还在吗</strong>？（持久 vs 暂时）<br>
+    Kelman 的三种类型（下一节）就是这两根轴组合出来的。
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Kelman's Three Types</h2>
+
+  <p>Herbert Kelman (1958) proposed that there are <strong>three types of conformity</strong>. Before you learn the names, look at the map — the three types differ in <em>how deep the change goes</em> and <em>how long it lasts</em>.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kelman's three types of conformity arranged by depth and duration">
+      <rect x="30" y="16" width="190" height="140" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="125" y="42" font-size="14" font-weight="700" fill="#c2410c" text-anchor="middle">COMPLIANCE</text>
+      <text x="125" y="64" font-size="11" fill="#1e293b" text-anchor="middle">public acceptance only</text>
+      <text x="125" y="82" font-size="11" fill="#1e293b" text-anchor="middle">you do not really believe it</text>
+      <rect x="55" y="102" width="140" height="12" rx="6" fill="#fdba74"/>
+      <text x="125" y="138" font-size="10" fill="#475569" text-anchor="middle">lasts: while the group watches</text>
+
+      <rect x="245" y="16" width="190" height="140" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+      <text x="340" y="42" font-size="14" font-weight="700" fill="#1d4ed8" text-anchor="middle">IDENTIFICATION</text>
+      <text x="340" y="64" font-size="11" fill="#1e293b" text-anchor="middle">we want to belong to the group</text>
+      <text x="340" y="82" font-size="11" fill="#1e293b" text-anchor="middle">change depends on membership</text>
+      <rect x="270" y="102" width="140" height="12" rx="6" fill="#93c5fd"/>
+      <text x="340" y="138" font-size="10" fill="#475569" text-anchor="middle">lasts: while we are in the role</text>
+
+      <rect x="460" y="16" width="190" height="140" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+      <text x="555" y="42" font-size="14" font-weight="700" fill="#166534" text-anchor="middle">INTERNALISATION</text>
+      <text x="555" y="64" font-size="11" fill="#1e293b" text-anchor="middle">private acceptance — we truly</text>
+      <text x="555" y="82" font-size="11" fill="#1e293b" text-anchor="middle">believe the majority is right</text>
+      <rect x="485" y="102" width="140" height="12" rx="6" fill="#86efac"/>
+      <text x="555" y="138" font-size="10.5" fill="#475569" text-anchor="middle">change lasts: most permanent</text>
+
+      <text x="30" y="185" font-size="11.5" font-weight="700" fill="#334155">Depth of change 深→</text>
+      <line x1="175" y1="181" x2="640" y2="181" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar4)"/>
+      <defs>
+        <marker id="ar4" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto">
+          <path d="M0,0 L7,3.2 L0,6.4 z" fill="#64748b"/>
+        </marker>
+      </defs>
+      <text x="30" y="215" font-size="11" fill="#475569">Shallowest: behaviour changes, belief does not.</text>
+      <text x="640" y="215" font-size="11" fill="#475569" text-anchor="end">Deepest: belief itself changes.</text>
+      <text x="340" y="238" font-size="10.5" font-style="italic" fill="#64748b" text-anchor="middle">All three were proposed by Kelman (1958).</text>
+    </svg>
+    <div class="figure-caption">Figure 1 — the three types, arranged by how deep and how lasting the change is.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：一张图记住三种</strong><br>
+    compliance = <strong>表面跟着走</strong>（心里不信，人群散了就变回去）；identification = <strong>想当“自己人”</strong>（在这个圈子里就那样做，离开圈子就不做了）；internalisation = <strong>真的信了</strong>（变成自己的观点，最持久）。
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Compliance</h2>
+
+  <p><strong>Compliance（表面顺从）</strong> involves going along with the majority to <strong>gain social approval or avoid social rejection</strong>, even if we do not agree with the majority opinion or behaviour. It is <strong>public acceptance</strong> only: the individual publicly goes along with the majority while <strong>privately holding different views</strong>.</p>
+
+  <div class="note-box">
+    <h4>Key features 考点特征</h4>
+    <ul>
+      <li>The change in behaviour is likely to influence the person <strong>only while majority pressure exists</strong>.</li>
+      <li>It will <strong>not have a lasting effect</strong> on behaviour — remove the group, and the behaviour reverts.</li>
+      <li>Driven by <strong>normative social influence</strong> (§9): we want approval, we fear rejection.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解 + 例子</strong><br>
+    课本里的例子：全组人都在听一个新歌手，其实你不喜欢，但你也买了演唱会门票 —— 为了<strong>合群</strong>，不是为了音乐。<br>
+    再一个：同事都给服务员小费，你其实不想给，但你也给了。人一走，下次你就不会给了 —— 这就是“不持久”。
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Internalisation</h2>
+
+  <p><strong>Internalisation（内化）</strong> occurs when you adopt the behaviours or values of the majority because you <strong>genuinely accept</strong> them and internalise them as your own — <strong>private acceptance</strong>. This may be because the majority seems to hold knowledge or information about how to behave, so you look to them for guidance.</p>
+
+  <div class="note-box">
+    <h4>Key features 考点特征</h4>
+    <ul>
+      <li>It results in the <strong>most permanent</strong> behaviour change, because there is a genuine change in belief or behaviour.</li>
+      <li>Driven by <strong>informational social influence</strong> (§8): we believe the majority knows better.</li>
+    </ul>
+  </div>
+
+  <div class="blue-box">
+    <h4>The evidence: Sherif (1935) — the autokinetic effect</h4>
+    <p>Muzafer Sherif used the <strong>autokinetic effect</strong>: a spot of light projected onto a screen in a dark room <em>appears</em> to move, even though it is stationary. Participants first estimated how far the light moved <strong>alone</strong>, then in <strong>groups</strong>.</p>
+    <p><strong>Finding:</strong> individual estimates <strong>converged to match the group estimate</strong>. Because there was <strong>no real correct answer</strong> — the light never moved — this conformity was probably <strong>internalisation</strong>: with no facts to check against, people genuinely adopted the group's answer.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么“没有正确答案”是关键</strong><br>
+    黑屋里光点其实没动，但你看起来它在动 —— 每个人都不知道真相。在<strong>模糊情境</strong>（ambiguous situation）里，别人就是我们唯一的信息来源，所以“跟大伙儿一致”是理性的。信了，就是 internalisation。<br>
+    对比记忆：1.1.2 里 Milgram 的实验有明确对错（线有多长、答案是什么），那是另一回事 —— Asch 要在<strong>答案明显</strong>的情况下测从众，下一章 1.1.5 讲。
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Identification</h2>
+
+  <p><strong>Identification（认同）</strong> occurs when we change our behaviour <strong>while in the company of a majority</strong> in order to fit in. We do it because we want to <strong>define ourselves as a member of a group</strong>, so we adopt their beliefs and behaviours.</p>
+
+  <div class="note-box">
+    <h4>Key features 考点特征</h4>
+    <ul>
+      <li>The change is <strong>temporary</strong>: it exists because of group membership.</li>
+      <li>Classic example: adopting a style of dress <strong>when with a friendship group</strong> — and dressing differently elsewhere.</li>
+      <li>Driven by <strong>normative social influence</strong>: the reward is belonging.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：compliance 和 identification 的区别在哪？</strong><br>
+    两者都不是真信。区别在<strong>动机</strong>：compliance 是怕被拒绝 / 想被认可（我被迫跟着走）；identification 是<strong>想成为这个群体的一员</strong>，把群体的做法当成“我们做的事”（我愿意跟着走）。<br>
+    两者都是公开顺从、都不持久 —— 考试里最容易混的就是这一对。
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Spot the Type</h2>
+
+  <p>Read each scenario and decide which type of conformity it shows. These are adapted from the kinds of examples the exam uses.</p>
+
+  <div class="xp-block">
+    <h4>🎯 Scenario 1 <span class="xp-badge">Which type?</span></h4>
+    <p class="xp-intro">An individual moves to a different country and adopts the customs and traditions of the new culture in order to become a citizen of that country.</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="typeMatch(this,'compliance','t1')">Compliance</button>
+      <button class="q-option" onclick="typeMatch(this,'identification','t1')">Identification</button>
+      <button class="q-option" onclick="typeMatch(this,'internalisation','t1')">Internalisation</button>
+    </div>
+    <div class="xp-result" id="res-t1"></div>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Scenario 2 <span class="xp-badge">Which type?</span></h4>
+    <p class="xp-intro">A child joins a cricket club and shows support by wearing the team kit and praising the team's skills <strong>while at their matches</strong>.</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="typeMatch(this,'compliance','t2')">Compliance</button>
+      <button class="q-option" onclick="typeMatch(this,'identification','t2')">Identification</button>
+      <button class="q-option" onclick="typeMatch(this,'internalisation','t2')">Internalisation</button>
+    </div>
+    <div class="xp-result" id="res-t2"></div>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Scenario 3 <span class="xp-badge">Which type?</span></h4>
+    <p class="xp-intro">An employee says they agree with their supervisor's decision to reduce break times, <strong>even though the employee does not privately agree</strong>.</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="typeMatch(this,'compliance','t3')">Compliance</button>
+      <button class="q-option" onclick="typeMatch(this,'identification','t3')">Identification</button>
+      <button class="q-option" onclick="typeMatch(this,'internalisation','t3')">Internalisation</button>
+    </div>
+    <div class="xp-result" id="res-t3"></div>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Scenario 4 <span class="xp-badge">Which type?</span></h4>
+    <p class="xp-intro">A guest at a restaurant does not receive his meal with the rest of his party and is treated rudely by the waiter. At the end of the meal the others leave a tip, so the guest also leaves a tip <strong>even though he does not want to</strong>.</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="typeMatch(this,'compliance','t4')">Compliance</button>
+      <button class="q-option" onclick="typeMatch(this,'identification','t4')">Identification</button>
+      <button class="q-option" onclick="typeMatch(this,'internalisation','t4')">Internalisation</button>
+    </div>
+    <div class="xp-result" id="res-t4"></div>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Informational Social Influence</h2>
+
+  <p>Morton Deutsch and Harold Gerrard (1955) proposed <strong>two explanations</strong> for why we conform: informational and normative social influence.</p>
+
+  <div class="blue-box">
+    <h4>Informational social influence（信息性社会影响，ISI）</h4>
+    <p>In a situation where we are <strong>unsure how to act or think</strong>, we look to others to guide us. We conform to the majority because we believe it is the <strong>correct</strong> way to behave — and we accept it.</p>
+    <ul>
+      <li>Explains conformity in <strong>ambiguous situations</strong>（模糊情境）.</li>
+      <li>Involves a <strong>rational judgement</strong> based on the information available.</li>
+      <li>Leads to <strong>internalisation</strong> — we genuinely believe the majority view (private acceptance).</li>
+    </ul>
+  </div>
+
+  <div class="note-box">
+    <h4>The textbook example 课本例子</h4>
+    <p>In a high-end restaurant, a diner looks at other guests to see <strong>which cutlery to use</strong> for the starter, because they do not know which fork is correct. The other diners are the best available source of information.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：一句话抓住 ISI</strong><br>
+    <strong>“我不知道，所以他们大概知道。”</strong> —— 触发条件是<strong>不确定</strong>；结果是真的信（internalisation）。关键词：ambiguous、rational、information、correct。
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Normative Social Influence</h2>
+
+  <div class="blue-box">
+    <h4>Normative social influence（规范性社会影响，NSI）</h4>
+    <p>Sometimes we conform because we have a <strong>need to be accepted</strong> and to fit into a group — or to <strong>avoid rejection</strong>. We do not necessarily believe the majority is right; we just want to belong.</p>
+    <ul>
+      <li><strong>Peer pressure</strong> is a common form, especially in adolescence when belonging matters most.</li>
+      <li>Leads to <strong>compliance</strong> and <strong>identification</strong> — public acceptance without genuine belief.</li>
+    </ul>
+  </div>
+
+  <div class="note-box">
+    <h4>The two textbook examples</h4>
+    <p><strong>NSI example:</strong> in a friendship group, many members start listening to a new musician. Not all of them like the music — but they all buy tickets to the live show.</p>
+    <p><strong>Evidence:</strong> Asch (1956) demonstrated NSI in a series of experiments where participants sometimes selected an answer that was <strong>obviously incorrect</strong> because of social pressure to go along with the group judgement. (Full detail in 1.1.5.)</p>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 265" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two routes into conformity: ISI leads to internalisation, NSI leads to compliance and identification">
+      <defs>
+        <marker id="ar5" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto">
+          <path d="M0,0 L7,3.2 L0,6.4 z" fill="#c2410c"/>
+        </marker>
+      </defs>
+      <rect x="24" y="20" width="170" height="88" rx="9" fill="#f8fafc" stroke="#64748b" stroke-width="1.6"/>
+      <text x="109" y="46" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">Ambiguous situation</text>
+      <text x="109" y="64" font-size="10.5" fill="#475569" text-anchor="middle">“I don't know the answer.</text>
+      <text x="109" y="79" font-size="10.5" fill="#475569" text-anchor="middle">Nobody does.”</text>
+      <text x="109" y="98" font-size="10.5" font-weight="600" fill="#166534" text-anchor="middle">e.g. Sherif's light spot</text>
+
+      <rect x="24" y="150" width="170" height="88" rx="9" fill="#f8fafc" stroke="#64748b" stroke-width="1.6"/>
+      <text x="109" y="176" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">Clear pressure to fit in</text>
+      <text x="109" y="194" font-size="10.5" fill="#475569" text-anchor="middle">“I want to belong.</text>
+      <text x="109" y="209" font-size="10.5" fill="#475569" text-anchor="middle">I don't want rejection.”</text>
+      <text x="109" y="228" font-size="10.5" font-weight="600" fill="#166534" text-anchor="middle">e.g. Asch's lines</text>
+
+      <line x1="198" y1="64" x2="266" y2="88" stroke="#c2410c" stroke-width="2.2" marker-end="url(#ar5)"/>
+      <line x1="198" y1="194" x2="266" y2="172" stroke="#c2410c" stroke-width="2.2" marker-end="url(#ar5)"/>
+
+      <rect x="270" y="42" width="180" height="92" rx="9" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+      <text x="360" y="70" font-size="12.5" font-weight="700" fill="#1d4ed8" text-anchor="middle">INFORMATIONAL (ISI)</text>
+      <text x="360" y="90" font-size="10.5" fill="#1e293b" text-anchor="middle">rational: “they must be right”</text>
+      <text x="360" y="107" font-size="10.5" fill="#1e293b" text-anchor="middle">private acceptance</text>
+      <text x="360" y="124" font-size="10.5" font-weight="600" fill="#166534" text-anchor="middle">→ internalisation</text>
+
+      <rect x="270" y="146" width="180" height="92" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="360" y="174" font-size="12.5" font-weight="700" fill="#c2410c" text-anchor="middle">NORMATIVE (NSI)</text>
+      <text x="360" y="194" font-size="10.5" fill="#1e293b" text-anchor="middle">social: “I want approval,”</text>
+      <text x="360" y="211" font-size="10.5" fill="#1e293b" text-anchor="middle">fear of rejection</text>
+      <text x="360" y="228" font-size="10.5" font-weight="600" fill="#166534" text-anchor="middle">→ compliance · identification</text>
+
+      <line x1="454" y1="88" x2="510" y2="88" stroke="#c2410c" stroke-width="2.2" marker-end="url(#ar5)"/>
+      <line x1="454" y1="192" x2="510" y2="180" stroke="#c2410c" stroke-width="2.2" marker-end="url(#ar5)"/>
+      <line x1="454" y1="192" x2="510" y2="212" stroke="#c2410c" stroke-width="2.2" marker-end="url(#ar5)"/>
+
+      <rect x="514" y="64" width="142" height="48" rx="9" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+      <text x="585" y="84" font-size="11" font-weight="700" fill="#166534" text-anchor="middle">Internalisation</text>
+      <text x="585" y="101" font-size="10" fill="#475569" text-anchor="middle">most permanent change</text>
+
+      <rect x="514" y="160" width="142" height="42" rx="9" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+      <text x="585" y="178" font-size="11" font-weight="700" fill="#166534" text-anchor="middle">Compliance</text>
+      <rect x="514" y="208" width="142" height="42" rx="9" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+      <text x="585" y="226" font-size="11" font-weight="700" fill="#166534" text-anchor="middle">Identification</text>
+      <text x="585" y="243" font-size="10" fill="#475569" text-anchor="middle">temporary changes</text>
+    </svg>
+    <div class="figure-caption">Figure 2 — the two routes into conformity. The situation decides which explanation, and the explanation decides which type.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：一句话抓住 NSI</strong><br>
+    <strong>“我知道他们不对，但我不想被孤立。”</strong> —— 触发条件是<strong>想被接受 / 怕被拒绝</strong>；结果是公开顺从但心里不信（compliance / identification）。关键词：approval、rejection、peer pressure、belonging。<br>
+    考试连招：ISI → internalisation；NSI → compliance + identification。写反了就丢分。
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Evaluating ISI &amp; NSI</h2>
+
+  <div class="summary-card-header" onclick="togglePanel(this,'isiev1')">
+    <span class="arrow">▶</span> Supporting evidence — and where it comes from
+  </div>
+  <div class="summary-card-body" id="isiev1">
+    <ul>
+      <li><span class="syl-tag ev">STUDY</span> <strong>Jenness (1932)</strong> — the beans experiment: participants judged how many beans were in a glass bottle alone, then produced a negotiated group estimate, then made a second individual estimate. Individuals <strong>shifted their second estimate toward the group estimate</strong>. This demonstrates <strong>ISI</strong>: the situation was ambiguous, and the group perhaps had more accurate information.</li>
+      <li><span class="syl-tag ev">STUDY</span> <strong>Sherif (1935)</strong> — participants adjusted their estimate of the light's movement to the group estimate <strong>because they were unsure of their own answer</strong> — again ISI.</li>
+      <li><span class="syl-tag ev">STUDY</span> <strong>Asch (1956)</strong> — participants gave an obviously incorrect answer when the whole group gave the wrong one, even though the correct answer was clear — <strong>NSI</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="summary-card-header" onclick="togglePanel(this,'isiev2')" style="margin-top:14px;">
+    <span class="arrow">▶</span> Criticisms — what the two explanations miss
+  </div>
+  <div class="summary-card-body" id="isiev2">
+    <ul>
+      <li><span class="syl-tag crit">LAB ONLY</span> 支持研究都是实验室实验：They demonstrate the process of majority influence, but tell us little about social influence in <strong>real-life situations</strong> such as peer pressure at school or work.</li>
+      <li><span class="syl-tag crit">MOTIVATION</span> 忽略动机：The explanation does not account for the underlying motivation to conform or not. For example, we might keep to speed limits simply for <strong>personal safety</strong> — not because of missing information or group pressure.</li>
+      <li><span class="syl-tag crit">INDIVIDUAL</span> 忽略个体差异：It ignores <strong>personality, gender and cultural values</strong> that influence conformity, and does not fully explore the <strong>situational factors</strong> known to affect whether we conform or resist.</li>
+    </ul>
+  </div>
+
+  <div class="exam-tip">
+    <strong>Exam shape.</strong> A 4-mark evaluation answer = two points, each with a <strong>consequence</strong>. “Jenness (1932) supports ISI because second estimates moved toward the group, <em>which shows</em> people use others as information in ambiguous situations.” The <em>which shows…</em> clause is where the second mark lives.
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Conformity to Social Roles</h2>
+
+  <div class="blue-box">
+    <h4>Roles and norms</h4>
+    <p>Social situations are governed by <strong>social norms</strong> — unwritten rules about how to behave in a situation. Individuals adopt or are assigned <strong>social roles</strong>（社会角色）, and behave according to the norms of that role.</p>
+    <p><strong>Conformity to a social role is a type of identification.</strong> We conform to the norms of the role <strong>while we are in that role</strong> — but not when we are out of it.</p>
+  </div>
+
+  <div class="note-box">
+    <h4>The textbook example</h4>
+    <p>Being a <strong>teacher</strong> is a role that carries norms: a teacher is expected to be an upstanding citizen and role model. A teacher conforms to the role at school — and may behave quite differently during the school holidays. We all play <strong>multiple social roles</strong> and adjust our behaviour to each.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解</strong><br>
+    你在学校是“学生”，在家是“孩子”，在球场上是“队友” —— 每个身份自带一套行为规范，你切换身份时行为也跟着切换。这就是 identification：身份在，改变就在；身份摘掉，改变就消失。
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. The Prison Studies</h2>
+
+  <div class="blue-box">
+    <h4>Zimbardo et al. (1973) — the Stanford prison study</h4>
+    <p>Philip Zimbardo demonstrated the power of conformity to social roles in a study at <strong>Stanford University</strong>. College students were recruited to play the role of either <strong>prison guard</strong> or <strong>prisoner</strong> in a simulated prison in the basement of the university.</p>
+    <p><strong>What happened:</strong> over a short period, the ‘prisoners' became <strong>passive</strong>, and the ‘prison guards' became <strong>aggressive and controlling</strong>. They had adopted the social roles they had been given.</p>
+  </div>
+
+  <div class="note-box">
+    <h4>The replication: Reicher and Haslam (BBC prison study)</h4>
+    <p>Steve Reicher and Alex Haslam's BBC prison study replicated Zimbardo's — and showed that conformity to social roles was <strong>not simply unthinkingly playing a role you are given</strong>. It is <strong>dynamic</strong> and influenced by factors such as <strong>identification with the group</strong> you represent.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么复制的结论不一样也很重要</strong><br>
+    Zimbardo 说“角色太强，一穿上就变了”；BBC 复制版说“没那么简单，关键看你是否<strong>认同</strong>这个群体”。考试里这是一对现成的 evaluate 素材：Zimbardo 是证据，Reicher &amp; Haslam 是边界条件 —— 说明角色从众不是自动发生的。
+  </div>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. Social Impact Theory</h2>
+
+  <div class="blue-box">
+    <h4>Latané (1981) — the theory</h4>
+    <p>Social impact theory explains many forms of social influence, including <strong>both conformity and obedience</strong>. We are greatly influenced by the actions of others: we can be persuaded, inhibited, threatened and supported by other people. Latané called this <strong>social impact</strong> — the effect others, real or imagined, have on us.</p>
+    <p>He distinguished the <strong>source</strong>（影响源）— the influencer, in conformity the majority — from the <strong>target</strong>（目标）— the person feeling the pressure, the individual.</p>
+  </div>
+
+  <div class="note-box">
+    <h4>Three social forces determine the impact</h4>
+    <table>
+      <tr><th style="width:22%">Force</th><th>What it means</th></tr>
+      <tr><td><strong>Strength</strong> 强度</td><td>The real or perceived <strong>status, legitimacy or authority</strong> of the source. The stronger the majority, the more likely someone is to conform.</td></tr>
+      <tr><td><strong>Immediacy</strong> 即时性</td><td>The <strong>proximity or distance</strong> between source and target. A physically close majority has more influence.</td></tr>
+      <tr><td><strong>Number</strong> 数量</td><td>How many sources and targets there are. A greater majority exerts more influence — <strong>but only up to a point</strong>.</td></tr>
+    </table>
+    <p style="margin:6px 0 0">Latané expressed the combined effect as a formula: <strong>I = f(S·I·N)</strong> — impact is a function of Strength × Immediacy × Number. The effect is <strong>multiplicative</strong>: the combination matters more than any single factor.</p>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 245" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The light bulb analogy: each extra source adds less impact, like each extra bulb adds less light">
+      <rect x="40" y="24" width="180" height="150" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.8"/>
+      <circle cx="130" cy="86" r="26" fill="#fbbf24"/>
+      <rect x="122" y="112" width="16" height="14" fill="#92400e"/>
+      <line x1="130" y1="118" x2="130" y2="126" stroke="#92400e" stroke-width="2"/>
+      <text x="130" y="152" font-size="11.5" font-weight="700" fill="#92400e" text-anchor="middle">1 bulb: the room brightens</text>
+      <text x="130" y="168" font-size="10.5" fill="#78350f" text-anchor="middle">a lot. Greatest single gain.</text>
+
+      <rect x="250" y="24" width="180" height="150" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.8"/>
+      <circle cx="312" cy="86" r="20" fill="#fbbf24"/><circle cx="368" cy="86" r="20" fill="#fcd34d"/>
+      <rect x="304" y="106" width="14" height="12" fill="#92400e"/><rect x="361" y="106" width="14" height="12" fill="#92400e"/>
+      <text x="340" y="152" font-size="11.5" font-weight="700" fill="#92400e" text-anchor="middle">2–3 bulbs: brighter again,</text>
+      <text x="340" y="168" font-size="10.5" fill="#78350f" text-anchor="middle">but each adds less than the first.</text>
+
+      <rect x="460" y="24" width="180" height="150" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.8"/>
+      <circle cx="497" cy="86" r="14" fill="#fcd34d"/><circle cx="530" cy="86" r="14" fill="#fde68a"/><circle cx="563" cy="86" r="14" fill="#fef3c7"/><circle cx="596" cy="86" r="14" fill="#fffbeb"/>
+      <rect x="491" y="100" width="12" height="10" fill="#92400e"/><rect x="524" y="100" width="12" height="10" fill="#92400e"/><rect x="557" y="100" width="12" height="10" fill="#92400e"/><rect x="590" y="100" width="12" height="10" fill="#92400e"/>
+      <text x="550" y="152" font-size="11.5" font-weight="700" fill="#92400e" text-anchor="middle">More bulbs: almost no</text>
+      <text x="550" y="168" font-size="10.5" fill="#78350f" text-anchor="middle">extra light. Effect levels off.</text>
+
+      <text x="340" y="205" font-size="11" fill="#475569" text-anchor="middle">Latané's analogy: the first bulb gives the greatest illumination; each extra bulb adds less.</text>
+      <text x="340" y="226" font-size="10.5" font-style="italic" fill="#64748b" text-anchor="middle">So a majority of 100 is not much more influential than a majority of 50.</text>
+    </svg>
+    <div class="figure-caption">Figure 3 — the light bulb analogy for the force of Number: each added source contributes less than the one before.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：S·I·N 三个力一起作用</strong><br>
+    记法：<strong>强不强（Strength）、近不近（Immediacy）、多不多（Number）</strong>。三者是<strong>相乘</strong>不是相加 —— 有一项为零，整体影响就大打折扣。比如人数再多，但如果权威毫无地位（Strength 弱）、离得很远（Immediacy 弱），影响也有限。
+  </div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="section" id="s14">
+  <h2>14. SIT Applied</h2>
+
+  <div class="note-box">
+    <h4>SIT links back to the three types</h4>
+    <table>
+      <tr><th style="width:30%">Type of conformity</th><th>What SIT says</th></tr>
+      <tr><td><strong>Compliance</strong></td><td>Explained by <strong>normative</strong> influence: a majority with strength, immediacy and number pressures the individual to conform publicly while privately disagreeing.</td></tr>
+      <tr><td><strong>Identification</strong></td><td>Also <strong>normative</strong>: the majority's perceived power motivates the individual to identify with the group and its norms.</td></tr>
+      <tr><td><strong>Internalisation</strong></td><td>Explained by <strong>informational</strong> influence: a majority with strength, immediacy and number is seen as <strong>credible</strong>, so the individual internalises its beliefs.</td></tr>
+    </table>
+  </div>
+
+  <div class="blue-box">
+    <h4>SIT also explains obedience</h4>
+    <p>Authority figures who are perceived to be <strong>legitimate</strong> (strength), who are <strong>immediate</strong> to the individual, and who are <strong>greater in number</strong> will be more likely to command obedience. Notice how neatly this maps onto Milgram's variations from 1.1.2: remove presence (immediacy) and obedience fell to 20.5%.</p>
+  </div>
+
+  <div class="keyterm-box">
+    <span class="kt">social engineering（社会工程）</span> — Latané's term for using knowledge of social impact to design better social settings: choosing leaders for their strength of influence, deciding how many students belong in a classroom, managing crowds. Others might consider it a form of <strong>social control</strong>.
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：一个理论管两章</strong><br>
+    SIT 是 Topic A 里少见的<strong>通用理论</strong>：既能解释从众（1.1.4）也能解释服从（1.1.1/1.1.2）。考试问 “describe a theory of conformity or obedience”，SIT 是性价比最高的选择 —— 一套 S·I·N 用两处。
+  </div>
+</section>
+
+<!-- ============ 15 ============ -->
+<section class="section" id="s15">
+  <h2>15. Evaluating SIT</h2>
+
+  <div class="summary-card-header" onclick="togglePanel(this,'sitev1')">
+    <span class="arrow">▶</span> Supporting evidence
+  </div>
+  <div class="summary-card-body" id="sitev1">
+    <ul>
+      <li><span class="syl-tag ev">STUDY</span> <strong>Berkowitz, Bickman and Milgram (1969)</strong> — the street-corner study. Between <strong>1 and 15 confederates</strong> stood on a New York street craning their necks to look up at the sixth floor of a university building; Milgram recorded from a sixth-floor window and counted how many passers-by stopped to look up too. <strong>Finding:</strong> more confederates produced more copying — but the effect <strong>levelled off</strong>, exactly as the force of Number predicts.</li>
+      <li><span class="syl-tag ev">STUDY</span> <strong>Asch (1956)</strong> — conformity rose as the majority grew from 1 to 3 confederates, but larger majorities produced <strong>no significant further increase</strong>. The presence of just <strong>one dissenter</strong> reduced conformity. Both findings support the diminishing effect of Number.</li>
+    </ul>
+  </div>
+
+  <div class="summary-card-header" onclick="togglePanel(this,'sitev2')" style="margin-top:14px;">
+    <span class="arrow">▶</span> Criticisms
+  </div>
+  <div class="summary-card-body" id="sitev2">
+    <ul>
+      <li><span class="syl-tag crit">REDUCTIONIST</span> 简化论：<strong>SIT views individuals as passive receivers</strong> of others' behaviour, disregarding the active nature of social interaction and what the <strong>target</strong> themselves brings to the situation.</li>
+      <li><span class="syl-tag crit">INDIVIDUAL</span> 忽略个体差异：Everyone is different — some of us are more independent and therefore <strong>more resistant</strong> to majority influence. SIT oversimplifies human interaction by ignoring this.</li>
+    </ul>
+  </div>
+
+  <div class="exam-tip">
+    <strong>Exam tip from the textbook.</strong> “Describe a theory” questions need <strong>no evaluation</strong> — give an account of the key elements and stop. For SIT, revise with prompts: <em>strength</em>, <em>number</em>, <em>immediacy</em>, <em>multiplicative</em>. Each prompt should trigger one sentence.
+  </div>
+</section>
+
+<!-- ============ 16 ============ -->
+<section class="section" id="s16">
+  <h2>16. Checkpoint</h2>
+
+  <div class="xp-block">
+    <h4>🎯 Eight quick questions <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro"><strong>Q1.</strong> Who proposed the three types of conformity?</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q1" value="a"> Asch</label>
+      <label class="q-option"><input type="radio" name="q1" value="b"> Kelman (1958)</label>
+      <label class="q-option"><input type="radio" name="q1" value="c"> Deutsch and Gerrard</label>
+    </div>
+    <p class="xp-intro"><strong>Q2.</strong> “Public acceptance without genuine belief” describes…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q2" value="a"> internalisation</label>
+      <label class="q-option"><input type="radio" name="q2" value="b"> compliance</label>
+      <label class="q-option"><input type="radio" name="q2" value="c"> identification only</label>
+    </div>
+    <p class="xp-intro"><strong>Q3.</strong> Sherif's autokinetic study is evidence for…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q3" value="a"> normative social influence</label>
+      <label class="q-option"><input type="radio" name="q3" value="b"> social roles</label>
+      <label class="q-option"><input type="radio" name="q3" value="c"> informational social influence</label>
+    </div>
+    <p class="xp-intro"><strong>Q4.</strong> Deutsch and Gerrard proposed their two forms of social influence in…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q4" value="a"> 1955</label>
+      <label class="q-option"><input type="radio" name="q4" value="b"> 1935</label>
+      <label class="q-option"><input type="radio" name="q4" value="c"> 1981</label>
+    </div>
+    <p class="xp-intro"><strong>Q5.</strong> In Latané's formula I = f(S·I·N), the letters stand for…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q5" value="a"> Source, Individual, Norm</label>
+      <label class="q-option"><input type="radio" name="q5" value="b"> Strength, Immediacy, Number</label>
+      <label class="q-option"><input type="radio" name="q5" value="c"> Status, Influence, Need</label>
+    </div>
+    <p class="xp-intro"><strong>Q6.</strong> In the street-corner study (Berkowitz, Bickman and Milgram, 1969), the effect of adding more confederates…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q6" value="a"> kept rising without limit</label>
+      <label class="q-option"><input type="radio" name="q6" value="b"> reversed</label>
+      <label class="q-option"><input type="radio" name="q6" value="c"> levelled off</label>
+    </div>
+    <p class="xp-intro"><strong>Q7.</strong> Conformity to a social role is a type of…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q7" value="a"> identification</label>
+      <label class="q-option"><input type="radio" name="q7" value="b"> compliance</label>
+      <label class="q-option"><input type="radio" name="q7" value="c"> internalisation</label>
+    </div>
+    <p class="xp-intro"><strong>Q8.</strong> The BBC prison study (Reicher and Haslam) showed that conformity to social roles is…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q8" value="a"> automatic once a role is assigned</label>
+      <label class="q-option"><input type="radio" name="q8" value="b"> dynamic and depends on identification with the group</label>
+      <label class="q-option"><input type="radio" name="q8" value="c"> impossible in ordinary people</label>
+    </div>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="checkQuiz()">Mark my answers</button>
+    </div>
+    <div class="xp-result" id="quizResult"></div>
+  </div>
+</section>
+
+<!-- ============ 17 ============ -->
+<section class="section" id="s17">
+  <h2>17. Exam Lab</h2>
+
+  <div class="note-box">
+    <h4>How to read the question</h4>
+    <p><strong>Describe</strong> — give an account. No evaluation, no judgement. For a theory: name the theorist, list the key elements, stop.<br>
+    <strong>Explain</strong> — give the reason or mechanism. One point plus one reason per mark.</p>
+  </div>
+
+  <div class="blue-box">
+    <h4>Q1a · Fezile — compliance (2 marks)</h4>
+    <p><em>Fezile is asked by her teacher to volunteer at a local primary school to help younger children learn to read. She agrees to help, but has no interest in teaching young children and would rather canoe with her friends.</em></p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('ma1')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="ma1">
+      <p>Fezile is showing <strong>compliance</strong>: she publicly goes along with her teacher's request to appear helpful, but she does not privately agree with it — she would rather be canoeing. Because compliance is only <strong>public acceptance</strong>, Fezile's helpful behaviour is likely to last only while the teacher's pressure exists, and she is unlikely to keep volunteering once she is free to choose.</p>
+    </div>
+  </div>
+
+  <div class="blue-box">
+    <h4>Q1b · Fezile — internalisation (2 marks)</h4>
+    <p><em>Fezile is also asked to volunteer to train young children to canoe. She chooses not to go canoeing with her friends so that she can teach the children instead.</em></p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('ma2')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="ma2">
+      <p>Fezile is showing <strong>internalisation</strong>: she has genuinely accepted the value of helping children learn to canoe, so it has become <strong>her own</strong> belief — private acceptance. This is why she gives up something she actually wants (canoeing with friends) with no majority present to see her sacrifice: the change is real and self-sustaining, not dependent on the group.</p>
+    </div>
+  </div>
+
+  <div class="blue-box">
+    <h4>Q2 · Kasim — conformity (2 marks)</h4>
+    <p><em>Kasim is with a large group of friends at a youth club. His friends start ripping the material on the seat covers and drawing on tables. Kasim asks them to stop, but his friends laugh at him and hand him a pen to join in. Kasim does not want to join in, but he writes on the table.</em></p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('ma3')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="ma3">
+      <p>Kasim conforms because of <strong>normative social influence</strong>: he changes his behaviour to match the majority of his friendship group even though he privately disagrees — he actually <em>asked them to stop</em>. His need to be accepted by the group and to avoid rejection is stronger than his own opinion, so he complies publicly. Because this is compliance rather than genuine belief, the behaviour depends on the group being present.</p>
+    </div>
+  </div>
+
+  <div class="exam-tip">
+    <strong>Exam tip from the textbook.</strong> For any named study you may be asked <strong>how it could be improved</strong>. Take a weakness, turn it into an improvement, then <strong>justify why it is an improvement</strong>: “Asch could include female participants instead of just 50 male students — this would make his findings about conformity more generalisable to a wider target population.”
+  </div>
+</section>
+
+<!-- ============ 18 ============ -->
+<section class="section" id="s18">
+  <h2>18. Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><div class="term">conformity <span class="zh">从众</span></div><div class="def">Changing behaviour or attitudes to align with those of the majority — no order is given.</div></div>
+    <div class="glossary-item"><div class="term">compliance <span class="zh">表面顺从</span></div><div class="def">Going along with the majority for approval or to avoid rejection, without genuine agreement (public acceptance only).</div></div>
+    <div class="glossary-item"><div class="term">internalisation <span class="zh">内化</span></div><div class="def">Genuinely accepting the majority's values as your own (private acceptance) — the most permanent change.</div></div>
+    <div class="glossary-item"><div class="term">identification <span class="zh">认同</span></div><div class="def">Changing behaviour to fit in because you want to belong to a group — temporary, tied to membership.</div></div>
+    <div class="glossary-item"><div class="term">private acceptance <span class="zh">私下接受</span></div><div class="def">Genuinely adopting the majority's behaviours or values as your own.</div></div>
+    <div class="glossary-item"><div class="term">public acceptance <span class="zh">公开顺从</span></div><div class="def">Going along with the majority outwardly while privately disagreeing.</div></div>
+    <div class="glossary-item"><div class="term">informational social influence <span class="zh">信息性社会影响</span></div><div class="def">Conforming because we believe the majority knows the correct answer — ambiguous situations, rational, leads to internalisation.</div></div>
+    <div class="glossary-item"><div class="term">normative social influence <span class="zh">规范性社会影响</span></div><div class="def">Conforming because we need to be accepted and fear rejection — leads to compliance and identification.</div></div>
+    <div class="glossary-item"><div class="term">social role <span class="zh">社会角色</span></div><div class="def">A position in a social situation with its own norms of behaviour — conforming to a role is identification.</div></div>
+    <div class="glossary-item"><div class="term">social norms <span class="zh">社会规范</span></div><div class="def">Unwritten rules about how to behave in a given social situation.</div></div>
+    <div class="glossary-item"><div class="term">social impact theory <span class="zh">社会影响理论</span></div><div class="def">Latané (1981): impact on a target is a function of the source's Strength, Immediacy and Number — I = f(S·I·N).</div></div>
+    <div class="glossary-item"><div class="term">source / target <span class="zh">影响源 / 目标</span></div><div class="def">The source is the influencer (the majority); the target is the person feeling the pressure (the individual).</div></div>
+    <div class="glossary-item"><div class="term">multiplicative <span class="zh">相乘的</span></div><div class="def">The combined effect of strength, immediacy and number is greater than their individual effects.</div></div>
+    <div class="glossary-item"><div class="term">autokinetic effect <span class="zh">自主运动效应</span></div><div class="def">Optical illusion where a stationary spot of light in a dark room appears to move — used by Sherif (1935).</div></div>
+    <div class="glossary-item"><div class="term">social engineering <span class="zh">社会工程</span></div><div class="def">Latané's idea of applying social impact theory to design settings — leadership, classroom size, crowds; seen by some as social control.</div></div>
+    <div class="glossary-item"><div class="term">visual estimation <span class="zh">目视估计</span></div><div class="def">Estimating the value or size of something using sight alone — the basis of Jenness's beans study.</div></div>
+  </div>
+</section>
+
+<div class="footer-note">1.1.4 Types and explanations of conformity · Social Psychology · previous: <a href="../1.1.3-factors-affecting-obedience/">1.1.3 factors affecting obedience</a> · next: <a href="../1.1.5-research-into-conformity/">1.1.5 research into conformity (Asch) →</a></div>
+  </main>
+</div>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+</div>
+
+<script>
+(function () {
+  var baseFont = 16;
+
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark'; }
+  };
+
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  window.beansChoice = function (c) {
+    var el = document.getElementById('beansResult');
+    if (!el) { return; }
+    var head;
+    if (c === 'moved') {
+      head = '<p><span class="xp-verdict">You moved toward the group.</span> Most people do: in Jenness\u2019 (1932) beans experiment, second individual estimates shifted toward the group estimate. Nobody ordered you to — the majority was simply the best available information.</p>';
+    } else if (c === 'stayed') {
+      head = '<p><span class="xp-verdict">You held your ground.</span> A minority do — and this matters: individual differences are real, and later research (1.1.7) shows personality and confidence affect who resists.</p>';
+    } else {
+      head = '<p><span class="xp-verdict">You moved away from the group.</span> That is the rarest response — occasionally people over-correct against a majority they resent. Jenness found the general pull was <em>toward</em> the group estimate.</p>';
+    }
+    el.innerHTML = head + '<p>Either way, notice what was <strong>missing</strong>: no order, no authority figure, no threat. Just other people and their opinions. That is what makes this conformity rather than obedience.</p>';
+    el.classList.add('show');
+  };
+
+  var typeFb = {
+    compliance: 'Compliance: public acceptance without genuine belief. The change holds only while the group or pressure is present.',
+    identification: 'Identification: the person wants to be (or stay) a member of the group, so they adopt its behaviour — but only while in that role or company.',
+    internalisation: 'Internalisation: the person genuinely accepts the value or belief as their own — private acceptance, the most permanent change.'
+  };
+  var typeKey = { t1: 'internalisation', t2: 'identification', t3: 'compliance', t4: 'compliance' };
+  var typeWhy = {
+    t1: 'The new citizen genuinely adopts the customs as their own in order to truly become part of the country — a lasting, private change.',
+    t2: 'The child wears the kit and praises the team while at matches — the change is tied to being in the club, i.e. to membership.',
+    t3: 'The employee publicly agrees but privately does not — textbook compliance, held up only by the supervisor\u2019s presence.',
+    t4: 'The guest tips only because everyone else does, not because he wants to — public acceptance under group pressure.'
+  };
+  window.typeMatch = function (btn, choice, id) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (choice === typeKey[id]);
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById('res-' + id);
+    if (!el) { return; }
+    el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + (ok ? typeWhy[id] : typeFb[choice]) + '</p>';
+    el.classList.add('show');
+    el.classList.toggle('ok', ok);
+  };
+
+  var quizKey = { q1: 'b', q2: 'b', q3: 'c', q4: 'a', q5: 'b', q6: 'c', q7: 'a', q8: 'b' };
+  var quizWhy = {
+    q1: 'Kelman (1958) proposed compliance, identification and internalisation.',
+    q2: 'Compliance is public acceptance only — the person does not genuinely believe it.',
+    q3: 'With no correct answer available, Sherif\u2019s participants genuinely adopted the group estimate — informational influence leading to internalisation.',
+    q4: 'Deutsch and Gerrard (1955) proposed informational and normative social influence.',
+    q5: 'Impact is a function of Strength, Immediacy and Number — multiplied together.',
+    q6: 'More confederates produced more copying, but the effect levelled off — the diminishing force of Number.',
+    q7: 'Conformity to a social role is identification: we adopt the role\u2019s norms while in the role.',
+    q8: 'Reicher and Haslam found role conformity is dynamic and depends on identification with the group — not automatic.'
+  };
+  window.checkQuiz = function () {
+    var el = document.getElementById('quizResult');
+    if (!el) { return; }
+    var score = 0;
+    var html = '';
+    Object.keys(quizKey).forEach(function (q) {
+      var sel = document.querySelector('input[name="' + q + '"]:checked');
+      var chosen = sel ? sel.value : null;
+      var ok = (chosen === quizKey[q]);
+      if (ok) { score++; }
+      html += '<p style="margin:6px 0"><strong>' + q.toUpperCase() + ':</strong> ' +
+        (chosen ? (ok ? 'correct' : 'not quite') : 'not answered') + ' — ' + quizWhy[q] + '</p>';
+    });
+    el.innerHTML = '<p><span class="xp-verdict">Score: ' + score + ' / 8</span></p>' + html;
+    el.classList.add('show');
+    el.classList.toggle('ok', score === 8);
+  };
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.toggle('show'); }
+  };
+
+  window.togglePanel = function (header, id) {
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    el.classList.toggle('hidden');
+    header.classList.toggle('open');
+  };
+
+  var secs = document.querySelectorAll('.section');
+  var links = document.querySelectorAll('.sb-item a');
+  function highlight() {
+    var best = null;
+    var bestTop = -99999;
+    for (var i = 0; i < secs.length; i++) {
+      var r = secs[i].getBoundingClientRect();
+      if (r.top <= 140 && r.top > bestTop) { bestTop = r.top; best = secs[i]; }
+    }
+    if (!best && secs.length) { best = secs[0]; }
+    for (var j = 0; j < links.length; j++) { links[j].classList.remove('sb-active'); }
+    if (best) {
+      var target = best.getAttribute('id');
+      for (var k = 0; k < links.length; k++) {
+        if (links[k].getAttribute('href') === '#' + target) { links[k].classList.add('sb-active'); }
+      }
+    }
+  }
+  window.addEventListener('scroll', highlight);
+  highlight();
+
+  var btt = document.getElementById('btt');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 400) { btt.classList.add('show'); } else { btt.classList.remove('show'); }
+  });
+})();
+</script>
+</body>
+</html>
