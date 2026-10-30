@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.1.6 CBT as a therapy for offenders（用认知行为疗法治疗犯罪者）</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.five-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+
+.mat2x2 { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 6px; margin: 14px 0; }
+.mat2x2 .mh { background: var(--primary); color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
+body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
+</style></head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic F · Criminological psychology — Treatment: CBT as a therapy for offenders</span>
+  </div>
+  <span class="nav-pill">⚖️ Criminal Psychology</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="6.1.6-CBT-as-Therapy-for-Offenders-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">6.1.6 · Contents</div>
+        <div class="sb-header-sub">CBT as a therapy for offenders</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">Before we start</li>
+        <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+        <li class="sb-item"><a href="#s2">2. Why Punishment Is Not Enough</a></li>
+        <li class="sb-item"><a href="#s3">3. What Treatment Means</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">How CBT works</li>
+        <li class="sb-item"><a href="#s4">4. What CBT Is</a></li>
+        <li class="sb-item"><a href="#s5">5. One Example, All the Way Through</a></li>
+        <li class="sb-item"><a href="#s6">6. Criminal Thinking (Beck 1999)</a></li>
+        <li class="sb-item"><a href="#s7">7. What CBT Tries to Change</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">The four programmes</li>
+        <li class="sb-item"><a href="#s8">8. Reasoning and Rehabilitation</a></li>
+        <li class="sb-item"><a href="#s9">9. Moral Reconation Therapy</a></li>
+        <li class="sb-item"><a href="#s10">10. Anger Management</a></li>
+        <li class="sb-item"><a href="#s11">11. Social Skills and Assertiveness</a></li>
+        <li class="sb-item"><a href="#s12">12. Match the Programme</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Does it work?</li>
+        <li class="sb-item"><a href="#s13">13. How Do We Know It Works?</a></li>
+        <li class="sb-item"><a href="#s14">14. Evidence · R&amp;R</a></li>
+        <li class="sb-item"><a href="#s15">15. Evidence · MRT</a></li>
+        <li class="sb-item"><a href="#s16">16. Evidence · CBT Overall</a></li>
+        <li class="sb-item"><a href="#s17">17. Side by Side</a></li>
+        <li class="sb-item"><a href="#s18">18. Evidence · Anger Management</a></li>
+        <li class="sb-item"><a href="#s19">19. Social Skills and Young Offenders</a></li>
+        <li class="sb-item"><a href="#s20">20. Evaluating the Evidence</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Exam</li>
+        <li class="sb-item"><a href="#s21">21. Checkpoint</a></li>
+        <li class="sb-item"><a href="#s22">22. Exam Lab</a></li>
+        <li class="sb-item"><a href="#s23">23. Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>6.1.6 CBT AS A THERAPY FOR OFFENDERS<br><span style="font-size:0.65em">用认知行为疗法治疗犯罪者</span></h1>
+  <div class="meta">
+    <span class="badge">Topic F · Criminological psychology</span>
+    <span class="badge">Treatment</span>
+    <span class="badge">Spec 6.1.6</span>
+  </div>
+  <div class="subtitle" style="margin-top:10px">Two exam questions only: <strong>how CBT is used</strong> with offenders, and <strong>how effective</strong> it is.</div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this section is really asking</h4>
+  <ol>
+    <li><strong>Punishment stops at consequences.</strong> It does not teach a different way to act.</li>
+    <li><strong>CBT says: change the thought, and the behaviour follows.</strong> Offenders are taught to spot distorted thinking and restructure it.</li>
+    <li><strong>The exam names four programmes</strong> — R&amp;R, MRT, anger management, and social skills / problem solving / assertiveness.</li>
+    <li><strong>Effectiveness is measured by recidivism</strong> (reoffending), and almost every study is a meta-analysis — learn the names and the numbers.</li>
+  </ol>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started</h2>
+
+  <p>Someone has been convicted of a crime. Now the court has to decide what happens to them. In most cases the answer is one of two things:</p>
+
+  <div class="five-grid">
+    <div class="compare-card">
+      <h4>Custodial sentence（监禁刑）</h4>
+      <p style="font-size:.9em;margin:4px 0">Sent to prison. Their activities are restricted and they lose access to the community.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Non-custodial sentence（非监禁刑）</h4>
+      <p style="font-size:.9em;margin:4px 0">A fine, or community service. They stay in the community but pay or work back.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：这一章要解决的矛盾</strong><br>
+    坐牢 = 让犯罪者“付出代价”。但出狱以后呢？如果一个人偷东西是因为“不会用别的方式解决问题”，
+    那关他几年并没有教会他别的方式。这一章整章都在回答一个问题：<strong>除了惩罚，还能做什么？</strong>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Have a guess first <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro">For each crime, which sentence do you think is more likely? There are no wrong answers here — just notice <em>why</em> you chose each one.</p>
+
+    <p class="xp-intro"><strong>Murder</strong></p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="sentenceChoice(this,'c1','cust')">custodial</button>
+      <button class="q-option" onclick="sentenceChoice(this,'c1','non')">non-custodial</button>
+    </div>
+    <div class="xp-result" id="res-c1"></div>
+
+    <p class="xp-intro"><strong>Shoplifting（first offence, low value）</strong></p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="sentenceChoice(this,'c2','cust')">custodial</button>
+      <button class="q-option" onclick="sentenceChoice(this,'c2','non')">non-custodial</button>
+    </div>
+    <div class="xp-result" id="res-c2"></div>
+
+    <p class="xp-intro"><strong>Driving without a licence</strong></p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="sentenceChoice(this,'c3','cust')">custodial</button>
+      <button class="q-option" onclick="sentenceChoice(this,'c3','non')">non-custodial</button>
+    </div>
+    <div class="xp-result" id="res-c3"></div>
+  </div>
+
+  <p>You probably sorted these by <strong>how serious</strong> they felt. Courts do roughly the same — but seriousness is not the only thing they weigh. They also ask: <em>is this person likely to do it again?</em> That second question is where <strong>treatment</strong> comes in.</p>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Why Punishment Is Not Enough</h2>
+
+  <p>Punishment is the most common response to crime in the criminal justice system, and it does one job well.</p>
+
+  <div class="green-box">
+    <h4>What punishment does do</h4>
+    <p>It teaches offenders that there are <strong>consequences</strong> to their offending behaviour. It aims to act as a <strong>deterrent</strong> by restricting their activities and — if they are sent to prison — removing access to the community.</p>
+  </div>
+
+  <div class="warn-box">
+    <h4>What punishment does not do</h4>
+    <p>It does <strong>not directly teach offenders how to act in a different way</strong>.</p>
+  </div>
+
+  <p>Think about why that gap matters. The textbook gives two reasons why an offence happens in the first place:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Reason 1 · a missing skill</h4>
+      <p style="font-size:.9em;margin:4px 0">The offender is <strong>lacking in skills to deal with different situations</strong>. Punishment never fills that gap — the person leaves prison as unskilled as they went in.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Reason 2 · a learned payoff</h4>
+      <p style="font-size:.9em;margin:4px 0">The offender has <strong>learned to associate offending with certain positive outcomes</strong> — money, status, excitement. Punishment adds a cost but never removes the reward.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：把惩罚想成“罚款单”</strong><br>
+    你因为乱停车被罚 200 块。罚款让你知道“这事有代价”——但你下次还是不知道该把车停哪里。
+    <strong>惩罚告诉你“别做”，但没告诉你“该做什么”。</strong>这就是 treatment（治疗）存在的理由：它教的是替代行为。
+  </div>
+
+  <p><strong>So:</strong> punishment cannot be the only solution to reduce reoffending.</p>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. What Treatment Means</h2>
+
+  <div class="blue-box">
+    <h4>The aim of treatment</h4>
+    <p>To <strong>identify problem behaviours and the root causes</strong> of those behaviours, and to teach offenders <strong>non-offending ways to deal with their problems</strong>.</p>
+  </div>
+
+  <table>
+    <tr><th style="width:22%;">Question</th><th>Answer in the specification</th></tr>
+    <tr><td>Who delivers it?</td><td>Mainly <strong>forensic psychologists</strong> or staff <strong>trained in the skills required</strong>. If the staff are not psychologists, they are usually <strong>supervised by psychologists</strong>.</td></tr>
+    <tr><td>Where?</td><td>In the <strong>community</strong> or in <strong>prisons</strong>.</td></tr>
+    <tr><td>Does the setting change it?</td><td>No. <strong>The principles for each treatment are the same</strong>, irrespective of where it is delivered.</td></tr>
+    <tr><td>Does everyone get the same amount?</td><td>No. The <strong>extent</strong> of treatment differs depending on the <strong>severity of the offence</strong> and the <strong>risk of future reoffending</strong>.</td></tr>
+  </table>
+
+  <div class="note-box">
+    <h4>The one treatment you need to know</h4>
+    <p>The majority of treatment for offenders focuses on <strong>psychological techniques and behavioural treatments</strong>. The one named in the specification is <strong>cognitive behavioural therapy (CBT)</strong>.</p>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. What CBT Is</h2>
+
+  <p>Cognitive behavioural therapy is a treatment that helps the offender <strong>develop insight into their thoughts and feelings and how these influence their behaviour</strong>. That sentence is worth unpacking slowly, because the whole chapter sits on top of it.</p>
+
+  <p>CBT works on a premise — a starting assumption. For <em>every situation</em> we experience:</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The CBT chain: situation leads to thoughts, thoughts lead to feelings, feelings lead to behaviour, and CBT targets the thoughts">
+      <defs>
+        <marker id="arA" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#ea580c"/>
+        </marker>
+      </defs>
+
+      <rect x="35" y="56" width="130" height="66" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+      <text x="100" y="84" font-size="13" font-weight="700" fill="#334155" text-anchor="middle">Situation</text>
+      <text x="100" y="104" font-size="11" fill="#64748b" text-anchor="middle">情境：发生了什么</text>
+
+      <rect x="195" y="56" width="130" height="66" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+      <text x="260" y="84" font-size="13" font-weight="700" fill="#334155" text-anchor="middle">Thoughts</text>
+      <text x="260" y="104" font-size="11" fill="#64748b" text-anchor="middle">想法：我怎么解读它</text>
+
+      <rect x="355" y="56" width="130" height="66" rx="9" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.6"/>
+      <text x="420" y="84" font-size="13" font-weight="700" fill="#334155" text-anchor="middle">Feelings</text>
+      <text x="420" y="104" font-size="11" fill="#64748b" text-anchor="middle">感受：情绪与身体反应</text>
+
+      <rect x="515" y="56" width="130" height="66" rx="9" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.6"/>
+      <text x="580" y="84" font-size="13" font-weight="700" fill="#334155" text-anchor="middle">Behaviour</text>
+      <text x="580" y="104" font-size="11" fill="#64748b" text-anchor="middle">行为：我做了什么</text>
+
+      <line x1="167" y1="89" x2="193" y2="89" stroke="#ea580c" stroke-width="2.2" marker-end="url(#arA)"/>
+      <line x1="327" y1="89" x2="353" y2="89" stroke="#94a3b8" stroke-width="2.2" marker-end="url(#arA)"/>
+      <line x1="487" y1="89" x2="513" y2="89" stroke="#94a3b8" stroke-width="2.2" marker-end="url(#arA)"/>
+
+      <rect x="110" y="188" width="460" height="56" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.6"/>
+      <text x="340" y="210" font-size="12.5" font-weight="700" fill="#1d4ed8" text-anchor="middle">CBT does not change the situation.</text>
+      <text x="340" y="230" font-size="12.5" fill="#1e40af" text-anchor="middle">It changes the thought — and the rest of the chain moves with it.</text>
+
+      <line x1="260" y1="186" x2="260" y2="128" stroke="#3b82f6" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arA)"/>
+    </svg>
+    <div class="figure-caption">The CBT chain. The situation is fixed; the thought is the part a therapist can reach.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：整章最重要的一张图</strong><br>
+    同一件事（有人撞到你、把你的咖啡撞洒了）——<br>
+    想法 A：“她是故意的” → 生气 → 骂她。<br>
+    想法 B：“她可能没看见我” → 平静 → 算了。<br>
+    <strong>事情没变，想法变了，行为就变了。</strong>CBT 做的就是第二步。考试只要问“CBT 的原理”，就写这一句。
+  </div>
+
+  <div class="note-box">
+    <h4>What the therapy is actually trying to produce</h4>
+    <p>It is possible to change an offender's reactions to the <strong>same</strong> experience by developing their <strong>awareness of their own thoughts</strong>, and changing their thoughts so that their behaviour in the same situation is more <strong>prosocial</strong>. It also encourages the offender to consider <strong>alternative ways they could act</strong> in situations that are not criminal.</p>
+  </div>
+
+  <div class="keyterm-box">
+    <span class="kt">prosocial behaviour（亲社会行为）：</span> behaviour that takes account of the welfare of others and avoids harming others deliberately.
+  </div>
+
+  <p>CBT can be delivered <strong>one-to-one</strong> with a therapist, or in a <strong>group setting</strong> with other offenders and a therapist guiding the discussions.</p>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. One Example, All the Way Through</h2>
+
+  <p>The textbook gives one worked example, and it is the clearest way to see the whole chain in action. An offender on an anger management course keeps an <strong>anger diary</strong>. This is one entry.</p>
+
+  <table>
+    <tr><th style="width:26%;">Column</th><th>What was written</th><th style="width:26%;">Which link in the chain</th></tr>
+    <tr><td>Date</td><td>Tues 1 July</td><td>—</td></tr>
+    <tr><td>What happened when I started to feel angry (trigger)</td><td>Someone bumped into me and I spilt my coffee</td><td><strong>Situation</strong></td></tr>
+    <tr><td>What physiological symptoms did I have?</td><td>Heart racing, fast breathing</td><td><strong>Feelings</strong></td></tr>
+    <tr><td>On a scale of 1–10, how angry did I feel?</td><td>5 / 10</td><td><strong>Feelings</strong></td></tr>
+    <tr><td>What did I think about the situation?</td><td>“How dare she?” “She did that on purpose.”</td><td><strong>Thoughts</strong></td></tr>
+    <tr><td>How did I deal with the situation?</td><td>I shouted at her and told her to get me another drink</td><td><strong>Behaviour</strong></td></tr>
+  </table>
+
+  <p>Now look at what the therapist has to work with. The situation is over — nobody can change it. But the <em>thought</em> is written down in black and white, and that is something they can examine.</p>
+
+  <div class="xp-block">
+    <h4>🎯 Restructure the thought <span class="xp-badge">Think first</span></h4>
+    <p class="xp-intro">The offender wrote: <em>“She did that on purpose.”</em> Which of these would a CBT therapist be trying to build towards?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="thoughtSwap(this,'a')">“People are careless and she should apologise.”</button>
+      <button class="q-option" onclick="thoughtSwap(this,'b')">“She probably did not see me.”</button>
+      <button class="q-option" onclick="thoughtSwap(this,'c')">“I should never carry coffee again.”</button>
+    </div>
+    <div class="xp-result" id="swapResult"></div>
+  </div>
+
+  <div class="note-box">
+    <h4>Why the diary keeps growing</h4>
+    <p>The diary is completed <strong>every time they feel angry</strong>. With support from the therapist, they start to recognise their <strong>triggers</strong>, and can then evaluate <strong>which techniques work for them in specific situations</strong>. Additional columns are added as they become more insightful — this is a <strong>scaffolding</strong> approach: it avoids giving the offender too many expectations at the start, when they still need to build understanding before they can use the skills.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：scaffolding（脚手架）</strong><br>
+    就像学骑车先装辅助轮。一开始只要求记“发生了什么 / 我想了什么”两栏；
+    等他看得懂自己的模式了，才加“我当时身体有什么反应”“我用了什么技巧”。
+    <strong>不是一次给完，是慢慢加。</strong>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Criminal Thinking (Beck, 1999)</h2>
+
+  <p>CBT has a sound theoretical basis for treating offenders because <strong>the way a criminal thinks has been firmly linked to their offending behaviour</strong> — that link is Beck (1999).</p>
+
+  <p>Criminals have been shown to display <strong>distorted thinking</strong>. There are four patterns, and you should be able to name and recognise each one:</p>
+
+  <div class="five-grid">
+    <div class="compare-card">
+      <h4>1 · Displacing the blame</h4>
+      <p style="font-size:.88em;margin:4px 0">Blaming the <strong>victim</strong> or another source <strong>external to themselves</strong>. “It was her fault for walking there.”</p>
+    </div>
+    <div class="compare-card">
+      <h4>2 · Justifying the offending</h4>
+      <p style="font-size:.88em;margin:4px 0">Explaining the crime as fair or necessary. “The shop is insured — nobody really lost anything.”</p>
+    </div>
+    <div class="compare-card">
+      <h4>3 · Misreading social cues</h4>
+      <p style="font-size:.88em;margin:4px 0">Interpreting neutral social cues as <strong>potential threats</strong>, then responding to a threat that was never there.</p>
+    </div>
+    <div class="compare-card">
+      <h4>4 · Schemas of dominance</h4>
+      <p style="font-size:.88em;margin:4px 0">Deep beliefs about <strong>self-dominance and personal entitlement</strong> — “I take what I am owed.”</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：四种“想歪了”的方式</strong><br>
+    ① 甩锅给别人（怪受害者）· ② 给自己找理由（我没错）· ③ 把别人中性的一眼看错成威胁 · ④ 骨子里觉得“我说了算、我该拿”。<br>
+    关键一句：<strong>这些被认为是学来的（learned）</strong> —— 既然是学来的，就能被改掉。这正是 CBT 敢接手的前提。
+  </div>
+
+  <div class="keyterm-box">
+    <span class="kt">schema（图式 / 核心信念）：</span> a deeply held belief about yourself and how the world works. Beck argued offenders hold schemas about their own dominance and entitlement.
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. What CBT Tries to Change</h2>
+
+  <p>Because the distorted patterns above are assumed to be <strong>learned</strong>, CBT aims to do three things:</p>
+
+  <table>
+    <tr><th style="width:26%;">Target</th><th>What that means in practice</th></tr>
+    <tr><td>Identify and restructure</td><td>Help offenders <strong>identify and restructure these faulty patterns of thinking</strong>.</td></tr>
+    <tr><td>Victim empathy</td><td>Develop <strong>victim empathy</strong> — actually considering the impact of the behaviour on others.</td></tr>
+    <tr><td>Challenge self-justification</td><td>Challenge their <strong>tendency to self-justify</strong> their offending.</td></tr>
+  </table>
+
+  <div class="keyterm-box">
+    <span class="kt">cognitive restructuring（认知重构）：</span> the process of identifying and challenging maladaptive/negative thinking patterns and replacing them with more objective and adaptive ones.
+  </div>
+
+  <div class="keyterm-box">
+    <span class="kt">Socratic questioning（苏格拉底式提问）：</span> a thoughtful method of questioning used in CBT to identify values and beliefs. The therapist asks questions rather than giving answers, so the offender reaches the contradiction themselves.
+  </div>
+
+  <div class="note-box">
+    <h4>What a CBT programme typically contains</h4>
+    <p>CBT typically involves <strong>cognitive training skills, anger management</strong> and other components such as <strong>social skills training and relapse prevention</strong>.</p>
+    <ul>
+      <li><strong>Cognitive skills training</strong> teaches thinking skills in order to better problem solve. <strong>Role-play</strong> is often used for critical thinking and perspective taking, to practise new ways of coping with situations that would typically cause aggressive or criminal behaviour.</li>
+      <li><strong>Anger management</strong> focuses on teaching offenders to monitor their thoughts where they typically react with anger — to identify anger triggers and reconsider their interpretation of those triggers as <strong>non-hostile explanations</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="blue-box">
+    <h4>Delivery differs — that is the point</h4>
+    <p>CBT treatments differ in their delivery: some focus on <strong>anger management</strong>, some on <strong>conflict resolution</strong>, others on <strong>moral reasoning and preventing relapse</strong>. When the exam says “one type of CBT programme”, it wants you to name one of these and describe it.</p>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Reasoning and Rehabilitation (R&amp;R)</h2>
+
+  <div class="blue-box">
+    <h4>The identity card</h4>
+    <p>Developed in Canada by <strong>Robert Ross and Elizabeth Fabiano (1985)</strong>. It is a <strong>branded</strong> CBT programme — a fixed package with a name.</p>
+  </div>
+
+  <p><strong>What it teaches:</strong> critical thinking, social skills, assertiveness skills, and how to negotiate and get along with others.</p>
+
+  <p><strong>Why those skills?</strong> They help to restructure the offender's <strong>rigid, illogical thinking</strong> and make them consider the <strong>consequences of their behaviour</strong>. Offenders learn to consider <strong>alternative ways of behaving</strong> and to think about the <strong>impact of their behaviour on others</strong>.</p>
+
+  <div class="note-box">
+    <h4>The main purpose, in one sentence</h4>
+    <p>To equip offenders with the <strong>thinking skills</strong> to make <strong>prosocial behaviour choices</strong> that will allow them to navigate out of a criminal lifestyle.</p>
+  </div>
+
+  <table>
+    <tr><th style="width:30%;">Feature</th><th>Detail to learn</th></tr>
+    <tr><td>Sessions</td><td><strong>36 group sessions</strong>, each lasting <strong>two hours</strong>.</td></tr>
+    <tr><td>Frequency</td><td>Between <strong>two and four times per week</strong>.</td></tr>
+    <tr><td>Methods</td><td>Group discussions, <strong>Socratic questioning</strong>, <strong>role playing</strong> and thinking games.</td></tr>
+    <tr><td>Purpose of the methods</td><td>All designed to <strong>challenge the offender's beliefs</strong> and develop better thinking, <strong>emotional regulation</strong> and <strong>problem-solving</strong> skills.</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：R&amp;R 在教什么</strong><br>
+    不是教“不要犯罪”，而是教<strong>思考的工具</strong>：遇到事先停一下、想后果、想别人的感受、想有没有别的做法。
+    36 次、每次 2 小时、每周 2–4 次 —— 这个数字容易考，记住 <strong>36</strong>。
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Moral Reconation Therapy (MRT)</h2>
+
+  <div class="blue-box">
+    <h4>The identity card</h4>
+    <p>Established by <strong>Greg Little and Ken Robinson (1986)</strong>. Where R&amp;R teaches thinking skills, MRT targets <strong>morality</strong>.</p>
+  </div>
+
+  <p><strong>What it is:</strong> a series of <strong>group and workbook exercises</strong> to target reducing criminal thinking.</p>
+
+  <p><strong>The assumption behind it:</strong> criminals have an <strong>underdeveloped morality</strong>, so the treatment is designed to teach <strong>moral reasoning and judgement</strong>. Offenders are taught about <strong>social rules</strong> and the <strong>importance of considering others</strong>.</p>
+
+  <div class="note-box">
+    <h4>The feature that makes MRT distinctive</h4>
+    <p>The programme is a <strong>staged workbook</strong>. Each offender must complete a series of <strong>homework assignments</strong> in order to <strong>pass to the next stage</strong>.</p>
+  </div>
+
+  <table>
+    <tr><th style="width:30%;">Feature</th><th>Detail to learn</th></tr>
+    <tr><td>Format</td><td>Group sessions plus a <strong>structured workbook</strong>.</td></tr>
+    <tr><td>Progression</td><td><strong>Staged</strong> — homework must be completed to move to the next stage.</td></tr>
+    <tr><td>Content of the exercises</td><td>Encourages moral thinking: awareness of <strong>beliefs around criminal activity</strong>, and developing <strong>tolerance to frustration</strong>.</td></tr>
+    <tr><td>Assumption</td><td>Criminals have <strong>underdeveloped morality</strong>; the fix is to teach moral reasoning and judgement.</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：MRT 和 R&amp;R 的区别（考试最爱考这个对比）</strong><br>
+    R&amp;R = 教<strong>思考技巧</strong>（会不会想）。<br>
+    MRT = 教<strong>道德水平</strong>（该不该做），而且像游戏通关：<strong>做完作业才能进下一关</strong>。<br>
+    两个都要写“创始人 + 年份”：Ross &amp; Fabiano (1985) / Little &amp; Robinson (1986)。
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Anger Management</h2>
+
+  <p>A common application of CBT for offenders, endorsed by <strong>Raymond Novaco since the 1970s</strong>.</p>
+
+  <div class="keyterm-box">
+    <span class="kt">How Novaco defines anger：</span> a <strong>strong emotion</strong> that has an impact on a person's <strong>physiology, behaviour and cognition</strong>. Notice — anger hits all three, so the treatment has to hit all three too.
+  </div>
+
+  <table>
+    <tr><th style="width:26%;">Part of anger</th><th>What the treatment uses</th></tr>
+    <tr><td>Physiology</td><td>Relaxation techniques to deal with the physiological response (for example, <strong>increased heart rate</strong>).</td></tr>
+    <tr><td>Cognition</td><td><strong>Cognitive restructuring</strong> to retrain thought patterns.</td></tr>
+    <tr><td>Behaviour</td><td><strong>“Time out”</strong> or <strong>assertiveness training</strong> to deal with the behavioural element.</td></tr>
+  </table>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The three steps of anger management: cognitive preparation, skill acquisition, application practice">
+      <defs>
+        <marker id="arB" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#ea580c"/>
+        </marker>
+      </defs>
+
+      <rect x="30" y="34" width="180" height="54" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+      <text x="120" y="56" font-size="12.5" font-weight="700" fill="#334155" text-anchor="middle">1 · Cognitive preparation</text>
+      <text x="120" y="76" font-size="11" fill="#64748b" text-anchor="middle">认知准备</text>
+
+      <rect x="250" y="34" width="180" height="54" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+      <text x="340" y="56" font-size="12.5" font-weight="700" fill="#334155" text-anchor="middle">2 · Skill acquisition</text>
+      <text x="340" y="76" font-size="11" fill="#64748b" text-anchor="middle">技能获得</text>
+
+      <rect x="470" y="34" width="180" height="54" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+      <text x="560" y="56" font-size="12.5" font-weight="700" fill="#334155" text-anchor="middle">3 · Application practice</text>
+      <text x="560" y="76" font-size="11" fill="#64748b" text-anchor="middle">应用练习</text>
+
+      <line x1="212" y1="61" x2="246" y2="61" stroke="#ea580c" stroke-width="2.2" marker-end="url(#arB)"/>
+      <line x1="432" y1="61" x2="466" y2="61" stroke="#ea580c" stroke-width="2.2" marker-end="url(#arB)"/>
+
+      <text x="120" y="112" font-size="11" fill="#475569" text-anchor="middle">Identify situations that provoke anger</text>
+      <text x="120" y="130" font-size="11" fill="#475569" text-anchor="middle">Challenge the thought patterns</text>
+      <text x="120" y="148" font-size="11" fill="#475569" text-anchor="middle">Consider the cost of anger on others</text>
+
+      <text x="340" y="112" font-size="11" fill="#475569" text-anchor="middle">Learn relaxation techniques</text>
+      <text x="340" y="130" font-size="11" fill="#475569" text-anchor="middle">Learn avoidance and social skills</text>
+      <text x="340" y="148" font-size="11" fill="#475569" text-anchor="middle">Assertiveness and conflict resolution</text>
+
+      <text x="560" y="112" font-size="11" fill="#475569" text-anchor="middle">Role-play scenarios to practise</text>
+      <text x="560" y="130" font-size="11" fill="#475569" text-anchor="middle">Controlled environment, feels safe</text>
+      <text x="560" y="148" font-size="11" fill="#475569" text-anchor="middle">No risk to untrained individuals</text>
+
+      <text x="340" y="186" font-size="11.5" font-weight="600" fill="#1e40af" text-anchor="middle">Anger is a normal emotion — offenders are not taught to fear it.</text>
+      <text x="340" y="204" font-size="11.5" fill="#475569" text-anchor="middle">The emphasis is on giving them skills so they can control it.</text>
+    </svg>
+    <div class="figure-caption">The three steps of anger management (Novaco).</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：三步就是“先认、再学、后练”</strong><br>
+    ① <strong>认</strong>：什么时候我会炸？（写愤怒日记找 trigger）<br>
+    ② <strong>学</strong>：学放松、学拒绝、学表达（给工具）<br>
+    ③ <strong>练</strong>：在安全的环境里角色扮演练这些工具<br>
+    还有一个反直觉的点：<strong>不要求他们“不生气”</strong>——生气是正常的，目标是“能控制”。
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Which step? <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro"><strong>A.</strong> An offender keeps a diary to work out which situations set them off.</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="stepMatch(this,'a','1')">step 1</button>
+      <button class="q-option" onclick="stepMatch(this,'a','2')">step 2</button>
+      <button class="q-option" onclick="stepMatch(this,'a','3')">step 3</button>
+    </div>
+    <div class="xp-result" id="res-a"></div>
+
+    <p class="xp-intro"><strong>B.</strong> An offender is taught breathing and relaxation techniques.</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="stepMatch(this,'b','1')">step 1</button>
+      <button class="q-option" onclick="stepMatch(this,'b','2')">step 2</button>
+      <button class="q-option" onclick="stepMatch(this,'b','3')">step 3</button>
+    </div>
+    <div class="xp-result" id="res-b"></div>
+
+    <p class="xp-intro"><strong>C.</strong> An offender role-plays being stuck in a queue while staying calm.</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="stepMatch(this,'c','1')">step 1</button>
+      <button class="q-option" onclick="stepMatch(this,'c','2')">step 2</button>
+      <button class="q-option" onclick="stepMatch(this,'c','3')">step 3</button>
+    </div>
+    <div class="xp-result" id="res-c"></div>
+  </div>
+
+  <div class="note-box">
+    <h4>Where and how long</h4>
+    <p>Anger management can be used <strong>in prisons</strong> or with offenders serving a <strong>probationary period in the community</strong>. Courses are usually run in <strong>small groups</strong> and last for approximately <strong>ten sessions</strong>, although some can last for a number of months.</p>
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Social Skills, Problem Solving and Assertiveness</h2>
+
+  <p>Not every CBT programme has a brand name. Typically CBT also incorporates <strong>social skills training, problem-solving skills and assertiveness training</strong>. As a package it is used to encourage offenders to <strong>consider their existing social skills and develop them further</strong>.</p>
+
+  <div class="keyterm-box">
+    <span class="kt">assertiveness（自信表达 / 坚定表达）：</span> communicating in a <strong>confident, non-confrontational way</strong> to minimise conflict and increase the likelihood the offender will be responded to positively.
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card red">
+      <h4>The pattern it replaces</h4>
+      <p style="font-size:.88em;margin:4px 0">An offender who usually interacts in an <strong>aggressive</strong> manner — communicating in a <strong>forceful, threatening or intimidating</strong> style.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>What it builds instead</h4>
+      <p style="font-size:.88em;margin:4px 0">The same person considering how to get the same outcome in a <strong>more assertive way</strong> — and then <strong>practising</strong> and reflecting on how successfully they used the skills.</p>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <h4>Why practice beats instruction here</h4>
+    <p>This is a <strong>supported</strong> approach to developing skills: by giving greater guidance it is <strong>more effective than simply telling the offender what they should do</strong>. The offender learns <strong>from personal experience</strong> how beneficial it may be to be polite in a situation, which also helps them <strong>feel more confident</strong> using the skills — so they are <strong>more likely to keep using them</strong> in the future.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：这一部分的核心逻辑</strong><br>
+    直接说教（“你要有礼貌”）没用。<strong>让他在安全环境里真的试一次，发现“有礼貌居然真的管用”</strong>——
+    这个亲身体会才会让他以后继续用。考试写“为什么有效”时，这一点非常加分。
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Match the Programme</h2>
+
+  <p>The specification expects you to describe <em>which</em> programme suits <em>which</em> offender. Test yourself on four cases.</p>
+
+  <div class="xp-block">
+    <h4>🎯 Four offenders, four programmes <span class="xp-badge">No notes</span></h4>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Case 1 · Danny</div>
+      <div class="xp-case-desc">Shoplifts repeatedly. Says the shop is insured so nobody really loses anything, and has never thought about the staff who have to clean up. Struggles to think through consequences before acting.</div>
+      <div class="xp-controls">
+        <button class="q-option" onclick="progMatch(this,'p1','rr')">R&amp;R</button>
+        <button class="q-option" onclick="progMatch(this,'p1','mrt')">MRT</button>
+        <button class="q-option" onclick="progMatch(this,'p1','am')">anger management</button>
+        <button class="q-option" onclick="progMatch(this,'p1','ss')">social skills / assertiveness</button>
+      </div>
+      <div class="xp-result" id="res-p1"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Case 2 · Marcus</div>
+      <div class="xp-case-desc">Halfway through a long sentence. Needs something structured that shows visible progress: works through homework booklets, and only moves up a stage once each one is complete.</div>
+      <div class="xp-controls">
+        <button class="q-option" onclick="progMatch(this,'p2','rr')">R&amp;R</button>
+        <button class="q-option" onclick="progMatch(this,'p2','mrt')">MRT</button>
+        <button class="q-option" onclick="progMatch(this,'p2','am')">anger management</button>
+        <button class="q-option" onclick="progMatch(this,'p2','ss')">social skills / assertiveness</button>
+      </div>
+      <div class="xp-result" id="res-p2"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Case 3 · Ryan</div>
+      <div class="xp-case-desc">Repeatedly becomes aggressive in queues and crowded places. Reports his heart racing and breathing fast, and describes other people as deliberately pushing in front of him.</div>
+      <div class="xp-controls">
+        <button class="q-option" onclick="progMatch(this,'p3','rr')">R&amp;R</button>
+        <button class="q-option" onclick="progMatch(this,'p3','mrt')">MRT</button>
+        <button class="q-option" onclick="progMatch(this,'p3','am')">anger management</button>
+        <button class="q-option" onclick="progMatch(this,'p3','ss')">social skills / assertiveness</button>
+      </div>
+      <div class="xp-result" id="res-p3"></div>
+    </div>
+
+    <div class="xp-case">
+      <div class="xp-case-name">Case 4 · Tyler</div>
+      <div class="xp-case-desc">Goes along with whatever his friends suggest because he cannot refuse a request, and when he does want something he asks in a loud, threatening way that starts arguments.</div>
+      <div class="xp-controls">
+        <button class="q-option" onclick="progMatch(this,'p4','rr')">R&amp;R</button>
+        <button class="q-option" onclick="progMatch(this,'p4','mrt')">MRT</button>
+        <button class="q-option" onclick="progMatch(this,'p4','am')">anger management</button>
+        <button class="q-option" onclick="progMatch(this,'p4','ss')">social skills / assertiveness</button>
+      </div>
+      <div class="xp-result" id="res-p4"></div>
+    </div>
+  </div>
+
+  <table>
+    <tr><th style="width:22%;">Programme</th><th>One-line identifier for the exam</th></tr>
+    <tr><td>R&amp;R</td><td>Ross &amp; Fabiano (1985) · <strong>36</strong> two-hour group sessions · critical thinking, social skills, assertiveness, negotiation · restructures rigid illogical thinking.</td></tr>
+    <tr><td>MRT</td><td>Little &amp; Robinson (1986) · <strong>staged workbook</strong> + homework · teaches moral reasoning and judgement · assumption: criminals have underdeveloped morality.</td></tr>
+    <tr><td>Anger management</td><td>Novaco (since the 1970s) · <strong>three steps</strong> · relaxation + cognitive restructuring + time out / assertiveness · about ten sessions.</td></tr>
+    <tr><td>Social skills</td><td>Not branded · problem solving and <strong>assertiveness</strong>: confident, non-confrontational communication · practised and reflected on.</td></tr>
+  </table>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. How Do We Know It Works?</h2>
+
+  <p>Before the studies, you need one term and one problem. Both come up in almost every evaluation answer.</p>
+
+  <div class="keyterm-box">
+    <span class="kt">recidivism（再犯率）：</span> the rate of reoffending — the tendency of a convicted criminal to reoffend. This is the standard measure of whether a treatment worked.
+  </div>
+
+  <div class="warn-box">
+    <h4>The problem: it is very hard to run a proper experiment</h4>
+    <p>Randomised controlled trials (RCTs) are designed to evaluate whether a therapy works: a sample is recruited and then <strong>randomly assigned</strong> to the treatment or control group. With offenders this is difficult, because they cannot be randomly allocated to treatment or no-treatment conditions. So <strong>most evaluations use non-randomised participants</strong>.</p>
+  </div>
+
+  <div class="note-box">
+    <h4>Why that matters for the conclusion</h4>
+    <p>If <strong>random allocation</strong> is not used, <strong>participant variables</strong> may prevent cause-and-effect relationships being drawn. We cannot be sure the improvement is due to the treatment itself, or to other factors — for example that the participant was <strong>selected</strong> for treatment because they were likely to benefit most, that they were <strong>highly motivated</strong>, that they <strong>volunteered</strong>, or that they were <strong>more likely to complete</strong> the programme.</p>
+    <p><strong>Consequence:</strong> it is unsurprising that studies which do not use randomised controlled trials often find that a treatment was effective.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么“有效”这个结论要打折扣</strong><br>
+    理想的实验是<strong>随机分组</strong>。但现实中，能进治疗项目的往往是<strong>本来就更想改的人</strong>。
+    所以“治疗后更少再犯”可能不是治疗的功劳，而是“这批人本来就不太会再犯”。<br>
+    评价题里这是<strong>最稳的一个扣分点</strong>，一定要写。
+  </div>
+
+  <div class="exam-tip">
+    <strong>Two things CBT is not.</strong> CBT is <strong>not a form of counselling</strong> — it does not focus on overcoming emotional reactions to past difficulties. Its focus is mainly on <strong>present thinking</strong>. And it <strong>does not work immediately</strong>: it requires <strong>commitment</strong> from the offender, because as a talking therapy it requires them to talk about their thoughts and experiences.
+  </div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="section" id="s14">
+  <h2>14. Evidence · R&amp;R</h2>
+
+  <div class="blue-box">
+    <h4>Tong and Farrington (2006)</h4>
+    <p>A <strong>meta-analysis</strong> on the implementation of R&amp;R in <strong>four countries</strong>: Canada, USA, UK and Sweden.</p>
+  </div>
+
+  <table>
+    <tr><th style="width:30%;">Finding</th><th>Detail</th></tr>
+    <tr><td>The headline</td><td>R&amp;R <strong>reduced reoffending by 15 per cent</strong> compared to the control groups.</td></tr>
+    <tr><td>Setting</td><td>Effective in <strong>both prison and community</strong> settings.</td></tr>
+    <tr><td>Who</td><td>Effective with <strong>volunteers and non-volunteers</strong>, and in <strong>all countries</strong> studied.</td></tr>
+    <tr><td>Risk level</td><td>Effective with high and low risk offenders, but <strong>much more effective with low risk offenders</strong>.</td></tr>
+    <tr><td>Their own caveat</td><td>The researchers noted that the <strong>European research included in the meta-analysis did not employ randomised controlled trials</strong>.</td></tr>
+  </table>
+
+  <div class="note-box">
+    <h4>What this means for your answer</h4>
+    <p>Overall, the R&amp;R programme seems to be an <strong>effective treatment for offenders</strong> — the finding holds across countries, settings and risk levels. But the caveat matters: because much of the European evidence is not from RCTs, we cannot rule out participant variables as the real cause.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：这条证据怎么用</strong><br>
+    写“支持”时用：15%、四国、监狱和社区都有效 —— 说明<strong>不是只在某一种条件下成立</strong>，推广性较好。<br>
+    写“限制”时用：欧洲部分<strong>没有随机分配</strong>；而且<strong>对低风险者效果明显更好</strong>，高风险者不能指望同样效果。
+  </div>
+</section>
+
+<!-- ============ 15 ============ -->
+<section class="section" id="s15">
+  <h2>15. Evidence · MRT</h2>
+
+  <div class="blue-box">
+    <h4>Ferguson and Wormith (2013)</h4>
+    <p>A meta-analysis of <strong>33 published studies</strong> comparing MRT with a control group, following up offenders over an average of <strong>three years</strong>.</p>
+  </div>
+
+  <table>
+    <tr><th style="width:30%;">Finding</th><th>Detail</th></tr>
+    <tr><td>The headline</td><td>Recidivism was <strong>reduced by up to a third</strong> compared to those who received <strong>no treatment</strong>.</td></tr>
+    <tr><td>Age</td><td>Outcomes were <strong>better for adult offenders</strong> compared to <strong>juvenile offenders</strong>.</td></tr>
+    <tr><td>Setting matters</td><td>The treatment seems to be <strong>only beneficial when delivered in a prison context</strong>.</td></tr>
+  </table>
+
+  <div class="warn-box">
+    <h4>Blonigen et al. (2023) — the boundary condition</h4>
+    <p>They found <strong>no difference in improvement between MRT and usual care</strong> in a <strong>residential mental health setting</strong>. The same programme that works in prison produced nothing extra there.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：MRT 的“但是”</strong><br>
+    Ferguson &amp; Wormith：再犯率最多降 <strong>1/3</strong>，<strong>成年人比青少年好</strong>。<br>
+    Blonigen：换成<strong>精神健康 residential 机构</strong>，MRT <strong>和常规照护没差别</strong>。<br>
+    → 结论要写成“<strong>在监狱环境下</strong>有效”，不能笼统说“MRT 有效”。这种“有条件才成立”的写法是高分句。
+  </div>
+</section>
+
+<!-- ============ 16 ============ -->
+<section class="section" id="s16">
+  <h2>16. Evidence · CBT Overall</h2>
+
+  <p>Three more studies sit under “CBT in general” rather than one named programme. Learn all three — the specification expects evidence for the <em>effectiveness of CBT</em>, not just for one brand.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Wilson, Bouffard and McKenzie (2005)</h4>
+      <p style="font-size:.88em;margin:4px 0">Meta-analysis of <strong>20 group-oriented CBT</strong> research studies. CBT reduced recidivism by <strong>up to 30 per cent</strong> more than control groups that did not receive CBT. Specifically, <strong>MRT and R&amp;R were most effective</strong>.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Pearson et al. (2002)</h4>
+      <p style="font-size:.88em;margin:4px 0">Other meta-analyses have found CBT <strong>more effective than behavioural techniques</strong> in reducing reoffending.</p>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <h4>The honest caveat from the same meta-analyses</h4>
+    <p>Some of the studies within each meta-analysis showed a <strong>greater effect</strong> than others, so it is <strong>not yet certain what aspect of the therapy works on what type of offender</strong>. There may be <strong>moderator variables</strong> that decide whether the effect on reoffending is small or large.</p>
+  </div>
+
+  <div class="blue-box">
+    <h4>Lipsey, Landenberger and Wilson (2007) — the answer to that problem</h4>
+    <p>A review of <strong>58 CBT studies</strong>. They scrutinised possible moderator variables — <strong>type of offender</strong> in the programme, <strong>methodology</strong> of the study, and <strong>nature of the intervention</strong>. Only one thing affected the likelihood of success: the <strong>amount and quality of the CBT programme</strong>.</p>
+    <p><strong>This suggests that any CBT programme is beneficial</strong> — what matters is how much of it you deliver and how well you deliver it.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：58 项研究找出的唯一答案</strong><br>
+    大家一直在问“到底是哪一套 CBT 最管用”。Lipsey 他们查了犯人类型、研究方法、干预形式——<strong>全都不是关键</strong>。<br>
+    唯一有影响的是：<strong>做了多少、做得好不好</strong>。<br>
+    这一句是评价题里非常漂亮的“总结句”：效果差异主要来自<strong>实施质量</strong>，不是方案本身。
+  </div>
+</section>
+
+<!-- ============ 17 ============ -->
+<section class="section" id="s17">
+  <h2>17. Side by Side</h2>
+
+  <p>Three headline numbers keep coming up. Learn them as a set — an evaluation answer that compares them is far stronger than one that lists a single study.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart comparing reductions in reoffending: R and R 15 per cent, MRT up to a third, CBT overall up to 30 per cent">
+      <text x="340" y="20" font-size="11.5" fill="#475569" text-anchor="middle">Reduction in reoffending compared with untreated comparison groups</text>
+
+      <line x1="70" y1="240" x2="640" y2="240" stroke="#334155" stroke-width="1.8"/>
+      <line x1="70" y1="30" x2="70" y2="240" stroke="#334155" stroke-width="1.8"/>
+
+      <line x1="70" y1="187.5" x2="640" y2="187.5" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="70" y1="135" x2="640" y2="135" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="70" y1="82.5" x2="640" y2="82.5" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="70" y1="30" x2="640" y2="30" stroke="#e2e8f0" stroke-width="1"/>
+
+      <text x="62" y="244" font-size="10.5" fill="#64748b" text-anchor="end">0%</text>
+      <text x="62" y="191.5" font-size="10.5" fill="#64748b" text-anchor="end">10%</text>
+      <text x="62" y="139" font-size="10.5" fill="#64748b" text-anchor="end">20%</text>
+      <text x="62" y="86.5" font-size="10.5" fill="#64748b" text-anchor="end">30%</text>
+      <text x="62" y="34" font-size="10.5" fill="#64748b" text-anchor="end">40%</text>
+
+      <rect x="110" y="161" width="100" height="79" rx="4" fill="#ea580c"/>
+      <rect x="290" y="67" width="100" height="173" rx="4" fill="#f97316"/>
+      <rect x="470" y="82" width="100" height="158" rx="4" fill="#fb923c"/>
+
+      <text x="160" y="153" font-size="12.5" font-weight="700" fill="#c2410c" text-anchor="middle">15%</text>
+      <text x="340" y="59" font-size="12.5" font-weight="700" fill="#c2410c" text-anchor="middle">up to a third</text>
+      <text x="520" y="74" font-size="12.5" font-weight="700" fill="#c2410c" text-anchor="middle">up to 30%</text>
+
+      <text x="160" y="258" font-size="12.5" font-weight="700" fill="#334155" text-anchor="middle">R&amp;R</text>
+      <text x="340" y="258" font-size="12.5" font-weight="700" fill="#334155" text-anchor="middle">MRT</text>
+      <text x="520" y="258" font-size="12.5" font-weight="700" fill="#334155" text-anchor="middle">CBT overall</text>
+
+      <text x="160" y="274" font-size="10" fill="#64748b" text-anchor="middle">Tong &amp; Farrington (2006)</text>
+      <text x="340" y="274" font-size="10" fill="#64748b" text-anchor="middle">Ferguson &amp; Wormith (2013)</text>
+      <text x="520" y="274" font-size="10" fill="#64748b" text-anchor="middle">Wilson et al. (2005)</text>
+    </svg>
+    <div class="figure-caption">The three headline reductions. Each comes from a meta-analysis, and each compares treated offenders with untreated ones.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：怎么读这张图</strong><br>
+    三根柱子<strong>不是同一件事</strong>：MRT 是“最多降三分之一”，CBT 整体是“最多降 30%”，R&amp;R 是“降 15%”。
+    考试别把它们混成一个数字。<br>
+    更重要的写法：<strong>三者的对照组都是“没接受治疗的人”</strong>——所以这些数字衡量的是“比不治好多少”，
+    不是“有多少人从此不再犯罪”。
+  </div>
+</section>
+
+<!-- ============ 18 ============ -->
+<section class="section" id="s18">
+  <h2>18. Evidence · Anger Management</h2>
+
+  <div class="warn-box">
+    <h4>First, the boundary: it only applies to some offenders</h4>
+    <p>Anger management programmes are <strong>only effective for those offenders who have problems with anger control</strong>. Not all offences — <strong>even violent ones</strong> — are committed because the offender was unable to control their anger. Before attending treatment for anger, offenders are <strong>interviewed to assess suitability</strong>.</p>
+  </div>
+
+  <div class="blue-box">
+    <h4>Howells et al. (2005) — the motivation finding</h4>
+    <p>Anger management was effective <strong>only for those motivated to change their behaviour</strong>, who are <strong>committed to the programme</strong>.</p>
+  </div>
+
+  <div class="green-box">
+    <h4>Ireland (2004) — the improvement finding</h4>
+    <p>Assessed <strong>50 young male prisoners</strong> on an anger management course and <strong>37 control prisoners</strong>. It was found that <strong>92 per cent</strong> of the prisoners showed an <strong>improvement in their management of their anger</strong>, suggesting such programmes are effective.</p>
+  </div>
+
+  <div class="warn-box">
+    <h4>But read that 92 per cent carefully</h4>
+    <p>It is possible, however, that offenders <strong>may be dishonest on questionnaire assessment</strong> measuring anger, and may try to show that they have either <strong>improved their anger management skills</strong> or <strong>minimised the anger they experienced in the first place</strong>.</p>
+    <p>This remains a difficulty with <strong>any intervention that relies on self-report data</strong>, particularly from offenders — there may be a greater <strong>incentive to lie</strong>, including <strong>looking good for parole</strong> (if in prison) or trying to <strong>have their restrictions reduced</strong> by demonstrating they are no longer a risk to the public.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：92% 这个数字为什么不可靠</strong><br>
+    量表是<strong>自己填的</strong>。犯人有很强的动机说“我已经不生气了”——为了<strong>假释</strong>、为了<strong>减少限制</strong>。<br>
+    所以高分答案会写：<strong>数据来自自我报告，且存在明显说谎动机，因此 92% 可能被高估</strong>。
+    这一句比单纯引用 92% 强得多。
+  </div>
+</section>
+
+<!-- ============ 19 ============ -->
+<section class="section" id="s19">
+  <h2>19. Social Skills, Problem Solving and Young Offenders</h2>
+
+  <div class="blue-box">
+    <h4>Pearson et al. (2002) — the difficulty of isolating a technique</h4>
+    <p>They reviewed the impact of social skills training on reoffending rates and found that <strong>CBT programmes in general had a positive effect</strong> on reducing reoffending. However, it is <strong>difficult to assess the effectiveness of specific techniques</strong> — social skills training, problem solving and assertiveness — because <strong>they are often used alongside other techniques</strong>. In a careful analysis of the techniques used within <strong>58 CBT programmes</strong>, <strong>cognitive skills training and interpersonal problem solving</strong> were found to have a <strong>modest positive effect</strong> on reducing recidivism.</p>
+  </div>
+
+  <div class="note-box">
+    <h4>The Enhanced Thinking Skills (ETS) programme — mixed findings</h4>
+    <p>ETS helps <strong>juvenile offenders</strong> learn critical reasoning skills, problem solving and self-control. It is a <strong>20-session programme</strong>, focused specifically on the cognitive skills that younger people may not have developed, which may have contributed to the offending.</p>
+  </div>
+
+  <table>
+    <tr><th style="width:26%;">Study</th><th>Finding</th><th style="width:20%;">Verdict</th></tr>
+    <tr><td>Friendship et al. (2002)</td><td>Initial findings suggested the programme <strong>lowered juvenile recidivism</strong> in low-, medium- and high-risk offenders.</td><td>positive</td></tr>
+    <tr><td>Falshaw et al. (2003)</td><td>A <strong>reanalysis of the same data</strong> did <strong>not show any significant effect</strong> in reducing reoffending.</td><td>negative</td></tr>
+    <tr><td>Cann et al. (2003)</td><td>Significant effects were shown <strong>only after one year</strong>; reoffending rates <strong>after two years were not improved</strong>.</td><td>short-term only</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：ETS 三连问怎么记</strong><br>
+    Friendship：<strong>有效</strong>。→ Falshaw：<strong>同一批数据重新分析，无效</strong>。→ Cann：<strong>一年有效，两年无效</strong>。<br>
+    合起来的结论：<strong>认知训练对青少年可能只有短期效果</strong>。写评价时用这三条说明“结果不稳定”。
+  </div>
+
+  <div class="warn-box">
+    <h4>The criticism from outside the therapy room</h4>
+    <p>CBT has been criticised for <strong>focusing on thinking skills</strong> and therefore <strong>failing to take account of social factors</strong> such as <strong>poverty and employment</strong>. These social factors are <strong>important predictors of reoffending</strong> and act as <strong>environmental stressors</strong> which are overlooked by the treatment.</p>
+  </div>
+
+  <div class="keyterm-box">
+    <span class="kt">stressor（压力源）：</span> any stimuli, internal or external, which places demands on the individual that require a physical or psychological change in order to cope.
+  </div>
+</section>
+
+<!-- ============ 20 ============ -->
+<section class="section" id="s20">
+  <h2>20. Evaluating the Evidence</h2>
+
+  <p>The specification asks for <strong>effectiveness</strong>, so every evaluation answer needs both sides. Open each card and notice that the strengths are about <em>evidence</em>, while the limitations are about <em>how that evidence was collected</em>.</p>
+
+  <div class="summary-card-header" onclick="togglePanel(this,'evgen')">
+    <span class="arrow">▶</span> Strengths — why the evidence is worth taking seriously
+  </div>
+  <div class="summary-card-body" id="evgen">
+    <ul>
+      <li><span class="syl-tag ev">SIZE</span> 效果量大：<strong>Wilson, Bouffard and McKenzie (2005)</strong> found CBT reduced recidivism by up to <strong>30%</strong> more than untreated controls — a large practical difference, not a marginal one.</li>
+      <li><span class="syl-tag ev">META</span> 元分析支撑：Findings come from <strong>meta-analyses</strong> pooling many studies (20 studies; 33 studies; 58 programmes), so they are not dependent on one small sample.</li>
+      <li><span class="syl-tag ev">GENERAL</span> 跨情境成立：<strong>Tong and Farrington (2006)</strong> found R&amp;R worked in prison and community, with volunteers and non-volunteers, across four countries — good <strong>external validity</strong>.</li>
+      <li><span class="syl-tag ev">THEORY</span> 有理论依据：<strong>Beck (1999)</strong> links criminal thinking directly to offending, so there is a clear reason to expect changing thinking to change behaviour.</li>
+      <li><span class="syl-tag ev">MECHANISM</span> 知道什么在起作用：<strong>Lipsey et al. (2007)</strong> isolated the amount and quality of delivery as the key factor, which is actionable.</li>
+    </ul>
+  </div>
+
+  <div class="summary-card-header" onclick="togglePanel(this,'evlim')" style="margin-top:14px;">
+    <span class="arrow">▶</span> Limitations — what the evidence cannot tell us
+  </div>
+  <div class="summary-card-body" id="evlim">
+    <ul>
+      <li><span class="syl-tag crit">RCT</span> 缺随机分配：Offenders cannot be randomly allocated to treatment or no treatment, so most evaluations use <strong>non-randomised participants</strong> and <strong>participant variables</strong> may explain the improvement — motivated volunteers, or those selected because they were likely to benefit.</li>
+      <li><span class="syl-tag crit">MEASURE</span> 测量本身有问题：Success is measured by <strong>recidivism</strong>. If the therapy aims to change thinking, a better measure would be <strong>whether thinking changed</strong>. Official statistics only capture <strong>arrests and convictions</strong>, so <strong>unreported crime is missed</strong> and CBT may look more effective than it is.</li>
+      <li><span class="syl-tag crit">SELF-REPORT</span> 自我报告不可靠：<strong>Ireland (2004)</strong> relied on questionnaires, and offenders have a strong <strong>incentive to lie</strong> — parole, or reduced restrictions.</li>
+      <li><span class="syl-tag crit">QUALITY</span> 元分析内部差异大：There are significant issues with using meta-analyses because of <strong>variation between programmes in quality of delivery</strong>.</li>
+      <li><span class="syl-tag crit">MIXED</span> 结果不稳定：The ETS data were positive (<strong>Friendship 2002</strong>), then non-significant on reanalysis (<strong>Falshaw 2003</strong>), then <strong>short-term only</strong> (<strong>Cann 2003</strong>).</li>
+      <li><span class="syl-tag crit">BOUNDED</span> 有条件才成立：<strong>MRT</strong> works better for adults and appears beneficial <strong>only in a prison context</strong> (<strong>Blonigen 2023</strong> found no advantage in a residential mental health setting).</li>
+      <li><span class="syl-tag crit">GENDER</span> 性别偏差：Most data concern <strong>male offenders</strong>, who are the largest group of convicted criminals. Programmes were <strong>designed with men in mind</strong> and may not reflect the needs of female offenders, so <strong>less is known about women</strong>.</li>
+      <li><span class="syl-tag crit">REDUCTIONIST</span> 忽视社会因素：CBT focuses on thinking and <strong>overlooks poverty and employment</strong>, which are important predictors of reoffending and act as <strong>environmental stressors</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：八分的评价题怎么凑四段</strong><br>
+    ① <strong>支持</strong>：Wilson 30% / Tong 15% 四国有效（有量、能推广）。<br>
+    ② <strong>方法限制</strong>：无法随机分配，参与变量可能才是原因。<br>
+    ③ <strong>测量限制</strong>：只看再犯率，漏报犯罪；自我报告有说谎动机。<br>
+    ④ <strong>范围限制</strong>：男性样本、青少年结果不稳、忽视贫困与就业。<br>
+    最后一句要给<strong>平衡结论</strong>：CBT 值得用，但效果好坏取决于实施质量与适用人群。
+  </div>
+</section>
+
+<!-- ============ 21 ============ -->
+<section class="section" id="s21">
+  <h2>21. Checkpoint</h2>
+
+  <div class="xp-block">
+    <h4>🎯 Eight quick questions <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro"><strong>Q1.</strong> Punishment fails to do which of these?</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q1" value="a"> teach that there are consequences</label>
+      <label class="q-option"><input type="radio" name="q1" value="b"> directly teach how to act in a different way</label>
+      <label class="q-option"><input type="radio" name="q1" value="c"> act as a deterrent</label>
+    </div>
+    <p class="xp-intro"><strong>Q2.</strong> In the CBT chain, what comes directly before feelings?</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q2" value="a"> the situation</label>
+      <label class="q-option"><input type="radio" name="q2" value="b"> thoughts</label>
+      <label class="q-option"><input type="radio" name="q2" value="c"> behaviour</label>
+    </div>
+    <p class="xp-intro"><strong>Q3.</strong> Beck (1999) — an offender saying the shop is insured so nobody really loses anything is an example of…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q3" value="a"> misinterpreting social cues as threats</label>
+      <label class="q-option"><input type="radio" name="q3" value="b"> schemas of self-dominance and entitlement</label>
+      <label class="q-option"><input type="radio" name="q3" value="c"> justifying the offending</label>
+    </div>
+    <p class="xp-intro"><strong>Q4.</strong> The R&amp;R programme typically consists of…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q4" value="a"> 10 sessions</label>
+      <label class="q-option"><input type="radio" name="q4" value="b"> 36 two-hour group sessions</label>
+      <label class="q-option"><input type="radio" name="q4" value="c"> 20 sessions</label>
+    </div>
+    <p class="xp-intro"><strong>Q5.</strong> What makes MRT distinctive?</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q5" value="a"> a staged workbook with homework to pass each stage</label>
+      <label class="q-option"><input type="radio" name="q5" value="b"> role play in controlled environments</label>
+      <label class="q-option"><input type="radio" name="q5" value="c"> relaxation to lower heart rate</label>
+    </div>
+    <p class="xp-intro"><strong>Q6.</strong> Novaco's step 3, application practice, involves…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q6" value="a"> identifying situations that provoke anger</label>
+      <label class="q-option"><input type="radio" name="q6" value="b"> learning relaxation and avoidance</label>
+      <label class="q-option"><input type="radio" name="q6" value="c"> role-playing scenarios to practise new skills</label>
+    </div>
+    <p class="xp-intro"><strong>Q7.</strong> Wilson, Bouffard and McKenzie (2005) found CBT reduced recidivism by up to…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q7" value="a"> 15%</label>
+      <label class="q-option"><input type="radio" name="q7" value="b"> 30%</label>
+      <label class="q-option"><input type="radio" name="q7" value="c"> a third</label>
+    </div>
+    <p class="xp-intro"><strong>Q8.</strong> Ireland (2004) found 92% improvement, but the key weakness was…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q8" value="a"> there was no control group</label>
+      <label class="q-option"><input type="radio" name="q8" value="b"> offenders may be dishonest on questionnaire assessment</label>
+      <label class="q-option"><input type="radio" name="q8" value="c"> the sample was all female</label>
+    </div>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="checkQuiz()">Mark my answers</button>
+    </div>
+    <div class="xp-result" id="quizResult"></div>
+  </div>
+</section>
+
+<!-- ============ 22 ============ -->
+<section class="section" id="s22">
+  <h2>22. Exam Lab</h2>
+
+  <div class="blue-box">
+    <h4>Q1. Outline how cognitive behavioural therapy might be used as a treatment for offenders. (4 marks)</h4>
+    <p style="margin:6px 0 2px"><strong>Needed:</strong> the premise, plus one named programme described in enough detail to be recognisable.</p>
+    <table>
+      <tr><th style="width:8%;">¶</th><th>Job of that point</th></tr>
+      <tr><td><strong>1</strong></td><td>The premise: situation → thoughts → feelings → behaviour; change the thought and behaviour changes.</td></tr>
+      <tr><td><strong>2</strong></td><td>Beck (1999): offenders show distorted thinking — blame, justification, misread cues, dominance schemas.</td></tr>
+      <tr><td><strong>3</strong></td><td>Name and describe one programme (R&amp;R: 36 two-hour sessions, Socratic questioning, role play).</td></tr>
+      <tr><td><strong>4</strong></td><td>What the offender actually does: diary, homework, practice; victim empathy and relapse prevention.</td></tr>
+    </table>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am1')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am1">
+      <p>CBT works on the premise that for every situation we experience we have <strong>thoughts</strong> about it, emotional reactions to it, and those thoughts then influence our behaviour. It is therefore possible to change an offender's reaction to the same experience by developing awareness of their own thoughts and <strong>restructuring</strong> them, so that their behaviour in that situation is more <strong>prosocial</strong>.</p>
+      <p>This matters because <strong>Beck (1999)</strong> showed criminals display distorted thinking — displacing blame onto the victim, justifying offending, misinterpreting social cues as threats, and holding schemas about self-dominance and entitlement. CBT aims to help offenders identify and restructure these patterns, develop <strong>victim empathy</strong>, and challenge self-justification.</p>
+      <p>One programme is the <strong>Reasoning and Rehabilitation programme (Ross and Fabiano, 1985)</strong>, typically <strong>36 group sessions of two hours</strong>, two to four times a week. Sessions use group discussion, <strong>Socratic questioning</strong>, role play and thinking games to challenge beliefs and develop emotional regulation and problem solving, equipping offenders to make prosocial choices.</p>
+      <p>Offenders may also keep <strong>anger diaries</strong>, completing them each time they feel angry, so that with the therapist's support they recognise their triggers and evaluate which techniques work for them; additional columns are added over time in a <strong>scaffolding</strong> approach.</p>
+    </div>
+  </div>
+
+  <div class="blue-box">
+    <h4>Q2. Evaluate the effectiveness of CBT as a therapy for offenders. (8 marks)</h4>
+    <p style="margin:6px 0 2px"><strong>Plan four paragraphs first:</strong></p>
+    <table>
+      <tr><th style="width:8%;">¶</th><th>Job of that paragraph</th></tr>
+      <tr><td><strong>1</strong></td><td>Supporting evidence: Wilson et al. (2005) up to 30%; Tong and Farrington (2006) 15%, four countries.</td></tr>
+      <tr><td><strong>2</strong></td><td>Methodological limit: no random allocation, participant variables.</td></tr>
+      <tr><td><strong>3</strong></td><td>Measurement limit: recidivism misses unreported crime; self-report incentive to lie.</td></tr>
+      <tr><td><strong>4</strong></td><td>Scope limit: gender bias, mixed juvenile findings, ignores poverty and employment — balanced conclusion.</td></tr>
+    </table>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am2')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am2">
+      <p><strong>¶1.</strong> A strength is that there is strong supporting evidence from meta-analyses. <strong>Wilson, Bouffard and McKenzie (2005)</strong> combined 20 group-oriented CBT studies and found CBT reduced recidivism by <strong>up to 30 per cent</strong> more than untreated controls, with MRT and R&amp;R the most effective. <strong>Tong and Farrington (2006)</strong> found R&amp;R reduced reoffending by <strong>15 per cent</strong> across four countries, in prison and community, with volunteers and non-volunteers. Because findings hold across settings and countries, the effect is not limited to one unusual sample.</p>
+      <p><strong>¶2.</strong> However, the evidence is methodologically weak. Offenders cannot be <strong>randomly allocated</strong> to treatment or no treatment, so most evaluations use non-randomised participants. Without random allocation, <strong>participant variables</strong> may explain the improvement: those selected for treatment may be more motivated, may have volunteered, or may be more likely to complete the programme. This makes it unsurprising that non-randomised studies often report positive effects.</p>
+      <p><strong>¶3.</strong> The way success is measured is also a problem. Effectiveness is typically measured by <strong>recidivism</strong>, yet if a therapy is designed to change <strong>thinking</strong>, a better measure would be whether thinking actually changed. Official recidivism statistics only capture <strong>arrests and convictions</strong>, so unreported crime is missed and CBT may appear <strong>more effective than it really is</strong>. Where self-report is used, such as <strong>Ireland (2004)</strong> where 92 per cent improved, offenders may be dishonest because they have an incentive to lie — looking good for parole or having restrictions reduced.</p>
+      <p><strong>¶4.</strong> Finally, the findings are limited in scope. Most data concern <strong>male offenders</strong> and programmes were designed with men in mind, so less is known about female offenders. Juvenile findings are mixed: <strong>Friendship et al. (2002)</strong> reported lower recidivism, <strong>Falshaw et al. (2003)</strong> found no significant effect on reanalysis, and <strong>Cann et al. (2003)</strong> found effects only after one year, suggesting <strong>short-term effects only</strong>. CBT has also been criticised for <strong>overlooking social factors</strong> such as poverty and employment, which predict reoffending and act as environmental stressors. On balance CBT appears beneficial — <strong>Lipsey et al. (2007)</strong> found the amount and quality of delivery was what mattered — but its effectiveness depends on who receives it and where.</p>
+    </div>
+  </div>
+
+  <div class="blue-box">
+    <h4>Q3. Outline how anger management is used with offenders. (4 marks)</h4>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am3')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am3">
+      <p>Anger management, endorsed by <strong>Novaco</strong> since the 1970s, treats anger as a strong emotion affecting physiology, behaviour and cognition, so all three are targeted. It is used in prisons or in the community on probation, usually in <strong>small groups</strong> for about <strong>ten sessions</strong>.</p>
+      <p>Step one is <strong>cognitive preparation</strong>: offenders identify the situations that provoke anger so they can recognise when an outburst is likely, thought patterns are challenged — for example, if they become angry when laughed at, they work through alternative conclusions such as that people are laughing at the behaviour and not at them — and they consider the negative consequences of their anger on others.</p>
+      <p>Step two is <strong>skill acquisition</strong>: new coping skills such as <strong>relaxation, avoidance</strong>, and social skills including <strong>assertiveness and conflict resolution</strong>. Because anger is a normal emotion, offenders are not taught to fear becoming angry; the emphasis is on giving them skills to <strong>control</strong> it.</p>
+      <p>Step three is <strong>application practice</strong>: offenders <strong>role-play</strong> scenarios to practise the new skills in a controlled environment where they feel safe and untrained individuals are not exposed to risk. They may also keep <strong>anger diaries</strong> to identify triggers and evaluate which techniques work for them.</p>
+    </div>
+  </div>
+
+  <div class="exam-tip">
+    <strong>Exam tip from the textbook.</strong> You may be asked to <strong>justify</strong> the use of CBT for offenders. Offer <strong>evidence</strong> which justifies its effectiveness — so it is important to learn the study evidence, names and numbers.
+  </div>
+
+  <div class="exam-tip">
+    <strong>Two things CBT is not.</strong> It is <strong>not counselling</strong> — the focus is mainly on present thinking, not on overcoming emotional reactions to past difficulties. And it <strong>does not work immediately</strong>: it requires commitment, because as a talking therapy the offender has to talk through their thoughts and experiences.
+  </div>
+</section>
+
+<!-- ============ 23 ============ -->
+<section class="section" id="s23">
+  <h2>23. Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><div class="term">cognitive behavioural therapy <span class="zh">认知行为疗法</span></div><div class="def">A treatment building insight into thoughts and feelings and how these influence behaviour; works by changing the thought to change the behaviour.</div></div>
+    <div class="glossary-item"><div class="term">custodial sentence <span class="zh">监禁刑</span></div><div class="def">A sentence served in prison — restricts activities and removes access to the community.</div></div>
+    <div class="glossary-item"><div class="term">non-custodial sentence <span class="zh">非监禁刑</span></div><div class="def">A sentence served in the community, such as a fine or community service.</div></div>
+    <div class="glossary-item"><div class="term">forensic psychologist <span class="zh">司法心理学家</span></div><div class="def">The professional who mainly delivers treatment; where staff are not psychologists, they are usually supervised by one.</div></div>
+    <div class="glossary-item"><div class="term">prosocial behaviour <span class="zh">亲社会行为</span></div><div class="def">Behaviour that takes account of the welfare of others and avoids harming others deliberately.</div></div>
+    <div class="glossary-item"><div class="term">cognitive restructuring <span class="zh">认知重构</span></div><div class="def">Identifying and challenging maladaptive thinking patterns and replacing them with more objective and adaptive ones.</div></div>
+    <div class="glossary-item"><div class="term">Socratic questioning <span class="zh">苏格拉底式提问</span></div><div class="def">A thoughtful method of questioning used in CBT to identify values and beliefs — the offender reaches the contradiction themselves.</div></div>
+    <div class="glossary-item"><div class="term">schema <span class="zh">图式 / 核心信念</span></div><div class="def">A deeply held belief about self and world — Beck identified schemas of self-dominance and personal entitlement in offenders.</div></div>
+    <div class="glossary-item"><div class="term">distorted thinking <span class="zh">扭曲思维</span></div><div class="def">Beck (1999): displacing blame, justifying offending, misreading social cues as threats, dominance and entitlement schemas.</div></div>
+    <div class="glossary-item"><div class="term">victim empathy <span class="zh">受害者共情</span></div><div class="def">One of the three aims of CBT for offenders — genuinely considering the impact of their behaviour on others.</div></div>
+    <div class="glossary-item"><div class="term">Reasoning and Rehabilitation (R&amp;R) <span class="zh">推理与康复项目</span></div><div class="def">Ross and Fabiano (1985): 36 two-hour group sessions teaching critical thinking, social skills, assertiveness and negotiation.</div></div>
+    <div class="glossary-item"><div class="term">Moral Reconation Therapy (MRT) <span class="zh">道德重建疗法</span></div><div class="def">Little and Robinson (1986): a staged workbook with homework, teaching moral reasoning and judgement.</div></div>
+    <div class="glossary-item"><div class="term">moral reasoning <span class="zh">道德推理</span></div><div class="def">Judging what is right and wrong — MRT assumes offenders have underdeveloped morality and teaches this directly.</div></div>
+    <div class="glossary-item"><div class="term">anger management <span class="zh">愤怒管理</span></div><div class="def">Novaco: three steps — cognitive preparation, skill acquisition, application practice.</div></div>
+    <div class="glossary-item"><div class="term">trigger <span class="zh">触发因素</span></div><div class="def">The situation that starts the anger — identified through anger diaries during cognitive preparation.</div></div>
+    <div class="glossary-item"><div class="term">scaffolding <span class="zh">脚手架式教学</span></div><div class="def">Adding diary columns gradually so the offender is not given too many expectations before they are ready.</div></div>
+    <div class="glossary-item"><div class="term">assertiveness <span class="zh">自信表达</span></div><div class="def">Communicating in a confident, non-confrontational way to minimise conflict and be responded to positively.</div></div>
+    <div class="glossary-item"><div class="term">recidivism <span class="zh">再犯率</span></div><div class="def">The rate of reoffending — the standard measure of whether treatment worked.</div></div>
+    <div class="glossary-item"><div class="term">randomised controlled trial <span class="zh">随机对照试验</span></div><div class="def">Participants randomly assigned to treatment or control; difficult to do with offenders, so most evaluations are not RCTs.</div></div>
+    <div class="glossary-item"><div class="term">moderator variable <span class="zh">调节变量</span></div><div class="def">A factor that changes the size of the effect — Lipsey et al. (2007) found only amount and quality of delivery mattered.</div></div>
+    <div class="glossary-item"><div class="term">stressor <span class="zh">压力源</span></div><div class="def">Any internal or external stimulus placing demands on the individual requiring change in order to cope — poverty and unemployment act this way.</div></div>
+    <div class="glossary-item"><div class="term">relapse prevention <span class="zh">预防复发</span></div><div class="def">A component of CBT packages aimed at stopping a return to offending after treatment ends.</div></div>
+  </div>
+</section>
+
+<div class="footer-note">6.1.6 CBT as a therapy for offenders · Criminological Psychology (Topic F) · previous: <a href="../6.1.5-jury-decision-making/">← 6.1.5 jury decision-making</a></div>
+  </main>
+</div>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function () {
+  var baseFont = 16;
+
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark'; }
+  };
+
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  var sentKey = { c1: 'cust', c2: 'non', c3: 'non' };
+  var sentFb = {
+    c1: 'Murder carries the most severe penalty and is very likely to receive a custodial sentence. Notice what a long sentence does though: it creates time in which treatment could happen, but it still does not teach the person a different way to act when they are released.',
+    c2: 'A first, low-value shoplifting offence is usually dealt with by a non-custodial sentence such as a fine or community service. Courts weigh how serious the offence is alongside the risk of reoffending.',
+    c3: 'Driving without a licence is usually non-custodial too - a fine or penalty points. The pattern across all three is that the sentence tracks seriousness, and none of the sentences by themselves change what the person will do next.'
+  };
+
+  window.sentenceChoice = function (btn, q, choice) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (choice === sentKey[q]);
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById('res-' + q);
+    if (el) {
+      el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'That is the usual outcome.' : 'Not the usual outcome.') + '</span> ' + sentFb[q] + '</p>';
+      el.classList.add('show');
+    }
+  };
+
+  window.thoughtSwap = function (btn, c) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === 'b');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById('swapResult');
+    if (!el) { return; }
+    var msg = ok
+      ? 'This is cognitive restructuring. The situation is already over and cannot be changed, but the interpretation can: the offender moves from a hostile explanation to a non-hostile one. Because thoughts drive feelings and behaviour, the shouting becomes far less likely next time - even though the queue and the crowded room are exactly the same.'
+      : 'The target is the interpretation of what the other person meant, not the behaviour advice. A CBT therapist would steer the offender towards a non-hostile explanation of the same event - that she probably did not see them - because that is the link in the chain that can still be changed.';
+    el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + msg + '</p>';
+    el.classList.add('show');
+  };
+
+  var stepKey = { a: '1', b: '2', c: '3' };
+  var stepFb = {
+    a: 'Step 1, cognitive preparation: offenders identify the situations that provoke anger so they can recognise when an aggressive outburst is likely to occur. The diary is the tool that does this.',
+    b: 'Step 2, skill acquisition: new coping skills are learned, such as relaxation, avoidance, and social skills including assertiveness and conflict resolution.',
+    c: 'Step 3, application practice: offenders role-play a variety of scenarios to practise the new skills, in controlled environments so they feel safe and untrained individuals are not exposed to risk of harm.'
+  };
+
+  window.stepMatch = function (btn, q, choice) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (choice === stepKey[q]);
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById('res-' + q);
+    if (el) {
+      el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + stepFb[q] + '</p>';
+      el.classList.add('show');
+    }
+  };
+
+  var progKey = { p1: 'rr', p2: 'mrt', p3: 'am', p4: 'ss' };
+  var progFb = {
+    p1: 'R and R. The justification and the failure to consider the impact on others are exactly the rigid, illogical thinking Ross and Fabiano targeted; the programme builds consequential thinking and victim awareness across 36 sessions.',
+    p2: 'MRT. The staged workbook with homework to pass each stage is the defining feature of Little and Robinson - it assumes criminals have underdeveloped morality and teaches moral reasoning step by step.',
+    p3: 'Anger management. Heart racing and fast breathing are the physiological response Novaco described, and reading other people as deliberately pushing in is the misinterpretation of social cues that cognitive restructuring is designed to challenge.',
+    p4: 'Social skills and assertiveness training. Being unable to refuse a request and asking in a threatening way are both social skill deficits - assertiveness trains confident, non-confrontational communication to replace the aggressive style.'
+  };
+
+  window.progMatch = function (btn, q, choice) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (choice === progKey[q]);
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById('res-' + q);
+    if (el) {
+      el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + progFb[q] + '</p>';
+      el.classList.add('show');
+    }
+  };
+
+  var quizKey = { q1: 'b', q2: 'b', q3: 'c', q4: 'b', q5: 'a', q6: 'c', q7: 'b', q8: 'b' };
+  var quizWhy = {
+    q1: 'Punishment does teach consequences and does act as a deterrent - what it does not do is directly teach offenders how to act in a different way.',
+    q2: 'Situation leads to thoughts, thoughts lead to feelings, feelings lead to behaviour. Thoughts are the link CBT targets.',
+    q3: 'Explaining the crime as harmless to anyone is justifying the offending, one of Beck four distorted patterns.',
+    q4: 'R and R is 36 group sessions of two hours, two to four times per week. Ten sessions is anger management and 20 is Enhanced Thinking Skills.',
+    q5: 'The staged workbook with homework is what makes MRT distinctive - R and R uses discussion and role play instead.',
+    q6: 'Application practice is role play in a controlled environment. Identifying triggers is step 1, relaxation is step 2.',
+    q7: 'Wilson, Bouffard and McKenzie found up to 30 per cent. Fifteen per cent is Tong and Farrington on R and R, and a third is Ferguson and Wormith on MRT.',
+    q8: 'Ireland did use a control group of 37 prisoners, and the sample was young males - the real weakness is that offenders may be dishonest on questionnaire assessment.'
+  };
+
+  window.checkQuiz = function () {
+    var el = document.getElementById('quizResult');
+    if (!el) { return; }
+    var score = 0;
+    var html = '';
+    Object.keys(quizKey).forEach(function (q) {
+      var sel = document.querySelector('input[name="' + q + '"]:checked');
+      var chosen = sel ? sel.value : null;
+      var ok = (chosen === quizKey[q]);
+      if (ok) { score++; }
+      html += '<p style="margin:6px 0"><strong>' + q.toUpperCase() + ':</strong> ' +
+        (chosen ? (ok ? 'correct' : 'not quite') : 'not answered') + ' — ' + quizWhy[q] + '</p>';
+    });
+    el.innerHTML = '<p><span class="xp-verdict">Score: ' + score + ' / 8</span></p>' + html;
+    el.classList.add('show');
+    el.classList.toggle('ok', score === 8);
+  };
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.toggle('show'); }
+  };
+
+  window.togglePanel = function (header, id) {
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    el.classList.toggle('hidden');
+    header.classList.toggle('open');
+  };
+
+  window.addEventListener('scroll', function () {
+    var btt = document.getElementById('btt');
+    if (btt) { btt.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  var links = document.querySelectorAll('.sb-item a');
+  var sections = [];
+  links.forEach(function (a) {
+    var sec = document.querySelector(a.getAttribute('href'));
+    if (sec) { sections.push({ link: a, sec: sec }); }
+  });
+  window.addEventListener('scroll', function () {
+    var pos = window.scrollY + 140;
+    var current = null;
+    sections.forEach(function (s) { if (s.sec.offsetTop <= pos) { current = s; } });
+    links.forEach(function (a) { a.classList.remove('sb-active'); });
+    if (current) { current.link.classList.add('sb-active'); }
+  });
+})();
+</script>
+</body>
+</html>
