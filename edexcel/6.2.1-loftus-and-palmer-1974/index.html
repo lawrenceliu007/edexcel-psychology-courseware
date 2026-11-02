@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.2.1 Loftus and Palmer (1974) — Reconstruction of automobile destruction</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.five-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+
+.mat2x2 { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 6px; margin: 14px 0; }
+.mat2x2 .mh { background: var(--primary); color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
+body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
+</style></head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic F · Criminological psychology — Classic study: Loftus and Palmer (1974)</span>
+  </div>
+  <span class="nav-pill">⚖️ Criminal Psychology</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="6.2.1-Loftus-and-Palmer-1974-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">6.2.1 · Contents</div>
+        <div class="sb-header-sub">Loftus and Palmer (1974)</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">Before we start</li>
+        <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+        <li class="sb-item"><a href="#s2">2. One Word, Two Answers</a></li>
+        <li class="sb-item"><a href="#s3">3. The Two Experiments</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Experiment one</li>
+        <li class="sb-item"><a href="#s4">4. Aim</a></li>
+        <li class="sb-item"><a href="#s5">5. Procedure</a></li>
+        <li class="sb-item"><a href="#s6">6. Results</a></li>
+        <li class="sb-item"><a href="#s7">7. Two Possible Reasons</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Experiment two</li>
+        <li class="sb-item"><a href="#s8">8. Why It Had to Happen</a></li>
+        <li class="sb-item"><a href="#s9">9. Aim</a></li>
+        <li class="sb-item"><a href="#s10">10. Procedure</a></li>
+        <li class="sb-item"><a href="#s11">11. Results</a></li>
+        <li class="sb-item"><a href="#s12">12. Conclusion</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">What it means</li>
+        <li class="sb-item"><a href="#s13">13. The Reconstructive Hypothesis</a></li>
+        <li class="sb-item"><a href="#s14">14. Two Experiments, Side by Side</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Evaluation</li>
+        <li class="sb-item"><a href="#s15">15. Strengths</a></li>
+        <li class="sb-item"><a href="#s16">16. Limitations</a></li>
+        <li class="sb-item"><a href="#s17">17. Real Life: What Changed</a></li>
+        <li class="sb-item"><a href="#s18">18. Match the Detail</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Exam</li>
+        <li class="sb-item"><a href="#s19">19. Checkpoint</a></li>
+        <li class="sb-item"><a href="#s20">20. Exam Lab</a></li>
+        <li class="sb-item"><a href="#s21">21. Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>6.2.1 LOFTUS AND PALMER (1974)<br><span style="font-size:0.65em">Reconstruction of automobile destruction · 汽车损毁的“重建”</span></h1>
+  <div class="meta">
+    <span class="badge">Topic F · Criminological psychology</span>
+    <span class="badge">Studies: classic</span>
+    <span class="badge">Spec 6.2.1</span>
+  </div>
+  <div class="subtitle" style="margin-top:10px">The study that showed one word in a question can change what a witness remembers — and changed how police question witnesses.</div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this section is really asking</h4>
+  <ol>
+    <li><strong>Change one verb</strong> in a question — smashed, collided, bumped, hit, contacted — and the speed estimate changes by up to 9 mph.</li>
+    <li><strong>Experiment two asks the real question:</strong> is that a changed memory, or just a different way of answering?</li>
+    <li><strong>The answer: it is a changed memory.</strong> A week later, “smashed” witnesses reported broken glass that was never there.</li>
+    <li><strong>Conclusion:</strong> memory is reconstructed — what we saw merges with what we are told later.</li>
+  </ol>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started</h2>
+
+  <p>Imagine you are standing at a junction. Two cars crash in front of you. A police officer arrives and asks you one question:</p>
+
+  <div class="blue-box">
+    <h4>Two versions of the same question</h4>
+    <p style="font-size:1.05em;margin:4px 0"><strong>“About how fast were the cars going when they <u>smashed</u> into each other?”</strong></p>
+    <p style="font-size:1.05em;margin:4px 0"><strong>“About how fast were the cars going when they <u>contacted</u> each other?”</strong></p>
+    <p style="margin:6px 0 0">Same crash. Same witness. Only one word is different.</p>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Have a guess first <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro">You saw the same crash either way. So do the two groups give the same number, or do they differ?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="speedGuess(this,'none')">The same speed — the word makes no difference</button>
+      <button class="q-option" onclick="speedGuess(this,'small')">A few mph apart — the word nudges the answer</button>
+      <button class="q-option" onclick="speedGuess(this,'huge')">20+ mph apart — the word dominates everything</button>
+    </div>
+    <div class="xp-result" id="res-speed"></div>
+  </div>
+
+  <p>Most people say “a few mph” — and that is right. But the interesting part is not <em>that</em> the number changed. It is <strong>why</strong> it changed, and what that means for anyone who has ever been asked to remember a crime.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：这一节要讲的“一个词”</strong><br>
+    两个目击者看的是<strong>同一场车祸</strong>，唯一区别是警察用了哪个动词：<em>smashed</em>（撞碎）听起来比 <em>contacted</em>（接触）严重得多。<br>
+    如果这个动词真的改变了目击者说出的速度，那法庭上“问话用词”就<strong>不再是小事</strong>——它可能直接改掉了证词。
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. One Word, Two Answers</h2>
+
+  <p>Elizabeth Loftus and John Palmer ran this in 1974. Their paper is called <em>Reconstruction of automobile destruction: An example of the interaction between language and memory</em>.</p>
+
+  <p>Three things make this study the <strong>classic study</strong> of this topic:</p>
+
+  <div class="five-grid">
+    <div class="compare-card">
+      <h4>It is about a real problem</h4>
+      <p style="font-size:.9em;margin:4px 0">Courts rely on eyewitnesses. If a question can change a memory, convictions can rest on something false.</p>
+    </div>
+    <div class="compare-card">
+      <h4>It changed practice</h4>
+      <p style="font-size:.9em;margin:4px 0">It contributed to the <strong>cognitive interview</strong> and to police guidance to avoid leading questions.</p>
+    </div>
+    <div class="compare-card">
+      <h4>It is two experiments, not one</h4>
+      <p style="font-size:.9em;margin:4px 0">The first one raises a doubt; the second one settles it. You must learn both.</p>
+    </div>
+  </div>
+
+  <div class="exam-tip">
+    <strong>The textbook is explicit.</strong> Loftus and Palmer's research involves <strong>both experiments</strong>, so you must be able to describe experiment one <em>and</em> experiment two in detail. An answer that only covers one will lose marks.
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. The Two Experiments</h2>
+
+  <p>Read the two experiments as one argument. Experiment one finds an effect; experiment two explains it.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Roadmap: experiment one asks whether the verb changes speed estimates, experiment two asks whether it is response bias or a changed memory">
+      <defs>
+        <marker id="ar621a" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#ea580c"/>
+        </marker>
+      </defs>
+
+      <rect x="30" y="52" width="200" height="96" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+      <text x="130" y="78" font-size="12.5" font-weight="700" fill="#334155" text-anchor="middle">Experiment 1</text>
+      <text x="130" y="98" font-size="11" fill="#64748b" text-anchor="middle">45 students · 5 verbs</text>
+      <text x="130" y="116" font-size="11" fill="#64748b" text-anchor="middle">estimates 40.8 → 31.8 mph</text>
+      <text x="130" y="134" font-size="10.5" fill="#94a3b8" text-anchor="middle">实验一：动词改了估计值</text>
+
+      <line x1="238" y1="100" x2="292" y2="100" stroke="#ea580c" stroke-width="2" marker-end="url(#ar621a)"/>
+
+      <rect x="300" y="52" width="200" height="96" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+      <text x="400" y="78" font-size="12.5" font-weight="700" fill="#334155" text-anchor="middle">So which is it?</text>
+      <text x="400" y="100" font-size="11" fill="#64748b" text-anchor="middle">response bias</text>
+      <text x="400" y="116" font-size="11" fill="#64748b" text-anchor="middle">or a changed memory</text>
+      <text x="400" y="134" font-size="10.5" fill="#94a3b8" text-anchor="middle">回答偏差 还是 记忆改变</text>
+
+      <line x1="508" y1="100" x2="562" y2="100" stroke="#ea580c" stroke-width="2" marker-end="url(#ar621a)"/>
+
+      <rect x="570" y="52" width="90" height="96" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+      <text x="615" y="78" font-size="12.5" font-weight="700" fill="#334155" text-anchor="middle">Exp 2</text>
+      <text x="615" y="100" font-size="11" fill="#64748b" text-anchor="middle">150</text>
+      <text x="615" y="116" font-size="11" fill="#64748b" text-anchor="middle">students</text>
+      <text x="615" y="134" font-size="10.5" fill="#94a3b8" text-anchor="middle">实验二</text>
+
+      <line x1="130" y1="156" x2="130" y2="196" stroke="#ea580c" stroke-width="2"/>
+      <rect x="30" y="196" width="200" height="62" rx="9" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="130" y="220" font-size="11.5" font-weight="700" fill="#334155" text-anchor="middle">Does the verb move the number?</text>
+      <text x="130" y="240" font-size="11" fill="#64748b" text-anchor="middle">Yes — by up to 9 mph</text>
+
+      <line x1="615" y1="156" x2="615" y2="196" stroke="#ea580c" stroke-width="2"/>
+      <rect x="490" y="196" width="170" height="62" rx="9" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="575" y="220" font-size="11.5" font-weight="700" fill="#334155" text-anchor="middle">Broken glass</text>
+      <text x="575" y="240" font-size="11" fill="#64748b" text-anchor="middle">32% vs 14% vs 12%</text>
+
+      <text x="340" y="284" font-size="11" fill="#475569" text-anchor="middle">One word goes in. Two different kinds of answer come out — and experiment two tells us which kind it is.</text>
+    </svg>
+    <div class="figure-caption">Figure 1 — The two experiments as one argument: the first finds the effect, the second explains it.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么要有第二个实验</strong><br>
+    实验一只能证明“说的数字变了”，但<strong>看不出心里发生了什么</strong>。可能只是嘴上换了个说法（想配合提问者的暗示），也可能<strong>记忆真的被改写了</strong>。<br>
+    实验二就是来<strong>分辨这两种可能</strong>的：它不问速度，而是问一个片子里<strong>根本没出现的东西</strong>。
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Experiment One · The Aim</h2>
+
+  <div class="keyterm-box">
+    <span class="kt">Aim of experiment one：</span> to investigate whether <strong>leading questions</strong> would influence the estimates of the speed of a vehicle among eyewitnesses.
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：这一问在问什么</strong><br>
+    <strong>leading question（引导性问题）</strong> = 提问方式本身<strong>暗示了答案</strong>。问“车<strong>撞碎</strong>时多快”，其实已经在告诉你“撞得很严重”。<br>
+    实验一要测的是：这种暗示<strong>能不能把目击者的回答往暗示的方向推</strong>。
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Experiment One · The Procedure</h2>
+
+  <p>Learn these numbers as a set — they are the detail the exam rewards.</p>
+
+  <table>
+    <tr><th style="width:26%;">Feature</th><th>What they did</th></tr>
+    <tr><td>Participants</td><td><strong>45 students</strong>, split into <strong>five groups of nine</strong>.</td></tr>
+    <tr><td>Materials</td><td><strong>Seven short film clips</strong> of traffic accidents, each lasting <strong>5 to 30 seconds</strong>.</td></tr>
+    <tr><td>Task</td><td>After each clip they gave an account of the accident, then answered a questionnaire.</td></tr>
+    <tr><td>The one difference</td><td>Every participant got the same questionnaire <strong>except one critical question</strong> — the verb was changed.</td></tr>
+    <tr><td>The five verbs</td><td>One group (nine) was asked about cars that <strong>hit</strong> each other. The other four groups got the same question with <strong>smashed</strong>, <strong>collided</strong>, <strong>bumped</strong> or <strong>contacted</strong>.</td></tr>
+    <tr><td>Controls</td><td>Each of the five groups saw the clips in a <strong>different order</strong>.</td></tr>
+    <tr><td>The check</td><td>Loftus and Palmer knew the <strong>actual speeds</strong> in four of the clips: one at <strong>20 mph</strong>, one at <strong>30 mph</strong>, two at <strong>40 mph</strong>.</td></tr>
+  </table>
+
+  <div class="note-box">
+    <h4>Why the last row matters</h4>
+    <p>Because they knew the true speeds, they could check whether the estimates were being dragged around by the real speed of the car instead of by the verb. It let them say with confidence: <strong>the verb did it, not the film</strong>.</p>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Experiment One · The Results</h2>
+
+  <table>
+    <tr><th style="width:40%;">Verb used</th><th>Mean speed estimate (mph)</th></tr>
+    <tr><td><strong>Smashed</strong></td><td><strong>40.8</strong></td></tr>
+    <tr><td><strong>Collided</strong></td><td><strong>39.3</strong></td></tr>
+    <tr><td><strong>Bumped</strong></td><td><strong>38.1</strong></td></tr>
+    <tr><td><strong>Hit</strong></td><td><strong>34.0</strong></td></tr>
+    <tr><td><strong>Contacted</strong></td><td><strong>31.8</strong></td></tr>
+  </table>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart of mean speed estimates by verb: smashed 40.8, collided 39.3, bumped 38.1, hit 34.0, contacted 31.8 mph">
+      <text x="340" y="20" font-size="11.5" fill="#475569" text-anchor="middle">Mean estimate of speed (mph) — the only difference between groups is one verb</text>
+
+      <line x1="90" y1="240" x2="640" y2="240" stroke="#334155" stroke-width="1.8"/>
+      <line x1="90" y1="30" x2="90" y2="240" stroke="#334155" stroke-width="1.8"/>
+
+      <line x1="90" y1="198" x2="640" y2="198" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="90" y1="156" x2="640" y2="156" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="90" y1="114" x2="640" y2="114" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="90" y1="72" x2="640" y2="72" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="90" y1="30" x2="640" y2="30" stroke="#e2e8f0" stroke-width="1"/>
+
+      <text x="82" y="244" font-size="10.5" fill="#64748b" text-anchor="end">0</text>
+      <text x="82" y="202" font-size="10.5" fill="#64748b" text-anchor="end">10</text>
+      <text x="82" y="160" font-size="10.5" fill="#64748b" text-anchor="end">20</text>
+      <text x="82" y="118" font-size="10.5" fill="#64748b" text-anchor="end">30</text>
+      <text x="82" y="76" font-size="10.5" fill="#64748b" text-anchor="end">40</text>
+      <text x="82" y="34" font-size="10.5" fill="#64748b" text-anchor="end">50</text>
+
+      <rect x="120" y="37.2" width="78" height="202.8" rx="4" fill="#ea580c"/>
+      <rect x="228" y="50.2" width="78" height="189.8" rx="4" fill="#f97316"/>
+      <rect x="336" y="60.8" width="78" height="179.2" rx="4" fill="#fb923c"/>
+      <rect x="444" y="96" width="78" height="144" rx="4" fill="#fdba74"/>
+      <rect x="552" y="112.8" width="78" height="127.2" rx="4" fill="#fed7aa"/>
+
+      <text x="159" y="30" font-size="12" font-weight="700" fill="#c2410c" text-anchor="middle">40.8</text>
+      <text x="267" y="43" font-size="12" font-weight="700" fill="#c2410c" text-anchor="middle">39.3</text>
+      <text x="375" y="53" font-size="12" font-weight="700" fill="#c2410c" text-anchor="middle">38.1</text>
+      <text x="483" y="89" font-size="12" font-weight="700" fill="#c2410c" text-anchor="middle">34.0</text>
+      <text x="591" y="105" font-size="12" font-weight="700" fill="#c2410c" text-anchor="middle">31.8</text>
+
+      <text x="159" y="260" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">smashed</text>
+      <text x="267" y="260" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">collided</text>
+      <text x="375" y="260" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">bumped</text>
+      <text x="483" y="260" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">hit</text>
+      <text x="591" y="260" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">contacted</text>
+
+      <text x="340" y="284" font-size="11" fill="#475569" text-anchor="middle">The gap between the top and the bottom is almost 9 mph — caused by one word.</text>
+    </svg>
+    <div class="figure-caption">Figure 2 — Table 12.1. The “smashed” group gave the fastest estimate; “contacted” gave the slowest.</div>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Read the table, then answer<span class="xp-badge">Use Figure 2</span></h4>
+    <p class="xp-intro">Roughly how far apart are the “smashed” and “contacted” groups?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="gapAns(this,'a')">About 1 mph</button>
+      <button class="q-option" onclick="gapAns(this,'b')">About 9 mph</button>
+      <button class="q-option" onclick="gapAns(this,'c')">About 25 mph</button>
+    </div>
+    <div class="xp-result" id="res-gap"></div>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Experiment One · Two Possible Reasons</h2>
+
+  <p>A change of word significantly affected the answer. But a changed number can mean two different things.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Reason 1 · response bias</h4>
+      <p style="font-size:.9em;margin:4px 0">The participant was <strong>uncertain of the speed</strong>, and the verb in the leading question <strong>created a bias</strong> which influenced their decision.<br><br><span style="color:#64748b">记忆没错，只是回答被暗示推了一把。</span></p>
+    </div>
+    <div class="compare-card green">
+      <h4>Reason 2 · the memory itself changed</h4>
+      <p style="font-size:.9em;margin:4px 0">The wording of the question <strong>causes a change in memory</strong>, so they recall the accident as <strong>more severe than it actually was</strong>.<br><br><span style="color:#64748b">记忆真的被改写了，事故在脑子里变严重了。</span></p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：两个理由的差别在哪里</strong><br>
+    <strong>回答偏差</strong>：心里知道是 30，但听到问“撞碎”就顺口报了个 40 —— 只是<strong>嘴上迎合</strong>。<br>
+    <strong>记忆改变</strong>：脑子里的画面<strong>真的变成了“一场猛烈撞击”</strong>，于是回忆时自然觉得很快。<br>
+    单看速度数字，这两种根本分不开。所以才需要实验二。
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Experiment Two · Why It Had to Happen</h2>
+
+  <p>So far, all we know is that the groups gave different numbers. That cannot tell us <em>why</em>. To find out, you need a clever trick.</p>
+
+  <div class="blue-box">
+    <h4>The trick: ask about something that was never there</h4>
+    <p>If the verb only nudges the answer, witnesses will keep their memory intact and simply report the crash as it was.<br>
+    But if the verb <strong>rewrites the memory</strong>, then witnesses who heard “smashed” should now remember a <strong>more violent crash</strong> — including details of violence that were never filmed.</p>
+    <p style="margin:6px 0 0">Violent crashes produce <strong>broken glass</strong>. The film contained none.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：碎玻璃这个设计巧在哪</strong><br>
+    片段里<strong>没有碎玻璃</strong>。所以任何人回答“看到了”，都不可能是真的看到了——只能来自<strong>被改写的记忆</strong>：既然记成了猛烈撞击，就顺理成章“看见”了碎玻璃。<br>
+    <strong>回答偏差解释不了这一点</strong>（单纯迎合提问不会让人凭空多出一段画面），所以这个设计能把两种解释分开。
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Experiment Two · The Aim</h2>
+
+  <div class="keyterm-box">
+    <span class="kt">Aim of experiment two：</span> the second experiment was designed to test whether the verb used in the question created a <strong>bias in the participant's response</strong>, or whether it created an <strong>actual change in memory</strong> of the incident.
+  </div>
+
+  <div class="exam-tip">
+    <strong>Learn the two aims as a pair.</strong> Experiment one = “do leading questions influence speed estimates?” Experiment two = “is that a response bias or a memory change?” If an exam question gives you one aim and asks for the other, this is the sentence you need.
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Experiment Two · The Procedure</h2>
+
+  <table>
+    <tr><th style="width:26%;">Feature</th><th>What they did</th></tr>
+    <tr><td>Participants</td><td><strong>150 students</strong>, divided into <strong>three groups of 50</strong>.</td></tr>
+    <tr><td>The film</td><td>A film of a <strong>multiple car accident</strong>, lasting <strong>less than one minute</strong> — the accident itself lasted <strong>four seconds</strong>.</td></tr>
+    <tr><td>Group 1</td><td>Asked “About how fast were the cars going when they <strong>smashed</strong> into each other?”</td></tr>
+    <tr><td>Group 2</td><td>Asked “About how fast were the cars going when they <strong>hit</strong> each other?”</td></tr>
+    <tr><td>Group 3 (control)</td><td><strong>Not asked about the speed of the cars at all</strong> — no critical question.</td></tr>
+    <tr><td>Then they waited</td><td>A <strong>week later</strong> the participants returned to answer <strong>ten questions</strong> about the accident, without watching the film again.</td></tr>
+    <tr><td>The critical question</td><td>Among those ten: <strong>“Did you see any broken glass?”</strong> — answered <strong>Yes</strong> or <strong>No</strong>. There was <strong>no broken glass</strong> in the film.</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：三个组各自的作用</strong><br>
+    <strong>smashed 组</strong>：听到最暴力的动词。<br>
+    <strong>hit 组</strong>：听到中性动词，用来对比。<br>
+    <strong>control 组</strong>：<strong>根本没被问速度</strong> —— 用来证明“光是参加实验、看片子”本身不会让人多想出碎玻璃。<br>
+    一周后的延迟是关键：说明这个影响<strong>不是当天随口应付</strong>，而是留在记忆里了。
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Experiment Two · The Results</h2>
+
+  <table>
+    <tr><th style="width:30%;">Verb condition</th><th>Said “Yes”</th><th>Said “No”</th><th>Percentage who said “Yes”</th></tr>
+    <tr><td><strong>“Smashed”</strong></td><td>16</td><td>34</td><td><strong>32%</strong></td></tr>
+    <tr><td><strong>“Hit”</strong></td><td>7</td><td>43</td><td><strong>14%</strong></td></tr>
+    <tr><td><strong>Control</strong> (no speed question)</td><td>6</td><td>44</td><td><strong>12%</strong></td></tr>
+  </table>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart of the percentage reporting broken glass: smashed 32 per cent, hit 14 per cent, control 12 per cent">
+      <text x="340" y="20" font-size="11.5" fill="#475569" text-anchor="middle">“Did you see any broken glass?” — percentage answering Yes, one week later</text>
+
+      <line x1="90" y1="230" x2="640" y2="230" stroke="#334155" stroke-width="1.8"/>
+      <line x1="90" y1="30" x2="90" y2="230" stroke="#334155" stroke-width="1.8"/>
+
+      <line x1="90" y1="190" x2="640" y2="190" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="90" y1="150" x2="640" y2="150" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="90" y1="110" x2="640" y2="110" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="90" y1="70" x2="640" y2="70" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="90" y1="30" x2="640" y2="30" stroke="#e2e8f0" stroke-width="1"/>
+
+      <text x="82" y="234" font-size="10.5" fill="#64748b" text-anchor="end">0%</text>
+      <text x="82" y="194" font-size="10.5" fill="#64748b" text-anchor="end">10%</text>
+      <text x="82" y="154" font-size="10.5" fill="#64748b" text-anchor="end">20%</text>
+      <text x="82" y="114" font-size="10.5" fill="#64748b" text-anchor="end">30%</text>
+      <text x="82" y="74" font-size="10.5" fill="#64748b" text-anchor="end">40%</text>
+      <text x="82" y="34" font-size="10.5" fill="#64748b" text-anchor="end">50%</text>
+
+      <rect x="150" y="70" width="90" height="160" rx="4" fill="#ea580c"/>
+      <rect x="340" y="150" width="90" height="80" rx="4" fill="#fb923c"/>
+      <rect x="510" y="158" width="90" height="72" rx="4" fill="#fed7aa"/>
+
+      <text x="195" y="62" font-size="12.5" font-weight="700" fill="#c2410c" text-anchor="middle">32%</text>
+      <text x="385" y="142" font-size="12.5" font-weight="700" fill="#c2410c" text-anchor="middle">14%</text>
+      <text x="555" y="150" font-size="12.5" font-weight="700" fill="#c2410c" text-anchor="middle">12%</text>
+
+      <text x="195" y="252" font-size="12.5" font-weight="700" fill="#334155" text-anchor="middle">“smashed”</text>
+      <text x="385" y="252" font-size="12.5" font-weight="700" fill="#334155" text-anchor="middle">“hit”</text>
+      <text x="555" y="252" font-size="12.5" font-weight="700" fill="#334155" text-anchor="middle">control</text>
+
+      <text x="195" y="270" font-size="10" fill="#64748b" text-anchor="middle">n = 50</text>
+      <text x="385" y="270" font-size="10" fill="#64748b" text-anchor="middle">n = 50</text>
+      <text x="555" y="270" font-size="10" fill="#64748b" text-anchor="middle">n = 50</text>
+    </svg>
+    <div class="figure-caption">Figure 3 — Table 12.2. In every condition most people correctly said “no”. The point is the <em>difference</em> between the groups.</div>
+  </div>
+
+  <div class="warn-box">
+    <h4>The statistical test</h4>
+    <p>A <strong>chi-square test</strong> was carried out and it was found that there was a <strong>statistically significant difference between the groups</strong>. A significantly higher number of participants in the “smashed” group reported seeing glass than in the “hit” group.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：怎么读这三个数字</strong><br>
+    不要只看“32% 的人说看到”——注意<strong>每组都有一半以上的人答对了</strong>（说没看到）。<br>
+    关键是<strong>组间差距</strong>：32% 比 14% 高出一大截，而没被问速度的那组只有 12%。<br>
+    学了统计的话，这个卡方检验说明<strong>差距不是巧合</strong>，而是动词造成的。
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Experiment Two · The Conclusion</h2>
+
+  <div class="green-box">
+    <h4>What the findings showed</h4>
+    <p>The verb in the question acted as <strong>post-event information</strong> which influenced the participants' recall of the accident. It <strong>changed their memory of the event</strong> rather than causing a response bias.</p>
+    <p style="margin:6px 0 0">The participants did not see any broken glass, and the findings suggest the verb <strong>changed their memory of the accident, even a week after seeing the film clip</strong>.</p>
+  </div>
+
+  <div class="keyterm-box">
+    <span class="kt">Loftus and Palmer concluded：</span> reconstructive memory exists, and <strong>leading questions do influence eyewitness testimony</strong>.
+  </div>
+
+  <div class="note-box">
+    <h4>Why this settles the doubt from experiment one</h4>
+    <p>A response bias would only move the number people say out loud. It would not make them report a piece of the scene that was never filmed. Reporting broken glass a week later is evidence that <strong>the memory itself had been rebuilt</strong>.</p>
+  </div>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. The Reconstructive Hypothesis</h2>
+
+  <p>Loftus and Palmer argue that two kinds of information go into a person's memory of a complex event.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>1 · What you witnessed</h4>
+      <p style="font-size:.9em;margin:4px 0">The information obtained <strong>from witnessing the event</strong> itself.</p>
+    </div>
+    <div class="compare-card">
+      <h4>2 · What you were told afterwards</h4>
+      <p style="font-size:.9em;margin:4px 0">The other information <strong>supplied after the event</strong> — post-event information.</p>
+    </div>
+  </div>
+
+  <p>As time elapses, the two sources <strong>merge</strong>, making it difficult to know the source of some details. This creates <strong>one overall memory</strong> of the event.</p>
+
+  <div class="keyterm-box">
+    <span class="kt">reconstructive hypothesis（重构假设）：</span> memory for an event when the information supplied after the event <strong>merges with</strong> the information obtained from witnessing the event.
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：大脑把“看到的”和“听说的”合成了一份</strong><br>
+    生活类比：你手机相册里<strong>自己拍的照片</strong>，和朋友后来发来的<strong>截图</strong>混在一起。过一阵子再看，你分不清哪张是自己拍的——但你会<strong>坚信自己当时就在那儿</strong>。<br>
+    记忆也是这样：只存<strong>一份合成版本</strong>，不保留“这条来自哪里”的标签。所以目击者说谎的概率未必高，但<strong>记忆本身可能已经失真</strong>。
+  </div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="section" id="s14">
+  <h2>14. Two Experiments, Side by Side</h2>
+
+  <table>
+    <tr><th style="width:20%;"></th><th>Experiment one</th><th>Experiment two</th></tr>
+    <tr><td><strong>Aim</strong></td><td>Do leading questions influence speed estimates?</td><td>Is it a <strong>response bias</strong> or an <strong>actual memory change</strong>?</td></tr>
+    <tr><td><strong>Participants</strong></td><td><strong>45 students</strong> — five groups of nine</td><td><strong>150 students</strong> — three groups of 50</td></tr>
+    <tr><td><strong>Materials</strong></td><td><strong>Seven clips</strong>, each 5–30 seconds</td><td><strong>One film</strong>, under a minute (accident 4 seconds)</td></tr>
+    <tr><td><strong>The verb(s)</strong></td><td><strong>Five</strong>: smashed, collided, bumped, hit, contacted</td><td><strong>Two</strong>: smashed, hit — plus a <strong>control</strong> with no speed question</td></tr>
+    <tr><td><strong>The measure</strong></td><td>Speed estimate in <strong>mph</strong> (quantitative)</td><td><strong>Yes / No</strong> to “Did you see any broken glass?”</td></tr>
+    <tr><td><strong>Timing</strong></td><td>Asked <strong>immediately</strong> after each clip</td><td>Asked <strong>a week later</strong>, plus ten other questions first</td></tr>
+    <tr><td><strong>Result</strong></td><td>40.8 down to 31.8 mph — a gap of almost <strong>9 mph</strong></td><td><strong>32%</strong> said they saw glass vs <strong>14%</strong> and <strong>12%</strong></td></tr>
+    <tr><td><strong>What it proves</strong></td><td>A word changes the answer</td><td>The <strong>memory itself</strong> was changed — not just the answer</td></tr>
+  </table>
+
+  <div class="exam-tip">
+    <strong>Describe both, every time.</strong> The strongest six-mark “describe” answers put the two side by side like this: same idea, different samples, different measures, different weeks.
+  </div>
+</section>
+
+<!-- ============ 15 ============ -->
+<section class="section" id="s15">
+  <h2>15. Evaluating · Strengths</h2>
+
+  <p>Each strength below is one the textbook gives. Notice that most of them are about <strong>how carefully the study was controlled</strong>.</p>
+
+  <div class="summary-card-header" onclick="togglePanel(this,'st1')">
+    <span class="arrow">▶</span> 1. High control — it is a laboratory experiment
+  </div>
+  <div class="summary-card-body" id="st1">
+    <ul>
+      <li><span class="syl-tag ev">CONTROL</span> Both experiments were conducted in a <strong>laboratory</strong> and therefore had a <strong>high level of control</strong>.</li>
+      <li>The questions asked were <strong>consistent for the groups</strong> (except the verb change), and so were the film clips used.</li>
+      <li><span class="syl-tag ev">RELIABILITY</span> This allows the study to be <strong>replicated</strong> to determine the reliability of the finding that recall is influenced by post-event information.</li>
+    </ul>
+  </div>
+
+  <div class="summary-card-header" onclick="togglePanel(this,'st2')" style="margin-top:14px;">
+    <span class="arrow">▶</span> 2. Construct validity — they measured exactly what they meant to
+  </div>
+  <div class="summary-card-body" id="st2">
+    <ul>
+      <li>By changing <strong>just the verb</strong> associated with speed, Loftus and Palmer can be <strong>more certain that the IV of the verb</strong> was what impacted the speed estimates.</li>
+      <li>This increases <strong>construct validity</strong> — that they tested the effect of language on recall.</li>
+    </ul>
+    <p class="small" style="margin:6px 0 0"><span class="kt">construct validity（结构效度）：</span> the extent to which the researcher has actually measured the intended variable or underlying construct.</p>
+  </div>
+
+  <div class="summary-card-header" onclick="togglePanel(this,'st3')" style="margin-top:14px;">
+    <span class="arrow">▶</span> 3. Demand characteristics were guarded against
+  </div>
+  <div class="summary-card-body" id="st3">
+    <ul>
+      <li>The critical question was <strong>randomly included among other questions</strong> within the questionnaire.</li>
+      <li>This <strong>prevented participants from guessing the aim</strong> and displaying demand characteristics, which would have produced flawed results.</li>
+      <li>It minimises the chance that responses were due to the <strong>research methodology</strong> rather than a genuine response to the question.</li>
+    </ul>
+  </div>
+
+  <div class="summary-card-header" onclick="togglePanel(this,'st4')" style="margin-top:14px;">
+    <span class="arrow">▶</span> 4. They checked the real speeds, and used quantitative data
+  </div>
+  <div class="summary-card-body" id="st4">
+    <ul>
+      <li>The experimenters <strong>knew the actual speeds</strong> for most films. They found it <strong>did not affect the estimates</strong> — so they could say with certainty that it was the <strong>verb</strong>, not the actual speed, that had the effect.</li>
+      <li>The yes/no responses and the speed estimates produced <strong>quantitative data</strong>, so there was <strong>no subjective interpretation</strong> — the findings are more objective and less likely to be the result of <strong>researcher bias</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：四条strength 的共同点</strong><br>
+    都在说同一件事：<strong>把别的解释一个个堵住了</strong>。<br>
+    控制变量一致 → 能复制；只改动词 → 确定是动词的功劳；问题混在问卷里 → 参与者猜不到目的；知道真实车速 → 排除了“片子本身开得快”。<br>
+    写评价题时，把“<strong>我们因此能确定是 X 造成的</strong>”这句写上，比只说“控制得好”得分高。
+  </div>
+</section>
+
+<!-- ============ 16 ============ -->
+<section class="section" id="s16">
+  <h2>16. Evaluating · Limitations</h2>
+
+  <div class="warn-box">
+    <h4>1. The sample may have made the effect easier to find</h4>
+    <p>It may be difficult to accurately distinguish the speed of cars from watching film clips, particularly when the participants were <strong>students</strong> who are likely to have <strong>limited experience of car speeds</strong>.</p>
+    <p style="margin:6px 0 0">Limited experience in estimating speeds may have resulted in <strong>students being more influenced by the verb</strong> than would have been the case with a population with <strong>more experience of driving</strong>. The findings therefore may only represent the views of this specific population, rather than generalising to the wider population.</p>
+  </div>
+
+  <div class="warn-box">
+    <h4>2. Watching a film is not witnessing an accident</h4>
+    <p>Participants are unlikely to have been under the <strong>same emotional strain as an eyewitness of a real accident</strong>, as they only watched film clips in a laboratory. This <strong>makes the validity questionable</strong> — they may have responded differently as a result.</p>
+    <p style="margin:6px 0 0">It cannot be said with certainty that a real eyewitness would respond in the same way as those in an artificial situation.</p>
+  </div>
+
+  <div class="warn-box">
+    <h4>3. It is reductionist</h4>
+    <p>As well as the type of question asked, <strong>many other factors could influence memory of a real-life event</strong>, including <strong>emotions</strong> and the <strong>environment</strong> in which it occurred. These are not considered. The study is therefore somewhat <strong>reductionist</strong>, considering only one potential variable that may influence human memory.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：三条 limitation 的共同点</strong><br>
+    都在问同一个问题：<strong>实验室里的学生，能代表真实目击者吗？</strong><br>
+    · 学生<strong>开车经验少</strong> → 更容易被动词牵着走，效应可能被<strong>放大</strong>了。<br>
+    · 看片子<strong>没有真事故的紧张和恐惧</strong> → 真人目击时情绪会介入，反应可能不同。<br>
+    · 只测了“用词”一个因素 → <strong>还原论</strong>：真实记忆还受情绪、环境等影响。<br>
+    写 8 分题时，把“学生经验少”和“缺情绪紧张”<strong>分开写</strong>，各配一句后果，比笼统说“样本不好”强。
+  </div>
+</section>
+
+<!-- ============ 17 ============ -->
+<section class="section" id="s17">
+  <h2>17. Real Life · What Changed Because of It</h2>
+
+  <p>This is the part examiners like, because it connects the study to the wider issue of <strong>the use of psychological knowledge within society</strong>.</p>
+
+  <div class="blue-box">
+    <h4>Devlin Committee (1976)</h4>
+    <p>It was set up to investigate the use of eyewitness testimony in court. It found that <strong>many people have been convicted of serious crimes by eyewitness testimony alone</strong>, and <strong>recommended against basing a conviction on a single eyewitness</strong>.</p>
+  </div>
+
+  <div class="green-box">
+    <h4>What Loftus and Palmer's work led to</h4>
+    <ul class="tight">
+      <li>Their research into post-event information <strong>contributed to the development of the cognitive interview</strong> — a technique police interviewers use when questioning eyewitnesses.</li>
+      <li>Police and legal professionals are guided to <strong>minimise the use of leading questions</strong> in order to ensure an accurate account is obtained.</li>
+      <li>This constitutes <strong>a marked change in policing techniques in the 20th century</strong>, and the cognitive interview is still used today.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：这个研究怎么改变了现实</strong><br>
+    逻辑链条：<strong>问话用词会改写记忆</strong> → 那么警察问话时就必须<strong>尽量少用引导性问题</strong> → 于是有了<strong>认知访谈（cognitive interview）</strong>这套不引导、让证人自己回忆的问法。<br>
+    同时，Devlin 委员会据此建议：<strong>不能只凭一个目击者的证词就定罪</strong>。<br>
+    这一节是整章最“有用”的一段——写 8 分题的<strong>现实应用</strong>时直接用。
+  </div>
+</section>
+
+<!-- ============ 18 ============ -->
+<section class="section" id="s18">
+  <h2>18. Match the Detail</h2>
+
+  <p>Three quick checks on the numbers. If you can do these without looking, the describe question is safe.</p>
+
+  <div class="xp-block">
+    <h4>🎯 Which experiment?<span class="xp-badge">45 · 150 · 7 · 3</span></h4>
+
+    <p class="xp-intro"><strong>45 students</strong></p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="detailAns(this,'d1','a')">Experiment one</button>
+      <button class="q-option" onclick="detailAns(this,'d1','b')">Experiment two</button>
+    </div>
+    <div class="xp-result" id="res-d1"></div>
+
+    <p class="xp-intro"><strong>Seven film clips</strong></p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="detailAns(this,'d2','a')">Experiment one</button>
+      <button class="q-option" onclick="detailAns(this,'d2','b')">Experiment two</button>
+    </div>
+    <div class="xp-result" id="res-d2"></div>
+
+    <p class="xp-intro"><strong>Three groups of 50</strong></p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="detailAns(this,'d3','a')">Experiment one</button>
+      <button class="q-option" onclick="detailAns(this,'d3','b')">Experiment two</button>
+    </div>
+    <div class="xp-result" id="res-d3"></div>
+  </div>
+</section>
+
+<!-- ============ 19 ============ -->
+<section class="section" id="s19">
+  <h2>19. Checkpoint</h2>
+
+  <p>Eight questions on the details the exam asks about. Do them before opening the Exam Lab.</p>
+
+  <div class="xp-block">
+    <h4>🎯 Eight quick questions <span class="xp-badge">No notes</span></h4>
+
+    <p class="xp-intro"><strong>Q1.</strong> How many participants took part in experiment one?</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q1" value="a"> 45</label>
+      <label class="q-option"><input type="radio" name="q1" value="b"> 150</label>
+      <label class="q-option"><input type="radio" name="q1" value="c"> 95</label>
+    </div>
+
+    <p class="xp-intro"><strong>Q2.</strong> Which verb produced the highest mean speed estimate?</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q2" value="a"> contacted</label>
+      <label class="q-option"><input type="radio" name="q2" value="b"> smashed</label>
+      <label class="q-option"><input type="radio" name="q2" value="c"> hit</label>
+    </div>
+
+    <p class="xp-intro"><strong>Q3.</strong> What was the mean estimate in the “contacted” condition?</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q3" value="a"> 31.8 mph</label>
+      <label class="q-option"><input type="radio" name="q3" value="b"> 34.0 mph</label>
+      <label class="q-option"><input type="radio" name="q3" value="c"> 38.1 mph</label>
+    </div>
+
+    <p class="xp-intro"><strong>Q4.</strong> Experiment two was designed to test whether:</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q4" value="a"> leading questions influence speed estimates</label>
+      <label class="q-option"><input type="radio" name="q4" value="b"> the verb created a response bias or an actual change in memory</label>
+      <label class="q-option"><input type="radio" name="q4" value="c"> students can judge the speed of cars</label>
+    </div>
+
+    <p class="xp-intro"><strong>Q5.</strong> When did the experiment two participants return to answer the ten questions?</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q5" value="a"> the next day</label>
+      <label class="q-option"><input type="radio" name="q5" value="b"> a week later</label>
+      <label class="q-option"><input type="radio" name="q5" value="c"> a month later</label>
+    </div>
+
+    <p class="xp-intro"><strong>Q6.</strong> What percentage of the “smashed” group reported seeing broken glass?</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q6" value="a"> 12 per cent</label>
+      <label class="q-option"><input type="radio" name="q6" value="b"> 14 per cent</label>
+      <label class="q-option"><input type="radio" name="q6" value="c"> 32 per cent</label>
+    </div>
+
+    <p class="xp-intro"><strong>Q7.</strong> The control group in experiment two:</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q7" value="a"> was asked about speed using the verb “hit”</label>
+      <label class="q-option"><input type="radio" name="q7" value="b"> was not asked about the speed of the cars at all</label>
+      <label class="q-option"><input type="radio" name="q7" value="c"> saw a different film clip</label>
+    </div>
+
+    <p class="xp-intro"><strong>Q8.</strong> The Devlin Committee (1976) recommended:</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q8" value="a"> banning eyewitness testimony from court</label>
+      <label class="q-option"><input type="radio" name="q8" value="b"> against basing a conviction on a single eyewitness</label>
+      <label class="q-option"><input type="radio" name="q8" value="c"> that all witnesses should be hypnotised before giving evidence</label>
+    </div>
+
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="checkQuiz()">Mark my answers</button>
+    </div>
+    <div class="xp-result" id="quizResult"></div>
+  </div>
+</section>
+
+<!-- ============ 20 ============ -->
+<section class="section" id="s20">
+  <h2>20. Exam Lab</h2>
+
+  <p>The specification names this as the <strong>classic study</strong>, so it can be examined closely. Two question types come up again and again.</p>
+
+  <div class="exam-tip">
+    <strong>Question type 1 · identifying variables.</strong> A short question such as “Identify the independent variable” and “Identify the dependent variable” in Loftus and Palmer's reconstruction of automobile destruction experiment.
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Try the short one first<span class="xp-badge">2 + 1 marks</span></h4>
+    <p class="xp-intro"><strong>a)</strong> Identify the independent variable in experiment one.</p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('ma1')">Show me the answer</button>
+    </div>
+    <div class="xp-result" id="ma1">
+      <p>The <strong>verb used in the critical question</strong> — smashed, collided, bumped, hit or contacted. (In experiment two it is the verb condition: “smashed”, “hit”, or no speed question.)</p>
+    </div>
+
+    <p class="xp-intro"><strong>b)</strong> Identify the dependent variable in experiment one.</p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('ma2')">Show me the answer</button>
+    </div>
+    <div class="xp-result" id="ma2">
+      <p>The <strong>estimated speed of the cars in miles per hour</strong> given by the participant.</p>
+    </div>
+  </div>
+
+  <div class="exam-tip">
+    <strong>Question type 2 · the eight-mark application question.</strong> “Assess whether this study can be applied to eyewitness memory in real-life situations.” (8 marks)
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Plan it, then compare<span class="xp-badge">8 marks</span></h4>
+    <p class="xp-intro">Before reading the model answer, write down three reasons <strong>for</strong> applying the findings and three reasons <strong>against</strong>. Use the strengths and limitations from sections 15 and 16.</p>
+
+    <table>
+      <tr><th style="width:50%;">For — it does apply</th><th>Against — be careful</th></tr>
+      <tr><td>The effect was <strong>strong and statistically significant</strong> (32% vs 14% vs 12%, chi-square).</td><td>The sample was <strong>students</strong> with limited experience of judging car speeds.</td></tr>
+      <tr><td>It lasted <strong>a week</strong>, not just a moment — memory really had changed.</td><td>Participants watched <strong>film clips in a laboratory</strong>, not a real accident.</td></tr>
+      <tr><td>They knew the <strong>real speeds</strong> and ruled out the film as the cause.</td><td>Real witnesses are under <strong>emotional strain</strong>, which the study did not include.</td></tr>
+      <tr><td>It has already changed practice — <strong>the cognitive interview</strong> and the Devlin recommendation.</td><td>The study is <strong>reductionist</strong>: one variable, when many influence memory.</td></tr>
+    </table>
+
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('ma3')">Show me a model answer</button>
+    </div>
+    <div class="xp-result" id="ma3">
+      <p><strong>AO1 (describe).</strong> In experiment one, 45 students in five groups of nine watched seven short film clips of traffic accidents and answered a questionnaire in which one critical question changed only the verb — smashed, collided, bumped, hit or contacted. Those given “smashed” estimated 40.8 mph and those given “contacted” estimated 31.8 mph, a difference of almost 9 mph. In experiment two, 150 students in three groups of 50 watched a multiple car accident; one group was asked about cars that “smashed”, one about cars that “hit”, and the control group was not asked about speed at all. A week later, of the participants asked “Did you see any broken glass?”, 32% of the “smashed” group said yes, compared with 14% of the “hit” group and 12% of the control group. There was no broken glass in the film.</p>
+      <p><strong>AO3 (assess).</strong> A strength is that the study was conducted in a laboratory with a high level of control: the clips and the questionnaire were identical apart from the verb, and the critical question was randomly placed among other questions so participants could not guess the aim. Because the experimenters also knew the actual speeds of the cars and found it did not affect the estimates, we can be more certain that the verb caused the difference, which increases construct validity. The yes/no and mph responses gave quantitative data with no subjective interpretation, so the findings are less likely to reflect researcher bias, and the design can be replicated to test reliability.</p>
+      <p>However, it is questionable whether the findings apply to real eyewitnesses. Participants were students with limited experience of estimating car speeds, so they may have been more influenced by the verb than a population with more driving experience would be — the findings may represent this specific sample rather than the wider population. They also watched film clips in a laboratory and so were unlikely to be under the emotional strain of a real eyewitness, which makes the ecological validity questionable; a real witness might respond differently.</p>
+      <p>A further problem is that the study is reductionist: as well as the wording of a question, many other factors influence memory in real life, including emotions and the environment, and these were not considered. On the other hand, the research does have real-world value: it contributed to the cognitive interview and to guidance that police should minimise leading questions, and the Devlin Committee (1976) recommended against convicting on the evidence of a single eyewitness.</p>
+      <p><strong>Conclusion.</strong> On balance the study can be applied to real eyewitness memory, because the underlying process — post-event information merging with what was witnessed — has been supported in practice and has already changed policing. But the size of the effect in a real, emotionally arousing event may be different from the laboratory figure, so the findings should be applied with caution rather than treated as an exact measure of how misleading a real witness is.</p>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <h4>What earns the marks</h4>
+    <ul class="tight">
+      <li><strong>AO1: describe both experiments with numbers.</strong> 45 and 150, five verbs and three groups, 40.8 to 31.8, and 32% / 14% / 12%.</li>
+      <li><strong>AO3: state the strength, then say what it lets us conclude</strong> — “so we can be more certain the verb caused it” beats “it was well controlled”.</li>
+      <li><strong>Distinguish the two limitations:</strong> students' inexperience with speed, and the absence of emotional strain. They are different points and are worth separate sentences.</li>
+      <li><strong>End with a balanced conclusion</strong> that mentions the real-world applications.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：这道 8 分题怎么组织</strong><br>
+    结构固定：<strong>描述两个实验（带数字）</strong> → <strong>优点 2 条，每条跟一句“所以我们能确定什么”</strong> → <strong>缺点 2 条，一条讲样本经验、一条讲缺真实情绪</strong> → <strong>补一条还原论</strong> → <strong>收尾提到认知访谈和 Devlin，再给出“有保留地可以应用”的结论</strong>。<br>
+    最忌讳：<strong>只说一个实验</strong>，或者<strong>写满缺点却没有一句后果</strong>。
+  </div>
+</section>
+
+<!-- ============ 21 ============ -->
+<section class="section" id="s21">
+  <h2>21. Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><div class="term">leading question <span class="zh">引导性问题</span></div><div class="def">A question whose wording suggests the answer — “how fast were the cars going when they smashed into each other?” already implies a violent crash.</div></div>
+    <div class="glossary-item"><div class="term">post-event information <span class="zh">事后信息</span></div><div class="def">Information supplied after an event which merges into the memory of it — in this study, the verb in the question.</div></div>
+    <div class="glossary-item"><div class="term">reconstructive hypothesis <span class="zh">重构假设</span></div><div class="def">Memory for an event when information supplied after the event merges with the information obtained from witnessing it, producing one overall memory.</div></div>
+    <div class="glossary-item"><div class="term">response bias <span class="zh">回答偏差</span></div><div class="def">The explanation that the participant's memory was intact and only their answer shifted — the alternative the second experiment ruled out.</div></div>
+    <div class="glossary-item"><div class="term">construct validity <span class="zh">结构效度</span></div><div class="def">The extent to which the researcher has actually measured the intended variable or underlying construct.</div></div>
+    <div class="glossary-item"><div class="term">demand characteristics <span class="zh">需求特征</span></div><div class="def">Cues that let participants guess the aim and change their behaviour; avoided here by hiding the critical question among others.</div></div>
+    <div class="glossary-item"><div class="term">ecological validity <span class="zh">生态效度</span></div><div class="def">Whether findings apply to real settings — questioned here because participants watched clips in a laboratory.</div></div>
+    <div class="glossary-item"><div class="term">reductionist <span class="zh">还原论的</span></div><div class="def">Explaining something using too few factors; the study considers only the wording of the question and not emotions or environment.</div></div>
+    <div class="glossary-item"><div class="term">chi-square test <span class="zh">卡方检验</span></div><div class="def">The statistical test used in experiment two; it showed a significant difference between the three groups.</div></div>
+    <div class="glossary-item"><div class="term">quantitative data <span class="zh">定量数据</span></div><div class="def">Numerical data such as mph estimates and yes/no counts — not open to subjective interpretation.</div></div>
+    <div class="glossary-item"><div class="term">cognitive interview <span class="zh">认知访谈</span></div><div class="def">A police interviewing technique for eyewitnesses developed with the help of Loftus and Palmer's findings; still used today.</div></div>
+    <div class="glossary-item"><div class="term">Devlin Committee (1976) <span class="zh">德夫林委员会</span></div><div class="def">Investigated eyewitness testimony; found many convictions rested on it alone and recommended against convicting on a single eyewitness.</div></div>
+  </div>
+</section>
+
+<div class="footer-note">6.2.1 Loftus and Palmer (1974) · Criminological Psychology (Topic F) · previous: <a href="../6.1.6-cbt-as-therapy-for-offenders/">← 6.1.6 CBT as a therapy for offenders</a> · next: <a href="../6.2.2-bradbury-and-williams-2013/">6.2.2 Bradbury and Williams (2013) →</a></div>
+  </main>
+</div>
+
+<button id="btt" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function () {
+  var baseFont = 16;
+
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark'; }
+  };
+
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  window.speedGuess = function (btn, choice) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (choice === 'small');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById('res-speed');
+    if (!el) { return; }
+    var msg = 'You are right. The two extreme groups ended up almost 9 mph apart — and most people are surprised it is that large.';
+    if (choice === 'none') { msg = 'It does make a difference. The groups given the strongest verb gave estimates almost 9 mph higher than the groups given the weakest one.'; }
+    if (choice === 'huge') { msg = 'Not that far — the real gap is almost 9 mph. Still large enough to matter in court, though.'; }
+    el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + msg + '</p>';
+    el.classList.add('show');
+  };
+
+  window.gapAns = function (btn, choice) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (choice === 'b');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById('res-gap');
+    if (!el) { return; }
+    var msg = 'Exactly. 40.8 − 31.8 = 9 mph, produced by changing one word in one question.';
+    if (choice === 'a') { msg = 'Look again: 40.8 and 31.8 are nearly 9 mph apart, not 1.'; }
+    if (choice === 'c') { msg = 'Too far. The gap is almost 9 mph — large enough to matter, but not 25.'; }
+    el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + msg + '</p>';
+    el.classList.add('show');
+  };
+
+  var detKey = { d1: 'a', d2: 'a', d3: 'b' };
+  var detFb = {
+    d1: 'Experiment one used 45 students in five groups of nine. Experiment two used 150 students in three groups of 50.',
+    d2: 'Experiment one used seven clips, each between 5 and 30 seconds. Experiment two used a single film lasting under a minute.',
+    d3: 'Experiment two had three groups of 50: smashed, hit, and a control group asked no question about speed at all.'
+  };
+
+  window.detailAns = function (btn, q, choice) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (choice === detKey[q]);
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById('res-' + q);
+    if (el) {
+      el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + detFb[q] + '</p>';
+      el.classList.add('show');
+    }
+  };
+
+  var quizKey = { q1: 'a', q2: 'b', q3: 'a', q4: 'b', q5: 'b', q6: 'c', q7: 'b', q8: 'b' };
+  var quizWhy = {
+    q1: 'Experiment one used 45 students in five groups of nine; experiment two used 150.',
+    q2: 'The verb smashed produced the fastest mean estimate at 40.8 mph, and contacted the slowest at 31.8 mph.',
+    q3: 'Contacted produced 31.8 mph. Hit was 34.0 and bumped was 38.1.',
+    q4: 'Experiment one asked whether leading questions influence estimates; experiment two asked whether the verb caused a response bias or an actual change in memory.',
+    q5: 'They returned a week later to answer ten questions, including the critical broken glass question, without seeing the film again.',
+    q6: 'Thirty-two per cent of the smashed group reported seeing glass, against 14 per cent in the hit group and 12 per cent of the control group.',
+    q7: 'The control group was not asked about the speed of the cars at all, which shows the effect comes from the verb and not simply from taking part.',
+    q8: 'The Devlin Committee found many people had been convicted by eyewitness testimony alone and recommended against basing a conviction on a single eyewitness.'
+  };
+
+  window.checkQuiz = function () {
+    var el = document.getElementById('quizResult');
+    if (!el) { return; }
+    var score = 0;
+    var html = '';
+    Object.keys(quizKey).forEach(function (q) {
+      var sel = document.querySelector('input[name="' + q + '"]:checked');
+      var chosen = sel ? sel.value : null;
+      var ok = (chosen === quizKey[q]);
+      if (ok) { score++; }
+      html += '<p style="margin:6px 0"><strong>' + q.toUpperCase() + ':</strong> ' +
+        (chosen ? (ok ? 'correct' : 'not quite') : 'not answered') + ' — ' + quizWhy[q] + '</p>';
+    });
+    el.innerHTML = '<p><span class="xp-verdict">Score: ' + score + ' / 8</span></p>' + html;
+    el.classList.add('show');
+    el.classList.toggle('ok', score === 8);
+  };
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.toggle('show'); }
+  };
+
+  window.togglePanel = function (header, id) {
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    el.classList.toggle('hidden');
+    header.classList.toggle('open');
+  };
+
+  window.addEventListener('scroll', function () {
+    var btt = document.getElementById('btt');
+    if (btt) { btt.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  var links = document.querySelectorAll('.sb-item a');
+  var sections = [];
+  links.forEach(function (a) {
+    var sec = document.querySelector(a.getAttribute('href'));
+    if (sec) { sections.push({ link: a, sec: sec }); }
+  });
+  window.addEventListener('scroll', function () {
+    var pos = window.scrollY + 140;
+    var current = null;
+    sections.forEach(function (s) { if (s.sec.offsetTop <= pos) { current = s; } });
+    links.forEach(function (a) { a.classList.remove('sb-active'); });
+    if (current) { current.link.classList.add('sb-active'); }
+  });
+})();
+</script>
+</body>
+</html>

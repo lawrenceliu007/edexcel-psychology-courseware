@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6.2.3 Ruva, McEvoy and Bryant (2007) — Student Notes Workbook</title>
+<style>
+@page { size: A4; margin: 13mm 12mm 15mm 12mm; }
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif; color:#1a1a1a; font-size:10pt; line-height:1.5; margin:0; background:#f3f3f3; }
+.page { background:#fff; max-width: 800px; margin: 0 auto 10px auto; padding: 10mm 11mm; page-break-after: always; position: relative; min-height: 248mm; }
+@media print { body { background:#fff; } .page { margin:0; padding:0; max-width:none; box-shadow:none; } }
+.pg-head { display:flex; justify-content:space-between; align-items:baseline; border-bottom: 2px solid #333; padding-bottom:4px; margin-bottom:10px; }
+.pg-head .t { font-size:11.5pt; font-weight:700; }
+.pg-head .r { font-size:8pt; color:#777; letter-spacing:.04em; }
+.pg-foot { position:absolute; bottom:4mm; left:0; right:0; text-align:center; font-size:8pt; color:#999; }
+.sec { font-size:10pt; font-weight:700; margin:12px 0 5px 0; padding-left:7px; border-left:3.5px solid #444; }
+.sec:first-of-type { margin-top:2px; }
+.sub { font-size:9.5pt; font-weight:700; margin:9px 0 3px 0; }
+.bl { display:inline-block; border-bottom:1px solid #555; height:1em; vertical-align:baseline; min-width:60px; margin:0 2px; }
+.hint { font-size:8.5pt; color:#666; }
+.hint::before { content:"（"; } .hint::after { content:"）"; }
+table.n { width:100%; border-collapse:collapse; margin:6px 0 9px 0; font-size:9pt; }
+table.n th, table.n td { border:1px solid #999; padding:4px 6px; text-align:left; vertical-align:top; }
+table.n th { background:#e9e9e9; font-size:8.8pt; }
+td.lbl { background:#f4f4f4; width:22%; font-weight:600; }
+.box { border:1px solid #aaa; border-left:4px solid #555; padding:6px 9px; margin:7px 0; border-radius:3px; }
+.box.grey { border:1px dashed #999; border-left:4px dashed #999; background:#fafafa; }
+.box.purple { border-left-color:#7c3aed; background:#faf5ff; }
+.box.blue { border-left-color:#2563eb; background:#f5f9ff; }
+.box.green { border-left-color:#16a34a; background:#f3faf5; }
+.box.orange { border-left-color:#ea580c; background:#fff7ed; }
+.box .bx-t { font-size:9.3pt; font-weight:700; margin-bottom:3px; }
+.wl { border-bottom:1px solid #bbb; height:24pt; }
+.wl.s { height:18pt; }
+ul.tight { margin:4px 0 8px 0; padding-left:17px; }
+ul.tight li { margin-bottom:3px; }
+ol.tight { margin:4px 0 8px 0; padding-left:17px; }
+ol.tight li { margin-bottom:4px; }
+.chk { font-size:9.3pt; }
+.chk .c { display:inline-block; width:11px; height:11px; border:1.3px solid #555; margin-right:6px; vertical-align:-1px; }
+.q { font-style:italic; background:#f6f6f6; border:1px solid #ccc; padding:5px 9px; margin:5px 0; font-size:9.3pt; border-radius:3px; }
+.small { font-size:8.6pt; line-height:1.35; }
+.pg-tight table.n { font-size:8.5pt; margin:5px 0 7px 0; }
+.pg-tight table.n th, .pg-tight table.n td { padding:2.5px 5px; }
+.pg-tight .sub { margin:7px 0 2px 0; }
+.pg-tight .box { padding:5px 8px; margin:6px 0; }
+.pg-tight .small { line-height:1.24; }
+.pg-tight p.small, .pg-tight .sec { font-size:7.9pt; }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1: COVER ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">6.2.3 Ruva, McEvoy and Bryant (2007) — Pre-trial Publicity and Source Memory Errors</span><span class="r">CRIMINAL PSYCHOLOGY · NOTES WORKBOOK</span></div>
+
+  <div class="box orange">
+    <div class="bx-t">What this workbook covers 本册讲什么</div>
+    The judge says “judge only the courtroom evidence” — but the news you read last week is already <strong>in your memory</strong>. This booklet walks through the two-phase experiment that showed negative pre-trial publicity <strong>biases verdicts</strong> (73% vs 41% guilty), how jurors <strong>misremember news as evidence</strong>, and why deliberating together helps.
+  </div>
+
+  <div class="sec">How to use this booklet 怎么用</div>
+  <ol class="tight">
+    <li><strong>Fill it in as you go</strong> — check the answer key (p. 20) after each page.</li>
+    <li><strong>Pages 5–10 (procedure &amp; results) and 15 (numbers) matter most.</strong> Do them from memory, under time.</li>
+  </ol>
+
+  <div class="sec">Content map 内容地图</div>
+  <table class="n">
+    <tr><th style="width:10%;">Page</th><th style="width:32%;">Topic</th><th>What you must be able to do afterwards</th></tr>
+    <tr><td class="lbl">p.2</td><td>Pre-trial publicity 问题</td><td>Explain why instructions to ignore media fail</td></tr>
+    <tr><td class="lbl">p.3</td><td>Aim and the two juror types</td><td>Define collaborating vs nominal jurors</td></tr>
+    <tr><td class="lbl">p.4–5</td><td>Sample and three conditions</td><td>558 · 276/140/142 · 25 groups each</td></tr>
+    <tr><td class="lbl">p.6</td><td>Phase one 种下新闻</td><td>Cover story · 9 matched articles · planted facts</td></tr>
+    <tr><td class="lbl">p.7</td><td>Phase two 庭审</td><td>30-min video · verdict / 1–7 rating / 30–45 years</td></tr>
+    <tr><td class="lbl">p.8</td><td>Deliberation and the test</td><td>30-min unanimous vs 15-min recall; source monitoring test</td></tr>
+    <tr><td class="lbl">p.9–10</td><td>Results 结果</td><td>73/41/65/37 · source errors · credibility 40.83 vs 49.57</td></tr>
+    <tr><td class="lbl">p.11</td><td>Conclusions 结论</td><td>Bias · leniency shift · juries catch errors</td></tr>
+    <tr><td class="lbl">p.12–13</td><td>Evaluation 评价</td><td>Strengths and limitations, each with a consequence</td></tr>
+    <tr><td class="lbl">p.14</td><td>Application 应用</td><td>Change of venue, bench trial</td></tr>
+    <tr><td class="lbl">p.15</td><td>Every number 数字收口</td><td>Cover the right column and test yourself</td></tr>
+    <tr><td class="lbl">p.16</td><td>Side by side 对照</td><td>vs Bradbury and Williams (2013)</td></tr>
+    <tr><td class="lbl">p.17</td><td>Exam skills 答题技巧</td><td>Command words, sentence frames</td></tr>
+    <tr><td class="lbl">p.18–19</td><td>Practice A &amp; Final check</td><td>Short answers and a memory sweep</td></tr>
+    <tr><td class="lbl">p.20</td><td>Answer key 答案速查</td><td>Mark honestly, then re-write wrong answers in full</td></tr>
+  </table>
+
+  <div class="sec">Revision tracker 复习打卡</div>
+  <p class="chk"><span class="c"></span>p.2–3 problem &amp; aim　<span class="c"></span>p.4–8 procedure　<span class="c"></span>p.9–11 results &amp; conclusions　<span class="c"></span>p.12–14 evaluation &amp; application　<span class="c"></span>p.15 numbers　<span class="c"></span>p.16–19 exam</p>
+
+  <div class="box purple">
+    <div class="bx-t">The whole study in one sentence 一句话总结</div>
+    Of <strong>558 students</strong>, those who read <strong>negative pre-trial publicity</strong> about a real murder trial voted guilty far more often (<strong>73%</strong> vs 41% collaborative; <strong>65%</strong> vs 37% nominal), made more <strong>source monitoring errors</strong> — mistaking article-only facts for trial evidence, <strong>confidently</strong> — and rated the defendant as <strong>less credible</strong> (40.83 vs 49.57), while group <strong>deliberation</strong> shifted verdicts toward <strong>leniency</strong> and helped catch memory errors.
+  </div>
+
+  <div class="pg-foot">Page 1 of 20</div>
+</div>
+
+<!-- ================= PAGE 2 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Pre-trial Publicity — The Problem</span><span class="r">6.2.3 RUVA, MCEVOY &amp; BRYANT (2007)</span></div>
+
+  <div class="sec">The right at stake 权利问题</div>
+  <p>Every defendant has the right to a <strong>fair trial</strong> and to be judged by an <strong>impartial jury</strong> and/or judge. But media coverage <strong>before</strong> the trial can be a source of bias.</p>
+
+  <div class="sec">Key term 关键术语</div>
+  <div class="box orange">
+    <div class="bx-t">pre-trial publicity（审前报道）</div>
+    News coverage about a case published <strong>before</strong> the trial — which may include information <strong>never presented in court</strong>.</div>
+
+  <div class="sec">What the justice system tried — and the verdict on each 应对措施</div>
+  <table class="n">
+    <tr><th style="width:45%;">Strategy</th><th>Shown to work?</th></tr>
+    <tr><td class="lbl">Voir dire（陪审员资格审查）</td><td><span class="bl"></span> <span class="hint">ineffective</span></td></tr>
+    <tr><td class="lbl">Judge's instruction to ignore media</td><td><span class="bl"></span> <span class="hint">ineffective</span></td></tr>
+    <tr><td class="lbl">Change of venue（更换审判地点）</td><td>Not tested experimentally; <span class="bl"></span> done; no right to request <span class="hint">rarely</span></td></tr>
+    <tr><td class="lbl">Bench trial（法官审，无陪审团）</td><td>Not tested experimentally; largely <span class="bl"></span> <span class="hint">prohibitive</span></td></tr>
+  </table>
+
+  <p class="small">Extra context: some countries have <strong>abolished juries</strong> altogether (Singapore, South Africa, India); others use juries only for a select number of offences.</p>
+
+  <div class="box blue">
+    <div class="bx-t">为什么口头指令没用（先想再翻答案）</div>
+    因为新闻内容已经<strong>存进记忆</strong>。「不要想」不能删除记忆 —— 只能靠<strong>来源监测</strong>（想起来时分辨「这是哪里来的」），而来源监测恰恰会出错。这正是本研究的核心机制。
+  </div>
+
+  <div class="pg-foot">Page 2 of 20</div>
+</div>
+
+<!-- ================= PAGE 3 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">The Aim and the Two Juror Types</span><span class="r">6.2.3 RUVA, MCEVOY &amp; BRYANT (2007)</span></div>
+
+  <div class="sec">Aim 研究目的</div>
+  <p>Test whether (1) exposure to <strong>negative pre-trial publicity</strong> biases jurors toward <strong>guilty</strong> verdicts, and (2) whether <strong>deliberating in a group</strong> versus <strong>thinking alone</strong> changes the judgments — including source monitoring errors.</p>
+
+  <div class="sec">Two key terms 两个关键术语</div>
+  <table class="n">
+    <tr><th style="width:30%;">Term</th><th>Meaning</th></tr>
+    <tr><td class="lbl">Collaborating jurors 协作陪审员</td><td>Deliberate <strong>together</strong> for 30 minutes and give one <strong>unanimous</strong> group verdict (guilty / not guilty / hung)</td></tr>
+    <tr><td class="lbl">Nominal jurors 名义陪审员</td><td>Judge <strong>alone</strong>; individual verdicts are pooled — <strong>no discussion</strong></td></tr>
+  </table>
+
+  <div class="box purple">
+    <div class="bx-t">为什么这个对比重要</div>
+    如果讨论组更准 → 「陪审团制度」本身有价值（成员互相<strong>纠错</strong>）；如果讨论组更糟 → 讨论可能<strong>传染</strong>偏见。实验结果支持前者，但有个前提 —— 详见 p.11。
+  </div>
+
+  <div class="sec">Warm-up 热身</div>
+  <p>1. Jurors who deliberate together and must reach one verdict are called <span class="bl"></span> jurors.</p>
+  <p>2. Jurors who judge individually with no discussion are called <span class="bl"></span> jurors.</p>
+  <p>3. The test that checks whether people can correctly attribute where information came from is the <span class="bl"></span> <span class="bl"></span> test.</p>
+
+  <div class="pg-foot">Page 3 of 20</div>
+</div>
+
+<!-- ================= PAGE 4 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">The Sample 样本</span><span class="r">6.2.3 RUVA, MCEVOY &amp; BRYANT (2007)</span></div>
+
+  <div class="sec">Fill in the numbers 填数字</div>
+  <table class="n">
+    <tr><th style="width:40%;">Feature</th><th>Answer</th></tr>
+    <tr><td class="lbl">Total participants</td><td><span class="bl"></span> university students <span class="hint">558</span></td></tr>
+    <tr><td class="lbl">Age range (and mean)</td><td><span class="bl"></span>–<span class="bl"></span> years (mean <span class="bl"></span>) <span class="hint">18–52; 20.6</span></td></tr>
+    <tr><td class="lbl">Male / female</td><td><span class="bl"></span> male, <span class="bl"></span> female <span class="hint">128 / 430</span></td></tr>
+    <tr><td class="lbl">Majority ethnicity</td><td>white (n = <span class="bl"></span>) <span class="hint">354</span></td></tr>
+    <tr><td class="lbl">Prior jury experience</td><td><span class="bl"></span> participants had served as jurors <span class="hint">6</span></td></tr>
+    <tr><td class="lbl">Payment</td><td>course <span class="bl"></span> <span class="hint">credit</span></td></tr>
+  </table>
+
+  <div class="box blue">
+    <div class="bx-t">样本评价先埋个伏笔</div>
+    <strong>430 女 vs 128 男</strong> —— 真实陪审员群体没有这么悬殊；学生平均 20.6 岁 —— 也不是典型陪审员年龄。评价时可用「sample not representative of real jurors」。
+  </div>
+
+  <div class="pg-foot">Page 4 of 20</div>
+</div>
+
+<!-- ================= PAGE 5 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Three Conditions 三个条件组</span><span class="r">6.2.3 RUVA, MCEVOY &amp; BRYANT (2007)</span></div>
+
+  <div class="sec">Complete the table 补全分组表</div>
+  <table class="n">
+    <tr><th style="width:40%;">Condition</th><th>n</th><th>What they read</th></tr>
+    <tr><td class="lbl">Collaborating condition</td><td><span class="bl"></span></td><td>negative pre-trial publicity; at phase 2 split into collaborative (n = <span class="bl"></span>) or nominal (n = <span class="bl"></span>)</td></tr>
+    <tr><td class="lbl">Nominal — exposed</td><td><span class="bl"></span></td><td>negative pre-trial publicity</td></tr>
+    <tr><td class="lbl">Nominal — non-exposed（控制组）</td><td><span class="bl"></span></td><td><span class="bl"></span> crime articles</td></tr>
+  </table>
+  <p class="small">There were <strong>25 groups</strong> in each condition. Answers: 276 · 138 · 138 · 140 · 142 · unrelated.</p>
+
+  <div class="box green">
+    <div class="bx-t">分组逻辑一图流</div>
+    <strong>读没读负面新闻</strong>（exposed vs non-exposed）是第一层对比 → 测「新闻有没有影响」。<br>
+    <strong>讨论不讨论</strong>（collaborative vs nominal）是第二层对比 → 测「讨论能不能纠错」。
+  </div>
+
+  <div class="sec">Quick check 快问快答</div>
+  <p>1. The control condition read articles about a woman <span class="bl"></span> child support funds.</p>
+  <p>2. Groups per condition: <span class="bl"></span>.</p>
+  <p>3. The collaborating condition contained <span class="bl"></span> participants in total.</p>
+
+  <div class="pg-foot">Page 5 of 20</div>
+</div>
+
+<!-- ================= PAGE 6 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Phase One — Planting the News 第一阶段</span><span class="r">6.2.3 RUVA, MCEVOY &amp; BRYANT (2007)</span></div>
+
+  <div class="sec">The cover story 掩护故事</div>
+  <p>Sessions of <strong>16 or fewer</strong>. Participants were told the study examined <em>“the stability of <span class="bl"></span> reactions to different sources of information”</em> — a cover story to stop them guessing the real aim (jury decision-making).</p>
+
+  <div class="sec">The articles 文章包</div>
+  <table class="n">
+    <tr><th style="width:50%;">Exposed groups</th><th>Non-exposed</th></tr>
+    <tr><td><span class="bl"></span> edited news articles about the <strong>NJ v Bias</strong> murder case (from the <em>Morning Call</em>), including facts <span class="bl"></span> presented at trial</td><td>Nine articles about an <strong>unrelated</strong> crime, matched for <span class="bl"></span> (about ten pages total)</td></tr>
+  </table>
+
+  <div class="sec">Facts planted only in the articles 只在新闻里出现</div>
+  <ol class="tight">
+    <li>Daniel Bias had a <span class="bl"></span> <span class="hint">bad temper</span></li>
+    <li>Lise's body was found in the <span class="bl"></span> of the bedroom <span class="hint">doorway</span></li>
+    <li>Lise did not know how to use <span class="bl"></span> and disliked them <span class="hint">guns</span></li>
+    <li>Daniel wanted Lise to <span class="bl"></span> <span class="hint">quit her job and start a family</span></li>
+  </ol>
+
+  <p>After reading: <strong>15 minutes</strong> to recall as much as possible and rate their <span class="bl"></span> response.</p>
+
+  <div class="box blue">
+    <div class="bx-t">设计精髓</div>
+    「坏脾气」这类信息<strong>庭审中不存在</strong>。谁在测验里说「这是法庭上听到的」，谁就把新闻<strong>误存成了证据</strong> —— 错误被精确抓到。
+  </div>
+
+  <div class="pg-foot">Page 6 of 20</div>
+</div>
+
+<!-- ================= PAGE 7 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Phase Two — The Trial 第二阶段</span><span class="r">6.2.3 RUVA, MCEVOY &amp; BRYANT (2007)</span></div>
+
+  <div class="sec">The video 庭审录像</div>
+  <p><span class="bl"></span>–<span class="bl"></span> days later, participants watched a <strong>30-minute video</strong> of the real trial <em>NJ v Bias</em>: a man accused of <span class="bl"></span> his wife, pleading not guilty (claiming <span class="bl"></span> shooting). His guilt was <strong>not clear</strong>.</p>
+
+  <div class="sec">Facts presented only in the trial 只在庭审中出现</div>
+  <ol class="tight">
+    <li>Detective John Flynn failed to do any <span class="bl"></span> testing on the weapon</li>
+    <li>Daniel had his hand on his wife's hand when the weapon <span class="bl"></span> <span class="bl"></span></li>
+    <li>Lise was standing by the <span class="bl"></span> when the weapon went off</li>
+    <li>That day they had argued about a piece of <span class="bl"></span></li>
+  </ol>
+
+  <div class="sec">The three measures 三项测量</div>
+  <table class="n">
+    <tr><th style="width:40%;">Measure</th><th>Scale</th></tr>
+    <tr><td class="lbl">Verdict</td><td>guilty / <span class="bl"></span></td></tr>
+    <tr><td class="lbl">Rating of guilt</td><td><span class="bl"></span>–<span class="bl"></span> (1 = certain not guilty, 7 = certain guilty)</td></tr>
+    <tr><td class="lbl">Sentence</td><td><span class="bl"></span>–<span class="bl"></span> years (New Jersey guidelines)</td></tr>
+  </table>
+
+  <div class="pg-foot">Page 7 of 20</div>
+</div>
+
+<!-- ================= PAGE 8 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Deliberate or Recall 讨论还是回忆</span><span class="r">6.2.3 RUVA, MCEVOY &amp; BRYANT (2007)</span></div>
+
+  <div class="sec">What each group did next</div>
+  <table class="n">
+    <tr><th style="width:50%;">Collaborating jurors</th><th>Nominal jurors</th></tr>
+    <tr><td><span class="bl"></span> minutes to deliberate → one <span class="bl"></span> verdict; no decision = <span class="bl"></span> jury (mistrial)</td><td>Taken to a different room; <span class="bl"></span> min recalling trial facts, <span class="bl"></span> min indicating which facts most influenced their verdict; same verdict form, no hung option</td></tr>
+  </table>
+
+  <div class="sec">Then, for everyone 最后所有人都做</div>
+  <ul class="tight">
+    <li><strong>Source monitoring test</strong>: attribute each fact to the <span class="bl"></span>, the <span class="bl"></span>, or <span class="bl"></span> — plus rate <strong>confidence</strong> for each answer</li>
+    <li>A final <span class="bl"></span> verdict, guilt rating and sentence</li>
+    <li>Rate the defendant's <span class="bl"></span> (e.g. “How honest did the defendant appear to be?”)</li>
+    <li>A <span class="bl"></span> questionnaire (did you believe the cover story?)</li>
+  </ul>
+
+  <div class="box orange">
+    <div class="bx-t">key term: source monitoring test（来源监测测验）</div>
+    A test/questionnaire designed to see whether a person can accurately <strong>attribute the original source</strong> of information.</div>
+
+  <div class="pg-foot">Page 8 of 20</div>
+</div>
+
+<!-- ================= PAGE 9 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Results 1 — The Verdicts 判罪结果</span><span class="r">6.2.3 RUVA, MCEVOY &amp; BRYANT (2007)</span></div>
+
+  <div class="sec">Pre-deliberation guilty verdicts 判罪率</div>
+  <table class="n pg-tight">
+    <tr><th style="width:55%;">Group</th><th>Not guilty</th><th>Guilty</th></tr>
+    <tr><td>Collaborative — exposed to negative publicity</td><td><span class="bl"></span>%</td><td><span class="bl"></span>%</td></tr>
+    <tr><td>Collaborative — not exposed</td><td>59%</td><td>41%</td></tr>
+    <tr><td>Nominal — exposed</td><td>35%</td><td><span class="bl"></span>%</td></tr>
+    <tr><td>Nominal — not exposed</td><td>63%</td><td>37%</td></tr>
+  </table>
+
+  <div class="box green">
+    <div class="bx-t">As predicted 预测成立</div>
+    Exposed groups were <strong>significantly more likely to give a guilty verdict</strong> (a <span class="bl"></span>-point jump for collaborative groups), gave <strong>higher guilt ratings</strong>, and <strong>longer sentences</strong>. These findings held <strong>after</strong> deliberation and after the source monitoring test.</div>
+
+  <div class="sec">Compute it 算一算</div>
+  <p>1. Collaborative groups: 73% − 41% = <span class="bl"></span> percentage points.</p>
+  <p>2. Nominal groups: 65% − 37% = <span class="bl"></span> percentage points.</p>
+  <p>3. In one sentence: exposure to negative pre-trial publicity <span class="bl"></span> guilty verdicts in both group types.</p>
+
+  <div class="pg-foot">Page 9 of 20</div>
+</div>
+
+<!-- ================= PAGE 10 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Results 2 — Source Errors and Credibility</span><span class="r">6.2.3 RUVA, MCEVOY &amp; BRYANT (2007)</span></div>
+
+  <div class="sec">Source monitoring errors 来源监测错误</div>
+  <ul class="tight">
+    <li>Exposed jurors made <span class="bl"></span> source monitoring errors — they misattributed article-only facts to <span class="bl"></span> (the trial / both), <strong>confidently</strong>.</li>
+    <li><span class="bl"></span> jurors were more accurate than <span class="bl"></span> jurors — group discussion helps catch memory errors.</li>
+  </ul>
+
+  <div class="sec">Credibility and suspicion 可信度与怀疑</div>
+  <table class="n">
+    <tr><th style="width:55%;">Measure</th><th>Exposed</th><th>Non-exposed</th></tr>
+    <tr><td>Defendant credibility (mean)</td><td><span class="bl"></span></td><td><span class="bl"></span></td></tr>
+    <tr><td>Believed the cover story</td><td>83%</td><td>85%</td></tr>
+    <tr><td>Suspected the real aim</td><td><span class="bl"></span>%</td><td>18%</td></tr>
+  </table>
+
+  <div class="sec">The mediation chain 中介链（考试金句）</div>
+  <div class="box purple">
+    Negative pre-trial publicity → <span class="bl"></span> <span class="bl"></span> errors → higher <span class="bl"></span> ratings → defendant seen as less <span class="bl"></span>.<br>
+    <span class="hint">The effect of publicity on guilt was MEDIATED by source monitoring errors.</span>
+  </div>
+
+  <p class="small">Bonus finding: verdicts shifted toward <strong>leniency</strong> after deliberation — possibly because discussion heightened the <strong>“reasonable doubt”</strong> standard, or because convicting feels more serious than acquitting.</p>
+
+  <div class="pg-foot">Page 10 of 20</div>
+</div>
+
+<!-- ================= PAGE 11 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Conclusions 结论</span><span class="r">6.2.3 RUVA, MCEVOY &amp; BRYANT (2007)</span></div>
+
+  <div class="sec">Four conclusions, one line each</div>
+  <ol class="tight">
+    <li>Negative pre-trial publicity can <strong>bias a jury</strong> toward guilt — in verdicts, guilt ratings and <span class="bl"></span> <span class="hint">sentence length</span> — and toward seeing the defendant as less <span class="bl"></span> <span class="hint">credible</span>.</li>
+    <li>Deliberation produced a shift toward <span class="bl"></span> <span class="hint">leniency</span>.</li>
+    <li>Collaborating jurors were more <span class="bl"></span> in source monitoring — a <strong>benefit of juries</strong>: members catch each other's <span class="bl"></span> errors.</li>
+    <li>But exposed jurors <span class="bl"></span> media information as trial evidence — media coverage may <strong>alter the memory of a trial</strong>, and no amount of discussion fixes a corrupted memory.</li>
+  </ol>
+
+  <div class="box purple">
+    <div class="bx-t">三个结论一句话版（中文）</div>
+    ① 负面审前报道<strong>推高判罪</strong>。② <strong>集体讨论</strong>能纠错、也更宽容。③ 一旦新闻被误存为证据，讨论也救不回来 —— 错的是记忆本身。
+  </div>
+
+  <div class="sec">Sentence building 造句</div>
+  <p>Write the conclusion sentence you would use in an exam: <em>“Ruva et al. concluded that…”</em></p>
+  <div class="wl"></div><div class="wl"></div>
+
+  <div class="pg-foot">Page 11 of 20</div>
+</div>
+
+<!-- ================= PAGE 12 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Evaluation · Strengths 评价：优点</span><span class="r">6.2.3 RUVA, MCEVOY &amp; BRYANT (2007)</span></div>
+
+  <div class="sec">Strength 1 — A real trial 真实庭审</div>
+  <p>Mock jury research often uses a <strong>fictional</strong> trial summarised in a document. Ruva's participants watched <strong>real court proceedings</strong> of a real murder case → greater <strong>ecological validity</strong> than much research in this area.</p>
+  <p><strong>Consequence:</strong> <span class="bl"></span></p>
+
+  <div class="sec">Strength 2 — Standardised procedures 标准化</div>
+  <p>Articles <span class="bl"></span> for length (nine each, ~ten pages), the same 30-minute video for all, fixed timings, random assignment → the experiment is <span class="bl"></span> and the comparison fair.</p>
+
+  <div class="sec">Strength 3 — Deception handled carefully 欺骗的处理</div>
+  <p>The cover story was <strong>necessary</strong>. <span class="bl"></span>% (exposed) and <span class="bl"></span>% (non-exposed) believed it; <span class="bl"></span>% of exposed jurors suspected the real aim vs <span class="bl"></span>% non-exposed — but analysis showed suspicious participants did <span class="bl"></span> differently, so suspicion did not distort the results.</p>
+
+  <div class="box green">
+    <div class="bx-t">评价句式（背结构）</div>
+    <strong>Point</strong> → <strong>Because/Example</strong> → <strong>Consequence</strong>。每个优点都带后果，才有分数。
+  </div>
+
+  <div class="pg-foot">Page 12 of 20</div>
+</div>
+
+<!-- ================= PAGE 13 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Evaluation · Limitations 评价：缺点</span><span class="r">6.2.3 RUVA, MCEVOY &amp; BRYANT (2007)</span></div>
+
+  <div class="sec">Limitation 1 — Only 30 minutes 讨论时间太短</div>
+  <p>Real jurors may deliberate <span class="bl"></span> as reasonably needed. The 30-minute limit means the verdicts may not reflect verdicts given <span class="bl"></span> time.</p>
+
+  <div class="sec">Limitation 2 — Not a real jury experience 陪审体验缺失</div>
+  <p>No <span class="bl"></span> (summons), no juror <span class="bl"></span>, not sworn in, no judge's instructions, not a real courtroom, not a real defendant's fate. Knowing the verdict would truly convict might have made participants more <span class="bl"></span>.</p>
+
+  <div class="sec">Limitation 3 — Groups of four to six, not twelve 人数不对</div>
+  <p>Real juries have <span class="bl"></span> members. Smaller groups give dissenting views <span class="bl"></span> support — biased opinions can go <span class="bl"></span>.</p>
+
+  <div class="sec">Limitation 4 — The study underestimates real life 低估现实</div>
+  <p>Participants were told to dismiss specific articles read only <span class="bl"></span> before. Real jurors absorb media over <span class="bl"></span> or months and would discriminate <span class="bl"></span> between coverage and trial evidence → real jurors could make <span class="bl"></span> source errors and be <span class="bl"></span> biased.</p>
+
+  <div class="box orange">
+    <div class="bx-t">高分句（中文）</div>
+    实验室里效果已经这么强；真实世界媒体浸泡更久更深 —— 实验结果是<strong>下限</strong>，不是上限。
+  </div>
+
+  <div class="pg-foot">Page 13 of 20</div>
+</div>
+
+<!-- ================= PAGE 14 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Application 应用</span><span class="r">6.2.3 RUVA, MCEVOY &amp; BRYANT (2007)</span></div>
+
+  <div class="sec">The logic 逻辑链</div>
+  <p>Jury decisions are biased by negative pre-trial publicity → instructing jurors to ignore media <span class="bl"></span> (voire dire too) → so measures must go <strong>beyond instructions</strong>, especially for <span class="bl"></span> cases.</p>
+
+  <div class="sec">Two concrete measures 两项对策</div>
+  <ol class="tight">
+    <li><span class="bl"></span> the trial — move it to a location with less publicity about the defendant.</li>
+    <li>Use a <span class="bl"></span> trial — the judge decides alone, no jury.</li>
+  </ol>
+  <p><strong>Both reduce the chance of an unfair trial.</strong></p>
+
+  <div class="sec">Link it back 呼应前文</div>
+  <p class="small">Why do these two work when instructions don't? Because they <strong>physically separate</strong> the decision-makers from the biased information, rather than asking memory to un-learn.</p>
+
+  <div class="box grey">
+    <div class="bx-t">Key term</div>
+    <strong>bench trial</strong>: trial by judge only — no jury.<br>
+    <strong>voir dire</strong>: questioning of prospective jurors to screen out bias (ineffective here).
+  </div>
+
+  <div class="pg-foot">Page 14 of 20</div>
+</div>
+
+<!-- ================= PAGE 15 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Every Number and Name 数字收口</span><span class="r">6.2.3 RUVA, MCEVOY &amp; BRYANT (2007)</span></div>
+
+  <div class="sec">Cover the right column, test yourself 遮住右栏自测</div>
+  <table class="n">
+    <tr><th style="width:55%;">Question</th><th>Answer</th></tr>
+    <tr><td>Total participants (mean age)</td><td><strong>558</strong> (20.6)</td></tr>
+    <tr><td>Male / female</td><td><strong>128 / 430</strong></td></tr>
+    <tr><td>White participants</td><td><strong>354</strong></td></tr>
+    <tr><td>Participants in the three conditions</td><td><strong>276 / 140 / 142</strong></td></tr>
+    <tr><td>Collaborative split at phase 2</td><td><strong>138 + 138</strong></td></tr>
+    <tr><td>Groups per condition</td><td><strong>25</strong></td></tr>
+    <tr><td>Articles per set (length)</td><td><strong>nine</strong> (~ten pages)</td></tr>
+    <tr><td>Gap between phases</td><td><strong>4–7 days</strong></td></tr>
+    <tr><td>Trial video length</td><td><strong>30 minutes</strong></td></tr>
+    <tr><td>Guilty % — collaborative exposed / non-exposed</td><td><strong>73% / 41%</strong></td></tr>
+    <tr><td>Guilty % — nominal exposed / non-exposed</td><td><strong>65% / 37%</strong></td></tr>
+    <tr><td>Deliberation / recall times</td><td><strong>30 min</strong> / <strong>15 min + 10 min</strong></td></tr>
+    <tr><td>Guilt rating scale / sentence range</td><td><strong>1–7</strong> / <strong>30–45 years</strong></td></tr>
+    <tr><td>Credibility means</td><td><strong>40.83 vs 49.57</strong></td></tr>
+    <tr><td>Believed cover story / suspected aim</td><td><strong>83% &amp; 85%</strong> / <strong>35% vs 18%</strong></td></tr>
+  </table>
+
+  <div class="box purple">
+    <div class="bx-t">数字卡片</div>
+    <strong>558 · 276/140/142 · 25 groups · 9 articles · 4–7 days · 30 min video · 73/41 · 65/37 · 30 min deliberation · 40.83 vs 49.57 · 83/85 · 35/18.</strong>
+  </div>
+
+  <div class="pg-foot">Page 15 of 20</div>
+</div>
+
+<!-- ================= PAGE 16 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Side by Side — Ruva vs Bradbury &amp; Williams</span><span class="r">6.2.3 vs 6.2.2</span></div>
+
+  <div class="sec">Complete the comparison 对照表（答案见 p.20）</div>
+  <table class="n pg-tight">
+    <tr><th style="width:20%;">Issue</th><th style="width:40%;">Ruva et al. (2007)</th><th>Bradbury and Williams (2013)</th></tr>
+    <tr><td class="lbl">Data type</td><td>Lab experiment with a <span class="bl"></span> trial video</td><td><span class="bl"></span> data from real trial records</td></tr>
+    <tr><td class="lbl">Sample</td><td><span class="bl"></span> students</td><td>Records of real hung-jury trials in <span class="bl"></span> states</td></tr>
+    <tr><td class="lbl">Focus</td><td>Pre-trial <span class="bl"></span> and source memory</td><td>Racial make-up of the <span class="bl"></span></td></tr>
+    <tr><td class="lbl">Analysis</td><td>Verdict percentages, ratings, source monitoring</td><td><span class="bl"></span> <span class="bl"></span> (probability of conviction)</td></tr>
+    <tr><td class="lbl">Ecological validity</td><td>Moderate — real trial <span class="bl"></span>, but artificial setting</td><td><span class="bl"></span> — real verdicts, real courtrooms</td></tr>
+    <tr><td class="lbl">Reliability</td><td><span class="bl"></span> — standardised, replicable</td><td>Low — real cases cannot be replicated</td></tr>
+    <tr><td class="lbl">Shared theme</td><td colspan="2">Both show jury decisions can be <span class="bl"></span> by information outside the courtroom evidence</td></tr>
+  </table>
+
+  <div class="box grey">
+    <div class="bx-t">怎么背这张表</div>
+    一句话反差：<strong>Ruva 操控信息（实验可重复），B&amp;W 读现实（不可重复但更真实）</strong>。共同点：陪审团决策会被「法庭之外」的信息带偏。
+  </div>
+
+  <div class="pg-foot">Page 16 of 20</div>
+</div>
+
+<!-- ================= PAGE 17 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Exam Skills 答题技巧</span><span class="r">6.2.3 RUVA, MCEVOY &amp; BRYANT (2007)</span></div>
+
+  <div class="sec">Command words 指令词</div>
+  <table class="n">
+    <tr><th style="width:22%;">Command word</th><th>What it demands</th></tr>
+    <tr><td class="lbl">Describe</td><td>Facts only — two phases, measures, groups. No judgement.</td></tr>
+    <tr><td class="lbl">Explain</td><td>The <strong>because/why</strong> — e.g. why the cover story was necessary.</td></tr>
+    <tr><td class="lbl">Evaluate / assess</td><td>Strength + limitation, each with a consequence, then a verdict.</td></tr>
+  </table>
+
+  <div class="sec">Sentence frames 万能句架</div>
+  <ul class="tight">
+    <li>Procedure: <em>“In phase one, participants read either nine articles of negative pre-trial publicity or nine unrelated crime articles, matched for length…”</em></li>
+    <li>Result with numbers: <em>“Exposed collaborative jurors voted guilty 73% of the time compared with 41% of non-exposed collaborative jurors.”</em></li>
+    <li>Mediation sentence: <em>“The effect of pre-trial publicity on guilt ratings was mediated by source monitoring errors.”</em></li>
+    <li>Evaluation: <em>“One strength is… which means… However, this may underestimate the effect because…”</em></li>
+  </ul>
+
+  <div class="box green">
+    <div class="bx-t">四个必写细节</div>
+    ① <strong>两个阶段</strong>（先读文章后看庭审）② <strong>73% vs 41%</strong>（最能说明问题的数字）③ <strong>mediated by source monitoring errors</strong>（机制句）④ <strong>change of venue / bench trial</strong>（应用）。
+  </div>
+
+  <div class="pg-foot">Page 17 of 20</div>
+</div>
+
+<!-- ================= PAGE 18: PRACTICE ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Practice A — Short Answers</span><span class="r">6.2.3 RUVA, MCEVOY &amp; BRYANT (2007)</span></div>
+
+  <div class="q">Q1. Outline the procedure of Ruva, McEvoy and Bryant (2007). (4)</div>
+  <div class="wl"></div><div class="wl"></div>
+
+  <div class="q">Q2. State the guilty-verdict percentages for exposed and non-exposed collaborative groups, and explain what they show. (4)</div>
+  <div class="wl"></div><div class="wl"></div>
+
+  <div class="q">Q3. Explain what is meant by a <strong>source monitoring error</strong> in this study, and why exposed jurors made more of them. (4)</div>
+  <div class="wl"></div><div class="wl"></div>
+
+  <div class="q">Q4. Describe one strength and one limitation of using a real trial video in this experiment. (4)</div>
+  <div class="wl"></div><div class="wl"></div>
+
+  <div class="pg-foot">Page 18 of 20</div>
+</div>
+
+<!-- ================= PAGE 19: FINAL CHECK ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Final Check — Five Minutes, No Notes</span><span class="r">6.2.3 RUVA, MCEVOY &amp; BRYANT (2007)</span></div>
+
+  <div class="sec">Ten answers from memory 十题默检</div>
+  <ol class="tight">
+    <li>Total sample (and mean age): <span class="bl"></span></li>
+    <li>The three condition sizes: <span class="bl"></span></li>
+    <li>What the non-exposed group read: <span class="bl"></span></li>
+    <li>The cover story was about… <span class="bl"></span></li>
+    <li>Gap between phases: <span class="bl"></span></li>
+    <li>Length of the trial video: <span class="bl"></span></li>
+    <li>Guilty % for collaborative exposed / non-exposed: <span class="bl"></span></li>
+    <li>The test that caught memory mistakes: <span class="bl"></span></li>
+    <li>The credibility means (exposed vs non-exposed): <span class="bl"></span></li>
+    <li>Two applications: <span class="bl"></span></li>
+  </ol>
+
+  <div class="box purple">
+    <div class="bx-t">Brain dump 空白默写</div>
+    <p class="small">Close the booklet. Write everything you remember about Ruva, McEvoy and Bryant (2007) — aim → sample → procedure → one result → one evaluation point.</p>
+    <div class="wl"></div><div class="wl"></div><div class="wl"></div>
+  </div>
+
+  <div class="pg-foot">Page 19 of 20</div>
+</div>
+
+<!-- ================= PAGE 20: ANSWER KEY ================= -->
+<div class="page pg-tight">
+  <div class="pg-head"><span class="t">Answer Key 答案速查</span><span class="r">pp. 2–19</span></div>
+
+  <div class="sec">Page 2</div>
+  <p class="small">Table: ineffective · ineffective · rarely · prohibitive.</p>
+  <div class="sec">Page 3</div>
+  <p class="small">1. collaborating　2. nominal　3. source monitoring</p>
+  <div class="sec">Page 4</div>
+  <p class="small">558 · 18–52 (20.6) · 128 / 430 · 354 · 6 · credit</p>
+  <div class="sec">Page 5</div>
+  <p class="small">276; 138; 138; 140; 142; unrelated · embezzling · 25</p>
+  <div class="sec">Page 6</div>
+  <p class="small">emotional · nine; never · length · temper · doorway · guns · quit her job and start a family · emotional</p>
+  <div class="sec">Page 7</div>
+  <p class="small">4–7 · murdering · accidental · fingerprint · went off · mirror · jewellery · not guilty · 1–7 · 30–45</p>
+  <div class="sec">Page 8</div>
+  <p class="small">30; unanimous; hung · 15; 10 · articles / trial / both · individual · credibility · debrief</p>
+  <div class="sec">Page 9</div>
+  <p class="small">27 / 73 · 65 · 32 · 28 · increased</p>
+  <div class="sec">Page 10</div>
+  <p class="small">more; the trial or both · Collaborating; nominal · 40.83; 49.57 · 35 · source monitoring; guilt; credible</p>
+  <div class="sec">Pages 12–14</div>
+  <p class="small">p.12: applies to real courtrooms / matched; replicable · 83; 85; 35; 18; not respond. p.13: as long; sufficient · summons; selection; lenient · 12; less; unchallenged · days; weeks; worse; more; more. p.14: fails; high-profile · Move; bench.</p>
+  <div class="sec">Page 16</div>
+  <p class="small">real; secondary · 558; four · publicity; jury · logistic regression · video; high · high · biased</p>
+  <div class="sec">Page 18 — Practice A (model points)</div>
+  <p class="small"><strong>Q1</strong> Two phases: read 9 PTP or 9 unrelated articles (+15 min recall), then 4–7 days later watch the 30-min real trial video; verdict + 1–7 guilt rating + 30–45-year sentence; collaborative deliberated 30 min for a unanimous verdict, nominal recalled individually; source monitoring test last.<br>
+  <strong>Q2</strong> 73% vs 41% — a 32-point jump; shows negative pre-trial publicity significantly increased guilty verdicts.<br>
+  <strong>Q3</strong> Attributing article-only facts (e.g. "bad temper") to the trial; exposed jurors had read them days earlier and misfiled them as trial evidence.<br>
+  <strong>Q4</strong> Strength: real proceedings → ecological validity. Limitation: participants lacked real jury processes (summons, selection, real consequences) so verdicts may be less considered.</p>
+
+  <div class="box green">
+    <div class="bx-t">答错怎么办</div>
+    把答错的题<strong>整句重写一遍</strong>（不是只补答案），隔天再默一次。错两次以上的点，誊到 p.19 brain dump 区。
+  </div>
+
+  <div class="pg-foot">Page 20 of 20</div>
+</div>
+
+</body>
+</html>

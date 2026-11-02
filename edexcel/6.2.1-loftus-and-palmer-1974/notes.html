@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6.2.1 Loftus and Palmer (1974) — Student Notes Workbook</title>
+<style>
+@page { size: A4; margin: 13mm 12mm 15mm 12mm; }
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif; color:#1a1a1a; font-size:10pt; line-height:1.5; margin:0; background:#f3f3f3; }
+.page { background:#fff; max-width: 800px; margin: 0 auto 10px auto; padding: 10mm 11mm; page-break-after: always; position: relative; min-height: 248mm; }
+@media print { body { background:#fff; } .page { margin:0; padding:0; max-width:none; box-shadow:none; } }
+.pg-head { display:flex; justify-content:space-between; align-items:baseline; border-bottom: 2px solid #333; padding-bottom:4px; margin-bottom:10px; }
+.pg-head .t { font-size:11.5pt; font-weight:700; }
+.pg-head .r { font-size:8pt; color:#777; letter-spacing:.04em; }
+.pg-foot { position:absolute; bottom:4mm; left:0; right:0; text-align:center; font-size:8pt; color:#999; }
+.sec { font-size:10pt; font-weight:700; margin:12px 0 5px 0; padding-left:7px; border-left:3.5px solid #444; }
+.sec:first-of-type { margin-top:2px; }
+.sub { font-size:9.5pt; font-weight:700; margin:9px 0 3px 0; }
+.bl { display:inline-block; border-bottom:1px solid #555; height:1em; vertical-align:baseline; min-width:60px; margin:0 2px; }
+.hint { font-size:8.5pt; color:#666; }
+.hint::before { content:"（"; } .hint::after { content:"）"; }
+table.n { width:100%; border-collapse:collapse; margin:6px 0 9px 0; font-size:9pt; }
+table.n th, table.n td { border:1px solid #999; padding:4px 6px; text-align:left; vertical-align:top; }
+table.n th { background:#e9e9e9; font-size:8.8pt; }
+td.lbl { background:#f4f4f4; width:22%; font-weight:600; }
+.box { border:1px solid #aaa; border-left:4px solid #555; padding:6px 9px; margin:7px 0; border-radius:3px; }
+.box.grey { border:1px dashed #999; border-left:4px dashed #999; background:#fafafa; }
+.box.purple { border-left-color:#7c3aed; background:#faf5ff; }
+.box.blue { border-left-color:#2563eb; background:#f5f9ff; }
+.box.green { border-left-color:#16a34a; background:#f3faf5; }
+.box.orange { border-left-color:#ea580c; background:#fff7ed; }
+.box .bx-t { font-size:9.3pt; font-weight:700; margin-bottom:3px; }
+.wl { border-bottom:1px solid #bbb; height:24pt; }
+.wl.s { height:18pt; }
+ul.tight { margin:4px 0 8px 0; padding-left:17px; }
+ul.tight li { margin-bottom:3px; }
+ol.tight { margin:4px 0 8px 0; padding-left:17px; }
+ol.tight li { margin-bottom:4px; }
+.chk { font-size:9.3pt; }
+.chk .c { display:inline-block; width:11px; height:11px; border:1.3px solid #555; margin-right:6px; vertical-align:-1px; }
+.q { font-style:italic; background:#f6f6f6; border:1px solid #ccc; padding:5px 9px; margin:5px 0; font-size:9.3pt; border-radius:3px; }
+.small { font-size:8.6pt; line-height:1.35; }
+.pg-tight table.n { font-size:8.5pt; margin:5px 0 7px 0; }
+.pg-tight table.n th, .pg-tight table.n td { padding:2.5px 5px; }
+.pg-tight .sub { margin:7px 0 2px 0; }
+.pg-tight .box { padding:5px 8px; margin:6px 0; }
+.pg-tight .small { line-height:1.24; }
+.pg-tight p.small, .pg-tight .sec { font-size:7.9pt; }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1: COVER ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">6.2.1 Loftus and Palmer (1974) — Reconstruction of Automobile Destruction</span><span class="r">CRIMINAL PSYCHOLOGY · NOTES WORKBOOK</span></div>
+
+  <div class="box orange">
+    <div class="bx-t">What this workbook covers 本册讲什么</div>
+    One question, five different verbs, and speed estimates that swing by almost <strong>9 mph</strong>. This booklet walks through <strong>both experiments</strong> — the one that found the effect and the one that explained it — plus the evaluation and the 8-mark answer.
+  </div>
+
+  <div class="sec">How to use this booklet 怎么用</div>
+  <ol class="tight">
+    <li><strong>Fill it in as you go</strong> — check the answer key (pp. 19–20) after each page.</li>
+    <li><strong>Pages 3–7 (both experiments) and 11 (numbers) matter most.</strong> Do them from memory, under time.</li>
+  </ol>
+
+  <div class="sec">Content map 内容地图</div>
+  <table class="n">
+    <tr><th style="width:10%;">Page</th><th style="width:32%;">Topic</th><th>What you must be able to do afterwards</th></tr>
+    <tr><td class="lbl">p.2</td><td>One word, two answers 引入</td><td>Explain why a single verb matters in court</td></tr>
+    <tr><td class="lbl">p.3–4</td><td>Experiment one：aim, procedure, results</td><td>45 students · 5 verbs · estimates 40.8 → 31.8 mph</td></tr>
+    <tr><td class="lbl">p.5</td><td>Two possible reasons 两种解释</td><td>State response bias vs memory change</td></tr>
+    <tr><td class="lbl">p.6–8</td><td>Experiment two：aim, procedure, results, conclusion</td><td>150 students · broken glass · 32% / 14% / 12%</td></tr>
+    <tr><td class="lbl">p.9</td><td>Reconstructive hypothesis 重构假设</td><td>Define it and give the merging-sources explanation</td></tr>
+    <tr><td class="lbl">p.10</td><td>Side by side 两实验对照</td><td>Fill the full comparison table</td></tr>
+    <tr><td class="lbl">p.11</td><td>Every number 数字收口</td><td>Cover the right column and test yourself</td></tr>
+    <tr><td class="lbl">p.12–13</td><td>Evaluation 评价</td><td>Four strengths, three limitations, each with a consequence</td></tr>
+    <tr><td class="lbl">p.14</td><td>Real life 现实改变</td><td>Devlin Committee and the cognitive interview</td></tr>
+    <tr><td class="lbl">p.15</td><td>Exam skills 答题技巧</td><td>IV / DV, command words, sentence frames</td></tr>
+    <tr><td class="lbl">p.16–17</td><td>Practice A &amp; B 演练</td><td>Short answers, then the 8-mark application</td></tr>
+    <tr><td class="lbl">p.18</td><td>Final check 五分钟默检</td><td>Ten answers from memory, no notes</td></tr>
+    <tr><td class="lbl">p.19–20</td><td>Answer key 答案速查</td><td>Mark honestly, then re-write wrong answers in full</td></tr>
+  </table>
+
+  <div class="sec">Revision tracker 复习打卡</div>
+  <p class="chk"><span class="c"></span>p.2–4 experiment one　<span class="c"></span>p.5 the two reasons　<span class="c"></span>p.6–8 experiment two　<span class="c"></span>p.9–10 hypothesis &amp; comparison　<span class="c"></span>p.11 numbers　<span class="c"></span>p.12–14 evaluation &amp; real life　<span class="c"></span>p.15–17 exam</p>
+
+  <div class="box purple">
+    <div class="bx-t">The whole study in one sentence 一句话总结</div>
+    Change one verb in the question — smashed, collided, bumped, hit, contacted — and witnesses estimate speeds from <strong>40.8 down to 31.8 mph</strong>; and a week later, <strong>32%</strong> of “smashed” witnesses remembered <strong>broken glass that was never there</strong> (vs 14% and 12%), proving that post-event information <strong>merges into memory itself</strong> — the reconstructive hypothesis.
+  </div>
+
+  <div class="pg-foot">Page 1 of 20</div>
+</div>
+
+<!-- ================= PAGE 2: ONE WORD ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§1 · One word, two answers</span><span class="r">ANSWERS → p.19</span></div>
+
+  <div class="sec">The setup</div>
+  <p>You witness a crash. Two officers ask about it. One asks how fast the cars were going when they <span class="bl" style="min-width:90px;"></span> into each other; the other asks about cars that <span class="bl" style="min-width:90px;"></span> each other. Same crash, one word different.</p>
+
+  <div class="sec">Why this study is the classic one</div>
+  <p class="small">Number the three reasons 1–3 in the order given:</p>
+  <p class="chk"><span class="c"></span>It is <strong>two experiments</strong>, not one — the first finds the effect, the second explains it.　<span class="c"></span>It is about a <strong>real problem</strong>: convictions can rest on eyewitness memory.　<span class="c"></span>It <strong>changed practice</strong> — police questioning and the cognitive interview.</p>
+
+  <div class="box blue">
+    <div class="bx-t">中文理解：为什么一个动词是大事</div>
+    目击证词是法庭上<strong>最常用的证据之一</strong>。如果换一个词就能让目击者把 30 迈说成 40 迈，
+    甚至一周后“记得”片子里根本<strong>不存在的碎玻璃</strong>，那么定罪所依据的记忆本身可能就是<strong>被问话塑造出来的</strong>。
+    这就是为什么这个研究能改变警察问话的方式。
+  </div>
+
+  <div class="sec">The exam warning</div>
+  <p>The textbook is explicit: the research involves <span class="bl" style="min-width:60px;"></span> experiments, so you must be able to describe experiment <span class="bl" style="min-width:40px;"></span> and experiment <span class="bl" style="min-width:40px;"></span> in detail.</p>
+
+  <div class="pg-foot">Page 2 of 20</div>
+</div>
+
+<!-- ================= PAGE 3: EXP1 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§2 · Experiment one — aim and procedure</span><span class="r">ANSWERS → p.19</span></div>
+
+  <div class="sec">The aim（默写）</div>
+  <p>To investigate whether <span class="bl" style="min-width:100px;"></span> questions would influence the <span class="bl" style="min-width:110px;"></span> of the speed of a vehicle among eyewitnesses.</p>
+  <p class="hint">leading / estimates</p>
+
+  <div class="sec">The procedure — fill the gaps</div>
+  <table class="n">
+    <tr><th style="width:26%;">Feature</th><th>Detail</th></tr>
+    <tr><td>Participants</td><td><span class="bl" style="min-width:40px;"></span> students, split into <span class="bl" style="min-width:40px;"></span> groups of <span class="bl" style="min-width:40px;"></span></td></tr>
+    <tr><td>Materials</td><td><span class="bl" style="min-width:40px;"></span> short film clips of traffic accidents, each lasting <span class="bl" style="min-width:40px;"></span> to <span class="bl" style="min-width:40px;"></span> seconds</td></tr>
+    <tr><td>Task</td><td>After each clip: give an <span class="bl" style="min-width:90px;"></span> of the accident, then answer a <span class="bl" style="min-width:90px;"></span></td></tr>
+    <tr><td>The one difference</td><td>Same questionnaire for all, except <span class="bl" style="min-width:40px;"></span> critical question — the <span class="bl" style="min-width:60px;"></span> was changed</td></tr>
+    <tr><td>The five verbs</td><td><span class="bl" style="min-width:170px;"></span></td></tr>
+    <tr><td>Controls</td><td>Each of the five groups saw the clips in a <span class="bl" style="min-width:90px;"></span> order</td></tr>
+    <tr><td>The check</td><td>They knew the actual speeds in <span class="bl" style="min-width:40px;"></span> of the clips: <span class="bl" style="min-width:40px;"></span>, <span class="bl" style="min-width:40px;"></span>, and two at <span class="bl" style="min-width:40px;"></span> mph</td></tr>
+  </table>
+  <p class="hint">45 · five · nine / seven · 5 · 30 / account · questionnaire / one · verb / smashed, collided, bumped, hit, contacted / different / four · 20 · 30 · 40</p>
+
+  <div class="box green">
+    <div class="bx-t">为什么“知道真实车速”重要</div>
+    如果不知道真实车速，就无法排除“<strong>是片子本身开得快</strong>”这个解释。有了这四个数据，
+    他们发现<strong>真实车速并不影响估计值</strong>，才能有把握地说：是<strong>动词</strong>在起作用。
+  </div>
+
+  <div class="pg-foot">Page 3 of 20</div>
+</div>
+
+<!-- ================= PAGE 4: EXP1 RESULTS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§3 · Experiment one — the results</span><span class="r">ANSWERS → p.19</span></div>
+
+  <div class="sec">Table 12.1 — fill the means</div>
+  <table class="n">
+    <tr><th>Verb used</th><td class="lbl">smashed</td><td class="lbl">collided</td><td class="lbl">bumped</td><td class="lbl">hit</td><td class="lbl">contacted</td></tr>
+    <tr><th>Mean speed (mph)</th><td><span class="bl" style="min-width:44px;"></span></td><td><span class="bl" style="min-width:44px;"></span></td><td><span class="bl" style="min-width:44px;"></span></td><td><span class="bl" style="min-width:44px;"></span></td><td><span class="bl" style="min-width:44px;"></span></td></tr>
+  </table>
+  <p class="hint">40.8 · 39.3 · 38.1 · 34.0 · 31.8（从左到右按动词强度递减）</p>
+
+  <div class="sec">Draw the bars — sketch the five means below</div>
+  <div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div>
+
+  <div class="sec">Three quick reads of the table</div>
+  <ol class="tight">
+    <li>Which verb produced the fastest estimate? <span class="bl" style="min-width:90px;"></span></li>
+    <li>Which produced the slowest? <span class="bl" style="min-width:90px;"></span></li>
+    <li>The gap between them is almost <span class="bl" style="min-width:40px;"></span> mph.</li>
+  </ol>
+
+  <div class="box purple">
+    <div class="bx-t">怎么记这一列数字</div>
+    记 <strong>40.8 / 31.8</strong> 两端，中间三个顺着<strong>动词的暴力程度</strong>排：smashed（撞碎）&gt; collided（相撞）&gt; bumped（碰）&gt; hit（撞）&gt; contacted（接触）。动词越狠，估得越快。
+  </div>
+
+  <div class="pg-foot">Page 4 of 20</div>
+</div>
+
+<!-- ================= PAGE 5: TWO REASONS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§4 · Experiment one — two possible reasons</span><span class="r">ANSWERS → p.19</span></div>
+
+  <p>A change of word could <span class="bl" style="min-width:90px;"></span> affect a witness's answer. But a changed number can mean two different things.</p>
+
+  <table class="n">
+    <tr><th style="width:34%;">Reason</th><th>What it claims</th></tr>
+    <tr><td class="lbl">1 · response bias（回答偏差）</td>
+        <td>The participant was <span class="bl" style="min-width:90px;"></span> of the speed, and the verb in the leading question created a <span class="bl" style="min-width:70px;"></span> which influenced their decision.</td></tr>
+    <tr><td class="lbl">2 · the memory itself changed</td>
+        <td>The wording of the question causes a <span class="bl" style="min-width:70px;"></span> in memory, so they recall the accident as being <span class="bl" style="min-width:70px;"></span> than it actually was.</td></tr>
+  </table>
+  <p class="hint">significantly / uncertain · bias / change · more severe</p>
+
+  <div class="box blue">
+    <div class="bx-t">中文理解：两个理由差在哪</div>
+    <strong>回答偏差</strong>：心里知道是 30，顺口说了 40 —— 只是嘴上迎合暗示，<strong>记忆没变</strong>。<br>
+    <strong>记忆改变</strong>：脑子里的画面真变成了“猛烈撞击”，<strong>记忆本身被改写</strong>。<br>
+    只看速度估计，两种解释<strong>分不开</strong> —— 所以才需要实验二。
+  </div>
+
+  <div class="sec">Why speed estimates alone cannot settle it</div>
+  <p>Both explanations predict the same pattern in experiment one. To separate them we need a measure that only <span class="bl" style="min-width:90px;"></span> would produce — something that was <span class="bl" style="min-width:60px;"></span> in the film at all.</p>
+  <p class="hint">a changed memory / never present</p>
+
+  <div class="pg-foot">Page 5 of 20</div>
+</div>
+
+<!-- ================= PAGE 6: EXP2 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§5 · Experiment two — aim and procedure</span><span class="r">ANSWERS → p.19</span></div>
+
+  <div class="sec">The aim（默写）</div>
+  <p>To test whether the verb used in the question created a <span class="bl" style="min-width:100px;"></span> in the participant's response, or whether it created an <span class="bl" style="min-width:100px;"></span> change in <span class="bl" style="min-width:80px;"></span> of the incident.</p>
+  <p class="hint">bias / actual / memory</p>
+
+  <div class="sec">The procedure — fill the gaps</div>
+  <table class="n">
+    <tr><th style="width:26%;">Feature</th><th>Detail</th></tr>
+    <tr><td>Participants</td><td><span class="bl" style="min-width:40px;"></span> students, divided into <span class="bl" style="min-width:40px;"></span> groups of <span class="bl" style="min-width:40px;"></span></td></tr>
+    <tr><td>The film</td><td>A multiple car accident lasting <span class="bl" style="min-width:60px;"></span> one minute; the accident itself lasted <span class="bl" style="min-width:40px;"></span> seconds</td></tr>
+    <tr><td>Group 1</td><td>“About how fast were the cars going when they <span class="bl" style="min-width:70px;"></span> into each other?”</td></tr>
+    <tr><td>Group 2</td><td>“…when they <span class="bl" style="min-width:70px;"></span> each other?”</td></tr>
+    <tr><td>Group 3</td><td><span class="bl" style="min-width:110px;"></span> — no critical question about speed at all</td></tr>
+    <tr><td>The wait</td><td>A <span class="bl" style="min-width:60px;"></span> later, participants returned to answer <span class="bl" style="min-width:40px;"></span> questions, without watching the film again</td></tr>
+    <tr><td>Critical question</td><td><span class="bl" style="min-width:150px;"></span>? — Yes or No. There was <span class="bl" style="min-width:60px;"></span> broken glass in the film.</td></tr>
+  </table>
+  <p class="hint">150 · three · 50 / less than · 4 / smashed / hit / control / week · ten / “Did you see any broken glass” · no</p>
+
+  <div class="box blue">
+    <div class="bx-t">三个组各自的作用</div>
+    <strong>smashed 组</strong>：听到最暴力的动词。<br>
+    <strong>hit 组</strong>：听到中性动词 —— 用来对比。<br>
+    <strong>control 组</strong>：<strong>没被问速度</strong> —— 证明“光参加实验”本身不会让人多想出碎玻璃。<br>
+    <strong>一周的延迟</strong>是关键：影响不是当天随口应付，而是<strong>留在了记忆里</strong>。
+  </div>
+
+  <div class="pg-foot">Page 6 of 20</div>
+</div>
+
+<!-- ================= PAGE 7: EXP2 RESULTS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§6 · Experiment two — the results</span><span class="r">ANSWERS → p.19</span></div>
+
+  <div class="sec">Table 12.2 — fill the counts and percentages</div>
+  <table class="n">
+    <tr><th>Verb condition</th><th>Said “Yes”</th><th>Said “No”</th><th>% who said “Yes”</th></tr>
+    <tr><td class="lbl">“smashed”</td><td><span class="bl" style="min-width:40px;"></span></td><td><span class="bl" style="min-width:40px;"></span></td><td><span class="bl" style="min-width:50px;"></span></td></tr>
+    <tr><td class="lbl">“hit”</td><td><span class="bl" style="min-width:40px;"></span></td><td><span class="bl" style="min-width:40px;"></span></td><td><span class="bl" style="min-width:50px;"></span></td></tr>
+    <tr><td class="lbl">control</td><td><span class="bl" style="min-width:40px;"></span></td><td><span class="bl" style="min-width:40px;"></span></td><td><span class="bl" style="min-width:50px;"></span></td></tr>
+  </table>
+  <p class="hint">16 · 34 · 32% / 7 · 43 · 14% / 6 · 44 · 12%</p>
+
+  <div class="sec">The statistical test</div>
+  <p>A <span class="bl" style="min-width:90px;"></span> test was carried out and there was a <span class="bl" style="min-width:90px;"></span> difference between the groups: significantly <span class="bl" style="min-width:60px;"></span> participants in the “smashed” group reported seeing glass than in the “hit” group.</p>
+  <p class="hint">chi-square / statistically significant / more</p>
+
+  <div class="box green">
+    <div class="bx-t">怎么读这三个数字（考试常错）</div>
+    不要只看“32% 的人说看到”。每组都有<strong>一半以上答对</strong>（说没看到）。关键是<strong>组间差距</strong>：
+    smashed 32% 对 hit 14%，而没人问速度的 control 只有 12%。卡方检验说明差距<strong>不是巧合</strong>。
+  </div>
+
+  <div class="sec">One-line read</div>
+  <p>The verb acted as <span class="bl" style="min-width:90px;"></span> information. It changed their <span class="bl" style="min-width:70px;"></span> of the event rather than causing a response bias — and it did so even <span class="bl" style="min-width:60px;"></span> after seeing the film.</p>
+  <p class="hint">post-event / memory / a week</p>
+
+  <div class="pg-foot">Page 7 of 20</div>
+</div>
+
+<!-- ================= PAGE 8: CONCLUSION ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§7 · Experiment two — the conclusion</span><span class="r">ANSWERS → p.19</span></div>
+
+  <div class="sec">Why broken glass settles the argument</div>
+  <p>A <span class="bl" style="min-width:90px;"></span> would only move the number people say out loud. It would not make them report a piece of the scene that was <span class="bl" style="min-width:60px;"></span>. Reporting broken glass a week later is evidence that the <span class="bl" style="min-width:70px;"></span> itself had been rebuilt.</p>
+  <p class="hint">response bias / never filmed / memory</p>
+
+  <div class="sec">The two conclusions（默写）</div>
+  <p>Loftus and Palmer concluded that <span class="bl" style="min-width:90px;"></span> memory exists, and that <span class="bl" style="min-width:90px;"></span> questions do influence eyewitness testimony.</p>
+  <p class="hint">reconstructive / leading</p>
+
+  <div class="sec">The two kinds of information that go into memory</div>
+  <table class="n">
+    <tr><th style="width:40%;">Source</th><th>Example in this study</th></tr>
+    <tr><td>1 · Information from <span class="bl" style="min-width:80px;"></span> the event</td><td>The film clip itself</td></tr>
+    <tr><td>2 · Information supplied <span class="bl" style="min-width:60px;"></span> the event</td><td>The verb in the critical question</td></tr>
+  </table>
+  <p class="hint">witnessing / after</p>
+
+  <div class="box purple">
+    <div class="bx-t">一句话连起来</div>
+    亲历的信息 + 事后得到的信息 → 随时间<strong>融合（merge）</strong> → 分不清哪条来自哪里 →
+    只剩<strong>一份合成记忆</strong>。这就是下一页的<strong>重构假设</strong>。
+  </div>
+
+  <div class="pg-foot">Page 8 of 20</div>
+</div>
+
+<!-- ================= PAGE 9: RECONSTRUCTIVE HYPOTHESIS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§8 · The reconstructive hypothesis</span><span class="r">ANSWERS → p.19</span></div>
+
+  <div class="sec">Define it in your own words first</div>
+  <div class="wl s"></div><div class="wl s"></div>
+
+  <div class="box orange">
+    <div class="bx-t">Textbook definition 课本定义</div>
+    <strong>Reconstructive hypothesis:</strong> memory for an event when the information supplied <strong>after</strong> the event <strong>merges with</strong> the information obtained from <strong>witnessing</strong> the event.
+  </div>
+
+  <div class="sec">The chain — fill it in</div>
+  <p>Witness the event → receive <span class="bl" style="min-width:90px;"></span> information afterwards → the two sources <span class="bl" style="min-width:70px;"></span> as time elapses → we cannot tell the <span class="bl" style="min-width:70px;"></span> of some details → one <span class="bl" style="min-width:90px;"></span> memory of the event.</p>
+  <p class="hint">post-event / merge / source / overall</p>
+
+  <div class="box blue">
+    <div class="bx-t">中文理解：一份“合成的”记忆</div>
+    生活类比：手机相册里<strong>自己拍的照片</strong>和朋友发来的<strong>截图</strong>混在一起。过一阵子再看，
+    分不清哪张是自己拍的——但你会<strong>坚信自己当时在场</strong>。<br>
+    记忆只存<strong>一份合成版本</strong>，不保留“这条来自哪里”的标签。所以目击者未必在说谎，
+    但<strong>记忆本身可能已经失真</strong>。
+  </div>
+
+  <div class="sec">Apply it — one exam-style sentence</div>
+  <p>Write one sentence linking the broken-glass finding to the reconstructive hypothesis:</p>
+  <div class="wl"></div><div class="wl s"></div>
+
+  <div class="pg-foot">Page 9 of 20</div>
+</div>
+
+<!-- ================= PAGE 10: SIDE BY SIDE ================= -->
+<div class="page pg-tight">
+  <div class="pg-head"><span class="t">§9 · Two experiments, side by side</span><span class="r">ANSWERS → p.19</span></div>
+
+  <table class="n">
+    <tr><th style="width:16%;"></th><th style="width:42%;">Experiment one</th><th>Experiment two</th></tr>
+    <tr><td class="lbl">Aim</td><td>Do leading questions influence <span class="bl" style="min-width:80px;"></span> estimates?</td><td>Is it a response <span class="bl" style="min-width:60px;"></span> or an actual <span class="bl" style="min-width:60px;"></span> change?</td></tr>
+    <tr><td class="lbl">Participants</td><td><span class="bl" style="min-width:40px;"></span> students — five groups of <span class="bl" style="min-width:40px;"></span></td><td><span class="bl" style="min-width:40px;"></span> students — three groups of <span class="bl" style="min-width:40px;"></span></td></tr>
+    <tr><td class="lbl">Materials</td><td><span class="bl" style="min-width:40px;"></span> clips, each 5–30 seconds</td><td><span class="bl" style="min-width:40px;"></span> film, under a minute (accident 4 seconds)</td></tr>
+    <tr><td class="lbl">The verb(s)</td><td><span class="bl" style="min-width:40px;"></span> verbs: smashed, collided, bumped, hit, contacted</td><td><span class="bl" style="min-width:40px;"></span> verbs: smashed, hit — plus a <span class="bl" style="min-width:60px;"></span> with no speed question</td></tr>
+    <tr><td class="lbl">The measure</td><td>Speed estimate in <span class="bl" style="min-width:50px;"></span> (quantitative)</td><td><span class="bl" style="min-width:50px;"></span> to “Did you see any broken glass?”</td></tr>
+    <tr><td class="lbl">Timing</td><td>Asked <span class="bl" style="min-width:70px;"></span> after each clip</td><td>Asked a <span class="bl" style="min-width:50px;"></span> later, after ten other questions</td></tr>
+    <tr><td class="lbl">Result</td><td>40.8 down to <span class="bl" style="min-width:50px;"></span> mph — a gap of almost <span class="bl" style="min-width:40px;"></span> mph</td><td><span class="bl" style="min-width:44px;"></span>% vs <span class="bl" style="min-width:44px;"></span>% vs <span class="bl" style="min-width:44px;"></span>%</td></tr>
+    <tr><td class="lbl">Proves</td><td>A word changes the <span class="bl" style="min-width:60px;"></span></td><td>The <span class="bl" style="min-width:60px;"></span> itself was changed — not just the answer</td></tr>
+  </table>
+  <p class="hint">speed / bias · memory / 45 · nine / 150 · 50 / seven · one / five · two · control / mph · Yes/No / immediately · week / 31.8 · 9 / 32 · 14 · 12 / answer · memory</p>
+
+  <div class="box orange">
+    <div class="bx-t">The strongest describe answers put both side by side</div>
+    Same idea, different samples, different measures, different weeks. Never write about only one experiment.
+  </div>
+
+  <div class="pg-foot">Page 10 of 20</div>
+</div>
+
+<!-- ================= PAGE 11: NUMBERS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§10 · Every number 数字收口</span><span class="r">COVER THE RIGHT COLUMN</span></div>
+
+  <table class="n">
+    <tr><th style="width:52%;">Question</th><th>Answer</th></tr>
+    <tr><td>Experiment one participants / groups</td><td><span class="bl" style="min-width:70px;"></span> students, <span class="bl" style="min-width:40px;"></span> groups of <span class="bl" style="min-width:40px;"></span></td></tr>
+    <tr><td>Experiment one clips / length</td><td><span class="bl" style="min-width:40px;"></span> clips, <span class="bl" style="min-width:40px;"></span>–<span class="bl" style="min-width:40px;"></span> seconds</td></tr>
+    <tr><td>“Smashed” mean / “contacted” mean</td><td><span class="bl" style="min-width:50px;"></span> mph / <span class="bl" style="min-width:50px;"></span> mph</td></tr>
+    <tr><td>The gap between the two extreme verbs</td><td>almost <span class="bl" style="min-width:40px;"></span> mph</td></tr>
+    <tr><td>Actual speeds they knew (four clips)</td><td><span class="bl" style="min-width:40px;"></span>, <span class="bl" style="min-width:40px;"></span>, and two at <span class="bl" style="min-width:40px;"></span> mph</td></tr>
+    <tr><td>Experiment two participants / groups</td><td><span class="bl" style="min-width:70px;"></span> students, <span class="bl" style="min-width:40px;"></span> groups of <span class="bl" style="min-width:40px;"></span></td></tr>
+    <tr><td>Film length / accident length</td><td>under <span class="bl" style="min-width:40px;"></span> minute / <span class="bl" style="min-width:40px;"></span> seconds</td></tr>
+    <tr><td>Return after…</td><td>a <span class="bl" style="min-width:60px;"></span>, answering <span class="bl" style="min-width:40px;"></span> questions</td></tr>
+    <tr><td>Broken glass “Yes”: smashed / hit / control</td><td><span class="bl" style="min-width:44px;"></span>% / <span class="bl" style="min-width:44px;"></span>% / <span class="bl" style="min-width:44px;"></span>%</td></tr>
+    <tr><td>Broken glass counts: smashed / hit / control</td><td><span class="bl" style="min-width:40px;"></span> / <span class="bl" style="min-width:40px;"></span> / <span class="bl" style="min-width:40px;"></span> said “Yes”</td></tr>
+    <tr><td>Statistical test used in experiment two</td><td><span class="bl" style="min-width:90px;"></span></td></tr>
+    <tr><td>Committee that reviewed eyewitness testimony</td><td><span class="bl" style="min-width:90px;"></span> (<span class="bl" style="min-width:44px;"></span>)</td></tr>
+  </table>
+
+  <div class="box purple">
+    <div class="bx-t">三组数字的记法</div>
+    <strong>实验一</strong>记“45 / 5 组 / 7 段 / 40.8→31.8”。<br>
+    <strong>实验二</strong>记“150 / 3 组 / 一周 / 32-14-12”。<br>
+    顺序：45 在前（找效应）→ 150 在后（解释效应）。
+  </div>
+
+  <div class="pg-foot">Page 11 of 20</div>
+</div>
+
+<!-- ================= PAGE 12: STRENGTHS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§11 · Evaluating — strengths</span><span class="r">ANSWERS → p.20</span></div>
+
+  <div class="sec">1 · High control and replicability</div>
+  <p>Both experiments were conducted in a <span class="bl" style="min-width:70px;"></span> and therefore had a high level of control. The questions and clips were <span class="bl" style="min-width:90px;"></span> for the groups. This allows the study to be <span class="bl" style="min-width:70px;"></span> to determine the <span class="bl" style="min-width:70px;"></span> of the findings.</p>
+  <p class="hint">laboratory / consistent / replicated · reliability</p>
+
+  <div class="sec">2 · Construct validity</div>
+  <p>By changing just the <span class="bl" style="min-width:60px;"></span> associated with speed, they can be more certain that the <span class="bl" style="min-width:40px;"></span> of the verb was what impacted the estimates. This increases <span class="bl" style="min-width:90px;"></span> validity — that they tested the effect of <span class="bl" style="min-width:70px;"></span> on recall.</p>
+  <p class="hint">verb / IV / construct · language</p>
+
+  <div class="sec">3 · Demand characteristics were guarded against</div>
+  <p>The critical question was randomly <span class="bl" style="min-width:80px;"></span> among other questions. This prevented participants from <span class="bl" style="min-width:90px;"></span> the aim of the study and displaying demand characteristics.</p>
+  <p class="hint">included / guessing</p>
+
+  <div class="sec">4 · The real-speed check and quantitative data</div>
+  <p>They knew the <span class="bl" style="min-width:80px;"></span> speeds and found it did <span class="bl" style="min-width:60px;"></span> affect the estimates — so it was the <span class="bl" style="min-width:60px;"></span>, not the film. The yes/no responses and mph estimates gave <span class="bl" style="min-width:90px;"></span> data with no subjective interpretation, making the findings more <span class="bl" style="min-width:70px;"></span> and less open to researcher bias.</p>
+  <p class="hint">actual / did not / verb / quantitative · objective</p>
+
+  <div class="box green">
+    <div class="bx-t">四条 strength 的共同点</div>
+    都在说：<strong>把别的解释一个个堵住了</strong>。写评价时加一句“我们因此能确定是 X 造成的”，比只说“控制得好”得分高。
+  </div>
+
+  <div class="pg-foot">Page 12 of 20</div>
+</div>
+
+<!-- ================= PAGE 13: LIMITATIONS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§12 · Evaluating — limitations</span><span class="r">ANSWERS → p.20</span></div>
+
+  <div class="sec">1 · Students may have made the effect easier to find</div>
+  <p>Participants were <span class="bl" style="min-width:70px;"></span>, likely to have <span class="bl" style="min-width:110px;"></span> experience of car speeds. Limited experience may have made them <span class="bl" style="min-width:60px;"></span> influenced by the verb than a population with more experience of <span class="bl" style="min-width:60px;"></span>. The findings may only represent this specific <span class="bl" style="min-width:70px;"></span>, rather than generalising to the wider population.</p>
+  <p class="hint">students · limited · more · driving · population</p>
+
+  <div class="sec">2 · Watching a film is not witnessing an accident</div>
+  <p>Participants were unlikely to be under the same <span class="bl" style="min-width:90px;"></span> as an eyewitness of a real accident, as they only watched <span class="bl" style="min-width:60px;"></span> in a laboratory. This makes the <span class="bl" style="min-width:70px;"></span> questionable — they may have responded differently as a result.</p>
+  <p class="hint">emotional strain · film clips · validity</p>
+
+  <div class="sec">3 · Reductionist</div>
+  <p>Many other factors could influence memory of a real-life event, including <span class="bl" style="min-width:70px;"></span> and the <span class="bl" style="min-width:70px;"></span> in which it occurred. The study is somewhat <span class="bl" style="min-width:90px;"></span>, considering only <span class="bl" style="min-width:40px;"></span> potential variable.</p>
+  <p class="hint">emotions · environment · reductionist · one</p>
+
+  <div class="box blue">
+    <div class="bx-t">三条 limitation 的共同点</div>
+    都在问：<strong>实验室里的学生，能代表真实目击者吗？</strong><br>
+    写 8 分题时，把“学生经验少”和“缺情绪紧张”<strong>分开写</strong>，各配一句后果；
+    再补一条“只测了一个变量（还原论）”。别笼统写“样本不好”。
+  </div>
+
+  <div class="pg-foot">Page 13 of 20</div>
+</div>
+
+<!-- ================= PAGE 14: REAL LIFE ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§13 · Real life — what changed because of it</span><span class="r">ANSWERS → p.20</span></div>
+
+  <div class="sec">Devlin Committee (1976)</div>
+  <p>It was set up to investigate the use of <span class="bl" style="min-width:110px;"></span> in court. It found that many people have been <span class="bl" style="min-width:80px;"></span> of serious crimes by eyewitness testimony <span class="bl" style="min-width:50px;"></span>, and recommended against basing a conviction on a <span class="bl" style="min-width:60px;"></span> eyewitness.</p>
+  <p class="hint">eyewitness testimony / convicted · alone · single</p>
+
+  <div class="sec">What the research led to</div>
+  <p class="small">Tick what the textbook says:</p>
+  <p class="chk"><span class="c"></span>contributed to the <strong>cognitive interview</strong>　<span class="c"></span>police guided to <strong>minimise leading questions</strong>　<span class="c"></span>a marked change in <strong>policing techniques in the 20th century</strong>　<span class="c"></span>the cognitive interview is still used today　<span class="c"></span>police must hypnotise witnesses</p>
+
+  <div class="sec">The logic chain（填空）</div>
+  <p>Question wording can rewrite memory → police must <span class="bl" style="min-width:90px;"></span> leading questions → the <span class="bl" style="min-width:80px;"></span> interview was developed → convictions should not rest on a <span class="bl" style="min-width:60px;"></span> eyewitness (Devlin).</p>
+  <p class="hint">minimise · cognitive · single</p>
+
+  <div class="box purple">
+    <div class="bx-t">这一节是 8 分题的“应用”素材</div>
+    逻辑链：<strong>问话用词会改写记忆</strong> → 警察问话必须<strong>少用引导性问题</strong> → 有了<strong>认知访谈</strong>这套不引导的问法
+    → Devlin 建议<strong>不能只凭一个目击者定罪</strong>。写“这个研究能不能用到现实”时，这条链直接能用。
+  </div>
+
+  <div class="pg-foot">Page 14 of 20</div>
+</div>
+
+<!-- ================= PAGE 15: EXAM SKILLS ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§14 · Exam skills 答题技巧</span><span class="r">KEEP THIS PAGE</span></div>
+
+  <div class="sec">Variables — the two short questions</div>
+  <table class="n">
+    <tr><th style="width:24%;">Question</th><th>Answer</th></tr>
+    <tr><td>IV of experiment one</td><td>The <span class="bl" style="min-width:100px;"></span> used in the critical question (smashed, collided, bumped, hit, contacted)</td></tr>
+    <tr><td>DV of experiment one</td><td>The <span class="bl" style="min-width:100px;"></span> of the cars, in miles per hour</td></tr>
+    <tr><td>IV of experiment two</td><td>The <span class="bl" style="min-width:60px;"></span> condition: “smashed”, “hit”, or no speed question</td></tr>
+    <tr><td>DV of experiment two</td><td>Whether the participant reported <span class="bl" style="min-width:70px;"></span> broken glass (Yes / No)</td></tr>
+  </table>
+  <p class="hint">verb / estimated speed / verb / seeing</p>
+
+  <div class="sec">Command words</div>
+  <table class="n">
+    <tr><th style="width:22%;">Command word</th><th>What you must do</th></tr>
+    <tr><td>describe</td><td>Both experiments, in order, with the numbers — no evaluation</td></tr>
+    <tr><td>explain</td><td>The mechanism: post-event information merges into memory</td></tr>
+    <tr><td>assess / evaluate</td><td>Claim + evidence + consequence, both sides, then a judgement</td></tr>
+    <tr><td>apply</td><td>Link findings to real eyewitness situations — cognitive interview, Devlin, emotional strain</td></tr>
+  </table>
+
+  <div class="sec">Sentence frames 句子骨架</div>
+  <ul class="tight">
+    <li>In experiment one, <strong>45 students</strong> watched <strong>seven clips</strong> and estimated speeds; those given “smashed” estimated <strong>40.8 mph</strong> against <strong>31.8 mph</strong> for “contacted”…</li>
+    <li>This supports the reconstructive hypothesis because the post-event verb <strong>merged with</strong> the witnessed event…</li>
+    <li>However, the sample were <strong>students with limited experience of car speeds</strong>, which may have inflated the effect, so…</li>
+    <li>In real life, witnesses are under <strong>emotional strain</strong>, and the study is <strong>reductionist</strong> because it considers only one variable…</li>
+    <li>Overall, the study does apply to real eyewitness memory, as shown by the <strong>cognitive interview</strong> and the <strong>Devlin Committee</strong>, but the exact size of the effect may differ…</li>
+  </ul>
+
+  <div class="pg-foot">Page 15 of 20</div>
+</div>
+
+<!-- ================= PAGE 16: PRACTICE A ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§15 · Practice A — short answers（先自己写，再对答案）</span><span class="r">ANSWERS → p.20</span></div>
+
+  <div class="q">A1. Identify the independent variable and the dependent variable in Loftus and Palmer's (1974) experiment one. (3)</div>
+  <div class="wl s"></div><div class="wl s"></div>
+
+  <div class="q">A2. Outline the procedure of experiment two. (4)</div>
+  <p class="small">提示：150 / 三组各 50 / smashed vs hit vs 无速度问题 / 一周后十个问题 / 碎玻璃问题。</p>
+  <div class="wl"></div><div class="wl"></div>
+
+  <div class="q">A3. Explain why experiment two was needed after experiment one. (3)</div>
+  <p class="small">提示：速度估计分不开两种解释；碎玻璃只有“记忆被改写”才能解释。</p>
+  <div class="wl"></div><div class="wl"></div>
+
+  <div class="q">A4. State one strength and one limitation of this study. (4)</div>
+  <div class="wl"></div><div class="wl s"></div>
+
+  <div class="box grey">
+    <div class="bx-t">自评标准</div>
+    每个论点 = 1 个具体名词/数字 + 1 个具体细节。写完先对 p.20 答案，再回来补全句子。
+  </div>
+
+  <div class="pg-foot">Page 16 of 20</div>
+</div>
+
+<!-- ================= PAGE 17: PRACTICE B ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§16 · Practice B — the application question</span><span class="r">ANSWERS → p.20</span></div>
+
+  <div class="q">Assess whether Loftus and Palmer's (1974) study can be applied to eyewitness memory in real-life situations. (8)</div>
+
+  <div class="sec">Plan first — fill the skeleton</div>
+  <table class="n">
+    <tr><th style="width:50%;">For — it does apply（证据 + 数字）</th><th>Against — be careful（批评 + 后果）</th></tr>
+    <tr><td>1. <span class="wl s"></span></td><td>1. <span class="wl s"></span></td></tr>
+    <tr><td>2. <span class="wl s"></span></td><td>2. <span class="wl s"></span></td></tr>
+    <tr><td>3. <span class="wl s"></span></td><td>3. <span class="wl s"></span></td></tr>
+  </table>
+  <p class="small">Judgement（一句话收尾，写在线上）：</p>
+  <div class="wl"></div>
+
+  <div class="box orange">
+    <div class="bx-t">评分要点</div>
+    · AO1：两个实验各带数字（45/150、40.8–31.8、32-14-12）。<br>
+    · AO3：优点配“所以我们能确定…”；缺点配后果（效应可能被放大 / 生态效度存疑）；补一条还原论。<br>
+    · 收尾：认知访谈 + Devlin + “有保留地可以应用”。
+  </div>
+
+  <div class="pg-foot">Page 17 of 20</div>
+</div>
+
+<!-- ================= PAGE 18: FINAL CHECK ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">§17 · Final check — five minutes, from memory</span><span class="r">NO NOTES</span></div>
+
+  <div class="sec">Rapid recall</div>
+  <ol class="tight">
+    <li>Experiment one: participants / groups: <span class="bl" style="min-width:150px;"></span></li>
+    <li>Experiment one: clips and their lengths: <span class="bl" style="min-width:150px;"></span></li>
+    <li>The five verbs in order of estimate: <span class="bl" style="min-width:200px;"></span></li>
+    <li>Top and bottom means, and the gap: <span class="bl" style="min-width:180px;"></span></li>
+    <li>The two possible reasons for the change: <span class="bl" style="min-width:180px;"></span></li>
+    <li>Experiment two: participants / groups / wait: <span class="bl" style="min-width:180px;"></span></li>
+    <li>The critical question and the three percentages: <span class="bl" style="min-width:200px;"></span></li>
+    <li>Reconstructive hypothesis in one sentence: <span class="bl" style="min-width:200px;"></span></li>
+    <li>Two limitations, each with its consequence: <span class="bl" style="min-width:200px;"></span></li>
+    <li>Two real-life changes the research contributed to: <span class="bl" style="min-width:180px;"></span></li>
+  </ol>
+
+  <div class="box purple">
+    <div class="bx-t">Brain dump 一句话版本</div>
+    One verb changes the estimate (40.8 → 31.8 mph), and a week later “smashed” witnesses remember broken glass that was never there (32% vs 14% vs 12%) — post-event information merges into memory itself, so police now avoid leading questions and the cognitive interview exists.
+  </div>
+
+  <div class="sec">Answer key location</div>
+  <p class="small">All blanks in this booklet are answered on <strong>pp. 19–20</strong>. Mark each page as you finish it, and re-write anything wrong in full.</p>
+
+  <div class="pg-foot">Page 18 of 20</div>
+</div>
+
+<!-- ================= PAGE 19: ANSWER KEY 1 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Answer Key ① — pp. 2–10</span><span class="r">MARK HONESTLY</span></div>
+
+  <p class="small"><strong>p.2</strong> smashed; contacted. Reasons order: 2 (real problem), 3 (changed practice), 1 (two experiments). both; one; two.</p>
+  <p class="small"><strong>p.3</strong> leading; estimates. 45; five; nine / seven; 5; 30 / account; questionnaire / one; verb / smashed, collided, bumped, hit, contacted / different / four; 20; 30; 40.</p>
+  <p class="small"><strong>p.4</strong> 40.8 · 39.3 · 38.1 · 34.0 · 31.8. smashed; contacted; 9.</p>
+  <p class="small"><strong>p.5</strong> significantly; uncertain; bias; change; more severe. a changed memory; never present.</p>
+  <p class="small"><strong>p.6</strong> bias; actual; memory. 150; three; 50 / less than; 4 / smashed / hit / control / week; ten / “Did you see any broken glass”; no.</p>
+  <p class="small"><strong>p.7</strong> 16 · 34 · 32% / 7 · 43 · 14% / 6 · 44 · 12%. chi-square; statistically significant; more. post-event; memory; a week.</p>
+  <p class="small"><strong>p.8</strong> response bias; never filmed; memory. reconstructive; leading. witnessing; after.</p>
+  <p class="small"><strong>p.9</strong> post-event; merge; source; overall. Model sentence: “Because a week later 32% of the smashed group reported broken glass that was never in the film, the verb must have merged with their memory of the event — supporting the reconstructive hypothesis.”</p>
+  <p class="small"><strong>p.10</strong> speed; bias; memory / 45; nine; 150; 50 / seven; one / five; two; control / mph; Yes–No / immediately; week / 31.8; 9; 32; 14; 12 / answer; memory.</p>
+
+  <div class="pg-foot">Page 19 of 20</div>
+</div>
+
+<!-- ================= PAGE 20: ANSWER KEY 2 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Answer Key ② — pp. 11–17</span><span class="r">RE-WRITE WRONG ANSWERS</span></div>
+
+  <p class="small"><strong>p.11</strong> 45 · five · nine / 7 · 5–30 / 40.8 · 31.8 / 9 / 20 · 30 · 40 / 150 · three · 50 / one · 4 / week · ten / 32 · 14 · 12 / 16 · 7 · 6 / chi-square test / Devlin Committee (1976).</p>
+  <p class="small"><strong>p.12</strong> laboratory; consistent; replicated; reliability. verb; IV; construct; language. included; guessing. actual; did not; verb; quantitative; objective.</p>
+  <p class="small"><strong>p.13</strong> students; limited; more; driving; population. emotional strain; film clips; validity. emotions; environment; reductionist; one.</p>
+  <p class="small"><strong>p.14</strong> eyewitness testimony; convicted; alone; single. Ticks: cognitive interview ✓; minimise leading questions ✓; policing techniques in the 20th century ✓; still used today ✓ (hypnotise = NO). minimise; cognitive; single.</p>
+  <p class="small"><strong>p.15</strong> verb / estimated speed / verb / seeing.</p>
+  <p class="small"><strong>p.16 A1</strong> IV = the verb used in the critical question (smashed, collided, bumped, hit, contacted); DV = the estimated speed of the cars in mph. <strong>A2</strong> 150 students in three groups of 50 watched a film of a multiple car accident lasting under a minute (the accident four seconds). One group was asked about cars that “smashed”, one about cars that “hit”, and the control group was not asked about speed. A week later they answered ten questions without seeing the film again, including “Did you see any broken glass?” <strong>A3</strong> Speed estimates alone cannot separate the two explanations. The broken glass was never in the film, so only a changed memory — not a response bias — could make people report it. <strong>A4</strong> Strength: high control, so replicable and reliable. Limitation: students with limited experience of car speeds may be more influenced by the verb, so findings may not generalise.</p>
+  <p class="small"><strong>p.17 B — model judgement</strong> “On balance the study can be applied to real eyewitness memory: the effect was strong and lasted a week, the real speeds were controlled for, and its applications — the cognitive interview and the Devlin Committee's warning against single-eyewitness convictions — show it changed practice. However, students with limited driving experience and the absence of real emotional strain mean the size of the effect in real life may differ, and the study is reductionist in considering only one variable.”</p>
+
+  <div class="pg-foot">Page 20 of 20</div>
+</div>
+
+</body>
+</html>

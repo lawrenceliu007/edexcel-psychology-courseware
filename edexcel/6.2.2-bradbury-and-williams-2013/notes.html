@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6.2.2 Bradbury and Williams (2013) — Student Notes Workbook</title>
+<style>
+@page { size: A4; margin: 13mm 12mm 15mm 12mm; }
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif; color:#1a1a1a; font-size:10pt; line-height:1.5; margin:0; background:#f3f3f3; }
+.page { background:#fff; max-width: 800px; margin: 0 auto 10px auto; padding: 10mm 11mm; page-break-after: always; position: relative; min-height: 248mm; }
+@media print { body { background:#fff; } .page { margin:0; padding:0; max-width:none; box-shadow:none; } }
+.pg-head { display:flex; justify-content:space-between; align-items:baseline; border-bottom: 2px solid #333; padding-bottom:4px; margin-bottom:10px; }
+.pg-head .t { font-size:11.5pt; font-weight:700; }
+.pg-head .r { font-size:8pt; color:#777; letter-spacing:.04em; }
+.pg-foot { position:absolute; bottom:4mm; left:0; right:0; text-align:center; font-size:8pt; color:#999; }
+.sec { font-size:10pt; font-weight:700; margin:12px 0 5px 0; padding-left:7px; border-left:3.5px solid #444; }
+.sec:first-of-type { margin-top:2px; }
+.sub { font-size:9.5pt; font-weight:700; margin:9px 0 3px 0; }
+.bl { display:inline-block; border-bottom:1px solid #555; height:1em; vertical-align:baseline; min-width:60px; margin:0 2px; }
+.hint { font-size:8.5pt; color:#666; }
+.hint::before { content:"（"; } .hint::after { content:"）"; }
+table.n { width:100%; border-collapse:collapse; margin:6px 0 9px 0; font-size:9pt; }
+table.n th, table.n td { border:1px solid #999; padding:4px 6px; text-align:left; vertical-align:top; }
+table.n th { background:#e9e9e9; font-size:8.8pt; }
+td.lbl { background:#f4f4f4; width:22%; font-weight:600; }
+.box { border:1px solid #aaa; border-left:4px solid #555; padding:6px 9px; margin:7px 0; border-radius:3px; }
+.box.grey { border:1px dashed #999; border-left:4px dashed #999; background:#fafafa; }
+.box.purple { border-left-color:#7c3aed; background:#faf5ff; }
+.box.blue { border-left-color:#2563eb; background:#f5f9ff; }
+.box.green { border-left-color:#16a34a; background:#f3faf5; }
+.box.orange { border-left-color:#ea580c; background:#fff7ed; }
+.box .bx-t { font-size:9.3pt; font-weight:700; margin-bottom:3px; }
+.wl { border-bottom:1px solid #bbb; height:24pt; }
+.wl.s { height:18pt; }
+ul.tight { margin:4px 0 8px 0; padding-left:17px; }
+ul.tight li { margin-bottom:3px; }
+ol.tight { margin:4px 0 8px 0; padding-left:17px; }
+ol.tight li { margin-bottom:4px; }
+.chk { font-size:9.3pt; }
+.chk .c { display:inline-block; width:11px; height:11px; border:1.3px solid #555; margin-right:6px; vertical-align:-1px; }
+.q { font-style:italic; background:#f6f6f6; border:1px solid #ccc; padding:5px 9px; margin:5px 0; font-size:9.3pt; border-radius:3px; }
+.small { font-size:8.6pt; line-height:1.35; }
+.pg-tight table.n { font-size:8.5pt; margin:5px 0 7px 0; }
+.pg-tight table.n th, .pg-tight table.n td { padding:2.5px 5px; }
+.pg-tight .sub { margin:7px 0 2px 0; }
+.pg-tight .box { padding:5px 8px; margin:6px 0; }
+.pg-tight .small { line-height:1.24; }
+.pg-tight p.small, .pg-tight .sec { font-size:7.9pt; }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1: COVER ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">6.2.2 Bradbury and Williams (2013) — The Effects of Race on Juror Decision-Making</span><span class="r">CRIMINAL PSYCHOLOGY · NOTES WORKBOOK</span></div>
+
+  <div class="box orange">
+    <div class="bx-t">What this workbook covers 本册讲什么</div>
+    No lab, no students, no films — this study reads <strong>real trial records</strong> from hung juries in four American states to ask one question: does the <strong>racial make-up of a jury</strong> change whether a Black defendant is convicted? This booklet covers the design, the seven control variables, the logistic regression, the five findings, and the evaluation.
+  </div>
+
+  <div class="sec">How to use this booklet 怎么用</div>
+  <ol class="tight">
+    <li><strong>Fill it in as you go</strong> — check the answer key (pp. 19–20) after each page.</li>
+    <li><strong>Pages 4–8 (design &amp; results) and 12 (numbers) matter most.</strong> Do them from memory, under time.</li>
+  </ol>
+
+  <div class="sec">Content map 内容地图</div>
+  <table class="n">
+    <tr><th style="width:10%;">Page</th><th style="width:32%;">Topic</th><th>What you must be able to do afterwards</th></tr>
+    <tr><td class="lbl">p.2</td><td>Race and juries 引入</td><td>Explain why in-group / out-group bias matters in court</td></tr>
+    <tr><td class="lbl">p.3</td><td>Aim and two hypotheses</td><td>State H1 and H2 in full</td></tr>
+    <tr><td class="lbl">p.4</td><td>The sample 二手数据</td><td>4 states · 2000–2001 · hung juries · Black defendants 60%</td></tr>
+    <tr><td class="lbl">p.5</td><td>Variables and logistic regression</td><td>Define DV, IV, and logistic regression</td></tr>
+    <tr><td class="lbl">p.6</td><td>Seven control variables</td><td>List them and say why each is needed</td></tr>
+    <tr><td class="lbl">p.7–8</td><td>Results and conclusion</td><td>p &lt; .01 vs p ≤ 0.1 · which hypothesis survived</td></tr>
+    <tr><td class="lbl">p.9–10</td><td>Evaluation 评价</td><td>Strengths and limitations, each with a consequence</td></tr>
+    <tr><td class="lbl">p.11</td><td>Socially sensitive + Batson rule</td><td>Explain the debate and the legal limit on the application</td></tr>
+    <tr><td class="lbl">p.12</td><td>Every number 数字收口</td><td>Cover the right column and test yourself</td></tr>
+    <tr><td class="lbl">p.13</td><td>Side by side with Loftus &amp; Palmer</td><td>Classic vs contemporary comparison table</td></tr>
+    <tr><td class="lbl">p.14</td><td>Exam skills 答题技巧</td><td>Command words, sentence frames</td></tr>
+    <tr><td class="lbl">p.15–16</td><td>Practice A &amp; B 演练</td><td>Short answers, then the evaluation answer</td></tr>
+    <tr><td class="lbl">p.17–18</td><td>Misconceptions + Final check</td><td>Trap answers and a memory sweep</td></tr>
+    <tr><td class="lbl">p.19–20</td><td>Answer key 答案速查</td><td>Mark honestly, then re-write wrong answers in full</td></tr>
+  </table>
+
+  <div class="sec">Revision tracker 复习打卡</div>
+  <p class="chk"><span class="c"></span>p.3 hypotheses　<span class="c"></span>p.4–6 sample &amp; design　<span class="c"></span>p.7–8 results　<span class="c"></span>p.9–11 evaluation &amp; debate　<span class="c"></span>p.12 numbers　<span class="c"></span>p.13 comparison　<span class="c"></span>p.14–16 exam</p>
+
+  <div class="box purple">
+    <div class="bx-t">The whole study in one sentence 一句话总结</div>
+    Using <strong>secondary data</strong> from real <strong>hung-jury</strong> trials in four American states (2000–2001), Bradbury and Williams found that juries composed mostly of <strong>white</strong> jurors were <strong>more likely to convict Black defendants</strong> (p &lt; .01, H1 supported), mostly-Hispanic juries showed the same <strong>direction</strong> but only at p ≤ 0.1 (H2 not supported), and mostly-Black juries were <strong>least likely to convict</strong> — so the <strong>diversity of the jury pool</strong> can bias the outcome of a trial.
+  </div>
+
+  <div class="pg-foot">Page 1 of 20</div>
+</div>
+
+<!-- ================= PAGE 2 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Race and Juries — Why This Study Exists</span><span class="r">6.2.2 BRADBURY &amp; WILLIAMS (2013)</span></div>
+
+  <div class="sec">The problem the study attacks 问题所在</div>
+  <p>Race and crime is heavily researched: are some races <strong>over-represented</strong> in crime statistics and prisons? Are some races <strong>treated differently</strong> at different stages of the justice system? Bradbury and Williams zoom in on one stage — <strong>how the racial make-up of the jury shapes the verdict</strong>.</p>
+
+  <div class="box blue">
+    <div class="bx-t">The psychology behind it 心理学背景</div>
+    <strong>In-group / out-group bias（内群体/外群体偏差）</strong>：我们天然偏袒「自己人」（in-group），对「外人」（out-group）更苛刻。陪审员也是人 —— 如果陪审团的种族构成一边倒，被告可能因为「属于外群体」而被判得更重。
+  </div>
+
+  <div class="sec">What makes this study different 这研究的特别之处</div>
+  <table class="n">
+    <tr><th style="width:30%;">Loftus &amp; Palmer (1974) — classic</th><th>Bradbury &amp; Williams (2013) — contemporary</th></tr>
+    <tr><td>Students watching <strong>film clips</strong> in a lab</td><td><strong>Real trials</strong> that actually happened</td></tr>
+    <tr><td>Memory for speed estimates</td><td>Actual <strong>verdicts</strong> (convicted or not)</td></tr>
+    <tr><td>Experiment — the researchers control everything</td><td><strong>Secondary data</strong> — the trials already happened</td></tr>
+  </table>
+
+  <div class="sec">Warm-up 热身填空</div>
+  <p>1. The bias where we favour "our own group" is called <span class="bl"></span>-group bias. <span class="hint">in</span></p>
+  <p>2. This study uses <span class="bl"></span> data — records of trials that already took place. <span class="hint">secondary</span></p>
+  <p>3. The classic study in this pair used <span class="bl"></span> juries in a laboratory; this one uses real court records.</p>
+
+  <div class="pg-foot">Page 2 of 20</div>
+</div>
+
+<!-- ================= PAGE 3 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">The Aim and the Two Hypotheses</span><span class="r">6.2.2 BRADBURY &amp; WILLIAMS (2013)</span></div>
+
+  <div class="sec">Aim 研究目的</div>
+  <div class="box grey">
+    To examine whether the <strong>racial make-up of a jury</strong> affects its <strong>decision-making</strong>.
+  </div>
+
+  <div class="sec">Two hypotheses 两条假设</div>
+  <table class="n">
+    <tr><th style="width:12%;">Label</th><th>The hypothesis, word for word</th></tr>
+    <tr><td class="lbl">H1</td><td>Black defendants will be more likely to be convicted by juries composed of a higher number of <strong>white</strong> jurors.</td></tr>
+    <tr><td class="lbl">H2</td><td>Black defendants will be more likely to be convicted by juries composed of a higher number of <strong>Hispanic</strong> jurors.</td></tr>
+  </table>
+
+  <div class="box blue">
+    <div class="bx-t">怎么记住 H1 / H2</div>
+    两条假设结构完全一样，只有陪审团的多数族群不同：<strong>H1 = white（白人）</strong>，<strong>H2 = Hispanic（拉美裔）</strong>。背的时候只背「谁当多数 → Black 被告更容易被判罪」这个句式，再往里换族群。
+  </div>
+
+  <div class="sec">Write them out 默写练习</div>
+  <p>H1: Black defendants will be more likely to be convicted by juries composed of a higher number of <span class="bl"></span> jurors.</p>
+  <p>H2: Black defendants will be more likely to be convicted by juries composed of a higher number of <span class="bl"></span> jurors.</p>
+
+  <div class="box green">
+    <div class="bx-t">Exam tip 考点提示</div>
+    被要求「写出假设」时，必须包含<strong>方向</strong>（more likely to be convicted）和<strong>双方的族群</strong>。只写「race affects verdicts」没有方向，拿不到满分。
+  </div>
+
+  <div class="pg-foot">Page 3 of 20</div>
+</div>
+
+<!-- ================= PAGE 4 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">The Sample — Real Trials, Real Records</span><span class="r">6.2.2 BRADBURY &amp; WILLIAMS (2013)</span></div>
+
+  <div class="sec">Where the data came from 数据来源</div>
+  <table class="n">
+    <tr><th style="width:34%;">Feature</th><th>Detail</th></tr>
+    <tr><td class="lbl">Type of data</td><td><strong>Secondary</strong> — from an earlier study of real trials</td></tr>
+    <tr><td class="lbl">Location</td><td>Four American states: <strong>Arizona, California, New York, Washington, DC</strong></td></tr>
+    <tr><td class="lbl">When</td><td>Held between <strong>2000 and 2001</strong></td></tr>
+    <tr><td class="lbl">Which cases</td><td>Only <strong>hung jury</strong> cases — where juries <strong>could not agree</strong> on guilt</td></tr>
+    <tr><td class="lbl">Defendants</td><td>Only trials with <strong>Black</strong> defendants — they made up <strong>60%</strong> of the cases</td></tr>
+    <tr><td class="lbl">What was recorded</td><td>Demographics of the jury, jury selection, offence type</td></tr>
+  </table>
+
+  <div class="box blue">
+    <div class="bx-t">为什么专挑 hung jury（僵局陪审团）？</div>
+    僵局 = 陪审团内部<strong>意见不一致</strong>。只有在「结果本来就摇摆」的案子里，陪审团的<strong>构成</strong>才可能成为压倒天平的那根手指。如果所有案子都一边倒地定罪，组成根本没机会起作用 —— 这正是研究者选样的聪明之处。
+  </div>
+
+  <div class="sec">Fill in the blanks 填空</div>
+  <p>1. The data was <span class="bl"></span> (not collected fresh) — from real trials in <span class="bl"></span> American states.</p>
+  <p>2. The trials were held between <span class="bl"></span> and <span class="bl"></span>.</p>
+  <p>3. Only cases with a <span class="bl"></span> jury were chosen — where jurors could not agree.</p>
+  <p>4. Only trials with <span class="bl"></span> defendants were examined, because they made up <span class="bl"></span>% of the cases.</p>
+
+  <div class="pg-foot">Page 4 of 20</div>
+</div>
+
+<!-- ================= PAGE 5 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Variables and Logistic Regression</span><span class="r">6.2.2 BRADBURY &amp; WILLIAMS (2013)</span></div>
+
+  <div class="sec">The variables 变量</div>
+  <table class="n">
+    <tr><th style="width:22%;">Variable</th><th>How it was measured</th></tr>
+    <tr><td class="lbl">DV 因变量</td><td>Whether the trial resulted in a <strong>conviction</strong> — coded <strong>1 = conviction, 0 = no conviction / hung jury</strong></td></tr>
+    <tr><td class="lbl">IV 自变量</td><td>The <strong>racial make-up of the jury</strong>: percentage of Black, white and Hispanic jurors</td></tr>
+    <tr><td class="lbl">Controls 控制变量</td><td><strong>Seven</strong> variables measuring the strength of the prosecution case (next page)</td></tr>
+  </table>
+
+  <div class="sec">Key term: logistic regression 关键术语</div>
+  <div class="box orange">
+    <div class="bx-t">logistic regression（逻辑回归）</div>
+    A statistical analysis that examines the relationship between the <strong>dependent variable</strong> and the <strong>independent variables</strong> being investigated, and calculates the <strong>probability</strong> of them being related.
+  </div>
+
+  <div class="box blue">
+    <div class="bx-t">为什么不能用「算平均数」？</div>
+    因为结果是<strong>「是/否」</strong>（判罪 or 不判罪），不是连续数字。你不能说「陪审团平均判罪 34.2%」，只能说「这种陪审团构成下，判罪的<strong>概率</strong>是多少」。逻辑回归就是专门算这种概率的工具 —— 这也是它区别于 Loftus &amp; Palmer（算平均车速）的地方。
+  </div>
+
+  <div class="sec">Check yourself 自测</div>
+  <p>1. The DV was coded: <span class="bl"></span> = conviction, <span class="bl"></span> = no conviction / hung jury.</p>
+  <p>2. The IV was the percentage of <span class="bl"></span>, <span class="bl"></span> and <span class="bl"></span> jurors.</p>
+  <p>3. The statistical test that calculates the <em>probability</em> of a relationship is called <span class="bl"></span> <span class="bl"></span>.</p>
+
+  <div class="pg-foot">Page 5 of 20</div>
+</div>
+
+<!-- ================= PAGE 6 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">The Seven Control Variables</span><span class="r">6.2.2 BRADBURY &amp; WILLIAMS (2013)</span></div>
+
+  <div class="sec">Why controls at all 为什么要控制变量</div>
+  <p>Imagine a jury convicts — was it because jurors were <strong>mostly white</strong>, or because the prosecution's case was simply <strong>overwhelming</strong>? To isolate the effect of race, the researchers measured <strong>seven control variables</strong> capturing how strong each case was, ensuring there was a sufficient case for the jury to decide on.</p>
+
+  <div class="sec">List them 默写七项</div>
+  <ol class="tight">
+    <li>Quantity of <span class="bl"></span> <span class="hint">evidence</span></li>
+    <li>Strength of the <span class="bl"></span> <span class="hint">case</span></li>
+    <li>Length of the <span class="bl"></span> <span class="hint">trial</span></li>
+    <li>Length of the jury <span class="bl"></span> <span class="hint">deliberations</span></li>
+    <li>Presence of written <span class="bl"></span> to the jury <span class="hint">instructions</span></li>
+    <li>Case type: <span class="bl"></span> or <span class="bl"></span> offences <span class="hint">violence / property</span></li>
+    <li>Lawyer type: <span class="bl"></span> or <span class="bl"></span> <span class="hint">public / private</span></li>
+  </ol>
+
+  <div class="box green">
+    <div class="bx-t">Exam tip 考点提示</div>
+    七个控制变量是这研究最常见的考点之一。记忆分组：<strong>证据两条</strong>（数量、强度）＋ <strong>时间两条</strong>（审判时长、商议时长）＋ <strong>材料一条</strong>（书面指示）＋ <strong>类型两条</strong>（罪行类型、律师类型）。考「name two control variables」时挑最好写的：quantity of evidence、strength of the case。
+  </div>
+
+  <div class="pg-foot">Page 6 of 20</div>
+</div>
+
+<!-- ================= PAGE 7 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">The Results — Five Findings</span><span class="r">6.2.2 BRADBURY &amp; WILLIAMS (2013)</span></div>
+
+  <div class="sec">Fill the table 结果表</div>
+  <table class="n pg-tight">
+    <tr><th style="width:56%;">Finding</th><th>Statistical status</th></tr>
+    <tr><td>Black defendants are <span class="bl"></span> likely to be convicted by juries composed mostly of <strong>Black</strong> jurors.</td><td>Supports the general effect</td></tr>
+    <tr><td>Juries comprising mostly <strong>white</strong> jurors are <span class="bl"></span> likely to convict Black defendants.</td><td>Significant at <strong>p &lt; .01</strong> — <span class="bl"></span> supported</td></tr>
+    <tr><td>Juries composed of mostly <strong>Hispanic</strong> jurors were more likely to convict Black defendants.</td><td>Only significant at <strong>p ≤ 0.1</strong> — <span class="bl"></span> cannot be supported</td></tr>
+    <tr><td>All juries were less likely to convict for a <span class="bl"></span> crime than a substance-related offence.</td><td>Clear effect</td></tr>
+    <tr><td>All juries were less likely to convict for a <span class="bl"></span> offence than a substance-related offence.</td><td>Only significant at <strong>p ≤ 0.1</strong></td></tr>
+  </table>
+
+  <div class="box purple">
+    <div class="bx-t">The p-value trap 显著性陷阱（考试最爱）</div>
+    <strong>p &lt; .01</strong> = 巧合概率不到 1%，<strong>高度显著</strong> → H1 <strong>成立</strong>。<br>
+    <strong>p ≤ 0.1</strong> = 巧合概率还有 10%，心理学惯例里<strong>不够显著</strong> → H2 <strong>不能被支持</strong>。<br>
+    Hispanic 组的<strong>方向</strong>与 H2 一致（也判得多），但<strong>统计上撑不住</strong>。标准写法：「The direction supported H2, but the effect was only significant at p ≤ 0.1, so H2 cannot be supported.」
+  </div>
+
+  <div class="pg-foot">Page 7 of 20</div>
+</div>
+
+<!-- ================= PAGE 8 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">The Conclusion 结论</span><span class="r">6.2.2 BRADBURY &amp; WILLIAMS (2013)</span></div>
+
+  <div class="sec">What they concluded 结论原文要点</div>
+  <ul class="tight">
+    <li><strong>Diversity within the jury pool</strong> is likely to have an impact on the outcome of jury decision-making.</li>
+    <li>Black defendants are more likely to be convicted if the percentage of <strong>other-ethnicity</strong> jurors is higher than the percentage of <strong>Black</strong> jurors.</li>
+    <li>The <strong>selection process</strong> of jury members can therefore <strong>bias</strong> the outcome of the trial.</li>
+    <li>Black defendants were more likely to be convicted of <strong>substance crimes</strong> — raising the question of whether the criminal justice system is <strong>tougher on Black defendants for substance-related offences</strong> generally.</li>
+  </ul>
+
+  <div class="sec">Sentence completion 补全句子</div>
+  <p>1. Diversity within the <span class="bl"></span> pool is likely to have an impact on the outcome of jury <span class="bl"></span>.</p>
+  <p>2. The selection process of jury members can therefore <span class="bl"></span> the outcome of the trial.</p>
+  <p>3. The conviction pattern for substance crimes suggests the justice system may be <span class="bl"></span> on Black defendants for substance-related offences.</p>
+
+  <div class="box blue">
+    <div class="bx-t">一句话记忆</div>
+    陪审团<strong>越不像被告</strong>（Black 占比越低），Black 被告越容易被判罪；而且这类案子集中在<strong>毒品相关罪行</strong>上 —— 司法系统可能对 Black 被告的毒品案更严。
+  </div>
+
+  <div class="pg-foot">Page 8 of 20</div>
+</div>
+
+<!-- ================= PAGE 9 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Evaluation · Strengths</span><span class="r">6.2.2 BRADBURY &amp; WILLIAMS (2013)</span></div>
+
+  <div class="sec">Strength 1 — Real trials (ecological validity) 真实案件</div>
+  <p>The data represented characteristics of <strong>actual jury trials</strong>, as opposed to mock juries. This provides more <strong>valid</strong> data regarding actual jury decision-making than a laboratory experiment — the findings are more <strong>ecologically valid</strong> than other research methodologies.</p>
+  <p><strong>Consequence:</strong> we can trust that the race effect happens <em>outside the lab</em>, in real courtrooms.</p>
+
+  <div class="sec">Strength 2 — Seven control variables 控制变量充分</div>
+  <p>The controls ensured they were truly investigating the <strong>racial composition of the jury</strong> rather than other factors (evidence quantity, crime type…) known to influence jury decisions. This ensures a level of <strong>validity</strong> — findings can be confidently applied to race and jury decision-making.</p>
+
+  <div class="sec">Strength 3 — Corroborating evidence 旁证</div>
+  <p><strong>Anwar et al. (2012)</strong> found Black defendants were convicted <strong>81%</strong> of the time by white jurors — supporting Bradbury and Williams, making the results more <strong>reliable</strong>.</p>
+
+  <div class="sec">Strength 4 — Objective coding 客观编码</div>
+  <p>Variables were <strong>coded</strong> (e.g. violent crime 0 = no, 1 = yes), producing <strong>quantitative</strong> data — more <strong>objective</strong> and less open to researchers' interpretation.</p>
+
+  <div class="box green">
+    <div class="bx-t">评价句式（背这个结构）</div>
+    <strong>Point</strong>（真实数据）→ <strong>Because</strong>（不是模拟陪审团）→ <strong>Consequence</strong>（生态效度高，结论可信）。
+  </div>
+
+  <div class="pg-foot">Page 9 of 20</div>
+</div>
+
+<!-- ================= PAGE 10 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Evaluation · Limitations</span><span class="r">6.2.2 BRADBURY &amp; WILLIAMS (2013)</span></div>
+
+  <div class="sec">Limitation 1 — Cannot replicate 无法重复</div>
+  <p>Because <strong>real trial data</strong> was used, it is not possible to <strong>replicate</strong> the court case to see if the verdicts would be the same again.</p>
+  <p><strong>Consequence:</strong> harder to establish reliability directly.</p>
+
+  <div class="sec">Limitation 2 — Cannot control everything 控不干净的变量</div>
+  <p>Other factors — jurors' <strong>personal experiences of crime</strong>, <strong>personal biases</strong>, <strong>pre-trial publicity</strong> — may have had an unknown impact. With real trials this was impossible to control despite the attempts.</p>
+
+  <div class="sec">Limitation 3 — Representativeness 代表性存疑</div>
+  <ul class="tight">
+    <li>Real-trial data is <strong>rare</strong> — hard to be sure findings represent <strong>all trials</strong>; they may reflect an unknown <strong>uniqueness</strong> of these trials and jurors.</li>
+    <li>Only trials in <strong>America</strong> — other countries have different judicial processes, so may not represent defendants worldwide.</li>
+    <li>Only <strong>Black defendants</strong> — findings may not apply to defendants of other races; further research into other ethnic groups is required.</li>
+  </ul>
+
+  <div class="sec">Limitation 4 — Coding oversimplifies 编码简化了现实</div>
+  <p>The DV coding may have overlooked that trials are <strong>complex</strong>: defendants can be charged with <strong>multiple crimes</strong>, convicted of some and acquitted of others — variations in the data would have been <strong>omitted</strong>.</p>
+
+  <div class="box orange">
+    <div class="bx-t">一句话总结评价</div>
+    真实案件带来<strong>生态效度</strong>，也带来<strong>失控</strong>（不可重复、混入偏见、代表性窄、编码丢失细节）。考试时成对写：优点+后果，缺点+后果。
+  </div>
+
+  <div class="pg-foot">Page 10 of 20</div>
+</div>
+
+<!-- ================= PAGE 11 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Socially Sensitive Research &amp; the Batson Rule</span><span class="r">6.2.2 BRADBURY &amp; WILLIAMS (2013)</span></div>
+
+  <div class="sec">Socially sensitive research 社会敏感研究</div>
+  <p>This study focuses on <strong>defendant and juror race</strong>, so it is <strong>socially sensitive</strong>. Why?</p>
+  <ul class="tight">
+    <li>It could potentially <strong>reinforce stereotypical (false) views</strong> about certain ethnicities being more likely to be involved in crime, or specific crimes such as substance-related offences.</li>
+    <li>These stereotypes may spread into the <strong>public domain</strong>, causing <strong>tension between ethnic groups</strong> or labelling groups as more criminal.</li>
+    <li>It could be used to claim certain ethnic groups are <strong>racist in their decision-making</strong> — with negative implications for the groups represented this way.</li>
+  </ul>
+
+  <div class="sec">The application — and its legal limit 应用与限制</div>
+  <p><strong>Application:</strong> the research can inform <strong>how juries are selected</strong>, ensuring a <strong>mix of ethnicities</strong> to promote fairness in the legal process.</p>
+  <p><strong>The limit:</strong> in practice this may be difficult and also <strong>not permitted</strong>. Under the <strong>Batson rule</strong> in the USA, the court is <strong>not allowed to use a peremptory challenge to exclude a jury member because of their race</strong>.</p>
+
+  <div class="box blue">
+    <div class="bx-t">key term</div>
+    <strong>Batson rule</strong>：美国法庭规则 —— 律师不得以种族为由用「无条件回避权」（peremptory challenge）排除某位陪审员。也就是说，研究证明了「构成影响判决」，但法律<strong>禁止</strong>按种族挑陪审员。
+  </div>
+
+  <div class="sec">Quick check 快问快答</div>
+  <p>1. The name of the USA rule limiting race-based jury selection: <span class="bl"></span> <span class="hint">Batson rule</span></p>
+  <p>2. Two reasons this study is socially sensitive: <span class="bl"></span> and <span class="bl"></span></p>
+
+  <div class="pg-foot">Page 11 of 20</div>
+</div>
+
+<!-- ================= PAGE 12 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Every Number and Name 数字收口</span><span class="r">6.2.2 BRADBURY &amp; WILLIAMS (2013)</span></div>
+
+  <div class="sec">Cover the right column, test yourself 遮住右栏自测</div>
+  <table class="n">
+    <tr><th style="width:55%;">Question</th><th>Answer</th></tr>
+    <tr><td>Year of publication</td><td><strong>2013</strong></td></tr>
+    <tr><td>Type of data</td><td><strong>Secondary</strong> (real trial records)</td></tr>
+    <tr><td>Number of American states</td><td><strong>4</strong> (Arizona, California, New York, Washington, DC)</td></tr>
+    <tr><td>Trial years</td><td><strong>2000–2001</strong></td></tr>
+    <tr><td>Which cases were selected</td><td><strong>Hung jury</strong> cases</td></tr>
+    <tr><td>Share of cases with Black defendants</td><td><strong>60%</strong></td></tr>
+    <tr><td>Number of control variables</td><td><strong>7</strong></td></tr>
+    <tr><td>Significance level of the white-juror finding</td><td><strong>p &lt; .01</strong></td></tr>
+    <tr><td>Significance level of the Hispanic-juror finding</td><td><strong>p ≤ 0.1</strong></td></tr>
+    <tr><td>Which hypothesis was supported</td><td><strong>H1 only</strong></td></tr>
+    <tr><td>Corroborating study and figure</td><td><strong>Anwar et al. (2012)</strong> — <strong>81%</strong> convicted by white jurors</td></tr>
+    <tr><td>Crime type both juries were MORE likely to convict</td><td><strong>Substance-related</strong> offences</td></tr>
+  </table>
+
+  <div class="box purple">
+    <div class="bx-t">一句话卡片</div>
+    <strong>2013 · 4 states · 2000–01 · hung juries · 60% Black defendants · 7 controls · p&lt;.01 (H1) vs p≤0.1 (H2) · Anwar 81%.</strong>
+  </div>
+
+  <div class="pg-foot">Page 12 of 20</div>
+</div>
+
+<!-- ================= PAGE 13 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Side by Side — Classic vs Contemporary</span><span class="r">6.2.2 vs 6.2.1</span></div>
+
+  <div class="sec">Complete the comparison 对照表（答案见 p.19）</div>
+  <table class="n pg-tight">
+    <tr><th style="width:20%;">Issue</th><th style="width:40%;">Loftus and Palmer (1974)</th><th>Bradbury and Williams (2013)</th></tr>
+    <tr><td class="lbl">Method</td><td> Laboratory <span class="bl"></span> with film clips</td><td>Analysis of <span class="bl"></span> data from real trials</td></tr>
+    <tr><td class="lbl">Participants</td><td><span class="bl"></span> students (exp. one)</td><td>Records of real <span class="bl"></span> in 4 states</td></tr>
+    <tr><td class="lbl">DV</td><td>Estimated <span class="bl"></span> of the cars; broken glass recalled</td><td>Whether the trial ended in a <span class="bl"></span> (1/0)</td></tr>
+    <tr><td class="lbl">IV</td><td>The <span class="bl"></span> in the critical question</td><td><span class="bl"></span> make-up of the jury (%)</td></tr>
+    <tr><td class="lbl">Analysis</td><td>Mean speed estimates compared across conditions</td><td><span class="bl"></span> <span class="bl"></span> (probability of a relationship)</td></tr>
+    <tr><td class="lbl">Ecological validity</td><td>Low — watched films, judged speed, artificial task</td><td><span class="bl"></span> — real verdicts in real courtrooms</td></tr>
+    <tr><td class="lbl">Reliability</td><td>High — standardised clips and questions, replicable</td><td>Low — real cases <span class="bl"></span> be replicated</td></tr>
+    <tr><td class="lbl">Ethics</td><td>Deception and <span class="bl"></span> (stress) but necessary</td><td>Public records — few consent issues, but <span class="bl"></span> sensitive</td></tr>
+  </table>
+
+  <div class="box grey">
+    <div class="bx-t">怎么背这张表</div>
+    考试常用句式：「Both studies investigate… however…」。核心反差只有两条：<strong>实验室 vs 真实法庭</strong>（生态效度换可靠性），<strong>操控变量 vs 只能控制已记录的变量</strong>。
+  </div>
+
+  <div class="pg-foot">Page 13 of 20</div>
+</div>
+
+<!-- ================= PAGE 14 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Exam Skills 答题技巧</span><span class="r">6.2.2 BRADBURY &amp; WILLIAMS (2013)</span></div>
+
+  <div class="sec">Command words 指令词</div>
+  <table class="n">
+    <tr><th style="width:22%;">Command word</th><th>What it demands</th></tr>
+    <tr><td class="lbl">Describe</td><td>Give the facts — sample, variables, findings. No judgement needed.</td></tr>
+    <tr><td class="lbl">Explain</td><td>Add the <strong>because/why</strong> — link cause to consequence.</td></tr>
+    <tr><td class="lbl">Evaluate / assess</td><td>Strength <strong>and</strong> limitation, each with a consequence, then a verdict.</td></tr>
+  </table>
+
+  <div class="sec">Sentence frames 万能句架</div>
+  <ul class="tight">
+    <li>Describe the sample: <em>“Secondary data was collected from real trials in four American states…, held between 2000 and 2001, using hung jury cases where…”</em></li>
+    <li>Explain a control: <em>“The researchers controlled for … in order to make sure the effect was due to the racial composition of the jury and not …”</em></li>
+    <li>State a result with its status: <em>“Juries comprising mostly white jurors were more likely to convict Black defendants, significant at p &lt; .01, so H1 was supported.”</em></li>
+    <li>Evaluate: <em>“One strength is that the data came from real trials, which means the findings are more ecologically valid than mock jury research. However, …”</em></li>
+  </ul>
+
+  <div class="box green">
+    <div class="bx-t">三个必写细节</div>
+    ① <strong>hung jury</strong>（选样理由）② <strong>p &lt; .01 vs p ≤ 0.1</strong>（哪条假设活下来）③ <strong>Batson rule</strong>（应用的法律限制）。少了任何一条，答案就降一个档次。
+  </div>
+
+  <div class="pg-foot">Page 14 of 20</div>
+</div>
+
+<!-- ================= PAGE 15: PRACTICE A ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Practice A — Short Answers</span><span class="r">6.2.2 BRADBURY &amp; WILLIAMS (2013)</span></div>
+
+  <div class="q">Q1. State the two hypotheses investigated by Bradbury and Williams (2013). (4)</div>
+  <div class="wl"></div><div class="wl"></div>
+
+  <div class="q">Q2. Identify <strong>two</strong> of the seven control variables and explain why control variables were needed in this study. (4)</div>
+  <div class="wl"></div><div class="wl"></div>
+
+  <div class="q">Q3. Explain what is meant by a <strong>hung jury</strong>, and why such cases were selected. (4)</div>
+  <div class="wl"></div><div class="wl"></div>
+
+  <div class="q">Q4. Describe the findings for mostly-white and mostly-Hispanic juries, including the significance levels. (4)</div>
+  <div class="wl"></div><div class="wl"></div>
+
+  <div class="pg-foot">Page 15 of 20</div>
+</div>
+
+<!-- ================= PAGE 16: PRACTICE B ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Practice B — The Evaluation Answer</span><span class="r">6.2.2 BRADBURY &amp; WILLIAMS (2013)</span></div>
+
+  <div class="q">Q5. Evaluate Bradbury and Williams (2013). In your answer, discuss <strong>one strength</strong> and <strong>one limitation</strong>, each with a consequence. (8)</div>
+
+  <p class="small" style="margin-bottom:2px;">Plan first — one line per box:</p>
+  <table class="n">
+    <tr><th style="width:50%;">Strength (+ consequence)</th><th>Limitation (+ consequence)</th></tr>
+    <tr><td style="height:44px;"></td><td></td></tr>
+  </table>
+
+  <div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div>
+
+  <div class="box grey">
+    <div class="bx-t">Marking checklist 评分自查</div>
+    <p class="chk"><span class="c"></span>Named the strength precisely (real trials / ecological validity)<br>
+    <span class="c"></span>Gave the consequence (findings apply to real courtrooms)<br>
+    <span class="c"></span>Named the limitation (no replication / representativeness / uncontrolled biases)<br>
+    <span class="c"></span>Gave the consequence<br>
+    <span class="c"></span>Used a connector: "however" / "therefore"<br>
+    <span class="c"></span>No generic evaluation — everything tied to <em>this</em> study</p>
+  </div>
+
+  <div class="pg-foot">Page 16 of 20</div>
+</div>
+
+<!-- ================= PAGE 17 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Common Traps 常见错误辨析</span><span class="r">6.2.2 BRADBURY &amp; WILLIAMS (2013)</span></div>
+
+  <div class="sec">Trap or truth? 判断对错</div>
+  <table class="n">
+    <tr><th style="width:62%;">Statement</th><th>Verdict</th></tr>
+    <tr><td>“Both hypotheses were supported by the results.”</td><td><strong>Trap.</strong> Only H1 (white jurors, p &lt; .01). H2's direction matched but p ≤ 0.1 — not significant.</td></tr>
+    <tr><td>“The researchers ran new mock jury trials in a laboratory.”</td><td><strong>Trap.</strong> Secondary data — real trials that had already happened.</td></tr>
+    <tr><td>“The study shows juries should be selected by race to make trials fairer.”</td><td><strong>Trap.</strong> The Batson rule forbids using race to exclude jurors. The application is promoting a mix — not selecting by race.</td></tr>
+    <tr><td>“All juries were more likely to convict for violent crimes.”</td><td><strong>Trap.</strong> The reverse — less likely to convict for violent and property crimes than substance-related offences.</td></tr>
+    <tr><td>“Anwar et al. (2012) contradicted Bradbury and Williams.”</td><td><strong>Trap.</strong> Anwar <em>supported</em> them — 81% conviction by white jurors.</td></tr>
+    <tr><td>“Because real trial data was used, the study can be easily replicated.”</td><td><strong>Trap.</strong> Real cases <em>cannot</em> be replicated — that is a limitation.</td></tr>
+  </table>
+
+  <div class="box orange">
+    <div class="bx-t">为什么这些坑有效</div>
+    每个错句都是<strong>真实知识的一半</strong>：方向对但显著性错、数据真但来源错、应用好但法律限制漏。背「Trap or truth」表是考前性价比最高的一页。
+  </div>
+
+  <div class="pg-foot">Page 17 of 20</div>
+</div>
+
+<!-- ================= PAGE 18 ================= -->
+<div class="page">
+  <div class="pg-head"><span class="t">Final Check — Five Minutes, No Notes</span><span class="r">6.2.2 BRADBURY &amp; WILLIAMS (2013)</span></div>
+
+  <div class="sec">Ten answers from memory 十题默检</div>
+  <ol class="tight">
+    <li>Year of the study: <span class="bl"></span></li>
+    <li>Type of data (primary or secondary): <span class="bl"></span></li>
+    <li>Number of states + one example: <span class="bl"></span></li>
+    <li>Trial years: <span class="bl"></span></li>
+    <li>The special kind of case selected (two words): <span class="bl"></span></li>
+    <li>Percentage of cases with Black defendants: <span class="bl"></span></li>
+    <li>Number of control variables: <span class="bl"></span></li>
+    <li>Which hypothesis was supported (and its p level): <span class="bl"></span></li>
+    <li>The US rule limiting race-based jury selection: <span class="bl"></span></li>
+    <li>The supporting study + its key percentage: <span class="bl"></span></li>
+  </ol>
+
+  <div class="box purple">
+    <div class="bx-t">Brain dump 空白默写</div>
+    <p class="small">Close the booklet. Write everything you remember about Bradbury and Williams (2013) in the space below — aim for: aim → sample → variables → one finding → one evaluation point.</p>
+    <div class="wl"></div><div class="wl"></div><div class="wl"></div>
+  </div>
+
+  <div class="pg-foot">Page 18 of 20</div>
+</div>
+
+<!-- ================= PAGE 19: ANSWER KEY 1 ================= -->
+<div class="page pg-tight">
+  <div class="pg-head"><span class="t">Answer Key · 1</span><span class="r">pp. 2–11</span></div>
+
+  <div class="sec">Page 2 — warm-up</div>
+  <p class="small">1. in-group　2. secondary　3. mock</p>
+
+  <div class="sec">Page 3 — hypotheses</div>
+  <p class="small">H1: higher number of <strong>white</strong> jurors.　H2: higher number of <strong>Hispanic</strong> jurors.</p>
+
+  <div class="sec">Page 4 — sample</div>
+  <p class="small">1. secondary; four　2. 2000; 2001　3. hung　4. Black; 60</p>
+
+  <div class="sec">Page 5 — variables</div>
+  <p class="small">1. 1 = conviction; 0 = no conviction / hung jury　2. Black, white, Hispanic　3. logistic regression</p>
+
+  <div class="sec">Page 6 — controls</div>
+  <p class="small">1. evidence　2. case　3. trial　4. deliberations　5. instructions　6. violence; property　7. public; private</p>
+
+  <div class="sec">Page 7 — results</div>
+  <p class="small">Row 1: <strong>less</strong>. Row 2: <strong>more</strong>; H1 supported. Row 3: H2 cannot be supported. Row 4: <strong>violent</strong>. Row 5: <strong>property</strong>.</p>
+
+  <div class="sec">Page 8 — conclusion</div>
+  <p class="small">1. jury; decision-making　2. bias　3. tougher</p>
+
+  <div class="sec">Page 11 — quick check</div>
+  <p class="small">1. Batson rule　2. any two of: reinforcing stereotypes about ethnicity and crime / causing tension between groups / labelling groups criminal / claiming groups are racist in decision-making</p>
+
+  <div class="pg-foot">Page 19 of 20</div>
+</div>
+
+<!-- ================= PAGE 20: ANSWER KEY 2 ================= -->
+<div class="page pg-tight">
+  <div class="pg-head"><span class="t">Answer Key · 2</span><span class="r">pp. 12–18</span></div>
+
+  <div class="sec">Page 13 — side by side</div>
+  <p class="small">Method: experiment; secondary. Participants: 45; trials (hung jury cases). DV: speed estimates; conviction (1/0). IV: verb used; racial make-up (%). Analysis: logistic regression. Ecological validity: high. Reliability: cannot. Ethics: stress; socially.</p>
+
+  <div class="sec">Page 15 — Practice A</div>
+  <p class="small"><strong>Q1</strong> H1: Black defendants more likely to be convicted by juries with a higher number of white jurors; H2: … higher number of Hispanic jurors. (1 mark each for the racial group + direction.)<br>
+  <strong>Q2</strong> Any two of: quantity of evidence / strength of the case / length of trial / length of deliberations / written instructions / case type (violence vs property) / lawyer type (public vs private). Needed to isolate the jury's racial make-up from the strength of the prosecution case.<br>
+  <strong>Q3</strong> Hung jury = juries could not agree on guilt; chosen because in undecided cases jury composition could tip the outcome.<br>
+  <strong>Q4</strong> Mostly white juries more likely to convict, p &lt; .01, H1 supported; mostly Hispanic juries also more likely but only p ≤ 0.1, H2 cannot be supported.</p>
+
+  <div class="sec">Page 16 — Practice B (model)</div>
+  <p class="small"><strong>Strength:</strong> The data came from real trials rather than mock juries, so the findings have high ecological validity — we can trust the race effect exists in actual courtrooms. <strong>Limitation:</strong> real cases cannot be replicated, and factors such as jurors' personal biases or pre-trial publicity could not be controlled, so the conviction differences may not be due to race alone. <strong>Verdict:</strong> despite the limits, the corroborating evidence from Anwar et al. (2012) — 81% convictions by white jurors — makes the findings credible.</p>
+
+  <div class="sec">Page 18 — final check</div>
+  <p class="small">1. 2013　2. secondary　3. four (e.g. Arizona)　4. 2000–2001　5. hung jury　6. 60%　7. seven　8. H1, p &lt; .01　9. Batson rule　10. Anwar et al. (2012), 81%</p>
+
+  <div class="box green">
+    <div class="bx-t">答错怎么办</div>
+    把答错的题<strong>整句重写一遍</strong>（不是只补答案），隔天再默一次同一页。错两次以上的点，誊到 p.18 brain dump 区。
+  </div>
+
+  <div class="pg-foot">Page 20 of 20</div>
+</div>
+
+</body>
+</html>

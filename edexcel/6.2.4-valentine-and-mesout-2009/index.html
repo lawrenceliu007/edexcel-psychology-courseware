@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.2.4 Valentine and Mesout (2009) — Eyewitness Identification Under Stress in the London Dungeon</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.five-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+
+.mat2x2 { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 6px; margin: 14px 0; }
+.mat2x2 .mh { background: var(--primary); color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
+body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
+</style><nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic F · Criminological psychology — Optional contemporary study: Valentine and Mesout (2009)</span>
+  </div>
+  <span class="nav-pill">⚖️ Criminal Psychology</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="6.2.4-Valentine-and-Mesout-2009-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<!-- ============ SIDEBAR ============ -->
+<nav id="sidebar">
+  <div class="sb-head">6.2.4 Valentine &amp; Mesout</div>
+  <ul>
+    <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+    <li class="sb-item"><a href="#s2">2. Why the Dungeon</a></li>
+    <li class="sb-item"><a href="#s3">3. The Aim</a></li>
+    <li class="sb-item"><a href="#s4">4. Part One: Validating</a></li>
+    <li class="sb-item"><a href="#s5">5. State vs Trait Anxiety</a></li>
+    <li class="sb-item"><a href="#s6">6. Part Two: The Sample</a></li>
+    <li class="sb-item"><a href="#s7">7. Into the Labyrinth</a></li>
+    <li class="sb-item"><a href="#s8">8. The Line-up</a></li>
+    <li class="sb-item"><a href="#s9">9. Results: Anxiety</a></li>
+    <li class="sb-item"><a href="#s10">10. Results: Identification</a></li>
+    <li class="sb-item"><a href="#s11">11. The Two Tables</a></li>
+    <li class="sb-item"><a href="#s12">12. Conclusions</a></li>
+    <li class="sb-item"><a href="#s13">13. Evaluating · Strengths</a></li>
+    <li class="sb-item"><a href="#s14">14. Evaluating · Limitations</a></li>
+    <li class="sb-item"><a href="#s15">15. Wider Issues</a></li>
+    <li class="sb-item"><a href="#s16">16. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s17">17. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s18">18. Key Terms</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+<div class="page-head">
+  <h1>Valentine and Mesout (2009)</h1>
+  <p class="subtitle">Eyewitness Identification Under Stress in the London Dungeon</p>
+  <div class="head-badges">
+    <span class="badge">Topic F · Criminological Psychology</span>
+    <span class="badge">Method: Field experiment</span>
+    <span class="badge">Core Concept: Anxiety and identification</span>
+  </div>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started</h2>
+
+  <p>Imagine you are walking through a dark maze. Scary sounds play around you. Suddenly an actor in a dark robe — pale face, wounds and scars — steps out and <strong>blocks your way</strong>.</p>
+
+  <p>Twenty minutes later a researcher shows you <strong>nine photographs</strong>. “The person you saw may or may not be here. Can you point them out?”</p>
+
+  <div class="xp-block">
+    <h4>🎯 Your gut answer<span class="xp-badge">No wrong answer</span></h4>
+    <p class="xp-intro">While your heart was pounding — how well do you think you could describe that face?</p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="gutAns('a')">Pretty well — fear makes me focus</button>
+      <button class="xp-btn" onclick="gutAns('b')">Badly — panic scrambles everything</button>
+    </div>
+    <div class="xp-result" id="res-gut"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么这个实验特别</strong><br>
+    实验室研究只能「假装吓人」，被试知道自己在做实验。这个研究把人放进<strong>真的会吓到的地方</strong>（伦敦地牢鬼屋）——
+    他们不知道自己之后要指认「吓人的演员」，就像真实案件的目击者一样。<strong>紧张是真的，记忆才是真的。</strong>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Why the Dungeon</h2>
+
+  <p>Tim Valentine had researched witness identifications for years. With Jan Mesout (2009), he wanted to fix a weakness of <strong>laboratory research</strong> on stress: lab participants <strong>know</strong> they are in a study. So the researchers went to the <strong>London Dungeon</strong> — a tourist attraction where visitors walk through rooms showing London's history, with actors acting out each theme.</p>
+
+  <div class="green-box">
+    <h4>Two things this setting gives you</h4>
+    <ul>
+      <li><strong>Genuine stress</strong> — real physiological arousal, not a staged threat.</li>
+      <li><strong>Unaware witnesses</strong> — visitors did not know their testimony would be tested, exactly like a real eyewitness.</li>
+    </ul>
+  </div>
+
+  <div class="keyterm-box">
+    <div class="kt-term">catastrophe model of memory performance（突变模型）</div>
+    The prediction that <strong>high physiological arousal / anxiety</strong> can cause a <strong>sudden, marked impairment</strong> of eyewitness recall and identification. This study was designed to test it.</div>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么叫「突变」模型</strong><br>
+    不是「越紧张越差一点」的线性关系，而是紧张超过某个程度后表现<strong>断崖式下跌</strong>——像走路走稳了突然跌倒。本章 6.1.4 里 Christianson &amp; Hübiner 的武器聚焦研究说「焦虑聚焦在武器上、周围变模糊」；这里的模型进一步说：高焦虑直接让指认<strong>崩盘</strong>。数据支持了它：低焦虑组 75% 指认成功，高焦虑组只有 17%。
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. The Aim</h2>
+
+  <div class="note-box">
+    <p><strong>To test the hypothesis that high arousal (high levels of stress) can reduce the ability of an eyewitness to recall information and identify a perpetrator.</strong></p>
+    <p style="margin-top:6px;">Specifically: could visitors to the London Dungeon <strong>describe and identify</strong> the “scary person” they met in the <strong>Horror Labyrinth</strong>?</p>
+  </div>
+
+  <p>The study has <strong>two parts</strong>:</p>
+  <table>
+    <tr><th style="width:35%;">Part</th><th>Purpose</th></tr>
+    <tr><td><strong>1. Validation</strong></td><td>Prove that visiting the Dungeon <strong>really raises anxiety</strong> — so the questionnaire is a valid measure of stress</td></tr>
+    <tr><td><strong>2. Eyewitness study</strong></td><td>Test recall and identification of the “scary person” against measured anxiety</td></tr>
+  </table>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Part One — Validating the Anxiety Measure</h2>
+
+  <p>Before testing any witnesses, the researchers had to show the Dungeon is <strong>genuinely stressful</strong>.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Heart rate validation: baseline 74.7 bpm rising to 86.9 bpm in the Horror Labyrinth, mean state anxiety 43.2 correlated with heart rate change">
+      <rect x="30" y="30" width="180" height="86" rx="10" fill="#f1f5f9" stroke="#334155" stroke-width="1.6"/>
+      <text x="120" y="58" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">20 store employees</text>
+      <text x="120" y="80" font-size="11" fill="#475569" text-anchor="middle">wireless heart-rate monitor</text>
+      <text x="120" y="99" font-size="11" fill="#475569" text-anchor="middle">baseline recorded first</text>
+
+      <line x1="210" y1="73" x2="252" y2="73" stroke="#94a3b8" stroke-width="2"/>
+      <polygon points="252,67 252,79 264,73" fill="#94a3b8"/>
+
+      <rect x="266" y="30" width="180" height="86" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="1.6"/>
+      <text x="356" y="58" font-size="13" font-weight="700" fill="#7c2d12" text-anchor="middle">Heart rate rises</text>
+      <text x="356" y="84" font-size="15" font-weight="800" fill="#ea580c" text-anchor="middle">74.7 → 86.9 bpm</text>
+      <text x="356" y="104" font-size="10.5" fill="#9a3412" text-anchor="middle">baseline → Horror Labyrinth</text>
+
+      <line x1="446" y1="73" x2="488" y2="73" stroke="#94a3b8" stroke-width="2"/>
+      <polygon points="488,67 488,79 500,73" fill="#94a3b8"/>
+
+      <rect x="502" y="30" width="158" height="86" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6"/>
+      <text x="581" y="58" font-size="13" font-weight="700" fill="#14532d" text-anchor="middle">Questionnaire valid</text>
+      <text x="581" y="84" font-size="13" font-weight="700" fill="#16a34a" text-anchor="middle">anxiety 43.2</text>
+      <text x="581" y="103" font-size="10.5" fill="#166534" text-anchor="middle">correlated with heart rate</text>
+
+      <text x="340" y="156" font-size="11.5" fill="#475569" text-anchor="middle">Data from 18 participants was used — 2 were outliers (baseline heart rates).</text>
+      <text x="340" y="180" font-size="11" fill="#7c3aed" text-anchor="middle">中文：先证明「鬼屋真的让人紧张」，问卷测出来的才是焦虑而不是别的情绪。</text>
+    </svg>
+  </div>
+
+  <ul>
+    <li><strong>20 employees</strong> of a London department store walked the Dungeon wearing a <strong>wireless heart-rate monitor</strong>; baseline was recorded first, then monitored around the visit.</li>
+    <li>Afterwards they completed a <strong>State and Trait Anxiety Inventory</strong>.</li>
+    <li>Data from <strong>18</strong> used (2 outliers). Baseline <strong>74.7 bpm</strong> vs <strong>86.9 bpm</strong> in the Horror Labyrinth — reliably higher.</li>
+    <li>Mean state anxiety <strong>43.2</strong>, which <strong>correlated</strong> with the heart-rate change → the inventory validly measures stress.</li>
+  </ul>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. State vs Trait Anxiety</h2>
+
+  <div class="keyterm-box">
+    <div class="kt-term">state anxiety（状态焦虑）</div>
+    Anxiety <strong>right now</strong>, caused by the situation you are in — here: how stressed you felt inside the Dungeon.</div>
+
+  <div class="keyterm-box">
+    <div class="kt-term">trait anxiety（特质焦虑）</div>
+    A <strong>personality trait</strong>: a tendency to worry about yourself and others <strong>regardless of circumstances</strong>. A stable, dispositional factor — not caused by the situation.</div>
+
+  <table>
+    <tr><th></th><th>State anxiety</th><th>Trait anxiety</th></tr>
+    <tr><td><strong>Source</strong></td><td>The situation (situational)</td><td>The person (dispositional)</td></tr>
+    <tr><td><strong>Changes?</strong></td><td>Yes — moment to moment</td><td>No — consistent over time</td></tr>
+    <tr><td><strong>Role in this study</strong></td><td>The <strong>IV-like</strong> measure: high vs low groups</td><td>A <strong>baseline</strong> of individual differences</td></tr>
+  </table>
+
+  <div class="xp-block">
+    <h4>🎯 Spot the type<span class="xp-badge">Quick check</span></h4>
+    <p class="xp-intro">1. “I felt terrified while walking through the dark maze.” — Which anxiety?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="stAns(this,'state')">State anxiety</button>
+      <button class="q-option" onclick="stAns(this,'trait')">Trait anxiety</button>
+    </div>
+    <div class="xp-result" id="res-st"></div>
+
+    <p class="xp-intro">2. “I tend to worry about things, whatever I'm doing.” — Which anxiety?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="stAns2(this,'state')">State anxiety</button>
+      <button class="q-option" onclick="stAns2(this,'trait')">Trait anxiety</button>
+    </div>
+    <div class="xp-result" id="res-st2"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：一句话区分</strong><br>
+    <strong>State = 此刻</strong>（在鬼屋里吓到腿软），<strong>Trait = 平时</strong>（天生爱操心的人）。本研究比的是<strong>当下</strong>的紧张程度，但记录<strong>平时</strong>的焦虑倾向作为个人差异的基线。
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Part Two — The Sample</h2>
+
+  <table>
+    <tr><th style="width:40%;">Feature</th><th>Detail</th></tr>
+    <tr><td>Who</td><td><strong>56 visitors</strong> to the London Dungeon</td></tr>
+    <tr><td>Sex</td><td><strong>29 female, 27 male</strong></td></tr>
+    <tr><td>Age</td><td>Mean <strong>31.0 years</strong></td></tr>
+    <tr><td>Why they took part</td><td>Offered a <strong>reduction in the admission price</strong> to complete questionnaires <em>after</em> their visit</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：注意「事后」两个字</strong><br>
+    招募发生在参观<strong>之后</strong> —— 所以参观时他们完全不知道要做实验。这保住了「不知情目击者」的核心设计；但愿意停下来填问卷的人，可能是<strong>自选样本</strong>（评价时会用到这一点）。
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Into the Labyrinth</h2>
+
+  <ul>
+    <li>Each participant walked the <strong>Horror Labyrinth</strong> with around <strong>30 other visitors</strong>, for about <strong>7 minutes</strong>.</li>
+    <li>The labyrinth is a <strong>maze designed to disorientate</strong>: dark, with scary sounds played on a recording.</li>
+    <li>Among the “scares”: an actor in a <strong>dark robe</strong>, make-up to appear <strong>very pale</strong>, with <strong>wounds or scars</strong> on the face — the <strong>“scary person”</strong>.</li>
+    <li>The scary person would <strong>step out in front</strong> of the participant and <strong>block their way</strong> from passing.</li>
+    <li>All participants went around <strong>in the same direction</strong>.</li>
+  </ul>
+
+  <div class="green-box">
+    <h4>After the tour — consent first, then the tests</h4>
+    <ul>
+      <li>Purpose <strong>explained</strong>, <strong>informed consent</strong> obtained, chance to <strong>withdraw</strong> at any stage.</li>
+      <li><strong>State anxiety</strong> questionnaire (how they felt in the dungeon).</li>
+      <li><strong>Trait anxiety</strong> questionnaire (general emotion tendencies).</li>
+      <li><strong>Free recall</strong>: describe the scary person in your own words.</li>
+      <li><strong>Cued recall</strong>: specific details — gender, age, height, hair colour. Told <strong>not to guess</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：自由回忆 vs 线索回忆</strong><br>
+    <strong>Free recall</strong> = 「随便说说你看到什么」——考<strong>量</strong>。<br>
+    <strong>Cued recall</strong> = 「他多高？什么发型？」——考<strong>细节准确度</strong>。<br>
+    两组问题分开计分，才能看出焦虑到底伤的是「记得多」还是「记得准」。
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. The Line-up</h2>
+
+  <p>Finally, each participant saw a <strong>nine-person photograph line-up</strong>:</p>
+  <ul>
+    <li>The scary person's photo sat in a <strong>randomly selected position</strong>, alongside <strong>eight similar-looking actors</strong>.</li>
+    <li>Instruction: <em>“The person you saw in the labyrinth <strong>may or may not</strong> be in the line-up.”</em> Guided to say if they could not identify anyone.</li>
+    <li>They rated their <strong>confidence</strong> from <strong>0–100%</strong>.</li>
+  </ul>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么 lineup 里要说「可能不在」</strong><br>
+    防止人们<strong>硬选一个</strong>。如果不说这句话，被试会觉得「九张里必有一张」，猜也会猜一张 —— 数据就被污染了。这句指令让「没认出来」成为合法答案，指认成功才真实。
+  </div>
+</section>
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Results — Anxiety Levels</h2>
+
+  <table>
+    <tr><th style="width:55%;">Finding</th><th>Detail</th></tr>
+    <tr><td>State anxiety in the dungeon — females vs males</td><td><strong>52.8 vs 45.3</strong> — females felt more anxious</td></tr>
+    <tr><td>Mean state anxiety (whole sample)</td><td><strong>49.0</strong></td></tr>
+    <tr><td>Mean trait anxiety</td><td><strong>36.8</strong> — <strong>no difference</strong> between males and females</td></tr>
+    <tr><td>Recall quality</td><td>Participants with <strong>lower state anxiety recalled more correct information</strong> about the scary person</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：先记住两条性别差异</strong><br>
+    <strong>状态焦虑</strong>：女 52.8 &gt; 男 45.3（情境吓人，女性感觉更强）。<br>
+    <strong>特质焦虑</strong>：无差异（平时爱不爱操心与性别无关）。<br>
+    这个分工后面会出现在结论里 —— 女性指认差，根源在<strong>当下更紧张</strong>。
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Results — The Identification Cliff</h2>
+
+  <p>The headline result. The sample was split at the <strong>median</strong> state anxiety score (52):</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Correct identification from the line-up: 75 percent of low state anxiety witnesses versus 17 percent of high state anxiety witnesses">
+      <line x1="90" y1="220" x2="620" y2="220" stroke="#334155" stroke-width="1.6"/>
+
+      <rect x="150" y="54" width="120" height="166" fill="#16a34a" opacity="0.85"/>
+      <text x="210" y="46" font-size="17" font-weight="800" fill="#14532d" text-anchor="middle">75%</text>
+      <text x="210" y="242" font-size="11.5" fill="#475569" text-anchor="middle">LOW state anxiety</text>
+      <text x="210" y="260" font-size="10.5" fill="#475569" text-anchor="middle">(below the median, &lt; 52)</text>
+
+      <rect x="420" y="183" width="120" height="37" fill="#dc2626" opacity="0.85"/>
+      <text x="480" y="175" font-size="17" font-weight="800" fill="#7f1d1d" text-anchor="middle">17%</text>
+      <text x="480" y="242" font-size="11.5" fill="#475569" text-anchor="middle">HIGH state anxiety</text>
+      <text x="480" y="260" font-size="10.5" fill="#475569" text-anchor="middle">(above the median, ≥ 52)</text>
+
+      <text x="340" y="296" font-size="11" fill="#7c3aed" text-anchor="middle" transform="translate(0,-16)">中文：高焦虑组指认成功率只有低焦虑组的不到四分之一 —— 断崖式下跌，支持突变模型。</text>
+    </svg>
+  </div>
+
+  <div class="green-box">
+    <h4>Read it like an examiner</h4>
+    <ul>
+      <li>Only <strong>17%</strong> of high-anxiety witnesses correctly identified the scary person from the <strong>culprit-present</strong> line-up — versus <strong>75%</strong> of low-anxiety witnesses.</li>
+      <li>Those who identified correctly also showed <strong>higher confidence</strong> — accurate witnesses knew they were right.</li>
+      <li><strong>Males made more correct identifications than females</strong> — and the gender gap remained even when state anxiety was accounted for separately.</li>
+    </ul>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Quick math<span class="xp-badge">Data</span></h4>
+    <p class="xp-intro">How many times better did low-anxiety witnesses perform?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="ratioAns(this,'a')">About 4.4× (75 ÷ 17)</button>
+      <button class="q-option" onclick="ratioAns(this,'b')">About 2× (75 ÷ 41)</button>
+      <button class="q-option" onclick="ratioAns(this,'c')">About 1.5× (75 ÷ 52)</button>
+    </div>
+    <div class="xp-result" id="res-ratio"></div>
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. The Two Tables</h2>
+
+  <p><strong>Table 12.5</strong> — identification of the “scary person” by state anxiety (nine-person culprit-present line-up):</p>
+  <table>
+    <tr><th>Identification</th><th>Low state anxiety</th><th>High state anxiety</th></tr>
+    <tr><td><strong>Accurate</strong></td><td>21</td><td>5</td></tr>
+    <tr><td><strong>Inaccurate</strong></td><td>6</td><td>15</td></tr>
+    <tr><td><strong>No identification</strong></td><td>1</td><td>8</td></tr>
+  </table>
+  <p class="small">28 in each group. Low anxiety: 21 of 28 correct = 75%. High anxiety: 5 of 28 correct = 17%.</p>
+
+  <p><strong>Table 12.6</strong> — identification accuracy by biological sex:</p>
+  <table>
+    <tr><th>Identification</th><th>Male</th><th>Female</th></tr>
+    <tr><td><strong>Accurate</strong></td><td>19</td><td>7</td></tr>
+    <tr><td><strong>Inaccurate</strong></td><td>5</td><td>16</td></tr>
+    <tr><td><strong>No identification</strong></td><td>5</td><td>4</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：两张表怎么读</strong><br>
+    表 12.5 看<strong>焦虑</strong>：低焦虑组 21 对 6 错 1 弃权；高焦虑组直接反转成 5 对 15 错 8 弃权。<br>
+    表 12.6 看<strong>性别</strong>：男性 19 对，女性只有 7 对。两条线都指向同一个方向：<strong>紧张 + 女性 = 最弱的指认</strong>。
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Conclusions</h2>
+
+  <div class="note-box">
+    <ul>
+      <li><strong>Females show higher levels of anxiety</strong> in stressful situations.</li>
+      <li>Being <strong>highly anxious reduces the accuracy</strong> of eyewitnesses in identifying perpetrators.</li>
+      <li>Experts assessing eyewitness accuracy should take into account the <strong>emotional state of the witness at the time of the event</strong>.</li>
+      <li>The sex-difference pattern suggests <strong>females may be particularly vulnerable</strong> to the effects of stress when witnessing or being the victim of a crime.</li>
+      <li>Overall, the failure of high-anxiety witnesses to describe and identify the perpetrator <strong>supports the catastrophe model</strong> of memory performance under anxiety.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：一句话版</strong><br>
+    紧张真的会砸了目击证词 —— 而且不是慢慢变差，是<strong>断崖式崩盘</strong>（75% → 17%）。司法系统必须问目击者：<strong>案发时你有多害怕？</strong>
+  </div>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. Evaluating · Strengths</h2>
+
+  <div class="green-box">
+    <h4>Strength 1 — A genuine field experiment</h4>
+    <p>Natural setting and <strong>unaware witnesses</strong> make the findings more <strong>representative of real eyewitnesses</strong> than laboratory studies, where participants may guess the aims and respond to please the researcher. A genuine witness also would not know they would later have to identify the perpetrator — this reinforces the <strong>ecological validity</strong>.</p>
+  </div>
+
+  <div class="green-box">
+    <h4>Strength 2 — Excellent controls → replicability</h4>
+    <p><strong>Same actor</strong> for every set of visitors, acting the <strong>same manner</strong>, on the same tour. Every tour group experiences the <strong>same exhibits, same order, same time</strong>. This gives the study a <strong>high level of replicability</strong> — it could be re-tested whether anxiety impairs recall.</p>
+  </div>
+
+  <div class="green-box">
+    <h4>Strength 3 — Validated questionnaires</h4>
+    <p>The extra validation study (office workers, heart-rate monitors) showed the State Anxiety Inventory <strong>reliably measures anxiety</strong> — not some other emotion. Assures the validity of the whole study.</p>
+  </div>
+
+  <div class="green-box">
+    <h4>Strength 4 — Individual differences built in</h4>
+    <p>Measuring <strong>trait anxiety</strong> gave a <strong>baseline</strong> of each person's general tendency, against which the <strong>state</strong> anxiety of the Dungeon could be compared — rather than just comparing a stress group with a control group.</p>
+  </div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="section" id="s14">
+  <h2>14. Evaluating · Limitations</h2>
+
+  <div class="blue-box">
+    <h4>Limitation 1 — Self-selected, scare-loving sample</h4>
+    <p>Participants had all <strong>chosen to visit</strong> a scary attraction. They may <strong>prefer scary entertainment</strong> and react differently to scary events than people who avoid such places — limiting the <strong>generalisability</strong> of the findings to the wider population.</p>
+  </div>
+
+  <div class="blue-box">
+    <h4>Limitation 2 — Ethics of genuine fear</h4>
+    <p>Visitors experienced <strong>real stress</strong> before consent was possible (consent came only after the tour). The design deliberately kept them unaware — protection came from debriefing and the right to withdraw, but the fear itself could not be consented to in advance.</p>
+  </div>
+
+  <div class="blue-box">
+    <h4>Limitation 3 — Not a real crime</h4>
+    <p>The “scary person” is an <strong>actor</strong>, the encounter lasts seconds inside a <strong>7-minute</strong> maze with ~30 other visitors. A real crime may involve longer exposure, a weapon, or consequences for the witness — different stress profile.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：缺点抓一条主线</strong><br>
+    生态效度的<strong>来源</strong>（真实紧张）同时也是它的<strong>代价</strong>：无法事先同意 + 来的人本来就爱找刺激。优缺点一体两面，这是本题最漂亮的评价。
+  </div>
+</section>
+
+<!-- ============ 15 ============ -->
+<section class="section" id="s15">
+  <h2>15. Wider Issues — Real-life Implications</h2>
+
+  <div class="note-box">
+    <ul>
+      <li>During trials of real crimes, be <strong>cautious about trusting accounts</strong> from witnesses who underwent significant <strong>anxiety or trauma</strong> during the crime.</li>
+      <li>Police should be informed that <strong>anxiety can impair recall and identification</strong> — a consideration when assessing the <strong>admissibility</strong> of eyewitness testimony.</li>
+      <li>It should also be considered when police use <strong>line-up identification techniques</strong>.</li>
+      <li>Important nuance: Valentine and Mesout told participants the person <strong>may or may not</strong> be present — yet anxious witnesses still failed. So this instruction alone is <strong>not enough</strong> to stop witnesses choosing the wrong suspect.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：这条应用为什么高分</strong><br>
+    它不止说「警察要小心紧张证人」，还顺着研究设计往前多走一步：<strong>就算用「可能不在 lineup 里」的标准指令，高焦虑证人照样会错</strong> —— 指令挡不住焦虑对记忆的破坏。
+  </div>
+</section>
+<!-- ============ 16 ============ -->
+<section class="section" id="s16">
+  <h2>16. Checkpoint</h2>
+
+  <div class="xp-block">
+    <h4>🎯 Ten quick questions<span class="xp-badge">From memory</span></h4>
+    <p class="xp-intro">Cover the sections above and answer. Click an answer to check it.</p>
+    <div class="xp-result" id="res-cp"></div>
+
+    <p class="xp-intro"><strong>1.</strong> How many visitors took part in the eyewitness study?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="cpAns(this)">56</button>
+      <button class="q-option" onclick="cpAns(this)">558</button>
+      <button class="q-option" onclick="cpAns(this)">46</button>
+    </div>
+
+    <p class="xp-intro"><strong>2.</strong> How many were female and male?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="cpAns(this)">27 female, 29 male</button>
+      <button class="q-option" onclick="cpAns(this)" data-ok="1">29 female, 27 male</button>
+      <button class="q-option" onclick="cpAns(this)">25 female, 31 male</button>
+    </div>
+
+    <p class="xp-intro"><strong>3.</strong> What was the mean age?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="cpAns(this)" data-ok="1">31.0 years</button>
+      <button class="q-option" onclick="cpAns(this)">20.6 years</button>
+      <button class="q-option" onclick="cpAns(this)">34.5 years</button>
+    </div>
+
+    <p class="xp-intro"><strong>4.</strong> How long did visitors walk the Horror Labyrinth?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="cpAns(this)">about 7 minutes</button>
+      <button class="q-option" onclick="cpAns(this)" data-ok="1">about 7 minutes — with around 30 other visitors</button>
+      <button class="q-option" onclick="cpAns(this)">about 30 minutes alone</button>
+    </div>
+
+    <p class="xp-intro"><strong>5.</strong> What was baseline heart rate in the validation study?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="cpAns(this)">86.9 bpm</button>
+      <button class="q-option" onclick="cpAns(this)" data-ok="1">74.7 bpm</button>
+      <button class="q-option" onclick="cpAns(this)">43.2 bpm</button>
+    </div>
+
+    <p class="xp-intro"><strong>6.</strong> How many photographs were in the line-up?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="cpAns(this)">6</button>
+      <button class="q-option" onclick="cpAns(this)">12</button>
+      <button class="q-option" onclick="cpAns(this)" data-ok="1">9</button>
+    </div>
+
+    <p class="xp-intro"><strong>7.</strong> Correct identification — low vs high state anxiety:</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="cpAns(this)">17% vs 75%</button>
+      <button class="q-option" onclick="cpAns(this)" data-ok="1">75% vs 17%</button>
+      <button class="q-option" onclick="cpAns(this)">73% vs 41%</button>
+    </div>
+
+    <p class="xp-intro"><strong>8.</strong> The median split for state anxiety was at a score of…</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="cpAns(this)" data-ok="1">52</button>
+      <button class="q-option" onclick="cpAns(this)">49</button>
+      <button class="q-option" onclick="cpAns(this)">36.8</button>
+    </div>
+
+    <p class="xp-intro"><strong>9.</strong> Which group reported the higher state anxiety?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="cpAns(this)" data-ok="1">Females (52.8 vs 45.3)</button>
+      <button class="q-option" onclick="cpAns(this)">Males (45.3 vs 52.8)</button>
+      <button class="q-option" onclick="cpAns(this)">No difference</button>
+    </div>
+
+    <p class="xp-intro"><strong>10.</strong> The results support which model?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="cpAns(this)">Reconstructive memory model</button>
+      <button class="q-option" onclick="cpAns(this)" data-ok="1">Catastrophe model of memory performance</button>
+      <button class="q-option" onclick="cpAns(this)">Multi-store model</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 17 ============ -->
+<section class="section" id="s17">
+  <h2>17. Exam Lab</h2>
+
+  <div class="syl-tags">
+    <span class="syl-tag">AO1 (4) + AO3 (4) = 8 marks</span>
+    <span class="syl-tag">Generic answers score 0</span>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ Question 1 — Describe<span class="xp-badge">AO1</span></h4>
+    <p class="xp-intro"><em>Describe the procedure of Valentine and Mesout (2009). (4)</em></p>
+    <p class="xp-intro">Frame your answer: <strong>validation part → sample → labyrinth → tests → line-up</strong>.</p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am1')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am1">
+      <p>First, the State Anxiety Inventory was validated: 20 employees wore heart-rate monitors around the London Dungeon, and their heart rate rose from a baseline of 74.7 to 86.9 bpm inside the Horror Labyrinth, with mean state anxiety (43.2) correlating with the heart-rate change. In the main study, 56 visitors (29 female, 27 male, mean age 31.0), recruited afterwards for a reduced admission price, walked the dark Horror Labyrinth for about seven minutes with around 30 other visitors, where an actor — the “scary person” — stepped out and blocked their path. Afterwards they completed state and trait anxiety questionnaires, gave free recall and cued recall of the actor's appearance without guessing, and attempted identification from a nine-person culprit-present photo line-up, rating their confidence from 0–100%.</p>
+    </div>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ Question 2 — Evaluate<span class="xp-badge">AO3</span></h4>
+    <p class="xp-intro"><em>Evaluate the study by Valentine and Mesout (2009). (4)</em></p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am2')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am2">
+      <p>One strength is the field setting with unaware witnesses: visitors did not know their testimony would be tested, just like a real eyewitness, which gives the findings strong ecological validity compared with laboratory research. It was also highly replicable because the same actor acted in the same manner on identical tours, and the questionnaire was validated against heart-rate data. However, the sample was self-selected — all participants had chosen to visit a scary attraction, so they may enjoy and respond differently to fear, limiting generalisability to people who avoid such places. The fear was also genuinely caused before consent could be given, raising ethical issues that had to be managed through debriefing and the right to withdraw.</p>
+    </div>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ Question 3 — Results and conclusion<span class="xp-badge">AO2</span></h4>
+    <p class="xp-intro"><em>Describe the results and conclusions of Valentine and Mesout (2009). (4)</em></p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am3')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am3">
+      <p>Only 17% of witnesses scoring above the median state anxiety (52) correctly identified the scary person from the culprit-present line-up, compared with 75% of those below the median; low-anxiety witnesses also recalled more correct information, and males made more correct identifications than females (19 vs 7 accurate). Females reported higher state anxiety (52.8 vs 45.3) with no sex difference in trait anxiety. The researchers concluded that high anxiety reduces eyewitness identification accuracy — supporting the catastrophe model — that experts should consider the witness's emotional state at the time of the event, and that females may be particularly vulnerable to stress when witnessing crime.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 18 ============ -->
+<section class="section" id="s18">
+  <h2>18. Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="keyterm-box"><div class="kt-term">state anxiety</div>Anxiety caused by the current situation — how stressed you feel right now.</div>
+    <div class="keyterm-box"><div class="kt-term">trait anxiety</div>A stable personality tendency to worry, regardless of circumstances.</div>
+    <div class="keyterm-box"><div class="kt-term">catastrophe model</div>High physiological arousal can cause a sudden, marked impairment of recall and identification.</div>
+    <div class="keyterm-box"><div class="kt-term">field experiment</div>An experiment in a natural setting — here, a working tourist attraction.</div>
+    <div class="keyterm-box"><div class="kt-term">Horror Labyrinth</div>The dark, disorientating maze in the London Dungeon where the encounter occurred.</div>
+    <div class="keyterm-box"><div class="kt-term">scary person</div>The robed, pale-faced actor with wounds/scars who blocked visitors' path.</div>
+    <div class="keyterm-box"><div class="kt-term">culprit-present line-up</div>A photo line-up that actually contains the target (9 photos, random position).</div>
+    <div class="keyterm-box"><div class="kt-term">free vs cued recall</div>Open description of the person versus specific prompted details (age, height, hair).</div>
+  </div>
+</section>
+
+<div class="footer-note">
+  6.2.4 Valentine and Mesout (2009) · Criminological Psychology · back: <a href="../6.2.3-ruva-mcevoy-and-bryant-2007/">← 6.2.3 Ruva, McEvoy and Bryant (2007)</a>
+</div>
+</main>
+
+<div id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  /* ---------- sidebar scroll spy ---------- */
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.parentElement.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  /* ---------- reveal helpers ---------- */
+  function show(id, html) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.innerHTML = html;
+    el.classList.add('show');
+  }
+  function verdictHTML(ok, msg) {
+    return '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + msg + '</p>';
+  }
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  /* ---------- s1 ---------- */
+  window.gutAns = function (choice) {
+    if (choice === 'a') {
+      show('res-gut', verdictHTML(false, 'That is the common intuition — and this study shows it is wrong for most people: the highest-anxiety visitors identified the actor only 17% of the time.'));
+    } else {
+      show('res-gut', verdictHTML(true, 'This study agrees: witnesses above the median state anxiety identified the actor only 17% of the time, versus 75% for calm witnesses.'));
+    }
+  };
+
+  /* ---------- s5 ---------- */
+  window.stAns = function (btn, key) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (key === 'state');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    show('res-st', verdictHTML(ok, ok ? 'Right — terror in the maze is anxiety caused by the situation: state anxiety.' : 'That is the stable personality tendency. Terror in the maze comes from the situation — state anxiety.'));
+  };
+  window.stAns2 = function (btn, key) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (key === 'trait');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    show('res-st2', verdictHTML(ok, ok ? 'Right — worrying "whatever I\'m doing" is a stable disposition: trait anxiety. In the study it gave a personal baseline.' : 'That is the moment-to-moment kind. A general tendency to worry is trait anxiety — the dispositional baseline.'));
+  };
+
+  /* ---------- s10 ---------- */
+  var ratioFb = {
+    a: 'Correct — 75 ÷ 17 ≈ 4.4. Calm witnesses were over four times more accurate.',
+    b: '41% belongs to a different study (Ruva). Here it is 75% vs 17%.',
+    c: '52 is the median anxiety score, not a percentage to divide by.'
+  };
+  window.ratioAns = function (btn, key) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(key === 'a' ? 'chosen-best' : 'chosen-bad');
+    show('res-ratio', verdictHTML(key === 'a', ratioFb[key]));
+  };
+
+  /* ---------- s16 checkpoint ---------- */
+  window.cpAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    show('res-cp', verdictHTML(ok, ok ? '' : 'Check the section referenced by the question and try again.'));
+  };
+})();
+</script>

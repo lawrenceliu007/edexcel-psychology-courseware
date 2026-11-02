@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.2.3 Ruva, McEvoy and Bryant (2007) — Pre-trial Publicity and Source Memory Errors</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.five-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+
+.mat2x2 { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 6px; margin: 14px 0; }
+.mat2x2 .mh { background: var(--primary); color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
+body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
+</style><nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic F · Criminological psychology — Contemporary study: Ruva, McEvoy and Bryant (2007)</span>
+  </div>
+  <span class="nav-pill">⚖️ Criminal Psychology</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="6.2.3-Ruva-McEvoy-and-Bryant-2007-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<!-- ============ SIDEBAR ============ -->
+<nav id="sidebar">
+  <div class="sb-head">6.2.3 Ruva, McEvoy &amp; Bryant</div>
+  <ul>
+    <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+    <li class="sb-item"><a href="#s2">2. Pre-trial Publicity</a></li>
+    <li class="sb-item"><a href="#s3">3. The Aim</a></li>
+    <li class="sb-item"><a href="#s4">4. The Sample</a></li>
+    <li class="sb-item"><a href="#s5">5. Three Conditions</a></li>
+    <li class="sb-item"><a href="#s6">6. Phase One</a></li>
+    <li class="sb-item"><a href="#s7">7. Phase Two</a></li>
+    <li class="sb-item"><a href="#s8">8. Deliberate or Recall</a></li>
+    <li class="sb-item"><a href="#s9">9. Results: Verdicts</a></li>
+    <li class="sb-item"><a href="#s10">10. Results: Errors</a></li>
+    <li class="sb-item"><a href="#s11">11. Conclusions</a></li>
+    <li class="sb-item"><a href="#s12">12. Evaluating · Strengths</a></li>
+    <li class="sb-item"><a href="#s13">13. Evaluating · Limitations</a></li>
+    <li class="sb-item"><a href="#s14">14. Wider Issues</a></li>
+    <li class="sb-item"><a href="#s15">15. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s16">16. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s17">17. Key Terms</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+<div class="page-head">
+  <h1>Ruva, McEvoy and Bryant (2007)</h1>
+  <p class="subtitle">Effects of Pre-trial Publicity and Jury Deliberation on Jury Bias and Source Memory Errors</p>
+  <div class="head-badges">
+    <span class="badge">Topic F · Criminological Psychology</span>
+    <span class="badge">Method: Lab experiment</span>
+    <span class="badge">Core Concept: Source monitoring</span>
+  </div>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started</h2>
+
+  <p>You are about to sit on a jury. But last week you read the news:</p>
+
+  <div class="note-box">
+    <p><strong>“LOCAL MAN ARRESTED IN WIFE'S SHOOTING DEATH. Neighbours say he had a temper. She was afraid of guns.”</strong></p>
+  </div>
+
+  <p>The judge tells you: <em>“Decide only on the evidence presented in this courtroom.”</em></p>
+
+  <p style="font-weight:700;color:#9a3412;">Be honest with yourself — can you really unread that headline?</p>
+
+  <div class="xp-block">
+    <h4>🎯 Your gut answer<span class="xp-badge">No wrong answer</span></h4>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="newsAns('a')">Yes — I can follow the judge's instruction</button>
+      <button class="xp-btn" onclick="newsAns('b')">No — it's already in my head</button>
+    </div>
+    <div class="xp-result" id="res-news"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：这个实验在问什么</strong><br>
+    法官说「只看法庭证据」很容易；但新闻读过的内容已经<strong>存进了你的记忆</strong>。这个研究问的正是：
+    读过的新闻会不会被你<strong>误记成</strong>「法庭上看到的证据」？——这就是<strong>source monitoring error（来源监测错误）</strong>。
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Pre-trial Publicity — The Problem</h2>
+
+  <p>Every defendant has the right to a <strong>fair trial</strong> and an <strong>impartial jury</strong>. But in today's world, news is everywhere. Research shows that media coverage <strong>before</strong> a trial can bias jurors against the defendant.</p>
+
+  <div class="keyterm-box">
+    <div class="kt-term">pre-trial publicity（审前报道）</div>
+    News coverage about a case published <strong>before</strong> the trial begins — it may contain information that never appears in court.</div>
+
+  <div class="green-box">
+    <h4>What the justice system tried — and why it fails</h4>
+    <table>
+      <tr><th>Strategy</th><th>Does it work?</th></tr>
+      <tr><td><strong>Voir dire</strong> — questioning prospective jurors</td><td>Shown to be <strong>ineffective</strong></td></tr>
+      <tr><td><strong>Judge's instruction</strong> to ignore media coverage</td><td>Shown to be <strong>ineffective</strong></td></tr>
+      <tr><td><strong>Change of venue</strong> — move the trial elsewhere</td><td>Not tested experimentally; rarely done; no right to request it</td></tr>
+      <tr><td><strong>Bench trial</strong> — trial by judge only, no jury</td><td>Not tested experimentally; largely prohibitive</td></tr>
+    </table>
+  </div>
+
+  <p>Some countries have abolished juries altogether (Singapore, South Africa, India); others use juries only for selected offences. So: can we <strong>measure</strong> how much pre-trial publicity actually biases a verdict?</p>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. The Aim</h2>
+
+  <div class="note-box">
+    <p><strong>To test whether:</strong></p>
+    <ul>
+      <li>exposure to <strong>negative pre-trial publicity</strong> biases jurors toward <strong>guilty</strong> verdicts, and</li>
+      <li>whether <strong>deliberating in a group</strong> (collaborating jurors) versus <strong>thinking alone</strong> (nominal jurors) changes those judgments — including <strong>source monitoring errors</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：collaborating vs nominal</strong><br>
+    <strong>Collaborating jurors（协作陪审员）</strong>：真正坐在一起<strong>讨论</strong>并给出统一裁决的小组。<br>
+    <strong>Nominal jurors（名义陪审员）</strong>：只是各自<strong>单独</strong>判断，研究时把个人答案加总 —— 没有讨论。<br>
+    对比这两者，就能看出「讨论」本身是<strong>纠错</strong>还是<strong>传染</strong>。
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. The Sample</h2>
+
+  <table>
+    <tr><th style="width:40%;">Feature</th><th>Detail</th></tr>
+    <tr><td>Who</td><td><strong>558 university students</strong>, aged 18–52 (mean <strong>20.6</strong>)</td></tr>
+    <tr><td>Sex</td><td><strong>128 male</strong>, <strong>430 female</strong></td></tr>
+    <tr><td>Ethnicity</td><td>Range of ethnicities; majority white (<strong>n = 354</strong>)</td></tr>
+    <tr><td>Experience</td><td><strong>Six</strong> participants had served as jurors in a criminal trial before</td></tr>
+    <tr><td>Payment</td><td>Course credit（学分）</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：先记住三个数字</strong><br>
+    <strong>558</strong> 人总样本 · <strong>128 男 / 430 女</strong>（女多男少，注意推广性）· 平均 <strong>20.6</strong> 岁。
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Three Conditions</h2>
+
+  <p>Participants were divided into <strong>three conditions</strong> — with <strong>25 groups</strong> in each condition:</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three conditions: 276 collaborating condition, 140 nominal exposed, 142 nominal non-exposed">
+      <rect x="20" y="26" width="200" height="120" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="120" y="54" font-size="14" font-weight="700" fill="#7c2d12" text-anchor="middle">Collaborating condition</text>
+      <text x="120" y="78" font-size="26" font-weight="800" fill="#ea580c" text-anchor="middle">276</text>
+      <text x="120" y="102" font-size="11.5" fill="#9a3412" text-anchor="middle">negative pre-trial publicity</text>
+      <text x="120" y="124" font-size="11.5" fill="#9a3412" text-anchor="middle">→ 138 collaborative + 138 nominal</text>
+
+      <rect x="240" y="26" width="200" height="120" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+      <text x="340" y="54" font-size="14" font-weight="700" fill="#1e3a8a" text-anchor="middle">Nominal — exposed</text>
+      <text x="340" y="78" font-size="26" font-weight="800" fill="#2563eb" text-anchor="middle">140</text>
+      <text x="340" y="102" font-size="11.5" fill="#1e40af" text-anchor="middle">negative pre-trial publicity</text>
+      <text x="340" y="124" font-size="11.5" fill="#1e40af" text-anchor="middle">judge alone, no discussion</text>
+
+      <rect x="460" y="26" width="200" height="120" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+      <text x="560" y="54" font-size="14" font-weight="700" fill="#14532d" text-anchor="middle">Nominal — non-exposed</text>
+      <text x="560" y="78" font-size="26" font-weight="800" fill="#16a34a" text-anchor="middle">142</text>
+      <text x="560" y="102" font-size="11.5" fill="#166534" text-anchor="middle">unrelated crime articles</text>
+      <text x="560" y="124" font-size="11.5" fill="#166534" text-anchor="middle">the control group</text>
+
+      <text x="340" y="186" font-size="12" fill="#475569" text-anchor="middle">Exposed vs non-exposed tests the effect of the publicity itself.</text>
+      <text x="340" y="208" font-size="11" fill="#7c3aed" text-anchor="middle">中文：上排是「读没读负面新闻」的对比，协作条件在第二阶段再拆成讨论组与单独组。</text>
+    </svg>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Quick check<span class="xp-badge">Use the diagram</span></h4>
+    <p class="xp-intro">Which group was the control group?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="condAns(this,'a')">The 276 in the collaborating condition</button>
+      <button class="q-option" onclick="condAns(this,'b')">The 140 nominal exposed</button>
+      <button class="q-option" onclick="condAns(this,'c')">The 142 nominal non-exposed</button>
+    </div>
+    <div class="xp-result" id="res-cond"></div>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Phase One — Planting the News</h2>
+
+  <p>Sessions of <strong>16 or fewer</strong> participants. They were told a <strong>cover story</strong>: this is a two-phase study about <em>“the stability of emotional reactions to different sources of information”</em> — so nobody guessed it was about jury decisions.</p>
+
+  <p>Everyone filled in a <strong>personality test</strong> and a questionnaire (age, sex, ethnicity), then received a packet of articles:</p>
+
+  <table>
+    <tr><th style="width:50%;">Exposed groups</th><th>Non-exposed group</th></tr>
+    <tr><td><strong>Nine</strong> edited news articles about the <strong>NJ v Bias</strong> murder investigation and trial (from the <em>Morning Call</em> online newspaper) — including facts <strong>never presented at trial</strong></td><td>Nine articles about an <strong>unrelated</strong> crime — a woman accused of <strong>embezzling child support funds</strong></td></tr>
+  </table>
+
+  <div class="green-box">
+    <h4>Facts planted only in the articles (never in the trial)</h4>
+    <ul>
+      <li>Daniel Bias had a <strong>bad temper</strong></li>
+      <li>Lise Bias's body was found in the <strong>doorway</strong> of the bedroom</li>
+      <li>Lise <strong>did not know how to use guns</strong> and disliked them</li>
+      <li>Daniel had wanted Lise to <strong>quit her job and start a family</strong></li>
+    </ul>
+  </div>
+
+  <p>Both sets of articles were <strong>matched for length</strong> — about ten pages in total. Afterwards: <strong>15 minutes</strong> to recall as much as possible and rate their emotional response.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么文章要与庭审「不重合」？</strong><br>
+    文章里故意放了一些<strong>法庭上不会出现的信息</strong>（坏脾气、不会用枪……）。如果被试在裁决时「想起」这些信息，它们只可能来自新闻 —— 这样就能用来源监测测验精确地抓到<strong>「把新闻记成证据」</strong>的瞬间。
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Phase Two — The Trial</h2>
+
+  <p><strong>Four to seven days</strong> later, participants returned and watched a <strong>30-minute video</strong> of a real trial: <strong>NJ v Bias</strong> — a man accused of murdering his wife, pleading <strong>not guilty</strong> (claiming accidental self-shooting). His guilt was <strong>not clear</strong>.</p>
+
+  <p>Just like a real trial, they were told to <strong>ignore anything they had read before</strong> and judge only on the trial evidence.</p>
+
+  <div class="green-box">
+    <h4>Facts presented only in the trial（只在庭审中出现）</h4>
+    <ul>
+      <li>Detective John Flynn <strong>failed to do any fingerprint testing</strong> on the weapon</li>
+      <li>Daniel had his hand on his wife's hand <strong>when the weapon went off</strong></li>
+      <li>Lise was standing <strong>by the mirror</strong> when the weapon went off</li>
+      <li>That day they had argued about a <strong>piece of jewellery</strong></li>
+    </ul>
+  </div>
+
+  <p>After the video, each participant gave:</p>
+  <table>
+    <tr><th>Measure</th><th>Scale</th></tr>
+    <tr><td>Verdict</td><td><strong>guilty / not guilty</strong></td></tr>
+    <tr><td>Rating of guilt</td><td><strong>1–7</strong> (1 = certain not guilty, 7 = certain guilty)</td></tr>
+    <tr><td>Sentence</td><td><strong>30–45 years</strong> (New Jersey guidelines)</td></tr>
+  </table>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Deliberate or Recall</h2>
+
+  <table>
+    <tr><th style="width:50%;">Collaborating jurors</th><th>Nominal jurors</th></tr>
+    <tr><td><strong>30 minutes</strong> to deliberate and reach a <strong>unanimous</strong> group verdict (guilty / not guilty / <strong>hung</strong>)</td><td>Taken to a different room. <strong>15 minutes</strong> recalling trial facts, <strong>10 minutes</strong> indicating which facts most influenced their verdict; then the same verdict form (no hung option)</td></tr>
+  </table>
+
+  <div class="keyterm-box">
+    <div class="kt-term">source monitoring test（来源监测测验）</div>
+    A test designed to see whether a person can accurately <strong>attribute the original source</strong> of information — here: did each fact come from the <strong>articles</strong>, the <strong>trial</strong>, or <strong>both</strong>? Participants also rated their <strong>confidence</strong> in each answer.</div>
+
+  <p>Finally everyone gave an <strong>individual verdict</strong>, guilt rating and sentence once more, rated the <strong>defendant's credibility</strong> (“How honest did the defendant appear to be?”), and answered a <strong>debrief questionnaire</strong> (did you believe the cover story?).</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Timeline: phase one articles and recall, four to seven days, phase two trial video, verdicts, deliberation or recall, source monitoring test">
+      <rect x="20" y="40" width="150" height="72" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+      <text x="95" y="66" font-size="12.5" font-weight="700" fill="#7c2d12" text-anchor="middle">Phase 1</text>
+      <text x="95" y="86" font-size="10.5" fill="#9a3412" text-anchor="middle">read articles</text>
+      <text x="95" y="102" font-size="10.5" fill="#9a3412" text-anchor="middle">15 min recall + emotion</text>
+
+      <line x1="170" y1="76" x2="212" y2="76" stroke="#94a3b8" stroke-width="2"/>
+      <polygon points="212,70 212,82 224,76" fill="#94a3b8"/>
+      <text x="198" y="62" font-size="10" fill="#64748b" text-anchor="middle">4–7 days</text>
+
+      <rect x="226" y="40" width="150" height="72" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8"/>
+      <text x="301" y="66" font-size="12.5" font-weight="700" fill="#1e3a8a" text-anchor="middle">Phase 2</text>
+      <text x="301" y="86" font-size="10.5" fill="#1e40af" text-anchor="middle">watch 30-min trial video</text>
+      <text x="301" y="102" font-size="10.5" fill="#1e40af" text-anchor="middle">individual verdict first</text>
+
+      <line x1="376" y1="76" x2="418" y2="76" stroke="#94a3b8" stroke-width="2"/>
+      <polygon points="418,70 418,82 430,76" fill="#94a3b8"/>
+
+      <rect x="432" y="40" width="110" height="72" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+      <text x="487" y="66" font-size="12.5" font-weight="700" fill="#14532d" text-anchor="middle">Discuss</text>
+      <text x="487" y="86" font-size="10.5" fill="#166534" text-anchor="middle">collaborative: 30 min</text>
+      <text x="487" y="102" font-size="10.5" fill="#166534" text-anchor="middle">nominal: recall 15 min</text>
+
+      <line x1="542" y1="76" x2="554" y2="76" stroke="#94a3b8" stroke-width="2"/>
+      <polygon points="554,70 554,82 566,76" fill="#94a3b8"/>
+
+      <rect x="568" y="40" width="92" height="72" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.8"/>
+      <text x="614" y="66" font-size="12.5" font-weight="700" fill="#4c1d95" text-anchor="middle">Test</text>
+      <text x="614" y="86" font-size="10.5" fill="#5b21b6" text-anchor="middle">source monitoring</text>
+      <text x="614" y="102" font-size="10.5" fill="#5b21b6" text-anchor="middle">+ final verdicts</text>
+
+      <text x="340" y="156" font-size="11.5" fill="#475569" text-anchor="middle">The key measure is the last box: where did each memory actually come from?</text>
+      <text x="340" y="178" font-size="11" fill="#7c3aed" text-anchor="middle">中文：最关键的是紫色框 —— 每条信息到底来自新闻还是法庭。</text>
+    </svg>
+  </div>
+</section>
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Results — The Verdicts</h2>
+
+  <p>Table 12.3 shows guilty verdicts <strong>before</strong> deliberation/recall. Read the pattern before the numbers:</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Percentage of guilty verdicts: collaborative exposed 73, collaborative non-exposed 41, nominal exposed 65, nominal non-exposed 37">
+      <line x1="70" y1="220" x2="640" y2="220" stroke="#334155" stroke-width="1.6"/>
+
+      <rect x="95"  y="44"  width="90" height="176" fill="#ea580c" opacity="0.85"/>
+      <text x="140" y="36"  font-size="15" font-weight="800" fill="#7c2d12" text-anchor="middle">73%</text>
+      <text x="140" y="240" font-size="10.5" fill="#475569" text-anchor="middle">Collaborative</text>
+      <text x="140" y="256" font-size="10.5" font-weight="700" fill="#7c2d12" text-anchor="middle">EXPOSED</text>
+
+      <rect x="225" y="109" width="90" height="111" fill="#94a3b8"/>
+      <text x="270" y="101" font-size="15" font-weight="800" fill="#334155" text-anchor="middle">41%</text>
+      <text x="270" y="240" font-size="10.5" fill="#475569" text-anchor="middle">Collaborative</text>
+      <text x="270" y="256" font-size="10.5" fill="#475569" text-anchor="middle">non-exposed</text>
+
+      <rect x="355" y="44"  width="90" height="176" x="355" y="44" fill="#ea580c" opacity="0.65"/>
+      <rect x="355" y="44"  width="90" height="176" fill="#ea580c" opacity="0.65"/>
+      <text x="400" y="36"  font-size="15" font-weight="800" fill="#7c2d12" text-anchor="middle">65%</text>
+      <text x="400" y="240" font-size="10.5" fill="#475569" text-anchor="middle">Nominal</text>
+      <text x="400" y="256" font-size="10.5" font-weight="700" fill="#7c2d12" text-anchor="middle">EXPOSED</text>
+
+      <rect x="485" y="120" width="90" height="100" fill="#94a3b8"/>
+      <text x="530" y="112" font-size="15" font-weight="800" fill="#334155" text-anchor="middle">37%</text>
+      <text x="530" y="240" font-size="10.5" fill="#475569" text-anchor="middle">Nominal</text>
+      <text x="530" y="256" font-size="10.5" fill="#475569" text-anchor="middle">non-exposed</text>
+
+      <text x="340" y="286" font-size="11" fill="#7c3aed" text-anchor="middle" transform="translate(0,-14)">中文：读到负面新闻的两组（橙色），判罪率分别高出对照组 32 和 28 个百分点。</text>
+    </svg>
+  </div>
+
+  <table>
+    <tr><th>Group</th><th>Not guilty</th><th>Guilty</th></tr>
+    <tr><td>Collaborative — exposed</td><td>27%</td><td><strong>73%</strong></td></tr>
+    <tr><td>Collaborative — not exposed</td><td>59%</td><td>41%</td></tr>
+    <tr><td>Nominal — exposed</td><td>35%</td><td><strong>65%</strong></td></tr>
+    <tr><td>Nominal — not exposed</td><td>63%</td><td>37%</td></tr>
+  </table>
+
+  <div class="green-box">
+    <h4>As predicted 预测成立</h4>
+    <p>Groups exposed to negative pre-trial publicity were <strong>significantly more likely to give a guilty verdict</strong>, gave significantly <strong>higher ratings of guilt</strong>, and gave <strong>longer sentences</strong> when voting guilty. All of this held true <strong>after</strong> deliberation and after the source monitoring test.</p>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Read the bars<span class="xp-badge">Data</span></h4>
+    <p class="xp-intro">How big was the publicity effect for collaborative groups?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="barAns(this,'a')">73% vs 41% — a 32-point jump</button>
+      <button class="q-option" onclick="barAns(this,'b')">27% vs 59% — a 32-point drop</button>
+      <button class="q-option" onclick="barAns(this,'c')">73% vs 73% — no effect</button>
+    </div>
+    <div class="xp-result" id="res-bar"></div>
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Results — Source Errors and Credibility</h2>
+
+  <div class="green-box">
+    <h4>Source monitoring errors 来源监测错误</h4>
+    <ul>
+      <li>Jurors exposed to negative pre-trial publicity made <strong>more source monitoring errors</strong> than those who read unrelated articles.</li>
+      <li>Exposed jurors misattributed article-only information to <strong>the trial, or to both</strong> — and were <strong>confident</strong> doing it.</li>
+      <li><strong>Collaborating</strong> jurors were more accurate than nominal jurors — and more confident in both accurate <em>and</em> inaccurate judgments for trial items.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：什么叫「把新闻记成证据」</strong><br>
+    「他脾气坏」这条信息<strong>法庭上从未出现</strong>。但暴露组的陪审员在测验里说：「这是法庭上听到的」。不仅记错了，还<strong>很有信心</strong>。新闻内容就这样伪装成证据，悄悄推动了有罪裁决。
+  </div>
+
+  <table>
+    <tr><th>Measure</th><th>Exposed</th><th>Non-exposed</th></tr>
+    <tr><td>Defendant credibility（可信度均值）</td><td><strong>40.83</strong> — less credible</td><td><strong>49.57</strong></td></tr>
+    <tr><td>Believed the cover story</td><td><strong>83%</strong></td><td><strong>85%</strong></td></tr>
+    <tr><td>Suspected the real aim</td><td><strong>35%</strong></td><td><strong>18%</strong></td></tr>
+  </table>
+
+  <div class="green-box">
+    <h4>The mediation chain 中介链条</h4>
+    <p>Negative pre-trial publicity → <strong>source monitoring errors</strong> → higher <strong>guilt ratings</strong> → defendant seen as <strong>less credible</strong>. The effect of publicity on guilt <strong>was mediated by</strong> source monitoring errors.</p>
+  </div>
+
+  <p>One more twist: verdicts tended to become <strong>more lenient</strong> after deliberation — possibly because deliberation heightened the <strong>“reasonable doubt”</strong> standard, or because convicting feels more serious than acquitting.</p>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Conclusions</h2>
+
+  <div class="note-box">
+    <ul>
+      <li>Negative pre-trial publicity can <strong>bias a jury</strong> toward believing a defendant is more guilty — in guilty verdicts, guilt ratings <em>and</em> sentence length — and toward seeing the defendant as <strong>less credible</strong>.</li>
+      <li>Deliberation produced a <strong>shift in leniency</strong>.</li>
+      <li><strong>Collaborating</strong> jurors were more accurate in source monitoring — there is a <strong>benefit in using juries</strong>: jurors catch each other's memory errors.</li>
+      <li>But exposure to publicity led jurors to <strong>misattribute</strong> media information to trial evidence — media coverage may <strong>alter the memory of a trial</strong>, creating a negative impression of the defendant.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：三个结论一句话版</strong><br>
+    ① 负面审前报道<strong>推高判罪</strong>。② <strong>集体讨论</strong>能互相纠错（还更宽容）。③ 但一旦读新闻的人把新闻<strong>误存为证据</strong>，讨论也救不回来 —— 因为错的是记忆本身。
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Evaluating · Strengths</h2>
+
+  <div class="green-box">
+    <h4>Strength 1 — A real trial</h4>
+    <p>Mock jury research often uses a <strong>fictional trial summarised in a document</strong>. Ruva's participants watched <strong>real court proceedings</strong> of a real murder case — greater <strong>ecological validity</strong> than much research in this area.</p>
+  </div>
+
+  <div class="green-box">
+    <h4>Strength 2 — Standardised procedures and controls</h4>
+    <p>Articles matched for <strong>length</strong> (nine each, ten pages), the same <strong>30-minute video</strong> for everyone, fixed timing (15 / 30 / 10 minutes), random assignment. This makes the experiment <strong>replicable</strong> and the comparison <strong>fair</strong>.</p>
+  </div>
+
+  <div class="green-box">
+    <h4>Strength 3 — Deception was handled carefully</h4>
+    <p>The cover story was <strong>necessary</strong> (otherwise participants guess the aim). The vast majority believed it — <strong>83%</strong> exposed vs <strong>85%</strong> non-exposed. When asked directly, <strong>35%</strong> of exposed jurors suspected the real aim (vs <strong>18%</strong> non-exposed) — but analysis showed <strong>suspicious participants did not respond differently</strong>, so the suspicion did not distort the results.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么 83% / 85% 是个优点</strong><br>
+    用了欺骗（cover story），但大多数人<strong>信了</strong>，而且即使起疑的人作答也无差异 —— 说明欺骗<strong>没有污染数据</strong>。伦理与效度两头都交代了。
+  </div>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. Evaluating · Limitations</h2>
+
+  <div class="blue-box">
+    <h4>Limitation 1 — Only 30 minutes to deliberate</h4>
+    <p>Real jurors may deliberate <strong>as long as reasonably needed</strong>. The 30-minute limit means collaborating jurors' verdicts <strong>may not reflect verdicts given sufficient time</strong>.</p>
+  </div>
+
+  <div class="blue-box">
+    <h4>Limitation 2 — Not a real jury experience</h4>
+    <p>Participants never received a <strong>summons</strong>, went through <strong>juror selection</strong>, were <strong>sworn in</strong>, or heard the judge's instructions. They did not decide the fate of a <strong>real defendant</strong> — knowing their verdict would actually convict someone might have made them <strong>more lenient</strong>.</p>
+  </div>
+
+  <div class="blue-box">
+    <h4>Limitation 3 — Groups of four to six, not twelve</h4>
+    <p>Real juries have <strong>12 members</strong>. Smaller groups give <strong>less room for dissenting opinions</strong> to be heard — biased views can go <strong>unchallenged</strong>.</p>
+  </div>
+
+  <div class="blue-box">
+    <h4>Limitation 4 — The study underestimates real-life publicity</h4>
+    <p>Participants were told to <strong>dismiss specific articles</strong> they had read only days before. In real life, jurors absorb media coverage <strong>over weeks or months</strong> and would discriminate <strong>worse</strong> between coverage and trial evidence — real jurors could make <strong>more</strong> source errors and be <strong>more</strong> biased than this sample.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：记住「低估」这个词</strong><br>
+    实验室里的效果已经这么强；真实世界媒体浸泡<strong>更久更深</strong> —— 所以实验室结果是<strong>下限</strong>，不是上限。这是评价里最高级的一句话。
+  </div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="section" id="s14">
+  <h2>14. Wider Issues — Applying the Findings</h2>
+
+  <p>The research has <strong>significant practical application</strong>: if jury decisions are biased by negative pre-trial publicity, measures must go <strong>beyond instructing jurors to ignore media</strong> (which we know fails).</p>
+
+  <div class="green-box">
+    <h4>For high-profile cases（高关注度案件）</h4>
+    <ul>
+      <li><strong>Move the trial</strong> to a location with less publicity about the defendant（change of venue）</li>
+      <li>Or use a <strong>bench trial</strong> — the judge decides alone, no jury</li>
+    </ul>
+    <p>Either would <strong>reduce the chance of an unfair trial</strong>.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么这条应用「考试好写」</strong><br>
+    它直接回应了第 2 节的失效清单：口头指令没用 → 所以要<strong>物理隔离</strong>（换地方）或<strong>取消陪审团</strong>（bench trial）。研究结论与对策一一对应，逻辑闭环。
+  </div>
+</section>
+<!-- ============ 15 ============ -->
+<section class="section" id="s15">
+  <h2>15. Checkpoint</h2>
+
+  <div class="xp-block">
+    <h4>🎯 Ten quick questions<span class="xp-badge">From memory</span></h4>
+    <p class="xp-intro">Cover the sections above and answer. Click an answer to check it.</p>
+    <div class="xp-result" id="res-cp"></div>
+
+    <p class="xp-intro"><strong>1.</strong> How many participants took part?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="cpAns(this,'a')" data-ok="1">558</button>
+      <button class="q-option" onclick="cpAns(this,'b')">451</button>
+      <button class="q-option" onclick="cpAns(this,'c')">276</button>
+    </div>
+
+    <p class="xp-intro"><strong>2.</strong> How many were male?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="cpAns(this,'b')" data-ok="1">128</button>
+      <button class="q-option" onclick="cpAns(this,'a')">430</button>
+      <button class="q-option" onclick="cpAns(this,'c')">354</button>
+    </div>
+
+    <p class="xp-intro"><strong>3.</strong> How long between phase one and phase two?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="cpAns(this,'b')">24 hours</button>
+      <button class="q-option" onclick="cpAns(this,'a')" data-ok="1">4–7 days</button>
+      <button class="q-option" onclick="cpAns(this,'c')">2 weeks</button>
+    </div>
+
+    <p class="xp-intro"><strong>4.</strong> How long did the trial video last?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="cpAns(this,'b')">15 minutes</button>
+      <button class="q-option" onclick="cpAns(this,'c')">60 minutes</button>
+      <button class="q-option" onclick="cpAns(this,'a')" data-ok="1">30 minutes</button>
+    </div>
+
+    <p class="xp-intro"><strong>5.</strong> Which article set did the non-exposed group read?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="cpAns(this,'b')">Articles about a burglary</button>
+      <button class="q-option" onclick="cpAns(this,'a')" data-ok="1">Articles about a woman embezzling child support funds</button>
+      <button class="q-option" onclick="cpAns(this,'c')">No articles at all</button>
+    </div>
+
+    <p class="xp-intro"><strong>6.</strong> What percentage of collaborative exposed jurors voted guilty?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="cpAns(this,'b')">59%</button>
+      <button class="q-option" onclick="cpAns(this,'a')" data-ok="1">73%</button>
+      <button class="q-option" onclick="cpAns(this,'c')">65%</button>
+    </div>
+
+    <p class="xp-intro"><strong>7.</strong> Which group made MORE source monitoring errors?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="cpAns(this,'a')" data-ok="1">The exposed group</button>
+      <button class="q-option" onclick="cpAns(this,'b')">The non-exposed group</button>
+      <button class="q-option" onclick="cpAns(this,'c')">Both were equal</button>
+    </div>
+
+    <p class="xp-intro"><strong>8.</strong> Deliberation shifted verdicts toward…</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="cpAns(this,'b')">more guilty verdicts</button>
+      <button class="q-option" onclick="cpAns(this,'a')" data-ok="1">more leniency</button>
+      <button class="q-option" onclick="cpAns(this,'c')">more hung juries</button>
+    </div>
+
+    <p class="xp-intro"><strong>9.</strong> How long did collaborative jurors deliberate?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="cpAns(this,'b')">15 minutes</button>
+      <button class="q-option" onclick="cpAns(this,'c')">until the next day</button>
+      <button class="q-option" onclick="cpAns(this,'a')">30 minutes</button>
+    </div>
+
+    <p class="xp-intro"><strong>10.</strong> A real jury has how many members?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="cpAns(this,'b')">4–6</button>
+      <button class="q-option" onclick="cpAns(this,'a')" data-ok="1">12</button>
+      <button class="q-option" onclick="cpAns(this,'c')">9</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 16 ============ -->
+<section class="section" id="s16">
+  <h2>16. Exam Lab</h2>
+
+  <div class="syl-tags">
+    <span class="syl-tag">AO1 (4) + AO3 (4) = 8 marks</span>
+    <span class="syl-tag">Generic answers score 0</span>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ Question 1 — Describe<span class="xp-badge">AO1</span></h4>
+    <p class="xp-intro"><em>Describe the procedure of Ruva, McEvoy and Bryant (2007). (4)</em></p>
+    <p class="xp-intro">Frame your answer: <strong>sample → two phases → measures → deliberation/recall → source monitoring test</strong>.</p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am1')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am1">
+      <p>558 university students (mean age 20.6) were told a cover story about emotional reactions. In phase one they read either nine articles of negative pre-trial publicity about the NJ v Bias murder case or nine unrelated crime articles, matched for length, and recalled them for 15 minutes. Four to seven days later they watched a 30-minute video of the real trial and gave a verdict, a 1–7 guilt rating and a 30–45-year sentence. Collaborating jurors then deliberated for 30 minutes to reach a unanimous verdict, while nominal jurors recalled trial facts individually. Finally all completed a source monitoring test attributing each fact to the articles, the trial, or both.</p>
+    </div>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ Question 2 — Evaluate<span class="xp-badge">AO3</span></h4>
+    <p class="xp-intro"><em>Evaluate the study by Ruva, McEvoy and Bryant (2007). (4)</em></p>
+    <p class="xp-intro">Frame your answer: <strong>one strength + consequence, one limitation + consequence</strong> — all tied to this study.</p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am2')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am2">
+      <p>One strength is that participants watched a real murder trial rather than a fictional summary, so the findings have greater ecological validity than typical mock jury research. However, collaborating jurors only deliberated for 30 minutes in groups of four to six, unlike real juries of twelve that may deliberate for as long as needed, so the verdicts may not reflect what well-resourced deliberation would produce. The study may also underestimate the bias: real jurors absorb media coverage for weeks or months and would discriminate worse between coverage and trial evidence, so real-world effects could be even stronger.</p>
+    </div>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ Question 3 — Application<span class="xp-badge">AO2</span></h4>
+    <p class="xp-intro"><em>Suggest how the justice system could reduce the bias found by Ruva et al. (4)</em></p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am3')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am3">
+      <p>Since simply instructing jurors to ignore media coverage has been shown to be ineffective, high-profile cases could be moved to a location with less pre-trial publicity about the defendant, or tried as a bench trial where the judge decides alone. Either measure physically separates the decision-makers from the biased information, reducing the source monitoring errors that Ruva et al. showed mediate the link between publicity and guilty verdicts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 17 ============ -->
+<section class="section" id="s17">
+  <h2>17. Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="keyterm-box"><div class="kt-term">pre-trial publicity</div>News coverage of a case before the trial; may contain information never presented in court.</div>
+    <div class="keyterm-box"><div class="kt-term">source monitoring test</div>A test of whether a person can accurately attribute the original source of information.</div>
+    <div class="keyterm-box"><div class="kt-term">collaborating jurors</div>Group members who deliberate together and give one unanimous verdict.</div>
+    <div class="keyterm-box"><div class="kt-term">nominal jurors</div>Individuals judging alone; their answers are pooled without discussion.</div>
+    <div class="keyterm-box"><div class="kt-term">bench trial</div>Trial by judge only — no jury.</div>
+    <div class="keyterm-box"><div class="kt-term">voir dire</div>Questioning of prospective jurors to screen out bias; shown to be ineffective here.</div>
+    <div class="keyterm-box"><div class="kt-term">hung jury</div>A jury that cannot agree on a verdict.</div>
+    <div class="keyterm-box"><div class="kt-term">cover story</div>A false explanation of the study's aim, used here to hide the jury focus.</div>
+  </div>
+</section>
+
+<div class="footer-note">
+  6.2.3 Ruva, McEvoy and Bryant (2007) · Criminological Psychology · back: <a href="../6.2.2-bradbury-and-williams-2013/">← 6.2.2 Bradbury and Williams (2013)</a>
+</div>
+</main>
+
+<div id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  /* ---------- sidebar scroll spy ---------- */
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.parentElement.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  /* ---------- reveal helpers ---------- */
+  function show(id, html) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.innerHTML = html;
+    el.classList.add('show');
+  }
+  function verdictHTML(ok, msg) {
+    return '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + msg + '</p>';
+  }
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  /* ---------- s1 ---------- */
+  window.newsAns = function (choice) {
+    if (choice === 'a') {
+      show('res-news', verdictHTML(true, 'That is what most people believe — and exactly what this study tests. Judges give that instruction, yet exposed jurors still voted guilty far more often.'));
+    } else {
+      show('res-news', verdictHTML(true, 'That is the hunch this study confirms: the headline is already in memory, and it leaks into the verdict through source monitoring errors.'));
+    }
+  };
+
+  /* ---------- s5 ---------- */
+  var condFb = {
+    a: 'Not the control group — the collaborating condition (276) read the negative publicity.',
+    b: 'Not the control group — the 140 nominal exposed also read the negative publicity.',
+    c: 'Correct — the 142 non-exposed read unrelated crime articles, so any difference vs the exposed groups can be attributed to the publicity itself.'
+  };
+  window.condAns = function (btn, key) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(key === 'c' ? 'chosen-best' : 'chosen-bad');
+    show('res-cond', verdictHTML(key === 'c', condFb[key]));
+  };
+
+  /* ---------- s9 ---------- */
+  var barFb = {
+    a: 'Correct — 73% guilty vs 41% for collaborative non-exposed: a 32-percentage-point jump caused by the articles.',
+    b: 'You flipped the labels: 27% vs 59% are the NOT-guilty percentages of those same groups.',
+    c: 'Look again — exposed collaborative jurors voted guilty 73% of the time, non-exposed only 41%.'
+  };
+  window.barAns = function (btn, key) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(key === 'a' ? 'chosen-best' : 'chosen-bad');
+    show('res-bar', verdictHTML(key === 'a', barFb[key]));
+  };
+
+  /* ---------- s15 checkpoint ---------- */
+  var cpFb = {
+    a: '558 university students, mean age 20.6.',
+    b: '451 is not right — the sample was 558 (128 male, 430 female).',
+    c: '276 is the collaborating condition only — the full sample was 558.'
+  };
+  window.cpAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    show('res-cp', verdictHTML(ok, ok ? '' : 'Check the section referenced by the question and try again.'));
+  };
+})();
+</script>

@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.2.2 Bradbury and Williams (2013) — The Effects of Race on Juror Decision-Making</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.five-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+
+.mat2x2 { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 6px; margin: 14px 0; }
+.mat2x2 .mh { background: var(--primary); color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
+body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
+</style></head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic F · Criminological psychology — Contemporary study: Bradbury and Williams (2013)</span>
+  </div>
+  <span class="nav-pill">⚖️ Criminal Psychology</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="6.2.2-Bradbury-and-Williams-2013-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">6.2.2 · Contents</div>
+        <div class="sb-header-sub">Bradbury and Williams (2013)</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">Before we start</li>
+        <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+        <li class="sb-item"><a href="#s2">2. Race and Juries</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">The study</li>
+        <li class="sb-item"><a href="#s3">3. Aim and Hypotheses</a></li>
+        <li class="sb-item"><a href="#s4">4. The Sample</a></li>
+        <li class="sb-item"><a href="#s5">5. Variables</a></li>
+        <li class="sb-item"><a href="#s6">6. Logistic Regression</a></li>
+        <li class="sb-item"><a href="#s7">7. The Results</a></li>
+        <li class="sb-item"><a href="#s8">8. The Conclusion</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Evaluation</li>
+        <li class="sb-item"><a href="#s9">9. Strengths</a></li>
+        <li class="sb-item"><a href="#s10">10. Limitations</a></li>
+        <li class="sb-item"><a href="#s11">11. Socially Sensitive Research</a></li>
+        <li class="sb-item"><a href="#s12">12. Application and the Batson Rule</a></li>
+        <li class="sb-item"><a href="#s13">13. Match the Finding</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Exam</li>
+        <li class="sb-item"><a href="#s14">14. Checkpoint</a></li>
+        <li class="sb-item"><a href="#s15">15. Exam Lab</a></li>
+        <li class="sb-item"><a href="#s16">16. Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>6.2.2 BRADBURY AND WILLIAMS (2013)<br><span style="font-size:0.65em">Diversity and Citizen Participation: The Effects of Race on Juror Decision-Making</span></h1>
+  <div class="meta">
+    <span class="badge">Topic F · Criminological psychology</span>
+    <span class="badge">Studies: contemporary</span>
+    <span class="badge">Spec 6.2.2</span>
+  </div>
+  <div class="subtitle" style="margin-top:10px">Does the racial make-up of a jury change whether a Black defendant is convicted? Real trial data says it does.</div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this section is really asking</h4>
+  <ol>
+    <li><strong>Real trials, not mock juries.</strong> Secondary data from hung-jury cases in four American states, 2000–2001.</li>
+    <li><strong>Two hypotheses:</strong> more white jurors → more convictions of Black defendants; more Hispanic jurors → the same.</li>
+    <li><strong>The finding:</strong> mostly-white juries were <strong>significantly</strong> more likely to convict (p &lt; .01); the Hispanic effect was only marginal (p ≤ 0.1) — so H2 was not supported.</li>
+    <li><strong>Conclusion:</strong> jury selection can bias the outcome — which makes this a <strong>socially sensitive</strong> study with a real application.</li>
+  </ol>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started</h2>
+
+  <p>Two juries. The same charge, the same strength of evidence, a Black defendant in both. One jury is mostly white; the other is mostly Black. Do they reach the same verdict?</p>
+
+  <div class="xp-block">
+    <h4>🎯 Have a guess first <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro">If the racial make-up of a jury changes its verdicts, what does that imply about “a jury of your peers”?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="fairGuess(this,'same')">Juries judge evidence — make-up makes no difference</button>
+      <button class="q-option" onclick="fairGuess(this,'diff')">Make-up matters — the same evidence can get different verdicts</button>
+    </div>
+    <div class="xp-result" id="res-fair"></div>
+  </div>
+
+  <p>The textbook opens this study with a thought experiment: smartly dressed defendants seem to receive more innocent verdicts than scruffily dressed ones. Appearance, race, accent — all of them are <strong>not the evidence</strong>, and all of them may still matter. Bradbury and Williams tested the biggest one: <strong>race</strong>.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：这一问为什么重要</strong><br>
+    陪审团制度的前提是「由你的同侪（peers）审判」。如果陪审团的<strong>种族构成</strong>能改变判决，
+    那么「抽签抽出来的陪审团」就可能<strong>系统性地偏向某一方</strong>——这不是个别陪审员的偏见，
+    而是<strong>制度层面的公平问题</strong>。
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Race and Juries</h2>
+
+  <p>Race and crime is extensively researched in criminological psychology. This includes whether certain races are over-represented in crime statistics and prisons, and — more importantly for this study — whether different races are <strong>treated differently at various stages of the criminal justice system</strong>, particularly how they are perceived by jurors.</p>
+
+  <div class="blue-box">
+    <h4>The bias being tested: in-group / out-group</h4>
+    <p>Bradbury and Williams investigated <strong>in-group / out-group bias</strong> using verdicts from criminal cases across several states of America.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：in-group / out-group 怎么用在这里</strong><br>
+    <strong>in-group（内群体）</strong>＝「和我们相似的人」；<strong>out-group（外群体）</strong>＝「和我们不同的人」。<br>
+    心理学发现：人们更信任内群体、更容易对外群体成员做出负面判断。<br>
+    放到陪审团里：如果陪审团里<strong>几乎没有与被告同种族的陪审员</strong>，被告就成了「外群体成员」，
+    判罪的可能性可能因此升高。6.1.5 讲过的这个概念，在这里变成了可以测量的假设。
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. The Aim and the Two Hypotheses</h2>
+
+  <div class="keyterm-box">
+    <span class="kt">Aim：</span> to examine whether the <strong>racial make-up of a jury</strong> affects its decision-making.
+  </div>
+
+  <table>
+    <tr><th style="width:20%;">Hypothesis</th><th>What it predicts</th></tr>
+    <tr><td><strong>H1</strong></td><td>Black defendants will be more likely to be convicted by juries composed of a <strong>higher number of white jurors</strong>.</td></tr>
+    <tr><td><strong>H2</strong></td><td>Black defendants will be more likely to be convicted by juries composed of a <strong>higher number of Hispanic jurors</strong>.</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么要两个假设</strong><br>
+    如果只有白人陪审员多才判得多，那可能是<strong>白人 vs Black</strong> 的特殊关系。<br>
+    再加一个 Hispanic 假设，就能看清楚：<strong>是「任何非 Black 陪审员都会这样」</strong>，
+    还是<strong>只有某一族群才这样</strong>。结果会告诉你这两个假设命运不同 —— 一个被支持，一个没有。
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. The Sample</h2>
+
+  <p>Everything about this sample is unusual — in a good way. Learn each point as an evaluation card.</p>
+
+  <table>
+    <tr><th style="width:26%;">Feature</th><th>Detail</th></tr>
+    <tr><td>Type of data</td><td><strong>Secondary data</strong>, collected from an earlier study of <strong>real trials</strong>.</td></tr>
+    <tr><td>Where and when</td><td>Four American states — <strong>Arizona, California, New York and Washington, DC</strong> — held between <strong>2000 and 2001</strong>.</td></tr>
+    <tr><td>Which cases</td><td>Only cases with a <strong>“hung jury”</strong> — juries that could not agree on guilt.</td></tr>
+    <tr><td>What the data included</td><td>Demographic characteristics of the jury, jury selection and offence type.</td></tr>
+    <tr><td>Which defendants</td><td>Only trials with <strong>Black defendants</strong> were examined, because they made up <strong>60 per cent</strong> of the cases.</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么专挑 hung jury（僵局陪审团）</strong><br>
+    陪审团<strong>意见分裂到判不下来</strong>的案子，最有可能是「证据与偏见在拉锯」的案子——
+    恰好是<strong>种族构成可能起作用</strong>的地方。整场一边倒的案子，谁当陪审员结论都一样，测不出效应。<br>
+    代价是：这种案子在所有案件里<strong>很少见</strong>，所以后面评价里有一条「代表性」的批评就来自这里。
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. The Variables</h2>
+
+  <table>
+    <tr><th style="width:24%;">Variable</th><th>What it was</th></tr>
+    <tr><td><strong>Dependent variable</strong></td><td>Whether or not a trial resulted in a <strong>conviction</strong> (coded 1 = conviction, 0 = no conviction / hung jury).</td></tr>
+    <tr><td><strong>Independent variable</strong></td><td>The <strong>racial make-up of the jury</strong>: percentage of Black, white and Hispanic jurors.</td></tr>
+    <tr><td><strong>Seven control variables</strong></td><td>Quantity of evidence · strength of the case · length of the trial · length of jury deliberations · presence of written instructions to the jury · case type (violent or property offences) · lawyer type (public or private).</td></tr>
+  </table>
+
+  <div class="note-box">
+    <h4>Why seven control variables matter</h4>
+    <p>They measured the <strong>strength of the prosecution case</strong>, to make sure there was a sufficient case for the jury to decide on. Without them, a mostly-white jury convicting more often might simply mean those juries faced <strong>stronger cases</strong> — not bias.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：控制变量是在「堵别的解释」</strong><br>
+    真实庭审数据不像实验室能随机分组，所以「white 陪审多的案子判得多」可能有别的解释：
+    <strong>证据更足？审得更久？律师更强？</strong>这七个变量就是把这几条路<strong>逐个堵上</strong>，
+    让剩下的解释只剩「陪审团种族构成」。这和 6.2.1 里「知道真实车速」是同一种思路。
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Logistic Regression</h2>
+
+  <div class="keyterm-box">
+    <span class="kt">logistic regression（逻辑回归）：</span> a statistical analysis that examines the relationship between the <strong>dependent variable</strong> and the <strong>independent variables</strong> being investigated, and calculates the <strong>probability</strong> of them being related.
+  </div>
+
+  <p>The researchers undertook complex statistical analysis, including a logistic regression. The nature of this test helped them identify <strong>which juror characteristics may influence decision-making</strong>, and the effect of the percentage of Black, white and Hispanic jurors on the <strong>likelihood of conviction</strong>.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么用逻辑回归</strong><br>
+    因变量只有两个值（判罪 / 不判罪），不是连续数字。逻辑回归就是处理<strong>「是 / 否」结果</strong>的方法：
+    它输出的是「在其他条件相同时，陪审团构成每变一分，<strong>判罪的概率</strong>变多少」。<br>
+    「其他条件相同」正是靠上一页那七个控制变量实现的。
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flow of the analysis: secondary data of hung jury trials, variables, logistic regression, likelihood of conviction">
+      <defs>
+        <marker id="ar622a" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#ea580c"/>
+        </marker>
+      </defs>
+
+      <rect x="30" y="60" width="150" height="90" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+      <text x="105" y="88" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">Secondary data</text>
+      <text x="105" y="108" font-size="10.5" fill="#64748b" text-anchor="middle">real trials · 4 states</text>
+      <text x="105" y="126" font-size="10.5" fill="#64748b" text-anchor="middle">hung juries only</text>
+
+      <line x1="184" y1="105" x2="222" y2="105" stroke="#ea580c" stroke-width="2" marker-end="url(#ar622a)"/>
+
+      <rect x="228" y="60" width="150" height="90" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+      <text x="303" y="88" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">Variables</text>
+      <text x="303" y="108" font-size="10.5" fill="#64748b" text-anchor="middle">IV: jury racial make-up</text>
+      <text x="303" y="126" font-size="10.5" fill="#64748b" text-anchor="middle">7 control variables</text>
+
+      <line x1="382" y1="105" x2="420" y2="105" stroke="#ea580c" stroke-width="2" marker-end="url(#ar622a)"/>
+
+      <rect x="426" y="60" width="110" height="90" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+      <text x="481" y="88" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">Logistic</text>
+      <text x="481" y="106" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">regression</text>
+      <text x="481" y="128" font-size="10.5" fill="#64748b" text-anchor="middle">逻辑回归</text>
+
+      <line x1="540" y1="105" x2="578" y2="105" stroke="#ea580c" stroke-width="2" marker-end="url(#ar622a)"/>
+
+      <rect x="582" y="60" width="78" height="90" rx="9" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="621" y="92" font-size="11.5" font-weight="700" fill="#334155" text-anchor="middle">P</text>
+      <text x="621" y="110" font-size="11.5" font-weight="700" fill="#334155" text-anchor="middle">(convict)</text>
+      <text x="621" y="130" font-size="10" fill="#64748b" text-anchor="middle">判罪概率</text>
+
+      <text x="340" y="200" font-size="11" fill="#475569" text-anchor="middle">Because the outcome is yes/no (convicted or not), the analysis must estimate a probability — not a simple average.</text>
+      <text x="340" y="222" font-size="10.5" fill="#94a3b8" text-anchor="middle">结果是“是否判罪”，所以分析的输出是概率。</text>
+    </svg>
+    <div class="figure-caption">Figure 1 — The route from real trial records to a probability of conviction.</div>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. The Results</h2>
+
+  <p>Five findings. The first two are the hypotheses; the last two are the offence-type effects.</p>
+
+  <table>
+    <tr><th style="width:52%;">Finding</th><th>Statistical status</th></tr>
+    <tr><td>Black defendants are <strong>less likely to be convicted</strong> by juries composed mostly of <strong>Black</strong> jurors (than Hispanic or white jurors).</td><td>Supports the general effect</td></tr>
+    <tr><td>Juries comprising mostly <strong>white</strong> jurors are <strong>more likely to convict</strong> Black defendants.</td><td><strong>Significant at p &lt; .01</strong> — highly significant. <strong>H1 supported.</strong></td></tr>
+    <tr><td>Juries composed of mostly <strong>Hispanic</strong> jurors were more likely to convict Black defendants.</td><td>Only significant at <strong>p ≤ 0.1</strong> — <strong>H2 cannot be supported.</strong></td></tr>
+    <tr><td>Juries, regardless of composition, were <strong>less likely to convict</strong> a Black defendant for a <strong>violent crime</strong> than a substance-related offence.</td><td>Clear effect</td></tr>
+    <tr><td>Juries were also less likely to convict for a <strong>property offence</strong> than a substance-related offence.</td><td>Only significant at <strong>p ≤ 0.1</strong></td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：p &lt; .01 与 p ≤ 0.1 的差别</strong><br>
+    <strong>p &lt; .01</strong>：由巧合造成这种差距的概率不到 1% —— 非常可信，H1 成立。<br>
+    <strong>p ≤ 0.1</strong>：巧合的概率还有 10% —— 在心理学惯例里<strong>不够显著</strong>，所以 H2 <strong>不能被支持</strong>。<br>
+    考试陷阱：Hispanic 组的<strong>方向</strong>和 H1 一样（也判得多），但<strong>统计上撑不住</strong>——
+    所以答案要写「方向一致但未达显著」，不能写「H2 被证明」。
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Direction of effect by jury composition: mostly Black jurors less likely to convict, mostly white jurors more likely at p < .01, mostly Hispanic jurors weakly more likely at p ≤ 0.1">
+      <!-- top boxes -->
+      <rect x="20" y="26" width="200" height="58" rx="10" fill="#f1f5f9" stroke="#334155" stroke-width="1.6"/>
+      <text x="120" y="50" font-size="13.5" font-weight="700" fill="#0f172a" text-anchor="middle">Jury mostly BLACK</text>
+      <text x="120" y="70" font-size="11" fill="#475569" text-anchor="middle"> defendant: Black</text>
+
+      <rect x="240" y="26" width="200" height="58" rx="10" fill="#f1f5f9" stroke="#334155" stroke-width="1.6"/>
+      <text x="340" y="50" font-size="13.5" font-weight="700" fill="#0f172a" text-anchor="middle">Jury mostly WHITE</text>
+      <text x="340" y="70" font-size="11" fill="#475569" text-anchor="middle"> defendant: Black</text>
+
+      <rect x="460" y="26" width="200" height="58" rx="10" fill="#f1f5f9" stroke="#334155" stroke-width="1.6"/>
+      <text x="560" y="50" font-size="13.5" font-weight="700" fill="#0f172a" text-anchor="middle">Jury mostly HISPANIC</text>
+      <text x="560" y="70" font-size="11" fill="#475569" text-anchor="middle"> defendant: Black</text>
+
+      <!-- arrows -->
+      <line x1="120" y1="84" x2="120" y2="132" stroke="#16a34a" stroke-width="2.4"/>
+      <polygon points="112,132 128,132 120,146" fill="#16a34a"/>
+
+      <line x1="340" y1="84" x2="340" y2="132" stroke="#dc2626" stroke-width="2.4"/>
+      <polygon points="332,132 348,132 340,146" fill="#dc2626"/>
+
+      <line x1="560" y1="84" x2="560" y2="132" stroke="#d97706" stroke-width="2.4" stroke-dasharray="6 4"/>
+      <polygon points="552,132 568,132 560,146" fill="#d97706"/>
+
+      <!-- verdict boxes -->
+      <rect x="20" y="150" width="200" height="76" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6"/>
+      <text x="120" y="176" font-size="12.5" font-weight="700" fill="#14532d" text-anchor="middle">LESS likely to convict</text>
+      <text x="120" y="196" font-size="11" fill="#166534" text-anchor="middle">than Hispanic or white jurors</text>
+
+      <rect x="240" y="150" width="200" height="76" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.6"/>
+      <text x="340" y="174" font-size="12.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">MORE likely to convict</text>
+      <text x="340" y="193" font-size="11" fill="#991b1b" text-anchor="middle">p &lt; .01 — highly significant</text>
+      <text x="340" y="211" font-size="11" font-weight="700" fill="#b91c1c" text-anchor="middle">H1 supported</text>
+
+      <rect x="460" y="150" width="200" height="76" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.6"/>
+      <text x="560" y="174" font-size="12.5" font-weight="700" fill="#78350f" text-anchor="middle">Also more likely — but weak</text>
+      <text x="560" y="193" font-size="11" fill="#92400e" text-anchor="middle">p ≤ 0.1 — not significant</text>
+      <text x="560" y="211" font-size="11" font-weight="700" fill="#b45309" text-anchor="middle">H2 cannot be supported</text>
+
+      <!-- caption -->
+      <text x="340" y="258" font-size="11.5" fill="#475569" text-anchor="middle">Direction of effect only — the textbook gives no simple percentages for these groups.</text>
+      <text x="340" y="278" font-size="11" fill="#7c3aed" text-anchor="middle">虚线 = 方向存在但统计上不显著；实线 = 达到显著水平。</text>
+    </svg>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Quick check<span class="xp-badge">Use the table</span></h4>
+    <p class="xp-intro">Which hypothesis was supported?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="hypAns(this,'a')">H1 — the white juror hypothesis</button>
+      <button class="q-option" onclick="hypAns(this,'b')">H2 — the Hispanic juror hypothesis</button>
+      <button class="q-option" onclick="hypAns(this,'c')">Both</button>
+    </div>
+    <div class="xp-result" id="res-hyp"></div>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. The Conclusion</h2>
+
+  <div class="green-box">
+    <h4>What Bradbury and Williams concluded</h4>
+    <p><strong>Diversity within the jury pool is likely to have an impact on the outcome of jury decision-making.</strong> Black defendants are more likely to be convicted if the percentage of other-ethnicity jurors is higher than the percentage of Black jurors.</p>
+    <p style="margin:6px 0 0">The <strong>selection process of jury members can therefore bias the outcome of the trial</strong>.</p>
+  </div>
+
+  <div class="warn-box">
+    <h4>The substance-crime question</h4>
+    <p>The finding that Black defendants were more likely to be convicted of <strong>substance crimes</strong> raises the issue of whether the criminal justice system is <strong>tougher on Black defendants for substance-related offences generally</strong>.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：结论为什么指向「陪审团的选拔」</strong><br>
+    陪审员是随机抽的，但如果<strong>抽出来的构成</strong>本身就能预测判决结果，
+    那么「随机」并不等于「公平」。结论落在<strong>制度层面</strong>：陪审团遴选过程（selection process）
+    可能<strong>系统性地影响审判结果</strong>。这就是为什么下一节说它是「社会敏感研究」。
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Evaluating · Strengths</h2>
+
+  <div class="summary-card-header" onclick="togglePanel(this,'st1')">
+    <span class="arrow">▶</span> 1. Real trial data — more valid than mock juries
+  </div>
+  <div class="summary-card-body" id="st1">
+    <ul>
+      <li>The data represented characteristics of <strong>actual jury trials</strong>, as opposed to mock juries.</li>
+      <li>This provides more <strong>valid data regarding actual jury decision-making</strong> than an experiment in a laboratory or a mock jury study — the findings can be considered more <strong>ecologically valid</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="summary-card-header" onclick="togglePanel(this,'st2')" style="margin-top:14px;">
+    <span class="arrow">▶</span> 2. Seven control variables
+  </div>
+  <div class="summary-card-body" id="st2">
+    <ul>
+      <li>The control variables ensured they were truly investigating the <strong>racial composition of the jury</strong> rather than other factors, such as quantity of evidence and type of crime — factors known to influence jury decision-making.</li>
+      <li>This ensures a level of <strong>validity</strong>, and the findings can be confidently applied to the area of <strong>race and jury decision-making</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="summary-card-header" onclick="togglePanel(this,'st3')" style="margin-top:14px;">
+    <span class="arrow">▶</span> 3. Supported by other research — reliability
+  </div>
+  <div class="summary-card-body" id="st3">
+    <ul>
+      <li>As real trial data was used, it is <strong>not possible to replicate</strong> the court case to see if the verdicts would be the same again.</li>
+      <li>However, other research has shown <strong>similar findings</strong>: <strong>Anwar et al. (2012)</strong> found that Black defendants were convicted <strong>81 per cent</strong> of the time by white jurors, which supports Bradbury and Williams — meaning their results could be considered more <strong>reliable</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="summary-card-header" onclick="togglePanel(this,'st4')" style="margin-top:14px;">
+    <span class="arrow">▶</span> 4. Coding gives objective quantitative data
+  </div>
+  <div class="summary-card-body" id="st4">
+    <ul>
+      <li>Coding procedures quantified the dependent and control variables (e.g. violent crime: 0 = no, 1 = yes; conviction: yes / no).</li>
+      <li>This provides <strong>quantitative data</strong> which is more <strong>objective</strong> and less open to interpretation by the researchers.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：四条 strength 的分工</strong><br>
+    <strong>真实庭审</strong>管生态效度；<strong>七个控制变量</strong>管内部效度；<strong>Anwar 81%</strong> 在不能复制的条件下补可靠性；
+    <strong>编码</strong>管客观性。四个角都占住了 —— 写评价时挑<strong>两条</strong>展开即可。
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Evaluating · Limitations</h2>
+
+  <div class="warn-box">
+    <h4>1. Not everything could be controlled</h4>
+    <p>It is not possible to control for <strong>all variables</strong>. Jurors' own <strong>personal experiences of crime</strong>, other <strong>personal biases</strong>, and any <strong>pre-trial publicity</strong> may have influenced the decision — these could not be controlled because the trials were real. They may have had an <strong>unknown impact</strong>.</p>
+  </div>
+
+  <div class="warn-box">
+    <h4>2. Representativeness — three layers</h4>
+    <ul class="tight">
+      <li><strong>Hung jury cases are rare</strong>, so it is difficult to be sure the findings represent all trials; the cases may reflect an unknown uniqueness of the trial and the jurors.</li>
+      <li><strong>America only</strong> — other countries have different judicial processes, so it may not represent defendants across the world.</li>
+      <li><strong>Black defendants only</strong> — the findings may not apply to cases where the defendant belongs to a different race. Further research into other ethnic groups is required before the effect can be said to hold across races.</li>
+    </ul>
+  </div>
+
+  <div class="warn-box">
+    <h4>3. The coding was too simple for complex trials</h4>
+    <p>The dependent measure may have overlooked that many trials are <strong>more complex</strong>: defendants can be charged with <strong>multiple crimes</strong>, convicted of some and acquitted of others — perhaps the more serious offences. This would have been <strong>overlooked</strong>, so variations in the data may have been omitted.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：三条 limitation 的共同点</strong><br>
+    都是<strong>「真实数据」的代价</strong>：真实 → 不能控制一切、不能复制、案子特殊、编码只能简化。<br>
+    对照记忆：mock jury 研究<strong>好控制但假</strong>；真实庭审<strong>真但难控制</strong>。
+    这个 trade-off（取舍）写进 8 分题就是一条完整的 AO3。
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Wider Issues · Socially Sensitive Research</h2>
+
+  <p>Because this study focuses on <strong>defendant and juror race</strong>, it is considered <strong>socially sensitive</strong>.</p>
+
+  <div class="warn-box">
+    <h4>What could go wrong</h4>
+    <ul class="tight">
+      <li>It could potentially <strong>reinforce stereotypical (false) views</strong> about certain ethnicities being more likely to be involved in crime, or in specific crimes such as substance-related offences.</li>
+      <li>These stereotypes may extend into the <strong>public domain</strong> and cause <strong>tension between different ethnic groups</strong>, or be used to <strong>label groups</strong> as more likely to engage in criminal activity.</li>
+      <li>It could also be used to claim that certain ethnic groups are <strong>racist in their decision-making</strong> — which has negative implications for the populations represented in this way.</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：「社会敏感」是什么意思</strong><br>
+    不是说研究<strong>做错了</strong>，而是研究结果<strong>可能被误用</strong>：
+    「白人陪审团判得多」这种结论，可能被拿去给某个族群<strong>贴标签</strong>、制造群体对立。<br>
+    考试写法：承认风险 + 说明<strong>为什么仍然值得做</strong>（不研究它，司法系统里的偏见就永远不会被发现和纠正）。
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Application — and the Batson Rule</h2>
+
+  <div class="green-box">
+    <h4>What the research suggests</h4>
+    <p>An important application: it can help inform the way <strong>juries are selected</strong>, to ensure a <strong>mix of different ethnicities</strong> is used to promote fairness in the legal process.</p>
+  </div>
+
+  <div class="warn-box">
+    <h4>Why it is difficult in practice</h4>
+    <p>In practice this may be <strong>more difficult and also not permitted</strong>. According to the <strong>Batson rule</strong> in the USA, the court is <strong>not allowed to use a peremptory challenge to exclude a jury member because of their race</strong>.</p>
+  </div>
+
+  <div class="keyterm-box">
+    <span class="kt">peremptory challenge（无因回避）：</span> a lawyer's right to reject a potential juror without giving a reason. The Batson rule forbids using this right to exclude jurors <strong>on the basis of race</strong>.
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：研究建议与法律规则的冲突</strong><br>
+    研究说「陪审团构成影响判决 → 那就选得多样化一点」；但法律说「<strong>不能按种族挑选或排除陪审员</strong>」。<br>
+    这不是矛盾，而是<strong>底线不同</strong>：制度不能按种族操纵陪审团，但可以在<strong>遴选池</strong>层面保证来源多元。
+    考试里点出这个冲突，就是一条成熟的 AO3。
+  </div>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. Match the Finding</h2>
+
+  <p>Three quick checks. If these are automatic, the describe questions are safe.</p>
+
+  <div class="xp-block">
+    <h4>🎯 Which is correct?<span class="xp-badge">Key details</span></h4>
+
+    <p class="xp-intro"><strong>The four states in the sample were…</strong></p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="stateAns(this,'res-state','ok')">Arizona, California, New York, Washington, DC</button>
+      <button class="q-option" onclick="stateAns(this,'res-state','no')">Texas, Florida, Ohio, Nevada</button>
+    </div>
+    <div class="xp-result" id="res-state"></div>
+
+    <p class="xp-intro"><strong>The cases studied were ones with…</strong></p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="stateAns(this,'res-hung','no')">the strongest evidence available</button>
+      <button class="q-option" onclick="stateAns(this,'res-hung','ok')">a hung jury — where juries could not agree</button>
+    </div>
+    <div class="xp-result" id="res-hung"></div>
+
+    <p class="xp-intro"><strong>The statistical test used was…</strong></p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="stateAns(this,'res-test','no')">chi-square</button>
+      <button class="q-option" onclick="stateAns(this,'res-test','ok')">logistic regression</button>
+    </div>
+    <div class="xp-result" id="res-test"></div>
+  </div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="section" id="s14">
+  <h2>14. Checkpoint</h2>
+
+  <p>Eight questions covering aim, sample, results and evaluation.</p>
+
+  <div class="xp-block">
+    <h4>🎯 Eight quick questions <span class="xp-badge">No notes</span></h4>
+
+    <p class="xp-intro"><strong>Q1.</strong> Bradbury and Williams investigated which type of bias?</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q1" value="a"> confirmation bias</label>
+      <label class="q-option"><input type="radio" name="q1" value="b"> in-group / out-group bias</label>
+      <label class="q-option"><input type="radio" name="q1" value="c"> social loafing</label>
+    </div>
+
+    <p class="xp-intro"><strong>Q2.</strong> H1 predicted that Black defendants would be more likely to be convicted by juries with more…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q2" value="a"> white jurors</label>
+      <label class="q-option"><input type="radio" name="q2" value="b"> Black jurors</label>
+      <label class="q-option"><input type="radio" name="q2" value="c"> female jurors</label>
+    </div>
+
+    <p class="xp-intro"><strong>Q3.</strong> The data came from real trials held between…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q3" value="a"> 1990 and 1991</label>
+      <label class="q-option"><input type="radio" name="q3" value="b"> 2000 and 2001</label>
+      <label class="q-option"><input type="radio" name="q3" value="c"> 2010 and 2011</label>
+    </div>
+
+    <p class="xp-intro"><strong>Q4.</strong> Only trials with Black defendants were examined because they made up…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q4" value="a"> 30 per cent of the cases</label>
+      <label class="q-option"><input type="radio" name="q4" value="b"> 60 per cent of the cases</label>
+      <label class="q-option"><input type="radio" name="q4" value="c"> 90 per cent of the cases</label>
+    </div>
+
+    <p class="xp-intro"><strong>Q5.</strong> The finding for mostly-white juries was significant at…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q5" value="a"> p &lt; .01</label>
+      <label class="q-option"><input type="radio" name="q5" value="b"> p ≤ 0.1</label>
+      <label class="q-option"><input type="radio" name="q5" value="c"> p = .05 exactly</label>
+    </div>
+
+    <p class="xp-intro"><strong>Q6.</strong> Why could H2 not be supported?</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q6" value="a"> The Hispanic effect was only significant at p ≤ 0.1</label>
+      <label class="q-option"><input type="radio" name="q6" value="b"> Hispanic jurors never convicted Black defendants</label>
+      <label class="q-option"><input type="radio" name="q6" value="c"> The sample contained no Hispanic jurors</label>
+    </div>
+
+    <p class="xp-intro"><strong>Q7.</strong> Anwar et al. (2012) found Black defendants were convicted what percentage of the time by white jurors?</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q7" value="a"> 60 per cent</label>
+      <label class="q-option"><input type="radio" name="q7" value="b"> 71 per cent</label>
+      <label class="q-option"><input type="radio" name="q7" value="c"> 81 per cent</label>
+    </div>
+
+    <p class="xp-intro"><strong>Q8.</strong> The Batson rule says the court is not allowed to…</p>
+    <div class="xp-controls">
+      <label class="q-option"><input type="radio" name="q8" value="a"> use a peremptory challenge to exclude a juror because of race</label>
+      <label class="q-option"><input type="radio" name="q8" value="b"> seat more than 12 jurors</label>
+      <label class="q-option"><input type="radio" name="q8" value="c"> try a defendant twice for the same crime</label>
+    </div>
+
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="checkQuiz()">Mark my answers</button>
+    </div>
+    <div class="xp-result" id="quizResult"></div>
+  </div>
+</section>
+
+<!-- ============ 15 ============ -->
+<section class="section" id="s15">
+  <h2>15. Exam Lab</h2>
+
+  <p>As a contemporary study, this can be asked through its aim, sample, procedure, results, conclusions and evaluation. Two drills cover the most likely formats.</p>
+
+  <div class="exam-tip">
+    <strong>Drill 1 · describe the procedure.</strong> Learn it as four moves: secondary data → hung jury cases in four states, 2000–2001 → Black defendants only (60%) → logistic regression with seven control variables.
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Try it<span class="xp-badge">4 marks</span></h4>
+    <p class="xp-intro"><strong>Describe the procedure of Bradbury and Williams (2013).</strong> Write four sentences, one per move, then compare.</p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('pa1')">Show me a model answer</button>
+    </div>
+    <div class="xp-result" id="pa1">
+      <p>Secondary data was collected from an earlier study of <strong>real trials</strong> in four American states — Arizona, California, New York and Washington, DC — held between <strong>2000 and 2001</strong>. The cases chosen were ones with a <strong>hung jury</strong>, where juries could not agree on the verdict. Only trials with <strong>Black defendants</strong> were examined, because they made up 60 per cent of the cases. The dependent variable was whether the trial resulted in a conviction, the independent variable was the racial make-up of the jury, and the analysis — a <strong>logistic regression</strong> — included <strong>seven control variables</strong> measuring the strength of the prosecution case.</p>
+    </div>
+  </div>
+
+  <div class="exam-tip">
+    <strong>Drill 2 · evaluate with consequences.</strong> Pair each point with what it lets us conclude — or what it stops us concluding.
+  </div>
+
+  <table>
+    <tr><th style="width:38%;">Point</th><th>The consequence you must attach</th></tr>
+    <tr><td>Real trial data (ecological validity)</td><td>…so the findings are more valid for actual juries than mock jury studies — but the case cannot be replicated, so reliability rests on supporting research such as <strong>Anwar et al. (2012)</strong>.</td></tr>
+    <tr><td>Seven control variables</td><td>…so the findings can be confidently applied to race and jury decision-making — though <strong>not all</strong> variables could be controlled (personal biases, pre-trial publicity).</td></tr>
+    <tr><td>Hung jury cases only</td><td>…so it is difficult to be sure the findings represent <strong>all trials</strong>; they may reflect an unknown uniqueness of these cases.</td></tr>
+    <tr><td>Black defendants, America only</td><td>…so the findings may not apply to <strong>other races</strong> or <strong>other judicial systems</strong>; further research across ethnic groups is required.</td></tr>
+    <tr><td>Binary coding of the verdict</td><td>…objective quantitative data — but trials where defendants were convicted of <strong>some charges and acquitted of others</strong> were oversimplified.</td></tr>
+    <tr><td>Socially sensitive</td><td>…could reinforce stereotypes or be used to label ethnic groups — yet without such research, bias in the system would remain invisible.</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：评价题的「配对」写法</strong><br>
+    每条评价 = <strong>点 + 后果</strong>。左列是点，右列是它<strong>让结论变大还是变小</strong>。
+    考试时挑 2–3 对写成完整句子，比罗列五六条光杆名词高一个档。
+  </div>
+</section>
+
+<!-- ============ 16 ============ -->
+<section class="section" id="s16">
+  <h2>16. Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><div class="term">secondary data <span class="zh">二手数据</span></div><div class="def">Data collected earlier by other researchers and re-analysed here — real trial records rather than a new experiment.</div></div>
+    <div class="glossary-item"><div class="term">hung jury <span class="zh">僵局陪审团</span></div><div class="def">A jury that could not agree on guilt or innocence — the case type studied, where evidence and bias may be in balance.</div></div>
+    <div class="glossary-item"><div class="term">logistic regression <span class="zh">逻辑回归</span></div><div class="def">A statistical analysis examining the relationship between the dependent and independent variables and calculating the probability of them being related.</div></div>
+    <div class="glossary-item"><div class="term">in-group / out-group bias <span class="zh">内群体/外群体偏差</span></div><div class="def">Favouring people similar to oneself and judging out-group members more harshly — the bias tested through jury composition.</div></div>
+    <div class="glossary-item"><div class="term">control variable <span class="zh">控制变量</span></div><div class="def">Seven factors measured so other explanations (evidence strength, trial length, lawyer type) could be ruled out.</div></div>
+    <div class="glossary-item"><div class="term">statistical significance <span class="zh">统计显著性</span></div><div class="def">p &lt; .01 is highly significant; p ≤ 0.1 is too weak — which is why H2 was not supported.</div></div>
+    <div class="glossary-item"><div class="term">ecological validity <span class="zh">生态效度</span></div><div class="def">Real trial data reflects actual jury decision-making better than laboratory or mock jury studies.</div></div>
+    <div class="glossary-item"><div class="term">socially sensitive research <span class="zh">社会敏感研究</span></div><div class="def">Research whose findings could reinforce stereotypes or be misused — a key wider-issues debate for this study.</div></div>
+    <div class="glossary-item"><div class="term">peremptory challenge <span class="zh">无因回避</span></div><div class="def">A lawyer's right to reject a potential juror without giving a reason; the Batson rule forbids using it to exclude jurors by race.</div></div>
+    <div class="glossary-item"><div class="term">coding <span class="zh">编码</span></div><div class="def">Converting information into numbers (e.g. conviction = 1, none = 0), producing objective quantitative data.</div></div>
+    <div class="glossary-item"><div class="term">representativeness <span class="zh">代表性</span></div><div class="def">Whether the sample reflects the wider population — limited here by rare hung-jury cases, one country, and one defendant race.</div></div>
+    <div class="glossary-item"><div class="term">Anwar et al. (2012) <span class="zh">支持性研究</span></div><div class="def">Found Black defendants were convicted 81 per cent of the time by white jurors — supporting the reliability of Bradbury and Williams.</div></div>
+  </div>
+</section>
+
+<div class="footer-note">6.2.2 Bradbury and Williams (2013) · Criminological Psychology (Topic F) · next: <a href="../6.2.3-ruva-mcevoy-and-bryant-2007/">6.2.3 Ruva, McEvoy and Bryant (2007) →</a></div>
+  </main>
+</div>
+
+<button id="btt" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function () {
+  var baseFont = 16;
+
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark'; }
+  };
+
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  window.fairGuess = function (btn, choice) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (choice === 'diff');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById('res-fair');
+    if (!el) { return; }
+    var msg = 'That is what Bradbury and Williams found: mostly-white juries were significantly more likely to convict Black defendants, even with seven controls for case strength.';
+    if (choice === 'same') { msg = 'That is the ideal — but the data from real trials says otherwise. Mostly-white juries convicted Black defendants significantly more often.'; }
+    el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + msg + '</p>';
+    el.classList.add('show');
+  };
+
+  window.hypAns = function (btn, choice) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (choice === 'a');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById('res-hyp');
+    if (!el) { return; }
+    var msg = 'H1 was supported: mostly-white juries were more likely to convict Black defendants, significant at p < .01. The Hispanic effect (H2) only reached p ≤ 0.1, so it cannot be supported.';
+    if (choice === 'b') { msg = 'Look at the significance levels: the Hispanic effect was only p ≤ 0.1 — too weak to support H2. It was H1 that held.'; }
+    if (choice === 'c') { msg = 'Only H1 held. Both effects pointed the same way, but the Hispanic one was not statistically strong enough (p ≤ 0.1).'; }
+    el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + msg + '</p>';
+    el.classList.add('show');
+  };
+
+  var stFb = {
+    ok1: 'Arizona, California, New York and Washington, DC, held between 2000 and 2001.',
+    no1: 'Those are not the states. The sample came from Arizona, California, New York and Washington, DC.',
+    ok2: 'Hung jury cases — juries that could not agree — were chosen precisely because that is where jury composition could tip the outcome.',
+    no2: 'Not the strongest cases: the study used hung jury cases where juries could not agree on the verdict.',
+    ok3: 'Logistic regression — appropriate because the outcome is binary (convicted or not), so the analysis estimates a probability.',
+    no3: 'Chi-square belongs to Loftus and Palmer. Here the outcome is binary, so the test was logistic regression.'
+  };
+
+  window.stateAns = function (btn, resId, verdict) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (verdict === 'ok');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var el = document.getElementById(resId);
+    if (el) {
+      var q = resId.slice(-1);
+      var fb;
+      if (resId === 'res-state') { fb = ok ? stFb.ok1 : stFb.no1; }
+      else if (resId === 'res-hung') { fb = ok ? stFb.ok2 : stFb.no2; }
+      else { fb = ok ? stFb.ok3 : stFb.no3; }
+      el.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + fb + '</p>';
+      el.classList.add('show');
+    }
+  };
+
+  var quizKey = { q1: 'b', q2: 'a', q3: 'b', q4: 'b', q5: 'a', q6: 'a', q7: 'c', q8: 'a' };
+  var quizWhy = {
+    q1: 'They investigated in-group / out-group bias — how jurors judge defendants from outside their own group.',
+    q2: 'H1: Black defendants are more likely to be convicted by juries with a higher number of white jurors.',
+    q3: 'The real trials were held between 2000 and 2001.',
+    q4: 'Black defendants made up 60 per cent of the cases, so only those trials were examined.',
+    q5: 'p < .01 — highly significant, which is why H1 was supported.',
+    q6: 'The Hispanic effect was only significant at p ≤ 0.1 — too weak to support the hypothesis.',
+    q7: 'Anwar et al. (2012): 81 per cent, supporting the reliability of Bradbury and Williams.',
+    q8: 'The Batson rule forbids using a peremptory challenge to exclude a jury member because of their race.'
+  };
+
+  window.checkQuiz = function () {
+    var el = document.getElementById('quizResult');
+    if (!el) { return; }
+    var score = 0;
+    var html = '';
+    Object.keys(quizKey).forEach(function (q) {
+      var sel = document.querySelector('input[name="' + q + '"]:checked');
+      var chosen = sel ? sel.value : null;
+      var ok = (chosen === quizKey[q]);
+      if (ok) { score++; }
+      html += '<p style="margin:6px 0"><strong>' + q.toUpperCase() + ':</strong> ' +
+        (chosen ? (ok ? 'correct' : 'not quite') : 'not answered') + ' — ' + quizWhy[q] + '</p>';
+    });
+    el.innerHTML = '<p><span class="xp-verdict">Score: ' + score + ' / 8</span></p>' + html;
+    el.classList.add('show');
+    el.classList.toggle('ok', score === 8);
+  };
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.toggle('show'); }
+  };
+
+  window.togglePanel = function (header, id) {
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    el.classList.toggle('hidden');
+    header.classList.toggle('open');
+  };
+
+  window.addEventListener('scroll', function () {
+    var btt = document.getElementById('btt');
+    if (btt) { btt.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  var links = document.querySelectorAll('.sb-item a');
+  var sections = [];
+  links.forEach(function (a) {
+    var sec = document.querySelector(a.getAttribute('href'));
+    if (sec) { sections.push({ link: a, sec: sec }); }
+  });
+  window.addEventListener('scroll', function () {
+    var pos = window.scrollY + 140;
+    var current = null;
+    sections.forEach(function (s) { if (s.sec.offsetTop <= pos) { current = s; } });
+    links.forEach(function (a) { a.classList.remove('sb-active'); });
+    if (current) { current.link.classList.add('sb-active'); }
+  });
+})();
+</script>
+</body>
+</html>
