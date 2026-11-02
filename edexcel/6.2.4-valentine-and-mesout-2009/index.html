@@ -218,7 +218,15 @@ body.dark .summary-card-body li { color: #c4b5fd; }
 .mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
 .mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
 body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
-</style><nav class="nav-bar">
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+<nav class="nav-bar">
   <div class="nav-breadcrumb">
     <a href="../../index.html">Home</a> <span class="sep">›</span>
     <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
@@ -234,10 +242,15 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 </nav>
 
+<div class="page-layout">
+
 <!-- ============ SIDEBAR ============ -->
-<nav id="sidebar">
-  <div class="sb-head">6.2.4 Valentine &amp; Mesout</div>
-  <ul>
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">6.2.4 Valentine &amp; Mesout</div>
+    <div class="sb-header-sub">Eyewitness identification under stress · 压力下的目击者指认</div>
+  </div>
+  <ul class="sb-list">
     <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
     <li class="sb-item"><a href="#s2">2. Why the Dungeon</a></li>
     <li class="sb-item"><a href="#s3">3. The Aim</a></li>
@@ -257,17 +270,27 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
     <li class="sb-item"><a href="#s17">17. Exam Lab</a></li>
     <li class="sb-item"><a href="#s18">18. Key Terms</a></li>
   </ul>
-</nav>
+</div>
+</aside>
 
-<main id="content">
-<div class="page-head">
-  <h1>Valentine and Mesout (2009)</h1>
-  <p class="subtitle">Eyewitness Identification Under Stress in the London Dungeon</p>
-  <div class="head-badges">
-    <span class="badge">Topic F · Criminological Psychology</span>
-    <span class="badge">Method: Field experiment</span>
-    <span class="badge">Core Concept: Anxiety and identification</span>
+<main class="main-content">
+<div class="header">
+  <h1>6.2.4 VALENTINE AND MESOUT (2009)<br><span style="font-size:0.65em">Eyewitness identification under stress · 压力下的目击者指认</span></h1>
+  <div class="meta">
+    <span class="badge">Topic F · Criminological psychology</span>
+    <span class="badge">Studies: contemporary</span>
+    <span class="badge">Spec 6.2.4</span>
   </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this section is really asking</h4>
+  <ol>
+    <li><strong>A real scare, not a lab slide show.</strong> Visitors to the London Dungeon met a robed actor blocking their path; heart rate confirmed they were genuinely anxious.</li>
+    <li><strong>High vs low anxiety</strong> was defined by the median split: 86.9 bpm versus 74.7 bpm on entering the Dungeon.</li>
+    <li><strong>The gap is huge:</strong> 17% of high-anxiety visitors (5 of 30) identified the actor correctly, compared with 75% of low-anxiety visitors (21 of 28).</li>
+    <li><strong>Conclusion:</strong> high physiological arousal disrupts identification — the person who frightened you is often the one you remember least accurately.</li>
+  </ol>
 </div>
 
 <!-- ============ 1 ============ -->
@@ -310,7 +333,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="keyterm-box">
-    <div class="kt-term">catastrophe model of memory performance（突变模型）</div>
+    <div class="kt">catastrophe model of memory performance（突变模型）</div>
     The prediction that <strong>high physiological arousal / anxiety</strong> can cause a <strong>sudden, marked impairment</strong> of eyewitness recall and identification. This study was designed to test it.</div>
 
   <div class="cn-note">
@@ -383,11 +406,11 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <h2>5. State vs Trait Anxiety</h2>
 
   <div class="keyterm-box">
-    <div class="kt-term">state anxiety（状态焦虑）</div>
+    <div class="kt">state anxiety（状态焦虑）</div>
     Anxiety <strong>right now</strong>, caused by the situation you are in — here: how stressed you felt inside the Dungeon.</div>
 
   <div class="keyterm-box">
-    <div class="kt-term">trait anxiety（特质焦虑）</div>
+    <div class="kt">trait anxiety（特质焦虑）</div>
     A <strong>personality trait</strong>: a tendency to worry about yourself and others <strong>regardless of circumstances</strong>. A stable, dispositional factor — not caused by the situation.</div>
 
   <table>
@@ -751,7 +774,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 <section class="section" id="s17">
   <h2>17. Exam Lab</h2>
 
-  <div class="syl-tags">
+  <div class="syl-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px">
     <span class="syl-tag">AO1 (4) + AO3 (4) = 8 marks</span>
     <span class="syl-tag">Generic answers score 0</span>
   </div>
@@ -796,14 +819,14 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <h2>18. Key Terms</h2>
 
   <div class="glossary-grid">
-    <div class="keyterm-box"><div class="kt-term">state anxiety</div>Anxiety caused by the current situation — how stressed you feel right now.</div>
-    <div class="keyterm-box"><div class="kt-term">trait anxiety</div>A stable personality tendency to worry, regardless of circumstances.</div>
-    <div class="keyterm-box"><div class="kt-term">catastrophe model</div>High physiological arousal can cause a sudden, marked impairment of recall and identification.</div>
-    <div class="keyterm-box"><div class="kt-term">field experiment</div>An experiment in a natural setting — here, a working tourist attraction.</div>
-    <div class="keyterm-box"><div class="kt-term">Horror Labyrinth</div>The dark, disorientating maze in the London Dungeon where the encounter occurred.</div>
-    <div class="keyterm-box"><div class="kt-term">scary person</div>The robed, pale-faced actor with wounds/scars who blocked visitors' path.</div>
-    <div class="keyterm-box"><div class="kt-term">culprit-present line-up</div>A photo line-up that actually contains the target (9 photos, random position).</div>
-    <div class="keyterm-box"><div class="kt-term">free vs cued recall</div>Open description of the person versus specific prompted details (age, height, hair).</div>
+    <div class="keyterm-box"><div class="kt">state anxiety</div>Anxiety caused by the current situation — how stressed you feel right now.</div>
+    <div class="keyterm-box"><div class="kt">trait anxiety</div>A stable personality tendency to worry, regardless of circumstances.</div>
+    <div class="keyterm-box"><div class="kt">catastrophe model</div>High physiological arousal can cause a sudden, marked impairment of recall and identification.</div>
+    <div class="keyterm-box"><div class="kt">field experiment</div>An experiment in a natural setting — here, a working tourist attraction.</div>
+    <div class="keyterm-box"><div class="kt">Horror Labyrinth</div>The dark, disorientating maze in the London Dungeon where the encounter occurred.</div>
+    <div class="keyterm-box"><div class="kt">scary person</div>The robed, pale-faced actor with wounds/scars who blocked visitors' path.</div>
+    <div class="keyterm-box"><div class="kt">culprit-present line-up</div>A photo line-up that actually contains the target (9 photos, random position).</div>
+    <div class="keyterm-box"><div class="kt">free vs cued recall</div>Open description of the person versus specific prompted details (age, height, hair).</div>
   </div>
 </section>
 
@@ -812,12 +835,27 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 </div>
 </main>
 
-<div id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+</div><!-- /page-layout -->
+</div><!-- /container -->
+
+<div id="btt" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
 
 <script>
 (function () {
   var $ = function (s) { return document.querySelector(s); };
   var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
 
   /* ---------- sidebar scroll spy ---------- */
   var links = $$('.sb-item a');
@@ -825,9 +863,14 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   function spy() {
     var y = window.scrollY + 120, idx = 0;
     for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
-    links.forEach(function (a, i) { a.parentElement.classList.toggle('active', i === idx); });
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
   }
   window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
 
   /* ---------- reveal helpers ---------- */
   function show(id, html) {
@@ -893,3 +936,5 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   };
 })();
 </script>
+</body>
+</html>

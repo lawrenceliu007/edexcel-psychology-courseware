@@ -218,7 +218,15 @@ body.dark .summary-card-body li { color: #c4b5fd; }
 .mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
 .mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
 body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
-</style><nav class="nav-bar">
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+<nav class="nav-bar">
   <div class="nav-breadcrumb">
     <a href="../../index.html">Home</a> <span class="sep">›</span>
     <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
@@ -234,10 +242,15 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 </nav>
 
+<div class="page-layout">
+
 <!-- ============ SIDEBAR ============ -->
-<nav id="sidebar">
-  <div class="sb-head">6.2.3 Ruva, McEvoy &amp; Bryant</div>
-  <ul>
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">6.2.3 Ruva, McEvoy &amp; Bryant</div>
+    <div class="sb-header-sub">Pre-trial publicity and source memory · 审前报道与来源记忆</div>
+  </div>
+  <ul class="sb-list">
     <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
     <li class="sb-item"><a href="#s2">2. Pre-trial Publicity</a></li>
     <li class="sb-item"><a href="#s3">3. The Aim</a></li>
@@ -256,17 +269,27 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
     <li class="sb-item"><a href="#s16">16. Exam Lab</a></li>
     <li class="sb-item"><a href="#s17">17. Key Terms</a></li>
   </ul>
-</nav>
+</div>
+</aside>
 
-<main id="content">
-<div class="page-head">
-  <h1>Ruva, McEvoy and Bryant (2007)</h1>
-  <p class="subtitle">Effects of Pre-trial Publicity and Jury Deliberation on Jury Bias and Source Memory Errors</p>
-  <div class="head-badges">
-    <span class="badge">Topic F · Criminological Psychology</span>
-    <span class="badge">Method: Lab experiment</span>
-    <span class="badge">Core Concept: Source monitoring</span>
+<main class="main-content">
+<div class="header">
+  <h1>6.2.3 RUVA, MCEVOY AND BRYANT (2007)<br><span style="font-size:0.65em">Pre-trial publicity and source memory · 审前报道与来源记忆</span></h1>
+  <div class="meta">
+    <span class="badge">Topic F · Criminological psychology</span>
+    <span class="badge">Studies: contemporary</span>
+    <span class="badge">Spec 6.2.3</span>
   </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this section is really asking</h4>
+  <ol>
+    <li><strong>Two phases, one week apart.</strong> Students read either negative pre-trial publicity or unrelated articles, then watched a 30-minute trial video.</li>
+    <li><strong>Then some deliberated, some did not</strong> — 276 jurors talked it through in groups, 282 gave individual verdicts without discussion.</li>
+    <li><strong>The publicity did two things:</strong> it pushed verdicts towards guilty (73% vs 41% when jurors deliberated) and it blurred <strong>where</strong> each fact came from.</li>
+    <li><strong>Conclusion:</strong> pre-trial publicity contaminates memory itself, so jurors cannot simply be told to ignore it.</li>
+  </ol>
 </div>
 
 <!-- ============ 1 ============ -->
@@ -306,7 +329,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <p>Every defendant has the right to a <strong>fair trial</strong> and an <strong>impartial jury</strong>. But in today's world, news is everywhere. Research shows that media coverage <strong>before</strong> a trial can bias jurors against the defendant.</p>
 
   <div class="keyterm-box">
-    <div class="kt-term">pre-trial publicity（审前报道）</div>
+    <div class="kt">pre-trial publicity（审前报道）</div>
     News coverage about a case published <strong>before</strong> the trial begins — it may contain information that never appears in court.</div>
 
   <div class="green-box">
@@ -473,7 +496,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </table>
 
   <div class="keyterm-box">
-    <div class="kt-term">source monitoring test（来源监测测验）</div>
+    <div class="kt">source monitoring test（来源监测测验）</div>
     A test designed to see whether a person can accurately <strong>attribute the original source</strong> of information — here: did each fact come from the <strong>articles</strong>, the <strong>trial</strong>, or <strong>both</strong>? Participants also rated their <strong>confidence</strong> in each answer.</div>
 
   <p>Finally everyone gave an <strong>individual verdict</strong>, guilt rating and sentence once more, rated the <strong>defendant's credibility</strong> (“How honest did the defendant appear to be?”), and answered a <strong>debrief questionnaire</strong> (did you believe the cover story?).</p>
@@ -787,7 +810,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 <section class="section" id="s16">
   <h2>16. Exam Lab</h2>
 
-  <div class="syl-tags">
+  <div class="syl-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px">
     <span class="syl-tag">AO1 (4) + AO3 (4) = 8 marks</span>
     <span class="syl-tag">Generic answers score 0</span>
   </div>
@@ -833,14 +856,14 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <h2>17. Key Terms</h2>
 
   <div class="glossary-grid">
-    <div class="keyterm-box"><div class="kt-term">pre-trial publicity</div>News coverage of a case before the trial; may contain information never presented in court.</div>
-    <div class="keyterm-box"><div class="kt-term">source monitoring test</div>A test of whether a person can accurately attribute the original source of information.</div>
-    <div class="keyterm-box"><div class="kt-term">collaborating jurors</div>Group members who deliberate together and give one unanimous verdict.</div>
-    <div class="keyterm-box"><div class="kt-term">nominal jurors</div>Individuals judging alone; their answers are pooled without discussion.</div>
-    <div class="keyterm-box"><div class="kt-term">bench trial</div>Trial by judge only — no jury.</div>
-    <div class="keyterm-box"><div class="kt-term">voir dire</div>Questioning of prospective jurors to screen out bias; shown to be ineffective here.</div>
-    <div class="keyterm-box"><div class="kt-term">hung jury</div>A jury that cannot agree on a verdict.</div>
-    <div class="keyterm-box"><div class="kt-term">cover story</div>A false explanation of the study's aim, used here to hide the jury focus.</div>
+    <div class="keyterm-box"><div class="kt">pre-trial publicity</div>News coverage of a case before the trial; may contain information never presented in court.</div>
+    <div class="keyterm-box"><div class="kt">source monitoring test</div>A test of whether a person can accurately attribute the original source of information.</div>
+    <div class="keyterm-box"><div class="kt">collaborating jurors</div>Group members who deliberate together and give one unanimous verdict.</div>
+    <div class="keyterm-box"><div class="kt">nominal jurors</div>Individuals judging alone; their answers are pooled without discussion.</div>
+    <div class="keyterm-box"><div class="kt">bench trial</div>Trial by judge only — no jury.</div>
+    <div class="keyterm-box"><div class="kt">voir dire</div>Questioning of prospective jurors to screen out bias; shown to be ineffective here.</div>
+    <div class="keyterm-box"><div class="kt">hung jury</div>A jury that cannot agree on a verdict.</div>
+    <div class="keyterm-box"><div class="kt">cover story</div>A false explanation of the study's aim, used here to hide the jury focus.</div>
   </div>
 </section>
 
@@ -849,12 +872,27 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 </div>
 </main>
 
-<div id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+</div><!-- /page-layout -->
+</div><!-- /container -->
+
+<div id="btt" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
 
 <script>
 (function () {
   var $ = function (s) { return document.querySelector(s); };
   var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
 
   /* ---------- sidebar scroll spy ---------- */
   var links = $$('.sb-item a');
@@ -862,9 +900,14 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   function spy() {
     var y = window.scrollY + 120, idx = 0;
     for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
-    links.forEach(function (a, i) { a.parentElement.classList.toggle('active', i === idx); });
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
   }
   window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
 
   /* ---------- reveal helpers ---------- */
   function show(id, html) {
@@ -932,3 +975,5 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   };
 })();
 </script>
+</body>
+</html>
