@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.1.6 Psychoanalysis and the Object Relations School — Making the unconscious conscious</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.five-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+
+.mat2x2 { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 6px; margin: 14px 0; }
+.mat2x2 .mh { background: var(--primary); color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
+body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style></head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic D · Learning theories and development — 4.1.6 Psychoanalysis and the object relations school</span>
+  </div>
+  <span class="nav-pill">🧠 Learning &amp; Development</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="4.1.6-Psychoanalysis-and-Object-Relations-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">4.1.6 · Contents</div>
+        <div class="sb-header-sub">Psychoanalysis &amp; Object Relations</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">Before we start</li>
+        <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+        <li class="sb-item"><a href="#s2">2. From Theory to Therapy</a></li>
+        <li class="sb-item"><a href="#s3">3. What It Is</a></li>
+        <li class="sb-item"><a href="#s4">4. The Setting</a></li>
+        <li class="sb-item"><a href="#s5">5. Session One</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">The techniques</li>
+        <li class="sb-item"><a href="#s6">6. Free Association</a></li>
+        <li class="sb-item"><a href="#s7">7. Dream Analysis</a></li>
+        <li class="sb-item"><a href="#s8">8. Transference</a></li>
+        <li class="sb-item"><a href="#s9">9. Counter-transference</a></li>
+        <li class="sb-item"><a href="#s10">10. Resistance</a></li>
+        <li class="sb-item"><a href="#s11">11. One Session</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Object relations</li>
+        <li class="sb-item"><a href="#s12">12. The Idea</a></li>
+        <li class="sb-item"><a href="#s13">13. The Therapy</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Evaluation</li>
+        <li class="sb-item"><a href="#s14">14. Psychoanalysis</a></li>
+        <li class="sb-item"><a href="#s15">15. Object Relations</a></li>
+        <li class="sb-item"><a href="#s16">16. Three Therapies</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Exam</li>
+        <li class="sb-item"><a href="#s17">17. Exam Focus</a></li>
+        <li class="sb-item"><a href="#s18">18. Checkpoint</a></li>
+        <li class="sb-item"><a href="#s19">19. Exam Lab</a></li>
+        <li class="sb-item"><a href="#s20">20. Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>4.1.6 PSYCHOANALYSIS AND THE OBJECT RELATIONS SCHOOL<br><span style="font-size:0.65em">Making the unconscious conscious · 精神分析与客体关系学派</span></h1>
+  <div class="meta">
+    <span class="badge">Topic D · Learning theories and development</span>
+    <span class="badge">Therapy: psychodynamic</span>
+    <span class="badge">Spec 4.1.6</span>
+  </div>
+  <div class="subtitle" style="margin-top:10px">Freud's therapy does not fight the symptom. It follows the clues — free speech, dreams, slip-ups, even missed appointments — down to the unconscious conflicts underneath.</div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this section is really asking</h4>
+  <ol>
+    <li><strong>The aim is self-insight:</strong> make the unconscious conscious, so the client can finally see what has been driving their thoughts and feelings.</li>
+    <li><strong>The therapist never pushes.</strong> This is a non-directive therapy — the client speaks, dreams and drifts; the therapist interprets.</li>
+    <li><strong>Four windows into the unconscious:</strong> free association, dream analysis, transference, and resistance — each one is a leak the defence mechanisms cannot fully plug.</li>
+    <li><strong>Object relations takes it further:</strong> our earliest relationships are carried inside us as an internal working model, and therapy helps the client tell where old patterns end and the self begins.</li>
+  </ol>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started</h2>
+
+  <p>Meet two people who keep failing in the same way.</p>
+
+  <p>The first dates partners who are cold and critical — again and again, different person, same story. The second cannot keep a close friend; every friendship somehow ends in the same argument. Both are intelligent. Both can describe exactly what goes wrong. <strong>Neither can stop it.</strong></p>
+
+  <div class="blue-box">
+    <h4>The puzzle</h4>
+    <p>If they can see the pattern, why can't they change it? Freud's answer: because the <strong>real reason is not visible to them</strong>. It lives in the unconscious — and what we consciously believe about ourselves is the story the mind tells afterwards.</p>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Have a guess first <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro">So what would a therapy built on Freud's theory try to do?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="paGuess(this,'a')">Give the client better advice about relationships</button>
+      <button class="q-option" onclick="paGuess(this,'b')">Bring the hidden reasons into conscious awareness</button>
+      <button class="q-option" onclick="paGuess(this,'c')">Train the client to avoid stressful situations</button>
+    </div>
+    <div class="xp-result" id="res-guess"></div>
+  </div>
+
+  <p>The answer is the second one. And notice what this therapy is <em>not</em>: it gives no instructions, sets no exercises, builds no hierarchy. The client talks; the therapist listens and interprets. That is why it is called <strong>non-directive</strong> — the mirror image of systematic desensitisation from 4.1.5.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么「看见了却改不掉」？</strong><br>
+    Freud 认为你看到的模式（总遇错的人、总吵一样的架）只是<strong>表面</strong>，真正的动力藏在潜意识里——那里有你自己都不承认的愿望、冲突和记忆。<br>
+    所以治疗不能靠「给建议」，而要<strong>把潜意识的内容翻到意识层面</strong>（making the unconscious conscious）。看见真正的理由，改变才有可能。
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. From Theory to Therapy</h2>
+
+  <p>Psychoanalysis is Freud's theory of mind, turned into a treatment. The textbook names three concepts from Freud's psychodynamic theory that the therapy is built on — you met them all in 4.1.4.</p>
+
+  <div class="mat2x2">
+    <div class="mh">Concept from the theory</div>
+    <div class="mh">What it says</div>
+    <div class="mh">What the therapy does with it</div>
+
+    <div class="mv">The unconscious mind</div>
+    <div class="cell">A large part of the mind is hidden from awareness, yet still drives thoughts, feelings and behaviour.</div>
+    <div class="cell">The whole therapy is a journey <strong>down into it</strong> — every technique is a way of hearing what the unconscious is saying.</div>
+
+    <div class="mv">Intrapsychic conflict</div>
+    <div class="cell">The id demands, the super-ego forbids, the ego is squeezed in the middle.</div>
+    <div class="cell">Unresolved conflicts from the past keep causing trouble; the client <strong>relives them safely</strong> and resolves them as an adult.</div>
+
+    <div class="mv">Ego defence mechanisms</div>
+    <div class="cell">The ego protects itself by pushing painful material out of awareness.</div>
+    <div class="cell">The techniques work by <strong>weakening these defences</strong>, letting unconscious content slip through.</div>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An iceberg: the conscious mind above the waterline, the unconscious below">
+      <defs>
+        <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#bae6fd"/><stop offset="0.28" stop-color="#bae6fd"/>
+          <stop offset="0.28" stop-color="#0c4a6e"/><stop offset="1" stop-color="#082f49"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="30" width="680" height="240" fill="url(#sea)" rx="10"/>
+      <polygon points="300,30 470,30 430,120 340,120" fill="#f8fafc"/>
+      <polygon points="300,30 340,120 250,190 210,280 420,280 430,120 470,30" fill="#dbe4ec" opacity="0.92"/>
+      <text x="340" y="20" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#1e293b">The mind as an iceberg</text>
+
+      <text x="600" y="62" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#0c4a6e">CONSCIOUS</text>
+      <text x="600" y="80" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#0c4a6e">what you are</text>
+      <text x="600" y="94" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#0c4a6e">aware of now</text>
+
+      <text x="585" y="180" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#e0f2fe">UNCONSCIOUS</text>
+      <text x="585" y="200" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#bae6fd">hidden wishes, conflicts,</text>
+      <text x="585" y="216" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#bae6fd">memories — driving behaviour</text>
+      <text x="585" y="244" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#7dd3fc">psychoanalysis works here,</text>
+      <text x="585" y="258" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#7dd3fc">going upward</text>
+
+      <line x1="0" y1="112" x2="680" y2="112" stroke="#38bdf8" stroke-width="2" opacity="0.6"/>
+    </svg>
+    <div class="figure-caption">Figure 4.1.6a · Freud's iceberg. The visible tip is the conscious mind; psychoanalysis is a deliberate attempt to haul material from below the waterline into view.</div>
+  </div>
+
+  <p>One more idea completes the picture. The <strong>aim</strong> of psychoanalysis is to give the client <strong>self-insight</strong> by making the unconscious conscious. Through exploring the unconscious, the client understands its impact on their thoughts and emotions — and, crucially, they get to <strong>relive past experiences in a safe environment</strong>. Reliving them as an adult, with adult resources, they can respond more appropriately and resolve the psychic conflicts and defences they have been carrying.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：三个理论概念 = 三个治疗动作</strong><br>
+    潜意识 → 治疗就是「下去捞」；内心冲突 → 治疗让来访者<strong>在安全的环境里重新经历</strong>一遍，用成年人的方式回应它；防御机制 → 各种技术都是在<strong>削弱防御</strong>，让被压住的东西漏出来。<br>
+    冰山图考试能直接用：水面上的叫 conscious，水面下的叫 unconscious，治疗就是把下面的东西拉上来。
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. What Psychoanalysis Is</h2>
+
+  <div class="keyterm-box">
+    <div class="kt">psychoanalysis（精神分析）</div>
+    A <strong>non-directive</strong> psychological therapy developed by Sigmund Freud. Its aim is to give the client self-insight by making the unconscious conscious, so that unconscious conflicts can be understood and resolved.
+  </div>
+
+  <p>Put it next to systematic desensitisation and the contrast explains both:</p>
+
+  <div class="mat2x2">
+    <div class="mh">Question</div>
+    <div class="mh">Systematic desensitisation (4.1.5)</div>
+    <div class="mh">Psychoanalysis (4.1.6)</div>
+
+    <div class="mv">Who leads?</div>
+    <div class="cell">The therapist — it is directive.</div>
+    <div class="cell">The client — it is non-directive.</div>
+
+    <div class="mv">What is treated?</div>
+    <div class="cell">The learned response (the phobia itself).</div>
+    <div class="cell">The underlying unconscious conflict (the possible cause).</div>
+
+    <div class="mv">Main tool</div>
+    <div class="cell">A hierarchy of fears plus relaxation.</div>
+    <div class="cell">Talking: free association, dreams, the therapy relationship itself.</div>
+
+    <div class="mv">Time scale</div>
+    <div class="cell">Brief and structured.</div>
+    <div class="cell">Around an hour a week, possibly for years.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：一张表分清两个疗法</strong><br>
+    系统脱敏＝<strong>教练</strong>：我安排步骤，你照做，治的是「反应」。<br>
+    精神分析＝<strong>侦探</strong>：你随便说，我从你的话、梦、迟到里找线索，治的是「原因」。<br>
+    考试问「compare/contrast」时，这张表的每一行都是一个对比点。
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. The Setting</h2>
+
+  <p>Walk into a traditional psychoanalysis session and the first thing you notice is the furniture.</p>
+
+  <div class="note-box">
+    <h4>The classic arrangement</h4>
+    <p>The client <strong>lies on a couch facing away</strong> from the therapist, and the therapist remains <strong>anonymous</strong> — no judgements, no visible emotional reactions. Freud's own clients lay on a chaise longue facing away from him while they spoke.</p>
+  </div>
+
+  <p>Why so strange? Every detail has a job:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Facing away</h4>
+      <p>The client cannot read the therapist's face, so they cannot edit what they say to please or annoy them. The flow of thought stays unfiltered.</p>
+    </div>
+    <div class="compare-card">
+      <h4>The anonymous therapist</h4>
+      <p>Not reacting means not judging. Without approval or disapproval to chase, the client is safe to say the embarrassing things — which are usually the important ones.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>The therapeutic relationship</h4>
+      <p>All of this establishes trust — an essential process in psychoanalysis. Nothing else in the therapy works without it.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：躺椅不是 Freud 的怪癖，是技术设计</strong><br>
+    你试着对着朋友说一个难以启齿的想法——你一定会盯着他的脸，看他皱不皱眉，然后当场删改。<strong>看不到脸，才敢说真话。</strong><br>
+    治疗师保持匿名也是同一逻辑：我不评判你，所以你不用讨好我或防着我。
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Session One: Assessment</h2>
+
+  <p>Before any technique begins, psychoanalysis starts with an initial assessment of:</p>
+
+  <ul>
+    <li>the client's <strong>current concerns</strong> — what is troubling them now;</li>
+    <li>their <strong>personal history</strong> — childhood, family, significant events;</li>
+    <li>their <strong>relationships</strong> — past and present;</li>
+    <li>any <strong>symptoms</strong> they may be experiencing.</li>
+  </ul>
+
+  <p>This is not a formality. Psychoanalysis is interested in the <strong>whole person</strong>, not one behaviour — the assessment is where the map of the client's life is first drawn, and every later interpretation is checked against it.</p>
+
+  <div class="note-box">
+    <h4>Connect this to the evaluation</h4>
+    <p>Remember this breadth: it is why psychoanalysis is called a <strong>holistic</strong> therapy later in this chapter, and it is the first strength you can quote in an exam.</p>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Free Association</h2>
+
+  <div class="keyterm-box">
+    <div class="kt">free association（自由联想）</div>
+    The client is encouraged to speak freely about their thoughts, memories, feelings and dreams — and asked <strong>not to censor themselves at all</strong>, no matter how embarrassing or irrelevant the information seems.
+  </div>
+
+  <p>Why would rambling help? Because censorship is exactly what the defence mechanisms do. Every time you swallow a thought (“that's silly”, “I shouldn't say that”), a defence has done its job. Free association aims to access the unconscious by <strong>weakening the ego defence mechanisms</strong> that normally censor it.</p>
+
+  <p>As the client becomes more relaxed in the non-judgemental environment, they begin to express themselves <strong>without filtering or distorting</strong> unconscious thoughts. What leaks out — the pauses, the odd word, the story that arrives out of nowhere — is material for interpretation.</p>
+
+  <div class="green-box">
+    <h4>A two-minute experiment</h4>
+    <p>Try saying honestly whatever comes to mind for one minute, forbidding yourself to censor. Notice how quickly an internal editor appears — “don't say that”, “that's irrelevant”. That editor is the defence mechanism at work; the therapist is listening for the moments it fails.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：自由联想 = 让「内心审稿人」下班</strong><br>
+    我们平时说话前都会自我审查：这个不体面、那个太尴尬。这些「审稿人」就是防御机制。<br>
+    自由联想的规则只有一条：<strong>想到什么说什么，不许删改</strong>。越放松、越不评判的环境，审稿人越松懈，潜意识的内容就漏得越多。
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Dream Analysis</h2>
+
+  <p>For Freud, dreaming is not random noise. <strong>When we dream we are fulfilling our wishes and desires.</strong> But the wish almost never appears in the dream wearing its own face — it arrives in disguise.</p>
+
+  <div class="keyterm-box">
+    <div class="kt">manifest content（显性内容）</div>
+    The dream <strong>as we experience and report it</strong> — the story we remember in the morning.
+  </div>
+
+  <div class="keyterm-box">
+    <div class="kt">latent content（隐性内容）</div>
+    The <strong>actual wish or desire</strong> underneath — the real meaning the dream is hiding.
+  </div>
+
+  <div class="keyterm-box">
+    <div class="kt">dreamwork（梦的工作）</div>
+    The process that <strong>alters and disguises</strong> the latent content into the manifest content — turning a forbidden wish into an acceptable story.
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dreamwork disguises the latent wish into the manifest dream; interpretation works backwards">
+      <defs>
+        <marker id="ar7" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L7,3 L0,6 Z" fill="#94a3b8"/>
+        </marker>
+        <marker id="ar7b" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L7,3 L0,6 Z" fill="#ea580c"/>
+        </marker>
+      </defs>
+      <text x="340" y="24" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#1e293b">The dream assembly line</text>
+
+      <rect x="20" y="70" width="160" height="86" rx="8" fill="#fef2f2" stroke="#dc2626"/>
+      <text x="100" y="96" text-anchor="middle" font-family="Arial" font-size="12.5" font-weight="700" fill="#991b1b">LATENT CONTENT</text>
+      <text x="100" y="115" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#7f1d1d">the real unconscious wish</text>
+      <text x="100" y="132" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#7f1d1d">hidden even from the</text>
+      <text x="100" y="146" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#7f1d1d">waking mind</text>
+
+      <rect x="255" y="70" width="170" height="86" rx="8" fill="#fff7ed" stroke="#ea580c"/>
+      <text x="340" y="96" text-anchor="middle" font-family="Arial" font-size="12.5" font-weight="700" fill="#c2410c">DREAMWORK</text>
+      <text x="340" y="115" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#7c2d12">alters and disguises</text>
+      <text x="340" y="132" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#7c2d12">the wish, e.g. by</text>
+      <text x="340" y="149" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#7c2d12">displacement</text>
+
+      <rect x="500" y="70" width="160" height="86" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+      <text x="580" y="96" text-anchor="middle" font-family="Arial" font-size="12.5" font-weight="700" fill="#1d4ed8">MANIFEST CONTENT</text>
+      <text x="580" y="115" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#1e3a8a">the dream you actually</text>
+      <text x="580" y="132" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#1e3a8a">remember and report</text>
+
+      <line x1="180" y1="113" x2="249" y2="113" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar7)"/>
+      <line x1="425" y1="113" x2="494" y2="113" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar7)"/>
+
+      <path d="M580 160 C580 216 200 216 100 162" fill="none" stroke="#ea580c" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#ar7b)"/>
+      <text x="340" y="234" text-anchor="middle" font-family="Arial" font-size="11.5" font-weight="600" fill="#c2410c">the therapist interprets the symbols — working backwards to the latent wish</text>
+    </svg>
+    <div class="figure-caption">Figure 4.1.6b · Dreamwork turns the hidden wish into the remembered dream. Interpretation is the therapist reading the disguises backwards.</div>
+  </div>
+
+  <h3>Displacement: the disguise itself</h3>
+
+  <p>During dreamwork the latent content is disguised through <strong>displacement</strong>: we dream of something which is <strong>actually symbolic of something else</strong>. A dream about a snarling dog may carry feelings that actually belong to a frightening parent; a dream about missing an exam may carry anxieties about a job.</p>
+
+  <p>Why does the disguise work at night? Because <strong>during sleep our ego defence mechanisms are weaker</strong>, allowing unconscious content to slip into the dream. The defences are still strong enough to demand a disguise — but not strong enough to block the dream entirely. That gap is what the therapist works in: <strong>the role of the therapist is to interpret these symbols to uncover the actual unconscious wish</strong>.</p>
+
+  <div class="xp-block">
+    <h4>🎯 Quick check <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro">A client dreams of being chased by a large black dog. In the dream, the dog is…</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="dreamAns(this,'a')">the latent content — the true wish</button>
+      <button class="q-option" onclick="dreamAns(this,'b')">the manifest content — a symbol disguising something else</button>
+      <button class="q-option" onclick="dreamAns(this,'c')">the dreamwork — the process of disguise</button>
+    </div>
+    <div class="xp-result" id="res-dream"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：梦 = 加了伪装的愿望</strong><br>
+    <strong>latent</strong>＝真正想说的（藏起来的）；<strong>manifest</strong>＝你早上讲出来的那个故事；<strong>dreamwork</strong>＝中间那道「伪装工序」，常用 displacement（转移）：把情绪挪到一个替身身上。<br>
+    为什么睡觉时能漏出来？因为睡着时防御机制值班松了。治疗师的工作 = <strong>顺着伪装往回破译</strong>。
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Transference</h2>
+
+  <p>Sit with anyone long enough, in an atmosphere of trust and anonymity, and something remarkable happens: <strong>the client's relationships walk into the room</strong>.</p>
+
+  <div class="keyterm-box">
+    <div class="kt">transference（移情）</div>
+    During therapy, the client may transfer their feelings and thoughts about a person or situation <strong>onto the therapist</strong> — positive feelings, hostile feelings, romantic feelings, or dependence — <strong>as if the therapist were a parent</strong>.
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Transference: old feelings aimed at the therapist; counter-transference flowing back">
+      <defs>
+        <marker id="ar8" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L7,3 L0,6 Z" fill="#dc2626"/>
+        </marker>
+        <marker id="ar8b" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L7,3 L0,6 Z" fill="#2563eb"/>
+        </marker>
+      </defs>
+      <text x="340" y="26" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#1e293b">Two currents in the therapy room</text>
+
+      <rect x="60" y="60" width="200" height="120" rx="10" fill="#eff6ff" stroke="#2563eb"/>
+      <text x="160" y="90" text-anchor="middle" font-family="Arial" font-size="13.5" font-weight="700" fill="#1d4ed8">CLIENT</text>
+      <text x="160" y="112" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#1e3a8a">carries old feelings about</text>
+      <text x="160" y="128" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#1e3a8a">important people (often parents)</text>
+
+      <rect x="420" y="60" width="200" height="120" rx="10" fill="#fff7ed" stroke="#ea580c"/>
+      <text x="520" y="90" text-anchor="middle" font-family="Arial" font-size="13.5" font-weight="700" fill="#c2410c">THERAPIST</text>
+      <text x="520" y="112" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#7c2d12">stays calm, anonymous,</text>
+      <text x="520" y="128" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#7c2d12">and interprets what arrives</text>
+
+      <line x1="262" y1="100" x2="414" y2="100" stroke="#dc2626" stroke-width="3" marker-end="url(#ar8)"/>
+      <text x="338" y="88" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#991b1b">TRANSFERENCE</text>
+      <text x="338" y="142" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#7f1d1d">old feelings, now aimed here</text>
+      <text x="338" y="157" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#7f1d1d">warmth · hostility · romance · dependence</text>
+
+      <line x1="418" y1="166" x2="266" y2="166" stroke="#2563eb" stroke-width="3" marker-end="url(#ar8b)"/>
+      <text x="342" y="186" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#1d4ed8">COUNTER-TRANSFERENCE</text>
+      <text x="342" y="202" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#1e3a8a">the therapist's own emotional response</text>
+    </svg>
+    <div class="figure-caption">Figure 4.1.6c · Transference runs from client to therapist; counter-transference is the return current. Both are interpreted, not suppressed.</div>
+  </div>
+
+  <p>The feelings are not really about the therapist — the therapist is a <strong>stand-in</strong>. That is what makes transference valuable: the client's deepest patterns are being <strong>reenacted live</strong>, in a place where someone trained is watching. It is the therapist's role to interpret the transference to gain insight into the client's unconscious mind.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：把治疗师「当成」某个重要的人</strong><br>
+    你对权威老师又敬又怕、总想讨好——这模式不会因为进了治疗室就消失。你会不知不觉<strong>用对待父亲/母亲的方式对待治疗师</strong>：撒娇、敌意、依赖、甚至爱慕。<br>
+    这不是事故，是<strong>素材</strong>：你最重要的人际模式正在现场直播，治疗师正好现场解说。
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Counter-transference</h2>
+
+  <div class="keyterm-box">
+    <div class="kt">counter-transference（反移情）</div>
+    The <strong>therapist's emotional response</strong> to the client's transference. The therapist may feel warmth, frustration or irritation, feel protective towards the client, or even develop romantic feelings.
+  </div>
+
+  <p>Read the definition twice: the therapist is a person too. Week after week, a client may pour affection, hostility or helplessness into the room — and the therapist's own feelings respond. Those responses can include:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card"><h4>Positive feelings</h4><p>Warmth towards the client, a wish to help beyond the professional role.</p></div>
+    <div class="compare-card"><h4>Negative feelings</h4><p>Frustration or irritation — perhaps echoing the client's own hostility.</p></div>
+    <div class="compare-card"><h4>Protective feelings</h4><p>Wanting to shield the client, as a parent might shield a child.</p></div>
+    <div class="compare-card"><h4>Romantic feelings</h4><p>A response to the client's romantic transference — the most dangerous kind if unexamined.</p></div>
+  </div>
+
+  <div class="note-box">
+    <h4>Why the therapist's feelings matter</h4>
+    <p>The textbook is clear: both transference and counter-transference are <strong>important features of the therapeutic relationship</strong>, and the therapist should work to <strong>interpret them and explain their significance to the client</strong>. The therapist's feelings are not an obstacle to the therapy — handled properly, they are another source of information about the client's unconscious.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：治疗师也是人，也会有情绪</strong><br>
+    来访者对你撒娇依赖，你可能莫名想照顾他；来访者 week after week 攻击你，你可能开始烦他。<br>
+    这些情绪本身不是错误——<strong>关键是别被它牵着走，而是拿它当数据</strong>：「我为什么突然想保护这个人？也许他在我面前重现了和母亲的关系。」<br>
+    考试考点：transference＝来访者的情绪投向治疗师；counter-transference＝治疗师的情绪反应。方向别记反。
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Resistance</h2>
+
+  <p>Psychoanalysis is about revealing the contents of the unconscious — and some of those contents are painful. A common response is for the client to show <strong>resistance</strong>: they become reluctant to explore certain distressing thoughts and emotions.</p>
+
+  <div class="keyterm-box">
+    <div class="kt">resistance（阻抗）</div>
+    The client's reluctance to explore distressing unconscious material, shown indirectly — missing or arriving late to sessions, changing the topic of conversation, falling silent at the crucial moment.
+  </div>
+
+  <p>Resistance is easy to misread as rudeness or laziness. In this therapy it is neither: it is the <strong>defence mechanisms defending</strong>, exactly where the defences are needed most. That is the clue:</p>
+
+  <div class="green-box">
+    <h4>Resistance is information</h4>
+    <p>Understanding the client's resistance becomes <strong>part of the therapy</strong>. The therapist can analyse it — because the client does not resist randomly. They resist precisely <strong>where it hurts</strong>, so the shape of the resistance traces the outline of the unconscious conflict underneath.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：迟到和跑题不是态度问题，是地图</strong><br>
+    来访者平时守时，唯独聊到父亲那周迟到半小时；平时健谈，唯独提到童年就换话题。<strong>避开哪里，哪里就有东西。</strong><br>
+    治疗师不指责阻抗，反而研究它——因为阻抗画出的「禁区」，正是潜意识冲突的藏身处。
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. One Session, Start to Finish</h2>
+
+  <p>The four techniques are not a menu — they run together, week after week, and the therapist assembles the picture piece by piece. By working through these processes, <strong>the therapist builds up a picture of unconscious conflicts and explains them to the patient</strong>.</p>
+
+  <div class="mat2x2">
+    <div class="mh">Stage</div>
+    <div class="mh">What happens</div>
+    <div class="mh">Which concept it uses</div>
+
+    <div class="mv">Opening</div>
+    <div class="cell">Client lies on the couch and free-associates; dreams from the week are reported.</div>
+    <div class="cell">Free association · dream analysis.</div>
+
+    <div class="mv">Middle</div>
+    <div class="cell">Feelings towards the therapist surface; missed sessions and topic changes appear.</div>
+    <div class="cell">Transference · resistance.</div>
+
+    <div class="mv">Interpretation</div>
+    <div class="cell">The therapist offers interpretations — of symbols, of the transference, of the resistances.</div>
+    <div class="cell">Weakening the defences, piece by piece.</div>
+
+    <div class="mv">Insight</div>
+    <div class="cell">The client sees the unconscious conflict, relives it as an adult, and resolves it.</div>
+    <div class="cell">The aim: making the unconscious conscious.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：治疗像拼图，不像做手术</strong><br>
+    没有哪一次会谈「治好」来访者。自由联想给碎片，梦给碎片，移情和阻抗给碎片——治疗师把碎片拼成一幅<strong>潜意识冲突的地图</strong>，再解释给来访者听。<br>
+    「解释」（interpretation）贯穿始终：解释梦、解释移情、解释阻抗，全是同一个动作。
+  </div>
+</section>
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Object Relations: The Idea</h2>
+
+  <p>One school of thought grew directly out of psychoanalysis — and changed what therapy looks at.</p>
+
+  <div class="keyterm-box">
+    <div class="kt">object relations school of thought（客体关系学派）</div>
+    A psychodynamic approach that focuses on the <strong>relationships</strong> we have with others, and the <strong>internal representations of others</strong> — known as “objects” — in the development of the human psyche. It emphasises the importance of <strong>early childhood relationships with parents</strong>.
+  </div>
+
+  <div class="keyterm-box">
+    <div class="kt">human psyche（人类心智）</div>
+    The human mind with all its conscious and unconscious aspects: thoughts, feelings, memories, and wishes.
+  </div>
+
+  <div class="keyterm-box">
+    <div class="kt">internal working model（内部工作模型）</div>
+    A mental construct formed from our attachment experiences, which influences our perception of relationships as stable or unstable, trusting or untrusting, secure or insecure.
+  </div>
+
+  <p>The word <em>object</em> sounds cold, but it just means <strong>a person as represented inside your mind</strong> — not the real person, but your internal copy of them. The theory's chain of reasoning runs like this:</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Early attachments become internal representations, which shape the internal working model and adult relationships">
+      <defs>
+        <marker id="ar12" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L7,3 L0,6 Z" fill="#94a3b8"/>
+        </marker>
+      </defs>
+      <text x="340" y="26" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#1e293b">How early relationships travel inside us</text>
+
+      <rect x="16" y="66" width="196" height="104" rx="8" fill="#fef9c3" stroke="#ca8a04"/>
+      <text x="114" y="92" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#854d0e">EARLY ATTACHMENTS</text>
+      <text x="114" y="111" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#713f12">relationships with parents</text>
+      <text x="114" y="127" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#713f12">(the “objects”) in the</text>
+      <text x="114" y="143" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#713f12">first years of life</text>
+
+      <rect x="242" y="66" width="196" height="104" rx="8" fill="#fff7ed" stroke="#ea580c"/>
+      <text x="340" y="92" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#c2410c">INTERNAL OBJECTS</text>
+      <text x="340" y="111" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#7c2d12">representations of those</text>
+      <text x="340" y="127" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#7c2d12">relationships, formed</text>
+      <text x="340" y="143" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#7c2d12">through early attachment</text>
+
+      <rect x="468" y="66" width="196" height="104" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+      <text x="566" y="92" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#1d4ed8">INTERNAL WORKING MODEL</text>
+      <text x="566" y="111" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#1e3a8a">a template for what</text>
+      <text x="566" y="127" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#1e3a8a">relationships are — shaping</text>
+      <text x="566" y="143" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#1e3a8a">personality development</text>
+
+      <line x1="212" y1="118" x2="236" y2="118" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar12)"/>
+      <line x1="438" y1="118" x2="462" y2="118" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar12)"/>
+
+      <text x="340" y="206" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#475569">The quality of those early attachments is internally represented — and quietly steers every later relationship.</text>
+    </svg>
+    <div class="figure-caption">Figure 4.1.6d · Object relations in one line: early attachments become internal objects, and internal objects become the working model the adult lives by.</div>
+  </div>
+
+  <p>These early relationships <strong>shape our understanding of the world</strong>. A child whose first attachments were reliable builds a model in which people can be trusted; a child whose first attachments were frightening builds a model in which closeness means danger. Either way, the model was built <strong>before the child had any say in it</strong> — which is why it operates so invisibly in adult life.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：object 不是「物体」，是「住在你心里的那个人」</strong><br>
+    客体关系学派的「客体」＝你头脑中<strong>对某个重要他人的内部表征</strong>（internal representation）。<br>
+    链条：早期和父母的依恋 → 心里留下「人大概是什么样的」内部模型（internal working model）→ 成年后按这个模板去建立关系。<br>
+    类比：小时候学会的母语口音，你自己察觉不到，却决定你一生的口音——早期关系就是关系的「母语」。
+  </div>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. Object Relations Therapy</h2>
+
+  <p>Object relations therapy is a <strong>non-directive therapy</strong>. Its aim is to understand the client's relationships and the internal representations of objects — the people carried inside.</p>
+
+  <h3>What happens in the therapy</h3>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Early relationships on the table</h4>
+      <p>Because the school focuses on early attachments, the therapy emphasises experiences in early childhood and the <strong>quality of the attachments</strong> that were formed. The client is encouraged to talk about these early relationships and the feelings and thoughts they have about them.</p>
+    </div>
+    <div class="compare-card">
+      <h4>The psychoanalytic toolkit, reused</h4>
+      <p>Like psychoanalysis, the therapist analyses incidents of <strong>transference and counter-transference</strong>. There is also <strong>analysis of symbols</strong> and exploration of the unconscious.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>A different centre of gravity</h4>
+      <p>But the focus stays on <strong>relationships with others and how they have been internalised</strong> — not on drives or wishes, as in classical psychoanalysis.</p>
+    </div>
+  </div>
+
+  <h3>The goal</h3>
+
+  <div class="green-box">
+    <h4>Differentiate self from others, and build boundaries</h4>
+    <p>The goal of the therapy is to help clients <strong>differentiate between their self-identity and others, and to establish boundaries</strong> between them. If your model of relationships was written by someone else in your first years of life, therapy helps you see which parts are truly you — and where other people end and you begin.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：治疗目标为什么是「分清你和别人」</strong><br>
+    如果早期关系一团糟，来访者心里的「你」「我」边界常常是模糊的：要么过度依赖（分不清自己要什么），要么过度隔离（不敢让人靠近）。<br>
+    治疗做的事＝陪着来访者把心里那些「别人的声音」一个个认出来：<strong>这个害怕是我自己的，还是我妈妈塞给我的？</strong>认出来，边界就立起来了。
+  </div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="section" id="s14">
+  <h2>14. Evaluation · Psychoanalysis</h2>
+
+  <h3>Strengths</h3>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>It treats the whole person</h4>
+      <p>Psychoanalysis takes into account <strong>many factors</strong> about a person that may have led to mental health problems — history, relationships, unconscious conflict. Unlike systematic desensitisation, which focuses on learned behaviour, it is a <strong>holistic</strong> therapy.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>It has been productive</h4>
+      <p>It has led to the development of other therapies, most notably the <strong>object relations school of thought</strong>. A therapy whose ideas keep generating new treatments is doing something right.</p>
+    </div>
+  </div>
+
+  <h3>Limitations</h3>
+
+  <div class="warn-box">
+    <h4>1. Interpretation is subjective — so the therapy is unreliable</h4>
+    <p>Much of the therapy's principles are derived from psychodynamic theory, and Freud built that theory from <strong>case studies of his own patients</strong>. The interpretations of symbols and behaviours — in free association, dream analysis and transference — are made by the therapist about the nature of the unconscious, and they are <strong>subjective</strong>. A different therapist may have a completely different interpretation of the same dream. If the diagnosis depends on who is listening, psychoanalysis is an <strong>unreliable therapy</strong>.</p>
+  </div>
+
+  <div class="warn-box">
+    <h4>2. It is slow, expensive and inaccessible</h4>
+    <p>Sessions last around an hour, once a week, and therapy <strong>can go on for many years</strong>. It is a talking therapy that requires a degree of <strong>self-insight and understanding</strong> to take part in at all — which makes it a therapy that is inaccessible for many people, both financially and psychologically.</p>
+  </div>
+
+  <div class="warn-box">
+    <h4>3. The effectiveness evidence is uncomfortable</h4>
+    <p><strong>Hans Eysenck (1962)</strong> reviewed research into the effectiveness of psychoanalysis compared with other therapies in the treatment of neurosis. Psychoanalysis appeared effective in around <strong>half</strong> of the patients treated — but more patients seemed to <strong>recover after no treatment at all</strong>. Later research suggests different rates of effectiveness and of spontaneous remission, but the deeper problem stands: there is <strong>no consistent measure of “cure”</strong>, and individual differences between patients, therapists, and the type and duration of therapy make conclusions unreliable.</p>
+  </div>
+
+  <div class="keyterm-box">
+    <div class="kt">spontaneous remission（自发缓解）</div>
+    Recovery <strong>without treatment</strong> — the awkward benchmark any therapy must beat. If people recover anyway, an apparent cure may not be a cure.
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：Eysenck 这刀为什么狠</strong><br>
+    治好一半听起来不错？但 Eysenck 说：<strong>不治疗的自己好了更多</strong>。这就好比一种药吃好转了一半的人，不吃药好了一半以上——药的价值在哪？<br>
+    再加上「治愈」没有统一标准、来访者/治疗师/疗程都差异巨大，效果研究几乎没法做干净。这是 AO3 里最锋利的一条 limitation。
+  </div>
+</section>
+
+<!-- ============ 15 ============ -->
+<section class="section" id="s15">
+  <h2>15. Evaluation · Object Relations</h2>
+
+  <p>Object relations therapy inherits both the strengths and the problems of its parent.</p>
+
+  <h3>Limitation — the same subjectivity</h3>
+
+  <p>The same criticism made of psychoanalysis can be made here: the therapist analyses symbols in the client's internal world and the impact of early relationships on the internal working model, and that analysis is <strong>subjective</strong>.</p>
+
+  <p>However — and this is the textbook's important qualification — <strong>therapists are trained to acknowledge and minimise subjective interpretation</strong>. Instead of pronouncing meanings from above, they work <strong>with the client in a collaborative way to facilitate a shared understanding</strong> of the client's experiences. Two minds checking each other is still not objectivity, but it is a step towards it.</p>
+
+  <h3>Strength — a solid developmental base</h3>
+
+  <p>Object relations therapy is built on <strong>extensive work in developmental psychology</strong> demonstrating the importance of early childhood relationships for later development. Its central claim — that early attachments matter — is one of the best-supported ideas in the whole discipline. (You will meet it again in Topic E, with Bowlby's theory of attachment and Ainsworth's attachment types.)</p>
+
+  <h3>Limitation — case studies again</h3>
+
+  <p>In the same way as psychoanalysis, object relations therapy is built on <strong>case study evidence</strong>, and it is <strong>difficult to measure its effectiveness</strong>. The therapy is also long-term, which raises the same issues of cost and accessibility.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：一个「但书」值得背</strong><br>
+    考试最容易拿分的写法是先给批评再给转折：<strong>「主观性依旧存在，但是治疗师受过训练，会承认并尽量减少主观解释，与来访者合作达成共同理解。」</strong>——这句话同时展示你 knows the weakness 和 knows the defence，比单写一边高级。
+  </div>
+</section>
+
+<!-- ============ 16 ============ -->
+<section class="section" id="s16">
+  <h2>16. Three Therapies Compared</h2>
+
+  <p>A summary you can revise from — and each row is a possible comparison question.</p>
+
+  <div class="mat2x2">
+    <div class="mh">Question</div>
+    <div class="mh">Systematic desensitisation</div>
+    <div class="mh">Psychoanalysis</div>
+    <div class="mh">Object relations therapy</div>
+
+    <div class="mv">Directive?</div>
+    <div class="cell">Yes — the therapist instructs.</div>
+    <div class="cell">No — the client speaks freely.</div>
+    <div class="cell">No — collaborative exploration.</div>
+
+    <div class="mv">Main target</div>
+    <div class="cell">The learned fear response.</div>
+    <div class="cell">Unconscious conflict — making the unconscious conscious.</div>
+    <div class="cell">Internal representations of early relationships.</div>
+
+    <div class="mv">Key technique</div>
+    <div class="cell">Hierarchy of fears + relaxation (counterconditioning).</div>
+    <div class="cell">Free association, dream analysis, interpreting transference and resistance.</div>
+    <div class="cell">Talking about early attachments; analysing transference; symbols.</div>
+
+    <div class="mv">Goal</div>
+    <div class="cell">Replace fear with relaxation.</div>
+    <div class="cell">Self-insight; relive and resolve past conflicts.</div>
+    <div class="cell">Differentiate self from others; establish boundaries.</div>
+
+    <div class="mv">Best for</div>
+    <div class="cell">Specific, identifiable phobias.</div>
+    <div class="cell">Deep-seated problems where insight is the road to change.</div>
+    <div class="cell">Relationship difficulties rooted in early attachment.</div>
+
+    <div class="mv">Main weakness</div>
+    <div class="cell">Cannot treat GAD; evolutionary fears resist it.</div>
+    <div class="cell">Subjective interpretation; Eysenck's verdict; years of sessions.</div>
+    <div class="cell">Case study base; effectiveness hard to measure.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：三个疗法一句话各记一条</strong><br>
+    SD＝<strong>换反应</strong>（怕→放松）；精神分析＝<strong>找原因</strong>（潜意识变意识）；客体关系＝<strong>理关系</strong>（分清自己和别人）。<br>
+    指导性只有 SD 一个——记住这个「孤例」，选择题就不会错。
+  </div>
+</section>
+<!-- ============ 17 ============ -->
+<section class="section" id="s17">
+  <h2>17. Exam Focus</h2>
+
+  <p>The classic question on this topic is a <strong>discuss how</strong> — a scenario client, a named therapy, and 8 marks waiting for structure.</p>
+
+  <div class="mat2x2">
+    <div class="mh">Command</div>
+    <div class="mh">What you must do</div>
+    <div class="mh">Structure that earns the marks</div>
+
+    <div class="mv">Discuss how [therapist] might use [therapy]…<br><span style="font-size:.85em">(8 marks)</span></div>
+    <div class="cell">Explain the therapy <strong>applied to the client in the question</strong>, then evaluate. Roughly AO1 4 + AO3 4.</div>
+    <div class="cell">AO1: walk the client through assessment, free association, dream analysis, transference. AO3: holistic strength, then subjectivity and Eysenck.</div>
+
+    <div class="mv">Explain one strength and one weakness…<br><span style="font-size:.85em">(4 marks)</span></div>
+    <div class="cell">Two developed points — claim, then <strong>because</strong>.</div>
+    <div class="cell">Strength: developmental evidence base. Weakness: subjective interpretation.</div>
+  </div>
+
+  <div class="exam-tip">
+    <h4>💡 From the textbook</h4>
+    <p>When asked to explain or discuss <strong>how</strong> a therapy is conducted, it is a process — like following a recipe. Frame the answer with <em>firstly, secondly, thirdly</em> so you write enough points and the examiner can see you know the sequence.</p>
+  </div>
+
+  <h3>The 8-mark paragraph that usually scores</h3>
+  <div class="note-box">
+    <p><strong>AO1 (about 4 marks).</strong> Psychoanalysis is a non-directive therapy which aims to give the client self-insight by making the unconscious conscious. The therapist would begin with an assessment of the client's concerns, history, relationships and symptoms. In sessions, the client would free-associate — speaking without censoring anything — so that weakened defences allow unconscious material to surface. Dreams would be analysed: the therapist interprets the manifest content, looking through displacement to the latent wish. Finally, the therapist would interpret transference — the client's feelings towards the therapist as if they were a parent — and any resistance, building a picture of the unconscious conflict and explaining it.</p>
+    <p><strong>AO3 (about 4 marks).</strong> A strength is that the therapy is holistic: it considers many factors in the person's history rather than one behaviour, and it has generated further therapies such as object relations. However, interpretations are subjective — a different therapist might interpret the same dream differently — which makes the therapy unreliable. It is also time-consuming and costly, with weekly sessions for years, and Eysenck (1962) found only about half of patients improved while more recovered with no treatment at all, with no consistent measure of cure.</p>
+  </div>
+</section>
+
+<!-- ============ 18 ============ -->
+<section class="section" id="s18">
+  <h2>18. Checkpoint</h2>
+
+  <div class="checkpoint">
+    <h3>Eight quick questions</h3>
+
+    <div class="q-row">
+      <div class="q-stem">Q1. The aim of psychoanalysis is to…</div>
+      <label class="q-opt"><input type="radio" name="q1" value="a"> replace fear with relaxation.</label>
+      <label class="q-opt"><input type="radio" name="q1" value="b"> make the unconscious conscious.</label>
+      <label class="q-opt"><input type="radio" name="q1" value="c"> reinforce desired behaviours.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q2. In traditional psychoanalysis the client lies on a couch facing away from the therapist because…</div>
+      <label class="q-opt"><input type="radio" name="q2" value="a"> it helps the client fall into a trance.</label>
+      <label class="q-opt"><input type="radio" name="q2" value="b"> the therapy happens in the therapist's bedroom.</label>
+      <label class="q-opt"><input type="radio" name="q2" value="c"> the therapist remains anonymous — no judgements, no shown emotion — which builds trust.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q3. Free association aims to access the unconscious by…</div>
+      <label class="q-opt"><input type="radio" name="q3" value="a"> weakening the ego defence mechanisms that censor it.</label>
+      <label class="q-opt"><input type="radio" name="q3" value="b"> strengthening those mechanisms.</label>
+      <label class="q-opt"><input type="radio" name="q3" value="c"> pairing thoughts with relaxation.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q4. The dream we remember and report to the therapist is the…</div>
+      <label class="q-opt"><input type="radio" name="q4" value="a"> latent content.</label>
+      <label class="q-opt"><input type="radio" name="q4" value="b"> dreamwork.</label>
+      <label class="q-opt"><input type="radio" name="q4" value="c"> manifest content.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q5. Dreamwork disguises the latent content, for example through…</div>
+      <label class="q-opt"><input type="radio" name="q5" value="a"> counter-transference.</label>
+      <label class="q-opt"><input type="radio" name="q5" value="b"> displacement.</label>
+      <label class="q-opt"><input type="radio" name="q5" value="c"> counterconditioning.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q6. A client starts arriving late and changing the topic whenever childhood comes up. This is…</div>
+      <label class="q-opt"><input type="radio" name="q6" value="a"> transference.</label>
+      <label class="q-opt"><input type="radio" name="q6" value="b"> dreamwork.</label>
+      <label class="q-opt"><input type="radio" name="q6" value="c"> resistance.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q7. The therapist notices feeling protective towards the client. This is…</div>
+      <label class="q-opt"><input type="radio" name="q7" value="a"> counter-transference.</label>
+      <label class="q-opt"><input type="radio" name="q7" value="b"> resistance.</label>
+      <label class="q-opt"><input type="radio" name="q7" value="c"> free association.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q8. The goal of object relations therapy is to…</div>
+      <label class="q-opt"><input type="radio" name="q8" value="a"> replace fear with relaxation.</label>
+      <label class="q-opt"><input type="radio" name="q8" value="b"> help the client differentiate self-identity from others and establish boundaries.</label>
+      <label class="q-opt"><input type="radio" name="q8" value="c"> build a hierarchy of fears.</label>
+    </div>
+
+    <div class="xp-controls"><button class="xp-btn" onclick="checkQuiz()">Check my answers</button></div>
+    <div id="quizResult" class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 19 ============ -->
+<section class="section" id="s19">
+  <h2>19. Exam Lab</h2>
+
+  <div class="exam-practice">
+    <h3>Question 1 · Saisha and Omal (8 marks)</h3>
+    <p>Saisha is a psychoanalyst. She has a new client, Omal, who has come to her for psychoanalysis because he has a phobia of flying. Discuss how Saisha might use psychoanalysis to help Omal with his phobia of flying. <strong>(8 marks)</strong></p>
+    <p class="small">AO1 4 marks · AO3 4 marks. Keep referring back to Omal — a generic answer scores 0 in many mark schemes.</p>
+
+    <textarea class="answer-box" id="p1" placeholder="Walk Omal through the therapy, then evaluate..."></textarea>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('m1')">Show a model answer</button></div>
+    <div id="m1" class="xp-result">
+      <p><span class="xp-verdict">Model answer</span></p>
+      <p><strong>AO1.</strong> Psychoanalysis is a non-directive therapy which aims to give the client self-insight by making the unconscious conscious — the idea being that Omal's fear of flying is a surface symptom of an unconscious conflict. Saisha would begin with an assessment of Omal's current concerns, personal history, relationships and symptoms. In sessions, Omal would lie on the couch and <strong>free-associate</strong>, speaking without censoring anything, so that his weakened defences allow unconscious material to surface. Saisha would analyse his <strong>dreams</strong>: the frightening flight is the manifest content, and through displacement it may disguise a latent wish or fear with no obvious link to planes. She would also interpret <strong>transference</strong> — if Omal begins to treat her as he once treated a parent, his deepest relationship patterns are being re-enacted in the room — and any <strong>resistance</strong>, such as missed sessions, as a map of what he cannot yet face. By explaining these interpretations, Saisha helps Omal relive the conflict safely as an adult and resolve it.</p>
+      <p><strong>AO3.</strong> A strength is that psychoanalysis is holistic — it considers many factors in Omal's history rather than treating the symptom alone, so if his flying phobia is rooted in something deeper, the therapy may reach it. It also has generative value: it produced the object relations school. However, the interpretations Saisha offers are <strong>subjective</strong> — another analyst might read Omal's dog dream completely differently — so the therapy is unreliable. It is also slow and costly (weekly sessions, potentially for years) and Eysenck (1962) found only about half of neurotic patients improved, while more recovered with no treatment at all, with no consistent measure of cure. For a specific phobia, systematic desensitisation would be faster and better evidenced — which is a comparison the examiner rewards.</p>
+    </div>
+  </div>
+
+  <div class="exam-practice">
+    <h3>Question 2 · Object relations therapy (4 marks)</h3>
+    <p>Explain one strength and one weakness of the object relations school of thought therapy. <strong>(4 marks)</strong></p>
+    <textarea class="answer-box" id="p2" placeholder="Two developed points: claim + because..."></textarea>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('m2')">Show a model answer</button></div>
+    <div id="m2" class="xp-result">
+      <p><span class="xp-verdict">Model answer</span></p>
+      <p><strong>Strength.</strong> The therapy rests on extensive work in developmental psychology showing that early childhood relationships shape later development, so its central assumption is well supported by research — unlike therapies whose assumptions come from a single theorist's cases. Its therapists are also trained to acknowledge and minimise subjective interpretation, working collaboratively with the client towards a shared understanding, which partly answers the charge of subjectivity.</p>
+      <p><strong>Weakness.</strong> Like psychoanalysis, it is built on case study evidence, so its effectiveness is difficult to measure: there is no consistent measure of cure, and interpretations of the client's internal world remain subjective. A different therapist could draw different conclusions from the same material, making the therapy unreliable.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 20 ============ -->
+<section class="section" id="s20">
+  <h2>20. Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><div class="term">psychoanalysis <span class="zh">精神分析</span></div><div class="def">Freud's non-directive therapy: making the unconscious conscious so the client gains self-insight and resolves unconscious conflicts.</div></div>
+    <div class="glossary-item"><div class="term">non-directive therapy <span class="zh">非指导性治疗</span></div><div class="def">Therapy focused on making sense of the client's experiences; the client leads rather than follows instructions.</div></div>
+    <div class="glossary-item"><div class="term">free association <span class="zh">自由联想</span></div><div class="def">Speaking freely without censoring anything, however embarrassing or irrelevant, to weaken defences and surface unconscious material.</div></div>
+    <div class="glossary-item"><div class="term">manifest content <span class="zh">显性梦境</span></div><div class="def">The dream as experienced and reported — the disguise, not the wish.</div></div>
+    <div class="glossary-item"><div class="term">latent content <span class="zh">隐性梦境</span></div><div class="def">The actual unconscious wish or desire the dream conceals.</div></div>
+    <div class="glossary-item"><div class="term">dreamwork <span class="zh">梦的工作</span></div><div class="def">The process altering and disguising latent content into the manifest dream.</div></div>
+    <div class="glossary-item"><div class="term">displacement <span class="zh">置换</span></div><div class="def">Dreaming of something symbolic of something else — the feelings move to a substitute object.</div></div>
+    <div class="glossary-item"><div class="term">transference <span class="zh">移情</span></div><div class="def">The client transfers feelings about a person or situation onto the therapist — positive, hostile, romantic or dependent — as if the therapist were a parent.</div></div>
+    <div class="glossary-item"><div class="term">counter-transference <span class="zh">反移情</span></div><div class="def">The therapist's emotional response to the client's transference — warmth, irritation, protectiveness, romantic feelings — to be interpreted, not suppressed.</div></div>
+    <div class="glossary-item"><div class="term">resistance <span class="zh">阻抗</span></div><div class="def">Reluctance to explore distressing material, shown by lateness, missed sessions or changing the topic; itself evidence of where the conflict lies.</div></div>
+    <div class="glossary-item"><div class="term">object <span class="zh">客体</span></div><div class="def">In object relations theory, the internal representation of another person carried in the mind.</div></div>
+    <div class="glossary-item"><div class="term">object relations school <span class="zh">客体关系学派</span></div><div class="def">A psychodynamic approach focusing on internal representations of others and the role of early childhood attachments in shaping the psyche.</div></div>
+    <div class="glossary-item"><div class="term">internal working model <span class="zh">内部工作模型</span></div><div class="def">A mental construct from attachment experiences shaping how relationships are perceived — stable or unstable, trusting or untrusting, secure or insecure.</div></div>
+    <div class="glossary-item"><div class="term">human psyche <span class="zh">人类心智</span></div><div class="def">The mind with all its conscious and unconscious aspects: thoughts, feelings, memories and wishes.</div></div>
+    <div class="glossary-item"><div class="term">spontaneous remission <span class="zh">自发缓解</span></div><div class="def">Recovery without treatment — the benchmark any therapy must beat, central to Eysenck's critique.</div></div>
+    <div class="glossary-item"><div class="term">neurosis <span class="zh">神经症</span></div><div class="def">The category of milder mental disorders Eysenck (1962) studied when reviewing psychoanalysis's effectiveness.</div></div>
+  </div>
+</section>
+
+<div class="footer-note">4.1.6 Psychoanalysis and the object relations school · Learning theories and development (Topic D) · previous: <a href="../4.1.5-systematic-desensitisation/">← 4.1.5 Systematic desensitisation</a> · next: 4.2 Methods — observations, content analysis and case studies</div>
+
+  </main>
+</div>
+
+<button id="btt" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function () {
+  var baseFont = 16;
+
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark'; }
+  };
+
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  function show(id, html) {
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    el.innerHTML = html;
+    el.classList.add('show');
+  }
+
+  function verdict(ok, msg) {
+    return '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + msg + '</p>';
+  }
+
+  window.paGuess = function (btn, c) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === 'b');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var msg = ok
+      ? 'Exactly. No instructions, no exercises — the therapy brings hidden reasons into awareness, because insight is its instrument of change.'
+      : 'Not quite. Advice targets conscious thinking and avoidance trains escape. Psychoanalysis works on what is hidden: it makes the unconscious conscious.';
+    show('res-guess', verdict(ok, msg));
+  };
+
+  window.dreamAns = function (btn, c) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === 'b');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var msg = ok
+      ? 'Correct. The dog is the manifest content — a symbol produced by dreamwork, probably a displacement of feelings that belong to something else entirely.'
+      : 'The remembered dream is always the manifest content; dreamwork is the disguising process, not a character in the dream; and the latent content is the hidden wish, which the dream never shows directly.';
+    show('res-dream', verdict(ok, msg));
+  };
+
+  var quizKey = { q1: 'b', q2: 'c', q3: 'a', q4: 'c', q5: 'b', q6: 'c', q7: 'a', q8: 'b' };
+  var quizWhy = {
+    q1: 'Making the unconscious conscious is the textbook aim — self-insight is how change happens. Relaxation belongs to systematic desensitisation.',
+    q2: 'The arrangement keeps the therapist anonymous, free of visible judgement or emotion — which establishes the trust the therapy depends on.',
+    q3: 'By weakening the defences that normally censor unconscious material. Nothing is strengthened and nothing is paired with relaxation here.',
+    q4: 'Manifest content is what you remember and report; the latent wish hides underneath it; dreamwork is the disguising process between the two.',
+    q5: 'Displacement — dreaming of something symbolic of something else. Counter-transference belongs to the therapist; counterconditioning belongs to systematic desensitisation.',
+    q6: 'Resistance — the defences defending. The client avoids exactly where it hurts, which is why the pattern of avoidance is itself informative.',
+    q7: 'Counter-transference: the therapist\'s own emotional response to the client\'s transference. It should be interpreted and explained, not acted on.',
+    q8: 'Differentiating self-identity from others and establishing boundaries. Relaxation and hierarchies belong to the behavioural therapy, not this one.'
+  };
+
+  window.checkQuiz = function () {
+    var el = document.getElementById('quizResult');
+    if (!el) { return; }
+    var score = 0;
+    var html = '';
+    Object.keys(quizKey).forEach(function (q) {
+      var sel = document.querySelector('input[name="' + q + '"]:checked');
+      var chosen = sel ? sel.value : null;
+      var ok = (chosen === quizKey[q]);
+      if (ok) { score++; }
+      html += '<p style="margin:6px 0"><strong>' + q.toUpperCase() + ':</strong> ' +
+        (chosen ? (ok ? '✅ correct' : '❌ not quite') : 'not answered') +
+        ' — ' + quizWhy[q] + '</p>';
+    });
+    el.innerHTML = '<p><span class="xp-verdict">Score: ' + score + ' / 8</span></p>' + html;
+    el.classList.add('show');
+    if (score === 8) { el.classList.add('ok'); } else { el.classList.remove('ok'); }
+  };
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.toggle('show'); }
+  };
+
+  var secs = document.querySelectorAll('.section');
+  var links = document.querySelectorAll('.sb-item a');
+  function highlight() {
+    var best = null;
+    var bestTop = -99999;
+    for (var i = 0; i < secs.length; i++) {
+      var r = secs[i].getBoundingClientRect();
+      if (r.top <= 140 && r.top > bestTop) { bestTop = r.top; best = secs[i]; }
+    }
+    if (!best && secs.length) { best = secs[0]; }
+    for (var j = 0; j < links.length; j++) { links[j].classList.remove('sb-active'); }
+    if (best) {
+      var target = best.getAttribute('id');
+      for (var k = 0; k < links.length; k++) {
+        if (links[k].getAttribute('href') === '#' + target) { links[k].classList.add('sb-active'); }
+      }
+    }
+  }
+  window.addEventListener('scroll', highlight);
+  highlight();
+
+  var btt = document.getElementById('btt');
+  window.addEventListener('scroll', function () {
+    if (!btt) { return; }
+    if (window.scrollY > 400) { btt.classList.add('show'); } else { btt.classList.remove('show'); }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.1.5 Systematic Desensitisation — Treating phobias by unlearning fear</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.five-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+
+.mat2x2 { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 6px; margin: 14px 0; }
+.mat2x2 .mh { background: var(--primary); color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
+body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style></head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic D · Learning theories and development — 4.1.5 Systematic desensitisation</span>
+  </div>
+  <span class="nav-pill">🧠 Learning &amp; Development</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="4.1.5-Systematic-Desensitisation-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">4.1.5 · Contents</div>
+        <div class="sb-header-sub">Systematic Desensitisation</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">Before we start</li>
+        <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+        <li class="sb-item"><a href="#s2">2. Two Kinds of Therapy</a></li>
+        <li class="sb-item"><a href="#s3">3. What It Is</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">The method</li>
+        <li class="sb-item"><a href="#s4">4. The One Rule</a></li>
+        <li class="sb-item"><a href="#s5">5. The Five Steps</a></li>
+        <li class="sb-item"><a href="#s6">6. The Hierarchy</a></li>
+        <li class="sb-item"><a href="#s7">7. Real or Imagined</a></li>
+        <li class="sb-item"><a href="#s8">8. Relaxation Training</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Evidence</li>
+        <li class="sb-item"><a href="#s9">9. Capafons et al. (1998)</a></li>
+        <li class="sb-item"><a href="#s10">10. Why It Works</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Evaluation</li>
+        <li class="sb-item"><a href="#s11">11. Strengths</a></li>
+        <li class="sb-item"><a href="#s12">12. Limitations</a></li>
+        <li class="sb-item"><a href="#s13">13. Therapy in an App</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Exam</li>
+        <li class="sb-item"><a href="#s14">14. Exam Focus</a></li>
+        <li class="sb-item"><a href="#s15">15. Checkpoint</a></li>
+        <li class="sb-item"><a href="#s16">16. Exam Lab</a></li>
+        <li class="sb-item"><a href="#s17">17. Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>4.1.5 SYSTEMATIC DESENSITISATION<br><span style="font-size:0.65em">Unlearning a phobia, one small step at a time · 系统脱敏法</span></h1>
+  <div class="meta">
+    <span class="badge">Topic D · Learning theories and development</span>
+    <span class="badge">Therapy: behavioural</span>
+    <span class="badge">Spec 4.1.5</span>
+  </div>
+  <div class="subtitle" style="margin-top:10px">A phobia is a learned fear. If it was learned, it can be unlearned — and this therapy does it by pairing the feared object with the one state that makes fear impossible: relaxation.</div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this section is really asking</h4>
+  <ol>
+    <li><strong>A phobia is a learned response</strong>, not a character flaw — which is why telling someone to calm down never works.</li>
+    <li><strong>You cannot be anxious and relaxed at the same time</strong> (reciprocal inhibition). That single fact is the engine of the whole therapy.</li>
+    <li><strong>The client climbs a ladder of fears</strong>, rung by rung, relaxing at each rung until the fear fades — that is counterconditioning.</li>
+    <li><strong>The evidence is good but narrow:</strong> Capafons et al. (1998) found 18 of 20 flying-phobia clients improved, yet the therapy only works when the feared object is clearly identifiable.</li>
+  </ol>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started</h2>
+
+  <p>Imagine a friend who is terrified of spiders. A spider appears on the wall and your friend freezes, backs out of the room, and cannot sleep until the spider is gone. You say the obvious thing: <em>“It's tiny. It can't hurt you. Just calm down.”</em></p>
+
+  <p>It never works. Not because your friend is stupid, but because the fear is not a <strong>belief</strong> you can argue with. It is a <strong>response</strong> — the body has learned to react before the thinking part of the brain gets a vote.</p>
+
+  <div class="blue-box">
+    <h4>The question this chapter answers</h4>
+    <p>If fear can be <strong>learned</strong>, can it also be <strong>unlearned</strong>? And if so, how do you teach a body to unlearn something it has practised for years?</p>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Have a guess first <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro">A therapist wants to cure a spider phobia. Which of these is closest to what systematic desensitisation actually does?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="sdGuess(this,'a')">Explains why spiders are harmless, until the client believes it</button>
+      <button class="q-option" onclick="sdGuess(this,'b')">Pairs the feared object with a state that is incompatible with fear</button>
+      <button class="q-option" onclick="sdGuess(this,'c')">Keeps the client away from spiders until the fear fades on its own</button>
+    </div>
+    <div class="xp-result" id="res-guess"></div>
+  </div>
+
+  <p>The answer is the second one. Explaining things targets thoughts; this therapy targets <strong>the body's response</strong>. And avoidance makes fear worse, never better — every time you escape, you teach yourself that escape was necessary.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么「别怕」没有用？</strong><br>
+    恐惧症（phobia）不是观点，是<strong>条件反射</strong>。就像你闻到坏掉的食物会皱眉，不需要先想「这有毒」——身体比思考快一步。<br>
+    所以治疗也不能靠讲道理，而要<strong>重新训练这个反射</strong>：让「蜘蛛」这个信号，慢慢和「放松」而不是「恐惧」连在一起。
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Two Kinds of Therapy</h2>
+
+  <p>Before the method itself, two distinctions do a lot of work in this topic — and in your exam answers.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Psychological therapies</h4>
+      <p>Work through the mind — talking, learning, thinking, behaving. Examples: psychoanalysis, behavioural therapy, cognitive therapy, family therapy, humanistic therapy.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Biological treatments</h4>
+      <p>Work through the body — medication, psychosurgery. Example: antidepressants for depression.</p>
+    </div>
+  </div>
+
+  <div class="keyterm-box">
+    <div class="kt">directive therapy（指导性治疗）</div>
+    The therapist instructs the client to do certain things or to think in a different way. The therapist leads.
+  </div>
+
+  <div class="keyterm-box">
+    <div class="kt">non-directive therapy（非指导性治疗）</div>
+    The therapy focuses on making sense of the client's experiences and how the client understands themselves. The client leads; the therapist follows and interprets.
+  </div>
+
+  <p>Systematic desensitisation sits in the <strong>psychological, directive, behavioural</strong> corner: the therapist gives instructions, and those instructions are about behaviour, not about insight.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：指导性 vs 非指导性</strong><br>
+    <strong>Directive（指导性）</strong>＝教练型：教练告诉你下一步做什么，「先深呼吸，然后看这张图」。系统脱敏法就是这样。<br>
+    <strong>Non-directive（非指导性）</strong>＝陪聊型：治疗师不指挥你，而是让你自由说，他负责理解与解释。下一节 4.1.6 的精神分析就是这种。<br>
+    考试常考「这个疗法是指导性还是非指导性」，记住这条线就不会混。
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. What Systematic Desensitisation Is</h2>
+
+  <div class="keyterm-box">
+    <div class="kt">systematic desensitisation（系统脱敏法）</div>
+    A directive behavioural treatment for anxiety disorders, especially phobias, developed by <strong>Joseph Wolpe in the 1950s</strong>. It is based on classical conditioning, and the name says it all: <strong>systematic</strong> = following a planned order, <strong>desensitisation</strong> = becoming less sensitive to the feared object.
+  </div>
+
+  <p>Two words inside the term are worth unpacking, because students often use them without knowing what they mean:</p>
+
+  <div class="mat2x2">
+    <div class="mh">Word</div>
+    <div class="mh">Meaning</div>
+    <div class="mh">What it looks like in therapy</div>
+
+    <div class="mv">systematic</div>
+    <div class="cell">Gradually facing up to the phobic object via a <strong>hierarchy of exposure</strong>, from least fearful to most fearful.</div>
+    <div class="cell">Nobody starts by holding a spider. The client starts with a picture, then a video, then a spider in a jar across the room.</div>
+
+    <div class="mv">desensitisation</div>
+    <div class="cell">Brought about by <strong>relaxation techniques</strong> taught before facing the phobic object.</div>
+    <div class="cell">The client learns to relax first, so that relaxation is available the moment fear appears.</div>
+  </div>
+
+  <p>The aim is to overcome an irrational fear by exposing the person to it <strong>gradually and in a controlled way</strong>. The therapy rests on one idea from classical conditioning:</p>
+
+  <div class="green-box">
+    <h4>The logic in one sentence</h4>
+    <p>Phobias are <strong>acquired through an unhelpful learned response</strong> to a stimulus — so just as you can learn to fear something, you can <strong>unlearn</strong> the fear by relaxing whenever you are in contact with the phobic object.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：名字就是方法</strong><br>
+    <strong>systematic</strong>（系统的）＝按「恐惧等级表」一级一级来，不许跳级；<br>
+    <strong>desensitisation</strong>（脱敏）＝让你对这个东西越来越「不敏感」，像打疫苗一样，从小剂量开始。<br>
+    一句话：<strong>先把放松练好，再按等级表一点点接近害怕的东西，直到害怕消失。</strong>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. The One Rule That Makes It Work</h2>
+
+  <p>Everything in this therapy depends on a single claim about the nervous system:</p>
+
+  <div class="keyterm-box">
+    <div class="kt">reciprocal inhibition（交互抑制）</div>
+    You cannot be anxious and relaxed at the same time. If relaxation is present, anxiety is blocked — and the two responses cannot coexist.
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A balance beam: when relaxation goes up, anxiety must go down">
+      <defs>
+        <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#be123c"/><stop offset="1" stop-color="#16a34a"/>
+        </linearGradient>
+      </defs>
+      <text x="340" y="28" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#1e293b">One beam, two states</text>
+
+      <line x1="120" y1="150" x2="560" y2="118" stroke="url(#beam)" stroke-width="12" stroke-linecap="round"/>
+      <circle cx="340" cy="134" r="9" fill="#475569"/>
+      <polygon points="340,134 328,200 352,200" fill="#475569"/>
+
+      <rect x="86" y="70" width="150" height="46" rx="8" fill="#fef2f2" stroke="#dc2626"/>
+      <text x="161" y="90" text-anchor="middle" font-family="Arial" font-size="12.5" font-weight="700" fill="#991b1b">ANXIETY</text>
+      <text x="161" y="107" text-anchor="middle" font-family="Arial" font-size="11" fill="#7f1d1d">fast heart rate, tension</text>
+
+      <rect x="444" y="60" width="150" height="46" rx="8" fill="#f0fdf4" stroke="#16a34a"/>
+      <text x="519" y="80" text-anchor="middle" font-family="Arial" font-size="12.5" font-weight="700" fill="#166534">RELAXATION</text>
+      <text x="519" y="97" text-anchor="middle" font-family="Arial" font-size="11" fill="#14532d">slow breathing, loose muscles</text>
+
+      <text x="340" y="222" text-anchor="middle" font-family="Arial" font-size="12" fill="#475569">Raise one side and the other side has to drop: the two states inhibit each other.</text>
+      <text x="340" y="240" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#94a3b8">This is why relaxation is trained BEFORE the client meets the spider.</text>
+    </svg>
+    <div class="figure-caption">Figure 4.1.5a · Reciprocal inhibition. The therapist does not try to argue the fear away — the therapist makes relaxation physically impossible to combine with fear.</div>
+  </div>
+
+  <p>That is why the order of the therapy matters so much. If the client meets the spider first and learns to relax afterwards, there is nothing to inhibit the fear. Relaxation has to be <strong>already available</strong>, like a fire extinguisher before the fire.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么「同时」这么关键？</strong><br>
+    交感神经（紧张）和副交感神经（放松）不能同时全开。所以只要你能真正放松下来，恐惧反应就「进不来」。<br>
+    类比：手上已经握着一杯水，就没办法同时握拳。<strong>治疗师要做的是先让你学会「握水杯」，再把你带到害怕的东西面前。</strong>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. The Five Steps</h2>
+
+  <p>The textbook lists five key processes. Learn them in this order, because the exam asks you to explain <em>how</em> the therapy is conducted — and a process answer earns marks for sequence.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Five steps of systematic desensitisation in order">
+      <text x="340" y="24" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#1e293b">From conversation to cure</text>
+
+      <rect x="14" y="60" width="120" height="78" rx="8" fill="#fff7ed" stroke="#ea580c"/>
+      <text x="74" y="82" text-anchor="middle" font-family="Arial" font-size="11.5" font-weight="700" fill="#c2410c">1. Functional</text>
+      <text x="74" y="97" text-anchor="middle" font-family="Arial" font-size="11.5" font-weight="700" fill="#c2410c">analysis</text>
+      <text x="74" y="116" text-anchor="middle" font-family="Arial" font-size="10" fill="#7c2d12">what exactly</text>
+      <text x="74" y="129" text-anchor="middle" font-family="Arial" font-size="10" fill="#7c2d12">is feared?</text>
+
+      <rect x="146" y="60" width="120" height="78" rx="8" fill="#fff7ed" stroke="#ea580c"/>
+      <text x="206" y="82" text-anchor="middle" font-family="Arial" font-size="11.5" font-weight="700" fill="#c2410c">2. Hierarchy</text>
+      <text x="206" y="97" text-anchor="middle" font-family="Arial" font-size="11.5" font-weight="700" fill="#c2410c">of fears</text>
+      <text x="206" y="116" text-anchor="middle" font-family="Arial" font-size="10" fill="#7c2d12">least to most</text>
+      <text x="206" y="129" text-anchor="middle" font-family="Arial" font-size="10" fill="#7c2d12">frightening</text>
+
+      <rect x="278" y="60" width="120" height="78" rx="8" fill="#fff7ed" stroke="#ea580c"/>
+      <text x="338" y="82" text-anchor="middle" font-family="Arial" font-size="11.5" font-weight="700" fill="#c2410c">3. Relaxation</text>
+      <text x="338" y="97" text-anchor="middle" font-family="Arial" font-size="11.5" font-weight="700" fill="#c2410c">training</text>
+      <text x="338" y="116" text-anchor="middle" font-family="Arial" font-size="10" fill="#7c2d12">breathing,</text>
+      <text x="338" y="129" text-anchor="middle" font-family="Arial" font-size="10" fill="#7c2d12">visualisation</text>
+
+      <rect x="410" y="60" width="120" height="78" rx="8" fill="#fff7ed" stroke="#ea580c"/>
+      <text x="470" y="82" text-anchor="middle" font-family="Arial" font-size="11.5" font-weight="700" fill="#c2410c">4. Gradual</text>
+      <text x="470" y="97" text-anchor="middle" font-family="Arial" font-size="11.5" font-weight="700" fill="#c2410c">exposure</text>
+      <text x="470" y="116" text-anchor="middle" font-family="Arial" font-size="10" fill="#7c2d12">one rung at</text>
+      <text x="470" y="129" text-anchor="middle" font-family="Arial" font-size="10" fill="#7c2d12">the client's pace</text>
+
+      <rect x="542" y="60" width="124" height="78" rx="8" fill="#f0fdf4" stroke="#16a34a"/>
+      <text x="604" y="82" text-anchor="middle" font-family="Arial" font-size="11.5" font-weight="700" fill="#166534">5. Counter-</text>
+      <text x="604" y="97" text-anchor="middle" font-family="Arial" font-size="11.5" font-weight="700" fill="#166534">conditioning</text>
+      <text x="604" y="116" text-anchor="middle" font-family="Arial" font-size="10" fill="#14532d">fear is replaced</text>
+      <text x="604" y="129" text-anchor="middle" font-family="Arial" font-size="10" fill="#14532d">by calm</text>
+
+      <defs>
+        <marker id="ar5" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L7,3 L0,6 Z" fill="#94a3b8"/>
+        </marker>
+      </defs>
+      <line x1="134" y1="99" x2="142" y2="99" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar5)"/>
+      <line x1="266" y1="99" x2="274" y2="99" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar5)"/>
+      <line x1="398" y1="99" x2="406" y2="99" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar5)"/>
+      <line x1="530" y1="99" x2="538" y2="99" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar5)"/>
+
+      <text x="340" y="176" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#475569">Steps 1–3 come before any contact with the feared object. Step 5 is the result, not an extra technique.</text>
+      <text x="340" y="196" text-anchor="middle" font-family="Arial" font-size="11" fill="#94a3b8">The client, not the therapist, decides the order of the rungs and the speed of the climb.</text>
+    </svg>
+    <div class="figure-caption">Figure 4.1.5b · The five processes in the order the textbook lists them.</div>
+  </div>
+
+  <h3>Step by step</h3>
+
+  <p><strong>1. Functional analysis.</strong> A conversation between therapist and client to identify the <strong>nature of the anxiety</strong> and its possible <strong>triggers</strong>. This is the assessment stage: what exactly is feared, when does it happen, what makes it worse.</p>
+
+  <p><strong>2. Develop a hierarchy of fears.</strong> Client and therapist build a list from the <strong>least</strong> anxiety-provoking situation to the <strong>most</strong>. It is not a list of the therapist's ideas: the client must have input, because only the client knows which rung feels worse.</p>
+
+  <p><strong>3. Relaxation training.</strong> The client is taught relaxation methods that suit them — deep breathing, progressive muscle relaxation, or visualisation such as imagining a peaceful setting.</p>
+
+  <p><strong>4. Gradual exposure.</strong> Working through the agreed hierarchy, the phobic object is introduced slowly, at the speed agreed by the client. Nobody is pushed up a rung.</p>
+
+  <p><strong>5. Counterconditioning.</strong> Through <strong>repeated pairings</strong> of the feared stimulus with relaxation, the client learns to associate the previously feared stimulus with relaxation rather than anxiety.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：五步其实是「问清楚 → 排队 → 学放松 → 一级级上 → 换掉旧反应」</strong><br>
+    ① functional analysis＝问诊，搞清楚到底怕什么；② hierarchy＝把害怕的情境排成 1–10 级；③ relaxation training＝先学会放松；④ gradual exposure＝按等级表一级一级接触；⑤ counterconditioning＝反复「怕的东西 + 放松」配对，最后旧的条件反射被新的取代。<br>
+    考试写「如何实施」时，用 <em>firstly / secondly / thirdly</em> 把这五步串起来，就是满分结构。
+  </div>
+</section>
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Building the Hierarchy</h2>
+
+  <p>The hierarchy is the heart of the method. It turns “I am scared of birds” into ten concrete situations that can be tackled in order.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A five-step staircase of fear, from imagining a spider to holding it">
+      <defs>
+        <marker id="ar6" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L7,3 L0,6 Z" fill="#ea580c"/>
+        </marker>
+      </defs>
+      <text x="470" y="26" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#1e293b">An anxiety hierarchy for a spider phobia</text>
+
+      <rect x="40" y="250" width="220" height="52" rx="6" fill="#ecfdf5" stroke="#16a34a"/>
+      <text x="56" y="271" font-family="Arial" font-size="12" font-weight="700" fill="#166534">1 · least fearful</text>
+      <text x="56" y="290" font-family="Arial" font-size="11.5" fill="#14532d">Imagine the spider on your hand</text>
+
+      <rect x="260" y="198" width="220" height="52" rx="6" fill="#f0fdf4" stroke="#22c55e"/>
+      <text x="276" y="219" font-family="Arial" font-size="12" font-weight="700" fill="#166534">2</text>
+      <text x="276" y="238" font-family="Arial" font-size="11.5" fill="#14532d">Look at a picture of a spider in a book</text>
+
+      <rect x="480" y="146" width="180" height="52" rx="6" fill="#fefce8" stroke="#ca8a04"/>
+      <text x="496" y="167" font-family="Arial" font-size="12" font-weight="700" fill="#854d0e">3</text>
+      <text x="496" y="186" font-family="Arial" font-size="11.5" fill="#713f12">Be in the same room</text>
+
+      <rect x="480" y="94" width="180" height="52" rx="6" fill="#fff7ed" stroke="#ea580c"/>
+      <text x="496" y="115" font-family="Arial" font-size="12" font-weight="700" fill="#c2410c">4</text>
+      <text x="496" y="134" font-family="Arial" font-size="11.5" fill="#7c2d12">Walk towards the spider</text>
+
+      <rect x="480" y="42" width="180" height="52" rx="6" fill="#fef2f2" stroke="#dc2626"/>
+      <text x="496" y="63" font-family="Arial" font-size="12" font-weight="700" fill="#991b1b">5 · most fearful</text>
+      <text x="496" y="82" font-family="Arial" font-size="11.5" fill="#7f1d1d">Hold the spider</text>
+
+      <path d="M150 250 L150 224 L370 224 L370 172 L480 172" fill="none" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="5 4"/>
+      <path d="M370 172 L370 120 L480 120" fill="none" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="5 4"/>
+      <path d="M480 120 L480 68" fill="none" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="5 4"/>
+
+      <line x1="30" y1="302" x2="650" y2="302" stroke="#cbd5e1" stroke-width="2" marker-end="url(#ar6)"/>
+      <text x="30" y="322" font-family="Arial" font-size="11.5" fill="#64748b">Therapy moves this way: one rung at a time, relaxing before moving on</text>
+    </svg>
+    <div class="figure-caption">Figure 4.1.5c · The textbook's own spider hierarchy. The client climbs from imagining the spider (least fearful) to holding it (most fearful).</div>
+  </div>
+
+  <p>Two rules keep the hierarchy safe and effective:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>The client writes the rungs</h4>
+      <p>Only the client knows which situation feels worse. If the therapist imposes the order, the client may be pushed up a rung too early and the fear is reinforced rather than reduced.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>The client sets the speed</h4>
+      <p>Progress depends on the strength of the phobia and the client's ability to relax — which is why the number of sessions varies so much between clients.</p>
+    </div>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Quick check <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro">A client's hierarchy reads: (A) hold a spider, (B) look at a photo, (C) stand in the same room. Which item does the client meet <strong>first</strong>?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="rungAns(this,'a')">A — start with the hardest while motivation is high</button>
+      <button class="q-option" onclick="rungAns(this,'b')">B — start with the least frightening item</button>
+      <button class="q-option" onclick="rungAns(this,'c')">C — start in the middle and work both ways</button>
+    </div>
+    <div class="xp-result" id="res-rung"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：等级表为什么必须由来访者自己排？</strong><br>
+    因为「怕」是主观的。治疗师觉得「看照片」很轻，但来访者可能连照片都不敢看。排错等级＝把人直接推到承受不了的那一级，恐惧反而被强化（这叫 re-traumatisation，二次创伤）。<br>
+    所以等级表既是技术工具，也是<strong>伦理保护</strong>。
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Real or Imagined</h2>
+
+  <p>Exposure can happen in two forms, and the difference is examinable vocabulary:</p>
+
+  <div class="mat2x2">
+    <div class="mh">Form</div>
+    <div class="mh">What the client meets</div>
+    <div class="mh">Strength / weakness</div>
+
+    <div class="mv">in vivo</div>
+    <div class="cell">The <strong>real object</strong>, in real life — an actual spider, an actual aeroplane cabin.</div>
+    <div class="cell">Stronger, more convincing learning; but harder to arrange and more frightening for the client.</div>
+
+    <div class="mv">in vitro</div>
+    <div class="cell">An <strong>imaginary exposure</strong> — picturing the object, or watching a film of it.</div>
+    <div class="cell">Safe and easy to control; but the learning may not transfer to the real situation.</div>
+  </div>
+
+  <p>Modern practice adds a third route: <strong>virtual reality</strong>. A headset can put a client in a plane cabin or a room full of spiders while the therapist controls exactly how much appears and when. It keeps the graded control of in vitro exposure but feels much closer to in vivo.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：in vivo / in vitro 别记反</strong><br>
+    <em>in vivo</em>＝在活体里＝<strong>真实情境</strong>（真的蜘蛛）；<em>in vitro</em>＝在玻璃器皿里＝<strong>想象或影像</strong>。<br>
+    记忆法：<strong>vivo 有「活」的意思</strong>——活的、真的。
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Relaxation Training</h2>
+
+  <p>Relaxation is not “try to feel better”. It is a skill, taught and practised, until the client can produce it on demand. Three common methods:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Deep breathing</h4>
+      <p>Slow, abdominal breathing lowers heart rate. Simple, portable, usable in the moment.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Progressive muscle relaxation</h4>
+      <p>Tensing and then releasing each muscle group, teaching the body the difference between tension and relaxation.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Visualisation</h4>
+      <p>Imagining a peaceful setting — a beach, a quiet room — until the image itself triggers calm.</p>
+    </div>
+  </div>
+
+  <p>The therapist chooses methods that suit the client: a client who cannot sit still may prefer breathing to a long body scan; a visually imaginative client may take to visualisation quickly. What matters is that the client can <strong>reach relaxation reliably</strong> before exposure begins.</p>
+
+  <div class="note-box">
+    <h4>Why practice, not just instruction</h4>
+    <p>Under fear, the body reverts to whatever it has practised. A relaxation technique used for the first time in front of a spider will fail — the client needs it to be automatic, so that it can compete with the anxiety response.</p>
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Evidence: Capafons et al. (1998)</h2>
+
+  <p>Does the therapy actually work? The textbook's key evidence is a Spanish study of fear of flying.</p>
+
+  <div class="mat2x2">
+    <div class="mh">Feature</div>
+    <div class="mh">Detail</div>
+    <div class="mh">Why it matters</div>
+
+    <div class="mv">Sample</div>
+    <div class="cell">41 Spanish participants who suffered from a <strong>fear of flying</strong> (aerophobia).</div>
+    <div class="cell">A clinical sample — people with a real phobia, not students asked to imagine one.</div>
+
+    <div class="mv">Groups</div>
+    <div class="cell"><strong>20</strong> treated with systematic desensitisation; <strong>21</strong> in a <strong>waiting control group</strong> (waiting for therapy, not yet treated).</div>
+    <div class="cell">The comparison shows what would have happened without treatment.</div>
+
+    <div class="mv">Result</div>
+    <div class="cell"><strong>18</strong> of the treated participants reported lower levels of fear and were less anxious.</div>
+    <div class="cell">A large improvement in the treated group, against a group receiving nothing.</div>
+  </div>
+
+  <p>Read that result carefully, because the exam rewards precision: <strong>18 out of 20</strong>, not “all of them”, and the outcome is <strong>self-reported fear</strong>, not a behavioural test of actually boarding a plane.</p>
+
+  <div class="green-box">
+    <h4>What this study supports</h4>
+    <p>Systematic desensitisation can reduce reported fear in a genuine clinical phobia — and it does so better than receiving no treatment. That is exactly the claim the therapy needs, because it is a <strong>behavioural</strong> treatment: if the behaviour (avoidance) does not change, the therapy has not done its job.</p>
+  </div>
+
+  <div class="warn-box">
+    <h4>What it does not prove</h4>
+    <p>A waiting control group is not a placebo control, so some of the improvement could come from expectation and attention. The measure is self-report, so demand characteristics are possible. And there is no long follow-up reported, so we cannot tell whether the fear stayed away.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：这组数据怎么用？</strong><br>
+    41 人、20 人接受治疗、21 人排队等待、18 人报告恐惧下降——这是<strong>支持「有效」的证据</strong>（AO3 里的 strength）。<br>
+    但同时要会挑毛病：等待对照组≠安慰剂组；结果是<strong>自评</strong>不是真的去坐飞机；样本只有 41 人；没有长期追踪。这样一段「先支持再限制」的写法，才是 8 分题的高分结构。
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Why It Works</h2>
+
+  <p>Describe the therapy in the language of classical conditioning and it becomes much easier to remember — and much easier to write about under exam pressure.</p>
+
+  <div class="mat2x2">
+    <div class="mh">Conditioning term</div>
+    <div class="mh">In the phobia</div>
+    <div class="mh">In the therapy</div>
+
+    <div class="mv">CS</div>
+    <div class="cell">The spider (originally neutral, now a signal for danger).</div>
+    <div class="cell">Still the spider — but now paired with something else.</div>
+
+    <div class="mv">UCS / UCR</div>
+    <div class="cell">A frightening experience (being bitten, startled) producing fear.</div>
+    <div class="cell">Relaxation training produces calm, deliberately.</div>
+
+    <div class="mv">New pairing</div>
+    <div class="cell">—</div>
+    <div class="cell">CS (spider) + relaxation, repeated at each rung.</div>
+
+    <div class="mv">New CR</div>
+    <div class="cell">Fear at the sight of the spider.</div>
+    <div class="cell">Calm at the sight of the spider — a <strong>counter</strong>-conditioned response.</div>
+  </div>
+
+  <p>The technical name for this replacement is <strong>counterconditioning</strong>: a new response is conditioned to the old stimulus, and because the two responses inhibit each other, the old one cannot run.</p>
+
+  <div class="note-box">
+    <h4>Counterconditioning or extinction?</h4>
+    <p>Extinction would mean presenting the spider repeatedly <em>without</em> anything unpleasant, until the fear fades. Systematic desensitisation does something more active: it attaches a <strong>competing</strong> response to the spider. That is why relaxation training is not optional — without it, there is nothing to compete with the fear.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：用条件反射的语言重讲一遍</strong><br>
+    原本：蜘蛛（CS）→ 害怕（CR）。<br>
+    现在：每次出现「蜘蛛」，同时让你处于放松状态，重复多次后，蜘蛛（CS）→ 放松（新的 CR）。<br>
+    这叫 <strong>counterconditioning（反向条件化）</strong>：不是把旧反应「擦掉」，而是让一个<strong>更强、互斥</strong>的新反应占住位置。
+  </div>
+</section>
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Evaluation · Strengths</h2>
+
+  <p>Four strengths, each with the reason behind it — not just a list of adjectives.</p>
+
+  <h3>1. It has proven effectiveness</h3>
+  <p>Most studies report that people receiving systematic desensitisation improve <strong>more than a non-treatment group</strong>. Capafons et al. (1998) is the textbook example: 18 of 20 treated flying-phobia clients reported lower fear, against a waiting control group who received nothing. Unlike some talking therapies, the outcome here is behavioural and measurable — you can see whether the client now approaches the spider.</p>
+
+  <h3>2. It takes less time and effort than other therapies</h3>
+  <p>Compared with psychoanalysis, which can run for years, systematic desensitisation is <strong>brief and structured</strong>. The hierarchy gives both therapist and client a clear plan, so progress is visible session by session. That also makes it cheaper for health services.</p>
+
+  <h3>3. The client can, in principle, do it alone</h3>
+  <p>Because the method is a set of explicit steps, it can be delivered through <strong>computer simulations, apps and virtual reality software</strong>. That widens access for people who cannot travel, cannot afford a therapist, or feel too ashamed to seek one.</p>
+
+  <h3>4. It raises few ethical problems</h3>
+  <p>The techniques — a graded hierarchy and relaxation — mean the client is <strong>not exposed to any high-anxiety situation</strong>. There is no deception, no distressing procedure, and the client controls the pace. Compare this with flooding, which deliberately puts the client in the most frightening situation at once.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么「伦理风险低」是加分点</strong><br>
+    同属行为疗法的 flooding（满灌疗法）是直接把人放进最害怕的情境，效果快但可能造成创伤。系统脱敏法的等级表相当于<strong>安全绳</strong>：每一级都在来访者能承受的范围内。<br>
+    在 AO3 里写「ethical」时，一定要说清<strong>为什么</strong>（等级表 + 放松训练保证不进入高焦虑），否则只是空话。
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Evaluation · Limitations</h2>
+
+  <h3>1. It only treats some anxiety disorders</h3>
+  <p>The object or situation has to be <strong>clearly identifiable</strong> for a hierarchy to be built. That makes it inappropriate for someone with <strong>generalised anxiety disorder</strong> — a long-term condition where the person feels anxious across a range of situations rather than about one specific object. You cannot build a ladder for “everything”.</p>
+
+  <h3>2. Some phobias resist it</h3>
+  <p>It is less effective for phobias with an <strong>underlying survival component</strong> — fear of the dark, of dangerous animals, of heights. One explanation is evolutionary: these fears may have kept our ancestors alive, so they are deep-rooted and very difficult to remove. A fear of heights is a poor candidate for a hierarchy of photographs.</p>
+
+  <h3>3. It treats the symptom, not the cause</h3>
+  <p>Systematic desensitisation changes the <strong>response</strong> and says nothing about why the fear arose. If the phobia is a surface expression of an unresolved conflict or a traumatic memory, removing the surface behaviour may leave the underlying problem untouched — and the anxiety may reappear in another form. This is exactly the criticism psychoanalysis makes of behavioural therapy.</p>
+
+  <h3>4. It depends on skills the client may not have</h3>
+  <p>The client must be able to relax on cue and to work with an imagined or real hierarchy. Clients who cannot achieve relaxation, or who cannot tolerate any exposure, progress poorly — and self-help apps remove the therapist's judgement about when to stop.</p>
+
+  <div class="xp-block">
+    <h4>🎯 Quick check <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro">Which client is the <strong>least</strong> suitable for systematic desensitisation?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="limAns(this,'a')">A woman with a severe spider phobia</button>
+      <button class="q-option" onclick="limAns(this,'b')">A man who panics on aeroplanes</button>
+      <button class="q-option" onclick="limAns(this,'c')">A woman with generalised anxiety who worries about many vague situations</button>
+    </div>
+    <div class="xp-result" id="res-lim"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：三个限制其实是一条逻辑</strong><br>
+    系统脱敏法要求「有一个具体、可分级、可接近的恐惧对象」。<br>
+    → 对象不明确（GAD）＝做不出等级表；<br>
+    → 对象是进化写进基因的（黑暗、高处、猛兽）＝等级表也压不住；<br>
+    → 恐惧只是更深问题的表面＝治好了表面，里面还在。<br>
+    记住这条主线，三条限制就不需要死背。
+  </div>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. Therapy in an App</h2>
+
+  <p>The textbook asks you to weigh up clients using electronic applications — apps and virtual reality — to treat their own phobia, without visiting a therapist. Here is the balanced case.</p>
+
+  <div class="mat2x2">
+    <div class="mh">Question</div>
+    <div class="mh">Case for the app</div>
+    <div class="mh">Case against the app</div>
+
+    <div class="mv">Access</div>
+    <div class="cell">No waiting list, no travel, available at 2 a.m. when the fear is worst. Reaches people who would never enter a clinic.</div>
+    <div class="cell">Assumes a smartphone, data and a private space — it excludes some of the people who need it most.</div>
+
+    <div class="mv">Cost</div>
+    <div class="cell">A fraction of weekly sessions; can be free. Health services can offer it at scale.</div>
+    <div class="cell">Cheap partly because nobody is assessing the client — savings may be paid for elsewhere.</div>
+
+    <div class="mv">Control</div>
+    <div class="cell">The client moves at their own pace, which fits the principle that the client sets the speed.</div>
+    <div class="cell">No therapist to judge when the client is climbing too fast, and no one to notice if the fear is worsening.</div>
+
+    <div class="mv">Safety</div>
+    <div class="cell">In vitro and VR exposure cannot put the client in real physical danger.</div>
+    <div class="cell">Drop-out is invisible; a client who abandons the programme at rung four gets no follow-up at all.</div>
+  </div>
+
+  <div class="green-box">
+    <h4>The judgement to reach</h4>
+    <p>Apps are a reasonable <strong>first step or top-up</strong> for mild, specific phobias, where the client is motivated and the hierarchy is easy to build. They are a poor substitute for a therapist when the phobia is severe, when the client cannot relax, or when the fear is tangled up with other problems — the very cases where professional judgement matters most.</p>
+  </div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="section" id="s14">
+  <h2>14. Exam Focus</h2>
+
+  <p>Two command words dominate this topic, and they want different things.</p>
+
+  <div class="mat2x2">
+    <div class="mh">Command</div>
+    <div class="mh">What you must do</div>
+    <div class="mh">Structure that earns the marks</div>
+
+    <div class="mv">Explain how…<br><span style="font-size:.85em">(4 marks)</span></div>
+    <div class="cell">Describe the <strong>process</strong>, in order. This is AO1 only.</div>
+    <div class="cell">Firstly… (functional analysis) Secondly… (hierarchy) Thirdly… (relaxation) Finally… (graded exposure and counterconditioning).</div>
+
+    <div class="mv">Discuss…<br><span style="font-size:.85em">(8 marks)</span></div>
+    <div class="cell">Explain the therapy <strong>and</strong> evaluate it. Roughly AO1 4 + AO3 4.</div>
+    <div class="cell">AO1: what it is, how it is done, the mechanism. AO3: effectiveness with a named study, plus limitations such as GAD and evolutionary fears.</div>
+  </div>
+
+  <div class="exam-tip">
+    <h4>💡 From the textbook</h4>
+    <p>When asked to explain or discuss <strong>how</strong> a therapy is conducted, treat it like a recipe: the examiner wants the steps. Framing your answer with <em>firstly, secondly, thirdly</em> makes sure you write enough distinct points — and makes it obvious to the examiner that you know the sequence.</p>
+  </div>
+
+  <h3>The 8-mark paragraph that usually scores</h3>
+  <div class="note-box">
+    <p><strong>AO1 (about 4 marks).</strong> Systematic desensitisation is a directive behavioural therapy developed by Wolpe, based on classical conditioning. The client is first given a functional analysis, then builds a hierarchy of fears from least to most anxiety-provoking. They are taught relaxation techniques, then work through the hierarchy while relaxing, so that the feared stimulus becomes paired with calm through counterconditioning — possible because of reciprocal inhibition.</p>
+    <p><strong>AO3 (about 4 marks).</strong> It is supported by Capafons et al. (1998), where 18 of 20 flying-phobia clients reported lower fear. It is brief, ethical and can be delivered by app. However, it cannot treat generalised anxiety disorder because no single hierarchy can be built, and it is less effective for evolutionary fears such as heights. It also treats the response rather than any underlying cause.</p>
+  </div>
+</section>
+
+<!-- ============ 15 ============ -->
+<section class="section" id="s15">
+  <h2>15. Checkpoint</h2>
+
+  <div class="checkpoint">
+    <h3>Eight quick questions</h3>
+
+    <div class="q-row">
+      <div class="q-stem">Q1. Systematic desensitisation was developed by…</div>
+      <label class="q-opt"><input type="radio" name="q1" value="a"> Sigmund Freud, in Vienna.</label>
+      <label class="q-opt"><input type="radio" name="q1" value="b"> Joseph Wolpe, in the 1950s.</label>
+      <label class="q-opt"><input type="radio" name="q1" value="c"> B. F. Skinner, in 1948.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q2. The therapy is based on the principles of…</div>
+      <label class="q-opt"><input type="radio" name="q2" value="a"> operant conditioning.</label>
+      <label class="q-opt"><input type="radio" name="q2" value="b"> classical conditioning.</label>
+      <label class="q-opt"><input type="radio" name="q2" value="c"> social learning theory.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q3. Reciprocal inhibition means that…</div>
+      <label class="q-opt"><input type="radio" name="q3" value="a"> you cannot be anxious and relaxed at the same time.</label>
+      <label class="q-opt"><input type="radio" name="q3" value="b"> fear transfers from one object to another.</label>
+      <label class="q-opt"><input type="radio" name="q3" value="c"> relaxation works as a punishment for fear.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q4. Which happens first in the therapy?</div>
+      <label class="q-opt"><input type="radio" name="q4" value="a"> Gradual exposure to the phobic object.</label>
+      <label class="q-opt"><input type="radio" name="q4" value="b"> Relaxation training.</label>
+      <label class="q-opt"><input type="radio" name="q4" value="c"> Counterconditioning.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q5. A hierarchy of fears is…</div>
+      <label class="q-opt"><input type="radio" name="q5" value="a"> a list of situations from least to most anxiety-provoking.</label>
+      <label class="q-opt"><input type="radio" name="q5" value="b"> the therapist's timetable of sessions.</label>
+      <label class="q-opt"><input type="radio" name="q5" value="c"> a questionnaire that measures anxiety.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q6. In Capafons et al. (1998), how many participants actually received the treatment?</div>
+      <label class="q-opt"><input type="radio" name="q6" value="a"> 18</label>
+      <label class="q-opt"><input type="radio" name="q6" value="b"> 20</label>
+      <label class="q-opt"><input type="radio" name="q6" value="c"> 21</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q7. Systematic desensitisation is inappropriate for…</div>
+      <label class="q-opt"><input type="radio" name="q7" value="a"> specific phobias of objects.</label>
+      <label class="q-opt"><input type="radio" name="q7" value="b"> generalised anxiety disorder.</label>
+      <label class="q-opt"><input type="radio" name="q7" value="c"> fear of flying.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q8. In vitro exposure means the client…</div>
+      <label class="q-opt"><input type="radio" name="q8" value="a"> meets the real phobic object.</label>
+      <label class="q-opt"><input type="radio" name="q8" value="b"> is exposed imaginatively to the object.</label>
+      <label class="q-opt"><input type="radio" name="q8" value="c"> is treated only with virtual reality.</label>
+    </div>
+
+    <div class="xp-controls"><button class="xp-btn" onclick="checkQuiz()">Check my answers</button></div>
+    <div id="quizResult" class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 16 ============ -->
+<section class="section" id="s16">
+  <h2>16. Exam Lab</h2>
+
+  <div class="exam-practice">
+    <h3>Question · Judith and the cat (8 marks)</h3>
+    <p>Judith has developed a phobia of cats following an incident where a cat unexpectedly jumped out at her and bit her hand. Discuss systematic desensitisation as a treatment for Judith's phobia of cats. <strong>(8 marks)</strong></p>
+    <p class="small">AO1 4 marks · AO3 4 marks. Use Judith's case in your answer — a generic essay scores lower.</p>
+
+    <textarea class="answer-box" id="p1" placeholder="Write your plan: what the therapist does, in order, then two evaluations linked to Judith..."></textarea>
+
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('m1')">Show a model answer</button></div>
+    <div id="m1" class="xp-result">
+      <p><span class="xp-verdict">Model answer</span></p>
+      <p><strong>AO1.</strong> Systematic desensitisation is a directive behavioural therapy developed by Wolpe, based on classical conditioning. Judith's fear of cats is a learned response to a stimulus — the cat that bit her — so it can be unlearned by pairing cats with relaxation. The therapist would begin with a <strong>functional analysis</strong>, identifying that the trigger is a cat moving suddenly towards her. They would then build a <strong>hierarchy of fears</strong> together, from least to most frightening: seeing a photo of a cat, watching a video, being in the same room as a cat in a carrier, being near a cat that is free, and finally stroking a cat. Judith would be taught <strong>relaxation techniques</strong> such as deep breathing or visualisation, and would then work up the hierarchy at her own pace, staying relaxed at each rung. Through repeated pairing of cats with relaxation, <strong>counterconditioning</strong> occurs: because she cannot be anxious and relaxed at once (reciprocal inhibition), the fear response is replaced by calm.</p>
+      <p><strong>AO3.</strong> One strength is that the therapy is well supported: Capafons et al. (1998) found 18 of 20 flying-phobia clients reported lower fear after treatment, suggesting Judith is likely to improve. The graded hierarchy also keeps her out of any high-anxiety situation, so it raises few ethical issues. However, the therapy only reduces the response and does not address why the phobia developed. If Judith's fear is linked to a broader anxiety problem, the fear may return or appear elsewhere — and if her fear were not tied to a clearly identifiable object, a hierarchy could not be built at all, which is why the therapy would not suit generalised anxiety disorder.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 17 ============ -->
+<section class="section" id="s17">
+  <h2>17. Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><div class="term">systematic desensitisation <span class="zh">系统脱敏法</span></div><div class="def">A directive behavioural therapy for phobias, developed by Wolpe, that pairs gradual exposure to the feared object with relaxation.</div></div>
+    <div class="glossary-item"><div class="term">systematic <span class="zh">系统的</span></div><div class="def">Gradually facing the phobic object via a hierarchy of exposure, from least fearful to most fearful.</div></div>
+    <div class="glossary-item"><div class="term">desensitisation <span class="zh">脱敏</span></div><div class="def">Becoming less sensitive to the feared object, brought about by relaxation techniques taught before exposure.</div></div>
+    <div class="glossary-item"><div class="term">reciprocal inhibition <span class="zh">交互抑制</span></div><div class="def">The principle that anxiety and relaxation cannot occur at the same time, so relaxation blocks the fear response.</div></div>
+    <div class="glossary-item"><div class="term">functional analysis <span class="zh">功能分析</span></div><div class="def">The opening conversation between therapist and client that identifies the nature of the anxiety and its triggers.</div></div>
+    <div class="glossary-item"><div class="term">hierarchy of fears <span class="zh">恐惧等级表</span></div><div class="def">A ranked list of situations from least to most anxiety-provoking, built with the client, who also sets the pace.</div></div>
+    <div class="glossary-item"><div class="term">relaxation training <span class="zh">放松训练</span></div><div class="def">Teaching the client to relax on cue — deep breathing, progressive muscle relaxation or visualisation.</div></div>
+    <div class="glossary-item"><div class="term">counterconditioning <span class="zh">反向条件化</span></div><div class="def">Replacing a conditioned fear response with a new, incompatible response (relaxation) through repeated pairing.</div></div>
+    <div class="glossary-item"><div class="term">in vivo <span class="zh">真实情境暴露</span></div><div class="def">Exposure to the actual feared object in real life.</div></div>
+    <div class="glossary-item"><div class="term">in vitro <span class="zh">想象暴露</span></div><div class="def">Exposure through imagination or images rather than the real object.</div></div>
+    <div class="glossary-item"><div class="term">directive therapy <span class="zh">指导性治疗</span></div><div class="def">The therapist instructs the client what to do or how to think; systematic desensitisation is directive.</div></div>
+    <div class="glossary-item"><div class="term">generalised anxiety disorder <span class="zh">广泛性焦虑障碍</span></div><div class="def">A long-term condition of anxiety across many situations rather than one specific object — unsuitable for a hierarchy.</div></div>
+    <div class="glossary-item"><div class="term">waiting control group <span class="zh">等待对照组</span></div><div class="def">Participants waiting for treatment who receive none during the study, used by Capafons et al. as a comparison.</div></div>
+  </div>
+</section>
+
+<div class="footer-note">4.1.5 Systematic desensitisation · Learning theories and development (Topic D) · previous: <a href="../d21-unconscious-personality/">← 4.1.4 The unconscious and personality</a> · next: <a href="../4.1.6-psychoanalysis-and-object-relations/">4.1.6 Psychoanalysis and the object relations school →</a></div>
+
+  </main>
+</div>
+
+<button id="btt" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function () {
+  var baseFont = 16;
+
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark'; }
+  };
+
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  function show(id, html) {
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    el.innerHTML = html;
+    el.classList.add('show');
+  }
+
+  function verdict(ok, msg) {
+    return '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + msg + '</p>';
+  }
+
+  window.sdGuess = function (btn, c) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === 'b');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var msg = ok
+      ? 'Exactly. The therapy does not argue with the fear — it makes relaxation physically incompatible with it, using reciprocal inhibition.'
+      : 'Not quite. Explaining the danger targets thoughts, and avoidance makes fear worse. The therapy pairs the feared object with a state that cannot coexist with fear: relaxation.';
+    show('res-guess', verdict(ok, msg));
+  };
+
+  window.rungAns = function (btn, c) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === 'b');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var msg = ok
+      ? 'Correct. The hierarchy runs from least to most anxiety-provoking, and the client starts at the bottom rung — with a photo, not a spider.'
+      : 'Look at the direction of the hierarchy: it runs from least to most frightening, so the climb starts at the least frightening item.';
+    show('res-rung', verdict(ok, msg));
+  };
+
+  window.limAns = function (btn, c) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === 'c');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var msg = ok
+      ? 'Correct. Generalised anxiety has no single identifiable object, so no hierarchy can be built — that is the therapy\'s first limitation.'
+      : 'Both of those are specific, identifiable phobias with a clear object, which is exactly what a hierarchy needs. The unsuitable client is the one whose anxiety is spread across many vague situations.';
+    show('res-lim', verdict(ok, msg));
+  };
+
+  var quizKey = { q1: 'b', q2: 'b', q3: 'a', q4: 'b', q5: 'a', q6: 'b', q7: 'b', q8: 'b' };
+  var quizWhy = {
+    q1: 'Joseph Wolpe developed the technique in the 1950s. Freud developed psychoanalysis; Skinner is the operant conditioning name in this topic.',
+    q2: 'Classical conditioning — a neutral stimulus becomes associated with a response. Operant conditioning is about reinforcement and punishment, which is a different therapy.',
+    q3: 'Reciprocal inhibition: the two states are mutually exclusive, so relaxation blocks anxiety. Nothing transfers and nothing is punished.',
+    q4: 'Relaxation comes before exposure, otherwise there is nothing to inhibit the fear. Counterconditioning is the result of the whole process, not a separate first step.',
+    q5: 'It is a client-built list from least to most anxiety-provoking — not a timetable and not a questionnaire.',
+    q6: '20 received the treatment and 21 were the waiting control group; 18 of the 20 improved. All three numbers appear in the study, so read the question carefully.',
+    q7: 'Generalised anxiety disorder involves many vague situations, so no hierarchy can be constructed. Specific phobias and fear of flying are exactly what the therapy treats.',
+    q8: 'In vitro is imaginary exposure — in vivo is the real object. Virtual reality is a modern delivery method, not the definition.'
+  };
+
+  window.checkQuiz = function () {
+    var el = document.getElementById('quizResult');
+    if (!el) { return; }
+    var score = 0;
+    var html = '';
+    Object.keys(quizKey).forEach(function (q) {
+      var sel = document.querySelector('input[name="' + q + '"]:checked');
+      var chosen = sel ? sel.value : null;
+      var ok = (chosen === quizKey[q]);
+      if (ok) { score++; }
+      html += '<p style="margin:6px 0"><strong>' + q.toUpperCase() + ':</strong> ' +
+        (chosen ? (ok ? '✅ correct' : '❌ not quite') : 'not answered') +
+        ' — ' + quizWhy[q] + '</p>';
+    });
+    el.innerHTML = '<p><span class="xp-verdict">Score: ' + score + ' / 8</span></p>' + html;
+    el.classList.add('show');
+    if (score === 8) { el.classList.add('ok'); } else { el.classList.remove('ok'); }
+  };
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.toggle('show'); }
+  };
+
+  var secs = document.querySelectorAll('.section');
+  var links = document.querySelectorAll('.sb-item a');
+  function highlight() {
+    var best = null;
+    var bestTop = -99999;
+    for (var i = 0; i < secs.length; i++) {
+      var r = secs[i].getBoundingClientRect();
+      if (r.top <= 140 && r.top > bestTop) { bestTop = r.top; best = secs[i]; }
+    }
+    if (!best && secs.length) { best = secs[0]; }
+    for (var j = 0; j < links.length; j++) { links[j].classList.remove('sb-active'); }
+    if (best) {
+      var target = best.getAttribute('id');
+      for (var k = 0; k < links.length; k++) {
+        if (links[k].getAttribute('href') === '#' + target) { links[k].classList.add('sb-active'); }
+      }
+    }
+  }
+  window.addEventListener('scroll', highlight);
+  highlight();
+
+  var btt = document.getElementById('btt');
+  window.addEventListener('scroll', function () {
+    if (!btt) { return; }
+    if (window.scrollY > 400) { btt.classList.add('show'); } else { btt.classList.remove('show'); }
+  });
+})();
+</script>
+</body>
+</html>
