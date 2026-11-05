@@ -296,11 +296,11 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="xp-block">
     <h4>🫙 The jar of beans <span class="xp-badge">Try it on yourself</span></h4>
-    <p class="xp-intro">Your teacher holds up a jar full of coloured beans and asks everyone to <strong>write down privately</strong> how many beans it holds. You write your estimate. Then the class discusses it and agrees on a <strong>group estimate</strong> — say, most people are saying “about 850”.</p>
-    <p class="xp-intro">Now the teacher asks everyone to write a <strong>second private estimate</strong>. Your first guess was 600. What happens to your second one?</p>
+    <p class="xp-intro">Your teacher holds up a jar full of coloured beans and asks everyone to <strong>write down privately</strong> how many beans it holds. You write your estimate. Then the class discusses it and agrees on a <strong>group estimate</strong> — and the group settles on a much bigger number than yours.</p>
+    <p class="xp-intro">Now the teacher asks everyone to write a <strong>second private estimate</strong>. What happens to yours?</p>
     <div class="xp-controls">
-      <button class="xp-btn" onclick="beansChoice('moved')">It moves toward 850</button>
-      <button class="xp-btn" onclick="beansChoice('stayed')">It stays at 600</button>
+      <button class="xp-btn" onclick="beansChoice('moved')">It moves toward the group's estimate</button>
+      <button class="xp-btn" onclick="beansChoice('stayed')">It stays where it was</button>
       <button class="xp-btn" onclick="beansChoice('away')">It moves further away</button>
     </div>
     <div class="xp-result" id="beansResult"></div>
