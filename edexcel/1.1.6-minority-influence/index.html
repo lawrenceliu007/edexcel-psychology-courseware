@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.1.6 Minority Influence — How a few people change what everyone thinks</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.five-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+
+.mat2x2 { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 6px; margin: 14px 0; }
+.mat2x2.c2 { grid-template-columns: 150px 1fr; }
+.mat2x2 .mh { background: var(--primary); color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
+body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style></head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic A · Social Psychology — 1.1.6 Minority influence</span>
+  </div>
+  <span class="nav-pill">🧑‍🤝‍🧑 Social Psychology</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="1.1.6-Minority-Influence-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">1.1.6 · Contents</div>
+        <div class="sb-header-sub">Minority Influence</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">Before we start</li>
+        <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+        <li class="sb-item"><a href="#s2">2. Two Directions of Influence</a></li>
+        <li class="sb-item"><a href="#s3">3. What It Is</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">How a minority wins</li>
+        <li class="sb-item"><a href="#s4">4. The Engine Room</a></li>
+        <li class="sb-item"><a href="#s5">5. Style 1: Consistency</a></li>
+        <li class="sb-item"><a href="#s6">6. Style 2: Flexibility</a></li>
+        <li class="sb-item"><a href="#s7">7. Conversion</a></li>
+        <li class="sb-item"><a href="#s8">8. Social Change</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Evidence</li>
+        <li class="sb-item"><a href="#s9">9. Moscovici et al. (1969)</a></li>
+        <li class="sb-item"><a href="#s10">10. Nemeth &amp; Brilmayer (1987)</a></li>
+        <li class="sb-item"><a href="#s11">11. Who Listens to a Minority?</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Evaluation</li>
+        <li class="sb-item"><a href="#s12">12. Strengths</a></li>
+        <li class="sb-item"><a href="#s13">13. Limitations</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Exam</li>
+        <li class="sb-item"><a href="#s14">14. Exam Focus</a></li>
+        <li class="sb-item"><a href="#s15">15. Checkpoint</a></li>
+        <li class="sb-item"><a href="#s16">16. Exam Lab</a></li>
+        <li class="sb-item"><a href="#s17">17. Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>1.1.6 MINORITY INFLUENCE<br><span style="font-size:0.65em">How a few people change what everyone thinks · 少数派影响 · Moscovici (1976)</span></h1>
+  <div class="subtitle">Social Psychology · Majorities keep society running. Minorities change where it is going.</div>
+  <div class="meta">
+    <span class="badge">🧠 Core idea: behavioural style beats numbers</span>
+    <span class="badge">🔁 Ends in internalisation</span>
+    <span class="badge">📖 Textbook: Chapter 3</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this section is really asking</h4>
+  <ol>
+    <li><strong>Majority influence keeps social order;</strong> minority influence is how social <strong>change</strong> happens — a few people rejecting the established norms and pulling the majority towards them.</li>
+    <li><strong>Minorities have no power in numbers,</strong> so their influence comes from their <strong>behavioural style</strong>: above all <strong>consistency</strong>, supported by <strong>flexibility</strong>.</li>
+    <li><strong>It works through informational social influence</strong> and ends in <strong>internalisation</strong> — people genuinely come to believe the new view, not just go along with it.</li>
+    <li><strong>It is slow:</strong> the process of <strong>conversion</strong> is a gradual shift in majority opinion, seen in feminism, civil rights and environmental campaigns.</li>
+  </ol>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started</h2>
+
+  <p>Picture the first day a classmate — on their own — starts carrying a reusable water bottle and picking up litter that nobody asked them to touch. For weeks, nothing changes. Some people smirk. Then a second person joins. Then a third. A term later, half the class does it, and the school puts recycling bins in the corridor.</p>
+
+  <p>Nobody <em>ordered</em> anyone to change. There was no punishment for ignoring it. And yet the behaviour of the whole group moved — because a small number of people kept doing the same thing, in the same way, for a long time.</p>
+
+  <div class="blue-box">
+    <h4>The question this chapter answers</h4>
+    <p>We already know how <strong>majorities</strong> pressure individuals (Asch). But history shows the opposite happening: individuals and small groups changing the whole of society. How does a minority — with no numbers, no authority, no punishment — ever win?</p>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Have a guess first <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro">Think of a big real-world change — recycling, seatbelts, civil rights. What made the early campaigners (the minority) effective?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="miGuess(this,'a')">They were the loudest and the most numerous</button>
+      <button class="q-option" onclick="miGuess(this,'b')">They stuck to the same message relentlessly and never gave up</button>
+      <button class="q-option" onclick="miGuess(this,'c')">They had the government's support from the start</button>
+    </div>
+    <div class="xp-result" id="res-guess"></div>
+  </div>
+
+  <p>The answer is the middle one — and it is the whole topic in a sentence. Minorities do not win by being big. They win by <strong>how they behave</strong>.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么少数派能赢？</strong><br>
+    多数派影响（majority influence）靠的是<strong>人多</strong>——你不从众就不合群；<br>
+    少数派影响（minority influence）靠的是<strong>行为风格</strong>——你说的观点<strong>始终如一</strong>（consistency），别人就会开始想：「他们是不是真的有道理？」<br>
+    一句话：<strong>多数派让人「不得不跟」，少数派让人「想了以后愿意跟」。</strong>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Two Directions of Influence</h2>
+
+  <p>Every kind of social influence pushes in one of two directions, and each direction does a different job for society.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Majority influence</h4>
+      <p>Keeps <strong>social order</strong> running. People accept the established norms so that groups and institutions function — queueing, following rules, agreeing on how to behave. You have met it in Asch's line-judging task.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Minority influence</h4>
+      <p>Creates <strong>social change</strong>. Throughout history, minorities have challenged the established social order — and those challenges are how societies move: feminism, civil rights, the 'right to education', environmental change.</p>
+    </div>
+  </div>
+
+  <p>Notice the symmetry. Both are forms of social influence; both can change a person's behaviour and beliefs. What differs is <strong>who is doing the pushing</strong> — and that difference changes everything about <em>how</em> the pushing works.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Majority influence presses the individual into the group; minority influence pulls the whole group towards the minority">
+      <defs>
+        <marker id="miAr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0,0 L9,4.5 L0,9 Z" fill="#475569"/>
+        </marker>
+        <marker id="miArO" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0,0 L9,4.5 L0,9 Z" fill="#ea580c"/>
+        </marker>
+      </defs>
+      <text x="340" y="26" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#1e293b">Two directions of social influence</text>
+
+      <!-- left panel: majority -->
+      <rect x="30" y="46" width="290" height="210" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+      <text x="175" y="70" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#334155">MAJORITY → INDIVIDUAL</text>
+      <circle cx="80"  cy="112" r="13" fill="#334155"/>
+      <circle cx="115" cy="100" r="13" fill="#334155"/>
+      <circle cx="150" cy="112" r="13" fill="#334155"/>
+      <circle cx="115" cy="134" r="13" fill="#334155"/>
+      <circle cx="190" cy="112" r="13" fill="#334155"/>
+      <text x="112" y="165" text-anchor="middle" font-family="Arial" font-size="11" fill="#475569">the group</text>
+      <line x1="200" y1="118" x2="262" y2="150" stroke="#475569" stroke-width="3" marker-end="url(#miAr)"/>
+      <circle cx="285" cy="160" r="13" fill="#fbbf24"/>
+      <text x="285" y="192" text-anchor="middle" font-family="Arial" font-size="11" fill="#475569">you</text>
+      <text x="175" y="232" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#334155">order is maintained</text>
+
+      <!-- right panel: minority -->
+      <rect x="360" y="46" width="290" height="210" rx="12" fill="#fff7ed" stroke="#fdba74"/>
+      <text x="505" y="70" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#9a3412">MINORITY → MAJORITY</text>
+      <circle cx="405" cy="150" r="13" fill="#ea580c"/>
+      <circle cx="440" cy="138" r="13" fill="#ea580c"/>
+      <text x="422" y="182" text-anchor="middle" font-family="Arial" font-size="11" fill="#9a3412">the few</text>
+      <line x1="455" y1="150" x2="515" y2="130" stroke="#ea580c" stroke-width="3" marker-end="url(#miArO)"/>
+      <circle cx="545" cy="100" r="13" fill="#334155"/>
+      <circle cx="580" cy="88"  r="13" fill="#334155"/>
+      <circle cx="615" cy="100" r="13" fill="#334155"/>
+      <circle cx="580" cy="122" r="13" fill="#334155"/>
+      <text x="580" y="158" text-anchor="middle" font-family="Arial" font-size="11" fill="#475569">the many</text>
+      <text x="505" y="232" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#9a3412">change is created</text>
+    </svg>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：两个箭头，两个结果</strong><br>
+    左图：<strong>多数 → 个人</strong>，大家把你「压」进来，维持秩序（Asch 讲的就是这个）。<br>
+    右图：<strong>少数 → 多数</strong>，几个人把整个群体「拉」过去，产生变化（本章讲的就是这个）。<br>
+    考试如果问「minority influence 和 majority influence 有什么不同」，先答方向，再答机制（人多 vs 行为风格）。
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. What Minority Influence Is</h2>
+
+  <div class="keyterm-box">
+    <div class="kt">minority influence（少数派影响）</div>
+    A form of social influence where people <strong>reject the established norms of the majority</strong> and move towards the <strong>behaviour and opinions of a minority group</strong>.
+  </div>
+
+  <p>Read the definition slowly, because every clause is doing work:</p>
+
+  <div class="mat2x2">
+    <div class="mh">Part of the definition</div>
+    <div class="mh">What it means</div>
+    <div class="mh">Example</div>
+
+    <div class="mv">reject the established norms</div>
+    <div class="cell">The majority's current way of thinking is treated as the "normal" one — the minority steps away from it.</div>
+    <div class="cell">In 1950s America, racial segregation was the norm. Civil-rights protesters rejected it publicly.</div>
+
+    <div class="mv">move towards the minority</div>
+    <div class="cell">Members of the majority actually shift — their behaviour and opinions start to match the minority's.</div>
+    <div class="cell">Ten years later, equal-rights laws pass and attitudes have moved with them.</div>
+  </div>
+
+  <div class="green-box">
+    <h4>Who said it, and when</h4>
+    <p><strong>Serge Moscovici (1976)</strong> is the name attached to this theory. His argument: by definition minorities do not have power in numbers — so their influence must be explained by their <strong>behavioural style</strong>. Successful minorities show <strong>consistent conviction</strong> in their views.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：名字要挂在 Moscovici 身上</strong><br>
+    考试写「Explain minority influence」时，第一句就点名：<em>Moscovici (1976) argued that…</em>。<br>
+    核心逻辑只有一句：<strong>少数派没有「人多」这个武器，所以只能靠「行为风格」（behavioural style）——尤其是始终坚持同一立场（consistency）。</strong>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. The Engine Room: Where the Power Comes From</h2>
+
+  <p>Two facts work together to explain how the trick is done — one about <strong>why</strong> people listen, one about <strong>how deeply</strong> they change.</p>
+
+  <h3>Fact 1: it is informational, not normative</h3>
+  <p>You already know the two channels of social influence from Asch's topic. Minority influence travels through <strong>informational social influence (ISI)</strong>: the minority provides <strong>information</strong> — a viewpoint, an argument, a way of seeing the issue — that the majority starts to take seriously. Nobody is afraid of being excluded by two campaigners; they listen because the message seems worth listening to.</p>
+
+  <h3>Fact 2: the result is internalisation</h3>
+  <p>Because people accept the information as true, the outcome is <strong>internalisation</strong> — the deepest form of conformity, where the belief becomes part of the person. They carry it with them even when the minority is not watching, and they will hold it in private as well as in public.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Compliance (recall)</h4>
+      <p>Go along publicly, disagree privately. Shallow change. That is what majority pressure usually buys (NSI).</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Internalisation</h4>
+      <p>Public <em>and</em> private acceptance. Deep change. This is what minority influence produces, because people are convinced by information.</p>
+    </div>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Quick check <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro">Why does minority influence end in internalisation rather than mere compliance?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="engAns(this,'a')">Because minorities can punish dissenters</button>
+      <button class="q-option" onclick="engAns(this,'b')">Because people accept the minority's information as true</button>
+      <button class="q-option" onclick="engAns(this,'c')">Because minorities are always consistent</button>
+    </div>
+    <div class="xp-result" id="res-eng"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：信息 → 真信 → 内化</strong><br>
+    少数派改变你，靠的不是吓你（NSI），而是<strong>说服你</strong>（ISI）：给你一个你以前没想到的角度。<br>
+    你一旦觉得「他说得有道理」，这个观点就住进了你脑子里——这就是 <strong>internalisation（内化）</strong>：当人不在场时你也照样这么认为。<br>
+    连起来记：<strong>少数派 → ISI → internalisation</strong>，三个词是一条链。
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Style 1: Consistency</h2>
+
+  <p>This is the headline factor — the one Moscovici's name is tied to.</p>
+
+  <div class="keyterm-box">
+    <div class="kt">consistency（一致性）</div>
+    The minority keeps saying and doing the <strong>same thing</strong> — the same viewpoint, maintained over time, by all members of the minority. Successful minorities show <strong>consistent conviction</strong> in their views.
+  </div>
+
+  <p>Why does sameness create influence? Two reasons:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Mechanism 1 · It signals certainty</h4>
+      <p>If the campaigners never waver — same message in week one and week fifty — observers start to think: <em>they must really believe this. Maybe they know something we don't.</em></p>
+    </div>
+    <div class="compare-card green">
+      <h4>Mechanism 2 · It creates doubt</h4>
+      <p>A consistent challenge makes the majority's own position look <strong>shakier by comparison</strong>. People begin to re-examine a view they had never questioned before.</p>
+    </div>
+  </div>
+
+  <p>This is why big social movements could not have happened without it: such change required a <strong>consistent viewpoint being established and maintained</strong>, and minority individuals being <strong>dedicated to their cause</strong> — showing up again and again, year after year.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：重复本身就是说服力</strong><br>
+    第一次听到有人说「要回收」，你觉得多事；第十次、第一百次听到不同的人说同样的话，你就会开始想「是不是真有问题」。<br>
+    <strong>consistency 的本质：把「一个奇怪的想法」重复成「一个值得认真对待的想法」。</strong><br>
+    注意 dedication 一词：投入/坚持也常和 consistency 一起考——既相同又坚持，缺一不可。
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Style 2: Flexibility</h2>
+
+  <p>Consistency alone is not enough — and here is the subtlety students miss. Consistency carried to extremes backfires.</p>
+
+  <div class="keyterm-box">
+    <div class="kt">flexibility（灵活性）</div>
+    Minorities are rarely effective unless they show <strong>flexibility</strong> in their viewpoint and are not rigid in their beliefs — accepting alternative opinions and negotiating change.
+  </div>
+
+  <div class="mat2x2">
+    <div class="mh">Minority style</div>
+    <div class="mh">How the majority sees them</div>
+    <div class="mh">Result</div>
+
+    <div class="mv">Rigid &amp; uncompromising</div>
+    <div class="cell">We perceive an uncompromising minority as <strong>extreme</strong> — dogmatic, unreasonable, not worth engaging with.</div>
+    <div class="cell">Less likely to be believed; the message is dismissed with the messenger.</div>
+
+    <div class="mv">Flexible &amp; accepting</div>
+    <div class="cell">Viewed as <strong>less extreme and more reasonable</strong> — people who will listen as well as talk.</div>
+    <div class="cell">Their viewpoint is more likely to be considered — and a flexible style can <strong>cast doubt or uncertainty over the beliefs of the majority</strong>, as change is negotiated.</div>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rigid consistency reads as extreme; flexible consistency reads as reasonable">
+      <text x="340" y="26" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#1e293b">Same message, two styles, two fates</text>
+
+      <!-- left: rigid -->
+      <rect x="30" y="46" width="290" height="190" rx="12" fill="#fef2f2" stroke="#fca5a5"/>
+      <text x="175" y="72" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#991b1b">RIGID</text>
+      <text x="175" y="94" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#7f1d1d">"Our way. No discussion. Ever."</text>
+      <rect x="70" y="112" width="210" height="40" rx="8" fill="#ffffff" stroke="#dc2626"/>
+      <text x="175" y="137" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#334155">majority's verdict: extreme</text>
+      <rect x="70" y="168" width="210" height="40" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+      <text x="175" y="193" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#7f1d1d">message dismissed</text>
+
+      <!-- right: flexible -->
+      <rect x="360" y="46" width="290" height="190" rx="12" fill="#f0fdf4" stroke="#86efac"/>
+      <text x="505" y="72" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#166534">FLEXIBLE</text>
+      <text x="505" y="94" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#14532d">"We hold our view — and we'll listen."</text>
+      <rect x="400" y="112" width="210" height="40" rx="8" fill="#ffffff" stroke="#16a34a"/>
+      <text x="505" y="137" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#334155">majority's verdict: reasonable</text>
+      <rect x="400" y="168" width="210" height="40" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+      <text x="505" y="193" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#14532d">message considered, doubt planted</text>
+
+      <text x="340" y="258" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#475569">Consistent on the goal — flexible about the route</text>
+    </svg>
+  </div>
+
+  <div class="green-box">
+    <h4>Hold both at once</h4>
+    <p>The best-argued minority is <strong>consistent about its core aim</strong> but <strong>flexible about how to get there</strong> — never moving the destination, but willing to negotiate the road. That combination is what makes a minority hard to dismiss.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：像谈判，不像呐喊</strong><br>
+    想象和父母谈判要养猫：<br>
+    <strong>死硬派</strong>：「必须养！不养绝食！」→ 父母觉得你偏激，话题终结。<br>
+    <strong>灵活派</strong>：「我很想养。不过可以先试寄养两周，我负责铲屎，费用我出。」→ 目标没变（要猫），姿态有弹性（让步方案），父母反而开始认真考虑。<br>
+    少数派的秘诀：<strong>终点坚定，路线灵活。</strong>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. The Process of Conversion</h2>
+
+  <p>Minority influence is rarely a quick process. Nobody wakes up one morning having been converted by two campaigners. What actually happens is slower — and it has a name.</p>
+
+  <div class="keyterm-box">
+    <div class="kt">conversion（转化）</div>
+    The process where individuals in the majority group <strong>gradually come to accept the minority viewpoint</strong> — a gradual shift in majority opinion.
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A gradual timeline showing majority opinion slowly shifting towards the minority view">
+      <defs>
+        <marker id="cvAr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0,0 L9,4.5 L0,9 Z" fill="#64748b"/>
+        </marker>
+      </defs>
+      <text x="340" y="26" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#1e293b">Conversion: a slow slide, not a jump</text>
+
+      <!-- timeline -->
+      <line x1="60" y1="180" x2="620" y2="180" stroke="#94a3b8" stroke-width="3" marker-end="url(#cvAr)"/>
+      <text x="640" y="184" font-family="Arial" font-size="11" fill="#64748b">time</text>
+
+      <!-- majority line sliding down to minority line -->
+      <line x1="80" y1="90" x2="600" y2="150" stroke="#334155" stroke-width="3.5"/>
+      <text x="80" y="76" font-family="Arial" font-size="11.5" font-weight="700" fill="#334155">majority opinion</text>
+      <line x1="80" y1="150" x2="600" y2="150" stroke="#ea580c" stroke-width="3.5" stroke-dasharray="7 5"/>
+      <text x="80" y="136" font-family="Arial" font-size="11.5" font-weight="700" fill="#9a3412">minority viewpoint</text>
+
+      <!-- milestones -->
+      <circle cx="170" cy="104" r="6" fill="#334155"/>
+      <text x="170" y="212" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#475569">"odd idea"</text>
+      <circle cx="300" cy="118" r="6" fill="#334155"/>
+      <text x="300" y="212" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#475569">"worth a thought"</text>
+      <circle cx="430" cy="132" r="6" fill="#334155"/>
+      <text x="430" y="212" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#475569">"maybe they're right"</text>
+      <circle cx="560" cy="146" r="6" fill="#ea580c"/>
+      <text x="560" y="212" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#9a3412">accepted — internalised</text>
+    </svg>
+  </div>
+
+  <p>That final stage matters most. When the two lines meet, the majority hasn't just copied a behaviour — the <strong>belief itself has moved</strong>. That is why the endpoint of minority influence is internalisation, and why changes it produces tend to <strong>stick</strong> even when the original campaigners are long gone.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：温水式的改变</strong><br>
+    conversion（转化）的关键词是 <strong>gradual（渐进）</strong>：从「这想法好怪」→「好像也有点道理」→「他们是对的」。<br>
+    类比烧水：不是点火就开，而是温度一格一格爬升，某个时刻突然沸腾——社会观念的变化也是这样，看起来「突然」，其实一直是 minorities 在持续加热。
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Social Change: The Theory in the Wild</h2>
+
+  <p>Every major social movement the textbook names follows the same script. Check each one against the theory:</p>
+
+  <div class="mat2x2 c2">
+    <div class="mh">Movement</div>
+    <div class="mh">Started as…</div>
+    <div class="mh">The minority style on display</div>
+
+    <div class="mv">Feminism</div>
+    <div class="cell">A small group arguing for rights the majority considered settled.</div>
+    <div class="cell">Consistent message maintained for decades; flexible tactics (petitions, marches, legal test cases) negotiating each step.</div>
+
+    <div class="mv">Civil rights</div>
+    <div class="cell">Activists rejecting segregation, an established norm.</div>
+    <div class="cell">Dedication sustained through years of resistance; consistency made the moral claim impossible to keep ignoring.</div>
+
+    <div class="mv">'Right to education'</div>
+    <div class="cell">Campaigns for universal schooling.</div>
+    <div class="cell">Information repeated until the majority internalised the principle — and then wrote it into law.</div>
+
+    <div class="mv">Environmental change</div>
+    <div class="cell">A few scientists and campaigners on carbon, recycling and food waste.</div>
+    <div class="cell">Credibility (science) plus prominent figures like Greta Thunberg keep the message consistent and in the news.</div>
+  </div>
+
+  <p>Notice what all four have in common: the change <strong>could not have occurred without a consistent viewpoint being established and maintained</strong>, and individuals <strong>dedicated to the cause</strong>. That sentence is worth memorising — it is the theory applied, not just described.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：把「理论」套到「新闻」上</strong><br>
+    考试若要求举例说明 minority influence，四个现成例子任选：<strong>feminism、civil rights、right to education、environmental change</strong>。<br>
+    答题公式：<em>"This change could not have occurred without a consistent viewpoint being established and maintained."</em> —— 一句话同时覆盖 consistency + dedication 两个考点。
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Evidence 1: Moscovici et al. (1969)</h2>
+
+  <p>The theory has direct experimental support from the man who proposed it.</p>
+
+  <div class="green-box">
+    <h4>The study in brief</h4>
+    <p><strong>Moscovici et al. (1969)</strong> conducted a series of experiments to investigate minority influence on a <strong>colour perception judgement task</strong>. The task involved participants in a majority being swayed by <strong>incorrect judgements made by a minority</strong> in the group. They found that <strong>minorities can exert some influence over majority opinion — particularly if the minority were consistent</strong> in their viewpoint.</p>
+  </div>
+
+  <p>Three things to notice about the design, because each one is doing theoretical work:</p>
+
+  <div class="mat2x2 c2">
+    <div class="mh">Design choice</div>
+    <div class="mh">Why it matters here</div>
+
+    <div class="mv">Colour judgement task</div>
+    <div class="cell">A simple perception task with an unambiguous answer — so any shift towards the minority's wrong answers cannot be explained by uncertainty about the task itself.</div>
+
+    <div class="mv">Minority gives wrong answers</div>
+    <div class="cell">The influence is measured directly: if the majority starts agreeing with answers known to be wrong, the minority has moved them.</div>
+
+    <div class="mv">Consistency manipulated</div>
+    <div class="cell">The key comparison: a minority that repeats the same wrong answer influences more than one that does not — behavioural style is the variable, exactly as Moscovici (1976) predicted.</div>
+  </div>
+
+  <p class="small">📖 Link: the full procedure and results of Moscovici et al. (1969) — the classic study for this topic — get their own treatment when we build the 1.3.1 study page. For the theory, remember the headline: <strong>consistent minorities move majorities.</strong></p>
+
+  <div class="cn-note">
+    <strong>中文理解：这个实验在「证明」什么</strong><br>
+    颜色判断题的答案本来毫无争议——所以如果多数人开始跟着少数人给出<strong>明显错误的答案</strong>，唯一的解释就是被影响了。<br>
+    而「坚持重复同一答案的少数派」影响最大——这正是 <strong>consistency</strong> 的直接证据。
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Evidence 2: Nemeth &amp; Brilmayer (1987)</h2>
+
+  <p>The second study tests the other half of the behavioural style: flexibility.</p>
+
+  <div class="green-box">
+    <h4>The study in brief</h4>
+    <p><strong>Nemeth and Brilmayer (1987)</strong> used a <strong>mock jury</strong> study. <strong>72 male students</strong> were asked to decide how much compensation to award a victim of a ski accident due to the negligence of a ski company. When a compensation offer suggested by a minority was <strong>consistent and uncompromising</strong>, it was <strong>less effective</strong> than when the offer was <strong>negotiated</strong>.</p>
+  </div>
+
+  <div class="mat2x2">
+    <div class="mh">Question</div>
+    <div class="mh">Answer from the study</div>
+
+    <div class="mv">Who?</div>
+    <div class="cell">72 male students, acting as a mock jury.</div>
+
+    <div class="mv">Deciding what?</div>
+    <div class="cell">The amount of compensation for a ski-accident victim injured through the ski company's negligence.</div>
+
+    <div class="mv">What varied?</div>
+    <div class="cell">The minority's style: an unchanging, uncompromising offer versus an offer that was negotiated — adjusted in response to the discussion.</div>
+
+    <div class="mv">Finding?</div>
+    <div class="cell">The negotiated (flexible) offer was <strong>more effective</strong> than the rigid one. Flexibility beat stubbornness.</div>
+  </div>
+
+  <p>This is direct support for the idea that <strong>minority flexibility is an important factor in social influence</strong> — the courtroom version of "you catch more flies with honey".</p>
+
+  <div class="cn-note">
+    <strong>中文理解：两个实验各管一半理论</strong><br>
+    <strong>Moscovici (1969)</strong>：颜色任务 → 证明 <strong>consistency</strong> 有效。<br>
+    <strong>Nemeth &amp; Brilmayer (1987)</strong>：模拟陪审团 → 证明 <strong>flexibility</strong>（会谈判）比死顶更有效。<br>
+    两个一起记，evaluation 就有两个现成的 named study 可写。
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Who Listens to a Minority?</h2>
+
+  <p>Minority influence does not work equally on everyone. The textbook points to a third layer of the explanation — <strong>the audience</strong>.</p>
+
+  <p>Minority influence can be affected by <strong>individual differences and culture</strong>. Some individuals and cultures are more or less likely to be swayed by the opinions of others. And whether we accept a minority viewpoint also depends on <strong>whether we identify with the minority group</strong>:</p>
+
+  <div class="keyterm-box">
+    <div class="kt">social identity theory &amp; the ingroup（社会认同理论与内群体）</div>
+    According to social identity theory, we are more likely to identify with a minority <strong>if they form part of our ingroup</strong> — the group we feel we belong to. A minority that feels like "people like us" gets a hearing; one that feels like "people like them" often doesn't.
+  </div>
+
+  <div class="blue-box">
+    <h4>Why this matters for your exam</h4>
+    <p>This sentence is a bridge. It tells you that the <em>style</em> of the minority (consistency, flexibility) is only half the story — the <em>characteristics of the audience</em> (personality, situation, culture) do the rest. That is exactly the content of the next page, <strong>1.1.7 Factors affecting conformity and minority influence</strong>.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：同一句话，不同人听，效果不同</strong><br>
+    同样的环保倡议，本校环保社团的学长说 → 你觉得「自己人」说的，愿意听；陌生城市的陌生人说 → 你可能无感。<br>
+    <strong>ingroup（内群体）= 「我们这一边的」。</strong>少数派如果能让你觉得「他和我们是一伙的」，说服就成功了一半。<br>
+    这一条连接了 1.1.6（少数派说什么）和 1.1.7（听的人是谁、在什么情境、来自什么文化）。
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Evaluation · Strengths</h2>
+
+  <h3>1. There is direct experimental support for consistency</h3>
+  <p>Moscovici et al. (1969) found that minorities can exert some influence over majority opinion, <strong>particularly if the minority were consistent</strong>. Because the task was colour perception — an area with a clear right answer — the shift towards the minority's incorrect judgements is strong evidence that behavioural style, not ambiguity, did the persuading.</p>
+
+  <h3>2. There is direct experimental support for flexibility</h3>
+  <p>Nemeth and Brilmayer (1987) found that a consistent but uncompromising compensation offer was <strong>less effective than a negotiated one</strong>. This is evidence for the idea that minority flexibility is an important factor in social influence — and it shows the theory is more than "be stubborn for long enough".</p>
+
+  <h3>3. The theory explains real social change</h3>
+  <p>The account has face validity at the level of history: movements such as feminism, civil rights, the right to education and environmental change all began with a minority viewpoint, and all required a consistent position maintained by dedicated individuals. The theory's predictions match how change actually happens — gradually, through conversion, ending in internalisation.</p>
+
+  <h3>4. It fits the deeper channel of influence</h3>
+  <p>Because minority influence operates through informational social influence, its end point — internalisation — explains why converted majorities keep the new belief in private and pass it on, rather than snapping back the moment the minority stops watching.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：四条优势其实是一条线</strong><br>
+    两个实验各证一半（consistency / flexibility）→ 理论又正好解释真实历史（社会运动）→ 结果层面还说得通（内化 = 改变持久）。<br>
+    AO3 写的时候记住配对：<strong>consistency ↔ Moscovici (1969)，flexibility ↔ Nemeth &amp; Brilmayer (1987)</strong>，别张冠李戴。
+  </div>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. Evaluation · Limitations</h2>
+
+  <h3>1. The evidence base is narrow and artificial</h3>
+  <p>The two supporting studies used contrived situations — judging coloured slides, awarding hypothetical compensation in a mock jury. Real social influence happens over months and years, in messy public debates. A colour-slide task cannot capture decades of campaigning, so caution is needed when generalising from the lab to society.</p>
+
+  <h3>2. Influence depends on the audience, not just the style</h3>
+  <p>Minority influence is affected by individual differences and culture — some people and some cultures are simply more or less likely to be swayed. Acceptance also depends on ingroup identification. So the same consistent, flexible minority will succeed in front of one audience and fail in front of another: style is not a magic key that works on everyone.</p>
+
+  <h3>3. Consistency and flexibility can pull against each other</h3>
+  <p>The theory asks the minority to hold firm and bend at the same time. Nemeth and Brilmayer's finding shows why this is delicate: uncompromising consistency was <em>less</em> effective. In practice, judging how much flexibility to show is difficult — and a minority that bends too far may lose the very consistency that earned it attention.</p>
+
+  <h3>4. The process is slow — and the slowness is hard to study</h3>
+  <p>Conversion is by definition gradual, and real-world change takes years. Experiments can compress consistency into a single session, but they cannot compress decades. This makes the theory's long-term claims harder to test directly in a laboratory.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：三条限制各打一个点</strong><br>
+    ① 实验太「人工」（颜色滑片、模拟陪审团）→ 不敢直接推广到几十年真实社会运动；<br>
+    ② 效果看听众（个体差异、文化、ingroup）→ 同样的少数派换个观众就失灵；<br>
+    ③ 坚持与灵活本来就互相拉扯 → 太硬被当偏激，太软丢掉一致性。<br>
+    加上「过程太慢难研究」，四条正好凑成一组能写的 AO3。
+  </div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="section" id="s14">
+  <h2>14. Exam Focus</h2>
+
+  <p>For minority influence, the examiners want the theory <em>and</em> its two named studies kept in their correct lanes.</p>
+
+  <div class="mat2x2">
+    <div class="mh">Command</div>
+    <div class="mh">What you must do</div>
+    <div class="mh">Structure that earns the marks</div>
+
+    <div class="mv">Explain minority influence<br><span style="font-size:.85em">(typically 2–4 marks)</span></div>
+    <div class="cell">Describe the theory, not just the word. AO1.</div>
+    <div class="cell">Definition (reject majority norms, move towards minority) → Moscovici (1976) name-drop → behavioural style: consistency (＋dedication), supported by flexibility → operates through ISI → ends in internalisation.</div>
+
+    <div class="mv">Discuss / evaluate minority influence<br><span style="font-size:.85em">(8 marks: AO1 4 + AO3 4)</span></div>
+    <div class="cell">Explain the theory <strong>and</strong> weigh the evidence.</div>
+    <div class="cell">AO1: the chain above, plus conversion as a gradual process. AO3: Moscovici et al. (1969) for consistency, Nemeth &amp; Brilmayer (1987) for flexibility, then limits: artificial tasks, audience differences, style-vs-style tension.</div>
+  </div>
+
+  <div class="exam-tip">
+    <h4>💡 From the textbook</h4>
+    <p>The single most examinable sentence in this topic: social change <em>"could not have occurred without a consistent viewpoint being established and maintained, and minority individuals being dedicated to their cause."</em> Learn it as a unit — it contains the definition, the process and the required style all at once.</p>
+  </div>
+
+  <h3>The 8-mark paragraph that usually scores</h3>
+  <div class="note-box">
+    <p><strong>AO1 (about 4 marks).</strong> Minority influence (Moscovici, 1976) is a form of social influence in which people reject the established norms of the majority and move towards the behaviour and opinions of a minority group. Because minorities lack power in numbers, their influence is explained by their behavioural style: they show consistent conviction in their views — the same viewpoint established and maintained by dedicated individuals — supported by flexibility, since a rigid minority is perceived as extreme. It operates through informational social influence and results in internalisation of the minority's beliefs. Change is rarely quick: through the process of conversion, individuals in the majority gradually come to accept the minority viewpoint.</p>
+    <p><strong>AO3 (about 4 marks).</strong> This is supported by Moscovici et al. (1969), who found minorities could sway a majority's colour-perception judgements, particularly when consistent. Nemeth and Brilmayer (1987) supported the flexibility claim: in a mock jury of 72 male students, an uncompromising compensation offer was less effective than a negotiated one. However, the evidence comes from artificial tasks, so generalising to decades-long real movements is difficult, and influence also depends on the audience — individual differences, culture and ingroup identification all moderate the effect.</p>
+  </div>
+</section>
+
+<!-- ============ 15 ============ -->
+<section class="section" id="s15">
+  <h2>15. Checkpoint</h2>
+
+  <div class="checkpoint">
+    <h3>Eight quick questions</h3>
+
+    <div class="q-row">
+      <div class="q-stem">Q1. Minority influence is the theory of…</div>
+      <label class="q-opt"><input type="radio" name="q1" value="a"> Solomon Asch.</label>
+      <label class="q-opt"><input type="radio" name="q1" value="b"> Serge Moscovici (1976).</label>
+      <label class="q-opt"><input type="radio" name="q1" value="c"> Stanley Milgram.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q2. By definition, minorities lack power in numbers — so their influence comes from…</div>
+      <label class="q-opt"><input type="radio" name="q2" value="a"> their behavioural style.</label>
+      <label class="q-opt"><input type="radio" name="q2" value="b"> their authority.</label>
+      <label class="q-opt"><input type="radio" name="q2" value="c"> their ability to punish.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q3. Minority influence operates through…</div>
+      <label class="q-opt"><input type="radio" name="q3" value="a"> normative social influence.</label>
+      <label class="q-opt"><input type="radio" name="q3" value="b"> informational social influence.</label>
+      <label class="q-opt"><input type="radio" name="q3" value="c"> obedience to authority.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q4. The typical end point of minority influence is…</div>
+      <label class="q-opt"><input type="radio" name="q4" value="a"> compliance.</label>
+      <label class="q-opt"><input type="radio" name="q4" value="b"> identification.</label>
+      <label class="q-opt"><input type="radio" name="q4" value="c"> internalisation.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q5. A rigid, uncompromising minority is likely to be perceived as…</div>
+      <label class="q-opt"><input type="radio" name="q5" value="a"> extreme — and less likely to be believed.</label>
+      <label class="q-opt"><input type="radio" name="q5" value="b"> dedicated — and more likely to be believed.</label>
+      <label class="q-opt"><input type="radio" name="q5" value="c"> authoritative — and obeyed.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q6. In Nemeth and Brilmayer (1987), the more effective compensation offer was…</div>
+      <label class="q-opt"><input type="radio" name="q6" value="a"> the consistent, uncompromising one.</label>
+      <label class="q-opt"><input type="radio" name="q6" value="b"> the negotiated one.</label>
+      <label class="q-opt"><input type="radio" name="q6" value="c"> the one backed by the ski company.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q7. The gradual shift in majority opinion is called…</div>
+      <label class="q-opt"><input type="radio" name="q7" value="a"> conversion.</label>
+      <label class="q-opt"><input type="radio" name="q7" value="b"> conformity.</label>
+      <label class="q-opt"><input type="radio" name="q7" value="c"> contagion.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q8. According to social identity theory, we are more likely to identify with a minority if…</div>
+      <label class="q-opt"><input type="radio" name="q8" value="a"> they are very numerous.</label>
+      <label class="q-opt"><input type="radio" name="q8" value="b"> they form part of our ingroup.</label>
+      <label class="q-opt"><input type="radio" name="q8" value="c"> they hold political power.</label>
+    </div>
+
+    <div class="xp-controls"><button class="xp-btn" onclick="checkQuiz()">Check my answers</button></div>
+    <div id="quizResult" class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 16 ============ -->
+<section class="section" id="s16">
+  <h2>16. Exam Lab</h2>
+
+  <div class="exam-practice">
+    <h3>Question · The recycling campaign (8 marks)</h3>
+    <p>A small group of students starts a campaign to reduce food waste in their school. Most students ignore them at first, but the group keeps raising the same arguments at every assembly, month after month, and is willing to negotiate practical steps like smaller portion options in the canteen. Within a year, food waste has fallen and most students say they believe reducing waste matters. <strong>Discuss minority influence, using the recycling campaign as an example. (8 marks)</strong></p>
+    <p class="small">AO1 4 marks · AO3 4 marks. Use the campaign in your answer — a generic essay scores lower.</p>
+
+    <textarea class="answer-box" id="p1" placeholder="Write your plan: definition → behavioural style → ISI → internalisation → conversion → then two studies and one limitation, tied to the campaign..."></textarea>
+
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('m1')">Show a model answer</button></div>
+    <div id="m1" class="xp-result">
+      <p><span class="xp-verdict">Model answer</span></p>
+      <p><strong>AO1.</strong> Minority influence (Moscovici, 1976) is a form of social influence in which people reject the established norms of the majority and move towards the behaviour and opinions of a minority group. Since minorities lack power in numbers, their influence comes from their behavioural style: consistent conviction in their viewpoint, maintained over time by dedicated individuals, together with flexibility so they are seen as reasonable rather than extreme. Minority influence operates through informational social influence, so it results in individuals internalising the new beliefs — accepting them publicly and privately. It is rarely quick: through the process of conversion, members of the majority gradually come to accept the minority viewpoint.</p>
+      <p><strong>AO3.</strong> The campaign displays exactly this style: the students keep raising the same arguments (consistency) yet negotiate practical steps such as smaller portions (flexibility), and the outcome — most students privately believing waste matters — is internalisation, not mere compliance. This fits Moscovici et al. (1969), where a consistent minority swayed a majority's colour-perception judgements, and Nemeth and Brilmayer (1987), where a negotiated offer was more effective than an uncompromising one. However, both studies used artificial tasks, so caution is needed when applying them to a year-long real campaign; and acceptance also depends on the audience — students may comply because the campaigners are part of their ingroup, so individual differences and culture, not style alone, helped the minority succeed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 17 ============ -->
+<section class="section" id="s17">
+  <h2>17. Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><div class="term">minority influence <span class="zh">少数派影响</span></div><div class="def">A form of social influence where people reject the established norms of the majority and move towards the behaviour and opinions of a minority group.</div></div>
+    <div class="glossary-item"><div class="term">behavioural style <span class="zh">行为风格</span></div><div class="def">The way a minority acts — its consistency, dedication and flexibility. Since minorities lack numbers, style is their source of power.</div></div>
+    <div class="glossary-item"><div class="term">consistency <span class="zh">一致性</span></div><div class="def">Keeping the same viewpoint over time and across members; consistent conviction makes the majority doubt its own position.</div></div>
+    <div class="glossary-item"><div class="term">dedication <span class="zh">投入与坚持</span></div><div class="def">Commitment to the cause over the long term, shown by minority individuals keeping the campaign alive.</div></div>
+    <div class="glossary-item"><div class="term">flexibility <span class="zh">灵活性</span></div><div class="def">Being willing to accept alternative opinions and negotiate change; a rigid minority is perceived as extreme and less believable.</div></div>
+    <div class="glossary-item"><div class="term">conversion <span class="zh">转化</span></div><div class="def">The gradual process by which individuals in the majority group come to accept the minority viewpoint.</div></div>
+    <div class="glossary-item"><div class="term">internalisation <span class="zh">内化</span></div><div class="def">Public and private acceptance of a belief — the deepest form of conformity, and the typical end point of minority influence.</div></div>
+    <div class="glossary-item"><div class="term">informational social influence <span class="zh">信息性社会影响</span></div><div class="def">Changing because the source provides information or argument that seems true — the channel through which minorities persuade.</div></div>
+    <div class="glossary-item"><div class="term">social change <span class="zh">社会变革</span></div><div class="def">Large-scale shifts in society's norms, begun by minorities — e.g. feminism, civil rights, environmental change.</div></div>
+    <div class="glossary-item"><div class="term">mock jury <span class="zh">模拟陪审团</span></div><div class="def">A research set-up where participants act as jurors in a fictional case, used by Nemeth and Brilmayer (1987).</div></div>
+    <div class="glossary-item"><div class="term">social identity theory <span class="zh">社会认同理论</span></div><div class="def">The theory that we derive identity from group membership; we more readily accept a minority that forms part of our ingroup.</div></div>
+    <div class="glossary-item"><div class="term">ingroup <span class="zh">内群体</span></div><div class="def">The group a person feels they belong to ("us"), as opposed to the outgroup ("them").</div></div>
+  </div>
+</section>
+
+<div class="footer-note">1.1.6 Minority influence (Moscovici, 1976) · Social Psychology (Topic A) · previous: <a href="../1.1.5-research-into-conformity/">← 1.1.5 Research into conformity (Asch)</a> · next: <a href="../1.1.7-factors-affecting-conformity/">1.1.7 Factors affecting conformity and minority influence →</a></div>
+
+  </main>
+</div>
+
+<button id="btt" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function () {
+  var baseFont = 16;
+
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark'; }
+  };
+
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  function show(id, html) {
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    el.innerHTML = html;
+    el.classList.add('show');
+  }
+
+  function verdict(ok, msg) {
+    return '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + msg + '</p>';
+  }
+
+  window.miGuess = function (btn, c) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === 'b');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var msg = ok
+      ? 'Exactly. Minorities win by how they behave — the same message, held without wavering, wins attention that numbers never could.'
+      : 'Not quite. Minorities have no numbers and usually no authority — what makes them effective is their behavioural style, above all sticking to the same message relentlessly.';
+    show('res-guess', verdict(ok, msg));
+  };
+
+  window.engAns = function (btn, c) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === 'b');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var msg = ok
+      ? 'Correct. People are convinced by the information the minority provides, so they accept it as true — publicly and privately. That is internalisation.'
+      : 'Close, but think about the channel. Consistency is how the minority earns a hearing; internalisation happens because listeners accept the information itself as true.';
+    show('res-eng', verdict(ok, msg));
+  };
+
+  var quizKey = { q1: 'b', q2: 'a', q3: 'b', q4: 'c', q5: 'a', q6: 'b', q7: 'a', q8: 'b' };
+  var quizWhy = {
+    q1: 'Serge Moscovici (1976) is the name attached to minority influence; Asch is majority influence and Milgram is obedience.',
+    q2: 'Their behavioural style — above all consistent conviction in their views — is what Moscovici (1976) says explains their influence.',
+    q3: 'Informational social influence: the minority provides a viewpoint or argument the majority comes to accept as true.',
+    q4: 'Internalisation — because the belief is accepted as true, it is held publicly and privately, and it persists.',
+    q5: 'We perceive an uncompromising minority as extreme, so we are less likely to believe them; a flexible minority is seen as more reasonable.',
+    q6: 'The negotiated offer. When a minority offer was consistent and uncompromising it was less effective — flexibility beat rigidity.',
+    q7: 'Conversion: individuals in the majority gradually come to accept the minority viewpoint. It is a slow slide, not a jump.',
+    q8: 'If they form part of our ingroup — social identity theory says we identify with minorities that feel like "people like us".'
+  };
+
+  window.checkQuiz = function () {
+    var el = document.getElementById('quizResult');
+    if (!el) { return; }
+    var score = 0;
+    var html = '';
+    Object.keys(quizKey).forEach(function (q) {
+      var sel = document.querySelector('input[name="' + q + '"]:checked');
+      var chosen = sel ? sel.value : null;
+      var ok = (chosen === quizKey[q]);
+      if (ok) { score++; }
+      html += '<p style="margin:6px 0"><strong>' + q.toUpperCase() + ':</strong> ' +
+        (chosen ? (ok ? '✅ correct' : '❌ not quite') : 'not answered') +
+        ' — ' + quizWhy[q] + '</p>';
+    });
+    el.innerHTML = '<p><span class="xp-verdict">Score: ' + score + ' / 8</span></p>' + html;
+    el.classList.add('show');
+    if (score === 8) { el.classList.add('ok'); } else { el.classList.remove('ok'); }
+  };
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.toggle('show'); }
+  };
+
+  var secs = document.querySelectorAll('.section');
+  var links = document.querySelectorAll('.sb-item a');
+  function highlight() {
+    var best = null;
+    var bestTop = -99999;
+    for (var i = 0; i < secs.length; i++) {
+      var r = secs[i].getBoundingClientRect();
+      if (r.top <= 140 && r.top > bestTop) { bestTop = r.top; best = secs[i]; }
+    }
+    if (!best && secs.length) { best = secs[0]; }
+    for (var j = 0; j < links.length; j++) { links[j].classList.remove('sb-active'); }
+    if (best) {
+      var target = best.getAttribute('id');
+      for (var k = 0; k < links.length; k++) {
+        if (links[k].getAttribute('href') === '#' + target) { links[k].classList.add('sb-active'); }
+      }
+    }
+  }
+  window.addEventListener('scroll', highlight);
+  highlight();
+
+  var btt = document.getElementById('btt');
+  window.addEventListener('scroll', function () {
+    if (!btt) { return; }
+    if (window.scrollY > 400) { btt.classList.add('show'); } else { btt.classList.remove('show'); }
+  });
+})();
+</script>
+</body>
+</html>

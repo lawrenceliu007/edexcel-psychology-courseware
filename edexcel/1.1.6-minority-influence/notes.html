@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1.1.6 Minority Influence — Student Notes Workbook</title>
+<style>
+@page { size: A4; margin: 13mm 12mm 15mm 12mm; }
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif; color:#1a1a1a; font-size:10pt; line-height:1.5; margin:0; background:#f3f3f3; }
+.page { background:#fff; max-width: 800px; margin: 0 auto 10px auto; padding: 10mm 11mm; page-break-after: always; position: relative; min-height: 248mm; }
+@media print { body { background:#fff; } .page { margin:0; padding:0; max-width:none; box-shadow:none; } }
+.pg-head { display:flex; justify-content:space-between; align-items:baseline; border-bottom: 2px solid #333; padding-bottom:4px; margin-bottom:10px; }
+.pg-head .t { font-size:11.5pt; font-weight:700; }
+.pg-head .r { font-size:8pt; color:#777; letter-spacing:.04em; }
+.pg-foot { position:absolute; bottom:4mm; left:0; right:0; text-align:center; font-size:8pt; color:#999; }
+.sec { font-size:10pt; font-weight:700; margin:12px 0 5px 0; padding-left:7px; border-left:3.5px solid #444; }
+.sec:first-of-type { margin-top:2px; }
+.sub { font-size:9.5pt; font-weight:700; margin:9px 0 3px 0; }
+.bl { display:inline-block; border-bottom:1px solid #555; height:1em; vertical-align:baseline; min-width:60px; margin:0 2px; }
+.hint { font-size:8.5pt; color:#666; }
+.hint::before { content:"（"; } .hint::after { content:"）"; }
+table.n { width:100%; border-collapse:collapse; margin:6px 0 9px 0; font-size:9pt; }
+table.n th, table.n td { border:1px solid #999; padding:4px 6px; text-align:left; vertical-align:top; }
+table.n th { background:#e9e9e9; font-size:8.8pt; }
+td.lbl { background:#f4f4f4; width:22%; font-weight:600; }
+.box { border:1px solid #aaa; border-left:4px solid #555; padding:6px 9px; margin:7px 0; border-radius:3px; }
+.box.grey { border:1px dashed #999; border-left:4px dashed #999; background:#fafafa; }
+.box.purple { border-left-color:#7c3aed; background:#faf5ff; }
+.box.blue { border-left-color:#2563eb; background:#f5f9ff; }
+.box.green { border-left-color:#16a34a; background:#f3faf5; }
+.box.orange { border-left-color:#ea580c; background:#fff7ed; }
+.box .bx-t { font-size:9.3pt; font-weight:700; margin-bottom:3px; }
+.wl { border-bottom:1px solid #bbb; height:24pt; }
+.wl.s { height:18pt; }
+ul.tight { margin:4px 0 8px 0; padding-left:17px; }
+ul.tight li { margin-bottom:3px; }
+ol.tight { margin:4px 0 8px 0; padding-left:17px; }
+ol.tight li { margin-bottom:4px; }
+.chk { font-size:9.3pt; }
+.chk .c { display:inline-block; width:11px; height:11px; border:1.3px solid #555; margin-right:6px; vertical-align:-1px; }
+.q { font-style:italic; background:#f6f6f6; border:1px solid #ccc; padding:5px 9px; margin:5px 0; font-size:9.3pt; border-radius:3px; }
+.small { font-size:8.6pt; line-height:1.35; }
+.pg-tight table.n { font-size:8.5pt; margin:5px 0 7px 0; }
+.pg-tight table.n th, .pg-tight table.n td { padding:2.5px 5px; }
+.pg-tight .sub { margin:7px 0 2px 0; }
+.pg-tight .box { padding:5px 8px; margin:6px 0; }
+.pg-tight .wl { height:20pt; }
+.pg-tight .sec { margin:9px 0 4px 0; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="pg-head"><span class="t">1.1.6 Minority Influence — Student Notes Workbook</span><span class="r">TOPIC A · NOTES WORKBOOK</span></div>
+
+  <div class="box orange">
+    <div class="bx-t">What this workbook covers 本册讲什么</div>
+    Majorities keep society running; <strong>minorities change where it is going</strong>. This booklet walks through Moscovici's (1976) theory of minority influence: why numbers are not the point, what behavioural style means (consistency + flexibility), how conversion gradually shifts majority opinion, the two supporting studies, and the evaluation you need for 8-mark questions.
+  </div>
+
+  <div class="sec">How to use this booklet 怎么用</div>
+  <ol class="tight">
+    <li><strong>Fill it in as you go</strong> — check the answer key (pp. 19–20) after each page.</li>
+    <li><strong>Pages 5–6 (the two styles) and 10–11 (the two studies) matter most.</strong> Redo them from memory, under time.</li>
+  </ol>
+
+  <div class="sec">Content map 内容地图</div>
+  <table class="n">
+    <tr><th style="width:10%;">Page</th><th style="width:34%;">Topic</th><th>What you must be able to do afterwards</th></tr>
+    <tr><td class="lbl">p.2–3</td><td>Two directions + definition 定义</td><td>Define minority influence; attach Moscovici (1976)</td></tr>
+    <tr><td class="lbl">p.4</td><td>ISI → internalisation 机制</td><td>Trace the chain: information → belief → internalisation</td></tr>
+    <tr><td class="lbl">p.5–7</td><td>Consistency &amp; flexibility 风格</td><td>Explain both styles; say why rigidity backfires</td></tr>
+    <tr><td class="lbl">p.8</td><td>Conversion 转化</td><td>Describe the gradual shift and its stages</td></tr>
+    <tr><td class="lbl">p.9</td><td>Social change 社会变革</td><td>Apply the theory to four real movements</td></tr>
+    <tr><td class="lbl">p.10–11</td><td>Two studies 证据</td><td>Moscovici et al. (1969); Nemeth &amp; Brilmayer (1987)</td></tr>
+    <tr><td class="lbl">p.12</td><td>Who listens 听众</td><td>Social identity theory and the ingroup</td></tr>
+    <tr><td class="lbl">p.13–15</td><td>Evaluation 评价</td><td>Four strengths, four limitations, each with a reason</td></tr>
+    <tr><td class="lbl">p.16–17</td><td>Exam skills 考试技巧</td><td>2-mark and 8-mark structures; cloze model answer</td></tr>
+    <tr><td class="lbl">p.18</td><td>Practice 演练</td><td>Plan and write the recycling 8-marker</td></tr>
+    <tr><td class="lbl">p.19–20</td><td>Answer key 答案速查</td><td>Mark honestly, then re-write wrong answers in full</td></tr>
+  </table>
+
+  <div class="sec">Revision tracker 复习打卡</div>
+  <p class="chk"><span class="c"></span>p.3 definition　<span class="c"></span>p.4 ISI→internalisation　<span class="c"></span>p.5–6 two styles　<span class="c"></span>p.8 conversion　<span class="c"></span>p.10–11 studies　<span class="c"></span>p.13–15 evaluation　<span class="c"></span>p.16–18 exam</p>
+
+  <div class="box purple">
+    <div class="bx-t">The whole theory in one sentence 一句话总结</div>
+    Because minorities have <strong>no power in numbers</strong>, their influence comes from their <strong>behavioural style</strong> — consistent conviction, supported by flexibility — which works through <strong>informational social influence</strong>, ends in <strong>internalisation</strong>, and produces social change through the slow process of <strong>conversion</strong>.
+  </div>
+
+  <div class="pg-foot">Page 1 of 20</div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="pg-head"><span class="t">1 · Two directions of influence</span><span class="r">1.1.6 MINORITY INFLUENCE</span></div>
+
+  <div class="sec">The puzzle 引入</div>
+  <p>One classmate starts carrying a reusable bottle and picking up litter. Weeks of nothing — then a second person joins, then a third. A term later, half the class does it. Nobody was ordered to change.</p>
+
+  <div class="box blue">
+    <div class="bx-t">Fill the gap 填空</div>
+    <p>Majority influence keeps <strong>social o</strong> <span class="bl"></span> running; minority influence is how social <strong>c</strong> <span class="bl"></span> occurs.</p>
+  </div>
+
+  <div class="sec">Sort the examples 分类</div>
+  <table class="n">
+    <tr><th>Example</th><th style="width:34%;">Majority or minority influence?</th></tr>
+    <tr><td>A student laughs at the teacher's joke because everyone else does</td><td></td></tr>
+    <tr><td>Two campaigners keep raising recycling at every assembly for a year</td><td></td></tr>
+    <tr><td>You start queueing because everyone in the crowd queues</td><td></td></tr>
+    <tr><td>Civil-rights activists challenge segregation until laws change</td><td></td></tr>
+  </table>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 两个箭头</div>
+    多数 → 个人：把你「压」进来，维持秩序（Asch）。<br>
+    少数 → 多数：几个人把整个群体「拉」过去，产生变化（本章）。<br>
+    考试先答<strong>方向</strong>，再答<strong>机制</strong>（人多 vs 行为风格）。
+  </div>
+
+  <div class="pg-foot">Page 2 of 20</div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="pg-head"><span class="t">2 · The definition</span><span class="r">1.1.6 MINORITY INFLUENCE</span></div>
+
+  <div class="sec">Key term 关键术语</div>
+  <div class="box">
+    <div class="bx-t">Minority influence（少数派影响）</div>
+    <p>A form of social influence where people reject the established n <span class="bl"></span> of the majority and move towards the behaviour and o <span class="bl"></span> of a minority group.</p>
+  </div>
+
+  <div class="sec">Unpack the definition 拆定义</div>
+  <table class="n">
+    <tr><th style="width:30%;">Part</th><th>Meaning</th></tr>
+    <tr><td class="lbl">reject the established norms</td><td>The majority's current way of thinking is treated as "normal" — the minority steps <span class="bl"></span> from it</td></tr>
+    <tr><td class="lbl">move towards the minority</td><td>Members of the majority actually <span class="bl"></span> — their behaviour and opinions shift</td></tr>
+  </table>
+
+  <div class="sec">The name to attach 名字</div>
+  <div class="box green">
+    <p><strong>S</strong> <span class="bl"></span> M <span class="bl"></span> (<span class="bl" style="min-width:44px;"></span>) argued that minorities do not have power in numbers, so their influence is explained by their <strong>behavioural s</strong> <span class="bl"></span> — successful minorities show consistent c <span class="bl"></span> in their views.</p>
+  </div>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 名字要挂对</div>
+    写「Explain minority influence」第一句就点名：<em>Moscovici (1976) argued that…</em><br>
+    核心逻辑一句：<strong>没有「人多」这个武器 → 只能靠「行为风格」→ 尤其是始终坚持（consistency）。</strong>
+  </div>
+
+  <div class="pg-foot">Page 3 of 20</div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <div class="pg-head"><span class="t">3 · The engine room: ISI → internalisation</span><span class="r">1.1.6 MINORITY INFLUENCE</span></div>
+
+  <div class="sec">The chain 链条</div>
+  <p>Minority influence travels through <strong>i</strong> <span class="bl"></span> social influence: the minority provides a viewpoint or argument the majority comes to take seriously. Because people accept the information as true, the result is <strong>internalisation</strong> — the d <span class="bl"></span> form of conformity.</p>
+
+  <div class="sec">Compare the endpoints 对比</div>
+  <table class="n">
+    <tr><th style="width:22%;"></th><th>Compliance</th><th>Internalisation</th></tr>
+    <tr><td class="lbl">Public behaviour</td><td>Go along</td><td><span class="bl"></span></td></tr>
+    <tr><td class="lbl">Private belief</td><td>Disagree</td><td><span class="bl"></span></td></tr>
+    <tr><td class="lbl">Depth</td><td>Shallow</td><td><span class="bl"></span></td></tr>
+    <tr><td class="lbl">Typical source</td><td>NSI (majority pressure)</td><td><span class="bl" style="min-width:110px;"></span></td></tr>
+  </table>
+
+  <div class="sec">Quick check 快问快答</div>
+  <p class="q">Why does minority influence end in internalisation rather than mere compliance?</p>
+  <div class="wl"></div>
+  <div class="wl"></div>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 三个词一条链</div>
+    少数派改变你靠的不是吓你（NSI），而是<strong>说服你</strong>（ISI）。你一旦觉得「有道理」，观点就住进脑子 = <strong>internalisation</strong>：人不在场你也照样这么认为。<br>
+    连起来记：<strong>少数派 → ISI → internalisation</strong>。
+  </div>
+
+  <div class="pg-foot">Page 4 of 20</div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <div class="pg-head"><span class="t">4 · Style 1: Consistency</span><span class="r">1.1.6 MINORITY INFLUENCE</span></div>
+
+  <div class="sec">Key term 关键术语</div>
+  <div class="box">
+    <div class="bx-t">Consistency（一致性）</div>
+    <p>The minority keeps saying and doing the s <span class="bl"></span> thing — the same viewpoint, maintained over t <span class="bl"></span>, by all members of the minority.</p>
+  </div>
+
+  <div class="sec">Two mechanisms 两个机制</div>
+  <table class="n">
+    <tr><th style="width:28%;">Mechanism</th><th>What happens in people's heads</th></tr>
+    <tr><td class="lbl">It signals certainty</td><td>Same message in week one and week fifty → <em>they must really b <span class="bl"></span> this</em></td></tr>
+    <tr><td class="lbl">It creates doubt</td><td>A consistent challenge makes the majority's own position look sh <span class="bl"></span> by comparison</td></tr>
+  </table>
+
+  <div class="sec">The examinable sentence 必背句</div>
+  <div class="box grey">
+    <p>Social change <em>"could not have occurred without a c <span class="bl"></span> viewpoint being established and m <span class="bl"></span>, and minority individuals being d <span class="bl"></span> to their cause."</em></p>
+  </div>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 重复本身就是说服力</div>
+    第一次听「要回收」觉得多事；第一百次听到同样的话就开始想「是不是真有问题」。<br>
+    consistency 的本质：<strong>把「一个奇怪的想法」重复成「一个值得认真对待的想法」。</strong>dedication（坚持投入）常与它一起考。
+  </div>
+
+  <div class="pg-foot">Page 5 of 20</div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page">
+  <div class="pg-head"><span class="t">5 · Style 2: Flexibility</span><span class="r">1.1.6 MINORITY INFLUENCE</span></div>
+
+  <div class="sec">Key term 关键术语</div>
+  <div class="box">
+    <div class="bx-t">Flexibility（灵活性）</div>
+    <p>Minorities are rarely effective unless they show f <span class="bl"></span> in their viewpoint and are not r <span class="bl"></span> in their beliefs.</p>
+  </div>
+
+  <div class="sec">Two styles, two fates 对比表</div>
+  <table class="n">
+    <tr><th style="width:26%;">Minority style</th><th>How the majority sees them</th><th style="width:30%;">Result</th></tr>
+    <tr><td class="lbl">Rigid &amp; uncompromising</td><td>Perceived as e <span class="bl"></span></td><td>Less likely to be b <span class="bl"></span></td></tr>
+    <tr><td class="lbl">Flexible &amp; accepting</td><td>Less extreme and more r <span class="bl"></span></td><td>Viewpoint more likely to be considered; doubt cast over majority beliefs</td></tr>
+  </table>
+
+  <div class="sec">Hold both at once 双招并用</div>
+  <div class="box green">
+    <p>Consistent about the c <span class="bl"></span> aim, flexible about how to get there — never moving the d <span class="bl"></span>, but willing to negotiate the road.</p>
+  </div>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 像谈判，不像呐喊</div>
+    死硬派：「必须养猫！不养绝食！」→ 被当偏激。<br>
+    灵活派：「先寄养两周试一试，费用我出。」→ 目标没变，姿态有弹性，父母开始认真考虑。<br>
+    秘诀：<strong>终点坚定，路线灵活。</strong>
+  </div>
+
+  <div class="pg-foot">Page 6 of 20</div>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page">
+  <div class="pg-head"><span class="t">6 · Style sorter: which minority wins?</span><span class="r">1.1.6 MINORITY INFLUENCE</span></div>
+
+  <div class="sec">Read each case, judge the style 判断练习</div>
+  <table class="n">
+    <tr><th style="width:58%;">Case</th><th style="width:20%;">Consistent?</th><th style="width:22%;">Flexible?</th></tr>
+    <tr><td>Two students raise the same recycling arguments at every assembly, all year, and accept a trial of smaller portions</td><td></td><td></td></tr>
+    <tr><td>A campaigner shouts the same slogan for a decade but refuses to discuss any practical step</td><td></td><td></td></tr>
+    <tr><td>A group changes its message every month to match whatever is popular</td><td></td><td></td></tr>
+    <tr><td>A minority keeps its goal fixed but negotiates the timetable for change</td><td></td><td></td></tr>
+  </table>
+
+  <div class="sec">Verdict 判决理由</div>
+  <p>Which of the four cases is <strong>most</strong> likely to shift the majority, and why?</p>
+  <div class="wl"></div>
+  <div class="wl"></div>
+
+  <div class="box purple">
+    <div class="bx-t">One-line summary 一句话</div>
+    Consistency earns the <strong>hearing</strong>; flexibility earns the <strong>acceptance</strong>. A minority needs both — one without the other fails in a different way.
+  </div>
+
+  <div class="pg-foot">Page 7 of 20</div>
+</div>
+
+<!-- PAGE 8 -->
+<div class="page">
+  <div class="pg-head"><span class="t">7 · Conversion: the slow slide</span><span class="r">1.1.6 MINORITY INFLUENCE</span></div>
+
+  <div class="sec">Key term 关键术语</div>
+  <div class="box">
+    <div class="bx-t">Conversion（转化）</div>
+    <p>The process where individuals in the majority group g <span class="bl"></span> come to a <span class="bl"></span> the minority viewpoint.</p>
+  </div>
+
+  <div class="sec">Order the stages 排序</div>
+  <p>Number these stages 1–4 in the order a typical majority member moves through them:</p>
+  <table class="n">
+    <tr><td style="width:12%;">___</td><td>"maybe they're right"</td></tr>
+    <tr><td>___</td><td>"odd idea" — dismissed</td></tr>
+    <tr><td>___</td><td>accepted — internalised</td></tr>
+    <tr><td>___</td><td>"worth a thought"</td></tr>
+  </table>
+
+  <div class="sec">Why the endpoint matters 终点</div>
+  <p>When the two lines meet, the <strong>belief itself has moved</strong> — so the change s <span class="bl"></span> even when the original campaigners are long gone.</p>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 温水式的改变</div>
+    conversion 的关键词是 <strong>gradual（渐进）</strong>。类比烧水：不是点火就开，而是一格一格升温，某刻突然沸腾——社会变化看似「突然」，其实是 minorities 一直在加热。
+  </div>
+
+  <div class="pg-foot">Page 8 of 20</div>
+</div>
+
+<!-- PAGE 9 -->
+<div class="page">
+  <div class="pg-head"><span class="t">8 · Social change: the theory in the wild</span><span class="r">1.1.6 MINORITY INFLUENCE</span></div>
+
+  <div class="sec">Four movements 四场运动</div>
+  <table class="n">
+    <tr><th style="width:22%;">Movement</th><th>Started as…</th><th style="width:36%;">The style on display</th></tr>
+    <tr><td class="lbl">Feminism</td><td>A small group arguing for rights the majority considered settled</td><td>Consistent message for decades; flexible tactics</td></tr>
+    <tr><td class="lbl">Civil rights</td><td>Activists rejecting segregation</td><td>D <span class="bl"></span> sustained through years of resistance</td></tr>
+    <tr><td class="lbl">Right to education</td><td>Campaigns for universal schooling</td><td>Information repeated until the majority i <span class="bl"></span> the principle</td></tr>
+    <tr><td class="lbl">Environmental change</td><td>A few scientists and campaigners</td><td>Credibility (science) + prominent figures like G <span class="bl"></span></td></tr>
+  </table>
+
+  <div class="sec">Apply it 应用</div>
+  <p class="q">Choose one movement and explain, in two sentences, how it shows both consistency and flexibility.</p>
+  <div class="wl"></div>
+  <div class="wl"></div>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 答题公式</div>
+    四个现成例子：<strong>feminism、civil rights、right to education、environmental change</strong>。<br>
+    一句话覆盖两个考点：<em>"This change could not have occurred without a consistent viewpoint being established and maintained."</em>
+  </div>
+
+  <div class="pg-foot">Page 9 of 20</div>
+</div>
+
+<!-- PAGE 10 -->
+<div class="page">
+  <div class="pg-head"><span class="t">9 · Evidence 1: Moscovici et al. (1969)</span><span class="r">1.1.6 MINORITY INFLUENCE</span></div>
+
+  <div class="sec">The study in brief 研究概况</div>
+  <div class="box green">
+    <p>A s <span class="bl"></span> of experiments investigating minority influence on a colour p <span class="bl"></span> judgement task. Participants in a majority were swayed by incorrect judgements made by a m <span class="bl"></span> in the group.</p>
+  </div>
+
+  <div class="sec">Findings + design logic 设计逻辑</div>
+  <table class="n">
+    <tr><th style="width:30%;">Design choice</th><th>Why it matters</th></tr>
+    <tr><td class="lbl">Colour judgement task</td><td>Clear right answer — any shift cannot be explained by un <span class="bl"></span> about the task</td></tr>
+    <tr><td class="lbl">Minority gives wrong answers</td><td>Influence is measured d <span class="bl"></span>: agreeing with known-wrong answers = moved</td></tr>
+    <tr><td class="lbl">Consistency manipulated</td><td>A minority repeating the same wrong answer influences m <span class="bl"></span> than one that does not</td></tr>
+  </table>
+
+  <div class="sec">Headline 结论句</div>
+  <p>Minorities can exert some influence over majority opinion, <strong>particularly if the minority were c</strong> <span class="bl"></span> in their viewpoint.</p>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 这个实验在证明什么</div>
+    颜色判断本无争议——多数人若跟着给出<strong>明显错误</strong>的答案，唯一解释就是被影响了；而「坚持重复同一答案」的少数派影响最大 = <strong>consistency 的直接证据</strong>。
+  </div>
+
+  <div class="pg-foot">Page 10 of 20</div>
+</div>
+
+<!-- PAGE 11 -->
+<div class="page">
+  <div class="pg-head"><span class="t">10 · Evidence 2: Nemeth &amp; Brilmayer (1987)</span><span class="r">1.1.6 MINORITY INFLUENCE</span></div>
+
+  <div class="sec">The numbers 数字填空</div>
+  <div class="box green">
+    <p>A m <span class="bl"></span> jury study. <span class="bl" style="min-width:40px;"></span> male students decided how much c <span class="bl"></span> to award a victim of a ski accident caused by the negligence of a ski company.</p>
+  </div>
+
+  <div class="sec">What varied, what was found 自变量与结果</div>
+  <table class="n">
+    <tr><th style="width:26%;">Question</th><th>Answer</th></tr>
+    <tr><td class="lbl">What varied?</td><td>A consistent, u <span class="bl"></span> offer versus a n <span class="bl"></span> offer</td></tr>
+    <tr><td class="lbl">Finding</td><td>The negotiated offer was m <span class="bl"></span> effective than the rigid one</td></tr>
+    <tr><td class="lbl">What it supports</td><td>Minority f <span class="bl"></span> is an important factor in social influence</td></tr>
+  </table>
+
+  <div class="sec">Keep the pair straight 配对</div>
+  <table class="n">
+    <tr><th style="width:40%;">Claim</th><th>Evidence study</th></tr>
+    <tr><td>Consistency works</td><td></td></tr>
+    <tr><td>Flexibility works (better than rigidity)</td><td></td></tr>
+  </table>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 两个实验各管一半</div>
+    Moscovici (1969)：颜色任务 → <strong>consistency</strong>；Nemeth &amp; Brilmayer (1987)：模拟陪审团 → <strong>flexibility</strong>。evaluation 两个 named study 别张冠李戴。
+  </div>
+
+  <div class="pg-foot">Page 11 of 20</div>
+</div>
+
+<!-- PAGE 12 -->
+<div class="page">
+  <div class="pg-head"><span class="t">11 · Who listens to a minority?</span><span class="r">1.1.6 MINORITY INFLUENCE</span></div>
+
+  <div class="sec">The audience matters 听众</div>
+  <p>Minority influence can be affected by individual d <span class="bl"></span> and c <span class="bl"></span> — some people and cultures are more or less likely to be swayed.</p>
+
+  <div class="sec">Key term 关键术语</div>
+  <div class="box">
+    <div class="bx-t">Social identity theory &amp; the ingroup（社会认同理论与内群体）</div>
+    <p>We are more likely to identify with a minority if they form part of our i <span class="bl"></span> — the group we feel we b <span class="bl"></span> to.</p>
+  </div>
+
+  <div class="sec">Quick apply 快速应用</div>
+  <p class="q">The same environmental campaign is presented by (a) students from your own school and (b) strangers from another city. Which audience is more likely to accept it, and which theory explains why?</p>
+  <div class="wl"></div>
+  <div class="wl"></div>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 自己人说的才算</div>
+    <strong>ingroup（内群体）＝「我们这一边的」。</strong>少数派让你觉得「他和我们是一伙的」，说服就成功一半。<br>
+    这一条是 1.1.6 与 1.1.7 之间的桥：少数派说什么只是一半，听众是谁、在什么情境、来自什么文化是另一半。
+  </div>
+
+  <div class="pg-foot">Page 12 of 20</div>
+</div>
+
+<!-- PAGE 13 -->
+<div class="page">
+  <div class="pg-head"><span class="t">12 · Evaluation: strengths</span><span class="r">1.1.6 MINORITY INFLUENCE</span></div>
+
+  <div class="sec">Four strengths, with reasons 四条优势</div>
+  <table class="n">
+    <tr><th style="width:32%;">Strength</th><th>Reason (fill the gaps)</th></tr>
+    <tr><td class="lbl">1. Experimental support for consistency</td><td>Moscovici et al. (1969): minorities swayed a majority's colour judgements, particularly when c <span class="bl"></span></td></tr>
+    <tr><td class="lbl">2. Experimental support for flexibility</td><td>Nemeth &amp; Brilmayer (1987): the n <span class="bl"></span> offer beat the uncompromising one</td></tr>
+    <tr><td class="lbl">3. Explains real social change</td><td>Feminism, civil rights, education, environment — all began with a minority viewpoint and required c <span class="bl"></span> + d <span class="bl"></span></td></tr>
+    <tr><td class="lbl">4. Fits the deeper channel</td><td>Works through ISI → i <span class="bl"></span>, so converted majorities keep the belief in private</td></tr>
+  </table>
+
+  <div class="sec">AO3 discipline 答题纪律</div>
+  <p>Write the <strong>pairing</strong> correctly every time: consistency ↔ <span class="bl" style="min-width:130px;"></span>; flexibility ↔ <span class="bl" style="min-width:130px;"></span>.</p>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 四条优势一条线</div>
+    两个实验各证一半 → 理论解释真实历史 → 结果层面说得通（内化 = 改变持久）。<br>
+    AO3 别只写形容词，每条优势都要带 <strong>named study + reason</strong>。
+  </div>
+
+  <div class="pg-foot">Page 13 of 20</div>
+</div>
+
+<!-- PAGE 14 -->
+<div class="page">
+  <div class="pg-head"><span class="t">13 · Evaluation: limitations</span><span class="r">1.1.6 MINORITY INFLUENCE</span></div>
+
+  <div class="sec">Four limitations 四条限制</div>
+  <table class="n">
+    <tr><th style="width:32%;">Limitation</th><th>Reason (fill the gaps)</th></tr>
+    <tr><td class="lbl">1. Narrow, artificial evidence</td><td>Colour slides and mock juries cannot capture d <span class="bl"></span> of real campaigning</td></tr>
+    <tr><td class="lbl">2. Influence depends on the audience</td><td>Individual differences, c <span class="bl"></span> and ingroup identification all m <span class="bl"></span> the effect</td></tr>
+    <tr><td class="lbl">3. The two styles pull against each other</td><td>Uncompromising consistency was l <span class="bl"></span> effective (Nemeth &amp; Brilmayer); bending too far loses the c <span class="bl"></span> that earned attention</td></tr>
+    <tr><td class="lbl">4. Conversion is slow — hard to study</td><td>Experiments compress consistency into one s <span class="bl"></span>; they cannot compress d <span class="bl"></span></td></tr>
+  </table>
+
+  <div class="sec">Turn one limitation into AO3 prose 写成段落</div>
+  <p>Choose limitation 1 and write it as two full sentences beginning <em>"One limitation is that…"</em>:</p>
+  <div class="wl"></div>
+  <div class="wl"></div>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 三条限制一条逻辑</div>
+    ① 实验太人工 → 不敢推广到几十年真实运动；② 效果看听众 → 换个观众就失灵；③ 太硬被当偏激、太软丢一致性。<br>
+    加上「过程太慢难研究」，四条正好一组 AO3。
+  </div>
+
+  <div class="pg-foot">Page 14 of 20</div>
+</div>
+
+<!-- PAGE 15 -->
+<div class="page">
+  <div class="pg-head"><span class="t">14 · Build the 8-mark answer (AO1 + AO3)</span><span class="r">1.1.6 MINORITY INFLUENCE</span></div>
+
+  <div class="sec">AO1 skeleton cloze 主干填空</div>
+  <div class="box blue">
+    <p>Minority influence (Moscovici, <span class="bl" style="min-width:44px;"></span>) is a form of social influence in which people reject the established norms of the m <span class="bl"></span> and move towards the behaviour and opinions of a m <span class="bl"></span> group. Since minorities lack power in n <span class="bl"></span>, their influence comes from their behavioural style: consistent c <span class="bl"></span> supported by f <span class="bl"></span>. It operates through informational social influence and results in i <span class="bl"></span>. Change is rarely quick: through c <span class="bl"></span>, the majority gradually comes to accept the minority viewpoint.</p>
+  </div>
+
+  <div class="sec">AO3 skeleton cloze 评价填空</div>
+  <div class="box blue">
+    <p>Supported by Moscovici et al. (<span class="bl" style="min-width:44px;"></span>) for consistency and Nemeth and B <span class="bl"></span> (<span class="bl" style="min-width:44px;"></span>) for flexibility. However, the evidence comes from a <span class="bl"></span> tasks, and influence also depends on the a <span class="bl"></span> — individual differences, culture and ingroup i <span class="bl"></span> all moderate the effect.</p>
+  </div>
+
+  <div class="sec">Self-check 自查</div>
+  <p class="chk"><span class="c"></span>Named Moscovici with the year　<span class="c"></span>Both styles explained　<span class="c"></span>ISI + internalisation named　<span class="c"></span>Both studies in AO3　<span class="c"></span>At least one limitation</p>
+
+  <div class="pg-foot">Page 15 of 20</div>
+</div>
+
+<!-- PAGE 16 -->
+<div class="page">
+  <div class="pg-head"><span class="t">15 · Exam focus: command words</span><span class="r">1.1.6 MINORITY INFLUENCE</span></div>
+
+  <div class="sec">Two commands, two jobs 指令词</div>
+  <table class="n">
+    <tr><th style="width:26%;">Command</th><th style="width:32%;">What you must do</th><th>Structure that earns the marks</th></tr>
+    <tr><td class="lbl">Explain… (2–4)</td><td>Describe the theory (AO1)</td><td>Definition → Moscovici (1976) → behavioural style → ISI → internalisation</td></tr>
+    <tr><td class="lbl">Discuss… (8)</td><td>Explain <strong>and</strong> evaluate (AO1 4 + AO3 4)</td><td>AO1 chain + conversion; AO3 = two studies + limits</td></tr>
+  </table>
+
+  <div class="sec">Quick drills 小练</div>
+  <ol class="tight">
+    <li>State the definition of minority influence in one sentence.</li>
+  </ol>
+  <div class="wl s"></div>
+  <ol class="tight" start="2">
+    <li>Name the study that supports flexibility, with its sample size.</li>
+  </ol>
+  <div class="wl s"></div>
+  <ol class="tight" start="3">
+    <li>Give the two styles a successful minority needs, with one word of explanation each.</li>
+  </ol>
+  <div class="wl s"></div>
+
+  <div class="box purple">
+    <div class="bx-t">The most examinable sentence 最常考的一句</div>
+    Social change <em>"could not have occurred without a consistent viewpoint being established and maintained, and minority individuals being dedicated to their cause."</em> — definition + process + required style, all in one line.
+  </div>
+
+  <div class="pg-foot">Page 16 of 20</div>
+</div>
+
+<!-- PAGE 17 -->
+<div class="page">
+  <div class="pg-head"><span class="t">16 · Timed practice plan</span><span class="r">1.1.6 MINORITY INFLUENCE</span></div>
+
+  <div class="sec">The question 题目</div>
+  <p class="q">A small group of students campaigns to reduce food waste in their school. Most ignore them at first, but the group keeps raising the same arguments at every assembly and negotiates practical steps like smaller portions. Within a year, most students believe reducing waste matters. Discuss minority influence, using the campaign as an example. (8 marks)</p>
+
+  <div class="sec">Plan first, in three minutes 列提纲</div>
+  <table class="n">
+    <tr><th style="width:20%;">Slot</th><th>Your points (bullet notes only)</th></tr>
+    <tr><td class="lbl">AO1 · theory</td><td class="small"></td></tr>
+    <tr><td class="lbl">AO1 · applied</td><td class="small"></td></tr>
+    <tr><td class="lbl">AO3 · study 1</td><td class="small"></td></tr>
+    <tr><td class="lbl">AO3 · study 2</td><td class="small"></td></tr>
+    <tr><td class="lbl">AO3 · limit</td><td class="small"></td></tr>
+  </table>
+
+  <div class="sec">Timing check 时间分配</div>
+  <p class="small">8 marks ≈ 10–12 minutes: 2 min plan · 5–6 min write · 2 min check that every AO3 point names a study or a mechanism. A generic essay scores 0 — every sentence should touch the recycling campaign.</p>
+
+  <div class="pg-foot">Page 17 of 20</div>
+</div>
+
+<!-- PAGE 18 -->
+<div class="page">
+  <div class="pg-head"><span class="t">17 · Write it out</span><span class="r">1.1.6 MINORITY INFLUENCE</span></div>
+
+  <div class="sec">Your answer 你的答案</div>
+  <p class="small">Write the full 8-mark answer here. AO1 first (theory applied to the campaign), then AO3 (two studies + one limitation, all tied to the campaign).</p>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+
+  <div class="pg-foot">Page 18 of 20</div>
+</div>
+
+<!-- PAGE 19 -->
+<div class="page">
+  <div class="pg-head"><span class="t">18 · Answer key (1 of 2)</span><span class="r">1.1.6 MINORITY INFLUENCE</span></div>
+
+  <div class="sec">p.2–3 定义与方向</div>
+  <ul class="tight small">
+    <li>p.2: social <strong>order</strong>; social <strong>change</strong>. Sorter: majority / minority / majority / minority.</li>
+    <li>p.3: <strong>n</strong>orms; <strong>o</strong>pinions; steps <em>away</em> from it; <strong>shift</strong>; <strong>Serge Moscovici (1976)</strong>; behavioural <strong>style</strong>; consistent <strong>conviction</strong>.</li>
+  </ul>
+
+  <div class="sec">p.4 机制</div>
+  <ul class="tight small">
+    <li><strong>i</strong>nformational; <strong>d</strong>eep. Table: go along / accept publicly; disagree / accept privately; shallow / deep; internalisation comes from ISI.</li>
+    <li>Quick check: people accept the minority's information as true, so the belief is held publicly and privately — that is internalisation, not compliance.</li>
+  </ul>
+
+  <div class="sec">p.5–6 两种风格</div>
+  <ul class="tight small">
+    <li>p.5: <strong>s</strong>ame; over <strong>t</strong>ime; really <strong>b</strong>elieve; shakier; <strong>c</strong>onsistent / <strong>m</strong>aintained / <strong>d</strong>edicated.</li>
+    <li>p.6: <strong>f</strong>lexibility; <strong>r</strong>igid; extreme; believed; reasonable.</li>
+  </ul>
+
+  <div class="sec">p.7 风格判断</div>
+  <ul class="tight small">
+    <li>Case 1 consistent + flexible (winner); Case 2 consistent, not flexible; Case 3 neither — no consistency at all; Case 4 consistent + flexible (winner). Most likely to win: cases 1 and 4 — consistent on the goal, flexible on the route.</li>
+  </ul>
+
+  <div class="sec">p.8–9 转化与社会变革</div>
+  <ul class="tight small">
+    <li>p.8: <strong>g</strong>radually; <strong>a</strong>ccept. Order: 3, 1, 4, 2. Endpoint: change <strong>sticks</strong>.</li>
+    <li>p.9: civil rights = <strong>d</strong>edication; right to education = <strong>i</strong>nternalised; environment = <strong>G</strong>reta Thunberg.</li>
+  </ul>
+
+  <div class="pg-foot">Page 19 of 20</div>
+</div>
+
+<!-- PAGE 20 -->
+<div class="page">
+  <div class="pg-head"><span class="t">19 · Answer key (2 of 2) + brain dump</span><span class="r">1.1.6 MINORITY INFLUENCE</span></div>
+
+  <div class="sec">p.10–12 研究与听众</div>
+  <ul class="tight small">
+    <li>p.10: <strong>s</strong>eries; <strong>p</strong>erception; <strong>m</strong>inority; uncertainty; directly; more; <strong>c</strong>onsistent.</li>
+    <li>p.11: <strong>m</strong>ock; <strong>72</strong>; <strong>c</strong>ompensation; uncompromising; negotiated; more; <strong>f</strong>lexibility. Pairing: consistency ↔ Moscovici et al. (1969); flexibility ↔ Nemeth &amp; Brilmayer (1987).</li>
+    <li>p.12: <strong>d</strong>ifferences; <strong>c</strong>ulture; <strong>i</strong>ngroup; <strong>b</strong>elong. Audience (a) — social identity theory: your own students are the ingroup.</li>
+  </ul>
+
+  <div class="sec">p.13–15 评价与骨架</div>
+  <ul class="tight small">
+    <li>p.13: consistent; negotiated; consistency + dedication; internalisation.</li>
+    <li>p.14: decades; culture, moderate; less, consistency; session, decades.</li>
+    <li>p.15 AO1: 1976; majority; minority; numbers; conviction; flexibility; internalisation; conversion. AO3: 1969; Brilmayer; 1987; artificial; audience; identification.</li>
+  </ul>
+
+  <div class="sec">Brain dump 最终默写</div>
+  <div class="box grey">
+    <p class="small">Close the booklet. From memory, write: the definition (1 line) · the two styles with one study each (2 lines) · the ISI → internalisation → conversion chain (1 line). If any line is blank, revisit that page today.</p>
+    <div class="wl"></div>
+    <div class="wl"></div>
+    <div class="wl"></div>
+    <div class="wl"></div>
+  </div>
+
+  <div class="pg-foot">Page 20 of 20</div>
+</div>
+
+</body>
+</html>

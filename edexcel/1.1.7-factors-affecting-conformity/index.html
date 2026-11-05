@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.1.7 Factors Affecting Conformity and Minority Influence — Person, situation, culture</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.five-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+
+.mat2x2 { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 6px; margin: 14px 0; }
+.mat2x2.c2 { grid-template-columns: 150px 1fr; }
+.mat2x2 .mh { background: var(--primary); color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
+body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style></head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic A · Social Psychology — 1.1.7 Factors affecting conformity and minority influence</span>
+  </div>
+  <span class="nav-pill">🧑‍🤝‍🧑 Social Psychology</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="1.1.7-Factors-Affecting-Conformity-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">1.1.7 · Contents</div>
+        <div class="sb-header-sub">Factors Affecting Conformity</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">Before we start</li>
+        <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+        <li class="sb-item"><a href="#s2">2. Three Lenses</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Lens 1 · The person</li>
+        <li class="sb-item"><a href="#s3">3. Locus of Control</a></li>
+        <li class="sb-item"><a href="#s4">4. LOC: The Evidence</a></li>
+        <li class="sb-item"><a href="#s5">5. Desire for Control</a></li>
+        <li class="sb-item"><a href="#s6">6. Other Characteristics</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Lens 2 · The situation</li>
+        <li class="sb-item"><a href="#s7">7. Size of the Groups</a></li>
+        <li class="sb-item"><a href="#s8">8. Unity of the Majority</a></li>
+        <li class="sb-item"><a href="#s9">9. Ambiguity &amp; the Source</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Lens 3 · The culture</li>
+        <li class="sb-item"><a href="#s10">10. Cross-Culture Scoreboard</a></li>
+        <li class="sb-item"><a href="#s11">11. Berry (1967): Two Ways of Living</a></li>
+        <li class="sb-item"><a href="#s12">12. Collectivist vs Individualist</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Evaluation</li>
+        <li class="sb-item"><a href="#s13">13. Strengths &amp; Limits</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Exam</li>
+        <li class="sb-item"><a href="#s14">14. Exam Focus</a></li>
+        <li class="sb-item"><a href="#s15">15. Checkpoint</a></li>
+        <li class="sb-item"><a href="#s16">16. Exam Lab</a></li>
+        <li class="sb-item"><a href="#s17">17. Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>1.1.7 FACTORS AFFECTING CONFORMITY AND MINORITY INFLUENCE<br><span style="font-size:0.65em">影响从众与少数派影响的因素 · individual differences · situation · culture</span></h1>
+  <div class="subtitle">Social Psychology · Same experiment, different people, different situations, different cultures — different results.</div>
+  <div class="meta">
+    <span class="badge">🧠 Core idea: three lenses — person, situation, culture</span>
+    <span class="badge">📊 Packed with named studies</span>
+    <span class="badge">📖 Textbook: Chapter 3</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this section is really asking</h4>
+  <ol>
+    <li><strong>Who conforms and who resists?</strong> Personality matters: an <strong>internal locus of control</strong> and a <strong>high desire for control</strong> both make people harder to sway.</li>
+    <li><strong>When is conformity strongest?</strong> Situation matters: group size, a <strong>united majority</strong>, ambiguous situations and high-status sources all raise it; a <strong>broken majority</strong> collapses it (33% → 5.5%).</li>
+    <li><strong>Where is conformity strongest?</strong> Culture matters: <strong>collectivistic</strong> cultures conform more than <strong>individualistic</strong> ones (Smith &amp; Bond, 1996 — 133 studies, 17 countries), and Berry (1967) traced the difference to how a culture gets its food.</li>
+    <li><strong>The same three lenses also decide whether a minority gets heard</strong> — which is why 1.1.6 ended with this page.</li>
+  </ol>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started</h2>
+
+  <p>Thirty people are in the same experiment, watching the same wrong answers, from the same three confederates. Twenty-three go along with the wrong answer at least once. Seven never do.</p>
+
+  <p>Stop and think about what that means. The <strong>situation was identical</strong> for all thirty — same room, same task, same pressure. So the difference between the 23 and the 7 has to come from <strong>something the situation didn't contain</strong>: the person. Their personality. What they believe about who controls their life.</p>
+
+  <div class="blue-box">
+    <h4>The question this chapter answers</h4>
+    <p>Asch and Moscovici told us <em>that</em> people yield to influence. This page tells us <strong>how much</strong> — and what makes the difference: the individual differences (personality) we bring, the situation we are placed in, and the culture we grew up in.</p>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Have a guess first <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro">Two students hear the same viral rumour. One checks the facts and shrugs it off; the other shares it within minutes. Which difference best explains this?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="faGuess(this,'a')">One is taller than the other</button>
+      <button class="q-option" onclick="faGuess(this,'b')">One believes their outcomes are controlled by their own actions; the other believes it is down to luck and other people</button>
+      <button class="q-option" onclick="faGuess(this,'c')">One is older than the other</button>
+    </div>
+    <div class="xp-result" id="res-guess"></div>
+  </div>
+
+  <p>Answer B — and that belief about control has a technical name, which is where we start.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：一个实验，两种人</strong><br>
+    Asch 的实验里条件完全相同，但结果不同——说明除了情境，<strong>人的内部</strong>还有变量。<br>
+    本章就是一套「三层滤镜」：<strong>你是谁（personality）→ 你在什么情境（situation）→ 你来自什么文化（culture）</strong>。三层滤镜叠在一起，才决定一个人从众多少。
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Three Lenses on Influence</h2>
+
+  <p>The specification splits the factors into three groups. Keep them as three drawers — every fact on this page belongs in exactly one drawer, and the exam questions map onto them one by one.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>1 · Individual differences (personality)</h4>
+      <p>What you bring into the room: <strong>locus of control</strong>, <strong>desire for control</strong>, self-esteem, need for social approval, anxiety, insecurity.</p>
+    </div>
+    <div class="compare-card">
+      <h4>2 · Situation</h4>
+      <p>What the room contains: <strong>size of the majority</strong> and of the minority, <strong>unity of the majority</strong>, how <strong>ambiguous</strong> the situation is, and the <strong>status/credibility of the source</strong>.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>3 · Culture</h4>
+      <p>What the room sits inside: <strong>collectivistic vs individualistic</strong> societies, and even how a culture <strong>gets its food</strong> (Berry, 1967).</p>
+    </div>
+  </div>
+
+  <div class="exam-tip">
+    <h4>💡 From the textbook</h4>
+    <p>The exam practice for this chapter is literally three questions: <em>"Explain one individual difference… one situational factor… one factor associated with culture… which may influence conformity and/or minority influence. (2 marks each)"</em>. Three drawers, three questions. Organise your revision the same way.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：三个抽屉，各放各的</strong><br>
+    <strong>人</strong>：控制点（locus of control）、控制欲（desire for control）、自尊低、需要被认可、焦虑、不安；<br>
+    <strong>情境</strong>：多数派/少数派规模、多数派是否团结、情境是否模糊、信息来源的地位与可信度；<br>
+    <strong>文化</strong>：集体主义 vs 个人主义、Berry 的农耕 vs 狩猎。<br>
+    答题时先判断题目问的是哪个抽屉，再从对应抽屉里拿证据，不会乱。
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Individual Difference 1: Locus of Control</h2>
+
+  <p>Similar to obedience, there are individual differences between us that mean <strong>some people are more likely to conform than others</strong>. The first is a belief system about control itself.</p>
+
+  <div class="keyterm-box">
+    <div class="kt">locus of control（控制点）</div>
+    A belief system which determines our <strong>perception of control over events</strong> that occur. The "locus" is the location of control — inside you, or outside you.
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Internal locus of control</h4>
+      <p>"What happens to me depends on <strong>what I do</strong>." Such a person <strong>may feel less pressure from others</strong>, is less likely to comply with group norms or feel a need to fit in — and is therefore <strong>less susceptible to normative social influence</strong>.</p>
+    </div>
+    <div class="compare-card">
+      <h4>External locus of control</h4>
+      <p>"What happens to me depends on <strong>luck, fate and other people</strong>." Such a person <strong>tends to look to others</strong> to help guide their decisions and rely on others' opinions — and is therefore <strong>more susceptible to normative social influence</strong>.</p>
+    </div>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A spectrum from internal to external locus of control, with susceptibility to normative social influence rising towards the external end">
+      <defs>
+        <linearGradient id="locGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#16a34a"/><stop offset="1" stop-color="#dc2626"/>
+        </linearGradient>
+      </defs>
+      <text x="340" y="28" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#1e293b">Where is the control? One spectrum, two habits</text>
+
+      <rect x="60" y="95" width="560" height="26" rx="13" fill="url(#locGrad)"/>
+      <text x="90"  y="84" font-family="Arial" font-size="12.5" font-weight="700" fill="#166534">INTERNAL</text>
+      <text x="330" y="84" text-anchor="middle" font-family="Arial" font-size="11" fill="#475569">a spectrum — most people sit somewhere in between</text>
+      <text x="620" y="84" text-anchor="end" font-family="Arial" font-size="12.5" font-weight="700" fill="#991b1b">EXTERNAL</text>
+
+      <text x="90"  y="145" font-family="Arial" font-size="11.5" fill="#14532d">"my actions decide"</text>
+      <text x="620" y="145" text-anchor="end" font-family="Arial" font-size="11.5" fill="#7f1d1d">"luck and others decide"</text>
+
+      <line x1="90" y1="168" x2="610" y2="168" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4"/>
+      <polygon points="610,168 598,162 598,174" fill="#94a3b8"/>
+      <text x="350" y="188" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#475569">susceptibility to normative social influence rises this way →</text>
+
+      <text x="90"  y="212" font-family="Arial" font-size="11" fill="#166534">less pressure to fit in · resists group norms</text>
+      <text x="620" y="212" text-anchor="end" font-family="Arial" font-size="11" fill="#991b1b">relies on others' opinions · conforms more</text>
+    </svg>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：命运的方向盘握在谁手里？</strong><br>
+    <strong>Internal（内控）</strong>＝方向盘在我手里：考试没考好，是「我没复习够」→ 既然结果由我决定，别人的意见只是参考。<br>
+    <strong>External（外控）</strong>＝方向盘在别人/运气手里：没考好是「题目太偏、运气差」→ 那就多听听别人怎么说吧，反正我自己说了不算。<br>
+    记法：<strong>外控 → 依赖他人意见 → 更容易从众（NSI）；内控 → 反之。</strong>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Locus of Control: The Evidence</h2>
+
+  <p>Three studies — and a meta-analysis to tie them together. Learn them as a chain: two early experiments, one big summary.</p>
+
+  <div class="mat2x2">
+    <div class="mh">Study</div>
+    <div class="mh">What they did</div>
+    <div class="mh">What they found</div>
+
+    <div class="mv">Biondo et al. (1971)</div>
+    <div class="cell">Compared how students with internal vs external loci of control responded to attempts to change their attitudes.</div>
+    <div class="cell"><strong>Externals were more influenced by overt attempts to persuade</strong> attitude change than internals. Internals <strong>reacted against overt influence and ignored subtle influence</strong>.</div>
+
+    <div class="mv">Ritchie &amp; Phares (1969)</div>
+    <div class="cell">Tested how persuasion worked depending on who delivered it.</div>
+    <div class="cell"><strong>Externals were more persuaded by communication from a source of high prestige</strong> than internals were.</div>
+
+    <div class="mv">Avtgis (1998)</div>
+    <div class="cell">Conducted a <strong>meta-analysis</strong> of studies on locus of control and social influence — gathering and analysing other people's data to compare effect sizes.</div>
+    <div class="cell">Most research indicated that <strong>higher external locus of control scores went with more conformity</strong>. But the evidence is <strong>mixed</strong>: the link depends on the <strong>type and source of the persuasion</strong>.</div>
+  </div>
+
+  <div class="keyterm-box">
+    <div class="kt">meta-analysis（元分析）</div>
+    When a researcher <strong>gathers and analyses other people's data</strong> to look at effect sizes, to draw conclusions about research in a topic area. One big conclusion from many small studies.
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Quick check <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro">An internal student receives an obvious, direct attempt to change their opinion. Based on Biondo et al. (1971), what do they do?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="locAns(this,'a')">They accept it — internals follow the majority</button>
+      <button class="q-option" onclick="locAns(this,'b')">They react against it</button>
+      <button class="q-option" onclick="locAns(this,'c')">They subtly accept it without noticing</button>
+    </div>
+    <div class="xp-result" id="res-loc"></div>
+  </div>
+
+  <div class="green-box">
+    <h4>Keep the nuance</h4>
+    <p>Avtgis's meta-analysis supports the general trend — but the textbook is explicit that <strong>evidence in this area is mixed</strong> and the link <strong>depends on the type and source of the persuasion</strong>. Many different factors play a role in social influence; locus of control is one of them, not the whole story.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：三个证据连成一条线</strong><br>
+    Biondo（外控的人挡不住正面说服）＋ Ritchie &amp; Phares（外控的人特别吃「权威来源」那一套）＝ 两个实验；<br>
+    Avtgis (1998) 元分析＝ 把一摊研究合起来看，结论仍是 <strong>外控 → 更从众</strong>，但要补一句 <strong>but 证据并不一致，取决于说服的类型和来源</strong>——这句 "but" 在 AO3 里值钱。
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Individual Difference 2: Desire for Control</h2>
+
+  <p>Where locus of control is about <em>belief</em>, the second difference is about <em>motivation</em>.</p>
+
+  <div class="keyterm-box">
+    <div class="kt">desire for control（控制欲）</div>
+    Proposed by <strong>Jerry Burger and Harris Cooper (1979)</strong>: individual differences in our <strong>motivation to control events in our environment</strong>.
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>High desire for control</h4>
+      <p>Tends to be <strong>assertive, decisive</strong> and to <strong>take leadership roles</strong> within a group. More likely to <strong>resist other opinions and beliefs</strong>.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Low desire for control</h4>
+      <p>Tends to be <strong>passive</strong> and <strong>influenced by others</strong>.</p>
+    </div>
+  </div>
+
+  <div class="green-box">
+    <h4>Burger (1987): putting the idea to the test</h4>
+    <p><strong>Fifty-five student participants</strong> were placed in <strong>groups of four</strong> and asked to <strong>rate the funniness of a cartoon on a scale of 1–100</strong>. Each participant gave their rating <strong>publicly, after three other participants — who were confederates of the study — had given theirs</strong>. Burger found that participants with a <strong>high desire for control were less likely to conform</strong> to the group norm by agreeing with the confederates' judgements.</p>
+  </div>
+
+  <div class="mat2x2 c2">
+    <div class="mh">Design detail</div>
+    <div class="mh">Why it matters</div>
+
+    <div class="mv">Cartoon ratings, 1–100</div>
+    <div class="cell">There is no correct answer — this is an opinion task, so conformity to the group's "norm" of funniness is easy to measure against the confederates' numbers.</div>
+
+    <div class="mv">Speaking after three confederates</div>
+    <div class="cell">Each real participant always answered last, so the group "norm" was already established before their turn — the classic Asch set-up, in a modern disguise.</div>
+
+    <div class="mv">Public rating</div>
+    <div class="cell">Saying the number out loud adds normative pressure — you cannot quietly disagree; the group hears your answer.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：belief vs desire——两个「控制」别混</strong><br>
+    <strong>Locus of control</strong> ＝ 你<strong>相信</strong>控制权在哪（belief/信念）；<br>
+    <strong>Desire for control</strong> ＝ 你<strong>多想</strong>掌控一切（motivation/动机）。<br>
+    类比：一个人可能相信「成绩靠努力」（内控），但并不特别想当班长（低控制欲）——两者是不同的东西。考试最爱考的就是把这两个词互换着骗你。
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Other Characteristics That Matter</h2>
+
+  <p>Personality does not stop at control. The textbook lists four more characteristics that can explain variations in social influence:</p>
+
+  <div class="mat2x2 c2">
+    <div class="mh">Characteristic</div>
+    <div class="mh">Typical link</div>
+
+    <div class="mv">Low self-esteem（低自尊）</div>
+    <div class="cell">If you do not trust your own judgement, other people's judgements fill the gap — more room for influence.</div>
+
+    <div class="mv">High need for social approval（高社会赞许需要）</div>
+    <div class="cell">If being liked matters above all, agreeing with the group is the safest route — more normative conformity.</div>
+
+    <div class="mv">Anxiety（焦虑）</div>
+    <div class="cell">Anxious situations and anxious people look to others for cues about what to do.</div>
+
+    <div class="mv">Insecurity（不安全感）</div>
+    <div class="cell">Feeling unsure of your standing makes the group's opinion feel heavier.</div>
+  </div>
+
+  <p class="small">These four are "also on the list" rather than deeply studied here — the examinable personalities are locus of control and desire for control, each with their named studies.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：一个共同主题</strong><br>
+    四个词（低自尊、需要认可、焦虑、不安全感）其实说的是一件事：<strong>对自己的判断不够自信</strong>。<br>
+    对自己越没把握的人，越需要「跟着别人走」这份安全感——这就是它们推高从众的共同逻辑。
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Situational Factor 1: Size of the Groups</h2>
+
+  <p>The first situational factor is simply <em>how many people are on each side</em> — and it works differently for majorities and minorities.</p>
+
+  <h3>Size of the majority</h3>
+  <p>As the Asch experiments demonstrated, the size of the majority changes the odds of conformity. Asch found that a majority of <strong>three was optimal</strong> — conformity rose as dissenters were added, up to three — and <strong>any greater number did not exert greater influence</strong>. The pressure saturates.</p>
+
+  <h3>Size of the minority</h3>
+  <p>The size of a minority can also influence whether a majority can be persuaded — <strong>however, research is mixed</strong>, and the arguments point both ways:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Case for a large minority</h4>
+      <p>A large minority has <strong>more visual presence</strong> — it is harder to ignore five campaigners than one.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Case for a small minority</h4>
+      <p>A small minority can still be effective <strong>if their argument is strong and consistent</strong> — a tiny consistent group stands out against the crowd, which is where attention begins.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Risk for a small minority</h4>
+      <p>A small minority could be <strong>discounted as extreme or eccentric</strong> — "it's just those two again".</p>
+    </div>
+    <div class="compare-card">
+      <h4>Risk for a large minority</h4>
+      <p>A large minority risks being seen as "just another group" rather than a cause — size alone persuades nobody.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：多数派有「最优人数」，少数派没有定论</strong><br>
+    多数派：3 个人就是上限，再加人也白加（Asch 的饱和效应）。<br>
+    少数派：<strong>研究结论不一（research is mixed）</strong>——大有大的显眼，小有小的聚焦。<br>
+    AO3 现成素材：写到少数派规模时，别只写一边，把 <strong>"however, research is mixed"</strong> 这句亮出来。
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Situational Factor 2: Unity of the Majority</h2>
+
+  <p>Majority <strong>unity</strong> can also influence conformity — and this is one of the most quotable numbers in the topic.</p>
+
+  <div class="green-box">
+    <h4>The broken-majority effect</h4>
+    <p>As found in the Asch experiments: <strong>when a majority is broken</strong> — one dissenting confederate starts giving different answers — conformity <strong>fell from 33% to 5.5%</strong>.</p>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart: conformity 33 percent with a united majority versus 5.5 percent when the majority is broken">
+      <text x="340" y="26" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#1e293b">One defector changes everything</text>
+
+      <!-- baseline -->
+      <line x1="80" y1="196" x2="600" y2="196" stroke="#94a3b8" stroke-width="2"/>
+
+      <!-- bar 1 -->
+      <rect x="150" y="58" width="120" height="138" rx="6" fill="#334155"/>
+      <text x="210" y="48" text-anchor="middle" font-family="Arial" font-size="16" font-weight="700" fill="#1e293b">33%</text>
+      <text x="210" y="216" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#475569">united majority</text>
+      <text x="210" y="234" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#64748b">everyone gives the same (wrong) answer</text>
+
+      <!-- bar 2 -->
+      <rect x="410" y="188.5" width="120" height="7.5" rx="3" fill="#ea580c"/>
+      <text x="470" y="176" text-anchor="middle" font-family="Arial" font-size="16" font-weight="700" fill="#9a3412">5.5%</text>
+      <text x="470" y="216" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#9a3412">broken majority</text>
+      <text x="470" y="234" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#64748b">one dissenter breaks the wall</text>
+
+      <text x="340" y="112" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#475569">conformity</text>
+      <text x="340" y="130" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#475569">× 1/6</text>
+    </svg>
+  </div>
+
+  <p>Why such a collapse? A united majority says <em>"everyone agrees, so you must be wrong."</em> A broken majority says <em>"reasonable people can disagree."</em> The social cost of disagreeing suddenly drops — the participant is no longer alone against the world, they are one of two.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：33% → 5.5%，一句话记忆</strong><br>
+    多数派「团结」时，反对一个人 = 对抗全世界，33% 的人从众；<br>
+    只要有一个同盟军开口，反对的人不再孤单，从众率跌到 <strong>5.5%</strong>——只剩原来的 <strong>六分之一</strong>。<br>
+    这也是 33% 这个数字的考点：考「unity」必配这组数据。
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Situational Factors 3 &amp; 4: Ambiguity and the Source</h2>
+
+  <h3>3 · Ambiguity and uncertainty</h3>
+  <p>If a situation is <strong>ambiguous or uncertain</strong>, we are more likely to conform to the opinions of others around us — because their opinions provide a <strong>source of information we need to make sense of the situation</strong>.</p>
+
+  <div class="blue-box">
+    <h4>Which channel is this?</h4>
+    <p>This is a form of <strong>informational social influence</strong> — and because people are accepting information, not just going along, it results in a <strong>more persistent change in attitude or behaviour</strong>. Compare with normative pressure: that buys public agreement, which evaporates when the group leaves the room.</p>
+  </div>
+
+  <h3>4 · The source of the influence</h3>
+  <p>The final situational factor is <strong>who</strong> is doing the influencing. If a source has <strong>status, reputation, credibility or expertise</strong> — whether the source is a majority or a minority — it will affect its ability to influence others.</p>
+
+  <div class="mat2x2 c2">
+    <div class="mh">Source quality</div>
+    <div class="mh">Effect on influence</div>
+
+    <div class="mv">High status / credibility / expertise</div>
+    <div class="cell">The message gets taken seriously — the textbook's example is environmental campaigners, whose policy has <strong>scientific support</strong> and is led by prominent activists such as <strong>Greta Thunberg</strong>. This also helps minorities: credibility is how a small group earns a hearing (and links straight back to Ritchie &amp; Phares — prestige sources persuade externals especially).</div>
+
+    <div class="mv">Low credibility</div>
+    <div class="cell">The same argument falls flat — the content is the same, the messenger is not.</div>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Quick check <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro">A confused tourist in an unfamiliar station follows the crowd towards an exit. Which factor and channel explain this best?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="ambAns(this,'a')">Ambiguity + informational social influence</button>
+      <button class="q-option" onclick="ambAns(this,'b')">Ambiguity + normative social influence</button>
+      <button class="q-option" onclick="ambAns(this,'c')">Group size + obedience</button>
+    </div>
+    <div class="xp-result" id="res-amb"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：越不懂，越跟人</strong><br>
+    看不懂出口指示牌（情境模糊）→ 别人走的方向就成了「信息」（ISI）；<br>
+    记住后半句：<strong>ISI 造成的是「更持久」的改变</strong>——因为你真的把信息当作答案接受了，不像 NSI 只是表面合群。<br>
+    「来源」这条和 1.1.6 呼应：少数派要被听见，也得有 credibility。
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Cultural Factor 1: The Cross-Culture Scoreboard</h2>
+
+  <p>The third drawer is the biggest: culture. Research has found that <strong>some cultures show greater conformity than others</strong>. Cross-cultural replications of Asch-type experiments have shown different levels of conformity in different countries — here is the full scoreboard from the textbook.</p>
+
+  <div class="mat2x2">
+    <div class="mh">Study</div>
+    <div class="mh">Who was tested</div>
+    <div class="mh">Finding</div>
+
+    <div class="mv">Neto (1995)</div>
+    <div class="cell">Female Portuguese university students</div>
+    <div class="cell">A <strong>higher rate of conformity than Asch</strong> found.</div>
+
+    <div class="mv">Whittaker &amp; Meade (1967)</div>
+    <div class="cell">Students in Brazil and Zimbabwe</div>
+    <div class="cell"><strong>Brazilians: similar rates to Asch</strong>; <strong>Zimbabweans showed greater conformity</strong>.</div>
+
+    <div class="mv">Chandra (1973)</div>
+    <div class="cell">Native Fijians vs Indians</div>
+    <div class="cell">Native Fijians were <strong>more conforming than Indians</strong>; the Fijians displayed <strong>36%</strong>, comparable to Asch's American students.</div>
+
+    <div class="mv">Timaeus (1968)</div>
+    <div class="cell">German students</div>
+    <div class="cell"><strong>Less conforming than Americans</strong>.</div>
+
+    <div class="mv">Milgram (1961)</div>
+    <div class="cell">Norwegians (and French)</div>
+    <div class="cell"><strong>Higher conformity in Norwegians</strong>.</div>
+
+    <div class="mv">Perrin &amp; Spencer (1980)</div>
+    <div class="cell">British students (England)</div>
+    <div class="cell">A <strong>virtual absence of conformity</strong> in England.</div>
+
+    <div class="mv">Triandis et al. (1988)</div>
+    <div class="cell">Japanese vs US students</div>
+    <div class="cell">Japanese students reported <strong>conforming less than US students in general</strong>, but <strong>differentiated in-groups from out-groups more sharply</strong> — more likely to conform to <strong>fellow students than to strangers</strong>.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：别背国家，背「对比」</strong><br>
+    七条研究不要当七个孤立知识点背，按三组对比记：<br>
+    ① <strong>更高</strong>：葡萄牙女生（Neto）、津巴布韦（W&amp;M）、挪威人（Milgram）、斐济土著 36%（Chandra）；<br>
+    ② <strong>更低</strong>：德国（Timaeus）、英国「几乎无人从众」（Perrin &amp; Spencer）、日本人对陌生人（Triandis）；<br>
+    ③ <strong>持平</strong>：巴西 ≈ Asch（W&amp;M）。<br>
+    考试写得出 1–2 个具体研究＋方向，就够 2 分。
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Cultural Factor 2: Berry (1967) — Two Ways of Living</h2>
+
+  <p>The most interesting cultural study does not compare countries at all. It compares two <strong>subsistence cultures</strong> — cultures defined by how they get their food.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>The Temne（塞拉利昂）</h4>
+      <p>The Temne from Sierra Leone <strong>exist on a single crop of food</strong>. There is an annual effort to ensure the crop is harvested — and harvesting requires <strong>cooperation</strong>. Everyone's survival depends on everyone working together.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>The Canadian Inuit（因纽特人）</h4>
+      <p>The Canadian Inuit are <strong>hunter-gatherers</strong>, so they rely <strong>less on collective effort</strong> in food collection. A good hunt depends on skill and judgement, not on coordinating a whole village.</p>
+    </div>
+  </div>
+
+  <div class="green-box">
+    <h4>The hypothesis and the result</h4>
+    <p><strong>John Berry (1967)</strong> hypothesised that the Temne would display more conformity than the Canadian Inuit. Using an <strong>adaptation of Asch's line study</strong>, he found exactly that: <strong>the Temne showed higher rates of conformity than the Canadian Inuit</strong> — which could be explained by the <strong>cooperative values instilled in the culture because of food production</strong>.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：饭碗怎么来，性格就怎么长</strong><br>
+    种单一作物（Temne）＝全村人必须配合农时 → 文化里灌输 <strong>cooperation</strong> → 从众高；<br>
+    狩猎采集（Inuit）＝各凭本事 → 不依赖集体 → 从众低。<br>
+    这是「文化影响从众」最漂亮的因果链：<strong>生存方式 → 文化价值观 → 从众行为</strong>，答题时把三环都写上。
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Cultural Factor 3: Collectivist vs Individualist</h2>
+
+  <p>Berry's two cultures point at a wider pattern. As discussed earlier in the book, <strong>collectivistic</strong> cultures place a greater emphasis on group cooperation and interdependence, so social norms are expected to be adhered to; <strong>individualistic</strong> cultures nurture greater independence and are <strong>more tolerant of dissent</strong> to social norms.</p>
+
+  <div class="keyterm-box">
+    <div class="kt">Smith &amp; Bond (1996) — the big test</div>
+    A <strong>meta-analysis of 133 conformity studies</strong> using an Asch-type procedure, across <strong>17 collectivistic and individualistic countries</strong>. They found that <strong>collectivistic countries tended to show higher levels of conformity</strong> than individualistic ones.
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Collectivistic cultures conform more than individualistic cultures, per Smith and Bond 1996 meta-analysis of 133 studies in 17 countries">
+      <defs>
+        <marker id="sbAr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0,0 L9,4.5 L0,9 Z" fill="#94a3b8"/>
+        </marker>
+      </defs>
+      <text x="340" y="28" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#1e293b">Smith &amp; Bond (1996): 133 studies, 17 countries</text>
+
+      <!-- collectivist -->
+      <rect x="60" y="60" width="250" height="120" rx="12" fill="#eff6ff" stroke="#93c5fd"/>
+      <text x="185" y="88" text-anchor="middle" font-family="Arial" font-size="13.5" font-weight="700" fill="#1e40af">COLLECTIVISTIC</text>
+      <text x="185" y="112" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#1e3a8a">group cooperation · interdependence</text>
+      <text x="185" y="132" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#1e3a8a">norms are expected to be adhered to</text>
+      <text x="185" y="162" text-anchor="middle" font-family="Arial" font-size="12.5" font-weight="700" fill="#1e40af">→ higher conformity</text>
+
+      <!-- individualist -->
+      <rect x="370" y="60" width="250" height="120" rx="12" fill="#fff7ed" stroke="#fdba74"/>
+      <text x="495" y="88" text-anchor="middle" font-family="Arial" font-size="13.5" font-weight="700" fill="#9a3412">INDIVIDUALISTIC</text>
+      <text x="495" y="112" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#7c2d12">independence nurtured</text>
+      <text x="495" y="132" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#7c2d12">more tolerant of dissent</text>
+      <text x="495" y="162" text-anchor="middle" font-family="Arial" font-size="12.5" font-weight="700" fill="#9a3412">→ lower conformity</text>
+
+      <line x1="316" y1="120" x2="364" y2="120" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#sbAr)"/>
+      <text x="340" y="212" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#475569">one direction of difference — but many variables shape it</text>
+    </svg>
+  </div>
+
+  <div class="blue-box">
+    <h4>The caveat the textbook insists on</h4>
+    <p>While we can draw general conclusions from this research, <strong>many variables influence conformity, so the exact influence of socio-cultural factors cannot be determined</strong>. "Collectivistic countries conform more" is a trend across 133 studies — not a law that predicts any individual.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：三个文化研究递进</strong><br>
+    ① 一堆国家各测一次（第 10 节记分板）→ 发现方向不一；<br>
+    ② Berry (1967) → 给出<strong>因果解释</strong>：生存方式塑造合作价值观；<br>
+    ③ Smith &amp; Bond (1996) → 用 <strong>133 项研究、17 国</strong>的元分析做总结：集体主义 &gt; 个人主义，但注明<strong>变量太多，确切影响无法确定</strong>。<br>
+    三步正好是「现象 → 解释 → 总检验」。
+  </div>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. Evaluation · Strengths and Limits</h2>
+
+  <h3>Strengths</h3>
+
+  <h3 class="tight">1. Each factor is backed by named evidence</h3>
+  <p class="tight">The individual-difference claims rest on experiments (Biondo et al., 1971; Ritchie &amp; Phares, 1969; Burger, 1987), the situational claims on Asch's own manipulations, and the cultural claims on a meta-analysis of 133 studies across 17 countries (Smith &amp; Bond, 1996). This is not one person's opinion — it is a layered evidence base.</p>
+
+  <h3 class="tight">2. The three lenses complement each other</h3>
+  <p class="tight">Because personality, situation and culture each explain variance the others cannot, the account is more complete than any single-factor explanation: the same situation produces different results in different people, and the same person conforms differently in different cultures.</p>
+
+  <h3>Limitations</h3>
+
+  <h3 class="tight">3. The evidence is mixed and context-dependent</h3>
+  <p class="tight">Avtgis (1998) found the locus-of-control link depends on the <strong>type and source</strong> of persuasion; minority size research is <strong>mixed</strong>; and Perrin &amp; Spencer found a virtual absence of conformity in England, showing Asch's effect is not universal even within one culture. Tidy rules ("externals conform") come with so many exceptions that the honest summary is "it depends".</p>
+
+  <h3 class="tight">4. Socio-cultural influence cannot be isolated</h3>
+  <p class="tight">The textbook's own caveat: there are <strong>many variables that influence conformity, so the exact influence of socio-cultural factors cannot be determined</strong>. Culture is entangled with education, era, task and sample — cross-cultural replications differ in more than one thing at a time, so no single cause can be pinned down.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：AO3 的两把刀</strong><br>
+    写这页的 evaluation，最锋利的两把刀都来自课本原文：<br>
+    ① <strong>"evidence in this area is mixed"</strong>（LOC、少数派规模都是）→ 任何「某因素导致从众」的说法都要加条件；<br>
+    ② <strong>"the exact influence of socio-cultural factors cannot be determined"</strong>（变量太多）→ 文化结论只能谈趋势，不能下断言。<br>
+    优势面就写「三层证据 + 三视角互补」。
+  </div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="section" id="s14">
+  <h2>14. Exam Focus</h2>
+
+  <p>The textbook's own exam practice sets the pattern: <strong>three short questions, one per drawer</strong>. Each is worth 2 marks — a named factor plus a correct explanation.</p>
+
+  <div class="mat2x2 c2">
+    <div class="mh">Question (textbook)</div>
+    <div class="mh">What earns the 2 marks</div>
+
+    <div class="mv">1 · Explain one individual difference</div>
+    <div class="cell">Name it (e.g. internal locus of control) + explain the mechanism: they feel less pressure from others, so they are less susceptible to normative social influence and less likely to comply with group norms.</div>
+
+    <div class="mv">2 · Explain one situational factor</div>
+    <div class="cell">Name it (e.g. unity of the majority) + evidence: when the majority is broken, conformity fell from 33% to 5.5% — a dissenter lowers the cost of disagreeing.</div>
+
+    <div class="mv">3 · Explain one cultural factor</div>
+    <div class="cell">Name it (e.g. collectivism) + explanation: collectivistic cultures emphasise group cooperation and interdependence, so norms are expected to be adhered to — Smith &amp; Bond (1996) found higher conformity across 133 studies.</div>
+  </div>
+
+  <div class="exam-tip">
+    <h4>💡 The 2-mark formula</h4>
+    <p><strong>Point + because.</strong> "An internal locus of control, <em>because</em> people who believe they control their own outcomes feel less pressure to fit in, so they resist normative social influence." One sentence of factor, one sentence of mechanism — no more is needed for 2 marks, and less is too thin.</p>
+  </div>
+
+  <h3>The 8-mark paragraph that usually scores</h3>
+  <div class="note-box">
+    <p><strong>AO1 (about 4 marks).</strong> Conformity and minority influence vary with individual differences, situation and culture. Internally-controlled people, who believe outcomes depend on their own actions, resist normative social influence, while externally-controlled people rely on others' opinions and conform more (Avtgis, 1998, meta-analysis). People with a high desire for control (Burger &amp; Cooper, 1979) are assertive and resist: Burger (1987) found high desire-for-control participants conformed less when rating cartoons publicly after three confederates. Situationally, Asch found three dissenters is the optimal majority size and that a broken majority cut conformity from 33% to 5.5%; ambiguous situations raise conformity through informational social influence, and high-status, credible sources (like Greta Thunberg for environmental campaigns) influence more. Culturally, Berry (1967) found the cooperative Temne conformed more than hunter-gatherer Inuit, and Smith &amp; Bond's (1996) meta-analysis of 133 studies in 17 countries found collectivistic countries conform more than individualistic ones.</p>
+    <p><strong>AO3 (about 4 marks).</strong> However, the evidence is mixed and context-dependent: Avtgis notes the locus-of-control link depends on the type and source of persuasion, and minority-size research is inconclusive. Perrin and Spencer (1980) found a virtual absence of conformity in England, showing the Asch effect is not universal even within one culture. The textbook's own caution applies to the cultural claims: because many variables influence conformity, the exact influence of socio-cultural factors cannot be determined. The three lenses are best treated as complementary trends, not laws.</p>
+  </div>
+</section>
+
+<!-- ============ 15 ============ -->
+<section class="section" id="s15">
+  <h2>15. Checkpoint</h2>
+
+  <div class="checkpoint">
+    <h3>Eight quick questions</h3>
+
+    <div class="q-row">
+      <div class="q-stem">Q1. A person who believes outcomes depend on their own actions has…</div>
+      <label class="q-opt"><input type="radio" name="q1" value="a"> an external locus of control.</label>
+      <label class="q-opt"><input type="radio" name="q1" value="b"> an internal locus of control.</label>
+      <label class="q-opt"><input type="radio" name="q1" value="c"> a high desire for control.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q2. Avtgis (1998) is what type of research?</div>
+      <label class="q-opt"><input type="radio" name="q2" value="a"> A case study.</label>
+      <label class="q-opt"><input type="radio" name="q2" value="b"> A meta-analysis.</label>
+      <label class="q-opt"><input type="radio" name="q2" value="c"> A field experiment.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q3. In Burger (1987), participants rated…</div>
+      <label class="q-opt"><input type="radio" name="q3" value="a"> the length of lines, after confederates answered.</label>
+      <label class="q-opt"><input type="radio" name="q3" value="b"> the funniness of cartoons (1–100), publicly, after three confederates.</label>
+      <label class="q-opt"><input type="radio" name="q3" value="c"> compensation for a ski accident, in a mock jury.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q4. In Biondo et al. (1971), students with an internal locus of control…</div>
+      <label class="q-opt"><input type="radio" name="q4" value="a"> reacted against overt influence and ignored subtle influence.</label>
+      <label class="q-opt"><input type="radio" name="q4" value="b"> accepted all persuasion attempts.</label>
+      <label class="q-opt"><input type="radio" name="q4" value="c"> were persuaded only by prestigious sources.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q5. Asch found that when the majority was broken, conformity fell…</div>
+      <label class="q-opt"><input type="radio" name="q5" value="a"> from 33% to 5.5%.</label>
+      <label class="q-opt"><input type="radio" name="q5" value="b"> from 75% to 32%.</label>
+      <label class="q-opt"><input type="radio" name="q5" value="c"> from 36% to 12%.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q6. Conformity in ambiguous situations rises because of…</div>
+      <label class="q-opt"><input type="radio" name="q6" value="a"> normative social influence.</label>
+      <label class="q-opt"><input type="radio" name="q6" value="b"> informational social influence.</label>
+      <label class="q-opt"><input type="radio" name="q6" value="c"> obedience to authority.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q7. Berry (1967) found that the Temne conformed more than the Inuit because the Temne…</div>
+      <label class="q-opt"><input type="radio" name="q7" value="a"> hunted food cooperatively.</label>
+      <label class="q-opt"><input type="radio" name="q7" value="b"> harvested a single crop, which required cooperation.</label>
+      <label class="q-opt"><input type="radio" name="q7" value="c"> were tested with a harder task.</label>
+    </div>
+
+    <div class="q-row">
+      <div class="q-stem">Q8. Smith and Bond (1996) meta-analysed…</div>
+      <label class="q-opt"><input type="radio" name="q8" value="a"> 72 jury studies across 5 countries.</label>
+      <label class="q-opt"><input type="radio" name="q8" value="b"> 133 Asch-type conformity studies across 17 countries.</label>
+      <label class="q-opt"><input type="radio" name="q8" value="c"> 55 cartoon-rating studies.</label>
+    </div>
+
+    <div class="xp-controls"><button class="xp-btn" onclick="checkQuiz()">Check my answers</button></div>
+    <div id="quizResult" class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 16 ============ -->
+<section class="section" id="s16">
+  <h2>16. Exam Lab</h2>
+
+  <div class="exam-practice">
+    <h3>Question · Three factors, three students (6 marks)</h3>
+    <p>Three students join the same school club. Amara rarely changes her mind no matter what the group thinks; Ben goes along with whatever the loudest members say; Chi keeps her opinions even when visiting her cousin's school abroad, but notices that students there agree with each other much more than students at her own school. <strong>Explain one individual difference, one situational factor and one cultural factor that may influence conformity, using the students as examples. (6 marks)</strong></p>
+
+    <textarea class="answer-box" id="p1" placeholder="Three short paragraphs: Amara (personality), Ben (situation), Chi's observation (culture)..."></textarea>
+
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('m1')">Show a model answer</button></div>
+    <div id="m1" class="xp-result">
+      <p><span class="xp-verdict">Model answer</span></p>
+      <p><strong>Individual difference — Amara.</strong> Amara may have an internal locus of control: she believes outcomes depend on her own actions, so she feels less pressure from those around her, is less susceptible to normative social influence, and resists the group's opinions. (Her assertiveness could also reflect a high desire for control — Burger, 1987, found such participants conform less.)</p>
+      <p><strong>Situational factor — Ben.</strong> Ben's conformity is shaped by the situation: the loudest members form a united majority, which raises conformity — in Asch's research a broken majority reduced conformity from 33% to 5.5%, so unity is powerful. The loud members may also be a high-status source, and sources with status, reputation, credibility or expertise influence others more.</p>
+      <p><strong>Cultural factor — Chi's observation.</strong> The cousin's school may sit in a more collectivistic culture, which emphasises group cooperation and interdependence, so social norms are expected to be adhered to. Smith and Bond (1996) found in a meta-analysis of 133 Asch-type studies across 17 countries that collectivistic countries show higher conformity than individualistic ones — though the exact influence of socio-cultural factors cannot be determined, as many variables are at work.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 17 ============ -->
+<section class="section" id="s17">
+  <h2>17. Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><div class="term">locus of control <span class="zh">控制点</span></div><div class="def">A belief system determining our perception of control over events: internal (my actions) versus external (luck, fate, others).</div></div>
+    <div class="glossary-item"><div class="term">internal locus of control <span class="zh">内控</span></div><div class="def">Feeling less pressure from others; less likely to comply with group norms; less susceptible to normative social influence.</div></div>
+    <div class="glossary-item"><div class="term">external locus of control <span class="zh">外控</span></div><div class="def">Looking to others to guide decisions and relying on others' opinions; more susceptible to normative social influence.</div></div>
+    <div class="glossary-item"><div class="term">desire for control <span class="zh">控制欲</span></div><div class="def">Burger &amp; Cooper's (1979) individual difference in motivation to control events; high desire = assertive, decisive, resistant to influence.</div></div>
+    <div class="glossary-item"><div class="term">meta-analysis <span class="zh">元分析</span></div><div class="def">Gathering and analysing other people's data to look at effect sizes and draw conclusions about a topic area.</div></div>
+    <div class="glossary-item"><div class="term">majority unity <span class="zh">多数派团结</span></div><div class="def">Whether the dissenting majority all agree; a broken majority cut Asch's conformity from 33% to 5.5%.</div></div>
+    <div class="glossary-item"><div class="term">ambiguity <span class="zh">情境模糊</span></div><div class="def">Unclear situations make us conform for information — informational social influence, producing a more persistent change.</div></div>
+    <div class="glossary-item"><div class="term">source credibility <span class="zh">信息来源可信度</span></div><div class="def">Status, reputation, credibility or expertise of the influencer — raises influence for majorities and minorities alike.</div></div>
+    <div class="glossary-item"><div class="term">cross-cultural replication <span class="zh">跨文化重复验证</span></div><div class="def">Repeating Asch-type experiments in other countries, revealing different conformity rates across cultures.</div></div>
+    <div class="glossary-item"><div class="term">subsistence culture <span class="zh">生计文化</span></div><div class="def">A culture defined by how it obtains food — Berry (1967) compared crop-farming Temne with hunter-gatherer Inuit.</div></div>
+    <div class="glossary-item"><div class="term">collectivistic culture <span class="zh">集体主义文化</span></div><div class="def">Emphasises group cooperation and interdependence; norms are expected to be adhered to; shows higher conformity.</div></div>
+    <div class="glossary-item"><div class="term">individualistic culture <span class="zh">个人主义文化</span></div><div class="def">Nurtures independence and tolerates dissent from social norms; shows lower conformity.</div></div>
+  </div>
+</section>
+
+<div class="footer-note">1.1.7 Factors affecting conformity and minority influence · Social Psychology (Topic A) · previous: <a href="../1.1.6-minority-influence/">← 1.1.6 Minority influence</a> · next: 1.2 Methods — self-reporting data</div>
+
+  </main>
+</div>
+
+<button id="btt" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function () {
+  var baseFont = 16;
+
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark'; }
+  };
+
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  function show(id, html) {
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    el.innerHTML = html;
+    el.classList.add('show');
+  }
+
+  function verdict(ok, msg) {
+    return '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + msg + '</p>';
+  }
+
+  window.faGuess = function (btn, c) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === 'b');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var msg = ok
+      ? 'Exactly. That belief about control is locus of control — the personality variable this page starts with.'
+      : 'Not quite. Age and height are not psychological explanations. The difference lies in what each person believes about who controls their outcomes.';
+    show('res-guess', verdict(ok, msg));
+  };
+
+  window.locAns = function (btn, c) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === 'b');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var msg = ok
+      ? 'Correct. Internals reacted against overt influence and ignored subtle influence — they defend their own judgement when pressure is obvious.'
+      : 'Remember Biondo et al. (1971): internals reacted AGAINST obvious attempts to persuade them, and ignored the subtle ones. It is the externals who accepted persuasion.';
+    show('res-loc', verdict(ok, msg));
+  };
+
+  window.ambAns = function (btn, c) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === 'a');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var msg = ok
+      ? 'Correct. The station is ambiguous, so the crowd becomes a source of information — informational social influence, and a persistent change.'
+      : 'Think about why the tourist follows: not to be liked by strangers, but because the crowd seems to know the way. That is information, not approval.';
+    show('res-amb', verdict(ok, msg));
+  };
+
+  var quizKey = { q1: 'b', q2: 'b', q3: 'b', q4: 'a', q5: 'a', q6: 'b', q7: 'b', q8: 'b' };
+  var quizWhy = {
+    q1: 'Internal = the control sits inside me ("my actions decide"). External = luck, fate and other people decide. Option c is a different variable entirely — desire for control.',
+    q2: 'Avtgis (1998) gathered and analysed other people\u2019s data on locus of control and social influence — the definition of a meta-analysis.',
+    q3: 'Cartoons rated 1–100, spoken publicly after three confederates — Burger (1987). Lines are Asch; the ski accident is Nemeth & Brilmayer.',
+    q4: 'Internals reacted against overt influence and ignored subtle influence; it was the externals who were more swayed by overt persuasion.',
+    q5: '33% down to 5.5% — one dissenting voice cut conformity to about a sixth of its level.',
+    q6: 'Informational social influence: in uncertainty, others\u2019 opinions supply the information we need — so the change is more persistent.',
+    q7: 'The Temne live on a single crop whose harvest demands cooperation, so cooperative values are instilled — hence more conformity than the hunter-gatherer Inuit.',
+    q8: '133 conformity studies using Asch-type procedures, across 17 collectivistic and individualistic countries: collectivistic countries conformed more.'
+  };
+
+  window.checkQuiz = function () {
+    var el = document.getElementById('quizResult');
+    if (!el) { return; }
+    var score = 0;
+    var html = '';
+    Object.keys(quizKey).forEach(function (q) {
+      var sel = document.querySelector('input[name="' + q + '"]:checked');
+      var chosen = sel ? sel.value : null;
+      var ok = (chosen === quizKey[q]);
+      if (ok) { score++; }
+      html += '<p style="margin:6px 0"><strong>' + q.toUpperCase() + ':</strong> ' +
+        (chosen ? (ok ? '✅ correct' : '❌ not quite') : 'not answered') +
+        ' — ' + quizWhy[q] + '</p>';
+    });
+    el.innerHTML = '<p><span class="xp-verdict">Score: ' + score + ' / 8</span></p>' + html;
+    el.classList.add('show');
+    if (score === 8) { el.classList.add('ok'); } else { el.classList.remove('ok'); }
+  };
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.toggle('show'); }
+  };
+
+  var secs = document.querySelectorAll('.section');
+  var links = document.querySelectorAll('.sb-item a');
+  function highlight() {
+    var best = null;
+    var bestTop = -99999;
+    for (var i = 0; i < secs.length; i++) {
+      var r = secs[i].getBoundingClientRect();
+      if (r.top <= 140 && r.top > bestTop) { bestTop = r.top; best = secs[i]; }
+    }
+    if (!best && secs.length) { best = secs[0]; }
+    for (var j = 0; j < links.length; j++) { links[j].classList.remove('sb-active'); }
+    if (best) {
+      var target = best.getAttribute('id');
+      for (var k = 0; k < links.length; k++) {
+        if (links[k].getAttribute('href') === '#' + target) { links[k].classList.add('sb-active'); }
+      }
+    }
+  }
+  window.addEventListener('scroll', highlight);
+  highlight();
+
+  var btt = document.getElementById('btt');
+  window.addEventListener('scroll', function () {
+    if (!btt) { return; }
+    if (window.scrollY > 400) { btt.classList.add('show'); } else { btt.classList.remove('show'); }
+  });
+})();
+</script>
+</body>
+</html>
