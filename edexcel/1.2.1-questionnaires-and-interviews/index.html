@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.2.1 Questionnaires and Interviews — Asking people about themselves</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.five-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+
+.mat2x2 { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 6px; margin: 14px 0; }
+.mat2x2.c2 { grid-template-columns: 150px 1fr; }
+.mat2x2 .mh { background: var(--primary); color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
+body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style></head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic A · Social Psychology — 1.2.1 Questionnaires and Interviews</span>
+  </div>
+  <span class="nav-pill">🧑‍🤝‍🧑 Social Psychology · Methods</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="1.2.1-Questionnaires-and-Interviews-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">1.2.1 · Contents</div>
+        <div class="sb-header-sub">Questionnaires &amp; Interviews</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">Before we start</li>
+        <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+        <li class="sb-item"><a href="#s2">2. What Is Self-Report?</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Questionnaires</li>
+        <li class="sb-item"><a href="#s3">3. Two Kinds of Data</a></li>
+        <li class="sb-item"><a href="#s4">4. Closed &amp; Open Questions</a></li>
+        <li class="sb-item"><a href="#s5">5. Attitude Scales</a></li>
+        <li class="sb-item"><a href="#s6">6. Design Issues</a></li>
+        <li class="sb-item"><a href="#s7">7. Reliability</a></li>
+        <li class="sb-item"><a href="#s8">8. Validity</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Interviews</li>
+        <li class="sb-item"><a href="#s9">9. Three Types of Interview</a></li>
+        <li class="sb-item"><a href="#s10">10. Researcher Effects</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Data &amp; hypotheses</li>
+        <li class="sb-item"><a href="#s11">11. Primary vs Secondary Data</a></li>
+        <li class="sb-item"><a href="#s12">12. Alternative Hypotheses</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Exam</li>
+        <li class="sb-item"><a href="#s13">13. Exam Focus</a></li>
+        <li class="sb-item"><a href="#s14">14. Checkpoint</a></li>
+        <li class="sb-item"><a href="#s15">15. Exam Lab</a></li>
+        <li class="sb-item"><a href="#s16">16. Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>1.2.1 QUESTIONNAIRES AND INTERVIEWS<br><span style="font-size:0.65em">Asking people about themselves · 问卷与访谈 · self-report data</span></h1>
+  <div class="subtitle">Social Psychology · Methods · You cannot watch an attitude. Sometimes the only way to learn what people think is to ask them.</div>
+  <div class="meta">
+    <span class="badge">🗣️ Core idea: self-report data</span>
+    <span class="badge">🔢 Quantitative vs qualitative</span>
+    <span class="badge">📖 Textbook: Chapter 4</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this section is really asking</h4>
+  <ol>
+    <li><strong>Surveys are self-report methods:</strong> they gather information about how people feel — attitudes, opinions, personality traits — through <strong>questionnaires</strong> or <strong>interviews</strong>.</li>
+    <li><strong>Questions come in two families:</strong> <strong>closed</strong> questions (fixed options, quick answers, quantitative data) and <strong>open</strong> questions (free answers, rich detail, qualitative data) — with <strong>Likert and ranked scales</strong> in between.</li>
+    <li><strong>Asking is not the same as measuring well:</strong> questionnaires must survive checks of <strong>reliability</strong> (consistency) and <strong>validity</strong> (measuring what it intends to measure), and avoid traps like <strong>social desirability</strong> and <strong>response bias</strong>.</li>
+    <li><strong>The asker matters too:</strong> <strong>researcher effects</strong> — the interviewer's sex, age, manner and expectations — can shape what respondents say, so they must be predicted and controlled.</li>
+  </ol>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started</h2>
+
+  <p>Think about the last time someone asked you a question and you <em>edited</em> your answer. Maybe a teacher asked "did you revise for this test?" Maybe a relative asked "do you like my cooking?" You did not lie exactly. You just chose the version of the truth that made you look better.</p>
+
+  <p>Now imagine a psychologist who wants to know whether students would obey an unfair rule. They cannot follow a thousand students around all day. So they do something simpler — and something much more dangerous: they <strong>ask</strong>.</p>
+
+  <div class="blue-box">
+    <h4>The question this chapter answers</h4>
+    <p>Asking people about themselves is one of psychology's most powerful tools — and one of its most fragile. How do you design questions so people answer <em>honestly</em>, in a way you can <em>measure</em> and <em>trust</em>? That single question unpacks into question types, scales, reliability, validity, interviews and researcher effects.</p>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Have a guess first <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro">A researcher wants to know whether students would admit to cheating in an exam. Which answer will they probably get?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="srGuess(this,'a')">An honest estimate — most students will admit it</button>
+      <button class="q-option" onclick="srGuess(this,'b')">Almost nobody will admit it, because admitting it breaks a social rule</button>
+      <button class="q-option" onclick="srGuess(this,'c')">It depends entirely on how long the questionnaire is</button>
+    </div>
+    <div class="xp-result" id="res-guess"></div>
+  </div>
+
+  <p>The answer is the middle one. Admitting to cheating clashes with what society expects, so respondents give the answer that depicts them in a more favourable light. Psychologists have a name for this — <strong>social desirability</strong> — and it is one of the reasons "just ask them" is harder than it sounds.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：self-report（自我报告）为什么好用又危险？</strong><br>
+    好用：态度、观点、性格这些东西<strong>看不见</strong>，实验测不出来，只能开口问；<br>
+    危险：人回答时会<strong>自动「美化」自己</strong>（social desirability 社会赞许性）——没人愿意承认自己作弊、不服从、不善良。<br>
+    一句话：<strong>问出来的答案，是「对方想让你听到的版本」，研究者要设计方法把真话挤出来。</strong>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. What Is Self-Report?</h2>
+
+  <p><strong>A survey is a self-report method, used to gather information about how people feel, their attitudes and opinions, personality types and other traits.</strong> Surveys are typically designed to gather a large amount of information, and they do it through two main tools:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Questionnaires</h4>
+      <p>Written questions, answered in writing. Can be administered <strong>by post, email, face to face or online</strong>, and often consist of questions about attitudes, opinions, lifestyles — indeed any aspect of a person's life. Designed to reach a <strong>large sample</strong> at low cost.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Interviews</h4>
+      <p>Questions answered <strong>directly, in conversation</strong>, rather than in writing. Can be a free-flowing conversation or a fixed set of preset questions asked by the researcher. Reaches <strong>depth</strong> that paper cannot.</p>
+    </div>
+  </div>
+
+  <div class="keyterm-box">
+    <span class="term">survey</span> <span class="zh">调查</span> — a self-report method gathering information about feelings, attitudes, opinions and traits. Carried out via <strong>questionnaire</strong>（问卷）or <strong>interview</strong>（访谈）.
+  </div>
+
+  <p>One warning before we go further. <strong>Self-report data is what people <em>say</em> about themselves — not necessarily what they actually do.</strong> A student can tick "I never cheat" on a questionnaire and then cheat the next morning. Every claim built on self-report data carries this shadow, and every evaluation question about surveys lives in this gap between <em>saying</em> and <em>doing</em>.</p>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Two Kinds of Data</h2>
+
+  <p>Every question you write produces one of two kinds of data — and the kind it produces decides how you can analyse it.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Quantitative data（数量数据）</h4>
+      <p>Information that is <strong>numerical or can be converted into numbers</strong>. "7 students said yes." "A rating of 4 out of 5." Numbers are easy to compare, count and graph.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Qualitative data（质量数据）</h4>
+      <p>Information that is <strong>non-numerical prose</strong> — words, sentences, explanations. "I don't cheat because I saw how badly my friend was punished." Rich in meaning, but harder to summarise.</p>
+    </div>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Quantitative data is objective numbers; qualitative data is subjective words">
+      <defs>
+        <marker id="srAr1" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0,0 L9,4.5 L0,9 Z" fill="#475569"/>
+        </marker>
+      </defs>
+      <text x="340" y="26" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#1e293b">Same person, two kinds of answer</text>
+
+      <!-- left: quantitative -->
+      <rect x="35" y="50" width="285" height="216" rx="12" fill="#eff6ff" stroke="#bfdbfe"/>
+      <text x="177" y="76" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#1d4ed8">QUANTITATIVE</text>
+      <text x="177" y="94" text-anchor="middle" font-family="Arial" font-size="11" fill="#475569">numbers · can be counted</text>
+      <rect x="65" y="110" width="225" height="34" rx="8" fill="#ffffff" stroke="#93c5fd"/>
+      <text x="177" y="132" text-anchor="middle" font-family="Arial" font-size="12" fill="#1e293b">"Do you have a pet?" → Yes / No</text>
+      <rect x="65" y="154" width="225" height="34" rx="8" fill="#ffffff" stroke="#93c5fd"/>
+      <text x="177" y="176" text-anchor="middle" font-family="Arial" font-size="12" fill="#1e293b">Age: 18–40 / 41–60 / 60+ (circle)</text>
+      <rect x="65" y="198" width="225" height="40" rx="8" fill="#dbeafe"/>
+      <text x="177" y="215" text-anchor="middle" font-family="Arial" font-size="11.5" font-weight="700" fill="#1d4ed8">Objective: not open to</text>
+      <text x="177" y="230" text-anchor="middle" font-family="Arial" font-size="11.5" font-weight="700" fill="#1d4ed8">interpretation — numbers are numbers</text>
+
+      <!-- arrow -->
+      <line x1="330" y1="158" x2="352" y2="158" stroke="#475569" stroke-width="2" marker-end="url(#srAr1)"/>
+
+      <!-- right: qualitative -->
+      <rect x="360" y="50" width="285" height="216" rx="12" fill="#f0fdf4" stroke="#bbf7d0"/>
+      <text x="502" y="76" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#15803d">QUALITATIVE</text>
+      <text x="502" y="94" text-anchor="middle" font-family="Arial" font-size="11" fill="#475569">words · prose · reasons</text>
+      <rect x="390" y="110" width="225" height="52" rx="8" fill="#ffffff" stroke="#86efac"/>
+      <text x="502" y="131" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#1e293b">"Why do you text people daily?"</text>
+      <text x="502" y="149" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#1e293b">→ respondent writes freely…</text>
+      <rect x="390" y="172" width="225" height="40" rx="8" fill="#dcfce7"/>
+      <text x="502" y="189" text-anchor="middle" font-family="Arial" font-size="11.5" font-weight="700" fill="#15803d">Subjective: meanings in prose</text>
+      <text x="502" y="204" text-anchor="middle" font-family="Arial" font-size="11.5" font-weight="700" fill="#15803d">are open to interpretation</text>
+    </svg>
+  </div>
+
+  <div class="exam-tip">
+    <h4>Exam tip — objective vs subjective</h4>
+    <p>Ask two people to <em>estimate</em> the length of a classroom table and they will disagree — that is a <strong>subjective</strong> interpretation. Ask them to <em>measure</em> it with a ruler and they will agree — that is an <strong>objective</strong> measure. <strong>Quantitative data is objective because numbers are not open to interpretation; qualitative data can be subjective because the meanings found in prose are open to interpretation.</strong></p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：quantitative vs qualitative 怎么记？</strong><br>
+    <strong>quantity = 数量</strong> → quantitative = 能变成数字的（几个、几分、几成）；<br>
+    <strong>quality = 质量/性质</strong> → qualitative = 用文字描述的（为什么、什么感受）。<br>
+    记忆口诀：<strong>能算数的是 quantitative，要读懂的是 qualitative。</strong>闭卷选择题给 quantitative，开放题给 qualitative。
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Closed &amp; Open Questions</h2>
+
+  <p>The type of question decides the type of data. The textbook splits questions into two families:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Closed questions（封闭式问题）</h4>
+      <p>Questions that have <strong>preset fixed answers</strong> which a respondent selects from by circling or ticking the closest match. Yes/no response questions, or a list of options ("fixed choice"). <strong>Closed questions yield quantitative data.</strong></p>
+    </div>
+    <div class="compare-card green">
+      <h4>Open questions（开放式问题）</h4>
+      <p>Questions that <strong>do not involve preset answers</strong> — respondents answer freely. This allows them to <strong>elaborate and justify their opinions</strong>, producing qualitative data that needs qualitative analysis.</p>
+    </div>
+  </div>
+
+  <div class="mat2x2">
+    <div class="mh">Closed: what you gain</div>
+    <div class="mh">Closed: what you lose</div>
+
+    <div class="cell">Quick and easy for respondents; data is easy for researchers to analyse and compare across hundreds of people.</div>
+    <div class="cell">Frustrating if none of the preset options match what the person really thinks — and the researcher <strong>cannot know why</strong> someone answered that way, so detail is limited.</div>
+
+    <div class="mh">Open: what you gain</div>
+    <div class="mh">Open: what you lose</div>
+
+    <div class="cell">Depth and honesty — respondents explain <em>why</em>, in their own words, revealing reasons no preset option could capture.</div>
+    <div class="cell">More time and effort for the respondent, and the answers require <strong>qualitative analysis</strong>, which can lead to subjective interpretation on the part of the researcher.</div>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Spectrum from closed questions to open questions trading speed for depth">
+      <defs>
+        <linearGradient id="srGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#1d4ed8"/>
+          <stop offset="50%" stop-color="#ea580c"/>
+          <stop offset="100%" stop-color="#15803d"/>
+        </linearGradient>
+        <marker id="srAr2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0,0 L9,4.5 L0,9 Z" fill="#475569"/>
+        </marker>
+      </defs>
+      <text x="340" y="28" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#1e293b">The detail–speed trade-off</text>
+
+      <rect x="60" y="70" width="560" height="26" rx="13" fill="url(#srGrad)"/>
+      <text x="90" y="120" text-anchor="middle" font-family="Arial" font-size="12.5" font-weight="700" fill="#1d4ed8">CLOSED</text>
+      <text x="90" y="137" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#475569">tick a box</text>
+      <text x="340" y="120" text-anchor="middle" font-family="Arial" font-size="12.5" font-weight="700" fill="#ea580c">SCALES</text>
+      <text x="340" y="137" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#475569">rate 1–5 · rank 1st–4th</text>
+      <text x="590" y="120" text-anchor="middle" font-family="Arial" font-size="12.5" font-weight="700" fill="#15803d">OPEN</text>
+      <text x="590" y="137" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#475569">write freely</text>
+
+      <!-- top arrow: depth -->
+      <line x1="120" y1="52" x2="560" y2="52" stroke="#15803d" stroke-width="2" marker-end="url(#srAr2)"/>
+      <text x="340" y="46" text-anchor="middle" font-family="Arial" font-size="11" fill="#15803d">more detail and depth →</text>
+
+      <!-- bottom arrow: speed -->
+      <line x1="560" y1="165" x2="120" y2="165" stroke="#1d4ed8" stroke-width="2" marker-end="url(#srAr2)"/>
+      <text x="340" y="183" text-anchor="middle" font-family="Arial" font-size="11" fill="#1d4ed8">← quicker to answer and analyse</text>
+
+      <text x="340" y="222" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#475569">Every question you design sits somewhere on this line — you are always trading detail against speed.</text>
+    </svg>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Spot the type <span class="xp-badge">Quick check</span></h4>
+    <p class="xp-intro">"How regularly do you send text messages? Daily / A few times a week / Occasionally / Never (please circle)" — what kind of question is this, and what data does it yield?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="srQMatch(this,'a')">Closed — quantitative data</button>
+      <button class="q-option" onclick="srQMatch(this,'b')">Open — qualitative data</button>
+      <button class="q-option" onclick="srQMatch(this,'c')">Ranked scale — both kinds of data</button>
+    </div>
+    <div class="xp-result" id="res-qmatch"></div>
+  </div>
+
+  <p>The preset list of options makes it <strong>closed</strong>, and closed questions yield <strong>quantitative</strong> data — you can count how many people circle each option.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：怎么判断一个问题是 closed 还是 open？</strong><br>
+    只看一件事：<strong>答案是不是出题人预先写好的。</strong><br>
+    是 → closed（勾选、圈选、Yes/No、选项列表、Likert 打分、排序）；<br>
+    不是、答题人自己写 → open（「为什么」「请解释」「描述一下」）。<br>
+    再推一步：<strong>closed → 数字 → 好分析但浅；open → 文字 → 有深度但难分析。</strong>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Attitude Scales</h2>
+
+  <p>A plain yes/no answer is fast but shallow. <strong>Attitude scales</strong> were designed to increase the level of detail achieved in a questionnaire: instead of a yes/no response, they offer respondents a <strong>range of options so that their strength of opinion can be gauged</strong>. The textbook gives two kinds:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Likert-style scale（李克特量表）</h4>
+      <p>The respondent selects from a <strong>fixed set of options to rate their agreement</strong> with a series of statements — e.g. "I am happy with my purchase today": Strongly agree · Agree · Neutral · Disagree · Strongly disagree. (A Likert scale was used in the Adorno et al. survey on authoritarianism.)</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Ranked scale（排序量表）</h4>
+      <p>The respondent <strong>ranks their choices relative to other options</strong>. Each preference is given a <strong>weighting</strong>: to rank animals by how fearful people are of them, the most feared animal gets the highest score.</p>
+    </div>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A five point Likert scale example">
+      <text x="340" y="28" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#1e293b">A Likert-scale question (Figure 4.1)</text>
+      <rect x="60" y="52" width="560" height="44" rx="10" fill="#fff7ed" stroke="#fdba74"/>
+      <text x="340" y="80" text-anchor="middle" font-family="Arial" font-size="14" font-style="italic" fill="#7c2d12">"I am happy with my purchase today."</text>
+
+      <g font-family="Arial" font-size="11.5" text-anchor="middle">
+        <circle cx="115" cy="140" r="31" fill="#16a34a"/>
+        <text x="115" y="137" fill="#ffffff" font-weight="700">Strongly</text>
+        <text x="115" y="151" fill="#ffffff" font-weight="700">agree</text>
+        <circle cx="235" cy="140" r="24" fill="#4ade80"/>
+        <text x="235" y="144" fill="#14532d" font-weight="700">Agree</text>
+        <circle cx="355" cy="140" r="24" fill="#d4d4d8"/>
+        <text x="355" y="144" fill="#3f3f46" font-weight="700">Neutral</text>
+        <circle cx="475" cy="140" r="24" fill="#f87171"/>
+        <text x="475" y="144" fill="#7f1d1d" font-weight="700">Disagree</text>
+        <circle cx="580" cy="140" r="31" fill="#dc2626"/>
+        <text x="580" y="137" fill="#ffffff" font-weight="700">Strongly</text>
+        <text x="580" y="151" fill="#ffffff" font-weight="700">disagree</text>
+      </g>
+      <text x="340" y="200" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#475569">Five options = strength of opinion on a line, not just yes or no.</text>
+    </svg>
+  </div>
+
+  <div class="blue-box">
+    <h4>Odd or even? A design decision with consequences</h4>
+    <p>When designing Likert-style statements, the <strong>number of options</strong> matters. An <strong>odd number</strong> of answers gives a middle value, which respondents may select more frequently — a comfortable escape hatch. An <strong>even number</strong> forces respondents to make a choice rather than select a 'neutral' or 'neither agree nor disagree' option.</p>
+  </div>
+
+  <div class="exam-tip">
+    <h4>Exam tip — response bias and reversed statements</h4>
+    <p><strong>Response bias</strong> can occur with Likert-style scales: if all the statements in a set are worded favourably (or all unfavourably), respondents can slip into <strong>just agreeing or just disagreeing with all of them</strong> — ticking without reading. To resolve this, statements should be <strong>reversed and mixed up</strong>:</p>
+    <table class="q-row">
+      <tr><th>Example statement</th><th>Reversed statement</th></tr>
+      <tr><td>Employment helps society to function.</td><td>Employment does not help society to function.</td></tr>
+      <tr><td>Pets make people happy.</td><td>Pets do not make people happy.</td></tr>
+      <tr><td>Politicians help the economy thrive.</td><td>The economy can thrive without politicians.</td></tr>
+    </table>
+    <p>If someone truly agrees that employment helps society, they should also <em>disagree</em> that it does not. Someone ticking "agree" all the way down is exposed as a response-bias responder.</p>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Odd or even? <span class="xp-badge">Design decision</span></h4>
+    <p class="xp-intro">A researcher is worried that people will take the easy middle option instead of committing to a view. What should they do?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="srScale(this,'a')">Use an odd number of options, so the middle feels natural</button>
+      <button class="q-option" onclick="srScale(this,'b')">Use an even number of options, so there is no neutral to hide behind</button>
+      <button class="q-option" onclick="srScale(this,'c')">Reverse the statements in order</button>
+    </div>
+    <div class="xp-result" id="res-scale"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：Likert 与 ranked 怎么区分？</strong><br>
+    <strong>Likert = 给一句话打分</strong>（非常同意 → 非常不同意）——测「你对这句话有多同意」；<br>
+    <strong>ranked = 给一堆东西排序</strong>（最怕的动物排第 1，最不怕的排第 4）——测「相对偏好」。<br>
+    记忆口诀：<strong>Likert 竖着打分，ranked 横着排队。</strong>注意细节：odd 选项留了中立逃生门，even 逼人站队；全正向的题目会诱发 response bias，要混入反向陈述。
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Design Issues</h2>
+
+  <p>Questionnaires can be a useful way of finding out about attitudes, beliefs and opinions — but designing them well is tricky. Three issues come up again and again:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card red">
+      <h4>1 · Social desirability（社会赞许性）</h4>
+      <p>The respondent <strong>does not give a genuine answer, but one which depicts them in a more favourable light</strong> — an answer that fits prevailing social norms. Almost nobody admits to agreeing with cheating in an exam. This is especially problematic for research into <strong>socially sensitive issues</strong> or attitudes that go against social norms. (Many questionnaires are designed to help researchers <em>detect</em> socially desirable responses — e.g. with reversed statements.)</p>
+    </div>
+    <div class="compare-card">
+      <h4>2 · Question construction（题目措辞）</h4>
+      <p>The researcher is often <strong>not present</strong> when the questionnaire is completed, so questions must not be too <strong>technical, ambiguous or complex</strong>. They must not <strong>lead or mislead</strong> the respondent into a particular answer. And they must respect the right to <strong>privacy</strong>: participants should not be asked personal questions they would find intrusive, and the researcher must not obtain personal data a participant would not voluntarily disclose.</p>
+    </div>
+    <div class="compare-card">
+      <h4>3 · Response bias（反应偏差）</h4>
+      <p>Covered above — all-favourable wording invites blanket agreement. Fix: <strong>reverse and mix up</strong> statements. Related fix: even-numbered scales remove the neutral hideout.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：三个坑怎么记？</strong><br>
+    <strong>坑一在人</strong>：social desirability——答题人自我美化，不给真话；<br>
+    <strong>坑二在题</strong>：question construction——题目太技术、太模糊、有引导性，或侵犯 privacy；<br>
+    <strong>坑三在格式</strong>：response bias——全同向陈述让人无脑全勾「同意」。<br>
+    对策：<strong>人 → 用检测设计（反向陈述）；题 → 简单、中立、守隐私；格式 → 反向混排 + 偶数选项。</strong>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Reliability</h2>
+
+  <p><strong>Reliability refers to the consistency of a measure or finding.</strong> A questionnaire is reliable if it produces the same result every time it should. The textbook splits this into two directions:</p>
+
+  <div class="mat2x2 c2">
+    <div class="mh">Type</div>
+    <div class="mh">What consistency means here</div>
+
+    <div class="mv">External reliability（外部信度）</div>
+    <div class="cell">Consistency of a measure <strong>over time</strong>. If the same questionnaire is given to the same people on a different occasion, do they score the same?</div>
+
+    <div class="mv">Internal reliability（内部信度）</div>
+    <div class="cell">Consistency of a measure <strong>within itself</strong>. If several questions all measure the same trait, do they all point the same way?</div>
+  </div>
+
+  <p>Each type has its own test — and the two tests are a classic exam pairing:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Test-retest method → external reliability</h4>
+      <p><strong>The same people are given the same questionnaire to complete again on a different occasion.</strong> If their responses are the same or very similar, external reliability is established. (Note the textbook's warning: some scales lose external reliability exactly <em>because</em> people remember or change.)</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Split-half method → internal reliability</h4>
+      <p><strong>Splitting the questions into two halves and comparing the findings from both halves during analysis.</strong> If all the questions measure the same concept, both halves should achieve the same score. If they do not, some questions may be measuring a different concept.</p>
+    </div>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Name the method <span class="xp-badge">Quick check</span></h4>
+    <p class="xp-intro">A researcher splits their 20 anxiety questions into two sets of 10 and compares the scores from each half. What are they checking, and how?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="srRel(this,'a')">External reliability, via the test-retest method</button>
+      <button class="q-option" onclick="srRel(this,'b')">Internal reliability, via the split-half method</button>
+      <button class="q-option" onclick="srRel(this,'c')">Validity, via the face validity method</button>
+    </div>
+    <div class="xp-result" id="res-rel"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：信度 = 「每次测都一样」吗？</strong><br>
+    <strong>external</strong> = 隔一段时间再测，结果稳不稳 → 用 <strong>test-retest</strong>（同一批人再测一次）；<br>
+    <strong>internal</strong> = 问卷内部那几道题，是不是真的都在测同一个东西 → 用 <strong>split-half</strong>（拆两半对答案）。<br>
+    记忆口诀：<strong>对外看时间（retest），对内看拆半（split-half）。</strong>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Validity</h2>
+
+  <p><strong>Validity refers to the extent to which something is measuring what it intends to measure.</strong> If you design a questionnaire intending to measure attitudes about education, your questions must measure that attitude — and nothing else. Reliability asks "is it consistent?"; validity asks the harder question: "is it the <em>right thing</em> that's consistent?"</p>
+
+  <div class="mat2x2">
+    <div class="mh">Type of validity</div>
+    <div class="mh">How it is established</div>
+
+    <div class="mv">Face validity（表面效度）</div>
+    <div class="cell">Simply <strong>looking at each question and deciding whether it makes sense in terms of the construct being measured</strong>. Can be confirmed by asking an expert in the field to review the questions.</div>
+
+    <div class="mv">Predictive validity（预测效度）</div>
+    <div class="cell">The extent to which results from a test or study can <strong>predict future behaviour</strong>. A valid intelligence test should correlate with later educational success, such as A level or degree grading.</div>
+
+    <div class="mv">Concurrent validity（共时效度）</div>
+    <div class="cell"><strong>Comparing evidence from several studies testing the same thing to see if they agree</strong> — or comparing your questionnaire to another test that measures the same construct.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：三种效度一句话记忆</strong><br>
+    <strong>face</strong> = 「看脸」——读一遍题目，像不像在测这个东西；<br>
+    <strong>predictive</strong> = 「预言」——今天测出的分数，能不能预测以后的行为（智力分 → 学业成绩）；<br>
+    <strong>concurrent</strong> = 「对照」——和别的同主题测试比一比，结果一致才说明测的是同一个东西。<br>
+    别和信度搞混：<strong>信度问「稳不稳」，效度问「准不准」。</strong>一支尺子每次都量出同一个错的数——信但不住，稳但不准。
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Three Types of Interview</h2>
+
+  <p>An interview is when respondents answer questions <strong>directly</strong>, rather than writing them. The three types differ in one thing: <strong>how tightly the researcher holds the script</strong>.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three interview types from structured to unstructured">
+      <defs>
+        <marker id="srAr3" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0,0 L9,4.5 L0,9 Z" fill="#475569"/>
+        </marker>
+      </defs>
+      <text x="340" y="28" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#1e293b">One spectrum, three stops</text>
+
+      <rect x="40" y="52" width="190" height="200" rx="12" fill="#eff6ff" stroke="#93c5fd"/>
+      <text x="135" y="78" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#1d4ed8">STRUCTURED</text>
+      <text x="135" y="96" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#475569">script: fully fixed</text>
+      <text x="135" y="126" text-anchor="middle" font-family="Arial" font-size="11" fill="#1e293b">Standardised: everyone gets</text>
+      <text x="135" y="141" text-anchor="middle" font-family="Arial" font-size="11" fill="#1e293b">the same preset questions</text>
+      <text x="135" y="156" text-anchor="middle" font-family="Arial" font-size="11" fill="#1e293b">in the same way</text>
+      <text x="135" y="180" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#15803d">+ easy to administer</text>
+      <text x="135" y="195" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#15803d">+ easy to repeat</text>
+      <text x="135" y="218" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#b91c1c">− superficial, lacks depth</text>
+      <text x="135" y="233" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#b91c1c">− respondent feels stifled</text>
+
+      <rect x="245" y="52" width="190" height="200" rx="12" fill="#fff7ed" stroke="#fdba74"/>
+      <text x="340" y="78" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#c2410c">SEMI-STRUCTURED</text>
+      <text x="340" y="96" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#475569">script: loose guide</text>
+      <text x="340" y="126" text-anchor="middle" font-family="Arial" font-size="11" fill="#1e293b">Preset questions to be answered,</text>
+      <text x="340" y="141" text-anchor="middle" font-family="Arial" font-size="11" fill="#1e293b">but no standardised format —</text>
+      <text x="340" y="156" text-anchor="middle" font-family="Arial" font-size="11" fill="#1e293b">the researcher can deviate</text>
+      <text x="340" y="180" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#15803d">+ conversation flows better</text>
+      <text x="340" y="195" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#15803d">+ gathers quant + qual data</text>
+      <text x="340" y="218" text-anchor="middle" font-family="Arial" font-size="11" fill="#475569">the middle road: structure</text>
+      <text x="340" y="233" text-anchor="middle" font-family="Arial" font-size="11" fill="#475569">with room to explore</text>
+
+      <rect x="450" y="52" width="190" height="200" rx="12" fill="#f0fdf4" stroke="#86efac"/>
+      <text x="545" y="78" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#15803d">UNSTRUCTURED</text>
+      <text x="545" y="96" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#475569">script: just an aim</text>
+      <text x="545" y="126" text-anchor="middle" font-family="Arial" font-size="11" fill="#1e293b">Begins with a loose research</text>
+      <text x="545" y="141" text-anchor="middle" font-family="Arial" font-size="11" fill="#1e293b">aim; gathers information as</text>
+      <text x="545" y="156" text-anchor="middle" font-family="Arial" font-size="11" fill="#1e293b">a conversation</text>
+      <text x="545" y="180" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#15803d">+ deepest detail, rapport</text>
+      <text x="545" y="200" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#b91c1c">− time consuming, hard to analyse</text>
+      <text x="545" y="215" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#b91c1c">− not replicable (different</text>
+      <text x="545" y="230" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#b91c1c">questions each time)</text>
+    </svg>
+  </div>
+
+  <div class="blue-box">
+    <h4>What the unstructured interviewer needs</h4>
+    <p>Unlike a structured interviewer, an unstructured interviewer must be <strong>analytical during the interview</strong> — probing and seeking meaning from respondents. They need to be skilled at achieving a good <strong>rapport</strong>, responsive to the information offered, a good listener, and careful to use <strong>non-judgemental language</strong>.</p>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Which interview is it? <span class="xp-badge">From the textbook</span></h4>
+    <p class="xp-intro">"A researcher wants to investigate what pets people own. They want to know what type of pets people have and how long they have owned them, but also want to explore the reasons for owning pets."</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="srInt(this,'a')">Structured</button>
+      <button class="q-option" onclick="srInt(this,'b')">Semi-structured</button>
+      <button class="q-option" onclick="srInt(this,'c')">Unstructured</button>
+    </div>
+    <div class="xp-result" id="res-int"></div>
+  </div>
+
+  <p>There are <strong>preset facts to collect</strong> (pet type, ownership time) <strong>but also room to explore reasons</strong> — preset questions <em>plus</em> permission to deviate. That is the textbook definition of a <strong>semi-structured</strong> interview.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：三种访谈 = 三种「剧本」</strong><br>
+    <strong>structured</strong>：照剧本念，一句不改 → 好重复、好比较，但浅；<br>
+    <strong>semi-structured</strong>：有提纲，能跑题 → 又有结构又有深挖空间；<br>
+    <strong>unstructured</strong>：只有一个大方向，纯聊天 → 最深，但费时间、没法复制。<br>
+    记忆口诀：<strong>剧本越死越好比，剧本越活挖越深。</strong>
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Researcher Effects</h2>
+
+  <p>When asking people questions, <strong>the interviewer's own characteristics can influence the respondent</strong>: biological sex, age, manner and personality can all affect how a person responds, whether they are truthful, and whether they disclose information at all. It is therefore important to <strong>predict</strong> what characteristics might influence respondents and <strong>control</strong> them.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Who the researcher is</h4>
+      <p>Example from the textbook: you can predict that a <strong>male interviewer will be unlikely to obtain detailed information</strong> from a female participant about her view of friendships within her peer group. Control: <strong>employ a female interviewer</strong>.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>What the researcher expects</h4>
+      <p>Researcher effects also include <strong>unintended influence from the researcher's expectations</strong> — smiling in approval at an answer, or inadvertently asking questions that serve to confirm the expected outcomes. This is <strong>confirmation bias</strong>: conducting research in a way that confirms the intended outcomes.</p>
+    </div>
+  </div>
+
+  <div class="blue-box">
+    <h4>The fix</h4>
+    <p>Researcher effects can be reduced by using an <strong>independent researcher who is trained in interviewing techniques, but is not aware of the study aims</strong>. No expectations → nothing to accidentally confirm.</p>
+  </div>
+
+  <div class="keyterm-box">
+    <span class="term">confirmation bias</span> <span class="zh">确认偏差</span> — when a researcher conducts research in a way that confirms the intended outcomes. Related: <span class="term">researcher effects</span>（研究者效应）— any influence the researcher's characteristics or expectations have on respondents' answers.
+  </div>
+
+  <div class="blue-box">
+    <h4>Ethics: privacy matters most in interviews</h4>
+    <p>Ethical issues matter in any questionnaire or interview, but are <strong>critical in unstructured interviews</strong>: the qualitative data can make <strong>direct reference to quotes from respondents</strong>. All respondent details must be <strong>anonymised</strong> and personal details disguised. Because the conversation is reflexive and personal, the interviewer must ask for personal information sensitively, to ensure they do not breach the respondent's <strong>right to privacy</strong>.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：researcher effects 为什么存在？</strong><br>
+    面对面提问时，<strong>提问者本身就是环境的一部分</strong>：你的性别、年龄、语气、表情都在影响对方敢不敢说真话。<br>
+    两条腿：<strong>你是谁</strong>（male interviewer 问 female participant 闺蜜话题 → 问不出细节）+ <strong>你盼什么</strong>（expected outcomes → confirmation bias，点头微笑把答案「钓」出来）。<br>
+    对策一句话：<strong>换一个不知道研究目的的独立访谈者。</strong>
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Primary vs Secondary Data</h2>
+
+  <p>Where does your data come from? The textbook draws one clean line:</p>
+
+  <div class="mat2x2">
+    <div class="mh">Dimension</div>
+    <div class="mh">Primary data（一手数据）</div>
+    <div class="mh">Secondary data（二手数据）</div>
+
+    <div class="mv">Source</div>
+    <div class="cell">Gathered <strong>directly by a researcher</strong> from participants or sources — using an experiment, observation, survey or content analysis.</div>
+    <div class="cell">Gathered from <strong>existing studies conducted by other researchers</strong> — e.g. during a literature review or meta-analysis.</div>
+
+    <div class="mv">Fit to the aim</div>
+    <div class="cell"><strong>First-hand</strong> and therefore gathered specifically according to the aims of the study.</div>
+    <div class="cell"><strong>Second-hand</strong> — may be slightly different and not specific to the aims of the researcher.</div>
+
+    <div class="mv">Cost</div>
+    <div class="cell"><strong>Time consuming</strong> to collect: the researcher must gather participants and design and conduct the research themselves.</div>
+    <div class="cell">Already collected — just needs to be <strong>analysed and compared</strong>.</div>
+
+    <div class="mv">Freshness &amp; scale</div>
+    <div class="cell"><strong>Current</strong> — collected now, for this question.</div>
+    <div class="cell">May be <strong>out of date</strong>, but useful because <strong>large amounts of data</strong> from many studies give an overview of one research area.</div>
+  </div>
+
+  <div class="keyterm-box">
+    <span class="term">literature review</span> <span class="zh">文献综述</span> — when a researcher reads, summarises and draws conclusions from other people's research.
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Primary data flows from researcher to participants; secondary data flows from existing studies">
+      <defs>
+        <marker id="srAr4" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0,0 L9,4.5 L0,9 Z" fill="#1d4ed8"/>
+        </marker>
+        <marker id="srAr5" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0,0 L9,4.5 L0,9 Z" fill="#15803d"/>
+        </marker>
+      </defs>
+      <text x="340" y="26" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#1e293b">Where the data comes from</text>
+
+      <!-- primary lane -->
+      <rect x="40" y="48" width="600" height="100" rx="12" fill="#eff6ff" stroke="#93c5fd"/>
+      <text x="62" y="72" font-family="Arial" font-size="13" font-weight="700" fill="#1d4ed8">PRIMARY — you collect it</text>
+      <rect x="62" y="90" width="150" height="40" rx="8" fill="#ffffff" stroke="#60a5fa"/>
+      <text x="137" y="108" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#1e293b">Your research</text>
+      <text x="137" y="122" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#1e293b">(survey / experiment)</text>
+      <line x1="216" y1="110" x2="268" y2="110" stroke="#1d4ed8" stroke-width="2.5" marker-end="url(#srAr4)"/>
+      <rect x="274" y="90" width="150" height="40" rx="8" fill="#ffffff" stroke="#60a5fa"/>
+      <text x="349" y="114" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#1e293b">Your participants</text>
+      <line x1="428" y1="110" x2="480" y2="110" stroke="#1d4ed8" stroke-width="2.5" marker-end="url(#srAr4)"/>
+      <rect x="486" y="90" width="130" height="40" rx="8" fill="#dbeafe"/>
+      <text x="551" y="108" text-anchor="middle" font-family="Arial" font-size="11.5" font-weight="700" fill="#1d4ed8">First-hand data</text>
+      <text x="551" y="122" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#1e40af">built for your aim</text>
+
+      <!-- secondary lane -->
+      <rect x="40" y="168" width="600" height="100" rx="12" fill="#f0fdf4" stroke="#86efac"/>
+      <text x="62" y="192" font-family="Arial" font-size="13" font-weight="700" fill="#15803d">SECONDARY — someone else collected it</text>
+      <rect x="62" y="210" width="150" height="40" rx="8" fill="#ffffff" stroke="#4ade80"/>
+      <text x="137" y="228" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#1e293b">Existing studies</text>
+      <text x="137" y="242" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#1e293b">(other researchers)</text>
+      <line x1="216" y1="230" x2="268" y2="230" stroke="#15803d" stroke-width="2.5" marker-end="url(#srAr5)"/>
+      <rect x="274" y="210" width="150" height="40" rx="8" fill="#ffffff" stroke="#4ade80"/>
+      <text x="349" y="234" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#1e293b">Literature review /</text>
+      <text x="349" y="248" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#1e293b">meta-analysis</text>
+      <line x1="428" y1="230" x2="480" y2="230" stroke="#15803d" stroke-width="2.5" marker-end="url(#srAr5)"/>
+      <rect x="486" y="210" width="130" height="40" rx="8" fill="#dcfce7"/>
+      <text x="551" y="228" text-anchor="middle" font-family="Arial" font-size="11.5" font-weight="700" fill="#15803d">Second-hand data</text>
+      <text x="551" y="242" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#166534">broad but less fitted</text>
+    </svg>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：primary vs secondary 怎么判断？</strong><br>
+    只问一句：<strong>数据是不是你自己直接向参与者收集的？</strong><br>
+    是 → primary（实验、观察、问卷、访谈都算）；<br>
+    不是、是从别人的研究里拿的 → secondary（文献综述、meta-analysis）。<br>
+    一句话：<strong>primary 贴合目的但费时；secondary 省时且量大，但可能过时、不对口。</strong>
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Alternative Hypotheses</h2>
+
+  <p>In addition to an overall research aim, a study also makes a <strong>prediction about what is likely to occur</strong>. This prediction is known as the <strong>alternative hypothesis</strong>.</p>
+
+  <div class="blue-box">
+    <h4>What a good hypothesis must be</h4>
+    <p>A hypothesis should <strong>contain the variables under investigation</strong> and be a <strong>clear, testable and precise statement</strong> made at the beginning of a study. The prediction is often guided by previous research in the topic area.</p>
+  </div>
+
+  <p>But what if previous research is thin — or the findings are mixed? Then the prediction may have to state only that <strong>a difference or relationship might be found</strong> between the variables, <strong>without saying which direction</strong> it will take:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Directional prediction</h4>
+      <p>Previous research points one way, so the hypothesis names the direction: "Students who score higher on a conformity scale will report <em>more</em> agreement with the majority." (You will meet the full directional / non-directional language in Topic B, Chapter 11.)</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Non-directional prediction</h4>
+      <p>Limited or mixed previous research, so the hypothesis predicts only that a difference or relationship exists — not whether it goes up or down.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：alternative hypothesis 是什么？</strong><br>
+    研究开始前，把「我觉得会发生什么」写成一句<strong>明确、可检验、精确</strong>的话，并包含要研究的变量。<br>
+    有把握方向 → 写明方向（「X 越高 Y 越高」）；研究少、结论乱 → 只写「会发现差异/关系」，不指方向。<br>
+    记住它是<strong>「备择」</strong>：它是和「什么都没发生」相对立的那种预测——名字在 Topic B 还会展开。
+  </div>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. Exam Focus</h2>
+
+  <p>This topic appears constantly in Paper 1 — especially <strong>quantitative data</strong>, the single most frequent theme in past papers. Three textbook exam tips do most of the work:</p>
+
+  <div class="exam-tip">
+    <h4>Tip 1 — strengths/weaknesses must be social-psychology specific</h4>
+    <p>You may be asked to give a strength or weakness of questionnaires <em>as they are used in social psychology</em>. A generic answer scores little; the answer must relate to social psychology specifically. Model:</p>
+    <p class="small"><em>"One weakness with using questionnaires in social psychology is that participants may answer in a way that portrays them in the best possible light: social desirability bias may occur. This means that people may say that they are more obedient than they actually are because they don't want people to think they are disobedient."</em></p>
+  </div>
+
+  <div class="exam-tip">
+    <h4>Tip 2 — interviews earn their depth in social psychology</h4>
+    <p>Model strength: <em>"One strength of using interviews in social psychology is that in-depth answers contain detailed information and reasons why individuals may consider others to have authority or power. This increases the validity of the data gathered by social psychology researchers about topics such as obedience."</em> Notice the structure: <strong>feature → because → so what for social psychology.</strong></p>
+  </div>
+
+  <div class="mat2x2">
+    <div class="mh">Method</div>
+    <div class="mh">Signature strength</div>
+    <div class="mh">Signature weakness</div>
+
+    <div class="mv">Questionnaire</div>
+    <div class="cell">Reaches large samples cheaply; closed questions give quick quantitative data that is easy to analyse.</div>
+    <div class="cell">Social desirability bias — respondents may claim to be more obedient (or less conforming) than they really are.</div>
+
+    <div class="mv">Interview</div>
+    <div class="cell">In-depth answers reveal <em>why</em> people grant authority or power — increasing the validity of data on obedience.</div>
+    <div class="cell">Researcher effects: the interviewer's characteristics and expectations can distort what respondents disclose.</div>
+
+    <div class="mv">Structured interview</div>
+    <div class="cell">Standardised and easily repeated; no rapport needed.</div>
+    <div class="cell">Superficial data; respondents feel stifled and cannot fully express opinions.</div>
+
+    <div class="mv">Unstructured interview</div>
+    <div class="cell">Depth, rapport, and responsive probing follow the respondent's meaning.</div>
+    <div class="cell">Time consuming; not replicable; sensitive ethics around privacy and quotes.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：考试万能公式（Point → Because → So what）</strong><br>
+    1）先报术语：One weakness is social desirability bias…（点出术语名）；<br>
+    2）解释机制：…because people don't want to be seen as disobedient…（说清为什么）；<br>
+    3）落回社会心理学：…so they may say they are more obedient than they actually are.（绑定本学科场景）。<br>
+    缺第 3 步 = 泛泛而谈 = 低分。考纲明说 Generic answers score 0。
+  </div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="section" id="s14">
+  <h2>14. Checkpoint</h2>
+
+  <div class="checkpoint">
+    <h4>8 quick questions — cover the notes first</h4>
+
+    <div class="q-row">
+      <p class="q-stem">Q1. A self-report method that reaches a large sample through written questions is a…</p>
+      <label><input type="radio" name="q1" value="a"> interview</label>
+      <label><input type="radio" name="q1" value="b"> questionnaire</label>
+      <label><input type="radio" name="q1" value="c"> meta-analysis</label>
+    </div>
+
+    <div class="q-row">
+      <p class="q-stem">Q2. "Explain why you chose your A level subjects." This question yields…</p>
+      <label><input type="radio" name="q2" value="a"> quantitative data</label>
+      <label><input type="radio" name="q2" value="b"> qualitative data</label>
+      <label><input type="radio" name="q2" value="c"> no data — it is unethical</label>
+    </div>
+
+    <div class="q-row">
+      <p class="q-stem">Q3. Which scale asks respondents to order options relative to each other, with weightings?</p>
+      <label><input type="radio" name="q3" value="a"> a Likert-style scale</label>
+      <label><input type="radio" name="q3" value="b"> a ranked scale</label>
+      <label><input type="radio" name="q3" value="c"> a fixed-choice scale</label>
+    </div>
+
+    <div class="q-row">
+      <p class="q-stem">Q4. Giving answers that make you look good according to social norms is…</p>
+      <label><input type="radio" name="q4" value="a"> response bias</label>
+      <label><input type="radio" name="q4" value="b"> confirmation bias</label>
+      <label><input type="radio" name="q4" value="c"> social desirability</label>
+    </div>
+
+    <div class="q-row">
+      <p class="q-stem">Q5. The same people complete the same questionnaire again next month. Which method, checking which property?</p>
+      <label><input type="radio" name="q5" value="a"> test-retest; external reliability</label>
+      <label><input type="radio" name="q5" value="b"> split-half; internal reliability</label>
+      <label><input type="radio" name="q5" value="c"> test-retest; concurrent validity</label>
+    </div>
+
+    <div class="q-row">
+      <p class="q-stem">Q6. An intelligence score that predicts later degree grading demonstrates…</p>
+      <label><input type="radio" name="q6" value="a"> face validity</label>
+      <label><input type="radio" name="q6" value="b"> predictive validity</label>
+      <label><input type="radio" name="q6" value="c"> internal reliability</label>
+    </div>
+
+    <div class="q-row">
+      <p class="q-stem">Q7. Which interview type is standardised so all respondents are asked the same preset questions in the same way?</p>
+      <label><input type="radio" name="q7" value="a"> structured</label>
+      <label><input type="radio" name="q7" value="b"> semi-structured</label>
+      <label><input type="radio" name="q7" value="c"> unstructured</label>
+    </div>
+
+    <div class="q-row">
+      <p class="q-stem">Q8. Smiling in approval at answers that fit your expectations is an example of…</p>
+      <label><input type="radio" name="q8" value="a"> opportunity sampling</label>
+      <label><input type="radio" name="q8" value="b"> a researcher effect (confirmation bias)</label>
+      <label><input type="radio" name="q8" value="c"> social desirability</label>
+    </div>
+
+    <button class="xp-btn" onclick="checkQuiz()">Check my answers</button>
+    <div class="xp-result" id="quizResult"></div>
+  </div>
+</section>
+
+<!-- ============ 15 ============ -->
+<section class="section" id="s15">
+  <h2>15. Exam Lab</h2>
+
+  <p>These are the actual question patterns from the textbook's exam practice for this chapter. Attempt each before revealing.</p>
+
+  <div class="exam-practice">
+    <h4>Q1 — Carlos and the 'keep off the grass' signs (from the textbook)</h4>
+    <p class="small">Carlos wants to test how compliant pedestrians are to signs which ask them to 'keep off the grass'. He designs a questionnaire to gather quantitative data from pedestrians who visit a local park.</p>
+
+    <div class="q-row">
+      <p class="q-stem"><strong>(a)</strong> State one closed question that Carlos could use in his questionnaire about obedience. (1 mark)</p>
+      <button class="xp-btn" onclick="revealAns('lab1a')">Reveal answer</button>
+      <div class="answer-box" id="lab1a"><p>Any fixed-option question, e.g. "Would you walk on the grass if a sign asked you not to? Yes / No (please circle)." The key is preset answers that can be circled or ticked — that is what makes it closed and quantitative.</p></div>
+    </div>
+
+    <div class="q-row">
+      <p class="q-stem"><strong>(b)</strong> State one open question that Carlos could use in his questionnaire. (1 mark)</p>
+      <button class="xp-btn" onclick="revealAns('lab1b')">Reveal answer</button>
+      <div class="answer-box" id="lab1b"><p>Any free-answer question, e.g. "Explain why you would or would not walk on the grass when the sign asks you not to." No preset options — the respondent writes freely.</p></div>
+    </div>
+
+    <div class="q-row">
+      <p class="q-stem"><strong>(c)</strong> Carlos decided to recruit participants using an opportunity sampling technique. Explain how Carlos would go about recruiting participants for his study. (2 marks)</p>
+      <button class="xp-btn" onclick="revealAns('lab1c')">Reveal answer</button>
+      <div class="answer-box" id="lab1c"><p>Opportunity sampling uses participants who are readily available at the time. Carlos would go to the local park (where his target population — pedestrians — are) and ask the people who are there and willing to take part in his questionnaire.</p></div>
+    </div>
+
+    <div class="q-row">
+      <p class="q-stem"><strong>(d)</strong> Explain one weakness of Carlos using an opportunity sampling technique for his questionnaire. (2 marks)</p>
+      <button class="xp-btn" onclick="revealAns('lab1d')">Reveal answer</button>
+      <div class="answer-box" id="lab1d"><p>Opportunity sampling gives the researcher limited control over who is recruited: only pedestrians available at that time and place can be selected, so not everyone in the target population has an equal chance of being chosen. The resulting sample may be unrepresentative, limiting how far conclusions about compliance to 'keep off the grass' signs can be generalised. (Also worth knowing: asking people directly can be unethical as it puts pressure on them to participate.)</p></div>
+    </div>
+  </div>
+
+  <div class="exam-practice">
+    <h4>Q2 — the 'how' question: describing a stratified sample (from the textbook exam tip)</h4>
+    <p class="small">Crystal has been asked by her employer to send out questionnaires asking opinions about whether the food served in the office canteen is good. There are 100 employees who use the canteen at lunchtime and work in the office building. Describe how Crystal might gather a stratified sample of the employees in the office building. (3 marks)</p>
+    <p>The textbook's rule: if asked to describe <strong>'how'</strong> a sampling technique is used, treat it as a process — <strong>firstly, secondly, thirdly</strong>. This ensures you access all the available marks.</p>
+    <button class="xp-btn" onclick="revealAns('lab2')">Reveal model answer</button>
+    <div class="answer-box" id="lab2"><p><strong>Firstly</strong>, Crystal would decide which subgroups exist in the office building, such as managers, clerks, cleaners. <strong>Secondly</strong>, she would calculate the percentage of managers, clerks and cleaners that represents the whole target population in the office building. <strong>Thirdly</strong>, she would randomly select the proportionate number of employees in each subgroup and ask if they would complete the questionnaire on how good the food was in the office canteen.</p><p class="small">The full stratified sampling walkthrough is in 1.2.5 Sampling Techniques — this page previews the exam pattern so the two connect.</p></div>
+  </div>
+</section>
+
+<!-- ============ 16 ============ -->
+<section class="section" id="s16">
+  <h2>16. Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><strong>survey</strong><br>A self-report method gathering information about feelings, attitudes, opinions, personality and traits, via questionnaire or interview.</div>
+    <div class="glossary-item"><strong>quantitative data</strong><br>Information that is numerical or can be converted into numbers. Objective — not open to interpretation.</div>
+    <div class="glossary-item"><strong>qualitative data</strong><br>Information that is non-numerical prose. Can be subjective — meanings in prose are open to interpretation.</div>
+    <div class="glossary-item"><strong>closed questions</strong><br>Preset fixed answers the respondent selects by circling or ticking. Yield quantitative data.</div>
+    <div class="glossary-item"><strong>open questions</strong><br>No preset answers; respondents answer freely, elaborate and justify. Yield qualitative data.</div>
+    <div class="glossary-item"><strong>attitude scale</strong><br>More than yes/no: offers a range of options so the strength of opinion can be gauged.</div>
+    <div class="glossary-item"><strong>Likert-style scale</strong><br>Respondent rates agreement with statements from a fixed set of options (Strongly agree → Strongly disagree).</div>
+    <div class="glossary-item"><strong>ranked scale</strong><br>Respondent ranks choices relative to other options; each preference is given a weighting.</div>
+    <div class="glossary-item"><strong>social desirability</strong><br>Responding in a way that depicts oneself in a more favourable light according to prevailing social norms.</div>
+    <div class="glossary-item"><strong>response bias</strong><br>Agreeing (or disagreeing) with every statement in an all-same-direction set. Fixed by reversing and mixing statements.</div>
+    <div class="glossary-item"><strong>privacy</strong><br>Participants should not be asked intrusive personal questions, and the researcher must not obtain personal data a participant would not voluntarily disclose.</div>
+    <div class="glossary-item"><strong>reliability</strong><br>The consistency of a measure or finding. External = over time; internal = within itself.</div>
+    <div class="glossary-item"><strong>test-retest method</strong><br>Same people, same questionnaire, different occasion — establishes external reliability.</div>
+    <div class="glossary-item"><strong>split-half method</strong><br>Splitting questions into two halves and comparing the findings — establishes internal reliability.</div>
+    <div class="glossary-item"><strong>validity</strong><br>The extent to which something measures what it intends to measure.</div>
+    <div class="glossary-item"><strong>face validity</strong><br>Looking at each question and deciding whether it makes sense for the construct being measured.</div>
+    <div class="glossary-item"><strong>predictive validity</strong><br>The extent to which results predict future behaviour (e.g. intelligence scores ↔ degree grading).</div>
+    <div class="glossary-item"><strong>concurrent validity</strong><br>Comparing evidence from several studies testing the same thing to see if they agree.</div>
+    <div class="glossary-item"><strong>structured interview</strong><br>Standardised: same preset questions, same way, for everyone. Easy to repeat; can be superficial.</div>
+    <div class="glossary-item"><strong>semi-structured interview</strong><br>Preset questions but no standardised format; the researcher can deviate. Gathers quantitative and qualitative data.</div>
+    <div class="glossary-item"><strong>unstructured interview</strong><br>A loose research aim explored through conversation; needs rapport, listening skills, non-judgemental language; not replicable.</div>
+    <div class="glossary-item"><strong>researcher effects</strong><br>Influence of the interviewer's characteristics (sex, age, manner, personality) or expectations on respondents' answers.</div>
+    <div class="glossary-item"><strong>confirmation bias</strong><br>Conducting research in a way that confirms the intended outcomes — e.g. asking questions that confirm expected results.</div>
+    <div class="glossary-item"><strong>primary data</strong><br>Gathered directly by the researcher from participants, fitted to the study's aims; time consuming but current.</div>
+    <div class="glossary-item"><strong>secondary data</strong><br>Gathered from existing studies (literature review, meta-analysis); quick and large-scale but possibly out of date and not aim-specific.</div>
+    <div class="glossary-item"><strong>literature review</strong><br>Reading, summarising and drawing conclusions from other people's research.</div>
+    <div class="glossary-item"><strong>alternative hypothesis</strong><br>A clear, testable, precise prediction containing the variables under investigation, made at the beginning of a study.</div>
+  </div>
+</section>
+
+<div class="footer-note">1.2.1 Questionnaires and Interviews · Social Psychology · previous: <a href="../1.1.7-factors-affecting-conformity/">1.1.7 factors affecting conformity</a> · next: <a href="../1.2.5-sampling-techniques/">1.2.5 sampling techniques</a></div>
+
+  </main>
+</div>
+
+<button id="btt" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function () {
+  var baseFont = 16;
+
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark'; }
+  };
+
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  function show(id, html) {
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    el.innerHTML = html;
+    el.classList.add('show');
+  }
+
+  function verdict(ok, msg) {
+    return '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + msg + '</p>';
+  }
+
+  window.srGuess = function (btn, c) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === 'b');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var msg = ok
+      ? 'Exactly. Admitting to cheating breaks a social norm, so respondents give the answer that depicts them in a favourable light — social desirability.'
+      : 'Not quite. People rarely admit to behaviour that breaks social norms — they give the socially desirable answer instead. That gap between saying and doing is the central problem of self-report.';
+    show('res-guess', verdict(ok, msg));
+  };
+
+  window.srQMatch = function (btn, c) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === 'a');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var msg = ok
+      ? 'Correct. Preset options to circle = closed question; closed questions yield quantitative data.'
+      : 'Look again: the answers (Daily / A few times a week / Occasionally / Never) are preset by the researcher, so this is a closed question yielding quantitative data.';
+    show('res-qmatch', verdict(ok, msg));
+  };
+
+  window.srScale = function (btn, c) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === 'b');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var msg = ok
+      ? 'Right. An even number of answers forces respondents to make a choice rather than select a neutral option.'
+      : 'Reversed statements tackle response bias, and an odd scale makes the middle easier — the fix for a hiding-in-the-middle problem is an even number of options.';
+    show('res-scale', verdict(ok, msg));
+  };
+
+  window.srRel = function (btn, c) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === 'b');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var msg = ok
+      ? 'Correct. Splitting the questions into two halves and comparing the findings checks internal reliability — are all the questions measuring the same concept?'
+      : 'Splitting the questions into two halves is the split-half method, which establishes internal reliability — consistency within the questionnaire itself.';
+    show('res-rel', verdict(ok, msg));
+  };
+
+  window.srInt = function (btn, c) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === 'b');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var msg = ok
+      ? 'Correct. Preset questions (pet type, ownership time) plus room to deviate and explore reasons — that is semi-structured.'
+      : 'Preset questions to answer but no standardised format, so the conversation can explore reasons — that combination defines a semi-structured interview.';
+    show('res-int', verdict(ok, msg));
+  };
+
+  var quizKey = { q1: 'b', q2: 'b', q3: 'b', q4: 'c', q5: 'a', q6: 'b', q7: 'a', q8: 'b' };
+  var quizWhy = {
+    q1: 'A questionnaire gathers a large amount of data from a large sample through written questions; interviews are spoken, and a meta-analysis is secondary data.',
+    q2: 'Free written answers are prose — non-numerical — so they yield qualitative data (which can be subjective to analyse).',
+    q3: 'A ranked scale involves ranking choices relative to other options, with each preference given a weighting.',
+    q4: 'Social desirability: giving an answer that depicts oneself favourably according to prevailing social norms. Response bias is blanket agreement; confirmation bias belongs to the researcher.',
+    q5: 'Test-retest = same people, same questionnaire, different occasion — establishing external reliability (consistency over time).',
+    q6: 'Predictive validity: results from the test accurately predict the same construct in the future (educational success).',
+    q7: 'Structured interviews are standardised so all respondents are asked the same preset questions in the same way.',
+    q8: 'Unintended influence from the researcher\u2019s expectations is a researcher effect; inadvertently confirming expected outcomes is confirmation bias.'
+  };
+
+  window.checkQuiz = function () {
+    var el = document.getElementById('quizResult');
+    if (!el) { return; }
+    var score = 0;
+    var html = '';
+    Object.keys(quizKey).forEach(function (q) {
+      var sel = document.querySelector('input[name="' + q + '"]:checked');
+      var chosen = sel ? sel.value : null;
+      var ok = (chosen === quizKey[q]);
+      if (ok) { score++; }
+      html += '<p style="margin:6px 0"><strong>' + q.toUpperCase() + ':</strong> ' +
+        (chosen ? (ok ? '✅ correct' : '❌ not quite') : 'not answered') +
+        ' — ' + quizWhy[q] + '</p>';
+    });
+    el.innerHTML = '<p><span class="xp-verdict">Score: ' + score + ' / 8</span></p>' + html;
+    el.classList.add('show');
+    if (score === 8) { el.classList.add('ok'); } else { el.classList.remove('ok'); }
+  };
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.toggle('show'); }
+  };
+
+  var secs = document.querySelectorAll('.section');
+  var links = document.querySelectorAll('.sb-item a');
+  function highlight() {
+    var best = null;
+    var bestTop = -99999;
+    for (var i = 0; i < secs.length; i++) {
+      var r = secs[i].getBoundingClientRect();
+      if (r.top <= 140 && r.top > bestTop) { bestTop = r.top; best = secs[i]; }
+    }
+    if (!best && secs.length) { best = secs[0]; }
+    for (var j = 0; j < links.length; j++) { links[j].classList.remove('sb-active'); }
+    if (best) {
+      var target = best.getAttribute('id');
+      for (var k = 0; k < links.length; k++) {
+        if (links[k].getAttribute('href') === '#' + target) { links[k].classList.add('sb-active'); }
+      }
+    }
+  }
+  window.addEventListener('scroll', highlight);
+  highlight();
+
+  var btt = document.getElementById('btt');
+  window.addEventListener('scroll', function () {
+    if (!btt) { return; }
+    if (window.scrollY > 400) { btt.classList.add('show'); } else { btt.classList.remove('show'); }
+  });
+})();
+</script>
+</body>
+</html>

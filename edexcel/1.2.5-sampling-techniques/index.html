@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.2.5 Sampling Techniques — Who gets to be in the study?</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.five-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+
+.mat2x2 { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 6px; margin: 14px 0; }
+.mat2x2.c2 { grid-template-columns: 150px 1fr; }
+.mat2x2 .mh { background: var(--primary); color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
+body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style></head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic A · Social Psychology — 1.2.5 Sampling Techniques</span>
+  </div>
+  <span class="nav-pill">🧑‍🤝‍🧑 Social Psychology · Methods</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="1.2.5-Sampling-Techniques-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">1.2.5 · Contents</div>
+        <div class="sb-header-sub">Sampling Techniques</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">Before we start</li>
+        <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+        <li class="sb-item"><a href="#s2">2. Population &amp; Sample</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">The four techniques</li>
+        <li class="sb-item"><a href="#s3">3. Stratified Sampling</a></li>
+        <li class="sb-item"><a href="#s4">4. Random Sampling</a></li>
+        <li class="sb-item"><a href="#s5">5. Opportunity Sampling</a></li>
+        <li class="sb-item"><a href="#s6">6. Volunteer Sampling</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Compare &amp; diagnose</li>
+        <li class="sb-item"><a href="#s7">7. The Four Compared</a></li>
+        <li class="sb-item"><a href="#s8">8. Spotting Sampling Bias</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Exam</li>
+        <li class="sb-item"><a href="#s9">9. Exam Focus</a></li>
+        <li class="sb-item"><a href="#s10">10. Checkpoint</a></li>
+        <li class="sb-item"><a href="#s11">11. Exam Lab</a></li>
+        <li class="sb-item"><a href="#s12">12. Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>1.2.5 SAMPLING TECHNIQUES<br><span style="font-size:0.65em">Who gets to be in the study? · 抽样技术 · random · stratified · opportunity · volunteer</span></h1>
+  <div class="subtitle">Social Psychology · Methods · You cannot study everyone. So the small group you <em>do</em> study has to carry the weight for everyone else.</div>
+  <div class="meta">
+    <span class="badge">🎯 Core idea: representativeness</span>
+    <span class="badge">⚖️ Four techniques, four trade-offs</span>
+    <span class="badge">📖 Textbook: Chapter 4</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this section is really asking</h4>
+  <ol>
+    <li><strong>A whole population is too big to study,</strong> so researchers recruit a <strong>sample</strong> — and the aim of any sampling method is a <strong>representative sample</strong>: one that reflects the characteristics of the target population well.</li>
+    <li><strong>Stratified sampling</strong> is the most representative: divide the population into subgroups, calculate each subgroup's percentage, and randomly select proportionate numbers from each.</li>
+    <li><strong>Random, opportunity and volunteer</strong> each trade representativeness for speed — random gives everyone an equal chance, opportunity takes whoever is available, volunteer lets people self-select.</li>
+    <li><strong>Every technique has a failure mode:</strong> if a type of participant is over- or under-represented, <strong>sampling bias</strong> occurs and conclusions cannot be generalised back to the target population.</li>
+  </ol>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started</h2>
+
+  <p>Your school has 1,200 students. You want to know how students feel about the new canteen menu. You cannot ask all 1,200 — there is no time. So you ask 60.</p>
+
+  <p>Now the real question, the one this whole topic lives inside: <strong>which 60?</strong></p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Option A</h4>
+      <p>The first 60 students who walk into the canteen at 12:30. Fast. Convenient. And notice something: they are all there <em>because they eat at the canteen</em> — hardly a neutral panel for judging its food.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Option B</h4>
+      <p>Names pulled from a hat — every student's name in the draw, no exceptions. Slower. But nobody's presence or absence was decided by convenience.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Option C</h4>
+      <p>A poster: "Share your canteen opinions — scan here." Only the students who <em>care enough</em> to respond. Some will have very strong views indeed.</p>
+    </div>
+  </div>
+
+  <div class="blue-box">
+    <h4>The question this chapter answers</h4>
+    <p>All three options produce 60 respondents. But they produce <strong>very different 60s</strong> — and every conclusion the researcher draws is only as good as the group they asked. How do psychologists choose people so that the small group can stand in for the whole population?</p>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Have a guess first <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro">Which of the three options is most likely to give you students with <em>extreme</em> opinions about the canteen?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="saGuess(this,'a')">Option A — the first 60 in the door</button>
+      <button class="q-option" onclick="saGuess(this,'b')">Option B — names from a hat</button>
+      <button class="q-option" onclick="saGuess(this,'c')">Option C — the poster volunteers</button>
+    </div>
+    <div class="xp-result" id="res-guess"></div>
+  </div>
+
+  <p>Option C. People who respond to an advert <strong>self-select</strong> — they chose to take part, usually because the topic matters to them. A student who feels nothing about the canteen never scans the poster. That is why volunteer samples so often over-represent the passionate, the opinionated and the available.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：抽样到底在解决什么问题？</strong><br>
+    研究者想说的是「<strong>全体学生</strong>怎么想」，但手里只有「<strong>被选中的 60 人</strong>」的数据。<br>
+    这中间隔着一座桥：<strong>样本能不能代表总体（representativeness）</strong>。<br>
+    桥搭得好 → 60 人的结论可以推广给 1,200 人；桥搭歪了 → 60 人只代表 60 人。<br>
+    一句话：<strong>抽样技术 = 决定「谁来代表大家」的规则。</strong>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Population &amp; Sample</h2>
+
+  <p>Before naming techniques, the textbook builds the vocabulary:</p>
+
+  <div class="mat2x2">
+    <div class="mh">Term</div>
+    <div class="mh">Meaning</div>
+
+    <div class="mv">Sampling（抽样）</div>
+    <div class="cell">The way in which participants are <strong>selected</strong> for a study.</div>
+
+    <div class="mv">Target population（目标总体）</div>
+    <div class="cell">The <strong>population of people being investigated</strong> by a study. If you are investigating attitudes about health services at a local hospital, the target population is people at the hospital. A sample is recruited from this group.</div>
+
+    <div class="mv">Representative sample（代表性样本）</div>
+    <div class="cell">A sample that <strong>represents the characteristics of the population well</strong> — so conclusions drawn from the research can be generalised back to explain the behaviour of the target population as a whole.</div>
+
+    <div class="mv">Sampling bias（抽样偏差）</div>
+    <div class="cell">Occurs if the sample is <strong>not representative</strong> — because of an <strong>over- or under-representation</strong> of a particular type of participant.</div>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A sample is drawn from the target population and must reflect its characteristics">
+      <defs>
+        <marker id="saAr1" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0,0 L9,4.5 L0,9 Z" fill="#475569"/>
+        </marker>
+      </defs>
+      <text x="340" y="26" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#1e293b">Target population → sample → generalise back</text>
+
+      <!-- population -->
+      <rect x="40" y="52" width="280" height="200" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+      <text x="180" y="76" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#334155">TARGET POPULATION</text>
+      <text x="180" y="93" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#64748b">everyone the study is about</text>
+      <g fill="#94a3b8">
+        <circle cx="80"  cy="120" r="10"/><circle cx="115" cy="115" r="10"/><circle cx="150" cy="122" r="10"/>
+        <circle cx="185" cy="112" r="10"/><circle cx="220" cy="120" r="10"/><circle cx="255" cy="115" r="10"/>
+        <circle cx="80"  cy="155" r="10"/><circle cx="115" cy="150" r="10"/><circle cx="150" cy="157" r="10"/>
+        <circle cx="185" cy="147" r="10"/><circle cx="220" cy="155" r="10"/><circle cx="255" cy="150" r="10"/>
+        <circle cx="80"  cy="190" r="10"/><circle cx="115" cy="185" r="10"/><circle cx="150" cy="192" r="10"/>
+        <circle cx="185" cy="182" r="10"/><circle cx="220" cy="190" r="10"/><circle cx="255" cy="185" r="10"/>
+        <circle cx="100" cy="225" r="10"/><circle cx="140" cy="228" r="10"/><circle cx="180" cy="222" r="10"/>
+        <circle cx="220" cy="226" r="10"/><circle cx="255" cy="220" r="10"/>
+      </g>
+
+      <!-- arrow -->
+      <line x1="330" y1="150" x2="378" y2="150" stroke="#475569" stroke-width="2.5" marker-end="url(#saAr1)"/>
+      <text x="354" y="138" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#475569">sampling</text>
+      <text x="354" y="170" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#475569">technique</text>
+
+      <!-- sample -->
+      <rect x="386" y="52" width="254" height="200" rx="12" fill="#fff7ed" stroke="#fdba74"/>
+      <text x="513" y="76" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#c2410c">SAMPLE</text>
+      <text x="513" y="93" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#9a3412">the people actually studied</text>
+      <g>
+        <circle cx="440" cy="125" r="10" fill="#ea580c"/>
+        <circle cx="475" cy="120" r="10" fill="#94a3b8"/>
+        <circle cx="510" cy="125" r="10" fill="#ea580c"/>
+        <circle cx="545" cy="118" r="10" fill="#94a3b8"/>
+        <circle cx="580" cy="125" r="10" fill="#94a3b8"/>
+        <circle cx="440" cy="160" r="10" fill="#94a3b8"/>
+        <circle cx="475" cy="155" r="10" fill="#ea580c"/>
+        <circle cx="510" cy="160" r="10" fill="#94a3b8"/>
+        <circle cx="545" cy="153" r="10" fill="#94a3b8"/>
+        <circle cx="580" cy="160" r="10" fill="#ea580c"/>
+        <circle cx="455" cy="195" r="10" fill="#94a3b8"/>
+        <circle cx="495" cy="192" r="10" fill="#94a3b8"/>
+        <circle cx="535" cy="196" r="10" fill="#94a3b8"/>
+        <circle cx="570" cy="190" r="10" fill="#ea580c"/>
+      </g>
+      <circle cx="415" cy="238" r="7" fill="#ea580c"/>
+      <text x="430" y="242" font-family="Arial" font-size="10.5" fill="#9a3412">if one type is over-represented → sampling bias</text>
+    </svg>
+  </div>
+
+  <p>The technique used depends on the <strong>type of research</strong> and the <strong>availability of participants</strong> — but the aim is always the same: select a <strong>representative</strong> sample, so findings can be <strong>generalised</strong> back to the target population.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：population vs sample 一图记牢</strong><br>
+    <strong>target population</strong> = 你想下结论的那群人（全校 1,200 人）；<br>
+    <strong>sample</strong> = 你真正问到的人（60 人）；<br>
+    <strong>sampling bias</strong> = 样本里某类人太多或太少（问的全是天天去食堂的人）。<br>
+    检验标准一句话：<strong>样本长得像不像总体。</strong>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Stratified Sampling</h2>
+
+  <p><strong>The most likely way to recruit a representative sample of a target population is by using a stratified sampling technique.</strong> If the target population has certain subgroups that need to be represented in the sample, stratified sampling recruits the correct number of participants from each subgroup.</p>
+
+  <div class="blue-box">
+    <h4>The process — three steps (learn these as a chain)</h4>
+    <ol>
+      <li><strong>Divide</strong> the target population into its <strong>subgroups (strata)</strong>.</li>
+      <li><strong>Calculate the percentage</strong> of members of each subgroup. If the target population is 50% children and 20% teenagers, the sample must represent those percentages.</li>
+      <li><strong>Randomly select</strong> a proportionate number of each subgroup.</li>
+    </ol>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stratified sampling divides the population into strata and samples each proportionally">
+      <defs>
+        <marker id="saAr2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0,0 L9,4.5 L0,9 Z" fill="#475569"/>
+        </marker>
+      </defs>
+      <text x="340" y="26" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#1e293b">Stratified sampling, step by step (Figure 4.2)</text>
+
+      <!-- step 1: population -->
+      <text x="120" y="56" text-anchor="middle" font-family="Arial" font-size="12.5" font-weight="700" fill="#334155">1 · Population</text>
+      <rect x="40" y="66" width="160" height="170" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+      <g fill="#94a3b8">
+        <circle cx="65" cy="95" r="9"/><circle cx="95" cy="92" r="9"/><circle cx="125" cy="95" r="9"/><circle cx="158" cy="90" r="9"/>
+        <circle cx="65" cy="125" r="9"/><circle cx="95" cy="122" r="9"/><circle cx="125" cy="125" r="9"/><circle cx="158" cy="120" r="9"/>
+        <circle cx="65" cy="155" r="9"/><circle cx="95" cy="152" r="9"/><circle cx="125" cy="155" r="9"/><circle cx="158" cy="150" r="9"/>
+        <circle cx="65" cy="185" r="9"/><circle cx="95" cy="182" r="9"/><circle cx="125" cy="185" r="9"/><circle cx="158" cy="180" r="9"/>
+        <circle cx="85" cy="215" r="9"/><circle cx="120" cy="215" r="9"/><circle cx="150" cy="213" r="9"/>
+      </g>
+      <text x="120" y="254" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#64748b">mixed subgroups, unequal sizes</text>
+
+      <line x1="206" y1="150" x2="240" y2="150" stroke="#475569" stroke-width="2.5" marker-end="url(#saAr2)"/>
+
+      <!-- step 2: strata -->
+      <text x="352" y="56" text-anchor="middle" font-family="Arial" font-size="12.5" font-weight="700" fill="#334155">2 · Strata with percentages</text>
+      <rect x="248" y="66" width="208" height="46" rx="8" fill="#eff6ff" stroke="#93c5fd"/>
+      <text x="260" y="86" font-family="Arial" font-size="11" font-weight="700" fill="#1d4ed8">Group A — 50%</text>
+      <rect x="260" y="94" width="94" height="10" rx="5" fill="#1d4ed8"/>
+      <rect x="260" y="94" width="94" height="10" rx="5" fill="#1d4ed8" opacity="0.5"/>
+      <rect x="248" y="122" width="208" height="46" rx="8" fill="#fff7ed" stroke="#fdba74"/>
+      <text x="260" y="142" font-family="Arial" font-size="11" font-weight="700" fill="#c2410c">Group B — 30%</text>
+      <rect x="260" y="150" width="56" height="10" rx="5" fill="#ea580c"/>
+      <rect x="248" y="178" width="208" height="46" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+      <text x="260" y="198" font-family="Arial" font-size="11" font-weight="700" fill="#15803d">Group C — 20%</text>
+      <rect x="260" y="206" width="38" height="10" rx="5" fill="#16a34a"/>
+
+      <line x1="462" y1="150" x2="496" y2="150" stroke="#475569" stroke-width="2.5" marker-end="url(#saAr2)"/>
+
+      <!-- step 3: proportional random sample -->
+      <text x="576" y="56" text-anchor="middle" font-family="Arial" font-size="12.5" font-weight="700" fill="#334155">3 · Proportional sample</text>
+      <rect x="504" y="66" width="144" height="46" rx="8" fill="#ffffff" stroke="#93c5fd"/>
+      <text x="576" y="86" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#1d4ed8">A · 50% of sample</text>
+      <text x="576" y="102" text-anchor="middle" font-family="Arial" font-size="10" fill="#475569">randomly selected</text>
+      <rect x="504" y="122" width="144" height="46" rx="8" fill="#ffffff" stroke="#fdba74"/>
+      <text x="576" y="142" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#c2410c">B · 30% of sample</text>
+      <text x="576" y="158" text-anchor="middle" font-family="Arial" font-size="10" fill="#475569">randomly selected</text>
+      <rect x="504" y="178" width="144" height="46" rx="8" fill="#ffffff" stroke="#86efac"/>
+      <text x="576" y="198" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#15803d">C · 20% of sample</text>
+      <text x="576" y="214" text-anchor="middle" font-family="Arial" font-size="10" fill="#475569">randomly selected</text>
+
+      <text x="340" y="278" text-anchor="middle" font-family="Arial" font-size="11.5" fill="#475569">Each subgroup keeps its share of the population — so the sample looks like the population in miniature.</text>
+      <text x="340" y="302" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#b91c1c">Caveat: a researcher still has to ask those selected to take part — and they may not agree.</text>
+    </svg>
+  </div>
+
+  <div class="blue-box">
+    <h4>When it earns its keep — the workplace example</h4>
+    <p>Researching <strong>stress in the workplace</strong> at a company: find out how many staff occupy different roles — office clerks, managers, canteen staff, cleaners. There may be <strong>more clerks than managers</strong>, so more clerks need to be recruited than managers to represent the company staff fairly.</p>
+  </div>
+
+  <div class="mat2x2 c2">
+    <div class="mh">Strength</div>
+    <div class="mh">Catch</div>
+
+    <div class="cell"><strong>The most representative sampling method</strong> — every subgroup appears in the sample in its true proportion.</div>
+    <div class="cell">Participants selected this way <strong>can still refuse to take part</strong>, which can distort the final sample. It is also time consuming to organise.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：stratified 三步口诀</strong><br>
+    <strong>一分（divide）→ 二算（calculate percentages）→ 三抽（random select proportionally）。</strong><br>
+    例：总体 50% 儿童 / 20% 青少年 → 样本也必须是 50% / 20%。公司研究：职员多、经理少，就多抽职员、少抽经理。<br>
+    为什么它最公平？<strong>总体里各占几成，样本里就各占几成</strong>——总体的小型复制品。但要记住「三抽」后面还藏着一句：被选中的人<strong>仍可能拒绝参加</strong>。
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Random Sampling</h2>
+
+  <p><strong>A random sampling technique should ensure that everyone has an equal chance of being selected.</strong> The textbook gives two concrete ways to achieve this:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Computer-generated numbers</h4>
+      <p>Computers can produce random sequences of numbers. Every person in the target population is <strong>assigned a number</strong>, and the computer-generated numbers select the sample where the numbers correspond.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>The hat method</h4>
+      <p>A simpler way: place the <strong>names of every member of the target population into a hat</strong>, shuffle them, and draw at random. Then contact everyone drawn to see if they wish to take part.</p>
+    </div>
+  </div>
+
+  <div class="mat2x2 c2">
+    <div class="mh">What it promises</div>
+    <div class="mh">Where it breaks</div>
+
+    <div class="cell">Random sampling <strong>should</strong> result in a representative sample — no researcher's hand ever picked who got in.</div>
+    <div class="cell">You <strong>can select an unrepresentative sample at random, too</strong> — chance has no memory. And even a representative list needs <strong>consent</strong>: anyone who declines to take part leaves you with an unrepresentative final sample.</div>
+  </div>
+
+  <div class="exam-tip">
+    <h4>Exam tip — time cost</h4>
+    <p>Similar to stratified sampling, <strong>random sampling is time consuming</strong> — the researcher must obtain a full list of the target population, select randomly, and then contact each person selected to ask for consent.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：random = 抽签，为什么还不够？</strong><br>
+    每人机会均等，研究者手不沾——听起来最公平。但两个漏洞：<br>
+    <strong>运气会歪</strong>：抽签也可能恰好抽出一屋子同款人（representative 不保证）；<br>
+    <strong>拒绝会歪</strong>：抽中的人有权说不来，最后到场的样本就变了形。<br>
+    一句话：<strong>随机保证的是「机会」，不是「结果」。</strong>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Opportunity Sampling</h2>
+
+  <p><strong>An opportunity sample makes use of participants who are readily available by asking them to take part.</strong> Two textbook pictures of this:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>The student common room</h4>
+      <p>A researcher walks into a student common room and <strong>asks the people there</strong> to take part. Whoever happens to be in the room at the time is the sample.</p>
+    </div>
+    <div class="compare-card">
+      <h4>The street</h4>
+      <p>Or <strong>investigating passers-by in a street</strong>: whoever walks past and agrees becomes a participant. Again — availability decides, not the population's characteristics.</p>
+    </div>
+  </div>
+
+  <div class="mat2x2 c2">
+    <div class="mh">Why researchers use it</div>
+    <div class="mh">What it costs</div>
+
+    <div class="cell">It is the <strong>quickest and easiest</strong> technique — no lists, no strata, no follow-up letters. The people are simply there.</div>
+    <div class="cell">The researcher has <strong>limited control over who is recruited</strong>: not everyone in the target population has an equal chance of being selected, because they may not be available at the time. <strong>Asking people directly can also be unethical, as it puts pressure on them to participate.</strong></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：opportunity = 「顺手抓人」</strong><br>
+    谁在 common room、谁路过街头，就问谁。<strong>省时省力</strong>是它唯一的王牌。<br>
+    代价两个：样本歪（在场的 ≠ 总体的缩影）+ 道德压力（当面开口，人家不好意思拒绝）。<br>
+    一句话：<strong>方便换来的，都是代表性欠的债。</strong>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Volunteer Sampling</h2>
+
+  <p><strong>Self-selected participants</strong> can be recruited by <strong>placing an advert in a newspaper or a student common room</strong>. Volunteers are <em>self-selecting</em>: they choose to take part — they are not approached and asked by a researcher.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Opportunity sampling approaches the available; volunteer sampling lets people come forward">
+      <defs>
+        <marker id="saAr3" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0,0 L9,4.5 L0,9 Z" fill="#1d4ed8"/>
+        </marker>
+        <marker id="saAr4" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0,0 L9,4.5 L0,9 Z" fill="#15803d"/>
+        </marker>
+      </defs>
+      <text x="340" y="26" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#1e293b">Who moves towards whom?</text>
+
+      <!-- left: opportunity -->
+      <rect x="35" y="48" width="290" height="196" rx="12" fill="#eff6ff" stroke="#93c5fd"/>
+      <text x="180" y="74" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#1d4ed8">OPPORTUNITY</text>
+      <text x="180" y="92" text-anchor="middle" font-family="Arial" font-size="11" fill="#475569">the researcher goes to the people</text>
+      <circle cx="90" cy="150" r="14" fill="#1d4ed8"/>
+      <text x="90" y="186" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#1e293b">researcher</text>
+      <line x1="110" y1="148" x2="196" y2="140" stroke="#1d4ed8" stroke-width="2.5" marker-end="url(#saAr3)"/>
+      <g fill="#94a3b8">
+        <circle cx="215" cy="130" r="11"/><circle cx="250" cy="122" r="11"/>
+        <circle cx="222" cy="168" r="11"/><circle cx="258" cy="160" r="11"/>
+      </g>
+      <text x="240" y="200" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#64748b">whoever is there, right now</text>
+      <text x="180" y="230" text-anchor="middle" font-family="Arial" font-size="10.5" font-weight="700" fill="#b91c1c">pressure risk: asked face to face</text>
+
+      <!-- right: volunteer -->
+      <rect x="355" y="48" width="290" height="196" rx="12" fill="#f0fdf4" stroke="#86efac"/>
+      <text x="500" y="74" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#15803d">VOLUNTEER</text>
+      <text x="500" y="92" text-anchor="middle" font-family="Arial" font-size="11" fill="#475569">the people come to the researcher</text>
+      <rect x="450" y="128" width="110" height="42" rx="8" fill="#ffffff" stroke="#4ade80"/>
+      <text x="505" y="146" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#1e293b">"Participants</text>
+      <text x="505" y="160" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#1e293b">wanted — advert"</text>
+      <line x1="430" y1="150" x2="444" y2="150" stroke="#15803d" stroke-width="2.5" marker-end="url(#saAr4)"/>
+      <g fill="#94a3b8">
+        <circle cx="385" cy="118" r="11"/><circle cx="395" cy="145" r="11"/><circle cx="410" cy="172" r="11"/>
+      </g>
+      <text x="500" y="200" text-anchor="middle" font-family="Arial" font-size="10.5" fill="#64748b">whoever saw the advert and had time</text>
+      <text x="500" y="230" text-anchor="middle" font-family="Arial" font-size="10.5" font-weight="700" fill="#15803d">more ethical: nobody was put on the spot</text>
+    </svg>
+  </div>
+
+  <div class="mat2x2 c2">
+    <div class="mh">Strength</div>
+    <div class="mh">Weakness</div>
+
+    <div class="cell">Considered a <strong>more ethical sampling method</strong> — nobody is approached and put under pressure; people decide for themselves.</div>
+    <div class="cell">The researcher has <strong>no control over who volunteers</strong>: a certain type of participant may choose to take part, and only those who <strong>see the advert and have the time</strong> will respond. This can result in a <strong>sample bias which limits the generalisability</strong> of the study conclusions.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：volunteer = 「贴广告等人报名」</strong><br>
+    道德上最舒服：<strong>没人被当面施压</strong>，报名全凭自愿。<br>
+    但报名的人自带滤镜：有空的、看到广告的、对话题有强观点的——往往是「某一类人」。<br>
+    对比记忆：<strong>opportunity 是研究者走向人（顺手抓），volunteer 是人走向研究者（看广告）。方向相反，代价各有不同。</strong>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. The Four Compared</h2>
+
+  <div class="mat2x2">
+    <div class="mh">Technique</div>
+    <div class="mh">How it works</div>
+    <div class="mh">Main weakness</div>
+
+    <div class="mv">Stratified</div>
+    <div class="cell">Divide into subgroups → calculate percentages → randomly select proportionate numbers.</div>
+    <div class="cell">Time consuming; those selected may still refuse to take part.</div>
+
+    <div class="mv">Random</div>
+    <div class="cell">Everyone has an equal chance — computer-generated numbers or names in a hat.</div>
+    <div class="cell">Chance can still produce an unrepresentative sample; refusals distort it; time consuming.</div>
+
+    <div class="mv">Opportunity</div>
+    <div class="cell">Ask whoever is readily available — common room, street.</div>
+    <div class="cell">Unequal chance of selection; direct asking can be unethical (pressure to participate).</div>
+
+    <div class="mv">Volunteer</div>
+    <div class="cell">Advertise; participants self-select by responding.</div>
+    <div class="cell">Only certain types of people volunteer — sample bias limits generalisability.</div>
+  </div>
+
+  <p>Read the table twice and a pattern appears: <strong>every move away from stratified buys convenience and pays in representativeness.</strong> Stratified is the gold standard; random keeps fairness but leaves results to chance; opportunity and volunteer trade the most representativeness for the least effort.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：一张表压住整章</strong><br>
+    考试时按需取用：<strong>问「how」→ 背 stratified 三步；问「define」→ 方法名 + 例子；问「weakness」→ 从最后一列取一条并落到社会心理学场景。</strong><br>
+    记忆主线一句话：<strong>公平度：stratified &gt; random &gt; opportunity ≈ volunteer；方便度正好反过来。</strong>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Spotting Sampling Bias</h2>
+
+  <p>The textbook's Activity 4 asks you to identify the sampling bias in each scenario — and to suggest its likely impact on the conclusions. This is exactly the skill the exam rewards. Work through them, then reveal:</p>
+
+  <div class="q-row">
+    <p class="q-stem"><strong>(a)</strong> A researcher recruits student participants in the canteen at lunchtime to find out about attitudes towards A level reforms.</p>
+    <button class="xp-btn" onclick="revealAns('bias-a')">Reveal</button>
+    <div class="answer-box" id="bias-a"><p>Opportunity sampling: only students who happen to be in the canteen at lunchtime are recruited, so students who avoid the canteen have no chance of selection. Impact: the sample over-represents one type of student, so conclusions about <em>all</em> students' attitudes to A level reforms may not generalise.</p></div>
+  </div>
+
+  <div class="q-row">
+    <p class="q-stem"><strong>(b)</strong> Participants volunteer to take part in a study about career choices by responding to an advert in a women's magazine.</p>
+    <button class="xp-btn" onclick="revealAns('bias-b')">Reveal</button>
+    <div class="answer-box" id="bias-b"><p>Volunteer sampling with a heavily skewed readership: the advert reaches the magazine's readers, and only they can respond. Impact: one demographic (e.g. by gender and interests) is over-represented, so conclusions about career choices in the wider population are limited.</p></div>
+  </div>
+
+  <div class="q-row">
+    <p class="q-stem"><strong>(c)</strong> A researcher uses the telephone directory to gather a sample of participants for a study on health-related behaviour.</p>
+    <button class="xp-btn" onclick="revealAns('bias-c')">Reveal</button>
+    <div class="answer-box" id="bias-c"><p>Random-ish selection from a flawed frame: people without listed numbers (or with no landline) have no chance of selection. Impact: households unrepresented by the directory may differ systematically in age, income or lifestyle — biasing conclusions about health-related behaviour.</p></div>
+  </div>
+
+  <div class="q-row">
+    <p class="q-stem"><strong>(d)</strong> Attitudes towards a new school uniform policy are gathered from students recruited from a school common room.</p>
+    <button class="xp-btn" onclick="revealAns('bias-d')">Reveal</button>
+    <div class="answer-box" id="bias-d"><p>Opportunity sampling again: common-room users are over-represented; students who spend breaks elsewhere are missed. Impact: if common-room users share habits or year groups, the sample's attitudes may not represent the whole school's.</p></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：诊断抽样的三连问</strong><br>
+    ① 谁有<strong>机会</strong>被选中？（opportunity → 在场的人；volunteer → 看到广告的人；random → 名单上的人；stratified → 各子群按比例）<br>
+    ② 谁<strong>没有</strong>机会？（没去食堂的、不看那本杂志的、没登记电话的）<br>
+    ③ 缺的那批人，观点会不会<strong>系统性</strong>不同？会 → 结论推广受限（limited generalisability）。
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Exam Focus</h2>
+
+  <p>Sampling questions come in two shapes, and the textbook gives a scoring rule for each:</p>
+
+  <div class="exam-tip">
+    <h4>Shape 1 — "Describe how…" (the how question)</h4>
+    <p>If asked to describe <strong>'how'</strong> a sampling technique is used, <strong>treat it as a process: firstly, secondly, thirdly</strong>. This ensures you access the available marks. The model answer is the Crystal canteen question in 1.2.1's Exam Lab — stratified in exactly three steps.</p>
+  </div>
+
+  <div class="exam-tip">
+    <h4>Shape 2 — "Define…" (the definition question)</h4>
+    <p>If asked to <strong>define</strong> a sampling method, you gain more marks by giving an example. Model from the textbook: <em>"Opportunity sampling uses participants who are available at the time, for example gathering students who are available in the common room at the time of the study and who agree to take part when asked."</em> Structure: <strong>definition → "for example" → concrete scene.</strong></p>
+  </div>
+
+  <div class="blue-box">
+    <h4>Why sampling questions dominate social psychology papers</h4>
+    <p>Every classic social study made a sampling decision you can be asked about: Milgram's newspaper advert (<strong>volunteer</strong> sampling — which is why his sample was self-selected), Asch's student participants (<strong>opportunity</strong> sampling). When you evaluate a study, sampling is one of the fastest evaluation points available: name the technique, state the bias, limit the generalisability.</p>
+  </div>
+
+  <div class="mat2x2 c2">
+    <div class="mh">Universal strength</div>
+    <div class="mh">Universal weakness</div>
+
+    <div class="cell">Stratified: most representative, so conclusions generalise best to the target population.</div>
+    <div class="cell">Opportunity and volunteer: a certain type of person is over-represented — sampling bias limits generalisability.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：两种题型两套模板</strong><br>
+    <strong>Describe how（过程题）</strong>：firstly 分子群 → secondly 算百分比 → thirdly 按比例随机抽并邀请参加——三步拿满分。<br>
+    <strong>Define（定义题）</strong>：定义 + for example + 具体场景——多一个例子多一分。<br>
+    评价题万能链条：<strong>技术名 → 偏差 → 推广受限。</strong>
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Checkpoint</h2>
+
+  <div class="checkpoint">
+    <h4>8 quick questions — cover the notes first</h4>
+
+    <div class="q-row">
+      <p class="q-stem">Q1. The population of people being investigated by a study is called the…</p>
+      <label><input type="radio" name="q1" value="a"> sample</label>
+      <label><input type="radio" name="q1" value="b"> target population</label>
+      <label><input type="radio" name="q1" value="c"> stratum</label>
+    </div>
+
+    <div class="q-row">
+      <p class="q-stem">Q2. A sample where one type of participant is over-represented shows…</p>
+      <label><input type="radio" name="q2" value="a"> sampling bias</label>
+      <label><input type="radio" name="q2" value="b"> response bias</label>
+      <label><input type="radio" name="q2" value="c"> researcher effects</label>
+    </div>
+
+    <div class="q-row">
+      <p class="q-stem">Q3. Which technique is described as the most representative sampling method?</p>
+      <label><input type="radio" name="q3" value="a"> opportunity</label>
+      <label><input type="radio" name="q3" value="b"> volunteer</label>
+      <label><input type="radio" name="q3" value="c"> stratified</label>
+    </div>
+
+    <div class="q-row">
+      <p class="q-stem">Q4. Put stratified sampling's steps in order.</p>
+      <label><input type="radio" name="q4" value="a"> calculate percentages → divide into subgroups → random select</label>
+      <label><input type="radio" name="q4" value="b"> divide into subgroups → calculate percentages → randomly select proportionate numbers</label>
+      <label><input type="radio" name="q4" value="c"> random select → divide → calculate</label>
+    </div>
+
+    <div class="q-row">
+      <p class="q-stem">Q5. Names of every member of the target population placed in a hat illustrates…</p>
+      <label><input type="radio" name="q5" value="a"> stratified sampling</label>
+      <label><input type="radio" name="q5" value="b"> random sampling</label>
+      <label><input type="radio" name="q5" value="c"> opportunity sampling</label>
+    </div>
+
+    <div class="q-row">
+      <p class="q-stem">Q6. "Only those who see the advert and have the time participate." This criticism targets…</p>
+      <label><input type="radio" name="q6" value="a"> volunteer sampling</label>
+      <label><input type="radio" name="q6" value="b"> stratified sampling</label>
+      <label><input type="radio" name="q6" value="c"> random sampling</label>
+    </div>
+
+    <div class="q-row">
+      <p class="q-stem">Q7. Which sampling method is considered more ethical because nobody is approached and put under pressure?</p>
+      <label><input type="radio" name="q7" value="a"> opportunity</label>
+      <label><input type="radio" name="q7" value="b"> volunteer</label>
+      <label><input type="radio" name="q7" value="c"> random</label>
+    </div>
+
+    <div class="q-row">
+      <p class="q-stem">Q8. Even a truly random sample can end up unrepresentative because…</p>
+      <label><input type="radio" name="q8" value="a"> computers make mistakes</label>
+      <label><input type="radio" name="q8" value="b"> chance can select an unrepresentative sample, and selected people may decline consent</label>
+      <label><input type="radio" name="q8" value="c"> stratified sampling is always used instead</label>
+    </div>
+
+    <button class="xp-btn" onclick="checkQuiz()">Check my answers</button>
+    <div class="xp-result" id="quizResult"></div>
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Exam Lab</h2>
+
+  <div class="exam-practice">
+    <h4>Q1 — Carlos's pedestrians, part two (from the textbook)</h4>
+    <p class="small">Carlos wants to test how compliant pedestrians are to 'keep off the grass' signs in a local park.</p>
+
+    <div class="q-row">
+      <p class="q-stem"><strong>(a)</strong> Explain how Carlos would recruit participants using opportunity sampling. (2 marks)</p>
+      <button class="xp-btn" onclick="revealAns('lab1a')">Reveal answer</button>
+      <div class="answer-box" id="lab1a"><p>Carlos would go to the local park and ask the pedestrians who are there at the time to take part in his questionnaire. Opportunity sampling uses whoever is readily available — the people in the park when he is — rather than selecting from a full list of the target population.</p></div>
+    </div>
+
+    <div class="q-row">
+      <p class="q-stem"><strong>(b)</strong> Explain one weakness of opportunity sampling for Carlos. (2 marks)</p>
+      <button class="xp-btn" onclick="revealAns('lab1b')">Reveal answer</button>
+      <div class="answer-box" id="lab1b"><p>Carlos has limited control over who is recruited: only pedestrians available at that time are selected, so not everyone in the target population has an equal chance of being chosen. The sample may be unrepresentative — for example, people who visit the park at other times or who avoid it — limiting the generalisability of his conclusions about compliance.</p></div>
+    </div>
+  </div>
+
+  <div class="exam-practice">
+    <h4>Q2 — the Crystal stratified question, replayed for sampling (from the textbook)</h4>
+    <p class="small">Crystal must send out questionnaires asking opinions about the office canteen food. There are 100 employees who use the canteen. Describe how Crystal might gather a stratified sample of the employees. (3 marks)</p>
+    <button class="xp-btn" onclick="revealAns('lab2')">Reveal model answer</button>
+    <div class="answer-box" id="lab2"><p><strong>Firstly</strong>, Crystal would decide which subgroups exist in the office building, such as managers, clerks, cleaners. <strong>Secondly</strong>, she would calculate the percentage of managers, clerks and cleaners that represents the whole target population in the office building. <strong>Thirdly</strong>, she would randomly select the proportionate number of employees in each subgroup and ask if they would complete the questionnaire.</p><p class="small">Three steps, three marks — "firstly / secondly / thirdly" is the scoring frame.</p></div>
+  </div>
+
+  <div class="exam-practice">
+    <h4>Q3 — definition with example (the textbook's exam tip, applied)</h4>
+    <div class="q-row">
+      <p class="q-stem">Define volunteer sampling. (2 marks)</p>
+      <button class="xp-btn" onclick="revealAns('lab3')">Reveal model answer</button>
+      <div class="answer-box" id="lab3"><p>Volunteer sampling recruits self-selected participants who choose to take part — for example by placing an advert in a newspaper or a student common room, and recruiting those who respond. Nobody is approached and asked by the researcher.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><strong>sampling</strong><br>The way in which participants are selected for a study.</div>
+    <div class="glossary-item"><strong>target population</strong><br>The population of people being investigated by a study; the sample is recruited from it.</div>
+    <div class="glossary-item"><strong>representative sample</strong><br>A sample that represents the characteristics of the population well, allowing conclusions to be generalised back.</div>
+    <div class="glossary-item"><strong>generalisability</strong><br>The extent to which conclusions from the sample can explain the behaviour of the target population as a whole.</div>
+    <div class="glossary-item"><strong>sampling bias</strong><br>Over- or under-representation of a particular type of participant, making the sample unrepresentative.</div>
+    <div class="glossary-item"><strong>stratified sampling</strong><br>Divide the population into subgroups, calculate each subgroup's percentage, randomly select proportionate numbers. Most representative.</div>
+    <div class="glossary-item"><strong>strata</strong><br>The subgroups within the target population (e.g. managers / clerks / cleaners; 50% children / 20% teenagers).</div>
+    <div class="glossary-item"><strong>random sampling</strong><br>Everyone has an equal chance of selection — via computer-generated numbers or names in a hat.</div>
+    <div class="glossary-item"><strong>opportunity sampling</strong><br>Using participants who are readily available by asking them to take part (common room, street passers-by).</div>
+    <div class="glossary-item"><strong>volunteer sampling</strong><br>Self-selected participants recruited through an advert; more ethical but a certain type of person tends to volunteer.</div>
+    <div class="glossary-item"><strong>self-selecting</strong><br>Participants who choose to take part rather than being approached by the researcher.</div>
+    <div class="glossary-item"><strong>consent (in sampling)</strong><br>Even selected participants must agree to take part — refusals can leave the final sample unrepresentative.</div>
+  </div>
+</section>
+
+<div class="footer-note">1.2.5 Sampling Techniques · Social Psychology · previous: <a href="../1.2.1-questionnaires-and-interviews/">1.2.1 questionnaires and interviews</a> · next: <a href="../../index.html">back to course overview</a></div>
+
+  </main>
+</div>
+
+<button id="btt" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function () {
+  var baseFont = 16;
+
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark'; }
+  };
+
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  function show(id, html) {
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    el.innerHTML = html;
+    el.classList.add('show');
+  }
+
+  function verdict(ok, msg) {
+    return '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + msg + '</p>';
+  }
+
+  window.saGuess = function (btn, c) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === 'c');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var msg = ok
+      ? 'Exactly. Volunteers self-select — the people who respond tend to be those who care about the topic, so extreme opinions are over-represented.'
+      : 'The poster is the trap: volunteers choose to respond, usually because the topic matters to them, so a certain type of participant — often the passionate — is over-represented.';
+    show('res-guess', verdict(ok, msg));
+  };
+
+  var quizKey = { q1: 'b', q2: 'a', q3: 'c', q4: 'b', q5: 'b', q6: 'a', q7: 'b', q8: 'b' };
+  var quizWhy = {
+    q1: 'The target population is the population of people being investigated; the sample is recruited from it.',
+    q2: 'Sampling bias: an over- or under-representation of a particular type of participant makes the sample unrepresentative.',
+    q3: 'Stratified sampling — subgroups appear in the sample in their true proportions — is described as the most representative method.',
+    q4: 'Divide into subgroups, calculate the percentage of each, then randomly select the proportionate number from each subgroup.',
+    q5: 'The hat (or computer-generated numbers) is random sampling: everyone in the target population has an equal chance.',
+    q6: 'Volunteer sampling: only those who see the advert and have the time respond, so a certain type of participant may dominate.',
+    q7: 'Volunteer sampling — participants are not approached and asked, so nobody is put under pressure to participate.',
+    q8: 'Random selection does not guarantee a representative outcome: chance can misfire, and anyone selected who declines consent changes the final sample.'
+  };
+
+  window.checkQuiz = function () {
+    var el = document.getElementById('quizResult');
+    if (!el) { return; }
+    var score = 0;
+    var html = '';
+    Object.keys(quizKey).forEach(function (q) {
+      var sel = document.querySelector('input[name="' + q + '"]:checked');
+      var chosen = sel ? sel.value : null;
+      var ok = (chosen === quizKey[q]);
+      if (ok) { score++; }
+      html += '<p style="margin:6px 0"><strong>' + q.toUpperCase() + ':</strong> ' +
+        (chosen ? (ok ? '✅ correct' : '❌ not quite') : 'not answered') +
+        ' — ' + quizWhy[q] + '</p>';
+    });
+    el.innerHTML = '<p><span class="xp-verdict">Score: ' + score + ' / 8</span></p>' + html;
+    el.classList.add('show');
+    if (score === 8) { el.classList.add('ok'); } else { el.classList.remove('ok'); }
+  };
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.toggle('show'); }
+  };
+
+  var secs = document.querySelectorAll('.section');
+  var links = document.querySelectorAll('.sb-item a');
+  function highlight() {
+    var best = null;
+    var bestTop = -99999;
+    for (var i = 0; i < secs.length; i++) {
+      var r = secs[i].getBoundingClientRect();
+      if (r.top <= 140 && r.top > bestTop) { bestTop = r.top; best = secs[i]; }
+    }
+    if (!best && secs.length) { best = secs[0]; }
+    for (var j = 0; j < links.length; j++) { links[j].classList.remove('sb-active'); }
+    if (best) {
+      var target = best.getAttribute('id');
+      for (var k = 0; k < links.length; k++) {
+        if (links[k].getAttribute('href') === '#' + target) { links[k].classList.add('sb-active'); }
+      }
+    }
+  }
+  window.addEventListener('scroll', highlight);
+  highlight();
+
+  var btt = document.getElementById('btt');
+  window.addEventListener('scroll', function () {
+    if (!btt) { return; }
+    if (window.scrollY > 400) { btt.classList.add('show'); } else { btt.classList.remove('show'); }
+  });
+})();
+</script>
+</body>
+</html>

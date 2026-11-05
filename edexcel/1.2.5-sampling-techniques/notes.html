@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1.2.5 Sampling Techniques — Student Notes Workbook</title>
+<style>
+@page { size: A4; margin: 13mm 12mm 15mm 12mm; }
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif; color:#1a1a1a; font-size:10pt; line-height:1.5; margin:0; background:#f3f3f3; }
+.page { background:#fff; max-width: 800px; margin: 0 auto 10px auto; padding: 10mm 11mm; page-break-after: always; position: relative; min-height: 248mm; }
+@media print { body { background:#fff; } .page { margin:0; padding:0; max-width:none; box-shadow:none; } }
+.pg-head { display:flex; justify-content:space-between; align-items:baseline; border-bottom: 2px solid #333; padding-bottom:4px; margin-bottom:10px; }
+.pg-head .t { font-size:11.5pt; font-weight:700; }
+.pg-head .r { font-size:8pt; color:#777; letter-spacing:.04em; }
+.pg-foot { position:absolute; bottom:4mm; left:0; right:0; text-align:center; font-size:8pt; color:#999; }
+.sec { font-size:10pt; font-weight:700; margin:12px 0 5px 0; padding-left:7px; border-left:3.5px solid #444; }
+.sec:first-of-type { margin-top:2px; }
+.sub { font-size:9.5pt; font-weight:700; margin:9px 0 3px 0; }
+.bl { display:inline-block; border-bottom:1px solid #555; height:1em; vertical-align:baseline; min-width:60px; margin:0 2px; }
+.hint { font-size:8.5pt; color:#666; }
+.hint::before { content:"（"; } .hint::after { content:"）"; }
+table.n { width:100%; border-collapse:collapse; margin:6px 0 9px 0; font-size:9pt; }
+table.n th, table.n td { border:1px solid #999; padding:4px 6px; text-align:left; vertical-align:top; }
+table.n th { background:#e9e9e9; font-size:8.8pt; }
+td.lbl { background:#f4f4f4; width:22%; font-weight:600; }
+.box { border:1px solid #aaa; border-left:4px solid #555; padding:6px 9px; margin:7px 0; border-radius:3px; }
+.box.grey { border:1px dashed #999; border-left:4px dashed #999; background:#fafafa; }
+.box.purple { border-left-color:#7c3aed; background:#faf5ff; }
+.box.blue { border-left-color:#2563eb; background:#f5f9ff; }
+.box.green { border-left-color:#16a34a; background:#f3faf5; }
+.box.orange { border-left-color:#ea580c; background:#fff7ed; }
+.box .bx-t { font-size:9.3pt; font-weight:700; margin-bottom:3px; }
+.wl { border-bottom:1px solid #bbb; height:24pt; }
+.wl.s { height:18pt; }
+ul.tight { margin:4px 0 8px 0; padding-left:17px; }
+ul.tight li { margin-bottom:3px; }
+ol.tight { margin:4px 0 8px 0; padding-left:17px; }
+ol.tight li { margin-bottom:4px; }
+.chk { font-size:9.3pt; }
+.chk .c { display:inline-block; width:11px; height:11px; border:1.3px solid #555; margin-right:6px; vertical-align:-1px; }
+.q { font-style:italic; background:#f6f6f6; border:1px solid #ccc; padding:5px 9px; margin:5px 0; font-size:9.3pt; border-radius:3px; }
+.small { font-size:8.6pt; line-height:1.35; }
+.pg-tight table.n { font-size:8.5pt; margin:5px 0 7px 0; }
+.pg-tight table.n th, .pg-tight table.n td { padding:2.5px 5px; }
+.pg-tight .sub { margin:7px 0 2px 0; }
+.pg-tight .box { padding:5px 8px; margin:6px 0; }
+.pg-tight .wl { height:20pt; }
+.pg-tight .sec { margin:9px 0 4px 0; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="pg-head"><span class="t">1.2.5 Sampling Techniques — Student Notes Workbook</span><span class="r">TOPIC A · NOTES WORKBOOK</span></div>
+
+  <div class="box orange">
+    <div class="bx-t">What this workbook covers 本册讲什么</div>
+    You cannot study everyone — so the small group you <em>do</em> study must carry the weight for everyone else. This booklet builds the vocabulary (target population, representativeness, sampling bias), then walks the four techniques — <strong>stratified, random, opportunity, volunteer</strong> — each with its promise and its failure mode, and drills the two exam shapes: describe-how and define-with-example.
+  </div>
+
+  <div class="sec">How to use this booklet 怎么用</div>
+  <ol class="tight">
+    <li><strong>Fill it in as you go</strong> — check the answer key (pp. 19–20) after each page.</li>
+    <li><strong>Page 4–5 (stratified three steps) and page 12 (firstly/secondly/thirdly) matter most.</strong> The 'how' question is a reliable 3-marker — redo it from memory, under time.</li>
+  </ol>
+
+  <div class="sec">Content map 内容地图</div>
+  <table class="n">
+    <tr><th style="width:10%;">Page</th><th style="width:34%;">Topic</th><th>What you must be able to do afterwards</th></tr>
+    <tr><td class="lbl">p.2–3</td><td>Vocabulary 词汇</td><td>Define sampling, target population, representative, sampling bias</td></tr>
+    <tr><td class="lbl">p.4–5</td><td>Stratified 分层</td><td>Recite the three steps; compute proportions; state the caveat</td></tr>
+    <tr><td class="lbl">p.6</td><td>Random 随机</td><td>Two ways to do it; two ways it breaks</td></tr>
+    <tr><td class="lbl">p.7</td><td>Opportunity 机会</td><td>Define with example; ethics pressure point</td></tr>
+    <tr><td class="lbl">p.8</td><td>Volunteer 自愿</td><td>Self-selection; why ethical but biased</td></tr>
+    <tr><td class="lbl">p.9</td><td>Four compared 对照</td><td>Rank all four on representativeness vs convenience</td></tr>
+    <tr><td class="lbl">p.10–11</td><td>Bias diagnosis 诊断</td><td>Spot the bias and state its impact (textbook Activity 4)</td></tr>
+    <tr><td class="lbl">p.12–15</td><td>Exam skills 考试</td><td>how-type three steps; define+example; Carlos set; cloze evaluation</td></tr>
+    <tr><td class="lbl">p.16–18</td><td>8-mark &amp; brain dump 演练</td><td>Plan and write the evaluation; dump every term from memory</td></tr>
+    <tr><td class="lbl">p.19–20</td><td>Answer key 答案速查</td><td>Mark honestly, then re-write wrong answers in full</td></tr>
+  </table>
+
+  <div class="sec">Revision tracker 复习打卡</div>
+  <p class="chk"><span class="c"></span>p.2–3 vocabulary　<span class="c"></span>p.4–5 stratified　<span class="c"></span>p.6–8 other three　<span class="c"></span>p.9 comparison　<span class="c"></span>p.10–11 bias diagnosis　<span class="c"></span>p.12–15 exam skills　<span class="c"></span>p.16–18 practice</p>
+
+  <div class="box purple">
+    <div class="bx-t">The whole topic in one sentence 一句话总结</div>
+    A sampling technique is the rule that decides <strong>who gets to stand in for everyone</strong>: stratified builds a miniature of the population (most representative), random gives equal chances but leaves the outcome to luck, and opportunity and volunteer buy convenience at the price of <strong>sampling bias</strong> — which limits how far conclusions can be <strong>generalised</strong> back to the target population.
+  </div>
+
+  <div class="pg-foot">Page 1 of 20</div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="pg-head"><span class="t">1 · Population and sample</span><span class="r">1.2.5 SAMPLING TECHNIQUES</span></div>
+
+  <div class="sec">Fill the gap 填空</div>
+  <div class="box blue">
+    <p><strong>Sampling</strong> is the way in which participants are <span class="bl"></span> for a study.</p>
+    <p>A <strong>target population</strong> is the population of people being <span class="bl"></span> by a study.</p>
+    <p>It is unlikely that a whole population can be studied, so a <span class="bl"></span> of the population needs to be gathered using a <span class="bl"></span> technique.</p>
+  </div>
+
+  <div class="sec">Hospital example 应用</div>
+  <p class="small">If you are investigating attitudes about health services at a local hospital, the target population will be <span class="bl"></span>. A sample will be recruited from this target population using a sampling technique.</p>
+
+  <div class="sec">The aim 目的</div>
+  <div class="box green">
+    <p>The aim of a sampling method is to select a <span class="bl"></span> sample — one that represents the <span class="bl"></span> of the population well — so conclusions can be <span class="bl"></span> back to explain the behaviour of the target population as a whole.</p>
+  </div>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 抽样在解决什么</div>
+    研究者想说的是「<strong>全体</strong>怎么想」，手里却只有「<strong>被选中的几十人</strong>」的数据。<br>
+    中间隔一座桥：<strong>样本像不像总体（representativeness）</strong>。<br>
+    桥稳 → 几十人的结论推广给全体；桥歪 → 结论只属于那几十人。
+  </div>
+
+  <div class="pg-foot">Page 2 of 20</div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="pg-head"><span class="t">2 · Sampling bias</span><span class="r">1.2.5 SAMPLING TECHNIQUES</span></div>
+
+  <div class="sec">Definition 定义</div>
+  <div class="box blue">
+    <p>If the sample gathered is not representative, because of an <span class="bl"></span> or <span class="bl"></span>-representation of a particular type of participant in the sample, a sampling <span class="bl"></span> will occur.</p>
+  </div>
+
+  <div class="sec">What decides the technique 什么决定技术选择</div>
+  <p class="small">The technique used will depend on the <span class="bl"></span> of research being conducted and the <span class="bl"></span> of the participants.</p>
+
+  <div class="sec">Quick sort 快速判断</div>
+  <table class="n">
+    <tr><th>Statement</th><th style="width:34%;">Representative / biased / can't tell?</th></tr>
+    <tr><td>A sample of 100 drawn by lottery from the full school roll</td><td></td></tr>
+    <tr><td>A sample of 100 students who all attend the same chess club</td><td></td></tr>
+    <tr><td>A sample where 70% are boys although the school is 50/50</td><td></td></tr>
+  </table>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 偏差 = 长得不像</div>
+    <strong>sampling bias</strong>：样本里某类人<strong>太多或太少</strong>（over-/under-represented）。<br>
+    检验只问一句：<strong>样本长得像不像总体？</strong>不像 → 有偏差 → 推广受限。<br>
+    注意：bias 是<strong>结果</strong>（样本变形），不是方法名——任何技术都可能产出 bias。
+  </div>
+
+  <div class="pg-foot">Page 3 of 20</div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <div class="pg-head"><span class="t">3 · Stratified sampling: the three steps</span><span class="r">1.2.5 SAMPLING TECHNIQUES</span></div>
+
+  <div class="sec">Learn the chain 背链条</div>
+  <div class="box blue">
+    <p><strong>Firstly</strong>, <span class="bl"></span> the target population into its <span class="bl"></span> (strata).</p>
+    <p><strong>Secondly</strong>, calculate the <span class="bl"></span> of members of each subgroup.</p>
+    <p><strong>Thirdly</strong>, <span class="bl"></span> select a <span class="bl"></span> number of each subgroup.</p>
+  </div>
+
+  <div class="sec">Do the maths 算一算</div>
+  <table class="n">
+    <tr><th>Subgroup</th><th style="width:20%;">% of population</th><th style="width:26%;">% of a sample of 40</th></tr>
+    <tr><td>Children</td><td>50%</td><td></td></tr>
+    <tr><td>Teenagers</td><td>20%</td><td></td></tr>
+    <tr><td>Adults</td><td>30%</td><td></td></tr>
+  </table>
+
+  <div class="sec">The workplace example 职场例子</div>
+  <p class="small">Researching stress in a company: find how many staff occupy each role — office clerks, managers, canteen staff, cleaners. There may be <span class="bl"></span> clerks than managers, so <span class="bl"></span> clerks need to be recruited than managers, to represent the company staff more <span class="bl"></span>.</p>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 三步口诀</div>
+    <strong>一分（divide）→ 二算（percentages）→ 三抽（random proportionally）。</strong><br>
+    总体里各占几成，样本里就各占几成——<strong>总体的迷你复制品</strong>，所以它是最有代表性的方法。
+  </div>
+
+  <div class="pg-foot">Page 4 of 20</div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <div class="pg-head"><span class="t">4 · Stratified: the catch</span><span class="r">1.2.5 SAMPLING TECHNIQUES</span></div>
+
+  <div class="sec">Weigh it up 权衡</div>
+  <table class="n">
+    <tr><th style="width:50%;">Strength</th><th>Weaknesses</th></tr>
+    <tr><td></td><td>a researcher still needs to ask those selected to take part — and they may <span class="bl"></span> to take part</td></tr>
+    <tr><td>most representative sampling method</td><td></td></tr>
+    <tr><td></td><td>time consuming to organise</td></tr>
+  </table>
+
+  <div class="sec">Figure 4.2 in words 图解</div>
+  <p class="small">Population → <span class="bl"></span> (subgroups with percentages) → <span class="bl"></span> samples from each stratum. Stratified sampling ensures that each different part of the population is <span class="bl"></span> represented in the sample.</p>
+
+  <div class="sec">Exam pattern preview 考法预览</div>
+  <div class="box green">
+    <p class="small">"Describe how Crystal might gather a stratified sample of the employees in the office building. (3 marks)" — the full walkthrough is on page 12. Here, just note: the marks live in the <strong>process words</strong> firstly / secondly / thirdly.</p>
+  </div>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 金标准也有裂缝</div>
+    分层法最像总体，但<strong>被选中 ≠ 会参加</strong>：拒绝的人一多，迷你复制品又变形了。<br>
+    加上它费时费力——这就是为什么考题爱问「怎么操作」：因为每一步都有分。
+  </div>
+
+  <div class="pg-foot">Page 5 of 20</div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page">
+  <div class="pg-head"><span class="t">5 · Random sampling</span><span class="r">1.2.5 SAMPLING TECHNIQUES</span></div>
+
+  <div class="sec">Definition 定义</div>
+  <div class="box blue">
+    <p>A random sampling technique should ensure that everyone has an <span class="bl"></span> chance of being <span class="bl"></span>.</p>
+  </div>
+
+  <div class="sec">Two ways to do it 两种做法</div>
+  <table class="n">
+    <tr><th>Method</th><th style="width:52%;">How it works (fill in)</th></tr>
+    <tr><td class="lbl">Computer numbers</td><td>every person is <span class="bl"></span> a number; computer-generated numbers select the sample where the numbers <span class="bl"></span></td></tr>
+    <tr><td class="lbl">The hat</td><td>place the <span class="bl"></span> of every member of the target population into a hat, <span class="bl"></span> them, and draw at random</td></tr>
+  </table>
+
+  <div class="sec">Where it breaks 两个裂缝</div>
+  <p class="small">① You can select an <span class="bl"></span> sample at random, too — chance has no memory.<br>② Even a representative list needs <span class="bl"></span> from each participant; those who <span class="bl"></span> to take part leave you with an unrepresentative final sample.<br>③ Like stratified sampling, random sampling is <span class="bl"></span> consuming.</p>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 随机保证机会，不保证结果</div>
+    抽签人人机会均等、研究者手不沾——听着最公平。<br>
+    但<strong>运气会歪</strong>（恰好抽出一屋子同款人）+ <strong>拒绝会歪</strong>（不来的都长一个样）。<br>
+    评价题写这两条裂缝，比背定义更值钱。
+  </div>
+
+  <div class="pg-foot">Page 6 of 20</div>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page">
+  <div class="pg-head"><span class="t">6 · Opportunity sampling</span><span class="r">1.2.5 SAMPLING TECHNIQUES</span></div>
+
+  <div class="sec">Definition 定义</div>
+  <div class="box blue">
+    <p>An opportunity sample makes use of participants who are readily <span class="bl"></span> by <span class="bl"></span> them to take part.</p>
+  </div>
+
+  <div class="sec">Two textbook pictures 两个画面</div>
+  <p class="small">① going to a <span class="bl"></span> <span class="bl"></span> and asking people to take part; ② investigating <span class="bl"></span>-by in a street.</p>
+
+  <div class="sec">Weigh it up 权衡</div>
+  <table class="n">
+    <tr><th style="width:50%;">Gain</th><th>Costs</th></tr>
+    <tr><td></td><td>limited control over who is <span class="bl"></span></td></tr>
+    <tr><td>quickest and easiest technique</td><td></td></tr>
+    <tr><td></td><td>not everyone has an <span class="bl"></span> chance of selection — they may not be <span class="bl"></span> at the time</td></tr>
+    <tr><td></td><td>asking people directly can be <span class="bl"></span> — it puts <span class="bl"></span> on them to participate</td></tr>
+  </table>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 顺手抓人</div>
+    谁在 common room、谁路过街头就问谁——<strong>方便是唯一的王牌</strong>。<br>
+    代价：样本歪（在场的 ≠ 总体缩影）+ 道德压力（当面开口，人难拒绝）。<br>
+    一句话：<strong>方便换来的，都是代表性欠的债。</strong>
+  </div>
+
+  <div class="pg-foot">Page 7 of 20</div>
+</div>
+
+<!-- PAGE 8 -->
+<div class="page">
+  <div class="pg-head"><span class="t">7 · Volunteer sampling</span><span class="r">1.2.5 SAMPLING TECHNIQUES</span></div>
+
+  <div class="sec">Definition 定义</div>
+  <div class="box blue">
+    <p><span class="bl"></span>-selected participants can be recruited by placing an <span class="bl"></span> in a newspaper or a student common room. Volunteers are self-selecting because they <span class="bl"></span> to take part — they are not <span class="bl"></span> and asked by a researcher.</p>
+  </div>
+
+  <div class="sec">Weigh it up 权衡</div>
+  <table class="n">
+    <tr><th style="width:50%;">Gain</th><th>Costs</th></tr>
+    <tr><td>considered a more <span class="bl"></span> sampling method — nobody is put on the spot</td><td></td></tr>
+    <tr><td></td><td>the researcher has no <span class="bl"></span> over who volunteers</td></tr>
+    <tr><td></td><td>a certain <span class="bl"></span> of participant may choose to take part; only those who see the advert and have the <span class="bl"></span> respond</td></tr>
+    <tr><td></td><td>can result in sample <span class="bl"></span> which limits the <span class="bl"></span> of the conclusions</td></tr>
+  </table>
+
+  <div class="sec">Direction matters 方向感</div>
+  <p class="small">Opportunity: the researcher goes to the people. Volunteer: <span class="bl"></span>. The flow is reversed — and so is the bias.</p>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 贴广告等人报名</div>
+    道德上最舒服：<strong>没人被当面施压</strong>。<br>
+    但报名的人自带滤镜：有空的、看得到广告的、话题相关的——<strong>某一类人</strong>占多数。<br>
+    对比记忆：<strong>opportunity 人走向研究者？不，研究者走向人；volunteer 才是人走向研究者。</strong>
+  </div>
+
+  <div class="pg-foot">Page 8 of 20</div>
+</div>
+
+<!-- PAGE 9 -->
+<div class="page">
+  <div class="pg-head"><span class="t">8 · The four compared</span><span class="r">1.2.5 SAMPLING TECHNIQUES</span></div>
+
+  <div class="sec">The master table 总表</div>
+  <table class="n">
+    <tr><th style="width:16%;">Technique</th><th style="width:40%;">How it works</th><th>Main weakness</th></tr>
+    <tr><td class="lbl">Stratified</td><td></td><td></td></tr>
+    <tr><td class="lbl">Random</td><td></td><td></td></tr>
+    <tr><td class="lbl">Opportunity</td><td></td><td></td></tr>
+    <tr><td class="lbl">Volunteer</td><td></td><td></td></tr>
+  </table>
+
+  <div class="sec">Rank them 排序</div>
+  <p class="small">Representativeness (best → worst): <span class="bl"></span> &gt; <span class="bl"></span> &gt; <span class="bl"></span> ≈ <span class="bl"></span></p>
+  <p class="small">Convenience (easiest → hardest): <span class="bl"></span> ≈ <span class="bl"></span> &gt; <span class="bl"></span> &gt; <span class="bl"></span></p>
+
+  <div class="box purple">
+    <div class="bx-t">The pattern 规律</div>
+    <strong>Every move away from stratified buys convenience and pays in representativeness.</strong><br>
+    考试取用：问 how → 背 stratified 三步；问 define → 方法名 + 例子；问 weakness → 从总表取一条并落到社会心理学场景。
+  </div>
+
+  <div class="pg-foot">Page 9 of 20</div>
+</div>
+
+<!-- PAGE 10 -->
+<div class="page">
+  <div class="pg-head"><span class="t">9 · Spotting sampling bias I (textbook Activity 4)</span><span class="r">1.2.5 SAMPLING TECHNIQUES</span></div>
+
+  <div class="sec">Diagnose each scenario 逐题诊断</div>
+  <table class="n">
+    <tr><th style="width:52%;">Scenario</th><th>Technique</th><th style="width:26%;">Who is missed?</th></tr>
+    <tr><td>(a) Students recruited in the canteen at lunchtime — attitudes to A level reforms</td><td></td><td></td></tr>
+    <tr><td>(b) Volunteers respond to an advert in a women's magazine — career choices</td><td></td><td></td></tr>
+  </table>
+
+  <div class="sec">State the impact 写影响</div>
+  <p class="small">(a) Impact on conclusions: <span class="bl"></span></p>
+  <div class="wl s"></div>
+  <p class="small">(b) Impact on conclusions: <span class="bl"></span></p>
+  <div class="wl s"></div>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 三连问</div>
+    ① 谁有机会被选中？② 谁<strong>没有</strong>机会？③ 缺的那批人观点会不会<strong>系统性</strong>不同？<br>
+    会 → 结论推广受限（limited generalisability）——这句就是影响题的万能落点。
+  </div>
+
+  <div class="pg-foot">Page 10 of 20</div>
+</div>
+
+<!-- PAGE 11 -->
+<div class="page">
+  <div class="pg-head"><span class="t">10 · Spotting sampling bias II</span><span class="r">1.2.5 SAMPLING TECHNIQUES</span></div>
+
+  <div class="sec">Diagnose each scenario 逐题诊断</div>
+  <table class="n">
+    <tr><th style="width:52%;">Scenario</th><th>Technique / frame</th><th style="width:26%;">Who is missed?</th></tr>
+    <tr><td>(c) Sample gathered from the telephone directory — health-related behaviour</td><td></td><td></td></tr>
+    <tr><td>(d) Uniform-policy attitudes from a school common room</td><td></td><td></td></tr>
+  </table>
+
+  <div class="sec">State the impact 写影响</div>
+  <p class="small">(c) Impact on conclusions: <span class="bl"></span></p>
+  <div class="wl s"></div>
+  <p class="small">(d) Impact on conclusions: <span class="bl"></span></p>
+  <div class="wl s"></div>
+
+  <div class="sec">Link to the classics 呼应经典研究</div>
+  <p class="small">Milgram recruited through a newspaper advert → <span class="bl"></span> sampling → self-selected, so his sample over-represented people who respond to adverts. Asch used students available to him → <span class="bl"></span> sampling → students only, no older adults. Sampling is one of the fastest evaluation points in any social psychology essay.</p>
+
+  <div class="pg-foot">Page 11 of 20</div>
+</div>
+
+<!-- PAGE 12 -->
+<div class="page">
+  <div class="pg-head"><span class="t">11 · Exam skills I — the 'how' question</span><span class="r">1.2.5 SAMPLING TECHNIQUES</span></div>
+
+  <div class="sec">The rule 规则</div>
+  <p class="small">If you are asked to describe <strong>'how'</strong> a sampling technique is used, treat this as a <span class="bl"></span>: <span class="bl"></span>, <span class="bl"></span>, <span class="bl"></span>. This will ensure you access the available marks.</p>
+
+  <div class="sec">The Crystal question 原题</div>
+  <div class="q">Crystal has been asked by her employer to send out questionnaires asking opinions about whether the food served in the office canteen is good. There are 100 employees who use the canteen at lunchtime. Describe how Crystal might gather a stratified sample of the employees. (3 marks)</div>
+
+  <p class="small"><strong>Firstly</strong>, Crystal would <span class="bl"></span></p>
+  <div class="wl s"></div>
+  <p class="small"><strong>Secondly</strong>, she would <span class="bl"></span></p>
+  <div class="wl s"></div>
+  <p class="small"><strong>Thirdly</strong>, she would <span class="bl"></span></p>
+  <div class="wl s"></div>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 三步拿三步分</div>
+    firstly 分子群（managers / clerks / cleaners）→ secondly 算百分比 → thirdly 按比例随机抽并邀请填问卷。<br>
+    <strong>过程词就是得分框架</strong>——漏掉一步就漏掉一分。
+  </div>
+
+  <div class="pg-foot">Page 12 of 20</div>
+</div>
+
+<!-- PAGE 13 -->
+<div class="page">
+  <div class="pg-head"><span class="t">12 · Exam skills II — the 'define' question</span><span class="r">1.2.5 SAMPLING TECHNIQUES</span></div>
+
+  <div class="sec">The rule 规则</div>
+  <p class="small">If asked to <span class="bl"></span> a sampling method, you can gain more marks if you give an <span class="bl"></span>.</p>
+
+  <div class="sec">Textbook model 范文填空</div>
+  <div class="box grey">
+    <p>"<span class="bl"></span> sampling uses participants who are <span class="bl"></span> at the time, for example gathering students who are available in the <span class="bl"></span> at the time of the study and who agree to take part when <span class="bl"></span>."</p>
+  </div>
+
+  <div class="sec">Write your own 自己写三条</div>
+  <p class="small"><strong>Random sampling</strong> — definition + example:</p>
+  <div class="wl"></div>
+  <p class="small"><strong>Stratified sampling</strong> — definition + example:</p>
+  <div class="wl"></div>
+  <p class="small"><strong>Volunteer sampling</strong> — definition + example:</p>
+  <div class="wl"></div>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 定义题模板</div>
+    <strong>定义 + for example + 具体场景。</strong>没有例子的定义 = 白送的分不要。
+  </div>
+
+  <div class="pg-foot">Page 13 of 20</div>
+</div>
+
+<!-- PAGE 14 -->
+<div class="page">
+  <div class="pg-head"><span class="t">13 · Mixed practice — name the technique</span><span class="r">1.2.5 SAMPLING TECHNIQUES</span></div>
+
+  <div class="sec">Identify and justify 判断并说理由</div>
+  <table class="n">
+    <tr><th style="width:56%;">Scenario</th><th>Technique</th></tr>
+    <tr><td>A researcher numbers every pupil in the school and uses a random number generator to pick 50.</td><td></td></tr>
+    <tr><td>A psychologist stands outside the gym and asks passers-by to complete her survey.</td><td></td></tr>
+    <tr><td>An advert in the common room invites students to sign up for a study on sleep.</td><td></td></tr>
+    <tr><td>A hospital study finds 60% of its patients are over 60, so 60% of the sample is over 60, selected by lottery within that stratum.</td><td></td></tr>
+  </table>
+
+  <div class="sec">Target population spot-check 找总体</div>
+  <table class="n">
+    <tr><th style="width:60%;">Study</th><th>Target population</th></tr>
+    <tr><td>Asking teachers at a school about canteen food</td><td></td></tr>
+    <tr><td>A survey about exercise using a gym membership list</td><td></td></tr>
+    <tr><td>Investigating stress at work in an office building</td><td></td></tr>
+  </table>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 判断抓手</div>
+    见「随机数/抽签」→ random；见「站在门口问」→ opportunity；见「广告报名」→ volunteer；见「按比例分子群」→ stratified。<br>
+    找总体：问的是<strong>谁的意见</strong>，总体就是<strong>那群人</strong>。
+  </div>
+
+  <div class="pg-foot">Page 14 of 20</div>
+</div>
+
+<!-- PAGE 15 -->
+<div class="page">
+  <div class="pg-head"><span class="t">14 · Exam skills III — the evaluation chain</span><span class="r">1.2.5 SAMPLING TECHNIQUES</span></div>
+
+  <div class="sec">The chain 链条</div>
+  <p class="small"><strong>Technique → bias → limited generalisability.</strong> Fill both cloze models:</p>
+
+  <div class="box grey">
+    <p>"One weakness of opportunity sampling is that the researcher has limited <span class="bl"></span> over who is recruited, so not everyone in the target <span class="bl"></span> has an equal chance of being selected. The sample may be <span class="bl"></span>, which limits the <span class="bl"></span> of the study's conclusions."</p>
+  </div>
+
+  <div class="box grey">
+    <p>"One weakness of volunteer sampling is that only those who <span class="bl"></span> the advert and have the <span class="bl"></span> to participate will volunteer, so a certain <span class="bl"></span> of participant may dominate the sample. This sample <span class="bl"></span> limits the <span class="bl"></span> of the conclusions."</p>
+  </div>
+
+  <div class="sec">One strength to balance 补一条优点</div>
+  <p class="small">"One strength of stratified sampling is that subgroups are represented in their true <span class="bl"></span>, making it the most <span class="bl"></span> sampling method, so conclusions <span class="bl"></span> well to the target population."</p>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 万能链条</div>
+    <strong>技术名 → 偏差（谁被多算/漏算）→ 推广受限。</strong><br>
+    优点方向倒着走：<strong>按比例 → 最像总体 → 推广最好。</strong>
+  </div>
+
+  <div class="pg-foot">Page 15 of 20</div>
+</div>
+
+<!-- PAGE 16 -->
+<div class="page">
+  <div class="pg-head"><span class="t">15 · 8-mark planning — sampling in a study</span><span class="r">1.2.5 SAMPLING TECHNIQUES</span></div>
+
+  <div class="q">A psychologist investigates whether people who exercise regularly report lower stress levels, using members of a local gym who are available on Tuesday mornings. Evaluate the sampling decision and its impact on what the study can conclude. (8 marks)</div>
+
+  <div class="sec">Plan it 列提纲</div>
+  <table class="n">
+    <tr><th style="width:16%;">#</th><th style="width:28%;">Point</th><th>Because + so what</th></tr>
+    <tr><td class="lbl">P1</td><td>technique = opportunity</td><td></td></tr>
+    <tr><td class="lbl">P2</td><td>bias: who is missed?</td><td></td></tr>
+    <tr><td class="lbl">P3</td><td>impact on conclusions</td><td></td></tr>
+    <tr><td class="lbl">P4</td><td>better alternative + its cost</td><td></td></tr>
+  </table>
+
+  <div class="sec">Write one paragraph in full 写一段</div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+
+  <div class="box green">
+    <div class="bx-t">Scoring self-check 自评</div>
+    <span class="chk"><span class="c"></span> 报出技术名　<span class="c"></span> 指出漏掉的人群　<span class="c"></span> 落到 generalisability　<span class="c"></span> 给了改进方案并说其代价</span>
+  </div>
+
+  <div class="pg-foot">Page 16 of 20</div>
+</div>
+
+<!-- PAGE 17 -->
+<div class="page">
+  <div class="pg-head"><span class="t">16 · Exam practice — Carlos again (sampling side)</span><span class="r">1.2.5 SAMPLING TECHNIQUES</span></div>
+
+  <div class="q">Carlos wants to test how compliant pedestrians are to 'keep off the grass' signs. He recruits participants using opportunity sampling from pedestrians visiting a local park.</div>
+
+  <div class="sub">(a) Explain how Carlos would recruit his participants. (2)</div>
+  <div class="wl"></div>
+
+  <div class="sub">(b) Explain one weakness of this sampling decision for Carlos. (2)</div>
+  <div class="wl"></div>
+
+  <div class="sub">(c) Suggest why volunteer sampling would have been more ethical — and one new problem it would create. (2+2)</div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 提示</div>
+    (a) 在公园现场、问当时在场的行人——<strong>谁在场问谁</strong>。<br>
+    (b) 在场的行人 ≠ 全体行人 → 推广受限（还可以写 direct asking 的道德压力）。<br>
+    (c) 更道德 = 没人被当面施压；新问题 = 只有看到广告的人报名 → 变一种偏。
+  </div>
+
+  <div class="pg-foot">Page 17 of 20</div>
+</div>
+
+<!-- PAGE 18 -->
+<div class="page">
+  <div class="pg-head"><span class="t">17 · Brain dump</span><span class="r">1.2.5 SAMPLING TECHNIQUES</span></div>
+
+  <div class="sec">Dump everything 先自测</div>
+  <div class="box grey">
+    <p class="small">Cover everything. Write: the four techniques, each with a one-line definition and one weakness; the three stratified steps; the two exam shapes; and every key term you remember:</p>
+    <div class="wl s"></div>
+    <div class="wl s"></div>
+    <div class="wl s"></div>
+    <div class="wl s"></div>
+    <div class="wl s"></div>
+    <div class="wl s"></div>
+  </div>
+
+  <div class="sec">The 60-second drill 一分钟自检</div>
+  <p class="chk">
+  <span class="c"></span> target population ≠ sample<br>
+  <span class="c"></span> representative = 像总体<br>
+  <span class="c"></span> stratified：分 → 算 → 抽<br>
+  <span class="c"></span> random：等概率，但运气 + 拒绝都会歪<br>
+  <span class="c"></span> opportunity：顺手抓，有施压问题<br>
+  <span class="c"></span> volunteer：自我选择，偏「热心人」<br>
+  <span class="c"></span> bias → limited generalisability<br>
+  <span class="c"></span> how 题 = firstly / secondly / thirdly<br>
+  <span class="c"></span> define 题 = 定义 + for example
+  </p>
+
+  <div class="pg-foot">Page 18 of 20</div>
+</div>
+
+<!-- PAGE 19 -->
+<div class="page">
+  <div class="pg-head"><span class="t">18 · Answer key (1 of 2)</span><span class="r">1.2.5 SAMPLING TECHNIQUES</span></div>
+
+  <div class="sec">Answer key pp.2–8 答案（上半）</div>
+  <ul class="tight small">
+    <li><strong>p.2</strong> selected; investigated; sample, sampling. People at the hospital. Representative; characteristics; generalised.</li>
+    <li><strong>p.3</strong> over-, under-, bias. Type; availability. Sort: representative (though chance could still skew); biased; biased.</li>
+    <li><strong>p.4</strong> divide, subgroups; percentage; randomly, proportionate. 20 / 8 / 12 out of 40. More; more; fairly.</li>
+    <li><strong>p.5</strong> refuse. Strata; random; proportionally.</li>
+    <li><strong>p.6</strong> equal, selected. Assigned; correspond. Names; shuffle. ① unrepresentative; ② consent, decline; ③ time.</li>
+    <li><strong>p.7</strong> available, asking. Common room; passers-. Recruited; equal, available; unethical, pressure.</li>
+    <li><strong>p.8</strong> Self; advert; choose; approached. Ethical; control; type, time; bias, generalisability. The people come to the researcher.</li>
+  </ul>
+
+  <div class="box purple">
+    <div class="bx-t">Master table answers 总表答案</div>
+    Stratified: divide → % → proportional random / refusal + time. Random: equal chance (hat, computer) / chance can misfire, refusals distort. Opportunity: ask the available / unequal chance, pressure. Volunteer: advert, self-select / certain types dominate.
+  </div>
+
+  <div class="pg-foot">Page 19 of 20</div>
+</div>
+
+<!-- PAGE 20 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Answer key (2 of 2)</span><span class="r">1.2.5 SAMPLING TECHNIQUES</span></div>
+
+  <div class="sec">Answer key pp.9–17 答案（下半）</div>
+  <ul class="tight small">
+    <li><strong>p.9</strong> Ranks — representativeness: stratified &gt; random &gt; opportunity ≈ volunteer; convenience: opportunity ≈ volunteer &gt; random &gt; stratified.</li>
+    <li><strong>p.10 (a)</strong> opportunity; students avoiding the canteen; over-represents canteen users, so conclusions about all students limited. <strong>(b)</strong> volunteer; non-readers of the magazine; one demographic dominates, so career-choice conclusions limited.</li>
+    <li><strong>p.11 (c)</strong> random-ish frame (directory); people without listed numbers; they may differ in age/income/lifestyle → biased health conclusions. <strong>(d)</strong> opportunity; students elsewhere at break; common-room users may share habits → not representative of the school. Classics: volunteer; opportunity.</li>
+    <li><strong>p.12</strong> process; firstly, secondly, thirdly. Firstly divide into subgroups (managers, clerks, cleaners); secondly calculate each subgroup's percentage of the 100; thirdly randomly select the proportionate number and ask them to complete the questionnaire.</li>
+    <li><strong>p.13</strong> define; example. Opportunity; available; common room; asked.</li>
+    <li><strong>p.14</strong> random; opportunity; volunteer; stratified. Teachers at the school; gym members; employees in the office building.</li>
+    <li><strong>p.15</strong> control; population; unrepresentative; generalisability. See; time; type; bias; generalisability. Percentages; representative; generalise.</li>
+    <li><strong>p.17 (a)</strong> go to the park and ask pedestrians available at the time. <strong>(b)</strong> only those present then → unequal chance → unrepresentative → limited generalisability. <strong>(c)</strong> nobody is approached/pressured; but only advert-readers volunteer → a certain type dominates.</li>
+  </ul>
+
+  <div class="box purple">
+    <div class="bx-t">Last look 最后过一遍</div>
+    分 → 算 → 抽｜等概率 ≠ 代表性｜顺手抓人有压力｜贴广告来的都是热心人｜<strong>bias → limited generalisability</strong>｜how 题 firstly/secondly/thirdly｜define 题带 for example。
+  </div>
+
+  <div class="pg-foot">Page 20 of 20</div>
+</div>
+
+</body>
+</html>

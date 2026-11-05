@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1.2.1 Questionnaires and Interviews — Student Notes Workbook</title>
+<style>
+@page { size: A4; margin: 13mm 12mm 15mm 12mm; }
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif; color:#1a1a1a; font-size:10pt; line-height:1.5; margin:0; background:#f3f3f3; }
+.page { background:#fff; max-width: 800px; margin: 0 auto 10px auto; padding: 10mm 11mm; page-break-after: always; position: relative; min-height: 248mm; }
+@media print { body { background:#fff; } .page { margin:0; padding:0; max-width:none; box-shadow:none; } }
+.pg-head { display:flex; justify-content:space-between; align-items:baseline; border-bottom: 2px solid #333; padding-bottom:4px; margin-bottom:10px; }
+.pg-head .t { font-size:11.5pt; font-weight:700; }
+.pg-head .r { font-size:8pt; color:#777; letter-spacing:.04em; }
+.pg-foot { position:absolute; bottom:4mm; left:0; right:0; text-align:center; font-size:8pt; color:#999; }
+.sec { font-size:10pt; font-weight:700; margin:12px 0 5px 0; padding-left:7px; border-left:3.5px solid #444; }
+.sec:first-of-type { margin-top:2px; }
+.sub { font-size:9.5pt; font-weight:700; margin:9px 0 3px 0; }
+.bl { display:inline-block; border-bottom:1px solid #555; height:1em; vertical-align:baseline; min-width:60px; margin:0 2px; }
+.hint { font-size:8.5pt; color:#666; }
+.hint::before { content:"（"; } .hint::after { content:"）"; }
+table.n { width:100%; border-collapse:collapse; margin:6px 0 9px 0; font-size:9pt; }
+table.n th, table.n td { border:1px solid #999; padding:4px 6px; text-align:left; vertical-align:top; }
+table.n th { background:#e9e9e9; font-size:8.8pt; }
+td.lbl { background:#f4f4f4; width:22%; font-weight:600; }
+.box { border:1px solid #aaa; border-left:4px solid #555; padding:6px 9px; margin:7px 0; border-radius:3px; }
+.box.grey { border:1px dashed #999; border-left:4px dashed #999; background:#fafafa; }
+.box.purple { border-left-color:#7c3aed; background:#faf5ff; }
+.box.blue { border-left-color:#2563eb; background:#f5f9ff; }
+.box.green { border-left-color:#16a34a; background:#f3faf5; }
+.box.orange { border-left-color:#ea580c; background:#fff7ed; }
+.box .bx-t { font-size:9.3pt; font-weight:700; margin-bottom:3px; }
+.wl { border-bottom:1px solid #bbb; height:24pt; }
+.wl.s { height:18pt; }
+ul.tight { margin:4px 0 8px 0; padding-left:17px; }
+ul.tight li { margin-bottom:3px; }
+ol.tight { margin:4px 0 8px 0; padding-left:17px; }
+ol.tight li { margin-bottom:4px; }
+.chk { font-size:9.3pt; }
+.chk .c { display:inline-block; width:11px; height:11px; border:1.3px solid #555; margin-right:6px; vertical-align:-1px; }
+.q { font-style:italic; background:#f6f6f6; border:1px solid #ccc; padding:5px 9px; margin:5px 0; font-size:9.3pt; border-radius:3px; }
+.small { font-size:8.6pt; line-height:1.35; }
+.pg-tight table.n { font-size:8.5pt; margin:5px 0 7px 0; }
+.pg-tight table.n th, .pg-tight table.n td { padding:2.5px 5px; }
+.pg-tight .sub { margin:7px 0 2px 0; }
+.pg-tight .box { padding:5px 8px; margin:6px 0; }
+.pg-tight .wl { height:20pt; }
+.pg-tight .sec { margin:9px 0 4px 0; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="pg-head"><span class="t">1.2.1 Questionnaires and Interviews — Student Notes Workbook</span><span class="r">TOPIC A · NOTES WORKBOOK</span></div>
+
+  <div class="box orange">
+    <div class="bx-t">What this workbook covers 本册讲什么</div>
+    You cannot watch an attitude — sometimes the only way in is to <strong>ask</strong>. This booklet walks through surveys as self-report: question types (closed/open, Likert and ranked scales), design traps (social desirability, response bias), the reliability and validity checks every questionnaire must survive, the three interview types, researcher effects, primary vs secondary data, and alternative hypotheses.
+  </div>
+
+  <div class="sec">How to use this booklet 怎么用</div>
+  <ol class="tight">
+    <li><strong>Fill it in as you go</strong> — check the answer key (pp. 19–20) after each page.</li>
+    <li><strong>Pages 4–5 (question types + scales) and 8–9 (reliability/validity) matter most.</strong> Quantitative data is the single most frequent theme in past papers — redo those pages from memory.</li>
+  </ol>
+
+  <div class="sec">Content map 内容地图</div>
+  <table class="n">
+    <tr><th style="width:10%;">Page</th><th style="width:34%;">Topic</th><th>What you must be able to do afterwards</th></tr>
+    <tr><td class="lbl">p.2</td><td>Self-report 两种工具</td><td>Define survey, questionnaire, interview</td></tr>
+    <tr><td class="lbl">p.3</td><td>Two kinds of data 数据类型</td><td>Sort quantitative vs qualitative; objective vs subjective</td></tr>
+    <tr><td class="lbl">p.4–6</td><td>Question types &amp; scales 题型</td><td>Closed/open, Likert, ranked; odd/even; response bias</td></tr>
+    <tr><td class="lbl">p.7</td><td>Design issues 设计坑</td><td>Social desirability, construction, privacy</td></tr>
+    <tr><td class="lbl">p.8–9</td><td>Reliability &amp; validity 信效度</td><td>test-retest, split-half; face, predictive, concurrent</td></tr>
+    <tr><td class="lbl">p.10–11</td><td>Interviews 访谈</td><td>Structured / semi-structured / unstructured</td></tr>
+    <tr><td class="lbl">p.12</td><td>Researcher effects 研究者效应</td><td>Who the researcher is + what they expect</td></tr>
+    <tr><td class="lbl">p.13</td><td>Primary vs secondary 主次数据</td><td>Define both; give one strength and one weakness each</td></tr>
+    <tr><td class="lbl">p.14</td><td>Alternative hypotheses 假设</td><td>Write a clear, testable, precise prediction</td></tr>
+    <tr><td class="lbl">p.15–18</td><td>Exam skills &amp; practice 考试</td><td>Point-Because-So; Carlos question set; 8-mark plan</td></tr>
+    <tr><td class="lbl">p.19–20</td><td>Answer key 答案速查</td><td>Mark honestly, then re-write wrong answers in full</td></tr>
+  </table>
+
+  <div class="sec">Revision tracker 复习打卡</div>
+  <p class="chk"><span class="c"></span>p.3 data types　<span class="c"></span>p.4–6 scales　<span class="c"></span>p.7 design issues　<span class="c"></span>p.8–9 reliability/validity　<span class="c"></span>p.10–11 interviews　<span class="c"></span>p.12 researcher effects　<span class="c"></span>p.13–14 data &amp; hypotheses　<span class="c"></span>p.15–18 exam</p>
+
+  <div class="box purple">
+    <div class="bx-t">The whole topic in one sentence 一句话总结</div>
+    Surveys gather self-report data through <strong>questionnaires and interviews</strong>; every question yields <strong>quantitative or qualitative</strong> data; a good instrument survives checks of <strong>reliability</strong> (consistent) and <strong>validity</strong> (measuring what it intends), avoids <strong>social desirability</strong> and <strong>response bias</strong>, and controls <strong>researcher effects</strong> — because what people <em>say</em> about themselves is not automatically what they <em>do</em>.
+  </div>
+
+  <div class="pg-foot">Page 1 of 20</div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="pg-head"><span class="t">1 · Self-report: the two tools</span><span class="r">1.2.1 QUESTIONNAIRES &amp; INTERVIEWS</span></div>
+
+  <div class="sec">Fill the gap 填空</div>
+  <div class="box blue">
+    <p>A <strong>survey</strong> is a <span class="bl"></span> method, used to gather information about how people feel, their <span class="bl"></span> and opinions, personality types and other traits.</p>
+    <p>Questionnaires can be administered by post, <span class="bl"></span>, face to face or <span class="bl"></span>.</p>
+    <p>An <strong>interview</strong> is when respondents answer questions <span class="bl"></span>, rather than writing them.</p>
+  </div>
+
+  <div class="sec">Compare the two tools 对比</div>
+  <table class="n">
+    <tr><th></th><th>Questionnaire</th><th>Interview</th></tr>
+    <tr><td class="lbl">How answered</td><td>written</td><td></td></tr>
+    <tr><td class="lbl">Best at reaching</td><td></td><td>depth — reasons in the respondent's own words</td></tr>
+  </table>
+
+  <div class="sec">The shadow of self-report 自我报告的阴影</div>
+  <p class="small"><strong>Self-report data is what people <em>say</em> about themselves — not necessarily what they actually do.</strong> Every evaluation you write about surveys lives in this gap. Keep it in mind on every page that follows.</p>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 为什么只能「问」？</div>
+    态度、观点、性格这些东西<strong>看不见</strong>——实验测不出、天平称不了，只能开口问。<br>
+    问的形式两条路：<strong>问卷</strong>（笔答，量大、便宜、快）和<strong>访谈</strong>（口答，深、细、能追问）。<br>
+    但问出来的话 = 「对方想让你听的版本」，不是 automatically 真话。
+  </div>
+
+  <div class="pg-foot">Page 2 of 20</div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="pg-head"><span class="t">2 · Two kinds of data</span><span class="r">1.2.1 QUESTIONNAIRES &amp; INTERVIEWS</span></div>
+
+  <div class="sec">Definitions 定义</div>
+  <div class="box blue">
+    <p><strong>Quantitative data</strong>: information that is <span class="bl"></span> or can be <span class="bl"></span> into numbers.</p>
+    <p><strong>Qualitative data</strong>: information that is <span class="bl"></span> prose.</p>
+  </div>
+
+  <div class="sec">Sort the data 分类</div>
+  <table class="n">
+    <tr><th>Answer collected</th><th style="width:30%;">Quantitative or qualitative?</th></tr>
+    <tr><td>"7 out of 30 students circled Daily."</td><td></td></tr>
+    <tr><td>"I text constantly because my friends live abroad."</td><td></td></tr>
+    <tr><td>A rating of 4 out of 5 on a satisfaction scale</td><td></td></tr>
+    <tr><td>A paragraph describing what makes school stressful</td><td></td></tr>
+  </table>
+
+  <div class="sec">Objective vs subjective 主观与客观</div>
+  <p class="small">Estimate the length of a classroom table → two people disagree → <strong>subjective</strong>. Measure it with a ruler → they agree → <strong>objective</strong>. Quantitative data is objective because <span class="bl"></span>; qualitative data can be subjective because <span class="bl"></span>.</p>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 能算数 vs 要读懂</div>
+    <strong>quantity = 数量</strong> → quantitative = 能变成数字的（几个、几分）；<br>
+    <strong>quality = 性质</strong> → qualitative = 用文字描述的（为什么、什么感受）。<br>
+    口诀：<strong>能算数的是 quantitative，要读懂的是 qualitative。</strong>
+  </div>
+
+  <div class="pg-foot">Page 3 of 20</div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <div class="pg-head"><span class="t">3 · Closed and open questions</span><span class="r">1.2.1 QUESTIONNAIRES &amp; INTERVIEWS</span></div>
+
+  <div class="sec">Definitions 定义</div>
+  <div class="box blue">
+    <p><strong>Closed questions</strong> have <span class="bl"></span> fixed answers that a respondent selects by <span class="bl"></span> or <span class="bl"></span>. They yield <span class="bl"></span> data.</p>
+    <p><strong>Open questions</strong> do not involve <span class="bl"></span> answers; respondents answer <span class="bl"></span>. They yield <span class="bl"></span> data.</p>
+  </div>
+
+  <div class="sec">Sort the questions 分类</div>
+  <table class="n">
+    <tr><th>Question</th><th style="width:18%;">Closed / open?</th><th style="width:26%;">Data it yields</th></tr>
+    <tr><td>Do you have a pet? Yes / No</td><td></td><td></td></tr>
+    <tr><td>Age: 18–40 / 41–60 / 60+ (please circle)</td><td></td><td></td></tr>
+    <tr><td>Explain why you would or would not walk on the grass.</td><td></td><td></td></tr>
+    <tr><td>How regularly do you text? Daily / Weekly / Occasionally / Never</td><td></td><td></td></tr>
+  </table>
+
+  <div class="sec">The trade-off 代价表</div>
+  <table class="n">
+    <tr><th></th><th>Gain</th><th>Lose</th></tr>
+    <tr><td class="lbl">Closed</td><td>quick to answer; easy to analyse</td><td></td></tr>
+    <tr><td class="lbl">Open</td><td></td><td>time and effort; needs qualitative analysis (subjective)</td></tr>
+  </table>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 一眼判断</div>
+    只看一件事：<strong>答案是不是预先写好的。</strong>是 → closed（→数字→浅）；不是 → open（→文字→深）。<br>
+    闭卷题问「哪种题型给 quantitative」→ 答 closed；问「哪种给深度原因」→ 答 open。
+  </div>
+
+  <div class="pg-foot">Page 4 of 20</div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <div class="pg-head"><span class="t">4 · Attitude scales: Likert</span><span class="r">1.2.1 QUESTIONNAIRES &amp; INTERVIEWS</span></div>
+
+  <div class="sec">Why scales exist 量表为什么存在</div>
+  <p class="small">A yes/no answer is fast but shallow. <strong>Attitude scales</strong> were designed to increase the <span class="bl"></span> achieved in a questionnaire: instead of a yes/no response, they offer a <span class="bl"></span> of options so that the <span class="bl"></span> of opinion can be gauged.</p>
+
+  <div class="sec">Build a Likert question 搭一个量表</div>
+  <p class="small">Statement: <em>"I am happy with my purchase today."</em> Fill in the five options in order:</p>
+  <p class="chk"><span class="bl" style="min-width:110px;"></span> → Agree → <span class="bl" style="min-width:70px;"></span> → Disagree → <span class="bl" style="min-width:130px;"></span></p>
+
+  <div class="sec">Odd or even? 奇数还是偶数</div>
+  <div class="box blue">
+    <p>An <strong>odd</strong> number of options gives a <span class="bl"></span> value, which respondents may select more <span class="bl"></span>.</p>
+    <p>An <strong>even</strong> number forces respondents to make a <span class="bl"></span> rather than hide behind 'neutral'.</p>
+  </div>
+
+  <div class="box green">
+    <div class="bx-t">Link back 呼应旧知识</div>
+    A Likert scale was used in the <strong>Adorno et al.</strong> survey on authoritarianism — the same scale type you met in the obedience topic.
+  </div>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 Likert = 竖着打分</div>
+    Likert：给<strong>一句话</strong>表态，非常同意 → 非常不同意五个台阶。<br>
+    选项数量是设计决策：<strong>奇数留中立逃生门，偶数逼人站队。</strong>
+  </div>
+
+  <div class="pg-foot">Page 5 of 20</div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page">
+  <div class="pg-head"><span class="t">5 · Ranked scales and response bias</span><span class="r">1.2.1 QUESTIONNAIRES &amp; INTERVIEWS</span></div>
+
+  <div class="sec">Ranked scales 排序量表</div>
+  <div class="box blue">
+    <p>Ranked scales involve a respondent <span class="bl"></span> their choices relative to other options. Each preference should be given a <span class="bl"></span>: to rank animals by fear, the <span class="bl"></span> feared animal gets the highest score.</p>
+  </div>
+
+  <div class="sec">Response bias 反应偏差</div>
+  <p class="small">If all the statements in a set are worded in the <span class="bl"></span> direction, respondents can slip into just <span class="bl"></span> or just <span class="bl"></span> with all of them. Fix: statements should be <span class="bl"></span> and <span class="bl"></span> up.</p>
+
+  <div class="sec">Write the reversed versions 写反向句</div>
+  <table class="n">
+    <tr><th style="width:46%;">Example statement</th><th>Reversed statement (write it)</th></tr>
+    <tr><td>Employment helps society to function.</td><td></td></tr>
+    <tr><td>Pets make people happy.</td><td></td></tr>
+  </table>
+
+  <div class="sec">Likert vs ranked 一句话区分</div>
+  <table class="n">
+    <tr><th></th><th>Likert-style</th><th>Ranked</th></tr>
+    <tr><td class="lbl">Task</td><td></td><td>order options relative to each other</td></tr>
+    <tr><td class="lbl">Key mechanism</td><td>rate agreement on fixed options</td><td></td></tr>
+  </table>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 一个竖一个横</div>
+    <strong>Likert 竖着打分</strong>（对一句话表态）；<strong>ranked 横着排队</strong>（一堆东西比出 1、2、3、4 名）。<br>
+    Response bias 是「无脑全勾同意」——反向句混进去，划水的人立刻现形。
+  </div>
+
+  <div class="pg-foot">Page 6 of 20</div>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page">
+  <div class="pg-head"><span class="t">6 · Design issues</span><span class="r">1.2.1 QUESTIONNAIRES &amp; INTERVIEWS</span></div>
+
+  <div class="sec">The three traps 三个坑</div>
+  <table class="n">
+    <tr><th style="width:26%;">Issue</th><th>What goes wrong</th><th style="width:28%;">Fix</th></tr>
+    <tr><td class="lbl">Social desirability</td><td></td><td>detect with reversed statements</td></tr>
+    <tr><td class="lbl">Question construction</td><td>questions too technical, ambiguous, complex, leading — or intrusive</td><td></td></tr>
+    <tr><td class="lbl">Response bias</td><td></td><td>reverse &amp; mix statements; even-numbered scale</td></tr>
+  </table>
+
+  <div class="sec">Social desirability in full 社会赞许性</div>
+  <div class="box blue">
+    <p>Social desirability occurs when a respondent does not give a <span class="bl"></span> answer, but one which depicts them in a more <span class="bl"></span> light — an answer that fits prevailing <span class="bl"></span> norms.</p>
+    <p>It is particularly problematic for research into socially <span class="bl"></span> issues, or attitudes that go <span class="bl"></span> social norms.</p>
+  </div>
+
+  <div class="sec">Key term: privacy 隐私</div>
+  <p class="small"><strong>Privacy:</strong> participants should not be asked personal questions that they may find <span class="bl"></span>, and the researcher must not obtain personal data that a participant would not <span class="bl"></span> disclose.</p>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 坑在哪、怎么填</div>
+    坑一在人（自我美化）→ 用反向陈述<strong>检测</strong>；<br>
+    坑二在题（太技术/有引导/侵犯隐私）→ 写<strong>简单、中立、守隐私</strong>的题；<br>
+    坑三在格式（全同向 → 无脑全勾）→ <strong>反向混排 + 偶数选项</strong>。
+  </div>
+
+  <div class="pg-foot">Page 7 of 20</div>
+</div>
+
+<!-- PAGE 8 -->
+<div class="page">
+  <div class="pg-head"><span class="t">7 · Reliability</span><span class="r">1.2.1 QUESTIONNAIRES &amp; INTERVIEWS</span></div>
+
+  <div class="sec">The two directions 两个方向</div>
+  <div class="box blue">
+    <p><strong>Reliability</strong> refers to the <span class="bl"></span> of a measure or finding.</p>
+    <p><strong>External reliability</strong>: consistency of a measure <span class="bl"></span>.</p>
+    <p><strong>Internal reliability</strong>: consistency of a measure <span class="bl"></span>.</p>
+  </div>
+
+  <div class="sec">Match the method 连线配对</div>
+  <table class="n">
+    <tr><th>Method</th><th style="width:22%;">What it checks</th><th style="width:34%;">How it works (fill in)</th></tr>
+    <tr><td class="lbl">Test-retest</td><td></td><td>same <span class="bl"></span>, same <span class="bl"></span>, different <span class="bl"></span></td></tr>
+    <tr><td class="lbl">Split-half</td><td></td><td>split the <span class="bl"></span> into two <span class="bl"></span> and compare the findings</td></tr>
+  </table>
+
+  <div class="sec">Interpret it 会读结果</div>
+  <p class="small">In a split-half check, if both halves achieve the <span class="bl"></span> score, the questions are measuring the same concept. If they do not, some questions may be measuring a <span class="bl"></span> concept.</p>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 对外看时间，对内看拆半</div>
+    <strong>信度 = 「每次测都一样」吗？</strong><br>
+    external = 隔段时间再测稳不稳 → <strong>test-retest</strong>（同一批人再测）；<br>
+    internal = 问卷内部几道题是否都测同一个东西 → <strong>split-half</strong>（拆两半对答案）。
+  </div>
+
+  <div class="pg-foot">Page 8 of 20</div>
+</div>
+
+<!-- PAGE 9 -->
+<div class="page">
+  <div class="pg-head"><span class="t">8 · Validity</span><span class="r">1.2.1 QUESTIONNAIRES &amp; INTERVIEWS</span></div>
+
+  <div class="sec">The core question 核心问题</div>
+  <div class="box blue">
+    <p><strong>Validity</strong> refers to the extent to which something is measuring <span class="bl"></span> it <span class="bl"></span> to measure.</p>
+  </div>
+
+  <div class="sec">Match the three types 三种效度配对</div>
+  <table class="n">
+    <tr><th style="width:24%;">Type</th><th>Definition (fill in)</th><th style="width:30%;">Example</th></tr>
+    <tr><td class="lbl">Face</td><td>looking at each question and deciding whether it makes <span class="bl"></span> for the <span class="bl"></span> being measured</td><td>an expert reviews your questions</td></tr>
+    <tr><td class="lbl">Predictive</td><td>results can predict <span class="bl"></span> behaviour</td><td></td></tr>
+    <tr><td class="lbl">Concurrent</td><td>comparing evidence from several studies testing the <span class="bl"></span> thing to see if they <span class="bl"></span></td><td></td></tr>
+  </table>
+
+  <div class="sec">Reliability vs validity 信 vs 效</div>
+  <p class="small">Reliability asks "<span class="bl"></span>?"; validity asks "<span class="bl"></span>?". A ruler that always reads 3 cm short is perfectly <span class="bl"></span> but not <span class="bl"></span>.</p>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 三种效度一句话</div>
+    <strong>face</strong> = 看脸——题目像不像在测它；<strong>predictive</strong> = 预言——今天分数预测未来行为；<strong>concurrent</strong> = 对照——和别人家同主题测试比一致。<br>
+    信度问「稳不稳」，效度问「准不准」——<strong>稳但不准</strong>的尺子每天都错得一样整齐。
+  </div>
+
+  <div class="pg-foot">Page 9 of 20</div>
+</div>
+
+<!-- PAGE 10 -->
+<div class="page">
+  <div class="pg-head"><span class="t">9 · Structured interviews</span><span class="r">1.2.1 QUESTIONNAIRES &amp; INTERVIEWS</span></div>
+
+  <div class="sec">Definition 定义</div>
+  <div class="box blue">
+    <p>Structured interviews are <span class="bl"></span> so that all respondents are asked the <span class="bl"></span> preset questions in the <span class="bl"></span> way.</p>
+  </div>
+
+  <div class="sec">Weigh it up 权衡</div>
+  <table class="n">
+    <tr><th style="width:50%;">Strengths</th><th>Weaknesses</th></tr>
+    <tr><td>easy to administer</td><td></td></tr>
+    <tr><td></td><td>data can be superficial and lack depth</td></tr>
+    <tr><td>easy to repeat</td><td></td></tr>
+    <tr><td></td><td>respondent may feel <span class="bl"></span> and unable to express opinions fully</td></tr>
+  </table>
+
+  <div class="sec">Spot the type 判断类型</div>
+  <table class="n">
+    <tr><th>Scenario (from the textbook's Activity 3)</th><th style="width:26%;">Type?</th></tr>
+    <tr><td>A researcher writes specific questions to ask people in friendship groups about how friendships form</td><td></td></tr>
+    <tr><td>A researcher has a conversation with students in the dining room about preferred meals</td><td></td></tr>
+    <tr><td>A researcher wants pet types and ownership times, but also to explore reasons for owning pets</td><td></td></tr>
+  </table>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 三种剧本</div>
+    <strong>structured</strong>：照剧本念，好重复但浅；<strong>semi</strong>：有提纲能跑题，又有结构又深；<strong>unstructured</strong>：纯聊天最深，但费时、不可复制。<br>
+    判断口诀：<strong>剧本越死越好比，剧本越活挖越深。</strong>
+  </div>
+
+  <div class="pg-foot">Page 10 of 20</div>
+</div>
+
+<!-- PAGE 11 -->
+<div class="page">
+  <div class="pg-head"><span class="t">10 · Semi-structured and unstructured interviews</span><span class="r">1.2.1 QUESTIONNAIRES &amp; INTERVIEWS</span></div>
+
+  <div class="sec">Semi-structured 半结构化</div>
+  <div class="box blue">
+    <p>The researcher has <span class="bl"></span> questions that they aim to be answered, but does not have a <span class="bl"></span> format to follow and can <span class="bl"></span> from the script. This type can gather both <span class="bl"></span> and <span class="bl"></span> data.</p>
+  </div>
+
+  <div class="sec">Unstructured 无结构</div>
+  <p class="small">Begins with a <span class="bl"></span> research aim and gathers information in the form of a <span class="bl"></span>. The interviewer needs to be <span class="bl"></span> during the interview so they can probe and seek meaning; they need good <span class="bl"></span> skills and should use non-<span class="bl"></span> language.</p>
+
+  <div class="sec">Weigh unstructured up 权衡</div>
+  <table class="n">
+    <tr><th style="width:50%;">Strength</th><th>Weaknesses</th></tr>
+    <tr><td>deepest detail; rapport; responsive probing</td><td></td></tr>
+    <tr><td></td><td>time consuming to conduct and analyse</td></tr>
+    <tr><td></td><td>not <span class="bl"></span> — different questions in each interview</td></tr>
+  </table>
+
+  <div class="sec">Ethics spotlight 伦理</div>
+  <p class="small">Ethics are <strong>critical</strong> in unstructured interviews because the qualitative data can make direct reference to <span class="bl"></span> from respondents. All details must be <span class="bl"></span>, and personal details <span class="bl"></span>.</p>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 伦理为什么最紧张</div>
+    无结构访谈会挖到<strong>原话引用</strong>——一句 Quote 就可能认出一个人。<br>
+    所以：<strong>匿名化 + 打散个人细节 + 问敏感问题要温柔</strong>（别破 privacy）。
+  </div>
+
+  <div class="pg-foot">Page 11 of 20</div>
+</div>
+
+<!-- PAGE 12 -->
+<div class="page">
+  <div class="pg-head"><span class="t">11 · Researcher effects</span><span class="r">1.2.1 QUESTIONNAIRES &amp; INTERVIEWS</span></div>
+
+  <div class="sec">Two faces of the problem 两副面孔</div>
+  <table class="n">
+    <tr><th style="width:30%;">Face</th><th>What it means</th><th style="width:30%;">Control</th></tr>
+    <tr><td class="lbl">Who the researcher is</td><td>sex, age, manner and <span class="bl"></span> affect how people respond and whether they disclose</td><td>predict the influence and <span class="bl"></span> it (e.g. employ a female interviewer)</td></tr>
+    <tr><td class="lbl">What the researcher expects</td><td>smiling in approval; inadvertently asking questions that confirm the expected outcome = <span class="bl"></span> bias</td><td></td></tr>
+  </table>
+
+  <div class="sec">The fix 对策</div>
+  <div class="box green">
+    <p>Researcher effects can be reduced by using an <span class="bl"></span> researcher who is trained in interviewing techniques, but is <span class="bl"></span> of the study aims.</p>
+  </div>
+
+  <div class="sec">Apply it 应用</div>
+  <p class="small">A male interviewer will be unlikely to obtain detailed information from a female participant about her view of <span class="bl"></span> within her peer group — so the researcher controls this by <span class="bl"></span>.</p>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 提问者就是环境</div>
+    面对面提问时，你的<strong>性别、年龄、语气、表情</strong>都影响对方敢不敢说真话。<br>
+    两条腿：<strong>你是谁</strong>（身份阻碍披露）+ <strong>你盼什么</strong>（confirmation bias 钓答案）。<br>
+    对策一句话：<strong>换一个不知道研究目的的独立访谈者。</strong>
+  </div>
+
+  <div class="pg-foot">Page 12 of 20</div>
+</div>
+
+<!-- PAGE 13 -->
+<div class="page">
+  <div class="pg-head"><span class="t">12 · Primary and secondary data</span><span class="r">1.2.1 QUESTIONNAIRES &amp; INTERVIEWS</span></div>
+
+  <div class="sec">The comparison 对照表</div>
+  <table class="n">
+    <tr><th></th><th>Primary data</th><th>Secondary data</th></tr>
+    <tr><td class="lbl">Source</td><td>gathered <span class="bl"></span> by the researcher from participants</td><td>gathered from <span class="bl"></span> studies by other researchers</td></tr>
+    <tr><td class="lbl">Fit to aim</td><td>first-hand; <span class="bl"></span> to the aims of the study</td><td>second-hand; may be <span class="bl"></span> specific to the aims</td></tr>
+    <tr><td class="lbl">Cost</td><td><span class="bl"></span> to collect</td><td>already collected — just <span class="bl"></span> and compare</td></tr>
+    <tr><td class="lbl">Freshness / scale</td><td><span class="bl"></span></td><td>may be <span class="bl"></span>; but <span class="bl"></span> amounts give an overview</td></tr>
+  </table>
+
+  <div class="sec">Key term 文献综述</div>
+  <p class="small"><strong>Literature review:</strong> when a researcher <span class="bl"></span>, <span class="bl"></span> and draws conclusions from <span class="bl"></span> people's research.</p>
+
+  <div class="sec">Sort the scenarios 判断</div>
+  <table class="n">
+    <tr><th>Scenario</th><th style="width:26%;">Primary or secondary?</th></tr>
+    <tr><td>Marco reads articles about workplace conformity for his research</td><td></td></tr>
+    <tr><td>Philipina conducts a questionnaire about recycling influences in her city</td><td></td></tr>
+  </table>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 只问一句</div>
+    <strong>数据是不是你自己直接向参与者收集的？</strong><br>
+    是 → primary（实验、观察、问卷都算）；不是（从别人研究里拿）→ secondary。<br>
+    <strong>primary 贴合目的但费时；secondary 省时量大，但可能过时、不对口。</strong>
+  </div>
+
+  <div class="pg-foot">Page 13 of 20</div>
+</div>
+
+<!-- PAGE 14 -->
+<div class="page">
+  <div class="pg-head"><span class="t">13 · Alternative hypotheses</span><span class="r">1.2.1 QUESTIONNAIRES &amp; INTERVIEWS</span></div>
+
+  <div class="sec">What a hypothesis must be 三个要求</div>
+  <div class="box blue">
+    <p>An alternative hypothesis is a <span class="bl"></span> about what is likely to occur. It should contain the <span class="bl"></span> under investigation and be a clear, <span class="bl"></span> and <span class="bl"></span> statement at the beginning of a study.</p>
+  </div>
+
+  <div class="sec">Directional or not? 方向问题</div>
+  <p class="small">If previous research is limited or findings are <span class="bl"></span>, the prediction may only state that a <span class="bl"></span> or <span class="bl"></span> might be found — without saying which <span class="bl"></span> it takes.</p>
+
+  <div class="sec">Write two hypotheses 写两条</div>
+  <p class="small"><strong>(a)</strong> Directional: students who score higher on a conformity scale report <em>more</em> agreement with the majority.</p>
+  <div class="wl"></div>
+  <p class="small"><strong>(b)</strong> Non-directional: a difference in self-reported conformity between year groups. (Say only that a difference exists.)</p>
+  <div class="wl"></div>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 备择假设 = 郑重的预测</div>
+    开工前把「我觉得会发生什么」写成<strong>明确、可检验、精确</strong>的一句话，并写明变量。<br>
+    有把握 → 指方向；研究少/结论乱 → 只说「会有差异/关系」。<br>
+    检验：别人读完能<strong>照着做研究去验证对错</strong>，才叫 testable。
+  </div>
+
+  <div class="pg-foot">Page 14 of 20</div>
+</div>
+
+<!-- PAGE 15 -->
+<div class="page">
+  <div class="pg-head"><span class="t">14 · Exam skills I — the Point-Because-So formula</span><span class="r">1.2.1 QUESTIONNAIRES &amp; INTERVIEWS</span></div>
+
+  <div class="sec">The rule 规则</div>
+  <p class="small">Asked for a strength or weakness of questionnaires <em>as used in social psychology</em>? A generic answer scores 0 — the answer must relate to <strong>social psychology specifically</strong>.</p>
+
+  <div class="sec">Cloze the model answer 填空范文</div>
+  <div class="box grey">
+    <p>"One <span class="bl"></span> with using questionnaires in social psychology is that participants may answer in a way that portrays them in the best possible light: <span class="bl"></span> bias may occur. This means that people may say that they are more <span class="bl"></span> than they actually are because they don't want people to think they are <span class="bl"></span>."</p>
+  </div>
+
+  <div class="sec">Dismantle it 拆结构</div>
+  <table class="n">
+    <tr><th style="width:24%;">Slot</th><th>Job it does</th></tr>
+    <tr><td class="lbl">Point</td><td></td></tr>
+    <tr><td class="lbl">Because</td><td></td></tr>
+    <tr><td class="lbl">So what (social psych)</td><td></td></tr>
+  </table>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 万能公式</div>
+    ① 报术语（One weakness is social desirability bias…）<br>
+    ② 讲机制（…because people don't want to be seen as disobedient…）<br>
+    ③ 落回社会心理学（…so they may say they are more obedient than they actually are.）<br>
+    <strong>缺第 ③ 步 = 泛泛而谈 = 低分。</strong>
+  </div>
+
+  <div class="pg-foot">Page 15 of 20</div>
+</div>
+
+<!-- PAGE 16 -->
+<div class="page">
+  <div class="pg-head"><span class="t">15 · Exam skills II — the interview strength</span><span class="r">1.2.1 QUESTIONNAIRES &amp; INTERVIEWS</span></div>
+
+  <div class="sec">Cloze the model answer 填空范文</div>
+  <div class="box grey">
+    <p>"One <span class="bl"></span> of using interviews in social psychology is that in-depth answers contain detailed information and <span class="bl"></span> why individuals may consider others to have <span class="bl"></span> or power. This increases the <span class="bl"></span> of the data gathered by social psychology researchers about topics such as <span class="bl"></span>."</p>
+  </div>
+
+  <div class="sec">Strengths and weaknesses bank 素材库</div>
+  <table class="n">
+    <tr><th style="width:24%;">Method</th><th>Signature strength</th><th>Signature weakness</th></tr>
+    <tr><td class="lbl">Questionnaire</td><td></td><td>social desirability bias</td></tr>
+    <tr><td class="lbl">Interview</td><td>depth — reveals reasons for authority/power perceptions</td><td></td></tr>
+    <tr><td class="lbl">Structured</td><td></td><td>superficial; stifled respondents</td></tr>
+    <tr><td class="lbl">Unstructured</td><td>rapport; responsive probing</td><td></td></tr>
+  </table>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 背「签名级」优劣</div>
+    每种方法背一条最强的优点 + 一条最强的缺点，考场上组合进 Point-Because-So：<br>
+    问卷 → 快、便宜、好分析 / 社会赞许性；访谈 → 深挖原因 / 研究者效应；<br>
+    结构化 → 好重复 / 浅；无结构 → 深 / 费时不可复制。
+  </div>
+
+  <div class="pg-foot">Page 16 of 20</div>
+</div>
+
+<!-- PAGE 17 -->
+<div class="page">
+  <div class="pg-head"><span class="t">16 · Exam practice — Carlos (from the textbook)</span><span class="r">1.2.1 QUESTIONNAIRES &amp; INTERVIEWS</span></div>
+
+  <div class="q">Carlos wants to test how compliant pedestrians are to signs which ask them to 'keep off the grass'. He designs a questionnaire to gather quantitative data from pedestrians who visit a local park.</div>
+
+  <div class="sub">(a) State one closed question Carlos could use about obedience. (1)</div>
+  <div class="wl s"></div>
+
+  <div class="sub">(b) State one open question Carlos could use. (1)</div>
+  <div class="wl s"></div>
+
+  <div class="sub">(c) Explain how Carlos would recruit participants using opportunity sampling. (2)</div>
+  <div class="wl"></div>
+
+  <div class="sub">(d) Explain one weakness of Carlos using opportunity sampling. (2)</div>
+  <div class="wl"></div>
+
+  <div class="box orange">
+    <div class="bx-t">中文理解 答题提示</div>
+    (a)(b) 各写一个具体问题——closed 必须有预设选项；open 必须让人自由写。<br>
+    (c) 机会抽样 = <strong>谁在场问谁</strong>（公园 + 当时在场的行人）。<br>
+    (d) 沿链条走：<strong>只有当时在场的人被选中 → 不代表总体 → 结论推广受限</strong>。
+  </div>
+
+  <div class="pg-foot">Page 17 of 20</div>
+</div>
+
+<!-- PAGE 18 -->
+<div class="page">
+  <div class="pg-head"><span class="t">17 · 8-mark planning — evaluate questionnaires</span><span class="r">1.2.1 QUESTIONNAIRES &amp; INTERVIEWS</span></div>
+
+  <div class="q">Evaluate questionnaires as they are used in social psychology. (8 marks)</div>
+
+  <div class="sec">Plan it — two strengths, two weaknesses 列提纲</div>
+  <table class="n">
+    <tr><th style="width:16%;">#</th><th style="width:28%;">Point</th><th>Because + so what for social psychology</th></tr>
+    <tr><td class="lbl">S1</td><td></td><td></td></tr>
+    <tr><td class="lbl">S2</td><td></td><td></td></tr>
+    <tr><td class="lbl">W1</td><td></td><td></td></tr>
+    <tr><td class="lbl">W2</td><td></td><td></td></tr>
+  </table>
+
+  <div class="sec">Write one paragraph in full 写一段</div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+
+  <div class="box green">
+    <div class="bx-t">Scoring self-check 自评</div>
+    <span class="chk"><span class="c"></span> 每段都报了术语名　<span class="c"></span> 每段都有 because 机制　<span class="c"></span> 每段落回社会心理学（obedience / conformity 场景）　<span class="c"></span> 至少一处用到本册术语（social desirability / response bias / reliability…）</span>
+  </div>
+
+  <div class="pg-foot">Page 18 of 20</div>
+</div>
+
+<!-- PAGE 19 -->
+<div class="page">
+  <div class="pg-head"><span class="t">18 · Brain dump + Answer key (1 of 2)</span><span class="r">1.2.1 QUESTIONNAIRES &amp; INTERVIEWS</span></div>
+
+  <div class="sec">Brain dump 先自测</div>
+  <div class="box grey">
+    <p class="small">Cover everything. Write every term you remember from this booklet — question types, scales, traps, reliability, validity, interviews, data, hypotheses:</p>
+    <div class="wl s"></div>
+    <div class="wl s"></div>
+    <div class="wl s"></div>
+    <div class="wl s"></div>
+  </div>
+
+  <div class="sec">Answer key pp.2–7 答案（上半）</div>
+  <ul class="tight small">
+    <li><strong>p.2</strong> self-report; attitudes; email; online; directly. Questionnaire: written / large sample. Interview: spoken / depth.</li>
+    <li><strong>p.3</strong> numerical, converted; non-numerical. Sort: quant, qual, quant, qual. Numbers are not open to interpretation; meanings in prose are open to interpretation.</li>
+    <li><strong>p.4</strong> preset; circling, ticking; quantitative. Open: preset; freely; qualitative. Sort: closed/quant; closed/quant; open/qual; closed/quant. Closed loses the "why"; open gains depth.</li>
+    <li><strong>p.5</strong> level of detail; range; strength. Strongly agree; Neutral; Strongly disagree. Odd: middle, frequently. Even: choice.</li>
+    <li><strong>p.6</strong> ranking; weighting; most. Same direction; agreeing, disagreeing; reversed, mixed. Reversed: "Employment does not help society to function."; "Pets do not make people happy."</li>
+    <li><strong>p.7</strong> Social desirability: not give a genuine answer…favourable light…social norms; sensitive; against. Construction fix: simple, neutral, privacy-respecting. Response bias: blanket agreement. Privacy: intrusive; voluntarily.</li>
+  </ul>
+
+  <div class="pg-foot">Page 19 of 20</div>
+</div>
+
+<!-- PAGE 20 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Answer key (2 of 2)</span><span class="r">1.2.1 QUESTIONNAIRES &amp; INTERVIEWS</span></div>
+
+  <div class="sec">Answer key pp.8–17 答案（下半）</div>
+  <ul class="tight small">
+    <li><strong>p.8</strong> consistency; over time; within itself. Test-retest: external — same people, same questionnaire, different occasion. Split-half: internal — questions, two halves. Same score; different concept.</li>
+    <li><strong>p.9</strong> what, intends. Face: sense, construct. Predictive: future — intelligence score → degree grading. Concurrent: same, agree — compare to another test of the same construct. Consistent? / measuring the right thing? reliable, valid.</li>
+    <li><strong>p.10</strong> standardised; same, same. Weaknesses filled: stifled. Types: structured; unstructured; semi-structured.</li>
+    <li><strong>p.11</strong> preset; standardised; deviate; quantitative, qualitative. Loose; conversation; analytical; listening; judgemental. Not replicable. Quotes; anonymised; disguised.</li>
+    <li><strong>p.12</strong> personality; control. Confirmation. Independent; not aware. Friendships; employing a female interviewer.</li>
+    <li><strong>p.13</strong> directly; existing; specifically; less; time consuming; analysed; current; out of date, large. Literature review: reads, summarises, other. Marco: secondary; Philipina: primary.</li>
+    <li><strong>p.14</strong> prediction; variables; testable, precise. Mixed; difference, relationship; direction.</li>
+    <li><strong>p.15</strong> weakness; social desirability; obedient; disobedient. Point = name the bias; Because = people protect their image; So what = self-reported obedience inflated.</li>
+    <li><strong>p.16</strong> strength; reasons; authority; validity; obedience. Bank rows: questionnaire — reaches large samples cheaply; interview — researcher effects; structured — standardised, repeatable; unstructured — time consuming, not replicable.</li>
+    <li><strong>p.17 (a)</strong> e.g. "Would you walk on the grass if a sign asked you not to? Yes / No." <strong>(b)</strong> "Explain why you would or would not walk on the grass when the sign asks you not to." <strong>(c)</strong> Go to the park and ask pedestrians available at the time. <strong>(d)</strong> Only those present then are selected → unequal chance → unrepresentative → limited generalisability (also: direct asking pressures people to participate).</li>
+  </ul>
+
+  <div class="box purple">
+    <div class="bx-t">Last look 最后过一遍</div>
+    Closed→quant·浅｜Open→qual·深｜Likert 打分｜ranked 排序｜odd 留中立·even 逼站队｜test-retest 外信｜split-half 内信｜face/predictive/concurrent｜structured 浅可重复｜unstructured 深不可复制｜primary 亲手收·secondary 别人收。
+  </div>
+
+  <div class="pg-foot">Page 20 of 20</div>
+</div>
+
+</body>
+</html>
