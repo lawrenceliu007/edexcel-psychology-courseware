@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.3.1 Classic Study — Moscovici et al. (1969)</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.five-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+
+.mat2x2 { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 6px; margin: 14px 0; }
+.mat2x2.c2 { grid-template-columns: 150px 1fr; }
+.mat2x2 .mh { background: var(--primary); color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
+body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style></head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic A · Social Psychology — 1.3.1 Classic study: Moscovici et al. (1969)</span>
+  </div>
+  <span class="nav-pill">🧑‍🤝‍🧑 Social Psychology · Studies</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="1.3.1-Moscovici-1969-Classic-Study-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">1.3.1 · Contents</div>
+        <div class="sb-header-sub">Moscovici et al. (1969)</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">Before we start</li>
+        <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+        <li class="sb-item"><a href="#s2">2. The Classic Study</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">The study itself</li>
+        <li class="sb-item"><a href="#s3">3. The Three Questions</a></li>
+        <li class="sb-item"><a href="#s4">4. Sample</a></li>
+        <li class="sb-item"><a href="#s5">5. The Colour Task</a></li>
+        <li class="sb-item"><a href="#s6">6. The Vision Check</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Three experiments</li>
+        <li class="sb-item"><a href="#s7">7. Variation: Where They Sat</a></li>
+        <li class="sb-item"><a href="#s8">8. Experiment Two: Private</a></li>
+        <li class="sb-item"><a href="#s9">9. Experiment Three: Inconsistent</a></li>
+        <li class="sb-item"><a href="#s10">10. The Control Groups</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">What was found</li>
+        <li class="sb-item"><a href="#s11">11. Results: Experiments 1</a></li>
+        <li class="sb-item"><a href="#s12">12. Results: Experiments 2 &amp; 3</a></li>
+        <li class="sb-item"><a href="#s13">13. What the Results Mean</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Evaluation</li>
+        <li class="sb-item"><a href="#s14">14. Strengths</a></li>
+        <li class="sb-item"><a href="#s15">15. Limitations</a></li>
+        <li class="sb-item"><a href="#s16">16. Suggest an Improvement</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Exam</li>
+        <li class="sb-item"><a href="#s17">17. Exam Focus</a></li>
+        <li class="sb-item"><a href="#s18">18. Checkpoint</a></li>
+        <li class="sb-item"><a href="#s19">19. Exam Lab</a></li>
+        <li class="sb-item"><a href="#s20">20. Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>1.3.1 CLASSIC STUDY · MOSCOVICI ET AL. (1969)<br><span style="font-size:0.62em">Influence of a consistent minority on the responses of a majority in a colour perception task</span></h1>
+  <div class="subtitle">One classic study for Topic A: can a minority of two really pull a majority of four towards a wrong answer about a colour?</div>
+  <div class="meta">
+    <span class="badge">Topic A · Social psychology</span>
+    <span class="badge">Studies: classic</span>
+    <span class="badge">Spec 1.3.1</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this study is really asking</h4>
+  <ol>
+    <li><strong>Two confederates insist, again and again, that a blue slide is green.</strong> Do the four real participants start saying green too? Yes, some do: <strong>8.42%</strong> of answers in the experimental groups, against <strong>0.25%</strong> in the control.</li>
+    <li><strong>Consistency is the engine.</strong> When the confederates wavered (green 24 times, blue 12), agreement collapsed to <strong>1.25%</strong>.</li>
+    <li><strong>The influence goes deeper than words.</strong> In experiment two, people who had never publicly agreed still shifted their private colour judgements afterwards, so the minority had altered their <strong>perceptual code</strong>.</li>
+    <li><strong>Conclusion:</strong> a consistent minority can change how a majority actually sees things; majority influence tends to change only what people say.</li>
+  </ol>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started</h2>
+
+  <p>You are sitting in a row of six people, judging the colour of a slide on a screen. The slide is clearly, unmistakably blue. The person next to you says "green". The next one says "green" too.</p>
+
+  <p>It is your turn. What do you say?</p>
+
+  <div class="xp-block">
+    <h4>🎯 Have a guess first <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro">Two people before you, out of four, have said "green" about a blue slide. What is most likely to happen across a whole experiment?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="msGuess(this,'a')">Everyone keeps saying blue — two voices cannot touch a confident majority</button>
+      <button class="q-option" onclick="msGuess(this,'b')">A few people drift towards green, especially if the two keep saying it every single time</button>
+      <button class="q-option" onclick="msGuess(this,'c')">Half the room switches to green within a few slides</button>
+    </div>
+    <div class="xp-result" id="res-ms"></div>
+  </div>
+
+  <p>Option B is what Moscovici found. The pull of a minority is small, but it is real, and it depends on one thing above all: <strong>the minority never wavers</strong>.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：这一讲研究什么</strong><br>
+    上一讲（1.1.6）讲过少数派影响的理论。这一讲是<strong>支持它的经典实验</strong>：两个托儿面对四个真被试，把蓝色幻灯片一口咬定说成绿色，看真被试会不会跟着说绿。<br>
+    要记的三个数字：<strong>8.42%</strong>（实验组随少数派的比例）、<strong>0.25%</strong>（控制组）、<strong>1.25%</strong>（托儿前后不一致时）。一个一致、一个不一致，对比全在这两个数之间。
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Why This Is the Classic Study</h2>
+
+  <p>Asch showed that a <strong>majority</strong> can bend an individual. Moscovici asked the reverse question: can a small <strong>minority</strong> bend the majority? The textbook lists three reasons this study earns the label "classic":</p>
+
+  <div class="five-grid">
+    <div class="compare-card">
+      <h4>It tested the reverse direction</h4>
+      <p style="font-size:.9em;margin:4px 0">Asch had the many pressing the one. Here, two people press against four. Minority influence needed a laboratory test of its own.</p>
+    </div>
+    <div class="compare-card">
+      <h4>It isolated the key behaviour style</h4>
+      <p style="font-size:.9em;margin:4px 0">Consistency was built into the design: some groups met a minority that never changed its answer, and one group met a minority that did. The comparison does the explaining.</p>
+    </div>
+    <div class="compare-card">
+      <h4>It probed below the surface</h4>
+      <p style="font-size:.9em;margin:4px 0">A second experiment measured what happened <strong>inside</strong> perception, so the study could tell a changed answer apart from a changed way of seeing.</p>
+    </div>
+  </div>
+
+  <div class="keyterm-box">
+    <span class="kt">perceptual code:</span> a way of perceiving or interpreting information. In the context of Moscovici's experiments, when a minority consistently presents a viewpoint, it can challenge the majority's perceptual code.
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：perceptual code（知觉编码）</strong><br>
+    你看见蓝色，大脑把蓝色"翻译"给你，这一套翻译规则就是知觉编码。<br>
+    少数派一直说"这是绿的"，等于在挑战你的翻译规则：<strong>你也许嘴上不改，但心里那套规则可能被掰动</strong>。实验二测的就是后者，它让人写下自己真正看到的颜色。
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. The Three Questions (Aims)</h2>
+
+  <p>Serge Moscovici and colleagues ran a series of experiments in 1969. The textbook gives three aims. Learn them as three questions:</p>
+
+  <table>
+    <tr><th style="width:8%;">#</th><th>The question the study set out to answer</th></tr>
+    <tr><td>1</td><td>Can social pressure from a <strong>minority</strong> influence a <strong>majority</strong> into giving an incorrect response, on a colour perception task in a group?</td></tr>
+    <tr><td>2</td><td>Would a <strong>consistent</strong> minority exert a greater influence than an <strong>inconsistent</strong> minority?</td></tr>
+    <tr><td>3</td><td>Does minority influence create only a change in <strong>verbal response</strong>, or also an actual change in <strong>perception</strong>?</td></tr>
+  </table>
+
+  <div class="note-box">
+    <h4>How the three experiments map onto the aims</h4>
+    <p>Question 1 and 2 are answered by the main procedure plus experiment three (the inconsistent version). Question 3 is answered by experiment two, where people judged colours <strong>in private</strong>. Keep this mapping in mind: exam questions often name an aim and ask which part of the study tested it.</p>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Sample</h2>
+
+  <table>
+    <tr><th style="width:30%;">Feature</th><th>Detail</th></tr>
+    <tr><td>Who</td><td>All participants were <strong>female</strong> students of <strong>liberal arts, law or social science</strong>.</td></tr>
+    <tr><td>Group size</td><td>Placed in groups of <strong>six</strong>.</td></tr>
+    <tr><td>Who was real</td><td><strong>Two</strong> of each group were confederates of the study; <strong>four</strong> were naïve participants.</td></tr>
+    <tr><td>Why female</td><td>The researchers thought women would have a <strong>greater involvement in evaluating colour</strong>.</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么挑女生</strong><br>
+    研究者假设女生平时更在意颜色（穿衣服、化妆这类判断里颜色出现得多），所以对颜色的判断会更投入。<br>
+    记住这个理由，评价题里"只用了女性，结论能不能推广"就顺着这条线答：设计上有理由，但样本单一仍是弱点。
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. The Colour Task</h2>
+
+  <p>The apparatus was a screen onto which a series of <strong>blue coloured slides</strong> were projected using coloured filters. Each group sat in a row in front of it and was told the study was about colour perception.</p>
+
+  <table>
+    <tr><th style="width:34%;">Feature</th><th>Detail</th></tr>
+    <tr><td>The judgements</td><td>Say aloud the <strong>colour</strong> of the slide, and judge its <strong>light intensity</strong> on a scale of <strong>0–5</strong> (0 dimmest, 5 brightest). A brief explanation of light intensity was given first.</td></tr>
+    <tr><td>The slides</td><td><strong>Six slides</strong>, each presented <strong>six times</strong>, for <strong>15 seconds</strong> per slide.</td></tr>
+    <tr><td>Total</td><td>Each participant judged <strong>36 slides</strong> in all.</td></tr>
+    <tr><td>Warm-up</td><td>A <strong>practice trial</strong> came first; after that each slide was shown one at a time.</td></tr>
+    <tr><td>The minority</td><td>The two confederates <strong>consistently reported the slides were green</strong>.</td></tr>
+  </table>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Six people seated in a row facing a screen showing a blue slide; the first two confederates say green while the four naive participants judge blue and rate light intensity from 0 to 5">
+      <rect x="530" y="40" width="130" height="120" rx="8" fill="#dbeafe" stroke="#1e3a5f" stroke-width="2"/>
+      <rect x="546" y="60" width="98" height="80" rx="4" fill="#2563eb"/>
+      <text x="595" y="106" font-size="13" font-weight="700" fill="#dbeafe" text-anchor="middle">BLUE</text>
+      <text x="595" y="124" font-size="11" font-weight="700" fill="#dbeafe" text-anchor="middle">slide</text>
+      <text x="595" y="180" font-size="10" fill="#475569" text-anchor="middle">6 slides × 6 times</text>
+      <text x="595" y="194" font-size="10" fill="#475569" text-anchor="middle">15 s each = 36</text>
+
+      <text x="240" y="34" font-size="11.5" fill="#475569" text-anchor="middle">the row of six, facing the screen</text>
+
+      <rect x="60" y="120" width="74" height="52" rx="8" fill="#ea580c"/>
+      <text x="97" y="142" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">Confederate</text>
+      <text x="97" y="160" font-size="9.5" fill="#ffedd5" text-anchor="middle">says "green"</text>
+
+      <rect x="140" y="120" width="74" height="52" rx="8" fill="#ea580c"/>
+      <text x="177" y="142" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">Confederate</text>
+      <text x="177" y="160" font-size="9.5" fill="#ffedd5" text-anchor="middle">says "green"</text>
+
+      <rect x="220" y="120" width="74" height="52" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="257" y="142" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">Naïve</text>
+      <text x="257" y="160" font-size="10.5" fill="#64748b" text-anchor="middle">blue?</text>
+
+      <rect x="300" y="120" width="74" height="52" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="337" y="142" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">Naïve</text>
+      <text x="337" y="160" font-size="10.5" fill="#64748b" text-anchor="middle">blue?</text>
+
+      <rect x="380" y="120" width="74" height="52" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="417" y="142" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">Naïve</text>
+      <text x="417" y="160" font-size="10.5" fill="#64748b" text-anchor="middle">blue?</text>
+
+      <rect x="460" y="120" width="52" height="52" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="486" y="142" font-size="10" font-weight="700" fill="#334155" text-anchor="middle">Naïve</text>
+      <text x="486" y="160" font-size="9.5" fill="#64748b" text-anchor="middle">blue?</text>
+
+      <text x="97" y="196" font-size="10.5" fill="#c2410c" text-anchor="middle">the consistent minority</text>
+      <text x="330" y="196" font-size="10.5" fill="#475569" text-anchor="middle">the naive majority</text>
+
+      <rect x="60" y="224" width="440" height="52" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+      <text x="280" y="246" font-size="11.5" font-weight="700" fill="#c2410c" text-anchor="middle">Two answers per slide</text>
+      <text x="280" y="264" font-size="10.5" fill="#475569" text-anchor="middle">1 · the colour, out loud  2 · light intensity, rated 0 (dimmest) to 5 (brightest)</text>
+    </svg>
+    <div class="figure-caption">Figure 1 — The basic task: two confederates answer before the four naïve participants and keep saying "green".</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么题目要带一个亮度打分</strong><br>
+    光报颜色太简单，真被试一眼就能看出"这题是不是在骗人"。加一个 <strong>0–5 的亮度判断</strong>，整个任务看起来像一场正经的视知觉测量，托儿说错颜色才显得像"看法不同"，不像故意捣乱。<br>
+    亮度判断还有另一个用处：结果分析时能看出<strong>光线越弱，少数派影响越大</strong>（见第 11 节）。
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. The Vision Check</h2>
+
+  <p>Before any slide was shown, <strong>all group members were given a test to check for visual abnormalities</strong>.</p>
+
+  <p>This control did two jobs at once:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Job 1 · screen out poor vision</h4>
+      <p style="font-size:.9em;margin:4px 0">Anyone whose colour vision was off could be removed, so odd answers could not be blamed on the eyes.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Job 2 · convince the participants</h4>
+      <p style="font-size:.9em;margin:4px 0">Everyone <strong>saw</strong> the test happen, so each naïve participant knew the other five had normal vision. Nobody could dismiss the "green" answers as a visual problem.</p>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <h4>Why this small detail earns marks</h4>
+    <p>The textbook calls this an important control: it removed the possibility that naïve participants would attribute different colour judgements to visual differences. If someone says "green" and you know their eyes are fine, the only remaining explanation is social. That is exactly the situation the study needed.</p>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Variation One: Where the Confederates Sat</h2>
+
+  <p>In the first variation of the procedure, the seating and answering positions of the two confederates were changed across groups:</p>
+
+  <table>
+    <tr><th style="width:38%;">Groups</th><th>What the confederates did</th></tr>
+    <tr><td><strong>12 groups</strong></td><td>Sat <strong>next to each other</strong> and gave the <strong>first and second</strong> responses of the group.</td></tr>
+    <tr><td><strong>20 groups</strong></td><td>Gave the <strong>first and fourth</strong> responses, with naïve participants answering in between. This was aimed at making the second confederate appear <strong>independent</strong> of the first.</td></tr>
+  </table>
+
+  <p>The finding: <strong>there was no difference</strong> between the responses given under the two arrangements. Whether the two "green" voices sat together or were split apart, the amount of influence stayed the same.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：拆开坐是在测什么</strong><br>
+    两个托儿挨着坐，看起来像"一伙的"；一个答第 1 位、一个答第 4 位，中间隔着两个真被试，第二个托儿就显得<strong>像是自己独立做出的判断</strong>。<br>
+    结果两种摆法影响一样大。起作用的始终是<strong>"又有人说绿了"这件事本身</strong>，托儿之间坐得远近、看起来像不像一伙，都排不上号。
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Experiment Two: The Private Test</h2>
+
+  <p>Aim 3 asked whether minority influence touches perception itself. Experiment two was built to answer it.</p>
+
+  <p><strong>Ten groups</strong> who had completed experiment one were then asked to consent to taking part in <strong>another researcher's study on the effect of exercise on visual phenomena</strong>. The researcher gained agreement, left the room, and a <strong>second researcher</strong> entered and repeated the request.</p>
+
+  <table>
+    <tr><th style="width:34%;">Feature</th><th>Detail</th></tr>
+    <tr><td>Setting</td><td>Participants seated <strong>around a table</strong>, each isolated by <strong>cardboard screens</strong>.</td></tr>
+    <tr><td>The judgement</td><td><strong>Private</strong>: each person wrote the colour down on paper instead of saying it aloud.</td></tr>
+    <tr><td>The discs</td><td><strong>16 discs</strong>: three blue, three green, and <strong>ten ambiguous</strong> (between blue and green).</td></tr>
+    <tr><td>Timing</td><td>Each disc shown one at a time, for <strong>five seconds</strong>, on a neutral background in the centre of the table.</td></tr>
+    <tr><td>Wrap-up</td><td>The first experimenter returned, ended the study and administered the post-experimental questionnaire.</td></tr>
+  </table>
+
+  <div class="note-box">
+    <h4>What this experiment was designed to detect</h4>
+    <p>Two possibilities. First, whether experiment one had a <strong>lasting effect on perception</strong> for those who yielded to the minority. Second, whether participants who <strong>did not publicly yield</strong> in experiment one, perhaps because they repressed their response during the social interaction, had still changed their <strong>perceptual code</strong>. Writing the answer down, alone behind a screen, strips away the social pressure. Whatever shift remains must live somewhere inside perception.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：换研究者这个戏演给谁看</strong><br>
+    新实验先让"另一个研究员"来接手，被试就会觉得这是<strong>两件不相干的事</strong>，不会联想到刚才那群说"绿"的托儿。<br>
+    再加上纸板隔开、各自写答案：<strong>没有人在听，没有面子问题</strong>。这时候如果答案还偏向绿，就只能解释成脑子里的颜色标准真的动了。
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Experiment Three: The Inconsistent Minority</h2>
+
+  <p><strong>Eleven groups</strong> were tested to see if the <strong>degree of consistency</strong> between the confederates had an impact on minority influence.</p>
+
+  <div class="blue-box">
+    <h4>The one change</h4>
+    <p>The two confederates said the slide was green <strong>24 times</strong> and blue <strong>12 times</strong>, demonstrating <strong>inconsistency</strong> in their judgement. Everything else stayed as before.</p>
+  </div>
+
+  <p>So the three experiments form a staircase:</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Staircase of three experiments: main procedure with consistent minority, experiment two private written judgements, experiment three inconsistent minority answering green 24 times and blue 12 times">
+      <defs>
+        <marker id="arA20a" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#ea580c"/>
+        </marker>
+      </defs>
+
+      <rect x="30" y="60" width="190" height="110" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+      <text x="125" y="86" font-size="12.5" font-weight="700" fill="#c2410c" text-anchor="middle">Main procedure</text>
+      <text x="125" y="106" font-size="10.5" fill="#475569" text-anchor="middle">groups of 6 (2 confederates)</text>
+      <text x="125" y="124" font-size="10.5" fill="#475569" text-anchor="middle">36 blue slides, answers out loud</text>
+      <text x="125" y="142" font-size="10.5" font-weight="700" fill="#334155" text-anchor="middle">confederates: always green</text>
+      <text x="125" y="160" font-size="10" fill="#94a3b8" text-anchor="middle">answers aim 1 · seating variation</text>
+
+      <line x1="224" y1="115" x2="266" y2="115" stroke="#ea580c" stroke-width="2" marker-end="url(#arA20a)"/>
+
+      <rect x="270" y="60" width="190" height="110" rx="9" fill="#eff6ff" stroke="#1e3a5f" stroke-width="1.8"/>
+      <text x="365" y="86" font-size="12.5" font-weight="700" fill="#1e3a5f" text-anchor="middle">Experiment two</text>
+      <text x="365" y="106" font-size="10.5" fill="#475569" text-anchor="middle">10 groups · cardboard screens</text>
+      <text x="365" y="124" font-size="10.5" fill="#475569" text-anchor="middle">16 discs, 10 ambiguous</text>
+      <text x="365" y="142" font-size="10.5" font-weight="700" fill="#334155" text-anchor="middle">private, written answers</text>
+      <text x="365" y="160" font-size="10" fill="#94a3b8" text-anchor="middle">answers aim 3 · perception itself</text>
+
+      <line x1="464" y1="115" x2="506" y2="115" stroke="#ea580c" stroke-width="2" marker-end="url(#arA20a)"/>
+
+      <rect x="510" y="60" width="140" height="110" rx="9" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8"/>
+      <text x="580" y="86" font-size="12.5" font-weight="700" fill="#991b1b" text-anchor="middle">Experiment three</text>
+      <text x="580" y="106" font-size="10.5" fill="#475569" text-anchor="middle">11 groups</text>
+      <text x="580" y="124" font-size="10.5" font-weight="700" fill="#334155" text-anchor="middle">green 24 · blue 12</text>
+      <text x="580" y="142" font-size="10.5" fill="#991b1b" text-anchor="middle">inconsistent minority</text>
+      <text x="580" y="160" font-size="10" fill="#94a3b8" text-anchor="middle">answers aim 2 · consistency</text>
+
+      <rect x="30" y="196" width="620" height="40" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+      <text x="340" y="221" font-size="11.5" fill="#475569" text-anchor="middle">Each experiment had its own control group of 22 participants with no confederates present.</text>
+    </svg>
+    <div class="figure-caption">Figure 2 — The three experiments, each answering a different aim, each with its own control group.</div>
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. The Control Groups</h2>
+
+  <p>A control group of <strong>22 participants</strong> also made colour judgements in groups of six, with <strong>no confederates present</strong>. There was a control group for each of the experiments conducted.</p>
+
+  <div class="note-box">
+    <h4>What the control gives you</h4>
+    <p>Without it, a few stray "green" answers could mean many things: a strange batch of slides, a projector drifting in colour, tired eyes. The control group saw the same slides with nobody pushing, and they said green for <strong>0.25%</strong> of answers. That near-zero baseline is what lets Moscovici claim the green responses in the experimental groups came from <strong>minority influence</strong>.</p>
+  </div>
+</section>
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Results: The Main Experiments</h2>
+
+  <p>Moscovici et al. measured minority influence by the number of <strong>"green" responses</strong> given by the naïve participants.</p>
+
+  <table>
+    <tr><th style="width:44%;">Result</th><th>Numbers</th></tr>
+    <tr><td>Green responses, experimental groups (first two experiments, n = 128)</td><td><strong>8.42%</strong> of answers</td></tr>
+    <tr><td>Green responses, control group (22 participants)</td><td><strong>0.25%</strong> of answers</td></tr>
+    <tr><td>Naïve participants who conformed at least once (said a blue slide was green)</td><td><strong>32%</strong></td></tr>
+    <tr><td>Within groups that yielded, naïve participants who matched the confederates</td><td><strong>57%</strong> (an average of two participants per group)</td></tr>
+  </table>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart: green responses 8.42 per cent in experimental groups versus 0.25 per cent in control, inconsistent minority 1.25 per cent">
+      <text x="340" y="20" font-size="11.5" fill="#475569" text-anchor="middle">Share of answers that said "green" — the slides were blue every time</text>
+
+      <line x1="90" y1="250" x2="640" y2="250" stroke="#334155" stroke-width="1.8"/>
+      <line x1="90" y1="40" x2="90" y2="250" stroke="#334155" stroke-width="1.8"/>
+
+      <line x1="90" y1="200" x2="640" y2="200" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="90" y1="150" x2="640" y2="150" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="90" y1="100" x2="640" y2="100" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="90" y1="50" x2="640" y2="50" stroke="#e2e8f0" stroke-width="1"/>
+
+      <text x="82" y="254" font-size="10.5" fill="#64748b" text-anchor="end">0</text>
+      <text x="82" y="204" font-size="10.5" fill="#64748b" text-anchor="end">2%</text>
+      <text x="82" y="154" font-size="10.5" fill="#64748b" text-anchor="end">4%</text>
+      <text x="82" y="104" font-size="10.5" fill="#64748b" text-anchor="end">6%</text>
+      <text x="82" y="54" font-size="10.5" fill="#64748b" text-anchor="end">8%</text>
+
+      <rect x="140" y="44.75" width="120" height="205.25" rx="4" fill="#ea580c"/>
+      <rect x="290" y="243.75" width="120" height="6.25" rx="2" fill="#94a3b8"/>
+      <rect x="440" y="218.75" width="120" height="31.25" rx="3" fill="#f59e0b"/>
+
+      <text x="200" y="38" font-size="13" font-weight="700" fill="#c2410c" text-anchor="middle">8.42%</text>
+      <text x="350" y="236" font-size="12" font-weight="700" fill="#64748b" text-anchor="middle">0.25%</text>
+      <text x="500" y="212" font-size="13" font-weight="700" fill="#b45309" text-anchor="middle">1.25%</text>
+
+      <text x="200" y="270" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">consistent minority</text>
+      <text x="350" y="270" font-size="12" font-weight="700" fill="#64748b" text-anchor="middle">control (no minority)</text>
+      <text x="500" y="270" font-size="12" font-weight="700" fill="#b45309" text-anchor="middle">inconsistent minority</text>
+
+      <text x="340" y="292" font-size="11" fill="#475569" text-anchor="middle">Consistency multiplies the influence: 8.42 against 1.25 is close to a seven-fold gap.</text>
+    </svg>
+    <div class="figure-caption">Figure 3 — Green responses under a consistent minority, no minority, and an inconsistent minority.</div>
+  </div>
+
+  <p>Three more findings complete the picture:</p>
+  <ul>
+    <li><strong>Seating made no difference:</strong> responses were the same whether the confederates answered first and second, or first and fourth.</li>
+    <li><strong>Light intensity mattered:</strong> minority influence was greatest when the light intensity of the slide was <strong>weak</strong> — but even so, the green response was always higher in the experimental groups than in the controls.</li>
+    <li><strong>Post-experimental interviews:</strong> those who tended to agree with the minority described the slides as a <strong>range of green-blue shades</strong>; those who did not agree claimed the slides were simply blue. This suggests members of the majority were genuinely making an effort to consider the minority's viewpoint, perhaps because the minority were exerting <strong>informational social influence</strong>.</li>
+  </ul>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Results: Experiments Two and Three</h2>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Experiment two · the private shift</h4>
+      <p style="font-size:.9em;margin:4px 0">Participants who <strong>did not publicly agree</strong> with the minority during experiment one were <strong>more likely to shift their judgement</strong> in phase two than those who did publicly agree. The textbook reads this as a <strong>modification in perceptual code</strong>, more than a change of verbal response.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Experiment three · the collapse</h4>
+      <p style="font-size:.9em;margin:4px 0">With an inconsistent minority (green 24, blue 12), only <strong>1.25%</strong> of responses agreed with the minority. Consistency of the minority is therefore an important <strong>behaviour style</strong>.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：实验二的结果反着看才有味道</strong><br>
+    嘴上没跟着说"绿"的人，私下写答案时反而<strong>更偏向绿</strong>。这些人当着大家的面憋住了，可颜色标准已经被动过。<br>
+    这就是少数派影响和从众（Asch 那种）最不一样的地方：<strong>多数派影响改的是"说什么"，少数派影响改的是"怎么想"</strong>。面积小，扎得深。
+  </div>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. What the Results Mean (Conclusions)</h2>
+
+  <p>The textbook draws the threads together in four sentences worth learning:</p>
+
+  <ol>
+    <li>Minorities can exert <strong>some, albeit small, influence</strong> in a laboratory situation using female participants, particularly if the minority are <strong>consistent</strong> in their viewpoint.</li>
+    <li>A consistent minority can <strong>modify the perceptual code or norm</strong> of a majority.</li>
+    <li>A consistent minority is more capable of modifying a majority's <strong>perceptive code</strong> than their <strong>social response</strong>.</li>
+    <li>This <strong>contrasts with majority influence</strong>, which is more likely to influence a <strong>social response</strong> than affect a perceptual code.</li>
+  </ol>
+
+  <div class="blue-box">
+    <h4>The mirror-image idea (worth a sentence in any essay)</h4>
+    <p>Majority influence and minority influence work on different layers. The majority tends to change what people <strong>say</strong> (social response); a consistent minority tends to change what people <strong>see</strong> (perceptual code). The direction of pressure and the depth of the change go hand in hand.</p>
+  </div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="section" id="s14">
+  <h2>14. Evaluation · Strengths</h2>
+
+  <p>The textbook's headline verdict: the study was conducted using a <strong>highly standardised procedure with variables tightly controlled</strong>. Three controls do the work:</p>
+
+  <table>
+    <tr><th style="width:34%;">Control</th><th>What it achieved</th></tr>
+    <tr><td>The <strong>vision test</strong> for all group members</td><td>Anyone with visual problems could be removed, and participants knew everyone in the group had good colour vision, so they avoided treating the minority's judgements as incorrect because of visual issues.</td></tr>
+    <tr><td><strong>Random allocation</strong> to experimental or control group</td><td>Removed the possible bias of certain types of personality being grouped together.</td></tr>
+    <tr><td>Altering and analysing different <strong>light intensities</strong> of the slides and participants' responses</td><td>Controlled for the intensity of light affecting visual perception.</td></tr>
+  </table>
+
+  <p>The payoff of all this control: <strong>the study can be replicated</strong> to check whether minority influence is a consistent outcome.</p>
+</section>
+
+<!-- ============ 15 ============ -->
+<section class="section" id="s15">
+  <h2>15. Evaluation · Limitations</h2>
+
+  <div class="compare-grid">
+    <div class="compare-card red">
+      <h4>Sample limitation</h4>
+      <p style="font-size:.9em;margin:4px 0">Only <strong>female</strong> liberal arts, law and social science students took part, so the findings may not represent the behaviour of <strong>males or non-students</strong> in minority influence situations. Conformity to a minority was tested on a female student population only.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Culture limitation</h4>
+      <p style="font-size:.9em;margin:4px 0">Only <strong>American students</strong> were used, and cross-cultural research shows <strong>considerable variation in social influence</strong> in different countries.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Ecological validity</h4>
+      <p style="font-size:.9em;margin:4px 0">A laboratory environment is <strong>artificial</strong> and may not reflect how minority groups exert influence over <strong>real-life situations and real issues</strong>. We cannot be sure minorities will exert the same influence over people in real situations.</p>
+    </div>
+    <div class="compare-card">
+      <h4>The size question (honest reading)</h4>
+      <p style="font-size:.9em;margin:4px 0">The influence found was small: 8.42% of answers, from a minority of two against four. The textbook itself calls it "some, albeit small, influence". A fair evaluation weighs the effect as well as its significance.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：三条弱点怎么记</strong><br>
+    一条管<strong>人</strong>（只有女学生，男女差异、非学生群体说不清），一条管<strong>地方</strong>（只有美国学生，各国社会影响差别大），一条管<strong>场景</strong>（实验室里的颜色判断太干净，现实里少数派改变多数靠的是真实议题）。<br>
+    写答案时各配一句"所以结论只能推到哪"，就够两分。
+  </div>
+</section>
+
+<!-- ============ 16 ============ -->
+<section class="section" id="s16">
+  <h2>16. Suggest an Improvement</h2>
+
+  <div class="exam-tip">
+    <strong>Exam tip (from the textbook).</strong> You may be asked to suggest an <strong>improvement</strong> to research listed on the specification. You must suggest a suitable improvement that will actually improve the study. This can be identified by considering the weaknesses of a study. You must also <strong>justify why</strong> your suggested improvement will improve the study.
+  </div>
+
+  <p>The textbook's worked example, built directly on the sample weakness:</p>
+
+  <div class="green-box">
+    <h4>Model answer</h4>
+    <p>One improvement to Moscovici's research would be to <strong>use male and female participants</strong>, as Moscovici only used female students. This would be a <strong>more representative sample</strong> so that we can be sure the minority influence over a majority would extend to the wider population and increase <strong>generalisability</strong>.</p>
+    <p class="small">Notice the structure: weakness first, then the fix, then the justification. Three moves, and the mark scheme has everything it wants.</p>
+  </div>
+</section>
+<!-- ============ 17 ============ -->
+<section class="section" id="s17">
+  <h2>17. Exam Focus</h2>
+
+  <div class="exam-tip">
+    <strong>Classic vs contemporary (textbook exam tip).</strong> You have learned about two compulsory studies and one option study in this chapter. You can be asked for specific details of the <strong>classic</strong> study, but only general questions about your <strong>option</strong> study. When revising, separate each study into <strong>aim(s), sample, procedure, results and conclusion(s)</strong>. If you are asked to describe the procedure, you will not get marks for describing the aim(s), sample, results or conclusion(s).
+  </div>
+
+  <table>
+    <tr><th style="width:30%;">Likely question</th><th>What a full-mark answer needs</th></tr>
+    <tr><td>State two results of Moscovici et al.'s (1969) study</td><td>Any two of: 8.42% green responses in the experimental groups; 0.25% in the control; 32% conformed at least once; 57% of naïve participants in yielding groups (two per group on average); 1.25% with an inconsistent minority.</td></tr>
+    <tr><td>Suggest one improvement (2 marks)</td><td>The fix (e.g. male and female participants) <strong>plus</strong> the justification (more representative, increases generalisability). One without the other is one mark.</td></tr>
+    <tr><td>Explain one weakness</td><td>Name it (all-female student sample / American students only / artificial laboratory), then explain the consequence for what the conclusions can claim.</td></tr>
+  </table>
+</section>
+
+<!-- ============ 18 ============ -->
+<section class="section" id="s18">
+  <h2>18. Checkpoint</h2>
+
+  <div class="checkpoint">
+    <h3>Quick self-test · 8 questions</h3>
+    <div class="q-row">
+      <p class="q-stem">1. How many people were in each group, and how many were confederates?</p>
+      <label class="q-opt"><input type="radio" name="m1" value="a"> 6 people, 2 confederates</label>
+      <label class="q-opt"><input type="radio" name="m1" value="b"> 6 people, 3 confederates</label>
+      <label class="q-opt"><input type="radio" name="m1" value="c"> 4 people, 2 confederates</label>
+    </div>
+    <div class="q-row">
+      <p class="q-stem">2. Why were only female participants used?</p>
+      <label class="q-opt"><input type="radio" name="m2" value="a"> Women conform more than men</label>
+      <label class="q-opt"><input type="radio" name="m2" value="b"> The researchers thought women would have a greater involvement in evaluating colour</label>
+      <label class="q-opt"><input type="radio" name="m2" value="c"> Female students were easier to recruit</label>
+    </div>
+    <div class="q-row">
+      <p class="q-stem">3. What did each participant judge, per slide?</p>
+      <label class="q-opt"><input type="radio" name="m3" value="a"> Only the colour</label>
+      <label class="q-opt"><input type="radio" name="m3" value="b"> The colour, and light intensity on a scale of 0–5</label>
+      <label class="q-opt"><input type="radio" name="m3" value="c"> The colour, and a confidence rating from 1 to 10</label>
+    </div>
+    <div class="q-row">
+      <p class="q-stem">4. What was the purpose of the vision test?</p>
+      <label class="q-opt"><input type="radio" name="m4" value="a"> To remove participants with visual problems and show everyone that all group members had normal vision</label>
+      <label class="q-opt"><input type="radio" name="m4" value="b"> To select only colour-blind participants</label>
+      <label class="q-opt"><input type="radio" name="m4" value="c"> To measure reaction times</label>
+    </div>
+    <div class="q-row">
+      <p class="q-stem">5. In experiment two, why were participants isolated by cardboard screens and asked to write?</p>
+      <label class="q-opt"><input type="radio" name="m5" value="a"> To save time</label>
+      <label class="q-opt"><input type="radio" name="m5" value="b"> To test whether the minority had changed their perceptual code away from any social pressure</label>
+      <label class="q-opt"><input type="radio" name="m5" value="c"> To stop them talking to the researcher</label>
+    </div>
+    <div class="q-row">
+      <p class="q-stem">6. What did the inconsistent minority in experiment three do?</p>
+      <label class="q-opt"><input type="radio" name="m6" value="a"> Said green 24 times and blue 12 times</label>
+      <label class="q-opt"><input type="radio" name="m6" value="b"> Answered only half of the slides</label>
+      <label class="q-opt"><input type="radio" name="m6" value="c"> Changed their answer only once</label>
+    </div>
+    <div class="q-row">
+      <p class="q-stem">7. In experiment two, who shifted their judgement the most in phase two?</p>
+      <label class="q-opt"><input type="radio" name="m7" value="a"> Those who had publicly agreed with the minority</label>
+      <label class="q-opt"><input type="radio" name="m7" value="b"> Those who had not publicly agreed with the minority</label>
+      <label class="q-opt"><input type="radio" name="m7" value="c"> The control group</label>
+    </div>
+    <div class="q-row">
+      <p class="q-stem">8. Which conclusion contrasts minority influence with majority influence?</p>
+      <label class="q-opt"><input type="radio" name="m8" value="a"> A consistent minority modifies the perceptual code more than the social response; majority influence tends to work the other way round</label>
+      <label class="q-opt"><input type="radio" name="m8" value="b"> Minorities and majorities influence people in exactly the same way</label>
+      <label class="q-opt"><input type="radio" name="m8" value="c"> Minority influence only works on men</label>
+    </div>
+    <div class="xp-controls" style="margin-top:10px;">
+      <button class="xp-btn" onclick="checkQuiz()">Check my answers</button>
+    </div>
+    <div class="xp-result" id="quizResult"></div>
+  </div>
+</section>
+
+<!-- ============ 19 ============ -->
+<section class="section" id="s19">
+  <h2>19. Exam Lab</h2>
+
+  <p class="small">The two questions below come from the textbook's exam practice for this chapter.</p>
+
+  <div class="exam-practice">
+    <h4>Q1 — State two results of Moscovici et al.'s (1969) study. (2 marks)</h4>
+    <p class="small">In social psychology, you will have learned about one classic study in detail: Moscovici et al. (1969) <em>Influence of a consistent minority on the responses of a majority in a colour perception task</em>.</p>
+    <button class="xp-btn" onclick="revealAns('lab1')">Reveal model answer</button>
+    <div class="answer-box" id="lab1"><p><strong>Firstly</strong>, green responses were given for 8.42 per cent of answers by naïve participants in the experimental groups, compared with 0.25 per cent in the control group. <strong>Secondly</strong>, 32 per cent of naïve participants conformed to the minority colour judgement by saying that the blue slide was green on at least one occasion.</p><p class="small">Two results, two marks: each one must carry a number or a clear comparison to count.</p></div>
+  </div>
+
+  <div class="exam-practice">
+    <h4>Q2 — Suggest one improvement that could be made to Moscovici et al.'s (1969) study. (2 marks)</h4>
+    <button class="xp-btn" onclick="revealAns('lab2')">Reveal model answer</button>
+    <div class="answer-box" id="lab2"><p>One improvement would be to use <strong>both male and female participants</strong>, since Moscovici only used female students. This would make the sample <strong>more representative</strong>, so the researcher could be sure that minority influence over a majority extends to the wider population, which would <strong>increase generalisability</strong>.</p></div>
+  </div>
+
+  <div class="exam-practice">
+    <h4>Q3 — Explain one weakness of Moscovici et al.'s (1969) study. (from the chapter checkpoint)</h4>
+    <button class="xp-btn" onclick="revealAns('lab3')">Reveal model answer</button>
+    <div class="answer-box" id="lab3"><p>Only female liberal arts, law and social science students took part, so the findings may not represent the behaviour of <strong>males or non-students</strong> in minority influence situations. This limits the findings about conformity to a minority to a female student population only, which reduces the <strong>generalisability</strong> of the conclusions.</p></div>
+  </div>
+</section>
+
+<!-- ============ 20 ============ -->
+<section class="section" id="s20">
+  <h2>20. Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><strong>minority influence</strong><br>A small group changing the views or perceptions of a larger group; tested here with two confederates against four naïve participants.</div>
+    <div class="glossary-item"><strong>perceptual code</strong><br>A way of perceiving or interpreting information; a consistent minority can challenge the majority's perceptual code.</div>
+    <div class="glossary-item"><strong>consistency</strong><br>The behaviour style of never changing your answer; the consistent minority said green every time, and this drove the influence.</div>
+    <div class="glossary-item"><strong>inconsistent minority</strong><br>In experiment three, confederates said green 24 times and blue 12 times; agreement collapsed to 1.25%.</div>
+    <div class="glossary-item"><strong>light intensity</strong><br>The brightness of each slide, judged on a scale of 0 (dimmest) to 5 (brightest); influence was greatest on weak-intensity slides.</div>
+    <div class="glossary-item"><strong>naïve participants</strong><br>The four real members of each group, unaware that two respondents were confederates.</div>
+    <div class="glossary-item"><strong>confederate</strong><br>Someone working for the researchers who pretends to be a participant; here they consistently reported the blue slides as green.</div>
+    <div class="glossary-item"><strong>control group</strong><br>22 participants judging colours in groups of six with no confederates; their 0.25% baseline isolates the effect of minority influence.</div>
+    <div class="glossary-item"><strong>informational social influence</strong><br>Agreeing with others because you believe they know something you do not; offered as the reason some participants genuinely weighed the minority's view.</div>
+    <div class="glossary-item"><strong>post-experimental questionnaire</strong><br>Given at the end of each experiment; interviews suggested agreeing participants saw green-blue shades rather than plain blue.</div>
+    <div class="glossary-item"><strong>generalisability</strong><br>The extent to which conclusions apply beyond the sample; weakened here by the all-female, all-student, all-American sample.</div>
+    <div class="glossary-item"><strong>ecological validity</strong><br>Whether findings hold in real life; the laboratory colour task may not reflect how minorities influence over real issues.</div>
+  </div>
+</section>
+
+<div class="footer-note">1.3.1 Classic Study · Moscovici et al. (1969) · Social Psychology · previous: <a href="../1.2.5-sampling-techniques/">1.2.5 sampling techniques</a> · next: <a href="../1.3.2-contemporary-study-burger-2009/">1.3.2 contemporary study: Burger (2009)</a></div>
+
+  </main>
+</div>
+
+<button id="btt" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function () {
+  var baseFont = 16;
+
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark'; }
+  };
+
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  function show(id, html) {
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    el.innerHTML = html;
+    el.classList.add('show');
+  }
+
+  function verdict(ok, msg) {
+    return '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + msg + '</p>';
+  }
+
+  window.msGuess = function (btn, c) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === 'b');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var msg = ok
+      ? 'The pull is real but small: 8.42% of answers went green with a consistent minority, and consistency is exactly what made it work.'
+      : 'The effect exists, but it is small and it leans on consistency. A minority that wavers barely registers: 1.25% of answers.';
+    show('res-ms', verdict(ok, msg));
+  };
+
+  var quizKey = { m1: 'a', m2: 'b', m3: 'b', m4: 'a', m5: 'b', m6: 'a', m7: 'b', m8: 'a' };
+  var quizWhy = {
+    m1: 'Groups of six: two confederates and four naïve participants.',
+    m2: 'The researchers thought female participants would have a greater involvement in evaluating colour.',
+    m3: 'The colour out loud, plus light intensity on a 0 to 5 scale (0 dimmest, 5 brightest).',
+    m4: 'It removed the possibility that naïve participants would attribute different colour judgements to visual differences.',
+    m5: 'Private written judgements reveal a shift in the perceptual code, away from public social pressure.',
+    m6: 'Green 24 times and blue 12 times, demonstrating inconsistency; agreement fell to 1.25%.',
+    m7: 'Those who did not publicly agree in experiment one shifted more in phase two, suggesting a modified perceptual code.',
+    m8: 'A consistent minority modifies the perceptual code more than the social response; majority influence is more likely to influence the social response.'
+  };
+
+  window.checkQuiz = function () {
+    var el = document.getElementById('quizResult');
+    if (!el) { return; }
+    var score = 0;
+    var html = '';
+    Object.keys(quizKey).forEach(function (q) {
+      var sel = document.querySelector('input[name="' + q + '"]:checked');
+      var chosen = sel ? sel.value : null;
+      var ok = (chosen === quizKey[q]);
+      if (ok) { score++; }
+      html += '<p style="margin:6px 0"><strong>' + q.toUpperCase() + ':</strong> ' +
+        (chosen ? (ok ? '✅ correct' : '❌ not quite') : 'not answered') +
+        ' — ' + quizWhy[q] + '</p>';
+    });
+    el.innerHTML = '<p><span class="xp-verdict">Score: ' + score + ' / 8</span></p>' + html;
+    el.classList.add('show');
+    if (score === 8) { el.classList.add('ok'); } else { el.classList.remove('ok'); }
+  };
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.toggle('show'); }
+  };
+
+  var secs = document.querySelectorAll('.section');
+  var links = document.querySelectorAll('.sb-item a');
+  function highlight() {
+    var best = null;
+    var bestTop = -99999;
+    for (var i = 0; i < secs.length; i++) {
+      var r = secs[i].getBoundingClientRect();
+      if (r.top <= 140 && r.top > bestTop) { bestTop = r.top; best = secs[i]; }
+    }
+    if (!best && secs.length) { best = secs[0]; }
+    for (var j = 0; j < links.length; j++) { links[j].classList.remove('sb-active'); }
+    if (best) {
+      var target = best.getAttribute('id');
+      for (var k = 0; k < links.length; k++) {
+        if (links[k].getAttribute('href') === '#' + target) { links[k].classList.add('sb-active'); }
+      }
+    }
+  }
+  window.addEventListener('scroll', highlight);
+  highlight();
+
+  var btt = document.getElementById('btt');
+  window.addEventListener('scroll', function () {
+    if (!btt) { return; }
+    if (window.scrollY > 400) { btt.classList.add('show'); } else { btt.classList.remove('show'); }
+  });
+})();
+</script>
+</body>
+</html>

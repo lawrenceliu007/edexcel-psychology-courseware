@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.3.2 Contemporary Study — Burger (2009)</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.five-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.glossary-item { background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; }
+.glossary-item .term { font-weight: 700; color: var(--primary-dark); font-size: .96rem; }
+.glossary-item .zh { color: #64748b; font-size: .85rem; margin-left: 4px; }
+.glossary-item .def { font-size: .88rem; line-height: 1.45; margin-top: 4px; color: var(--text); }
+body.dark .glossary-item { background: #16213e; border-color: #334155; }
+body.dark .glossary-item .def { color: #cbd5e1; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+.xp-checkbox { margin: 6px 0; }
+.xp-checkbox label { margin-left: 6px; cursor: pointer; font-size: .9rem; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.q-row { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.q-row .q-stem { font-size: .93rem; font-weight: 600; margin-bottom: 8px; }
+.q-row label.q-opt { display: block; font-size: .9rem; margin: 5px 0; cursor: pointer; }
+.q-fb { font-size: .88rem; margin-top: 8px; display: none; }
+.q-fb.show { display: block; }
+body.dark .q-row { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+textarea.answer-box { width: 100%; min-height: 90px; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; font-family: inherit; font-size: .92rem; line-height: 1.6; resize: vertical; }
+body.dark textarea.answer-box { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.summary-card-header { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; padding: 12px 16px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: .92em; font-weight: 600; }
+.summary-card-header:hover { opacity: .9; }
+.summary-card-header .arrow { transition: transform .3s; font-size: .8em; transform: rotate(90deg); }
+.summary-card-header.open .arrow { transform: rotate(270deg); }
+.summary-card-body { background: #f5f3ff; border: 2px solid #c4b5fd; border-top: none; border-radius: 0 0 10px 10px; padding: 16px 18px; display: block; }
+.summary-card-body.hidden { display: none; }
+.summary-card-body li { margin: 8px 0; font-size: .9em; color: #5b21b6; }
+body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
+body.dark .summary-card-body li { color: #c4b5fd; }
+
+.mat2x2 { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 6px; margin: 14px 0; }
+.mat2x2.c2 { grid-template-columns: 150px 1fr; }
+.mat2x2 .mh { background: var(--primary); color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
+body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style></head>
+<body>
+<div class="container">
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic A · Social Psychology — 1.3.2 Contemporary study: Burger (2009)</span>
+  </div>
+  <span class="nav-pill">🧑‍🤝‍🧑 Social Psychology · Studies</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="1.3.2-Burger-2009-Contemporary-Study-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sb-header">
+        <div class="sb-header-title">1.3.2 · Contents</div>
+        <div class="sb-header-sub">Burger (2009)</div>
+      </div>
+      <ul class="sb-list">
+        <li class="sb-group-label">Before we start</li>
+        <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+        <li class="sb-item"><a href="#s2">2. Why Replicate Milgram?</a></li>
+        <li class="sb-item"><a href="#s3">3. Aim</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Finding the people</li>
+        <li class="sb-item"><a href="#s4">4. First Screening</a></li>
+        <li class="sb-item"><a href="#s5">5. Second Screening</a></li>
+        <li class="sb-item"><a href="#s6">6. The Final Sample</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">The experiment</li>
+        <li class="sb-item"><a href="#s7">7. Baseline: Setting Up</a></li>
+        <li class="sb-item"><a href="#s8">8. Baseline: The Shocks</a></li>
+        <li class="sb-item"><a href="#s9">9. Modelled Refusal</a></li>
+        <li class="sb-item"><a href="#s10">10. The Safety Rail</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">What was found</li>
+        <li class="sb-item"><a href="#s11">11. Results: Baseline</a></li>
+        <li class="sb-item"><a href="#s12">12. Results: Modelled Refusal</a></li>
+        <li class="sb-item"><a href="#s13">13. Gender and Personality</a></li>
+        <li class="sb-item"><a href="#s14">14. Conclusion</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Evaluation</li>
+        <li class="sb-item"><a href="#s15">15. Ethics: Fixed and Unfixed</a></li>
+        <li class="sb-item"><a href="#s16">16. The Partial Replication</a></li>
+        <li class="sb-item"><a href="#s17">17. Population Validity</a></li>
+        <li class="sb-item"><a href="#s18">18. Reliability, Objectivity, Realism</a></li>
+        <li class="sb-divider"></li>
+        <li class="sb-group-label">Exam</li>
+        <li class="sb-item"><a href="#s19">19. Exam Focus</a></li>
+        <li class="sb-item"><a href="#s20">20. Checkpoint</a></li>
+        <li class="sb-item"><a href="#s21">21. Exam Lab</a></li>
+        <li class="sb-item"><a href="#s22">22. Key Terms</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+<div class="header">
+  <h1>1.3.2 CONTEMPORARY STUDY · BURGER (2009)<br><span style="font-size:0.62em">Replicating Milgram: Would people still obey today?</span></h1>
+  <div class="subtitle">One contemporary study for Topic A: forty-five years after Milgram, Jerry Burger rebuilt the obedience experiment with modern ethical brakes, and stopped it at 150 volts.</div>
+  <div class="meta">
+    <span class="badge">Topic A · Social psychology</span>
+    <span class="badge">Studies: contemporary</span>
+    <span class="badge">Spec 1.3.2</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this study is really asking</h4>
+  <ol>
+    <li><strong>Society has changed since 1963.</strong> People know more about blindly following orders. Would obedience rates still hold up? Burger thought they would.</li>
+    <li><strong>He could not run the full experiment ethically,</strong> so participants were stopped at the <strong>150-volt</strong> point: the question became "do you try to continue past 150 volts?", and <strong>70%</strong> did.</li>
+    <li><strong>Watching someone else refuse changed nothing.</strong> In the modelled refusal condition, <strong>63.3%</strong> still went to continue.</li>
+    <li><strong>Conclusion:</strong> obedience levels were similar to Milgram's experiment 5 (82.5%). Time, culture change and a visible dissenter did not shift them; the power of the situation dominated.</li>
+  </ol>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started</h2>
+
+  <p>Put yourself in a psychology lab in 1963. A man in a grey lab coat tells you to keep delivering electric shocks to a stranger. You know the shocks hurt. He insists. What would you do?</p>
+
+  <p>Almost everyone who reads that question answers the same way: <em>I would have stopped.</em> Almost nobody actually did stop.</p>
+
+  <div class="xp-block">
+    <h4>🎯 Have a guess first <span class="xp-badge">No notes</span></h4>
+    <p class="xp-intro">Now fast-forward to 2009. People have watched films about the study, schools teach it, the phrase "blind obedience" is common. If the experiment ran again with modern safeguards, would obedience rates drop?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="bgGuess(this,'a')">Much lower — people today would see through it</button>
+      <button class="q-option" onclick="bgGuess(this,'b')">Roughly the same — the situation would still dominate</button>
+      <button class="q-option" onclick="bgGuess(this,'c')">Higher — people are more used to following instructions now</button>
+    </div>
+    <div class="xp-result" id="res-bg"></div>
+  </div>
+
+  <p>Burger bet on option B, and the data went his way. How he tested that bet under modern ethics is the story of this study.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：这一讲的关键词</strong><br>
+    三个词撑起整讲：<strong>replication（复制研究）</strong>，把 Milgram 的实验在 2009 年重跑一遍；<strong>150 volts（150 伏特）</strong>，新实验的终点线，谁想继续就算服从；<strong>screening（筛查）</strong>，Burger 在实验前把心理脆弱的人一层层筛掉，这是现代伦理要求逼出来的设计。<br>
+    考试最爱问的数字：<strong>70%</strong>（基线条件想继续的比例）对比 Milgram 的 <strong>82.5%</strong>。
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Why Replicate Milgram?</h2>
+
+  <p>In 2009, Jerry Burger decided to replicate Milgram's (1963) study in contemporary society. He too was interested in whether people would obey an authoritative figure. Two beliefs pulled the decision:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>The case for change</h4>
+      <p style="font-size:.9em;margin:4px 0">Some psychologists today believe people are more aware of the consequences of unthinkingly following orders from an authoritative figure, and as a result would reconsider their actions when asked to cause potential injury to others.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Burger's prediction</h4>
+      <p style="font-size:.9em;margin:4px 0">Despite the large time gap since Milgram's study, Burger believed his study would still produce <strong>similar levels of obedience</strong>. Society's culture and values had changed, but he felt this would not have a significant effect on obedience.</p>
+    </div>
+  </div>
+
+  <p>There was a second constraint. Milgram's obedience study had been subject to <strong>ethical criticism</strong>, so Burger needed to adapt his research to adhere more closely to current ethical guidelines and cause <strong>minimal participant distress</strong>. Those adaptations shape every part of the design that follows.</p>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Aim</h2>
+
+  <div class="keyterm-box">
+    <span class="kt">Aim：</span> to investigate obedience by <strong>partially replicating</strong> Milgram's (1963) study, to examine whether obedience to an authoritative figure would still be present today.
+  </div>
+
+  <p>Two words carry marks in that aim. <strong>Partially</strong>: the study stops at 150 volts, so it tests the first stage of obedience rather than the full run. <strong>Today</strong>: the whole point of a contemporary study is to check whether an old finding survives in a new world.</p>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. First Screening</h2>
+
+  <p>Participants responded to adverts and flyers in a local newspaper and local establishments (library, businesses) as well as online. The adverts promised <strong>US$50</strong> for taking part in two <strong>45-minute sessions</strong>. Individuals expressed interest by phone or email, and then received a call from a research assistant who began a screening procedure.</p>
+
+  <table>
+    <tr><th style="width:34%;">Question asked</th><th>Why it was asked</th></tr>
+    <tr><td>Have you been to college? If yes, did you take psychology lessons?</td><td>Anyone who had taken <strong>two or more psychology classes</strong> was excluded, to rule out people familiar with Milgram's original study.</td></tr>
+    <tr><td>How is your physical and psychological health?</td><td>To spot obvious risks of taking part.</td></tr>
+    <tr><td>Have you suffered any traumatic childhood experiences?</td><td>Distress from the procedure could reopen old wounds, so these participants were screened out.</td></tr>
+  </table>
+
+  <p>A further <strong>30 per cent</strong> of participants were excluded from further involvement after this health and history screening. This first process eliminated anyone with knowledge of Milgram's study, or with obvious issues about taking part.</p>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Second Screening</h2>
+
+  <p>Survivors of the first screening moved on to a second stage, led by <strong>two clinical psychologists</strong> and held at <strong>Santa Clara University</strong> campus. It had two parts: a set of questionnaires, then a structured interview.</p>
+
+  <p>First, the questionnaires (Table 6.1 in the textbook):</p>
+
+  <table>
+    <tr><th>Questionnaire</th><th style="width:18%;">Items</th><th>What it measures</th></tr>
+    <tr><td><strong>Interpersonal Reactivity Index</strong></td><td>28</td><td>Empathy levels</td></tr>
+    <tr><td><strong>Beck Anxiety Inventory</strong></td><td>21</td><td>Own anxiety levels, rated against 21 anxiety symptoms</td></tr>
+    <tr><td><strong>Desirability of Control Scale</strong></td><td>20</td><td>Impressions of self-control over one's own life</td></tr>
+    <tr><td><strong>Beck Depression Inventory</strong></td><td>21</td><td>Severity of depression</td></tr>
+    <tr><td colspan="3">Plus a <strong>demographic sheet</strong>: age, occupation, education and ethnicity</td></tr>
+  </table>
+
+  <p>Second, the interview. Participants were interviewed by a clinical psychologist to assess who might be negatively affected by the study. The interview was structured around the <strong>Mini International Neuropsychiatric Interview (MINI)</strong> procedure, which touches on psychological disorders and let the psychologist identify anyone who should not take part. Each interview lasted approximately <strong>30 minutes</strong>.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Screening funnel: adverts produce interest, first screening removes psychology students and health risks, second screening removes 47 of 123, six drop out, leaving 70 participants">
+      <defs>
+        <marker id="arA21a" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#ea580c"/>
+        </marker>
+      </defs>
+
+      <rect x="40" y="30" width="600" height="44" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.6"/>
+      <text x="340" y="50" font-size="12" font-weight="700" fill="#c2410c" text-anchor="middle">Adverts: newspaper, flyers, online · US$50 for two 45-minute sessions</text>
+      <text x="340" y="66" font-size="10" fill="#64748b" text-anchor="middle">interest by phone or email, then a research assistant begins screening</text>
+
+      <line x1="340" y1="78" x2="340" y2="96" stroke="#ea580c" stroke-width="2" marker-end="url(#arA21a)"/>
+
+      <rect x="40" y="100" width="600" height="44" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-width="1.4"/>
+      <text x="340" y="120" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">Screening 1 · phone call</text>
+      <text x="340" y="136" font-size="10" fill="#475569" text-anchor="middle">2+ psychology classes → out · health and trauma questions → a further 30% excluded</text>
+
+      <line x1="340" y1="148" x2="340" y2="166" stroke="#ea580c" stroke-width="2" marker-end="url(#arA21a)"/>
+
+      <rect x="40" y="170" width="600" height="52" rx="8" fill="#eff6ff" stroke="#1e3a5f" stroke-width="1.4"/>
+      <text x="340" y="190" font-size="12" font-weight="700" fill="#1e3a5f" text-anchor="middle">Screening 2 · two clinical psychologists, Santa Clara University</text>
+      <text x="340" y="206" font-size="10" fill="#475569" text-anchor="middle">4 questionnaires + demographic sheet · 30-minute MINI interview</text>
+      <text x="340" y="217" font-size="10" fill="#475569" text-anchor="middle">123 screened · 47 removed (38.2%) but paid as advertised</text>
+
+      <line x1="340" y1="226" x2="340" y2="242" stroke="#ea580c" stroke-width="2" marker-end="url(#arA21a)"/>
+
+      <rect x="40" y="246" width="600" height="38" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6"/>
+      <text x="340" y="263" font-size="12" font-weight="700" fill="#166534" text-anchor="middle">76 invited back a week later · 6 dropped out (5 said they knew of Milgram's research)</text>
+      <text x="340" y="277" font-size="11" fill="#166534" text-anchor="middle">final sample: 70 participants</text>
+    </svg>
+    <div class="figure-caption">Figure 1 — The screening funnel. Burger removed anyone who knew the original study or might be hurt by it, before a single shock button was touched.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：两轮筛查各管一件事</strong><br>
+    第一轮管<strong>知道内情的人</strong>：学过两门以上心理学课的可能认出这是 Milgram 的实验，实验就没法"骗"他们了。<br>
+    第二轮管<strong>会被伤害的人</strong>：量表加 MINI 访谈，把焦虑、抑郁、童年创伤重的人请出场，钱照付。47 人被请出，占 38.2%。这份谨慎是 Milgram 当年没有的，也是评价题里"伦理改进"的得分点。
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. The Final Sample</h2>
+
+  <p>A total of 76 individuals were invited back a week later, but 6 dropped out at this point, 5 of whom expressed awareness of Milgram's research during the second session. That left a final sample of:</p>
+
+  <table>
+    <tr><th style="width:34%;">Feature</th><th>Detail</th></tr>
+    <tr><td>Size</td><td><strong>70</strong> participants (29 males, 41 females)</td></tr>
+    <tr><td>Age</td><td>Ranged from <strong>20 to 81</strong> years, with a mean of <strong>42.9 years</strong></td></tr>
+    <tr><td>Recruitment</td><td>Adverts and flyers in a local newspaper and local establishments (library, businesses), plus online</td></tr>
+    <tr><td>Payment</td><td><strong>US$50</strong>, kept even if the participant withdrew</td></tr>
+  </table>
+
+  <p>Compare that with Milgram's sample of men aged 20 to 50. The age span alone makes Burger's sample a different animal, which matters later in the evaluation.</p>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Baseline Condition · Setting Up</h2>
+
+  <p>Participants were randomly split into two groups, with an attempt to keep equal ratios of gender in each. <strong>Forty</strong> participants were randomly assigned to the baseline condition and <strong>30</strong> to the modelled refusal condition.</p>
+
+  <p>In the baseline condition:</p>
+
+  <table>
+    <tr><th style="width:30%;">Step</th><th>What happened</th></tr>
+    <tr><td>The cast</td><td>The participant met the experimenter and the confederate. Both were selected for their <strong>resemblance to Milgram's</strong> original experimenter and learner.</td></tr>
+    <tr><td>The money</td><td>Participant and confederate were both given <strong>US$50</strong> and told to keep it <strong>even if they withdrew</strong>.</td></tr>
+    <tr><td>The script</td><td>Burger used a <strong>similar script to Milgram's</strong>, explaining the procedure and the electric generator.</td></tr>
+    <tr><td>The rigged draw</td><td>The role choice was rigged, as in Milgram's study: the confederate always became the <strong>learner</strong>, the participant the <strong>teacher</strong>. Both signed consent forms.</td></tr>
+    <tr><td>The electrode</td><td>The learner was taken to the adjoining room. The teacher watched the experimenter strap an electrode to the learner's <strong>left wrist</strong>, seal it with paste, and explain it would provide good contact and prevent blisters or burns.</td></tr>
+    <tr><td>The task</td><td>The teacher read out a list of <strong>25 word pairs</strong>, delivering a stronger shock for each wrong answer.</td></tr>
+    <tr><td>The detail</td><td>At this point the confederate revealed a <strong>heart problem</strong> detected at a hospital visit, exactly as in Milgram's study.</td></tr>
+  </table>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Baseline Condition · The Shocks</h2>
+
+  <p>From here the trial follows Milgram closely, with one hard stop built in:</p>
+
+  <ul>
+    <li>The learner was shown how to use the generator and given a <strong>15-volt sample shock</strong>.</li>
+    <li>The <strong>same four verbal prods</strong> from Milgram's study were used.</li>
+    <li><strong>Pre-recorded voice feedback</strong>: grunts from the learner became audible at the <strong>75-volt</strong> level.</li>
+    <li>At <strong>150 volts</strong>, a standard recording of the learner's voice demanded to be released and complained of heart issues.</li>
+    <li>After the experimenter used the verbal prods, if the teacher was still resistant, <strong>the experiment ended there</strong>. It was also forcibly ended at the point where the teacher read out the next instruction following the 150-volt shock.</li>
+    <li>On finishing, the experimenter <strong>immediately admitted the shocks were not real</strong> and introduced the teacher to the learner, to show he was perfectly fine.</li>
+  </ul>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Timeline of a Burger trial: 15 volt sample shock, grunts from 75 volts, verbal prods, at 150 volts the learner demands release, the teacher is stopped or ends the experiment, then immediate debrief">
+      <defs>
+        <marker id="arA21b" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#ea580c"/>
+        </marker>
+      </defs>
+
+      <line x1="50" y1="110" x2="630" y2="110" stroke="#ea580c" stroke-width="3" marker-end="url(#arA21b)"/>
+
+      <circle cx="90" cy="110" r="7" fill="#ea580c"/>
+      <text x="90" y="88" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">15 V</text>
+      <text x="90" y="134" font-size="10" fill="#475569" text-anchor="middle">sample shock</text>
+
+      <circle cx="210" cy="110" r="7" fill="#ea580c"/>
+      <text x="210" y="88" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">75 V</text>
+      <text x="210" y="134" font-size="10" fill="#475569" text-anchor="middle">grunts begin</text>
+
+      <circle cx="340" cy="110" r="7" fill="#ea580c"/>
+      <text x="340" y="88" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">90 V</text>
+      <text x="340" y="134" font-size="10" fill="#475569" text-anchor="middle">refusal point</text>
+      <text x="340" y="148" font-size="10" fill="#475569" text-anchor="middle">(modelled condition)</text>
+
+      <circle cx="470" cy="110" r="9" fill="#dc2626"/>
+      <text x="470" y="88" font-size="12" font-weight="700" fill="#991b1b" text-anchor="middle">150 V</text>
+      <text x="470" y="134" font-size="10" fill="#475569" text-anchor="middle">learner demands release</text>
+      <text x="470" y="148" font-size="10" fill="#475569" text-anchor="middle">hard stop for the teacher</text>
+
+      <circle cx="590" cy="110" r="7" fill="#16a34a"/>
+      <text x="590" y="88" font-size="11" font-weight="700" fill="#166534" text-anchor="middle">after</text>
+      <text x="590" y="134" font-size="10" fill="#475569" text-anchor="middle">immediate debrief</text>
+
+      <rect x="80" y="180" width="520" height="46" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.4"/>
+      <text x="340" y="200" font-size="11.5" font-weight="700" fill="#c2410c" text-anchor="middle">The whole experiment lives or dies at one switch</text>
+      <text x="340" y="217" font-size="10.5" fill="#475569" text-anchor="middle">Trying to continue past 150 volts = obeying. Resisting and stopping = dissent. Nothing beyond 150 volts ever happened.</text>
+    </svg>
+    <div class="figure-caption">Figure 2 — The trial timeline. Everything is arranged around a single decision: continue past 150 volts or refuse.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么偏偏选 150 伏</strong><br>
+    Milgram 的数据里，150 伏附近是分水岭：能熬过这一关继续按的人，后面几乎一路到底。Burger 把实验停在 150 伏，等于只测<strong>"会不会迈过这道坎"</strong>，迈过去就算服从。<br>
+    这个设计能成立，靠的是 Milgram 数据里那句话：<strong>150 伏是 point of no return（不归点）</strong>。评价题里会再问你：这个假设稳不稳。
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Modelled Refusal Condition</h2>
+
+  <p>In this variation, all participants followed the same procedure as the baseline condition, with a few exceptions:</p>
+
+  <ul>
+    <li><strong>Two confederates</strong> were used instead of one. The second posed as a participant and was the <strong>same gender as the real participant</strong>.</li>
+    <li>The drawing of roles was rigged again: a learner (confederate), <strong>Teacher 1</strong> (a confederate) and <strong>Teacher 2</strong>, the real participant.</li>
+    <li>Teacher 1 took the lead, asking the questions and administering shocks, while Teacher 2 sat alongside.</li>
+    <li>At <strong>75 volts</strong>, Teacher 1 hesitated after hearing the learner grunt, as scripted.</li>
+    <li>At <strong>90 volts</strong>, Teacher 1 stated <em>"I don't know about this"</em>.</li>
+    <li>The experimenter prompted Teacher 1, but he/she <strong>refused to carry on and pushed the chair back</strong> from the table.</li>
+    <li>The experimenter then asked <strong>Teacher 2, the real participant, to continue</strong>.</li>
+  </ul>
+
+  <div class="note-box">
+    <h4>What this condition tests</h4>
+    <p>Milgram had found that a dissenting peer sharply cut obedience. Burger wanted to know whether that effect still holds today. The visible refusal is a model of dissent, hence the name <strong>modelled refusal</strong>: the participant sees disobedience modelled in front of them, then has to choose.</p>
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. The Safety Rail (Ethical Adaptations)</h2>
+
+  <p>Burger acknowledged the ethical concerns associated with Milgram's original experiments, and the textbook lists what he did about them:</p>
+
+  <table>
+    <tr><th style="width:40%;">Adaptation</th><th>Detail</th></tr>
+    <tr><td><strong>Rigorous screening</strong></td><td>Participants deemed unsuitable were not selected (see sections 4 and 5).</td></tr>
+    <tr><td><strong>Right to withdraw, three times</strong></td><td>Participants were informed <strong>three times before the experiment</strong> that they could leave without consequence.</td></tr>
+    <tr><td><strong>A gentler sample shock</strong></td><td>15 volts rather than the <strong>45 volts</strong> given in Milgram's study.</td></tr>
+    <tr><td><strong>A clinical psychologist as experimenter</strong></td><td>Instructed to stop the experiment if excessive stress was detected during the procedure.</td></tr>
+    <tr><td><strong>Immediate debrief</strong></td><td>Participants were debriefed immediately afterwards to alleviate any distress or anxiety caused.</td></tr>
+    <tr><td><strong>The hard stop at 150 volts</strong></td><td>Nobody ever went further, so nobody heard the learner at his most distressed.</td></tr>
+  </table>
+</section>
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Results · Baseline Condition</h2>
+
+  <p>In the baseline condition, <strong>70 per cent</strong> of participants had to be stopped before attempting to continue past 150 volts. That rate is <strong>just lower than Milgram's 82.5 per cent</strong>, found in his variation experiment 5.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart comparing continuation rates: Milgram experiment 5 82.5 per cent, Burger baseline 70 per cent, Burger modelled refusal 63.3 per cent">
+      <text x="340" y="20" font-size="11.5" fill="#475569" text-anchor="middle">Share who went to continue after 150 volts</text>
+
+      <line x1="90" y1="230" x2="640" y2="230" stroke="#334155" stroke-width="1.8"/>
+      <line x1="90" y1="60" x2="90" y2="230" stroke="#334155" stroke-width="1.8"/>
+
+      <line x1="90" y1="189.5" x2="640" y2="189.5" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="90" y1="149" x2="640" y2="149" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="90" y1="108.5" x2="640" y2="108.5" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="90" y1="68" x2="640" y2="68" stroke="#e2e8f0" stroke-width="1"/>
+
+      <text x="82" y="234" font-size="10.5" fill="#64748b" text-anchor="end">0</text>
+      <text x="82" y="193" font-size="10.5" fill="#64748b" text-anchor="end">20%</text>
+      <text x="82" y="153" font-size="10.5" fill="#64748b" text-anchor="end">40%</text>
+      <text x="82" y="112" font-size="10.5" fill="#64748b" text-anchor="end">60%</text>
+      <text x="82" y="72" font-size="10.5" fill="#64748b" text-anchor="end">80%</text>
+
+      <rect x="150" y="60.75" width="120" height="169.25" rx="4" fill="#94a3b8"/>
+      <rect x="310" y="86" width="120" height="144" rx="4" fill="#ea580c"/>
+      <rect x="470" y="100.25" width="120" height="129.75" rx="4" fill="#fb923c"/>
+
+      <text x="210" y="54" font-size="13" font-weight="700" fill="#64748b" text-anchor="middle">82.5%</text>
+      <text x="370" y="80" font-size="13" font-weight="700" fill="#c2410c" text-anchor="middle">70%</text>
+      <text x="530" y="94" font-size="13" font-weight="700" fill="#c2410c" text-anchor="middle">63.3%</text>
+
+      <text x="210" y="250" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">Milgram (1963)</text>
+      <text x="210" y="266" font-size="10" fill="#64748b" text-anchor="middle">experiment 5, 1963</text>
+      <text x="370" y="250" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">Burger baseline</text>
+      <text x="370" y="266" font-size="10" fill="#64748b" text-anchor="middle">2009, alone at the switch</text>
+      <text x="530" y="250" font-size="12" font-weight="700" fill="#334155" text-anchor="middle">Burger modelled refusal</text>
+      <text x="530" y="266" font-size="10" fill="#64748b" text-anchor="middle">2009, after watching a refusal</text>
+    </svg>
+    <div class="figure-caption">Figure 3 — Table 6.2, condensed. The 2009 baseline sits just under Milgram's experiment 5; the visible refusal barely dents it.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：这两个百分比怎么用</strong><br>
+    70% 对 82.5%，差了 12.5 个百分点，但注意两个实验<strong>停的时点不同</strong>：Milgram 让人一路走到 450 伏，Burger 只走到 150 伏。想继续过 150 伏的人未必都会走到底，所以这 70% 只能算一个下限估计。<br>
+    考试写法：报告数字，再补一句"the results were very similar to Milgram's"，评价时再提"assumption"的坑（第 16 节）。
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Results · Modelled Refusal</h2>
+
+  <p>In the modelled refusal condition, <strong>63.3 per cent</strong> went to continue the procedure after 150 volts, despite the expectations held by Burger and by the confederate who withdrew. The results were very similar to the baseline condition.</p>
+
+  <p>The full comparison, from Table 6.2 of the textbook:</p>
+
+  <table>
+    <tr><th>Condition</th><th>Stopped at 150 volts or earlier</th><th>Went to continue after 150 volts</th></tr>
+    <tr><td><strong>Baseline · male</strong> (n = 18)</td><td>6 (33.3%)</td><td>12 (66.7%)</td></tr>
+    <tr><td><strong>Baseline · female</strong> (n = 22)</td><td>6 (27.3%)</td><td>16 (72.7%)</td></tr>
+    <tr><td><strong>Baseline · total</strong> (n = 40)</td><td>12 (30.0%)</td><td>28 (70.0%)</td></tr>
+    <tr><td><strong>Modelled refusal · male</strong> (n = 11)</td><td>5 (45.5%)</td><td>6 (54.5%)</td></tr>
+    <tr><td><strong>Modelled refusal · female</strong> (n = 19)</td><td>6 (31.6%)</td><td>13 (68.4%)</td></tr>
+    <tr><td><strong>Modelled refusal · total</strong> (n = 30)</td><td>11 (36.7%)</td><td>19 (63.3%)</td></tr>
+    <tr><td><strong>Milgram's experiment 5</strong></td><td>7 (17.5%)</td><td>33 (82.5%)</td></tr>
+  </table>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. Gender and Personality</h2>
+
+  <ul>
+    <li><strong>Gender:</strong> little difference in obedience levels in either condition. In the baseline condition, <strong>66.7%</strong> of men and <strong>72.7%</strong> of women pressed the 150-volt switch. The point at which men and women needed the first prod was also similar.</li>
+    <li><strong>Empathy and control:</strong> Burger compared the results with the screening tests relating to empathy and control, and found <strong>little difference</strong> between those who stopped and those who continued.</li>
+    <li><strong>One personality echo:</strong> those who showed <strong>reluctance to give the shocks early</strong> in the procedure scored higher on <strong>desirability for control</strong> in the baseline condition. No difference was found when comparing the modelled refusal and baseline conditions on personality scores overall.</li>
+  </ul>
+
+  <div class="note-box">
+    <h4>Read the pattern, not the single number</h4>
+    <p>Personality traits correlated with <em>early hesitation</em> but not with final obedience. People who disliked being controlled felt the discomfort sooner, yet they still went to continue at the same rate. That ordering, discomfort first and obedience anyway, is exactly what "the power of the situation" predicts.</p>
+  </div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="section" id="s14">
+  <h2>14. Conclusion</h2>
+
+  <p>The textbook gives four conclusion points. Learn them as pairs:</p>
+
+  <ol>
+    <li>Results found in both conditions are <strong>similar to Milgram's research over 45 years ago</strong>. Time and changes in society's culture did not have an effect on obedience levels, nor did the refusal of the confederate.</li>
+    <li>Witnessing another person refuse to continue had <strong>no effect</strong> on obedience levels, so it seems that the <strong>power of the situation</strong> had a greater effect.</li>
+    <li>No difference was found between <strong>genders</strong>, nor did <strong>age, education level or ethnicity</strong> have an effect on the obedience levels found.</li>
+    <li>There was <strong>some impact of personality</strong>: those with high empathetic concern expressed reluctance to continue early in the procedure. However, this did not ultimately affect their obedience.</li>
+  </ol>
+
+  <div class="cn-note">
+    <strong>中文理解：结论一句话版</strong><br>
+    四十五年过去，社会变了、人变了，可是<strong>同样的情境还是逼出同样比例的服从</strong>。看见别人拒绝也没用，性别年龄学历族裔统统没用，性格只影响"多早开始难受"，不影响最后按不按。<br>
+    这正是 1.1.3 讲过的 situational 解释对 dispositional 解释的一次正面胜利，答题时可以把两讲连起来。
+  </div>
+</section>
+
+<!-- ============ 15 ============ -->
+<section class="section" id="s15">
+  <h2>15. Evaluation · Ethics: Fixed and Unfixed</h2>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>What Burger fixed</h4>
+      <p style="font-size:.9em;margin:4px 0">Rigorous screening kept unsuitable participants out. Participants were reminded <strong>three times</strong> of their right to withdraw. The sample shock was <strong>15 volts, not 45</strong>. The experimenter was a <strong>clinical psychologist</strong>, instructed to stop on signs of excessive stress. Debriefing was <strong>immediate</strong>.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>What stayed worrying</h4>
+      <p style="font-size:.9em;margin:4px 0">Participants were still <strong>deliberately placed in a situation that would cause anxiety</strong>. The <strong>verbal prods</strong> used by the experimenter could have been understood to remove the previously established right to withdraw, even if only temporarily.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：伦理这题怎么答才不空</strong><br>
+    别只写"改进了伦理"。答题结构是：<strong>列改进（筛查 / 三次告知退出权 / 15 伏 / 临床心理学家主试 / 即刻汇报）→ 转折（情境本身仍制造焦虑，prods 一出口，退出权等于被临时没收）</strong>。有改进有残留，才是完整的伦理评价。
+  </div>
+</section>
+
+<!-- ============ 16 ============ -->
+<section class="section" id="s16">
+  <h2>16. Evaluation · The Partial Replication</h2>
+
+  <p>Burger only <strong>partially</strong> replicated Milgram's study: participants did not go beyond the 150-volt level, due to the ethical concern that they would experience greater distress beyond this point, as observed in Milgram's study.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>The ethical strength</h4>
+      <p style="font-size:.9em;margin:4px 0">Stopping at 150 volts protected every participant from the most distressed moments of the procedure.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>The scientific cost</h4>
+      <p style="font-size:.9em;margin:4px 0">It can only be <strong>assumed</strong> that participants would have continued to obey after 150 volts. That assumption rests on Milgram's finding that the majority continued once past this "point of no return". We <strong>cannot be certain</strong> that Burger's participants would have continued.</p>
+    </div>
+  </div>
+
+  <p>This trade, ethics bought at the price of certainty, is the single most examinable idea in the whole study.</p>
+</section>
+
+<!-- ============ 17 ============ -->
+<section class="section" id="s17">
+  <h2>17. Evaluation · Population Validity</h2>
+
+  <div class="blue-box">
+    <h4>What pushes generalisability up</h4>
+    <p>Burger tested <strong>males and females</strong>, participants of <strong>different education levels</strong> and <strong>varied ethnicity</strong>, aged 20 to 81. The study therefore had population validity, so the conclusions about obedience to authority can be generalised to the US population.</p>
+  </div>
+
+  <div class="warn-box">
+    <h4>What pulls it back down</h4>
+    <p><strong>47 participants were not selected</strong> following the screening process, because they would have found the procedure too distressing. This might indicate that the obedience levels found would only apply to people <strong>without psychological issues</strong> such as anxiety or depression, which may limit the generalisability of the findings.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：一把尺子的两端</strong><br>
+    往上推：男女都有、年龄跨度 20 到 81、教育族裔多样，比 Milgram 那批 20 到 50 岁的男性广得多。<br>
+    往下拉：最脆弱的 47 人被筛掉了，等于实验结论只对"心理没负担的人"负责。两句话一起写，population validity 这题就满了。
+  </div>
+</section>
+
+<!-- ============ 18 ============ -->
+<section class="section" id="s18">
+  <h2>18. Evaluation · Reliability, Objectivity, Realism</h2>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Reliability · standardised</h4>
+      <p style="font-size:.9em;margin:4px 0">All participants were read the <strong>same instructions</strong> and given the <strong>same verbal prods</strong>. The research can be retested exactly, to check whether the 70% obedience level would be consistent. Burger found a similar obedience level to Milgram's experiment 5, which suggests obedience is <strong>consistently observed</strong> among participants in the same situation.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Objectivity · the 150-volt switch</h4>
+      <p style="font-size:.9em;margin:4px 0">Burger used the point at which participants broke off or continued, at <strong>150 volts</strong>, as the measure of obedience. This measure could be regarded as <strong>objective</strong> because it is not open to interpretation by other researchers.</p>
+    </div>
+  </div>
+
+  <div class="compare-card red" style="margin:14px 0;">
+    <h4>Ecological validity · mundane realism</h4>
+    <p style="font-size:.9em;margin:4px 0">The study was conducted in a <strong>laboratory at Santa Clara University</strong>, an artificial setting that does not represent real-life obedience at home, in school or in the workplace. The 70% obedience level may not be found in an ordinary setting. Laboratory research demanding obedience to shock another person on a word-pair task is unlike real-life obedience, which can be a very ordinary experience, such as complying with the request of a teacher or parent. The task therefore <strong>lacks mundane realism</strong>.</p>
+  </div>
+</section>
+
+<!-- ============ 19 ============ -->
+<section class="section" id="s19">
+  <h2>19. Exam Focus</h2>
+
+  <div class="exam-tip">
+    <strong>Exam tip (from the textbook).</strong> For any named study on the specification, you should know the <strong>aim(s), sample, procedure, results and conclusion(s)</strong>, as you could be asked to recall specific information on these elements. Aim to recall at least one point per mark that might be awarded: <strong>Aim(s)</strong> 2 marks per aim · <strong>Sample</strong> 2 marks · <strong>Procedure</strong> up to 5 marks · <strong>Results</strong> up to 4 marks · <strong>Conclusion(s)</strong> 2 marks per conclusion.
+  </div>
+
+  <div class="exam-tip">
+    <strong>Second exam tip.</strong> When revising evaluation of studies named on the specification, make sure you can distinguish between the evaluation points in terms of <strong>validity, reliability, objectivity/subjectivity, generalisability and credibility</strong>.
+  </div>
+
+  <table>
+    <tr><th style="width:30%;">Likely question</th><th>What a full-mark answer needs</th></tr>
+    <tr><td>Describe how Burger screened participants (2 marks)</td><td>Two steps, clearly named: the phone screening excluding psychology students and health risks; the second screening with four questionnaires and the 30-minute MINI interview by clinical psychologists.</td></tr>
+    <tr><td>Describe one finding (2 marks)</td><td>70% went to continue past 150 volts in the baseline condition, just below Milgram's 82.5% in experiment 5; or 63.3% in the modelled refusal condition; or the gender detail (66.7% men, 72.7% women).</td></tr>
+    <tr><td>Compare Burger with Milgram</td><td>Procedure (same script and prods, stop at 150 volts), ethics (screening, three withdrawal reminders, 15-volt sample, clinical psychologist, debrief) and results/conclusions (70% vs 82.5%, similar conclusion).</td></tr>
+  </table>
+</section>
+
+<!-- ============ 20 ============ -->
+<section class="section" id="s20">
+  <h2>20. Checkpoint</h2>
+
+  <div class="checkpoint">
+    <h3>Quick self-test · 8 questions</h3>
+    <div class="q-row">
+      <p class="q-stem">1. What payment did the adverts promise, and for what?</p>
+      <label class="q-opt"><input type="radio" name="b1" value="a"> US$50 for taking part in two 45-minute sessions</label>
+      <label class="q-opt"><input type="radio" name="b1" value="b"> US$100 for one session</label>
+      <label class="q-opt"><input type="radio" name="b1" value="c"> Nothing, participation was voluntary</label>
+    </div>
+    <div class="q-row">
+      <p class="q-stem">2. Who was excluded in the first phone screening?</p>
+      <label class="q-opt"><input type="radio" name="b2" value="a"> Anyone under 18</label>
+      <label class="q-opt"><input type="radio" name="b2" value="b"> Anyone who had taken two or more psychology classes</label>
+      <label class="q-opt"><input type="radio" name="b2" value="c"> Anyone who had heard of psychology</label>
+    </div>
+    <div class="q-row">
+      <p class="q-stem">3. Which scale measured empathy?</p>
+      <label class="q-opt"><input type="radio" name="b3" value="a"> Beck Anxiety Inventory</label>
+      <label class="q-opt"><input type="radio" name="b3" value="b"> Desirability of Control Scale</label>
+      <label class="q-opt"><input type="radio" name="b3" value="c"> Interpersonal Reactivity Index</label>
+    </div>
+    <div class="q-row">
+      <p class="q-stem">4. What was the MINI?</p>
+      <label class="q-opt"><input type="radio" name="b4" value="a"> A shock generator</label>
+      <label class="q-opt"><input type="radio" name="b4" value="b"> A structured interview procedure touching on psychological disorders, run by a clinical psychologist for about 30 minutes</label>
+      <label class="q-opt"><input type="radio" name="b4" value="c"> The consent form</label>
+    </div>
+    <div class="q-row">
+      <p class="q-stem">5. In the baseline condition, what percentage went to continue past 150 volts?</p>
+      <label class="q-opt"><input type="radio" name="b5" value="a"> 82.5%</label>
+      <label class="q-opt"><input type="radio" name="b5" value="b"> 70%</label>
+      <label class="q-opt"><input type="radio" name="b5" value="c"> 63.3%</label>
+    </div>
+    <div class="q-row">
+      <p class="q-stem">6. In the modelled refusal condition, what did Teacher 1 do at 90 volts?</p>
+      <label class="q-opt"><input type="radio" name="b6" value="a"> Increased the shock</label>
+      <label class="q-opt"><input type="radio" name="b6" value="b"> Said "I don't know about this", refused to continue and pushed the chair back</label>
+      <label class="q-opt"><input type="radio" name="b6" value="c"> Left the room</label>
+    </div>
+    <div class="q-row">
+      <p class="q-stem">7. Which personality measure did early-reluctant participants score higher on?</p>
+      <label class="q-opt"><input type="radio" name="b7" value="a"> Desirability for control (baseline condition)</label>
+      <label class="q-opt"><input type="radio" name="b7" value="b"> Beck Depression Inventory</label>
+      <label class="q-opt"><input type="radio" name="b7" value="c"> None; there were no personality differences at all</label>
+    </div>
+    <div class="q-row">
+      <p class="q-stem">8. Why does the partial replication limit the conclusions?</p>
+      <label class="q-opt"><input type="radio" name="b8" value="a"> The 150-volt measure was unreliable</label>
+      <label class="q-opt"><input type="radio" name="b8" value="b"> That participants would have continued past 150 volts is only an assumption, based on Milgram's point of no return</label>
+      <label class="q-opt"><input type="radio" name="b8" value="c"> The participants were not paid enough</label>
+    </div>
+    <div class="xp-controls" style="margin-top:10px;">
+      <button class="xp-btn" onclick="checkQuiz()">Check my answers</button>
+    </div>
+    <div class="xp-result" id="quizResult"></div>
+  </div>
+</section>
+
+<!-- ============ 21 ============ -->
+<section class="section" id="s21">
+  <h2>21. Exam Lab</h2>
+
+  <p class="small">The question below comes from the textbook's exam practice for this chapter.</p>
+
+  <div class="exam-practice">
+    <h4>Q1 — Describe how Burger (2009) screened the participants before they took part in his study. (2 marks)</h4>
+    <p class="small">One mark per distinct step; name the step and what it removed.</p>
+    <button class="xp-btn" onclick="revealAns('lab1')">Reveal model answer</button>
+    <div class="answer-box" id="lab1"><p><strong>Firstly</strong>, a research assistant phoned interested respondents and screened out anyone who had taken two or more psychology classes (who might have known Milgram's original study), then asked about physical and psychological health and any traumatic childhood experiences, excluding a further 30 per cent. <strong>Secondly</strong>, at Santa Clara University two clinical psychologists led a second screening: participants completed the Interpersonal Reactivity Index, Beck Anxiety Inventory, Desirability of Control Scale and Beck Depression Inventory, plus a demographic sheet, and were interviewed for about 30 minutes using the MINI procedure, after which 47 of 123 were removed.</p></div>
+  </div>
+
+  <div class="exam-practice">
+    <h4>Q2 — Describe one finding of Burger's (2009) study into obedience. (from the chapter checkpoint)</h4>
+    <button class="xp-btn" onclick="revealAns('lab2')">Reveal model answer</button>
+    <div class="answer-box" id="lab2"><p>In the baseline condition, <strong>70 per cent</strong> of participants had to be stopped before attempting to continue past 150 volts. This rate was just lower than the 82.5 per cent found in Milgram's variation experiment 5, suggesting obedience levels had changed little across the 45 years between the studies.</p></div>
+  </div>
+
+  <div class="exam-practice">
+    <h4>Q3 — Compare Burger's study with Milgram's original. (from the textbook's Activity 2)</h4>
+    <button class="xp-btn" onclick="revealAns('lab3')">Reveal model answer</button>
+    <div class="answer-box" id="lab3"><p><strong>Procedure:</strong> both used a rigged role draw, the same script style, the same four prods and word-pair task; Burger added a hard stop at 150 volts and a modelled refusal condition. <strong>Ethics:</strong> both caused distress and used deception, but Burger screened out vulnerable participants, reminded them three times of the right to withdraw, gave a 15-volt sample shock instead of 45, employed a clinical psychologist as experimenter and debriefed immediately. <strong>Results/conclusions:</strong> Milgram's experiment 5 reached 82.5% continuation at the equivalent stage; Burger found 70%, and both concluded that the power of the situation produces high obedience in ordinary people.</p></div>
+  </div>
+</section>
+
+<!-- ============ 22 ============ -->
+<section class="section" id="s22">
+  <h2>22. Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><strong>partial replication</strong><br>Repeating part of a study; Burger stopped at 150 volts, so obedience beyond that point remains an assumption.</div>
+    <div class="glossary-item"><strong>150-volt criterion</strong><br>The measure of obedience: whether the participant went to continue after the learner demanded release at 150 volts.</div>
+    <div class="glossary-item"><strong>baseline condition</strong><br>The direct copy of Milgram's procedure; 40 participants, 70% went to continue.</div>
+    <div class="glossary-item"><strong>modelled refusal condition</strong><br>30 participants watched Teacher 1 refuse at 90 volts; 63.3% still went to continue.</div>
+    <div class="glossary-item"><strong>screening</strong><br>Two rounds of checks (phone and clinical) removing psychology students, health risks and anyone likely to be distressed.</div>
+    <div class="glossary-item"><strong>MINI</strong><br>Mini International Neuropsychiatric Interview; a structured interview touching on psychological disorders, run for about 30 minutes.</div>
+    <div class="glossary-item"><strong>Interpersonal Reactivity Index</strong><br>28-item scale measuring empathy levels.</div>
+    <div class="glossary-item"><strong>Desirability of Control Scale</strong><br>20-item scale measuring impressions of self-control over one's own life.</div>
+    <div class="glossary-item"><strong>verbal prods</strong><br>The same four spoken prompts Milgram used to push participants onward; they could have been heard as cancelling the right to withdraw.</div>
+    <div class="glossary-item"><strong>mundane realism</strong><br>Whether a task resembles everyday life; shocking a stranger over word pairs does not resemble ordinary obedience, so it lacks mundane realism.</div>
+    <div class="glossary-item"><strong>point of no return</strong><br>Milgram's finding that most participants who passed 150 volts continued to the end; the basis of Burger's assumption.</div>
+    <div class="glossary-item"><strong>power of the situation</strong><br>The conclusion that situational forces dominated: witnessing refusal, and all personal characteristics measured, failed to change obedience levels.</div>
+  </div>
+</section>
+
+<div class="footer-note">1.3.2 Contemporary Study · Burger (2009) · Social Psychology · previous: <a href="../1.3.1-classic-study-moscovici-1969/">1.3.1 classic study: Moscovici et al. (1969)</a> · next: <a href="../1.3.4-contemporary-study-haun-2014/">1.3.4 contemporary study: Haun et al. (2014)</a></div>
+
+  </main>
+</div>
+
+<button id="btt" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function () {
+  var baseFont = 16;
+
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark'; }
+  };
+
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  function show(id, html) {
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    el.innerHTML = html;
+    el.classList.add('show');
+  }
+
+  function verdict(ok, msg) {
+    return '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + msg + '</p>';
+  }
+
+  window.bgGuess = function (btn, c) {
+    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    var ok = (c === 'b');
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var msg = ok
+      ? 'Burger predicted it, and the data agreed: 70% at the 150-volt point, against Milgram\u2019s 82.5%. The situation still runs the show.'
+      : 'Tempting, but the data went the other way. Awareness of the study did not lower obedience: 70% still went to continue past 150 volts.';
+    show('res-bg', verdict(ok, msg));
+  };
+
+  var quizKey = { b1: 'a', b2: 'b', b3: 'c', b4: 'b', b5: 'b', b6: 'b', b7: 'a', b8: 'b' };
+  var quizWhy = {
+    b1: 'US$50 for taking part in two 45-minute sessions, kept even if the participant withdrew.',
+    b2: 'Anyone who had taken two or more psychology classes was excluded, to remove people familiar with Milgram\u2019s original study.',
+    b3: 'The Interpersonal Reactivity Index (28 items) was designed to analyse empathy levels.',
+    b4: 'The Mini International Neuropsychiatric Interview, about 30 minutes, run by a clinical psychologist to identify anyone who should not take part.',
+    b5: '70% in the baseline, just below Milgram\u2019s 82.5% in experiment 5.',
+    b6: 'Teacher 1 hesitated at 75 volts, said the line at 90 volts, refused the prompt and pushed the chair back.',
+    b7: 'Early reluctance tracked desirability for control in the baseline condition, but did not change final obedience.',
+    b8: 'Because the experiment stopped at 150 volts, continued obedience is an assumption based on Milgram\u2019s point of no return.'
+  };
+
+  window.checkQuiz = function () {
+    var el = document.getElementById('quizResult');
+    if (!el) { return; }
+    var score = 0;
+    var html = '';
+    Object.keys(quizKey).forEach(function (q) {
+      var sel = document.querySelector('input[name="' + q + '"]:checked');
+      var chosen = sel ? sel.value : null;
+      var ok = (chosen === quizKey[q]);
+      if (ok) { score++; }
+      html += '<p style="margin:6px 0"><strong>' + q.toUpperCase() + ':</strong> ' +
+        (chosen ? (ok ? '✅ correct' : '❌ not quite') : 'not answered') +
+        ' — ' + quizWhy[q] + '</p>';
+    });
+    el.innerHTML = '<p><span class="xp-verdict">Score: ' + score + ' / 8</span></p>' + html;
+    el.classList.add('show');
+    if (score === 8) { el.classList.add('ok'); } else { el.classList.remove('ok'); }
+  };
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.toggle('show'); }
+  };
+
+  var secs = document.querySelectorAll('.section');
+  var links = document.querySelectorAll('.sb-item a');
+  function highlight() {
+    var best = null;
+    var bestTop = -99999;
+    for (var i = 0; i < secs.length; i++) {
+      var r = secs[i].getBoundingClientRect();
+      if (r.top <= 140 && r.top > bestTop) { bestTop = r.top; best = secs[i]; }
+    }
+    if (!best && secs.length) { best = secs[0]; }
+    for (var j = 0; j < links.length; j++) { links[j].classList.remove('sb-active'); }
+    if (best) {
+      var target = best.getAttribute('id');
+      for (var k = 0; k < links.length; k++) {
+        if (links[k].getAttribute('href') === '#' + target) { links[k].classList.add('sb-active'); }
+      }
+    }
+  }
+  window.addEventListener('scroll', highlight);
+  highlight();
+
+  var btt = document.getElementById('btt');
+  window.addEventListener('scroll', function () {
+    if (!btt) { return; }
+    if (window.scrollY > 400) { btt.classList.add('show'); } else { btt.classList.remove('show'); }
+  });
+})();
+</script>
+</body>
+</html>
