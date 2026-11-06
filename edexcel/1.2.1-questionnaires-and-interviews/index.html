@@ -215,6 +215,7 @@ body.dark .summary-card-body li { color: #c4b5fd; }
 
 .mat2x2 { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 6px; margin: 14px 0; }
 .mat2x2.c2 { grid-template-columns: 150px 1fr; }
+.mat2x2.even { grid-template-columns: 1fr 1fr; }
 .mat2x2 .mh { background: var(--primary); color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
 .mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
 .mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
@@ -445,7 +446,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
     </div>
   </div>
 
-  <div class="mat2x2">
+  <div class="mat2x2 even">
     <div class="mh">Closed: what you gain</div>
     <div class="mh">Closed: what you lose</div>
 
@@ -677,7 +678,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <p><strong>Validity refers to the extent to which something is measuring what it intends to measure.</strong> If you design a questionnaire intending to measure attitudes about education, your questions must measure that attitude — and nothing else. Reliability asks "is it consistent?"; validity asks the harder question: "is it the <em>right thing</em> that's consistent?"</p>
 
-  <div class="mat2x2">
+  <div class="mat2x2 c2">
     <div class="mh">Type of validity</div>
     <div class="mh">How it is established</div>
 
@@ -1097,33 +1098,33 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <h2>16. Key Terms</h2>
 
   <div class="glossary-grid">
-    <div class="glossary-item"><strong>survey</strong><br>A self-report method gathering information about feelings, attitudes, opinions, personality and traits, via questionnaire or interview.</div>
-    <div class="glossary-item"><strong>quantitative data</strong><br>Information that is numerical or can be converted into numbers. Objective — not open to interpretation.</div>
-    <div class="glossary-item"><strong>qualitative data</strong><br>Information that is non-numerical prose. Can be subjective — meanings in prose are open to interpretation.</div>
-    <div class="glossary-item"><strong>closed questions</strong><br>Preset fixed answers the respondent selects by circling or ticking. Yield quantitative data.</div>
-    <div class="glossary-item"><strong>open questions</strong><br>No preset answers; respondents answer freely, elaborate and justify. Yield qualitative data.</div>
-    <div class="glossary-item"><strong>attitude scale</strong><br>More than yes/no: offers a range of options so the strength of opinion can be gauged.</div>
-    <div class="glossary-item"><strong>Likert-style scale</strong><br>Respondent rates agreement with statements from a fixed set of options (Strongly agree → Strongly disagree).</div>
-    <div class="glossary-item"><strong>ranked scale</strong><br>Respondent ranks choices relative to other options; each preference is given a weighting.</div>
-    <div class="glossary-item"><strong>social desirability</strong><br>Responding in a way that depicts oneself in a more favourable light according to prevailing social norms.</div>
-    <div class="glossary-item"><strong>response bias</strong><br>Agreeing (or disagreeing) with every statement in an all-same-direction set. Fixed by reversing and mixing statements.</div>
-    <div class="glossary-item"><strong>privacy</strong><br>Participants should not be asked intrusive personal questions, and the researcher must not obtain personal data a participant would not voluntarily disclose.</div>
-    <div class="glossary-item"><strong>reliability</strong><br>The consistency of a measure or finding. External = over time; internal = within itself.</div>
-    <div class="glossary-item"><strong>test-retest method</strong><br>Same people, same questionnaire, different occasion — establishes external reliability.</div>
-    <div class="glossary-item"><strong>split-half method</strong><br>Splitting questions into two halves and comparing the findings — establishes internal reliability.</div>
-    <div class="glossary-item"><strong>validity</strong><br>The extent to which something measures what it intends to measure.</div>
-    <div class="glossary-item"><strong>face validity</strong><br>Looking at each question and deciding whether it makes sense for the construct being measured.</div>
-    <div class="glossary-item"><strong>predictive validity</strong><br>The extent to which results predict future behaviour (e.g. intelligence scores ↔ degree grading).</div>
-    <div class="glossary-item"><strong>concurrent validity</strong><br>Comparing evidence from several studies testing the same thing to see if they agree.</div>
-    <div class="glossary-item"><strong>structured interview</strong><br>Standardised: same preset questions, same way, for everyone. Easy to repeat; can be superficial.</div>
-    <div class="glossary-item"><strong>semi-structured interview</strong><br>Preset questions but no standardised format; the researcher can deviate. Gathers quantitative and qualitative data.</div>
-    <div class="glossary-item"><strong>unstructured interview</strong><br>A loose research aim explored through conversation; needs rapport, listening skills, non-judgemental language; not replicable.</div>
-    <div class="glossary-item"><strong>researcher effects</strong><br>Influence of the interviewer's characteristics (sex, age, manner, personality) or expectations on respondents' answers.</div>
-    <div class="glossary-item"><strong>confirmation bias</strong><br>Conducting research in a way that confirms the intended outcomes — e.g. asking questions that confirm expected results.</div>
-    <div class="glossary-item"><strong>primary data</strong><br>Gathered directly by the researcher from participants, fitted to the study's aims; time consuming but current.</div>
-    <div class="glossary-item"><strong>secondary data</strong><br>Gathered from existing studies (literature review, meta-analysis); quick and large-scale but possibly out of date and not aim-specific.</div>
-    <div class="glossary-item"><strong>literature review</strong><br>Reading, summarising and drawing conclusions from other people's research.</div>
-    <div class="glossary-item"><strong>alternative hypothesis</strong><br>A clear, testable, precise prediction containing the variables under investigation, made at the beginning of a study.</div>
+    <div class="glossary-item"><strong>survey</strong><span class="zh">（问卷调查）</span><br>A self-report method gathering information about feelings, attitudes, opinions, personality and traits, via questionnaire or interview.</div>
+    <div class="glossary-item"><strong>quantitative data</strong><span class="zh">（量化数据）</span><br>Information that is numerical or can be converted into numbers. Objective — not open to interpretation.</div>
+    <div class="glossary-item"><strong>qualitative data</strong><span class="zh">（质性数据）</span><br>Information that is non-numerical prose. Can be subjective — meanings in prose are open to interpretation.</div>
+    <div class="glossary-item"><strong>closed questions</strong><span class="zh">（封闭式问题）</span><br>Preset fixed answers the respondent selects by circling or ticking. Yield quantitative data.</div>
+    <div class="glossary-item"><strong>open questions</strong><span class="zh">（开放式问题）</span><br>No preset answers; respondents answer freely, elaborate and justify. Yield qualitative data.</div>
+    <div class="glossary-item"><strong>attitude scale</strong><span class="zh">（态度量表）</span><br>More than yes/no: offers a range of options so the strength of opinion can be gauged.</div>
+    <div class="glossary-item"><strong>Likert-style scale</strong><span class="zh">（李克特式量表）</span><br>Respondent rates agreement with statements from a fixed set of options (Strongly agree → Strongly disagree).</div>
+    <div class="glossary-item"><strong>ranked scale</strong><span class="zh">（排序量表）</span><br>Respondent ranks choices relative to other options; each preference is given a weighting.</div>
+    <div class="glossary-item"><strong>social desirability</strong><span class="zh">（社会赞许性）</span><br>Responding in a way that depicts oneself in a more favourable light according to prevailing social norms.</div>
+    <div class="glossary-item"><strong>response bias</strong><span class="zh">（反应偏差）</span><br>Agreeing (or disagreeing) with every statement in an all-same-direction set. Fixed by reversing and mixing statements.</div>
+    <div class="glossary-item"><strong>privacy</strong><span class="zh">（隐私）</span><br>Participants should not be asked intrusive personal questions, and the researcher must not obtain personal data a participant would not voluntarily disclose.</div>
+    <div class="glossary-item"><strong>reliability</strong><span class="zh">（信度）</span><br>The consistency of a measure or finding. External = over time; internal = within itself.</div>
+    <div class="glossary-item"><strong>test-retest method</strong><span class="zh">（重测法）</span><br>Same people, same questionnaire, different occasion — establishes external reliability.</div>
+    <div class="glossary-item"><strong>split-half method</strong><span class="zh">（分半法）</span><br>Splitting questions into two halves and comparing the findings — establishes internal reliability.</div>
+    <div class="glossary-item"><strong>validity</strong><span class="zh">（效度）</span><br>The extent to which something measures what it intends to measure.</div>
+    <div class="glossary-item"><strong>face validity</strong><span class="zh">（表面效度）</span><br>Looking at each question and deciding whether it makes sense for the construct being measured.</div>
+    <div class="glossary-item"><strong>predictive validity</strong><span class="zh">（预测效度）</span><br>The extent to which results predict future behaviour (e.g. intelligence scores ↔ degree grading).</div>
+    <div class="glossary-item"><strong>concurrent validity</strong><span class="zh">（共时效度）</span><br>Comparing evidence from several studies testing the same thing to see if they agree.</div>
+    <div class="glossary-item"><strong>structured interview</strong><span class="zh">（结构化访谈）</span><br>Standardised: same preset questions, same way, for everyone. Easy to repeat; can be superficial.</div>
+    <div class="glossary-item"><strong>semi-structured interview</strong><span class="zh">（半结构化访谈）</span><br>Preset questions but no standardised format; the researcher can deviate. Gathers quantitative and qualitative data.</div>
+    <div class="glossary-item"><strong>unstructured interview</strong><span class="zh">（非结构化访谈）</span><br>A loose research aim explored through conversation; needs rapport, listening skills, non-judgemental language; not replicable.</div>
+    <div class="glossary-item"><strong>researcher effects</strong><span class="zh">（研究者效应）</span><br>Influence of the interviewer's characteristics (sex, age, manner, personality) or expectations on respondents' answers.</div>
+    <div class="glossary-item"><strong>confirmation bias</strong><span class="zh">（确认偏差）</span><br>Conducting research in a way that confirms the intended outcomes — e.g. asking questions that confirm expected results.</div>
+    <div class="glossary-item"><strong>primary data</strong><span class="zh">（一手数据）</span><br>Gathered directly by the researcher from participants, fitted to the study's aims; time consuming but current.</div>
+    <div class="glossary-item"><strong>secondary data</strong><span class="zh">（二手数据）</span><br>Gathered from existing studies (literature review, meta-analysis); quick and large-scale but possibly out of date and not aim-specific.</div>
+    <div class="glossary-item"><strong>literature review</strong><span class="zh">（文献综述）</span><br>Reading, summarising and drawing conclusions from other people's research.</div>
+    <div class="glossary-item"><strong>alternative hypothesis</strong><span class="zh">（备择假设）</span><br>A clear, testable, precise prediction containing the variables under investigation, made at the beginning of a study.</div>
   </div>
 </section>
 
