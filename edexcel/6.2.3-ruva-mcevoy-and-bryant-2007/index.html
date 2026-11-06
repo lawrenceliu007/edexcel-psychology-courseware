@@ -318,7 +318,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="cn-note">
     <strong>中文理解：这个实验在问什么</strong><br>
     法官说「只看法庭证据」很容易；但新闻读过的内容已经<strong>存进了你的记忆</strong>。这个研究问的正是：
-    读过的新闻会不会被你<strong>误记成</strong>「法庭上看到的证据」？——这就是<strong>source monitoring error（来源监测错误）</strong>。
+    读过的新闻会不会被你<strong>误记成</strong>「法庭上看到的证据」？这就是<strong>source monitoring error（来源监测错误）</strong>。
   </div>
 </section>
 
@@ -344,6 +344,35 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <p>Some countries have abolished juries altogether (Singapore, South Africa, India); others use juries only for selected offences. So: can we <strong>measure</strong> how much pre-trial publicity actually biases a verdict?</p>
+
+  <h3>How a headline turns into a guilty verdict</h3>
+
+  <p>The textbook names <strong>two routes</strong> by which prejudicial media reaches a juror's decision. Ruva et al. set out to test the second one.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Route 1 · Confirmation bias（确认偏误）</h4>
+      <p>If a juror already holds a <strong>negative impression</strong> of the defendant, they <strong>selectively attend</strong> to negative evidence during the trial and let positive evidence pass by. The impression was formed before the trial started, but it decides what counts as evidence once the trial begins.</p>
+      <p class="small">The verdict shifts without any memory error. Nothing is misremembered; attention is simply filtered.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Route 2 · Source monitoring error（来源监测错误）</h4>
+      <p>The juror <strong>cannot tell apart</strong> information from the media and information from the trial. A fact read in a newspaper becomes "something the witness said in court".</p>
+      <p class="small">The verdict shifts because memory itself is contaminated. This route is what the source monitoring test is built to catch.</p>
+    </div>
+  </div>
+
+  <div class="keyterm-box">
+    <div class="kt">confirmation bias（确认偏误）</div>
+    Only paying attention to information which is <strong>consistent with previously formed impressions</strong>.
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：两条路线，两种危害</strong><br>
+    <strong>确认偏误</strong>是「戴着有色眼镜看证据」：证据都在，只是你只挑对自己印象有利的看。记忆没坏，注意力被筛选了。<br>
+    <strong>来源监测错误</strong>是「证据被调包」：法庭上根本没有的东西，被你记成「庭上听到的」。记忆坏了。<br>
+    前一条路线靠「认真听证据」也许能救；后一条路线救不了，因为<strong>错在下游的记忆里，不在上游的注意力</strong>。这正是这个研究要证明的点。
+  </div>
 </section>
 
 <!-- ============ 3 ============ -->
@@ -361,7 +390,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="cn-note">
     <strong>中文理解：collaborating vs nominal</strong><br>
     <strong>Collaborating jurors（协作陪审员）</strong>：真正坐在一起<strong>讨论</strong>并给出统一裁决的小组。<br>
-    <strong>Nominal jurors（名义陪审员）</strong>：只是各自<strong>单独</strong>判断，研究时把个人答案加总 —— 没有讨论。<br>
+    <strong>Nominal jurors（名义陪审员）</strong>：只是各自<strong>单独</strong>判断，研究时把个人答案加总，中间没有讨论。<br>
     对比这两者，就能看出「讨论」本身是<strong>纠错</strong>还是<strong>传染</strong>。
   </div>
 </section>
@@ -455,7 +484,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>中文理解：为什么文章要与庭审「不重合」？</strong><br>
-    文章里故意放了一些<strong>法庭上不会出现的信息</strong>（坏脾气、不会用枪……）。如果被试在裁决时「想起」这些信息，它们只可能来自新闻 —— 这样就能用来源监测测验精确地抓到<strong>「把新闻记成证据」</strong>的瞬间。
+    文章里故意放了一些<strong>法庭上不会出现的信息</strong>（坏脾气、不会用枪……）。如果被试在裁决时「想起」这些信息，它们只可能来自新闻。这样就能用来源监测测验精确地抓到<strong>「把新闻记成证据」</strong>的瞬间。
   </div>
 </section>
 
@@ -484,6 +513,20 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
     <tr><td>Rating of guilt</td><td><strong>1–7</strong> (1 = certain not guilty, 7 = certain guilty)</td></tr>
     <tr><td>Sentence</td><td><strong>30–45 years</strong> (New Jersey guidelines)</td></tr>
   </table>
+
+  <p>These same three measures were taken <strong>three times</strong>, which is why the results come in three rounds:</p>
+
+  <table>
+    <tr><th>Time point</th><th>When it was measured</th></tr>
+    <tr><td><strong>Pre-deliberation</strong></td><td>Straight after the video, before any discussion or recall</td></tr>
+    <tr><td><strong>Post-deliberation</strong></td><td>After collaborators deliberated, or nominal jurors recalled the trial alone</td></tr>
+    <tr><td><strong>Post-source monitoring</strong></td><td>After the source monitoring test, as a final individual verdict</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么要测三次</strong><br>
+    只测一次，只能说明「读了新闻的人判得更重」。测三次，才能看出<strong>讨论有没有救回来</strong>：如果讨论后判罪率下降，说明陪审团制度本身有纠错能力。这个设计是为了回答「陪审团还值不值得保留」，不只是证明媒体有影响。
+  </div>
 </section>
 
 <!-- ============ 8 ============ -->
@@ -646,7 +689,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>中文理解：三个结论一句话版</strong><br>
-    ① 负面审前报道<strong>推高判罪</strong>。② <strong>集体讨论</strong>能互相纠错（还更宽容）。③ 但一旦读新闻的人把新闻<strong>误存为证据</strong>，讨论也救不回来 —— 因为错的是记忆本身。
+    负面审前报道<strong>推高判罪</strong>。集体讨论能让陪审员互相纠错，讨论后还会更宽容。但一旦读新闻的人把新闻<strong>误存为证据</strong>，讨论也救不回来，因为错的是记忆本身。
   </div>
 </section>
 
@@ -654,24 +697,35 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 <section class="section" id="s12">
   <h2>12. Evaluating · Strengths</h2>
 
-  <div class="green-box">
-    <h4>Strength 1 — A real trial</h4>
-    <p>Mock jury research often uses a <strong>fictional trial summarised in a document</strong>. Ruva's participants watched <strong>real court proceedings</strong> of a real murder case — greater <strong>ecological validity</strong> than much research in this area.</p>
-  </div>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Strength 1 · A real trial（真实庭审）</h4>
+      <p>Mock jury research often shows participants a <strong>fictional trial summarised in a document</strong>. Ruva's participants watched <strong>real court proceedings</strong> of a real murder case, so the study has greater <strong>ecological validity</strong> than much research in this area.</p>
+      <p class="small">中文：别人给被试一份假案卷摘要，这里让被试看真实凶杀案的庭审录像，更接近陪审员真正面对的材料。</p>
+    </div>
 
-  <div class="green-box">
-    <h4>Strength 2 — Standardised procedures and controls</h4>
-    <p>Articles matched for <strong>length</strong> (nine each, ten pages), the same <strong>30-minute video</strong> for everyone, fixed timing (15 / 30 / 10 minutes), random assignment. This makes the experiment <strong>replicable</strong> and the comparison <strong>fair</strong>.</p>
-  </div>
+    <div class="compare-card green">
+      <h4>Strength 2 · Standardised procedures（标准化流程）</h4>
+      <p>Articles were <strong>matched for length</strong> (nine each, ten pages), everyone watched the <strong>same 30-minute video</strong>, timing was fixed (15 / 30 / 10 minutes), and participants were <strong>randomly allocated</strong> to collaborating or nominal conditions. The comparison between groups is therefore fair, and the study can be <strong>replicated</strong>.</p>
+      <p class="small">中文：两组读的文章长度一样，看的视频一样，分配随机，所以判罪率的差别只能归因于「读没读负面新闻」。</p>
+    </div>
 
-  <div class="green-box">
-    <h4>Strength 3 — Deception was handled carefully</h4>
-    <p>The cover story was <strong>necessary</strong> (otherwise participants guess the aim). The vast majority believed it — <strong>83%</strong> exposed vs <strong>85%</strong> non-exposed. When asked directly, <strong>35%</strong> of exposed jurors suspected the real aim (vs <strong>18%</strong> non-exposed) — but analysis showed <strong>suspicious participants did not respond differently</strong>, so the suspicion did not distort the results.</p>
+    <div class="compare-card green">
+      <h4>Strength 3 · Objective measures（客观测量）</h4>
+      <p>Guilt was measured as a <strong>guilty / not guilty verdict</strong>, a rating on a <strong>1–7 scale</strong>, and a sentence in <strong>years</strong>. None of these depend on the researcher's opinion, so the data collected can be treated as <strong>scientific</strong>.</p>
+      <p class="small">中文：判罪与否、1–7 评分、判多少年，都是硬指标，不是研究者「觉得」被试有多怀疑。这是量化数据能写进 AO3 的底气。</p>
+    </div>
+
+    <div class="compare-card green">
+      <h4>Strength 4 · Deception handled carefully（欺骗处理得当）</h4>
+      <p>The cover story was <strong>necessary</strong>, otherwise participants would guess the aim. Most believed it (<strong>83%</strong> exposed vs <strong>85%</strong> non-exposed). Asked directly, <strong>35%</strong> of exposed jurors suspected the real aim (vs <strong>18%</strong> non-exposed), but analysis showed <strong>suspicious participants did not respond differently</strong>.</p>
+      <p class="small">中文：用了欺骗，但大多数人信了；就算起疑，作答也没有差别。说明欺骗没有污染数据，伦理和效度两头都有交代。</p>
+    </div>
   </div>
 
   <div class="cn-note">
-    <strong>中文理解：为什么 83% / 85% 是个优点</strong><br>
-    用了欺骗（cover story），但大多数人<strong>信了</strong>，而且即使起疑的人作答也无差异 —— 说明欺骗<strong>没有污染数据</strong>。伦理与效度两头都交代了。
+    <strong>中文理解：这四条怎么在 8 分题里用</strong><br>
+    挑<strong>一条</strong>写透，比四条都写一遍分更高。写法是「优势 + 这优势让结论变得可信在哪」：例如真实庭审 → 材料接近现实 → 结论能外推到真实陪审团。<strong>只写「生态效度高」不加解释，拿不到高分</strong>。
   </div>
 </section>
 
@@ -679,29 +733,48 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 <section class="section" id="s13">
   <h2>13. Evaluating · Limitations</h2>
 
-  <div class="blue-box">
-    <h4>Limitation 1 — Only 30 minutes to deliberate</h4>
-    <p>Real jurors may deliberate <strong>as long as reasonably needed</strong>. The 30-minute limit means collaborating jurors' verdicts <strong>may not reflect verdicts given sufficient time</strong>.</p>
+  <div class="compare-grid">
+    <div class="compare-card red">
+      <h4>Limitation 1 · Only 30 minutes to deliberate（讨论时间太短）</h4>
+      <p>Real jurors may deliberate <strong>as long as reasonably needed</strong>. The 30-minute limit means collaborating jurors' verdicts <strong>may not reflect verdicts given sufficient time</strong>.</p>
+      <p class="small">中文：真实陪审团想讨论多久就讨论多久，这里只给 30 分钟，讨论组给出的裁决未必是充分讨论后的结果。</p>
+    </div>
+
+    <div class="compare-card red">
+      <h4>Limitation 2 · Not a real jury experience（不是真正的陪审体验）</h4>
+      <p>Participants never received a <strong>summons</strong>, went through <strong>juror selection</strong>, were <strong>sworn in</strong>, or heard the judge's instructions. They never sat in a real courtroom or decided the fate of a <strong>real defendant</strong>. Knowing a verdict would actually convict someone might have made them <strong>more lenient</strong>.</p>
+      <p class="small">中文：没有传票，没有遴选，没有宣誓，也没有法官训示，更不用真的决定一个人的命运。知道自己的一票会把人送进监狱，被试可能会更宽容。</p>
+    </div>
+
+    <div class="compare-card red">
+      <h4>Limitation 3 · Groups of four to six, not twelve（小组人数不够）</h4>
+      <p>Real juries have <strong>12 members</strong>. In smaller groups, individual dissenters get <strong>less support</strong> from others, so <strong>biased views can go unchallenged</strong>. This may explain why collaborating jurors held a <strong>more negative impression</strong> of the defendant than nominal jurors.</p>
+      <p class="small">中文：人少，少数意见更容易被压住，偏见没人挑战。这可能就是讨论组对被告印象更差的原因。但注意课本同时说：协作对裁决本身<strong>没有显著影响</strong>。</p>
+    </div>
+
+    <div class="compare-card red">
+      <h4>Limitation 4 · Students in one US state（样本不具代表性）</h4>
+      <p>The sample was <strong>university students in Florida, USA</strong>, the majority <strong>white</strong>. Real jurors are selected <strong>randomly from the electoral roll</strong>, so this sample does not represent them, nor jurors from other states or other countries. We cannot assume <strong>all</strong> jurors would be biased by negative media coverage.</p>
+      <p class="small">中文：被试是佛罗里达的大学生、以白人为主；真实陪审员从选民册随机抽取。样本对不上，结论不能推广到所有陪审团。</p>
+    </div>
+
+    <div class="compare-card red">
+      <h4>Limitation 5 · Underestimates real-life publicity（低估真实影响）</h4>
+      <p>Participants were told to <strong>dismiss specific articles</strong> they had read only days before, so they could discriminate <strong>better</strong> than a real juror would. Real jurors absorb coverage <strong>over weeks or months</strong>, from many sources, and would confuse the two <strong>more</strong> easily. Real effects could be <strong>larger</strong> than those measured.</p>
+      <p class="small">中文：被试读的是几篇指定的文章，几天后就被提醒丢掉。真实陪审员被媒体泡上几周几个月，来源分得更不清。所以这里测出的是<strong>下限</strong>，真实危害只会更大。</p>
+    </div>
   </div>
 
-  <div class="blue-box">
-    <h4>Limitation 2 — Not a real jury experience</h4>
-    <p>Participants never received a <strong>summons</strong>, went through <strong>juror selection</strong>, were <strong>sworn in</strong>, or heard the judge's instructions. They did not decide the fate of a <strong>real defendant</strong> — knowing their verdict would actually convict someone might have made them <strong>more lenient</strong>.</p>
-  </div>
-
-  <div class="blue-box">
-    <h4>Limitation 3 — Groups of four to six, not twelve</h4>
-    <p>Real juries have <strong>12 members</strong>. Smaller groups give <strong>less room for dissenting opinions</strong> to be heard — biased views can go <strong>unchallenged</strong>.</p>
-  </div>
-
-  <div class="blue-box">
-    <h4>Limitation 4 — The study underestimates real-life publicity</h4>
-    <p>Participants were told to <strong>dismiss specific articles</strong> they had read only days before. In real life, jurors absorb media coverage <strong>over weeks or months</strong> and would discriminate <strong>worse</strong> between coverage and trial evidence — real jurors could make <strong>more</strong> source errors and be <strong>more</strong> biased than this sample.</p>
+  <div class="keyterm-box">
+    <div class="kt">social loafing（社会惰化）</div>
+    In large groups there is a tendency for <strong>some members to avoid participating</strong>.
   </div>
 
   <div class="cn-note">
-    <strong>中文理解：记住「低估」这个词</strong><br>
-    实验室里的效果已经这么强；真实世界媒体浸泡<strong>更久更深</strong> —— 所以实验室结果是<strong>下限</strong>，不是上限。这是评价里最高级的一句话。
+    <strong>中文理解：12 人陪审团到底该不该保留</strong><br>
+    课本用这个研究翻出了一个反常识的结论。小群体（4 到 6 人）的问题是个别异议得不到支持，偏见无人挑战。但讨论<strong>并没有显著改变裁决</strong>，只让被告印象更差。<br>
+    于是问题反过来问：既然大群体也会 <strong>social loafing</strong>（有人搭便车不参与），而挑 12 个陪审员成本高、对陪审员的经济和家庭负担也重，那么 12 人陪审团的必要性就需要重新论证。<br>
+    这一层是这道评价题能拿高分的地方：<strong>从一个方法的缺陷，推到制度层面的追问</strong>。
   </div>
 </section>
 
@@ -722,7 +795,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>中文理解：为什么这条应用「考试好写」</strong><br>
-    它直接回应了第 2 节的失效清单：口头指令没用 → 所以要<strong>物理隔离</strong>（换地方）或<strong>取消陪审团</strong>（bench trial）。研究结论与对策一一对应，逻辑闭环。
+    它直接回应了第 2 节的失效清单：口头指令没用 → 所以要<strong>物理隔离</strong>（换地方）或<strong>取消陪审团</strong>（bench trial）。研究结论与对策一一对应，前后咬得上。
   </div>
 </section>
 <!-- ============ 15 ============ -->
@@ -938,7 +1011,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   var condFb = {
     a: 'Not the control group — the collaborating condition (276) read the negative publicity.',
     b: 'Not the control group — the 140 nominal exposed also read the negative publicity.',
-    c: 'Correct — the 142 non-exposed read unrelated crime articles, so any difference vs the exposed groups can be attributed to the publicity itself.'
+    c: 'The 142 non-exposed read unrelated crime articles, so any difference from the exposed groups can be attributed to the publicity itself.'
   };
   window.condAns = function (btn, key) {
     var sibs = btn.parentNode.querySelectorAll('.q-option');
@@ -949,7 +1022,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   /* ---------- s9 ---------- */
   var barFb = {
-    a: 'Correct — 73% guilty vs 41% for collaborative non-exposed: a 32-percentage-point jump caused by the articles.',
+    a: '73% guilty vs 41% for collaborative non-exposed: a 32-percentage-point jump caused by the articles.',
     b: 'You flipped the labels: 27% vs 59% are the NOT-guilty percentages of those same groups.',
     c: 'Look again — exposed collaborative jurors voted guilty 73% of the time, non-exposed only 41%.'
   };
@@ -960,18 +1033,49 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
     show('res-bar', verdictHTML(key === 'a', barFb[key]));
   };
 
-  /* ---------- s15 checkpoint ---------- */
-  var cpFb = {
-    a: '558 university students, mean age 20.6.',
-    b: '451 is not right — the sample was 558 (128 male, 430 female).',
-    c: '276 is the collaborating condition only — the full sample was 558.'
-  };
+  /* ---------- s15 checkpoint: one reason per option ---------- */
+  var cpWhy = [
+    ['558 is the full sample: 128 male and 430 female students.',
+     '451 does not appear anywhere in the study. The sample was 558.',
+     '276 is only the collaborating condition. The full sample was 558.'],
+    ['128 of the 558 participants were male.',
+     '430 is the number of female participants. The question asks for male.',
+     '354 is the number of white participants, not the number of males.'],
+    ['Too short. The two phases were four to seven days apart.',
+     'Correct. Phase one was the articles, phase two came four to seven days later.',
+     'Too long, and it would have weakened the memory test. The articles had to be recent enough to still influence recall.'],
+    ['15 minutes is the recall time in phase one, not the length of the video.',
+     '60 minutes is not in the procedure. The trial video lasted 30 minutes.',
+     'Correct. Everyone watched the same 30-minute recording of the trial.'],
+    ['A burglary never appears. One set was about the NJ v Bias case, the other about an embezzlement case.',
+     'Correct. This was the control material: a crime unrelated to the trial, so any bias had to come from the publicity.',
+     'Everyone read nine articles. The non-exposed group read unrelated ones, which is what made a fair comparison possible.'],
+    ['59% is the NOT-guilty figure for the collaborative non-exposed group.',
+     'Correct. Collaborative exposed jurors voted guilty 73% of the time, against 41% when not exposed.',
+     '65% is the nominal exposed group. The question asks about the collaborative exposed group.'],
+    ['Reversed. Exposure to the articles is what produced the errors.',
+     'Correct. Non-exposed jurors were better at tagging a fact as trial-only, so they made fewer errors.',
+     'The groups differed significantly. That difference is the finding.'],
+    ['That is the pre-deliberation pattern. The shift after discussion went the other way.',
+     'Correct. Verdicts became more lenient after deliberation, possibly because the reasonable-doubt standard came into play.',
+     'No trend towards hung juries is reported. The shift was towards leniency.'],
+    ['15 minutes is the nominal jurors\' recall time.',
+     'No limit of that kind was used. Deliberation was capped at 30 minutes.',
+     'Correct. 30 minutes to reach a unanimous verdict, or it counted as a hung jury.'],
+    ['Four to six is the size of the groups in this study. Real juries are larger.',
+     'Correct. Twelve members, which is why a 4-to-6-person group is listed as a limitation.',
+     'Nine is not the figure used here. Real juries have 12 members.']
+  ];
   window.cpAns = function (btn) {
     var ok = btn.getAttribute('data-ok') === '1';
-    var sibs = btn.parentNode.querySelectorAll('.q-option');
+    var group = btn.parentNode;
+    var groups = Array.prototype.slice.call(document.querySelectorAll('#s15 .xp-controls'));
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
     for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
     btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
-    show('res-cp', verdictHTML(ok, ok ? '' : 'Check the section referenced by the question and try again.'));
+    var why = (cpWhy[qi] && cpWhy[qi][oi]) ? cpWhy[qi][oi] : 'Re-read the section this question comes from.';
+    show('res-cp', verdictHTML(ok, why));
   };
 })();
 </script>
