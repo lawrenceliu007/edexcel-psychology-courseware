@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.3 Methods — Researching Criminological Psychology</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-divider { height: 1px; background: #e2e8f0; margin: 4px 12px; }
+.sb-group-label { font-size: .62em; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .8px; padding: 8px 16px 3px; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-divider, body.dark .sb-group-label { background: #334155; color: #64748b; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+.syl-tag.ev { background: #dcfce7; color: #166534; }
+.syl-tag.crit { background: #fce7f3; color: #9d174d; }
+.syl-tag.app { background: #fef3c7; color: #854d0e; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+.xp-case .xp-case-name { font-weight: 700; color: var(--primary-dark); font-size: 1rem; }
+.xp-case .xp-case-desc { font-size: .9rem; line-height: 1.6; color: #374151; margin: 6px 0 10px; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .xp-case .xp-case-name { color: #fb923c; }
+body.dark .xp-case .xp-case-desc { color: #cbd5e1; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic F · Criminological psychology — 6.3 Methods</span>
+  </div>
+  <span class="nav-pill">⚖️ Criminal Psychology</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="6.3-Criminological-Methods-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">6.3 Methods</div>
+    <div class="sb-header-sub">Researching crime · 犯罪心理学研究方法</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+    <li class="sb-item"><a href="#s2">2. Method Map</a></li>
+    <li class="sb-item"><a href="#s3">3. Lab Experiments</a></li>
+    <li class="sb-item"><a href="#s4">4. Lab · Evaluation</a></li>
+    <li class="sb-item"><a href="#s5">5. Field Experiments</a></li>
+    <li class="sb-item"><a href="#s6">6. Field · Evaluation</a></li>
+    <li class="sb-item"><a href="#s7">7. Mock Jury Studies</a></li>
+    <li class="sb-item"><a href="#s8">8. Mock Jury · Evaluation</a></li>
+    <li class="sb-item"><a href="#s9">9. Three Methods Compared</a></li>
+    <li class="sb-item"><a href="#s10">10. Reliability</a></li>
+    <li class="sb-item"><a href="#s11">11. Validity</a></li>
+    <li class="sb-item"><a href="#s12">12. Objectivity · G · C</a></li>
+    <li class="sb-item"><a href="#s13">13. Ethics &amp; Risk</a></li>
+    <li class="sb-item"><a href="#s14">14. Data Analysis</a></li>
+    <li class="sb-item"><a href="#s15">15. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s16">16. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s17">17. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>6.3 METHODS<br><span style="font-size:0.65em">Researching criminological psychology · 犯罪心理学的研究方法</span></h1>
+  <div class="meta">
+    <span class="badge">Topic F · Criminological psychology</span>
+    <span class="badge">Methods</span>
+    <span class="badge">Spec 6.3.1–6.3.4</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this chapter is really asking</h4>
+  <ol>
+    <li><strong>Why the lab?</strong> Testing real witnesses is illegal and real jurors cannot be studied, so crime research has to be simulated: films for witnesses（目击者）, mock juries for jurors.</li>
+    <li><strong>Three methods, one trade-off.</strong> Lab experiments buy control and reliability at the cost of realism; field experiments buy realism at the cost of control; mock juries buy access to verdicts at the cost of a real juror experience.</li>
+    <li><strong>Evaluation has a fixed vocabulary:</strong> reliability, validity, objectivity, generalisability, credibility, ethics. Use these words in every AO3 answer.</li>
+    <li><strong>Ethics and risk management are examinable content:</strong> BPS Code (2009), protection, deception and consent, right to withdraw, debrief, and OASys-style risk assessment.</li>
+  </ol>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started — Design Your Own Study</h2>
+
+  <p>Scenario from the textbook: researchers have noticed that <strong>women are less likely to be convicted of an offence compared to men</strong>. You are commissioned to test whether mock jurors find a <strong>woman less guilty than a man</strong> for the same offence.</p>
+
+  <div class="note-box">
+    <h4>Every decision you must make</h4>
+    <ul class="tight">
+      <li>What <strong>sample</strong>? Which <strong>sampling method</strong>?</li>
+      <li>What are the <strong>IV</strong> and the <strong>DV</strong>?</li>
+      <li>Which <strong>controls</strong> and which <strong>experimental design</strong>?</li>
+      <li>How do you run the <strong>procedure</strong> and <strong>analyse the results</strong>?</li>
+    </ul>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：这一章考什么</strong><br>
+    考纲 6.3.1 要求你把 U1、U2 学过的研究方法<strong>搬到犯罪心理学</strong>里用：怎么设计、怎么评价。考试最常见的问法就是课本这种场景题：给你一个研究任务（比如被告性别会不会影响判罪），让你写出怎么用实验去做。<strong>IV 是被告特征，DV 是判罪结果，被试是模拟陪审员</strong>。先把这套思路练熟，后面三节的具体方法就都通了。
+  </div>
+
+  <div class="xp-block">
+    <h4>🤔 Quick decision<span class="xp-badge">Think first</span></h4>
+    <p class="xp-intro">In this scenario, what is the independent variable?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">The gender of the defendant</button>
+      <button class="q-option" onclick="mcAns(this)">Whether the jurors find the defendant guilty</button>
+      <button class="q-option" onclick="mcAns(this)">The offence the defendant committed</button>
+    </div>
+    <div class="xp-result" id="res-s1"></div>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Method Map — Four Spec Points</h2>
+
+  <table>
+    <tr><th>Spec point</th><th>What it covers</th><th>Where in this page</th></tr>
+    <tr><td>6.3.1 Use of methods</td><td>Experiments in eyewitness research（目击记忆实验）and mock jury research（模拟陪审团研究）</td><td>§3–§8</td></tr>
+    <tr><td>6.3.2 Ethical guidelines</td><td>BPS Code of Ethics and Conduct (2009) and risk management（风险管理）</td><td>§13</td></tr>
+    <tr><td>6.3.3 Data analysis</td><td>List A (quantitative analysis) and List B (inferential statistics) from Units 1 and 2</td><td>§14</td></tr>
+    <tr><td>6.3.4 Evaluation</td><td>Reliability, validity, generalisability, credibility, objectivity, subjectivity, ethics, practical applications</td><td>§9–§12</td></tr>
+  </table>
+
+  <div class="exam-tip">
+    <strong>Exam tip (from the textbook):</strong> laboratory and field experiments are described here, but in the exam you could be asked to apply your knowledge of <strong>any research method</strong> to criminological psychology. You also need to analyse data using <strong>graphs and statistical tests</strong>.
+  </div>
+
+  <div class="figure">
+  <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+    <defs>
+      <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/>
+      </marker>
+    </defs>
+    <rect x="240" y="12" width="200" height="44" rx="10" fill="#ea580c"/>
+    <text x="340" y="32" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">Criminological research</text>
+    <text x="340" y="48" text-anchor="middle" fill="#ffe4cf" font-size="10">can't study real witnesses or jurors</text>
+    <rect x="30" y="100" width="190" height="58" rx="10" fill="#fff" stroke="#ea580c" stroke-width="2"/>
+    <text x="125" y="122" text-anchor="middle" fill="#c2410c" font-size="12" font-weight="bold">Lab experiment</text>
+    <text x="125" y="138" text-anchor="middle" fill="#64748b" font-size="10">film clip · control high</text>
+    <rect x="245" y="100" width="190" height="58" rx="10" fill="#fff" stroke="#ea580c" stroke-width="2"/>
+    <text x="340" y="122" text-anchor="middle" fill="#c2410c" font-size="12" font-weight="bold">Field experiment</text>
+    <text x="340" y="138" text-anchor="middle" fill="#64748b" font-size="10">staged incident · realism high</text>
+    <rect x="460" y="100" width="190" height="58" rx="10" fill="#fff" stroke="#ea580c" stroke-width="2"/>
+    <text x="555" y="122" text-anchor="middle" fill="#c2410c" font-size="12" font-weight="bold">Mock jury study</text>
+    <text x="555" y="138" text-anchor="middle" fill="#64748b" font-size="10">trial video · verdicts</text>
+    <line x1="150" y1="60" x2="125" y2="98" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+    <line x1="340" y1="60" x2="340" y2="98" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+    <line x1="530" y1="60" x2="555" y2="98" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+    <rect x="100" y="186" width="480" height="40" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="340" y="204" text-anchor="middle" fill="#475569" font-size="11">Evaluate everything with: reliability · validity · objectivity ·</text>
+    <text x="340" y="219" text-anchor="middle" fill="#475569" font-size="11">generalisability · credibility · ethics</text>
+    <line x1="125" y1="158" x2="180" y2="184" stroke="#cbd5e1" stroke-width="1.2"/>
+    <line x1="340" y1="158" x2="340" y2="184" stroke="#cbd5e1" stroke-width="1.2"/>
+    <line x1="555" y1="158" x2="500" y2="184" stroke="#cbd5e1" stroke-width="1.2"/>
+  </svg>
+  <div class="figure-caption">Why crime research is simulated, and the three simulations this chapter covers</div>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Laboratory Experiments and Eyewitness Memory</h2>
+
+  <div class="keyterm-box"><span class="kt">laboratory experiment<span class="zh">（实验室实验）</span></span> — conducted in an artificial environment constructed by the experimenter, in which the researcher manipulates the independent variable (IV) and measures the dependent variable (DV).</div>
+
+  <p>Laboratory experiments are common in this area, especially for <strong>eyewitness testimony（目击证词）</strong>. The reason is simple: <strong>it is illegal to test real witnesses</strong>, because it could bias their testimony. So researchers test <strong>participant witnesses</strong> in a simulated context, such as watching films in a laboratory.</p>
+
+  <h3>The IV and DV in crime research</h3>
+  <ul>
+    <li>The <strong>IV</strong> is a factor such as <strong>weapon presence（武器在场）</strong> or <strong>leading question types（引导性问题）</strong>.</li>
+    <li>The <strong>DV</strong> is the <strong>testimony provided</strong> or the <strong>witness recall</strong>, often after watching a film.</li>
+  </ul>
+
+  <h3>Loftus' three-step laboratory procedure</h3>
+  <p>The Loftus studies used laboratory experiments with a number of key steps:</p>
+  <table>
+    <tr><th>Step</th><th>What happens</th><th>Where the IV can be introduced</th></tr>
+    <tr><td>1. Gather participants</td><td>Recruit people to take part in the study</td><td>Vary <strong>participant characteristics</strong>: age or gender</td></tr>
+    <tr><td>2. Show the incident</td><td>Show a film or photographs of an incident or a potential suspect</td><td>Show <strong>different films, offences or suspects</strong></td></tr>
+    <tr><td>3. Test memory</td><td>Ask them to recall what they saw</td><td><strong>Post-event information（事后信息）</strong>: delay recall, or change how they recall it</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：三步法是答题骨架</strong><br>
+    任何「用实验室实验研究目击记忆」的题，都按这三步写：<strong>招人 → 看事件 → 测记忆</strong>。IV 可以在任意一步动手脚：第一步换被试（年龄、性别），第二步换刺激（不同影片、嫌疑人），第三步换回忆条件（延迟、事后信息）。写 8 分大题时按这个顺序铺开，结构分就稳了。
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Check the logic<span class="xp-badge">Apply it</span></h4>
+    <p class="xp-intro">A researcher wants to study the effect of post-event information. At which step is the IV manipulated?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)">Step 1, by selecting participants of different ages</button>
+      <button class="q-option" onclick="mcAns(this)">Step 2, by showing different films of the incident</button>
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Step 3, by delaying recall or adding misleading information</button>
+    </div>
+    <div class="xp-result" id="res-s3"></div>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Evaluating Lab Experiments in Criminological Psychology</h2>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Strength 1 · Standardised and replicable</h4>
+      <p>Laboratory experiments use a <strong>standardised procedure（标准化程序）</strong>, so they are easier to <strong>replicate</strong> than any method carried out in a real setting.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Strength 2 · Control gives cause and effect</h4>
+      <p>Precise control of extraneous variables, and direct manipulation of events that <strong>could never be staged in a real witnessed event</strong>, allow a <strong>cause-and-effect relationship</strong> to be established: which factors really influence eyewitness accuracy.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Limitation 1 · Artificiality lowers validity</h4>
+      <p>The setting may produce <strong>unnatural behaviour</strong> with low <strong>ecological validity（生态效度）</strong>. Participants <strong>expect to see something</strong> and pay attention, unlike a passer-by before an unexpected accident. Stress is also lower: no police interview, no discussion with others, so extra influencing variables are minimised away from real life.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Limitation 2 · Reductionism（还原论）</h4>
+      <p>Laboratory experiments isolate single variables on a single DV: <strong>experimental reductionism</strong>. Ruva, McEvoy and Bryant (2007) isolated pre-trial publicity, but failed to research the many other variables that influence juries. Exploring single variables cannot capture mediating factors, so explanations can be <strong>incomplete</strong>.</p>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <h4>Ethics note</h4>
+    <p>Film clips of crimes would be unethical to experience in real life. Watching a clip is <strong>less distressing</strong> than a real accident, but may still upset a participant with <strong>previous experience of a similar accident</strong>. In that case they are given the <strong>right to withdraw（退出权）</strong>.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：控制换来的代价</strong><br>
+    实验室实验的两条优点和两条缺点是同一枚硬币的两面：<strong>正因为控制得死（标准化、单变量），才换来了因果结论；也正因为控制得死，行为才不真实、解释才不完整</strong>。评价题里把这对因果关系写出来，比各说各的强得多。
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Field Experiments in Criminological Psychology</h2>
+
+  <div class="keyterm-box"><span class="kt">field experiment<span class="zh">（现场实验）</span></span> — like a laboratory experiment it manipulates an IV and measures a DV, but it is conducted in a <strong>more natural setting</strong> where the phenomenon would naturally occur. The experiment is still artificially constructed.</div>
+
+  <p>A field experiment follows the <strong>same three steps</strong> as a laboratory experiment, but at step 2 the participants witness a <strong>simulated crime or an actor playing an offender</strong>. A researcher might realistically recreate a car accident in a high street.</p>
+
+  <h3>Worked example: Valentine and Mesout (2009)</h3>
+  <p>The <strong>London Dungeon</strong> study used real visitors in the dungeons (the natural setting) to assess the effect of <strong>stress on memory</strong>. Visitors would not normally be asked to complete questionnaires or identify people they saw, but the setting itself was real.</p>
+
+  <div class="exam-tip">
+    <strong>Do not confuse field experiments with natural experiments:</strong> in a <strong>natural experiment（自然实验）</strong> the IV occurs naturally, so the researcher does <strong>not</strong> have to manipulate it. In a field experiment the researcher still stages and manipulates the IV.
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Evaluating Field Experiments in Criminological Psychology</h2>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Strength 1 · Genuine witness experience</h4>
+      <p>Participants essentially experience the conditions of a <strong>real witness</strong>: they may feel stress or anxiety, discuss what they saw with others, and are <strong>not forewarned</strong> to recall. This raises <strong>ecological validity</strong> and makes findings representative of real eyewitness situations.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Strength 2 · Demand characteristics minimised</h4>
+      <p>Participants may be <strong>unaware they are in a study</strong>, so their responses are more likely to be <strong>genuine</strong> and indicative of real-life witnesses. Findings can be relied on more than where response bias is a concern.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Limitation 1 · Control is harder</h4>
+      <p>Many <strong>situational variables</strong> occur in natural settings, such as distractions from other witnesses. Replicating exactly is unlikely, so results are inconsistent and <strong>reliability is low</strong>. Some field studies can still control variables, for example a staged bank robbery set up inside a bank.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Limitation 2 · Distress is an ethical problem</h4>
+      <p>Participants believe they are witnessing a <strong>real incident</strong>, so they are more likely to experience distress than in a laboratory. The researcher must weigh the nature of the staged incident to make sure it does not create <strong>excessive distress</strong>.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：真实与失控是一对</strong><br>
+    现场实验和实验室实验正好反过来：<strong>越真实，越失控</strong>。真实带来了生态效度和真心反应（不被察觉），失控带来了重复困难和信度下降。这对比较是 6.3 最常考的评价角度，记住哪边换来哪边。
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Mock Jury Studies</h2>
+
+  <div class="keyterm-box"><span class="kt">real jury</span> — members of the public randomly selected to sit through a trial and reach a verdict. <span class="kt">mock jury<span class="zh">（模拟陪审团）</span></span> — an experiment which tries to emulate aspects of a real juror experience.</div>
+
+  <h3>Why mock juries exist</h3>
+  <ul>
+    <li>It is <strong>not permissible to study genuine jurors</strong> as they sit through a trial or deliberate.</li>
+    <li>Jurors are <strong>not permitted to talk</strong> about what happened in the deliberation room（合议室）after the trial is over.</li>
+  </ul>
+
+  <h3>What a mock jury study looks like</h3>
+  <p>Mock jury studies are essentially <strong>laboratory experiments</strong> where participants are exposed to trial evidence through <strong>video recordings or transcripts</strong>. They are a simulation of a real juror's experience. Participants are then asked for their <strong>verdict</strong>, or other information such as the <strong>strength of the case</strong> or <strong>witness confidence</strong>.</p>
+
+  <p>The contemporary study <strong>Ruva, McEvoy and Bryant (2007)</strong> is a mock jury study: participants read negative pre-trial publicity or unrelated coverage, watched a video of a criminal trial, answered questions about both, and gave a guilty or not guilty verdict.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：一个记忆钩子</strong><br>
+    为什么不直接研究真陪审团？两条法律原因：<strong>审中不许研究，审后不许聊</strong>。所以只能造假陪审团。而模拟陪审团本质就是实验室实验，只不过 IV 变成了「审判证据怎么呈现」，DV 变成了「判罪与否」。你已经在 6.2.3 里完整学过一个例子。
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Evaluating Mock Jury Studies</h2>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Strength · Control over evidence</h4>
+      <p>Researchers have <strong>good control</strong> over what jurors are exposed to. Standardised procedures mean every juror sees the <strong>same video or transcript</strong> (except the manipulated variable), so <strong>cause-and-effect conclusions</strong> can be drawn about factors affecting jury decision-making.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Limitation 1 · Simulation fidelity varies</h4>
+      <p>Reading court proceedings does not resemble sitting through a trial, so <strong>ecological validity</strong> is weak. A video showing opening statements, witness accounts, cross-examination and the judge's instructions is better. But many studies <strong>skip deliberation</strong>, arguably the most important aspect; even where it happens, time is restricted and the jury is smaller than <strong>12</strong>. A real jury deliberates as long as necessary, elects a foreperson and reviews evidence per the judge's instructions.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Limitation 2 · No real consequences</h4>
+      <p>Reaching a verdict or setting a sentence is unlike real juror experience because <strong>nothing happens to an actual defendant</strong>. Mock verdicts may be <strong>less considered or cautious</strong>, and jurors know they are <strong>role playing</strong>. Extra measures (witness confidence ratings, culpability, sentence length) are not part of a genuine juror's experience either.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Limitation 3 · Student samples</h4>
+      <p>Students are convenient to access, so samples are unlikely to represent typical jurors drawn randomly from a geographical area: students are <strong>younger and educated</strong>, while real juries span a range of ages and educational levels. However, how much this matters is <strong>still debated</strong>.</p>
+    </div>
+  </div>
+
+  <div class="green-box">
+    <h4>The counter-argument · Mitchell et al. (2005)</h4>
+    <p>Some researchers question whether mock jury studies represent real trials, meaning factors found in mock studies may not influence real juries. This is contested by psychologists such as <strong>Mitchell et al. (2005)</strong>, whose meta-analysis suggested that <strong>race may influence real jurors in the same way as mock jurors</strong>.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：评价要成对出现</strong><br>
+    写模拟陪审团的评价时，别只堆缺点。<strong>每条缺点都能配一个让步</strong>：样本局限，但影响有争议；模拟不像真审，但 Mitchell 的元分析显示真陪审团反应类似。<strong>缺点 + 反驳</strong>这个组合是高分 AO3 的固定写法。
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Three Methods Compared</h2>
+
+  <p>The textbook asks you to rate each method on reliability, validity, generalisability and ethics. The table below gathers what the chapter itself says, so you can justify a rating from the text rather than guessing.</p>
+
+  <table>
+    <tr><th>Method</th><th>Reliability</th><th>Validity</th><th>Generalisability</th><th>Ethics</th></tr>
+    <tr><td>Lab experiments</td><td><strong>High</strong>: standardised procedure, precise control, replicable</td><td><strong>Doubtful</strong>: artificial setting, low stress, expecting the event</td><td><strong>Weak</strong>: results may not transfer to real accidents</td><td>Artificial event protects participants; film may still upset past victims, so offer withdrawal</td></tr>
+    <tr><td>Field experiments</td><td><strong>Low</strong>: situational variables hard to control, replication difficult</td><td><strong>Strong</strong>: genuine witness conditions, demand characteristics minimised</td><td><strong>Strong</strong>: findings representative of real situations</td><td>Participants believe the incident is real, so distress must be weighed carefully</td></tr>
+    <tr><td>Mock jury studies</td><td><strong>High</strong> on exposure: same video or transcript for all jurors</td><td><strong>Mixed</strong>: fidelity varies; deliberation often missing; role playing; no consequences</td><td><strong>Doubtful</strong>: student samples unrepresentative (though impact debated, Mitchell et al. 2005)</td><td>Similar to lab experiments; deception about the trial focus is common and needs debriefing</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：这张表就是考点索引</strong><br>
+    考试问「比较两种方法」或「评价某种方法」，答案素材基本都在这张表的格子里。横向读是单一方法的四维评价，竖向读是两两对比。背的时候按<strong>方法 → 优点词 → 缺点词</strong>三段记，写题时再展开成完整句。
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Reliability in Criminological Research</h2>
+
+  <div class="keyterm-box"><span class="kt">reliability<span class="zh">（信度）</span></span> — the consistency of the research findings. A design with many experimental controls results in high reliability and allows replication.</div>
+
+  <table>
+    <tr><th>Method</th><th>Why</th></tr>
+    <tr><td>Lab experiments</td><td><strong>High reliability</strong>: controlled design prevents other factors affecting what is studied. The same film clip can be shown, or only a specific age group researched. High controls allow replication many times and provide consistency.</td></tr>
+    <tr><td>Field experiments</td><td><strong>Lower reliability</strong>: more chance of situational variables in a natural setting, so exact replication is difficult and findings may be inconsistent.</td></tr>
+    <tr><td>Case studies</td><td><strong>Hard to control</strong> participant and situational variables: it is difficult to find two identical people who experienced the exact same situation to compare findings.</td></tr>
+  </table>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Validity — and Three Studies That Test It</h2>
+
+  <div class="keyterm-box"><span class="kt">validity<span class="zh">（效度）</span></span> — how well a study measures what it is supposed to measure.</div>
+
+  <p>Doubt has been raised about the validity of laboratory experiments and mock jury studies for eyewitness testimony: participants may be <strong>more or less cautious</strong> than a real witness or juror because they know it is an experiment. Three studies from the textbook test this:</p>
+
+  <table>
+    <tr><th>Study</th><th>What it did</th><th>What it shows about lab findings</th></tr>
+    <tr><td>Wagstaff et al. (2003)</td><td>Studied <strong>real witnesses</strong></td><td>Little evidence that weapon focus, age or level of violence affected real testimony, despite laboratory (and field) experiments suggesting these variables are influential.</td></tr>
+    <tr><td>Yuille and Cutshall (1986)</td><td>Studied <strong>real witnesses to a robbery</strong></td><td>Limited effect of leading questions on real witnesses, although the effect had been demonstrated in the laboratory.</td></tr>
+    <tr><td>Ihlebaek et al. (2003)</td><td>Compared a <strong>live staged robbery</strong> (field) with <strong>film footage</strong> of the same robbery (lab)</td><td>The film group recalled <strong>more details with greater accuracy</strong>; errors were equal in both conditions. Laboratory experiments <strong>overestimate witness recall</strong>, likely due to attention levels, so reliance on lab findings should be viewed with caution.</td></tr>
+  </table>
+
+  <p>Field experiments are <strong>more valid</strong>: participants experience what a real witness would, the only exception being that they are unlikely to be interviewed by the police.</p>
+
+  <div class="warn-box">
+    <h4>Demand characteristics（需求特征）</h4>
+    <p>Demand characteristics also reduce validity in artificial experiments. A participant may guess the aim is to test how stress affects witness recall and <strong>recall less to meet the researcher's expectations</strong>. That behaviour does not reflect a real-life situation.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：三个研究一句话记</strong><br>
+    Wagstaff：真证人身上武器聚焦等效应不明显；Yuille &amp; Cutshall：真证人不怕引导性问题；Ihlebaek：实验室组记得更多更准，说明<strong>实验室高估了记忆</strong>。三个研究合起来就是一个结论：<strong>实验室的发现拿到真实世界里会打折扣，所以效度要小心</strong>。考试里随便抽一个做 AO3 论据都够用。
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Objectivity, Generalisability, Credibility</h2>
+
+  <h3>Objectivity and subjectivity（客观性与主观性）</h3>
+  <p>Researchers should remain <strong>totally value free</strong>: gather facts that may prove or disprove the hypothesis, without bias.</p>
+  <ul>
+    <li><strong>Quantitative data</strong> (for example, the number of guilty or not guilty verdicts) requires <strong>no interpretation</strong>, minimising potential for bias. It is more <strong>objective</strong> and obtained in field and laboratory experiments.</li>
+    <li><strong>Qualitative data</strong> (for example, free recall of a witnessed event) needs a <strong>coding method（编码方法）</strong> so the quality or quantity of memory can be analysed objectively.</li>
+  </ul>
+  <p>Achieving objectivity makes the research more <strong>scientific</strong>.</p>
+
+  <h3>Generalisability（可推广性）</h3>
+  <p>Much criminological research uses <strong>students</strong>, often receiving course credit, because researchers have access to student lists. But <strong>anyone can be a witness</strong>, and most of us could be called to jury service, so real witnesses and jurors are far more diverse by age and educational level than a typical study sample. The risk: a body of knowledge about eyewitness memory and jury decision-making that <strong>does not actually apply to real cases</strong>.</p>
+
+  <h3>Credibility（可信度）</h3>
+  <p>Research should be taken seriously and influence the field. All methods achieve credibility by striving to be <strong>reliable, valid and objective</strong>. Criminal psychology research especially needs credibility, because its findings are applied by the <strong>courts and police</strong>.</p>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. Ethics and Risk Management</h2>
+
+  <h3>The rule books</h3>
+  <ul>
+    <li>The <strong>British Psychological Society (BPS) Code of Ethics and Conduct (2009)</strong> guides psychological research and forensic practice such as formulations and treatment interventions. Other countries have their own standards.</li>
+    <li><strong>Practitioner psychologists（执业心理学家）</strong> (forensic, clinical, health, etc.) follow additional guidance from their legal governing body, such as the <strong>Health and Care Professions Council (HCPC)</strong> in the UK. Those who do not follow the guidelines can be <strong>disbarred</strong> and are no longer allowed to practise.</li>
+  </ul>
+
+  <h3>Protection from harm（保护被试）</h3>
+  <p>It would be unethical to expose someone to a real crime for an experiment. Watching a film clip is less distressing than seeing it in reality, but it can <strong>remind a person of a past similar experience</strong>, for example if they were a victim of a similar crime. Participants should be allowed to <strong>withdraw</strong> whenever they feel distressed. Laboratory experiments protect participants more than field experiments or case studies because the event is artificial; with real situations, careful consideration is required to minimise distress.</p>
+
+  <h3>Deception and consent（欺骗与知情同意）</h3>
+  <ul>
+    <li>Deception may be used to <strong>minimise demand characteristics</strong>, which increases the validity of findings. The researcher may not tell participants the true aim.</li>
+    <li>If deception is used there is a <strong>lack of informed consent（缺乏知情同意）</strong>: participants cannot fully understand the nature and consequences of the research.</li>
+    <li>Laboratory experiments are <strong>more likely to require consent</strong> (participants know they are in a study). Field experiments may need it less if the staged incident is one a person could experience in everyday life, though this possibility is limited in criminological psychology. Deception remains an issue in the field too: participants may not know they are about to witness a staged crime.</li>
+    <li>Where deception and consent are issues, guidance suggests a <strong>debrief（事后告知）</strong> once the research is complete.</li>
+  </ul>
+
+  <h3>Right to withdraw（退出权）</h3>
+  <p>Less of an issue in field experiments, where participants would experience the situation in everyday life anyway. Laboratory experiments should <strong>always offer the right to withdraw</strong> to comply with protection guidance, and participants should be debriefed where withdrawal is an issue.</p>
+
+  <h3>Practical applications of research（研究的应用）</h3>
+  <p>Criminological research has gathered a large body of knowledge about causes of offending, treatment effectiveness, eyewitness reliability and jury decision-making. Governments use it to <strong>inform policy-making</strong> to tackle crime and reduce reoffending, and police use it to ensure <strong>robust testimony secures accurate convictions</strong>. One example is the <strong>cognitive interview</strong>, developed from Loftus' eyewitness research.</p>
+
+  <h3>Risk management（风险管理）</h3>
+  <p>All research should undertake a <strong>risk assessment</strong> to identify potential harm or hazards:</p>
+  <table>
+    <tr><th>Context</th><th>Risks to assess</th></tr>
+    <tr><td>Staged field incident (actor fleeing a crime scene)</td><td>Witness stress; a <strong>bystander pursuing the actor</strong>; likelihood of <strong>trips and falls</strong></td></tr>
+    <tr><td>Laboratory video footage</td><td><strong>Psychological distress</strong>, particularly if the participant has been a victim of crime; stress or embarrassment when recalling the event</td></tr>
+    <tr><td>Working with offenders</td><td>Forensic psychologists undertake <strong>regular risk assessments</strong>, such as reoffending risk, using established tools like the <strong>Offender Assessment System (OASys)</strong>, designed to predict the probability of an offence causing serious harm. Other tools predict likelihood of abuse, violence or specific offences.</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：伦理题的答题套路</strong><br>
+    伦理题答题三件套：<strong>点出伦理问题 → 说明它在这个情境里怎么出现 → 给出处理办法</strong>。比如欺骗：用了欺骗就没法知情同意，但在犯罪研究里欺骗是为了压住需求特征，处理办法是事后 debrief。风险管理同理：辨认风险（谁可能受伤、多严重、多可能）→ 给出管理动作。注意 OASys 这个词，它是 6.3.2 里少见的必背缩写。
+  </div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="section" id="s14">
+  <h2>14. Data Analysis — List A and List B</h2>
+
+  <p>Spec point 6.3.3 says decision making and interpretation of data draws on <strong>List A</strong> (analysis of quantitative data, from Topic A methods) and <strong>List B</strong> (decision making and interpretation of inferential statistics, from Topic B methods), as appropriate to criminological psychology.</p>
+
+  <table>
+    <tr><th>List</th><th>What it contains</th><th>How it appears here</th></tr>
+    <tr><td>List A</td><td>Quantitative data analysis: graphs, descriptive statistics, measures of central tendency and dispersion</td><td>Analysing verdict counts, guilt ratings, recall scores from experiments and mock jury studies</td></tr>
+    <tr><td>List B</td><td>Inferential statistics: choosing and interpreting tests, significance levels, critical values</td><td>Deciding whether witness or juror differences are significant</td></tr>
+  </table>
+
+  <div class="exam-tip">
+    <strong>Exam tip (from the textbook):</strong> you may be asked to draw on data analysis learned in your first year. Go back through the chapters on <strong>social psychology methods</strong> and <strong>cognitive psychology methods</strong> to review List A and List B.
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：不学新东西，练「搬家」</strong><br>
+    6.3.3 没有新统计知识要背，考的是把 U1、U2 的数据分析<strong>用在犯罪情境的数据上</strong>。比如给一张陪审员判罪人数表，让你画条形图、算百分比、选统计检验。方法本身在 U1/U2 已经学过，这里只练「换皮」应用。
+  </div>
+</section>
+
+<!-- ============ 15 ============ -->
+<section class="section" id="s15">
+  <h2>15. Checkpoint</h2>
+
+  <div class="xp-block">
+    <h4>🎯 Eight key-term questions<span class="xp-badge">From memory</span></h4>
+    <p class="xp-intro">These mirror the textbook checkpoint. Cover the sections above and answer. Click an answer to check it.</p>
+    <div class="xp-result" id="res-s15"></div>
+
+    <p class="xp-intro"><strong>1.</strong> The consistency of a finding relates to which key term?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Reliability</button>
+      <button class="q-option" onclick="mcAns(this)">Validity</button>
+      <button class="q-option" onclick="mcAns(this)">Objectivity</button>
+    </div>
+
+    <p class="xp-intro"><strong>2.</strong> Which term is used when data is open to interpretation by a researcher?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)">Objectivity</button>
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Subjectivity</button>
+      <button class="q-option" onclick="mcAns(this)">Credibility</button>
+    </div>
+
+    <p class="xp-intro"><strong>3.</strong> A study measuring what it claims to measure relates to which key term?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)">Reliability</button>
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Validity</button>
+      <button class="q-option" onclick="mcAns(this)">Generalisability</button>
+    </div>
+
+    <p class="xp-intro"><strong>4.</strong> The extent to which a sample is representative of a target population relates to which key term?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)">Validity</button>
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Generalisability</button>
+      <button class="q-option" onclick="mcAns(this)">Reliability</button>
+    </div>
+
+    <p class="xp-intro"><strong>5.</strong> A participant is not told that they are being tested as part of an investigation. Which ethical issue is this?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)">Right to withdraw</button>
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Deception</button>
+      <button class="q-option" onclick="mcAns(this)">Protection from harm</button>
+    </div>
+
+    <p class="xp-intro"><strong>6.</strong> A participant becomes anxious during an investigation. Which ethical issue is this?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)">Deception</button>
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Protection from harm</button>
+      <button class="q-option" onclick="mcAns(this)">Informed consent</button>
+    </div>
+
+    <p class="xp-intro"><strong>7.</strong> A participant wants to stop answering questions about a photograph. Which ethical issue is this?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)">Protection from harm</button>
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Right to withdraw</button>
+      <button class="q-option" onclick="mcAns(this)">Debrief</button>
+    </div>
+
+    <p class="xp-intro"><strong>8.</strong> A participant believes the study is about judging defendants' accents, but it is actually about defendant race. Which ethical issue is this?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)">Lack of informed consent</button>
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Deception</button>
+      <button class="q-option" onclick="mcAns(this)">Right to withdraw</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 16 ============ -->
+<section class="section" id="s16">
+  <h2>16. Exam Lab</h2>
+
+  <div class="syl-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px">
+    <span class="syl-tag">Textbook exam practice</span>
+    <span class="syl-tag">AO1 + AO2 + AO3</span>
+    <span class="syl-tag">8-mark discussion</span>
+  </div>
+
+  <div class="exam-practice">
+    <h3>Question 1 — Michaela's mock jury study (from the textbook)</h3>
+    <p class="small">Michaela used an opportunity sample of college students, split into two groups. Both watched the same video of a witness identifying the defendant, and decided guilty or not guilty. Group 1 were told the witness was <strong>100% confident</strong>; Group 2 were told <strong>80% confident</strong>. The higher the confidence, the more likely participants reached a guilty verdict.</p>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ 1a — Explain two strengths<span class="xp-badge">4 marks</span></h4>
+    <p class="xp-intro"><em>Explain two strengths of Michaela using a mock jury research method to investigate jury decision-making. (4)</em></p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am1')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am1">
+      <p><strong>Strength 1 (control):</strong> the mock jury method gave Michaela good control over what jurors were exposed to, since both groups watched the same video and differed only in the stated witness confidence, so a cause-and-effect conclusion about confidence and verdicts can be drawn. <strong>Strength 2 (access):</strong> genuine jurors cannot be studied as they sit through a trial or deliberate, and are not permitted to discuss the deliberation room afterwards, so the mock jury method is the only way to investigate jury decision-making directly.</p>
+    </div>
+    <div class="cn-note">
+      <strong>中文方法框：四分两个优点怎么拆</strong><br>
+      每个优点两分：<strong>一分点出优点，一分解释在这个研究里它怎么起作用</strong>。别背通用优点（信度、效度这种词干说一遍就完了），必须挂回 Michaela 的细节：同样的视频、只有自信度不同。这是爱德思评分的硬要求：贴题才给分。
+    </div>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ 1b — Improve generalisability<span class="xp-badge">2 marks</span></h4>
+    <p class="xp-intro"><em>Explain one way that Michaela could improve the generalisability of her mock jury study. (2)</em></p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am2')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am2">
+      <p>Her opportunity sample of college students is younger and more educated than typical jurors. She could use a sampling method that draws participants from a wider range of ages and educational backgrounds, for example a random or stratified sample from the local community, so the sample better represents the population of potential jurors and findings can be generalised to real juries.</p>
+    </div>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ Question 2 — Ethics of eyewitness research<span class="xp-badge">2 marks</span></h4>
+    <p class="xp-intro"><em>Explain one ethical issue that should be considered when researching factors that influence eyewitness memory. (2)</em></p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am3')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am3">
+      <p><strong>Protection from harm:</strong> participants watching a filmed crime may become distressed, particularly if they have been the victim of a similar crime themselves. The researcher should therefore allow participants to withdraw if they begin to feel distressed and debrief them once the research is complete.</p>
+    </div>
+    <div class="cn-note">
+      <strong>中文方法框：两分伦理题公式</strong><br>
+      <strong>问题名词（1 分）+ 在目击研究情境里的具体表现和处理（1 分）</strong>。只写「要保护被试」没有情境是拿不满的；加上「看到犯罪影片可能唤起亲身受害经历，所以给退出权并做 debrief」就满了。
+    </div>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ Question 3 — The 8-mark design question<span class="xp-badge">8 marks</span></h4>
+    <p class="xp-intro"><em>Fezile decides to conduct a laboratory experiment to investigate the influence of defendant characteristics on jury decision-making. Discuss how Fezile would go about conducting this laboratory experiment. (8)</em></p>
+    <p class="xp-intro">Frame your answer: <strong>sample → IV and DV → design and allocation → procedure and controls → how results are analysed → one evaluation point</strong>.</p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am4')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am4">
+      <p>Fezile could recruit a sample of participants to act as mock jurors and randomly allocate them to conditions. The <strong>IV</strong> would be a defendant characteristic, for example defendant race or gender, and the <strong>DV</strong> would be the verdict (guilty or not guilty) or a guilt rating. All jurors would watch the same video recording of a criminal trial, identical except for the manipulated characteristic of the defendant, with the trial length, evidence and instructions standardised so extraneous variables are controlled. Participants would give their verdict individually, and the number of guilty verdicts in each condition would be compared using quantitative analysis, for example percentages or a bar chart, and an appropriate inferential test. A laboratory experiment gives good control, allowing cause-and-effect conclusions about defendant characteristics; however the artificial setting lowers ecological validity, so Fezile should be cautious about generalising the findings to real jurors, who deliberate in groups of twelve with real consequences for the defendant.</p>
+    </div>
+    <div class="cn-note">
+      <strong>中文方法框：8 分设计题的骨架</strong><br>
+      这类题就是 §1 Getting Started 那张清单的展开版：<strong>样本 → IV/DV → 设计 → 程序和控制 → 数据分析 → 一句评价</strong>。每项一两句，六项正好铺满八分。最后一句评价是加分关键：点出实验室的因果优势，同时提醒生态效度限制，前后呼应。
+    </div>
+  </div>
+</section>
+
+<!-- ============ 17 ============ -->
+<section class="section" id="s17">
+  <h2>17. Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="keyterm-box"><div class="kt">laboratory experiment <span class="zh">实验室实验</span></div>An artificial environment constructed by the experimenter, where the IV is manipulated and the DV measured.</div>
+    <div class="keyterm-box"><div class="kt">field experiment <span class="zh">现场实验</span></div>An experiment in a more natural setting; the IV is still manipulated but the phenomenon occurs where it naturally would.</div>
+    <div class="keyterm-box"><div class="kt">natural experiment <span class="zh">自然实验</span></div>An experiment where the IV occurs naturally and the researcher does not have to manipulate it.</div>
+    <div class="keyterm-box"><div class="kt">mock jury <span class="zh">模拟陪审团</span></div>An experiment emulating aspects of a real juror experience; real jurors cannot legally be studied during a trial.</div>
+    <div class="keyterm-box"><div class="kt">experimental reductionism <span class="zh">实验还原论</span></div>Reducing complex behaviour to a single isolated variable for testing, as laboratory experiments do.</div>
+    <div class="keyterm-box"><div class="kt">reliability <span class="zh">信度</span></div>The consistency of research findings; high control allows replication.</div>
+    <div class="keyterm-box"><div class="kt">validity <span class="zh">效度</span></div>How well a study measures what it is supposed to measure.</div>
+    <div class="keyterm-box"><div class="kt">objectivity <span class="zh">客观性</span></div>Remaining value free; quantitative data needs no interpretation and minimises bias.</div>
+    <div class="keyterm-box"><div class="kt">subjectivity <span class="zh">主观性</span></div>Data open to interpretation by the researcher, as with uncoded qualitative recall.</div>
+    <div class="keyterm-box"><div class="kt">generalisability <span class="zh">可推广性</span></div>The extent to which findings from a sample apply to the target population.</div>
+    <div class="keyterm-box"><div class="kt">credibility <span class="zh">可信度</span></div>Research being taken seriously; achieved through reliability, validity and objectivity.</div>
+    <div class="keyterm-box"><div class="kt">demand characteristics <span class="zh">需求特征</span></div>Participants altering behaviour to match what they guess the study expects.</div>
+    <div class="keyterm-box"><div class="kt">debrief <span class="zh">事后告知</span></div>Explaining the true aim to participants after the study, required where deception or withdrawal issues exist.</div>
+    <div class="keyterm-box"><div class="kt">BPS Code of Ethics and Conduct (2009)</div>The British Psychological Society's guidance for research and forensic practice.</div>
+    <div class="keyterm-box"><div class="kt">HCPC</div>The Health and Care Professions Council, the UK legal governing body for practitioner psychologists.</div>
+    <div class="keyterm-box"><div class="kt">OASys</div>The Offender Assessment System, used to predict the probability of an offence causing serious harm.</div>
+  </div>
+</section>
+
+<div class="footer-note">
+  6.3 Methods · Criminological Psychology · back: <a href="../6.2.4-valentine-and-mesout-2009/">← 6.2.4 Valentine and Mesout (2009)</a>
+</div>
+</main>
+
+</div><!-- /page-layout -->
+</div><!-- /container -->
+
+<div id="btt" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  /* ---------- sidebar scroll spy ---------- */
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  /* ---------- reveal helper ---------- */
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  /* ---------- multiple choice: one why per option, grouped per section ---------- */
+  var secWhy = {
+    s1: [
+      'Correct. What you manipulate is the defendant gender; the verdict is the DV, the outcome being measured.',
+      'That is the dependent variable: the outcome measured, not the variable manipulated.',
+      'The offence is a control: it is held the same for both defendants so any verdict difference can be attributed to gender.'
+    ],
+    s3: [
+      'Step 1 manipulation changes who the participants are, for example their age or gender.',
+      'Step 2 manipulation changes what is witnessed, for example different films or suspects.',
+      'Correct. Post-event information enters at recall: delaying the recall or adding misleading information tests its influence on memory.'
+    ],
+    s15: [
+      ['Correct. Reliability means the consistency of findings; high control allows the research to be replicated consistently.',
+       'Validity is about measuring what the study claims to measure, not consistency.',
+       'Objectivity is about the researcher remaining unbiased, not about consistency.'],
+      ['Objectivity is the opposite: data needing no interpretation from the researcher.',
+       'Correct. Subjectivity is when data is open to interpretation by the researcher, such as uncoded qualitative recall.',
+       'Credibility is whether research is taken seriously, built from reliability, validity and objectivity.'],
+      ['Reliability is consistency, not accuracy of measurement.',
+       'Correct. Validity means the study measures what it is supposed to measure.',
+       'Generalisability is about samples representing a target population.'],
+      ['Validity is about measuring the intended thing, not about who is in the sample.',
+       'Correct. Generalisability is the extent to which a sample is representative of a target population.',
+       'Reliability is the consistency of findings, unrelated to sample representativeness.'],
+      ['Right to withdraw is about being free to stop taking part, not about knowing the true aim.',
+       'Correct. Not telling participants they are being tested, or hiding the true aim, is deception.',
+       'Protection from harm concerns distress or injury, not knowledge of the aim.'],
+      ['Deception concerns the aim being hidden, not the participant becoming upset.',
+       'Correct. Anxiety during an investigation is a protection from harm issue: participants must be shielded from distress and allowed to withdraw.',
+       'Informed consent concerns agreeing to take part with full knowledge, not distress during the study.'],
+      ['Protection from harm is about distress or injury; wanting to stop is different.',
+       'Correct. Wanting to stop answering questions is exercising the right to withdraw, which laboratory experiments must always offer.',
+       'A debrief is given after the study; the ethical issue at stake here is the right to withdraw.'],
+      ['Knowing you are in a study but not what it tests can raise informed consent issues, but the textbook answer here is different.',
+       'Correct. Giving a false explanation of the study aim is deception, even if the participant knows they are in a study.',
+       'Right to withdraw is about being able to stop; this scenario is about a false aim.']
+    ]
+  };
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = section.querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6.3 Methods — Student Notes Workbook</title>
+<style>
+@page { size: A4; margin: 13mm 12mm 15mm 12mm; }
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif; color:#1a1a1a; font-size:10pt; line-height:1.5; margin:0; background:#f3f3f3; }
+.page { background:#fff; max-width: 800px; margin: 0 auto 10px auto; padding: 10mm 11mm; page-break-after: always; position: relative; min-height: 248mm; }
+@media print { body { background:#fff; } .page { margin:0; padding:0; max-width:none; box-shadow:none; } }
+.pg-head { display:flex; justify-content:space-between; align-items:baseline; border-bottom: 2px solid #333; padding-bottom:4px; margin-bottom:10px; }
+.pg-head .t { font-size:11.5pt; font-weight:700; }
+.pg-head .r { font-size:8pt; color:#777; letter-spacing:.04em; }
+.pg-foot { position:absolute; bottom:4mm; left:0; right:0; text-align:center; font-size:8pt; color:#999; }
+.sec { font-size:10pt; font-weight:700; margin:12px 0 5px 0; padding-left:7px; border-left:3.5px solid #444; }
+.sec:first-of-type { margin-top:2px; }
+.sub { font-size:9.5pt; font-weight:700; margin:9px 0 3px 0; }
+.bl { display:inline-block; border-bottom:1px solid #555; height:1em; vertical-align:baseline; min-width:60px; margin:0 2px; }
+.hint { font-size:8.5pt; color:#666; }
+.hint::before { content:"（"; } .hint::after { content:"）"; }
+table.n { width:100%; border-collapse:collapse; margin:6px 0 9px 0; font-size:9pt; }
+table.n th, table.n td { border:1px solid #999; padding:4px 6px; text-align:left; vertical-align:top; }
+table.n th { background:#e9e9e9; font-size:8.8pt; }
+td.lbl { background:#f4f4f4; width:22%; font-weight:600; }
+.box { border:1px solid #aaa; border-left:4px solid #555; padding:6px 9px; margin:7px 0; border-radius:3px; }
+.box.grey { border:1px dashed #999; border-left:4px dashed #999; background:#fafafa; }
+.box.purple { border-left-color:#7c3aed; background:#faf5ff; }
+.box.blue { border-left-color:#2563eb; background:#f5f9ff; }
+.box.green { border-left-color:#16a34a; background:#f3faf5; }
+.box.orange { border-left-color:#ea580c; background:#fff7ed; }
+.box .bx-t { font-size:9.3pt; font-weight:700; margin-bottom:3px; }
+.wl { border-bottom:1px solid #bbb; height:24pt; }
+.wl.s { height:18pt; }
+ul.tight { margin:4px 0 8px 0; padding-left:17px; }
+ul.tight li { margin-bottom:3px; }
+ol.tight { margin:4px 0 8px 0; padding-left:17px; }
+ol.tight li { margin-bottom:4px; }
+.chk { font-size:9.3pt; }
+.chk .c { display:inline-block; width:11px; height:11px; border:1.3px solid #555; margin-right:6px; vertical-align:-1px; }
+.q { font-style:italic; background:#f6f6f6; border:1px solid #ccc; padding:5px 9px; margin:5px 0; font-size:9.3pt; border-radius:3px; }
+.small { font-size:8.6pt; line-height:1.35; }
+.pg-tight table.n { font-size:8.5pt; margin:5px 0 7px 0; }
+.pg-tight table.n th, .pg-tight table.n td { padding:2.5px 5px; }
+.pg-tight .sub { margin:7px 0 2px 0; }
+.pg-tight .box { padding:5px 8px; margin:6px 0; }
+.pg-tight .small { line-height:1.24; }
+.pg-tight p.small, .pg-tight .sec { font-size:7.9pt; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="pg-head"><span class="t">6.3 Methods — Researching Criminological Psychology</span><span class="r">CRIMINAL PSYCHOLOGY · NOTES WORKBOOK</span></div>
+  <div class="box orange">
+    <div class="bx-t">What this workbook covers 本册讲什么</div>
+    Real witnesses cannot legally be tested and real jurors cannot be studied at all. So crime research is <strong>simulated</strong>: film clips in labs, staged incidents in the field, and mock juries watching trial videos. This booklet walks through all three methods, how to evaluate them with the fixed vocabulary (reliability, validity, objectivity, generalisability, credibility), the BPS ethics and risk management rules, and the textbook exam questions.
+  </div>
+
+  <div class="sec">How to use this booklet 怎么用</div>
+  <ol class="tight">
+    <li><strong>Fill it in as you go</strong> — check the answer key (last page) after each page.</li>
+    <li><strong>The comparison table (p.5) and the evaluation vocabulary (p.6–7) matter most.</strong> Do them from memory, under time.</li>
+  </ol>
+
+  <div class="sec">Content map 内容地图</div>
+  <table class="n">
+    <tr><th style="width:12%;">Page</th><th style="width:34%;">Topic</th><th>What you must be able to do afterwards</th></tr>
+    <tr><td class="lbl">p.2</td><td>Lab experiments 实验室实验</td><td>Define it, state IV/DV in crime research, recite the three steps</td></tr>
+    <tr><td class="lbl">p.3</td><td>Lab evaluation</td><td>Two strengths, two limitations, the reductionism debate</td></tr>
+    <tr><td class="lbl">p.4</td><td>Field experiments 现场实验</td><td>Valentine and Mesout; field vs natural experiment</td></tr>
+    <tr><td class="lbl">p.5</td><td>Mock juries + comparison</td><td>Why mock juries exist; compare all three methods</td></tr>
+    <tr><td class="lbl">p.6–7</td><td>Evaluation vocabulary 评价词</td><td>Reliability, validity (3 studies), objectivity, generalisability, credibility</td></tr>
+    <tr><td class="lbl">p.8</td><td>Ethics 伦理</td><td>BPS (2009), HCPC, protection, deception and consent, withdrawal, debrief</td></tr>
+    <tr><td class="lbl">p.9</td><td>Risk management 风险</td><td>Risk assessment in field/lab/offender work; OASys</td></tr>
+    <tr><td class="lbl">p.10</td><td>Data analysis + exam skills</td><td>List A and List B; the 8-mark design frame</td></tr>
+    <tr><td class="lbl">p.11</td><td>Exam practice 真题</td><td>Textbook questions: 4+2+2+8 marks</td></tr>
+    <tr><td class="lbl">p.12</td><td>Answer key + brain dump</td><td>Mark honestly, then rewrite wrong answers in full</td></tr>
+  </table>
+
+  <div class="sec">Revision tracker 复习打卡</div>
+  <p class="chk"><span class="c"></span>p.2–3 lab　<span class="c"></span>p.4 field　<span class="c"></span>p.5 mock jury　<span class="c"></span>p.6–7 evaluation　<span class="c"></span>p.8–9 ethics &amp; risk　<span class="c"></span>p.10–11 exam</p>
+
+  <div class="box purple">
+    <div class="bx-t">The whole chapter in one sentence 一句话总结</div>
+    Because testing real witnesses is illegal and real jurors cannot be studied, criminological psychology relies on <strong>laboratory experiments</strong> (control, cause and effect, but artificial), <strong>field experiments</strong> (realistic, but unreliable) and <strong>mock jury studies</strong> (access to verdicts, but role play without consequences), all of which must be judged on <strong>reliability, validity, objectivity, generalisability, credibility and ethics</strong> under the <strong>BPS Code (2009)</strong> and proper <strong>risk management</strong>.
+  </div>
+
+    <div class="pg-foot">Page 1 of 12</div>
+</div>
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Laboratory Experiments 实验室实验</span><span class="r">6.3 METHODS · CRIMINAL PSYCHOLOGY</span></div>
+  <div class="sec">Key term 关键术语</div>
+  <div class="box orange">
+    <div class="bx-t">laboratory experiment（实验室实验）</div>
+    Conducted in an <strong>artificial environment</strong> constructed by the experimenter; the researcher <strong>manipulates the IV</strong> and <strong>measures the DV</strong>.
+  </div>
+
+  <div class="sec">Why labs? Why not real witnesses? 为什么要用实验室</div>
+  <p>It is <span class="bl"></span> <span class="hint">illegal</span> to test real witnesses because it may <span class="bl"></span> <span class="hint">bias their testimony</span>. So <strong>participant witnesses</strong> are tested in a simulated context, such as <span class="bl"></span> <span class="hint">watching films in a laboratory</span>.</p>
+
+  <div class="sec">IV and DV in crime research</div>
+  <table class="n">
+    <tr><th style="width:30%;">Role</th><th>In eyewitness research</th></tr>
+    <tr><td class="lbl">IV（自变量）</td><td>A factor such as <span class="bl"></span> <span class="hint">weapon presence</span> or <span class="bl"></span> <span class="hint">leading question types</span></td></tr>
+    <tr><td class="lbl">DV（因变量）</td><td>The <span class="bl"></span> <span class="hint">testimony provided</span> or the witness recall, often after watching a film</td></tr>
+  </table>
+
+  <div class="sec">The Loftus three-step procedure 三步法（必背骨架）</div>
+  <table class="n">
+    <tr><th style="width:8%;">Step</th><th style="width:42%;">What happens</th><th>Where the IV can be introduced</th></tr>
+    <tr><td>1</td><td><span class="bl"></span> participants <span class="hint">gathering</span></td><td>Vary participant <span class="bl"></span> <span class="hint">characteristics: age, gender</span></td></tr>
+    <tr><td>2</td><td>Show them a <span class="bl"></span> or <span class="bl"></span> of an incident or potential suspect <span class="hint">film; photographs</span></td><td>Show different <span class="bl"></span> <span class="hint">films, offences, suspects</span></td></tr>
+    <tr><td>3</td><td>Ask them to <span class="bl"></span> what they saw <span class="hint">recall</span></td><td><span class="bl"></span> information: delay recall or change how they recall <span class="hint">post-event</span></td></tr>
+  </table>
+
+  <div class="box blue">
+    <div class="bx-t">为什么三步法是答题骨架（中文理解）</div>
+    任何「用实验室实验研究目击记忆」的题都按这三步写：<strong>招人、看事件、测记忆</strong>。IV 可以在任意一步动手：第一步换被试特征，第二步换刺激材料，第三步换回忆条件。8 分设计题就按这个顺序铺开。
+  </div>
+
+    <div class="pg-foot">Page 2 of 12</div>
+</div>
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Lab Experiments — Evaluation 实验室实验评价</span><span class="r">6.3 METHODS · CRIMINAL PSYCHOLOGY</span></div>
+  <div class="sec">Two strengths, two limitations 两条优点两条缺点</div>
+  <table class="n">
+    <tr><th style="width:12%;"></th><th style="width:44%;">Point</th><th>Consequence（必须写出后果）</th></tr>
+    <tr><td class="lbl">Strength 1</td><td><span class="bl"></span> procedure <span class="hint">standardised</span></td><td>Easier to <span class="bl"></span> the experiment <span class="hint">replicate</span></td></tr>
+    <tr><td class="lbl">Strength 2</td><td>Precise control of <span class="bl"></span> variables; events can be directly <span class="bl"></span> <span class="hint">extraneous; manipulated</span></td><td>A <span class="bl"></span> relationship can be established <span class="hint">cause-and-effect</span>; impossible in a field setting where many variables act at once</td></tr>
+    <tr><td class="lbl">Limitation 1</td><td><span class="bl"></span> of the setting produces unnatural behaviour <span class="hint">artificiality</span></td><td>Low <span class="bl"></span> <span class="hint">ecological validity</span>: participants expect to see something, pay attention, feel less stress, are not interviewed by police, and do not discuss what they saw</td></tr>
+    <tr><td class="lbl">Limitation 2</td><td>Cannot <span class="bl"></span> findings to a real-life setting <span class="hint">generalise</span></td><td>Lab results may not match what research on a real accident would find</td></tr>
+  </table>
+
+  <div class="sec">Wider issues and debates: reductionism 还原论</div>
+  <div class="box">
+    <div class="bx-t">experimental reductionism（实验还原论）</div>
+    Reducing complex behaviour to a <span class="bl"></span> for the purpose of testing <span class="hint">single isolated variable</span>. Laboratory experiments do this: they isolate specific variables to measure their impact on a single DV.
+    <p class="small" style="margin-top:4px;"><strong>Example:</strong> Ruva, McEvoy and Bryant (2007) isolated <span class="bl"></span> to test its effect on verdicts <span class="hint">pre-trial publicity</span>, but did not research the many other variables influencing juries. Exploring single variables cannot capture mediating factors, so lab explanations are often <span class="bl"></span> <span class="hint">incomplete</span>.</p>
+  </div>
+
+  <div class="sec">Ethics note 伦理提醒</div>
+  <p class="small">Film clips of crimes would be <span class="bl"></span> to experience in real life <span class="hint">unethical</span>. Watching a clip is less distressing than the real event, but may still upset a participant with <span class="bl"></span> of a similar accident <span class="hint">previous experience</span>. They are given the <span class="bl"></span> <span class="hint">right to withdraw</span>.</p>
+
+  <div class="box blue">
+    <div class="bx-t">中文理解：控制换来的代价</div>
+    两条优点和两条缺点是同一枚硬币的两面：<strong>正因为控制得死，才换来因果结论；也正因为控制得死，行为才不真实、解释才不完整</strong>。评价题把这对因果写出来，比各说各的强。
+  </div>
+
+    <div class="pg-foot">Page 3 of 12</div>
+</div>
+<!-- PAGE 4 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Field Experiments 现场实验</span><span class="r">6.3 METHODS · CRIMINAL PSYCHOLOGY</span></div>
+  <div class="sec">Key term 关键术语</div>
+  <div class="box orange">
+    <div class="bx-t">field experiment（现场实验）</div>
+    Like a lab experiment it manipulates an IV and measures a DV, but it is conducted in a <span class="bl"></span> where the phenomenon would naturally occur <span class="hint">more natural setting</span>. The experiment is still <span class="bl"></span> <span class="hint">artificially constructed</span>.
+  </div>
+
+  <div class="sec">Same three steps, one change</div>
+  <p>A field experiment follows the same three steps as a lab experiment, but at step <span class="bl"></span> the participants witness a <span class="bl"></span> or <span class="bl"></span> playing the role of an offender <span class="hint">2; simulated crime/event; an actor</span>.</p>
+
+  <div class="sec">Worked example: Valentine and Mesout (2009)</div>
+  <p class="small">The <strong>London Dungeon</strong> study used <span class="bl"></span> in the dungeons, its natural setting, to assess the effect of <span class="bl"></span> on memory <span class="hint">real visitors; stress</span>. Visitors would not normally be asked to complete questionnaires or identify people they saw, but the setting itself was real.</p>
+
+  <div class="sec">Do not confuse 不要混淆</div>
+  <div class="box grey">
+    <div class="bx-t">field experiment vs natural experiment（自然实验）</div>
+    In a <strong>natural experiment</strong> the IV occurs <span class="bl"></span>, so the researcher does <span class="bl"></span> manipulate it <span class="hint">naturally; not have to</span>. In a <strong>field experiment</strong> the researcher still <span class="bl"></span> the IV <span class="hint">stages and manipulates</span>.
+  </div>
+
+  <div class="sec">Evaluation 评价</div>
+  <table class="n">
+    <tr><th style="width:12%;"></th><th style="width:44%;">Point</th><th>Consequence</th></tr>
+    <tr><td class="lbl">Strength 1</td><td>Participants experience the conditions of a <span class="bl"></span> witness <span class="hint">real</span>: stress, discussing with others, not forewarned</td><td>Increases <span class="bl"></span>; findings representative of real situations <span class="hint">ecological validity</span></td></tr>
+    <tr><td class="lbl">Strength 2</td><td>Participants may be <span class="bl"></span> they are in a study <span class="hint">unaware</span></td><td><span class="bl"></span> minimised; responses genuine <span class="hint">demand characteristics</span></td></tr>
+    <tr><td class="lbl">Limitation 1</td><td>Many <span class="bl"></span> variables in natural settings, e.g. distractions from other witnesses <span class="hint">situational</span></td><td>Hard to replicate exactly; results inconsistent; low <span class="bl"></span> <span class="hint">reliability</span>. Exception: some field studies can control variables, e.g. a staged bank robbery inside a bank</td></tr>
+    <tr><td class="lbl">Limitation 2</td><td>Participants believe the incident is <span class="bl"></span> <span class="hint">real</span></td><td>More likely to experience <span class="bl"></span> than in a lab; researcher must weigh the nature of the staged incident <span class="hint">distress</span></td></tr>
+  </table>
+
+  <div class="box blue">
+    <div class="bx-t">中文理解：真实与失控是一对</div>
+    现场实验和实验室实验正好反过来：<strong>越真实，越失控</strong>。真实带来生态效度和真心反应，失控带来重复困难和信度下降。这对比较是 6.3 最常考的评价角度。
+  </div>
+
+    <div class="pg-foot">Page 4 of 12</div>
+</div>
+<!-- PAGE 5 -->
+<div class="page pg-tight">
+  <div class="pg-head"><span class="t">Mock Jury Studies 模拟陪审团 + Three Methods Compared</span><span class="r">6.3 METHODS · CRIMINAL PSYCHOLOGY</span></div>
+  <div class="sec">Why mock juries exist 为什么需要模拟陪审团</div>
+  <ul class="tight">
+    <li>It is <span class="bl"></span> to study genuine jurors as they sit through a trial or deliberate <span class="hint">not permissible</span>.</li>
+    <li>Jurors are not permitted to <span class="bl"></span> about what happened in the deliberation room after the trial <span class="hint">talk</span>.</li>
+  </ul>
+
+  <div class="sec">Key term 关键术语</div>
+  <div class="box orange">
+    <div class="bx-t">mock jury（模拟陪审团）</div>
+    <strong>Real juries</strong> are members of the public <span class="bl"></span> selected to sit through a trial and reach a verdict <span class="hint">randomly</span>. <strong>Mock juries</strong> are experiments which try to <span class="bl"></span> aspects of a real juror experience <span class="hint">emulate</span>.
+  </div>
+
+  <div class="sec">What a mock jury study looks like</div>
+  <p class="small">Essentially <span class="bl"></span> experiments where participants are exposed to trial evidence through <span class="bl"></span> or <span class="bl"></span> <span class="hint">laboratory; video recordings; transcripts</span>. They are a <span class="bl"></span> of the real juror experience <span class="hint">simulation</span>. Participants give a <span class="bl"></span> or other information such as strength of the case or witness confidence <span class="hint">verdict</span>. Example: <span class="bl"></span> <span class="hint">Ruva, McEvoy and Bryant (2007)</span>.</p>
+
+  <div class="sec">Evaluation of mock juries 评价</div>
+  <table class="n">
+    <tr><th style="width:16%;"></th><th>Point and consequence</th></tr>
+    <tr><td class="lbl">Strength</td><td><span class="bl"></span> control over exposure <span class="hint">good</span>: standardised procedures, same video or transcript except the manipulated variable, so <span class="bl"></span> conclusions can be drawn <span class="hint">cause-and-effect</span></td></tr>
+    <tr><td class="lbl">Limitation 1</td><td>Simulation <span class="bl"></span> varies <span class="hint">fidelity</span>: reading proceedings is weak; video with opening statements, witness accounts, cross-examination and judge's instructions is better. Many studies <span class="bl"></span> deliberation, arguably the most important aspect; where it happens, time is <span class="bl"></span> and the jury is smaller than <span class="bl"></span> <span class="hint">skip; restricted; 12</span></td></tr>
+    <tr><td class="lbl">Limitation 2</td><td><span class="bl"></span> real consequences: verdicts may be less considered or cautious; jurors know they are <span class="bl"></span> <span class="hint">no; role playing</span></td></tr>
+    <tr><td class="lbl">Limitation 3</td><td><span class="bl"></span> samples: younger and educated, unlike real juries <span class="hint">student</span>; but the impact is <span class="bl"></span> <span class="hint">debated</span></td></tr>
+    <tr><td class="lbl">Counter</td><td><span class="bl"></span> et al. (2005) meta-analysis: race may influence real jurors in the <span class="bl"></span> way as mock jurors <span class="hint">Mitchell; same</span></td></tr>
+  </table>
+
+  <div class="sec">Three methods compared 三方法对照表（考点索引）</div>
+  <table class="n">
+    <tr><th style="width:15%;">Method</th><th style="width:21%;">Reliability</th><th style="width:23%;">Validity</th><th style="width:20%;">Generalisability</th><th>Ethics</th></tr>
+    <tr><td class="lbl">Lab</td><td><span class="bl"></span>: standardised, replicable <span class="hint">high</span></td><td><span class="bl"></span>: artificial, low stress <span class="hint">doubtful</span></td><td>Weak: may not transfer to real accidents</td><td>Artificial event protects; offer withdrawal</td></tr>
+    <tr><td class="lbl">Field</td><td><span class="bl"></span>: situational variables <span class="hint">low</span></td><td><span class="bl"></span>: genuine conditions <span class="hint">strong</span></td><td>Strong: representative</td><td>Distress must be weighed</td></tr>
+    <tr><td class="lbl">Mock jury</td><td><span class="bl"></span> on exposure <span class="hint">high</span></td><td><span class="bl"></span>: fidelity varies, role play <span class="hint">mixed</span></td><td>Doubtful: student samples (debated)</td><td>Like lab; deception needs debrief</td></tr>
+  </table>
+
+    <div class="pg-foot">Page 5 of 12</div>
+</div>
+<!-- PAGE 6 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Evaluating Research 1 — Reliability and Validity 信度与效度</span><span class="r">6.3 METHODS · CRIMINAL PSYCHOLOGY</span></div>
+  <div class="sec">Reliability（信度）：consistency of findings</div>
+  <table class="n">
+    <tr><th style="width:24%;">Method</th><th>Why</th></tr>
+    <tr><td class="lbl">Lab experiments</td><td><span class="bl"></span> reliability: controlled design prevents other factors affecting the study; same film clip, specific age group; replication possible many times <span class="hint">high</span></td></tr>
+    <tr><td class="lbl">Field experiments</td><td><span class="bl"></span> reliability: situational variables occur in natural settings; exact replication difficult; findings inconsistent <span class="hint">lower</span></td></tr>
+    <tr><td class="lbl">Case studies</td><td>Hard to control participant and situational variables: difficult to find <span class="bl"></span> <span class="hint">two identical people who experienced the exact same situation</span></td></tr>
+  </table>
+
+  <div class="sec">Validity（效度）：measuring what it claims to measure</div>
+  <p class="small">Doubt about lab experiments and mock jury studies: participants may be <span class="bl"></span> than a real witness or juror because they know it is an experiment <span class="hint">more or less cautious</span>.</p>
+
+  <div class="sec">Three studies that test lab validity（必背，AO3 论据）</div>
+  <table class="n">
+    <tr><th style="width:26%;">Study</th><th style="width:32%;">What it did</th><th>What it shows</th></tr>
+    <tr><td class="lbl">Wagstaff et al. (<span class="bl"></span>) <span class="hint">2003</span></td><td>Studied <span class="bl"></span> witnesses <span class="hint">real</span></td><td>Little evidence that <span class="bl"></span>, age or level of violence affected real testimony <span class="hint">weapon focus</span>, despite lab (and field) experiments suggesting they are influential</td></tr>
+    <tr><td class="lbl">Yuille and Cutshall (<span class="bl"></span>) <span class="hint">1986</span></td><td>Real witnesses to a <span class="bl"></span> <span class="hint">robbery</span></td><td><span class="bl"></span> effect of leading questions on real witnesses <span class="hint">limited</span>, though demonstrated in the lab</td></tr>
+    <tr><td class="lbl">Ihlebaek et al. (<span class="bl"></span>) <span class="hint">2003</span></td><td>Compared a <span class="bl"></span> staged robbery (field) with <span class="bl"></span> of the same robbery (lab) <span class="hint">live; film footage</span></td><td>Film group recalled <span class="bl"></span> details with greater accuracy <span class="hint">more</span>; errors <span class="bl"></span> in both conditions <span class="hint">equal/same</span>. Labs <span class="bl"></span> witness recall <span class="hint">overestimate</span>; rely on lab findings with caution</td></tr>
+  </table>
+
+  <div class="box grey">
+    <div class="bx-t">demand characteristics（需求特征）</div>
+    Participants alter behaviour in response to the situation. Example: a participant guesses the aim is to test how stress affects recall and <span class="bl"></span> to meet the researcher's expectations <span class="hint">recalls less</span>. This does not reflect a real-life situation and lowers validity.
+  </div>
+
+  <div class="box blue">
+    <div class="bx-t">中文理解：三个研究一句话记</div>
+    Wagstaff：真证人身上武器聚焦等效应不明显。Yuille &amp; Cutshall：真证人几乎不受引导性问题影响。Ihlebaek：实验室组记得更多更准，说明<strong>实验室高估了记忆</strong>。合起来一个结论：实验室发现拿到真实世界会打折扣。任选一个做 AO3 论据都够用。
+  </div>
+
+    <div class="pg-foot">Page 6 of 12</div>
+</div>
+<!-- PAGE 7 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Evaluating Research 2 — Objectivity · Generalisability · Credibility</span><span class="r">6.3 METHODS · CRIMINAL PSYCHOLOGY</span></div>
+  <div class="sec">Objectivity and subjectivity 客观性与主观性</div>
+  <p class="small">Researchers should remain <span class="bl"></span> when investigating <span class="hint">totally value free</span>: gather facts that may prove or disprove the hypothesis without bias.</p>
+  <table class="n">
+    <tr><th style="width:28%;">Data type</th><th>Objectivity</th></tr>
+    <tr><td class="lbl">Quantitative <span class="hint">e.g. guilty/not guilty counts</span></td><td>Requires <span class="bl"></span> interpretation <span class="hint">no/little</span>; minimises potential for bias; more <span class="bl"></span> <span class="hint">objective</span>; obtained in field and lab experiments; makes research more <span class="bl"></span> <span class="hint">scientific</span></td></tr>
+    <tr><td class="lbl">Qualitative <span class="hint">e.g. free recall</span></td><td>Needs a <span class="bl"></span> so quality or quantity of memory can be objectively analysed <span class="hint">coding method</span></td></tr>
+  </table>
+
+  <div class="sec">Generalisability 可推广性</div>
+  <p class="small">Much research uses <span class="bl"></span>, often for course credit <span class="hint">students</span>. But <span class="bl"></span> can be a witness and most of us could be called to <span class="bl"></span> <span class="hint">anyone; jury service</span>. Real witnesses and jurors are far more diverse by <span class="bl"></span> and <span class="bl"></span> <span class="hint">age; educational level</span>. Risk: a body of knowledge that does not actually <span class="bl"></span> to real cases <span class="hint">apply</span>.</p>
+
+  <div class="sec">Credibility 可信度</div>
+  <p class="small">All methods achieve credibility by striving to be <span class="bl"></span>, <span class="bl"></span> and <span class="bl"></span> <span class="hint">reliable; valid; objective</span>. Criminal psychology research especially needs credibility because findings are applied by the <span class="bl"></span> and <span class="bl"></span> <span class="hint">courts; police</span>.</p>
+
+  <div class="box purple">
+    <div class="bx-t">评价词六件套（AO3 词汇表，必背）</div>
+    <strong>reliability（信度）· validity（效度）· objectivity（客观性）· subjectivity（主观性）· generalisability（可推广性）· credibility（可信度）</strong><br>
+    写 AO3 时先用词定性，再挂证据：比如「lab experiments have high <u>reliability</u> because standardised procedures allow replication」。每个词都要配一个犯罪心理学的具体例子，干写定义不给分。
+  </div>
+
+  <div class="sec">Self-test 自测</div>
+  <p class="small">1. The consistency of a finding is called <span class="bl"></span>. <span class="hint">reliability</span><br>
+  2. Data open to interpretation by a researcher is called <span class="bl"></span>. <span class="hint">subjectivity</span><br>
+  3. A study measuring what it claims to measure has <span class="bl"></span>. <span class="hint">validity</span><br>
+  4. How representative a sample is of the target population is called <span class="bl"></span>. <span class="hint">generalisability</span></p>
+
+    <div class="pg-foot">Page 7 of 12</div>
+</div>
+<!-- PAGE 8 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Ethics — BPS (2009) and the Four Guideline Areas 伦理</span><span class="r">6.3 METHODS · CRIMINAL PSYCHOLOGY</span></div>
+  <div class="sec">The rule books 规则来源</div>
+  <ul class="tight">
+    <li><span class="bl"></span> Code of Ethics and Conduct (<span class="bl"></span>) <span class="hint">British Psychological Society (BPS); 2009</span>: guidance for research and forensic practice such as formulations and treatment interventions.</li>
+    <li>Practitioner psychologists（执业心理学家）follow additional guidance from their legal governing body, e.g. the <span class="bl"></span> <span class="hint">Health and Care Professions Council (HCPC)</span>. Failure to follow guidelines can lead to being <span class="bl"></span> <span class="hint">disbarred</span>.</li>
+  </ul>
+
+  <div class="sec">Four guideline areas 四条主线（填表）</div>
+  <table class="n">
+    <tr><th style="width:20%;">Area</th><th>In criminological research</th></tr>
+    <tr><td class="lbl">Protection from harm 保护被试</td><td>Exposing someone to a real crime would be <span class="bl"></span> <span class="hint">unethical</span>. Film clips are less distressing but can remind a person of <span class="bl"></span> <span class="hint">a past similar experience, e.g. victim of a similar crime</span>. Allow <span class="bl"></span> whenever they feel distressed <span class="hint">withdrawal</span>. Labs protect more than field or case studies because the event is <span class="bl"></span> <span class="hint">artificial</span></td></tr>
+    <tr><td class="lbl">Deception and consent 欺骗与同意</td><td>Deception may be used to <span class="bl"></span> demand characteristics, increasing <span class="bl"></span> <span class="hint">minimise; validity</span>. Cost: lack of <span class="bl"></span> <span class="hint">informed consent</span>. Labs are more likely to require consent; field studies may need it less but deception remains an issue. Where deception or consent are issues, <span class="bl"></span> participants once the research is complete <span class="hint">debrief</span></td></tr>
+    <tr><td class="lbl">Right to withdraw 退出权</td><td>Less of an issue in field experiments; lab experiments should <span class="bl"></span> offer it <span class="hint">always</span>. Debrief participants where withdrawal is an issue</td></tr>
+    <tr><td class="lbl">Practical applications 应用</td><td>Research informs government <span class="bl"></span> to tackle crime and reduce reoffending, and <span class="bl"></span> practices to secure accurate convictions <span class="hint">policy-making; police</span>. Example: the <span class="bl"></span>, developed from Loftus' eyewitness research <span class="hint">cognitive interview</span></td></tr>
+  </table>
+
+  <div class="box blue">
+    <div class="bx-t">中文理解：伦理题答题三件套</div>
+    <strong>点出伦理问题 → 说明它在这个情境里怎么出现 → 给出处理办法</strong>。例如欺骗：用了欺骗就没法知情同意，但犯罪研究里欺骗是为了压住需求特征，处理办法是事后 debrief。只写名词不给满，必须挂情境。
+  </div>
+
+    <div class="pg-foot">Page 8 of 12</div>
+</div>
+<!-- PAGE 9 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Risk Management 风险管理</span><span class="r">6.3 METHODS · CRIMINAL PSYCHOLOGY</span></div>
+  <div class="sec">Why risk assessment 为什么做风险评估</div>
+  <p class="small">All research should undertake a <span class="bl"></span> to identify potential harm or hazards <span class="hint">risk assessment</span>. The same risk management from Unit 1 applies to criminological research, eyewitness work and offenders.</p>
+
+  <div class="sec">Risks by context 分情境风险评估</div>
+  <table class="n">
+    <tr><th style="width:30%;">Context</th><th>Risks to assess</th></tr>
+    <tr><td class="lbl">Staged field incident <span class="hint">actor fleeing a crime scene</span></td><td>Witness <span class="bl"></span>; a <span class="bl"></span> pursuing the actor; likelihood of <span class="bl"></span> and falls <span class="hint">stress; bystander; trips</span></td></tr>
+    <tr><td class="lbl">Laboratory video footage</td><td>Potential <span class="bl"></span> distress, especially if the participant has been a <span class="bl"></span> of crime; stress or <span class="bl"></span> when recalling the event <span class="hint">psychological; victim; embarrassment</span></td></tr>
+    <tr><td class="lbl">Working with offenders</td><td>Forensic psychologists undertake <span class="bl"></span> risk assessments <span class="hint">regular</span>. Reoffending risk tools: the <span class="bl"></span> <span class="hint">Offender Assessment System (OASys)</span>, designed to predict the probability of an offence causing <span class="bl"></span> <span class="hint">serious harm</span>. Other tools predict likelihood of abuse, violence or specific offences</td></tr>
+  </table>
+
+  <div class="sec">Risk assessment form: London Dungeon（课本 Activity 2 场景）</div>
+  <table class="n">
+    <tr><th style="width:26%;">Risks identified</th><th style="width:26%;">Who might be harmed and how</th><th style="width:14%;">Severity</th><th style="width:14%;">Likelihood</th><th>Action to manage</th></tr>
+    <tr><td><span class="bl"></span> during the experience <span class="hint">stress/fear</span></td><td><span class="bl"></span> <span class="hint">visitors (participants)</span></td><td></td><td></td><td><span class="bl"></span> before; debrief after <span class="hint">screen/consent</span></td></tr>
+    <tr><td>Distress from recall of <span class="bl"></span> <span class="hint">frightening figures</span></td><td>Visitors with anxiety</td><td></td><td></td><td>Allow <span class="bl"></span> <span class="hint">withdrawal</span></td></tr>
+  </table>
+
+  <div class="box blue">
+    <div class="bx-t">中文理解：风险管理的答题格式</div>
+    风险评估的格式是<strong>四问</strong>：有什么风险？谁可能受害、怎么受害？严重程度（高/中/低）？发生可能性（高/中/低）？最后给管理动作。考试里出现时通常只要两三问，但四问的框架要会。OASys 是 6.3.2 里少见的必背缩写，写全称：Offender Assessment System。
+  </div>
+
+    <div class="pg-foot">Page 9 of 12</div>
+</div>
+<!-- PAGE 10 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Data Analysis (List A &amp; List B) + Exam Skills 数据分析与答题技巧</span><span class="r">6.3 METHODS · CRIMINAL PSYCHOLOGY</span></div>
+  <div class="sec">Spec 6.3.3: what to review 要复习什么</div>
+  <table class="n">
+    <tr><th style="width:14%;">List</th><th style="width:44%;">Contains</th><th>How it appears here</th></tr>
+    <tr><td class="lbl">List A</td><td>Analysis of <span class="bl"></span> data <span class="hint">quantitative</span>: graphs, descriptive statistics</td><td>Verdict counts, guilt ratings, recall scores from experiments and mock jury studies</td></tr>
+    <tr><td class="lbl">List B</td><td>Decision making and interpretation of <span class="bl"></span> statistics <span class="hint">inferential</span></td><td>Deciding whether witness or juror differences are significant</td></tr>
+  </table>
+  <p class="small">Exam tip: go back through the <span class="bl"></span> psychology methods and <span class="bl"></span> psychology methods chapters to review these <span class="hint">social; cognitive</span>. 6.3.3 has no new statistics to memorise; it tests applying U1/U2 analysis to crime data.</p>
+
+  <div class="sec">The exam tip that changes how you revise 考试提醒</div>
+  <div class="box orange">
+    <div class="bx-t">Any method can be examined 任何方法都可能考</div>
+    The chapter describes lab and field experiments, but the exam could ask you to apply knowledge of <strong>any research method</strong> to criminological psychology, plus analyse data with <strong>graphs and statistical tests</strong>.
+  </div>
+
+  <div class="sec">The 8-mark design frame 八分设计题骨架</div>
+  <p class="small">Question type: <em>Discuss how [researcher] would go about conducting a laboratory experiment to investigate [question]. (8)</em></p>
+  <table class="n">
+    <tr><th style="width:10%;">Order</th><th style="width:36%;">Component</th><th>Say something like</th></tr>
+    <tr><td>1</td><td>Sample and allocation</td><td>Recruit mock jurors; <span class="bl"></span> allocate to conditions <span class="hint">randomly</span></td></tr>
+    <tr><td>2</td><td>IV and DV</td><td>IV = defendant characteristic; DV = <span class="bl"></span> <span class="hint">verdict or guilt rating</span></td></tr>
+    <tr><td>3</td><td>Procedure</td><td>Same trial video except the manipulated characteristic; standardised evidence, instructions</td></tr>
+    <tr><td>4</td><td>Controls</td><td>Control extraneous variables so a <span class="bl"></span> conclusion is possible <span class="hint">cause-and-effect</span></td></tr>
+    <tr><td>5</td><td>Data analysis</td><td>Compare guilty verdicts with percentages, bar charts, an inferential test</td></tr>
+    <tr><td>6</td><td>One evaluation point</td><td>Control is a strength; artificial setting lowers <span class="bl"></span> so be cautious generalising <span class="hint">ecological validity</span></td></tr>
+  </table>
+
+  <div class="box blue">
+    <div class="bx-t">中文理解：这就是 Getting Started 清单的展开版</div>
+    <strong>先写样本和 IV/DV，再写程序和控制，然后是数据分析，最后加一句评价</strong>，每项一两句正好铺满八分。最后一句评价前后呼应，是加分关键。
+  </div>
+
+    <div class="pg-foot">Page 10 of 12</div>
+</div>
+<!-- PAGE 11 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Exam Practice 真题（Textbook Exam Practice）</span><span class="r">6.3 METHODS · CRIMINAL PSYCHOLOGY</span></div>
+  <div class="sec">Question 1 — Michaela's mock jury study（4 + 2 marks）</div>
+  <p class="small">Michaela used an opportunity sample of students from her local college, split into two groups. Both watched the same video of a witness giving evidence identifying the defendant, and decided guilty or not guilty. Group 1 were told the witness was <strong>100% confident</strong>; Group 2 were told <strong>80% confident</strong>. The higher the confidence, the more likely participants reached a guilty verdict.</p>
+
+  <div class="q">a) Explain two strengths of Michaela using a mock jury research method to investigate jury decision-making. (4)</div>
+  <p class="small hint" style="margin-left:8px;">Strength 1: control — same video, only confidence differs, so cause-and-effect. Strength 2: access — real jurors cannot be studied or discuss the deliberation room. 每个优点：一分点名词，一分挂 Michaela 的细节。</p>
+  <div class="wl"></div><div class="wl"></div><div class="wl"></div>
+
+  <div class="q">b) Explain one way that Michaela could improve the generalisability of her mock jury study. (2)</div>
+  <div class="wl"></div><div class="wl"></div>
+
+  <div class="sec">Question 2 — Ethics of eyewitness research（2 marks）</div>
+  <div class="q">Explain one ethical issue that should be considered when researching factors that influence eyewitness memory. (2)</div>
+  <p class="small hint" style="margin-left:8px;">公式：问题名词（1 分）+ 情境表现和处理（1 分）。例如 protection from harm：影片可能唤起受害经历，给退出权并 debrief。</p>
+  <div class="wl"></div><div class="wl"></div>
+
+  <div class="sec">Question 3 — The 8-mark design question（8 marks）</div>
+  <div class="q">Fezile decides to conduct a laboratory experiment to investigate the influence of defendant characteristics on jury decision-making. Discuss how Fezile would go about conducting this laboratory experiment. (8)</div>
+  <p class="small hint" style="margin-left:8px;">按六步骨架写：样本 → IV/DV → 程序 → 控制 → 分析 → 一句评价。</p>
+  <div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div>
+
+    <div class="pg-foot">Page 11 of 12</div>
+</div>
+<!-- PAGE 12 -->
+<div class="page pg-tight">
+  <div class="pg-head"><span class="t">Answer Key 答案速查 + Brain Dump</span><span class="r">6.3 METHODS · CRIMINAL PSYCHOLOGY</span></div>
+  <div class="sec">Fill-in answers 答案</div>
+  <table class="n pg-tight">
+    <tr><th style="width:30%;">Page</th><th>Answers</th></tr>
+    <tr><td class="lbl">p.2 lab basics</td><td>illegal · bias their testimony · watching films in a laboratory · weapon presence · leading question types · testimony provided · gathering · film; photographs · films, offences, suspects · recall · post-event</td></tr>
+    <tr><td class="lbl">p.3 lab evaluation</td><td>standardised · replicate · extraneous; manipulated · cause-and-effect · artificiality · ecological validity · generalise · single isolated variable · pre-trial publicity · incomplete · unethical · previous experience · right to withdraw</td></tr>
+    <tr><td class="lbl">p.4 field</td><td>more natural setting · artificially constructed · 2 · simulated crime/event; an actor · real visitors; stress · naturally; not have to · stages and manipulates · real · ecological validity · unaware · demand characteristics · situational · reliability · real · distress</td></tr>
+    <tr><td class="lbl">p.5 mock jury</td><td>not permissible · talk · randomly · emulate · laboratory; video recordings; transcripts · simulation · verdict · Ruva, McEvoy and Bryant (2007) · good · cause-and-effect · fidelity · skip; restricted; 12 · no; role playing · student · debated · Mitchell; same · high · doubtful · low · strong · high · mixed</td></tr>
+    <tr><td class="lbl">p.6 reliability &amp; validity</td><td>high · lower · two identical people · more or less cautious · 2003 · real · weapon focus · 1986 · robbery · limited · 2003 · live; film footage · more · equal/same · overestimate · recalls less</td></tr>
+    <tr><td class="lbl">p.7 objectivity etc.</td><td>totally value free · no/little · objective · scientific · coding method · students · anyone; jury service · age; educational level · apply · reliable; valid; objective · courts; police · reliability · subjectivity · validity · generalisability</td></tr>
+    <tr><td class="lbl">p.8 ethics</td><td>British Psychological Society (BPS); 2009 · Health and Care Professions Council (HCPC) · disbarred · unethical · a past similar experience · withdrawal · artificial · minimise; validity · informed consent · debrief · always · policy-making; police · cognitive interview</td></tr>
+    <tr><td class="lbl">p.9 risk</td><td>risk assessment · stress; bystander; trips · psychological; victim; embarrassment · regular · Offender Assessment System (OASys) · serious harm · stress/fear · visitors (participants) · screen/consent · frightening figures · withdrawal</td></tr>
+    <tr><td class="lbl">p.10 data &amp; exam</td><td>quantitative · inferential · social; cognitive · randomly · verdict or guilt rating · cause-and-effect · ecological validity</td></tr>
+  </table>
+
+  <div class="sec">Model answer sketches 简要范文</div>
+  <p class="small"><strong>Q1a:</strong> Strength 1: the mock jury method gave Michaela control over what jurors were exposed to (same video, only stated confidence differed), so a cause-and-effect conclusion about witness confidence and verdicts can be drawn. Strength 2: genuine jurors cannot be studied during a trial or deliberate, and cannot discuss the deliberation room afterwards, so mock juries are the only way to investigate jury decision-making directly.<br>
+  <strong>Q1b:</strong> Use a sample drawn from a wider range of ages and educational backgrounds (e.g. random or stratified community sample), so it better represents potential jurors and findings generalise to real juries.<br>
+  <strong>Q2:</strong> Protection from harm: watching a filmed crime may distress participants, especially past victims of similar crime; allow withdrawal and debrief.<br>
+  <strong>Q3:</strong> See the six-step frame on p.10: sample with random allocation; IV = defendant characteristic; DV = verdict or guilt rating; standardised trial video except the manipulated characteristic; compare guilty verdicts with percentages/charts/inferential test; strength = control and cause-and-effect, limitation = artificial setting lowers ecological validity so generalise with caution.</p>
+
+  <div class="sec">Brain dump 脑内清空</div>
+  <p class="small">Cover everything. Write everything you remember about 6.3 from memory: the three methods, their evaluations, the evaluation vocabulary, ethics and risk. Then check against this booklet and mark gaps.</p>
+  <div class="wl"></div><div class="wl"></div>
+
+    <div class="pg-foot">Page 12 of 12</div>
+</div>
+
+</body>
+</html>
