@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.2 Methods — Observations, Content Analysis and Case Studies</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic D · Learning theories — 4.2 Methods</span>
+  </div>
+  <span class="nav-pill">🧩 Learning Psychology</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="4.2-Learning-Methods-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">4.2 Methods</div>
+    <div class="sb-header-sub">Observation · Content analysis · Case study · 学习理论研究方法</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+    <li class="sb-item"><a href="#s2">2. Method Map</a></li>
+    <li class="sb-item"><a href="#s3">3. Observation Data</a></li>
+    <li class="sb-item"><a href="#s4">4. Types of Observation</a></li>
+    <li class="sb-item"><a href="#s5">5. Six Types Compared</a></li>
+    <li class="sb-item"><a href="#s6">6. Content Analysis</a></li>
+    <li class="sb-item"><a href="#s7">7. Freud's Case Study</a></li>
+    <li class="sb-item"><a href="#s8">8. Chi-Squared Test</a></li>
+    <li class="sb-item"><a href="#s9">9. Animal Research: For</a></li>
+    <li class="sb-item"><a href="#s10">10. Animal Research: Against</a></li>
+    <li class="sb-item"><a href="#s11">11. Animal Ethics Law</a></li>
+    <li class="sb-item"><a href="#s12">12. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s13">13. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s14">14. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>4.2 METHODS<br><span style="font-size:0.65em">Observation · Content analysis · Case study · Chi-squared · Animal research · 学习理论研究方法</span></h1>
+  <div class="meta">
+    <span class="badge">Topic D · Learning theories and development</span>
+    <span class="badge">Methods</span>
+    <span class="badge">Spec 4.2.1–4.2.8</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this chapter is really asking</h4>
+  <ol>
+    <li><strong>An observation has no IV.</strong> Nothing is manipulated; all data comes from watching and recording behaviour. That single fact drives every strength and weakness.</li>
+    <li><strong>Six type words, three pairs.</strong> Naturalistic or structured, participant or non-participant, overt or covert. Any real observation is a combination of one word from each pair.</li>
+    <li><strong>Two indirect methods.</strong> Content analysis watches things people made (books, adverts); Freud's case study watched what clients said on the couch.</li>
+    <li><strong>Chi-squared has three entry conditions:</strong> a test of difference or association, nominal data, independent measures.</li>
+    <li><strong>Animal research needs the law:</strong> the Animals (Scientific Procedures) Act (1986), the three Rs and the three licences.</li>
+  </ol>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started — Plan an Observation</h2>
+
+  <p>Scenario from the textbook: observe different types of communication in an office. Some areas are open plan; other areas have desks divided by screens. The prediction: an open plan space encourages <strong>verbal communication</strong>, while cubicles promote <strong>electronic communication</strong>.</p>
+
+  <div class="note-box">
+    <h4>The five planned steps (from the textbook)</h4>
+    <ol class="tight">
+      <li>Decide <strong>what behaviour</strong> you will observe and <strong>who</strong> you will observe.</li>
+      <li>Decide <strong>where</strong> you will observe the behaviour.</li>
+      <li>Make a <strong>table</strong> to record the observed behaviour.</li>
+      <li>Decide whether you will record <strong>all behaviour in a timeframe</strong> or <strong>tally specific behaviours</strong> as they occur.</li>
+      <li><strong>Analyse</strong> your findings.</li>
+    </ol>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：观察和实验的分界线</strong><br>
+    这一章所有方法共用一个前提：<strong>观察法不操纵 IV</strong>。实验里研究者动手改变什么条件再测结果；观察里研究者只站在旁边看和记。考试里问「为什么用观察而不用实验」，第一句就写这一点：研究的问题不适合操纵变量（比如想知道办公室里真实的沟通方式），所以只能记录自然发生的行为。课本的五步清单就是 4.4 实操大题的答题骨架，先把顺序背熟。
+  </div>
+
+  <div class="xp-block">
+    <h4>🤔 Quick decision<span class="xp-badge">Think first</span></h4>
+    <p class="xp-intro">What makes an observation different from an experiment?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">No independent variable is manipulated</button>
+      <button class="q-option" onclick="mcAns(this)">The data is always qualitative</button>
+      <button class="q-option" onclick="mcAns(this)">Participants must give consent before it starts</button>
+    </div>
+    <div class="xp-result" id="res-s1"></div>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Method Map — Eight Spec Points</h2>
+
+  <table>
+    <tr><th>Spec point</th><th>What it covers</th><th>Where in this page</th></tr>
+    <tr><td>4.2.1 Observations</td><td>Gathering qualitative and quantitative data, including tallying, event and time sampling</td><td>§3</td></tr>
+    <tr><td>4.2.2 Types of observation</td><td>Participant, non-participant, structured, naturalistic, overt, covert</td><td>§4–§5</td></tr>
+    <tr><td>4.2.3 Content analysis</td><td>Use of content analysis as a research method</td><td>§6</td></tr>
+    <tr><td>4.2.4 Case studies</td><td>Freud's use of the case study as a research method</td><td>§7</td></tr>
+    <tr><td>4.2.5 Quantitative data</td><td>List A from Topic A</td><td>Recap in §8</td></tr>
+    <tr><td>4.2.6 Qualitative data</td><td>Thematic analysis</td><td>4.4 Practical page</td></tr>
+    <tr><td>4.2.7 Chi-squared</td><td>List B from Topic B, focusing on the chi-squared test</td><td>§8</td></tr>
+    <tr><td>4.2.8 Animal research</td><td>Use of animals in lab experiments and animal ethics, including the Scientific Procedures Act (1986) and Home Office Regulations</td><td>§9–§11</td></tr>
+  </table>
+
+  <div class="figure">
+  <svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+    <defs>
+      <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/>
+      </marker>
+    </defs>
+    <rect x="215" y="12" width="250" height="44" rx="10" fill="#ea580c"/>
+    <text x="340" y="32" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">Observation = watch + record</text>
+    <text x="340" y="48" text-anchor="middle" fill="#ffe4cf" font-size="10">no IV is manipulated</text>
+    <rect x="20" y="100" width="200" height="58" rx="10" fill="#fff" stroke="#ea580c" stroke-width="2"/>
+    <text x="120" y="122" text-anchor="middle" fill="#c2410c" font-size="12" font-weight="bold">Direct observation</text>
+    <text x="120" y="138" text-anchor="middle" fill="#64748b" font-size="10">six type words · §4–§5</text>
+    <rect x="240" y="100" width="200" height="58" rx="10" fill="#fff" stroke="#ea580c" stroke-width="2"/>
+    <text x="340" y="122" text-anchor="middle" fill="#c2410c" font-size="12" font-weight="bold">Content analysis</text>
+    <text x="340" y="138" text-anchor="middle" fill="#64748b" font-size="10">indirect · books, adverts · §6</text>
+    <rect x="460" y="100" width="200" height="58" rx="10" fill="#fff" stroke="#ea580c" stroke-width="2"/>
+    <text x="560" y="122" text-anchor="middle" fill="#c2410c" font-size="12" font-weight="bold">Freud's case study</text>
+    <text x="560" y="138" text-anchor="middle" fill="#64748b" font-size="10">couch, dreams · §7</text>
+    <line x1="160" y1="60" x2="120" y2="98" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+    <line x1="340" y1="60" x2="340" y2="98" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+    <line x1="520" y1="60" x2="560" y2="98" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+    <rect x="60" y="196" width="560" height="40" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="340" y="214" text-anchor="middle" fill="#475569" font-size="11">Analyse the data: chi-squared on frequencies (§8) · thematic analysis on</text>
+    <text x="340" y="229" text-anchor="middle" fill="#475569" font-size="11">qualitative notes (4.4 Practical) · animal research judged by its own law (§9–§11)</text>
+    <line x1="120" y1="158" x2="200" y2="194" stroke="#cbd5e1" stroke-width="1.2"/>
+    <line x1="340" y1="158" x2="340" y2="194" stroke="#cbd5e1" stroke-width="1.2"/>
+    <line x1="560" y1="158" x2="480" y2="194" stroke="#cbd5e1" stroke-width="1.2"/>
+  </svg>
+  <div class="figure-caption">One method family, three members, two analysis routes</div>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Gathering Qualitative and Quantitative Data</h2>
+
+  <p>Observation as a research method means <strong>observing is the main way of obtaining data</strong> and there is <strong>no independent variable to manipulate</strong>. All data is gathered by observing, listening and recording behaviour.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Quantitative data · numbers</h4>
+      <p>Data that can be <strong>counted or expressed numerically</strong>. Example from the textbook: counting the number of times a child you observe picks up a <strong>gender-stereotyped toy（性别刻板玩具）</strong>.</p>
+    </div>
+    <div class="compare-card blue" style="border-left-color:#1e3a5f">
+      <h4 style="color:#1e3a5f">Qualitative data · words</h4>
+      <p>Data that <strong>cannot be expressed numerically</strong>; it is concerned with words, texts, ideas and themes. Example from the textbook: recording <strong>what parents say to their child</strong> and any <strong>non-verbal communication</strong> they use.</p>
+    </div>
+  </div>
+
+  <h3>Data collection tools</h3>
+  <ul>
+    <li><strong>Tallying（计数记录）</strong>: observers write down when and how many times certain behaviours occurred.</li>
+    <li><strong>Notes</strong> taken during the session, reviewed later to find behavioural patterns.</li>
+    <li><strong>Audio or video recordings</strong>.</li>
+  </ul>
+
+  <h3>The tally chart</h3>
+  <p>Table 23.1 from the textbook: a researcher observes whether men and women prefer different sized cars. Each time they see a person in a category, they tally in the matching cell.</p>
+
+  <table>
+    <tr><th></th><th>Male</th><th>Female</th></tr>
+    <tr><td>Small car</td><td>III (3)</td><td>IIII I (6)</td></tr>
+    <tr><td>Large car</td><td>IIII (4)</td><td>II (2)</td></tr>
+  </table>
+
+  <p>The <strong>categories need to be clear and unambiguous</strong>. In larger studies observers need training to understand the criteria for each category, known as the <strong>operational definitions of behavioural categories（行为类目的操作性定义）</strong>. Training and standardisation matter most when more than one observer is assessing.</p>
+
+  <h3>Time sampling vs event sampling</h3>
+  <table>
+    <tr><th>Technique</th><th>How it works</th><th>Its problem</th></tr>
+    <tr><td>Time sampling（时间抽样）</td><td>Observe at <strong>fixed time intervals</strong>, for example every 30 seconds, recording everything observed in that window</td><td>May not be <strong>representative</strong>: behaviours that happen between the windows are missed</td></tr>
+    <tr><td>Event sampling（事件抽样）</td><td>Record a <strong>predetermined behaviour every time it happens</strong>; the behaviours are decided before the observation starts, then tallied each time</td><td>If <strong>too many instances happen at once</strong>, the researcher may not record them all</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：两种抽样各漏什么</strong><br>
+    时间抽样按表看钟，<strong>漏掉间隔里发生的行为</strong>；事件抽样盯住目标行为，<strong>行为扎堆时来不及记全</strong>。考试问「该用哪种抽样」，先想清楚研究的行为是持续发生还是偶发：偶发行为用事件抽样（每次出现都记），持续行为用时间抽样（每 30 秒扫一眼）。真题 Evuska 观察司机用手机考的就是这个判断。
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Check the logic<span class="xp-badge">Apply it</span></h4>
+    <p class="xp-intro">A researcher ticks a box every time a child picks up a gender-stereotyped toy. Which technique is this?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Event sampling</button>
+      <button class="q-option" onclick="mcAns(this)">Time sampling</button>
+      <button class="q-option" onclick="mcAns(this)">Random sampling</button>
+    </div>
+    <div class="xp-result" id="res-s3"></div>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Types of Observation — Three Pairs of Choices</h2>
+
+  <h3>Pair 1 · Naturalistic vs structured</h3>
+
+  <div class="keyterm-box"><span class="kt">naturalistic observation<span class="zh">（自然观察）</span></span> — watching and recording behaviour in a natural environment where the observed behaviour would normally occur.</div>
+
+  <ul>
+    <li><strong>Naturalistic</strong>: the situation has <strong>not been created by the researcher</strong>, so it gives a real insight into behaviour. Higher <strong>ecological validity</strong> because participants act naturally in a familiar setting. But it poses <strong>ethical issues of consent and privacy</strong> if participants do not know they are watched, has <strong>limited control over extraneous variables</strong>, and is unlikely to be repeated exactly.</li>
+    <li><strong>Structured（结构观察）</strong>: variables are <strong>manipulated to make sure the behaviour is displayed</strong>. Staged observations, normally in an environment the researcher controls such as a laboratory, sometimes through a one-way screen.</li>
+  </ul>
+
+  <div class="note-box">
+    <h4>Worked example: Ainsworth's Strange Situation</h4>
+    <p>Mary Ainsworth et al. (1978) wanted to investigate parent–child attachment in a controlled way, but the sequence of events (mother leaves, stranger enters, reunion) <strong>would rarely occur naturally</strong>. So she set up the <strong>Strange Situation Procedure</strong>: a structured observation in a controlled environment.</p>
+  </div>
+
+  <h3>Pair 2 · Participant vs non-participant</h3>
+
+  <div class="keyterm-box"><span class="kt">non-participant observation<span class="zh">（非参与观察）</span></span> — the researcher observes behaviour of others but does not form part of the group they study. <span class="kt">participant observation<span class="zh">（参与观察）</span></span> — the researcher takes an active role in the situation being observed.</div>
+
+  <ul>
+    <li><strong>Non-participant</strong>: observing from a distance. If participants notice, they may <strong>alter their behaviour</strong>. Because the observer is detached they may not understand why a behaviour happens, or may interpret it subjectively: <strong>observer bias（观察者偏差）</strong>. The gain: researchers can <strong>concentrate on recording</strong> and collect data more objectively.</li>
+    <li><strong>Participant</strong>: joining the group. <strong>No stranger effect</strong> on how participants behave, and it can reveal data other methods would miss. But it is <strong>hard to record notes</strong> while taking part, and the researcher <strong>may lose objectivity</strong>.</li>
+  </ul>
+
+  <h3>Pair 3 · Overt vs covert</h3>
+
+  <div class="keyterm-box"><span class="kt">overt observation<span class="zh">（公开观察）</span></span> — those being observed are aware of the presence of an observer. <span class="kt">covert observation<span class="zh">（隐蔽观察）</span></span> — the participants do not know they are being observed.</div>
+
+  <ul>
+    <li><strong>Overt</strong>: <strong>informed consent</strong> can be obtained and participants keep the <strong>right to withdraw</strong>. But knowing they are watched may change behaviour.</li>
+    <li><strong>Covert</strong>: ethically problematic because participants are unaware. But participants are <strong>unlikely to change their behaviour</strong>, so the observation is <strong>more valid</strong>.</li>
+  </ul>
+
+  <h3>Any observation is a combination</h3>
+  <p>The textbook's two examples: a <strong>naturalistic, participant, overt</strong> observation, such as an anthropologist joining a tribal group to learn its customs; or a <strong>structured, non-participant, covert</strong> observation, such as secretly watching behaviour behind a one-way mirror in a laboratory.</p>
+
+  <div class="exam-tip">
+    <strong>Exam tip (from the textbook):</strong> be ready not only to outline each type but to <strong>give examples</strong>. Explicitly state which type you are describing or evaluating. Ethical and methodological issues that apply to one type may not apply to another: participant observations affect the behaviour of those observed, but that may not be true of covert non-participant observations.
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Check the logic<span class="xp-badge">Apply it</span></h4>
+    <p class="xp-intro">Ainsworth staged the sequence of separations and reunions in a controlled environment. Which type is the Strange Situation?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Structured observation</button>
+      <button class="q-option" onclick="mcAns(this)">Naturalistic observation</button>
+      <button class="q-option" onclick="mcAns(this)">Participant observation</button>
+    </div>
+    <div class="xp-result" id="res-s4"></div>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Six Types Compared — Issues to Weigh</h2>
+
+  <p>The textbook asks you to rate each type of observation for ethical issues, subjectivity, reliability and validity, and observer effects. This table gathers what the chapter says about each, so every rating can be justified from the text.</p>
+
+  <table>
+    <tr><th>Type</th><th>Ethics</th><th>Objectivity and validity</th><th>Reliability and control</th></tr>
+    <tr><td>Naturalistic</td><td>Consent and privacy issues if participants are unaware</td><td>Real behaviour, higher ecological validity</td><td>Limited control of extraneous variables; hard to repeat exactly</td></tr>
+    <tr><td>Structured</td><td>Participants know they take part, so consent and withdrawal are possible</td><td>Behaviour may be modified because of awareness; low ecological validity</td><td>Control and manipulation of variables; replicable; firm cause conclusions</td></tr>
+    <tr><td>Participant</td><td>Usually overt, so consent possible; covert participant observation raises deception issues</td><td>Reveals data other methods miss, but the researcher may lose objectivity</td><td>Hard to record notes while taking part</td></tr>
+    <tr><td>Non-participant</td><td>Distance observing may still be noticed</td><td>Observer bias: detached observer may misinterpret behaviour</td><td>Can concentrate on recording; more objective data collection</td></tr>
+    <tr><td>Overt</td><td>Informed consent obtained; right to withdraw respected</td><td>Participants may change behaviour when watched</td><td>Researcher can record openly and systematically</td></tr>
+    <tr><td>Covert</td><td>Participants unaware: ethically problematic</td><td>Behaviour unchanged, so more valid</td><td>Recording must be discreet</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：每对选择都在换东西</strong><br>
+    三对选择对应三次交换：<strong>自然换真实（生态效度），结构换控制（因果和重复）；参与换洞察（看到别人看不到的），非参与换客观（专心记录）；公开换伦理（知情同意），隐蔽换真实（行为不变）</strong>。每一条优点都对应一条缺点，答题时写成「选了 A 换来什么、付出什么」就自动成对，不会漏点。
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Content Analysis</h2>
+
+  <p>Content analysis may not involve observing participants' behaviour directly, but instead observing <strong>the incidence of other things</strong>: certain words, images or concepts within material such as advertisements, books, films and newspapers. Example from the textbook: a researcher uses content analysis to observe instances of <strong>gender stereotyping in children's books</strong>. Content analysis is therefore a form of <strong>indirect observation（间接观察）</strong>.</p>
+
+  <h3>How to conduct one</h3>
+  <ul>
+    <li><strong>Categories agreed in advance</strong>: for gender stereotyping, examine instances of stereotypical and non-stereotypical behaviour by males and females.</li>
+    <li><strong>Tally</strong> the number of times each category occurs in the selected material.</li>
+    <li>Qualitative analysis can also examine <strong>meanings and relationships</strong> of words, concepts and pictures, then make inferences about the messages within them.</li>
+    <li>The content <strong>must be coded into clear and manageable categories</strong> so appropriate conclusions can be drawn.</li>
+  </ul>
+
+  <h3>Evaluation</h3>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Strength 1 · Unobtrusive（不打扰）</h4>
+      <p>Data is collected from <strong>existing sources rather than live participants</strong>, so there are rarely ethical issues; researchers should still respect confidentiality.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Strength 2 · Reliable and useful over time</h4>
+      <p>Reliability can easily be assessed because the analysis <strong>can be replicated using the same categories</strong>. It offers fresh interpretation of existing data and is very useful for <strong>historical material and documenting trends over time</strong>.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Limitation 1 · Subjective（主观）</h4>
+      <p>It relies on the <strong>personal interpretation of the researcher</strong>. Internal validity is also at risk if the categories do not represent what they intend to measure.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Limitation 2 · Descriptive only</h4>
+      <p>It describes <strong>what is there but not why</strong>: it may not reveal the underlying motives for the observed pattern. It is limited by the <strong>availability of material</strong>; media trends may not reflect reality because dramatic events receive more coverage; and findings may be <strong>culture-biased</strong> if sources or coders come from one culture.</p>
+    </div>
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Check the logic<span class="xp-badge">Apply it</span></h4>
+    <p class="xp-intro">Why is content analysis called an indirect observation?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">It observes the incidence of things people produced, not live behaviour</button>
+      <button class="q-option" onclick="mcAns(this)">It records behaviour secretly without participants knowing</button>
+      <button class="q-option" onclick="mcAns(this)">It manipulates the material before counting categories</button>
+    </div>
+    <div class="xp-result" id="res-s6"></div>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Freud's Use of the Case Study</h2>
+
+  <p>A <strong>case study（个案研究）</strong> is a detailed investigation into <strong>one individual or a small group</strong>, typically used when someone is unique or rare, or has experienced something that could not ethically or practically be studied in a laboratory. Many methods can be combined inside one case study, such as observations, interviews and experiments, and their outcomes compared for trends.</p>
+
+  <h3>What Freud actually did</h3>
+  <ul>
+    <li>He gathered in-depth information from clients using <strong>free association（自由联想）</strong>, <strong>dream analysis（梦的分析）</strong> and <strong>observations of clients' behaviour</strong> to uncover unconscious wishes and desires.</li>
+    <li>Clients lay on a couch <strong>facing away from him</strong> to encourage them to talk without censorship.</li>
+    <li>He looked for <strong>Freudian slips（弗洛伊德式口误）</strong>: when a client says something they did not mean, because the unconscious reveals itself.</li>
+    <li>He analysed dreams and looked for <strong>transference and counter-transference（移情与反移情）</strong>.</li>
+    <li>He analysed the qualitative data and gave his <strong>interpretation of the unconscious</strong> to the client. His case studies <strong>informed his theories and were also used as a therapy</strong>.</li>
+  </ul>
+
+  <h3>Evaluation</h3>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Strength 1 · Sometimes the only way</h4>
+      <p>Case studies gather information that <strong>cannot ethically be achieved by other methods</strong>: Freud could not have caused hysteria in a client to research it. Clients had to present themselves with the symptoms.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Strength 2 · Deep and natural</h4>
+      <p>High <strong>ecological validity</strong>: data came directly from the individual in a natural setting. He gathered <strong>rich detailed information</strong> through free association and dream analysis, which he used both to <strong>treat the patient and develop his theories</strong>.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Limitation 1 · Unrepresentative（难以推广）</h4>
+      <p>He studied <strong>unique individuals, typically middle-class Viennese women</strong>, so it is difficult to generalise the information to anyone else.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Limitation 2 · Subjective and unverifiable</h4>
+      <p>Different analysts may find <strong>different meanings</strong> in the same free association or dream symbol, so the method is <strong>subjective</strong> and hard to build a general theory from. The <strong>unconscious cannot be directly observed</strong>, so the information could not be <strong>empirically verified（实证检验）</strong>.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：弗洛伊德方法的死穴在哪</strong><br>
+    四条评价都围着两个词转：<strong>深</strong>和<strong>主观</strong>。他躺在沙发上的做法换来了细致的信息（自然情境、细节丰富、边研究边治疗）；主观也是这套流程带来的（不同分析师解出不同含义，潜意识又无法实证）。考试写评价时把这条因果链点出来：<strong>方法的优点和缺点出自同一套做法</strong>，这就是高级 AO3。
+  </div>
+
+  <div class="xp-block">
+    <h4>🎯 Check the logic<span class="xp-badge">Apply it</span></h4>
+    <p class="xp-intro">A client says something they did not mean to say. What did Freud call this, and what did he think it showed?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">A Freudian slip: the unconscious revealing itself</button>
+      <button class="q-option" onclick="mcAns(this)">Transference: feelings redirected onto the analyst</button>
+      <button class="q-option" onclick="mcAns(this)">Free association: saying whatever comes to mind</button>
+    </div>
+    <div class="xp-result" id="res-s7"></div>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. The Chi-Squared Test（卡方检验）</h2>
+
+  <p>The chi-squared test is a <strong>test of association or difference conducted on nominal data（称名数据）</strong>, when results are gathered in groups or categories and recorded as frequencies.</p>
+
+  <h3>Three conditions for choosing chi-squared</h3>
+  <ol class="tight">
+    <li>The hypothesis predicts a <strong>difference or an association</strong> (for example boys and girls differ in the toys they choose).</li>
+    <li>The level of measurement is <strong>nominal</strong> (categories such as stereotypical or non-stereotypical toys).</li>
+    <li>The design uses <strong>independent measures（独立测量设计）</strong>: at least two different groups, for example boys and girls.</li>
+  </ol>
+
+  <div class="exam-tip">
+    <strong>Exam tip (from the textbook):</strong> a clue that chi-squared is needed is that <strong>frequencies are totalled</strong>, as in observational research or content analysis. It is <strong>not</strong> used when participants' individual scores are known. Do not convert numbers into averages or percentages; use the total number.
+  </div>
+
+  <h3>Worked example: toy choice at nursery</h3>
+  <p>A researcher asks whether four-year-old girls and boys play with gender-stereotypical toys. The data goes into a <strong>contingency table（列联表）</strong> where each cell shows a frequency:</p>
+
+  <table>
+    <tr><th></th><th>Stereotypical toy</th><th>Non-stereotypical toy</th><th>Row total</th></tr>
+    <tr><td>Girls</td><td>8 (Cell A)</td><td>12 (Cell B)</td><td>20</td></tr>
+    <tr><td>Boys</td><td>17 (Cell C)</td><td>3 (Cell D)</td><td>20</td></tr>
+    <tr><td>Column total</td><td>25</td><td>15</td><td>40 (overall)</td></tr>
+  </table>
+
+  <h3>The nine steps (from the textbook)</h3>
+  <table>
+    <tr><th>Step</th><th>What to do</th><th>This example</th></tr>
+    <tr><td>1. Contingency table</td><td>Put observed frequencies into the table (a 2×2 here; 3×2 is possible)</td><td>8, 12, 17, 3</td></tr>
+    <tr><td>2. Expected frequency</td><td>E = row total × column total ÷ overall total</td><td>A: 12.5 · B: 7.5 · C: 12.5 · D: 7.5</td></tr>
+    <tr><td>3. O − E</td><td>Subtract expected from observed for each cell</td><td>−4.5 · +4.5 · +4.5 · −4.5</td></tr>
+    <tr><td>4. Square it</td><td>(O − E)² for each cell</td><td>20.25 in every cell</td></tr>
+    <tr><td>5. Divide by E</td><td>(O − E)² ÷ E for each cell</td><td>A: 1.62 · B: 2.7 · C: 1.62 · D: 2.7</td></tr>
+    <tr><td>6. Add them up</td><td>Sum of step 5 values = observed value of χ²</td><td>1.62 + 2.7 + 1.62 + 2.7 = <strong>8.64</strong></td></tr>
+    <tr><td>7. Degrees of freedom</td><td>df = (rows − 1) × (columns − 1)</td><td>(2−1) × (2−1) = <strong>1</strong></td></tr>
+    <tr><td>8. Critical value</td><td>Look up df and significance level, noting one- or two-tailed</td><td>One-tailed, p = 0.05, df = 1 → <strong>2.71</strong></td></tr>
+    <tr><td>9. Compare</td><td>Observed ≥ critical → significant, reject the null hypothesis</td><td><strong>8.64 &gt; 2.71: significant</strong>. Boys and girls differ in toy choice</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：这条链背下来就能拿分</strong><br>
+    卡方九步可以压成一句口诀：<strong>列表 → 算期望 → 相减 → 平方 → 除以期望 → 加总 → 算自由度 → 查表 → 比大小</strong>。考试最常考的有三小问，比算全程更常见：<strong>为什么选卡方</strong>（差异或关联 + 称名数据 + 独立测量）、<strong>自由度</strong>（行减一乘列减一）、<strong>显著性判断</strong>（观测值大于临界值就显著，拒绝虚无假设）。这三问课本真题 Angelo 那题原样考过。
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Animal Research — Arguments in Favour</h2>
+
+  <p>Learning theorists such as <strong>Pavlov and Skinner</strong> built their methods on laboratory experimentation with non-human (animal) participants, manipulating an IV to see its effect on behaviour. The textbook's arguments in favour:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>1 · Practical breeding and speed</h4>
+      <p>Rats are frequently used because of their breeding speed: a rat's <strong>gestation period is typically 22 days</strong>, so large samples can be bred quickly, and effects across generations (for example aggression) show without long waits.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>2 · High control</h4>
+      <p>Animals can be <strong>caged in ways humans cannot</strong>, and variables isolated in ways impossible with people: placing them in a <strong>Skinner box</strong> and dispensing food on a lever press.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>3 · Fewer ethical limits than humans</h4>
+      <p>Unnecessary pain must be avoided, but <strong>pain and distress are permitted</strong>, which is not the case for human participants; Skinner gave electric shocks to animals in his box. Research is nonetheless <strong>heavily regulated</strong>: legislation governs housing and treatment, and laboratories undergo regular welfare inspections.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>4 · Real benefits and evolutionary continuity</h4>
+      <p>Animal research has provided significant insight into <strong>drug treatments, transplants, surgical techniques and cloning</strong>, and into the brain and nervous system; conditioning techniques from it are used in therapy. Humans <strong>share common ancestry</strong> with other animals, especially primates, with similar basic nervous systems, so we can <strong>generalise to some extent</strong>. The <strong>utilitarian argument（功利主义论证）</strong>: the suffering of a small number of animals is justified because it helps a significant number of people; Gray (1991) argues animal research is justified when it furthers this cause.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Animal Research — Arguments Against</h2>
+
+  <div class="compare-grid">
+    <div class="compare-card red">
+      <h4>1 · Lacks credibility and validity</h4>
+      <p>Lab-based animal research produces behaviour <strong>different from natural behaviour</strong>, so ecological validity is low.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>2 · Humans and animals differ too much</h4>
+      <p>Differences in evolution and genetic make-up; we differ cognitively and emotionally, and human behaviour is subject to far more variables such as <strong>culture, social norms and language</strong>. Physiologically, humans have a <strong>much larger cortex proportionally</strong> than any other animal. A newborn mouse in development and hormonal influence is equivalent to a <strong>seven-week-old foetus</strong>: can comparisons really be made?</p>
+    </div>
+    <div class="compare-card red">
+      <h4>3 · Anthropomorphism and the continuity contradiction</h4>
+      <p>Generalising from animals to humans risks <strong>anthropomorphism（拟人化）</strong>: mistakenly attributing human qualities to animals. Others point to the inconsistency in the continuity argument: if animals are <strong>so similar to humans, why are they not afforded the same ethical considerations</strong>?</p>
+    </div>
+    <div class="compare-card red">
+      <h4>4 · Speciesism（物种歧视）</h4>
+      <p>The benefits of research are <strong>not known until after the study</strong>, so the animal may suffer for limited effect. Singer (1975) viewed giving human suffering priority over animal suffering as discrimination: <strong>speciesism</strong>. On this view animals have the same rights as humans and <strong>no amount of regulation can justify animal research</strong>.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：争议的根在「连续性」这个双刃剑</strong><br>
+    支持方的核心论据是连续性：人和动物共享演化祖先和神经系统，所以结果能推广。反方用<strong>同一把刀</strong>反击：既然这么相似，凭什么不给它们同样的伦理保护？再往前一步就是 Singer 的物种歧视。考试写「评价动物研究」时，把这条<strong>连续性正反两用</strong>的思路写出来，比各堆三条理由更能拿高分。
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Animal Ethics — The Law and the Three Rs</h2>
+
+  <h3>The legislation</h3>
+  <ul>
+    <li>The <strong>Animals (Scientific Procedures) Act (1986)</strong> covers all animal research conducted in the UK. It relates to <strong>any scientific procedure that may cause pain, suffering, distress or lasting harm to a 'protected' animal</strong>. Protected animals comprise <strong>all non-human vertebrates and a single invertebrate species (the octopus)</strong>.</li>
+    <li>Psychologists are also directed to follow the <strong>Animal Welfare Act (2006)</strong>, which sets general duties of care towards animals.</li>
+    <li>In Europe, national regulations are governed by <strong>Directive 2010/63/EU</strong> on the protection of animals for scientific research.</li>
+  </ul>
+
+  <h3>The BPS position and the three Rs</h3>
+  <p>The <strong>British Psychological Society (BPS)</strong> states that permission for animal procedures will <strong>not be granted unless the researcher can justify the costs to the animals in relation to the likely benefits</strong>. Curiosity alone is not enough. When permission is requested, the researcher must demonstrate consideration of the <strong>three Rs (Russell and Burch, 1959)</strong> to minimise pain and distress:</p>
+
+  <table>
+    <tr><th>Three Rs</th><th>Meaning</th></tr>
+    <tr><td>Replace（替代）</td><td>Use non-sentient alternatives whenever possible (animals showing no signs of intelligence or self-awareness)</td></tr>
+    <tr><td>Reduce（减少）</td><td>Use fewer animals</td></tr>
+    <tr><td>Refine（优化）</td><td>Refine procedures to minimise suffering</td></tr>
+  </table>
+
+  <h3>The three licences</h3>
+  <table>
+    <tr><th>Licence</th><th>What it regulates</th></tr>
+    <tr><td>Project licence（项目许可）</td><td>Each project gets a new licence specifying the <strong>species and number of animals</strong>; granted only when benefits outweigh costs to the animals</td></tr>
+    <tr><td>Personal licence（个人许可）</td><td>For each researcher, given <strong>only after training</strong> proving competence to perform the procedures</td></tr>
+    <tr><td>Place licence（场所许可）</td><td>Regulates the <strong>conditions in which animals are kept</strong>, such as housing; these places are regularly inspected</td></tr>
+  </table>
+
+  <p>Researchers must <strong>minimise pain, suffering or distress</strong> within the design; adverse effects must be recognised and assessed with <strong>immediate action</strong> when necessary, and the licensed researcher is responsible for this happening.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：三 R 加三证是必背清单</strong><br>
+    课本 checkpoint 原题就问「说出 three Rs 和 three Ps」：<strong>Replace、Reduce、Refine</strong> 加 <strong>Project、Personal、Place</strong> 三张许可。记忆法：三 R 管的是<strong>怎么对待动物</strong>（换掉、减量、减痛），三证管的是<strong>谁批准谁来做在哪做</strong>（项目、个人、场所）。立法背景记一个锚点就够：<strong>1986 年法案 + 八爪鱼是唯一受保护的无脊椎动物</strong>，这个细节考过选择题。
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Checkpoint</h2>
+
+  <div class="xp-block">
+    <h4>🎯 Textbook checkpoint questions<span class="xp-badge">From memory</span></h4>
+    <p class="xp-intro">Cover the sections above and answer. Click an answer to check it.</p>
+    <div class="xp-result" id="res-s12"></div>
+
+    <p class="xp-intro"><strong>1.</strong> Name the three Rs of animal research.</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Replace, Reduce, Refine</button>
+      <button class="q-option" onclick="mcAns(this)">Randomise, Repeat, Report</button>
+      <button class="q-option" onclick="mcAns(this)">Replace, Refine, Release</button>
+    </div>
+
+    <p class="xp-intro"><strong>2.</strong> Name the three licences required for animal research.</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)">Research, Review, Report</button>
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Project, Personal, Place</button>
+      <button class="q-option" onclick="mcAns(this)">Project, Public, Private</button>
+    </div>
+
+    <p class="xp-intro"><strong>3.</strong> Which of these is a condition for using the chi-squared test?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)">Interval data</button>
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Nominal data</button>
+      <button class="q-option" onclick="mcAns(this)">Repeated measures</button>
+    </div>
+
+    <p class="xp-intro"><strong>4.</strong> A researcher watches shoppers from a distance without joining them, and interprets a customer's rushed exit as rudeness. Which issue does the textbook highlight for this design?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Observer bias</button>
+      <button class="q-option" onclick="mcAns(this)">Loss of objectivity from taking part</button>
+      <button class="q-option" onclick="mcAns(this)">Demand characteristics</button>
+    </div>
+
+    <p class="xp-intro"><strong>5.</strong> Why did Ainsworth use a structured rather than a naturalistic observation in the Strange Situation?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">The sequence of events would rarely occur naturally</button>
+      <button class="q-option" onclick="mcAns(this)">Children could not give informed consent</button>
+      <button class="q-option" onclick="mcAns(this)">Naturalistic observations cannot gather quantitative data</button>
+    </div>
+
+    <p class="xp-intro"><strong>6.</strong> Under the Animals (Scientific Procedures) Act (1986), which animals are 'protected'?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)">All living animals including insects</button>
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">All non-human vertebrates plus the octopus</button>
+      <button class="q-option" onclick="mcAns(this)">Only mammals used in laboratories</button>
+    </div>
+
+    <h4 style="margin-top:18px">Textbook matching question — write your answers first</h4>
+    <p class="xp-intro">Match each scenario to a type of observation: structured, naturalistic, participant, non-participant, covert, overt. Each type is used once.</p>
+    <div class="xp-case">
+      <p class="small tight">1. Maya waited outside a cinema to record who went inside<br>
+      2. Leo secretly watched students in a common room<br>
+      3. Asha told students coming into the dining room that she would be watching who they chose to sit next to<br>
+      4. Benito staged a play area in a laboratory to investigate how children play<br>
+      5. Carlos joined a group of bikers to study how they behaved around other biker groups<br>
+      6. Jamal watched and recorded a group of people from a distance</p>
+    </div>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('cp-match')">Show answers</button>
+    </div>
+    <div class="xp-result" id="cp-match">
+      <p>1 <strong>naturalistic</strong> (real setting, behaviour occurs normally) · 2 <strong>covert</strong> (watched secretly) · 3 <strong>overt</strong> (she announced it) · 4 <strong>structured</strong> (staged in a lab) · 5 <strong>participant</strong> (joined the group) · 6 <strong>non-participant</strong> (watched from a distance).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. Exam Lab</h2>
+
+  <div class="syl-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px">
+    <span class="syl-tag">Textbook exam practice</span>
+    <span class="syl-tag">AO1 + AO2 + AO3</span>
+    <span class="syl-tag">8-mark evaluation</span>
+  </div>
+
+  <div class="exam-practice">
+    <h3>Question 1 — Niro's glass walkway (from the textbook)</h3>
+    <p class="small">Niro was investigating heights as a phobia. At the top of a tall building with a glass walkway, visitors could choose the glass path or an avoiding path. Niro observed how many people chose each path.</p>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ 1 — Strength and weakness<span class="xp-badge">4 marks</span></h4>
+    <p class="xp-intro"><em>Explain one strength and one weakness of Niro using an observation research method in this study. (4)</em></p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am1')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am1">
+      <p><strong>Strength (ecological validity):</strong> the observation took place in a natural setting where the behaviour would normally occur, so visitors behaved as they really would when choosing a path, and the findings reflect genuine avoidance of heights rather than artificial laboratory behaviour. <strong>Weakness (lack of control):</strong> extraneous variables such as the weather, how busy the building was, or individual differences in bravery could not be controlled, so it is hard to be sure that path choice was caused by fear of heights alone, and the observation could not be repeated exactly.</p>
+    </div>
+    <div class="cn-note">
+      <strong>中文方法框：4 分观察评价题怎么拆</strong><br>
+      一强一弱各两分：<strong>一分点出优缺点名词，一分挂回 Niro 的场景</strong>。优点选自然情境带来的生态效度，缺点选无法控制额外变量。注意别把优点说成「因为他是观察所以真实」，要写<strong>玻璃走道是真实环境、游客不知道被观察</strong>才落分。弱点同理：天气、人流、胆量都管不住。
+    </div>
+  </div>
+
+  <div class="exam-practice">
+    <h3>Question 2 — Angelo's nursery observation (from the textbook)</h3>
+    <p class="small">Angelo observed children aged two to four in a local nursery. Each child was observed for five minutes and the number of times they played with each toy was tallied. Boys: construction-type toys 18, doll-type toys 32. Girls: construction-type 34, doll-type 12. Angelo used a chi-squared test and found a calculated value of 13.87.</p>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ 2a — Justify the test<span class="xp-badge">2 marks</span></h4>
+    <p class="xp-intro"><em>Justify the use of a chi-squared test for this data. (2)</em></p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am2')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am2">
+      <p>The data is <strong>nominal</strong>: frequencies of boys and girls playing with each category of toy, counted as tallies in categories rather than individual scores. The design uses <strong>independent measures</strong> (each child is either a boy or a girl, so the groups are unrelated) and the hypothesis predicts a <strong>difference</strong> between the groups, so chi-squared is the appropriate test of difference on nominal frequency data.</p>
+    </div>
+    <div class="cn-note">
+      <strong>中文方法框：justify 卡方就说三条件</strong><br>
+      两分题的答案就是 §8 的三条入场条件，<strong>挑两条写满即可</strong>：称名数据（频次计数）、独立测量（男女两组互不重叠）、检验差异或关联。写成「因为数据是频次所以选卡方」只算一条，把<strong>独立组和检验类型</strong>也点上才稳。
+    </div>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ 2b — Is it significant?<span class="xp-badge">2 marks</span></h4>
+    <p class="xp-intro"><em>Angelo found a calculated value of 13.87. Explain whether this is significant at p ≤ 0.05, two-tailed, df = 1. (2)</em></p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am3')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am3">
+      <p>With df = 1 the critical value at p ≤ 0.05 for a two-tailed test is <strong>3.84</strong>. The observed value of <strong>13.87 is greater than 3.84</strong>, so the result is significant: there is less than a five per cent probability that the difference in toy choice between boys and girls is due to chance, so the null hypothesis can be rejected.</p>
+    </div>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ Question 3 — Time sampling<span class="xp-badge">3 marks</span></h4>
+    <p class="xp-intro"><em>Evuska observed whether drivers aged 25 or below, or 50 and above, were more likely to use their mobile phone while driving, using time sampling. Describe how Evuska may have carried out the observation using time sampling. (3)</em></p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am4')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am4">
+      <p>Evuska would divide the observation period into <strong>fixed time intervals</strong>, for example recording every 30 seconds. At each interval she would record <strong>everything observed</strong>: whether each driver was in the younger or older age category and whether they were using a mobile phone at that moment. She would continue through the set intervals for the whole observation period and <strong>tally the frequencies</strong> for each group, so the data could later be compared between the two age categories.</p>
+    </div>
+    <div class="cn-note">
+      <strong>中文方法框：描述时间抽样三步走</strong><br>
+      三分题就三句话：<strong>定间隔（每 30 秒或每 1 分钟）→ 窗口内全记（年龄段 + 是否用手机）→ 全程计数汇总</strong>。别写成事件抽样（那会写成分 behaviors 出现就记），也别忘了最后一句把数据落到两组对比上。
+    </div>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ Question 4 — The 8-mark evaluation<span class="xp-badge">8 marks</span></h4>
+    <p class="xp-intro"><em>Evaluate content analysis as a research method. (8)</em></p>
+    <p class="xp-intro">Frame your answer: <strong>two strengths with explanation → two weaknesses with explanation → a brief conclusion</strong>.</p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am5')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am5">
+      <p><strong>Strength 1 (ethics and access):</strong> content analysis is unobtrusive because data comes from existing sources such as books, adverts or newspapers rather than live participants, so there are rarely ethical issues and material that could never be studied with people (for example historical documents) becomes available. <strong>Strength 2 (reliability):</strong> because the categories are decided in advance, another researcher can replicate the analysis using the same categories, so reliability can easily be assessed, and trends over time can be documented. <strong>Weakness 1 (subjectivity):</strong> the analysis relies on the personal interpretation of the researcher, and if the categories do not represent what they intend to measure the data lacks internal validity. <strong>Weakness 2 (descriptive only):</strong> it describes what is there but not why, so underlying motives stay hidden; it is also limited by the availability of material, and media trends may not reflect reality because dramatic events receive more coverage. Findings may be culture-biased if sources or researchers come from one culture. Overall, content analysis is a valuable indirect observation where live research is impossible, but conclusions should be checked across coders and cultures before being treated as firm.</p>
+    </div>
+    <div class="cn-note">
+      <strong>中文方法框：8 分评价的骨架</strong><br>
+      两强两弱各两分，结构照抄 §6 的绿红卡：<strong>不打扰 + 可复制，主观 + 只描述不解释</strong>。每条都按「名词 + 为什么 + 限制在哪」展开两句。最后一句总结不是分数点，但能让答案收口：方法适合替代没法做的研究，结论要跨编码者和跨文化核对再用。
+    </div>
+  </div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="section" id="s14">
+  <h2>14. Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="keyterm-box"><div class="kt">naturalistic observation <span class="zh">自然观察</span></div>Watching and recording behaviour in a natural environment where the behaviour would normally occur.</div>
+    <div class="keyterm-box"><div class="kt">structured observation <span class="zh">结构观察</span></div>Watching and recording behaviour in an artificial environment where a situation is manipulated to encourage a behaviour.</div>
+    <div class="keyterm-box"><div class="kt">participant observation <span class="zh">参与观察</span></div>The researcher takes an active role in the situation being observed.</div>
+    <div class="keyterm-box"><div class="kt">non-participant observation <span class="zh">非参与观察</span></div>The researcher observes behaviour of others but does not form part of the group they study.</div>
+    <div class="keyterm-box"><div class="kt">overt observation <span class="zh">公开观察</span></div>Those being observed are aware of the presence of an observer.</div>
+    <div class="keyterm-box"><div class="kt">covert observation <span class="zh">隐蔽观察</span></div>The participants do not know they are being observed.</div>
+    <div class="keyterm-box"><div class="kt">observer bias <span class="zh">观察者偏差</span></div>A detached observer misinterprets behaviour subjectively because they do not fully understand why it is displayed.</div>
+    <div class="keyterm-box"><div class="kt">operational definitions of behavioural categories <span class="zh">行为类目的操作性定义</span></div>Clear, unambiguous criteria for each observed category; observers need training in them.</div>
+    <div class="keyterm-box"><div class="kt">time sampling <span class="zh">时间抽样</span></div>Observing at fixed time intervals and recording everything observed in each window.</div>
+    <div class="keyterm-box"><div class="kt">event sampling <span class="zh">事件抽样</span></div>Recording a predetermined behaviour every time it happens.</div>
+    <div class="keyterm-box"><div class="kt">content analysis <span class="zh">内容分析</span></div>An indirect observation of the incidence of words, images or concepts in material such as adverts, books and films.</div>
+    <div class="keyterm-box"><div class="kt">case study <span class="zh">个案研究</span></div>A detailed investigation into one individual or a small group, combining several research methods.</div>
+    <div class="keyterm-box"><div class="kt">Freudian slip <span class="zh">弗洛伊德式口误</span></div>When a client says something they did not mean; the unconscious revealing itself.</div>
+    <div class="keyterm-box"><div class="kt">independent measures <span class="zh">独立测量设计</span></div>A design where different groups of participants are used in each condition of the study.</div>
+    <div class="keyterm-box"><div class="kt">utilitarian argument <span class="zh">功利主义论证</span></div>In animal ethics, the view that a small number of animals suffering is justified because the research helps a significant number of people.</div>
+    <div class="keyterm-box"><div class="kt">anthropomorphism <span class="zh">拟人化</span></div>Mistakenly attributing human qualities to non-human animals.</div>
+    <div class="keyterm-box"><div class="kt">speciesism <span class="zh">物种歧视</span></div>Singer's (1975) term for prioritising human suffering over animal suffering.</div>
+    <div class="keyterm-box"><div class="kt">Animals (Scientific Procedures) Act (1986)</div>UK legislation covering all animal research; protects all non-human vertebrates and the octopus.</div>
+    <div class="keyterm-box"><div class="kt">three Rs (Russell and Burch, 1959)</div>Replace animals with non-sentient alternatives, reduce the number used, refine procedures to minimise suffering.</div>
+    <div class="keyterm-box"><div class="kt">inter-observer reliability <span class="zh">观察者间信度</span></div>More than one observer conducts the observation and the rate of agreement is calculated and published with the data.</div>
+  </div>
+</section>
+
+<div class="footer-note">
+  4.2 Methods · Learning theories and development · next: <a href="../4.3-learning-studies/">4.3 Studies →</a>
+</div>
+</main>
+
+</div><!-- /page-layout -->
+</div><!-- /container -->
+
+<div id="btt" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  /* ---------- sidebar scroll spy ---------- */
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  /* ---------- reveal helper ---------- */
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  /* ---------- multiple choice: one why per option ---------- */
+  var secWhy = {
+    s1: [
+      'Correct. Nothing is manipulated in an observation; all data comes from watching and recording behaviour as it happens.',
+      'Observations can gather quantitative data too: tally charts and frequencies are the standard example.',
+      'Consent depends on the type: covert observations happen precisely because participants are unaware.'
+    ],
+    s3: [
+      'Correct. The behaviour is predetermined and recorded every time it happens: that is event sampling.',
+      'Time sampling records everything at fixed intervals, for example every 30 seconds, not one target behaviour each time it occurs.',
+      'Random sampling is a way of recruiting participants, not a way of recording behaviour during an observation.'
+    ],
+    s4: [
+      'Correct. Ainsworth manipulated the situation in a controlled environment so the sequence (mother leaves, stranger enters, reunion) could be observed: a structured observation.',
+      'Naturalistic observation watches behaviour where it normally occurs; the Strange Situation sequence would rarely happen naturally.',
+      'The researcher did not join the mother-child pair; the observer recorded from outside the interaction.'
+    ],
+    s6: [
+      'Correct. It observes the incidence of words, images or concepts in existing material such as books and adverts, rather than live behaviour.',
+      'Secrecy describes covert observation of people, not the analysis of material people produced.',
+      'Nothing is manipulated in content analysis; categories are agreed in advance and then counted.'
+    ],
+    s7: [
+      'Correct. A Freudian slip is when a client says something they did not mean, and Freud took it as the unconscious revealing itself.',
+      'Transference is when the client redirects feelings onto the analyst during therapy, not a slip of the tongue.',
+      'Free association is the technique of saying whatever comes to mind; a slip is a specific unintended utterance within it.'
+    ],
+    s12: [
+      ['Correct. Replace animals with non-sentient alternatives, reduce the number used, refine procedures to minimise suffering.',
+       'Those are good research practices but not the three Rs of animal ethics.',
+       'Release is not one of the three Rs; the third is refine, meaning refining procedures to minimise suffering.'],
+      ['Not quite: the three licences are all about who does what and where.',
+       'Correct. Project licence for each study, personal licence for each trained researcher, place licence for the housing conditions.',
+       'Public and private are not licence types; the third licence is the place licence regulating housing conditions.'],
+      ['Interval data belongs to tests like the t-test; chi-squared works on frequencies in categories.',
+       'Correct. Chi-squared is a test of difference or association on nominal data.',
+       'Repeated measures is a related design; chi-squared requires independent measures.'],
+      ['Correct. A detached observer who interprets a rushed exit as rudeness is showing observer bias, the textbook name for subjective misinterpretation from a distance.',
+       'Losing objectivity by taking part applies to participant observation; this observer never joined the group.',
+       'Demand characteristics are participants changing behaviour because they guess the aim; shoppers here are unaware.'],
+      ['Correct. The textbook explains that the separation, stranger and reunion sequence would rarely occur naturally, so Ainsworth staged it in a controlled environment.',
+       'Consent was not the design reason; children could not consent in either type of observation.',
+       'Naturalistic observations can gather quantitative data through tallying; the reason was control of the event sequence.'],
+      ['The Act does not cover all living animals; invertebrates are excluded except one species.',
+       'Correct. Protected animals are all non-human vertebrates plus a single invertebrate species, the octopus.',
+       'The Act covers vertebrates generally, not just mammals; it also covers the octopus.']
+    ]
+  };
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = section.querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+</script>
+</body>
+</html>

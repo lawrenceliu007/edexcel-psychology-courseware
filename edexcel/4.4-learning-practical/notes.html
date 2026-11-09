@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>4.4 Practical Investigation — Student Notes Workbook</title>
+<style>
+@page { size: A4; margin: 13mm 12mm 15mm 12mm; }
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif; color:#1a1a1a; font-size:10pt; line-height:1.5; margin:0; background:#f3f3f3; }
+.page { background:#fff; max-width: 800px; margin: 0 auto 10px auto; padding: 10mm 11mm; page-break-after: always; position: relative; min-height: 248mm; }
+@media print { body { background:#fff; } .page { margin:0; padding:0; max-width:none; box-shadow:none; } }
+.pg-head { display:flex; justify-content:space-between; align-items:baseline; border-bottom: 2px solid #333; padding-bottom:4px; margin-bottom:10px; }
+.pg-head .t { font-size:11.5pt; font-weight:700; }
+.pg-head .r { font-size:8pt; color:#777; letter-spacing:.04em; }
+.pg-foot { position:absolute; bottom:4mm; left:0; right:0; text-align:center; font-size:8pt; color:#999; }
+.sec { font-size:10pt; font-weight:700; margin:12px 0 5px 0; padding-left:7px; border-left:3.5px solid #444; }
+.sec:first-of-type { margin-top:2px; }
+.sub { font-size:9.5pt; font-weight:700; margin:9px 0 3px 0; }
+.bl { display:inline-block; border-bottom:1px solid #555; height:1em; vertical-align:baseline; min-width:60px; margin:0 2px; }
+.hint { font-size:8.5pt; color:#666; }
+.hint::before { content:"（"; } .hint::after { content:"）"; }
+table.n { width:100%; border-collapse:collapse; margin:6px 0 9px 0; font-size:9pt; }
+table.n th, table.n td { border:1px solid #999; padding:4px 6px; text-align:left; vertical-align:top; }
+table.n th { background:#e9e9e9; font-size:8.8pt; }
+td.lbl { background:#f4f4f4; width:22%; font-weight:600; }
+.box { border:1px solid #aaa; border-left:4px solid #555; padding:6px 9px; margin:7px 0; border-radius:3px; }
+.box.grey { border:1px dashed #999; border-left:4px dashed #999; background:#fafafa; }
+.box.purple { border-left-color:#7c3aed; background:#faf5ff; }
+.box.blue { border-left-color:#2563eb; background:#f5f9ff; }
+.box.green { border-left-color:#16a34a; background:#f3faf5; }
+.box.orange { border-left-color:#ea580c; background:#fff7ed; }
+.box .bx-t { font-size:9.3pt; font-weight:700; margin-bottom:3px; }
+.wl { border-bottom:1px solid #bbb; height:24pt; }
+.wl.s { height:18pt; }
+ul.tight { margin:4px 0 8px 0; padding-left:17px; }
+ul.tight li { margin-bottom:3px; }
+ol.tight { margin:4px 0 8px 0; padding-left:17px; }
+ol.tight li { margin-bottom:4px; }
+.chk { font-size:9.3pt; }
+.chk .c { display:inline-block; width:11px; height:11px; border:1.3px solid #555; margin-right:6px; vertical-align:-1px; }
+.q { font-style:italic; background:#f6f6f6; border:1px solid #ccc; padding:5px 9px; margin:5px 0; font-size:9.3pt; border-radius:3px; }
+.small { font-size:8.6pt; line-height:1.35; }
+.pg-tight table.n { font-size:8.5pt; margin:5px 0 7px 0; }
+.pg-tight table.n th, .pg-tight table.n td { padding:2.5px 5px; }
+.pg-tight .sub { margin:7px 0 2px 0; }
+.pg-tight .box { padding:5px 8px; margin:6px 0; }
+.pg-tight .small { line-height:1.24; }
+.pg-tight p.small, .pg-tight .sec { font-size:7.9pt; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="pg-head"><span class="t">4.4 Practical Investigation — Your Own Observation</span><span class="r">LEARNING THEORIES · NOTES WORKBOOK</span></div>
+  <div class="box orange">
+    <div class="bx-t">What this workbook covers 本册讲什么</div>
+    Spec 4.4: designing and conducting your own observational practical — design decisions (hypothesis, behavioural categories, coding sheets, sampling), the pilot study, controls and ethics, presenting quantitative data, running a chi-squared test on your results, thematic analysis of the qualitative data, and evaluating and improving your investigation.
+  </div>
+
+  <div class="sec">How to use this booklet 怎么用</div>
+  <ol class="tight">
+    <li><strong>Fill it in as you go</strong> — check the answer key (last page) after each page.</li>
+    <li><strong>The bus worked example (p.3) and the chi-squared steps (p.6) matter most.</strong> The exam asks you to describe YOUR procedure and YOUR data, so the example is your template.</li>
+  </ol>
+
+  <div class="sec">Content map 内容地图</div>
+  <table class="n">
+    <tr><th style="width:12%;">Page</th><th style="width:34%;">Topic</th><th>What you must be able to do afterwards</th></tr>
+    <tr><td class="lbl">p.2</td><td>The brief 要求</td><td>State what the practical must include (both data types, learned behaviour)</td></tr>
+    <tr><td class="lbl">p.3</td><td>Worked example + hypothesis 公交车例</td><td>Retell the bus study; justify a non-directional hypothesis</td></tr>
+    <tr><td class="lbl">p.4</td><td>Planning + coding sheet 规划</td><td>List the design decisions; draw a coding sheet; define behavioural categories</td></tr>
+    <tr><td class="lbl">p.5</td><td>Pilot, controls, ethics + data 试点与数据</td><td>Say what a pilot is for; explain inter-rater reliability and public-place ethics; present the contingency table (bar graph + frequency)</td></tr>
+    <tr><td class="lbl">p.6</td><td>Chi-squared 卡方</td><td>Compute expected values, χ², df, and compare with the critical value</td></tr>
+    <tr><td class="lbl">p.7</td><td>Thematic analysis 主题分析</td><td>Name the five phases (Braun and Clarke) with bus examples</td></tr>
+    <tr><td class="lbl">p.8</td><td>Conclusions + evaluation 结论评价</td><td>Write conclusions from both data types; evaluate on four dimensions</td></tr>
+    <tr><td class="lbl">p.9</td><td>Improvements + checkpoint 改进真题</td><td>Answer the six improvement questions; textbook questions 4+2+2</td></tr>
+    <tr><td class="lbl">p.10</td><td>Answer key + brain dump 答案</td><td>Mark honestly, then rewrite wrong answers in full</td></tr>
+  </table>
+
+  <div class="sec">Revision tracker 复习打卡</div>
+  <p class="chk"><span class="c"></span>p.2–3 brief + example　<span class="c"></span>p.4–5 planning + data　<span class="c"></span>p.6 chi-squared　<span class="c"></span>p.7 themes　<span class="c"></span>p.8–9 evaluation + exam</p>
+
+  <div class="box purple">
+    <div class="bx-t">The whole chapter in one sentence 一句话总结</div>
+    You design a naturalistic observation of <strong>learned behaviour</strong>, tally pre-defined behavioural categories on a coding sheet for numbers, note richer detail for words, test the numbers with <strong>chi-squared</strong> (expected = row × column ÷ overall), sort the words into themes with <strong>Braun and Clarke's five phases</strong>, then defend your choices and fix your flaws.
+  </div>
+
+      <div class="pg-foot">Page 1 of 10</div>
+</div>
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="pg-head"><span class="t">The Brief: What You Must Do 要求</span><span class="r">4.4 PRACTICAL · SPEC 4.4.1</span></div>
+  <div class="sec">Two routes 两条路</div>
+  <p>Either conduct <span class="bl" style="min-width:40px"></span> observations, one for qualitative and one for quantitative data <span class="hint">two</span>, or conduct <span class="bl" style="min-width:40px"></span> observation that gathers both types at once <span class="hint">one</span>. The behaviour observed must be <span class="bl"></span> <span class="hint">learned</span>, for example prosocial/antisocial behaviour, gender type behaviour, or modelling others.</p>
+
+  <div class="sec">What you must be able to produce 产出清单</div>
+  <table class="n">
+    <tr><th style="width:30%;">Stage</th><th>Requirement</th></tr>
+    <tr><td class="lbl">Design decisions</td><td>Behavioural <span class="bl"></span>, coding sheets and tallying, control, hypothesis construction, ethics and observer bias/effects <span class="hint">categories</span></td></tr>
+    <tr><td class="lbl">Data</td><td>Collect, present and comment on data: descriptive <span class="bl"></span> and graphical representation <span class="hint">statistics</span></td></tr>
+    <tr><td class="lbl">Quantitative analysis</td><td>Analyse with a <span class="bl"></span> test and explain the significance of the result <span class="hint">chi-squared</span></td></tr>
+    <tr><td class="lbl">Qualitative analysis</td><td>Conduct a <span class="bl"></span> analysis on the qualitative data and describe findings <span class="hint">thematic</span></td></tr>
+    <tr><td class="lbl">Write-up</td><td>Write the <span class="bl"></span>, results and discussion sections of a report <span class="hint">procedure</span></td></tr>
+  </table>
+
+  <div class="box purple">
+    <div class="bx-t">中文理解：这门实操考的是「设计决策链」</div>
+    考试不考你真去坐了多少趟公交，考你能不能把每一步为什么这么选讲清楚：为什么选自然观察、为什么假设不定向、为什么用卡方。每个选择前面有理由，后面有代价，链条完整就是满分答案的骨架。
+  </div>
+
+  <div class="sec">Your turn: choose your own behaviour 写你自己的</div>
+  <p>Your observation must target <span class="bl"></span> behaviour <span class="hint">learned</span>. Possible targets: prosocial or antisocial behaviour, gender type behaviour, <span class="bl"></span> others <span class="hint">modelling</span>.</p>
+  <p>The behaviour I will observe: <span class="bl" style="min-width:180px"></span></p>
+  <p>The learning theory that explains how it is learned (e.g. Bandura's social learning theory, learned by observing role models): <span class="bl" style="min-width:180px"></span></p>
+  <p>Two data types I will collect: quantitative = <span class="bl" style="min-width:110px"></span>; qualitative = <span class="bl" style="min-width:110px"></span> <span class="hint">tallies on a coding sheet; written notes of what people said</span></p>
+
+      <div class="pg-foot">Page 2 of 10</div>
+</div>
+<!-- PAGE 3 -->
+<div class="page pg-tight">
+  <div class="pg-head"><span class="t">Worked Example + Hypothesis Decision</span><span class="r">4.4 PRACTICAL · THE BUS STUDY</span></div>
+  <div class="sec">The worked example 公交车观察例</div>
+  <p>Observing gender differences in prosocial/polite behaviour on public <span class="bl"></span> <span class="hint">transport</span>. Prosocial behaviour is defined as any behaviour that is intended to <span class="bl"></span> another <span class="hint">benefit</span>. Data collected on an hour's bus journey between <span class="bl" style="min-width:60px"></span> on a Thursday <span class="hint">3.00 and 4.00 p.m.</span>; in all <span class="bl" style="min-width:30px"></span> passengers observed, <span class="bl" style="min-width:30px"></span> women and <span class="bl" style="min-width:30px"></span> men <span class="hint">51; 24; 27</span>.</p>
+
+  <div class="sec">Background literature 背景文献（决定假设方向的依据）</div>
+  <table class="n">
+    <tr><th style="width:34%;">Source</th><th>Claim</th></tr>
+    <tr><td class="lbl">Social learning theory</td><td>Gender-appropriate behaviour learned from role models (parents, teachers, siblings, peers, media) and reinforced through <span class="bl"></span> and punishments <span class="hint">rewards</span>; stereotypes such as women being kind and helpful may be modelled and rewarded more in women</td></tr>
+    <tr><td class="lbl">Eagly (<span class="bl" style="min-width:40px"></span>) <span class="hint">2009</span></td><td>Women and men both engage in prosocial behaviour <span class="bl"></span> <span class="hint">equally</span>, but women show more <span class="bl"></span> and relational prosocial behaviours, men more <span class="bl"></span> ones (to gain status or show strength) <span class="hint">communal; agentic</span></td></tr>
+    <tr><td class="lbl">Leslie, Snyder and Glomb (2013)</td><td>Workplace <span class="bl"></span> to charity: women donated more than men <span class="hint">donations</span></td></tr>
+  </table>
+
+  <div class="sec">The hypothesis decision 假设决策</div>
+  <p>Because the background research is <span class="bl"></span> <span class="hint">mixed</span>, a <span class="bl"></span> (two-tailed) hypothesis was put forward <span class="hint">non-directional</span>: there will be a <span class="bl"></span> in the number of women and men who display prosocial behaviour by thanking the bus driver before alighting <span class="hint">difference</span>. Rules of thumb: unsure of the effect → <span class="bl"></span>; previous results point one way → <span class="bl"></span>; either way the hypothesis must be clearly <span class="bl"></span> <span class="hint">non-directional; directional; testable</span>.</p>
+
+  <div class="box purple">
+    <div class="bx-t">中文理解：假设方向不是拍脑袋</div>
+    文献吵得有来有回（Eagly 说两性都做但类型不同，Snyder 说女性捐得多），没有一边倒的证据，就老实选不定向。考试问「为什么你的假设是不定向的」，答案就是这句：背景文献 mixed。如果文献一致指向一个方向，才选定向。
+  </div>
+
+  <div class="sec">Quick check 快问</div>
+  <p>In Eagly's terms: quietly giving up a seat to help someone = <span class="bl" style="min-width:90px"></span> prosocial behaviour; helping loudly so others see your strength = <span class="bl" style="min-width:90px"></span> <span class="hint">communal; agentic</span></p>
+  <p>Write your own non-directional hypothesis for one behavioural category on a bus:</p>
+  <div class="wl s"></div>
+
+      <div class="pg-foot">Page 3 of 10</div>
+</div>
+<!-- PAGE 4 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Planning: Categories, Coding Sheet</span><span class="r">4.4 PRACTICAL · DESIGN DECISIONS</span></div>
+  <div class="sec">Type of observation 观察类型</div>
+  <p>Observing in a natural setting (a real bus) means a <span class="bl"></span> observation <span class="hint">naturalistic</span>. Sampling technique: participants board by chance, so <span class="bl"></span> sampling <span class="hint">opportunity</span>. Design decisions also needed: which bus or train <span class="bl"></span>, the day of the week, the <span class="bl"></span> of day and the duration of the journey <span class="hint">route; time</span> — all influence how many passengers and what type.</p>
+
+  <div class="sec">Behavioural categories 行为类目</div>
+  <p>Measure polite behaviour as whether passengers <span class="bl"></span> the driver before alighting <span class="hint">thank</span>. Other possible categories: assisting other passengers, giving up a <span class="bl"></span>, making way for others on a crowded bus <span class="hint">seat</span>.</p>
+
+  <div class="sec">Coding sheet（Table 25.1）计数表</div>
+  <table class="n">
+    <tr><th>Behaviour</th><th>Male</th><th>Female</th></tr>
+    <tr><td class="lbl">Thanking the bus driver</td><td><span class="bl" style="min-width:50px"></span> <span class="hint">I (1)</span></td><td><span class="bl" style="min-width:50px"></span> <span class="hint">III (3)</span></td></tr>
+    <tr><td class="lbl">Giving up a seat on the bus</td><td><span class="bl" style="min-width:50px"></span> <span class="hint">II (2)</span></td><td><span class="bl" style="min-width:50px"></span> <span class="hint">—</span></td></tr>
+    <tr><td class="lbl">Helping a passenger with a pushchair</td><td><span class="bl" style="min-width:50px"></span> <span class="hint">I (1)</span></td><td><span class="bl" style="min-width:50px"></span> <span class="hint">II (2)</span></td></tr>
+  </table>
+  <p class="small">Tallying counts give <span class="bl"></span> data, testable with an inferential test <span class="hint">quantitative</span>. For <span class="bl"></span> data, write down what passengers actually said, the driver's gender, ages, eye contact <span class="hint">qualitative</span> — analysed later with thematic analysis.</p>
+
+  <div class="box purple">
+    <div class="bx-t">中文理解：coding sheet 是双轨数据的接口</div>
+    同一趟观察两条轨道：计数栏记频率（定量），便签栏记细节（定性）。类目必须操作化定义清楚（什么叫「感谢司机」：下车前对司机说谢谢，方向对、时机对就算），否则两个观察员记的不是同一个东西，信度就崩了。
+  </div>
+
+  <div class="sec">Operationalise it 下操作定义</div>
+  <p>Write an operational definition of 'thanking the driver' (state exactly what counts, said by whom, and when):</p>
+  <div class="wl s"></div>
+  <p class="small">Which type-words apply to the bus observation? Naturalistic, because the setting is <span class="bl"></span>; likely covert, because passengers are <span class="bl"></span>; likely non-participant, because the observer <span class="bl"></span> <span class="hint">natural; unaware; does not join in</span>.</p>
+
+      <div class="pg-foot">Page 4 of 10</div>
+</div>
+<!-- PAGE 5 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Pilot Study, Controls, Ethics + Presenting the Quantitative Data 定量数据</span><span class="r">4.4 PRACTICAL · BEFORE THE MAIN RUN</span></div>
+  <div class="sec">Pilot study 试点研究</div>
+  <p>Run before the main observation to address potential problems and test your observational <span class="bl"></span> <span class="hint">criteria</span>. Questions it answers: where is the best <span class="bl"></span> to observe (sit near the front for driver interactions) <span class="hint">position</span>; how long the journey needs to be for enough data; whether you can observe everyone at busy times. <strong>Key point:</strong> a pilot is not used to test whether the investigation is <span class="bl"></span> or <span class="bl"></span> <span class="hint">valid; reliable</span> — it only checks apparatus and timings work correctly. It is also a chance to ask participants whether they felt uncomfortable or suspected anything.</p>
+
+  <div class="sec">Controls 控制</div>
+  <p>Recruiting a second observer helps, e.g. one watches <span class="bl"></span> passengers, one watches <span class="bl"></span> <span class="hint">male; female</span>. You must then consider <span class="bl"></span> reliability: the degree of agreement between two or more observers <span class="hint">inter-rater</span>, ensuring consistency and controlling for <span class="bl"></span> bias <span class="hint">observer</span>. The observation is likely <span class="bl"></span> (participants unaware) <span class="hint">covert</span>; check whether passengers notice your note-taking and become suspicious — that would pose a <span class="bl"></span> variable <span class="hint">confounding</span>.</p>
+
+  <div class="sec">Ethical considerations 伦理</div>
+  <p>Observations in <span class="bl"></span> places are considered acceptable because you would expect to be observed in day-to-day interactions there <span class="hint">public</span>. You collect no names or personal data, only gender and observed behaviour, so no ethical guidelines are <span class="bl"></span> <span class="hint">contravened</span>. You might gain consent after the observation is complete, though this may not be <span class="bl"></span> <span class="hint">practical</span>.</p>
+
+  <div class="box purple">
+    <div class="bx-t">中文理解：pilot 的边界最容易考</div>
+    一句话卡死：pilot 查流程行不行（器材、时长、站位），查信度效度是主实验的事。公共场合观察伦理过关的理由也记两条：本来就默认会被看见；只记性别和行为，不碰个人信息。
+  </div>
+
+    
+  <div class="sec">Contingency table 列联表（Table 25.2）</div>
+  <table class="n">
+    <tr><th></th><th>Men</th><th>Women</th><th>Total</th></tr>
+    <tr><td class="lbl">Thanked the bus driver</td><td><span class="bl" style="min-width:44px"></span> (cell A) <span class="hint">11</span></td><td><span class="bl" style="min-width:44px"></span> (cell B) <span class="hint">18</span></td><td><span class="bl" style="min-width:44px"></span> <span class="hint">29</span></td></tr>
+    <tr><td class="lbl">Did not thank the driver</td><td><span class="bl" style="min-width:44px"></span> (cell C) <span class="hint">16</span></td><td><span class="bl" style="min-width:44px"></span> (cell D) <span class="hint">6</span></td><td><span class="bl" style="min-width:44px"></span> <span class="hint">22</span></td></tr>
+    <tr><td class="lbl">Total</td><td><span class="bl" style="min-width:44px"></span> <span class="hint">27</span></td><td><span class="bl" style="min-width:44px"></span> <span class="hint">24</span></td><td><span class="bl" style="min-width:44px"></span> <span class="hint">51</span></td></tr>
+  </table>
+  <p class="small">This is a <span class="bl"></span> contingency table, suitable for <span class="bl"></span> data <span class="hint">two-by-two; nominal</span>.</p>
+
+  <div class="sec">Descriptive statistics and graphs 描述统计与图</div>
+  <p>Best descriptive statistic for this data: <span class="bl" style="min-width:60px"></span> <span class="hint">frequency</span>. Best graph: a <span class="bl" style="min-width:60px"></span> graph, because nominal level data <span class="hint">bar</span>. Remember to label the <span class="bl"></span> and axes fully and provide a key where necessary <span class="hint">title</span>.</p>
+
+  <div class="box purple">
+    <div class="bx-t">中文理解：数据类型决定图表</div>
+    名义数据只有频次数，均值中位数都算不出来，所以描述统计用 frequency，画图用 bar graph。散点图要两列连续数据，折线图要时间序列，都对不上。这条选择题课本 checkpoint 原题考过。
+  </div>
+
+      <div class="pg-foot">Page 5 of 10</div>
+</div>
+<!-- PAGE 6 -->
+<div class="page pg-tight">
+  <div class="pg-head"><span class="t">Running the Chi-Squared Test 卡方实操</span><span class="r">4.4 PRACTICAL · WORKED CALCULATION</span></div>
+  <div class="sec">Why chi-squared 为什么选卡方</div>
+  <p>The study predicts a <span class="bl"></span>, uses unrelated data / <span class="bl"></span> groups, and the data is <span class="bl"></span> level <span class="hint">difference; independent; nominal</span>. The full nine-step method is in 4.2; here is the compressed three-step version used in the practical.</p>
+
+  <div class="sec">Step 1: Expected values 期望值</div>
+  <p>Formula: E = row total × column total ÷ <span class="bl"></span> total <span class="hint">overall</span></p>
+  <table class="n">
+    <tr><th style="width:16%;">Cell</th><th>Calculation</th><th>Result</th></tr>
+    <tr><td class="lbl">A</td><td><span class="bl" style="min-width:120px"></span> <span class="hint">29 × 27 / 51</span></td><td><span class="bl" style="min-width:50px"></span> <span class="hint">15.35</span></td></tr>
+    <tr><td class="lbl">B</td><td><span class="bl" style="min-width:120px"></span> <span class="hint">29 × 24 / 51</span></td><td><span class="bl" style="min-width:50px"></span> <span class="hint">13.65</span></td></tr>
+    <tr><td class="lbl">C</td><td><span class="bl" style="min-width:120px"></span> <span class="hint">22 × 27 / 51</span></td><td><span class="bl" style="min-width:50px"></span> <span class="hint">11.65</span></td></tr>
+    <tr><td class="lbl">D</td><td><span class="bl" style="min-width:120px"></span> <span class="hint">22 × 24 / 51</span></td><td><span class="bl" style="min-width:50px"></span> <span class="hint">10.35</span></td></tr>
+  </table>
+
+  <div class="sec">Step 2: (O − E)² ÷ E per cell, then add 加总</div>
+  <table class="n">
+    <tr><th style="width:16%;">Cell</th><th>Calculation</th><th>Result</th></tr>
+    <tr><td class="lbl">A</td><td>(<span class="bl" style="min-width:30px"></span> − 15.35)² ÷ 15.35 <span class="hint">11</span></td><td><span class="bl" style="min-width:50px"></span> <span class="hint">1.23</span></td></tr>
+    <tr><td class="lbl">B</td><td>(<span class="bl" style="min-width:30px"></span> − 13.65)² ÷ 13.65 <span class="hint">18</span></td><td><span class="bl" style="min-width:50px"></span> <span class="hint">1.39</span></td></tr>
+    <tr><td class="lbl">C</td><td>(<span class="bl" style="min-width:30px"></span> − 11.65)² ÷ 11.65 <span class="hint">16</span></td><td><span class="bl" style="min-width:50px"></span> <span class="hint">1.62</span></td></tr>
+    <tr><td class="lbl">D</td><td>(<span class="bl" style="min-width:30px"></span> − 10.35)² ÷ 10.35 <span class="hint">6</span></td><td><span class="bl" style="min-width:50px"></span> <span class="hint">1.83</span></td></tr>
+    <tr><td class="lbl">Total</td><td>χ² = sum of the four cells</td><td><span class="bl" style="min-width:50px"></span> <span class="hint">6.07</span></td></tr>
+  </table>
+
+  <div class="sec">Step 3: df, critical value, decision 自由度与判定</div>
+  <p>df = (<span class="bl" style="min-width:30px"></span> − 1) × (<span class="bl" style="min-width:30px"></span> − 1) = <span class="bl" style="min-width:30px"></span> <span class="hint">rows; columns; 1</span>. For a non-directional/two-tailed hypothesis, df = 1, p &lt; 0.05, the critical value is <span class="bl" style="min-width:44px"></span> <span class="hint">3.84</span>. Observed <span class="bl" style="min-width:44px"></span> critical value → significant, reject the <span class="bl"></span> hypothesis <span class="hint">6.07 ≥ 3.84; null</span>. Less than a five per cent probability the difference is due to <span class="bl"></span> <span class="hint">chance</span>. Direction found by examining the cells: <span class="bl"></span> were more likely to thank the bus driver <span class="hint">females</span>.</p>
+  <p class="small">Chi-squared has a <span class="bl" style="min-width:30px"></span> column, not an 'n' column, because nominal data gives no individual scores <span class="hint">df</span>.</p>
+
+  <div class="box purple">
+    <div class="bx-t">中文理解：三步就能交卷</div>
+    算期望（行乘列除总数）→ 算卡方（差方除期望再相加）→ 查表判定（自由度行减一乘列减一，观测值大于等于临界值就显著）。方向看格子：18 比 6，女的更爱说谢谢。4.2 讲完整九步法，这里练三步压缩版，考试两边都要会。
+  </div>
+
+      <div class="pg-foot">Page 6 of 10</div>
+</div>
+<!-- PAGE 7 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Thematic Analysis 主题分析</span><span class="r">4.4 PRACTICAL · BRAUN AND CLARKE (2006)</span></div>
+  <div class="sec">The five phases 五阶段</div>
+  <table class="n">
+    <tr><th style="width:30%;">Phase</th><th>What happens</th><th>Bus example</th></tr>
+    <tr><td class="lbl">1. Familiarisation 熟悉数据</td><td>Read through the notes, start noticing <span class="bl"></span> <span class="hint">themes</span></td><td>Males say 'Thanks' and make small talk ('What time does your shift finish?'); females say thank you plus a <span class="bl"></span> greeting and make eye contact <span class="hint">departure</span></td></tr>
+    <tr><td class="lbl">2. Generating initial codes 生成初始编码</td><td>A label or code given to specific categories identified</td><td>'thank you, with <span class="bl"></span>', 'thank you, with no familiarity', 'departure greeting', 'small talk' <span class="hint">familiarity</span></td></tr>
+    <tr><td class="lbl">3. Searching for themes 寻找主题</td><td>Seek themes on the basis of initial codes for some meaning</td><td>'<span class="bl"></span> familiarity' — passengers who make small talk treat the driver as familiar <span class="hint">implied</span></td></tr>
+    <tr><td class="lbl">4. Reviewing themes 回顾主题</td><td>Try out the categories, e.g. collect <span class="bl"></span> set of data to see if future observations fit <span class="hint">another</span></td><td>Does a second bus journey produce the same patterns?</td></tr>
+    <tr><td class="lbl">5. Defining and naming themes 定义命名</td><td>Themes clearly defined; a <span class="bl"></span> is produced telling a story about the emerging themes <span class="hint">report</span></td><td>Gender differences in how politeness is expressed to drivers</td></tr>
+  </table>
+
+  <div class="sec">Qualitative vs quantitative data 两种数据的性格</div>
+  <p>Qualitative data cannot be summarised in a chart or graph; it provides much <span class="bl"></span> detail on the complexities of human interaction <span class="hint">richer</span>. But it is harder to select patterns and draw <span class="bl"></span> conclusions <span class="hint">firm</span>, and it is more likely to be <span class="bl"></span>, reflecting the researcher's personal viewpoints and background <span class="hint">subjective</span>.</p>
+
+  <div class="box purple">
+    <div class="bx-t">中文理解：五阶段记五个字（读编找验定）</div>
+    先通读材料有感觉，再给片段贴标签，标签归类成主题，拿新数据验主题站不站得住，最后给主题命名写成报告。考点常考两处：Braun and Clarke 配 2006；第四阶段是回头验证，顺序不能乱。
+  </div>
+
+      <div class="pg-foot">Page 7 of 10</div>
+</div>
+<!-- PAGE 8 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Conclusions + Evaluation 结论与评价</span><span class="r">4.4 PRACTICAL · FOUR DIMENSIONS</span></div>
+  <div class="sec">Conclusions 结论</div>
+  <p><span class="bl"></span> data: the chi-squared result is significant, so the null hypothesis is rejected and the experimental hypothesis accepted <span class="hint">Quantitative</span>. Qualitative data: draw conclusions from the <span class="bl"></span> in the observation, supporting your interpretation with specific <span class="bl"></span> or observations <span class="hint">themes; quotes</span> (e.g. more small talk with male passengers, backed by actual quotes).</p>
+
+  <div class="sec">Evaluation: four dimensions 四个维度</div>
+  <table class="n">
+    <tr><th style="width:26%;">Dimension</th><th>Points</th></tr>
+    <tr><td class="lbl">Validity 效度</td><td>Naturalistic setting in real life suggests a degree of validity. 'Thank you' is a relatively <span class="bl"></span> measure (no judgement involved) <span class="hint">objective</span>; but qualitative notes like 'small talk' involve more <span class="bl"></span> <span class="hint">interpretation</span>. Improvement: <span class="bl"></span> validation — get feedback from participants (e.g. interview regular bus users) to check your interpretation <span class="hint">respondent</span></td></tr>
+    <tr><td class="lbl">Reliability 信度</td><td>Can another observer repeat the study and get similar findings? <span class="bl"></span> reliability: agreement between two or more observers; lack of consensus means the behavioural categories may need to be <span class="bl"></span> <span class="hint">inter-rater; revised</span>. <span class="bl"></span>–retest: repeat the observation on the same route later (a day, week or month) and compare <span class="hint">test</span></td></tr>
+    <tr><td class="lbl">Generalisability 概化</td><td>Time of day affects the <span class="bl"></span> achieved <span class="hint">sample</span>; ages need consideration — an equal distribution minimises bias. More retired passengers may raise polite interactions (less time-pressured, more traditional values of respect)</td></tr>
+    <tr><td class="lbl">Credibility 可信度</td><td>Depends on scientific principles: <span class="bl"></span>, measurable phenomena <span class="hint">replicability</span>. Weigh overall strengths (naturalistic = valid measurement) against weaknesses (fixed time of day limits generalisation; repeated observations may be needed)</td></tr>
+  </table>
+
+  <div class="sec">Triangulation 三角互证</div>
+  <p><span class="bl"></span>: using more than one approach to investigate a research question <span class="hint">Triangulation</span>. A single method suffers from that method's own limits; checking results by other methods gives increased <span class="bl"></span> in the findings if similar results emerge <span class="hint">confidence</span>. Example: a <span class="bl"></span> with bus passengers on politeness, to see if their views match the behaviour observed <span class="hint">questionnaire</span>.</p>
+
+  <div class="box purple">
+    <div class="bx-t">中文理解：四维评价一句话版</div>
+    效度看情境真不真、类目客观不客观；信度看换个观察员换个日子还能不能复制；概化看时段和年龄偏不偏；可信度看符不符合科学原则。respondent validation 和 triangulation 是两个加分招：一个问当事人认不认，一个换方法对不对得上。
+  </div>
+
+      <div class="pg-foot">Page 8 of 10</div>
+</div>
+<!-- PAGE 9 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Improvements + Checkpoint + Exam Practice</span><span class="r">4.4 PRACTICAL · TEXTBOOK</span></div>
+  <div class="sec">Six improvement questions 改进六问</div>
+  <ol class="tight">
+    <li>Was the <span class="bl"></span> representative? How could it be made more representative? <span class="hint">sample</span></li>
+    <li>Was the <span class="bl"></span> natural? How could it be more natural? <span class="hint">situation</span></li>
+    <li>Any issues with lack of <span class="bl"></span>? What controls could be used? <span class="hint">control</span></li>
+    <li>Were the behavioural categories measuring what was <span class="bl"></span>? How could they be operationalised more effectively? <span class="hint">intended</span></li>
+    <li>Was any data collection or analysis <span class="bl"></span>? How could it be more objective? <span class="hint">subjective</span></li>
+    <li>Any unforeseen <span class="bl"></span> issues? How could ethics be improved? <span class="hint">ethical</span></li>
+  </ol>
+
+  <div class="sec">Checkpoint（课本）</div>
+  <p class="small"><strong>1.</strong> Put the chi-squared instructions in the correct order: a) subtract the expected value from the observed value, then divide by the expected value · b) compare the calculated value with the critical/table value · c) calculate expected values (row total × column total / overall total) · d) total the scores for each cell to give the chi-squared value.</p>
+  <p class="small">First <span class="bl" style="min-width:40px"></span> then <span class="bl" style="min-width:40px"></span> then <span class="bl" style="min-width:40px"></span> finally <span class="bl" style="min-width:40px"></span></p>
+  <p class="small"><strong>2.</strong> Best descriptive statistic for the quantitative data: a) mean b) median c) frequency → <span class="bl" style="min-width:40px"></span></p>
+  <p class="small"><strong>3.</strong> Best graphical presentation: a) scattergraph b) bar graph c) line graph → <span class="bl" style="min-width:40px"></span></p>
+
+  <div class="sec">Exam practice（课本）</div>
+  <p class="q">1. (a) Describe the procedure of your learning theories and development practical investigation. (4) (b) Explain one strength of your practical investigation in terms of validity. (2) (c) Explain one improvement you could have made in terms of reliability. (2)</p>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl s"></div>
+
+      <div class="pg-foot">Page 9 of 10</div>
+</div>
+<!-- PAGE 10 -->
+<div class="page pg-tight">
+  <div class="pg-head"><span class="t">Answer Key 答案速查 + Brain Dump</span><span class="r">4.4 PRACTICAL · MARK HONESTLY</span></div>
+  <div class="sec">Answer key 答案速查</div>
+  <p class="small"><strong>p.2</strong> two · one · learned · categories · statistics · chi-squared · thematic · procedure · learned/modelling · tallies on a coding sheet / written notes.<br>
+  <strong>p.3</strong> transport · benefit · 3.00–4.00 p.m. · 51/24/27 · rewards · 2009 · equally · communal · agentic · donations · mixed · non-directional · difference · non-directional; directional; testable · communal; agentic (quick check).<br>
+  <strong>p.4</strong> naturalistic · opportunity · route · time · thank · seat · I/III · II/— · I/II · quantitative · qualitative · operational definition = own wording · natural · unaware · does not join in.<br>
+  <strong>p.5</strong> criteria · position · valid · reliable · male · female · inter-rater · observer · covert · confounding · public · contravened · practical · 11/18/29 · 16/6/22 · 27/24/51 · two-by-two · nominal · frequency · bar · title.<br>
+  <strong>p.6</strong> difference · independent · nominal · overall · 29×27/51→15.35 · 29×24/51→13.65 · 22×27/51→11.65 · 22×24/51→10.35 · 11/18/16/6 · 1.23/1.39/1.62/1.83 · 6.07 · rows · columns · 1 · 3.84 · 6.07 ≥ 3.84 · null · chance · females · df.<br>
+  <strong>p.7</strong> themes · departure · familiarity · implied · another · report · richer · firm · subjective.<br>
+  <strong>p.8</strong> Quantitative · themes · quotes · objective · interpretation · respondent · inter-rater · revised · test · sample · replicability · Triangulation · confidence · questionnaire.<br>
+  <strong>p.9</strong> sample · situation · control · intended · subjective · ethical · order: c, a, d, b · 2c · 3b.</p>
+
+  <div class="sec">Model answer highlights 高分要点（4+2+2 分题）</div>
+  <div class="box green">
+    <div class="bx-t">Q1(a) 描述自己的 procedure（4 分骨架）</div>
+    <span class="small">Describe what you actually did in order: naturalistic observation of passengers on a bus (state route, day, time, duration); behavioural category = thanking the driver before alighting; tallied males and females on a coding sheet (quantitative) while noting what passengers said (qualitative); opportunity sampling; 51 passengers observed. Four distinct steps, each with a detail.</span>
+  </div>
+  <div class="box green">
+    <div class="bx-t">Q1(b) 效度优点 + Q1(c) 信度改进（2+2 分骨架）</div>
+    <span class="small">(b) Validity strength: the observation was naturalistic, carried out in a real bus where the behaviour normally occurs, so thanking behaviour was genuine and spontaneous. (c) Reliability improvement: recruit a second observer and check inter-rater reliability (degree of agreement between observers); disagreement would show the behavioural categories need revising. State the concept + apply it to YOUR study.</span>
+  </div>
+
+  <div class="sec">Brain dump 空白重写</div>
+  <p class="small">Rewrite, from memory and in full, any answer you got wrong or left blank above:</p>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+
+      <div class="pg-foot">Page 10 of 10</div>
+</div>
+</body>
+</html>

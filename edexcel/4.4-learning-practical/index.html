@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.4 Practical Investigation — Observing Learned Behaviour</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic D · Learning theories — 4.4 Practical Investigation</span>
+  </div>
+  <span class="nav-pill">🧩 Learning Psychology</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="4.4-Learning-Practical-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">4.4 Practical</div>
+    <div class="sb-header-sub">Observation · Chi-squared · Thematic analysis · 观察实操</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+    <li class="sb-item"><a href="#s2">2. Practical Map</a></li>
+    <li class="sb-item"><a href="#s3">3. The Worked Example</a></li>
+    <li class="sb-item"><a href="#s4">4. Hypotheses</a></li>
+    <li class="sb-item"><a href="#s5">5. Planning &amp; Coding Sheet</a></li>
+    <li class="sb-item"><a href="#s6">6. Pilot · Controls · Ethics</a></li>
+    <li class="sb-item"><a href="#s7">7. Quantitative Data</a></li>
+    <li class="sb-item"><a href="#s8">8. Chi-Squared Worked</a></li>
+    <li class="sb-item"><a href="#s9">9. Thematic Analysis</a></li>
+    <li class="sb-item"><a href="#s10">10. Conclusions</a></li>
+    <li class="sb-item"><a href="#s11">11. Evaluating Your Study</a></li>
+    <li class="sb-item"><a href="#s12">12. Improving Your Study</a></li>
+    <li class="sb-item"><a href="#s13">13. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s14">14. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s15">15. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>4.4 PRACTICAL INVESTIGATION<br><span style="font-size:0.65em">Observing learned behaviour · Chi-squared · Thematic analysis · 观察法实操</span></h1>
+  <div class="meta">
+    <span class="badge">Topic D · Learning theories and development</span>
+    <span class="badge">Practical investigation</span>
+    <span class="badge">Spec 4.4.1</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this chapter is really asking</h4>
+  <ol>
+    <li><strong>You design and conduct observations</strong> on an aspect of <strong>learned behaviour</strong>: two observations, or one that gathers both qualitative and quantitative data.</li>
+    <li><strong>Every design decision is examinable:</strong> behavioural categories, coding sheets, tallying, control, hypothesis construction, ethics, observer bias and effects.</li>
+    <li><strong>Analysis is two-track:</strong> a <strong>chi-squared test</strong> on the tally frequencies plus a <strong>thematic analysis</strong> (Braun and Clarke, 2006) on the qualitative notes.</li>
+    <li><strong>The worked example</strong> (thanking the bus driver) is your template: reproduce its logic with your own behaviour and you have every 4-mark and 8-mark practical question covered.</li>
+  </ol>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started — Observation Is Systematic</h2>
+
+  <p>An observation is more than simply seeing: it is the <strong>systematic collection of pre-defined behaviours</strong>, with careful consideration of what behaviours would be expected for a given aim. The textbook gives three example aims; for each, think what pre-defined behaviours you would expect:</p>
+  <ul class="tight">
+    <li>Investigate <strong>non-verbal communication patterns during job interviews</strong>.</li>
+    <li>Investigate <strong>classroom behaviour when teachers use different behaviour management strategies</strong>.</li>
+    <li>Investigate <strong>parent–child interactions in a preschool setting</strong>.</li>
+  </ul>
+
+  <div class="cn-note">
+    <strong>中文理解：先定行为，再开观察</strong><br>
+    实操题的第一个失分点是把「观察」当成随便看。考纲要求 <strong>pre-defined behaviours</strong>：动手之前就要把要记的行为列清楚、定义清楚。4.4 的所有题都围绕「你怎么设计」展开，而这的第一步永远是：这个研究问题里，哪些行为值得记？怎么算发生了一次？
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Practical Map — What the Spec Requires</h2>
+
+  <table>
+    <tr><th>Requirement (spec 4.4.1)</th><th>What it means in practice</th><th>Where in this page</th></tr>
+    <tr><td>Two observations, or one gathering both data types</td><td>One qualitative and one quantitative, or a single observation doing both</td><td>§3, §5</td></tr>
+    <tr><td>Design decisions</td><td>Behavioural categories, coding sheets, tallying, control, hypothesis construction, ethics, observer bias/effects</td><td>§4–§6</td></tr>
+    <tr><td>Present and comment on data</td><td>Descriptive statistics: percentages, frequencies; bar chart or histogram as appropriate</td><td>§7</td></tr>
+    <tr><td>Chi-squared test</td><td>Calculate it, explain the significance of the result</td><td>§8</td></tr>
+    <tr><td>Thematic analysis</td><td>Conduct it on the qualitative data and describe the findings</td><td>§9</td></tr>
+    <tr><td>Strengths, weaknesses, improvements</td><td>Validity, reliability, generalisability, credibility of your observation</td><td>§11–§12</td></tr>
+    <tr><td>Write-up</td><td>Procedure, results and discussion sections of a report</td><td>§10</td></tr>
+  </table>
+
+  <div class="figure">
+  <svg viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+    <defs>
+      <marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/>
+      </marker>
+    </defs>
+    <rect x="215" y="12" width="250" height="44" rx="10" fill="#ea580c"/>
+    <text x="340" y="32" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">Learned behaviour (e.g. politeness)</text>
+    <text x="340" y="48" text-anchor="middle" fill="#ffe4cf" font-size="10">explainable by learning theories</text>
+    <rect x="40" y="96" width="280" height="58" rx="10" fill="#fff" stroke="#ea580c" stroke-width="2"/>
+    <text x="180" y="118" text-anchor="middle" fill="#c2410c" font-size="12" font-weight="bold">Quantitative track</text>
+    <text x="180" y="134" text-anchor="middle" fill="#64748b" font-size="10">coding sheet → tally → contingency table</text>
+    <rect x="360" y="96" width="280" height="58" rx="10" fill="#fff" stroke="#ea580c" stroke-width="2"/>
+    <text x="500" y="118" text-anchor="middle" fill="#c2410c" font-size="12" font-weight="bold">Qualitative track</text>
+    <text x="500" y="134" text-anchor="middle" fill="#64748b" font-size="10">detailed notes → themes</text>
+    <line x1="200" y1="60" x2="180" y2="94" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar3)"/>
+    <line x1="480" y1="60" x2="500" y2="94" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar3)"/>
+    <rect x="40" y="170" width="280" height="40" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="180" y="188" text-anchor="middle" fill="#475569" font-size="11">chi-squared → significant or not?</text>
+    <text x="180" y="202" text-anchor="middle" fill="#475569" font-size="11">bar graph (nominal data)</text>
+    <rect x="360" y="170" width="280" height="40" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="500" y="188" text-anchor="middle" fill="#475569" font-size="11">Braun and Clarke (2006) five phases</text>
+    <text x="500" y="202" text-anchor="middle" fill="#475569" font-size="11">richer detail, but subjective</text>
+    <line x1="180" y1="154" x2="180" y2="168" stroke="#cbd5e1" stroke-width="1.2"/>
+    <line x1="500" y1="154" x2="500" y2="168" stroke="#cbd5e1" stroke-width="1.2"/>
+  </svg>
+  <div class="figure-caption">One observation, two data tracks, two analyses</div>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. The Worked Example: Prosocial Behaviour on Public Transport</h2>
+
+  <p>The textbook works through one complete practical: <strong>gender differences in prosocial or polite behaviour on a bus</strong>. <strong>Prosocial behaviour（亲社会行为）</strong> is defined as any behaviour that is intended to benefit another.</p>
+
+  <h3>Link to learning theories</h3>
+  <p>Chapter 15 of this book covered Bandura: children observing an aggressive role model later model that antisocial behaviour. By observing prosocial behaviour you can test whether <strong>social learning theory also explains the modelling of prosocial behaviours</strong> in society.</p>
+  <ul>
+    <li>Social learning theory suggests we learn gender-appropriate behaviour from <strong>parents, teachers, siblings, peers and the media</strong>, with rewards and punishments reinforcing it.</li>
+    <li><strong>Eagly (2009)</strong>: women and men both engage in prosocial behaviour, but women tend towards more <strong>communal and relational</strong> prosocial behaviours while men display more <strong>agentic</strong> ones, engaging in prosocial acts to gain status or show strength.</li>
+    <li><strong>Leslie, Snyder and Glomb (2013)</strong>: examining workplace donations to charity suggested <strong>women donated more than men</strong>.</li>
+  </ul>
+
+  <div class="cn-note">
+    <strong>中文理解：实操也要有理论背景</strong><br>
+    4.4 的考察形式是「描述你的实操」，但高分答案里必须出现<strong>为什么研究这个行为</strong>的理论依据：SLT 说性别化行为是被榜样和强化教出来的，所以礼貌行为是合适的「习得行为」素材。Eagly 和 Leslie 那两条研究告诉你背景文献是<strong>混合的</strong>，这正是下一步选非定向假设的理由。因果链一路通到底。
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Hypotheses — Directional or Non-directional?</h2>
+
+  <ul>
+    <li>Use a <strong>non-directional (two-tailed) hypothesis</strong> when researchers are unsure of the effect.</li>
+    <li>Use a <strong>directional (one-tailed) hypothesis</strong> when previous studies suggest which way the research will go.</li>
+    <li>Whatever you choose, it must be <strong>clearly testable</strong>.</li>
+  </ul>
+
+  <div class="note-box">
+    <h4>The worked example's decision</h4>
+    <p>Because the background literature on gender and prosocial behaviour is <strong>mixed</strong> (Eagly says both genders help in different ways; Leslie et al. suggest women donate more), the practical puts forward a <strong>non-directional (two-tailed) hypothesis</strong>:</p>
+    <p><em>"There will be a difference in the number of women and men who display prosocial behaviour by thanking the bus driver before alighting."</em></p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：定向与非定向有理有据</strong><br>
+    选哪种假设不能拍脑袋：<strong>文献一致 → 定向；文献矛盾或没有文献 → 非定向</strong>。考试描述你的实操时，写完假设要补一句理由（"因为背景文献结果混合"），这句就是两分题里常考的设计决策。假设句式照抄课本：有差异（difference）的写法，别写成相关。
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Planning the Observation and the Coding Sheet</h2>
+
+  <h3>Design decisions</h3>
+  <ul>
+    <li><strong>Type:</strong> a <strong>naturalistic observation</strong> of people on a bus, in a natural setting. The sampling technique for participants is <strong>opportunity sampling</strong>.</li>
+    <li><strong>When and where:</strong> which bus route, day of week, time of day and journey duration. All influence how many passengers there are and what type.</li>
+    <li><strong>Statistical test in mind:</strong> plan the quantitative side knowing you will use chi-squared later; participants fall into unrelated categories (male or female), so the data is unrelated.</li>
+  </ul>
+
+  <h3>Behavioural categories and the coding sheet</h3>
+  <p>Decide the behaviours to observe: the <strong>behavioural categories（行为类目）</strong>. For example, measure polite behaviour by whether passengers <strong>thank the driver before alighting</strong>; other categories could include assisting other passengers, giving up a seat, or making way on a crowded bus. Then draw a chart to tally each occurrence:</p>
+
+  <table>
+    <tr><th>Behavioural category</th><th>Male</th><th>Female</th></tr>
+    <tr><td>Thanking the bus driver</td><td>I</td><td>III</td></tr>
+    <tr><td>Giving up a seat on the bus</td><td></td><td>II</td></tr>
+    <tr><td>Helping a passenger with a pushchair</td><td>I</td><td>II</td></tr>
+  </table>
+
+  <p>Counting instances on the coding sheet gives <strong>quantitative data</strong> that can be tested for significance. The observation also gathers <strong>qualitative data</strong> by writing down what passengers actually said, annotating details such as the driver's gender, the participants' ages, and whether there was eye contact. The qualitative notes then go through <strong>thematic analysis</strong>.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：编码表是量化数据的源头</strong><br>
+    编码表（coding sheet）把行为变成类目、把类目变成正字计数：<strong>先分类目，再计数，最后进列联表</strong>。考「描述你怎么收集定量数据」，答案就是这三步；考「你怎么同时收集定性数据」，答案是在计数之外<strong>随手记下原话和细节</strong>（说了什么、司机性别、有没有眼神接触）。一份观察两条数据线，正好满足 4.4.1 的「一次观察收两种数据」。
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Pilot Study, Controls and Ethics</h2>
+
+  <h3>Pilot study（预实验）</h3>
+  <ul>
+    <li>Run the observation once to <strong>address potential problems and test the criteria</strong>: where is the best position to observe? (Sit closer to the front to catch driver interactions.) How long does the journey need to be to gather enough data? At rush hour, can you see everyone?</li>
+    <li>A pilot study is <strong>not used to test validity or reliability</strong>: it only checks that <strong>apparatus, timings and so on work correctly</strong>.</li>
+    <li>It is also a chance to <strong>ask participants whether they felt uncomfortable, suspected anything, or felt their behaviour was influenced</strong>.</li>
+  </ul>
+
+  <h3>Controls</h3>
+  <ul>
+    <li>Consider recruiting a second observer, for example one observing male passengers and one observing female passengers.</li>
+    <li>You would need <strong>inter-rater reliability（评分者间信度）</strong>: the degree of agreement between two or more observers, ensuring consistency and controlling for <strong>observer bias</strong>.</li>
+    <li>The observation is likely <strong>covert</strong>, but check whether passengers notice your note taking and become suspicious: suspicion is a <strong>confounding variable（混淆变量）</strong>.</li>
+  </ul>
+
+  <h3>Ethics</h3>
+  <ul>
+    <li><strong>Public places are considered acceptable</strong> to observe because people expect to be observed in day-to-day interactions: buses and trains included.</li>
+    <li>Collect <strong>no names or personal data</strong>, only gender and the observed behaviour, so ethical guidelines are not contravened.</li>
+    <li>You might gain <strong>consent after the observation is complete</strong>, though this may not be practical.</li>
+  </ul>
+
+  <div class="warn-box">
+    <h4>Common confusion</h4>
+    <p>The pilot study question trips people up: it does <strong>not</strong> check validity or reliability. It checks <strong>practicalities</strong> (apparatus, timings, position, whether you can see everyone) and whether participants were uncomfortable or suspicious.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：预实验答三件事</strong><br>
+    考「为什么要做 pilot study」就写三件：<strong>先测流程行不行（设备、时长、观察位置），再确认能不能看到所有人，最后问被试有没有起疑或不舒服</strong>。再补一句「它不检验效度和信度」当保险。伦理段背两个关键词：<strong>公共场所（public place）默认可观察、不收个人信息</strong>。
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Analysing Quantitative Data</h2>
+
+  <p>The worked example collected data on <strong>an hour's bus journey between 3.00 p.m. and 4.00 p.m. on a Thursday</strong>: <strong>51 passengers observed, 24 women and 27 men</strong>. The tallies go into a contingency table ready for the chi-squared test:</p>
+
+  <table>
+    <tr><th></th><th>Men</th><th>Women</th><th>Total</th></tr>
+    <tr><td>Thanked the bus driver</td><td>11 (Cell A)</td><td>18 (Cell B)</td><td>29</td></tr>
+    <tr><td>Did not thank the bus driver</td><td>16 (Cell C)</td><td>6 (Cell D)</td><td>22</td></tr>
+    <tr><td>Total</td><td>27</td><td>24</td><td>51</td></tr>
+  </table>
+
+  <p>This is a <strong>two-by-two contingency table</strong> suitable for nominal data. Reading it: 11 men and 18 women thanked the driver; 16 men and 6 women did not. There is a <strong>fairly equal frequency of male and female passengers</strong> overall, and a visible difference in who thanked the driver.</p>
+
+  <div class="exam-tip">
+    <strong>Maths tip (from the textbook):</strong> nominal data calls for a <strong>bar graph</strong> as the graphical representation. Match the graph type to the level of measurement. The best descriptive statistic to summarise this quantitative data is <strong>frequency</strong>.
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：先读表再算卡方</strong><br>
+    拿到列联表先做两件事：<strong>检查行列总数是否对得上（27+24=51）</strong>，再把四个格子的数和行列总数抄清楚。考试描述数据时用一句话概括模式：「女性感谢司机的比例更高」。<strong>称名数据配频次和条形图</strong>，这两个搭配是 checkpoint 原题。
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. The Chi-Squared Test, Worked Through</h2>
+
+  <p>Chi-squared is the appropriate test because the study <strong>predicts a difference</strong>, uses <strong>unrelated data / independent groups</strong>, and has <strong>nominal level data</strong>.</p>
+
+  <h3>Step 1: Expected values</h3>
+  <p>Expected value (E) = row total × column total ÷ overall total. These are the frequencies expected if there were <strong>no difference</strong> between males and females:</p>
+
+  <table>
+    <tr><th>Cell</th><th>E = row × column / total</th></tr>
+    <tr><td>A</td><td>29 × 27 / 51 = <strong>15.35</strong></td></tr>
+    <tr><td>B</td><td>29 × 24 / 51 = <strong>13.65</strong></td></tr>
+    <tr><td>C</td><td>22 × 27 / 51 = <strong>11.65</strong></td></tr>
+    <tr><td>D</td><td>22 × 24 / 51 = <strong>10.35</strong></td></tr>
+  </table>
+
+  <h3>Step 2: The chi-squared calculation</h3>
+  <p>For each cell: subtract E from O, square the result, divide by E; then add all four:</p>
+
+  <table>
+    <tr><th>Cell</th><th>(O − E)² ÷ E</th></tr>
+    <tr><td>A</td><td>(11 − 15.35)² / 15.35 = <strong>1.23</strong></td></tr>
+    <tr><td>B</td><td>(18 − 13.65)² / 13.65 = <strong>1.39</strong></td></tr>
+    <tr><td>C</td><td>(16 − 11.65)² / 11.65 = <strong>1.62</strong></td></tr>
+    <tr><td>D</td><td>(6 − 10.35)² / 10.35 = <strong>1.83</strong></td></tr>
+    <tr><td><strong>Total</strong></td><td><strong>= 6.07</strong></td></tr>
+  </table>
+
+  <h3>Step 3: Degrees of freedom and the critical value</h3>
+  <ul>
+    <li>df = (rows − 1) × (columns − 1) = (2 − 1) × (2 − 1) = <strong>1</strong>.</li>
+    <li>For a <strong>non-directional/two-tailed</strong> hypothesis with df = 1 at <strong>p &lt; 0.05</strong>, the critical value is <strong>3.84</strong>.</li>
+    <li>The observed value of <strong>6.07 is greater than 3.84</strong>, so the result is <strong>significant</strong> and the null hypothesis can be rejected: there is less than a five per cent probability that the difference is due to chance.</li>
+    <li>The direction of the difference comes from examining the cells: <strong>females on the bus were more likely to thank the driver, males were not</strong>.</li>
+    <li>The observed/calculated value must <strong>equal or exceed</strong> the critical value to be significant at the level shown.</li>
+  </ul>
+
+  <div class="exam-tip">
+    <strong>Maths tip (from the textbook):</strong> chi-squared has no 'n' column on the critical values table because nominal data gives no individual scores; that is why we calculate <strong>degrees of freedom</strong> instead. The df column replaces the n column.
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：跟 4.2 的九步是同一套</strong><br>
+    这里只有三步，因为课本把九步压缩成了实操版：<strong>算期望 → 算卡方值 → 查表比大小</strong>。注意本例选的是<strong>非定向假设</strong>，查表用 two-tailed 那列的 3.84；如果当初定了向假设就要用 one-tailed 列。写结论时三个要件齐全：<strong>观测值 6.07 &gt; 临界值 3.84 → 显著 → 拒绝虚无假设</strong>，再补一句方向（女性更爱感谢司机）。
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Thematic Analysis（主题分析）</h2>
+
+  <p>Qualitative data cannot be summarised in a chart or graph. Its analysis involves recognising repeated themes. <strong>Braun and Clarke (2006)</strong> outline a <strong>five-phase approach</strong>, shown here with the bus example from the textbook:</p>
+
+  <table>
+    <tr><th>Phase</th><th>What you do</th><th>Bus example</th></tr>
+    <tr><td>1. Familiarisation（熟悉数据）</td><td>Read through your notes and notice patterns</td><td>Males and females thank the driver in different manners: males say 'Thanks' or 'Thank you, driver' with small talk ('What time does your shift finish?'); females say thank you with a departure greeting ('Goodbye') and more eye contact</td></tr>
+    <tr><td>2. Generating initial codes（生成初始编码）</td><td>Label specific categories identified</td><td>'thank you, with familiarity'; 'thank you, with no familiarity'; 'departure greeting'; 'small talk'</td></tr>
+    <tr><td>3. Searching for themes（寻找主题）</td><td>Seek themes on the basis of the codes</td><td>'implied familiarity': passengers make small talk with the driver</td></tr>
+    <tr><td>4. Reviewing themes（复核主题）</td><td>Try the categories out, possibly with another set of data; if new observations fit, the theme is worth further investigation</td><td>Collect more data on another journey and check the themes still hold</td></tr>
+    <tr><td>5. Defining and naming themes（定义命名主题）</td><td>Clearly define the themes, then produce a report telling the story of the emerging themes</td><td>Final report relates the categories with specific examples and quotes</td></tr>
+  </table>
+
+  <p>Qualitative data provides <strong>much richer detail on the complexities of human interaction</strong>, but it is harder to select patterns and draw firm conclusions, and it is more likely to be <strong>subjective</strong>, reflecting the personal viewpoints and background of the researcher.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：五阶段考试就考顺序和例子</strong><br>
+    主题分析五步背顺序：<strong>熟悉 → 编码 → 找主题 → 复核 → 定义命名</strong>。每步配一个公交车例句，答题时「阶段名 + 做什么 + 公交例」三件套展开。优缺点各记一句：<strong>细节丰富但主观</strong>。考点通常问 phase 内容或让你说出 themes 怎么来的，五步顺序乱了就全错。
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Writing Up: Conclusions</h2>
+
+  <ul>
+    <li><strong>Quantitative conclusion:</strong> the statistical test informs the overall conclusion. Here chi-squared shows the result is significant, so the null hypothesis is rejected and the experimental hypothesis accepted: there is a difference in polite behaviour between females and males alighting the bus.</li>
+    <li><strong>Qualitative conclusion:</strong> look at the themes and illustrate them with specific examples: more small talk with drivers by male passengers, backed up with specific quotes or observations.</li>
+    <li><strong>The report</strong> needs <strong>procedure, results and discussion</strong> sections: what you did, what you found (table, graph, test), and what it means (linked back to learning theory).</li>
+  </ul>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Evaluating Your Practical Investigation</h2>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Validity · naturalistic strength</h4>
+      <p>A naturalistic observation in real life suggests a degree of <strong>validity</strong>. 'Thank you' is a <strong>relatively objective behavioural category</strong> because it involves no judgement; qualitative notes such as 'small talk' involve more interpretation.</p>
+    </div>
+    <div class="compare-card green">
+      <h4>Validity · two improvement tools</h4>
+      <p><strong>Respondent validation（受试者验证）</strong>: gain feedback from participants on your interpretation, for example interviewing regular bus users about the findings; if they broadly agree, the interpretation is affirmed. <strong>Triangulation（三角验证）</strong>: use more than one approach, for example a questionnaire on politeness on public transport to check it corresponds with the observed behaviour.</p>
+    </div>
+    <div class="compare-card blue" style="border-left-color:#1e3a5f">
+      <h4 style="color:#1e3a5f">Reliability</h4>
+      <p>Repeat on another bus, town or time of day and compare. Qualitative data is harder to assess for reliability because it is subjective, but <strong>inter-rater reliability</strong> (agreement between observers) and the <strong>test–retest method</strong> (repeat a day, week or month later on the same route) both work. Lack of consensus means the <strong>behavioural categories may need revision</strong>.</p>
+    </div>
+    <div class="compare-card blue" style="border-left-color:#1e3a5f">
+      <h4 style="color:#1e3a5f">Generalisability and credibility</h4>
+      <p><strong>Time of day affects the sample</strong> (rush hour commuters may be too hurried for polite interactions); an <strong>equal distribution of ages</strong> minimises bias; more retired passengers may raise polite interactions because they are less time-pressured. <strong>Credibility</strong> depends on meeting scientific principles such as <strong>replicability and measurable phenomena</strong>; weigh the strengths (valid naturalistic measurement) against weaknesses (single time of day limits generalisation) and repeat the observation to assess overall effectiveness.</p>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：四个评价词对应四套工具</strong><br>
+    这是实操评价题的检索表：<strong>效度</strong>（自然情境 + 类目客观，改进用 respondent validation 和 triangulation）、<strong>信度</strong>（inter-rater + test-retest）、<strong>推广性</strong>（时段和年龄构成）、<strong>可信度</strong>（可重复、可测量）。考试问哪条答哪条，别把四套工具混在一起写。
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Improving Your Practical Investigation</h2>
+
+  <p>The textbook's six improvement questions. For each, name the problem and the fix:</p>
+  <table>
+    <tr><th>Question to ask</th><th>What a fix looks like</th></tr>
+    <tr><td>Was the sample representative?</td><td>Observe at different times and days so different passenger types are included</td></tr>
+    <tr><td>Was the situation natural?</td><td>Keep the observation covert and unobtrusive so behaviour is unaffected</td></tr>
+    <tr><td>Were there issues with lack of control?</td><td>Add a second observer; standardise the route and time window</td></tr>
+    <tr><td>Did the behavioural categories measure what was intended?</td><td>Operationalise the categories more effectively, for example defining 'polite interaction' in observable terms</td></tr>
+    <tr><td>Was data collection or analysis subjective?</td><td>Use inter-rater reliability; predefine coding rules for qualitative notes</td></tr>
+    <tr><td>Were there unforeseen ethical issues?</td><td>Check whether passengers noticed and felt uneasy; add retrospective consent where practical</td></tr>
+  </table>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. Checkpoint</h2>
+
+  <div class="xp-block">
+    <h4>🎯 Textbook checkpoint questions<span class="xp-badge">From memory</span></h4>
+    <p class="xp-intro">Cover the sections above and answer. Click an answer to check it.</p>
+    <div class="xp-result" id="res-s13"></div>
+
+    <p class="xp-intro"><strong>1.</strong> Put the chi-squared instructions in the correct order. Which comes FIRST?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Calculate the expected values using 'row total × column total / overall total'</button>
+      <button class="q-option" onclick="mcAns(this)">Subtract the expected value from the observed value</button>
+      <button class="q-option" onclick="mcAns(this)">Compare the calculated value with the critical value</button>
+    </div>
+
+    <p class="xp-intro"><strong>2.</strong> In the same sequence, which step comes immediately before comparing with the critical value?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)">Calculating the expected values</button>
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Totalling the scores for each cell to give the chi-squared value</button>
+      <button class="q-option" onclick="mcAns(this)">Squaring the difference for each cell</button>
+    </div>
+
+    <p class="xp-intro"><strong>3.</strong> Which is the best descriptive statistic to summarise the quantitative data from this practical investigation?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)">Mean</button>
+      <button class="q-option" onclick="mcAns(this)">Median</button>
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Frequency</button>
+    </div>
+
+    <p class="xp-intro"><strong>4.</strong> Which is the best graphical presentation for the quantitative data?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)">Scattergraph</button>
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Bar graph</button>
+      <button class="q-option" onclick="mcAns(this)">Line graph</button>
+    </div>
+
+    <p class="xp-intro"><strong>5.</strong> Why is a chi-squared test appropriate for this practical investigation?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">A difference is predicted, the groups are unrelated, and the data is nominal</button>
+      <button class="q-option" onclick="mcAns(this)">A correlation is predicted, the data is interval, and the design is repeated measures</button>
+      <button class="q-option" onclick="mcAns(this)">A difference is predicted, the data is ordinal, and the groups are related</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="section" id="s14">
+  <h2>14. Exam Lab</h2>
+
+  <div class="syl-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px">
+    <span class="syl-tag">Textbook exam practice</span>
+    <span class="syl-tag">AO1 + AO2</span>
+    <span class="syl-tag">Your own practical</span>
+  </div>
+
+  <div class="exam-practice">
+    <h3>Textbook exam practice (from the textbook)</h3>
+    <p class="small">In your studies of learning theories and development, you will have conducted a practical investigation.</p>
+    <ul class="tight small">
+      <li>(a) Describe the procedure of your learning theories and development practical investigation. (4)</li>
+      <li>(b) Explain one strength of your practical investigation in terms of validity. (2)</li>
+      <li>(c) Explain one improvement you could have made in terms of reliability. (2)</li>
+    </ul>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ (a) Describe the procedure<span class="xp-badge">4 marks</span></h4>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am1')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am1">
+      <p>The observation was a <strong>naturalistic, covert observation of passengers on a bus</strong>, chosen because social learning theory suggests polite behaviour is modelled and reinforced differently for males and females. The <strong>behavioural categories</strong> were thanking the driver before alighting, giving up a seat, and helping with a pushchair, recorded on a <strong>coding sheet with tallies</strong> for male and female passengers separately. Detailed <strong>qualitative notes</strong> (what passengers said, eye contact, approximate ages) were written alongside the tallies, so the single observation gathered both quantitative and qualitative data. The observation ran for <strong>one hour (3.00–4.00 p.m. on a Thursday)</strong>, covering 51 passengers; a non-directional hypothesis was used because the background research was mixed, and a pilot run checked the best seating position and whether the journey length collected enough data.</p>
+    </div>
+    <div class="cn-note">
+      <strong>中文方法框：描述程序四分就四句</strong><br>
+      每句一个设计决策：<strong>①观察类型和场景（自然、隐蔽、公交车）→ ②行为类目和编码表 → ③双线数据记录（计数 + 详细笔记）→ ④时长、样本量、假设类型和预实验</strong>。全部换成你自己的实操内容，别背公交车的数字（除非你做的就是它）。
+    </div>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ (b) One strength in terms of validity<span class="xp-badge">2 marks</span></h4>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am2')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am2">
+      <p><strong>Validity strength:</strong> the observation was <strong>naturalistic and covert</strong>, carried out in a real setting where the behaviour would normally occur, so passengers were unaware of being watched and behaved as they genuinely would; this raises ecological validity because the politeness measured reflects real everyday behaviour rather than behaviour changed by knowing about the observation.</p>
+    </div>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ (c) One improvement in terms of reliability<span class="xp-badge">2 marks</span></h4>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am3')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am3">
+      <p><strong>Reliability improvement:</strong> use the <strong>test–retest method</strong>: repeat the observation on the same bus route a week later and compare the tally frequencies; if similar results are achieved the observation is reliable. Alternatively, recruit a <strong>second observer</strong> and check <strong>inter-rater reliability</strong>: if both observers record similar tallies for the same behaviours, the behavioural categories are being applied consistently; any disagreement would show the categories need tighter operational definitions.</p>
+    </div>
+    <div class="cn-note">
+      <strong>中文方法框：信度改进二选一</strong><br>
+      这题的标准答案池就两个：<strong>test-retest（隔一周重测同一线路，比对频次）</strong>和 <strong>inter-rater（第二名观察员，比对一致性，不一致就修类目定义）</strong>。写法都是「方法 + 怎么判断可靠」。选一个写透即可，别两个都只写半句。
+    </div>
+  </div>
+</section>
+
+<!-- ============ 15 ============ -->
+<section class="section" id="s15">
+  <h2>15. Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="keyterm-box"><div class="kt">behavioural categories <span class="zh">行为类目</span></div>The pre-defined behaviours chosen for observation, with clear operational definitions.</div>
+    <div class="keyterm-box"><div class="kt">coding sheet <span class="zh">编码表</span></div>A record sheet used to tally each occurrence of a behavioural category.</div>
+    <div class="keyterm-box"><div class="kt">tallying <span class="zh">计数记录</span></div>Writing down when and how many times behaviours occur.</div>
+    <div class="keyterm-box"><div class="kt">prosocial behaviour <span class="zh">亲社会行为</span></div>Any behaviour that is intended to benefit another.</div>
+    <div class="keyterm-box"><div class="kt">directional / non-directional hypothesis <span class="zh">定向 / 非定向假设</span></div>One-tailed when previous research suggests a direction; two-tailed when unsure; must be testable.</div>
+    <div class="keyterm-box"><div class="kt">opportunity sampling <span class="zh">机会抽样</span></div>Recruiting whoever is available in the situation, as with bus passengers.</div>
+    <div class="keyterm-box"><div class="kt">pilot study <span class="zh">预实验</span></div>A trial run checking apparatus, timings and criteria work; it does not test validity or reliability.</div>
+    <div class="keyterm-box"><div class="kt">inter-rater reliability <span class="zh">评分者间信度</span></div>The degree of agreement between two or more observers.</div>
+    <div class="keyterm-box"><div class="kt">test–retest <span class="zh">重测法</span></div>Repeating the observation later on the same route and comparing results.</div>
+    <div class="keyterm-box"><div class="kt">confounding variable <span class="zh">混淆变量</span></div>Something unintended that affects results, such as passengers becoming suspicious of note taking.</div>
+    <div class="keyterm-box"><div class="kt">contingency table <span class="zh">列联表</span></div>A table of frequencies by category, two-by-two here, suitable for nominal data.</div>
+    <div class="keyterm-box"><div class="kt">degrees of freedom <span class="zh">自由度</span></div>(rows − 1) × (columns − 1); replaces the n column on the chi-squared critical values table.</div>
+    <div class="keyterm-box"><div class="kt">critical value <span class="zh">临界值</span></div>The table value the observed chi-squared must equal or exceed to be significant (3.84 for df = 1, two-tailed, p &lt; 0.05).</div>
+    <div class="keyterm-box"><div class="kt">thematic analysis <span class="zh">主题分析</span></div>Analysing qualitative data by recognising repeated themes; Braun and Clarke (2006) five phases.</div>
+    <div class="keyterm-box"><div class="kt">respondent validation <span class="zh">受试者验证</span></div>Checking your interpretation by gaining feedback from participants on the findings.</div>
+    <div class="keyterm-box"><div class="kt">triangulation <span class="zh">三角验证</span></div>Using more than one approach to check results, increasing confidence in findings.</div>
+    <div class="keyterm-box"><div class="kt">observer bias <span class="zh">观察者偏差</span></div>Subjective interpretation of behaviour by the observer; controlled with inter-rater checks.</div>
+    <div class="keyterm-box"><div class="kt">bar graph <span class="zh">条形图</span></div>The appropriate graph for nominal data such as tally frequencies.</div>
+  </div>
+</section>
+
+<div class="footer-note">
+  4.4 Practical Investigation · Learning theories and development · back: <a href="../4.3-learning-studies/">← 4.3 Studies</a>
+</div>
+</main>
+
+</div><!-- /page-layout -->
+</div><!-- /container -->
+
+<div id="btt" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  var secWhy = {
+    s13: [
+      ['Correct. Everything starts from the expected frequencies, calculated as row total × column total ÷ overall total.',
+       'Subtracting E from O is step two; you need the expected values before you can subtract them.',
+       'Comparing with the critical value is the last step, after the chi-squared value is calculated.'],
+      ['Expected values come first, not last.',
+       'Correct. Once each cell score is totalled to give the overall chi-squared value, the next step is comparing it with the critical value.',
+       'Squaring happens per cell early in the sequence, before the totals are combined.'],
+      ['The mean cannot be calculated meaningfully from category tallies; there are no individual scores to average.',
+       'The median needs ordered individual scores, which nominal frequency data does not provide.',
+       'Correct. With nominal data counted in categories, frequency is the appropriate descriptive statistic.'],
+      ['A scattergraph is for correlations between two sets of scores, not category frequencies.',
+       'Correct. Nominal data (frequencies in categories) is best shown in a bar graph.',
+       'A line graph suits continuous data over time, not category tallies.'],
+      ['Correct. Chi-squared fits when a difference is predicted, the design uses unrelated groups (male or female), and the data is nominal frequencies.',
+       'Chi-squared is not a correlation test and does not use interval data or repeated measures.',
+       'Ordinal data and related groups belong to other tests; chi-squared needs nominal data and independent groups.']
+    ]
+  };
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = section.querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+</script>
+</body>
+</html>

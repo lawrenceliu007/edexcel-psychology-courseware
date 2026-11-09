@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>4.2 Methods — Student Notes Workbook</title>
+<style>
+@page { size: A4; margin: 13mm 12mm 15mm 12mm; }
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif; color:#1a1a1a; font-size:10pt; line-height:1.5; margin:0; background:#f3f3f3; }
+.page { background:#fff; max-width: 800px; margin: 0 auto 10px auto; padding: 10mm 11mm; page-break-after: always; position: relative; min-height: 248mm; }
+@media print { body { background:#fff; } .page { margin:0; padding:0; max-width:none; box-shadow:none; } }
+.pg-head { display:flex; justify-content:space-between; align-items:baseline; border-bottom: 2px solid #333; padding-bottom:4px; margin-bottom:10px; }
+.pg-head .t { font-size:11.5pt; font-weight:700; }
+.pg-head .r { font-size:8pt; color:#777; letter-spacing:.04em; }
+.pg-foot { position:absolute; bottom:4mm; left:0; right:0; text-align:center; font-size:8pt; color:#999; }
+.sec { font-size:10pt; font-weight:700; margin:12px 0 5px 0; padding-left:7px; border-left:3.5px solid #444; }
+.sec:first-of-type { margin-top:2px; }
+.sub { font-size:9.5pt; font-weight:700; margin:9px 0 3px 0; }
+.bl { display:inline-block; border-bottom:1px solid #555; height:1em; vertical-align:baseline; min-width:60px; margin:0 2px; }
+.hint { font-size:8.5pt; color:#666; }
+.hint::before { content:"（"; } .hint::after { content:"）"; }
+table.n { width:100%; border-collapse:collapse; margin:6px 0 9px 0; font-size:9pt; }
+table.n th, table.n td { border:1px solid #999; padding:4px 6px; text-align:left; vertical-align:top; }
+table.n th { background:#e9e9e9; font-size:8.8pt; }
+td.lbl { background:#f4f4f4; width:22%; font-weight:600; }
+.box { border:1px solid #aaa; border-left:4px solid #555; padding:6px 9px; margin:7px 0; border-radius:3px; }
+.box.grey { border:1px dashed #999; border-left:4px dashed #999; background:#fafafa; }
+.box.purple { border-left-color:#7c3aed; background:#faf5ff; }
+.box.blue { border-left-color:#2563eb; background:#f5f9ff; }
+.box.green { border-left-color:#16a34a; background:#f3faf5; }
+.box.orange { border-left-color:#ea580c; background:#fff7ed; }
+.box .bx-t { font-size:9.3pt; font-weight:700; margin-bottom:3px; }
+.wl { border-bottom:1px solid #bbb; height:24pt; }
+.wl.s { height:18pt; }
+ul.tight { margin:4px 0 8px 0; padding-left:17px; }
+ul.tight li { margin-bottom:3px; }
+ol.tight { margin:4px 0 8px 0; padding-left:17px; }
+ol.tight li { margin-bottom:4px; }
+.chk { font-size:9.3pt; }
+.chk .c { display:inline-block; width:11px; height:11px; border:1.3px solid #555; margin-right:6px; vertical-align:-1px; }
+.q { font-style:italic; background:#f6f6f6; border:1px solid #ccc; padding:5px 9px; margin:5px 0; font-size:9.3pt; border-radius:3px; }
+.small { font-size:8.6pt; line-height:1.35; }
+.pg-tight table.n { font-size:8.5pt; margin:5px 0 7px 0; }
+.pg-tight table.n th, .pg-tight table.n td { padding:2.5px 5px; }
+.pg-tight .sub { margin:7px 0 2px 0; }
+.pg-tight .box { padding:5px 8px; margin:6px 0; }
+.pg-tight .small { line-height:1.24; }
+.pg-tight p.small, .pg-tight .sec { font-size:7.9pt; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="pg-head"><span class="t">4.2 Methods — Observation, Content Analysis, Case Study</span><span class="r">LEARNING THEORIES · NOTES WORKBOOK</span></div>
+  <div class="box orange">
+    <div class="bx-t">What this workbook covers 本册讲什么</div>
+    Spec 4.2.1–4.2.8: the observational method with qualitative and quantitative data (tallying, event and time sampling), the six types of observation, content analysis, Freud's case study, the chi-squared test, and the use and ethics of animals in laboratory experiments, including the Animals (Scientific Procedures) Act (1986).
+  </div>
+
+  <div class="sec">How to use this booklet 怎么用</div>
+  <ol class="tight">
+    <li><strong>Fill it in as you go</strong> — check the answer key (last page) after each page.</li>
+    <li><strong>The six types table (p.4) and the chi-squared steps (p.7–8) matter most.</strong> Do them from memory, under time.</li>
+  </ol>
+
+  <div class="sec">Content map 内容地图</div>
+  <table class="n">
+    <tr><th style="width:12%;">Page</th><th style="width:34%;">Topic</th><th>What you must be able to do afterwards</th></tr>
+    <tr><td class="lbl">p.2</td><td>Observation data 观察数据</td><td>Define quant and qual data; draw a tally chart; compare time and event sampling</td></tr>
+    <tr><td class="lbl">p.3</td><td>Types of observation 类型</td><td>Define each of the six types with the Ainsworth example</td></tr>
+    <tr><td class="lbl">p.4</td><td>Six types compared 对比</td><td>Give ethics, validity and control issues for each type</td></tr>
+    <tr><td class="lbl">p.5</td><td>Content analysis 内容分析</td><td>Describe how to conduct one; two strengths, two limitations</td></tr>
+    <tr><td class="lbl">p.6</td><td>Freud's case study 个案</td><td>Describe the couch method; evaluate with subjectivity and verification</td></tr>
+    <tr><td class="lbl">p.7–8</td><td>Chi-squared 卡方</td><td>State the three conditions; run the nine steps; read the critical values table</td></tr>
+    <tr><td class="lbl">p.9</td><td>Animal research 动物研究</td><td>Give arguments for and against, including the continuity contradiction</td></tr>
+    <tr><td class="lbl">p.10</td><td>Animal ethics law 立法</td><td>SPA 1986, three Rs, three licences</td></tr>
+    <tr><td class="lbl">p.11</td><td>Checkpoint + exam practice 真题</td><td>Textbook questions: 4+2+2+3+8 marks</td></tr>
+    <tr><td class="lbl">p.12</td><td>Answer key + brain dump 答案</td><td>Mark honestly, then rewrite wrong answers in full</td></tr>
+  </table>
+
+  <div class="sec">Revision tracker 复习打卡</div>
+  <p class="chk"><span class="c"></span>p.2 data　<span class="c"></span>p.3–4 types　<span class="c"></span>p.5 content　<span class="c"></span>p.6 Freud　<span class="c"></span>p.7–8 chi-squared　<span class="c"></span>p.9–10 animals　<span class="c"></span>p.11 exam</p>
+
+  <div class="box purple">
+    <div class="bx-t">The whole chapter in one sentence 一句话总结</div>
+    An observation <strong>manipulates nothing</strong>: it records behaviour as it happens, using tally charts and behavioural categories for numbers and notes for words; the six type-words trade realism against control; the chi-squared test runs on <strong>nominal frequencies from independent groups</strong>; and research with animals is justified only under the <strong>1986 Act, the three Rs and three licences</strong>.
+  </div>
+
+    <div class="pg-foot">Page 1 of 12</div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Observational Data 定性与定量数据</span><span class="r">4.2 METHODS · SPEC 4.2.1</span></div>
+  <div class="sec">The defining feature 与实验的分界线</div>
+  <p>In an observation there is <span class="bl"></span> to manipulate <span class="hint">no independent variable</span>. All data is gathered by <span class="bl"></span> <span class="hint">observing, listening, recording</span>.</p>
+
+  <div class="sec">Two data types 两种数据</div>
+  <table class="n">
+    <tr><th style="width:26%;">Type</th><th>Definition</th><th>Textbook example</th></tr>
+    <tr><td class="lbl">Quantitative（定量）</td><td>Can be <span class="bl"></span> or expressed numerically <span class="hint">counted</span></td><td>Counting how often a child picks up a <span class="bl"></span> toy <span class="hint">gender-stereotyped</span></td></tr>
+    <tr><td class="lbl">Qualitative（定性）</td><td>Not numerical; concerned with <span class="bl"></span> <span class="hint">words, texts, ideas, themes</span></td><td>Recording what parents <span class="bl"></span> and their non-verbal communication <span class="hint">say to their child</span></td></tr>
+  </table>
+
+  <div class="sec">The tally chart 计数表（Table 23.1）</div>
+  <table class="n">
+    <tr><th></th><th>Male</th><th>Female</th></tr>
+    <tr><td class="lbl">Small car</td><td><span class="bl" style="min-width:40px"></span> <span class="hint">3</span></td><td><span class="bl" style="min-width:40px"></span> <span class="hint">6</span></td></tr>
+    <tr><td class="lbl">Large car</td><td><span class="bl" style="min-width:40px"></span> <span class="hint">4</span></td><td><span class="bl" style="min-width:40px"></span> <span class="hint">2</span></td></tr>
+  </table>
+  <p class="small">Categories must be <span class="bl"></span> <span class="hint">clear and unambiguous</span>; observers need training in the <span class="bl"></span> <span class="hint">operational definitions of behavioural categories</span>.</p>
+
+  <div class="sec">Time sampling vs event sampling 两种抽样</div>
+  <table class="n">
+    <tr><th style="width:20%;">Technique</th><th style="width:44%;">How it works</th><th>Its problem</th></tr>
+    <tr><td class="lbl">Time sampling（时间抽样）</td><td>Observe at fixed <span class="bl"></span>, e.g. every 30 seconds, recording all observed <span class="hint">time intervals</span></td><td>May not be <span class="bl"></span>: behaviours between windows are missed <span class="hint">representative</span></td></tr>
+    <tr><td class="lbl">Event sampling（事件抽样）</td><td>Record a <span class="bl"></span> behaviour every time it happens <span class="hint">predetermined</span></td><td>If too many instances happen <span class="bl"></span>, not all can be recorded <span class="hint">at once</span></td></tr>
+  </table>
+
+  <div class="box purple">
+    <div class="bx-t">中文理解：两种抽样各漏什么</div>
+    时间抽样按表看钟，<strong>漏掉间隔里发生的行为</strong>；事件抽样盯住目标行为，<strong>行为扎堆时来不及记全</strong>。持续行为用时间抽样，偶发行为用事件抽样。
+  </div>
+
+    <div class="pg-foot">Page 2 of 12</div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Types of Observation 观察的类型</span><span class="r">4.2 METHODS · SPEC 4.2.2</span></div>
+  <div class="sec">Pair 1 · Naturalistic vs structured</div>
+  <p><strong>Naturalistic（自然观察）</strong>: behaviour watched in a <span class="bl"></span> environment where it would normally occur <span class="hint">natural</span>. Higher <span class="bl"></span> validity because behaviour is natural and spontaneous <span class="hint">ecological</span>. But it raises issues of <span class="bl"></span> and privacy if participants are unaware <span class="hint">consent</span>, and has limited <span class="bl"></span> over extraneous variables <span class="hint">control</span>.</p>
+  <p><strong>Structured（结构观察）</strong>: <span class="bl"></span> are manipulated so the behaviour is displayed <span class="hint">variables</span>. Staged, usually in an environment the researcher <span class="bl"></span>, sometimes behind a one-way screen <span class="hint">controls</span>.</p>
+
+  <div class="box blue">
+    <div class="bx-t">Worked example: Ainsworth's Strange Situation</div>
+    Ainsworth et al. (1978) studied <span class="bl"></span> <span class="hint">parent–child attachment</span>. The sequence (mother leaves, stranger enters, reunion) would <span class="bl"></span> occur naturally <span class="hint">rarely</span>, so she staged it: a <span class="bl"></span> observation in a controlled environment <span class="hint">structured</span>.
+  </div>
+
+  <div class="sec">Pair 2 · Participant vs non-participant</div>
+  <p><strong>Non-participant（非参与）</strong>: observing from a distance; risk of <span class="bl"></span> if the detached observer misinterprets behaviour <span class="hint">observer bias</span>. Gain: the observer can <span class="bl"></span> on recording, collecting data more objectively <span class="hint">concentrate</span>.</p>
+  <p><strong>Participant（参与）</strong>: joining the group; <span class="bl"></span> stranger effect on participants' behaviour <span class="hint">no</span>, reveals data other methods miss. But hard to record <span class="bl"></span> while taking part, and the researcher may lose <span class="bl"></span> <span class="hint">notes; objectivity</span>.</p>
+
+  <div class="sec">Pair 3 · Overt vs covert</div>
+  <p><strong>Overt（公开）</strong>: participants know; <span class="bl"></span> consent possible and withdrawal respected <span class="hint">informed</span>. <strong>Covert（隐蔽）</strong>: participants unaware, <span class="bl"></span> problematic <span class="hint">ethically</span>; but behaviour unchanged, so more <span class="bl"></span> <span class="hint">valid</span>.</p>
+
+  <div class="sec">Combinations 组合</div>
+  <p class="small">Textbook examples: a <span class="bl"></span>, participant, <span class="bl"></span> observation (an anthropologist joining a tribal group) <span class="hint">naturalistic; overt</span>; or a <span class="bl"></span>, non-participant, <span class="bl"></span> observation (secret watching behind a one-way mirror) <span class="hint">structured; covert</span>.</p>
+
+  <div class="box purple">
+    <div class="bx-t">中文理解：每对选择都在换东西</div>
+    自然换真实（生态效度），结构换控制（因果和重复）；参与换洞察，非参与换客观；公开换伦理，隐蔽换真实。答题写成「选了 A 换来什么、付出什么」就自动成对。
+  </div>
+
+    <div class="pg-foot">Page 3 of 12</div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Six Types Compared 六类型对比</span><span class="r">4.2 METHODS · TEXTBOOK ACTIVITY 2</span></div>
+  <div class="sec">Issues table 问题表（课本 Activity 2 的依据）</div>
+  <table class="n">
+    <tr><th style="width:16%;">Type</th><th style="width:28%;">Ethics</th><th style="width:28%;">Objectivity and validity</th><th>Reliability and control</th></tr>
+    <tr><td class="lbl">Naturalistic</td><td><span class="bl"></span> issues if unaware <span class="hint">consent and privacy</span></td><td>Real behaviour; higher <span class="bl"></span> validity <span class="hint">ecological</span></td><td>Limited control; hard to <span class="bl"></span> exactly <span class="hint">repeat</span></td></tr>
+    <tr><td class="lbl">Structured</td><td>Consent and withdrawal possible</td><td>Behaviour may be <span class="bl"></span> by awareness; low eco validity <span class="hint">modified</span></td><td>Control and <span class="bl"></span>; replicable <span class="hint">manipulation</span></td></tr>
+    <tr><td class="lbl">Participant</td><td>Usually overt, so consent possible</td><td>Reveals hidden data, but researcher may lose <span class="bl"></span> <span class="hint">objectivity</span></td><td>Hard to record <span class="bl"></span> <span class="hint">notes</span></td></tr>
+    <tr><td class="lbl">Non-participant</td><td>May still be noticed</td><td><span class="bl"></span> bias: detached observer misinterprets <span class="hint">Observer</span></td><td>Can concentrate on recording; more <span class="bl"></span> <span class="hint">objective</span></td></tr>
+    <tr><td class="lbl">Overt</td><td><span class="bl"></span> consent; right to withdraw <span class="hint">Informed</span></td><td>Participants may change behaviour when watched</td><td>Systematic open recording</td></tr>
+    <tr><td class="lbl">Covert</td><td>Participants unaware: <span class="bl"></span> problematic <span class="hint">ethically</span></td><td>Behaviour unchanged, so more <span class="bl"></span> <span class="hint">valid</span></td><td>Recording must be discreet</td></tr>
+  </table>
+
+  <div class="sec">Exam tip 考试提醒（课本原文）</div>
+  <div class="box blue">
+    <div class="bx-t">Outline + example</div>
+    Be ready to outline each type <strong>and give examples</strong>. <span class="bl"></span> state which type you are describing <span class="hint">Explicitly</span>. Issues that apply to one type may not apply to another: participant observations affect the behaviour observed, but that may not be true of <span class="bl"></span> <span class="bl"></span> observations <span class="hint">covert non-participant</span>.
+  </div>
+
+    <div class="pg-foot">Page 4 of 12</div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Content Analysis 内容分析</span><span class="r">4.2 METHODS · SPEC 4.2.3</span></div>
+  <div class="sec">What it is 定义</div>
+  <p>Content analysis observes the <span class="bl"></span> of certain words, images or concepts within material <span class="hint">incidence</span>, typically in <span class="bl"></span>, books, films, newspapers <span class="hint">advertisements</span>. Example from the textbook: instances of <span class="bl"></span> in children's books <span class="hint">gender stereotyping</span>. It is therefore a form of <span class="bl"></span> observation <span class="hint">indirect</span>.</p>
+
+  <div class="sec">How to conduct one 怎么做</div>
+  <ol class="tight">
+    <li>Categories <span class="bl"></span> in advance <span class="hint">agreed</span> (stereotypical and non-stereotypical behaviour by males and females).</li>
+    <li><span class="bl"></span> the number of times each category occurs <span class="hint">Tally</span>.</li>
+    <li>Qualitative analysis can examine <span class="bl"></span> of words, concepts and pictures, then make inferences <span class="hint">meanings and relationships</span>.</li>
+    <li>Content must be <span class="bl"></span> into clear and manageable categories <span class="hint">coded</span>.</li>
+  </ol>
+
+  <div class="sec">Evaluation 评价</div>
+  <table class="n">
+    <tr><th style="width:12%;"></th><th>Point</th></tr>
+    <tr><td class="lbl">Strength 1</td><td><span class="bl"></span> method: data from existing sources, rarely ethical issues; still respect <span class="bl"></span> <span class="hint">Unobtrusive; confidentiality</span></td></tr>
+    <tr><td class="lbl">Strength 2</td><td><span class="bl"></span> easily assessed: replicable using the same categories; useful for <span class="bl"></span> material and trends over time <span class="hint">Reliability; historical</span></td></tr>
+    <tr><td class="lbl">Weakness 1</td><td>Relies on the personal <span class="bl"></span> of the researcher (subjectivity); <span class="bl"></span> validity risk if categories do not measure what they intend <span class="hint">interpretation; internal</span></td></tr>
+    <tr><td class="lbl">Weakness 2</td><td>Purely <span class="bl"></span>: shows what is there but not <span class="bl"></span> <span class="hint">descriptive; why</span>. Limited by <span class="bl"></span> of material <span class="hint">availability</span>. Media trends may not reflect reality (dramatic events get more coverage); findings may be <span class="bl"></span> if one culture <span class="hint">culture-biased</span></td></tr>
+  </table>
+
+  <div class="box purple">
+    <div class="bx-t">中文理解：内容分析的三句话</div>
+    一句定义：数别人 produced 的材料里的类目，间接观察。一句优点：材料现成不打扰人，同类目可复制所以信度好查。一句缺点：怎么数靠研究者主观，数出来只有 what 没有 why。
+  </div>
+
+    <div class="pg-foot">Page 5 of 12</div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Freud's Case Study 弗洛伊德的个案研究</span><span class="r">4.2 METHODS · SPEC 4.2.4</span></div>
+  <div class="sec">Definition 定义</div>
+  <p>A case study is a detailed investigation into <span class="bl"></span> <span class="hint">one individual or a small group</span>, used when someone is <span class="bl"></span> or has experienced something that could not be studied in a laboratory <span class="hint">unique/rare</span>. Many methods can be combined: <span class="bl"></span>, interviews, experiments <span class="hint">observations</span>.</p>
+
+  <div class="sec">What Freud did 弗洛伊德的做法</div>
+  <ul class="tight">
+    <li><span class="bl"></span> and dream analysis to uncover unconscious wishes <span class="hint">Free association</span>.</li>
+    <li>Clients lay on a couch <span class="bl"></span> him, to encourage talking without censorship <span class="hint">facing away from</span>.</li>
+    <li><span class="bl"></span>: when a client says something they did not mean, the unconscious revealing itself <span class="hint">Freudian slips</span>.</li>
+    <li>Analysed dreams and looked for <span class="bl"></span> and counter-transference <span class="hint">transference</span>.</li>
+    <li>Analysed the <span class="bl"></span> data and gave his interpretation to the client <span class="hint">qualitative</span>. His case studies informed his theories and were also used as <span class="bl"></span> <span class="hint">a therapy</span>.</li>
+  </ul>
+
+  <div class="sec">Evaluation 评价</div>
+  <table class="n">
+    <tr><th style="width:12%;"></th><th>Point</th></tr>
+    <tr><td class="lbl">Strength 1</td><td>Sometimes the <span class="bl"></span> way to gather information: Freud could not have caused hysteria in a client <span class="hint">only</span></td></tr>
+    <tr><td class="lbl">Strength 2</td><td>High <span class="bl"></span> validity: data from the individual in a natural setting; rich detail used to treat patients and develop theories <span class="hint">ecological</span></td></tr>
+    <tr><td class="lbl">Weakness 1</td><td>Only <span class="bl"></span> individuals, typically <span class="bl"></span> Viennese women, so hard to generalise <span class="hint">unique; middle-class</span></td></tr>
+    <tr><td class="lbl">Weakness 2</td><td>Different analysts find <span class="bl"></span> meanings (subjective); the <span class="bl"></span> cannot be directly observed, so not empirically <span class="bl"></span> <span class="hint">different; unconscious; verified</span></td></tr>
+  </table>
+
+  <div class="box purple">
+    <div class="bx-t">中文理解：优点缺点出自同一套做法</div>
+    他躺在沙发上的做法换来了细致的信息（自然情境、细节丰富、边研究边治疗）；主观也是这套流程带来的（不同分析师解出不同含义，潜意识又无法实证）。评价时把这条因果链写出来就是高级 AO3。
+  </div>
+
+    <div class="pg-foot">Page 6 of 12</div>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Chi-Squared Test 卡方检验（一）</span><span class="r">4.2 METHODS · SPEC 4.2.7</span></div>
+  <div class="sec">Three conditions 三个入场条件（必背）</div>
+  <ol class="tight">
+    <li>The hypothesis predicts a <span class="bl"></span> or an <span class="bl"></span> <span class="hint">difference; association</span>.</li>
+    <li>The level of measurement is <span class="bl"></span> <span class="hint">nominal</span>.</li>
+    <li>The design uses <span class="bl"></span> measures: at least two different groups <span class="hint">independent</span>.</li>
+  </ol>
+  <div class="box blue">
+    <div class="bx-t">Exam tip（课本原文）</div>
+    A clue that chi-squared is needed: <span class="bl"></span> are totalled <span class="hint">frequencies</span>. It is not used when participants' <span class="bl"></span> scores are known <span class="hint">individual</span>. Do not convert numbers into <span class="bl"></span> or percentages <span class="hint">averages</span>.
+  </div>
+
+  <div class="sec">Worked example: toy choice 玩具选择例题</div>
+  <table class="n">
+    <tr><th></th><th>Stereotypical toy</th><th>Non-stereotypical toy</th><th>Row total</th></tr>
+    <tr><td class="lbl">Girls</td><td><span class="bl" style="min-width:36px"></span> (A) <span class="hint">8</span></td><td><span class="bl" style="min-width:36px"></span> (B) <span class="hint">12</span></td><td><span class="bl" style="min-width:36px"></span> <span class="hint">20</span></td></tr>
+    <tr><td class="lbl">Boys</td><td><span class="bl" style="min-width:36px"></span> (C) <span class="hint">17</span></td><td><span class="bl" style="min-width:36px"></span> (D) <span class="hint">3</span></td><td><span class="bl" style="min-width:36px"></span> <span class="hint">20</span></td></tr>
+    <tr><td class="lbl">Column total</td><td><span class="bl" style="min-width:36px"></span> <span class="hint">25</span></td><td><span class="bl" style="min-width:36px"></span> <span class="hint">15</span></td><td><span class="bl" style="min-width:36px"></span> <span class="hint">40 overall</span></td></tr>
+  </table>
+
+  <div class="sec">Steps 1–4 前四步</div>
+  <table class="n">
+    <tr><th style="width:30%;">Step</th><th>Rule</th><th>This example</th></tr>
+    <tr><td class="lbl">1. Contingency table</td><td>Put <span class="bl"></span> frequencies in <span class="hint">observed</span></td><td>8, 12, 17, 3</td></tr>
+    <tr><td class="lbl">2. Expected frequency</td><td>E = <span class="bl"></span> total × <span class="bl"></span> total ÷ <span class="bl"></span> total <span class="hint">row; column; overall</span></td><td>A: 12.5 · B: 7.5 · C: 12.5 · D: 7.5</td></tr>
+    <tr><td class="lbl">3. Subtract</td><td><span class="bl"></span> − <span class="bl"></span> for each cell <span class="hint">O − E</span></td><td>−4.5 · +4.5 · +4.5 · −4.5</td></tr>
+    <tr><td class="lbl">4. Square</td><td>(<span class="bl"></span>)² for each cell <span class="hint">O − E</span></td><td><span class="bl" style="min-width:50px"></span> in every cell <span class="hint">20.25</span></td></tr>
+  </table>
+
+    <div class="pg-foot">Page 7 of 12</div>
+</div>
+
+<!-- PAGE 8 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Chi-Squared Test 卡方检验（二）</span><span class="r">4.2 METHODS · STEPS 5–9</span></div>
+  <div class="sec">Steps 5–9 后五步</div>
+  <table class="n">
+    <tr><th style="width:30%;">Step</th><th>Rule</th><th>This example</th></tr>
+    <tr><td class="lbl">5. Divide by E</td><td>(O − E)² ÷ <span class="bl"></span> for each cell <span class="hint">E</span></td><td>A: 1.62 · B: 2.7 · C: 1.62 · D: 2.7</td></tr>
+    <tr><td class="lbl">6. Add up</td><td>Sum = <span class="bl"></span> value of χ² <span class="hint">observed</span></td><td>1.62 + 2.7 + 1.62 + 2.7 = <span class="bl" style="min-width:50px"></span> <span class="hint">8.64</span></td></tr>
+    <tr><td class="lbl">7. Degrees of freedom</td><td>df = (<span class="bl"></span> − 1) × (<span class="bl"></span> − 1) <span class="hint">rows; columns</span></td><td>(2−1) × (2−1) = <span class="bl" style="min-width:40px"></span> <span class="hint">1</span></td></tr>
+    <tr><td class="lbl">8. Critical value</td><td>Look up df and <span class="bl"></span> level, noting one- or two-tailed <span class="hint">significance</span></td><td>One-tailed, p = 0.05, df = 1 → <span class="bl" style="min-width:40px"></span> <span class="hint">2.71</span></td></tr>
+    <tr><td class="lbl">9. Compare</td><td>Observed <span class="bl"></span> critical → significant, reject the <span class="bl"></span> hypothesis <span class="hint">≥; null</span></td><td><span class="bl" style="min-width:60px"></span> <span class="hint">8.64 &gt; 2.71: significant</span></td></tr>
+  </table>
+
+  <div class="sec">Critical values table 临界值表（Table 23.3）</div>
+  <table class="n">
+    <tr><th rowspan="2">df</th><th colspan="3">One-tailed test</th><th colspan="3">Two-tailed test</th></tr>
+    <tr><th>0.05</th><th>0.025</th><th>0.01</th><th>0.10</th><th>0.05</th><th>0.02</th></tr>
+    <tr><td class="lbl">1</td><td><span class="bl" style="min-width:36px"></span> <span class="hint">2.71</span></td><td>3.84</td><td>5.41</td><td>2.71</td><td><span class="bl" style="min-width:36px"></span> <span class="hint">3.84</span></td><td>5.41</td></tr>
+    <tr><td class="lbl">2</td><td>4.60</td><td>5.99</td><td>7.82</td><td>4.60</td><td>5.99</td><td>7.82</td></tr>
+  </table>
+
+  <div class="box purple">
+    <div class="bx-t">中文理解：九步口诀</div>
+    列表 → 算期望 → 相减 → 平方 → 除以期望 → 加总 → 算自由度 → 查表 → 比大小。考试最爱三小问：为什么选卡方（三条件）、自由度（行减一乘列减一）、显著性判断（观测值大于临界值就显著，拒绝虚无假设）。
+  </div>
+
+  <div class="sec">Practice 自测</div>
+  <p class="q">A study with df = 2 produces an observed χ² of 6.31. Is this significant at p ≤ 0.05, two-tailed?</p>
+  <div class="wl s"></div>
+  <div class="wl s"></div>
+
+    <div class="pg-foot">Page 8 of 12</div>
+</div>
+
+<!-- PAGE 9 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Animal Research: For and Against 动物研究正反方</span><span class="r">4.2 METHODS · SPEC 4.2.8</span></div>
+  <div class="sec">Background 背景</div>
+  <p>Learning theorists such as <span class="bl"></span> and <span class="bl"></span> built their methods on animal experimentation <span class="hint">Pavlov; Skinner</span>, manipulating an IV to see its effect on behaviour.</p>
+
+  <div class="sec">Arguments in favour 支持方（四条）</div>
+  <ol class="tight">
+    <li><strong>Breeding speed:</strong> a rat's gestation period is typically <span class="bl" style="min-width:40px"></span> days <span class="hint">22</span>; large samples bred quickly; generational effects appear without long waits.</li>
+    <li><strong>Control:</strong> animals can be <span class="bl"></span> in ways humans cannot <span class="hint">caged</span>; variables isolated, e.g. the <span class="bl"></span> box dispensing food on a lever press <span class="hint">Skinner</span>.</li>
+    <li><strong>Fewer ethical limits:</strong> unnecessary pain must be avoided but <span class="bl"></span> and distress are permitted <span class="hint">pain</span>; research still heavily <span class="bl"></span>, with regular welfare <span class="bl"></span> <span class="hint">regulated; inspections</span>.</li>
+    <li><strong>Benefits and continuity:</strong> insight into drug treatments, transplants, surgery, <span class="bl"></span> <span class="hint">cloning</span>; humans share <span class="bl"></span> ancestry with other animals, especially primates <span class="hint">common/evolutionary</span>, so we can generalise to some extent. The <span class="bl"></span> argument: a small number of animals suffering is justified because it helps a significant number of people <span class="hint">utilitarian</span>; <span class="bl"></span> (1991) supports this when research furthers the cause <span class="hint">Gray</span>.</li>
+  </ol>
+
+  <div class="sec">Arguments against 反对方（四条）</div>
+  <ol class="tight">
+    <li><strong>Credibility:</strong> lab animal behaviour is <span class="bl"></span> from natural behaviour, so eco validity is low <span class="hint">different</span>.</li>
+    <li><strong>Too many differences:</strong> evolution, genes, cognition, emotion; human behaviour has more variables (culture, social norms, <span class="bl"></span>) <span class="hint">language</span>; humans have a proportionally much larger <span class="bl"></span> <span class="hint">cortex</span>. A newborn mouse equals a <span class="bl" style="min-width:60px"></span> <span class="hint">seven-week-old foetus</span>.</li>
+    <li><strong><span class="bl"></span></strong>: mistakenly attributing human qualities to animals <span class="hint">Anthropomorphism</span>; and the continuity contradiction: if animals are so similar, why not the same <span class="bl"></span> considerations? <span class="hint">ethical</span>.</li>
+    <li><strong><span class="bl"></span></strong>: Singer (1975) called giving human suffering priority a form of discrimination <span class="hint">Speciesism</span>; benefits are unknown until <span class="bl"></span> the study <span class="hint">after</span>; on this view <span class="bl"></span> regulation can justify animal research <span class="hint">no amount of</span>.</li>
+  </ol>
+
+  <div class="box purple">
+    <div class="bx-t">中文理解：连续性是双刃剑</div>
+    支持方靠连续性（共同祖先、相似神经系统）说结果能推广；反方用同一把刀反击：既然这么相似，凭什么不给同样的伦理保护？再一步就是 Singer 的物种歧视。把这条正反两用写出来比堆理由高级。
+  </div>
+
+    <div class="pg-foot">Page 9 of 12</div>
+</div>
+
+<!-- PAGE 10 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Animal Ethics: The Law 动物伦理立法</span><span class="r">4.2 METHODS · SPA 1986 · THREE Rs · THREE LICENCES</span></div>
+  <div class="sec">Legislation 立法</div>
+  <ul class="tight">
+    <li>The <strong>Animals (Scientific Procedures) Act (<span class="bl" style="min-width:40px"></span>)</strong> covers all animal research in the UK <span class="hint">1986</span>. It covers any scientific procedure that may cause <span class="bl"></span>, suffering, distress or lasting harm to a 'protected' animal <span class="hint">pain</span>.</li>
+    <li>Protected animals = all <span class="bl"></span> <span class="bl"></span> plus a single invertebrate species <span class="hint">non-human vertebrates; the octopus</span>.</li>
+    <li>Also follow the <strong>Animal Welfare Act (<span class="bl" style="min-width:40px"></span>)</strong> <span class="hint">2006</span>; in Europe, <span class="bl"></span> governs national regulations <span class="hint">Directive 2010/63/EU</span>.</li>
+  </ul>
+
+  <div class="sec">BPS position and the three Rs 三个 R</div>
+  <p>BPS: permission will not be granted unless the researcher can <span class="bl"></span> the costs to the animals in relation to the likely <span class="bl"></span> <span class="hint">justify; benefits</span>. Curiosity alone is not enough. Three Rs (Russell and Burch, <span class="bl" style="min-width:40px"></span>) <span class="hint">1959</span>:</p>
+  <table class="n">
+    <tr><th style="width:20%;">R</th><th>Meaning</th></tr>
+    <tr><td class="lbl">Replace（替代）</td><td>Use <span class="bl"></span> alternatives whenever possible <span class="hint">non-sentient</span></td></tr>
+    <tr><td class="lbl">Reduce（减少）</td><td>Use <span class="bl"></span> animals <span class="hint">fewer</span></td></tr>
+    <tr><td class="lbl">Refine（优化）</td><td>Refine procedures to <span class="bl"></span> suffering <span class="hint">minimise</span></td></tr>
+  </table>
+
+  <div class="sec">The three licences 三张许可（three Ps）</div>
+  <table class="n">
+    <tr><th style="width:24%;">Licence</th><th>What it regulates</th></tr>
+    <tr><td class="lbl">Project licence</td><td>Each project gets a new licence specifying the <span class="bl"></span> and <span class="bl"></span> of animals <span class="hint">species; number</span></td></tr>
+    <tr><td class="lbl">Personal licence</td><td>For each researcher, only after <span class="bl"></span> <span class="hint">training</span></td></tr>
+    <tr><td class="lbl">Place licence</td><td>Regulates the <span class="bl"></span> in which animals are kept; regularly inspected <span class="hint">conditions/housing</span></td></tr>
+  </table>
+
+  <div class="box purple">
+    <div class="bx-t">中文理解：三 R 管怎么对待，三证管谁批准</div>
+    Replace、Reduce、Refine 管<strong>怎么对待动物</strong>（换掉、减量、减痛）；Project、Personal、Place 管<strong>谁批准谁来做在哪做</strong>。锚点细节：<strong>1986 法案 + 八爪鱼是唯一受保护的无脊椎动物</strong>。
+  </div>
+
+    <div class="pg-foot">Page 10 of 12</div>
+</div>
+
+<!-- PAGE 11 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Checkpoint + Exam Practice 检查与真题</span><span class="r">4.2 METHODS · TEXTBOOK</span></div>
+  <div class="sec">Checkpoint（课本）</div>
+  <p class="small"><strong>1.</strong> Match: 1 Maya waited outside a cinema recording who went in · 2 Leo secretly watched students in a common room · 3 Asha announced she would watch who students sit next to · 4 Benito staged a play area in a lab · 5 Carlos joined a group of bikers · 6 Jamal watched from a distance.</p>
+  <p class="small">1 <span class="bl" style="min-width:70px"></span> 2 <span class="bl" style="min-width:70px"></span> 3 <span class="bl" style="min-width:70px"></span> 4 <span class="bl" style="min-width:70px"></span> 5 <span class="bl" style="min-width:70px"></span> 6 <span class="bl" style="min-width:70px"></span></p>
+  <p class="small"><strong>2.</strong> Name the three Rs and the three licences (three Ps).</p>
+  <div class="wl s"></div>
+  <p class="small"><strong>3.</strong> Choose the three conditions for using a chi-squared test: independent groups · ordinal data · test of difference or association · interval data · repeated measures · nominal data.</p>
+  <div class="wl s"></div>
+
+  <div class="sec">Exam practice 真题（课本）</div>
+  <p class="q">1. Niro observed how many visitors chose a glass walkway or an avoiding path at the top of a tall building. Explain one strength and one weakness of Niro using an observation research method in this study. (4)</p>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <p class="q">2. Angelo tallied toys played with by nursery children (boys 18/32; girls 34/12). (a) Justify the use of a chi-squared test. (2) (b) Observed value 13.87, df = 1, two-tailed, p ≤ 0.05. Is it significant? Explain. (2)</p>
+  <div class="wl s"></div>
+  <div class="wl s"></div>
+  <p class="q">3. Evuska observed mobile phone use by drivers aged 25 or below vs 50 and above, using time sampling. Describe how she carried out the observation using time sampling. (3)</p>
+  <div class="wl s"></div>
+  <p class="q">4. Evaluate content analysis as a research method. (8)</p>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl s"></div>
+
+    <div class="pg-foot">Page 11 of 12</div>
+</div>
+
+<!-- PAGE 12 -->
+<div class="page pg-tight">
+  <div class="pg-head"><span class="t">Answer Key 答案速查 + Brain Dump</span><span class="r">4.2 METHODS · MARK HONESTLY</span></div>
+  <div class="sec">Answer key 答案速查</div>
+  <p class="small"><strong>p.2</strong> no IV · counted / gender-stereotyped · words etc. · 3/6/4/2 · clear and unambiguous · operational definitions · time intervals; representative; predetermined; at once.<br>
+  <strong>p.3</strong> natural · ecological · consent · control · variables · controls · parent–child attachment · rarely · structured · observer bias · concentrate · no · notes · objectivity · informed · ethically · valid · naturalistic/overt · structured/covert.<br>
+  <strong>p.4</strong> consent and privacy · ecological · repeat · modified · manipulation · objectivity · notes · Observer · objective · Informed · ethically · valid · Explicitly · covert non-participant.<br>
+  <strong>p.5</strong> incidence · advertisements · gender stereotyping · indirect · agreed · Tally · meanings and relationships · coded · Unobtrusive/confidentiality · Reliability/historical · interpretation/internal · descriptive/why · availability · culture-biased.<br>
+  <strong>p.6</strong> one individual or small group · unique/rare · observations · Free association · facing away from · Freudian slips · transference · qualitative · a therapy · only · ecological · unique/middle-class · different/unconscious/verified.<br>
+  <strong>p.7–8</strong> difference; association · nominal · independent · frequencies · individual · averages · 8/12/17/3 · 20/20/25/15/40 · observed · row, column, overall · O−E · O−E · 20.25 · E · 8.64 · rows, columns · 1 · significance · 2.71 · ≥, null · 8.64&gt;2.71 significant · 2.71 / 3.84 · practice: 6.31 &gt; 5.99, significant at p ≤ 0.05 two-tailed with df = 2.<br>
+  <strong>p.9</strong> Pavlov, Skinner · 22 · caged · Skinner · pain · regulated, inspections · cloning · common/evolutionary · utilitarian · Gray · different · language · cortex · seven-week-old foetus · Anthropomorphism · ethical · Speciesism · after · no amount of.<br>
+  <strong>p.10</strong> 1986 · pain · non-human vertebrates, the octopus · 2006 · Directive 2010/63/EU · justify, benefits · 1959 · non-sentient · fewer · minimise · species, number · training · conditions/housing.<br>
+  <strong>p.11</strong> 1 naturalistic 2 covert 3 overt 4 structured 5 participant 6 non-participant · three Rs: replace, reduce, refine; three Ps: project, personal, place · nominal data, independent groups, test of difference or association.</p>
+
+  <div class="sec">Model answer highlights 高分要点（4+8 分题）</div>
+  <div class="box green">
+    <div class="bx-t">Q1 玻璃走道（4 分）</div>
+    <span class="small">Strength (ecological validity): real setting where the behaviour normally occurs, so path choice reflects genuine avoidance of heights. Weakness (lack of control): weather, crowd levels and individual differences could not be controlled, so fear of heights may not be the only cause and the observation cannot be repeated exactly.</span>
+  </div>
+  <div class="box green">
+    <div class="bx-t">Q4 内容分析（8 分骨架）</div>
+    <span class="small">Two strengths: unobtrusive (existing sources, few ethical issues, historical material available) + reliability (same categories make replication easy). Two weaknesses: subjective (personal interpretation; internal validity if categories misfit) + descriptive only (what not why; limited by material availability; media ≠ reality; culture bias). Conclusion: valuable where live research is impossible; check across coders and cultures.</span>
+  </div>
+
+  <div class="sec">Brain dump 空白重写</div>
+  <p class="small">Rewrite, from memory and in full, any answer you got wrong or left blank above:</p>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+
+    <div class="pg-foot">Page 12 of 12</div>
+</div>
+
+</body>
+</html>
