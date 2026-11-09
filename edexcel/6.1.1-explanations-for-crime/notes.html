@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6.1.1 Explanations for Crime — Student Notes Workbook</title>
+<style>
+@page { size: A4; margin: 13mm 12mm 15mm 12mm; }
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif; color:#1a1a1a; font-size:10pt; line-height:1.5; margin:0; background:#f3f3f3; }
+.page { background:#fff; max-width: 800px; margin: 0 auto 10px auto; padding: 10mm 11mm; page-break-after: always; position: relative; min-height: 248mm; }
+@media print { body { background:#fff; } .page { margin:0; padding:0; max-width:none; box-shadow:none; } }
+.pg-head { display:flex; justify-content:space-between; align-items:baseline; border-bottom: 2px solid #333; padding-bottom:4px; margin-bottom:10px; }
+.pg-head .t { font-size:11.5pt; font-weight:700; }
+.pg-head .r { font-size:8pt; color:#777; letter-spacing:.04em; }
+.pg-foot { position:absolute; bottom:4mm; left:0; right:0; text-align:center; font-size:8pt; color:#999; }
+.sec { font-size:10pt; font-weight:700; margin:12px 0 5px 0; padding-left:7px; border-left:3.5px solid #444; }
+.sec:first-of-type { margin-top:2px; }
+.sub { font-size:9.5pt; font-weight:700; margin:9px 0 3px 0; }
+.bl { display:inline-block; border-bottom:1px solid #555; height:1em; vertical-align:baseline; min-width:60px; margin:0 2px; }
+.hint { font-size:8.5pt; color:#666; }
+.hint::before { content:"（"; } .hint::after { content:"）"; }
+table.n { width:100%; border-collapse:collapse; margin:6px 0 9px 0; font-size:9pt; }
+table.n th, table.n td { border:1px solid #999; padding:4px 6px; text-align:left; vertical-align:top; }
+table.n th { background:#e9e9e9; font-size:8.8pt; }
+td.lbl { background:#f4f4f4; width:22%; font-weight:600; }
+.box { border:1px solid #aaa; border-left:4px solid #555; padding:6px 9px; margin:7px 0; border-radius:3px; }
+.box.grey { border:1px dashed #999; border-left:4px dashed #999; background:#fafafa; }
+.box.purple { border-left-color:#7c3aed; background:#faf5ff; }
+.box.blue { border-left-color:#2563eb; background:#f5f9ff; }
+.box.green { border-left-color:#16a34a; background:#f3faf5; }
+.box.orange { border-left-color:#ea580c; background:#fff7ed; }
+.box .bx-t { font-size:9.3pt; font-weight:700; margin-bottom:3px; }
+.wl { border-bottom:1px solid #bbb; height:24pt; }
+.wl.s { height:18pt; }
+ul.tight { margin:4px 0 8px 0; padding-left:17px; }
+ul.tight li { margin-bottom:3px; }
+ol.tight { margin:4px 0 8px 0; padding-left:17px; }
+ol.tight li { margin-bottom:4px; }
+.chk { font-size:9.3pt; }
+.chk .c { display:inline-block; width:11px; height:11px; border:1.3px solid #555; margin-right:6px; vertical-align:-1px; }
+.q { font-style:italic; background:#f6f6f6; border:1px solid #ccc; padding:5px 9px; margin:5px 0; font-size:9.3pt; border-radius:3px; }
+.small { font-size:8.6pt; line-height:1.35; }
+.pg-tight table.n { font-size:8.5pt; margin:5px 0 7px 0; }
+.pg-tight table.n th, .pg-tight table.n td { padding:2.5px 5px; }
+.pg-tight .sub { margin:7px 0 2px 0; }
+.pg-tight .box { padding:5px 8px; margin:6px 0; }
+.pg-tight .small { line-height:1.24; }
+.pg-tight p.small, .pg-tight .sec { font-size:7.9pt; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="pg-head"><span class="t">6.1.1 Explanations for Crime and Antisocial Behaviour</span><span class="r">TOPIC F · NOTES WORKBOOK</span></div>
+
+  <div class="box orange">
+    <div class="bx-t">How to use this workbook 使用方法</div>
+    <p class="small" style="margin-bottom:0;">Cover the answer hints, write your own answer first, then check.每一节先自己写，再对括号里的提示。答案速查在最后一页。做错的内容标星，考前只看标星部分。</p>
+  </div>
+
+  <div class="sec">Contents map 内容地图</div>
+  <table class="n">
+    <tr><th style="width:14%;">Page</th><th style="width:34%;">Section</th><th>What you must be able to do</th></tr>
+    <tr><td class="lbl">p.2</td><td>Crime vs antisocial + SFP theory 犯罪与反社会 + 自证预言</td><td>Define both behaviours; describe the four-step SFP process in order</td></tr>
+    <tr><td class="lbl">p.3</td><td>SFP evidence 自证预言证据</td><td>Match Rosenthal &amp; Jacobson (1968) and Jahoda (1954) to their findings</td></tr>
+    <tr><td class="lbl">p.4</td><td>SFP evaluation 自证预言评价</td><td>Reproduce the three-part evaluation skeleton and explain each point</td></tr>
+    <tr><td class="lbl">p.5</td><td>SLT theory 媒体社会学习理论</td><td>Define modelling and vicarious reinforcement in exam-ready wording</td></tr>
+    <tr><td class="lbl">p.6</td><td>SLT evidence 学习理论证据</td><td>Quote Bandura (1963), Williams (1986) and Comstock &amp; Paik (1994) numbers</td></tr>
+    <tr><td class="lbl">p.7</td><td>SLT evaluation 学习理论评价</td><td>Give three weaknesses with the numbers that back them</td></tr>
+    <tr><td class="lbl">p.8</td><td>ASPD features 反社会人格障碍</td><td>List the characteristics and the under-15 diagnosis rule</td></tr>
+    <tr><td class="lbl">p.9</td><td>ASPD evidence 人格障碍证据</td><td>Quote the twin-study and brain-imaging percentages</td></tr>
+    <tr><td class="lbl">p.10</td><td>Three theories compared 三论对比</td><td>Place each theory on the nature-nurture line; write one comparative sentence</td></tr>
+    <tr><td class="lbl">p.11</td><td>Checkpoint + exam practice 自测与真题</td><td>Textbook checkpoint 1-9 + real exam questions 2+2+2+8</td></tr>
+    <tr><td class="lbl">p.12</td><td>Answer key + brain dump 答案与重写</td><td>Mark honestly, rewrite every wrong answer in full</td></tr>
+  </table>
+
+  <div class="sec">Revision tracker 复习打卡</div>
+  <p class="chk"><span class="c"></span>p.2-3 SFP　<span class="c"></span>p.4 evaluation　<span class="c"></span>p.5-7 SLT　<span class="c"></span>p.8-9 ASPD　<span class="c"></span>p.10 compare　<span class="c"></span>p.11 exam</p>
+</div>
+
+  <div class="pg-foot">Page 1 of 12</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Crime vs Antisocial + SFP Theory</span><span class="r">6.1.1 · EXPLANATIONS FOR CRIME</span></div>
+
+  <div class="sec">1 · Criminal vs antisocial 犯罪行为与反社会行为</div>
+  <table class="n">
+    <tr><th style="width:20%;"></th><th>Criminal behaviour 犯罪行为</th><th>Antisocial behaviour 反社会行为</th></tr>
+    <tr><td class="lbl">Definition</td><td>You <span class="bl"></span> <span class="hint">break the law</span>.</td><td>Causes <span class="bl"></span>, alarm or distress to others, <span class="bl"></span> <span class="hint">harassment · not in itself illegal</span>.</td></tr>
+    <tr><td class="lbl">Examples</td><td>Theft, assault, fraud.</td><td>Excessive noise, intimidating others, hoax calls.</td></tr>
+    <tr><td class="lbl">Consequence (UK)</td><td><span class="bl"></span> <span class="hint">Prosecution 起诉</span>.</td><td>An <span class="bl"></span> listing what you cannot do. <span class="hint">ASBO 反社会行为令</span></td></tr>
+  </table>
+
+  <div class="sec">2 · SFP in four steps 自证预言四步过程</div>
+  <p>Write the four steps in order. 第一步已给，补齐后面三步：</p>
+  <ol class="tight">
+    <li>A <span class="bl"></span> expectation is believed about the person. <span class="hint">false 虚假的</span></li>
+    <li>The person is <span class="bl"></span> as that type of person. <span class="hint">labelled 被贴标签</span></li>
+    <li>They are treated <span class="bl"></span>; behaviour inconsistent with the label is <span class="bl"></span>. <span class="hint">differently · ignored</span></li>
+    <li>The person <span class="bl"></span> the label and acts in line with it, so the prophecy comes <span class="bl"></span>. <span class="hint">internalises · true</span></li>
+  </ol>
+
+  <div class="box purple">
+    <div class="bx-t">中文逻辑：四步记四个字（信贴待真）</div>
+    <p class="small" style="margin-bottom:0;">一个虚假的期待被人<strong>信</strong>了，就变成<strong>贴</strong>在对方身上的标签；别人按标签<strong>待</strong>他（好的行为被忽视，只有符合标签的行为有回应）；最后他把标签内化，标签就弄<strong>真</strong>了。放到犯罪上：被叫「小混混」的人被正常圈子孤立，只有犯罪团伙接纳他，最后他用犯罪「兑现」了标签。</p>
+  </div>
+
+  <div class="sec">Warm-up 检查</div>
+  <p>Which theory treats criminality as <strong>nurture</strong> and which as <strong>nature</strong>? SFP = <span class="bl" style="min-width:70px"></span>, ASPD = <span class="bl" style="min-width:70px"></span>. <span class="hint">nurture 教养 · nature 天性</span></p>
+
+  <div class="sec">Exam-style practice 实战一问</div>
+  <p class="q">Describe what is meant by antisocial behaviour. (2 marks)</p>
+  <p class="small">Skeleton: causes harassment, alarm or distress to others + not in itself breaking any law. Two clauses, one mark each.</p>
+  <div class="wl s"></div>
+
+  <div class="pg-foot">Page 2 of 12</div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="pg-head"><span class="t">SFP Evidence — Two Studies</span><span class="r">6.1.1 · EXPLANATIONS FOR CRIME</span></div>
+
+  <div class="sec">1 · Rosenthal &amp; Jacobson (1968) 教室里的期望</div>
+  <table class="n">
+    <tr><th style="width:22%;">Aspect</th><th>Fill from memory 凭记忆填</th></tr>
+    <tr><td class="lbl">Setting</td><td>An <span class="bl"></span> setting in <span class="bl"></span>, USA. <span class="hint">academic · San Francisco</span></td></tr>
+    <tr><td class="lbl">Label</td><td>Some students were labelled academic <span class="bl"></span> with great potential — but they were allocated <span class="bl"></span>, not by intelligence. <span class="hint">'bloomers' · randomly</span></td></tr>
+    <tr><td class="lbl">Measure</td><td>IQ measured at the <span class="bl"></span> and end of <span class="bl"></span> year(s). <span class="hint">start · one</span></td></tr>
+    <tr><td class="lbl">Finding</td><td>The bloomers' IQ rose <span class="bl"></span> than the non-bloomers', because teachers' <span class="bl"></span> changed how they treated them. <span class="hint">significantly higher · expectations</span></td></tr>
+  </table>
+
+  <div class="sec">2 · Jahoda (1954) 名字里的期望</div>
+  <table class="n">
+    <tr><th style="width:22%;">Aspect</th><th>Fill from memory 凭记忆填</th></tr>
+    <tr><td class="lbl">Group</td><td>The <span class="bl"></span> people of <span class="bl"></span>, who name boys by birth day. <span class="hint">Ashanti · Ghana</span></td></tr>
+    <tr><td class="lbl">Expectations</td><td>Monday boys: <span class="bl"></span>; Wednesday boys: <span class="bl"></span>. <span class="hint">quiet and placid · aggressive and short-tempered</span></td></tr>
+    <tr><td class="lbl">Data source</td><td><span class="bl"></span> years of records at a local <span class="bl"></span> court. <span class="hint">five · juvenile</span></td></tr>
+    <tr><td class="lbl">Finding</td><td><span class="bl"></span>% of violent offences by Wednesday-born boys vs <span class="bl"></span>% by Monday-born boys. <span class="hint">22 · 6.9</span></td></tr>
+  </table>
+
+  <div class="box purple">
+    <div class="bx-t">中文逻辑：两个研究各管一段</div>
+    <p class="small" style="margin-bottom:0;">Rosenthal &amp; Jacobson 证明「期望 → 待遇 → 表现改变」这条链，但场景是教室不是犯罪；Jahoda 把这条链接到了<strong>真实的暴力犯罪记录</strong>上，是 SFP 直接支持犯罪解释的唯一研究。考试问 <em>who found a link between violent offending and the day of the week they were born?</em>，答 Jahoda (1954)，数字 22% vs 6.9% 要能背。</p>
+  </div>
+
+  <div class="sec">Compare the two studies 两研究对比</div>
+  <table class="n">
+    <tr><th style="width:24%;"></th><th>Rosenthal &amp; Jacobson</th><th>Jahoda</th></tr>
+    <tr><td class="lbl">Method</td><td><span class="bl"></span> in a school setting. <span class="hint">field experiment</span></td><td><span class="bl"></span> of court records. <span class="hint">archival analysis</span></td></tr>
+    <tr><td class="lbl">Measure</td><td><span class="bl"></span> scores over a year. <span class="hint">IQ</span></td><td>Records of <span class="bl"></span> offences. <span class="hint">violent</span></td></tr>
+    <tr><td class="lbl">Direct link to crime?</td><td><span class="bl" style="min-width:40px"></span> <span class="hint">No — education only</span></td><td><span class="bl" style="min-width:40px"></span> <span class="hint">Yes — juvenile court</span></td></tr>
+  </table>
+
+  <div class="pg-foot">Page 3 of 12</div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <div class="pg-head"><span class="t">SFP Evaluation</span><span class="r">6.1.1 · EXPLANATIONS FOR CRIME</span></div>
+
+  <div class="sec">1 · The three-part skeleton 评价骨架</div>
+  <p class="small">任何一题 <em>evaluate self-fulfilling prophecy</em>，先用这三条搭骨架，再按题干挑一条展开：</p>
+  <table class="n">
+    <tr><th style="width:18%;">Skeleton</th><th>The point</th><th>Why it matters</th></tr>
+    <tr>
+      <td class="lbl">① Evidence thin 证据薄</td>
+      <td>The only direct criminal evidence is <span class="bl"></span>; the rest is about <span class="bl"></span> outcomes. <span class="hint">Jahoda · education/IQ</span></td>
+      <td>Teachers' treatment of pupils may not match what police or courts do to labelled people.</td>
+    </tr>
+    <tr>
+      <td class="lbl">② Method blocked 方法受限</td>
+      <td>Ethics forbid deliberately labelling children, so only a <span class="bl"></span> can be shown, not <span class="bl"></span>. <span class="hint">correlation · causation</span></td>
+      <td>Other variables could explain the link; causation stays an assumption.</td>
+    </tr>
+    <tr>
+      <td class="lbl">③ Scope narrow 视野窄</td>
+      <td>It ignores <span class="bl"></span> pressure, politics, <span class="bl"></span> factors and social or economic circumstances. <span class="hint">peer · biological</span></td>
+      <td>A complete explanation of crime needs SLT and ASPD too.</td>
+    </tr>
+  </table>
+
+  <div class="sec">2 · The self-report problem 测量难题</div>
+  <p>SFP is by definition a <span class="bl"></span> belief, so it is hard to measure: beliefs are studied with <span class="bl"></span> measures, which rely on insight, self-disclosure and <span class="bl"></span>. <span class="hint">false · self-report · honesty</span></p>
+
+  <div class="box green">
+    <div class="bx-t">Exam sentence starter 高分句式</div>
+    <p class="small" style="margin-bottom:0;">"The theory is supported by Jahoda (1954), who found that boys expected to be aggressive were over-represented in violent crime records. However, this is correlational, and because it would be unethical to label children experimentally, causation cannot be established." 背会这一句，2 分 justify 题和 4 分评价题都能用。</p>
+  </div>
+
+  <div class="sec">Write it out 全句写作</div>
+  <p class="small">Pick one skeleton point and write it as a full evaluation sentence (point + why):</p>
+  <div class="wl"></div>
+  <div class="wl"></div>
+
+  <div class="pg-foot">Page 4 of 12</div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <div class="pg-head"><span class="t">SLT — Social Learning from the Media</span><span class="r">6.1.1 · EXPLANATIONS FOR CRIME</span></div>
+
+  <div class="sec">1 · Key terms in exam wording 考试用语</div>
+  <p><strong>Social learning theory</strong>: criminal behaviour results from <span class="bl"></span> such behaviour from <span class="bl"></span> it via the media or watching other people. <span class="hint">modelling · observing</span></p>
+  <p><strong>Vicarious reinforcement</strong>: learning through the <span class="bl"></span> of <span class="bl"></span> person's behaviour. <span class="hint">consequence · another</span></p>
+  <p><strong>Modelling</strong>: imitating a <span class="bl"></span> that has been seen to be <span class="bl"></span>. <span class="hint">role model · rewarded</span></p>
+
+  <div class="sec">2 · The chain of learning 学习链</div>
+  <p class="small">补全链条（每空一词）：see the model act → see the act <span class="bl"></span> → store it as a script → reproduce it when the situation fits, possibly <span class="bl"></span> after seeing it. <span class="hint">rewarded · later</span></p>
+
+  <div class="box purple">
+    <div class="bx-t">中文逻辑：替代强化是核心词</div>
+    <p class="small" style="margin-bottom:0;">孩子不用自己挨打才学会打人：他看到别人打人<strong>被奖励</strong>（赢得了比赛、被夸厉害），就等于自己被强化了一次。这叫<strong>替代强化</strong>。考试要写这个词的英文 <em>vicarious reinforcement</em>，define 题就背上面第一句原文。</p>
+  </div>
+
+  <div class="sec">3 · Nature-nurture position 立场定位</div>
+  <p>SLT is a <span class="bl"></span>-cognitive explanation: learning is social (what is watched) but the storage and reproduction happens inside the mind. It sits between SFP (pure environment) and ASPD (pure biology). <span class="hint">social</span></p>
+
+  <div class="sec">Mini scenario 情境判断</div>
+  <p class="small">A child sees an older student win praise for bullying, then bullies a classmate the next week. Name the two pieces:</p>
+  <p>Copying the seen act = <span class="bl" style="min-width:90px"></span>; learning through another person's consequence = <span class="bl" style="min-width:120px"></span> reinforcement. <span class="hint">modelling · vicarious</span></p>
+
+  <div class="sec">Quick check 快问</div>
+  <p class="small">Give the SLT define wording in one full sentence: <span class="bl" style="min-width:210px"></span> <span class="hint">criminal behaviour results from modelling behaviour observed via the media or other people</span></p>
+
+  <div class="pg-foot">Page 5 of 12</div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page">
+  <div class="pg-head"><span class="t">SLT Evidence — Three Sources</span><span class="r">6.1.1 · EXPLANATIONS FOR CRIME</span></div>
+
+  <div class="sec">1 · Bandura, Ross &amp; Ross (1963)</div>
+  <p class="small">Children watched a video of adults behaving <span class="bl"></span> towards a Bobo doll; they also watched a <span class="bl"></span> version where the adult was dressed as a black cat. Children copied from <span class="bl"></span>. Limitation: long-term impact was not <span class="bl"></span> up, so we cannot know whether antisocial behaviour developed beyond the <span class="bl"></span> context. <span class="hint">aggressively · cartoon · both · followed · experimental</span></p>
+
+  <div class="sec">2 · MacBeth Williams (1986) — natural experiment</div>
+  <table class="n">
+    <tr><th style="width:24%;">Aspect</th><th>Fill 凭记忆填</th></tr>
+    <tr><td class="lbl">Event</td><td>The <span class="bl"></span> of television to a small community in British Columbia, Canada. <span class="hint">introduction</span></td></tr>
+    <tr><td class="lbl">Sample</td><td><span class="bl"></span> young people studied. <span class="hint">16</span></td></tr>
+    <tr><td class="lbl">Finding</td><td>After only <span class="bl"></span> years of television, they were <span class="bl"></span> as aggressive as two <span class="bl"></span> groups from nearby communities. <span class="hint">two · twice · control</span></td></tr>
+    <tr><td class="lbl">Her own caution</td><td>Williams suggested the aggression was more likely from the increased value placed on <span class="bl"></span> lifestyles than from programme violence. <span class="hint">materialistic</span></td></tr>
+  </table>
+
+  <div class="sec">3 · Comstock &amp; Paik (1994) — meta-analysis</div>
+  <p class="small">Meta-analysis of <span class="bl"></span> studies: a <span class="bl"></span> correlation between television violence viewed and aggressive behaviour, with an overall coefficient of <span class="bl"></span>. This is not particularly strong and is affected by <span class="bl"></span> sample sizes, which make findings appear significant when they are not. <span class="hint">correlational · positive · +0.19 · large</span></p>
+
+  <div class="box purple">
+    <div class="bx-t">中文逻辑：三个证据三种强度</div>
+    <p class="small" style="margin-bottom:0;">Bandura 是实验室证据（能控变量，但场景假）；Williams 是自然实验（有真实社区，但她自己都不认可是电视的功劳）；Comstock &amp; Paik 是相关元分析（人数最多，但 +0.19 很弱，相关也定不了因果方向，可能是爱看暴力的孩子自己去挑暴力节目）。答题时按「实验室最强控变量、自然实验最真实、相关最弱」排序引用。</p>
+  </div>
+
+  <div class="sec">Numbers recall 数字速查</div>
+  <p class="small">Williams sample = <span class="bl" style="min-width:30px"></span> young people; twice as aggressive after <span class="bl" style="min-width:40px"></span> years; Comstock &amp; Paik coefficient = <span class="bl" style="min-width:45px"></span>. <span class="hint">16 · two · +0.19</span></p>
+
+  <div class="pg-foot">Page 6 of 12</div>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page">
+  <div class="pg-head"><span class="t">SLT Evaluation</span><span class="r">6.1.1 · EXPLANATIONS FOR CRIME</span></div>
+
+  <div class="sec">1 · Three weaknesses to memorise 三个缺点</div>
+  <table class="n">
+    <tr><th style="width:20%;">Point</th><th>The evidence</th><th>Why it matters</th></tr>
+    <tr>
+      <td class="lbl">Weak correlation 相关弱</td>
+      <td>Comstock &amp; Paik's overall coefficient is <span class="bl"></span>, affected by large samples. <span class="hint">+0.19</span></td>
+      <td>A weak link cannot carry the whole explanation of criminality.</td>
+    </tr>
+    <tr>
+      <td class="lbl">Direction unknown 因果不明</td>
+      <td>Correlations do not establish <span class="bl"></span> or indicate the <span class="bl"></span> of possible causality: aggressive children may seek out violent programmes. <span class="hint">causality · direction</span></td>
+      <td>The third-variable problem applies: social class could drive both TV habits and aggression.</td>
+    </tr>
+    <tr>
+      <td class="lbl">Alternative explanation 自己人也反水</td>
+      <td>Williams suggested her own result came from <span class="bl"></span> lifestyles, not programme violence. <span class="hint">materialistic</span></td>
+      <td>Even the key study's author offers a non-learning explanation.</td>
+    </tr>
+  </table>
+
+  <div class="sec">2 · The Luca question method 8 分题方法</div>
+  <p class="small">课本真题：Luca 玩暴力游戏赢了比赛，在家和学校都开始打架。Discuss how SLT could account for Luca becoming aggressive. 写法四句：</p>
+  <ol class="tight">
+    <li>Name the mechanism: Luca saw fighting <span class="bl"></span> (he wins competitions and is praised). <span class="hint">rewarded</span></li>
+    <li>Use the key term: this is <span class="bl"></span> reinforcement. <span class="hint">vicarious</span></li>
+    <li>Chain the outcome: the script reproduces at home and school when the <span class="bl"></span> fits. <span class="hint">situation</span></li>
+    <li>Balance one line: this is correlational; Luca may already have been <span class="bl"></span>. <span class="hint">aggressive</span></li>
+  </ol>
+  <div class="wl s"></div>
+  <div class="wl s"></div>
+
+  <div class="sec">Exam-style practice 实战一问</div>
+  <p class="q">What is meant by 'vicarious reinforcement'? (2 marks)</p>
+  <div class="wl s"></div>
+  <div class="wl s"></div>
+
+  <div class="pg-foot">Page 7 of 12</div>
+</div>
+
+<!-- PAGE 8 -->
+<div class="page">
+  <div class="pg-head"><span class="t">ASPD — Features and Diagnosis</span><span class="r">6.1.1 · EXPLANATIONS FOR CRIME</span></div>
+
+  <div class="sec">1 · Definition 定义</div>
+  <p>Antisocial personality disorder is characterised by a persistent <span class="bl"></span> for the <span class="bl"></span> of others. <span class="hint">disregard · rights</span></p>
+
+  <div class="sec">2 · Six characteristics 六特征（课本清单位置）</div>
+  <ul class="tight">
+    <li>Disregard for <span class="bl"></span> rules or respect for <span class="bl"></span> behaviour. <span class="hint">social · lawful</span></li>
+    <li><span class="bl"></span> and manipulation: lying, using aliases, conning others. <span class="hint">Deceit</span></li>
+    <li><span class="bl"></span> or failing to plan ahead. <span class="hint">Impulsivity</span></li>
+    <li><span class="bl"></span> and irritability, e.g. getting into fights. <span class="hint">Aggression</span></li>
+    <li>Reckless disregard for their own or other people's <span class="bl"></span>. <span class="hint">safety</span></li>
+    <li>Lack of <span class="bl"></span> for wrongdoing or harm. <span class="hint">remorse</span></li>
+  </ul>
+
+  <div class="sec">3 · The under-15 rule 诊断年龄线</div>
+  <p>ASPD has its roots in childhood and cannot be formally diagnosed without evidence of antisocial behaviour before the age of <span class="bl"></span> years. <span class="hint">15</span></p>
+
+  <div class="box purple">
+    <div class="bx-t">中文逻辑：先有行为后有诊断</div>
+    <p class="small" style="margin-bottom:0;">六特征口诀：违规骗人、好斗鲁莽、不冲动不后悔，各占一条。年龄线是考点：15 岁前必须已经有反社会行为记录，成年才能诊断。这意味着「 disorder 导致犯罪」的说法只站得住一半，是先有行为证据才有 disorder。评价题里可以拿这条做加分点：诊断与行为互为前后，因果方向存疑。</p>
+  </div>
+
+  <div class="sec">Warm-up 检查</div>
+  <p>Demi steals money from her mother's purse. Which characteristic? <span class="bl"></span>. <span class="hint">disregard for social rules / lawful behaviour</span></p>
+
+  <div class="sec">Behaviours to characteristics 行为配特征（课本 Activity 2）</div>
+  <ul class="tight">
+    <li>Tamara screams aggressively at the neighbours — <span class="bl" style="min-width:110px"></span> <span class="hint">aggression and irritability</span></li>
+    <li>Sanya plays music loudly and insults people — <span class="bl" style="min-width:110px"></span> <span class="hint">disregard for social rules</span></li>
+    <li>Demi steals money from her mother's purse — <span class="bl" style="min-width:110px"></span> <span class="hint">disregard for lawful behaviour</span></li>
+    <li>Ruhie lies to his teachers — <span class="bl" style="min-width:110px"></span> <span class="hint">deceit and manipulation</span></li>
+    <li>Lola regularly fails to show up for work — <span class="bl" style="min-width:110px"></span> <span class="hint">impulsivity / failing to plan ahead</span></li>
+  </ul>
+
+  <div class="pg-foot">Page 8 of 12</div>
+</div>
+
+<!-- PAGE 9 -->
+<div class="page">
+  <div class="pg-head"><span class="t">ASPD Evidence — Twins and Brains</span><span class="r">6.1.1 · EXPLANATIONS FOR CRIME</span></div>
+
+  <div class="sec">1 · Twin and adoption studies 双胞胎与收养研究</div>
+  <table class="n">
+    <tr><th style="width:26%;">Study</th><th>Numbers to memorise 要背的数字</th></tr>
+    <tr><td class="lbl">Torgersen et al. (2008)</td><td><span class="bl"></span> twin pairs in a Norwegian sample; genetic heritability accounted for <span class="bl"></span>% of twin diagnosed with antisocial personality traits. <span class="hint">1386 · 38</span></td></tr>
+    <tr><td class="lbl">Mason &amp; Frick (1994)</td><td>Described <span class="bl"></span> twin and <span class="bl"></span> adoption studies; <span class="bl"></span>% of the variance in antisocial behaviour attributable to genetic factors. <span class="hint">12 · 3 · 50</span></td></tr>
+    <tr><td class="lbl">Fergusen (2010)</td><td>Meta-analysis of <span class="bl"></span> studies (1996-2006), combined sample of <span class="bl"></span>; genetic factors accounted for <span class="bl"></span>% of the variance. <span class="hint">38 · 96 918 · 56</span></td></tr>
+    <tr><td class="lbl">Hodgins &amp; Côtè (1993)</td><td>Offenders <span class="bl"></span> ASPD had a significant history of offending in <span class="bl"></span> and more <span class="bl"></span> in adulthood than offenders without ASPD. <span class="hint">with · childhood · convictions</span></td></tr>
+    <tr><td class="lbl">Simonoff et al. (2004)</td><td>Interviewed <span class="bl"></span> childhood twin pairs with <span class="bl"></span> disorder; it predicted ASPD in adulthood in those with criminal behaviour <span class="bl"></span> years later. <span class="hint">225 · conduct · 10-25</span></td></tr>
+  </table>
+
+  <div class="sec">2 · Brain imaging 脑成像</div>
+  <p class="small">Yang &amp; Raine (2009): meta-analysis of <span class="bl"></span> brain scan studies; found significantly reduced <span class="bl"></span> matter and reduced function in the <span class="bl"></span> cortex, which is known to <span class="bl"></span> aggression. Impairment could be inherited or <span class="bl"></span> through brain damage. Other differences: the <span class="bl"></span> and temporal lobe. <span class="hint">43 · grey · prefrontal · moderate · acquired · amygdala</span></p>
+
+  <div class="box purple">
+    <div class="bx-t">中文逻辑：数字按「38 → 50 → 56」递增背</div>
+    <p class="small" style="margin-bottom:0;">三项遗传研究给出 38%、50%、56% 三条数字线，越新越大，方向一致都指向遗传基础。Yang &amp; Raine 补上脑机制（前额叶管情绪刹车）。评价时记得：所有这些都是相关证据，脑差异可能是犯罪的结果而不是原因，课本原话「inherited or acquired」留的就是这个口子。</p>
+  </div>
+
+  <div class="sec">Numbers recall 数字速查</div>
+  <p class="small">Torgersen <span class="bl" style="min-width:55px"></span> twin pairs → <span class="bl" style="min-width:35px"></span>%; Mason &amp; Frick <span class="bl" style="min-width:35px"></span>%; Fergusen sample <span class="bl" style="min-width:55px"></span> → <span class="bl" style="min-width:35px"></span>%; Yang &amp; Raine <span class="bl" style="min-width:35px"></span> scans. <span class="hint">1386 · 38 · 50 · 96 918 · 56 · 43</span></p>
+
+  <div class="pg-foot">Page 9 of 12</div>
+</div>
+
+<!-- PAGE 10 -->
+<div class="page">
+  <div class="pg-head"><span class="t">Three Theories Compared</span><span class="r">6.1.1 · EXPLANATIONS FOR CRIME</span></div>
+
+  <div class="sec">1 · One-line comparison 一表定位</div>
+  <table class="n">
+    <tr><th style="width:26%;"></th><th>SFP 自证预言</th><th>SLT from media 媒体学习</th><th>ASPD 人格障碍</th></tr>
+    <tr><td class="lbl">Layer 层面</td><td>Social: treatment by others</td><td>Social-cognitive: observed models</td><td>Biological: the individual's disorder</td></tr>
+    <tr><td class="lbl">Key mechanism</td><td>A false <span class="bl"></span> internalised. <span class="hint">label</span></td><td><span class="bl"></span> reinforcement. <span class="hint">Vicarious</span></td><td>Persistent disregard for others' <span class="bl"></span>. <span class="hint">rights</span></td></tr>
+    <tr><td class="lbl">Best evidence</td><td><span class="bl"></span> (1954), 22% vs 6.9%. <span class="hint">Jahoda</span></td><td>Bandura (1963); Williams (1986); Comstock &amp; Paik (<span class="bl"></span>). <span class="hint">1994</span></td><td>Fergusen (2010) <span class="bl"></span>%; Yang &amp; Raine <span class="bl"></span> scans. <span class="hint">56 · 43</span></td></tr>
+    <tr><td class="lbl">Weakest point</td><td>Only correlational; ethics block experiments</td><td>Weak +<span class="bl"></span> coefficient; direction unknown. <span class="hint">0.19</span></td><td>Comorbidity and the under-<span class="bl"></span> rule blur cause and effect. <span class="hint">15</span></td></tr>
+    <tr><td class="lbl">Nature-nurture</td><td><span class="bl"></span> <span class="hint">nurture</span></td><td>Mostly <span class="bl"></span> <span class="hint">nurture</span></td><td><span class="bl"></span> <span class="hint">nature</span></td></tr>
+  </table>
+
+  <div class="sec">2 · Comparative sentence 写一句对比</div>
+  <p class="small">Write one sentence that places SFP and ASPD on opposite sides and names what a complete explanation needs:</p>
+  <div class="wl"></div>
+  <div class="wl"></div>
+
+  <div class="box green">
+    <div class="bx-t">Model sentence 参考句</div>
+    <p class="small" style="margin-bottom:0;">"SFP explains criminality through social treatment (nurture), while ASPD locates the cause inside the individual (nature); a complete explanation needs both, since twin and brain evidence shows a genetic basis while Jahoda's day-name study shows expectations shaping real offending."</p>
+  </div>
+
+  <div class="sec">Synthesis questions 综合问答</div>
+  <p class="small">1. Why can SLT and ASPD be combined in one explanation of a repeat offender? <span class="bl" style="min-width:170px"></span> <span class="hint">learning supplies the behaviour; ASPD traits supply impulsivity and low remorse</span></p>
+  <p class="small">2. Which theory best explains a first offence under peer pressure, and why? <span class="bl" style="min-width:170px"></span> <span class="hint">SFP/SLT — social expectations and observed models drive it</span></p>
+
+  <div class="pg-foot">Page 10 of 12</div>
+</div>
+
+<!-- PAGE 11 -->
+<div class="page pg-tight">
+  <div class="pg-head"><span class="t">Checkpoint + Exam Practice</span><span class="r">6.1.1 · EXPLANATIONS FOR CRIME</span></div>
+
+  <div class="sec">1 · Textbook checkpoint 课本自测 1-9</div>
+  <ol class="tight">
+    <li>Name the two SFP studies and what each measured: <span class="bl" style="min-width:150px"></span> <span class="hint">R&amp;J: IQ change · Jahoda: violent offences</span></li>
+    <li>Give a brief finding for each, one or two sentences: <span class="bl" style="min-width:150px"></span> <span class="hint">bloomers' IQ rose · Wednesday boys 22% vs 6.9%</span></li>
+    <li>Name three characteristics of ASPD: <span class="bl" style="min-width:150px"></span> <span class="hint">any three of the six</span></li>
+    <li>Name two sources of aggression children learn antisocial behaviour from: <span class="bl" style="min-width:120px"></span> <span class="hint">media / other people</span></li>
+    <li>Who linked violent offending to the day of the week born? <span class="bl" style="min-width:100px"></span> <span class="hint">Jahoda (1954)</span></li>
+    <li>Describe antisocial behaviour: <span class="bl" style="min-width:150px"></span> <span class="hint">causes harassment, alarm or distress; not itself illegal</span></li>
+    <li>Why can SFP-caused antisocial behaviour not be tested experimentally? <span class="bl" style="min-width:150px"></span> <span class="hint">unethical to label children deliberately</span></li>
+    <li>What is vicarious reinforcement? <span class="bl" style="min-width:150px"></span> <span class="hint">learning through another person's behaviour consequence</span></li>
+    <li>How does it explain aggression? <span class="bl" style="min-width:150px"></span> <span class="hint">seeing aggression rewarded strengthens copying</span></li>
+  </ol>
+
+  <div class="sec">2 · Exam practice 真题（课本 EXAM PRACTICE 原题）</div>
+  <p class="q">1. (a) Describe antisocial personality disorder (ASPD) as an explanation of criminal and antisocial behaviour. (2 marks)</p>
+  <div class="wl s"></div>
+  <div class="wl s"></div>
+  <p class="q">1. (b) Justify how ASPD can be considered a credible explanation of criminal and antisocial behaviour. (2 marks)</p>
+  <div class="wl s"></div>
+  <div class="wl s"></div>
+  <p class="q">2. Justify self-fulfilling prophecy as an explanation for crime and antisocial behaviour. (2 marks)</p>
+  <div class="wl s"></div>
+  <p class="q">3. Luca enjoys playing violent video games and has won a competition. His parents notice he is more aggressive at home and gets into trouble at school. Discuss how social learning theory could account for Luca becoming aggressive. (8 marks)</p>
+  <div class="wl s"></div>
+  <div class="wl s"></div>
+  <div class="wl s"></div>
+  <div class="wl s"></div>
+  <div class="wl s"></div>
+  <div class="wl s"></div>
+
+  <div class="pg-foot">Page 11 of 12</div>
+</div>
+
+<!-- PAGE 12 -->
+<div class="page pg-tight">
+  <div class="pg-head"><span class="t">Answer Key + Brain Dump</span><span class="r">6.1.1 · EXPLANATIONS FOR CRIME</span></div>
+
+  <div class="sec">Answer key 答案速查</div>
+  <p class="small"><strong>p.2</strong> break the law · harassment · not in itself illegal · Prosecution · ASBO · false · labelled · differently · ignored · internalises · true · nurture · nature.<br>
+  <strong>p.3</strong> academic · San Francisco · 'bloomers' · randomly · start · one · significantly higher · expectations · Ashanti · Ghana · quiet and placid · aggressive and short-tempered · five · juvenile · 22 · 6.9.<br>
+  <strong>p.4</strong> Jahoda · education/IQ · correlation · causation · peer · biological · false · self-report · honesty.<br>
+  <strong>p.5</strong> modelling · observing · consequence · another · role model · rewarded · rewarded · later · social.<br>
+  <strong>p.6</strong> aggressively · cartoon · both · followed · experimental · introduction · 16 · two · twice · control · materialistic · correlational · positive · +0.19 · large.<br>
+  <strong>p.7</strong> +0.19 · causality · direction · materialistic · rewarded · vicarious · situation · aggressive.<br>
+  <strong>p.8</strong> disregard · rights · social · lawful · Deceit · Impulsivity · Aggression · safety · remorse · 15 · disregard for social rules or lawful behaviour.<br>
+  <strong>p.9</strong> 1386 · 38 · 12 · 3 · 50 · 38 · 96 918 · 56 · with · childhood · convictions · 225 · conduct · 10-25 · 43 · grey · prefrontal · moderate · acquired · amygdala.<br>
+  <strong>p.10</strong> label · Vicarious · 1994 · Jahoda · 56 · 43 · 0.19 · 15 · nurture · nurture · nature.</p>
+
+  <div class="sec">Model answer highlights 高分要点</div>
+  <div class="box green">
+    <div class="bx-t">Q1a+1b ASPD 2+2 骨架</div>
+    <span class="small">Describe: a persistent disregard for the rights of others, diagnosed only with evidence of antisocial behaviour before age 15; features include deceitfulness, impulsivity, aggression and lack of remorse. Justify credibility: twin studies (Torgersen 38%, Fergusen 56% of variance) and brain scans (Yang &amp; Raine, reduced prefrontal function) give a measurable biological basis, and Simonoff (2004) shows childhood conduct disorder predicting adult ASPD.</span>
+  </div>
+  <div class="box green">
+    <div class="bx-t">Q3 Luca 8 分骨架</div>
+    <span class="small">1. Mechanism: Luca watches violent games where fighting is rewarded (prizes, praise). 2. Key term: vicarious reinforcement - seeing the model's aggression succeed strengthens his own aggressive scripts. 3. Application: the scripts reproduce at home (fights with his brother) and at school (playground) when the situation fits. 4. Balance: this evidence is correlational; Luca may have been more aggressive before gaming, and the theory cannot prove direction.</span>
+  </div>
+
+  <div class="sec">Brain dump 空白重写</div>
+  <p class="small">Rewrite, from memory and in full, any answer you got wrong or left blank above:</p>
+  <div class="wl"></div>
+  <div class="wl"></div>
+  <div class="wl"></div>
+
+  <div class="pg-foot">Page 12 of 12</div>
+</div>
+
+</body>
+</html>

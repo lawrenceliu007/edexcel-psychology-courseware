@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.1.1 Explanations for Crime — SFP, Media SLT and ASPD</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+body.dark .figure img { box-shadow: 0 2px 8px rgba(0,0,0,.4); }
+
+.syl-tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75em; font-weight: 600; margin-right: 6px; vertical-align: middle; background: #dbeafe; color: #1e40af; }
+body.dark .syl-tag { background: rgba(59,130,246,.15); color: #93c5fd; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic F · Criminological psychology — 6.1.1 Explanations for crime</span>
+  </div>
+  <span class="nav-pill">🧩 Criminological Psychology</span>
+  <div class="nav-controls">
+    <a class="nav-btn" href="notes.html" title="Printable student notes workbook" style="text-decoration:none;display:inline-flex;align-items:center;">📒 Notes</a>
+    <a class="nav-btn" href="6.1.1-Explanations-For-Crime-Notes-Workbook.pdf" title="Download notes as PDF" style="text-decoration:none;display:inline-flex;align-items:center;">⬇ PDF</a>
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">6.1.1 Explanations</div>
+    <div class="sb-header-sub">SFP · Media SLT · ASPD · 犯罪与反社会行为的解释</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+    <li class="sb-item"><a href="#s2">2. Explanation Map</a></li>
+    <li class="sb-item"><a href="#s3">3. Self-Fulfilling Prophecy</a></li>
+    <li class="sb-item"><a href="#s4">4. SFP Evidence and Evaluation</a></li>
+    <li class="sb-item"><a href="#s5">5. Media SLT</a></li>
+    <li class="sb-item"><a href="#s6">6. SLT Evidence and Evaluation</a></li>
+    <li class="sb-item"><a href="#s7">7. Antisocial Personality Disorder</a></li>
+    <li class="sb-item"><a href="#s8">8. ASPD Evidence and Evaluation</a></li>
+    <li class="sb-item"><a href="#s9">9. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s10">10. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s11">11. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>6.1.1 EXPLANATIONS FOR CRIME AND ANTISOCIAL BEHAVIOUR<br><span style="font-size:0.65em">Self-fulfilling prophecy · Social learning from the media · Antisocial personality disorder · 犯罪与反社会行为的解释</span></h1>
+  <div class="meta">
+    <span class="badge">Topic F · Criminological psychology</span>
+    <span class="badge">Spec 6.1.1</span>
+    <span class="badge">Textbook Book 2 · Chapter 7</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this chapter is really asking</h4>
+  <ol>
+    <li><strong>Two words that look alike but are not the same.</strong> Crime breaks the law; antisocial behaviour causes harassment, alarm or distress without breaking any law. Exams test whether you keep them apart.</li>
+    <li><strong>Three explanations, three layers.</strong> Self-fulfilling prophecy explains crime through how other people treat you; social learning from the media explains it through what you watch and copy; antisocial personality disorder explains it through the person's own makeup.</li>
+    <li><strong>Each explanation needs a supporting study.</strong> Rosenthal and Jacobson (1968) and Jahoda (1954) for SFP; Bandura et al. (1963), Williams (1986) and Comstock and Paik (1994) for media SLT; twin and brain-scan studies for ASPD.</li>
+    <li><strong>The command word "justify" wants evidence.</strong> A theory is credible because a study supports it, so every justify answer needs one named study with its finding.</li>
+    <li><strong>Weaknesses follow one pattern:</strong> the evidence is only correlational, the research sits in education rather than crime, and no single explanation covers every offender.</li>
+  </ol>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started — Crime or Antisocial Behaviour?</h2>
+
+  <p>Textbook scenario: list five types of crime, then list reasons why people commit them. The list gets long quickly, because crime has social, economic, mental-health and biological causes, and one crime can have several reasons behind it. That is why explaining criminal behaviour is hard, and why psychologists study the circumstances of each individual before looking for patterns across the offending population.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>Criminal behaviour 犯罪行为</h4>
+      <p class="small">Committing a crime is <strong>breaking the law</strong>. Theft, assault and fraud are crimes, so they can be prosecuted in court.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Antisocial behaviour 反社会行为</h4>
+      <p class="small">Acting in a way that causes <strong>harassment, alarm or distress</strong> to others, which does not in itself break any law. Examples from the textbook: being excessively noisy, not controlling animals, intimidating other people and making hoax calls.</p>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <h4>The antisocial behaviour order (ASBO)</h4>
+    <p class="small">If you are found to be committing antisocial behaviour in the UK you can be issued with an <strong>antisocial behaviour order</strong>, which lists what you cannot do. If you violate the order you can be prosecuted. The two terms have different meanings but are often used interchangeably, which is exactly the trap the exam sets.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：两个词的边界在哪</strong><br>
+    判断标准只有一条：<strong>有没有犯法</strong>。砸别人窗户、偷东西是犯罪，走法律程序；半夜放音乐吵醒整栋楼、打骚扰电话吓人，让人难受但法律没写这些是罪，所以只能算反社会行为。不过反社会行为也不是没后果：政府可以下一张 ASBO，白纸黑字写清楚你不能做什么，违反这张单子本身就可以被起诉。考试写定义题时两个词各写半句，再把「犯法与否」这句判词带上，分就齐了。
+  </div>
+
+  <div class="xp-block">
+    <h4>🤔 Quick decision<span class="xp-badge">Think first</span></h4>
+    <p class="xp-intro">Making hoax phone calls that frighten people. Is this criminal behaviour or antisocial behaviour?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Antisocial behaviour, because it causes distress without breaking a law</button>
+      <button class="q-option" onclick="mcAns(this)">Criminal behaviour, because frightening people is illegal</button>
+      <button class="q-option" onclick="mcAns(this)">Both, because distress always counts as a crime</button>
+    </div>
+    <div class="xp-result" id="res-s1"></div>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Explanation Map — Three Layers of Cause</h2>
+
+  <p>The textbook groups this spec into three explanations. Before going into each one, fix where each sits: one works through <strong>how others treat you</strong>, one works through <strong>what you observe and copy</strong>, one works through <strong>who you are</strong>.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Arial, sans-serif">
+      <rect x="190" y="14" width="300" height="52" rx="10" fill="#c2410c"/>
+      <text x="340" y="36" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">Why do people commit</text>
+      <text x="340" y="55" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">crime or antisocial behaviour?</text>
+      <line x1="340" y1="66" x2="120" y2="120" stroke="#94a3b8" stroke-width="2"/>
+      <line x1="340" y1="66" x2="340" y2="120" stroke="#94a3b8" stroke-width="2"/>
+      <line x1="340" y1="66" x2="560" y2="120" stroke="#94a3b8" stroke-width="2"/>
+      <polygon points="120,120 127,109 113,109" fill="#94a3b8"/>
+      <polygon points="340,120 347,109 333,109" fill="#94a3b8"/>
+      <polygon points="560,120 567,109 553,109" fill="#94a3b8"/>
+      <rect x="20" y="124" width="200" height="150" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="120" y="148" text-anchor="middle" font-size="13.5" font-weight="700" fill="#c2410c">SELF-FULFILLING</text>
+      <text x="120" y="165" text-anchor="middle" font-size="13.5" font-weight="700" fill="#c2410c">PROPHECY</text>
+      <text x="120" y="188" text-anchor="middle" font-size="11.5" fill="#475569">Others expect it,</text>
+      <text x="120" y="205" text-anchor="middle" font-size="11.5" fill="#475569">label you, treat you</text>
+      <text x="120" y="222" text-anchor="middle" font-size="11.5" fill="#475569">differently, and you</text>
+      <text x="120" y="239" text-anchor="middle" font-size="11.5" fill="#475569">live up to the label</text>
+      <text x="120" y="262" text-anchor="middle" font-size="10.5" font-style="italic" fill="#94a3b8">a social explanation</text>
+      <rect x="240" y="124" width="200" height="150" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="340" y="148" text-anchor="middle" font-size="13.5" font-weight="700" fill="#c2410c">SOCIAL LEARNING</text>
+      <text x="340" y="165" text-anchor="middle" font-size="13.5" font-weight="700" fill="#c2410c">FROM THE MEDIA</text>
+      <text x="340" y="188" text-anchor="middle" font-size="11.5" fill="#475569">Watch crime on TV,</text>
+      <text x="340" y="205" text-anchor="middle" font-size="11.5" fill="#475569">see it rewarded,</text>
+      <text x="340" y="222" text-anchor="middle" font-size="11.5" fill="#475569">copy the role model</text>
+      <text x="340" y="239" text-anchor="middle" font-size="11.5" fill="#475569">later</text>
+      <text x="340" y="262" text-anchor="middle" font-size="10.5" font-style="italic" fill="#94a3b8">a social-cognitive explanation</text>
+      <rect x="460" y="124" width="200" height="150" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="560" y="148" text-anchor="middle" font-size="13.5" font-weight="700" fill="#c2410c">ANTISOCIAL</text>
+      <text x="560" y="165" text-anchor="middle" font-size="13.5" font-weight="700" fill="#c2410c">PERSONALITY DISORDER</text>
+      <text x="560" y="188" text-anchor="middle" font-size="11.5" fill="#475569">A diagnosed disorder:</text>
+      <text x="560" y="205" text-anchor="middle" font-size="11.5" fill="#475569">disregard for others,</text>
+      <text x="560" y="222" text-anchor="middle" font-size="11.5" fill="#475569">impulsivity, low remorse,</text>
+      <text x="560" y="239" text-anchor="middle" font-size="11.5" fill="#475569">genetic and brain links</text>
+      <text x="560" y="262" text-anchor="middle" font-size="10.5" font-style="italic" fill="#94a3b8">a biological explanation</text>
+    </svg>
+    <div class="figure-caption">The three textbook explanations sit at three different layers: treatment by others, observed models, and the individual's own disorder.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：一张图记三章结构</strong><br>
+    三条解释各管一层，考试问「对比两种解释」时先报层次再展开：自我实现预言靠<strong>别人的期待</strong>起作用，媒体社会学习靠<strong>看到的榜样</strong>起作用，反社会人格障碍靠<strong>这个人本身的紊乱</strong>起作用。三个名字里有两个是纯社会解释，一个是生物解释，nature–nurture 这场辩论在这一章会反复出现，评价题里可以直接引用。
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Self-Fulfilling Prophecy</h2>
+
+  <div class="keyterm-box">
+    <div class="kt">self-fulfilling prophecy <span class="zh">自我实现预言</span></div>
+    When someone acts in accordance with the label they have been given. A behaviour may result from a belief or expectation someone has, and that expectation influences behaviour in such a way that it causes the expectation to come true.
+  </div>
+
+  <p>The textbook example: a teacher believes you are not good at maths, so they treat you differently, hold lower expectations for your success and offer you limited opportunities to excel. That treatment damages your maths performance, and you end up underachieving, which proves the teacher's belief right. Applied to crime: a person is falsely labelled as criminal or antisocial, people around them expect trouble and treat them with suspicion, good behaviour gets ignored because it does not fit the label. Isolated from normal society, they may be drawn into criminal groups, internalise the label, and commit an offence that confirms the expectation.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Arial, sans-serif">
+      <rect x="55" y="20" width="180" height="58" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+      <text x="145" y="44" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e40af">Others' beliefs</text>
+      <text x="145" y="62" text-anchor="middle" font-size="11.5" fill="#475569">a false label is formed</text>
+      <rect x="445" y="20" width="180" height="58" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+      <text x="535" y="44" text-anchor="middle" font-size="12.5" font-weight="700" fill="#166534">Our actions</text>
+      <text x="535" y="62" text-anchor="middle" font-size="11.5" fill="#475569">we act to match the label</text>
+      <rect x="445" y="150" width="180" height="58" rx="10" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+      <text x="535" y="174" text-anchor="middle" font-size="12.5" font-weight="700" fill="#854d0e">Our beliefs</text>
+      <text x="535" y="192" text-anchor="middle" font-size="11.5" fill="#475569">we internalise the label</text>
+      <rect x="55" y="150" width="180" height="58" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+      <text x="145" y="174" text-anchor="middle" font-size="12.5" font-weight="700" fill="#991b1b">Others' actions</text>
+      <text x="145" y="192" text-anchor="middle" font-size="11.5" fill="#475569">treated differently, isolated</text>
+      <line x1="235" y1="49" x2="445" y2="49" stroke="#64748b" stroke-width="2"/>
+      <polygon points="445,49 434,43 434,55" fill="#64748b"/>
+      <text x="340" y="40" text-anchor="middle" font-size="10.5" fill="#64748b">influence</text>
+      <line x1="535" y1="78" x2="535" y2="150" stroke="#64748b" stroke-width="2"/>
+      <polygon points="535,150 529,139 541,139" fill="#64748b"/>
+      <text x="553" y="118" text-anchor="middle" font-size="10.5" fill="#64748b">cause</text>
+      <line x1="445" y1="179" x2="235" y2="179" stroke="#64748b" stroke-width="2"/>
+      <polygon points="235,179 246,173 246,185" fill="#64748b"/>
+      <text x="340" y="196" text-anchor="middle" font-size="10.5" fill="#64748b">impact</text>
+      <line x1="145" y1="150" x2="145" y2="78" stroke="#64748b" stroke-width="2"/>
+      <polygon points="145,78 139,89 151,89" fill="#64748b"/>
+      <text x="118" y="118" text-anchor="middle" font-size="10.5" fill="#64748b">reinforce</text>
+      <text x="340" y="130" text-anchor="middle" font-size="11.5" font-weight="700" fill="#c2410c">the Pygmalion Effect: the loop keeps turning</text>
+    </svg>
+    <div class="figure-caption">The self-fulfilling prophecy process, from the textbook's Figure 7.1: the four boxes feed each other in a loop.</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：为什么叫「预言」</strong><br>
+    关键在于起点是<strong>假的</strong>：这个人本来没有犯罪倾向，只是被人贴了标签。四步循环记牢：<strong>贴标签 → 别人按标签对待他（好行为被无视）→ 他被孤立、内化标签 → 他真的去犯案，标签「应验」</strong>。应验之后循环还会加固，因为周围人会说「看吧，我早就说过」。答题时把「假的期待变成真的行为」这句写出来，定义分才完整。
+  </div>
+
+  <div class="xp-block">
+    <h4>🤔 Quick check<span class="xp-badge">Think first</span></h4>
+    <p class="xp-intro">Why is the initial label in a self-fulfilling prophecy described as "false"?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Because the person does not originally have the traits the label claims; the label is believed without evidence</button>
+      <button class="q-option" onclick="mcAns(this)">Because labels are always based on lies told deliberately by others</button>
+      <button class="q-option" onclick="mcAns(this)">Because the person refuses to accept the label throughout the process</button>
+    </div>
+    <div class="xp-result" id="res-s3"></div>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. SFP Evidence and Evaluation</h2>
+
+  <h3>Two studies the textbook uses</h3>
+
+  <div class="note-box">
+    <h4>Rosenthal and Jacobson (1968) — the "bloomers" study</h4>
+    <p class="small">In San Francisco, USA, teachers were told that some students would learn more and more quickly than others. Students were labelled academic "bloomers" with great potential, but they had been allocated to this group <strong>randomly</strong>, not by intelligence. IQ was measured for all students at the start and end of the year. The bloomers' IQ rose significantly more than the non-bloomers', even though they were not the highest scorers at the start. Conclusion: teachers' expectations changed their behaviour towards students, and that behaviour changed the IQ scores.</p>
+  </div>
+
+  <div class="note-box">
+    <h4>Jahoda (1954) — the Ashanti day-names study</h4>
+    <p class="small">The Ashanti people of Ghana name boys according to the day they were born, with expectations attached to each day: "Monday" boys are considered quiet and placid; "Wednesday" boys are thought to be aggressive and short-tempered. After examining five years of records at a local juvenile court, Jahoda found <strong>nearly 22 per cent of violent offences were committed by boys born on Wednesday, but only 6.9 per cent by boys born on Monday</strong>. Cultural expectations led to boys being treated according to their day-name, and many conformed to the label.</p>
+  </div>
+
+  <div class="figure">
+    <img src="images/sfp_cycle.png" alt="The self-fulfilling prophecy cycle, Figure 7.1 in the textbook" style="max-width:340px">
+    <div class="figure-caption">Textbook Figure 7.1: the SFP process (Pygmalion Effect). Our actions influence others' beliefs; others' beliefs cause others' actions; their actions impact our beliefs; our beliefs reinforce our actions.</div>
+  </div>
+
+  <h3>Evaluation</h3>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Strengths</h4>
+      <ul class="tight small">
+        <li><strong>Experimental support exists.</strong> Rosenthal and Jacobson controlled the study well across a full school year and showed expectations changing measured outcomes (IQ).</li>
+        <li><strong>A crime-relevant example exists.</strong> Jahoda connects a label given at birth to violent offending rates in real court records, which moves the theory beyond the classroom.</li>
+        <li><strong>It explains why isolation matters.</strong> Being treated with suspicion pushes a person away from normal society and toward criminal groups, which fits observed reoffending patterns.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Weaknesses</h4>
+      <ul class="tight small">
+        <li><strong>It cannot be tested experimentally on crime.</strong> The ethical and moral issues are so great that experiments are prevented, so the link can only ever be correlational, and other variables may be influencing behaviour.</li>
+        <li><strong>The research base sits in education.</strong> Most SFP research examines teacher-child relationships; other relationships may not have the same effect, so applying it to criminality is limited.</li>
+        <li><strong>Beliefs are hard to measure.</strong> SFP is by definition a false belief, and beliefs are usually studied through self-report, which relies on insight, self-disclosure and honesty.</li>
+        <li><strong>It ignores other factors.</strong> Peer pressure, politics, biological factors and social or economic circumstances are all excluded, yet they also raise the likelihood of antisocial behaviour.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="blue-box">
+    <h4>Wider issues and debates: nature–nurture</h4>
+    <p class="small">SFP emphasises environmental factors: what shapes offending is how people are treated, for example a child from an antisocial family being expected to offend too. But the theory ignores innate influences such as brain functioning or genetics, so on the nature–nurture debate it sits firmly on the nurture side, and that one-sidedness is itself an evaluation point.</p>
+  </div>
+
+  <div class="exam-tip">
+    <strong>Exam tip (from the textbook):</strong> you may be asked to <strong>justify</strong> why a theory is credible. The command word "justify" requires you to rationalise a decision, and the best way is to offer evidence in the form of a research study that supports the theory. Evidence makes a theory more credible, so name the study and state its finding.
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：两项证据和一堵墙</strong><br>
+    证据侧记两句话：Rosenthal 和 Jacobson 证明<strong>期待能改变 IQ</strong>（撒「bloomer」标签是随机分的，IQ 却真的涨了），Jahoda 证明<strong>标签能挂到暴力犯罪上</strong>（星期三男孩 22% 对星期一 6.9%）。墙也有两面：伦理障碍让犯罪领域<strong>做不了实验</strong>，只能停留在相关；研究又大多在教育里做，换到其他关系未必成立。评价题问「为什么不能确证因果」，把这两条合起来写：相关不等于因果，还有别的变量（生理、同伴、经济）在起作用。
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Social Learning from the Media</h2>
+
+  <div class="keyterm-box">
+    <div class="kt">vicarious <span class="zh">替代性的</span></div>
+    Learning through the consequence of another person's behaviour.
+  </div>
+
+  <p>Social learning theory is a social-cognitive theory that explains criminal behaviour as the result of <strong>modelling behaviour from observing it via the media or watching other people</strong>. The individual cannot learn offending behaviour without observing someone commit a crime, either directly (a peer) or indirectly (watching crime-related television). To reproduce the behaviour they must be motivated, which happens through <strong>vicarious reinforcement</strong>: watching a criminal get away with an offence or reap the rewards.</p>
+
+  <p>The textbook adds two media-specific points. On television, antisocial behaviour and criminality are often glamorised, and violence can be committed by "good guys". Criminal characters act as <strong>role models</strong> because they have power or share the viewer's gender, and they provide vicarious reinforcement when there is no punishment and only the <strong>sanitised effects</strong> on victims are shown. At the same time the theory stresses cognition: a person may choose not to commit a crime immediately after observing it, and the behaviour can happen much later. News programmes documenting negative consequences can also discourage offending.</p>
+
+  <div class="note-box">
+    <h4>Activity 1: apply each key term to stealing (from the textbook)</h4>
+    <table>
+      <tr><th>Key term</th><th>Definition</th><th>Applied to stealing</th></tr>
+      <tr><td>Attention</td><td>Observing someone perform a behaviour</td><td>A teenager observed a friend shoplifting from a store.</td></tr>
+      <tr><td>Retention</td><td>Remembering the behaviour</td><td>The teenager remembers how the friend hid the item and left.</td></tr>
+      <tr><td>Role model</td><td>Someone we look up to, who may be of higher status and the same gender</td><td>An older friend the teenager admires is the shoplifter.</td></tr>
+      <tr><td>Reproduction</td><td>Copying the behaviour witnessed</td><td>On a later trip the teenager copies the same steps to steal.</td></tr>
+      <tr><td>Vicarious reinforcement</td><td>Witnessing the role model receive a reward for a behaviour</td><td>The friend got new clothes and was never caught, so stealing looks rewarding.</td></tr>
+    </table>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：五个词串成一条链</strong><br>
+    考试考 SLT 应用时按链条顺序写：<strong>注意到行为 → 记住它 → 榜样有地位或同性别 → 稍后复制 → 看到榜样得利才更想复制</strong>。媒体的特殊角色在两头：开头它把罪犯包装成有魅力的强者，结尾它只播出「干干净净」的版本，不播受害者的惨状，替代强化就被放大了。别忘了理论里的认知成分：看和做之间可以隔很久，所以它叫社会<strong>认知</strong>理论。
+  </div>
+
+  <div class="xp-block">
+    <h4>🤔 Quick check<span class="xp-badge">Think first</span></h4>
+    <p class="xp-intro">A teenager watches a film where a thief steals a car and lives comfortably, with no arrest shown. Which concept best explains why this viewing experience makes stealing more likely?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Vicarious reinforcement: the thief's reward is witnessed without punishment</button>
+      <button class="q-option" onclick="mcAns(this)">Context-dependent memory, because the film acts as a retrieval cue</button>
+      <button class="q-option" onclick="mcAns(this)">Labeling, because the film labels the thief as a criminal</button>
+    </div>
+    <div class="xp-result" id="res-s5"></div>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. SLT Evidence and Evaluation</h2>
+
+  <h3>Three studies the textbook uses</h3>
+
+  <div class="note-box">
+    <h4>Bandura, Ross and Ross (1963) — experiment</h4>
+    <p class="small">Children copied aggression from watching a video recording of adults behaving aggressively towards a Bobo doll. Children were <strong>equally likely to copy aggression from a cartoon version</strong> where the aggressive adult was dressed as a black cat. This offers evidence that children copy antisocial behaviour from television. Limitation: the long-term impact was not followed up, so we do not know whether the children developed antisocial behaviour beyond the experimental context.</p>
+  </div>
+
+  <div class="note-box">
+    <h4>Williams (1986) — natural experiment</h4>
+    <p class="small">Tannis MacBeth Williams studied the introduction of television to a small community in British Columbia, Canada. Of the <strong>16 young people</strong> she studied, after only two years of receiving television these children were <strong>twice as aggressive</strong> as two control groups from nearby communities who had grown up with television in varying amounts. Caveat from Williams herself: the increased aggression may have resulted more from an increased value placed on materialistic lifestyles than from the violence on television.</p>
+  </div>
+
+  <div class="note-box">
+    <h4>Comstock and Paik (1994) — meta-analysis of correlations</h4>
+    <p class="small">Many correlational studies reported a positive correlation between television violence viewed and aggressive behaviour, with an overall correlation coefficient of <strong>+0.19</strong>. The textbook's cautions: the correlation is not particularly strong; large sample sizes tend to make findings appear significant when they are not; correlations show relationships only, with no causality, no direction and no measure of third variables. Aggressive children may seek out violent programmes; a third variable such as social class may explain both (children of lower socioeconomic status watch more television and are also more likely to be delinquent, Flood-Page et al., 2000; sensation seeking is another candidate, Slater et al., 2004).</p>
+  </div>
+
+  <div class="figure">
+    <img src="images/tv_violence.png" alt="Does watching violence on television affect children? Textbook discussion page" style="max-width:420px">
+    <div class="figure-caption">The textbook's link page for Bandura's research in Student Book 1: how does watching violence on television affect children?</div>
+  </div>
+
+  <h3>The textbook's overall conclusion</h3>
+
+  <p>Despite a phenomenal amount of research using a range of methods, there is <strong>no unequivocal evidence</strong> that links exposure to violence with aggression or antisocial behaviour. All the research indicates is that the relationship is <strong>neither simple nor straightforward</strong>. This nuance is exactly what an 8-mark answer should end on: the evidence supports some influence, but no single study nails observational learning as the cause of criminality.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Strengths of the evidence base</h4>
+      <ul class="tight small">
+        <li><strong>Multiple methods converge.</strong> A lab experiment (Bandura), a natural experiment (Williams) and correlational meta-analysis (Comstock and Paik) all point in the same direction.</li>
+        <li><strong>Real-world relevance.</strong> Williams introduced actual television to a community, so the setting had ecological validity that a laboratory lacks.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Weaknesses of the evidence base</h4>
+      <ul class="tight small">
+        <li><strong>Causality is missing.</strong> Correlations cannot establish cause, direction or third variables; the +0.19 coefficient is weak and inflated by large samples.</li>
+        <li><strong>Long-term effects unknown.</strong> Bandura's children were not followed up, so copying in the lab does not prove criminal development later.</li>
+        <li><strong>Alternative explanations survive.</strong> Williams blamed materialism, and social class plus sensation seeking both compete with media effects.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：三个研究各补一块拼图</strong><br>
+    Bandura 补「孩子确实会照搬」，连卡通版都照搬，但实验室里演的只是当下；Williams 补「真引进电视后攻击翻倍」，可她自己都承认可能是拜金风气在起作用；Comstock 和 Paik 补「整体相关只有 +0.19」，弱得撑不起因果。三块合起来正好是课本的收束句：<strong>证据很多，但没有一项确凿</strong>。写 8 分题时拿这句当结论，比硬说「媒体导致犯罪」稳得多。
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Antisocial Personality Disorder (ASPD)</h2>
+
+  <div class="keyterm-box">
+    <div class="kt">personality disorder <span class="zh">人格障碍</span></div>
+    When an individual's way of thinking, feeling or relating to others differs significantly from that of a person without the disorder; it reflects extremes in personality and requires a clinical diagnosis.
+  </div>
+
+  <div class="keyterm-box">
+    <div class="kt">delinquent <span class="zh">越轨者</span></div>
+    Tends to be involved in criminal activity.
+  </div>
+
+  <p>ASPD, sometimes referred to as dyssocial personality disorder, is characterised by a <strong>persistent disregard for the rights of others</strong>. It can be diagnosed through official classifications such as the <strong>DSM-V</strong> (Diagnostic and Statistical Manual of Mental Disorders) and the <strong>ICD-11</strong> (International Statistical Classification of Diseases and Related Health Problems), which give professionals clear guidance so people with the same symptoms receive consistent diagnoses.</p>
+
+  <h3>Diagnosis requires three or more of these characteristics</h3>
+  <ol class="tight">
+    <li><strong>Disregard for social rules or respect for lawful behaviour</strong>, e.g. harassment, stealing</li>
+    <li><strong>Deceit and manipulation</strong>: lying, using aliases, conning others for personal or financial gain</li>
+    <li><strong>Impulsivity</strong> or failing to plan ahead</li>
+    <li><strong>Aggression and irritability</strong>, e.g. getting into fights</li>
+    <li><strong>Reckless disregard</strong> for their own or other people's safety, e.g. reckless driving</li>
+    <li><strong>Irresponsible behaviour</strong>, such as failing to honour work or financial obligations</li>
+    <li><strong>Lack of remorse</strong> for wrongdoing or harm</li>
+  </ol>
+
+  <div class="note-box">
+    <h4>Four categories of offences and key facts</h4>
+    <p class="small">People with ASPD tend to commit one of four categories of offences: <strong>(1) aggression towards people or animals, (2) property offences, (3) theft or deceit, (4) serious violation of rules</strong>. Other features include arrogance, superficial charm, exploitativeness and failing to care properly for children. Prevalence is <strong>1 to 4 per cent</strong> of the general population (Lenzenweger et al., 2007), higher in subgroups such as males with substance abuse in clinics or prison. It is much more common in males, but likely under-diagnosed in females because diagnosis emphasises aggressive characteristics. Diagnosis requires the person to be <strong>at least 18</strong>, with <strong>evidence of conduct issues before age 15</strong>; an individual's offending should not itself be used to diagnose the disorder.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：诊断的门槛和年龄线</strong><br>
+    七条特征里<strong>至少中三条</strong>才算数，而且要「不灵活、持续、造成功能损害或痛苦」才够临床诊断。两条年龄线别记反：<strong>18 岁前不能正式确诊，15 岁前必须已经有品行问题的证据</strong>。还有一条考试爱考的：犯过罪不等于有 ASPD，反过来有 ASPD 的人也不是必然犯罪，风险升高但没有到「必然」的程度。患病率记 1% 到 4%，男性多于女性，女性可能因诊断标准偏重攻击性而漏诊。
+  </div>
+
+  <div class="xp-block">
+    <h4>🤔 Quick check<span class="xp-badge">Think first</span></h4>
+    <p class="xp-intro">Why can a person's offending behaviour not be used on its own to diagnose ASPD?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">A clinical diagnosis needs antisocial characteristics that are inflexible, persistent and cause significant impairment or distress, not just an offence</button>
+      <button class="q-option" onclick="mcAns(this)">Because offending is illegal, so psychologists are not allowed to discuss it</button>
+      <button class="q-option" onclick="mcAns(this)">Because only crimes of violence can ever be linked to a personality disorder</button>
+    </div>
+    <div class="xp-result" id="res-s7"></div>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. ASPD Evidence and Evaluation</h2>
+
+  <h3>Five studies the textbook uses</h3>
+
+  <table>
+    <tr><th>Study</th><th>Method</th><th>Finding</th></tr>
+    <tr><td>Hodgins and Côté (1993)</td><td>Compared offenders with and without an ASPD diagnosis</td><td>Offenders with ASPD had a significant history of offending during childhood and more convictions in adulthood than offenders without ASPD, suggesting the disorder carries a strong risk of offending.</td></tr>
+    <tr><td>Torgersen et al. (2008)</td><td>Assessed personality traits of <strong>1386 twin pairs</strong> in a Norwegian sample using structured interviews, compared to DSM-IV criteria</td><td>Genetic heritability accounted for <strong>38 per cent</strong> of twins diagnosed with antisocial personality traits.</td></tr>
+    <tr><td>Mason and Frick (1994)</td><td>Reviewed 12 twin and 3 adoption studies</td><td><strong>50 per cent</strong> of the variance in measures of antisocial behaviour was attributable to genetic factors.</td></tr>
+    <tr><td>Ferguson (2010)</td><td>Meta-analysis of 38 studies published 1996–2006, combined sample <strong>96,918</strong></td><td>Genetic factors accounted for <strong>56 per cent</strong> of the variance in antisocial personality and behaviour, supporting a biological basis for criminality.</td></tr>
+    <tr><td>Yang and Raine (2009)</td><td>Meta-analysis of <strong>43 brain-imaging studies</strong> (structural and functional)</td><td>Significantly reduced grey matter and reduced function in the <strong>PREFRONTAL CORTEX</strong> (the area that moderates aggression) in individuals displaying antisocial behaviour; differences also found in the amygdala and temporal lobe. The impairment could be inherited or acquired through brain damage.</td></tr>
+    <tr><td>Simonoff et al. (2004)</td><td>Longitudinal study of <strong>225 childhood twin pairs</strong> diagnosed with conduct disorder</td><td>Conduct disorder in childhood predicted ASPD in adulthood in those showing criminal behaviour 10–25 years later, supporting the before-age-15 rule and pointing to early identification and intervention.</td></tr>
+  </table>
+
+  <div class="figure">
+    <img src="images/prefrontal_cortex.png" alt="Reduced grey matter and function in the prefrontal cortex may explain antisocial behaviour, textbook Figure 7.2" style="max-width:300px">
+    <div class="figure-caption">Textbook Figure 7.2: reduced grey matter and function in the prefrontal cortex may explain antisocial behaviour, because this region moderates aggression.</div>
+  </div>
+
+  <h3>Evaluation</h3>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Strengths</h4>
+      <ul class="tight small">
+        <li><strong>Converging biological evidence.</strong> Twin data (38%, 50%, 56% heritability estimates) and brain scans (prefrontal cortex) all point the same way, which is what a "justify" answer needs.</li>
+        <li><strong>Longitudinal support.</strong> Simonoff's 10–25 year follow-up shows childhood conduct problems predicting adult ASPD, matching the diagnostic age rule.</li>
+        <li><strong>It explains the offender profile.</strong> Impulsivity, aggression and lack of remorse map directly onto persistent, serious offending.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Weaknesses</h4>
+      <ul class="tight small">
+        <li><strong>Diagnosis is complicated by comorbidity</strong> <span class="small">(the presence of more than one disorder in the same person)</span>: anxiety, depression, substance misuse and ADHD often co-occur and blur the picture.</li>
+        <li><strong>Environmental confounds remain.</strong> ASPD is more common with low socioeconomic status and urban living; those factors may contribute, or the subgroup may behave in ways that merely resemble the disorder and get misdiagnosed.</li>
+        <li><strong>Risk is not destiny.</strong> Offending risk is elevated but not inevitable: some people with ASPD never offend and hold jobs and relationships; severity, comorbid conditions and upbringing all shift the risk.</li>
+        <li><strong>Cause is still debated.</strong> Both genetic and environmental causes are widely believed to combine, so no single pathway is established.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：一串数字背出生物证据</strong><br>
+    生物证据按「遗传到脑」的顺序背：<strong>Torgersen 双胞胎 1386 对 38%、Mason 和 Frick 50%、Ferguson 96918 人 56%、Yang 和 Raine 43 项脑扫描发现前额叶灰质减少</strong>。前额叶管压制攻击，功能弱了人就更容易动手。反向证据也要备着：共病（comorbidity，一个人身上同时有多个障碍）搅浑诊断，环境因素（低收入、城市生活）既是原因也可能是误诊来源，而且 ASPD 患者不犯罪、正常生活的也大有人在。justify 题写证据，评价题写这四条限制，两套别混。
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Checkpoint</h2>
+
+  <div class="checkpoint">
+    <h3>Check your understanding (from the textbook checkpoint)</h3>
+
+    <p><strong>1.</strong> Which key term belongs with each theory? A boy is labelled a troublemaker at school, is treated with suspicion by every teacher, and eventually starts offending.</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Labelling and expectation: the label and the treatment it produces make the prophecy come true</button>
+      <button class="q-option" onclick="mcAns(this)">Vicarious reinforcement, because the boy saw offending rewarded</button>
+      <button class="q-option" onclick="mcAns(this)">Formal diagnosis, because the boy must have ASPD</button>
+    </div>
+    <div class="xp-result" id="res-s9a"></div>
+
+    <p><strong>2.</strong> Which pair of key terms belongs with social learning theory?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)">Impulsivity and recklessness</button>
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Role model and vicarious reinforcement</button>
+      <button class="q-option" onclick="mcAns(this)">Labelling and internalising</button>
+    </div>
+    <div class="xp-result" id="res-s9b"></div>
+
+    <p><strong>3.</strong> Jahoda (1954) found nearly 22 per cent of violent offences were committed by boys born on which day, versus 6.9 per cent on which day?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Wednesday versus Monday</button>
+      <button class="q-option" onclick="mcAns(this)">Friday versus Tuesday</button>
+      <button class="q-option" onclick="mcAns(this)">Sunday versus Thursday</button>
+    </div>
+    <div class="xp-result" id="res-s9c"></div>
+
+    <p><strong>4.</strong> Why can the link between self-fulfilling prophecy and antisocial behaviour never be proven experimentally?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)">Because self-report data is always unreliable</button>
+      <button class="q-option" onclick="mcAns(this)">Because IQ cannot be measured twice in the same person</button>
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Because the ethical and moral issues around labelling children to offend are so great that experiments are prevented, leaving only correlations</button>
+    </div>
+    <div class="xp-result" id="res-s9d"></div>
+
+    <p><strong>5.</strong> Yang and Raine (2009) meta-analysed 43 brain-scan studies. What did they find?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)">Enlarged hippocampi in people with antisocial behaviour</button>
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Significantly reduced grey matter and reduced function in the prefrontal cortex</button>
+      <button class="q-option" onclick="mcAns(this)">No brain differences between antisocial and non-antisocial individuals</button>
+    </div>
+    <div class="xp-result" id="res-s9e"></div>
+
+    <p><strong>6.</strong> How many of the seven ASPD characteristics must be present for diagnosis, and by what age?</p>
+    <div class="xp-controls">
+      <button class="q-option" onclick="mcAns(this)">Two characteristics, diagnosed from age 15</button>
+      <button class="q-option" onclick="mcAns(this)" data-ok="1">Three or more characteristics, diagnosed only from age 18 with conduct evidence before 15</button>
+      <button class="q-option" onclick="mcAns(this)">All seven characteristics, diagnosed at any age</button>
+    </div>
+    <div class="xp-result" id="res-s9f"></div>
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Exam Lab</h2>
+
+  <div class="syl-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px">
+    <span class="syl-tag">Textbook exam practice</span>
+    <span class="syl-tag">AO1 + AO2 + AO3</span>
+    <span class="syl-tag">8-mark discuss</span>
+  </div>
+
+  <div class="exam-practice">
+    <h3>Question 1 — ASPD (from the textbook)</h3>
+    <p class="small">(a) Describe antisocial personality disorder (ASPD) as an explanation of criminal and antisocial behaviour. (2)&nbsp;&nbsp;(b) Justify how ASPD can be considered a credible explanation of criminal and antisocial behaviour. (2)</p>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ 1a — Describe<span class="xp-badge">2 marks</span></h4>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am1')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am1">
+      <p>ASPD is a clinically diagnosed personality disorder characterised by a persistent disregard for the rights of others, with three or more features such as disregard for social rules, deceitfulness, impulsivity, aggression, recklessness and lack of remorse. A diagnosis can only be made from age 18, with evidence of conduct issues before age 15, so a person with the disorder is at elevated risk of offending.</p>
+    </div>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ 1b — Justify<span class="xp-badge">2 marks</span></h4>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am2')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am2">
+      <p>ASPD is credible because research evidence supports it: Ferguson (2010) meta-analysed 38 studies with a combined sample of 96,918 participants and found genetic factors accounted for 56 per cent of the variance in antisocial personality and behaviour, and Yang and Raine (2009) found reduced prefrontal grey matter in 43 brain-scan studies. Converging genetic and neurological evidence makes the explanation credible.</p>
+    </div>
+    <div class="cn-note">
+      <strong>中文方法框：justify 就是一句话加一个研究</strong><br>
+      命令词 justify 要你给决定找理由，课本给的公式是<strong>「证据让理论可信」</strong>：一句理论立场，加一个带数字的研究，两句收工。挑 Ferguson（56%）或 Yang 和 Raine（前额叶）都行，别只写「很多研究支持」这种没有名字的空话。
+    </div>
+  </div>
+
+  <div class="exam-practice">
+    <h3>Question 2 — SFP (from the textbook)</h3>
+    <p class="small">Justify self-fulfilling prophecy as an explanation for crime and antisocial behaviour. (2)</p>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ 2 — Justify SFP<span class="xp-badge">2 marks</span></h4>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am3')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am3">
+      <p>SFP is credible because Jahoda (1954) found that among the Ashanti, boys named after "aggressive" days such as Wednesday committed nearly 22 per cent of violent offences compared with 6.9 per cent for "placid" Monday boys, showing that a label given at birth can shape offending. Rosenthal and Jacobson (1968) add experimental support: randomly labelled "bloomers" gained significantly more IQ, so expectations really do change behaviour.</p>
+    </div>
+  </div>
+
+  <div class="exam-practice">
+    <h3>Question 3 — Luca and violent video games (from the textbook)</h3>
+    <p class="small">Luca enjoys playing violent video games in which he fights other characters. He is very good at winning and has recently won an online competition for being the most successful player. His parents have noticed he is more aggressive at home, often fighting with his younger brother, and he has started getting into trouble at school for fighting in the playground.</p>
+  </div>
+
+  <div class="xp-block">
+    <h4>✍️ 3 — Discuss how SLT could account for Luca's aggression<span class="xp-badge">8 marks</span></h4>
+    <p class="xp-intro">Frame your answer: <strong>AO1 theory chain → apply each link to Luca → evaluation or alternative view → conclusion</strong>.</p>
+    <div class="xp-controls">
+      <button class="xp-btn" onclick="revealAns('am4')">Show a model answer</button>
+    </div>
+    <div class="xp-result" id="am4">
+      <p><strong>AO1:</strong> social learning theory explains criminal and antisocial behaviour as modelling from observed models, with motivation supplied by vicarious reinforcement; behaviour can be reproduced later. <strong>Application:</strong> Luca attends to the fights in his video games (attention), remembers successful fighting techniques (retention), and the game's winning players act as role models. Winning the online competition is powerful vicarious reinforcement: Luca sees fighting skill rewarded with status, and punishment is absent, much like the sanitised media portrayals the textbook describes. He then reproduces the behaviour at home against his brother and in the playground (reproduction), which matches the theory's claim that copying can happen well after observing. <strong>Evaluation:</strong> Bandura, Ross and Ross (1963) support the chain, since children copied filmed aggression, including from a cartoon; however, Comstock and Paik's (1994) overall correlation of only +0.19 shows the media-aggression link is weak, and third variables such as frustration, family modelling or sensation seeking could explain Luca's fights instead. <strong>Conclusion:</strong> SLT offers a coherent account of how Luca's aggression was learned through observation and reward, but it cannot be confirmed as the sole cause.</p>
+    </div>
+    <div class="cn-note">
+      <strong>中文方法框：8 分题把链条挂满全段</strong><br>
+      Luca 这题的关键是<strong>五个术语一个不落地挂到他身上</strong>：看的比赛是注意，记招式是保持，冠军玩家是榜样，自己赢比赛是最强的替代强化，打弟弟、打同学是复制。然后才给评价：Bandura 支持链条成立，Comstock 和 Paik 的 +0.19 提醒媒体效应有限，第三变量要留一句。结构按「理论 → 应用 → 评价 → 收束」四步走，8 分刚好铺满。
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="keyterm-box"><div class="kt">criminal behaviour <span class="zh">犯罪行为</span></div>Committing a crime, i.e. breaking the law.</div>
+    <div class="keyterm-box"><div class="kt">antisocial behaviour <span class="zh">反社会行为</span></div>Acting in a way that causes harassment, alarm or distress to others, which does not in itself break any law, e.g. excessive noise, hoax calls.</div>
+    <div class="keyterm-box"><div class="kt">antisocial behaviour order (ASBO) <span class="zh">反社会行为令</span></div>An order listing what a person found to be committing antisocial behaviour cannot do; violating it can lead to prosecution.</div>
+    <div class="keyterm-box"><div class="kt">self-fulfilling prophecy <span class="zh">自我实现预言</span></div>When someone acts in accordance with the label they have been given, making a false expectation come true.</div>
+    <div class="keyterm-box"><div class="kt">Pygmalion Effect <span class="zh">皮格马利翁效应</span></div>The SFP loop: our actions influence others' beliefs, their beliefs cause their actions, their actions impact our beliefs, our beliefs reinforce our actions.</div>
+    <div class="keyterm-box"><div class="kt">vicarious <span class="zh">替代性的</span></div>Learning through the consequence of another person's behaviour.</div>
+    <div class="keyterm-box"><div class="kt">vicarious reinforcement <span class="zh">替代强化</span></div>Witnessing the role model receive a reward for a behaviour, which motivates reproduction.</div>
+    <div class="keyterm-box"><div class="kt">role model <span class="zh">榜样</span></div>Someone we look up to who may be of higher status and the same gender.</div>
+    <div class="keyterm-box"><div class="kt">social learning theory <span class="zh">社会学习理论</span></div>A social-cognitive theory explaining criminal behaviour as modelling from observing it via the media or other people.</div>
+    <div class="keyterm-box"><div class="kt">sanitised effects <span class="zh">净化的后果呈现</span></div>Media portrayals showing only the clean version of violence, without the real effects on victims, which boosts vicarious reinforcement.</div>
+    <div class="keyterm-box"><div class="kt">personality disorder <span class="zh">人格障碍</span></div>A way of thinking, feeling or relating to others that differs significantly from a person without the disorder; requires clinical diagnosis.</div>
+    <div class="keyterm-box"><div class="kt">antisocial personality disorder (ASPD) <span class="zh">反社会人格障碍</span></div>A disorder characterised by persistent disregard for the rights of others; three or more of seven characteristics are required, diagnosed from age 18 with conduct evidence before 15.</div>
+    <div class="keyterm-box"><div class="kt">DSM-V <span class="zh">《精神障碍诊断与统计手册》第五版</span></div>A classification system published by the American Psychiatric Association to facilitate diagnosis of mental and behavioural disorders.</div>
+    <div class="keyterm-box"><div class="kt">ICD-11 <span class="zh">《国际疾病分类》第十一次修订</span></div>The International Statistical Classification of Diseases and Related Health Problems, an official classification used for diagnosis.</div>
+    <div class="keyterm-box"><div class="kt">delinquent <span class="zh">越轨者</span></div>Tends to be involved in criminal activity.</div>
+    <div class="keyterm-box"><div class="kt">comorbidity <span class="zh">共病</span></div>The presence of more than one disorder in the same person.</div>
+    <div class="keyterm-box"><div class="kt">meta-analysis <span class="zh">元分析</span></div>A study that combines the data of many published studies to reach an overall estimate, e.g. Ferguson (2010) over 38 studies and 96,918 participants.</div>
+    <div class="keyterm-box"><div class="kt">prefrontal cortex <span class="zh">前额叶皮层</span></div>The brain area known to moderate aggression; reduced grey matter and function there is linked to antisocial behaviour (Yang and Raine, 2009).</div>
+  </div>
+</section>
+
+<div class="footer-note">
+  6.1.1 Explanations for crime · Criminological psychology · next: <a href="../6.1.2-6.1.3-understanding-the-offender/">6.1.2–6.1.3 Understanding the offender →</a>
+</div>
+</main>
+
+</div><!-- /page-layout -->
+</div><!-- /container -->
+
+<div id="btt" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  /* ---------- sidebar scroll spy ---------- */
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  /* ---------- reveal helper ---------- */
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  /* ---------- multiple choice: one why per option ---------- */
+  var secWhy = {
+    s1: [
+      'Correct. Hoax calls frighten people but do not in themselves break a law, so they are antisocial behaviour; violating an ASBO, however, can be prosecuted.',
+      'Causing distress is not automatically a crime; the textbook lists hoax calls among antisocial behaviours that stay on the legal side of the line.',
+      'Distress alone does not create a crime; the two categories are separate, and only violating an ASBO turns antisocial behaviour into a prosecutable act.'
+    ],
+    s3: [
+      'Correct. The label is believed without evidence, which is why the prophecy is "false" at the start and only becomes true through the treatment it produces.',
+      'Labels are usually unexamined assumptions rather than deliberate lies; the textbook stresses that the expectation is false, not that it is a lie told on purpose.',
+      'The person usually does internalise the label over time; the "false" refers to the initial belief, not to whether they accept it.'
+    ],
+    s5: [
+      'Correct. Vicarious reinforcement is witnessing the model receive a reward, especially when no punishment and only sanitised consequences are shown.',
+      'Context-dependent memory belongs to the cognitive interview chapter; it explains recall cues, not motivation to copy behaviour.',
+      'Labelling belongs to self-fulfilling prophecy; the film here works through observed rewards, not through a label applied to the viewer.'
+    ],
+    s7: [
+      'Correct. A clinical diagnosis requires antisocial characteristics that are inflexible, persistent and cause significant impairment or distress; a single offence cannot establish that pattern.',
+      'Psychologists routinely discuss offences; the issue is diagnostic, not legal secrecy.',
+      'The four offence categories include property offences and theft, so ASPD is not tied to violence alone; the issue is that offending alone cannot diagnose the disorder.'
+    ],
+    s9: [
+      ['Correct. Labelling and expectation drive self-fulfilling prophecy: a false label, differential treatment, and the labelled person living up to it.',
+       'Vicarious reinforcement belongs to social learning theory; nothing about a rewarded model appears in this scenario.',
+       'A formal diagnosis belongs to ASPD, and the scenario describes a school label plus treatment, not a clinical diagnosis.'],
+      ['Impulsivity and recklessness are characteristics of ASPD, not of social learning.',
+       'Correct. Social learning theory works through role models and vicarious reinforcement.',
+       'Labelling and internalising belong to self-fulfilling prophecy.'],
+      ['Correct. Jahoda found nearly 22 per cent of violent offences were committed by Wednesday boys versus 6.9 per cent by Monday boys.',
+       'Those days do not appear in Jahoda\'s study; the Ashanti expectations attach to Wednesday (aggressive) and Monday (quiet and placid).',
+       'Jahoda\'s comparison was Wednesday versus Monday, based on the day-name expectations of the Ashanti.'],
+      ['Self-report unreliability is a weakness of measuring beliefs, but it is not the reason experiments cannot be run.',
+       'IQ was measured twice in Rosenthal and Jacobson\'s study, so double measurement is not the obstacle.',
+       'Correct. The ethical and moral issues of inducing offending through labelling are so great that experiments are prevented, so only correlations are possible.'],
+      ['The hippocampus was not the finding; the textbook names the prefrontal cortex, amygdala and temporal lobe.',
+       'Correct. Yang and Raine found significantly reduced grey matter and reduced function in the prefrontal cortex, which moderates aggression.',
+       'The meta-analysis did find differences; reduced prefrontal grey matter and function was the headline finding.'],
+      ['The numbers are both off: diagnosis needs three or more characteristics and happens from age 18, not 15.',
+       'Correct. Three or more of the seven characteristics are required, diagnosis happens only from age 18, and conduct issues must be evident before 15.',
+       'All seven are never required, and diagnosis cannot happen at any age; the 18/15 age rules apply.']
+    ]
+  };
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = null;
+    var el = group.nextElementSibling;
+    while (el) {
+      if (el.classList && el.classList.contains('xp-result')) { box = el; break; }
+      el = el.nextElementSibling;
+    }
+    if (!box) box = section.querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+</script>
+</body>
+</html>
