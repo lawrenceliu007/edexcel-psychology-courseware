@@ -97,6 +97,9 @@ td:first-child { font-weight: 600; color: #374151; }
 .figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
 .quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
 .quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
 .quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
 .quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
 .quick-summary li strong { color: var(--primary-dark); }
@@ -131,6 +134,8 @@ body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.1
 body.dark .exam-practice h3 { color: #60a5fa; }
 body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
 body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
 body.dark .quick-summary li { color: #cbd5e1; }
 body.dark .quick-summary li strong { color: #fb923c; }
 body.dark table { border-color: #334155; }
@@ -232,8 +237,19 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   <div class="meta">
     <span class="badge">Topic F · Criminological psychology</span>
     <span class="badge">Spec 6.1.1</span>
-    <span class="badge">Textbook Book 2 · Chapter 7</span>
+    <span class="badge">Textbook Book 2 · Ch.7 · pp.92–101</span>
   </div>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Define and separate</strong> criminal behaviour and antisocial behaviour — and say which one breaks the law.</li>
+    <li><strong>Explain crime in three ways</strong>: self-fulfilling prophecy, social learning from the media, and antisocial personality disorder.</li>
+    <li><strong>Attach the right study to the right theory</strong>: Rosenthal and Jacobson (1968), Jahoda (1954), Bandura et al. (1963), Williams (1986), Comstock and Paik (1994), and the ASPD evidence from twins and brain scans.</li>
+    <li><strong>Evaluate each explanation</strong> with at least one strength and one weakness you can state in a sentence.</li>
+    <li><strong>Use evidence to justify</strong>: when the question asks why a theory is credible, name a study and state its finding.</li>
+  </ul>
 </div>
 
 <div class="quick-summary">
@@ -251,7 +267,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
 <section class="section" id="s1">
   <h2>1. Getting Started — Crime or Antisocial Behaviour?</h2>
 
-  <p>Textbook scenario: list five types of crime, then list reasons why people commit them. The list gets long quickly, because crime has social, economic, mental-health and biological causes, and one crime can have several reasons behind it. That is why explaining criminal behaviour is hard, and why psychologists study the circumstances of each individual before looking for patterns across the offending population.</p>
+  <p>Textbook scenario: list five types of crime, then list reasons why people commit them. The list gets long quickly, because crime has social, economic, mental-health and biological causes, and one crime can have several reasons behind it. That is why explaining criminal behaviour is hard, and why psychologists study the circumstances of each individual before looking for patterns across the offending population（整个犯罪人群）.</p>
 
   <div class="compare-grid">
     <div class="compare-card">
@@ -260,7 +276,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
     </div>
     <div class="compare-card">
       <h4>Antisocial behaviour 反社会行为</h4>
-      <p class="small">Acting in a way that causes <strong>harassment, alarm or distress</strong> to others, which does not in itself break any law. Examples from the textbook: being excessively noisy, not controlling animals, intimidating other people and making hoax calls.</p>
+      <p class="small">Acting in a way that causes <strong>harassment, alarm or distress</strong> to others, which does not in itself break any law. Examples from the textbook: being excessively noisy, not controlling animals, intimidating other people and making hoax calls（谎报险情一类的恶作剧电话）.</p>
     </div>
   </div>
 
@@ -346,7 +362,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
     When someone acts in accordance with the label they have been given. A behaviour may result from a belief or expectation someone has, and that expectation influences behaviour in such a way that it causes the expectation to come true.
   </div>
 
-  <p>The textbook example: a teacher believes you are not good at maths, so they treat you differently, hold lower expectations for your success and offer you limited opportunities to excel. That treatment damages your maths performance, and you end up underachieving, which proves the teacher's belief right. Applied to crime: a person is falsely labelled as criminal or antisocial, people around them expect trouble and treat them with suspicion, good behaviour gets ignored because it does not fit the label. Isolated from normal society, they may be drawn into criminal groups, internalise the label, and commit an offence that confirms the expectation.</p>
+  <p>The textbook example: a teacher believes you are not good at maths, so they treat you differently, hold lower expectations for your success and offer you limited opportunities to excel. That treatment damages your maths performance, and you end up underachieving, which proves the teacher's belief right. Applied to crime: a person is falsely labelled as criminal or antisocial, people around them expect trouble and treat them with suspicion, good behaviour gets ignored because it does not fit the label. Isolated from normal society, they may be drawn into criminal groups, internalise the label（内化标签：别人的眼光变成他自己的自我认知）, and commit an offence that confirms the expectation.</p>
 
   <div class="figure">
     <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Arial, sans-serif">
@@ -404,12 +420,12 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
 
   <div class="note-box">
     <h4>Rosenthal and Jacobson (1968) — the "bloomers" study</h4>
-    <p class="small">In San Francisco, USA, teachers were told that some students would learn more and more quickly than others. Students were labelled academic "bloomers" with great potential, but they had been allocated to this group <strong>randomly</strong>, not by intelligence. IQ was measured for all students at the start and end of the year. The bloomers' IQ rose significantly more than the non-bloomers', even though they were not the highest scorers at the start. Conclusion: teachers' expectations changed their behaviour towards students, and that behaviour changed the IQ scores.</p>
+    <p class="small">In San Francisco, USA, teachers were told that some students would learn more and more quickly than others. Students were labelled academic "bloomers"（「绽放者」，即被随机贴上「即将开窍」标签的学生） with great potential, but they had been allocated to this group <strong>randomly</strong>, not by intelligence. IQ was measured for all students at the start and end of the year. The bloomers' IQ rose significantly more than the non-bloomers', even though they were not the highest scorers at the start. Conclusion: teachers' expectations changed their behaviour towards students, and that behaviour changed the IQ scores.</p>
   </div>
 
   <div class="note-box">
     <h4>Jahoda (1954) — the Ashanti day-names study</h4>
-    <p class="small">The Ashanti people of Ghana name boys according to the day they were born, with expectations attached to each day: "Monday" boys are considered quiet and placid; "Wednesday" boys are thought to be aggressive and short-tempered. After examining five years of records at a local juvenile court, Jahoda found <strong>nearly 22 per cent of violent offences were committed by boys born on Wednesday, but only 6.9 per cent by boys born on Monday</strong>. Cultural expectations led to boys being treated according to their day-name, and many conformed to the label.</p>
+    <p class="small">The Ashanti people of Ghana name boys according to the day they were born, with expectations attached to each day: "Monday" boys are considered quiet and placid; "Wednesday" boys are thought to be aggressive and short-tempered. After examining five years of records at a local juvenile court（少年法庭）, Jahoda found <strong>nearly 22 per cent of violent offences were committed by boys born on Wednesday, but only 6.9 per cent by boys born on Monday</strong>. Cultural expectations led to boys being treated according to their day-name, and many conformed to the label.</p>
   </div>
 
   <div class="figure">
@@ -431,7 +447,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
     <div class="compare-card red">
       <h4>Weaknesses</h4>
       <ul class="tight small">
-        <li><strong>It cannot be tested experimentally on crime.</strong> The ethical and moral issues are so great that experiments are prevented, so the link can only ever be correlational, and other variables may be influencing behaviour.</li>
+        <li><strong>It cannot be tested experimentally on crime.</strong> The ethical and moral issues are so great that experiments are prevented, so the link can only ever be correlational（只证明相关，不证明因果）, and other variables may be influencing behaviour.</li>
         <li><strong>The research base sits in education.</strong> Most SFP research examines teacher-child relationships; other relationships may not have the same effect, so applying it to criminality is limited.</li>
         <li><strong>Beliefs are hard to measure.</strong> SFP is by definition a false belief, and beliefs are usually studied through self-report, which relies on insight, self-disclosure and honesty.</li>
         <li><strong>It ignores other factors.</strong> Peer pressure, politics, biological factors and social or economic circumstances are all excluded, yet they also raise the likelihood of antisocial behaviour.</li>
@@ -465,7 +481,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
 
   <p>Social learning theory is a social-cognitive theory that explains criminal behaviour as the result of <strong>modelling behaviour from observing it via the media or watching other people</strong>. The individual cannot learn offending behaviour without observing someone commit a crime, either directly (a peer) or indirectly (watching crime-related television). To reproduce the behaviour they must be motivated, which happens through <strong>vicarious reinforcement</strong>: watching a criminal get away with an offence or reap the rewards.</p>
 
-  <p>The textbook adds two media-specific points. On television, antisocial behaviour and criminality are often glamorised, and violence can be committed by "good guys". Criminal characters act as <strong>role models</strong> because they have power or share the viewer's gender, and they provide vicarious reinforcement when there is no punishment and only the <strong>sanitised effects</strong> on victims are shown. At the same time the theory stresses cognition: a person may choose not to commit a crime immediately after observing it, and the behaviour can happen much later. News programmes documenting negative consequences can also discourage offending.</p>
+  <p>The textbook adds two media-specific points. On television, antisocial behaviour and criminality are often glamorised, and violence can be committed by "good guys". Criminal characters act as <strong>role models</strong> because they have power or share the viewer's gender, and they provide vicarious reinforcement when there is no punishment and only the <strong>sanitised effects</strong>（「消过毒」的版本：受害者的真实惨状不被播出） on victims are shown. At the same time the theory stresses cognition: a person may choose not to commit a crime immediately after observing it, and the behaviour can happen much later. News programmes documenting negative consequences can also discourage offending.</p>
 
   <div class="note-box">
     <h4>Activity 1: apply each key term to stealing (from the textbook)</h4>
@@ -524,7 +540,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
 
   <h3>The textbook's overall conclusion</h3>
 
-  <p>Despite a phenomenal amount of research using a range of methods, there is <strong>no unequivocal evidence</strong> that links exposure to violence with aggression or antisocial behaviour. All the research indicates is that the relationship is <strong>neither simple nor straightforward</strong>. This nuance is exactly what an 8-mark answer should end on: the evidence supports some influence, but no single study nails observational learning as the cause of criminality.</p>
+  <p>Despite a phenomenal amount of research using a range of methods, there is <strong>no unequivocal evidence</strong>（没有一项确凿证据） that links exposure to violence with aggression or antisocial behaviour. All the research indicates is that the relationship is <strong>neither simple nor straightforward</strong>. This nuance is exactly what an 8-mark answer should end on: the evidence supports some influence, but no single study nails observational learning as the cause of criminality.</p>
 
   <div class="compare-grid">
     <div class="compare-card green">
@@ -579,7 +595,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
 
   <div class="note-box">
     <h4>Four categories of offences and key facts</h4>
-    <p class="small">People with ASPD tend to commit one of four categories of offences: <strong>(1) aggression towards people or animals, (2) property offences, (3) theft or deceit, (4) serious violation of rules</strong>. Other features include arrogance, superficial charm, exploitativeness and failing to care properly for children. Prevalence is <strong>1 to 4 per cent</strong> of the general population (Lenzenweger et al., 2007), higher in subgroups such as males with substance abuse in clinics or prison. It is much more common in males, but likely under-diagnosed in females because diagnosis emphasises aggressive characteristics. Diagnosis requires the person to be <strong>at least 18</strong>, with <strong>evidence of conduct issues before age 15</strong>; an individual's offending should not itself be used to diagnose the disorder.</p>
+    <p class="small">People with ASPD tend to commit one of four categories of offences: <strong>(1) aggression towards people or animals, (2) property offences, (3) theft or deceit, (4) serious violation of rules</strong>. Other features include arrogance, superficial charm, exploitativeness and failing to care properly for children. Prevalence is <strong>1 to 4 per cent</strong> of the general population (Lenzenweger et al., 2007), higher in subgroups such as males with substance abuse in clinics or prison. It is much more common in males, but likely under-diagnosed in females because diagnosis emphasises aggressive characteristics. Diagnosis requires the person to be <strong>at least 18</strong>, with <strong>evidence of conduct issues（品行问题） before age 15</strong>; an individual's offending should not itself be used to diagnose the disorder.</p>
   </div>
 
   <div class="cn-note">
@@ -611,7 +627,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
     <tr><td>Torgersen et al. (2008)</td><td>Assessed personality traits of <strong>1386 twin pairs</strong> in a Norwegian sample using structured interviews, compared to DSM-IV criteria</td><td>Genetic heritability accounted for <strong>38 per cent</strong> of twins diagnosed with antisocial personality traits.</td></tr>
     <tr><td>Mason and Frick (1994)</td><td>Reviewed 12 twin and 3 adoption studies</td><td><strong>50 per cent</strong> of the variance in measures of antisocial behaviour was attributable to genetic factors.</td></tr>
     <tr><td>Ferguson (2010)</td><td>Meta-analysis of 38 studies published 1996–2006, combined sample <strong>96,918</strong></td><td>Genetic factors accounted for <strong>56 per cent</strong> of the variance in antisocial personality and behaviour, supporting a biological basis for criminality.</td></tr>
-    <tr><td>Yang and Raine (2009)</td><td>Meta-analysis of <strong>43 brain-imaging studies</strong> (structural and functional)</td><td>Significantly reduced grey matter and reduced function in the <strong>PREFRONTAL CORTEX</strong> (the area that moderates aggression) in individuals displaying antisocial behaviour; differences also found in the amygdala and temporal lobe. The impairment could be inherited or acquired through brain damage.</td></tr>
+    <tr><td>Yang and Raine (2009)</td><td>Meta-analysis of <strong>43 brain-imaging studies</strong> (structural and functional)</td><td>Significantly reduced grey matter and reduced function in the <strong>PREFRONTAL CORTEX</strong> (the area that moderates aggression（压制攻击冲动）) in individuals displaying antisocial behaviour; differences also found in the amygdala and temporal lobe. The impairment could be inherited or acquired through brain damage.</td></tr>
     <tr><td>Simonoff et al. (2004)</td><td>Longitudinal study of <strong>225 childhood twin pairs</strong> diagnosed with conduct disorder</td><td>Conduct disorder in childhood predicted ASPD in adulthood in those showing criminal behaviour 10–25 years later, supporting the before-age-15 rule and pointing to early identification and intervention.</td></tr>
   </table>
 

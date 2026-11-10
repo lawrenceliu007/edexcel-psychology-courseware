@@ -97,6 +97,9 @@ td:first-child { font-weight: 600; color: #374151; }
 .figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
 .quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
 .quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
 .quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
 .quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
 .quick-summary li strong { color: var(--primary-dark); }
@@ -131,6 +134,8 @@ body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.1
 body.dark .exam-practice h3 { color: #60a5fa; }
 body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
 body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
 body.dark .quick-summary li { color: #cbd5e1; }
 body.dark .quick-summary li strong { color: #fb923c; }
 body.dark table { border-color: #334155; }
@@ -233,8 +238,19 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   <div class="meta">
     <span class="badge">Topic F · Criminological psychology</span>
     <span class="badge">Spec 6.1.2 + 6.1.3</span>
-    <span class="badge">Textbook Book 2 · Chapter 8</span>
+    <span class="badge">Textbook Book 2 · Ch.8 · pp.102–112</span>
   </div>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Say why interview accuracy matters</strong>: a flawed interview can end in a wrongful conviction or an acquittal.</li>
+    <li><strong>Name and apply the four techniques</strong> of the cognitive interview — and match each pair to the memory theory that powers it.</li>
+    <li><strong>Cite the evidence both ways</strong>: Geiselman's 41.15 vs 29.40, Fisher's 47 per cent gain, Köhnken's meta-analysis — and the limits from Memon and Dando.</li>
+    <li><strong>Tell the cognitive interview from the enhanced version</strong>: same techniques, added witness support.</li>
+    <li><strong>Describe a formulation in two phases</strong> and use "contingencies" and "criminogenic factors" without mixing them up.</li>
+  </ul>
 </div>
 
 <div class="quick-summary">
@@ -289,7 +305,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
     A specific way of asking a witness questions about an incident (Fisher and Geiselman et al., 1984), designed to <strong>maximise the accuracy of the information</strong> obtained.
   </div>
 
-  <p>The stakes are concrete. If inaccurate information is taken during a police interview, the <strong>wrong person may be charged</strong>, leading to a wrongful conviction while the actual offender gets away with the crime. Or an offender may have to be <strong>acquitted</strong> because their testimony is found to be unreliable.</p>
+  <p>The stakes are concrete. If inaccurate information is taken during a police interview, the <strong>wrong person may be charged</strong>, leading to a wrongful conviction while the actual offender gets away with the crime. Or an offender may have to be <strong>acquitted</strong>（被判无罪释放） because their testimony is found to be unreliable.</p>
 
   <p>Before the cognitive interview, <strong>standard interviewing</strong> consisted of "who, what, when, where?" type questions, with the interviewer directing the flow of the conversation. Psychologists worked with the police to develop the cognitive interview using their knowledge of how memory works.</p>
 
@@ -325,7 +341,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   <p>The cognitive interview is based on two principles of cognitive psychology:</p>
 
   <ol class="tight">
-    <li><strong>Memory for an event is not a faithful account of what was witnessed</strong> (Bartlett's 1932 reconstructive memory theory). We rebuild the event each time we recall it, and schemas fill the gaps with expectations rather than facts.</li>
+    <li><strong>Memory for an event is not a faithful account of what was witnessed</strong> (Bartlett's 1932 reconstructive memory theory). We rebuild the event each time we recall it, and schemas（图式：脑中现成的预期剧本） fill the gaps with expectations rather than facts.</li>
     <li><strong>When we experience an event we encode the details of the environment and our emotional state</strong> (Tulving's 1974 context-dependent memory): sights, sounds, smells and how we felt. Reinstating that context or state can act as a cue to the memory.</li>
   </ol>
 
@@ -447,7 +463,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
 
   <h3>The procedure in sequence</h3>
   <ol class="tight">
-    <li><strong>Establish a good rapport</strong> with the witness first.</li>
+    <li><strong>Establish a good rapport（信任关系）</strong> with the witness first.</li>
     <li>Encourage the witness to <strong>report everything without interruption</strong>, gaining an initial free-recall account.</li>
     <li>Then ask questions <strong>aimed at clarifying details</strong> from the testimony, using techniques such as mentally reliving the incident or recalling in a different order.</li>
     <li>Never ask <strong>leading questions</strong> that hint at a desired answer; ask open questions that encourage free recall.</li>
@@ -482,7 +498,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   <h3>Geiselman et al. (1985): the classic comparison</h3>
   <div class="note-box">
     <h4>Setup (from the textbook)</h4>
-    <p class="small"><strong>89 undergraduates</strong> from the University of California watched a film of a violent crime lasting around four minutes: a bank robbery, a liquor store holdup, a family dispute or a warehouse search, in which at least one individual was shot and killed. Each was interviewed by one of <strong>17 interviewers</strong> recruited from police detectives, CIA investigators, polygraph specialists and private detectives, all of whom had completed a forensic hypnosis course with field experience on hundreds of cases. After <strong>48 hours</strong>, participants were interviewed with one of three techniques: standard interview, hypnosis, or the cognitive interview (all four techniques). Correct, incorrect and confabulated items were recorded. <span class="small"><strong>Confabulated</strong> means falsely recalled.</span></p>
+    <p class="small"><strong>89 undergraduates</strong> from the University of California watched a film of a violent crime lasting around four minutes: a bank robbery, a liquor store holdup, a family dispute or a warehouse search, in which at least one individual was shot and killed. Each was interviewed by one of <strong>17 interviewers</strong> recruited from police detectives, CIA investigators, polygraph specialists（测谎专家） and private detectives, all of whom had completed a forensic hypnosis course with field experience on hundreds of cases. After <strong>48 hours</strong>, participants were interviewed with one of three techniques: standard interview, hypnosis, or the cognitive interview (all four techniques). Correct, incorrect and confabulated items were recorded. <span class="small"><strong>Confabulated</strong> means falsely recalled.</span></p>
   </div>
 
   <table>
@@ -502,7 +518,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
       <ul class="tight small">
         <li><strong>Fisher et al. (1989):</strong> after training, detectives gained as much as <strong>47 per cent more useful information</strong> from witnesses to real crimes compared with untrained officers, so the effect holds in ecologically valid settings.</li>
         <li><strong>Köhnken et al. (1999):</strong> a meta-analysis of <strong>42 studies</strong> (55 comparisons, 2,447 interviews) found the cognitive interview yielded significantly more correct details than the standard interview, and although more incorrect details were also reported, the <strong>overall accuracy rate was no worse</strong>.</li>
-        <li><strong>Holliday (2003):</strong> with children aged 4–5 and 9–10, the cognitive interview yielded more correct information from <strong>older children</strong>, and older children who had undergone it were <strong>less influenced by later misleading information</strong>, as if the interview inoculated the memory.</li>
+        <li><strong>Holliday (2003):</strong> with children aged 4–5 and 9–10, the cognitive interview yielded more correct information from <strong>older children</strong>, and older children who had undergone it were <strong>less influenced by later misleading information</strong>, as if the interview inoculated the memory（像给记忆打了疫苗，有了抵抗力）.</li>
       </ul>
     </div>
     <div class="compare-card red">
@@ -541,7 +557,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
 <section class="section" id="s7">
   <h2>7. Psychological (Case) Formulation</h2>
 
-  <p>The psychologist's role here is often that of a <strong>consultant</strong>: indirectly observing and reviewing the work of other professionals such as the police, or speaking to the offender directly to find out what influenced them to act as they did. Psychologists are asked why an individual committed a crime, both during the court process (was the individual capable of committing the offence, and what is their risk of reoffending?) and after conviction (what rehabilitation or treatment is appropriate, and is the person safe to be released into the community?).</p>
+  <p>The psychologist's role here is often that of a <strong>consultant</strong>: indirectly observing and reviewing the work of other professionals such as the police, or speaking to the offender directly to find out what influenced them to act as they did. Psychologists are asked why an individual committed a crime, both during the court process (was the individual capable of committing the offence, and what is their risk of reoffending?) and after conviction (what rehabilitation（矫治） or treatment is appropriate, and is the person safe to be released into the community?).</p>
 
   <div class="keyterm-box">
     <div class="kt">psychological (case) formulation <span class="zh">心理个案概念化</span></div>
@@ -571,7 +587,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
 <section class="section" id="s8">
   <h2>8. Phase One: Offence Analysis and Criminogenic Factors</h2>
 
-  <p><strong>Offence analysis</strong> assesses the offender to understand their motivation for committing the crime. It works by finding <strong>similar offences committed by different offenders</strong> to uncover patterns or commonalities that give insight into motives.</p>
+  <p><strong>Offence analysis</strong> assesses the offender to understand their motivation for committing the crime. It works by finding <strong>similar offences committed by different offenders</strong> to uncover patterns or commonalities（共性） that give insight into motives.</p>
 
   <div class="keyterm-box">
     <div class="kt">contingencies <span class="zh">常见伴发因素</span></div>
