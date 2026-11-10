@@ -74,6 +74,9 @@ strong { color: #1f2937; font-weight: 600; }
 .green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
 .warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
 .cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
 .cn-note strong { color: var(--primary-dark); }
 .exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
 .exam-tip strong { color: #1d4ed8; }
@@ -125,6 +128,8 @@ body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade
 body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
 body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
 body.dark .cn-note strong { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
 body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
 body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
 body.dark .exam-tip strong { color: #93c5fd; }
@@ -288,8 +293,19 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="meta">
     <span class="badge">🧠 Core idea: memory is evidence — and evidence can fail</span>
     <span class="badge">🔑 Four factors, one question: can you trust a witness?</span>
-    <span class="badge">📖 Textbook: Chapter 9</span>
+    <span class="badge">📖 Textbook Book 2 · Ch.9 · pp.113–123</span>
   </div>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Say why honest witnesses can still be wrong</strong>: memory is a reconstruction, not a replay.</li>
+    <li><strong>For each of the four factors</strong>, state when it strikes (during or after the event) and what it damages.</li>
+    <li><strong>Attach the number to the study</strong>: Gabbert 71%, Poole and Lindsay 95%, Loftus 11% vs 39%, Meissner and Brigham 1.40.</li>
+    <li><strong>Explain both routes of weapon focus</strong> and what Pickel's salon study settled.</li>
+    <li><strong>Handle the lab vs real-life contradiction</strong>: why Yuille and Cutshall, Odinot and Wagstaff matter to every factor.</li>
+  </ul>
 </div>
 
 <!-- ============ 1 ============ -->
@@ -297,7 +313,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <h2>1. Getting Started</h2>
 
   <div class="xp-block">
-    <h4>🎪 The concert <span class="xp-badge">Textbook scenario</span></h4>
+    <h4>🎪 The concert <span class="xp-badge">Scenario</span></h4>
     <p class="xp-intro">You are at a loud outdoor concert in a public park with friends. It is getting dark; the stage lights flicker on and off. A fight breaks out. Someone gets hurt, security guards rush over, and panic spreads. They carry the victim away. A guard reaches your group and asks: <strong>What did you see?</strong></p>
     <p style="font-size:.9rem;color:#4b5563;margin-top:6px;">Before reading anything else — tick everything in this story that might make remembering <em>harder</em>:</p>
     <div class="xp-checkbox"><input type="checkbox" class="cf" id="cf1" value="dark"><label for="cf1">It was getting dark, and the lights flickered.</label></div>
@@ -330,7 +346,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="cn-note">
-    <strong>为什么这一章值得学：</strong>目击证人是法庭上最常见、也最被陪审团相信的证据。但"我很确定"和"我是对的"是两回事。<strong>诚实 ≠ 准确</strong> —— 证人没有说谎，只是记忆本身被弄坏了。这一章就是研究弄坏记忆的四种方式。
+    <strong>为什么这一章值得学：</strong>目击证人是法庭上最常见、也最被陪审团相信的证据。但"我很确定"和"我是对的"是两回事。<strong>诚实 ≠ 准确</strong>：证人没有说谎，只是记忆本身被弄坏了。这一章就是研究弄坏记忆的四种方式。
   </div>
 
   <div class="note-box">
@@ -389,7 +405,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </table>
 
   <div class="cn-note">
-    <strong>记这张地图的方法：</strong>三个因素发生在<strong>看的时候</strong>（当时你的眼睛和大脑就没存好），一个因素发生在<strong>看之后</strong>（存好的记忆被新信息改写）。考试给一个场景，先问"这个问题出在事发时还是事发后？"—— 答案立刻缩到 1-3 个因素里。
+    <strong>记这张地图的方法：</strong>三个因素发生在<strong>看的时候</strong>（当时你的眼睛和大脑就没存好），一个因素发生在<strong>看之后</strong>（存好的记忆被新信息改写）。遇到任何案例，先问"这个问题出在事发时还是事发后？"：三个发生在看的时候，一个发生在看之后，选项立刻缩到一小半。
   </div>
 </section>
 
@@ -418,7 +434,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="cn-note">
-    <strong>一个类比：</strong>记忆不像硬盘里的录像文件，更像一篇<strong>每次重讲都会改写的作文</strong>。你朋友说了一句"那人戴了帽子吧？"——下次你回忆时，"帽子"可能就真的出现在你的画面里了。不是你撒谎，是作文被补写了一笔。<strong>misinformation effect（错误信息效应）</strong>：记忆因为接触事后信息而变得不准确。
+    <strong>一个类比：</strong>记忆不等于硬盘里的录像文件：它更像一篇<strong>每次重讲都会改写的作文</strong>。你朋友说了一句"那人戴了帽子吧？"，下次你回忆时，"帽子"可能就真的出现在你的画面里了。不是你撒谎，是作文被补写了一笔。<strong>misinformation effect（错误信息效应）</strong>：记忆因为接触事后信息而变得不准确。
   </div>
 </section>
 
@@ -435,7 +451,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </ul>
 
   <div class="cn-note">
-    <strong>这个实验妙在哪：</strong>两位"目击者"看的是<strong>不同的视频</strong>——所以讨论后说出对方视频里的细节，就能<strong>证明</strong>信息是从讨论里来的，不是从记忆里来的。这叫 <strong>memory conformity（记忆从众）</strong>：讨论让证词变得像一个模子刻出来的。
+    <strong>这个实验妙在哪：</strong>两位"目击者"看的是<strong>不同的视频</strong>，所以讨论后说出对方视频里的细节，就能<strong>证明</strong>信息是从讨论里来的，不是从记忆里来的。这叫 <strong>memory conformity（记忆从众）</strong>：讨论让证词变得像一个模子刻出来的。
   </div>
 
   <h3>Poole and Lindsay (1995) — children and leading questions 儿童与引导性问题</h3>
@@ -448,7 +464,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <p>Most post-event research uses adults — but children are <strong>highly suggestible</strong>（易受暗示的）when post-event information arrives as leading questions.</p>
 
   <div class="cn-note">
-    <strong>读研究的技巧：</strong>每个实验记三样就够 —— <strong>谁（被试）· 做了什么（ manipulated 什么）· 得到什么数字</strong>。Gabbert 记 <strong>71% / 60%</strong>，Poole &amp; Lindsay 记 <strong>95%</strong>。数字就是答案里的"Evidence"。
+    <strong>记研究的三个坐标：</strong><strong>谁（被试）· 改了什么 · 得到什么数字</strong>。Gabbert 记 <strong>71% / 60%</strong>，Poole 和 Lindsay 记 <strong>95%</strong>。有了坐标，研究就钉在记忆里不会散。
   </div>
 </section>
 
@@ -470,7 +486,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="cn-note">
-    <strong>两条线并排记：</strong>实验室说"事后信息会污染记忆"（Gabbert 71% 被带偏）；真实案件说"未必"（Yuille &amp; Cutshall 没被带偏，Odinot 84% 准确）。<strong>谁对？大概率都对——区别在场景：</strong>实验室里看视频不紧张、不投入；真实罪案里证人亲眼在场，记得牢。<strong>真实世界的研究生态效度更高，实验室的控制更好</strong>——这是 7 节评价的核心。
+    <strong>两条线并排记：</strong>实验室说"事后信息会污染记忆"（Gabbert 71% 被带偏）；真实案件说"未必"（Yuille &amp; Cutshall 没被带偏，Odinot 84% 准确）。<strong>谁对？大概率都对，区别在场景：</strong>实验室里看视频不紧张、不投入；真实罪案里证人亲眼在场，记得牢。<strong>真实世界的研究生态效度更高，实验室的控制更好</strong>。这组拉扯就是理解第 7 节评价的钥匙。
   </div>
 
   <div class="note-box">
@@ -492,7 +508,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
     </div>
     <div class="compare-card green">
       <h4>It explains real harm</h4>
-      <p>False convictions have been traced to contaminated memory. If leading questions are detected, the testimony can be ruled inadmissible; if not, <strong>false testimony can convict a suspect</strong>.</p>
+      <p>False convictions have been traced to contaminated memory. If leading questions are detected, the testimony can be ruled inadmissible; if not, <strong>false testimony can convict a suspect</strong>. (Testimony ruled <strong>inadmissible</strong>（不采纳：法官裁定它不能进入庭审） can no longer do that harm.)</p>
       <p><span class="syl-tag app">Application</span> the cognitive interview (open, non-leading questions) is a direct fix built on this research.</p>
     </div>
   </div>
@@ -512,7 +528,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="cn-note">
-    <strong>评价的写作套路（和 1.1.1 一样）：</strong>每条 = <strong>说什么有问题</strong> + <strong>为什么这是个问题</strong>。"实验室结果和真实案件不一致"只算半句；补上"因为实验室过度控制、被试知道不是真的，可能夸大了记忆的脆弱性"，才是完整评价。
+    <strong>一条完整的评价长什么样：</strong>每条 = <strong>说什么有问题</strong> + <strong>为什么这是个问题</strong>。"实验室结果和真实案件不一致"只算半句；补上"因为实验室过度控制、被试知道不是真的，可能夸大了记忆的脆弱性"，才是完整评价。
   </div>
 </section>
 
@@ -559,12 +575,12 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
     </div>
     <div class="compare-card">
       <h4>③ Source monitoring problems</h4>
-      <p>Traumatic events get rehearsed — police statements, media, conversations. People may <strong>confuse information encoded after the event</strong> with what actually happened, because they <strong>fail to distinguish the source</strong> of the information. Traumatic memories are therefore more prone to distortion.</p>
+      <p>Traumatic events get rehearsed — police statements, media, conversations. People may <strong>confuse information encoded after the event</strong> with what actually happened, because they <strong>fail to distinguish the source</strong>（来源监控失灵：分不清「后来听说的」和「亲眼看到的」） of the information. Traumatic memories are therefore more prone to distortion.</p>
     </div>
   </div>
 
   <div class="cn-note">
-    <strong>三者怎么连起来：</strong>压力太大（Yerkes–Dodson 过了顶点）→ 注意变窄（Easterbrook，只盯住核心细节，边缘信息根本没存进去）→ 事后反复回想、看电视、聊天（来源监控失灵，把"后来听说的"当成"亲眼看过的"）。<strong>注意"主观感觉"这个陷阱：</strong>证人往往觉得自己记忆栩栩如生（vivid memory），但压力恰恰<strong>损害了编码</strong>——感觉越真实，越要警惕。
+    <strong>三者怎么连起来：</strong>压力太大（Yerkes–Dodson 过了顶点）→ 注意变窄（Easterbrook，只盯住核心细节，边缘信息根本没存进去）→ 事后反复回想、看电视、聊天（来源监控失灵，把"后来听说的"当成"亲眼看过的"）。<strong>注意"主观感觉"这个陷阱：</strong>证人往往觉得自己记忆栩栩如生（vivid memory），但压力恰恰<strong>损害了编码</strong>：感觉越真实，越要警惕。
   </div>
 
   <div class="xp-block">
@@ -579,7 +595,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="cn-note">
-    <strong>为什么这个实验经典：</strong>根本<strong>没有</strong>电视拍过撞击画面。但 <strong>60%</strong> 的被试声称自己看过。他们不是撒谎——创伤性事件让记忆特别容易被事后信息（谈话、想象、媒体）污染，来源监控完全失灵。这直接演示了机制 ③。
+    <strong>为什么这个实验经典：</strong>根本<strong>没有</strong>电视拍过撞击画面。但 <strong>60%</strong> 的被试声称自己看过。他们不是撒谎：创伤性事件让记忆特别容易被事后信息（谈话、想象、媒体）污染，来源监控完全失灵。这直接演示了机制 ③。
   </div>
 </section>
 
@@ -624,7 +640,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="cn-note">
-    <strong>考试最爱的"但是"：</strong>实验室一边倒说压力有害，真实幸存者却记得很准。Deffenbacher (2004) 的元分析给出裁决：<strong>总体上压力是负面的</strong>。为什么结果不一致？—— 有趣的方法学批评：有的研究里的唤醒来自<strong>焦虑和恐惧</strong>（像真目击者），有的只来自<strong>警觉和注意</strong>（实验室条件）。<strong>"arousal"这个词在不同研究里含义不同，所以比较研究很困难</strong>。这句话写进 10 分/12 分题就是高级评价点。
+    <strong>实验室一边倒说压力有害，真实幸存者却记得很准。</strong>Deffenbacher (2004) 的元分析给出裁决：<strong>总体上压力是负面的</strong>。为什么结果会不一致？方法学上有个有趣的批评：一些研究里的唤醒来自<strong>焦虑和恐惧</strong>（像真目击者），有的只来自<strong>警觉和注意</strong>（实验室条件）。<strong>"arousal"这个词在不同研究里含义不同，所以研究结果之间很难比较</strong>。
   </div>
 </section>
 
@@ -711,7 +727,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="cn-note">
-    <strong>两条路线的区别是考点：</strong>路线 1 说"记忆差是因为<strong>吓</strong>"（stress，接 Yerkes–Dodson）；路线 2 说"记忆差是因为<strong>只顾看</strong>"（attention，不需要害怕也会发生）。哪条对？下一节 Pickel 的生鸡肉实验会给你答案 —— 高威胁但平常的东西（剪刀）不伤记忆，低威胁但奇怪的东西（生鸡肉）伤记忆 → <strong>unusualness 奇怪程度比 threat 威胁程度更像元凶</strong>。
+    <strong>两条路线的区别：</strong>路线 1 说"记忆差是因为<strong>吓</strong>"（stress，接 Yerkes–Dodson）；路线 2 说"记忆差是因为<strong>只顾看</strong>"（attention，不需要害怕也会发生）。哪条对？下一节 Pickel 的生鸡肉实验会给你答案：高威胁但平常的东西（剪刀）不伤记忆，低威胁但奇怪的东西（生鸡肉）伤记忆，所以<strong>unusualness（奇怪程度）比 threat（威胁程度）更像元凶</strong>。
   </div>
 </section>
 
@@ -720,7 +736,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <h2>12. Weapon Focus Evidence</h2>
 
   <h3>Loftus et al. (1987) — the eye-tracking experiment</h3>
-  <p><strong>36 participants</strong> watched a series of slides of a customer in a restaurant. One version: the customer was <strong>armed</strong>; the other: the same customer held a <strong>chequebook</strong>. Eye movements were recorded. Participants who saw the weapon <strong>tended to focus their gaze on the weapon</strong>. As a result they were <strong>less likely to identify</strong> the customer in an identity parade (<strong>11%</strong> vs <strong>39%</strong>) and had a <strong>worse memory for the event</strong>.</p>
+  <p><strong>36 participants</strong> watched a series of slides of a customer in a restaurant. One version: the customer was <strong>armed</strong>; the other: the same customer held a <strong>chequebook</strong>. Eye movements were recorded. Participants who saw the weapon <strong>tended to focus their gaze on the weapon</strong>. As a result they were <strong>less likely to identify</strong> the customer in an identity parade（排队指认：从一排人里挑出嫌疑人） (<strong>11%</strong> vs <strong>39%</strong>) and had a <strong>worse memory for the event</strong>.</p>
 
   <h3>Maass and Köhnken (1989) — the field experiment</h3>
   <p><strong>86 students</strong> were approached by a woman holding either a <strong>pen</strong> or a <strong>syringe</strong>. When asked to identify the woman from a line-up, <strong>two-thirds</strong> of participants in the syringe condition made an incorrect identification — supporting the weapon effect in a more real-life situation.</p>
@@ -751,7 +767,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="cn-note">
-    <strong>这张 2×2 矩阵是本章最好用的工具：</strong>纵轴"奇不奇怪"，横轴"吓不吓人"。伤记忆的是<strong>奇怪的</strong>那两个（武器、生鸡肉），不奇怪的两个（钱包、剪刀）都还行 → <strong>unusualness（奇怪程度）才是拉开注意力的东西</strong>。Pickel 认为正是武器的"不寻常"抓住了我们的注意。记住：生鸡肉听起来荒谬，但它在实验里和武器一样有效 —— 这就是它经典的原因。
+    <strong>这张 2×2 矩阵是本章最好用的工具：</strong>纵轴"奇不奇怪"，横轴"吓不吓人"。伤记忆的是<strong>奇怪的</strong>那两个（武器、生鸡肉），不奇怪的两个（钱包、剪刀）都还行 → <strong>unusualness（奇怪程度）才是拉开注意力的东西</strong>。Pickel 认为正是武器的"不寻常"抓住了我们的注意。记住：生鸡肉听起来荒谬，但它在实验里和武器一样有效，这就是它经典的原因。
   </div>
 
   <h3>Pickel et al. (2006) — can training overcome it? 训练能克服吗？</h3>
@@ -815,7 +831,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="warn-box">
     <h4>⛓️ Ronald Cotton (1984) — the case that defines the issue</h4>
-    <p>In 1984, a white woman, <strong>Jennifer Thompson</strong>, was assaulted by a man who gained entry to her apartment. Despite considerable effort to remember the face of the Black assailant, she <strong>misidentified Ronald Cotton</strong>. He was convicted of assault and spent <strong>more than ten years in prison</strong> before being exonerated — because of later <strong>DNA evidence</strong>. Thompson was a motivated, honest witness who tried her hardest. She was still wrong.</p>
+    <p>In 1984, a white woman, <strong>Jennifer Thompson</strong>, was assaulted by a man who gained entry to her apartment. Despite considerable effort to remember the face of the Black assailant, she <strong>misidentified Ronald Cotton</strong>. He was convicted of assault and spent <strong>more than ten years in prison</strong> before being exonerated（洗清罪名） — because of later <strong>DNA evidence</strong>. Thompson was a motivated, honest witness who tried her hardest. She was still wrong.</p>
   </div>
 
   <h3>Two explanations 两个解释</h3>
@@ -831,7 +847,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="cn-note">
-    <strong>两个解释一句话区分：</strong>解释 ① 说"练习问题"——你练的是分辨本族面孔的能力；解释 ② 说"归类问题"——你把外族人脸当成"一类"，把本族人脸当成"一个人"。注意 ① 的漏洞：如果只是练习，那接触外族人多的人就不该有异族效应 —— 但证据（下一节 Sangrigoli 的收养研究）显示练习/接触<strong>确实</strong>能减弱效应，这恰好反过来支持了"经验可以改变编码"。
+    <strong>两个解释一句话区分：</strong>解释 ① 说"练习问题"：你练的是分辨本族面孔的能力；解释 ② 说"归类问题"：你把外族人脸当成"一类"，把本族人脸当成"一个人"。注意 ① 的漏洞：如果只是练习，那接触外族人多的人就不该有异族效应。但下一节 Sangrigoli 的收养研究显示，练习和接触<strong>确实</strong>能减弱效应。「经验可以改变编码」，两个解释在这里短兵相接。
   </div>
 </section>
 
@@ -877,7 +893,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="cn-note">
-    <strong>四因素全部讲完，回头看这张总结：</strong>post-event information（事后的信息改写记忆）→ stress &amp; trauma（当时的唤醒让编码变窄）→ weapon focus（注意被武器吸走）→ other-race effect（编码外族面孔的能力天生不足）。前三个有"实验室说有害、真实世界说未必"的拉扯，第四个是四种方法一起指向同一结论。评价题里能指出"每个因素的证据强弱不同"，就已经是高分答案。
+    <strong>四因素全部讲完，回头看这张总结：</strong>post-event information（事后的信息改写记忆）→ stress &amp; trauma（当时的唤醒让编码变窄）→ weapon focus（注意被武器吸走）→ other-race effect（编码外族面孔的能力天生不足）。前三个有"实验室说有害、真实世界说未必"的拉扯，第四个是四种方法一起指向同一结论。比较每个因素的证据强弱，本身就是理解这一章最有用的视角。
   </div>
 </section>
 

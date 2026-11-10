@@ -99,6 +99,9 @@ td:first-child { font-weight: 600; color: #374151; }
 .figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
 .quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
 .quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
 .quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
 .quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
 .quick-summary li strong { color: var(--primary-dark); }
@@ -134,6 +137,8 @@ body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.1
 body.dark .exam-practice h3 { color: #60a5fa; }
 body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
 body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
 body.dark .quick-summary li { color: #cbd5e1; }
 body.dark .quick-summary li strong { color: #fb923c; }
 body.dark table { border-color: #334155; }
@@ -288,8 +293,19 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="meta">
     <span class="badge">🧠 Core idea: a verdict should rest on evidence — but other things get in</span>
     <span class="badge">🔑 Real juries cannot be studied, so nearly all evidence is mock juries</span>
-    <span class="badge">📖 Textbook: Chapter 10</span>
+    <span class="badge">📖 Textbook Book 2 · Ch.10 · pp.124–136</span>
   </div>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Describe what a jury does</strong> — and why deliberation secrecy forces psychologists to use mock juries.</li>
+    <li><strong>Place each factor on the timeline</strong>: pre-trial publicity before the trial, defendant characteristics in the courtroom, expert testimony when evidence is explained.</li>
+    <li><strong>Match the evidence to each factor</strong>: Gleisser for race, Dixon for attractiveness and accent, Ogloff and Vidmar for publicity, Penrod and Cutler for expert testimony.</li>
+    <li><strong>Explain both directions of expert testimony</strong>: it can educate jurors or just make them sceptical.</li>
+    <li><strong>Judge mock jury research</strong>: samples, artificiality and generalisability across legal systems.</li>
+  </ul>
 </div>
 
 <!-- ============ 1 ============ -->
@@ -313,7 +329,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="cn-note">
-    <strong>先记住这一句话：</strong>陪审团制度的设计目标是「只看证据」。心理学研究的问题是——<strong>人做不到只看证据</strong>。这一章的三个因素，都是「不该影响判决、但确实影响了判决」的东西。
+    <strong>先记住这一句话：</strong>陪审团制度的设计目标是「只看证据」。心理学研究的问题是：<strong>人做不到只看证据</strong>。这一章的三个因素，都是「不该影响判决、但确实影响了判决」的东西。
   </div>
 </section>
 
@@ -325,11 +341,11 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <table>
     <tr><th style="width:26%;">Feature</th><th>What happens</th></tr>
-    <tr><td>Who</td><td>Typically <strong>12 jurors</strong>, selected at random from an electoral roll or similar list of local people.</td></tr>
+    <tr><td>Who</td><td>Typically <strong>12 jurors</strong>, selected at random from an electoral roll（选民登记册） or similar list of local people.</td></tr>
     <tr><td>The rules</td><td>Jurors must not discuss the case with anyone outside the jury, and must avoid media coverage of the case. This protects them from influences other than the evidence.</td></tr>
     <tr><td>The judge</td><td>The judge instructs the jury on the law, but <strong>cannot decide guilt</strong> and cannot tell the jury what to decide. The judge relies entirely on the jury.</td></tr>
     <tr><td>In court</td><td>Jurors hear evidence from prosecution and defence lawyers, witness testimony, the defendant's statement — and sometimes <strong>expert testimony</strong>.</td></tr>
-    <tr><td>Deliberation</td><td>The jury leaves the room to review the evidence and discuss it. Deliberation is <strong>completely confidential</strong>: nobody else may enter and it cannot be recorded. A <strong>foreperson</strong> gives the verdict back to the judge.</td></tr>
+    <tr><td>Deliberation</td><td>The jury leaves the room to review the evidence and discuss it. Deliberation is <strong>completely confidential</strong>: nobody else may enter and it cannot be recorded. A <strong>foreperson</strong>（陪审团发言人） gives the verdict back to the judge.</td></tr>
   </table>
 
   <div class="note-box">
@@ -347,7 +363,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>大白话：</strong>不能进真实陪审团的房间，就让普通人<strong>看一段假审判</strong>（录像或文字记录），然后让他们判有罪无罪。<br>
-    这一章<strong>几乎所有研究都是 mock jury</strong>——这一点后面会变成最重要的评价点（见 §17）。
+    这一章<strong>几乎所有研究都是 mock jury</strong>，这一点后面会变成最重要的评价点（见 §17）。
   </div>
 
   <div class="blue-box">
@@ -441,7 +457,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="cn-note">
-    <strong>大白话：</strong>刻板印象就是「看到某一类人，脑子里自动跳出一个结论」。陪审员不是坏人——他们只是也带着这些自动反应进了法庭。
+    <strong>大白话：</strong>刻板印象就是「看到某一类人，脑子里自动跳出一个结论」。陪审员不是坏人，他们只是也带着这些自动反应进了法庭。
   </div>
 
   <h3>Why researchers take this seriously</h3>
@@ -559,7 +575,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="cn-note">
-    <strong>关键理解：</strong>不是「好看就判得轻」这么简单。<strong>好看和罪名会交互</strong>——诈骗时好看反而判得更重（因为人们觉得她在用外表骗钱），盗窃时好看判得轻（因为好看和盗窃不搭）。<br>
+    <strong>关键理解：</strong>不是「好看就判得轻」这么简单。<strong>好看和罪名会交互</strong>：诈骗时好看反而判得更重（因为人们觉得她在用外表骗钱），盗窃时好看判得轻（因为好看和盗窃不搭）。<br>
     <strong>没有照片组和不好看组结果差不多</strong> → 说明起作用的是「好看」本身，而不是「有照片」。
   </div>
 
@@ -610,7 +626,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>来源监控错误（一句话版）：</strong>「我<strong>记得</strong>这件事，但<strong>记错了是从哪儿听来的</strong>。」新闻看来的细节，被当成了法庭上听到的证词。<br>
-    这个术语在上一章（6.1.4 stress &amp; trauma）也出现过——Crombag 的幻影电视画面就是同一个机制。
+    这个术语在上一章（6.1.4 stress &amp; trauma）也出现过：Crombag 的幻影电视画面就是同一个机制。
   </div>
 
   <h3>Two types of publicity 两类报道</h3>
@@ -702,7 +718,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="cn-note">
-    <strong>为什么需要专家：</strong>陪审员凭常识判断「这个证人可信吗」，但<strong>常识对记忆是错的</strong>——多数人以为记忆像录像。专家的作用就是把心理学发现搬进法庭。<br>
+    <strong>为什么需要专家：</strong>陪审员凭常识判断「这个证人可信吗」，但<strong>常识对记忆是错的</strong>：多数人以为记忆像录像。专家的作用就是把心理学发现搬进法庭。<br>
     下一节的问题是：<strong>搬进去了，陪审员真的会用吗？</strong>
   </div>
 
@@ -728,8 +744,8 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="cn-note">
     <strong>三个研究的张力（必考的评价素材）：</strong><br>
     Benton：普通人<strong>不懂</strong>记忆 → 专家<strong>有必要</strong>。<br>
-    Jones：专家<strong>没用</strong>——只是让陪审员整体更怀疑，分辨不出好坏证据。<br>
-    Helm：专家<strong>有用</strong>——证据弱时确实少判有罪，证据强时不变。<br>
+    Jones：专家<strong>没用</strong>，只是让陪审员整体更怀疑，分辨不出好坏证据。<br>
+    Helm：专家<strong>有用</strong>：证据弱时确实少判有罪，证据强时不变。<br>
     <strong>结论写法：</strong>专家证词的效果取决于<strong>给的是什么信息</strong>，不是「有或没有专家」。
   </div>
 
@@ -825,7 +841,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>一句话版：</strong>陪审员对<strong>真正重要的条件</strong>（有没有蒙脸、隔了几天、列队公不公平）<strong>完全无感</strong>，却对<strong>最没用的东西</strong>（证人有多自信）<strong>极度敏感</strong>。<br>
-    这就是为什么要请专家——§15 测试专家能不能修好这个问题。
+    这就是为什么要请专家。§15 会测试专家能不能修好这个问题。
   </div>
 
   <div class="green-box">
@@ -886,7 +902,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="cn-note">
-    <strong>「no scepticism effect」为什么重要：</strong>批评者说专家会让陪审员<strong>无差别怀疑</strong>所有证人（见 §12 的 Jones）。Penrod 和 Cutler 说<strong>不会</strong>——专家让陪审员<strong>更会分辨</strong>，而不是更怀疑。<br>
+    <strong>「no scepticism effect」为什么重要：</strong>批评者说专家会让陪审员<strong>无差别怀疑</strong>所有证人（见 §12 的 Jones）。Penrod 和 Cutler 说<strong>不会</strong>，专家让陪审员<strong>更会分辨</strong>，而不是更怀疑。<br>
     另一个反直觉发现：<strong>信息不是越多越好</strong>。纯描述比「描述 + 数据」更有效。
   </div>
 </section>
@@ -968,9 +984,9 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>评价题万能三组：</strong><br>
-    ① <strong>样本</strong>——学生不代表公众（但 Bornstein 说差别不大，学生还更宽容）。<br>
-    ② <strong>生态效度</strong>——文字摘要 / 没有真实后果 / 没有评议（但 Nemeth 说形式本身不影响结果）。<br>
-    ③ <strong>跨文化</strong>——法律制度不同，美国有死刑，结论不能直接搬。
+    ① <strong>样本</strong>：学生不代表公众（但 Bornstein 说差别不大，学生还更宽容）。<br>
+    ② <strong>生态效度</strong>：文字摘要、没有真实后果、没有评议（但 Nemeth 说形式本身不影响结果）。<br>
+    ③ <strong>跨文化</strong>：法律制度不同，美国有死刑，结论不能直接搬。
   </div>
 </section>
 
