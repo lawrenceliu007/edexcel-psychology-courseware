@@ -96,6 +96,9 @@ td:first-child { font-weight: 600; color: #374151; }
 .figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
 .quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
 .quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
 .quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
 .quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
 .quick-summary li strong { color: var(--primary-dark); }
@@ -130,6 +133,8 @@ body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.1
 body.dark .exam-practice h3 { color: #60a5fa; }
 body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
 body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
 body.dark .quick-summary li { color: #cbd5e1; }
 body.dark .quick-summary li strong { color: #fb923c; }
 body.dark table { border-color: #334155; }
@@ -234,6 +239,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
     <span class="badge">Topic D · Learning theories and development</span>
     <span class="badge">Methods</span>
     <span class="badge">Spec 4.2.1–4.2.8</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.23–25 · pp.257–298</span>
   </div>
 </div>
 
@@ -248,14 +254,26 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   </ol>
 </div>
 
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Explain what makes an observation an observation</strong>: no IV is manipulated — and plan one with the five steps.</li>
+    <li><strong>Pick the right type from the three pairs</strong> and say what each choice gains and gives up.</li>
+    <li><strong>Run and evaluate content analysis</strong>, and explain why it counts as indirect observation.</li>
+    <li><strong>Describe what Freud did on the couch</strong> and why his case studies cut both ways.</li>
+    <li><strong>Decide when chi-squared applies</strong> (three conditions) and follow its nine steps.</li>
+    <li><strong>Argue both sides of animal research</strong> and cite the law: the 1986 Act, the three Rs and the three licences.</li>
+  </ul>
+</div>
+
 <!-- ============ 1 ============ -->
 <section class="section" id="s1">
   <h2>1. Getting Started — Plan an Observation</h2>
 
-  <p>Scenario from the textbook: observe different types of communication in an office. Some areas are open plan; other areas have desks divided by screens. The prediction: an open plan space encourages <strong>verbal communication</strong>, while cubicles promote <strong>electronic communication</strong>.</p>
+  <p>Warm-up scenario: observe different types of communication in an office. Some areas are open plan; other areas have desks divided by screens. The prediction: an open plan space encourages <strong>verbal communication</strong>, while cubicles promote <strong>electronic communication</strong>.</p>
 
   <div class="note-box">
-    <h4>The five planned steps (from the textbook)</h4>
+    <h4>The five planned steps</h4>
     <ol class="tight">
       <li>Decide <strong>what behaviour</strong> you will observe and <strong>who</strong> you will observe.</li>
       <li>Decide <strong>where</strong> you will observe the behaviour.</li>
@@ -267,7 +285,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
 
   <div class="cn-note">
     <strong>中文理解：观察和实验的分界线</strong><br>
-    这一章所有方法共用一个前提：<strong>观察法不操纵 IV</strong>。实验里研究者动手改变什么条件再测结果；观察里研究者只站在旁边看和记。考试里问「为什么用观察而不用实验」，第一句就写这一点：研究的问题不适合操纵变量（比如想知道办公室里真实的沟通方式），所以只能记录自然发生的行为。课本的五步清单就是 4.4 实操大题的答题骨架，先把顺序背熟。
+    这一章所有方法共用一个前提：<strong>观察法不操纵 IV</strong>。实验里研究者动手改变什么条件再测结果；观察里研究者只站在旁边看和记。考试里问「为什么用观察而不用实验」，第一句就写这一点：研究的问题不适合操纵变量（比如想知道办公室里真实的沟通方式），所以只能记录自然发生的行为。设计任何观察都从这几个问题开始：看什么行为、观察谁、在哪里看；然后决定全记还是只点数；最后再想怎么分析。
   </div>
 
   <div class="xp-block">
@@ -340,11 +358,11 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   <div class="compare-grid">
     <div class="compare-card green">
       <h4>Quantitative data · numbers</h4>
-      <p>Data that can be <strong>counted or expressed numerically</strong>. Example from the textbook: counting the number of times a child you observe picks up a <strong>gender-stereotyped toy（性别刻板玩具）</strong>.</p>
+      <p>Data that can be <strong>counted or expressed numerically</strong>. For example: counting the number of times a child you observe picks up a <strong>gender-stereotyped toy（性别刻板玩具）</strong>.</p>
     </div>
     <div class="compare-card blue" style="border-left-color:#1e3a5f">
       <h4 style="color:#1e3a5f">Qualitative data · words</h4>
-      <p>Data that <strong>cannot be expressed numerically</strong>; it is concerned with words, texts, ideas and themes. Example from the textbook: recording <strong>what parents say to their child</strong> and any <strong>non-verbal communication</strong> they use.</p>
+      <p>Data that <strong>cannot be expressed numerically</strong>; it is concerned with words, texts, ideas and themes. For example: recording <strong>what parents say to their child</strong> and any <strong>non-verbal communication</strong> they use.</p>
     </div>
   </div>
 
@@ -356,7 +374,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   </ul>
 
   <h3>The tally chart</h3>
-  <p>Table 23.1 from the textbook: a researcher observes whether men and women prefer different sized cars. Each time they see a person in a category, they tally in the matching cell.</p>
+  <p>A tally chart (Table 23.1): a researcher observes whether men and women prefer different sized cars. Each time they see a person in a category, they tally in the matching cell.</p>
 
   <table>
     <tr><th></th><th>Male</th><th>Female</th></tr>
@@ -375,7 +393,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
 
   <div class="cn-note">
     <strong>中文理解：两种抽样各漏什么</strong><br>
-    时间抽样按表看钟，<strong>漏掉间隔里发生的行为</strong>；事件抽样盯住目标行为，<strong>行为扎堆时来不及记全</strong>。考试问「该用哪种抽样」，先想清楚研究的行为是持续发生还是偶发：偶发行为用事件抽样（每次出现都记），持续行为用时间抽样（每 30 秒扫一眼）。真题 Evuska 观察司机用手机考的就是这个判断。
+    时间抽样按表看钟，<strong>漏掉间隔里发生的行为</strong>；事件抽样盯住目标行为，<strong>行为扎堆时来不及记全</strong>。考试问「该用哪种抽样」，先想清楚研究的行为是持续发生还是偶发：偶发行为用事件抽样（每次出现都记），持续行为用时间抽样（每 30 秒扫一眼）。
   </div>
 
   <div class="xp-block">
@@ -413,7 +431,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   <div class="keyterm-box"><span class="kt">non-participant observation<span class="zh">（非参与观察）</span></span> — the researcher observes behaviour of others but does not form part of the group they study. <span class="kt">participant observation<span class="zh">（参与观察）</span></span> — the researcher takes an active role in the situation being observed.</div>
 
   <ul>
-    <li><strong>Non-participant</strong>: observing from a distance. If participants notice, they may <strong>alter their behaviour</strong>. Because the observer is detached they may not understand why a behaviour happens, or may interpret it subjectively: <strong>observer bias（观察者偏差）</strong>. The gain: researchers can <strong>concentrate on recording</strong> and collect data more objectively.</li>
+    <li><strong>Non-participant</strong>: observing from a distance. If participants notice, they may <strong>alter their behaviour</strong>. Because the observer is detached they may not understand why a behaviour happens, or may interpret it subjectively: <strong>observer bias（观察者偏差：凭主观解读行为，把「赶时间」看成「没礼貌」）</strong>. The gain: researchers can <strong>concentrate on recording</strong> and collect data more objectively.</li>
     <li><strong>Participant</strong>: joining the group. <strong>No stranger effect</strong> on how participants behave, and it can reveal data other methods would miss. But it is <strong>hard to record notes</strong> while taking part, and the researcher <strong>may lose objectivity</strong>.</li>
   </ul>
 
@@ -426,11 +444,44 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
     <li><strong>Covert</strong>: ethically problematic because participants are unaware. But participants are <strong>unlikely to change their behaviour</strong>, so the observation is <strong>more valid</strong>.</li>
   </ul>
 
-  <h3>Any observation is a combination</h3>
-  <p>The textbook's two examples: a <strong>naturalistic, participant, overt</strong> observation, such as an anthropologist joining a tribal group to learn its customs; or a <strong>structured, non-participant, covert</strong> observation, such as secretly watching behaviour behind a one-way mirror in a laboratory.</p>
+  <div class="figure">
+  <svg viewBox="0 0 680 285" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+    <rect x="170" y="10" width="340" height="34" rx="8" fill="#ea580c"/>
+    <text x="340" y="32" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">Three pairs, three trades · pick one word from each</text>
+    <!-- pair 1 -->
+    <rect x="30" y="62" width="215" height="54" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="1.6"/>
+    <text x="137" y="84" text-anchor="middle" fill="#c2410c" font-size="12" font-weight="bold">Naturalistic</text>
+    <text x="137" y="102" text-anchor="middle" fill="#78716c" font-size="10">gain: real behaviour, eco validity</text>
+    <text x="340" y="95" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="bold">or</text>
+    <rect x="435" y="62" width="215" height="54" rx="9" fill="#fff7ed" stroke="#ea580c" stroke-width="1.6"/>
+    <text x="542" y="84" text-anchor="middle" fill="#c2410c" font-size="12" font-weight="bold">Structured</text>
+    <text x="542" y="102" text-anchor="middle" fill="#78716c" font-size="10">gain: control, replicable</text>
+    <!-- pair 2 -->
+    <rect x="30" y="128" width="215" height="54" rx="9" fill="#fff" stroke="#e7e5e4" stroke-width="1.6"/>
+    <text x="137" y="150" text-anchor="middle" fill="#c2410c" font-size="12" font-weight="bold">Non-participant</text>
+    <text x="137" y="168" text-anchor="middle" fill="#78716c" font-size="10">gain: objective recording</text>
+    <text x="340" y="161" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="bold">or</text>
+    <rect x="435" y="128" width="215" height="54" rx="9" fill="#fff" stroke="#e7e5e4" stroke-width="1.6"/>
+    <text x="542" y="150" text-anchor="middle" fill="#c2410c" font-size="12" font-weight="bold">Participant</text>
+    <text x="542" y="168" text-anchor="middle" fill="#78716c" font-size="10">gain: insider insight</text>
+    <!-- pair 3 -->
+    <rect x="30" y="194" width="215" height="54" rx="9" fill="#fff" stroke="#e7e5e4" stroke-width="1.6"/>
+    <text x="137" y="216" text-anchor="middle" fill="#c2410c" font-size="12" font-weight="bold">Overt</text>
+    <text x="137" y="234" text-anchor="middle" fill="#78716c" font-size="10">gain: consent, ethics</text>
+    <text x="340" y="227" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="bold">or</text>
+    <rect x="435" y="194" width="215" height="54" rx="9" fill="#fff" stroke="#e7e5e4" stroke-width="1.6"/>
+    <text x="542" y="216" text-anchor="middle" fill="#c2410c" font-size="12" font-weight="bold">Covert</text>
+    <text x="542" y="234" text-anchor="middle" fill="#78716c" font-size="10">gain: behaviour unchanged</text>
+    <text x="340" y="274" text-anchor="middle" fill="#64748b" font-size="10.5">Every combination is a valid observation: each choice is a trade, never a free upgrade</text>
+  </svg>
+  <div class="figure-caption">The three choices behind all six type words</div>
+</div>
+
+<h3>Any observation is a combination</h3>
+  <p>Two contrasting examples: a <strong>naturalistic, participant, overt</strong> observation, such as an anthropologist joining a tribal group to learn its customs; or a <strong>structured, non-participant, covert</strong> observation, such as secretly watching behaviour behind a one-way mirror in a laboratory.</p>
 
   <div class="exam-tip">
-    <strong>Exam tip (from the textbook):</strong> be ready not only to outline each type but to <strong>give examples</strong>. Explicitly state which type you are describing or evaluating. Ethical and methodological issues that apply to one type may not apply to another: participant observations affect the behaviour of those observed, but that may not be true of covert non-participant observations.
+    <strong>Exam tip:</strong> be ready not only to outline each type but to <strong>give examples</strong>. Explicitly state which type you are describing or evaluating. Ethical and methodological issues that apply to one type may not apply to another: participant observations affect the behaviour of those observed, but that may not be true of covert non-participant observations.
   </div>
 
   <div class="xp-block">
@@ -449,7 +500,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
 <section class="section" id="s5">
   <h2>5. Six Types Compared — Issues to Weigh</h2>
 
-  <p>The textbook asks you to rate each type of observation for ethical issues, subjectivity, reliability and validity, and observer effects. This table gathers what the chapter says about each, so every rating can be justified from the text.</p>
+  <p>Rate each type of observation for ethical issues, subjectivity, reliability and validity, and observer effects. The table below gathers the trade-offs for each, so every rating can be justified from what the type actually involves.</p>
 
   <table>
     <tr><th>Type</th><th>Ethics</th><th>Objectivity and validity</th><th>Reliability and control</th></tr>
@@ -463,7 +514,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
 
   <div class="cn-note">
     <strong>中文理解：每对选择都在换东西</strong><br>
-    三对选择对应三次交换：<strong>自然换真实（生态效度），结构换控制（因果和重复）；参与换洞察（看到别人看不到的），非参与换客观（专心记录）；公开换伦理（知情同意），隐蔽换真实（行为不变）</strong>。每一条优点都对应一条缺点，答题时写成「选了 A 换来什么、付出什么」就自动成对，不会漏点。
+    三对选择对应三次交换：<strong>自然换真实（生态效度），结构换控制（因果和重复）；参与换洞察（看到别人看不到的），非参与换客观（专心记录）；公开换伦理（知情同意），隐蔽换真实（行为不变）</strong>。每一条优点都对应一条缺点，三次交换记住了，六种类型就全齐了。
   </div>
 </section>
 
@@ -471,7 +522,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
 <section class="section" id="s6">
   <h2>6. Content Analysis</h2>
 
-  <p>Content analysis may not involve observing participants' behaviour directly, but instead observing <strong>the incidence of other things</strong>: certain words, images or concepts within material such as advertisements, books, films and newspapers. Example from the textbook: a researcher uses content analysis to observe instances of <strong>gender stereotyping in children's books</strong>. Content analysis is therefore a form of <strong>indirect observation（间接观察）</strong>.</p>
+  <p>Content analysis may not involve observing participants' behaviour directly, but instead observing <strong>the incidence of other things</strong>: certain words, images or concepts within material such as advertisements, books, films and newspapers. For example: a researcher uses content analysis to observe instances of <strong>gender stereotyping in children's books</strong>. Content analysis is therefore a form of <strong>indirect observation（间接观察）</strong>.</p>
 
   <h3>How to conduct one</h3>
   <ul>
@@ -550,7 +601,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
 
   <div class="cn-note">
     <strong>中文理解：弗洛伊德方法的死穴在哪</strong><br>
-    四条评价都围着两个词转：<strong>深</strong>和<strong>主观</strong>。他躺在沙发上的做法换来了细致的信息（自然情境、细节丰富、边研究边治疗）；主观也是这套流程带来的（不同分析师解出不同含义，潜意识又无法实证）。考试写评价时把这条因果链点出来：<strong>方法的优点和缺点出自同一套做法</strong>，这就是高级 AO3。
+    四条评价都围着两个词转：<strong>深</strong>和<strong>主观</strong>。他躺在沙发上的做法换来了细致的信息（自然情境、细节丰富、边研究边治疗）；主观也是这套流程带来的（不同分析师解出不同含义，潜意识又无法实证）。所以评价时不用另找角度：<strong>方法的优点和缺点出自同一套做法</strong>，换来「深」的同时也换来了「主观」。
   </div>
 
   <div class="xp-block">
@@ -579,11 +630,11 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   </ol>
 
   <div class="exam-tip">
-    <strong>Exam tip (from the textbook):</strong> a clue that chi-squared is needed is that <strong>frequencies are totalled</strong>, as in observational research or content analysis. It is <strong>not</strong> used when participants' individual scores are known. Do not convert numbers into averages or percentages; use the total number.
+    <strong>Exam tip:</strong> a clue that chi-squared is needed is that <strong>frequencies are totalled</strong>, as in observational research or content analysis. It is <strong>not</strong> used when participants' individual scores are known. Do not convert numbers into averages or percentages; use the total number.
   </div>
 
   <h3>Worked example: toy choice at nursery</h3>
-  <p>A researcher asks whether four-year-old girls and boys play with gender-stereotypical toys. The data goes into a <strong>contingency table（列联表）</strong> where each cell shows a frequency:</p>
+  <p>A researcher asks whether four-year-old girls and boys play with gender-stereotypical toys. The data goes into a <strong>contingency table（列联表：行和列交叉、每格填频数的表）</strong> where each cell shows a frequency:</p>
 
   <table>
     <tr><th></th><th>Stereotypical toy</th><th>Non-stereotypical toy</th><th>Row total</th></tr>
@@ -592,7 +643,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
     <tr><td>Column total</td><td>25</td><td>15</td><td>40 (overall)</td></tr>
   </table>
 
-  <h3>The nine steps (from the textbook)</h3>
+  <h3>The nine steps</h3>
   <table>
     <tr><th>Step</th><th>What to do</th><th>This example</th></tr>
     <tr><td>1. Contingency table</td><td>Put observed frequencies into the table (a 2×2 here; 3×2 is possible)</td><td>8, 12, 17, 3</td></tr>
@@ -606,9 +657,59 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
     <tr><td>9. Compare</td><td>Observed ≥ critical → significant, reject the null hypothesis</td><td><strong>8.64 &gt; 2.71: significant</strong>. Boys and girls differ in toy choice</td></tr>
   </table>
 
-  <div class="cn-note">
-    <strong>中文理解：这条链背下来就能拿分</strong><br>
-    卡方九步可以压成一句口诀：<strong>列表 → 算期望 → 相减 → 平方 → 除以期望 → 加总 → 算自由度 → 查表 → 比大小</strong>。考试最常考的有三小问，比算全程更常见：<strong>为什么选卡方</strong>（差异或关联 + 称名数据 + 独立测量）、<strong>自由度</strong>（行减一乘列减一）、<strong>显著性判断</strong>（观测值大于临界值就显著，拒绝虚无假设）。这三问课本真题 Angelo 那题原样考过。
+<div class="figure">
+  <svg viewBox="0 0 680 175" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+    <defs>
+      <marker id="arc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/>
+      </marker>
+    </defs>
+    <!-- row 1: steps 1-5 -->
+    <rect x="21" y="20" width="118" height="42" rx="8" fill="#ea580c"/>
+    <text x="80" y="38" text-anchor="middle" fill="#fff" font-size="11.5" font-weight="bold">1 · Table</text>
+    <text x="80" y="53" text-anchor="middle" fill="#ffe4cf" font-size="9">observed freq.</text>
+    <rect x="153" y="20" width="118" height="42" rx="8" fill="#fff" stroke="#fed7aa" stroke-width="1.5"/>
+    <text x="212" y="38" text-anchor="middle" fill="#c2410c" font-size="11.5" font-weight="bold">2 · Expected</text>
+    <text x="212" y="53" text-anchor="middle" fill="#94a3b8" font-size="9">row × col ÷ total</text>
+    <rect x="285" y="20" width="118" height="42" rx="8" fill="#fff" stroke="#fed7aa" stroke-width="1.5"/>
+    <text x="344" y="38" text-anchor="middle" fill="#c2410c" font-size="11.5" font-weight="bold">3 · O − E</text>
+    <text x="344" y="53" text-anchor="middle" fill="#94a3b8" font-size="9">per cell</text>
+    <rect x="417" y="20" width="118" height="42" rx="8" fill="#fff" stroke="#fed7aa" stroke-width="1.5"/>
+    <text x="476" y="38" text-anchor="middle" fill="#c2410c" font-size="11.5" font-weight="bold">4 · Square</text>
+    <text x="476" y="53" text-anchor="middle" fill="#94a3b8" font-size="9">(O − E)²</text>
+    <rect x="549" y="20" width="118" height="42" rx="8" fill="#fff" stroke="#fed7aa" stroke-width="1.5"/>
+    <text x="608" y="38" text-anchor="middle" fill="#c2410c" font-size="11.5" font-weight="bold">5 · ÷ E</text>
+    <text x="608" y="53" text-anchor="middle" fill="#94a3b8" font-size="9">per cell</text>
+    <line x1="139" y1="41" x2="151" y2="41" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arc)"/>
+    <line x1="271" y1="41" x2="283" y2="41" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arc)"/>
+    <line x1="403" y1="41" x2="415" y2="41" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arc)"/>
+    <line x1="535" y1="41" x2="547" y2="41" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arc)"/>
+    <!-- connector row1 -> row2 -->
+    <path d="M608 62 L608 95 L560 95" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+    <!-- row 2: steps 6-9 -->
+    <rect x="436" y="95" width="124" height="42" rx="8" fill="#fff" stroke="#fed7aa" stroke-width="1.5"/>
+    <text x="498" y="113" text-anchor="middle" fill="#c2410c" font-size="11.5" font-weight="bold">6 · Sum</text>
+    <text x="498" y="128" text-anchor="middle" fill="#94a3b8" font-size="9">= observed χ²</text>
+    <rect x="300" y="95" width="124" height="42" rx="8" fill="#fff" stroke="#16a34a" stroke-width="1.8"/>
+    <text x="362" y="113" text-anchor="middle" fill="#166534" font-size="11.5" font-weight="bold">7 · df</text>
+    <text x="362" y="128" text-anchor="middle" fill="#94a3b8" font-size="9">(rows−1)×(cols−1)</text>
+    <rect x="164" y="95" width="124" height="42" rx="8" fill="#fff" stroke="#fed7aa" stroke-width="1.5"/>
+    <text x="226" y="113" text-anchor="middle" fill="#c2410c" font-size="11.5" font-weight="bold">8 · Critical value</text>
+    <text x="226" y="128" text-anchor="middle" fill="#94a3b8" font-size="9">df + p level + tail</text>
+    <rect x="20" y="95" width="132" height="42" rx="8" fill="#16a34a"/>
+    <text x="86" y="113" text-anchor="middle" fill="#fff" font-size="11.5" font-weight="bold">9 · Compare</text>
+    <text x="86" y="128" text-anchor="middle" fill="#dcfce7" font-size="9">≥ critical → significant</text>
+    <line x1="436" y1="116" x2="426" y2="116" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arc)"/>
+    <line x1="300" y1="116" x2="290" y2="116" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arc)"/>
+    <line x1="164" y1="116" x2="154" y2="116" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arc)"/>
+    <text x="340" y="162" text-anchor="middle" fill="#64748b" font-size="10.5">Green boxes are the two understanding points: df counts the cells free to vary; significance means chance is ruled out</text>
+  </svg>
+  <div class="figure-caption">Chi-squared: one production line, two checkpoints to understand</div>
+</div>
+
+<div class="cn-note">
+    <strong>中文理解：把九步连成一条链</strong><br>
+    卡方九步是一条流水线：<strong>列表 → 算期望 → 相减 → 平方 → 除以期望 → 加总 → 算自由度 → 查表 → 比大小</strong>。整条链里真正要理解的是三处阀门：<strong>为什么选卡方</strong>（差异或关联＋称名数据＋独立测量，三个条件缺一不可）、<strong>自由度</strong>（行减一乘列减一，本质是「还能自由变化的格子数」）、<strong>显著性判断</strong>（观测值大于临界值，说明差异大到很难用巧合解释，才拒绝虚无假设）。
   </div>
 </section>
 
@@ -616,7 +717,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
 <section class="section" id="s9">
   <h2>9. Animal Research — Arguments in Favour</h2>
 
-  <p>Learning theorists such as <strong>Pavlov and Skinner</strong> built their methods on laboratory experimentation with non-human (animal) participants, manipulating an IV to see its effect on behaviour. The textbook's arguments in favour:</p>
+  <p>Learning theorists such as <strong>Pavlov and Skinner</strong> built their methods on laboratory experimentation with non-human (animal) participants, manipulating an IV to see its effect on behaviour. Four arguments in favour, and they build on each other: rats are cheap and fast, which makes tight control possible; control opens the door to procedures ethically impossible with people; and the payoff is genuine medical and psychological benefit, made transferable by our shared evolutionary history:</p>
 
   <div class="compare-grid">
     <div class="compare-card green">
@@ -642,6 +743,8 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
 <section class="section" id="s10">
   <h2>10. Animal Research — Arguments Against</h2>
 
+  <p>The counter-arguments aim at the same four pillars: the behaviour observed in a lab is not natural behaviour, the species gap breaks generalisation, the continuity argument backfires on ethics, and the utilitarian trade-off assumes benefits that cannot be known in advance.</p>
+
   <div class="compare-grid">
     <div class="compare-card red">
       <h4>1 · Lacks credibility and validity</h4>
@@ -656,14 +759,14 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
       <p>Generalising from animals to humans risks <strong>anthropomorphism（拟人化）</strong>: mistakenly attributing human qualities to animals. Others point to the inconsistency in the continuity argument: if animals are <strong>so similar to humans, why are they not afforded the same ethical considerations</strong>?</p>
     </div>
     <div class="compare-card red">
-      <h4>4 · Speciesism（物种歧视）</h4>
+      <h4>4 · Speciesism（物种歧视：认为人的利益天然高于动物）</h4>
       <p>The benefits of research are <strong>not known until after the study</strong>, so the animal may suffer for limited effect. Singer (1975) viewed giving human suffering priority over animal suffering as discrimination: <strong>speciesism</strong>. On this view animals have the same rights as humans and <strong>no amount of regulation can justify animal research</strong>.</p>
     </div>
   </div>
 
   <div class="cn-note">
     <strong>中文理解：争议的根在「连续性」这个双刃剑</strong><br>
-    支持方的核心论据是连续性：人和动物共享演化祖先和神经系统，所以结果能推广。反方用<strong>同一把刀</strong>反击：既然这么相似，凭什么不给它们同样的伦理保护？再往前一步就是 Singer 的物种歧视。考试写「评价动物研究」时，把这条<strong>连续性正反两用</strong>的思路写出来，比各堆三条理由更能拿高分。
+    支持方的核心论据是连续性：人和动物共享演化祖先和神经系统，所以结果能推广。反方用<strong>同一把刀</strong>反击：既然这么相似，凭什么不给它们同样的伦理保护？再往前一步就是 Singer 的物种歧视。所以评价动物研究不用死背两列理由：支持方的论据本身，就是反方的论据。
   </div>
 </section>
 
@@ -699,8 +802,8 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   <p>Researchers must <strong>minimise pain, suffering or distress</strong> within the design; adverse effects must be recognised and assessed with <strong>immediate action</strong> when necessary, and the licensed researcher is responsible for this happening.</p>
 
   <div class="cn-note">
-    <strong>中文理解：三 R 加三证是必背清单</strong><br>
-    课本 checkpoint 原题就问「说出 three Rs 和 three Ps」：<strong>Replace、Reduce、Refine</strong> 加 <strong>Project、Personal、Place</strong> 三张许可。记忆法：三 R 管的是<strong>怎么对待动物</strong>（换掉、减量、减痛），三证管的是<strong>谁批准谁来做在哪做</strong>（项目、个人、场所）。立法背景记一个锚点就够：<strong>1986 年法案 + 八爪鱼是唯一受保护的无脊椎动物</strong>，这个细节考过选择题。
+    <strong>中文理解：三 R 管怎么对待，三证管谁批准</strong><br>
+    <strong>Replace、Reduce、Refine</strong> 加 <strong>Project、Personal、Place</strong> 三张许可。分工记住一句话就够：三 R 管的是<strong>怎么对待动物</strong>（换掉、减量、减痛），三证管的是<strong>谁批准、谁来做、在哪做</strong>（项目、个人、场所）。立法背景记一个锚点：<strong>1986 年法案，八爪鱼是唯一受保护的无脊椎动物</strong>。
   </div>
 </section>
 
@@ -709,7 +812,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   <h2>12. Checkpoint</h2>
 
   <div class="xp-block">
-    <h4>🎯 Textbook checkpoint questions<span class="xp-badge">From memory</span></h4>
+    <h4>🎯 Checkpoint questions<span class="xp-badge">From memory</span></h4>
     <p class="xp-intro">Cover the sections above and answer. Click an answer to check it.</p>
     <div class="xp-result" id="res-s12"></div>
 
@@ -734,7 +837,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
       <button class="q-option" onclick="mcAns(this)">Repeated measures</button>
     </div>
 
-    <p class="xp-intro"><strong>4.</strong> A researcher watches shoppers from a distance without joining them, and interprets a customer's rushed exit as rudeness. Which issue does the textbook highlight for this design?</p>
+    <p class="xp-intro"><strong>4.</strong> A researcher watches shoppers from a distance without joining them, and interprets a customer's rushed exit as rudeness. Which issue does this design raise?</p>
     <div class="xp-controls">
       <button class="q-option" onclick="mcAns(this)" data-ok="1">Observer bias</button>
       <button class="q-option" onclick="mcAns(this)">Loss of objectivity from taking part</button>
@@ -755,7 +858,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
       <button class="q-option" onclick="mcAns(this)">Only mammals used in laboratories</button>
     </div>
 
-    <h4 style="margin-top:18px">Textbook matching question — write your answers first</h4>
+    <h4 style="margin-top:18px">Matching question — write your answers first</h4>
     <p class="xp-intro">Match each scenario to a type of observation: structured, naturalistic, participant, non-participant, covert, overt. Each type is used once.</p>
     <div class="xp-case">
       <p class="small tight">1. Maya waited outside a cinema to record who went inside<br>
@@ -779,13 +882,13 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   <h2>13. Exam Lab</h2>
 
   <div class="syl-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px">
-    <span class="syl-tag">Textbook exam practice</span>
+    <span class="syl-tag">Exam practice</span>
     <span class="syl-tag">AO1 + AO2 + AO3</span>
     <span class="syl-tag">8-mark evaluation</span>
   </div>
 
   <div class="exam-practice">
-    <h3>Question 1 — Niro's glass walkway (from the textbook)</h3>
+    <h3>Question 1 — Niro's glass walkway</h3>
     <p class="small">Niro was investigating heights as a phobia. At the top of a tall building with a glass walkway, visitors could choose the glass path or an avoiding path. Niro observed how many people chose each path.</p>
   </div>
 
@@ -805,7 +908,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   </div>
 
   <div class="exam-practice">
-    <h3>Question 2 — Angelo's nursery observation (from the textbook)</h3>
+    <h3>Question 2 — Angelo's nursery observation</h3>
     <p class="small">Angelo observed children aged two to four in a local nursery. Each child was observed for five minutes and the number of times they played with each toy was tallied. Boys: construction-type toys 18, doll-type toys 32. Girls: construction-type 34, doll-type 12. Angelo used a chi-squared test and found a calculated value of 13.87.</p>
   </div>
 
@@ -979,10 +1082,10 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
       ['Interval data belongs to tests like the t-test; chi-squared works on frequencies in categories.',
        'Correct. Chi-squared is a test of difference or association on nominal data.',
        'Repeated measures is a related design; chi-squared requires independent measures.'],
-      ['Correct. A detached observer who interprets a rushed exit as rudeness is showing observer bias, the textbook name for subjective misinterpretation from a distance.',
+      ['Correct. A detached observer who interprets a rushed exit as rudeness is showing observer bias, the name for subjective misinterpretation from a distance.',
        'Losing objectivity by taking part applies to participant observation; this observer never joined the group.',
        'Demand characteristics are participants changing behaviour because they guess the aim; shoppers here are unaware.'],
-      ['Correct. The textbook explains that the separation, stranger and reunion sequence would rarely occur naturally, so Ainsworth staged it in a controlled environment.',
+      ['Correct. The separation, stranger and reunion sequence would rarely occur naturally, so Ainsworth staged it in a controlled environment.',
        'Consent was not the design reason; children could not consent in either type of observation.',
        'Naturalistic observations can gather quantitative data through tallying; the reason was control of the event sequence.'],
       ['The Act does not cover all living animals; invertebrates are excluded except one species.',
