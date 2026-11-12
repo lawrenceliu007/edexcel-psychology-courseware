@@ -224,6 +224,11 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 .small { font-size: .84em; color: var(--text-secondary); }
 .tight { margin: 6px 0; }
 .tight li { margin: 3px 0; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
 </style></head>
 <body>
 <div class="container">
@@ -290,7 +295,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="meta">
     <span class="badge">🗣️ Core idea: self-report data</span>
     <span class="badge">🔢 Quantitative vs qualitative</span>
-    <span class="badge">📖 Textbook: Chapter 4</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.4 · pp.36–44</span>
   </div>
 </div>
 
@@ -304,6 +309,16 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </ol>
 </div>
 
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li>Design questionnaire items: open and closed questions, Likert and ranked scales, and explain the detail-speed trade-off.</li>
+    <li>Avoid the three design traps: social desirability, question construction and privacy.</li>
+    <li>Assess reliability (test-retest, split-half) and validity (face, predictive, concurrent) of self-report data.</li>
+    <li>Compare structured, unstructured and semi-structured interviews, and manage researcher effects.</li>
+    <li>Design or fix a self-report item for a given scenario.</li>
+  </ul>
+</div>
 <!-- ============ 1 ============ -->
 <section class="section" id="s1">
   <h2>1. Getting Started</h2>
@@ -333,7 +348,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="cn-note">
     <strong>中文理解：self-report（自我报告）为什么好用又危险？</strong><br>
     好用：态度、观点、性格这些东西<strong>看不见</strong>，实验测不出来，只能开口问；<br>
-    危险：人回答时会<strong>自动「美化」自己</strong>（social desirability 社会赞许性）——没人愿意承认自己作弊、不服从、不善良。<br>
+    危险：人回答时会<strong>自动「美化」自己</strong>（social desirability 社会赞许性），没人愿意承认自己作弊、不服从、不善良。<br>
     一句话：<strong>问出来的答案，是「对方想让你听到的版本」，研究者要设计方法把真话挤出来。</strong>
   </div>
 </section>
@@ -433,7 +448,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 <section class="section" id="s4">
   <h2>4. Closed &amp; Open Questions</h2>
 
-  <p>The type of question decides the type of data. The textbook splits questions into two families:</p>
+  <p>The type of question decides the type of data. Questions split into two families:</p>
 
   <div class="compare-grid">
     <div class="compare-card">
@@ -510,9 +525,9 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="cn-note">
     <strong>中文理解：怎么判断一个问题是 closed 还是 open？</strong><br>
     只看一件事：<strong>答案是不是出题人预先写好的。</strong><br>
-    是 → closed（勾选、圈选、Yes/No、选项列表、Likert 打分、排序）；<br>
+    是 → closed：用勾选、圈选这类格式，或 Yes/No、选项列表、Likert 打分与排序；<br>
     不是、答题人自己写 → open（「为什么」「请解释」「描述一下」）。<br>
-    再推一步：<strong>closed → 数字 → 好分析但浅；open → 文字 → 有深度但难分析。</strong>
+    再推一步：<strong>closed → 数字 → 好分析但浅；open → 文字 → 信息更厚但难分析。</strong>
   </div>
 </section>
 
@@ -520,7 +535,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 <section class="section" id="s5">
   <h2>5. Attitude Scales</h2>
 
-  <p>A plain yes/no answer is fast but shallow. <strong>Attitude scales</strong> were designed to increase the level of detail achieved in a questionnaire: instead of a yes/no response, they offer respondents a <strong>range of options so that their strength of opinion can be gauged</strong>. The textbook gives two kinds:</p>
+  <p>A plain yes/no answer is fast but shallow. <strong>Attitude scales</strong> were designed to increase the level of detail achieved in a questionnaire: instead of a yes/no response, they offer respondents a <strong>range of options so that their strength of opinion can be gauged</strong>. Two kinds are used:</p>
 
   <div class="compare-grid">
     <div class="compare-card">
@@ -587,8 +602,8 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>中文理解：Likert 与 ranked 怎么区分？</strong><br>
-    <strong>Likert = 给一句话打分</strong>（非常同意 → 非常不同意）——测「你对这句话有多同意」；<br>
-    <strong>ranked = 给一堆东西排序</strong>（最怕的动物排第 1，最不怕的排第 4）——测「相对偏好」。<br>
+    <strong>Likert = 给一句话打分</strong>（非常同意 → 非常不同意），测「你对这句话有多同意」；<br>
+    <strong>ranked = 给一堆东西排序</strong>（最怕的动物排第 1，最不怕的排第 4），测「相对偏好」。<br>
     记忆口诀：<strong>Likert 竖着打分，ranked 横着排队。</strong>注意细节：odd 选项留了中立逃生门，even 逼人站队；全正向的题目会诱发 response bias，要混入反向陈述。
   </div>
 </section>
@@ -616,9 +631,9 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>中文理解：三个坑怎么记？</strong><br>
-    <strong>坑一在人</strong>：social desirability——答题人自我美化，不给真话；<br>
-    <strong>坑二在题</strong>：question construction——题目太技术、太模糊、有引导性，或侵犯 privacy；<br>
-    <strong>坑三在格式</strong>：response bias——全同向陈述让人无脑全勾「同意」。<br>
+    <strong>坑一在人</strong>：social desirability：答题人自我美化，不给真话；<br>
+    <strong>坑二在题</strong>：question construction：题目太技术、太模糊、有引导性，或侵犯 privacy；<br>
+    <strong>坑三在格式</strong>：response bias：全同向陈述让人无脑全勾「同意」。<br>
     对策：<strong>人 → 用检测设计（反向陈述）；题 → 简单、中立、守隐私；格式 → 反向混排 + 偶数选项。</strong>
   </div>
 </section>
@@ -627,7 +642,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 <section class="section" id="s7">
   <h2>7. Reliability</h2>
 
-  <p><strong>Reliability refers to the consistency of a measure or finding.</strong> A questionnaire is reliable if it produces the same result every time it should. The textbook splits this into two directions:</p>
+  <p><strong>Reliability refers to the consistency of a measure or finding.</strong> A questionnaire is reliable if it produces the same result every time it should. This splits into two directions:</p>
 
   <div class="mat2x2 c2">
     <div class="mh">Type</div>
@@ -645,7 +660,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="compare-grid">
     <div class="compare-card">
       <h4>Test-retest method → external reliability</h4>
-      <p><strong>The same people are given the same questionnaire to complete again on a different occasion.</strong> If their responses are the same or very similar, external reliability is established. (Note the textbook's warning: some scales lose external reliability exactly <em>because</em> people remember or change.)</p>
+      <p><strong>The same people are given the same questionnaire to complete again on a different occasion.</strong> If their responses are the same or very similar, external reliability is established. (One warning: some scales lose external reliability exactly <em>because</em> people remember or change.)</p>
     </div>
     <div class="compare-card green">
       <h4>Split-half method → internal reliability</h4>
@@ -694,10 +709,10 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>中文理解：三种效度一句话记忆</strong><br>
-    <strong>face</strong> = 「看脸」——读一遍题目，像不像在测这个东西；<br>
-    <strong>predictive</strong> = 「预言」——今天测出的分数，能不能预测以后的行为（智力分 → 学业成绩）；<br>
-    <strong>concurrent</strong> = 「对照」——和别的同主题测试比一比，结果一致才说明测的是同一个东西。<br>
-    别和信度搞混：<strong>信度问「稳不稳」，效度问「准不准」。</strong>一支尺子每次都量出同一个错的数——信但不住，稳但不准。
+    <strong>face</strong> = 「看脸」，读一遍题目，像不像在测这个东西；<br>
+    <strong>predictive</strong> = 「预言」，今天测出的分数，能不能预测以后的行为（智力分 → 学业成绩）；<br>
+    <strong>concurrent</strong> = 「对照」，和别的同主题测试比一比，结果一致才说明测的是同一个东西。<br>
+    别和信度搞混：<strong>信度问「稳不稳」，效度问「准不准」。</strong>一支尺子每次都量出同一个错的数：信但不住，稳但不准。
   </div>
 </section>
 
@@ -757,7 +772,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="xp-block">
-    <h4>🎯 Which interview is it? <span class="xp-badge">From the textbook</span></h4>
+    <h4>🎯 Which interview is it? <span class="xp-badge">Practice</span></h4>
     <p class="xp-intro">"A researcher wants to investigate what pets people own. They want to know what type of pets people have and how long they have owned them, but also want to explore the reasons for owning pets."</p>
     <div class="xp-controls">
       <button class="q-option" onclick="srInt(this,'a')">Structured</button>
@@ -767,7 +782,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
     <div class="xp-result" id="res-int"></div>
   </div>
 
-  <p>There are <strong>preset facts to collect</strong> (pet type, ownership time) <strong>but also room to explore reasons</strong> — preset questions <em>plus</em> permission to deviate. That is the textbook definition of a <strong>semi-structured</strong> interview.</p>
+  <p>There are <strong>preset facts to collect</strong> (pet type, ownership time) <strong>but also room to explore reasons</strong> — preset questions <em>plus</em> permission to deviate. That is the definition of a <strong>semi-structured</strong> interview.</p>
 
   <div class="cn-note">
     <strong>中文理解：三种访谈 = 三种「剧本」</strong><br>
@@ -787,7 +802,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="compare-grid">
     <div class="compare-card">
       <h4>Who the researcher is</h4>
-      <p>Example from the textbook: you can predict that a <strong>male interviewer will be unlikely to obtain detailed information</strong> from a female participant about her view of friendships within her peer group. Control: <strong>employ a female interviewer</strong>.</p>
+      <p>Example: you can predict that a <strong>male interviewer will be unlikely to obtain detailed information</strong> from a female participant about her view of friendships within her peer group. Control: <strong>employ a female interviewer</strong>.</p>
     </div>
     <div class="compare-card red">
       <h4>What the researcher expects</h4>
@@ -811,7 +826,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>中文理解：researcher effects 为什么存在？</strong><br>
-    面对面提问时，<strong>提问者本身就是环境的一部分</strong>：你的性别、年龄、语气、表情都在影响对方敢不敢说真话。<br>
+    面对面提问时，<strong>提问者本身就是环境的一部分</strong>：你的性别年龄、语气表情，都在影响对方敢不敢说真话。<br>
     两条腿：<strong>你是谁</strong>（male interviewer 问 female participant 闺蜜话题 → 问不出细节）+ <strong>你盼什么</strong>（expected outcomes → confirmation bias，点头微笑把答案「钓」出来）。<br>
     对策一句话：<strong>换一个不知道研究目的的独立访谈者。</strong>
   </div>
@@ -821,7 +836,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 <section class="section" id="s11">
   <h2>11. Primary vs Secondary Data</h2>
 
-  <p>Where does your data come from? The textbook draws one clean line:</p>
+  <p>Where does your data come from? One clean line divides the answers:</p>
 
   <div class="mat2x2">
     <div class="mh">Dimension</div>
@@ -895,7 +910,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="cn-note">
     <strong>中文理解：primary vs secondary 怎么判断？</strong><br>
     只问一句：<strong>数据是不是你自己直接向参与者收集的？</strong><br>
-    是 → primary（实验、观察、问卷、访谈都算）；<br>
+    是 → primary（实验、观察与问卷访谈都算）；<br>
     不是、是从别人的研究里拿的 → secondary（文献综述、meta-analysis）。<br>
     一句话：<strong>primary 贴合目的但费时；secondary 省时且量大，但可能过时、不对口。</strong>
   </div>
@@ -929,7 +944,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
     <strong>中文理解：alternative hypothesis 是什么？</strong><br>
     研究开始前，把「我觉得会发生什么」写成一句<strong>明确、可检验、精确</strong>的话，并包含要研究的变量。<br>
     有把握方向 → 写明方向（「X 越高 Y 越高」）；研究少、结论乱 → 只写「会发现差异/关系」，不指方向。<br>
-    记住它是<strong>「备择」</strong>：它是和「什么都没发生」相对立的那种预测——名字在 Topic B 还会展开。
+    记住它是<strong>「备择」</strong>：它是和「什么都没发生」相对立的那种预测：名字在 Topic B 还会展开。
   </div>
 </section>
 
@@ -937,7 +952,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 <section class="section" id="s13">
   <h2>13. Exam Focus</h2>
 
-  <p>This topic appears constantly in Paper 1 — especially <strong>quantitative data</strong>, the single most frequent theme in past papers. Three textbook exam tips do most of the work:</p>
+  <p>This topic appears constantly in Paper 1 — especially <strong>quantitative data</strong>, the single most frequent theme in past papers. Three exam tips do most of the work:</p>
 
   <div class="exam-tip">
     <h4>Tip 1 — strengths/weaknesses must be social-psychology specific</h4>
@@ -1053,7 +1068,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 <section class="section" id="s15">
   <h2>15. Exam Lab</h2>
 
-  <p>These are the actual question patterns from the textbook's exam practice for this chapter. Attempt each before revealing.</p>
+  <p>These are exam-style questions modelled on this chapter's exam practice. Attempt each before revealing.</p>
 
   <div class="cn-note">
     <strong>中文理解：这章考什么</strong><br>
@@ -1061,7 +1076,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="exam-practice">
-    <h4>Q1 — Carlos and the 'keep off the grass' signs (from the textbook)</h4>
+    <h4>Q1 — Carlos and the 'keep off the grass' signs</h4>
     <p class="small">Carlos wants to test how compliant pedestrians are to signs which ask them to 'keep off the grass'. He designs a questionnaire to gather quantitative data from pedestrians who visit a local park.</p>
 
     <div class="q-row">
@@ -1090,9 +1105,9 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="exam-practice">
-    <h4>Q2 — the 'how' question: describing a stratified sample (from the textbook exam tip)</h4>
+    <h4>Q2 — the 'how' question: describing a stratified sample</h4>
     <p class="small">Crystal has been asked by her employer to send out questionnaires asking opinions about whether the food served in the office canteen is good. There are 100 employees who use the canteen at lunchtime and work in the office building. Describe how Crystal might gather a stratified sample of the employees in the office building. (3 marks)</p>
-    <p>The textbook's rule: if asked to describe <strong>'how'</strong> a sampling technique is used, treat it as a process — <strong>firstly, secondly, thirdly</strong>. This ensures you access all the available marks.</p>
+    <p>The rule: if asked to describe <strong>'how'</strong> a sampling technique is used, treat it as a process — <strong>firstly, secondly, thirdly</strong>. This ensures you access all the available marks.</p>
     <button class="xp-btn" onclick="revealAns('lab2')">Reveal model answer</button>
     <div class="answer-box" id="lab2"><p><strong>Firstly</strong>, Crystal would decide which subgroups exist in the office building, such as managers, clerks, cleaners. <strong>Secondly</strong>, she would calculate the percentage of managers, clerks and cleaners that represents the whole target population in the office building. <strong>Thirdly</strong>, she would randomly select the proportionate number of employees in each subgroup and ask if they would complete the questionnaire on how good the food was in the office canteen.</p><p class="small">The full stratified sampling walkthrough is in 1.2.5 Sampling Techniques — this page previews the exam pattern so the two connect.</p></div>
   </div>

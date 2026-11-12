@@ -218,6 +218,11 @@ body.dark .summary-card-body li { color: #c4b5fd; }
 .mat2x2 .mv { background: #f97316; color: #fff; border-radius: 6px; padding: 8px 6px; font-size: .82em; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
 .mat2x2 .cell { background: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; font-size: .86em; line-height: 1.5; }
 body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cbd5e1; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
 </style>
 </head>
 <body>
@@ -285,10 +290,20 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="meta">
     <span class="badge">🧠 Core idea: wrong, but unanimous</span>
     <span class="badge">📏 32% of answers were wrong on purpose</span>
-    <span class="badge">📖 Textbook: Chapter 2</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.2 · pp.21–31</span>
   </div>
 </div>
 
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li>Describe Asch's line-judgement procedure and why an unambiguous task mattered.</li>
+    <li>Recall the headline results and what they demonstrate about majority pressure.</li>
+    <li>Explain the variations: group size, unanimity (the dissenter) and task difficulty.</li>
+    <li>Evaluate the study on culture, era, ethics and ecological validity.</li>
+    <li>Justify a conclusion about conformity using the study's evidence.</li>
+  </ul>
+</div>
 <!-- ============ 1 ============ -->
 <section class="section" id="s1">
   <h2>1. Getting Started</h2>
@@ -328,7 +343,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>中文理解</strong><br>
-    这个任务的答案<strong>明显得不能再明显</strong> —— 没有任何模糊空间。Sherif 的光点实验（1.1.4）里人们从众，可以说“因为我真的不知道答案”；但在这里，答案就摆在眼前。<br>
+    这个任务的答案<strong>明显得不能再明显</strong>，没有任何模糊空间。Sherif 的光点实验（1.1.4）里人们从众，可以说“因为我真的不知道答案”；但在这里，答案就摆在眼前。<br>
     如果你还跟着大家说错话，那就只剩一种解释：<strong>不是信息问题，是压力问题</strong>。这正是 Asch 设计这个实验的原因。
   </div>
 </section>
@@ -353,7 +368,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="cn-note">
     <strong>中文理解：三个年份不要背混</strong><br>
     考纲要求三个研究：<strong>1951</strong>（基线 + 破裂多数 + 多数规模）、<strong>1952</strong>（熟人群体 + 异议者）、<strong>1956</strong>（123 人的经典版本 + 圆盘实验）。<br>
-    它们用的是<strong>同一个基本程序</strong>，每次改一样东西 —— 和 Milgram 的三个变式（1.1.2）思路完全一样：改情境，看行为跟着怎么变。
+    它们用的是<strong>同一个基本程序</strong>，每次改一样东西：和 Milgram 的三个变式（1.1.2）思路完全一样：改情境，看行为跟着怎么变。
   </div>
 </section>
 
@@ -378,7 +393,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="cn-note">
     <strong>中文理解：四个必须写准的细节</strong><br>
     ① 50 名男大学生；② 每组 8 人，其中 <strong>7 个是同谋者</strong>、只有 1 个真被试；③ 答案<strong>公开说出</strong>（这是压力来源）；④ 12 次“关键试验”里全员故意说错。<br>
-    从众的测量方式 = <strong>错误回答的次数/比例</strong> —— 这个“客观测量”是 1.1.5 评价里的一条优点。
+    从众的测量方式 = <strong>错误回答的次数/比例</strong>，这个“客观测量”是 1.1.5 评价里的一条优点。
   </div>
 </section>
 
@@ -398,13 +413,13 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="keyterm-box">
-    <span class="kt"> Exam trap 考试陷阱：</span> the result is “<strong>32% of responses</strong> given were errors” — <em>not</em> 32% of participants and <em>not</em> 32% of trials. The textbook checkpoint question tests exactly this distinction.
+    <span class="kt"> Exam trap 考试陷阱：</span> the result is “<strong>32% of responses</strong> given were errors” — <em>not</em> 32% of participants and <em>not</em> 32% of trials. Exam questions often test exactly this distinction.
   </div>
 
   <div class="cn-note">
     <strong>中文理解：怎么读 32% 这个数字</strong><br>
-    正着读：三分之一的回答跟着多数人错 —— 压力真实存在。<br>
-    反着读：68% 的回答是对的 —— 大多数时候人们顶住了。两个方向都要会写，评价题常考“结果其实显示人们大部分时间没从众”。
+    正着读：三分之一的回答跟着多数人错：压力真实存在。<br>
+    反着读：68% 的回答是对的：大多数时候人们顶住了。两个方向都要会写，评价题常考“结果显示人们大部分时间没从众”。
   </div>
 </section>
 
@@ -425,7 +440,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="cn-note">
     <strong>中文理解：只要一个人站在你这边</strong><br>
     七个人说错、你一个人说对 → 32% 从众。但有<strong>一个人</strong>跟你一起说对 → 从众掉到 <strong>5.5%</strong>。<br>
-    一个盟友就能抵掉大半压力 —— 这就是 <strong>social support（社会支持）</strong>的力量。考试问“how could Asch's findings be applied”，这是最好的应用点。
+    一个盟友就能抵掉大半压力：这就是 <strong>social support（社会支持）</strong>的力量。考试问“how could Asch's findings be applied”，这是最好的应用点。
   </div>
 </section>
 
@@ -507,8 +522,8 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>中文理解：这组对照为什么值钱</strong><br>
-    公开回答：33.2% 错；私下写答案：7.4% 错。<strong>同一批人、同一套题</strong>，唯一区别是要不要当众说 —— 差距就是 NSI 的直接证据。<br>
-    再加一层：这次明明有人<strong>公开质疑过</strong>多数人的判断（说明答案可疑），大家还是照样从众 —— “我不知道”这条借口被彻底排除了。
+    公开回答：33.2% 错；私下写答案：7.4% 错。<strong>同一批人、同一套题</strong>，唯一区别是要不要当众说：差距就是 NSI 的直接证据。<br>
+    再加一层：这次明明有人<strong>公开质疑过</strong>多数人的判断（说明答案可疑），大家还是照样从众，“我不知道”这条借口被彻底排除了。
   </div>
 </section>
 
@@ -531,7 +546,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>中文理解：四个变式一句话收</strong><br>
-    错得离谱照样跟（27.2%）；一个人不算多数（归零）；有一个坚定盟友减半（13%）；反过来一个人对十六个真被试，只会被嘲笑 —— <strong>力量全在“多数”这两个字上</strong>。<br>
+    错得离谱照样跟（27.2%）；一个人不算多数（归零）；有一个坚定盟友减半（13%）；反过来一个人对十六个真被试，只会被嘲笑：<strong>力量全在“多数”这两个字上</strong>。<br>
     最后一个变式留个钩子：一个人怎么才能反过来影响多数？那是 1.1.6 Moscovici 少数派影响的问题。
   </div>
 </section>
@@ -557,7 +572,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>中文理解：“妥协”这个细节最值钱</strong><br>
-    多数人指着一个极端错的答案，五分之一的人不是照抄、而是选了个<strong>折中的错误</strong> —— 说明压力之下人真的会<strong>扭曲自己的判断</strong>，不是简单复制别人的答案。写 evaluation 或 application 时这是很鲜活的细节。
+    多数人指着一个极端错的答案，五分之一的人没有照抄，选了个<strong>折中的错误</strong>，说明压力之下人真的会<strong>扭曲自己的判断</strong>，不是简单复制别人的答案。写 evaluation 或 application 时这是很鲜活的细节。
   </div>
 </section>
 
@@ -608,7 +623,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="cn-note">
     <strong>中文理解：一张图记住 1952 的四个数字</strong><br>
     33.2（公开·全体说错）→ 27.2（错得离谱）→ 13（有一个盟友）→ 7.4（私下写）。<br>
-    这四个柱子就是 Asch 研究的骨架 —— 任何 describe / evaluate 题都从这里取材。
+    这四个柱子就是 Asch 研究的骨架：任何 describe / evaluate 题都从这里取材。
   </div>
 </section>
 
@@ -672,7 +687,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>中文理解：别把三个“12”开头的数字弄混</strong><br>
-    <strong>12.8%</strong> = 两个同谋者（1951 多数规模）；<strong>10.4%</strong> = 两个真被试（1951 破裂多数）；<strong>12.5%</strong> = 真被试私下作答（1956）。三个都跟“12”有关但完全是三件事 —— 用情境来记，不要用数字背。
+    <strong>12.8%</strong> = 两个同谋者（1951 多数规模）；<strong>10.4%</strong> = 两个真被试（1951 破裂多数）；<strong>12.5%</strong> = 真被试私下作答（1956）。三个都跟“12”有关但完全是三件事：用情境来记，不要用数字背。
   </div>
 </section>
 
@@ -717,7 +732,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <table class="n">
-    <tr><th style="width:33%;">Improvement 改进</th><th>Justification 理由（课本原文句式）</th></tr>
+    <tr><th style="width:33%;">Improvement 改进</th><th>Justification 理由</th></tr>
     <tr><td>Use a more <strong>representative sample</strong> that also includes <strong>female participants</strong> instead of just the 50 male students.</td><td>This would make his findings about conformity to a majority group more <strong>generalisable</strong> to a wider target population.</td></tr>
     <tr><td>Use a more <strong>realistic task</strong>, such as providing photographs of real objects, to test conformity.</td><td>This would increase the <strong>validity</strong> of Asch's findings about conformity in real-life situations.</td></tr>
     <tr><td>Use <strong>familiar groups</strong> (friends) rather than strangers — as Mori and Arai (2010) did.</td><td>This would better reflect how conformity operates in <strong>everyday</strong> group settings.</td></tr>
@@ -725,7 +740,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>中文理解：改进题的三段套路</strong><br>
-    <strong>弱点 → 改进 → 理由</strong>。弱点必须是“真弱点”（不能是伦理——伦理难以既保留程序又消除），改进要可操作，理由落到 <strong>generalisability / validity</strong> 这类评价词上。背熟课本给的两个例句，考场上换内容即可。
+    <strong>弱点 → 改进 → 理由</strong>。弱点必须是“真弱点”（不能是伦理：伦理难以既保留程序又消除），改进要可操作，理由落到 <strong>generalisability / validity</strong> 这类评价词上。两个例句走的是同一套路：弱点、改进、理由各占一句，换一个弱点照样能写。
   </div>
 </section>
 
@@ -803,7 +818,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>中文理解：四道题怎么下手</strong><br>
-    Q1 四分背硬信息：50 男被试、八人一组、判断线段长短、一名真被试对七名托儿。<br>
+    Q1 四分背硬信息：50 男被试、八人一组，判断线段长短，一名真被试对七名托儿。<br>
     Q2 控制组的意义：没有托儿时错误率极低，说明主实验的错误是被人数压出来的。<br>
     Q3 社会支持：多一个说真话的人，错误率就崩下来，支持能顶住从众压力。<br>
     Q4 八分大题：两优点两缺点各配后果，最后加一句自己的判断。
@@ -861,7 +876,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="exam-tip">
-    <strong>Exam tip from the textbook.</strong> Review the <strong>weaknesses</strong> of any named study — they are the areas for improvement. Identify an improvement, then <strong>justify</strong> why it improves on the original (generalisability, validity…).
+    <strong>Exam tip.</strong> Review the <strong>weaknesses</strong> of any named study — they are the areas for improvement. Identify an improvement, then <strong>justify</strong> why it improves on the original (generalisability, validity…).
   </div>
 </section>
 

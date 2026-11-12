@@ -216,6 +216,11 @@ body.dark textarea.answer-box { background: #16213e; border-color: #334155; colo
 body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
 body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
 body.dark .summary-card-body li { color: #c4b5fd; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
 </style>
 </head>
 <body>
@@ -283,16 +288,26 @@ body.dark .summary-card-body li { color: #c4b5fd; }
   <div class="meta">
     <span class="badge">🧠 Core idea: social influence</span>
     <span class="badge">🔑 Two theories: agency + social power</span>
-    <span class="badge">📖 Textbook: Introduction + Chapter 1</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.1 · pp.2–20</span>
   </div>
 </div>
 
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li>Define obedience（服从）and explain how it differs from conformity.</li>
+    <li>Explain agency theory（代理理论）: the agentic and autonomous states, binding factors, and how it explains Milgram's findings.</li>
+    <li>Explain social power theory（社会权力理论）: the five bases of power, and apply each to a real authority situation.</li>
+    <li>Evaluate both theories with evidence and say what each one leaves out.</li>
+    <li>Justify which theory better explains an obedience scenario you are given.</li>
+  </ul>
+</div>
 <!-- ============ 1 ============ -->
 <section class="section" id="s1">
   <h2>1. Getting Started</h2>
 
   <div class="xp-block">
-    <h4>📚 The library chair <span class="xp-badge">Textbook activity</span></h4>
+    <h4>📚 The library chair <span class="xp-badge">Warm-up</span></h4>
     <p class="xp-intro">You are in the library studying for an important examination. There are a few other students in the library and the librarian asks you if you would mind moving to another area of the library, because your chair is needed in the hall for an important lecture. <strong>Do you move?</strong></p>
     <div class="xp-controls">
       <button class="xp-btn" onclick="libChoice('move')">I move</button>
@@ -337,7 +352,7 @@ body.dark .summary-card-body li { color: #c4b5fd; }
   </table>
 
   <div class="cn-note">
-    <strong>我们现在站在哪个角？</strong>Social approach。它不问"你脑子里发生了什么"，而问"<strong>谁在你身边、谁在对你说话</strong>"。图书馆里的那把椅子，用生物取向解释会很荒谬，用社会取向解释就很自然 —— 这就是取向的意义：先选镜头，再拍照片。
+    <strong>我们现在站在哪个角？</strong>Social approach。它不问"你脑子里发生了什么"，而问"<strong>谁在你身边、谁在对你说话</strong>"。图书馆里的那把椅子，用生物取向解释会很荒谬，用社会取向解释就很自然：这就是取向的意义：先选镜头，再拍照片。
   </div>
 </section>
 
@@ -417,7 +432,7 @@ body.dark .summary-card-body li { color: #c4b5fd; }
   </table>
 
   <div class="cn-note">
-    <strong>三者的分界线：</strong>看"压力来自谁"。来自<strong>大多数人</strong>是 conformity；来自<strong>少数人</strong>却改变了多数人是 minority influence；来自<strong>有权力的人</strong>是 obedience。考试给情境时，先找"那个人凭什么让你做" —— 凭人多还是凭职位 —— 答案就分出来了。
+    <strong>三者的分界线：</strong>看"压力来自谁"。来自<strong>大多数人</strong>是 conformity；来自<strong>少数人</strong>却改变了多数人是 minority influence；来自<strong>有权力的人</strong>是 obedience。考试给情境时，先找"那个人凭什么让你做"（凭人多还是凭职位），答案就分出来了。
   </div>
 </section>
 
@@ -435,7 +450,7 @@ body.dark .summary-card-body li { color: #c4b5fd; }
   <p>Most of us live in a <strong>hierarchical</strong> society: there are people who give instructions and people who follow them. From early childhood, <strong>socialisation</strong> teaches us the rule — parents, teachers and police officers give instructions, and we are rewarded for obeying and corrected for refusing. By adulthood, obeying is close to a habit.</p>
 
   <div class="cn-note">
-    <strong>为什么这件事值得学？</strong>训练出来的服从让社会能运转 —— 红灯停、排队、交作业，都靠它。但同一套机制也解释了最黑暗的事：当发命令的人要你伤害别人时，你还会照做吗？
+    <strong>为什么这件事值得学？</strong>训练出来的服从让社会能运转：红灯停、排队、交作业，都靠它。但同一套机制也解释了最黑暗的事：当发命令的人要你伤害别人时，你还会照做吗？
   </div>
 
   <h3>The dark side</h3>
@@ -498,7 +513,7 @@ body.dark .summary-card-body li { color: #c4b5fd; }
   </div>
 
   <div class="cn-note">
-    <strong>两态怎么理解：</strong>自主态是"我自己决定，出了事我负责"；代理态是"我只是替他执行，出事他负责"。这个把责任交给别人的动作叫 <strong>displacement of responsibility（责任转移）</strong>，是代理态的核心 —— 人不是突然变坏，而是悄悄把"负责的人"换掉了。
+    <strong>两态怎么理解：</strong>自主态是"我自己决定，出了事我负责"；代理态是"我只是替他执行，出事他负责"。这个把责任交给别人的动作叫 <strong>displacement of responsibility（责任转移）</strong>，是代理态的核心：人没有突然变坏，只是悄悄把"负责的人"换掉了。
   </div>
 
   <div class="note-box">
@@ -550,7 +565,7 @@ body.dark .summary-card-body li { color: #c4b5fd; }
   </ul>
 
   <div class="cn-note">
-    <strong>这条证据为什么关键：</strong>如果人真的完全进入了代理态、内心毫无波澜，我们不应该看到笑、抖、抽搐这些反应。正因为看到了，Milgram 才说：人不是"变成了坏人"，而是<strong>一边照做一边承受冲突</strong> —— 这就是 moral strain。
+    <strong>这条证据为什么关键：</strong>如果人真的完全进入了代理态、内心毫无波澜，我们不应该看到笑、抖、抽搐这些反应。正因为看到了，Milgram 才说：人没有"变成坏人"，只是<strong>一边照做一边承受冲突</strong>，这就是 moral strain。
   </div>
 </section>
 
@@ -607,7 +622,7 @@ body.dark .summary-card-body li { color: #c4b5fd; }
   </div>
 
   <div class="cn-note">
-    <strong>评价的写法套路：</strong>每一条批评都由两块组成 —— <strong>说什么不对</strong>（理论解释不了个体差异）+ <strong>为什么这是个问题</strong>（因为 35% 的人拒绝了，个体差异必须被解释）。只写第一块只能算说了一半；两块都写完整，才是评价题要的答案。
+    <strong>评价的写法套路：</strong>每一条批评都由两块组成：<strong>说什么不对</strong>（理论解释不了个体差异）+ <strong>为什么这是个问题</strong>（因为 35% 的人拒绝了，个体差异必须被解释）。只写第一块只能算说了一半；两块都写完整，才是评价题要的答案。
   </div>
 </section>
 
@@ -616,7 +631,7 @@ body.dark .summary-card-body li { color: #c4b5fd; }
   <h2>10. Whose Voice Is It?</h2>
 
   <div class="xp-block">
-    <h4>🎭 Five people, one request <span class="xp-badge">Textbook activity</span></h4>
+    <h4>🎭 Five people, one request <span class="xp-badge">Warm-up</span></h4>
     <p class="xp-intro">Someone asks you to stay behind after school on Friday to stack 200 chairs in the hall. The words are exactly the same every time. Only the <strong>person asking</strong> changes. Pick one and see what your reason for obeying turns out to be.</p>
     <div class="xp-controls">
       <button class="xp-btn" onclick="powChoice('legit')">Your head of year</button>
@@ -631,7 +646,7 @@ body.dark .summary-card-body li { color: #c4b5fd; }
   <p>Five different reasons, five different kinds of "because". French and Raven (1959) gave each of them a name, and together they form a second explanation of obedience — one that looks at the <strong>person giving the order</strong> instead of the person carrying it out.</p>
 
   <div class="cn-note">
-    <strong>这一节的重点：</strong>上一节我们说服从是因为当事人进入了 agentic state（代理状态）——看的是<strong>服从的人</strong>。这一节换个方向：看<strong>下命令的人手里有什么</strong>。同样一句话，从班主任嘴里说出来和从明星嘴里说出来，我们照做的原因是完全不同的两回事。这就是 <strong>social power theory（社会权力理论）</strong>的出发点。
+    <strong>这一节的重点：</strong>上一节我们说服从是因为当事人进入了 agentic state（代理状态），看的是<strong>服从的人</strong>。这一节换个方向：看<strong>下命令的人手里有什么</strong>。同样一句话，从班主任嘴里说出来和从明星嘴里说出来，我们照做的原因是完全不同的两回事。这就是 <strong>social power theory（社会权力理论）</strong>的出发点。
   </div>
 </section>
 
@@ -764,7 +779,7 @@ body.dark .summary-card-body li { color: #c4b5fd; }
   </div>
 
   <div class="cn-note">
-    <strong>这一点是得分点也是失分点：</strong>很多同学写 "the manager has legitimate power"，但忘了说明<strong>在什么情境下</strong>这个权力成立。情境一变，权力就消失 —— 在评价题里，这正是 "social power theory fails to take account of context" 这条批评的由来（下一节）。
+    <strong>这一点是得分点也是失分点：</strong>很多同学写 "the manager has legitimate power"，但忘了说明<strong>在什么情境下</strong>这个权力成立。情境一变，权力就消失：在评价题里，这正是 "social power theory fails to take account of context" 这条批评的由来（下一节）。
   </div>
 </section>
 
@@ -821,7 +836,7 @@ body.dark .summary-card-body li { color: #c4b5fd; }
   </div>
 
   <div class="cn-note">
-    <strong>评价的写作套路：</strong>每一条都由两块拼起来 —— <strong>理论漏掉了什么</strong>（ignore the context / ignore individual differences）+ <strong>为什么这是个问题</strong>（因为同一个人换个情境就反抗了 / 因为两个人面对同一个权威做出相反选择）。只写前半句是描述，两块一起才是评价。另注意：两条 weakness 本身正好预告了 1.1.3 —— 情境因素和个体差异，就是下一节要填的两个坑。
+    <strong>评价的写作套路：</strong>每一条都由两块拼起来 （<strong>理论漏掉了什么</strong>（ignore the context / ignore individual differences）+ <strong>为什么这是个问题</strong>（因为同一个人换个情境就反抗了 / 因为两个人面对同一个权威做出相反选择）。只写前半句是描述，两块一起才是评价。另注意：两条 weakness 本身正好预告了 1.1.3） 情境因素和个体差异，就是下一节要填的两个坑。
   </div>
 </section>
 

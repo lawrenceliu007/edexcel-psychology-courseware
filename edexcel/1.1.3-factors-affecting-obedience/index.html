@@ -212,6 +212,11 @@ body.dark textarea.answer-box { background: #16213e; border-color: #334155; colo
 body.dark .summary-card-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
 body.dark .summary-card-body { background: rgba(139,92,246,.06); border-color: rgba(139,92,246,.3); }
 body.dark .summary-card-body li { color: #c4b5fd; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
 </style>
 </head>
 <body>
@@ -269,16 +274,26 @@ body.dark .summary-card-body li { color: #c4b5fd; }
   <div class="meta">
     <span class="badge">🧠 Three factor families</span>
     <span class="badge">🔑 Personality · situation · culture</span>
-    <span class="badge">📖 Textbook: Chapter 1, pages 10–19</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.1 · pp.2–20</span>
   </div>
 </div>
 
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li>Explain how location, uniform, proximity and the form of authority change obedience rates.</li>
+    <li>Recall the direction of each key variation (which setups raised obedience, which crashed it).</li>
+    <li>Use agency theory to explain why each factor raises or lowers obedience.</li>
+    <li>Compare the factors by the size of their effect and judge which matters most.</li>
+    <li>Apply the factors to a new scenario and predict how obedience would change.</li>
+  </ul>
+</div>
 <!-- ============ 1 ============ -->
 <section class="section" id="s1">
   <h2>1. Getting Started</h2>
 
   <div class="xp-block">
-    <h4>🎭 Same order, three outcomes <span class="xp-badge">Textbook activity</span></h4>
+    <h4>🎭 Same order, three outcomes <span class="xp-badge">Warm-up</span></h4>
     <p class="xp-intro">A manager gives the same instruction to three people: stay late tonight and finish the stock check. One person obeys at once. One refuses. One obeys in the shop and ignores the instruction once they are at home. The words never changed — so what did?</p>
     <div class="xp-controls">
       <button class="xp-btn" onclick="openChoice('person')">The three people are different</button>
@@ -291,7 +306,7 @@ body.dark .summary-card-body li { color: #c4b5fd; }
   <p>Three answers, and none of them cancels the others out. Each one points at a different <strong>family</strong> of factors: something about the <strong>person</strong>, something about the <strong>situation</strong>, something about the <strong>culture</strong> they grew up in. This chapter sorts the evidence for each family — and asks how firm that evidence really is.</p>
 
   <div class="cn-note">
-    <strong>这一节要解决的核心问题：</strong>理论说明服从<strong>通常</strong>是怎么发生的，但同一个人换个房间、换个国家，服从率就会改变。<strong>哪些变量在起作用</strong>，就是 factors affecting obedience。读下去时请带着一个判断习惯：每看到一项证据就问两句 —— 这项证据是用什么方法得到的？这个差异真的来自那个变量本身吗？很多题的分数就藏在这两问里。
+    <strong>这一节要解决的核心问题：</strong>理论说明服从<strong>通常</strong>是怎么发生的，但同一个人换个房间、换个国家，服从率就会改变。<strong>哪些变量在起作用</strong>，就是 factors affecting obedience。读下去时请带着一个判断习惯：每看到一项证据就问两句：这项证据是用什么方法得到的？这个差异真的来自那个变量本身吗？很多题的分数就藏在这两问里。
   </div>
 </section>
 
@@ -353,7 +368,7 @@ body.dark .summary-card-body li { color: #c4b5fd; }
   </div>
 
   <div class="cn-note">
-    <strong>四个盒子怎么记：</strong>问自己一句 "差异来自哪里" —— 来自<strong>人本身</strong>（性格、性别）→ individual differences；来自<strong>现场布置</strong>（权威离得远不远、有没有制服、几个人在催）→ situational；来自<strong>长大的环境</strong>（国家/文化对权威的看法）→ cultural。考试常见陷阱：把 "在两个不同国家做" 写成 situational —— 那是 cultural。
+    <strong>四个盒子怎么记：</strong>问自己一句 "差异来自哪里" （来自<strong>人本身</strong>（性格、性别）→ individual differences；来自<strong>现场布置</strong>（权威离得远不远、有没有制服、几个人在催）→ situational；来自<strong>长大的环境</strong>（国家/文化对权威的看法）→ cultural。考试常见陷阱：把 "在两个不同国家做" 写成 situational） 那是 cultural。
   </div>
 </section>
 
@@ -435,7 +450,7 @@ body.dark .summary-card-body li { color: #c4b5fd; }
   </div>
 
   <div class="xp-block">
-    <h4>📝 Activity: complete the table <span class="xp-badge">Textbook activity</span></h4>
+    <h4>📝 Activity: complete the table <span class="xp-badge">Practice</span></h4>
     <p class="xp-intro">Write the belief that goes with each type of locus of control, and say whether it is linked with obedience or dissent.</p>
     <table>
       <tr><th style="width:150px">Locus of control</th><th>What is the belief?</th><th>Obedient or dissenting?</th></tr>
@@ -461,7 +476,7 @@ body.dark .summary-card-body li { color: #c4b5fd; }
   </div>
 
   <div class="cn-note">
-    <strong>一句话区分：</strong>external = "都是命/都是别人"（所以服从）；internal = "是我自己决定的"（所以更敢反抗）。数据记忆法：<strong>反抗者把 48% 的责任给了自己</strong> —— 四自己 -> internal -> dissent。
+    <strong>一句话区分：</strong>external = "都是命/都是别人"（所以服从）；internal = "是我自己决定的"（所以更敢反抗）。数据记忆法：<strong>反抗者把 48% 的责任给了自己</strong>，四自己 -> internal -> dissent。
   </div>
 </section>
 
@@ -480,7 +495,7 @@ body.dark .summary-card-body li { color: #c4b5fd; }
   </table>
 
   <div class="green-box">
-    <h4>What the textbook concludes</h4>
+    <h4>The key takeaways</h4>
     <p>Obedience research has used <strong>different procedures</strong> and produced <strong>inconsistent outcomes</strong>. Rather than proving a difference, the pattern suggests there are <strong>few gender differences in obedience</strong>, despite traditional beliefs that women would be more compliant to authority.</p>
     <p>In an answer, the gender evidence is strongest when you write it as two sides — a study that found a difference (Sheridan &amp; King) and reviews that found none (Blass) — and then say why the results are hard to compare.</p>
   </div>
@@ -603,7 +618,7 @@ body.dark .summary-card-body li { color: #c4b5fd; }
   </div>
 
   <div class="cn-note">
-    <strong>本节最有价值的句子：</strong>"看起来是文化差异，其实可能是程序差异。" 意大利 85% 用的最高电压只有 330V（比 Milgram 少 120V）而且只招学生 —— 电压更低自然更容易按到底。写文化因素的答案时，先说<strong>理论预测</strong>（collectivistic 更服从），再说<strong>为什么数据支持不了</strong>（程序不一致），最后给结论（complex and unclear），比背书式地列九个国家好得多。
+    <strong>本节最有价值的句子：</strong>"看起来是文化差异，很可能是程序差异。" 意大利 85% 用的最高电压只有 330V（比 Milgram 少 120V）而且只招学生：电压更低自然更容易按到底。写文化因素的答案时，先说<strong>理论预测</strong>（collectivistic 更服从），再说<strong>为什么数据支持不了</strong>（程序不一致），最后给结论（complex and unclear），比背书式地列九个国家好得多。
   </div>
 </section>
 

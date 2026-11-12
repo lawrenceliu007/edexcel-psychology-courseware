@@ -223,6 +223,11 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 .small { font-size: .84em; color: var(--text-secondary); }
 .tight { margin: 6px 0; }
 .tight li { margin: 3px 0; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
 </style></head>
 <body>
 <div class="container">
@@ -292,7 +297,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="meta">
     <span class="badge">🧠 Core idea: three lenses — person, situation, culture</span>
     <span class="badge">📊 Packed with named studies</span>
-    <span class="badge">📖 Textbook: Chapter 3</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.3 · pp.32–35</span>
   </div>
 </div>
 
@@ -306,6 +311,16 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </ol>
 </div>
 
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li>Explain how the situation (group size, unanimity, task difficulty) changes conformity rates.</li>
+    <li>Explain cultural differences between individualist and collectivist societies.</li>
+    <li>Explain individual-difference factors such as locus of control and expertise.</li>
+    <li>Use these factors to explain why conformity rates differ across studies and populations.</li>
+    <li>Apply the factors to a scenario and predict whether conformity rises or falls.</li>
+  </ul>
+</div>
 <!-- ============ 1 ============ -->
 <section class="section" id="s1">
   <h2>1. Getting Started</h2>
@@ -334,7 +349,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>中文理解：一个实验，两种人</strong><br>
-    Asch 的实验里条件完全相同，但结果不同——说明除了情境，<strong>人的内部</strong>还有变量。<br>
+    Asch 的实验里条件完全相同，但结果不同：说明除了情境，<strong>人的内部</strong>还有变量。<br>
     本章就是一套「三层滤镜」：<strong>你是谁（personality）→ 你在什么情境（situation）→ 你来自什么文化（culture）</strong>。三层滤镜叠在一起，才决定一个人从众多少。
   </div>
 </section>
@@ -361,14 +376,14 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="exam-tip">
-    <h4>💡 From the textbook</h4>
+    <h4>💡 Key point</h4>
     <p>The exam practice for this chapter is literally three questions: <em>"Explain one individual difference… one situational factor… one factor associated with culture… which may influence conformity and/or minority influence. (2 marks each)"</em>. Three drawers, three questions. Organise your revision the same way.</p>
   </div>
 
   <div class="cn-note">
     <strong>中文理解：三个抽屉，各放各的</strong><br>
-    <strong>人</strong>：控制点（locus of control）、控制欲（desire for control）、自尊低、需要被认可、焦虑、不安；<br>
-    <strong>情境</strong>：多数派/少数派规模、多数派是否团结、情境是否模糊、信息来源的地位与可信度；<br>
+    <strong>人</strong>：控制点（locus of control）与控制欲（desire for control），再加上低自尊、需要被认可、焦虑和不安；<br>
+    <strong>情境</strong>：多数派/少数派规模、多数派是否团结、情境是否模糊，以及信息来源的地位与可信度；<br>
     <strong>文化</strong>：集体主义 vs 个人主义、Berry 的农耕 vs 狩猎。<br>
     答题时先判断题目问的是哪个抽屉，再从对应抽屉里拿证据，不会乱。
   </div>
@@ -472,13 +487,13 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="green-box">
     <h4>Keep the nuance</h4>
-    <p>Avtgis's meta-analysis supports the general trend — but the textbook is explicit that <strong>evidence in this area is mixed</strong> and the link <strong>depends on the type and source of the persuasion</strong>. Many different factors play a role in social influence; locus of control is one of them, not the whole story.</p>
+    <p>Avtgis's meta-analysis supports the general trend — but <strong>evidence in this area is mixed</strong> and the link <strong>depends on the type and source of the persuasion</strong>. Many different factors play a role in social influence; locus of control is one of them, not the whole story.</p>
   </div>
 
   <div class="cn-note">
     <strong>中文理解：三个证据连成一条线</strong><br>
     Biondo（外控的人挡不住正面说服）＋ Ritchie &amp; Phares（外控的人特别吃「权威来源」那一套）＝ 两个实验；<br>
-    Avtgis (1998) 元分析＝ 把一摊研究合起来看，结论仍是 <strong>外控 → 更从众</strong>，但要补一句 <strong>but 证据并不一致，取决于说服的类型和来源</strong>——这句 "but" 在 AO3 里值钱。
+    Avtgis (1998) 元分析＝ 把一摊研究合起来看，结论仍是 <strong>外控 → 更从众</strong>，但要补一句 <strong>but 证据并不一致，取决于说服的类型和来源</strong>，这句 "but" 在 AO3 里值钱。
   </div>
 </section>
 
@@ -524,10 +539,10 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="cn-note">
-    <strong>中文理解：belief vs desire——两个「控制」别混</strong><br>
+    <strong>中文理解：belief vs desire：两个「控制」别混</strong><br>
     <strong>Locus of control</strong> ＝ 你<strong>相信</strong>控制权在哪（belief/信念）；<br>
     <strong>Desire for control</strong> ＝ 你<strong>多想</strong>掌控一切（motivation/动机）。<br>
-    类比：一个人可能相信「成绩靠努力」（内控），但并不特别想当班长（低控制欲）——两者是不同的东西。考试最爱考的就是把这两个词互换着骗你。
+    类比：一个人可能相信「成绩靠努力」（内控），但并不特别想当班长（低控制欲），两者是不同的东西。考试最爱考的就是把这两个词互换着骗你。
   </div>
 </section>
 
@@ -535,7 +550,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 <section class="section" id="s6">
   <h2>6. Other Characteristics That Matter</h2>
 
-  <p>Personality does not stop at control. The textbook lists four more characteristics that can explain variations in social influence:</p>
+  <p>Personality does not stop at control. Four more characteristics can explain variations in social influence:</p>
 
   <div class="mat2x2 c2">
     <div class="mh">Characteristic</div>
@@ -558,8 +573,8 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>中文理解：一个共同主题</strong><br>
-    四个词（低自尊、需要认可、焦虑、不安全感）其实说的是一件事：<strong>对自己的判断不够自信</strong>。<br>
-    对自己越没把握的人，越需要「跟着别人走」这份安全感——这就是它们推高从众的共同逻辑。
+    低自尊、需要认可、焦虑与不安全感，这四个词说的是同一件事：<strong>对自己的判断不够自信</strong>。<br>
+    对自己越没把握的人，越需要「跟着别人走」这份安全感：这就是它们推高从众的共同逻辑。
   </div>
 </section>
 
@@ -597,7 +612,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="cn-note">
     <strong>中文理解：多数派有「最优人数」，少数派没有定论</strong><br>
     多数派：3 个人就是上限，再加人也白加（Asch 的饱和效应）。<br>
-    少数派：<strong>研究结论不一（research is mixed）</strong>——大有大的显眼，小有小的聚焦。<br>
+    少数派：<strong>研究结论不一（research is mixed）</strong>，大有大的显眼，小有小的聚焦。<br>
     AO3 现成素材：写到少数派规模时，别只写一边，把 <strong>"however, research is mixed"</strong> 这句亮出来。
   </div>
 </section>
@@ -642,7 +657,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="cn-note">
     <strong>中文理解：33% → 5.5%，一句话记忆</strong><br>
     多数派「团结」时，反对一个人 = 对抗全世界，33% 的人从众；<br>
-    只要有一个同盟军开口，反对的人不再孤单，从众率跌到 <strong>5.5%</strong>——只剩原来的 <strong>六分之一</strong>。<br>
+    只要有一个同盟军开口，反对的人不再孤单，从众率跌到 <strong>5.5%</strong>，只剩原来的 <strong>六分之一</strong>。<br>
     这也是 33% 这个数字的考点：考「unity」必配这组数据。
   </div>
 </section>
@@ -667,7 +682,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
     <div class="mh">Effect on influence</div>
 
     <div class="mv">High status / credibility / expertise</div>
-    <div class="cell">The message gets taken seriously — the textbook's example is environmental campaigners, whose policy has <strong>scientific support</strong> and is led by prominent activists such as <strong>Greta Thunberg</strong>. This also helps minorities: credibility is how a small group earns a hearing (and links straight back to Ritchie &amp; Phares — prestige sources persuade externals especially).</div>
+    <div class="cell">The message gets taken seriously — the classic example is environmental campaigners, whose policy has <strong>scientific support</strong> and is led by prominent activists such as <strong>Greta Thunberg</strong>. This also helps minorities: credibility is how a small group earns a hearing (and links straight back to Ritchie &amp; Phares — prestige sources persuade externals especially).</div>
 
     <div class="mv">Low credibility</div>
     <div class="cell">The same argument falls flat — the content is the same, the messenger is not.</div>
@@ -687,7 +702,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="cn-note">
     <strong>中文理解：越不懂，越跟人</strong><br>
     看不懂出口指示牌（情境模糊）→ 别人走的方向就成了「信息」（ISI）；<br>
-    记住后半句：<strong>ISI 造成的是「更持久」的改变</strong>——因为你真的把信息当作答案接受了，不像 NSI 只是表面合群。<br>
+    记住后半句：<strong>ISI 造成的是「更持久」的改变</strong>，因为你真的把信息当作答案接受了，不像 NSI 只是表面合群。<br>
     「来源」这条和 1.1.6 呼应：少数派要被听见，也得有 credibility。
   </div>
 </section>
@@ -696,7 +711,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 <section class="section" id="s10">
   <h2>10. Cultural Factor 1: The Cross-Culture Scoreboard</h2>
 
-  <p>The third drawer is the biggest: culture. Research has found that <strong>some cultures show greater conformity than others</strong>. Cross-cultural replications of Asch-type experiments have shown different levels of conformity in different countries — here is the full scoreboard from the textbook.</p>
+  <p>The third drawer is the biggest: culture. Research has found that <strong>some cultures show greater conformity than others</strong>. Cross-cultural replications of Asch-type experiments have shown different levels of conformity in different countries — here is the full scoreboard.</p>
 
   <div class="mat2x2">
     <div class="mh">Study</div>
@@ -812,7 +827,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="blue-box">
-    <h4>The caveat the textbook insists on</h4>
+    <h4>The important caveat</h4>
     <p>While we can draw general conclusions from this research, <strong>many variables influence conformity, so the exact influence of socio-cultural factors cannot be determined</strong>. "Collectivistic countries conform more" is a trend across 133 studies — not a law that predicts any individual.</p>
   </div>
 
@@ -844,13 +859,13 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
     </div>
     <div class="compare-card red">
       <h4>Limitation 2 · Socio-cultural influence cannot be isolated（社会文化因素无法单独拆出）</h4>
-      <p style="font-size:.9em;margin:4px 0">The textbook's own caveat: there are <strong>many variables that influence conformity, so the exact influence of socio-cultural factors cannot be determined</strong>. Culture is entangled with education, era, task and sample; cross-cultural replications differ in more than one thing at a time, so no single cause can be pinned down.</p>
+      <p style="font-size:.9em;margin:4px 0">The caveat: there are <strong>many variables that influence conformity, so the exact influence of socio-cultural factors cannot be determined</strong>. Culture is entangled with education, era, task and sample; cross-cultural replications differ in more than one thing at a time, so no single cause can be pinned down.</p>
     </div>
   </div>
 
   <div class="cn-note">
     <strong>中文理解：AO3 的两把刀</strong><br>
-    写这页的 evaluation，最锋利的两把刀都来自课本原文：<br>
+    这页的 evaluation 有两把最锋利的刀：<br>
     ① <strong>"evidence in this area is mixed"</strong>（LOC、少数派规模都是）→ 任何「某因素导致从众」的说法都要加条件；<br>
     ② <strong>"the exact influence of socio-cultural factors cannot be determined"</strong>（变量太多）→ 文化结论只能谈趋势，不能下断言。<br>
     优势面就写「三层证据 + 三视角互补」。
@@ -861,10 +876,10 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 <section class="section" id="s14">
   <h2>14. Exam Focus</h2>
 
-  <p>The textbook's own exam practice sets the pattern: <strong>three short questions, one per drawer</strong>. Each is worth 2 marks — a named factor plus a correct explanation.</p>
+  <p>The practice questions set the pattern: <strong>three short questions, one per drawer</strong>. Each is worth 2 marks — a named factor plus a correct explanation.</p>
 
   <div class="mat2x2 c2">
-    <div class="mh">Question (textbook)</div>
+    <div class="mh">Question</div>
     <div class="mh">What earns the 2 marks</div>
 
     <div class="mv">1 · Explain one individual difference</div>
@@ -885,7 +900,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <h3>The 8-mark paragraph that usually scores</h3>
   <div class="note-box">
     <p><strong>AO1 (about 4 marks).</strong> Conformity and minority influence vary with individual differences, situation and culture. Internally-controlled people, who believe outcomes depend on their own actions, resist normative social influence, while externally-controlled people rely on others' opinions and conform more (Avtgis, 1998, meta-analysis). People with a high desire for control (Burger &amp; Cooper, 1979) are assertive and resist: Burger (1987) found high desire-for-control participants conformed less when rating cartoons publicly after three confederates. Situationally, Asch found a majority of three was the optimal size and that a broken majority cut conformity from 33% to 5.5%; ambiguous situations raise conformity through informational social influence, and high-status, credible sources (like Greta Thunberg for environmental campaigns) influence more. Culturally, Berry (1967) found the cooperative Temne conformed more than hunter-gatherer Inuit, and Smith &amp; Bond's (1996) meta-analysis of 133 studies in 17 countries found collectivistic countries conform more than individualistic ones.</p>
-    <p><strong>AO3 (about 4 marks).</strong> However, the evidence is mixed and context-dependent: Avtgis notes the locus-of-control link depends on the type and source of persuasion, and minority-size research is inconclusive. Perrin and Spencer (1980) found a virtual absence of conformity in England, showing the Asch effect is not universal even within one culture. The textbook's own caution applies to the cultural claims: because many variables influence conformity, the exact influence of socio-cultural factors cannot be determined. The three lenses are best treated as complementary trends, not laws.</p>
+    <p><strong>AO3 (about 4 marks).</strong> However, the evidence is mixed and context-dependent: Avtgis notes the locus-of-control link depends on the type and source of persuasion, and minority-size research is inconclusive. Perrin and Spencer (1980) found a virtual absence of conformity in England, showing the Asch effect is not universal even within one culture. One caution applies to the cultural claims: because many variables influence conformity, the exact influence of socio-cultural factors cannot be determined. The three lenses are best treated as complementary trends, not laws.</p>
   </div>
 </section>
 

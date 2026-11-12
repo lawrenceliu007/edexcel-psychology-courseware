@@ -223,6 +223,11 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 .small { font-size: .84em; color: var(--text-secondary); }
 .tight { margin: 6px 0; }
 .tight li { margin: 3px 0; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
 </style></head>
 <body>
 <div class="container">
@@ -283,7 +288,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="meta">
     <span class="badge">🎯 Core idea: representativeness</span>
     <span class="badge">⚖️ Four techniques, four trade-offs</span>
-    <span class="badge">📖 Textbook: Chapter 4</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.4 · pp.36–44</span>
   </div>
 </div>
 
@@ -297,6 +302,16 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </ol>
 </div>
 
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li>Define target population, representativeness and sampling bias.</li>
+    <li>Carry out and evaluate stratified, random, opportunity and volunteer sampling.</li>
+    <li>Quote the strengths and weaknesses of each technique, and why stratified is the most representative.</li>
+    <li>Choose a technique for a scenario and justify the choice.</li>
+    <li>Diagnose which technique a study used from its recruitment details.</li>
+  </ul>
+</div>
 <!-- ============ 1 ============ -->
 <section class="section" id="s1">
   <h2>1. Getting Started</h2>
@@ -351,7 +366,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 <section class="section" id="s2">
   <h2>2. Population &amp; Sample</h2>
 
-  <p>Before naming techniques, the textbook builds the vocabulary:</p>
+  <p>Before naming the techniques, build the vocabulary:</p>
 
   <div class="mat2x2 c2">
     <div class="mh">Term</div>
@@ -522,7 +537,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
     <strong>中文理解：stratified 三步口诀</strong><br>
     <strong>一分（divide）→ 二算（calculate percentages）→ 三抽（random select proportionally）。</strong><br>
     例：总体 50% 儿童 / 20% 青少年 → 样本也必须是 50% / 20%。公司研究：职员多、经理少，就多抽职员、少抽经理。<br>
-    为什么它最公平？<strong>总体里各占几成，样本里就各占几成</strong>——总体的小型复制品。但要记住「三抽」后面还藏着一句：被选中的人<strong>仍可能拒绝参加</strong>。
+    为什么它最公平？<strong>总体里各占几成，样本里就各占几成</strong>，总体的小型复制品。但要记住「三抽」后面还藏着一句：被选中的人<strong>仍可能拒绝参加</strong>。
   </div>
 </section>
 
@@ -530,7 +545,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 <section class="section" id="s4">
   <h2>4. Random Sampling</h2>
 
-  <p><strong>A random sampling technique should ensure that everyone has an equal chance of being selected.</strong> The textbook gives two concrete ways to achieve this:</p>
+  <p><strong>A random sampling technique should ensure that everyone has an equal chance of being selected.</strong> Two concrete ways to achieve this:</p>
 
   <div class="compare-grid">
     <div class="compare-card">
@@ -558,7 +573,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>中文理解：random = 抽签，为什么还不够？</strong><br>
-    每人机会均等，研究者手不沾——听起来最公平。但两个漏洞：<br>
+    每人机会均等，研究者手不沾：听起来最公平。但两个漏洞：<br>
     <strong>运气会歪</strong>：抽签也可能恰好抽出一屋子同款人（representative 不保证）；<br>
     <strong>拒绝会歪</strong>：抽中的人有权说不来，最后到场的样本就变了形。<br>
     一句话：<strong>随机保证的是「机会」，不是「结果」。</strong>
@@ -569,7 +584,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 <section class="section" id="s5">
   <h2>5. Opportunity Sampling</h2>
 
-  <p><strong>An opportunity sample makes use of participants who are readily available by asking them to take part.</strong> Two textbook pictures of this:</p>
+  <p><strong>An opportunity sample makes use of participants who are readily available by asking them to take part.</strong> Two concrete pictures of this:</p>
 
   <div class="compare-grid">
     <div class="compare-card">
@@ -657,7 +672,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="cn-note">
     <strong>中文理解：volunteer = 「贴广告等人报名」</strong><br>
     道德上最舒服：<strong>没人被当面施压</strong>，报名全凭自愿。<br>
-    但报名的人自带滤镜：有空的、看到广告的、对话题有强观点的——往往是「某一类人」。<br>
+    但报名的人自带滤镜：有空闲的、看到广告的，或者对话题本来就有强观点的人，往往是「某一类人」。<br>
     对比记忆：<strong>opportunity 是研究者走向人（顺手抓），volunteer 是人走向研究者（看广告）。方向相反，代价各有不同。</strong>
   </div>
 </section>
@@ -701,7 +716,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 <section class="section" id="s8">
   <h2>8. Spotting Sampling Bias</h2>
 
-  <p>The textbook's Activity 4 asks you to identify the sampling bias in each scenario — and to suggest its likely impact on the conclusions. This is exactly the skill the exam rewards. Work through them, then reveal:</p>
+  <p>Each scenario below hides a sampling bias: identify it, then suggest its likely impact on the conclusions. This is exactly the skill the exam rewards. Work through them, then reveal:</p>
 
   <div class="q-row">
     <p class="q-stem"><strong>(a)</strong> A researcher recruits student participants in the canteen at lunchtime to find out about attitudes towards A level reforms.</p>
@@ -730,7 +745,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   <div class="cn-note">
     <strong>中文理解：诊断抽样的三连问</strong><br>
     ① 谁有<strong>机会</strong>被选中？（opportunity → 在场的人；volunteer → 看到广告的人；random → 名单上的人；stratified → 各子群按比例）<br>
-    ② 谁<strong>没有</strong>机会？（没去食堂的、不看那本杂志的、没登记电话的）<br>
+    ② 谁<strong>没有</strong>机会？（没去食堂、不看那本杂志、没登记电话的人）<br>
     ③ 缺的那批人，观点会不会<strong>系统性</strong>不同？会 → 结论推广受限（limited generalisability）。
   </div>
 </section>
@@ -739,7 +754,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 <section class="section" id="s9">
   <h2>9. Exam Focus</h2>
 
-  <p>Sampling questions come in two shapes, and the textbook gives a scoring rule for each:</p>
+  <p>Sampling questions come in two shapes, each with its own scoring rule:</p>
 
   <div class="exam-tip">
     <h4>Shape 1 — "Describe how…" (the how question)</h4>
@@ -748,7 +763,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="exam-tip">
     <h4>Shape 2 — "Define…" (the definition question)</h4>
-    <p>If asked to <strong>define</strong> a sampling method, you gain more marks by giving an example. Model from the textbook: <em>"Opportunity sampling uses participants who are available at the time, for example gathering students who are available in the common room at the time of the study and who agree to take part when asked."</em> Structure: <strong>definition → "for example" → concrete scene.</strong></p>
+    <p>If asked to <strong>define</strong> a sampling method, you gain more marks by giving an example. Model answer: <em>"Opportunity sampling uses participants who are available at the time, for example gathering students who are available in the common room at the time of the study and who agree to take part when asked."</em> Structure: <strong>definition → "for example" → concrete scene.</strong></p>
   </div>
 
   <div class="blue-box">
@@ -766,8 +781,8 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
 
   <div class="cn-note">
     <strong>中文理解：两种题型两套模板</strong><br>
-    <strong>Describe how（过程题）</strong>：firstly 分子群 → secondly 算百分比 → thirdly 按比例随机抽并邀请参加——三步拿满分。<br>
-    <strong>Define（定义题）</strong>：定义 + for example + 具体场景——多一个例子多一分。<br>
+    <strong>Describe how（过程题）</strong>：firstly 分子群 → secondly 算百分比 → thirdly 按比例随机抽并邀请参加：三步拿满分。<br>
+    <strong>Define（定义题）</strong>：定义 + for example + 具体场景：多一个例子多一分。<br>
     评价题万能链条：<strong>技术名 → 偏差 → 推广受限。</strong>
   </div>
 </section>
@@ -852,7 +867,7 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="exam-practice">
-    <h4>Q1 — Carlos's pedestrians, part two (from the textbook)</h4>
+    <h4>Q1 — Carlos's pedestrians, part two</h4>
     <p class="small">Carlos wants to test how compliant pedestrians are to 'keep off the grass' signs in a local park.</p>
 
     <div class="q-row">
@@ -869,14 +884,14 @@ body.dark .mat2x2 .cell { background: #16213e; border-color: #334155; color: #cb
   </div>
 
   <div class="exam-practice">
-    <h4>Q2 — the Crystal stratified question, replayed for sampling (from the textbook)</h4>
+    <h4>Q2 — the Crystal stratified question, replayed for sampling</h4>
     <p class="small">Crystal must send out questionnaires asking opinions about the office canteen food. There are 100 employees who use the canteen. Describe how Crystal might gather a stratified sample of the employees. (3 marks)</p>
     <button class="xp-btn" onclick="revealAns('lab2')">Reveal model answer</button>
     <div class="answer-box" id="lab2"><p><strong>Firstly</strong>, Crystal would decide which subgroups exist in the office building, such as managers, clerks, cleaners. <strong>Secondly</strong>, she would calculate the percentage of managers, clerks and cleaners that represents the whole target population in the office building. <strong>Thirdly</strong>, she would randomly select the proportionate number of employees in each subgroup and ask if they would complete the questionnaire.</p><p class="small">Three steps, three marks — "firstly / secondly / thirdly" is the scoring frame.</p></div>
   </div>
 
   <div class="exam-practice">
-    <h4>Q3 — definition with example (the textbook's exam tip, applied)</h4>
+    <h4>Q3 — definition with example (the exam tip, applied)</h4>
     <div class="q-row">
       <p class="q-stem">Define volunteer sampling. (2 marks)</p>
       <button class="xp-btn" onclick="revealAns('lab3')">Reveal model answer</button>
