@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.2.8 Methods — Thematic Analysis</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+<body>
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic A · Social psychology — 1.2.8 Methods</span>
+  </div>
+  <span class="nav-pill">🧩 Social Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">1.2.8 Methods</div>
+    <div class="sb-header-sub">Qualitative data · Thematic analysis</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s1">1. From Numbers to Words</a></li>
+    <li class="sb-item"><a href="#s2">2. What Thematic Analysis Is</a></li>
+    <li class="sb-item"><a href="#s3">3. Inductive vs Deductive</a></li>
+    <li class="sb-item"><a href="#s4">4. The Coding Procedure</a></li>
+    <li class="sb-item"><a href="#s5">5. The Reliability Critique</a></li>
+    <li class="sb-item"><a href="#s6">6. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s7">7. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s8">8. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>1.2.8 THEMATIC ANALYSIS<br><span style="font-size:0.65em">Qualitative data · Themes · Codes · Inductive and deductive · 主题分析</span></h1>
+  <div class="meta">
+    <span class="badge">Topic A · Social psychology</span>
+    <span class="badge">Methods</span>
+    <span class="badge">Spec 1.2.8</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.5 · p.54</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this chapter is really asking</h4>
+  <ol>
+    <li><strong>Not all data is numbers.</strong> Interviews and observations produce words, and words need their own analysis tool.</li>
+    <li><strong>Thematic analysis compresses words into themes</strong>: general patterns and trends, reduced from a vast transcript without destroying what the words mean.</li>
+    <li><strong>Themes can be found or imposed.</strong> Inductive analysis lets themes emerge from the data; deductive analysis starts from themes the researcher decided on in advance.</li>
+    <li><strong>The price is reliability.</strong> Because themes rest on the researcher's judgement, bias is a real risk, and the standard fixes are independent coders and interrater reliability.</li>
+  </ol>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Define qualitative data</strong> and name the methods that produce it.</li>
+    <li><strong>Explain what thematic analysis does</strong>: reducing a large body of text to themes while keeping the data meaningful.</li>
+    <li><strong>Distinguish inductive from deductive thematic analysis</strong> and identify which one a researcher is using from their procedure.</li>
+    <li><strong>Describe the coding procedure</strong>: themes, codes, searching for instances, reviewing and revising.</li>
+    <li><strong>Evaluate thematic analysis</strong>: the researcher-bias problem, and how independent coders and interrater reliability address it.</li>
+    <li><strong>Justify a choice of qualitative analysis</strong> for a given research scenario.</li>
+  </ul>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. From Numbers to Words</h2>
+
+  <p>The whole previous stretch of this topic dealt with numbers: means, ranges, distributions. But a lot of psychological research produces <strong>qualitative data（定性数据：用文字而非数字记录的研究结果）</strong>, non-numerical data gathered through interviews, questionnaires, case studies and observations. When an interviewee explains why they obeyed, or an observer writes down what children actually said in a playground, the raw material is words.</p>
+
+  <p>Words create a problem that numbers do not have. A page of interview transcript cannot be summed up by taking an average. And yet a research project can easily generate hours of transcripts, far too much for any reader to hold in their head. The data needs compressing, the same way 40 raw scores needed a mean.</p>
+
+  <p>One route is simply to count: instances of an event occurring can be counted, which converts qualitative data into quantitative data. The other route keeps the words as words and finds the patterns inside them. That route is <strong>thematic analysis</strong>, and it is the tool this page teaches.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：文字数据同样的困境</strong><br>
+    40 个分数需要求平均数，40 小时的访谈录音也一样需要「压缩」：没人能记住每一句话。定量数据的压缩工具是均值和标准差；定性数据的压缩工具就是主题分析：把一大堆话归纳成几个反复出现的「主题」。两条路线任选：要么把话变成数字（数次数），要么保留文字找模式。本页讲第二条路。
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. What Thematic Analysis Is</h2>
+
+  <p><strong>Thematic analysis（主题分析：在数据中反复阅读并找出主题、模式与趋势的方法）</strong> is a way of analysing a vast amount of qualitative data by reducing it into manageable general patterns, trends and themes, without losing its meaningfulness completely. That last clause matters: the aim is compression, not destruction. A good thematic summary keeps enough of the original words' meaning that a reader can still hear the participants' own voice behind the themes.</p>
+
+  <p>Thematic analysis is achieved through reviewing and identifying themes in the qualitative data. A <strong>theme</strong> is a pattern that occurs frequently in the material or seems to be a key feature of it. How frequent or how central a theme must be is ultimately a judgement call: it depends on the opinion of the researcher and the nature of the material analysed.</p>
+
+  <div class="note-box">
+    <h4>The definition worth memorising</h4>
+    <p>Thematic analysis: recording themes, patterns or trends within data. Exam definitions usually ask for exactly these three nouns: themes, patterns, trends.</p>
+  </div>
+
+  <p>Thematic analysis is very flexible, and many researchers use it in different ways. There is no single locked procedure, but the overall shape is constant: read carefully, identify what keeps coming up, name it, and use those names to organise the whole data set. The next two sections fill in the two big decisions: where the themes come from, and how they are refined into something reportable.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：压缩但不压碎</strong><br>
+    主题分析的目标一句话：把一大堆话压成几个主题，但压完之后意思还在。就像把一本书缩写成三页提要：提要必须还能读出原书的意思。判断「什么算一个主题」有两个标准：出现得足够频繁，或者是材料的某个关键特征。没有铁律，靠研究者的判断，这正是后面第五节批评的来源。
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Inductive vs Deductive</h2>
+
+  <p>Where do the themes come from? There are two answers, and the distinction is a reliable exam question.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Inductive 归纳式</h4>
+      <p><strong>Themes emerge from the data.</strong> The researcher reads and re-reads the material with no pre-set ideas, and the themes surface from the data itself. <strong>Inductive（归纳式：不预设想法，让主题从数据里自己长出来）</strong> analysis imposes nothing: conclusions are drawn from the data to produce a theory.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Deductive 演绎式</h4>
+      <p><strong>Themes are specified in advance.</strong> The researcher decides which themes they will look for <em>before</em> analysing the data. <strong>Deductive（演绎式：先定好主题清单，再拿数据去验证）</strong> analysis starts from a theory that has been established and tests whether the data supports it.</p>
+    </div>
+  </div>
+
+  <div class="figure">
+  <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+    <defs>
+      <marker id="fa" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#c2410c"/></marker>
+    </defs>
+    <rect x="240" y="14" width="200" height="40" rx="10" fill="#1e3a5f"/>
+    <text x="340" y="39" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#fff">Interview transcripts, field notes</text>
+
+    <line x1="340" y1="54" x2="340" y2="84" stroke="#c2410c" stroke-width="2" marker-end="url(#fa)"/>
+    <rect x="270" y="86" width="140" height="34" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+    <text x="340" y="108" text-anchor="middle" font-size="11.5" font-weight="600" fill="#c2410c">Read and re-read</text>
+
+    <line x1="340" y1="120" x2="180" y2="158" stroke="#c2410c" stroke-width="1.6" marker-end="url(#fa)"/>
+    <line x1="340" y1="120" x2="500" y2="158" stroke="#c2410c" stroke-width="1.6" marker-end="url(#fa)"/>
+
+    <rect x="55" y="160" width="250" height="58" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+    <text x="180" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#166534">INDUCTIVE route</text>
+    <text x="180" y="204" text-anchor="middle" font-size="10.5" fill="#374151">no pre-set ideas; themes emerge from data</text>
+
+    <rect x="375" y="160" width="250" height="58" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+    <text x="500" y="184" text-anchor="middle" font-size="12" font-weight="bold" fill="#991b1b">DEDUCTIVE route</text>
+    <text x="500" y="204" text-anchor="middle" font-size="10.5" fill="#374151">themes specified before analysis</text>
+
+    <line x1="180" y1="218" x2="300" y2="252" stroke="#c2410c" stroke-width="1.6" marker-end="url(#fa)"/>
+    <line x1="500" y1="218" x2="380" y2="252" stroke="#c2410c" stroke-width="1.6" marker-end="url(#fa)"/>
+
+    <rect x="205" y="254" width="270" height="36" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="340" y="277" text-anchor="middle" font-size="11.5" font-weight="600" fill="#92400e">Themes → codes → summary of the data</text>
+  </svg>
+  <div class="figure-caption">Figure: both routes start from the same transcripts and end in coded themes; the difference is only where the themes come from</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：先有数据还是先有清单</strong><br>
+    区分两种路子只问一个问题：主题清单是什么时候定的？分析之前就定好的是演绎式（拿着清单去数据里找）；边读边浮现、事先没有任何预设的是归纳式（数据自己说话）。一个记忆钩子：inductive 从 data 出发得出 theory（数据→理论），deductive 从 theory 出发去测 data（理论→数据），方向相反。
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. The Coding Procedure</h2>
+
+  <p>Whichever route the themes take, the refinement process is the same. The researcher will develop the themes into <strong>codes（编码：代表各类主题的标签）</strong>, labels that represent the categories of themes found. The codes are then used as search keys across the whole data set.</p>
+
+  <ol>
+    <li><strong>Read and consider the data carefully.</strong> The whole gathered material is read with the themes in mind (emerging or pre-set).</li>
+    <li><strong>Develop themes into codes.</strong> Each recurring theme receives a label that names the category it stands for.</li>
+    <li><strong>Search for instances.</strong> The codes are used to analyse the data and find every place they appear.</li>
+    <li><strong>Review continually.</strong> The themes are reviewed and changed if necessary, until the themes can be stated, supported and used as a summary of the data.</li>
+    <li><strong>Support the themes with examples.</strong> Examples can be drawn from the data, usually quotations, to support the themes identified.</li>
+  </ol>
+
+  <p>The reviewing step is what makes the method honest: a code that turns out to fit only two scattered sentences can be dropped or merged, and a pattern the researcher missed on the first read can be promoted to a theme. Analysis is finished only when every theme can be stated and backed by examples from the data.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：从主题到编码的流水线</strong><br>
+    五步：通读 → 定主题 → 起编码名 → 全文检索该编码出现的位置 → 复查修订并用原文例句支撑。编码就是给主题贴的标签，用途像检索关键词：贴上「权威压力」这个标签后，所有能归入这个标签的访谈片段都被找出来归队。最后交出的成果是：几个主题，每个主题有定义、有出处、有原话引用。
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. The Reliability Critique</h2>
+
+  <p>Thematic analysis has an obvious strength: qualitative analysis yields far more detailed and meaningful information than quantitative data, and it can uncover opinions and beliefs about a topic without reducing the data to number values, so retaining its meaningfulness.</p>
+
+  <p>But the method is often considered to be <strong>unreliable</strong>, because the themes are highly dependent on the subjective opinions of the researcher, and therefore can lead to <strong>researcher bias（研究者偏差：研究者的预期影响其对材料的解读）</strong>. If a researcher expected that people with an internal locus of control are more likely to report that they are not influenced by their peer group, they may have preconceived ideas that affect their analysis and the way interview transcripts are interpreted. With so little control over how a thematic analysis is conducted, or how themes are chosen to be identified, two researchers can read the same transcripts and produce different themes.</p>
+
+  <p>Two standard fixes reduce the problem:</p>
+  <ul>
+    <li><strong>Use an independent coder.</strong> A second researcher codes the material separately, so no single person's expectations drive the themes.</li>
+    <li><strong>Establish interrater reliability（评分者间信度：不同编码者所得结果的一致程度）</strong> by comparing the themes identified by different coders. Agreement between coders is evidence that the themes are in the data, not just in one researcher's head.</li>
+  </ul>
+
+  <div class="cn-note">
+    <strong>中文理解：一句批评，两味解药</strong><br>
+    批评只有一句：主题是研究者主观判断出来的，换个研究者可能得出另一套主题（研究者偏差）。解药有两个：请第二个人独立编码（independent coder），再比对两人结果是否一致（interrater reliability）。两人找到的主题高度重合，就说明主题确实在数据里，不只在某个人脑子里。评价题就按「批评 + 解药」成对写。
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Checkpoint</h2>
+
+  <div class="checkpoint">
+    <h3>Quick checks</h3>
+
+    <div class="xp-block">
+      <h4><span class="xp-badge">Q1</span> Which of these produces qualitative data?</h4>
+      <div class="xp-controls">
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Counting how many participants obeyed</button>
+        <button class="q-option" data-ok="1" onclick="mcAns(this)">Recording what participants said in an interview</button>
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Calculating the mean of obedience ratings</button>
+      </div>
+      <div class="xp-result"></div>
+    </div>
+
+    <div class="xp-block">
+      <h4><span class="xp-badge">Q2</span> A researcher decides in advance which themes to look for, then analyses the transcripts. This approach is:</h4>
+      <div class="xp-controls">
+        <button class="q-option" data-ok="1" onclick="mcAns(this)">Deductive</button>
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Inductive</button>
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Interrater</button>
+      </div>
+      <div class="xp-result"></div>
+    </div>
+
+    <div class="xp-block">
+      <h4><span class="xp-badge">Q3</span> Why is thematic analysis often considered unreliable?</h4>
+      <div class="xp-controls">
+        <button class="q-option" data-ok="1" onclick="mcAns(this)">The themes depend heavily on the researcher's subjective opinions</button>
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">The transcripts are too short to analyse</button>
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Qualitative data cannot be summarised at all</button>
+      </div>
+      <div class="xp-result"></div>
+    </div>
+
+    <div class="xp-block">
+      <h4><span class="xp-badge">Q4</span> Comparing the themes identified by different coders establishes:</h4>
+      <div class="xp-controls">
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Face validity</button>
+        <button class="q-option" data-ok="1" onclick="mcAns(this)">Interrater reliability</button>
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Test-retest reliability</button>
+      </div>
+      <div class="xp-result"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Exam Lab</h2>
+
+  <p>Thematic analysis questions come in two shapes: a describe question on the procedure, and an evaluate question pairing the bias problem with a fix. Work through the three below.</p>
+
+  <div class="exam-practice">
+    <h3>Exam practice — the locus of control interviews</h3>
+    <p class="small">A researcher hypothesised that people with an internal locus of control are less influenced by their peer group. She interviewed 30 participants about their friendships and analysed the transcripts using thematic analysis.</p>
+
+    <h4>Q1 (2 marks)</h4>
+    <p>Explain what is meant by thematic analysis.</p>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans1')">Show answer</button></div>
+    <div class="xp-result" id="ans1">
+      <p><strong>A method of analysing qualitative data by reviewing it and identifying themes, patterns or trends within it, reducing a large amount of data into manageable general categories while keeping its meaning.</strong> One mark for identifying it as an analysis of qualitative data, one mark for the themes/patterns element.</p>
+    </div>
+
+    <h4>Q2 (2 marks)</h4>
+    <p>Explain one reason why the researcher's thematic analysis might be considered unreliable.</p>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans2')">Show answer</button></div>
+    <div class="xp-result" id="ans2">
+      <p><strong>She had a hypothesis about locus of control before analysing, so her preconceived ideas could bias which themes she identified and how she interpreted the transcripts.</strong> One mark for identifying researcher bias / subjectivity, one mark for linking it to this study (her expectation could shape the themes she finds in the interview data).</p>
+    </div>
+
+    <h4>Q3 (2 marks)</h4>
+    <p>Describe how the researcher could improve the reliability of her analysis.</p>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans3')">Show answer</button></div>
+    <div class="xp-result" id="ans3">
+      <p><strong>Have an independent coder analyse the same transcripts separately, then compare the themes each coder identified to establish interrater reliability.</strong> One mark for using an independent/second coder, one mark for comparing coders' themes and checking agreement (interrater reliability).</p>
+    </div>
+  </div>
+
+  <div class="exam-tip">
+    <strong>The pairing that scores:</strong>
+    <ul class="tight">
+      <li>Every thematic-analysis evaluation has two halves: the <strong>subjectivity problem</strong> and the <strong>coder fix</strong>. Write them together: "themes depend on the researcher's judgement … this is addressed by an independent coder / interrater reliability".</li>
+      <li>When asked to <strong>identify the approach</strong>, quote the procedure detail that gives it away: "decided the themes before analysing" = deductive; "no expectations imposed, themes emerged" = inductive.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Key Terms</h2>
+  <div class="glossary-grid">
+    <div class="keyterm-box"><span class="kt">qualitative data</span><br><span class="zh">定性数据：用文字而非数字记录的研究结果</span></div>
+    <div class="keyterm-box"><span class="kt">thematic analysis</span><br><span class="zh">主题分析：在数据中记录主题、模式与趋势</span></div>
+    <div class="keyterm-box"><span class="kt">theme</span><br><span class="zh">主题：数据中反复出现或构成关键特征的模式</span></div>
+    <div class="keyterm-box"><span class="kt">code</span><br><span class="zh">编码：代表一类主题的标签，用作检索依据</span></div>
+    <div class="keyterm-box"><span class="kt">inductive</span><br><span class="zh">归纳式：结论从数据中来，形成理论</span></div>
+    <div class="keyterm-box"><span class="kt">deductive</span><br><span class="zh">演绎式：先有理论，再用数据检验它</span></div>
+    <div class="keyterm-box"><span class="kt">researcher bias</span><br><span class="zh">研究者偏差：研究者的预期影响主题的识别与解读</span></div>
+    <div class="keyterm-box"><span class="kt">interrater reliability</span><br><span class="zh">评分者间信度：不同编码者结果的一致程度</span></div>
+  </div>
+
+  <p class="footer-note">Edexcel IAL Psychology · Topic A · Spec 1.2.8 · Thematic Analysis</p>
+</section>
+
+</main>
+</div>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  /* ---------- sidebar scroll spy ---------- */
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  /* ---------- reveal helper ---------- */
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  /* ---------- multiple choice: one why per option ---------- */
+  var secWhy = {
+    s6: [
+      ['Counting instances produces numbers, which is quantitative data.',
+       'Correct. What participants said is non-numerical, word-based data: qualitative.',
+       'A mean is a numerical summary of numerical scores.'],
+      ['Correct. Specifying themes before analysis is the deductive approach: theory first, data second.',
+       'Themes that emerge from data without pre-set ideas define the inductive approach.',
+       'Interrater is not an analysis route; it is the agreement check between different coders.'],
+      ['Correct. Themes rest on the researcher\'s subjective judgement, so two researchers could produce different themes.',
+       'Transcript length is not the reliability problem; long transcripts are exactly what the method is built for.',
+       'Qualitative data can be summarised; that is precisely what thematic analysis does, which is why the criticism is about bias, not impossibility.'],
+      ['Face validity is whether a measure looks like it measures what it claims, not coder agreement.',
+       'Correct. Agreement between the themes identified by different coders is interrater reliability.',
+       'Test-retest reliability checks a measure on the same people twice, not two coders on one data set.']
+    ]
+  };
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = (btn.closest('.xp-block') || section).querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+</script>
+</body>
+</html>

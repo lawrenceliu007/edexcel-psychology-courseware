@@ -206,7 +206,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
 <aside class="sidebar"><div class="sidebar-inner">
   <div class="sb-header">
     <div class="sb-header-title">1.2.6 Methods</div>
-    <div class="sb-header-sub">Quantitative data · Statistics · Distributions</div>
+    <div class="sb-header-sub">Quantitative data · Statistics</div>
   </div>
   <ul class="sb-list">
     <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
@@ -217,23 +217,21 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
     <li class="sb-item"><a href="#s6">6. Summary Tables</a></li>
     <li class="sb-item"><a href="#s7">7. Graphs</a></li>
     <li class="sb-item"><a href="#s8">8. Percentages, Ratios, Fractions</a></li>
-    <li class="sb-item"><a href="#s9">9. Normal Distribution</a></li>
-    <li class="sb-item"><a href="#s10">10. Skewed Distributions</a></li>
-    <li class="sb-item"><a href="#s11">11. Checkpoint</a></li>
-    <li class="sb-item"><a href="#s12">12. Exam Lab</a></li>
-    <li class="sb-item"><a href="#s13">13. Key Terms</a></li>
+    <li class="sb-item"><a href="#s9">9. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s10">10. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s11">11. Key Terms</a></li>
   </ul>
 </div>
 </aside>
 
 <main class="main-content">
 <div class="header">
-  <h1>1.2.6 ANALYSIS OF QUANTITATIVE DATA<br><span style="font-size:0.65em">Data tables · Central tendency · Dispersion · Graphs · Distributions · 定量数据分析</span></h1>
+  <h1>1.2.6 ANALYSIS OF QUANTITATIVE DATA<br><span style="font-size:0.65em">Data tables · Central tendency · Dispersion · Graphs · Percentages · 定量数据分析</span></h1>
   <div class="meta">
     <span class="badge">Topic A · Social psychology</span>
     <span class="badge">Methods</span>
     <span class="badge">Spec 1.2.6</span>
-    <span class="badge">📖 Textbook Book 1 · Ch.5 · pp.45–58</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.5 · pp.45–54</span>
   </div>
 </div>
 
@@ -243,7 +241,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
     <li><strong>Numbers need a summary before they mean anything.</strong> Raw scores are just a list; every tool on this page exists to compress that list into something readable.</li>
     <li><strong>Two kinds of summary.</strong> Central tendency finds the typical score (mean, median, mode); dispersion finds how spread out the scores are (range, IQR, standard deviation).</li>
     <li><strong>Then a picture.</strong> Bar charts for categories, histograms for continuous scales, and distribution curves for the overall shape.</li>
-    <li><strong>Shape matters.</strong> A normal curve is symmetric and its three averages coincide; a skewed curve pulls the mean away from the peak.</li>
+    <li><strong>Then look at the shape.</strong> How the scores distribute (normal or skewed) carries information the averages throw away; that topic has its own page, 1.2.7.</li>
     <li><strong>Part-whole language.</strong> Percentages, ratios and fractions express how a part relates to the whole, and exam calculations often test exactly this.</li>
   </ol>
 </div>
@@ -256,7 +254,6 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
     <li><strong>Calculate range, interquartile range and standard deviation</strong>, and explain why the SD is the strongest measure of spread.</li>
     <li><strong>Read and draw summary tables, bar charts and histograms</strong>, and say which graph suits which kind of data.</li>
     <li><strong>Convert between percentages, ratios and fractions</strong> and calculate a percentage of a frequency.</li>
-    <li><strong>Describe normal and skewed distributions</strong> and place the mean, median and mode on each curve.</li>
   </ul>
 </div>
 
@@ -610,129 +607,16 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
     <strong>中文理解：三件套各管一头</strong><br>
     百分比回答「一百个人里有几个」，比回答「这一份是那一份的几倍」，分数回答「占了整体的几分之几」。同一个事实可以有三种写法：100 人服从、500 人不服从，写成比是 1 : 5，写成分数是 100/600 即 1/6，写成百分比约是 16.7%。算题时先分清问的是「部分比部分」还是「部分比整体」，比值和分数的分母由此决定。
   </div>
+
+  <div class="note-box">
+    <h4>Where next</h4>
+    <p>The tools on this page summarise the centre and the spread of a data set. What they leave out is the overall shape: whether scores form a symmetric bell or lean to one side. That shape is the subject of the next page, <strong>1.2.7 Normal and Skewed Distributions</strong>.</p>
+  </div>
 </section>
 
 <!-- ============ 9 ============ -->
 <section class="section" id="s9">
-  <h2>9. The Normal Distribution</h2>
-
-  <p>Small samples only support the summary statistics seen so far. With larger samples it becomes useful to examine the overall <strong>distribution（分布：整组分数的整体形状）</strong>, the frequency of each value across the data set, and to estimate the distribution of scores in the whole population.</p>
-
-  <p>When the frequency distribution of a population is plotted, many measurements form a bell-shaped curve: a <strong>normal distribution（正态分布：中间高两头低的对称钟形）</strong>. Height is the classic example: most people gather around the average, and the further a score is from the average, the rarer it is.</p>
-
-  <div class="figure">
-  <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
-    <defs>
-      <marker id="arr2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#1e3a5f"/></marker>
-      <marker id="arr3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#16a34a"/></marker>
-    </defs>
-    <path d="M60,210 C200,206 240,55 340,55 C440,55 480,206 620,210" fill="none" stroke="#ea580c" stroke-width="3"/>
-    <path d="M60,210 C200,206 240,55 340,55 C440,55 480,206 620,210 L620,210 Z" fill="rgba(234,88,12,.10)" stroke="none"/>
-    <line x1="45" y1="210" x2="640" y2="210" stroke="#334155" stroke-width="1.5"/>
-    <line x1="340" y1="210" x2="340" y2="50" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4"/>
-    <line x1="292" y1="210" x2="292" y2="95" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3 4"/>
-    <line x1="388" y1="210" x2="388" y2="95" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3 4"/>
-    <line x1="244" y1="210" x2="244" y2="125" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3 4"/>
-    <line x1="436" y1="210" x2="436" y2="125" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3 4"/>
-    <text x="148" y="228" text-anchor="middle" font-size="11" fill="#64748b">−3σ</text>
-    <text x="244" y="228" text-anchor="middle" font-size="11" fill="#64748b">−2σ</text>
-    <text x="292" y="228" text-anchor="middle" font-size="11" fill="#64748b">−1σ</text>
-    <text x="340" y="228" text-anchor="middle" font-size="11" font-weight="bold" fill="#c2410c">mean</text>
-    <text x="388" y="228" text-anchor="middle" font-size="11" fill="#64748b">+1σ</text>
-    <text x="436" y="228" text-anchor="middle" font-size="11" fill="#64748b">+2σ</text>
-    <text x="532" y="228" text-anchor="middle" font-size="11" fill="#64748b">+3σ</text>
-    <line x1="296" y1="175" x2="384" y2="175" stroke="#1e3a5f" stroke-width="1.5" marker-start="url(#arr2)" marker-end="url(#arr2)"/>
-    <text x="340" y="165" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#1e3a5f">68% of the population</text>
-    <line x1="248" y1="145" x2="432" y2="145" stroke="#16a34a" stroke-width="1.5" marker-start="url(#arr3)" marker-end="url(#arr3)"/>
-    <text x="340" y="135" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#166534">95% of the population</text>
-    <text x="340" y="250" text-anchor="middle" font-size="11" fill="#64748b" font-style="italic">The curve is symmetric: mean, median and mode coincide at the mid-point</text>
-  </svg>
-  <div class="figure-caption">Figure: a normal distribution curve, with the 68% and 95% bands marked</div>
-  </div>
-
-  <p>Three features define the normal distribution:</p>
-  <ul>
-    <li><strong>Symmetry around the mid-point.</strong> The mean, median and mode should all be aligned at the centre.</li>
-    <li><strong>The tails never touch the horizontal axis.</strong> Extreme scores are always possible, just vanishingly rare.</li>
-    <li><strong>Fixed proportions under the curve.</strong> It is a rule of normal distribution that 68% of the population falls between one standard deviation each side of the mid-point, and 95% falls between two standard deviations each side.</li>
-  </ul>
-
-  <div class="note-box">
-    <h4>Using σ to count people</h4>
-    <p>Standard deviation is given the symbol σ, so 1σ means one standard deviation. Example: the standard deviation for a set of obedience scores was 2.8 and the mean score was 7. One standard deviation above the mid-point is 7 + 2.8 = 9.8; one below is 4.2. So 68% of the sample would score between <strong>4.2 and 9.8</strong>, and 95% would fall between two standard deviations each side of the mid-point, that is between <strong>1.4 and 12.6</strong>. To know exactly what values those intervals represent, the standard deviation must be calculated on the raw scores.</p>
-  </div>
-
-  <div class="cn-note">
-    <strong>中文理解：钟形曲线为什么重要</strong><br>
-    正态分布三个记忆点：三点重合（均值、中数、众数都站在正中间）、尾巴不落地（极端分数永远存在只是极少）、比例固定（±1σ 装下约 68% 的人，±2σ 装下约 95%）。最后的例子演示怎么用这两个比例做估算：知道均值 7、标准差 2.8，就能断言大多数人的分数落在 4.2 到 9.8 之间。这把「散布量数」从描述工具变成了预测工具。
-  </div>
-</section>
-
-<!-- ============ 10 ============ -->
-<section class="section" id="s10">
-  <h2>10. Skewed Distributions</h2>
-
-  <p>Some distributions are not symmetrical: they are <strong>skewed（偏态：峰不在中间，被挤向一边）</strong>. The cause is usually the difficulty of the test or the nature of the sample.</p>
-
-  <div class="figure">
-  <svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
-    <text x="115" y="26" text-anchor="middle" font-size="13" font-weight="bold" fill="#c2410c">Normal</text>
-    <line x1="20" y1="180" x2="210" y2="180" stroke="#334155" stroke-width="1.5"/>
-    <path d="M25,180 C75,176 80,70 115,70 C150,70 155,176 205,180" fill="none" stroke="#ea580c" stroke-width="2.5"/>
-    <circle cx="115" cy="70" r="5" fill="#c2410c"/>
-    <text x="115" y="198" text-anchor="middle" font-size="10.5" fill="#475569">mean = median = mode</text>
-    <text x="115" y="212" text-anchor="middle" font-size="10.5" fill="#64748b">symmetric</text>
-
-    <text x="340" y="26" text-anchor="middle" font-size="13" font-weight="bold" fill="#c2410c">Negative skew</text>
-    <text x="340" y="42" text-anchor="middle" font-size="10.5" fill="#64748b">most people score highly</text>
-    <line x1="245" y1="180" x2="435" y2="180" stroke="#334155" stroke-width="1.5"/>
-    <path d="M250,178 C300,176 355,72 395,72 C420,72 428,120 430,180" fill="none" stroke="#ea580c" stroke-width="2.5"/>
-    <circle cx="303" cy="180" r="5" fill="#1e3a5f"/>
-    <circle cx="345" cy="180" r="5" fill="#166534"/>
-    <circle cx="393" cy="180" r="5" fill="#c2410c"/>
-    <text x="300" y="198" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1e3a5f">mean</text>
-    <text x="345" y="198" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#166534">median</text>
-    <text x="400" y="198" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#c2410c">mode</text>
-    <text x="340" y="212" text-anchor="middle" font-size="10.5" fill="#64748b">tail on the left (low end)</text>
-
-    <text x="565" y="26" text-anchor="middle" font-size="13" font-weight="bold" fill="#c2410c">Positive skew</text>
-    <text x="565" y="42" text-anchor="middle" font-size="10.5" fill="#64748b">most people score low</text>
-    <line x1="470" y1="180" x2="660" y2="180" stroke="#334155" stroke-width="1.5"/>
-    <path d="M475,180 C478,120 486,72 510,72 C550,72 610,176 655,178" fill="none" stroke="#ea580c" stroke-width="2.5"/>
-    <circle cx="512" cy="180" r="5" fill="#c2410c"/>
-    <circle cx="560" cy="180" r="5" fill="#166534"/>
-    <circle cx="612" cy="180" r="5" fill="#1e3a5f"/>
-    <text x="505" y="198" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#c2410c">mode</text>
-    <text x="560" y="198" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#166534">median</text>
-    <text x="618" y="198" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1e3a5f">mean</text>
-    <text x="565" y="212" text-anchor="middle" font-size="10.5" fill="#64748b">tail on the right (high end)</text>
-  </svg>
-  <div class="figure-caption">Figure: the tail always drags the mean; the median stays in the middle and the mode stays on the peak</div>
-  </div>
-
-  <h3>How each skew arises</h3>
-  <ul>
-    <li><strong>Negative skew:</strong> if a test is easy, or the aptitude of the sample is unusually high, most people score highly. Scores bunch on the right with a tail on the left. The mean is pulled left by the few low scores, so the mean is lower than the mode.</li>
-    <li><strong>Positive skew:</strong> if a test is particularly difficult, or the aptitude of the sample is low, most people achieve low scores. Scores bunch on the left with a tail on the right. The mean is pulled right by the few high scores, so the mean is higher than the mode.</li>
-  </ul>
-
-  <h3>Placing the three averages</h3>
-  <p>When plotting the mean, median and mode on any distribution curve: the <strong>median</strong> is always exactly in the middle of the x-axis, the <strong>mode</strong> sits where the most values are (the peak), and the <strong>mean</strong> is dragged toward the tail, right on a positive skew and left on a negative skew.</p>
-
-  <div class="note-box">
-    <h4>A memory trick</h4>
-    <p>A common confusion is which skew is "positive". Remember: a positive skew has its tail at the <strong>positive (high) end</strong> of the horizontal axis, and a negative skew has its tail at the negative (low) end. Some students draw a face on the curve so it becomes a whale: a whale swimming towards the vertical axis is coming home, so it is positive; a whale swimming away is negative, because it is leaving.</p>
-  </div>
-
-  <div class="cn-note">
-    <strong>中文理解：尾巴拽走均值</strong><br>
-    偏态曲线只需要抓两件事。第一，命名跟尾巴走：尾巴拖在分数高的一端叫正偏态，拖在低的一端叫负偏态。第二，三个平均数的排队规律：中数永远在正中间，众数站在峰顶（分数最密集处），均值被少数极端分数的尾巴拉走。道理很朴素：均值要平均每一个分数，尾部的少数离群值就在它身上占了分量；中数和众数只看位置和次数，尾巴碰不到它们。所以偏态分布里「均值和众数谁大」，答案取决于尾巴在哪边。
-  </div>
-</section>
-
-<!-- ============ 11 ============ -->
-<section class="section" id="s11">
-  <h2>11. Checkpoint</h2>
+  <h2>9. Checkpoint</h2>
 
   <div class="checkpoint">
     <h3>Identify the statistic</h3>
@@ -790,9 +674,9 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   </div>
 </section>
 
-<!-- ============ 12 ============ -->
-<section class="section" id="s12">
-  <h2>12. Exam Lab</h2>
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Exam Lab</h2>
 
   <p>Quantitative data questions are among the most frequent on Paper 1: a calculation, a choice of statistic to justify, and data interpretation. The four questions below come from one exam-style scenario, worked from the first calculation to the comparison of statistics.</p>
 
@@ -839,9 +723,9 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   </div>
 </section>
 
-<!-- ============ 13 ============ -->
-<section class="section" id="s13">
-  <h2>13. Key Terms</h2>
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Key Terms</h2>
   <div class="glossary-grid">
     <div class="keyterm-box"><span class="kt">quantitative data</span><br><span class="zh">定量数据：用数字记录的研究结果</span></div>
     <div class="keyterm-box"><span class="kt">raw scores</span><br><span class="zh">原始分数：每个参与者各自的那一个数</span></div>
@@ -859,8 +743,6 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
     <div class="keyterm-box"><span class="kt">nominal data</span><br><span class="zh">名称类数据：只能归入类别的数据</span></div>
     <div class="keyterm-box"><span class="kt">ordinal data</span><br><span class="zh">顺序类数据：排名次而非计分数的数据</span></div>
     <div class="keyterm-box"><span class="kt">interval/ratio data</span><br><span class="zh">等距/等比数据：有相等单位、可加减的数据</span></div>
-    <div class="keyterm-box"><span class="kt">normal distribution</span><br><span class="zh">正态分布：对称钟形，三个平均数重合</span></div>
-    <div class="keyterm-box"><span class="kt">skewed distribution</span><br><span class="zh">偏态分布：不对称，尾巴拽走均值</span></div>
   </div>
 
   <p class="footer-note">Edexcel IAL Psychology · Topic A · Spec 1.2.6 · Analysis of Quantitative Data</p>
@@ -930,7 +812,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
        'Correct. Every score contributes its deviation from the mean, so the SD reflects the whole data set rather than two extremes.',
        'The SD does not ignore extreme scores; it includes every score, which is exactly why it is more representative.']
     ],
-    s11: [
+    s9: [
       ['The mean totals all scores and divides; frequency is not part of its definition.',
        'Correct. The mode is defined as the value that occurs most frequently.',
        'The standard deviation measures spread around the mean, not which score occurs most.'],

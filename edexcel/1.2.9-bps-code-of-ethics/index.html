@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.2.9 Methods — BPS Code of Ethics and Conduct</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+<body>
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic A · Social psychology — 1.2.9 Methods</span>
+  </div>
+  <span class="nav-pill">🧩 Social Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">1.2.9 Methods</div>
+    <div class="sb-header-sub">BPS code · Ethics · Risk management</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s1">1. Why Research Is Regulated</a></li>
+    <li class="sb-item"><a href="#s2">2. The Four BPS Principles</a></li>
+    <li class="sb-item"><a href="#s3">3. The Ethical Code Checklist</a></li>
+    <li class="sb-item"><a href="#s4">4. Ethics in Social Research</a></li>
+    <li class="sb-item"><a href="#s5">5. Risk Management</a></li>
+    <li class="sb-item"><a href="#s6">6. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s7">7. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s8">8. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>1.2.9 BPS CODE OF ETHICS AND CONDUCT<br><span style="font-size:0.65em">Four principles · Ethical code · Risk management · 伦理守则与风险管理</span></h1>
+  <div class="meta">
+    <span class="badge">Topic A · Social psychology</span>
+    <span class="badge">Methods</span>
+    <span class="badge">Spec 1.2.9</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.5 · pp.55–58</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this chapter is really asking</h4>
+  <ol>
+    <li><strong>Psychology works on people (and animals), so it needs rules.</strong> Codes of conduct called ethical guidelines regulate research and protect participants.</li>
+    <li><strong>The BPS code rests on four principles</strong>: respect, competence, responsibility and integrity.</li>
+    <li><strong>Seven concrete requirements turn principles into a checklist</strong>: confidentiality, right to withdraw, informed consent, protection, privacy, deception and debrief.</li>
+    <li><strong>Social psychology is ethically risky territory</strong> (obedience and conformity research pressure real people), which is why risk management exists: identify risks, predict them, minimise them.</li>
+  </ol>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Explain what ethical guidelines are</strong> and who enforces them, from the BPS to Institutional Review Boards.</li>
+    <li><strong>Describe the four BPS principles</strong> (respect, competence, responsibility, integrity) and what each one demands of a researcher.</li>
+    <li><strong>Match each element of the ethical code</strong> (confidentiality, right to withdraw, informed consent, protection, privacy, deception, debrief) to its definition.</li>
+    <li><strong>Explain why social psychological research poses significant ethical issues</strong> and how procedures such as debriefing and screening ease them.</li>
+    <li><strong>Describe the five stages of risk management</strong> and apply them to a research scenario.</li>
+    <li><strong>Use the Milgram risk example</strong> to explain why predicting harm is difficult.</li>
+  </ul>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Why Research Is Regulated</h2>
+
+  <p>Psychological research involves working with humans and animals, and certain codes of conduct are used to regulate this. These codes are referred to as <strong>ethical guidelines（伦理守则：规范研究行为的成套规则）</strong>. The purpose of ethical guidelines is ultimately to ensure the safety and well-being of participants within psychological investigations. They also ensure that the standards, professionalism and reputation of the subject are upheld.</p>
+
+  <p>Who enforces the rules depends on where the research happens:</p>
+  <ul>
+    <li><strong>United Kingdom:</strong> research is regulated by the British Psychological Society (BPS), whose Code of Ethics and Conduct (2009, updated 2021) is the framework taught on this page.</li>
+    <li><strong>America:</strong> the American Psychological Association has its own ethical code.</li>
+    <li><strong>Parts of Europe:</strong> the European Federation of Psychologists' Associations regulates Portugal, Spain, France, Italy, Malta and Greece using the Carta Ethica.</li>
+    <li><strong>Everywhere:</strong> research is regulated by individual <strong>Institutional Review Boards（机构审查委员会：研究所在大学内部审查研究方案的委员会）</strong>, also called Research Ethics Committees, at the universities where it is being conducted. These boards often form networks with other universities.</li>
+  </ul>
+
+  <p>Most countries are regulated by a similar framework with similar guidelines, so learning the BPS code equips you to judge research from anywhere.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：守则管两件事</strong><br>
+    伦理守则的使命有两层：保护参与者（安全与福祉优先），以及保护学科本身（标准、专业性与声誉）。层级记三个：国家级协会（英国的 BPS、美国的 APA）、区域联盟（欧洲的 Carta Ethica）、研究所在地的审查委员会（IRB，方案开做之前先过这一关）。
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. The Four BPS Principles</h2>
+
+  <p>The BPS ethical code is based around four ethical principles, as updated in 2021:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Respect 尊重</h4>
+      <p>Respect the dignity of all individuals, their cultural and role differences (ethnicity, age, religion, race, and so on) and the experience they bring. Maintain <strong>privacy and confidentiality</strong>, gain <strong>informed consent</strong> by disclosing the full nature of the research, avoid <strong>deception</strong> where possible, and offer a <strong>right to withdraw</strong> at any point without consequence.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Competence 胜任</h4>
+      <p>The researcher should be fully aware of the ethical code and, if uncertain whether their proposal meets the principles, seek help from experts or supervisors. Monitor your own knowledge of the area, and <strong>recognise your own limits and the limits of your research</strong>.</p>
+    </div>
+    <div class="compare-card">
+      <h4>Responsibility 责任</h4>
+      <p>Responsibility extends to participants, the general public, the profession and science: ensure research does not harm others or result in misuse. Inform participants of any potential harm and how they will be protected. Keep participation <strong>voluntary</strong>, never use incentives to coerce, and <strong>always give a debrief</strong> at the conclusion.</p>
+    </div>
+    <div class="compare-card red">
+      <h4>Integrity 诚实</h4>
+      <p>Be honest and fair in all work, and avoid situations where you might exploit others. Do not hold interests that conflict with participants' interests. Consider how the research is likely to be received by the public or used by organisations.</p>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <h4>Memory hook: RCRI</h4>
+    <p><strong>R</strong>espect, <strong>C</strong>ompetence, <strong>R</strong>esponsibility, <strong>I</strong>ntegrity. Each principle answers a different question: Respect: how are participants treated? Competence: is the researcher up to the job? Responsibility: who is the researcher answerable to? Integrity: is the researcher honest and conflict-free?</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：四原则各自管什么</strong><br>
+    Respect 管参与者怎么被对待：尊重文化与角色差异，保护隐私，先知情同意，能不欺骗就不欺骗，并保证随时可退出。Competence 管研究者自己行不行：熟悉守则，不确定就请教专家或督导，承认自己与研究的能力边界。Responsibility 管对谁负责：对参与者、公众、行业和科学负责，核心是不伤害，参加靠自愿，结束必给 debrief。Integrity 管诚实：不骗人、不利用人、没有利益冲突。记忆钩子 RCRI。
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. The Ethical Code Checklist</h2>
+
+  <p>The main elements of the ethical code can be structured as a brief checklist, and it doubles as a guide for planning your own practical investigations. Learn each element as a question you ask of any study:</p>
+
+  <table>
+    <tr><th style="width:26%">Element</th><th>The question it asks</th></tr>
+    <tr><td>Confidentiality（保密）</td><td>Are the participants anonymised so that they cannot be identified by name or any other personal information about them?</td></tr>
+    <tr><td>Right to withdraw（退出权）</td><td>Are participants aware they can leave at any point before, during or after the study, and can have their results withdrawn from analysis up to a set period of time?</td></tr>
+    <tr><td>Informed consent（知情同意）</td><td>Are participants fully aware of the study aims and the nature of their participation before agreeing to take part? Is any information being withheld?</td></tr>
+    <tr><td>Protection of participants（保护参与者）</td><td>Participants should not be subject to physical or psychological harm. Researchers should anticipate how a participant might feel (stressed, embarrassed, fearful) and avoid such situations.</td></tr>
+    <tr><td>Privacy（隐私）</td><td>Participants should not be involved in research that gathers personal or private information they would not willingly disclose.</td></tr>
+    <tr><td>Deception（欺骗）</td><td>Are the participants lied to about the nature of the study?</td></tr>
+    <tr><td>Debrief（研究后说明）</td><td>Participants must be told the nature of their participation when the study has concluded. If deception was used or information withheld, it must be fully disclosed during the debrief.</td></tr>
+  </table>
+
+  <div class="cn-note">
+    <strong>中文理解：七个词条一对一对记</strong><br>
+    七条守则每条都是一个问题，背的时候抓「问题问什么」而不是背长句：保密：能不能认出是谁？退出权：中途随时能走、事后还能撤数据吗？知情同意：开始前知道全部真相吗？保护：会不会受到身心伤害？隐私：会不会被问不愿说的事？欺骗：有没有对研究性质撒谎？Debrief：结束后有没有把真相讲清楚（用了欺骗就必须在 debrief 里补全）。
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Ethics in Social Research</h2>
+
+  <p>Social psychological research can pose significant ethical issues because of the nature of the topics being investigated. The two headline designs of this topic are both built on pressure:</p>
+  <ul>
+    <li><strong>Obedience research</strong> deliberately presents naïve participants with the commands of an authority figure, often insisting that they perform a behaviour they would not ordinarily choose to do.</li>
+    <li><strong>Conformity research</strong> places participants in a situation where they are pressured to go along with a majority, which can cause tension and distress.</li>
+  </ul>
+
+  <p>Because such designs cannot simply avoid all pressure and still study the phenomenon, ethical problems need to be eased by using procedures such as:</p>
+  <ul>
+    <li><strong>Debriefing participants fully immediately after the investigation</strong>, especially where deception was involved.</li>
+    <li><strong>Screening out particularly vulnerable individuals</strong> before the study begins.</li>
+    <li><strong>Anonymising participants</strong> so their data cannot identify them.</li>
+    <li><strong>Taking measures to minimise distress</strong> during the procedure itself.</li>
+  </ul>
+
+  <p>The code of ethical principles forms a framework that regulates research, but it cannot address every possible situation a researcher might face. Such judgements are made by the researcher, and consultation with other professionals in the field is encouraged.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：压力就是研究对象，伤害只能减不能免</strong><br>
+    社会心理学有个两难：要研究服从和从众，就得真的对人施加压力，压力本身就是潜在伤害源。所以守则不要求「零压力」，要求的是四道缓解措施：做完立刻完整 debrief，事先筛掉脆弱人群，对参与者匿名化，过程中尽量减少痛苦。还有一个原则性提醒：守则覆盖不到所有情境，剩余判断靠研究者本人，并鼓励同行商议。
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Risk Management</h2>
+
+  <p><strong>Risk management（风险管理：识别风险、预测风险、再把风险降到最低的流程）</strong> is important when organising any activity, and particularly when designing a psychological investigation which may involve physical or psychological harm. Risk management is a process whereby risks are initially identified, and then the nature, likelihood and severity of risk is predicted. Finally, measures are put into place to minimise or remove the potential risk.</p>
+
+  <div class="note-box">
+    <h4>The Milgram example: why prediction is hard</h4>
+    <p>Before Milgram conducted his obedience research, he sought to identify risk by asking psychiatrists whether they thought anyone would deliver the highest shocks. The psychiatrists predicted that most participants would not go beyond 150 volts. This shows Milgram was considering risk to participants by trying to identify whether distress would be caused by being ordered to deliver harmful electric shocks. But 65% of participants did administer 450-volt shocks, which shows how difficult it can be to predict risk of harm. Experts got the prediction badly wrong.</p>
+  </div>
+
+  <h3>Identifying risk: what can go wrong</h3>
+  <p>The BPS describe a range of possible risks to participants:</p>
+  <ul>
+    <li><strong>Self-esteem:</strong> research can cause embarrassment or ridicule.</li>
+    <li><strong>Personal values, relationships and privacy:</strong> research can affect them or involve personal information being disclosed.</li>
+    <li><strong>Vulnerable groups:</strong> children, those lacking the ability to give informed consent, and those with mental health problems or traumatic past experiences are particularly at risk.</li>
+    <li><strong>Socially sensitive research:</strong> research into ethnicity, political or religious beliefs carries its own risks.</li>
+    <li><strong>Deceptive research:</strong> the true nature of the investigation is withheld, so participants cannot make an informed decision to take part.</li>
+    <li><strong>Stressful or invasive procedures:</strong> psychological stress, prolonged testing, or even extreme procedures such as excessive exercise, administering medication or taking blood samples.</li>
+  </ul>
+
+  <p>A researcher must fully consider all aspects of their design, procedure, sample and how the results are likely to be used, to identify potential risks. The BPS suggest a five-stage process:</p>
+
+  <div class="figure">
+  <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+    <defs>
+      <marker id="ra" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#c2410c"/></marker>
+    </defs>
+    <line x1="40" y1="70" x2="645" y2="70" stroke="#cbd5e1" stroke-width="2"/>
+    <circle cx="90" cy="70" r="26" fill="#ea580c"/>
+    <text x="90" y="75" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">1</text>
+    <circle cx="232" cy="70" r="26" fill="#ea580c"/>
+    <text x="232" y="75" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">2</text>
+    <circle cx="374" cy="70" r="26" fill="#ea580c"/>
+    <text x="374" y="75" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">3</text>
+    <circle cx="496" cy="70" r="26" fill="#ea580c"/>
+    <text x="496" y="75" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">4</text>
+    <circle cx="620" cy="70" r="26" fill="#16a34a"/>
+    <text x="620" y="75" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">5</text>
+
+    <rect x="40" y="106" width="120" height="52" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+    <text x="100" y="126" text-anchor="middle" font-size="10.5" font-weight="600" fill="#c2410c">Identify possible</text>
+    <text x="100" y="142" text-anchor="middle" font-size="10.5" font-weight="600" fill="#c2410c">risks</text>
+
+    <rect x="172" y="106" width="120" height="52" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+    <text x="232" y="126" text-anchor="middle" font-size="10.5" font-weight="600" fill="#c2410c">Establish the risks:</text>
+    <text x="232" y="142" text-anchor="middle" font-size="10.5" font-weight="600" fill="#c2410c">who is affected?</text>
+
+    <rect x="304" y="106" width="140" height="52" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+    <text x="374" y="126" text-anchor="middle" font-size="10.5" font-weight="600" fill="#c2410c">Evaluate severity,</text>
+    <text x="374" y="142" text-anchor="middle" font-size="10.5" font-weight="600" fill="#c2410c">likelihood, management</text>
+
+    <rect x="440" y="106" width="112" height="52" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+    <text x="496" y="126" text-anchor="middle" font-size="10.5" font-weight="600" fill="#c2410c">Document the risk</text>
+    <text x="496" y="142" text-anchor="middle" font-size="10.5" font-weight="600" fill="#c2410c">assessment</text>
+
+    <rect x="560" y="106" width="120" height="52" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="620" y="126" text-anchor="middle" font-size="10.5" font-weight="600" fill="#166534">Assess effectiveness;</text>
+    <text x="620" y="142" text-anchor="middle" font-size="10.5" font-weight="600" fill="#166534">modify controls</text>
+
+    <path d="M620,158 C620,205 90,205 90,158" fill="none" stroke="#16a34a" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ra)"/>
+    <text x="355" y="212" text-anchor="middle" font-size="10.5" fill="#166534" font-style="italic">an ongoing process: risks change, so the cycle repeats</text>
+    <text x="340" y="38" text-anchor="middle" font-size="10.5" fill="#64748b">consider design · procedure · sample · use of results</text>
+  </svg>
+  <div class="figure-caption">Figure: the BPS five-stage risk management process; stage 5 feeds back into stage 1 because risks change over time</div>
+  </div>
+
+  <ol>
+    <li><strong>Identification</strong> of possible risks.</li>
+    <li><strong>Establishing</strong> what the risks are and who is likely to be affected.</li>
+    <li><strong>Evaluating</strong> the severity and likelihood of the risks and how they can be managed.</li>
+    <li><strong>Documenting</strong> the risk assessment.</li>
+    <li><strong>Assessing the effectiveness</strong> of the risk assessment and modifying control measures if necessary.</li>
+  </ol>
+
+  <p>Risk assessment is an ongoing process, as risks can change and new measures to control risks can be implemented.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：五步加一个回环</strong><br>
+    风险管理五步：识别可能风险 → 明确风险是什么、谁会受影响 → 评估严重程度与发生概率、想好怎么管理 → 把评估写成文件 → 检验措施有没有效、必要时改。第五步之后箭头绕回第一步：风险会变，评估要一直做，不是签字了事的静态文件。Milgram 的例子背两个数：精神病学家预测大多数人不会超过 150 伏，实际 65% 按到了 450 伏，用来说明「风险预测有多难」。
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Checkpoint</h2>
+
+  <div class="checkpoint">
+    <h3>Match the ethical code</h3>
+    <p class="small">Each description matches one element of the ethical code.</p>
+
+    <div class="xp-block">
+      <h4><span class="xp-badge">Q1</span> "Participants' data is anonymised so they cannot be identified."</h4>
+      <div class="xp-controls">
+        <button class="q-option" data-ok="1" onclick="mcAns(this)">Confidentiality</button>
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Privacy</button>
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Right to withdraw</button>
+      </div>
+      <div class="xp-result"></div>
+    </div>
+
+    <div class="xp-block">
+      <h4><span class="xp-badge">Q2</span> "Participants are aware that they can leave at any point."</h4>
+      <div class="xp-controls">
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Informed consent</button>
+        <button class="q-option" data-ok="1" onclick="mcAns(this)">Right to withdraw</button>
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Debrief</button>
+      </div>
+      <div class="xp-result"></div>
+    </div>
+
+    <div class="xp-block">
+      <h4><span class="xp-badge">Q3</span> "Participants know exactly what they are agreeing to take part in."</h4>
+      <div class="xp-controls">
+        <button class="q-option" data-ok="1" onclick="mcAns(this)">Informed consent</button>
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Deception</button>
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Protection of participants</button>
+      </div>
+      <div class="xp-result"></div>
+    </div>
+
+    <div class="xp-block">
+      <h4><span class="xp-badge">Q4</span> "Participants are told the nature of the study when it has concluded."</h4>
+      <div class="xp-controls">
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Informed consent</button>
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Privacy</button>
+        <button class="q-option" data-ok="1" onclick="mcAns(this)">Debrief</button>
+      </div>
+      <div class="xp-result"></div>
+    </div>
+
+    <div class="xp-block">
+      <h4><span class="xp-badge">Q5</span> "Participants are not asked to disclose information which they would normally not disclose."</h4>
+      <div class="xp-controls">
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Confidentiality</button>
+        <button class="q-option" data-ok="1" onclick="mcAns(this)">Privacy</button>
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Protection of participants</button>
+      </div>
+      <div class="xp-result"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Exam Lab</h2>
+
+  <p>Ethics questions attach to named studies: you are asked to identify an ethical issue, or to explain how a researcher managed it. The questions below use the obedience design you already know.</p>
+
+  <div class="exam-practice">
+    <h3>Exam practice — managing risk in an obedience study</h3>
+    <p class="small">A researcher plans to replicate an obedience study in which participants believe they are delivering electric shocks to another person on the orders of an authority figure.</p>
+
+    <h4>Q1 (2 marks)</h4>
+    <p>Identify two risks to participants in this study and explain why each is a risk.</p>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans1')">Show answer</button></div>
+    <div class="xp-result" id="ans1">
+      <p><strong>Deception: participants cannot make an informed decision to take part because the true nature of the investigation is withheld.</strong> <strong>Psychological stress: being ordered to deliver (apparently) harmful shocks can cause tension, distress and damage to self-esteem.</strong> One mark per identified risk, with the explanation securing the marks: deception blocks informed consent; pressure from an authority produces distress.</p>
+    </div>
+
+    <h4>Q2 (2 marks)</h4>
+    <p>Explain how the researcher could use screening and debriefing to ease the ethical problems in this study.</p>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans2')">Show answer</button></div>
+    <div class="xp-result" id="ans2">
+      <p><strong>Screening out particularly vulnerable individuals before the study reduces the chance of serious distress, and a full debrief immediately after the investigation discloses the true nature of the study and eases any distress the deception caused.</strong> One mark for each procedure correctly linked to the problem it addresses.</p>
+    </div>
+
+    <h4>Q3 (2 marks)</h4>
+    <p>In the original obedience research, psychiatrists were asked to predict how far participants would go before the study was run. Explain what this tells us about risk management.</p>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans3')">Show answer</button></div>
+    <div class="xp-result" id="ans3">
+      <p><strong>Consulting psychiatrists was an attempt to identify and predict risk before the study, showing risk management was considered. But their prediction (most participants would not go beyond 150 volts) was badly wrong, as 65% administered 450-volt shocks, showing how difficult it can be to predict risk of harm.</strong> One mark for identifying this as a risk-management step, one mark for the lesson that expert prediction can fail, so risk assessment must continue during and after the study.</p>
+    </div>
+  </div>
+
+  <div class="exam-tip">
+    <strong>Two habits that earn the marks:</strong>
+    <ul class="tight">
+      <li><strong>Name the element, then apply it.</strong> "There was deception" is half an answer; "deception: participants were told the study was about learning, so they could not give fully informed consent" is the full one.</li>
+      <li><strong>Pair problems with procedures.</strong> For any ethical issue you name, have its easing procedure ready: deception → debrief; distress → screening and minimising measures; identification → anonymising.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Key Terms</h2>
+  <div class="glossary-grid">
+    <div class="keyterm-box"><span class="kt">ethical guidelines</span><br><span class="zh">伦理守则：规范研究行为、保护参与者的成套规则</span></div>
+    <div class="keyterm-box"><span class="kt">BPS Code of Ethics and Conduct</span><br><span class="zh">英国心理学会伦理与行为守则（2009，2021 更新），四大原则的基础</span></div>
+    <div class="keyterm-box"><span class="kt">confidentiality</span><br><span class="zh">保密：参与者数据匿名化，不可被识别</span></div>
+    <div class="keyterm-box"><span class="kt">informed consent</span><br><span class="zh">知情同意：参与者充分了解研究目的、过程与影响后再参加</span></div>
+    <div class="keyterm-box"><span class="kt">right to withdraw</span><br><span class="zh">退出权：随时退出且无后果，事后可撤回数据</span></div>
+    <div class="keyterm-box"><span class="kt">debrief</span><br><span class="zh">研究后说明：结束后告知研究真实性质，欺骗必须在此补全</span></div>
+    <div class="keyterm-box"><span class="kt">incentive</span><br><span class="zh">激励：鼓励参与的钱或礼物，不得用来胁迫参与</span></div>
+    <div class="keyterm-box"><span class="kt">risk management</span><br><span class="zh">风险管理：识别、预测风险并采取措施将其降到最低</span></div>
+    <div class="keyterm-box"><span class="kt">Institutional Review Board</span><br><span class="zh">机构审查委员会：大学内部审查研究方案的伦理委员会</span></div>
+  </div>
+
+  <p class="footer-note">Edexcel IAL Psychology · Topic A · Spec 1.2.9 · BPS Code of Ethics and Conduct</p>
+</section>
+
+</main>
+</div>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  /* ---------- sidebar scroll spy ---------- */
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  /* ---------- reveal helper ---------- */
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  /* ---------- multiple choice: one why per option ---------- */
+  var secWhy = {
+    s6: [
+      ['Right to withdraw is about leaving the study, not about who can be identified.',
+       'Correct. Anonymising data so participants cannot be identified is confidentiality.',
+       'Privacy governs what questions may be asked; confidentiality governs what is revealed afterwards.'],
+      ['Informed consent happens before the study, at the moment of agreeing to take part.',
+       'Correct. Knowing they can leave before, during or after the study is the right to withdraw.',
+       'The debrief comes after the study has concluded, not as a promise of leaving.'],
+      ['Deception is the deliberate withholding or misrepresenting of information, the opposite of this requirement.',
+       'Correct. Full awareness of aims and the nature of participation before agreeing is informed consent.',
+       'Protection concerns harm during the study, not what participants know beforehand.'],
+      ['Consent is given before the study; telling participants afterwards is a different element.',
+       'Privacy governs what information is collected, not what is revealed afterwards.',
+       'Correct. Telling participants the nature of the study once it has concluded is the debrief.'],
+      ['Confidentiality protects data after collection; this is about which questions may be asked at all.',
+       'Correct. Not asking participants to disclose what they would not willingly disclose is privacy.',
+       'Protection concerns physical or psychological harm, not the sensitivity of questions.']
+    ]
+  };
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = (btn.closest('.xp-block') || section).querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+</script>
+</body>
+</html>
