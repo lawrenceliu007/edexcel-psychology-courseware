@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.2.6 Methods — Analysis of Quantitative Data</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic A · Social psychology — 1.2.6 Methods</span>
+  </div>
+  <span class="nav-pill">🧩 Social Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">1.2.6 Methods</div>
+    <div class="sb-header-sub">Quantitative data · Statistics · Distributions</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s1">1. Getting Started</a></li>
+    <li class="sb-item"><a href="#s2">2. From Scores to Conclusions</a></li>
+    <li class="sb-item"><a href="#s3">3. Data Tables</a></li>
+    <li class="sb-item"><a href="#s4">4. Central Tendency</a></li>
+    <li class="sb-item"><a href="#s5">5. Dispersion</a></li>
+    <li class="sb-item"><a href="#s6">6. Summary Tables</a></li>
+    <li class="sb-item"><a href="#s7">7. Graphs</a></li>
+    <li class="sb-item"><a href="#s8">8. Percentages, Ratios, Fractions</a></li>
+    <li class="sb-item"><a href="#s9">9. Normal Distribution</a></li>
+    <li class="sb-item"><a href="#s10">10. Skewed Distributions</a></li>
+    <li class="sb-item"><a href="#s11">11. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s12">12. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s13">13. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>1.2.6 ANALYSIS OF QUANTITATIVE DATA<br><span style="font-size:0.65em">Data tables · Central tendency · Dispersion · Graphs · Distributions · 定量数据分析</span></h1>
+  <div class="meta">
+    <span class="badge">Topic A · Social psychology</span>
+    <span class="badge">Methods</span>
+    <span class="badge">Spec 1.2.6</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.5 · pp.45–58</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this chapter is really asking</h4>
+  <ol>
+    <li><strong>Numbers need a summary before they mean anything.</strong> Raw scores are just a list; every tool on this page exists to compress that list into something readable.</li>
+    <li><strong>Two kinds of summary.</strong> Central tendency finds the typical score (mean, median, mode); dispersion finds how spread out the scores are (range, IQR, standard deviation).</li>
+    <li><strong>Then a picture.</strong> Bar charts for categories, histograms for continuous scales, and distribution curves for the overall shape.</li>
+    <li><strong>Shape matters.</strong> A normal curve is symmetric and its three averages coincide; a skewed curve pulls the mean away from the peak.</li>
+    <li><strong>Part-whole language.</strong> Percentages, ratios and fractions express how a part relates to the whole, and exam calculations often test exactly this.</li>
+  </ol>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Turn a table of raw scores into a conclusion</strong> by summarising it, and quote the numbers to justify what you say.</li>
+    <li><strong>Calculate mean, median and mode</strong>, and choose the right one for nominal, ordinal or interval/ratio data.</li>
+    <li><strong>Calculate range, interquartile range and standard deviation</strong>, and explain why the SD is the strongest measure of spread.</li>
+    <li><strong>Read and draw summary tables, bar charts and histograms</strong>, and say which graph suits which kind of data.</li>
+    <li><strong>Convert between percentages, ratios and fractions</strong> and calculate a percentage of a frequency.</li>
+    <li><strong>Describe normal and skewed distributions</strong> and place the mean, median and mode on each curve.</li>
+  </ul>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Getting Started — Reading a Table of Averages</h2>
+
+  <p>A researcher gathered data on a range of variables from a sample of students. The table shows the average scores for each variable for sports students and science students.</p>
+
+  <table>
+    <tr><th></th><th>Sport students</th><th>Science students</th></tr>
+    <tr><td>Average sleep per night (hours)</td><td>8</td><td>9</td></tr>
+    <tr><td>Average time spent revising each day (mins)</td><td>50</td><td>90</td></tr>
+    <tr><td>Average time spent exercising per week (hours)</td><td>25</td><td>5</td></tr>
+    <tr><td>Average percentage grade on a recent test</td><td>70%</td><td>71%</td></tr>
+    <tr><td>Average number of merits achieved over a year</td><td>12</td><td>11</td></tr>
+    <tr><td>Average peer group size</td><td>8</td><td>4</td></tr>
+  </table>
+
+  <p>What does this data tell us about the students? Sport students exercise far more and revise far less, yet their grades are almost identical to the science students' grades. Science students have smaller peer groups. Notice that you could not say any of this from a pile of individual scores: the table works because the scores have already been <strong>summarised into averages</strong>.</p>
+
+  <div class="note-box">
+    <h4>Two kinds of data</h4>
+    <p>Investigations can produce <strong>quantitative data（定量数据：用数字记录的结果）</strong> or qualitative data. Investigations that gather quantitative data produce numerical results called <strong>raw scores（原始分数：每个参与者各自的那一个数）</strong>. This chapter is about what to do with those numbers. Qualitative data, and how to analyse it thematically, is a separate skill covered later.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：这一章要解决的事</strong><br>
+    研究做完以后手里是一堆数字，可能是 30 人的服从评分，可能是全班的记忆词数，也可能是每个学生的身高。数字本身不会说话，必须先压缩成几个能看的量：平均在哪（集中趋势）、散开多远（离散程度）、整体长什么样（分布）。这一章就是一套「把数字变成结论」的工具箱：先整理成表，再算平均和散布，然后画成图，最后从图上读出趋势。每一节对应工具箱里的一件工具。
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. From Scores to Conclusions — The Analysis Pipeline</h2>
+
+  <p>Every quantitative analysis follows the same route. Wherever a question on the exam says "analyse the data" or "what conclusions can be drawn", you are walking this pipeline:</p>
+
+  <div class="figure">
+  <svg viewBox="0 0 680 190" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+    <defs>
+      <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#ea580c"/></marker>
+    </defs>
+    <rect x="12" y="40" width="112" height="86" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+    <text x="68" y="72" text-anchor="middle" font-size="13" font-weight="bold" fill="#c2410c">Raw scores</text>
+    <text x="68" y="92" text-anchor="middle" font-size="10.5" fill="#475569">one number</text>
+    <text x="68" y="106" text-anchor="middle" font-size="10.5" fill="#475569">per person</text>
+    <line x1="126" y1="83" x2="144" y2="83" stroke="#ea580c" stroke-width="2" marker-end="url(#arr)"/>
+    <rect x="147" y="40" width="112" height="86" rx="10" fill="#fff" stroke="#ea580c" stroke-width="2"/>
+    <text x="203" y="72" text-anchor="middle" font-size="13" font-weight="bold" fill="#c2410c">Data tables</text>
+    <text x="203" y="92" text-anchor="middle" font-size="10.5" fill="#475569">raw table or</text>
+    <text x="203" y="106" text-anchor="middle" font-size="10.5" fill="#475569">frequency table</text>
+    <line x1="261" y1="83" x2="279" y2="83" stroke="#ea580c" stroke-width="2" marker-end="url(#arr)"/>
+    <rect x="282" y="40" width="112" height="86" rx="10" fill="#fff" stroke="#ea580c" stroke-width="2"/>
+    <text x="338" y="66" text-anchor="middle" font-size="13" font-weight="bold" fill="#c2410c">Summary</text>
+    <text x="338" y="82" text-anchor="middle" font-size="13" font-weight="bold" fill="#c2410c">statistics</text>
+    <text x="338" y="100" text-anchor="middle" font-size="10.5" fill="#475569">typical value +</text>
+    <text x="338" y="114" text-anchor="middle" font-size="10.5" fill="#475569">spread</text>
+    <line x1="396" y1="83" x2="414" y2="83" stroke="#ea580c" stroke-width="2" marker-end="url(#arr)"/>
+    <rect x="417" y="40" width="112" height="86" rx="10" fill="#fff" stroke="#ea580c" stroke-width="2"/>
+    <text x="473" y="72" text-anchor="middle" font-size="13" font-weight="bold" fill="#c2410c">Graphs</text>
+    <text x="473" y="92" text-anchor="middle" font-size="10.5" fill="#475569">bar chart, histogram,</text>
+    <text x="473" y="106" text-anchor="middle" font-size="10.5" fill="#475569">distribution curve</text>
+    <line x1="531" y1="83" x2="549" y2="83" stroke="#ea580c" stroke-width="2" marker-end="url(#arr)"/>
+    <rect x="552" y="40" width="112" height="86" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+    <text x="608" y="72" text-anchor="middle" font-size="13" font-weight="bold" fill="#166534">Conclusion</text>
+    <text x="608" y="92" text-anchor="middle" font-size="10.5" fill="#475569">what the numbers</text>
+    <text x="608" y="106" text-anchor="middle" font-size="10.5" fill="#475569">actually show</text>
+    <text x="340" y="165" text-anchor="middle" font-size="11.5" fill="#64748b" font-style="italic">Every section of this chapter is one station on this line.</text>
+  </svg>
+  <div class="figure-caption">Figure: the analysis pipeline, from raw scores to a defensible conclusion</div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：一条流水线，五个站点</strong><br>
+    原始分数是一个人一个数，谁也读不出规律。第一步整理成数据表（原始表或频次表），让数字排队；第二步算概括统计量（典型值和散布），把整列数字压成两三个数；第三步画图，让肉眼能看见模式；第四步才下结论，而且结论必须能指回前面某张表或某幅图里的具体数字。顺序不能颠倒：没概括就画图，画出来的是噪声；没数字支撑的结论，只是感想。
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Data Tables — Raw and Frequency</h2>
+
+  <p><strong>Data tables（数据表）</strong> present the quantitative data found in an investigation. They can show the raw data gathered, or frequencies, or the summary statistics calculated from them.</p>
+
+  <h3>Raw data table</h3>
+  <p>A <strong>raw data table（原始数据表：所有单个分数的原样罗列）</strong> lists every individual value measured in the study. Below are the individual self-ratings of obedience (out of 10) from a small study of males and females.</p>
+
+  <table>
+    <tr><th></th><th>Males</th><th>Females</th></tr>
+    <tr><td>Self-rated obedience (out of 10)</td><td>3, 5, 4, 6, 4, 3, 4</td><td>7, 9, 6, 8, 7, 6, 9</td></tr>
+  </table>
+
+  <p>A trend is visible (the female ratings sit higher), but with bigger data sets raw tables stop being readable. Not all raw scores show an obvious trend, so other tables are used to analyse the findings more clearly.</p>
+
+  <h3>Frequency table</h3>
+  <p>A <strong>frequency table（频次表：每个分数各出现了几次）</strong> shows how many times each score occurred in the data set. The same obedience ratings, counted:</p>
+
+  <table>
+    <tr><th>Self-rated obedience score</th><th>Males</th><th>Females</th></tr>
+    <tr><td>3</td><td>2</td><td>0</td></tr>
+    <tr><td>4</td><td>3</td><td>0</td></tr>
+    <tr><td>5</td><td>1</td><td>0</td></tr>
+    <tr><td>6</td><td>1</td><td>2</td></tr>
+    <tr><td>7</td><td>0</td><td>2</td></tr>
+    <tr><td>8</td><td>0</td><td>1</td></tr>
+    <tr><td>9</td><td>0</td><td>2</td></tr>
+  </table>
+
+  <p>The frequency table makes the pattern impossible to miss: every male rating is 6 or below, and most female ratings are 7 or above. Males self-reported lower obedience.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：原始表给人看，频次表给规律看</strong><br>
+    原始表忠实但低效：十几个分数还勉强，几百个就成了电话簿。频次表把「有多少人得了这个分」数出来，分数的分布立刻显形。自己练习时先问一句：这张表数的是人还是次数？数人是原始表，数次数是频次表。
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Measures of Central Tendency</h2>
+
+  <p><strong>Central tendency（集中趋势：找最能代表整组数据的典型值）</strong> is a descriptive statistic that calculates the average or most typical value in a data set. Calculations which describe trends from raw data, including the mean, median, mode and standard deviation, are called <strong>descriptive statistics（描述性统计：用几个数概括一批数据的走向）</strong>.</p>
+
+  <h3>The arithmetic mean</h3>
+  <div class="keyterm-box"><span class="kt">mean（平均数）</span>：把所有分数加起来除以分数个数。<span class="zh">X = ΣX ÷ n</span></div>
+  <p>For example: data set 3, 5, 7, 9, 10, 11, 13. ΣX = 58, divided by the number of scores (7) gives a mean of <strong>8.3</strong>.</p>
+  <p>The mean is the most sensitive and therefore the most powerful measure of central tendency because <strong>all the scores</strong> in the data set are used in the calculation. But the same sensitivity is its weakness: it can be affected by extreme values. The mean is often used on interval/ratio data.</p>
+
+  <h3>The median</h3>
+  <div class="keyterm-box"><span class="kt">median（中位数）</span>：把分数从小到大排好后正中间的那一个。</div>
+  <ul>
+    <li>Odd number of scores: 3, 6, 8, 9, 10 → the median is <strong>8</strong>.</li>
+    <li>Even number of scores: 3, 5, 6, 7, 8, 9 → the mean of the two middle scores, 6 and 7, gives a median of <strong>6.5</strong>.</li>
+  </ul>
+  <p>The median is a simple calculation and is <strong>not affected by extreme scores</strong>. However, it is less sensitive than the mean because it does not include all the values in its calculation, and it is not useful on small data sets because the middle score may not represent the typical score. The median is typically used on ordinal data.</p>
+
+  <h3>The mode</h3>
+  <div class="keyterm-box"><span class="kt">mode（众数）</span>：出现次数最多的分数。</div>
+  <p>Data set 2, 2, 3, 3, 4, 4, 4, 6, 7, 7, 7, 7, 9 → the mode is <strong>7</strong>, the most frequent score. If there are two most frequent scores the data set is <strong>bi-modal</strong> and both should be reported. If more than two modes appear, the mode becomes a meaningless measure.</p>
+  <p>The mode is used on nominal data and is very easy to determine, and it is not affected by extreme scores. But it is not useful on small data sets and is less sensitive than the mean, because not all the values are included in the calculation.</p>
+
+  <h3>Which measure for which data?</h3>
+  <p>Three levels of measurement decide which average you can use:</p>
+  <table>
+    <tr><th>Level of measurement</th><th>What it is</th><th>Example</th><th>Natural average</th></tr>
+    <tr><td>nominal data（名称类数据：只能归类，不能排序）</td><td>Data forms discrete categories</td><td>Hair colour: blonde, brown, red, black</td><td>Mode</td></tr>
+    <tr><td>ordinal data（顺序类数据：排名次的数据）</td><td>Numbers are rankings rather than scores in themselves</td><td>A rank order for attractiveness on a scale of 1 to 5</td><td>Median</td></tr>
+    <tr><td>interval/ratio data（等距/等比数据：有相等单位、可加减的数据）</td><td>Scores on a recognised scale with equal distances between each score</td><td>Time, height</td><td>Mean</td></tr>
+  </table>
+
+  <div class="xp-block">
+    <h4><span class="xp-badge">TRY IT</span> Central tendency checks</h4>
+    <p class="xp-intro">Work each one out before you click. Full workings are in the feedback.</p>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Data set 3, 5, 7, 9, 10, 11, 13. The mean is 9.</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Data set 3, 5, 7, 9, 10, 11, 13. The mean is 8.3.</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Data set 3, 5, 7, 9, 10, 11, 13. The mean is 13.</button>
+    </div>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Data set 3, 5, 6, 7, 8, 9. The median is 6.</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Data set 3, 5, 6, 7, 8, 9. The median is 6.5.</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Data set 3, 5, 6, 7, 8, 9. The median is 7.</button>
+    </div>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Participants sort themselves into hair-colour categories. The right average is the mean.</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Participants sort themselves into hair-colour categories. The right average is the median.</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Participants sort themselves into hair-colour categories. The right average is the mode.</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：三个平均数怎么分工</strong><br>
+    均值最敬业也最脆弱：每个分数都参与计算，所以最能代表整组数据，但一个极端分数就能把它拽偏。中数只看位置：排好队取中间，极端值再大也碰不到它，代价是没有用到全部信息。众数最直观：数出现次数就行，而且它是名称类数据唯一能用的「平均」。数据类型决定选择：能归类的用众数，能排名的用中数，能加减的用均值。
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Measures of Dispersion</h2>
+
+  <p><strong>Dispersion（离散程度：分数互相之间拉开多远）</strong> is a descriptive statistic that calculates the spread of scores in the data set. Measures of central tendency can be misleading if you do not know the variation between the scores: two classes can share the same mean while one is full of similar scores and the other is all extremes.</p>
+
+  <h3>Range</h3>
+  <div class="keyterm-box"><span class="kt">range（全距）</span>：最高分减最低分，最简单的散布量数。</div>
+  <p>Data set 2, 4, 6, 8, 9 → the range is 9 − 2 = <strong>7</strong>. A high range means the scores are spread out; a low range means they are closer together.</p>
+  <p>The range is affected by extreme scores, so it may mislead when there are outliers in the data set. It also does not tell us whether the scores are bunched around the mean or more equally distributed.</p>
+
+  <h3>Interquartile range</h3>
+  <div class="keyterm-box"><span class="kt">interquartile range（四分位距：掐头去尾后的全距）</span>：切掉最低和最高的四分之一，取剩下中间一半分数的全距。</div>
+  <p>If a data set has extreme scores, it is often better to calculate the interquartile range instead. Cutting off the top and bottom 25% removes exactly the outliers that distort the ordinary range.</p>
+
+  <h3>Standard deviation</h3>
+  <div class="keyterm-box"><span class="kt">standard deviation（标准差：每个分数离平均值平均有多远）</span>：用一个数概括所有分数围绕均值的散布。</div>
+  <p><strong>Deviation（离差：单个分数与均值之差）</strong> is the distance of each value from the arithmetic mean. If the mean obedience rating for the male participants was 7, a male rated 9 has a deviation of +2; a male rated 5 has a deviation of −2. Every score has a deviation, so a single value is needed to represent them all: the standard deviation. The higher the standard deviation, the greater the spread of scores around the mean.</p>
+
+  <div class="note-box">
+    <h4>The five-step calculation, worked in full</h4>
+    <p>Take the data set 70, 80, 90, 100, 110, 120, 130, whose mean is 100:</p>
+    <table>
+      <tr><th>Score (X)</th><th>Mean (X̄)</th><th>Deviation (X − X̄)</th><th>Squared deviation (X − X̄)²</th></tr>
+      <tr><td>70</td><td>100</td><td>−30</td><td>900</td></tr>
+      <tr><td>80</td><td>100</td><td>−20</td><td>400</td></tr>
+      <tr><td>90</td><td>100</td><td>−10</td><td>100</td></tr>
+      <tr><td>100</td><td>100</td><td>0</td><td>0</td></tr>
+      <tr><td>110</td><td>100</td><td>10</td><td>100</td></tr>
+      <tr><td>120</td><td>100</td><td>20</td><td>400</td></tr>
+      <tr><td>130</td><td>100</td><td>30</td><td>900</td></tr>
+    </table>
+    <ol class="tight">
+      <li>Subtract the mean from each score to get the deviation scores (done above).</li>
+      <li>Square each deviation to remove the minus signs (final column).</li>
+      <li>Sum the squared deviations: 2800.</li>
+      <li>Divide by the number of scores minus 1: 2800 ÷ (7 − 1) = 2800 ÷ 6 = 466.6. This figure is the <strong>variance（方差）</strong>.</li>
+      <li>Take the square root of the variance: √466.6 = <strong>21.6</strong>. This is the standard deviation.</li>
+    </ol>
+  </div>
+
+  <div class="exam-tip">
+    <strong>Exam tip:</strong> In the exam you may use a calculator for the mean and standard deviation, but you <strong>must show all of your workings</strong>, not just the final figure. If a question asks you to interpret a table or graph, describe the trends and refer to the actual data values to justify your conclusions.
+  </div>
+
+  <div class="xp-block">
+    <h4><span class="xp-badge">TRY IT</span> Dispersion checks</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Data set 2, 4, 6, 8, 9. The range is 7.</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Data set 2, 4, 6, 8, 9. The range is 9.</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Data set 2, 4, 6, 8, 9. The range is 11.</button>
+    </div>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The standard deviation beats the range because it is easier to calculate.</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">The standard deviation beats the range because it uses every score's distance from the mean.</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The standard deviation beats the range because it ignores extreme scores completely.</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：平均值说「典型的人」，散布说「人和人差多远」</strong><br>
+    两组人的平均身高可以都是 170，一组人人 168 到 172，另一组一半 150 一半 190：均值一样，完全不是一回事。所以典型值必须配散布量数一起看。全距只用两个极端分数，一个离群值就能把它撑大；四分位距掐掉两端四分之一，专治离群值；标准差最讲究，把每个分数与均值的距离都算进去，是信息量最大的一种散布量数。算标准差记五步：先求离差，再平方，然后求和，除以 n−1 得方差，最后开方。
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Summary Tables</h2>
+
+  <p><strong>Summary tables（汇总表：把集中趋势和离散量数放进同一张表）</strong> represent the measures of central tendency and dispersion clearly, usually one column per group. The obedience self-ratings from Section 3, fully analysed:</p>
+
+  <table>
+    <tr><th></th><th>Males</th><th>Females</th></tr>
+    <tr><td>Mean obedience rating</td><td>4.1</td><td>7.4</td></tr>
+    <tr><td>Median obedience rating</td><td>4</td><td>7</td></tr>
+    <tr><td>Mode obedience rating</td><td>4</td><td>6, 7 and 9</td></tr>
+    <tr><td>Range of obedience ratings</td><td>3</td><td>3</td></tr>
+    <tr><td>Standard deviation</td><td>1</td><td>1.2</td></tr>
+  </table>
+
+  <p>Reading it: the typical score is higher for females than males, on every measure of central tendency. The modal score for females is not useful as three modes have been calculated. The spread of scores, indicated by the range, is the same for both groups, and the standard deviations are similar, suggesting a roughly equal spread around the mean in both conditions. The conclusion: females consistently rate themselves as more obedient than males, and males consistently rate themselves as less obedient than females.</p>
+
+  <div class="cn-note">
+    <strong>中文理解：读汇总表的固定顺序</strong><br>
+    先看典型值：均值、中数逐行比较两组谁高。再看散布：全距和标准差回答「高出来的那组是人人如此，还是少数人拉高」。最后看异常信号：这组女生的众数出现了三个（6、7、9），等于没有众数，写结论时要说明这一点而不是硬拿它当典型值。
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Graphical Representation of Data</h2>
+
+  <p>Graphs illustrate summary data or data frequencies. The two most common both use bars, but they answer different questions:</p>
+
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Bar chart 条形图</h4>
+      <p class="tight">Presents data from a <strong>categorical variable（类别变量）</strong>, such as the mean, median or mode of each category. The categories sit on the x-axis and the height of the bars represents the value. <strong>The bars are separated by a space</strong>, because the categories are discrete: nothing exists between "males" and "females".</p>
+    </div>
+    <div class="compare-card">
+      <h4>Histogram 直方图</h4>
+      <p class="tight">Presents the <strong>distribution of scores</strong> by illustrating the frequency of values. The possible values run along the x-axis as a continuous scale. <strong>The bars are joined</strong>, because the data is continuous rather than categorical: a score of 7.5 really does sit between 7 and 8.</p>
+    </div>
+  </div>
+
+  <div class="figure">
+  <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+    <text x="170" y="24" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#c2410c">Bar chart</text>
+    <text x="170" y="40" text-anchor="middle" font-size="10.5" fill="#64748b">bars separated: categories</text>
+    <line x1="55" y1="180" x2="290" y2="180" stroke="#334155" stroke-width="1.5"/>
+    <line x1="55" y1="180" x2="55" y2="55" stroke="#334155" stroke-width="1.5"/>
+    <rect x="80" y="90" width="55" height="90" fill="#ea580c"/>
+    <rect x="150" y="70" width="55" height="110" fill="#f97316"/>
+    <rect x="220" y="105" width="55" height="75" fill="#fdba74"/>
+    <text x="107" y="196" text-anchor="middle" font-size="10" fill="#475569">Cat A</text>
+    <text x="177" y="196" text-anchor="middle" font-size="10" fill="#475569">Cat B</text>
+    <text x="247" y="196" text-anchor="middle" font-size="10" fill="#475569">Cat C</text>
+    <text x="34" y="120" text-anchor="middle" font-size="10" fill="#64748b" transform="rotate(-90 34 120)">value</text>
+    <text x="510" y="24" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#c2410c">Histogram</text>
+    <text x="510" y="40" text-anchor="middle" font-size="10.5" fill="#64748b">bars joined: continuous scale</text>
+    <line x1="395" y1="180" x2="630" y2="180" stroke="#334155" stroke-width="1.5"/>
+    <line x1="395" y1="180" x2="395" y2="55" stroke="#334155" stroke-width="1.5"/>
+    <rect x="415" y="140" width="42" height="40" fill="#ea580c"/>
+    <rect x="457" y="100" width="42" height="80" fill="#f97316"/>
+    <rect x="499" y="60" width="42" height="120" fill="#c2410c"/>
+    <rect x="541" y="90" width="42" height="90" fill="#f97316"/>
+    <rect x="583" y="135" width="42" height="45" fill="#ea580c"/>
+    <text x="415" y="196" text-anchor="middle" font-size="10" fill="#475569">2</text>
+    <text x="499" y="196" text-anchor="middle" font-size="10" fill="#475569">4</text>
+    <text x="583" y="196" text-anchor="middle" font-size="10" fill="#475569">6</text>
+    <text x="374" y="120" text-anchor="middle" font-size="10" fill="#64748b" transform="rotate(-90 374 120)">frequency</text>
+    <text x="340" y="222" text-anchor="middle" font-size="11.5" fill="#64748b" font-style="italic">Same bars, different message: gap = categories, joined = a continuous scale</text>
+  </svg>
+  <div class="figure-caption">Figure: the bar gap is the whole difference between the two graphs</div>
+  </div>
+
+  <p>Patterns within the data may be easier to see if the data is grouped before being shown on a graph. Raw scores in a graph look messy and are not useful to draw conclusions from; graphical representations are supposed to be meaningful and summative, and plotting raw data does not achieve this.</p>
+
+  <div class="exam-tip">
+    <strong>Exam tip:</strong> If you are asked to draw a graph from a table, you must plot the values carefully, label both axes clearly and give the graph a title. If you are asked to interpret a graph, describe the trends and justify your conclusions by referring to the data presented.
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：条缝即分界</strong><br>
+    判断一张图该不该留缝，只看 x 轴上的东西是什么：是彼此独立的类别（男女、发型），条与条留空，用条形图；是有连续刻度的量（年龄、分数），条连成一片，用直方图。另一个易错点：图是用来概括数据的，把几十个原始分数直接堆上去，画出来一片混乱，什么结论都得不到；先分组或先算汇总值，再画。
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Percentages, Ratios and Fractions</h2>
+
+  <p>Both ratios and fractions show how a part relates to a whole or to another part. They turn counts into comparable quantities.</p>
+
+  <h3>Percentage</h3>
+  <p>A percentage score gives the relative proportion of people who achieved a particular score: divide the number who achieved the score by the total number, and multiply by 100.</p>
+  <p>Example: 5 people achieved an obedience score of 9, out of 49 participants. 5 ÷ 49 × 100 = <strong>10.20%</strong>. About one participant in ten scored exactly 9.</p>
+
+  <h3>Ratio</h3>
+  <div class="keyterm-box"><span class="kt">ratio（比）</span>：两个量之间的倍数关系，各部分之间用冒号隔开。</div>
+  <ul>
+    <li><strong>Part-to-whole ratio:</strong> 5 : 10 shows five parts out of a total of ten.</li>
+    <li><strong>Part-to-part ratio:</strong> in a group of five people, 3 : 2 could represent 3 girls to 2 boys.</li>
+    <li>Worked example: 100 people obeyed a command and 500 did not, so 100 : 500, which simplifies to <strong>1 : 5</strong>.</li>
+  </ul>
+
+  <h3>Fraction</h3>
+  <div class="keyterm-box"><span class="kt">fraction（分数）</span>：分子是被数的部分，分母是整体总量。</div>
+  <p>If 100 people did not obey and 500 people did obey, obeying participants are 100 out of a total 600: 100/600, which simplifies to <strong>1/6</strong>.</p>
+  <p>Fractions convert easily to decimals by dividing the numerator by the denominator (1/4 = 0.25), and decimals convert to percentages by multiplying by 100 (0.25 × 100 = 25%).</p>
+
+  <div class="cn-note">
+    <strong>中文理解：三件套各管一头</strong><br>
+    百分比回答「一百个人里有几个」，比回答「这一份是那一份的几倍」，分数回答「占了整体的几分之几」。同一个事实可以有三种写法：100 人服从、500 人不服从，写成比是 1 : 5，写成分数是 100/600 即 1/6，写成百分比约是 16.7%。算题时先分清问的是「部分比部分」还是「部分比整体」，比值和分数的分母由此决定。
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. The Normal Distribution</h2>
+
+  <p>Small samples only support the summary statistics seen so far. With larger samples it becomes useful to examine the overall <strong>distribution（分布：整组分数的整体形状）</strong>, the frequency of each value across the data set, and to estimate the distribution of scores in the whole population.</p>
+
+  <p>When the frequency distribution of a population is plotted, many measurements form a bell-shaped curve: a <strong>normal distribution（正态分布：中间高两头低的对称钟形）</strong>. Height is the classic example: most people gather around the average, and the further a score is from the average, the rarer it is.</p>
+
+  <div class="figure">
+  <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+    <defs>
+      <marker id="arr2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#1e3a5f"/></marker>
+      <marker id="arr3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#16a34a"/></marker>
+    </defs>
+    <path d="M60,210 C200,206 240,55 340,55 C440,55 480,206 620,210" fill="none" stroke="#ea580c" stroke-width="3"/>
+    <path d="M60,210 C200,206 240,55 340,55 C440,55 480,206 620,210 L620,210 Z" fill="rgba(234,88,12,.10)" stroke="none"/>
+    <line x1="45" y1="210" x2="640" y2="210" stroke="#334155" stroke-width="1.5"/>
+    <line x1="340" y1="210" x2="340" y2="50" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4"/>
+    <line x1="292" y1="210" x2="292" y2="95" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3 4"/>
+    <line x1="388" y1="210" x2="388" y2="95" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3 4"/>
+    <line x1="244" y1="210" x2="244" y2="125" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3 4"/>
+    <line x1="436" y1="210" x2="436" y2="125" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3 4"/>
+    <text x="148" y="228" text-anchor="middle" font-size="11" fill="#64748b">−3σ</text>
+    <text x="244" y="228" text-anchor="middle" font-size="11" fill="#64748b">−2σ</text>
+    <text x="292" y="228" text-anchor="middle" font-size="11" fill="#64748b">−1σ</text>
+    <text x="340" y="228" text-anchor="middle" font-size="11" font-weight="bold" fill="#c2410c">mean</text>
+    <text x="388" y="228" text-anchor="middle" font-size="11" fill="#64748b">+1σ</text>
+    <text x="436" y="228" text-anchor="middle" font-size="11" fill="#64748b">+2σ</text>
+    <text x="532" y="228" text-anchor="middle" font-size="11" fill="#64748b">+3σ</text>
+    <line x1="296" y1="175" x2="384" y2="175" stroke="#1e3a5f" stroke-width="1.5" marker-start="url(#arr2)" marker-end="url(#arr2)"/>
+    <text x="340" y="165" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#1e3a5f">68% of the population</text>
+    <line x1="248" y1="145" x2="432" y2="145" stroke="#16a34a" stroke-width="1.5" marker-start="url(#arr3)" marker-end="url(#arr3)"/>
+    <text x="340" y="135" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#166534">95% of the population</text>
+    <text x="340" y="250" text-anchor="middle" font-size="11" fill="#64748b" font-style="italic">The curve is symmetric: mean, median and mode coincide at the mid-point</text>
+  </svg>
+  <div class="figure-caption">Figure: a normal distribution curve, with the 68% and 95% bands marked</div>
+  </div>
+
+  <p>Three features define the normal distribution:</p>
+  <ul>
+    <li><strong>Symmetry around the mid-point.</strong> The mean, median and mode should all be aligned at the centre.</li>
+    <li><strong>The tails never touch the horizontal axis.</strong> Extreme scores are always possible, just vanishingly rare.</li>
+    <li><strong>Fixed proportions under the curve.</strong> It is a rule of normal distribution that 68% of the population falls between one standard deviation each side of the mid-point, and 95% falls between two standard deviations each side.</li>
+  </ul>
+
+  <div class="note-box">
+    <h4>Using σ to count people</h4>
+    <p>Standard deviation is given the symbol σ, so 1σ means one standard deviation. Example: the standard deviation for a set of obedience scores was 2.8 and the mean score was 7. One standard deviation above the mid-point is 7 + 2.8 = 9.8; one below is 4.2. So 68% of the sample would score between <strong>4.2 and 9.8</strong>, and 95% would fall between two standard deviations each side of the mid-point, that is between <strong>1.4 and 12.6</strong>. To know exactly what values those intervals represent, the standard deviation must be calculated on the raw scores.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：钟形曲线为什么重要</strong><br>
+    正态分布三个记忆点：三点重合（均值、中数、众数都站在正中间）、尾巴不落地（极端分数永远存在只是极少）、比例固定（±1σ 装下约 68% 的人，±2σ 装下约 95%）。最后的例子演示怎么用这两个比例做估算：知道均值 7、标准差 2.8，就能断言大多数人的分数落在 4.2 到 9.8 之间。这把「散布量数」从描述工具变成了预测工具。
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Skewed Distributions</h2>
+
+  <p>Some distributions are not symmetrical: they are <strong>skewed（偏态：峰不在中间，被挤向一边）</strong>. The cause is usually the difficulty of the test or the nature of the sample.</p>
+
+  <div class="figure">
+  <svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+    <text x="115" y="26" text-anchor="middle" font-size="13" font-weight="bold" fill="#c2410c">Normal</text>
+    <line x1="20" y1="180" x2="210" y2="180" stroke="#334155" stroke-width="1.5"/>
+    <path d="M25,180 C75,176 80,70 115,70 C150,70 155,176 205,180" fill="none" stroke="#ea580c" stroke-width="2.5"/>
+    <circle cx="115" cy="70" r="5" fill="#c2410c"/>
+    <text x="115" y="198" text-anchor="middle" font-size="10.5" fill="#475569">mean = median = mode</text>
+    <text x="115" y="212" text-anchor="middle" font-size="10.5" fill="#64748b">symmetric</text>
+
+    <text x="340" y="26" text-anchor="middle" font-size="13" font-weight="bold" fill="#c2410c">Negative skew</text>
+    <text x="340" y="42" text-anchor="middle" font-size="10.5" fill="#64748b">most people score highly</text>
+    <line x1="245" y1="180" x2="435" y2="180" stroke="#334155" stroke-width="1.5"/>
+    <path d="M250,178 C300,176 355,72 395,72 C420,72 428,120 430,180" fill="none" stroke="#ea580c" stroke-width="2.5"/>
+    <circle cx="303" cy="180" r="5" fill="#1e3a5f"/>
+    <circle cx="345" cy="180" r="5" fill="#166534"/>
+    <circle cx="393" cy="180" r="5" fill="#c2410c"/>
+    <text x="300" y="198" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1e3a5f">mean</text>
+    <text x="345" y="198" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#166534">median</text>
+    <text x="400" y="198" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#c2410c">mode</text>
+    <text x="340" y="212" text-anchor="middle" font-size="10.5" fill="#64748b">tail on the left (low end)</text>
+
+    <text x="565" y="26" text-anchor="middle" font-size="13" font-weight="bold" fill="#c2410c">Positive skew</text>
+    <text x="565" y="42" text-anchor="middle" font-size="10.5" fill="#64748b">most people score low</text>
+    <line x1="470" y1="180" x2="660" y2="180" stroke="#334155" stroke-width="1.5"/>
+    <path d="M475,180 C478,120 486,72 510,72 C550,72 610,176 655,178" fill="none" stroke="#ea580c" stroke-width="2.5"/>
+    <circle cx="512" cy="180" r="5" fill="#c2410c"/>
+    <circle cx="560" cy="180" r="5" fill="#166534"/>
+    <circle cx="612" cy="180" r="5" fill="#1e3a5f"/>
+    <text x="505" y="198" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#c2410c">mode</text>
+    <text x="560" y="198" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#166534">median</text>
+    <text x="618" y="198" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1e3a5f">mean</text>
+    <text x="565" y="212" text-anchor="middle" font-size="10.5" fill="#64748b">tail on the right (high end)</text>
+  </svg>
+  <div class="figure-caption">Figure: the tail always drags the mean; the median stays in the middle and the mode stays on the peak</div>
+  </div>
+
+  <h3>How each skew arises</h3>
+  <ul>
+    <li><strong>Negative skew:</strong> if a test is easy, or the aptitude of the sample is unusually high, most people score highly. Scores bunch on the right with a tail on the left. The mean is pulled left by the few low scores, so the mean is lower than the mode.</li>
+    <li><strong>Positive skew:</strong> if a test is particularly difficult, or the aptitude of the sample is low, most people achieve low scores. Scores bunch on the left with a tail on the right. The mean is pulled right by the few high scores, so the mean is higher than the mode.</li>
+  </ul>
+
+  <h3>Placing the three averages</h3>
+  <p>When plotting the mean, median and mode on any distribution curve: the <strong>median</strong> is always exactly in the middle of the x-axis, the <strong>mode</strong> sits where the most values are (the peak), and the <strong>mean</strong> is dragged toward the tail, right on a positive skew and left on a negative skew.</p>
+
+  <div class="note-box">
+    <h4>A memory trick</h4>
+    <p>A common confusion is which skew is "positive". Remember: a positive skew has its tail at the <strong>positive (high) end</strong> of the horizontal axis, and a negative skew has its tail at the negative (low) end. Some students draw a face on the curve so it becomes a whale: a whale swimming towards the vertical axis is coming home, so it is positive; a whale swimming away is negative, because it is leaving.</p>
+  </div>
+
+  <div class="cn-note">
+    <strong>中文理解：尾巴拽走均值</strong><br>
+    偏态曲线只需要抓两件事。第一，命名跟尾巴走：尾巴拖在分数高的一端叫正偏态，拖在低的一端叫负偏态。第二，三个平均数的排队规律：中数永远在正中间，众数站在峰顶（分数最密集处），均值被少数极端分数的尾巴拉走。道理很朴素：均值要平均每一个分数，尾部的少数离群值就在它身上占了分量；中数和众数只看位置和次数，尾巴碰不到它们。所以偏态分布里「均值和众数谁大」，答案取决于尾巴在哪边。
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Checkpoint</h2>
+
+  <div class="checkpoint">
+    <h3>Identify the statistic</h3>
+    <p>Each description below defines one of: mean, median, mode, range, standard deviation.</p>
+
+    <div class="xp-block">
+      <h4><span class="xp-badge">Q1</span> "The most frequent score observed in a data set."</h4>
+      <div class="xp-controls">
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Mean</button>
+        <button class="q-option" data-ok="1" onclick="mcAns(this)">Mode</button>
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Standard deviation</button>
+      </div>
+      <div class="xp-result"></div>
+    </div>
+
+    <div class="xp-block">
+      <h4><span class="xp-badge">Q2</span> "The middle value of a data set, once the scores are placed in rank order."</h4>
+      <div class="xp-controls">
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Mode</button>
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Range</button>
+        <button class="q-option" data-ok="1" onclick="mcAns(this)">Median</button>
+      </div>
+      <div class="xp-result"></div>
+    </div>
+
+    <div class="xp-block">
+      <h4><span class="xp-badge">Q3</span> "The spread of scores calculated by subtracting the lowest score from the highest score."</h4>
+      <div class="xp-controls">
+        <button class="q-option" data-ok="1" onclick="mcAns(this)">Range</button>
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Interquartile range</button>
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Variance</button>
+      </div>
+      <div class="xp-result"></div>
+    </div>
+
+    <div class="xp-block">
+      <h4><span class="xp-badge">Q4</span> "The arithmetic average calculated by totalling the scores and dividing by the number of values."</h4>
+      <div class="xp-controls">
+        <button class="q-option" data-ok="1" onclick="mcAns(this)">Mean</button>
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Median</button>
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Mode</button>
+      </div>
+      <div class="xp-result"></div>
+    </div>
+
+    <div class="xp-block">
+      <h4><span class="xp-badge">Q5</span> "The average deviation of scores from the arithmetic mean."</h4>
+      <div class="xp-controls">
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Range</button>
+        <button class="q-option" data-ok="1" onclick="mcAns(this)">Standard deviation</button>
+        <button class="q-option" data-ok="0" onclick="mcAns(this)">Median</button>
+      </div>
+      <div class="xp-result"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Exam Lab</h2>
+
+  <p>Quantitative data questions are among the most frequent on Paper 1: a calculation, a choice of statistic to justify, and data interpretation. The four questions below come from one exam-style scenario, worked from the first calculation to the comparison of statistics.</p>
+
+  <div class="exam-practice">
+    <h3>Exam practice — Rong-jun's obedience study</h3>
+    <p class="small">Rong-jun was investigating the obedience of students at a school. She wanted to find out if obedience levels changed depending on the status of the authority figure. She sampled a total of 300 students across the whole school.</p>
+
+    <h4>Q1 (1 mark)</h4>
+    <p>She found that 92 per cent of the students sampled said they would obey a senior teacher even if they disagreed with the senior teacher's command. Calculate the number of students who said they would obey the senior teacher.</p>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans1')">Show answer</button></div>
+    <div class="xp-result" id="ans1">
+      <p><strong>0.92 × 300 = 276 students.</strong> Show the working line, not just the answer: percentage × total = number. One mark for the correct figure with visible workings.</p>
+    </div>
+
+    <h4>Q2 (1 mark)</h4>
+    <p>A total of 30 students in Rong-jun's sample said that they would follow the instructions of another student (a peer) even if they disagreed with them. The other students said that they would not. Calculate the ratio of students who would follow the instructions of another student to those who would not.</p>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans2')">Show answer</button></div>
+    <div class="xp-result" id="ans2">
+      <p><strong>30 : 270, which simplifies to 1 : 9.</strong> First find both parts: 30 followers and 300 − 30 = 270 non-followers. Then simplify the part-to-part ratio by dividing both sides by 30.</p>
+    </div>
+
+    <h4>Q3 (2 marks)</h4>
+    <p>Rong-jun asked the students to rate their level of obedience on a scale of 1 (very disobedient) to 10 (very obedient). She calculated the mean obedience rating. Explain one reason why Rong-jun calculated the mean rating rather than the mode score.</p>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans3')">Show answer</button></div>
+    <div class="xp-result" id="ans3">
+      <p><strong>The mean is the most sensitive measure of central tendency because every score in the data set contributes to the calculation, whereas the mode only counts the most frequent score.</strong> One mark for a valid reason to prefer the mean (uses all scores / most sensitive), one mark for the linked weakness of the mode (ignores most of the data, can be unrepresentative, especially with a small data set or several modes).</p>
+    </div>
+
+    <h4>Q4 (2 marks)</h4>
+    <p>Explain why Rong-jun calculated the standard deviation of the obedience ratings rather than using the range.</p>
+    <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans4')">Show answer</button></div>
+    <div class="xp-result" id="ans4">
+      <p><strong>The range uses only the two extreme scores, so a single outlier would distort it, and it says nothing about how the remaining scores are arranged.</strong> The standard deviation uses every score's deviation from the mean, so it represents the spread of the whole data set. One mark for a limitation of the range, one mark for the advantage of the standard deviation.</p>
+    </div>
+  </div>
+
+  <div class="exam-tip">
+    <strong>Three rules that earn marks on data questions:</strong>
+    <ul class="tight">
+      <li><strong>Show your workings.</strong> A calculation answer needs the working line and the final figure, not the figure alone.</li>
+      <li><strong>Quote the data.</strong> When asked to describe trends or draw conclusions, refer to the actual values in the table or graph.</li>
+      <li><strong>Draw graphs properly.</strong> Plot values carefully, label both axes, and give the graph a title.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. Key Terms</h2>
+  <div class="glossary-grid">
+    <div class="keyterm-box"><span class="kt">quantitative data</span><br><span class="zh">定量数据：用数字记录的研究结果</span></div>
+    <div class="keyterm-box"><span class="kt">raw scores</span><br><span class="zh">原始分数：每个参与者各自的那一个数</span></div>
+    <div class="keyterm-box"><span class="kt">frequency table</span><br><span class="zh">频次表：每个分数各出现了几次</span></div>
+    <div class="keyterm-box"><span class="kt">descriptive statistics</span><br><span class="zh">描述性统计：概括原始数据走向的计算，包括均值、中数、众数和标准差</span></div>
+    <div class="keyterm-box"><span class="kt">central tendency</span><br><span class="zh">集中趋势：整组数据的典型值</span></div>
+    <div class="keyterm-box"><span class="kt">dispersion</span><br><span class="zh">离散程度：分数互相之间拉开多远</span></div>
+    <div class="keyterm-box"><span class="kt">mean</span><br><span class="zh">平均数：总分除以个数</span></div>
+    <div class="keyterm-box"><span class="kt">median</span><br><span class="zh">中位数：排序后正中间的分数</span></div>
+    <div class="keyterm-box"><span class="kt">mode</span><br><span class="zh">众数：出现最多的分数</span></div>
+    <div class="keyterm-box"><span class="kt">range</span><br><span class="zh">全距：最高分减最低分</span></div>
+    <div class="keyterm-box"><span class="kt">interquartile range</span><br><span class="zh">四分位距：中间一半分数的全距</span></div>
+    <div class="keyterm-box"><span class="kt">standard deviation</span><br><span class="zh">标准差：分数与均值距离的平均水平</span></div>
+    <div class="keyterm-box"><span class="kt">variance</span><br><span class="zh">方差：平方离差的平均值，开方即标准差</span></div>
+    <div class="keyterm-box"><span class="kt">nominal data</span><br><span class="zh">名称类数据：只能归入类别的数据</span></div>
+    <div class="keyterm-box"><span class="kt">ordinal data</span><br><span class="zh">顺序类数据：排名次而非计分数的数据</span></div>
+    <div class="keyterm-box"><span class="kt">interval/ratio data</span><br><span class="zh">等距/等比数据：有相等单位、可加减的数据</span></div>
+    <div class="keyterm-box"><span class="kt">normal distribution</span><br><span class="zh">正态分布：对称钟形，三个平均数重合</span></div>
+    <div class="keyterm-box"><span class="kt">skewed distribution</span><br><span class="zh">偏态分布：不对称，尾巴拽走均值</span></div>
+  </div>
+
+  <p class="footer-note">Edexcel IAL Psychology · Topic A · Spec 1.2.6 · Analysis of Quantitative Data</p>
+</section>
+
+</main>
+</div>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  /* ---------- sidebar scroll spy ---------- */
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  /* ---------- reveal helper ---------- */
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  /* ---------- multiple choice: one why per option ---------- */
+  var secWhy = {
+    s4: [
+      ['9 is the median, not the mean: order the data set and the middle score is 9.',
+       'Correct. 3 + 5 + 7 + 9 + 10 + 11 + 13 = 58, and 58 divided by 7 scores gives 8.3.',
+       '13 is the highest score, not the average of the whole data set.'],
+      ['6 is the lower of the two middle scores; with an even number of scores the median is the mean of the two middle values.',
+       'Correct. The middle scores are 6 and 7, and (6 + 7) / 2 gives a median of 6.5.',
+       '7 is the upper of the two middle scores, not the median of the six-value data set.'],
+      ['The mean needs arithmetic on scores with equal units, and hair-colour categories have none.',
+       'Categories cannot be ranked in order, so there is no middle value for a median.',
+       'Correct. Nominal data forms discrete categories, so the only usable average is the most frequent category, the mode.']
+    ],
+    s5: [
+      ['9 is the highest score; the range is the difference between highest and lowest.',
+       'Correct. The range is 9 minus 2, which equals 7.',
+       '11 double-counts: subtracting the lowest from the highest never gives the sum.'],
+      ['Ease of calculation is not the reason: the range is actually the easier one to compute.',
+       'Correct. Every score contributes its deviation from the mean, so the SD reflects the whole data set rather than two extremes.',
+       'The SD does not ignore extreme scores; it includes every score, which is exactly why it is more representative.']
+    ],
+    s11: [
+      ['The mean totals all scores and divides; frequency is not part of its definition.',
+       'Correct. The mode is defined as the value that occurs most frequently.',
+       'The standard deviation measures spread around the mean, not which score occurs most.'],
+      ['The mode is about frequency, not position in an ordered list.',
+       'The range spans highest minus lowest and has no middle value.',
+       'Correct. Rank order the scores, then take the middle value; with an even count, average the two middle scores.'],
+      ['Correct. The range is simply the highest value minus the lowest value.',
+       'The interquartile range cuts off the top and bottom quarter first; this description keeps both extremes.',
+       'The variance is the sum of squared deviations divided by n minus 1, not a highest-minus-lowest subtraction.'],
+      ['Correct. Total the scores, divide by the number of scores: that is the arithmetic mean.',
+       'The median only takes the middle value after ranking; no totalling is involved.',
+       'The mode takes the most frequent value; nothing is totalled or divided.'],
+      ['The range is a two-score subtraction, not an average of distances.',
+       'Correct. The standard deviation gives a single value for how scores spread around the mean, averaging the deviations.',
+       'The median is a positional value and never averages deviations.']
+    ]
+  };
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = (btn.closest('.xp-block') || section).querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+</script>
+</body>
+</html>
