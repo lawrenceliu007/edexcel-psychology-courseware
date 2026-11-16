@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.1.3 Content — Reconstructive Memory</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic B · Cognitive psychology — 2.1.3 Content</span>
+  </div>
+  <span class="nav-pill">🧠 Cognitive Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">2.1.3 Content</div>
+    <div class="sb-header-sub">Reconstructive Memory · Schema</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s1">1. Memory as Reconstruction</a></li>
+    <li class="sb-item"><a href="#s2">2. Schema Theory</a></li>
+    <li class="sb-item"><a href="#s3">3. Evidence for Schemas</a></li>
+    <li class="sb-item"><a href="#s4">4. Eyewitness Testimony</a></li>
+    <li class="sb-item"><a href="#s5">5. Evaluation</a></li>
+    <li class="sb-item"><a href="#s6">6. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s7">7. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s8">8. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>2.1.3 RECONSTRUCTIVE MEMORY<br><span style="font-size:0.65em">Bartlett (1932) · Schema theory · Distortion · Eyewitness testimony · 重构记忆与图式理论</span></h1>
+  <div class="meta">
+    <span class="badge">Topic B · Cognitive psychology</span>
+    <span class="badge">Content</span>
+    <span class="badge">Spec 2.1.3</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.10 · pp.96–100</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this page is really asking</h4>
+  <ol>
+    <li><strong>Memory is not a video recording.</strong> Bartlett argued that recalling an event is an act of rebuilding it from fragments, guided by what you already know.</li>
+    <li><strong>Schemas do the rebuilding.</strong> A schema is a parcel of stored knowledge built from experience, and it shapes memory twice: what gets stored, and how the fragments get reassembled at recall.</li>
+    <li><strong>The cost is distortion.</strong> When reconstruction runs on the wrong schema, the remembered event diverges from the real one, which is why eyewitness testimony needs caution.</li>
+    <li><strong>The theory has limits.</strong> Real-world recall can be accurate, and the theory is vague about exactly how reconstruction happens.</li>
+  </ol>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Explain reconstructive memory</strong>: memory as active rebuilding from stored fragments rather than playback of a faithful record.</li>
+    <li><strong>Define schema theory</strong> and describe how schemas influence memory at encoding and again at retrieval.</li>
+    <li><strong>Use the evidence</strong>: Bartlett's War of the Ghosts findings, Brewer and Treyens (1981) office study, Tuckey and Brewer (2003) bank robbery, Zhu et al. (2012).</li>
+    <li><strong>Evaluate the theory</strong>: Steyvers and Hemmer's (2012) accuracy argument, the vagueness of the reconstruction process, and the laboratory-versus-real-life gap.</li>
+    <li><strong>Apply schema theory to scenarios</strong>, explaining why two witnesses remember the same event differently.</li>
+  </ul>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Memory as Reconstruction</h2>
+  <p>Try a quick demonstration. Read this once, then cover it and recount it as carefully as you can:</p>
+  <p class="small"><em>When the man entered the kitchen, he slipped on a wet spot and dropped the delicate glass pitcher on the floor. The pitcher was very expensive and everyone watched the event in horror.</em> (Bransford, 1979)</p>
+  <p>People typically recall that the glass smashed. Nothing in the passage says so. The word <em>glass</em> plus the context of the story invites the inference, and the inference becomes part of the memory. Bartlett's theory explains this exactly: the story was stored, but at recall you used your imagination to rebuild it.</p>
+  <p>Sir Frederic C. Bartlett (1886–1969) was one of the most influential cognitive psychologists of the last century; his signature contribution was a series of memory experiments published in his book <em>Remembering</em>. Against the fashion of his time, he insisted on studying memory in a real context: experiments should not just capture reactions, they should capture human beings. He rejected the idea of dividing memory into independent parts and studying each in isolation; memory had to be understood in its relationship to other cognitive processes.</p>
+  <p>From his experiments Bartlett built the theory of <strong>reconstructive memory</strong>（重构记忆：回忆是在重建，不是在回放）. When we experience an event we record it like a series of notes on a notepad: partial, sketchy. When we later remember the event, we return to those notes and actively try to make sense of them, drawing on previously stored knowledge. In doing so we may add, reinterpret, fill in gaps and transform the fragments into a coherent story. It is an <strong>imaginative reconstruction</strong>, and the original event can end up distorted in the process.</p>
+  <div class="figure">
+    <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, sans-serif">
+      <defs>
+        <marker id="ar3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#334155"/></marker>
+      </defs>
+      <!-- event -->
+      <rect x="30" y="96" width="120" height="64" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+      <text x="90" y="122" text-anchor="middle" font-size="12" font-weight="700" fill="#1e40af">Real event</text>
+      <text x="90" y="140" text-anchor="middle" font-size="10" fill="#475569">full detail</text>
+      <!-- schema filter at encoding -->
+      <rect x="185" y="88" width="120" height="80" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="245" y="112" text-anchor="middle" font-size="11.5" font-weight="700" fill="#c2410c">Schema filter</text>
+      <text x="245" y="130" text-anchor="middle" font-size="9.8" fill="#475569">store what fits,</text>
+      <text x="245" y="144" text-anchor="middle" font-size="9.8" fill="#475569">drop or change the rest</text>
+      <!-- notes -->
+      <rect x="340" y="96" width="110" height="64" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+      <text x="395" y="122" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">Stored notes</text>
+      <text x="395" y="140" text-anchor="middle" font-size="10" fill="#475569">partial traces</text>
+      <!-- recall: rebuild -->
+      <rect x="485" y="88" width="160" height="80" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+      <text x="565" y="110" text-anchor="middle" font-size="11.5" font-weight="700" fill="#166534">Recall = rebuild</text>
+      <text x="565" y="128" text-anchor="middle" font-size="9.8" fill="#475569">schema fills the gaps,</text>
+      <text x="565" y="142" text-anchor="middle" font-size="9.8" fill="#475569">makes a coherent story</text>
+      <!-- arrows -->
+      <line x1="150" y1="128" x2="185" y2="128" stroke="#334155" stroke-width="2" marker-end="url(#ar3)"/>
+      <line x1="305" y1="128" x2="340" y2="128" stroke="#334155" stroke-width="2" marker-end="url(#ar3)"/>
+      <line x1="450" y1="128" x2="485" y2="128" stroke="#334155" stroke-width="2" marker-end="url(#ar3)"/>
+      <!-- output -->
+      <text x="565" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="#991b1b">Remembered event ≠ real event</text>
+      <!-- distortion arrow -->
+      <path d="M565,168 L565,182" fill="none" stroke="#dc2626" stroke-width="1.6" marker-end="url(#ar3)"/>
+    </svg>
+    <div class="figure-caption">Reconstructive memory: schemas filter what is stored and rebuild the fragments at recall, so the remembered event can diverge from the real one.</div>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>Bartlett 的核心比喻是「笔记」：事件发生时只记下几条潦草的要点，回忆时再对着笔记把故事「补写」完整。补写用的墨水来自你的旧知识（图式），所以补出来的故事难免走样。开头那个水罐小实验就是最好的证据：原文没说杯子碎了，但大家记忆里杯子都碎了，因为常识替你补上了这一幕。</p>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Schema Theory</h2>
+  <p><strong>Schemas</strong> are parcels of previously stored knowledge, mental representations of information about a specific event or object. They develop through personal experience, some shared with others and some not, and we use them to interpret and predict events in the world. At recall we draw on our schema to fill the gaps in the stored notes and make sense of them. Recall is therefore an active reconstruction strongly influenced by previously stored knowledge, expectations and beliefs.</p>
+  <h3>Schemas act twice</h3>
+  <ul class="tight">
+    <li><strong>At encoding</strong>: as we experience an event, we tend to store what is consistent with our schema and ignore, fail to store, or even change what is not.</li>
+    <li><strong>At retrieval</strong>: we use our schema to reinterpret the mental notes as we bring them back.</li>
+  </ul>
+  <p>This is why Bartlett suggested memory is prone to distortion: people reconstruct past events through their schemas.</p>
+  <div class="note-box">
+    <h4>Nature and nurture both in play</h4>
+    <p>Schemas can be thought of as the structural, hardware-like components of the memory system, inferred to be biological structures or modules. But the <em>content</em> they represent varies between individuals and across cultures: schemas encode stereotypical beliefs shaped by upbringing, so what fills them is a product of nurture.</p>
+  </div>
+  <div class="note-box">
+    <h4>An application in education</h4>
+    <p>Teachers activate prior knowledge before teaching a topic to establish a schema that bridges the gap between what students know and what they are trying to learn. Relating new content to real-life experiences and personal schemas also makes it more memorable.</p>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>图式就是大脑里的「预期模板」，从个人经验攒出来的。它管两次记忆：往里存的时候，符合模板的才存得进去，不符合的要么被忽略要么被改掉；往外取的时候，又拿模板来补窟窿。所以记忆走样是系统性的、可预测的。图式结构是天生的（nature），里面装的内容是养出来的（nurture），争论两边都占。</p>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Evidence for Schemas</h2>
+  <h3>The office study: Brewer and Treyens (1981)</h3>
+  <p>Participants waited in an office and were later asked to recall the items in it. Some objects were consistent with an office, such as a lamp; one was inconsistent, a skull. Participants were more likely to recall schema-consistent objects, and crucially also recalled objects that fit an office schema but were <strong>not actually there</strong>. They were reading from their office schema, not the room: direct evidence for schema-driven recall.</p>
+  <h3>The bank robbery: Tuckey and Brewer (2003)</h3>
+  <p>Michelle Tuckey and Neil Brewer asked 234 students to list what they thought were common elements of a bank robbery (for example, the robbers left with the money), establishing each student's robbery schema. The students then watched video footage of a real staged robbery and recalled it three days, three weeks and three months later. Witnesses modified schema-inconsistent details from the video (the robbers were wearing suits) into schema-consistent ones (the robbers left in a car) in at least one interview.</p>
+  <h3>Contaminated recall: Zhu et al. (2012)</h3>
+  <p>Participants viewed pictures of an incident in which someone stole a wallet, then read descriptions that were either accurate or inaccurate about the pictures. At recall, the inaccurate information from the descriptions had been incorporated into what participants remembered of the pictures. Post-event information slips straight into memory, which is exactly the mechanism exploited by doctored photographs in the contemporary study on page 2.3.4.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>三个实验一个套路：先看人记什么。办公室实验里大家把没出现过的书桌也「记」出来了，因为办公室模板里有它；抢劫实验里穿西装的劫匪三周后被记成「开车逃跑的劫匪」，因为模板说不穿西装；Zhu 的实验里错误描述直接混进记忆。三个证据共同点：不符合模板的细节会被模板吃掉。</p>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Eyewitness Testimony</h2>
+  <p>An <strong>eyewitness</strong>（目击证人）is a source of evidence about a criminal event, and that evidence may be used in court to convict or defend a suspect. If memory is reconstructive, the reliability of that evidence is in question: the witness's schema may have filtered the encoding and rebuilt the recall, and the court has no way to see the original.</p>
+  <p>The stakes are real. The Innocence Project works to exonerate people imprisoned on mistaken eyewitness identification. One notable case: Ronald Cotton was misidentified by his victim and sentenced to life in prison, spending more than ten years incarcerated before DNA evidence from the actual offender cleared him.</p>
+  <p>Laboratory work shows the same mechanism in miniature. Zhu et al.'s participants absorbed inaccurate descriptions into their memories; Tuckey and Brewer's witnesses bent the robbery footage toward their schema. A witness is not lying when this happens: they are reporting a reconstruction they believe.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>重构记忆理论最大的社会应用就是目击证词。证人不是在撒谎，他是在如实报告自己「补写好的故事」，而补写用的模板可能本来就是错的。Ronald Cotton 被受害者指认、坐了十多年冤狱才靠 DNA 平反，就是最沉重的实例。所以记忆理论直接关系司法：证词该信，但不能全信。</p>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Evaluation</h2>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Supports the theory</h4>
+      <ul class="tight">
+        <li><strong>Bartlett's own findings.</strong> Recall of the culturally unfamiliar folktale War of the Ghosts became shorter, with omissions and changes that made the story culturally familiar to his British participants: reconstruction in action (full analysis on page 2.3.1).</li>
+        <li><strong>Brewer and Treyens (1981).</strong> Recall of schema-consistent office objects, plus objects that were never there.</li>
+        <li><strong>Tuckey and Brewer (2003)</strong> and <strong>Zhu et al. (2012)</strong>: schema-driven and post-event distortion demonstrated with controlled material.</li>
+        <li><strong>Real-world relevance.</strong> The theory explains eyewitness errors that ruin lives, and it feeds practical responses such as activating prior knowledge in education.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Challenges the theory</h4>
+      <ul class="tight">
+        <li><strong>Memory may be better than claimed.</strong> Mark Steyvers and Pernille Hemmer (2012) argue Bartlett-style experiments deliberately induce errors: unfamiliar stories and manipulated material guarantee distortion. In real contexts without manipulated material, recall can be very accurate. Memory is not uniformly unreliable, especially in familiar settings.</li>
+        <li><strong>Prediction is hard.</strong> Resistance to distortion varies across individuals and situations, so it is difficult to predict precisely what will be reconstructed and how.</li>
+        <li><strong>The lab-to-life gap.</strong> Much of the research is laboratory based; in real life we cannot verify how the event actually happened, so the accuracy of recall and the extent of distortion are hard to establish.</li>
+        <li><strong>A partial explanation.</strong> Reconstructive memory says memories are part trace and part reconstruction, but compared with other theories it is vague on the actual processes: it fails to explain how memory is reconstructed at the point of recall.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="exam-tip">
+    <h4>Exam tip: anchor every point in the scenario</h4>
+    <p>You may be asked to explain why an individual recalled an event differently from what happened, or why two people recalled the same event differently. Either way, apply reconstructive memory and schema theory to the <em>specific details</em> of the scenario.</p>
+    <p>Worked example: <em>Maryam reported that the shoplifter stole high-value items including coffee and hair products; CCTV showed he stole low-value items: frozen peas, tinned beans and toothpaste. Explain why Maryam may have reported the incident inaccurately.</em></p>
+    <p>Her report must be explained through her own schema of a shoplifter: her stored expectations about what a shoplifter takes were inconsistent with frozen peas and toothpaste, so at recall she reconstructed the theft around the items her schema predicted, such as coffee and hair products. Every mark comes from tying the theory to those exact details.</p>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>评价抓三句。第一句反打：Steyvers 和 Hemmer 说 Bartlett 的实验材料故意制造错误，日常熟悉场景下记忆可以很准，别把记忆一棒子打死。第二句认短板：理论说了「会补」但没说「怎么补」，相比别的理论在加工过程上含糊。第三句留余地：每个人、每个场景抗走样能力不同，预测不了谁会记错什么。应用题的写法是把理论钉在情节细节上：Maryam 报告咖啡和护发用品，就要用「她对小偷会偷什么有模板」来解释这一处。</p>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Checkpoint</h2>
+  <p>Choose, then read the why.</p>
+  <div class="xp-block">
+    <h4>Q1 · Which of these is a characteristic of reconstructive memory?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Memories are stored as exact copies of what happened</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Memories are not changed</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Memories are prone to distortion and change</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q2 · Schemas are</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">short-term memories which are rehearsed</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">photographic memories which are recalled exactly</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">mental constructs used to perceive and recall information</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q3 · In Bartlett's War of the Ghosts, what did participants do when recalling the story?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Accurately recalled all the details of the story</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Changed the story to make it familiar</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Forgot the story completely</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q4 · What does reconstructive memory suggest about eyewitness testimony?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Witnesses can be unreliable when recalling events</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Witnesses can be trusted to give an accurate account</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Witnesses have photographic recall of events</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q5 · What is one weakness of reconstructive memory?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">It presents an overly pessimistic view of memory as unreliable</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">It tells us that memory is reconstructive</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">There is lots of experimental evidence to support the theory</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q6 · In Brewer and Treyens (1981), what was the key evidence for schema theory?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Participants recalled office-consistent objects that were never in the office</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Participants recalled the skull more often than any other object</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Participants refused to enter an office for the study</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q7 · What did Steyvers and Hemmer (2012) argue?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Schema theory applies only to children</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Recall is always distorted, in every setting</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Bartlett-style experiments induce errors; in real contexts recall can be very accurate</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Exam Lab</h2>
+  <div class="exam-practice">
+    <div class="xp-block">
+      <h4>Q1a · Explain <span class="xp-badge">3 marks</span></h4>
+      <div class="xp-intro">Aisyah and Fatimah witnessed a thief stealing a woman's handbag in the street. Both were asked to describe the thief at the police station. Aisyah said the man was older, had dark hair and wore a dark hooded jacket. Fatimah said the man was younger, had blond hair and wore jeans and a sports jumper. <strong>Explain, using reconstructive memory (Bartlett, 1932), including schema theory, why Aisyah and Fatimah gave different descriptions of the thief to the police.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans1')">Show answer</button></div>
+      <div class="xp-result" id="ans1" hidden>
+        <p><strong>Point:</strong> Each witness encoded and stored the event through her own schema, so each kept different fragments.</p>
+        <p><strong>Expansion:</strong> A schema is a parcel of stored knowledge built from personal experience, and it differs from person to person. At encoding, each woman stored details consistent with her own expectations about what a street thief looks like and let other details fade; at retrieval, each filled the gaps in her stored notes using her own schema, producing a coherent but personal reconstruction.</p>
+        <p><strong>Application:</strong> So Aisyah's schema rebuilt the thief as older with dark hair and a hooded jacket, while Fatimah's schema rebuilt the same man as younger, blond, and in jeans and a sports jumper.</p>
+        <p class="xp-case">Marking guidance: 1 mark per accurate point linking schema differences to encoding and retrieval, up to 3, anchored in the two descriptions.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q1b · Explain one strength <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Explain one strength of using reconstructive memory (Bartlett, 1932), including schema theory, to explain why Aisyah and Fatimah may have recalled the thief differently.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans2')">Show answer</button></div>
+      <div class="xp-result" id="ans2" hidden>
+        <p><strong>Strength:</strong> The theory is supported by controlled evidence, such as Brewer and Treyens (1981), where participants recalled office-consistent objects that were never present, and Tuckey and Brewer (2003), where witnesses reshaped robbery footage to fit their schema.</p>
+        <p><strong>Why it helps here:</strong> This evidence shows schema-driven distortion is a real, repeatable mechanism, so it is credible for explaining how two honest witnesses of the same street theft could produce two different descriptions without either of them lying.</p>
+        <p class="xp-case">Marking guidance: 1 mark for naming a supported strength, 1 mark for explaining how it makes the theory suitable for this scenario.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q2 · Discuss <span class="xp-badge">8 marks</span></h4>
+      <div class="xp-intro">Rabina has memory problems that cause confusion; she is not always able to understand situations and becomes frustrated. She was questioned twice before for antisocial behaviour, was found roaming confused in the early hours unable to find her way home, argued with a man she thought was laughing at her and told police he was lying, and struggled to remember what had happened. Her doctor referred her for a brain scan for memory processing issues. <strong>Discuss how well knowledge from cognitive psychology could explain Rabina's memory issues.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans3')">Show answer</button></div>
+      <div class="xp-result" id="ans3" hidden>
+        <p><strong>Knowledge that explains Rabina:</strong></p>
+        <ul class="tight">
+          <li><strong>Reconstructive memory and schema theory.</strong> Her belief that the man was laughing at her, and her insistence that he was lying, can be explained by schema-guided reconstruction: she interpreted ambiguous social cues through her expectations and rebuilt the event to match them.</li>
+          <li><strong>The multi-store model.</strong> Her everyday confusion and failure to retain new information fit a failure of transfer from the short-term store to the long-term store, the pattern seen in patients such as HM and Clive Wearing.</li>
+          <li><strong>The working memory model.</strong> Not understanding situations as they unfold suggests central-executive difficulties: attention cannot be focused, divided and switched well enough to coordinate the incoming streams.</li>
+        </ul>
+        <p><strong>Where cognitive knowledge falls short:</strong> Cognitive theories explain the <em>processing</em> but not the <em>cause</em>. Rabina's disorientation, her long-term pattern and the doctor's decision to refer her for a brain scan point to a possible underlying neurological impairment, which cognitive models describe functionally but cannot diagnose. Memory research itself notes that real-life distortion is hard to verify because the original event cannot be checked.</p>
+        <p><strong>Conclusion:</strong> Cognitive psychology explains the observable memory failures well, especially the reconstruction of the argument and the confusion in novel situations, but a full account of Rabina's issues needs biological evidence from the scan alongside the cognitive explanation.</p>
+        <p class="xp-case">Marking guidance: AO1 up to 4 marks for accurate cognitive knowledge; AO3 up to 4 marks for discussion: use of the scenario, weighing what the knowledge explains and what it cannot, and a reasoned conclusion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Key Terms</h2>
+  <div class="glossary-grid">
+    <div class="keyterm-box"><span class="kt">reconstructive memory</span><br><span class="zh">重构记忆：回忆时按已有预期改造所存信息的记忆观（Bartlett, 1932）</span></div>
+    <div class="keyterm-box"><span class="kt">schema</span><br><span class="zh">图式：从经验攒出的一包包旧知识，用来解释和预测事件</span></div>
+    <div class="keyterm-box"><span class="kt">imaginative reconstruction</span><br><span class="zh">想象性重构：回忆时用想象补全笔记，事件因此走样</span></div>
+    <div class="keyterm-box"><span class="kt">distortion</span><br><span class="zh">失真：重构后的记忆与真实事件的偏差</span></div>
+    <div class="keyterm-box"><span class="kt">encoding / retrieval</span><br><span class="zh">编码／提取：图式在这两处分别过滤存储、改写回忆</span></div>
+    <div class="keyterm-box"><span class="kt">eyewitness testimony</span><br><span class="zh">目击证词：证人描述的犯罪事件，可能用于定罪或辩护</span></div>
+    <div class="keyterm-box"><span class="kt">Innocence Project</span><br><span class="zh">无辜者计划：为错误目击指认造成的冤案平反的基金会</span></div>
+    <div class="keyterm-box"><span class="kt">post-event information</span><br><span class="zh">事后信息：事件之后收到的描述会混进记忆（Zhu et al., 2012）</span></div>
+    <div class="keyterm-box"><span class="kt">congenital blindness</span><br><span class="zh">先天失明：出生起失明（与 2.1.2 的 VSSP 批评相关）</span></div>
+  </div>
+  <div class="footer-note">Spec 2.1.3 · Content sourced from Book 1 Ch.10 (pp.96–100) · Next: 2.3.1 Bartlett (1932) War of the Ghosts</div>
+</section>
+
+</main>
+</div>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  /* ---------- sidebar scroll spy ---------- */
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  /* ---------- reveal helper ---------- */
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  /* ---------- multiple choice: one why per option ---------- */
+  var secWhy = {
+    s6: [
+      ['Exact-copy storage is the belief Bartlett argued against; the evidence shows recall changes material.',
+       'Unchanged memories are the opposite of the theory: the War of the Ghosts became shorter and culturally familiar.',
+       'Correct. Reconstruction guided by schemas adds, reinterprets and fills gaps, so memory is prone to distortion.'],
+      ['Rehearsed short-term memories describe the short-term store, not schemas.',
+       'Photographic exact recall contradicts the distortion evidence at the heart of schema theory.',
+       'Correct. Schemas are mental constructs, parcels of stored knowledge used to perceive and recall information.'],
+      ['Accurate recall of everything contradicts the findings of omissions and changes.',
+       'Correct. Recall became shorter with changes that made the story culturally familiar to British participants.',
+       'Complete forgetting did not happen: participants recalled a coherent but transformed story.'],
+      ['Correct. If recall is reconstruction guided by schemas, witnesses can be unreliable when recalling events.',
+       'Full trust ignores the systematic distortion shown in eyewitness research such as Tuckey and Brewer (2003).',
+       'Photographic recall is not a claim of reconstructive memory; the theory predicts the opposite.'],
+      ['Correct. Steyvers and Hemmer (2012) argue the experiments induce errors, so the theory paints memory as too unreliable.',
+       'That is a statement of the theory itself, not a weakness of it.',
+       'Supportive evidence is a strength, not a weakness.'],
+      ['Correct. Reading objects out of an office schema rather than the room is direct evidence for schema-driven recall.',
+       'The skull was schema-inconsistent and was recalled less; its rarity is not the key finding.',
+       'Participants did take part; the refusal option is not part of the study.'],
+      ['The theory is not restricted to children in any of the research discussed.',
+       'Recall being always distorted is the position Steyvers and Hemmer argued against.',
+       'Correct. Their research showed real-context recall can be very accurate when material is not manipulated.']
+    ]
+  };
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = (btn.closest('.xp-block') || section).querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+</script>
+</body>
+</html>
