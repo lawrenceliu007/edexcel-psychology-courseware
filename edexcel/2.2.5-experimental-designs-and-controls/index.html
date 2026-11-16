@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.2.5-2.2.8 Methods — Experimental Designs &amp; Controls</title>
+<style>
+
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.sc-item { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-size: .95em; line-height: 1.7; margin: 8px 0; }
+.sc-tag { display: inline-block; background: var(--accent); color: #fff; font-size: .72em; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-right: 8px; }
+.sc-predict { background: #eff6ff; border: 1.5px solid #3b82f6; border-radius: 10px; padding: 14px 18px; margin: 16px 0 4px; }
+.sc-predict h4 { margin: 0 0 6px; color: #1d4ed8; }
+body.dark .sc-item { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .sc-tag { background: #3b82f6; }
+body.dark .sc-predict { background: rgba(59,130,246,.08); border-color: #3b82f6; }
+body.dark .sc-predict h4 { color: #93c5fd; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic B · Cognitive psychology — 2.2.5–2.2.8 Methods</span>
+  </div>
+  <span class="nav-pill">🧠 Cognitive Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">2.2.5–2.2.8 Methods</div>
+    <div class="sb-header-sub">Designs, Operationalisation &amp; Controls</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s0">Start Here: The Memory Club Test</a></li>
+    <li class="sb-item"><a href="#s1">1. Three Experimental Designs</a></li>
+    <li class="sb-item"><a href="#s2">2. Order Effects &amp; Counterbalancing</a></li>
+    <li class="sb-item"><a href="#s3">3. Operationalisation</a></li>
+    <li class="sb-item"><a href="#s4">4. Extraneous Variables &amp; Controls</a></li>
+    <li class="sb-item"><a href="#s5">5. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s6">6. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s7">7. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>2.2.5–2.2.8 EXPERIMENTAL DESIGNS &amp; CONTROLS<br><span style="font-size:0.65em">Designs · Operationalisation · Extraneous variables · Counterbalancing · 实验设计与控制</span></h1>
+  <div class="meta">
+    <span class="badge">Topic B · Cognitive psychology</span>
+    <span class="badge">Methods</span>
+    <span class="badge">Spec 2.2.5–2.2.8</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.11 · pp.101–111</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this page is really asking</h4>
+  <ol>
+    <li><strong>Participants must be allocated to conditions, and every allocation method has a flaw.</strong> Independent groups risk participant differences; repeated measures risk order effects; matched pairs try to buy the best of both at the cost of time.</li>
+    <li><strong>Every weakness has a named control.</strong> Random allocation, counterbalancing, standardisation, control groups and blind procedures are the toolkit: learn which control answers which problem.</li>
+    <li><strong>Vague variables ruin studies.</strong> Operationalisation means deciding exactly how the IV is changed and exactly how the DV is recorded, so the study can be replicated and checked.</li>
+    <li><strong>Anything you did not manipulate is a threat.</strong> Extraneous variables become confounding variables the moment they actually distort the DV; situational ones come from the setting, participant ones from the people.</li>
+  </ol>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Identify the experimental design</strong> (independent groups, repeated measures, matched pairs) used in a described study.</li>
+    <li><strong>Evaluate each design</strong> with its named weakness and the control that fixes it: random allocation, counterbalancing, single/double-blind.</li>
+    <li><strong>Operationalise IVs and DVs</strong> and judge whether a given operationalisation is good or poor.</li>
+    <li><strong>Classify extraneous variables</strong> as situational or participant, and explain when one becomes confounding.</li>
+    <li><strong>Justify control decisions</strong> (standardisation, control group, randomisation) for a given study scenario.</li>
+  </ul>
+</div>
+
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic B · Cognitive psychology — 2.2.5–2.2.8 Methods</span>
+  </div>
+  <span class="nav-pill">🧠 Cognitive Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">2.2.5–2.2.8 Methods</div>
+    <div class="sb-header-sub">Designs, Operationalisation &amp; Controls</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s0">Start Here: The Memory Club Test</a></li>
+    <li class="sb-item"><a href="#s1">1. Three Experimental Designs</a></li>
+    <li class="sb-item"><a href="#s2">2. Order Effects &amp; Counterbalancing</a></li>
+    <li class="sb-item"><a href="#s3">3. Operationalisation</a></li>
+    <li class="sb-item"><a href="#s4">4. Extraneous Variables &amp; Controls</a></li>
+    <li class="sb-item"><a href="#s5">5. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s6">6. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s7">7. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>2.2.5–2.2.8 EXPERIMENTAL DESIGNS &amp; CONTROLS<br><span style="font-size:0.65em">Designs · Operationalisation · Extraneous variables · Counterbalancing · 实验设计与控制</span></h1>
+  <div class="meta">
+    <span class="badge">Topic B · Cognitive psychology</span>
+    <span class="badge">Methods</span>
+    <span class="badge">Spec 2.2.5–2.2.8</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.11 · pp.101–111</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this page is really asking</h4>
+  <ol>
+    <li><strong>Participants must be allocated to conditions, and every allocation method has a flaw.</strong> Independent groups risk participant differences; repeated measures risk order effects; matched pairs try to buy the best of both at the cost of time.</li>
+    <li><strong>Every weakness has a named control.</strong> Random allocation, counterbalancing, standardisation, control groups and blind procedures are the toolkit: learn which control answers which problem.</li>
+    <li><strong>Vague variables ruin studies.</strong> Operationalisation means deciding exactly how the IV is changed and exactly how the DV is recorded, so the study can be replicated and checked.</li>
+    <li><strong>Anything you did not manipulate is a threat.</strong> Extraneous variables become confounding variables the moment they actually distort the DV; situational ones come from the setting, participant ones from the people.</li>
+  </ol>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Identify the experimental design</strong> (independent groups, repeated measures, matched pairs) used in a described study.</li>
+    <li><strong>Evaluate each design</strong> with its named weakness and the control that fixes it: random allocation, counterbalancing, single/double-blind.</li>
+    <li><strong>Operationalise IVs and DVs</strong> and judge whether a given operationalisation is good or poor.</li>
+    <li><strong>Classify extraneous variables</strong> as situational or participant, and explain when one becomes confounding.</li>
+    <li><strong>Justify control decisions</strong> (standardisation, control group, randomisation) for a given study scenario.</li>
+  </ul>
+</div>
+
+<!-- ============ 0 · scenario ============ -->
+<section class="section" id="s0">
+  <h2>Start Here: The Memory Club Test</h2>
+  <div class="sc-item"><span class="sc-tag">背景</span>The psychology club wants to know whether a memory technique really works. The plan: give everyone a word-list test, teach the technique, then test again two weeks later with a different list.</div>
+  <div class="sc-item"><span class="sc-tag">角色</span>You are the club member the others turn to when the results look strange.</div>
+  <div class="sc-item"><span class="sc-tag">任务</span>Results are in: every single member improved on the second list. The president announces "the technique works!" — but you are not so sure. Something else could explain the improvement.</div>
+  <div class="sc-item"><span class="sc-tag">目标</span>Name the hidden explanation before you read on. Commit below: the whole page is built to confirm or correct your answer.</div>
+  <div class="sc-predict">
+    <h4><span class="sc-tag" style="background:#3b82f6">先猜</span>用同一批人前后测两次，结果全员进步，最大的隐患是什么？</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">人数太少，结果不可信</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">第一次已经练过一遍任务，第二次的提升分不清是训练的功劳还是熟练度</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">两次间隔太久，有人忘了第一次的内容</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Three Experimental Designs</h2>
+  <p>Once the IV is operationalised and its levels chosen, every participant must be allocated to a condition. Three designs can do this, and each one trades a different weakness for a different gain.</p>
+  <div class="figure">
+    <svg viewBox="0 0 680 310" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, sans-serif">
+      <defs>
+        <marker id="arA" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#334155"/></marker>
+      </defs>
+      <!-- column 1: independent groups -->
+      <text x="110" y="28" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1e293b">Independent groups</text>
+      <rect x="30" y="42" width="160" height="34" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="110" y="63" text-anchor="middle" font-size="12" fill="#334155">8 participants</text>
+      <rect x="30" y="150" width="160" height="30" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+      <text x="110" y="169" text-anchor="middle" font-size="12" font-weight="600" fill="#c2410c">Condition A · 4 people</text>
+      <rect x="30" y="205" width="160" height="30" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+      <text x="110" y="224" text-anchor="middle" font-size="12" font-weight="600" fill="#c2410c">Condition B · 4 people</text>
+      <path d="M95,76 L80,148" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arA)"/>
+      <path d="M125,76 L140,203" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arA)"/>
+      <text x="110" y="262" text-anchor="middle" font-size="11.5" fill="#475569">Different people in each</text>
+      <text x="110" y="279" text-anchor="middle" font-size="11.5" fill="#475569">condition; one test each</text>
+      <!-- column 2: repeated measures -->
+      <text x="340" y="28" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1e293b">Repeated measures</text>
+      <rect x="260" y="42" width="160" height="34" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="340" y="63" text-anchor="middle" font-size="12" fill="#334155">8 participants</text>
+      <rect x="260" y="150" width="160" height="30" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+      <text x="340" y="169" text-anchor="middle" font-size="12" font-weight="600" fill="#c2410c">Condition A</text>
+      <rect x="260" y="205" width="160" height="30" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+      <text x="340" y="224" text-anchor="middle" font-size="12" font-weight="600" fill="#c2410c">Condition B</text>
+      <path d="M325,76 L310,148" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arA)"/>
+      <path d="M355,76 L370,203" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arA)"/>
+      <text x="340" y="262" text-anchor="middle" font-size="11.5" fill="#475569">The same people do</text>
+      <text x="340" y="279" text-anchor="middle" font-size="11.5" fill="#475569">both conditions</text>
+      <!-- column 3: matched pairs -->
+      <text x="570" y="28" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1e293b">Matched pairs</text>
+      <rect x="490" y="42" width="160" height="34" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="570" y="63" text-anchor="middle" font-size="12" fill="#334155">8 participants</text>
+      <rect x="490" y="102" width="160" height="26" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.3"/>
+      <text x="570" y="119" text-anchor="middle" font-size="11" fill="#1d4ed8">pre-tested &amp; matched</text>
+      <rect x="490" y="150" width="160" height="30" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+      <text x="570" y="169" text-anchor="middle" font-size="12" font-weight="600" fill="#c2410c">Condition A</text>
+      <rect x="490" y="205" width="160" height="30" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+      <text x="570" y="224" text-anchor="middle" font-size="12" font-weight="600" fill="#c2410c">Condition B</text>
+      <line x1="570" y1="76" x2="570" y2="100" stroke="#334155" stroke-width="1.8" marker-end="url(#arA)"/>
+      <path d="M545,128 L530,148" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arA)"/>
+      <path d="M595,128 L610,203" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arA)"/>
+      <text x="570" y="262" text-anchor="middle" font-size="11.5" fill="#475569">Different people, but matched:</text>
+      <text x="570" y="279" text-anchor="middle" font-size="11.5" fill="#475569">one of each pair to A, one to B</text>
+    </svg>
+    <div class="figure-caption">Three ways to allocate participants to conditions (Figures 11.3 and 11.4, simplified): who is tested, and how often.</div>
+  </div>
+  <table>
+    <tr><th style="width:18%">Design</th><th>Strengths</th><th>Weaknesses</th></tr>
+    <tr><td><strong>Independent groups</strong>（独立组设计：每组人只参加一个条件）</td><td>Participants only experience one level of the IV, so they are less likely to guess the aim: demand characteristics and expectancy effects are reduced. It also avoids order effects entirely, because nobody is tested twice.</td><td>Recruiting twice as many participants. Participant variables (individual differences) between the groups may make the comparison unreliable; <strong>random allocation</strong>（随机分配：抽签式分组）makes an even distribution probable, though not certain.</td></tr>
+    <tr><td><strong>Repeated measures</strong>（重复测量设计：同一批人完成所有条件）</td><td>Individual differences are resolved: each participant is compared with themselves across conditions. Fewer participants are needed, so it is more economical.</td><td>Demand characteristics are greatly increased, because participants see every condition and can guess the aim. Order effects appear: practice (better later) or fatigue (worse later). Controls: a single-blind technique, and counterbalancing.</td></tr>
+    <tr><td><strong>Matched pairs</strong>（配对组设计：不同人各测一个条件，但按关键特征配对）</td><td>Conditions can be compared fairly despite using different people, so any difference is more likely to come from the IV and causation can be established.</td><td>Time-consuming: matching needs pre-testing and background research. Many participants are excluded for not meeting the criteria, and matching can never cover every relevant variable.</td></tr>
+  </table>
+  <p>Match on characteristics central to the aim, not trivial ones: a study of driving ability needs matched driving experience, eyesight and reaction time, and gains nothing from matching hair colour.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>三种设计的取舍可以记成一句话：独立组怕「两组人本来就不一样」，解药是随机分配；重复测量怕「做第二遍不是第一次了」，解药是抵消平衡；配对组想两头讨好，代价是配不全、配得慢。答题时先点出设计，再说它的天生弱点，最后给对应的解药，三步就是满分结构。</p>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Order Effects &amp; Counterbalancing</h2>
+  <p><strong>Order effects</strong>（顺序效应：表现受测试先后顺序影响）are the problem with presentation order. A participant may learn the task in the first condition and perform better in the second (<strong>practice</strong>), or become tired and perform worse (<strong>fatigue</strong>). In the club scenario, the hidden explanation you may have guessed was exactly this: the second test came after everyone had already done the task once.</p>
+  <p><strong>Counterbalancing</strong>（抵消平衡：一半人先 A 后 B，另一半先 B 后 A）does not remove order effects but spreads them equally: half the participants experience Condition A then Condition B, while the other half does B then A. Practice or fatigue now boosts (or drags down) both conditions equally, so they balance out of the comparison.</p>
+  <p>Randomisation helps too. <strong>Random allocation</strong> means participants are allocated to a condition at random, for example names drawn from a hat, so every participant has an equal chance of each condition and participant variables are spread evenly across the groups.</p>
+  <p>Back to the club: the design the president chose was repeated measures, and the improvement was contaminated by practice. Counterbalancing would have helped only partly, because the real difference was two weeks of training between the tests; what the club actually needed was a <strong>control group</strong>（控制组：走完全流程但不接受实验处理的一组）: a second group taught no technique, tested at the same two time points. Any improvement beyond the control group's would then be attributable to the technique. A control group gives the baseline from which the experimental group's change is judged.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>顺序效应有两种面孔：练熟了变好（练习），做累了变差（疲劳）。抵消平衡的逻辑是让它们对两个条件「一碗水端平」：AB 和 BA 各一半，效应互相抵消。但开头社团那个情景里，真正的干扰远不止顺序一项：中间还夹着两周的训练，所以还需要一个不学技巧的控制组当参照线。看到「全员进步」先问一句：跟谁比？</p>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Operationalisation</h2>
+  <p><strong>Operationalisation</strong>（操作化：把变量定义得具体可测）means defining the variables specifically so they are directly tested: deciding exactly how the IV will be manipulated and exactly how the DV will be recorded. Operational definitions state what the variables are and how they are measured.</p>
+  <p>Why it matters: precise operationalisation means the study can be exactly replicated to check the conclusions are reliable; it increases objectivity, because the DV is measured the same way by all researchers and is not open to interpretation; and it lets other psychologists assess whether the research is valid.</p>
+  <div class="xp-case">
+    <p><strong>Poor operationalisation:</strong> a researcher suspects children without a healthy breakfast struggle in morning lessons. She asks children what they had for breakfast, splits them into "healthy" and "unhealthy" groups, then watches them read a book and decides how well they read.</p>
+    <p>Nothing here is defined: what counts as a healthy breakfast is unclear, and "how well they read" is one researcher's judgement. A second researcher could not replicate the study, might judge the same child differently, and cannot check whether the variables measured what they claimed.</p>
+    <p><strong>Good operationalisation:</strong> the same researcher asks children and parents to record breakfasts for a week; a nutritionist categorises them, with breakfasts exceeding recommended salt, fat and sugar allowances defined as unhealthy. Each child then reads the same story aloud during literacy hour, timed by the researcher, who also records reading errors.</p>
+    <p>Now the IV (breakfast type) and the DV (reading time and errors) are defined without ambiguity. The study is replicable, and another researcher can assess whether the definitions measured what was intended.</p>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>判断操作化好坏只看一条：换一个研究者来，能不能照着定义原样重做一遍、并且量出一模一样的数。好操作化的两个标志：IV 的分组标准有明确界线（营养师定标准、有具体指标），DV 的测量有统一工具（同一个故事、计时、记错处）。「看一眼然后凭感觉判断」永远是不合格的 DV。</p>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Extraneous Variables &amp; the Control Toolkit</h2>
+  <p>An experiment should control factors that might have an unwanted effect on the DV. An <strong>extraneous variable</strong>（无关变量：可能影响 DV 但不是 IV 的变量）may have affected the dependent variable even though it was not the independent variable. When an extraneous variable actually succeeds in influencing the DV, it makes the effect look as though it came from the IV: it is then a <strong>confounding variable</strong>（混淆变量：直接搅浑结果的变量，研究不再测量原本想测的东西）, and the study no longer measures what it intended.</p>
+  <p>Extraneous variables come in two families:</p>
+  <ul class="tight">
+    <li><strong>Situational variables</strong>（情境变量：来自研究环境的干扰）: lighting, noise, temperature, other people, disturbances, time of day. They are controlled by being held constant for all participants, or eliminated by removing the possibility altogether.</li>
+    <li><strong>Participant variables</strong>（参与者变量：来自人本身的差异）: motivation, personality, intelligence, experience, age, skills. Age and gender are easy to control; motivation and experience take more thought.</li>
+  </ul>
+  <p>Only variables that might genuinely affect the DV need controlling: room temperature matters little unless the study tests something temperature could influence. This is why the designs of section 1 matter so much: participant variables are exactly what independent groups designs risk and repeated measures designs solve.</p>
+  <p>The control toolkit for everything else:</p>
+  <table>
+    <tr><th style="width:24%">Control</th><th>What it does</th></tr>
+    <tr><td><strong>Standardisation</strong>（标准化：所有人经历完全相同的研究体验）</td><td>Standardised instructions given to every participant remove the experimenter's chance to give verbal or non-verbal cues; standardised procedures (stages, timings, apparatus) treat everyone the same way. It also improves replicability.</td></tr>
+    <tr><td><strong>Control group</strong>（控制组）</td><td>Undertakes the procedure but not the experimental manipulation, giving a baseline: any difference between the groups shows the effect of the IV.</td></tr>
+    <tr><td><strong>Single-blind</strong>（单盲：参与者不知道研究目的）</td><td>Participants are unaware they are part of an experiment, or are deceived about its true nature, so their beliefs about the aim cannot shape their performance.</td></tr>
+    <tr><td><strong>Double-blind</strong>（双盲：参与者与研究者都不知道目的）</td><td>Independent researchers who do not know the aim conduct the study, so neither participant beliefs nor researcher cues can influence the outcome.</td></tr>
+  </table>
+  <div class="green-box">
+    <h4>Close the loop: rebuild the club test properly</h4>
+    <p>The club's design was repeated measures: the same members did both tests, so individual differences were not the problem. The contamination came from order: the second test followed practice on the first. Counterbalancing would spread that practice across both conditions if the study truly compared two conditions; but because the club compared "before training" with "after training", the honest fix is a control group that spends the same two weeks without the technique, tested at the same two time points. Standardised instructions and identical word-list difficulty keep the situational variables constant, and if the president counting the scores does not know who was in which group, the scoring is effectively blind. Every control on this page has a job in this one scenario.</p>
+    <p><strong>Reflect before the Checkpoint:</strong> look back at your Start Here answer. If you spotted the practice effect, you already think like an experimental designer; if not, re-read section 2 with the club results in mind and check where your intuition went.</p>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Checkpoint</h2>
+  <div class="xp-block">
+    <h4>Q1 · "An investigation to see if boys or girls are better at cognitive tasks." Which design?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Independent groups</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Repeated measures</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Matched pairs</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q2 · "A digit span test to see if recall is better in the morning compared to the afternoon." Which design?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Independent groups</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Repeated measures</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Matched pairs</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q3 · "Researchers investigated the difference in memory ability between identical twins." Which design?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Independent groups</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Repeated measures</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Matched pairs</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q4 · A researcher measures reading time and errors against a nutritionist-defined breakfast standard. This is an example of…</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Good operationalisation of the IV and DV</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Poor operationalisation, because the measures are too strict</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Counterbalancing the two conditions</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q5 · Noise from a nearby construction site affects some participants' recall scores. What kind of variable is the noise?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">A situational variable</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">A participant variable</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">A confounding variable by definition, whatever it does</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q6 · When does an extraneous variable become a confounding variable?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">As soon as it appears anywhere in the study</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">When the researcher decides to measure it as part of the DV</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">When it actually influences the DV, so the study no longer measures the effect of the IV</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q7 · In a repeated measures study, half the participants do Condition A then B, half do B then A. Which control is this?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Random allocation</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Counterbalancing</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Standardisation</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Exam Lab</h2>
+  <div class="exam-practice">
+    <div class="xp-block">
+      <h4>Q2a · Describe <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro">Zara and Aiden developed a new memory technique to help students with their revision. Volunteer students were given a word list to learn and their recall was recorded. They were then asked to practise the new memory technique for two weeks. After the two weeks they were given a different word list to learn and their recall was measured. The difference in recall before and after learning the memory technique was compared. <strong>Describe one control that Zara and Aiden would have considered when designing the word lists for this study.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans1')">Show answer</button></div>
+      <div class="xp-result" id="ans1" hidden>
+        <p>The two word lists must be matched for difficulty, so any change in recall cannot be explained by the second list simply being easier. For example, both lists should contain the same number of words, drawn from similar word types, with similar word lengths and familiarity. Holding list difficulty constant in this way is standardisation: it removes a situational variable that would otherwise confound the comparison.</p>
+        <p class="xp-case">Marking guidance: 1 mark for identifying the control (matching the lists for difficulty/word type/length), 1 mark for explaining that it stops list difficulty from explaining the change in recall.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q2b · Explain <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro">Zara and Aiden randomised the word lists. <strong>Explain how they did this.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans2')">Show answer</button></div>
+      <div class="xp-result" id="ans2" hidden>
+        <p>Randomisation means putting the words into a random order so that no systematic pattern decides which words appear in each position, for example by drawing the words from a container or using a random number generator to shuffle them. Each word has an equal chance of appearing anywhere on the list, so position effects (words at the start or end being recalled better) cannot explain the difference between the two lists.</p>
+        <p class="xp-case">Marking guidance: 1 mark for a random method (random number generator, drawing from a container), 1 mark for the consequence (equal chance per word, removing order/position effects as an explanation).</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q3a · Explain one strength <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro">Noorie investigated encoding in short-term memory using a volunteer sample of 20 participants. Each participant took part in Condition A and Condition B. Condition A involved learning ten acoustically similar sounding words, such as cat, hat, bat. Condition B involved the same participants learning ten acoustically different sounding words, such as pen, dog, mat. Noorie recorded how many words each participant correctly recalled. <strong>Explain one strength of Noorie using a repeated measures design in her experiment.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans3')">Show answer</button></div>
+      <div class="xp-result" id="ans3" hidden>
+        <p>Because the same 20 participants learn both word lists, participant variables (memory ability, age, motivation) are held constant across conditions: each participant acts as their own baseline. Any difference in recall between acoustically similar and acoustically different words is therefore more likely to reflect the encoding effect being tested rather than pre-existing differences between two groups of people.</p>
+        <p class="xp-case">Marking guidance: 1 mark for naming the strength (participant variables controlled / each participant compared with themselves), 1 mark for applying it to Noorie's encoding comparison.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q3b · Explain one weakness <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Explain one weakness of Noorie using a repeated measures design in her experiment into short-term memory encoding.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans4')">Show answer</button></div>
+      <div class="xp-result" id="ans4" hidden>
+        <p>Order effects are the main risk: doing the first word-list task practises the skill of recalling lists, so performance in the second condition may improve through practice (or deteriorate through fatigue) rather than because of the acoustic similarity manipulation. Participants also see both conditions, which increases the chance they guess the aim and show demand characteristics. Counterbalancing the two lists across participants would be the standard fix for the order problem.</p>
+        <p class="xp-case">Marking guidance: 1 mark for naming the weakness (order effects/practice/fatigue or increased demand characteristics), 1 mark for explaining how it distorts this encoding comparison.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q3c · Explain how <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Explain how Noorie could have used counterbalancing in her study of encoding in short-term memory.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans5')">Show answer</button></div>
+      <div class="xp-result" id="ans5" hidden>
+        <p>Split the 20 participants into two halves of 10. Ten participants learn the acoustically similar list (Condition A) first and then the acoustically different list (Condition B); the other ten learn Condition B first and Condition A second. Practice or fatigue gained on the first list now falls equally on both conditions, so order effects no longer favour one condition over the other.</p>
+        <p class="xp-case">Marking guidance: 1 mark for describing the two orders (AB and BA with equal halves), 1 mark for the consequence (order effects distributed equally across conditions).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Key Terms</h2>
+  <div class="glossary-grid">
+    <div class="keyterm-box"><span class="kt">independent groups design</span><br><span class="zh">独立组设计：不同的人分进不同条件，每人只测一次</span></div>
+    <div class="keyterm-box"><span class="kt">repeated measures design</span><br><span class="zh">重复测量设计：同一批人完成全部条件</span></div>
+    <div class="keyterm-box"><span class="kt">matched pairs design</span><br><span class="zh">配对组设计：不同人各测一个条件，但按关键特征提前配对</span></div>
+    <div class="keyterm-box"><span class="kt">random allocation</span><br><span class="zh">随机分配：抽签式分组，让个体差异均匀散到各组</span></div>
+    <div class="keyterm-box"><span class="kt">order effects</span><br><span class="zh">顺序效应：练习让第二次变好、疲劳让第二次变差</span></div>
+    <div class="keyterm-box"><span class="kt">counterbalancing</span><br><span class="zh">抵消平衡：一半人 AB、一半人 BA，让顺序效应两边抵消</span></div>
+    <div class="keyterm-box"><span class="kt">operationalisation</span><br><span class="zh">操作化：把 IV 怎么改、DV 怎么量定义到可直接检验</span></div>
+    <div class="keyterm-box"><span class="kt">operational definitions</span><br><span class="zh">操作定义：变量是什么、用什么方式测量</span></div>
+    <div class="keyterm-box"><span class="kt">extraneous variable</span><br><span class="zh">无关变量：可能影响 DV 但不是 IV 的变量</span></div>
+    <div class="keyterm-box"><span class="kt">confounding variable</span><br><span class="zh">混淆变量：真的搅进了 DV，研究不再测量原本想测的东西</span></div>
+    <div class="keyterm-box"><span class="kt">situational / participant variables</span><br><span class="zh">情境变量来自环境（噪音、温度、时段）；参与者变量来自人（动机、智力、经验）</span></div>
+    <div class="keyterm-box"><span class="kt">standardisation</span><br><span class="zh">标准化：指导语与流程人人相同，掐断主试线索</span></div>
+    <div class="keyterm-box"><span class="kt">control group</span><br><span class="zh">控制组：走流程但不接受处理，提供基线参照</span></div>
+    <div class="keyterm-box"><span class="kt">single-blind / double-blind</span><br><span class="zh">单盲：参与者不知目的；双盲：参与者和执行研究者都不知道</span></div>
+  </div>
+  <div class="footer-note">Spec 2.2.5–2.2.8 · Content sourced from Book 1 Ch.11 (pp.101–111) · Next: 2.2.9 Validity, reliability and objectivity</div>
+</section>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  /* ---------- sidebar scroll spy ---------- */
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  /* ---------- reveal helper ---------- */
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  /* ---------- multiple choice: one why per option ---------- */
+  var secWhy = {
+    s0: [
+      ['人少确实让结果不稳，但解释不了「全员进步」这个模式：就算人多，也该有人进步多、有人进步少。这里的异常是整齐划一的提升，另有原因。',
+       '正确。第二次测试前，每个人已经完整做过一遍这个任务：熟悉任务本身就是练习效应，它和训练技巧混在一起，谁也分不清谁的功劳。这一页的三大设计就是在解决这类「比较被污染」的问题。',
+       '忘了第一次的内容只会压低第二次的成绩，方向反了：大家第二次反而更好。而且「忘了」也解释不了为什么提升这么整齐。']
+    ],
+    s5: [
+      ['Correct. Boys and girls are different people, each tested once: two separate groups, an independent groups design.',
+       'Repeated measures would require the same participants to be tested as both boys and girls, which is impossible.',
+       'Matched pairs would mean matching boys with girls on key traits first; the description says nothing about matching.'],
+      ['Correct. The same participants recall digits in both the morning and the afternoon: two conditions, same people, a repeated measures design.',
+       'Independent groups would need one group tested only in the morning and a different group only in the afternoon.',
+       'Nothing in the description suggests participants were matched on traits before testing.'],
+      ['Correct. Identical twins are natural pairs matched on genetics; one twin is compared with the other, so this is matched pairs.',
+       'Independent groups would fit only if the twins were unrelated strangers with no matching.',
+       'Repeated measures would require each participant to take part in both conditions, which is not what is described.'],
+      ['Correct. Both variables are defined precisely enough for any researcher to replicate the measures exactly: good operationalisation.',
+       'Strict definitions are the point of operationalisation; being precise is not a weakness.',
+       'Counterbalancing is about the order of conditions, not how variables are defined.'],
+      ['Correct. The noise comes from the research environment, so it is a situational variable.',
+       'Participant variables come from the people themselves, such as motivation or intelligence.',
+       'It only becomes confounding if it actually distorts the DV; the variable type is situational either way.'],
+      ['Correct. The label changes when the variable actually influences the DV and ruins the measurement of the IV\u2019s effect.',
+       'Merely appearing in the study makes it extraneous, not confounding.',
+       'Measuring it would make it part of the study, not a hidden distortion.'],
+      ['Correct. Half AB, half BA is counterbalancing: order effects are spread equally across both conditions.',
+       'Random allocation assigns people to conditions at random; it does not arrange the order of conditions.',
+       'Standardisation makes the experience identical for everyone; counterbalancing deliberately varies the order.']
+    ]
+  };
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = (btn.closest('.xp-block') || section).querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+</script>
+</body>
+</html>
