@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5.1.1 Attachment — Theories of Attachment</title>
+<style>
+
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.sc-item { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-size: .95em; line-height: 1.7; margin: 8px 0; }
+.sc-tag { display: inline-block; background: var(--accent); color: #fff; font-size: .72em; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-right: 8px; }
+.sc-predict { background: #eff6ff; border: 1.5px solid #3b82f6; border-radius: 10px; padding: 14px 18px; margin: 16px 0 4px; }
+.sc-predict h4 { margin: 0 0 6px; color: #1d4ed8; }
+body.dark .sc-item { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .sc-tag { background: #3b82f6; }
+body.dark .sc-predict { background: rgba(59,130,246,.08); border-color: #3b82f6; }
+body.dark .sc-predict h4 { color: #93c5fd; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic E · Developmental psychology — 5.1.1 Attachment</span>
+  </div>
+  <span class="nav-pill">👶 Developmental Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">5.1.1 Attachment</div>
+    <div class="sb-header-sub">Theories of Attachment</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s0">Start Here: The Baby Who Loved the Wrong Person</a></li>
+    <li class="sb-item"><a href="#s1">1. Learning Theories</a></li>
+    <li class="sb-item"><a href="#s2">2. O'Connor et al. (2013)</a></li>
+    <li class="sb-item"><a href="#s3">3. Bowlby's Theory</a></li>
+    <li class="sb-item"><a href="#s4">4. Maternal Deprivation</a></li>
+    <li class="sb-item"><a href="#s5">5. The 44 Juvenile Thieves</a></li>
+    <li class="sb-item"><a href="#s6">6. Deprivation vs Privation</a></li>
+    <li class="sb-item"><a href="#s7">7. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s8">8. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s9">9. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>5.1.1 THEORIES OF ATTACHMENT<br><span style="font-size:0.65em">Learning theories · O'Connor et al. (2013) · Bowlby · Maternal deprivation · 44 Juvenile Thieves · 依恋理论</span></h1>
+  <div class="meta">
+    <span class="badge">Topic E · Developmental psychology</span>
+    <span class="badge">Content</span>
+    <span class="badge">Spec 5.1.1</span>
+    <span class="badge">📖 Textbook Book 2 · Ch.1 · pp.2–14</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this page is really asking</h4>
+  <ol>
+    <li><strong>Does love follow food?</strong> Learning theories say attachment is built from associations between caregiver and food (cupboard love). Bowlby says it is built into our biology. Every study on this page is ammunition for one side or the other.</li>
+    <li><strong>Learning can still matter, just not through food.</strong> O'Connor et al. (2013) taught parents to be more sensitive using social learning methods: behaviour changed, attachment types did not.</li>
+    <li><strong>Bowlby's theory has five moving parts.</strong> Social releasers, the critical/sensitive period, monotropy, a hierarchy of attachments and the internal working model.</li>
+    <li><strong>Deprivation breaks bonds; privation prevents them forming.</strong> The 44 Juvenile Thieves tested the link between early separations and the affectionless personality, and Rutter's distinction reinterprets what Bowlby actually found.</li>
+  </ol>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Describe the three learning explanations of attachment</strong> (classical conditioning, operant conditioning, social learning theory) and evaluate them with evidence.</li>
+    <li><strong>Outline O'Connor et al.'s (2013) RCT</strong> — aim, sample, procedure, results — and explain what it shows about teaching sensitivity.</li>
+    <li><strong>Explain Bowlby's theory</strong>: social releasers, critical/sensitive period, monotropy and the internal working model.</li>
+    <li><strong>Describe the maternal deprivation hypothesis</strong> and the 44 Juvenile Thieves study, including the correct statistical test for its data.</li>
+    <li><strong>Counter-pose evidence</strong>: Goldfarb and the Romanian orphans versus Bowlby's 1956 hospital study and the Koluchová twins.</li>
+  </ul>
+</div>
+
+<!-- ============ 0 ============ -->
+<section class="section" id="s0">
+  <h2>Start Here: The Baby Who Loved the Wrong Person</h2>
+  <div class="sc-item"><span class="sc-tag">背景</span>你家的小表弟壮壮从出生起主要由奶奶带：喂饭、洗澡、哄睡，全是奶奶的活。妈妈每天下班才回来，抱他的时间不多。</div>
+  <div class="sc-item"><span class="sc-tag">角色</span>你是来家里过周末的表哥表姐，负责观察这个一岁的小家伙。</div>
+  <div class="sc-item"><span class="sc-tag">任务</span>怪事出现了：奶奶走开，壮壮继续玩他的玩具，毫无反应；可妈妈只是起身去倒杯水，他立刻嚎啕大哭，直到妈妈回来抱起他才消停。</div>
+  <div class="sc-item"><span class="sc-tag">目标</span>按直觉，爱应该跟着喂饭走。先猜下面这题，再带着你的答案读这一页：心理学家怎么解释「爱不跟着食物走」这件事。</div>
+  <div class="sc-predict">
+    <h4><span class="sc-tag" style="background:#3b82f6">先猜</span>如果「婴儿爱谁，取决于谁喂他」是对的，壮壮的现象说明什么？</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">现象不可能出现：奶奶喂了整整一年，壮壮不可能对奶奶毫无依恋</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">这句话本身就不成立：婴儿最依恋的人可以完全不是喂他的人，食物不是爱的原因</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">壮壮只是还没认人：等他再大一点，自然就会跟奶奶最亲</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Learning Theories: Is Love Just Fed In?</h2>
+  <p><strong>Attachment</strong>（依恋：孩子与照顾者之间紧密、持久的情感联结，也指形成这种联结的过程）is the gradual process through which strong, emotional bonds form between infants and caregivers. The earliest explanations came from <strong>learning theories</strong>: attachment is learned through experience (nurture), built out of associations between the caregiver and food. The nickname for this family of explanations is <em>cupboard love</em>: the caregiver matters because the cupboard (food) is behind her.</p>
+  <ul class="tight">
+    <li><strong>Classical conditioning.</strong> Food is an <strong>unconditioned stimulus</strong>（非条件刺激：天生就能引发反应的刺激）that produces pleasure. After a few feeds, the baby associates the person who provides food with that pleasure: the caregiver becomes a <strong>conditioned stimulus</strong>（条件刺激：原本中性、因与 UCS 配对而能引发反应的刺激）, and the baby feels happy simply at the sight of her.</li>
+    <li><strong>Operant conditioning.</strong> Dollard and Miller (1950) describe hunger as a <strong>drive state</strong>（驱动状态：饥饿这类让人不舒服、推动人行动的生理状态）. Feeding reduces the drive, so food is a <strong>primary reinforcer</strong>, and any behaviour the baby performs just before food arrives (crying) is positively reinforced. The caregiver becomes a <strong>secondary reinforcer</strong>（次级强化物：因反复与满足初级需求的刺激配对而获得强化力的人或物）, and over time the baby develops a <strong>secondary drive</strong>（次级驱力：习得的、指向照顾者的动机）to seek her.</li>
+    <li><strong>Social learning theory.</strong> Hay and Vespo (1988) argue attachment behaviours are <strong>modelled</strong>: parents demonstrate affection, give direct instruction ("share with grandma"), and children imitate older siblings. Parents can also be <em>taught</em> positive parenting through observation, which is exactly the route tested by O'Connor et al. (2013).</li>
+  </ul>
+  <p class="small">Back to Zhuangzhuang: learning theories predict the person who feeds him should matter most. His behaviour shows exactly the opposite, which is the first crack in the cupboard-love story.</p>
+  <p><strong>Evaluation.</strong> A meta-analysis by Linde et al. (2020) found 57 per cent of breastfeeding studies reported a positive correlation between feeding duration and attachment security, which gives learning theories some support. However, breastfeeding also triggers <strong>oxytocin</strong>, a hormone that promotes bonding (Jansen et al., 2008), so feeding may work through hormones rather than learned association, weakening the learning account. Practical applications support the broader claim that attachment is shaped by experience: Bosmans et al. (2022) tested programmes based on classical and operant conditioning and improved children's confidence in their caregivers' availability and responsiveness.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>学习理论的共同主张：依恋是「喂」出来的。三条路各有记法：经典条件反射讲「配对」，食物带来的舒服感和照顾者绑定；操作性条件反射讲「强化」，食物是初级强化物，照顾者因总跟着食物出现而变成次级强化物，婴儿对她的依恋就是次级驱力；社会学习讲「模仿」，大人示范亲昵行为，孩子照着学。评价记两件事：Linde 2020 的元分析给了部分支持（57% 的母乳研究正相关），但催产素这个解释路线说明喂奶的好处可能走激素不走学习；另外 Harlow 的猴子宁可抱着不产奶的绒布妈妈，也直接戳破了「爱跟食物走」。</p>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. O'Connor et al. (2013): Can Parenting Be Taught?</h2>
+  <p>This is the named study for the learning theory part of the spec, and it is a clever crossover: it took a parenting programme built entirely on <strong>social learning theory</strong> and measured whether it improved <strong>sensitivity</strong>（敏感性：照顾者读懂婴儿信号并恰当回应的能力）, a variable from <em>attachment theory</em> that the programme never directly targeted.</p>
+  <ul class="tight">
+    <li><strong>Aim:</strong> to investigate whether a social-learning-based parenting programme can improve caregiver sensitivity, and whether it affects the children's <strong>internal working model</strong>（内部工作模型：婴儿期形成的、指导我们对未来关系预期的心智模板）.</li>
+    <li><strong>Method:</strong> a <strong>randomised control trial</strong>（随机对照试验：参与者随机分入接受新干预的实验组或对照组的临床试验设计）over three years. Classes of four- to six-year-olds were randomly allocated to a 12-week parenting programme called <strong>Incredible Years</strong> plus either a six-week reading intervention (n = 88) or a non-intervention control group (n = 86).</li>
+    <li><strong>Sample:</strong> 233 families invited; 174 took part. All attended one of four schools in a low-income, ethnically diverse inner-city area of London; about 25 per cent of children were at high risk of conduct or oppositional defiant disorder. High- to low-risk families were randomly selected at a ratio of 2:1 (36 per cent high-risk in the final sample).</li>
+    <li><strong>Procedure:</strong> parents watched and discussed videos of ethnically diverse parents and children, role-played the effective behaviours and practised them at home; group leaders phoned weekly. <strong>Home observations</strong> were filmed before the programme, after it, and six months later, using three structured tasks: free play (10 minutes), building a difficult model with verbal instructions only (10 minutes), and tidying up toys (5 minutes). Observers counted positive behaviours (praise) and negative behaviours (criticism), and rated <strong>sensitive responding</strong> and <strong>mutuality</strong>（互动性：亲子双方共同投入一项活动、彼此回应并维持亲近的程度）on seven-point Likert scales. The children's internal working model was assessed with the Manchester Child Attachment Story Task (MCAST), using dolls to discuss four scenarios (nightmare, hurting a knee, feeling ill, getting lost).</li>
+    <li><strong>Results:</strong> parents in the programme showed more positive parenting and greater sensitivity than controls, but only in the unstructured activities (free play and tidy up). Children's attachment style showed <strong>no significant change</strong>. There were no gender or ethnicity differences in effectiveness.</li>
+    <li><strong>Conclusion:</strong> parenting programmes based on social learning theory do promote positive changes in parents' behaviour.</li>
+  </ul>
+  <p><strong>Evaluation.</strong> The observers were <strong>single-blind</strong>: they did not know which families had taken the programme, which reduced observer bias and protected internal validity; observers also received ongoing training to prevent <strong>coding drift</strong>, which improved reliability. Against it: the average number of sessions attended was very low (five out of 18, median of two), so many parents may simply not have absorbed the material. Very few fathers or grandparents attended, and all children were neurotypical, so the findings may only generalise to mothers and neurotypical children. Finally, only 152 of the 174 families completed the follow-up, so the long-term effects could not be measured for everyone and the remaining families may not be representative. The study still benefits society: even shortened by ten weeks, the programme worked, making it cheaper and available to more families.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>这项研究的妙处在「交叉验证」：社会学习理论和依恋理论平时被当成对手，O'Connor 偏用社会学习的方法（看录像、角色扮演、回家练习）去改依恋理论的指标（敏感性、互动性）。结果家长行为真的变好了（但只在自由玩和收拾玩具这类松散场景），孩子的依恋类型却纹丝不动。一句话总结：教得出敏感的养育行为，教不出孩子的依恋表征。评价记三组：单盲观察和持续防编码漂移是加分项；出席次数中位数只有 2 次、几乎全是妈妈参加、孩子全是典型发育，都限制推广；174 家只有 152 家完成追踪。</p>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Bowlby's Theory: Attachment Is Built In</h2>
+  <p>John Bowlby (1907–1990), a psychiatrist at the Tavistock child guidance clinic in London, rejected the idea that complex emotional bonds can be explained by food alone. He proposed that attachment is <strong>innate</strong> (nature): infants and caregivers are biologically predisposed to form bonds, because in the <strong>evolutionary environment of adaptedness</strong>（适应环境：人类祖先演化出身体与行为特质的远古环境）, staying close to a protective adult reduced risks from predators and helped infants survive to reproductive age.</p>
+  <ul class="tight">
+    <li><strong>Social releasers</strong>（社会释放器：天生引发照顾行为的婴儿行为，如哭泣、微笑、目光接触）: innate baby behaviours that trigger caregiving responses in adults. Babies who inherited these tendencies survived more often, so the predisposition to attach spread through the population.</li>
+    <li><strong>Imprinting and critical periods.</strong> Bowlby drew on Lorenz's goslings, which followed the first moving object they saw within hours of hatching. Imprinting typically occurs within 12–24 hours and becomes impossible after about 32 hours: a <strong>critical period</strong>（关键期：发展中的一段有限时间，某些经验必须在期内发生才能正常发展）. Bowlby applied a human version: failure to attach within roughly the first three years, the <strong>sensitive period</strong>（敏感期：环境影响作用特别大的弹性时间窗）, may leave children unable to form secure, lasting bonds.</li>
+    <li><strong>Safe base evidence.</strong> Harlow and Zimmerman (1959) raised eight baby monkeys with two surrogate mothers: wire (feeding for four infants) and cloth. All eight spent most of their time clinging to cloth regardless of which one fed them, fed from the wire mother while leaning against the cloth one, and ran to the cloth surrogate when a noisy toy scared them, using it as a <strong>safe base</strong>（安全基地：婴儿感到可靠可依的来源，靠近它才敢探索四周）. Comfort, not food, drives attachment.</li>
+    <li><strong>Monotropy</strong>（单向性：婴儿对一位主要照顾者的明确偏好）: by 7–12 months most infants show a clear preference for one <strong>primary attachment figure</strong>. Later attachments are <strong>hierarchical</strong>, organised by importance, with the primary figure at the top.</li>
+    <li><strong>Internal working model:</strong> a memory of early attachment experience that acts as a template for future relationships. Consistent, loving caregiving builds a positive model (optimism and trust in adult relationships); inconsistent caregiving or missing the sensitive period builds a negative one.</li>
+  </ul>
+  <svg viewBox="0 0 680 170" role="img" aria-label="Bowlby's four phases of attachment">
+    <defs>
+      <marker id="arB1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker>
+    </defs>
+    <line x1="30" y1="45" x2="650" y2="45" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arB1)"/>
+    <rect x="30" y="62" width="150" height="62" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="105" y="82" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">1 · Preattachment</text>
+    <text x="105" y="99" text-anchor="middle" font-size="10.5" fill="#475569">0–6 weeks · same to</text>
+    <text x="105" y="113" text-anchor="middle" font-size="10.5" fill="#475569">everyone, cries for attention</text>
+    <rect x="196" y="62" width="150" height="62" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.3"/>
+    <text x="271" y="82" text-anchor="middle" font-size="12" font-weight="700" fill="#c2410c">2 · In the making</text>
+    <text x="271" y="99" text-anchor="middle" font-size="10.5" fill="#7c2d12">6 wks–6/8 mos · prefers the</text>
+    <text x="271" y="113" text-anchor="middle" font-size="10.5" fill="#7c2d12">most responsive person</text>
+    <rect x="362" y="62" width="150" height="62" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="1.3"/>
+    <text x="437" y="82" text-anchor="middle" font-size="12" font-weight="700" fill="#991b1b">3 · Clear-cut</text>
+    <text x="437" y="99" text-anchor="middle" font-size="10.5" fill="#7f1d1d">6/8–18/24 mos · one figure,</text>
+    <text x="437" y="113" text-anchor="middle" font-size="10.5" fill="#7f1d1d">separation + stranger distress</text>
+    <rect x="528" y="62" width="122" height="62" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.3"/>
+    <text x="589" y="82" text-anchor="middle" font-size="12" font-weight="700" fill="#166534">4 · Reciprocal</text>
+    <text x="589" y="99" text-anchor="middle" font-size="10.5" fill="#14532d">18/24 mos+ · multiple ties,</text>
+    <text x="589" y="113" text-anchor="middle" font-size="10.5" fill="#14532d">distress much reduced</text>
+    <text x="30" y="24" font-size="11.5" fill="#475569">Bonds form in stages, but the one-person preference peaks in phase 3 (monotropy).</text>
+    <text x="340" y="155" text-anchor="middle" font-size="11" fill="#64748b">Age runs left to right; phase 3 is where Zhuangzhuang's behaviour would be easiest to see.</text>
+  </svg>
+  <p><strong>Evaluation.</strong> Schaffer and Emerson (1964) challenged monotropy: in their Glasgow sample of sixty babies, 29 per cent were attached to two or more people by 12 months, and by 18 months only 13 per cent had a single attachment while 31 per cent had five or more, so multiple attachments form much earlier than Bowlby allowed. However, the same data support his hierarchy: the strongest attachment behaviours still pointed at one specific person. The internal working model is supported by Hazan and Shaver's (1987) Love Quiz, which found a significant correlation between recalled parenting warmth and adult relationship length and divorce rate. But this is correlational, and Kagan (1984) offers a temperament（气质：早年即可观察的人格生物学侧面，包括情绪反应性、探索意愿与羞怯）explanation: the same inborn temperament could shape both early attachment and adult relationships, which would make the working model unnecessary as an explanation. Bowlby's theory is also <strong>socially sensitive</strong>: although he accepted the mother need not be the primary figure, his emphasis on her role (hormonal changes, breastfeeding) has been used to justify negative attitudes towards working mothers and can make mothers who cannot provide constant care feel guilty.</p>
+  <p class="small">Back to Zhuangzhuang once more: he is around phase 3, where the preference for one figure peaks. His grandmother may be the busiest caregiver, but Bowlby predicts the hierarchy is organised by importance, not by feeding hours.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>Bowlby 的理论记五件套：① 天生论：依恋是进化产物，贴近保护者活下来的祖先把「想依附」写进了基因；② 社会释放器：哭、笑、对视是天生的「求照顾按钮」；③ 关键期与敏感期：从 Lorenz 的小鹅（24 小时内印刻、32 小时后不可能）搬到人类（约 3 岁，错过难补）；④ 单向性：7–12 个月出现对一个人的最强偏好，之后的依恋按重要性排成等级；⑤ 内部工作模型：早期关系存成模板，指导以后的恋爱和交友。证据三对：Harlow 的绒布妈妈支持「安慰重于食物」；Schaffer & Emerson 反驳单向性（多个依恋出现得早）但支持等级结构；Hazan & Shaver 的爱情测验支持内部工作模型但被 Kagan 用气质说挑战。社会敏感性：理论容易被拿去指责职场妈妈。</p>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. The Maternal Deprivation Hypothesis</h2>
+  <p><strong>Deprivation</strong>（剥夺：基本需要得不到满足）means failing to meet a person's basic human needs; <strong>maternal deprivation</strong>（母性剥夺：缺少一个能以敏感、回应和有爱的方式满足婴儿需要的人）is the absence of someone who meets the infant's needs in a sensitive, responsive and loving way. Bowlby put it memorably: "Mother-love in infancy and childhood is as important for mental health as vitamins and proteins for physical health" (Bowlby, 1952). Reflecting 1950s social norms he emphasised the mother, but his real concern was <strong>continuity of care</strong> rather than which person provided it.</p>
+  <p>Bowlby proposed that disrupted care within roughly the first <strong>two and a half years</strong> (the sensitive period) is most likely to cause long-term damage, with badly managed separations up to age five still harmful. The predicted outcomes include restricted growth (Johnson &amp; Gunnar, 2011), poor cognitive development (Goldfarb, 1943), antisocial behaviour, depression, and <strong>affectionless psychopathy</strong>（无情型精神病态：无法对他人产生共情，伤害别人也不会内疚或自责）.</p>
+  <p><strong>Evaluation.</strong> Goldfarb (1943) supported the hypothesis with a natural experiment: 30 infants separated from their mothers; half went straight into foster families (average 14 months), half spent four months to age three in institutions first. At ages 10 to 14, the institution group were less intelligent, had weaker social skills and formed poorer relationships. Because both groups had been separated, the damage points to the lack of an emotionally available caregiver rather than separation itself. But Bowlby's own later study works against the hypothesis: he followed 60 children hospitalised long-term with tuberculosis under age four. Their physical needs were met but nurses had no time for substitute mothering; at seven and 14, differences from a matched control group were smaller than expected, and at least half formed positive social relationships. The hypothesis, on this evidence, may be exaggerated.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>母性剥夺假说的核心句：「幼年的母爱之于心理健康，如同维生素与蛋白质之于身体健康」。记三个要点。第一，真正关键的是照顾的连续性，而不是「必须妈妈本人」（这是答题和评价都常被忽略的一层）。第二，敏感期约为两岁半以内，五岁前处理不当的分离仍可能有害。第三，预测后果一串：生长受限 / 认知发展差 / 反社会行为 / 抑郁 / 无情型精神病态。支持证据是 Goldfarb 的自然实验（孤儿院先待过的那组更差）；反对证据恰恰来自 Bowlby 自己 1956 年的肺结核住院儿童研究：一半以上照样建立了正常关系，假说可能夸大了。</p>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. The 44 Juvenile Thieves (1944)</h2>
+  <p>Bowlby's most famous evidence for the deprivation hypothesis is a study of <strong>juvenile thieves</strong>: children referred to his London child guidance clinic for stealing.</p>
+  <ul class="tight">
+    <li><strong>Aim:</strong> to investigate the relationship between affectionless character and prolonged early separations.</li>
+    <li><strong>Method:</strong> clinical interviews（临床访谈：临床情境中的深入谈话，用于了解病人的心理状态与经历）.</li>
+    <li><strong>Sample:</strong> an opportunity sample of 31 boys and 13 girls (ages 5–17, over half under 11, average to above-average intelligence; 50 per cent stealing regularly), referred by parents, schools and probation officers. They were compared with a matched control group of 44 children attending the same clinic for emotional problems but not stealing, similar in age, intelligence and socioeconomic status.</li>
+    <li><strong>Procedure:</strong> a psychologist observed each child's emotional state during an intelligence test; a social worker interviewed the mothers about the children's mental health. Bowlby then conducted one-hour clinical interviews with each child and each mother, adding to the case notes after every clinic visit, along with school reports as <strong>secondary data</strong>（次级资料：他人收集好的资料，如学校报告）.</li>
+  </ul>
+  <p><strong>Findings:</strong> Bowlby classified the 44 thieves as depressed (20 per cent), over-active (30 per cent) and affectionless (32 per cent). None of the control group were affectionless. Significantly more thieves than non-thieves had experienced early, permanent or prolonged separations: 39 per cent of thieves versus 5 per cent of non-thieves. Of the affectionless thieves, 86 per cent had experienced prolonged separations; among the non-affectionless children the figure was only 17 per cent.</p>
+  <table>
+    <tr><th></th><th>Prolonged separations before age 6</th><th>No prolonged separations</th><th>Total</th></tr>
+    <tr><td><strong>Thieves</strong></td><td>17</td><td>27</td><td>44</td></tr>
+    <tr><td><strong>Non-thieves</strong></td><td>2</td><td>42</td><td>44</td></tr>
+    <tr><td><strong>Total</strong></td><td>19</td><td>69</td><td>88</td></tr>
+  </table>
+  <p><strong>Conclusion:</strong> juvenile thieves with affectionless traits (lack of empathy and guilt) were likely to have experienced prolonged separations from their primary caregivers in the early years.</p>
+  <p><strong>The right statistical test.</strong> Bowlby used an independent groups design (thieves versus non-thieves) and collected nominal data（称名数据：只有类别之分，如「分离过 / 没分离过」）: did each child experience early prolonged separation, yes or no? Independent groups + nominal data means the correct test is the <strong>chi-squared test</strong>（卡方检验：用于两组独立样本、称名数据的显著性检验）.</p>
+  <p><strong>Evaluation.</strong> The study was longitudinal: children visited the clinic many times for therapy, so character classifications were not based on a single meeting, which increased validity. Against it: the classifications may have been subjective, because Bowlby interviewed the children after receiving the social worker's and psychologist's information, and his questions to the mothers may have been shaped by what the children had already told him: researcher bias that reduces the scientific status of the findings. The sample was small (44 per group), mostly boys, all from one London clinic, so the link may not generalise to girls, other regions, or cultures where childcare is routinely shared. Most importantly, 61 per cent of the thieves (27/44) had <em>not</em> experienced prolonged separations, so early separation cannot be the whole story of childhood criminality. The link is strongest for the affectionless group, and may depend on why the separation happened (bereavement, family discord; Rutter, 1981). Bowlby's research still changed society for the better: hospitals extended visiting hours and provided parent beds, orphanages were closed in many countries, and foster care now prioritises continuity of high-quality care.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>44 小偷研究的骨架：机会样本 44 个小偷 + 配对控制组 44 个非小偷，方法全是临床访谈（社工问妈妈、Bowlby 各访谈一小时、学校报告做次级资料）。结果记三组百分数：小偷里 39% 经历过早期长期分离，非小偷只有 5%；无情型小偷里 86% 有分离史，非无情型只有 17%；控制组 0% 被判为无情型。频率表背一个对比：小偷 17/44 有分离史，非小偷 2/44。统计检验考法：独立组设计 + 称名数据 → 卡方检验。评价三刀：纵向多次见面提高效度（加分）；Bowlby 先看了社工和心理学家的信息再访谈孩子和母亲，研究者偏差减分；最大的漏洞是 61% 的小偷没有分离史，分离讲不完偷窃这件事。</p>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Deprivation versus Privation</h2>
+  <p>Michael Rutter (1981) argued that Bowlby blurred a crucial distinction. <strong>Deprivation</strong> is the <em>breaking</em> of an attachment bond that had formed; <strong>privation</strong>（私情缺失：在关键期内从未形成任何依恋）is the <em>absence</em> of any attachment, as in severe neglect, abuse, or poor-quality institutional care. Rutter suggested many of Bowlby's 44 thieves had suffered privation rather than deprivation: some had moved through so many foster carers that they never had the chance to form a lasting bond, and the effects of privation, he argued, are more severe and long lasting.</p>
+  <p><strong>Evidence that privation's effects can last.</strong> Rutter and Sonuga-Barke (2007) followed a random sample of 165 Romanian orphans adopted into British families in the 1990s, subdivided into those adopted before or after six months of age. By age 11 the children had made significant physical and cognitive gains, but compared with a random sample of 52 adopted children without institutional care, those adopted after six months still showed overactivity and difficulties with social interaction and forming attachments. At age 15 these effects were still evident, so early privation can have long-term effects, moderated by age at adoption.</p>
+  <p><strong>Evidence that they can reverse.</strong> Koluchová (1972, 1992) studied twin boys Andrei and Vanya, discovered aged six after years of extreme abuse and neglect, with severe cognitive and language delays. After being fostered by two kind and loving sisters, their development was rapid: by 20, both were employed and in long-term romantic relationships. Cases like this challenge both the critical period for attachment and the claim that privation's effects are irreversible, though case-study evidence is weak on generalisability.</p>
+  <div class="green-box">
+    <h4>Close the loop: back to the baby who loved the wrong person</h4>
+    <p>Now you can give the full answer to the Start Here scenario. Learning theories predict attachment should follow food, but Zhuangzhuang's bond points at his mother, not the grandmother who feeds him: comfort, responsiveness and evolutionary predisposition matter more than feeding. Bowlby's phases explain the timing (around 8 months, clear-cut attachment makes one person's departure matter far more than anyone else's), his monotropy explains why the hierarchy has one person at the top, and caregiver sensitivity explains why the mother, despite fewer hours, may be the one who reads and responds to him best. The deprivation hypothesis adds the warning side: if that bond were broken without good substitute care, the damage could last, which is why continuity of care, not the identity of the caregiver, is what matters.</p>
+    <p style="margin-top:8px"><strong>Reflect before the Checkpoint:</strong> in your own family or one you know, who is the primary attachment figure, and is it the person who does the most feeding? What would Bowlby predict, and what would a learning theorist predict?</p>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Checkpoint</h2>
+  <div class="xp-block">
+    <h4>Q1 · Why is the mother referred to as a secondary reinforcer in the learning theory of attachment?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Because she reinforces the baby's hunger directly, like food does</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Because she becomes rewarding through repeated association with food, which is the primary reinforcer</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Because she reinforces the baby only when the baby cries loudly enough</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q2 · What was the parenting programme tested in O'Connor et al. (2013)?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Triple P (Positive Parenting Programme)</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Incredible Years, a 12-week programme based on social learning theory</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The MCAST story-telling programme</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q3 · In Bowlby's account, when does clear-cut attachment to one specific figure typically emerge?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">From birth to about 6 weeks</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Not until 18–24 months, when reciprocal attachments begin</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">At about 6–8 months, in phase three, with separation and stranger distress</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q4 · Which of the following is a named effect of maternal deprivation in Bowlby's account?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Improved peer relationships in adolescence</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Affectionless psychopathy, along with depression, antisocial behaviour and poor cognitive development</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Accelerated language acquisition</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q5 · Why is researcher bias a limitation of Bowlby's 44 Juvenile Thieves study?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Because the children were too young to answer interview questions accurately</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Because the control group was recruited from a different clinic with different standards</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Because Bowlby interviewed the children after reading the social worker's and psychologist's findings, so his classifications may have been shaped by prior information</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q6 · What is the difference between deprivation and privation, according to Rutter?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Deprivation is milder and always temporary; privation is any separation from the mother</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Deprivation breaks an attachment bond that had formed; privation is the failure to form any attachment within the critical period</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">They are two spellings of the same concept</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Exam Lab</h2>
+  <div class="exam-practice">
+    <div class="xp-block">
+      <h4>Q1 · Explain one feature <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Explain one feature of Bowlby's theory of attachment.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans1')">Show answer</button></div>
+      <div class="xp-result" id="ans1" hidden>
+        <p>One feature is <strong>social releasers</strong>: innate behaviours such as crying, smiling, grasping and eye contact that trigger caregiving responses from adults. They are the mechanism that makes the bond work: babies who emitted these signals were more likely to receive care and protection, so the behaviours were passed on because they helped infants survive. This shows how Bowlby's theory grounds attachment in evolution rather than in learned associations with food.</p>
+        <p class="xp-case">Marking guidance: 1 mark for identifying a feature (social releasers, monotropy, critical/sensitive period, internal working model are all acceptable), 1 mark for explaining it accurately in the context of attachment.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q2 · Explain one weakness <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Explain one weakness of Bowlby's maternal deprivation hypothesis.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans2')">Show answer</button></div>
+      <div class="xp-result" id="ans2" hidden>
+        <p>One weakness is that the evidence is mixed, including Bowlby's own later data. He studied 60 children who had experienced long-term separations while recovering from tuberculosis before age four. Although nurses could not provide high-quality substitute mothering, at ages seven and 14 the differences from a matched control group were smaller than expected, and at least half made positive social relationships. This suggests the negative effects of maternal deprivation may have been exaggerated, weakening the hypothesis.</p>
+        <p class="xp-case">Marking guidance: 1 mark for identifying a weakness (evidence of children recovering / Rutter's distinction / exaggerated effects), 1 mark for explaining it with a study or conceptual point.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q3 · Explain one strength <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Explain one strength of the procedure used in Bowlby's 44 Juvenile Thieves study.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans3')">Show answer</button></div>
+      <div class="xp-result" id="ans3" hidden>
+        <p>One strength is that the study was <strong>longitudinal</strong>: the children visited the clinic many times for therapy, and Bowlby added to their case histories as the weeks went by. Because the character-type classifications (affectionless, depressed, over-active) were built up across repeated meetings rather than a single session, they are more likely to be accurate, which increases the validity of the classifications.</p>
+        <p class="xp-case">Marking guidance: 1 mark for identifying the strength (longitudinal / repeated contact / matched control group), 1 mark for explaining how it improves validity or comparability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Key Terms</h2>
+  <div class="keyterm-box"><span class="kt">attachment</span><br><span class="zh">依恋：孩子与照顾者之间紧密、持久的情感联结（名词），也指形成联结的过程（动词）</span></div>
+  <div class="keyterm-box"><span class="kt">primary / secondary reinforcer</span><br><span class="zh">初级强化物：直接满足生理需要（如食物）；次级强化物：因反复与初级强化物配对而变得有吸引力（如照顾者）</span></div>
+  <div class="keyterm-box"><span class="kt">secondary drive</span><br><span class="zh">次级驱力：习得的指向照顾者的动机，由中性刺激与生理需要的满足配对而来</span></div>
+  <div class="keyterm-box"><span class="kt">randomised control trial</span><br><span class="zh">随机对照试验：参与者随机分入实验组（接受干预）与对照组的临床试验设计</span></div>
+  <div class="keyterm-box"><span class="kt">internal working model</span><br><span class="zh">内部工作模型：婴儿期形成的认知模板，指导我们对未来关系的预期</span></div>
+  <div class="keyterm-box"><span class="kt">social releasers</span><br><span class="zh">社会释放器：天生引发照顾行为的行为，如哭泣 / 微笑 / 目光接触 / 抓握</span></div>
+  <div class="keyterm-box"><span class="kt">critical period / sensitive period</span><br><span class="zh">关键期：发展必需经验必须发生的有限时间窗；敏感期：环境影响作用特别大的弹性时间窗</span></div>
+  <div class="keyterm-box"><span class="kt">monotropy</span><br><span class="zh">单向性：婴儿对一位主要照顾者的明确偏好，之后的依恋按重要性排成等级</span></div>
+  <div class="keyterm-box"><span class="kt">safe base</span><br><span class="zh">安全基地：可靠的安慰来源；靠近它，婴儿才敢探索周围环境</span></div>
+  <div class="keyterm-box"><span class="kt">maternal deprivation</span><br><span class="zh">母性剥夺：缺少能以敏感、回应、有爱的方式满足婴儿需要的人</span></div>
+  <div class="keyterm-box"><span class="kt">affectionless psychopathy</span><br><span class="zh">无情型精神病态：无法表现正常情感、羞耻或对自己行为的责任感</span></div>
+  <div class="keyterm-box"><span class="kt">privation</span><br><span class="zh">私情缺失：在关键期内未能形成任何依恋（Rutter 区分：剥夺是联结断裂，私情缺失是从未形成）</span></div>
+</section>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  /* ---------- sidebar scroll spy ---------- */
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  /* ---------- reveal helper ---------- */
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  /* ---------- multiple choice: one why per option ---------- */
+  var secWhy = {
+  s0: [
+    [
+      '这个选项被现象直接推翻了：壮壮恰恰对喂了他一年的奶奶毫无依恋反应。如果是「爱跟食物走」，最亲的应该是奶奶，但事实正相反。这恰恰是学习理论需要解释、而解释得很吃力的地方。',
+      '正确。壮壮的现象就是 cupboard love（爱跟着食物走）的反例：他最依恋的妈妈几乎不负责喂饭。Bowlby 会说依恋是天生的，对「能读懂并回应你的那个人」形成偏好；学习理论只能解释一部分，解释不了这种「爱不跟着食物走」。往下读，你会看到两条路线的完整对垒。',
+      '认人早就发生了：Bowlby 的阶段表里，6 到 8 个月就进入 clear-cut attachment（明确的依恋），壮壮这个年纪已经能明确偏好一个人。问题不在「还没认人」，而在他认的为什么是不喂饭的那个人。'
+    ]
+  ],
+  s7: [
+    [
+      '方向反了：直接满足饥饿的是食物本身（初级强化物）。妈妈的角色恰恰不是直接给生理满足。',
+      '正确。妈妈本身不解除饥饿，但她反复与食物（初级强化物）配对出现，于是获得了强化力。婴儿对她的依恋就是从这里长出来的次级驱力。',
+      '强化物理论不看哭声大小：操作性条件反射说的是食物到来之前婴儿的任何行为（包括哭）都被正强化，跟「哭得够不够响」没有关系。'
+    ]
+    ,[
+      'Triple P 是别的课程体系，不是 O\'Connor 等人测的这一个。',
+      '正确。Incredible Years（Webster-Stratton, 1984）是被缩短为 12 周的社会学习取向养育课程，实验组还配了六周阅读干预作对照。',
+      'MCAST 是测量工具（曼彻斯特儿童依恋故事任务，用玩偶评估内部工作模型），不是被检验的干预课程。'
+    ]
+    ,[
+      '0 到 6 周是第一阶段 preattachment：宝宝对所有人一视同仁，谈不上对特定人的明确依恋。',
+      '18 到 24 个月起是第四阶段 reciprocal attachments：多个依恋已经形成、分离痛苦大幅减轻，明确的一人偏好在此之前就出现了。',
+      '正确。第三阶段 clear-cut attachment 从 6 到 8 个月开始：对一位特定依恋对象表现出强烈偏好，这个人离开房间会哭闹，陌生人引发强烈不安。'
+    ]
+    ,[
+      '改善同伴关系是发展顺利的表现，Bowlby 预测的母性剥夺后果恰好相反：关系建立困难。',
+      '正确。Bowlby 列出的后果包括生长受限（Johnson & Gunnar, 2011）、认知发展差（Goldfarb, 1943）、反社会行为、抑郁和无情型精神病态（无法共情、不会内疚）。',
+      '语言加速与假说方向相反：剥夺预测的是发展受阻，不是发展提速。'
+    ]
+    ,[
+      '孩子答不准是访谈法的普遍顾虑，但课本点名的偏差来源另有其人：是 Bowlby 自己的信息顺序。',
+      '控制组确实在同一家诊所招募、年龄智力社会经济地位都配对了，这是研究做得规范的部分。',
+      '正确。Bowlby 先拿到社工和心理学家的发现，然后才访谈孩子和母亲；他对母亲的提问可能已经被孩子那边的信息带偏，人物分类可能因此受先入信息影响，这是研究者偏差。'
+    ]
+    ,[
+      '「轻重之分」说反了：Rutter 的区分不在严重程度，而在依恋到底有没有形成过。',
+      '正确。剥夺（deprivation）是已经形成的依恋联结被断裂；私情缺失（privation）是在关键期内从未形成任何依恋，比如严重忽视或长期辗转多个寄养家庭。',
+      '两者是 Rutter 明确区分的两个概念：一个讲「断」，一个讲「从来没有」，混为一谈正是他批评 Bowlby 的地方。'
+    ]
+  ]
+};
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = (btn.closest('.xp-block') || section).querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+</script>
+</body>
+</html>
