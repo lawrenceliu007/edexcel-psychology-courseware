@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.1.2 Content — The Working Memory Model</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic B · Cognitive psychology — 2.1.2 Content</span>
+  </div>
+  <span class="nav-pill">🧠 Cognitive Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">2.1.2 Content</div>
+    <div class="sb-header-sub">Working Memory Model</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s1">1. Why a New Model</a></li>
+    <li class="sb-item"><a href="#s2">2. The Central Executive</a></li>
+    <li class="sb-item"><a href="#s3">3. The Phonological Loop</a></li>
+    <li class="sb-item"><a href="#s4">4. The Visuospatial Sketchpad</a></li>
+    <li class="sb-item"><a href="#s5">5. The Episodic Buffer</a></li>
+    <li class="sb-item"><a href="#s6">6. Evaluation</a></li>
+    <li class="sb-item"><a href="#s7">7. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s8">8. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s9">9. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>2.1.2 THE WORKING MEMORY MODEL<br><span style="font-size:0.65em">Baddeley &amp; Hitch (1974) · Central executive · Phonological loop · VSSP · Episodic buffer · 工作记忆模型</span></h1>
+  <div class="meta">
+    <span class="badge">Topic B · Cognitive psychology</span>
+    <span class="badge">Content</span>
+    <span class="badge">Spec 2.1.2</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.9 · pp.88–95</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this page is really asking</h4>
+  <ol>
+    <li><strong>Short-term memory is not one passive shelf.</strong> Baddeley and Hitch rebuilt it as an active system that holds information <em>and works on it</em>: mental arithmetic, following sentences, tracking a moving light.</li>
+    <li><strong>One boss, several workers.</strong> The central executive directs attention and hands material to two slave systems: the phonological loop for sound, the visuospatial sketchpad for sight and space.</li>
+    <li><strong>Each claim needs its evidence.</strong> Dual-task performance, brain-damaged patients and brain scans all back the split into subsystems.</li>
+    <li><strong>The 2000 update matters.</strong> The episodic buffer was added to explain how the parts combine with each other and with long-term memory.</li>
+  </ol>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Outline all four components</strong>: the central executive, phonological loop, visuospatial sketchpad and episodic buffer, with the role and capacity of each.</li>
+    <li><strong>Distinguish the two parts of the phonological loop</strong> and use the phonological similarity effect and the word length effect as evidence for them.</li>
+    <li><strong>Explain dual-task performance</strong>: why two similar tasks interfere and two different tasks do not.</li>
+    <li><strong>Evaluate the model</strong> with clinical cases (KF, HM, Williams syndrome, Alzheimer's patients), neuroimaging (Paulesu et al., 1993) and the criticism that the central executive is vague and untestable.</li>
+    <li><strong>Apply the model to everyday scenarios</strong>, explaining which component is overloaded and why.</li>
+  </ul>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Why a New Model Was Needed</h2>
+  <p>Baddeley and Hitch proposed working memory in 1974 as a three-component short-term memory system. The label was not new: Atkinson and Shiffrin had already used <q>working memory</q> for the short-term store in their multi-store model. What was new was the diagnosis. Baddeley and Hitch argued that the multi-store version of short-term memory was overly simplistic and leaned too hard on rehearsal as the critical process for learning. They set out to understand short-term memory as a complex, <strong>active</strong> system.</p>
+  <p>Working memory temporarily stores and <strong>manipulates</strong> the information currently in use. We rely on it for remembering phone numbers and lists, comprehending sentences, mental calculation and reasoning. It is also fragile: easily disturbed by distraction (someone talking while you hold a number in mind), overload (a long list) and overwork (complicated calculations).</p>
+  <p>The original model had three parts: a <strong>central executive</strong> running the whole system, and two <strong>slave systems</strong>（从属系统：听命于总裁的分工部门）handling verbal and visual information. In 2000 a fourth component, the <strong>episodic buffer</strong>, was added.</p>
+  <div class="figure">
+    <svg viewBox="0 0 680 330" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, sans-serif">
+      <defs>
+        <marker id="ar2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#334155"/></marker>
+      </defs>
+      <!-- data from senses -->
+      <text x="52" y="66" font-size="11.5" font-weight="600" fill="#334155">Data from</text>
+      <text x="52" y="82" font-size="11.5" font-weight="600" fill="#334155">the senses</text>
+      <line x1="118" y1="74" x2="170" y2="96" stroke="#334155" stroke-width="2" marker-end="url(#ar2)"/>
+      <!-- central executive -->
+      <rect x="174" y="60" width="200" height="66" rx="10" fill="#1e3a5f"/>
+      <text x="274" y="88" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Central executive</text>
+      <text x="274" y="108" text-anchor="middle" font-size="10.5" fill="#cbd5e1">attentional controller · modality free</text>
+      <!-- arrows down to slave systems -->
+      <line x1="230" y1="126" x2="150" y2="178" stroke="#334155" stroke-width="2" marker-end="url(#ar2)"/>
+      <line x1="318" y1="126" x2="398" y2="178" stroke="#334155" stroke-width="2" marker-end="url(#ar2)"/>
+      <!-- phonological loop -->
+      <rect x="60" y="182" width="180" height="96" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="150" y="206" text-anchor="middle" font-size="13" font-weight="700" fill="#c2410c">Phonological loop</text>
+      <rect x="74" y="218" width="70" height="46" rx="6" fill="#fff" stroke="#fdba74"/>
+      <text x="109" y="238" text-anchor="middle" font-size="10" fill="#c2410c">Phonological</text>
+      <text x="109" y="252" text-anchor="middle" font-size="10" fill="#c2410c">store</text>
+      <rect x="156" y="218" width="70" height="46" rx="6" fill="#fff" stroke="#fdba74"/>
+      <text x="191" y="234" text-anchor="middle" font-size="9.5" fill="#c2410c">Articulatory</text>
+      <text x="191" y="246" text-anchor="middle" font-size="9.5" fill="#c2410c">rehearsal</text>
+      <text x="191" y="258" text-anchor="middle" font-size="9.5" fill="#c2410c">system</text>
+      <text x="150" y="272" text-anchor="middle" font-size="9.5" fill="#94a3b8">sound-based · limited capacity</text>
+      <!-- VSSP -->
+      <rect x="440" y="182" width="180" height="96" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+      <text x="530" y="206" text-anchor="middle" font-size="13" font-weight="700" fill="#1e40af">Visuospatial</text>
+      <text x="530" y="222" text-anchor="middle" font-size="13" font-weight="700" fill="#1e40af">sketchpad</text>
+      <text x="530" y="242" text-anchor="middle" font-size="10" fill="#475569">visual + spatial information</text>
+      <text x="530" y="258" text-anchor="middle" font-size="10" fill="#475569">shape · colour · location</text>
+      <text x="530" y="272" text-anchor="middle" font-size="9.5" fill="#94a3b8">visual code · limited capacity</text>
+      <!-- episodic buffer -->
+      <rect x="240" y="182" width="170" height="60" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+      <text x="325" y="206" text-anchor="middle" font-size="12.5" font-weight="700" fill="#166534">Episodic buffer</text>
+      <text x="325" y="224" text-anchor="middle" font-size="9.8" fill="#475569">integrates all sources · added 2000</text>
+      <!-- LTM -->
+      <rect x="240" y="284" width="170" height="36" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="325" y="307" text-anchor="middle" font-size="11.5" font-weight="700" fill="#334155">Long-term memory</text>
+      <!-- buffer <-> LTM -->
+      <line x1="325" y1="242" x2="325" y2="284" stroke="#16a34a" stroke-width="1.8" marker-end="url(#ar2)"/>
+      <line x1="337" y1="284" x2="337" y2="242" stroke="#16a34a" stroke-width="1.8" marker-end="url(#ar2)"/>
+      <!-- buffer links to slave systems -->
+      <line x1="410" y1="215" x2="440" y2="215" stroke="#16a34a" stroke-width="1.8" marker-end="url(#ar2)"/>
+      <line x1="228" y1="215" x2="240" y2="215" stroke="#16a34a" stroke-width="1.8"/>
+    </svg>
+    <div class="figure-caption">The working memory model (Baddeley and Hitch, 1974; episodic buffer added 2000). The central executive allocates incoming data to the slave systems; the episodic buffer binds their output together with long-term memory.</div>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>把工作记忆想成一个小团队。总裁（central executive）不存货，只管分配注意力：决定先看什么、先听什么，把材料分给两个干活的部门。语音回路管「声音」，视空间画板管「图像和位置」，两个部门各自容量都很小。2000 年新加的情节缓冲器是个连接器：把两个部门的产出和长时记忆里的旧知识绑在一起，解释了为什么我们能记住整句长句子。这页的考点是「每个部件干什么、证据是什么」，评价题专挑总裁「说不清、测不了」这一点打。</p>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. The Central Executive</h2>
+  <p>The central executive was originally described as a limited-capacity component in charge of general processing, supervising and coordinating the two slave systems. It is <strong>modality free</strong>（通道自由：什么形式的信息都能处理）: it can deal with acoustic, visual and other types of sensory information. Its best-understood role is as an <strong>attentional controller</strong> with the capacity to <strong>focus, divide and switch</strong> attention. It receives information from the senses and allocates verbal and visual material to the appropriate slave system.</p>
+  <div class="note-box">
+    <h4>Keep this criticism ready</h4>
+    <p>The central executive is largely a theoretical concept with limited experimental support. Because it is abstract, it is not directly testable: empirical data cannot easily be gathered, so critics argue it does not fully meet the criterion of being scientific. Its precise function is undefined and its location in the brain has not been found.</p>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>总裁的本事就三个词：focus（专注一件事）、divide（分心做两件）、switch（来回切换）。它不按声音或图像分类收货，什么都能管。但它也是最被诟病的部件：功能说不清、脑区找不到、实验难做，评价题写「central executive 概念模糊、缺乏直接证据」就是满分方向。</p>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. The Phonological Loop</h2>
+  <p>The phonological loop is the slave system for <strong>verbal information</strong>. It has two parts:</p>
+  <ul class="tight">
+    <li><strong>The phonological store</strong>: holds a limited amount of verbal information for a few seconds. The hold can be extended by subvocalising, that is, refreshing the trace.</li>
+    <li><strong>The articulatory rehearsal system</strong>（发音复述系统：心里默念的复读机）: the inner voice that repeats the sounds to keep them alive.</li>
+  </ul>
+  <h3>Two effects that prove the design</h3>
+  <p><strong>The phonological similarity effect.</strong> Similar-sounding items (man, cad, mat, cap, can) are harder to remember than different-sounding ones (pen, sup, car, day, hot). Crucially, the effect disappears for semantically similar words (huge, long, wide, tall, large) versus unrelated ones (thin, wet, old, late, strong). Only sound confusion matters, which demonstrates the store relies on <strong>acoustic encoding</strong> (Baddeley, 1966a).</p>
+  <p><strong>The word length effect.</strong> Short monosyllabic words (cat, rug, hat) are recalled better than long polysyllabic words (intelligence, alligator, hippopotamus). Longer words fill up the limited capacity of the articulatory rehearsal system, so words earlier in the list decay. The longer the word, the more capacity it eats, and the more likely forgetting becomes. The same logic explains <strong>articulatory suppression</strong>（发音抑制：复述被占线）: rehearsal collapses when you must repeat a filler such as <q>the</q> while learning a list, and recall deteriorates.</p>
+  <h3>Why the loop exists: language acquisition</h3>
+  <p>The Italian patient VP, with an acquired phonological impairment, could not retain any vocabulary from a new language, suggesting the loop evolved for language learning (Baddeley et al., 1988). Children with Specific Language Impairment（特定型语言障碍）struggle to repeat non-words (slimp, dar, gep), and this correlates with vocabulary size: deficits in the loop make learning novel language hard (Gathercole and Baddeley, 1996). Non-word repetition is now a standard indicator test for SLI.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>语音回路 = 仓库 + 复读机。两个经典效应都在证明这条设计：发音像的字母互相干扰（证明存的是声音），长单词占容量多、忘得快（证明复读机带宽有限）。进化意义也考过：学外语靠它（病人 VP 与 SLI 儿童的证据），所以非词复述测试成了语言障碍的筛查工具。</p>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. The Visuospatial Sketchpad</h2>
+  <p>The visuospatial sketchpad (VSSP) temporarily holds and manipulates <strong>visual and spatial</strong> information: shape, colour, and the location and movement of objects. It uses a visual code and has a limited capacity.</p>
+  <h3>Measuring spatial span: the Corsi blocks</h3>
+  <p>Spatial span is tested with the <strong>Corsi block tapping task</strong>（科西积木敲击任务：记方块亮起的顺序）: blocks on a screen light up in a sequence the participant must reproduce. Errors increase as the sequence grows, suggesting a limited capacity for spatial memory.</p>
+  <h3>Are visual and spatial one system or two?</h3>
+  <p>Klauer and Zhao (2004) found visual memory tasks were disrupted more by visual interference and spatial tasks more by spatial interference: evidence for separate components inside the VSSP. Darling et al. (2007) pushed this further with 72 participants memorising a letter <q>p</q> on a screen of 30 white squares, recalling either its appearance or its location. A spatial interference task (tapping keys in a figure of eight) disrupted memory for location but not appearance; a visual disruption (flickering black and white dots) affected memory for appearance, to a lesser extent, but not location. One caution: real visual memory usually juggles a whole scene, not one letter, so the task is not an everyday slice of visual processing. This study is examined in detail on page 2.3.3.</p>
+  <h3>A boundary case: congenital blindness</h3>
+  <p>David Lieberman (1980) criticised the VSSP concept using people with congenital blindness（先天失明）. Lacking the visual experience on which the sketchpad is built, they appear to run tasks that would rely on the VSSP through other sense modalities instead. The model may therefore need a more inclusive account of its components.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>视空间画板管「看到什么」和「东西在哪」。科西积木测空间容量：方块亮几块、按原顺序敲回来。视觉和空间是不是一个系统？两组干扰实验给出了分离证据：动态敲键盘破坏位置记忆、黑白闪烁破坏外观记忆，各管各的。边界案例：先天失明的人没有视觉经验却照样能做这类任务，说明画板理论需要修正。</p>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. The Episodic Buffer</h2>
+  <p>The episodic buffer was added in 2000. It is a temporary store of limited capacity whose role is to <strong>integrate information from different sources</strong>: the central executive, the phonological loop, the visuospatial sketchpad and long-term memory. It processes auditory, spatial and visual forms alike.</p>
+  <p>Two puzzles forced the addition:</p>
+  <ul class="tight">
+    <li><strong>The sentence-span puzzle.</strong> The phonological loop holds only a few word sequences, yet we can store far longer sentence sequences, up to 15 to 20 sentence units. Words in sentences can be bound together by meaning and grammar, and that binding reaches into long-term memory. The original model had no place for this.</li>
+    <li><strong>The combination puzzle.</strong> Verbal-span experiments showed verbal and visual encoding can be combined, but the original model could not explain how its subcomponents interface with each other or with long-term memory. The episodic buffer is the answer.</li>
+  </ul>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>情节缓冲器是 2000 年的补丁，补的是旧模型的两个漏洞。第一，语音回路明明只能装几个词，为什么整句话能记住十几句？因为句子靠意义和语法打包，打包动作要连到长时记忆。第二，语音信息和视觉信息能拼在一起用，旧模型没写部件之间怎么对接。缓冲器就是那个「把所有来源的信息捆到一起」的连接舱。</p>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Evaluation</h2>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Supports the model</h4>
+      <ul class="tight">
+        <li><strong>Dual-task experiments (Baddeley and Hitch, 1976).</strong> Participants tracked a moving light with a pointer while imagining the letter F and judging the angles at its top and bottom. Each task was easy alone, but together they failed: two visual tasks compete for the VSSP. Add a verbal task instead and performance holds, because the phonological loop takes the load. Separate slave systems explain the pattern.</li>
+        <li><strong>Clinical cases.</strong> KF (Shallice and Warrington, 1974) damaged his parietal lobe in a motorbike accident: digit span of one to two items, a gross phonological-store impairment, but intact visual memory. HM shows the mirror image: gross spatial-memory impairment with verbal short-term memory relatively unaffected. Two subsystems, independently damageable.</li>
+        <li><strong>Williams syndrome.</strong> Normal language ability but impaired visual and spatial ability: the same word-length and similarity factors operate, yet Corsi performance is poor. Clinical evidence for separate subsystems (Phillips et al., 2004, also found problems with spatial prepositions such as behind, underneath, against).</li>
+        <li><strong>Neuroimaging (Paulesu et al., 1993).</strong> PET scans showed different regions at work: Broca's area during subvocal rehearsal, the supramarginal gyrus when the phonological store was used. Physical evidence for the loop and its two subparts.</li>
+        <li><strong>The word length effect across development (Sebastián and Hernández-Gil, 2012).</strong> Spanish digit span grows with age from around age 7, when subvocalising starts, and is shorter than the Anglo-Saxon figure, plausibly because Spanish digit names take longer to pronounce.</li>
+        <li><strong>Alzheimer's disease (Baddeley et al., 1991).</strong> Alzheimer's patients handled single verbal or visual tasks as well as young and elderly controls, but failed badly when doing both together: the slave systems were intact, the coordination (central executive) was not.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Challenges the model</h4>
+      <ul class="tight">
+        <li><strong>The central executive is underspecified.</strong> Largely theoretical, limited experimental support, not directly testable: an abstract concept that resists empirical data. Its exact function and brain location remain unknown.</li>
+        <li><strong>Case studies generalise poorly.</strong> KF and HM are unique individuals with unique injuries; care is needed before extending their dissociations to everyone.</li>
+        <li><strong>The VSSP may not be universal.</strong> Lieberman (1980): people with congenital blindness handle such tasks through other modalities, so the sketchpad as described does not cover them.</li>
+        <li><strong>Laboratory tasks are narrow.</strong> Much of the evidence uses designed verbal and visual learning tasks; everyday working memory juggles a rich array of stimuli, so ecological validity is a fair question.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="exam-tip">
+    <h4>Exam tip: describe then explain</h4>
+    <p>Describing the model means a factual recount of the original model and each subcomponent in terms of capacity, function and coding, with detail scaled to the marks. You are not required to evaluate in a describe question, but examples help elaborate points.</p>
+    <p>For explain questions, make a point then justify it, anchored in the scenario. Worked example: <em>Why is it difficult to process two conversations simultaneously, such as talking on the phone while a friend tells you something?</em></p>
+    <p><strong>Point:</strong> Both conversations are verbal, so both utilise the phonological store.</p>
+    <p><strong>Expansion:</strong> The articulatory rehearsal system is overloaded by two people talking at once, so we cannot recall all the information.</p>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>支持线抓三类证据。行为证据：双任务（同通道抢资源、异通道不打架）。临床证据：KF 坏了语音回路但视觉记忆完好，HM 反过来，正好证明两个子系统独立。脑成像证据：PET 扫出复述用布洛卡区、仓库用缘上回，部件在脑子里真的分了工。反对线三把刀：总裁说不清测不了、个案病人不好推广、实验室任务太窄。背证据时每个都带上人名年份，评价题的分数就落在「证据指到哪个部件」上。</p>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Checkpoint</h2>
+  <p>Which component is being described? Choose, then read the why.</p>
+  <div class="xp-block">
+    <h4>Q1 · The component which integrates information between the slave systems and long-term memory</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">The episodic buffer</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The phonological loop</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The visuospatial sketchpad</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q2 · The component which rehearses verbal information</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The central executive</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">The articulatory rehearsal system</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The episodic buffer</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q3 · The component which receives sensory information and can focus, divide and switch attention</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">The central executive</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The phonological store</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The visuospatial sketchpad</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q4 · The component which processes visual information</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The phonological loop</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The episodic buffer</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">The visuospatial sketchpad</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q5 · What is the role of the central executive?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Processing visual and spatial information</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Rehearsing sounds</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Managing information flow to the subsystems</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q6 · Suki is revising her school notes while listening to the television, and finding it difficult. Which component is she overloading?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The central executive</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The visuospatial sketchpad</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">The phonological loop</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q7 · Which researchers found separate components within the visuospatial sketchpad?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Lieberman</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Darling et al.</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Sebastián and Hernández-Gil</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q8 · Dual-processing tasks support separate verbal and visual components because</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">we are able to perform two verbal tasks simultaneously</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">we are unable to process two verbal tasks simultaneously</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">we are unable to process one verbal task and one visual task simultaneously</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Exam Lab</h2>
+  <div class="exam-practice">
+    <div class="xp-block">
+      <h4>Q1a · Describe <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro">Nico is a library assistant working at a busy library. A visitor asks Nico about the location of a few particular books. At the same time, Nico overhears a conversation his library manager is having about a different book with another visitor. As Nico begins to search, he has forgotten the names of some of the books he is looking for. <strong>Describe, using the phonological loop, why Nico could not remember all of the books the visitor wanted.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans1')">Show answer</button></div>
+      <div class="xp-result" id="ans1" hidden>
+        <p>The book titles and the manager's conversation are both verbal information, so both enter the <strong>phonological loop</strong>. The loop has a limited capacity: the phonological store holds verbal information for only a few seconds, and the articulatory rehearsal system can refresh only so much at once. With two verbal streams competing for the same limited store, the trace of some book titles decays or is displaced before Nico can act on them.</p>
+        <p class="xp-case">Marking guidance: 1 mark for identifying that both sources compete for the limited phonological loop, 1 mark for linking the overload to forgetting the titles.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q1b · Explain one strength <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Explain one strength of using the working memory model (Baddeley and Hitch, 1974) to explain why Nico could not remember the books that the visitor wanted to read.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans2')">Show answer</button></div>
+      <div class="xp-result" id="ans2" hidden>
+        <p><strong>Strength:</strong> The model is supported by strong empirical evidence, including dual-task experiments showing that two verbal tasks interfere while a verbal and a visual task do not.</p>
+        <p><strong>Why it helps here:</strong> This evidence base makes the model a credible tool for Nico's scenario, because his forgetting fits the same mechanism the dual-task research demonstrates: two simultaneous verbal streams overload the phonological loop. A model with converging evidence from experiments, brain imaging and clinical cases can be applied to everyday situations with confidence.</p>
+        <p class="xp-case">Marking guidance: 1 mark for stating a strength (e.g. supported by dual-task / clinical / imaging evidence), 1 mark for explaining why that strength makes the model useful for explaining Nico's forgetting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Key Terms</h2>
+  <div class="glossary-grid">
+    <div class="keyterm-box"><span class="kt">working memory</span><br><span class="zh">工作记忆：临时储存并加工在用信息的主动系统（Baddeley &amp; Hitch, 1974）</span></div>
+    <div class="keyterm-box"><span class="kt">central executive</span><br><span class="zh">中央执行系统：注意的总管，能专注、分配、切换注意力，通道自由</span></div>
+    <div class="keyterm-box"><span class="kt">modality free</span><br><span class="zh">通道自由：不限于某一感官形式，声、视、触都能处理</span></div>
+    <div class="keyterm-box"><span class="kt">slave systems</span><br><span class="zh">从属系统：听命于中央执行系统的分工部门（语音回路、视空间画板）</span></div>
+    <div class="keyterm-box"><span class="kt">phonological loop</span><br><span class="zh">语音回路：临时储存言语信息的子系统</span></div>
+    <div class="keyterm-box"><span class="kt">phonological store</span><br><span class="zh">语音仓库：只存几秒的言语信息仓库</span></div>
+    <div class="keyterm-box"><span class="kt">articulatory rehearsal system</span><br><span class="zh">发音复述系统：心里的默念复读机，靠刷新延长保存</span></div>
+    <div class="keyterm-box"><span class="kt">word length effect</span><br><span class="zh">词长效应：长词占容量多，回忆差于短词</span></div>
+    <div class="keyterm-box"><span class="kt">articulatory suppression</span><br><span class="zh">发音抑制：复述被占用（如反复念 the），回忆变差</span></div>
+    <div class="keyterm-box"><span class="kt">specific language impairment</span><br><span class="zh">特定型语言障碍：语言技能远低于 IQ 等其他认知能力的状况</span></div>
+    <div class="keyterm-box"><span class="kt">visuospatial sketchpad</span><br><span class="zh">视空间画板：临时保存加工视觉与空间信息的子系统</span></div>
+    <div class="keyterm-box"><span class="kt">Corsi block tapping task</span><br><span class="zh">科西积木敲击任务：按亮起顺序敲方块，测空间容量</span></div>
+    <div class="keyterm-box"><span class="kt">episodic buffer</span><br><span class="zh">情节缓冲器：2000 年补上的整合舱，连接各子系统与长时记忆</span></div>
+    <div class="keyterm-box"><span class="kt">dual task experiment</span><br><span class="zh">双任务实验：同时做两件事，看同通道是否互相抢资源</span></div>
+    <div class="keyterm-box"><span class="kt">Broca's area</span><br><span class="zh">布洛卡区：额叶语言产出区，默念复述时激活</span></div>
+    <div class="keyterm-box"><span class="kt">supramarginal gyrus</span><br><span class="zh">缘上回：顶叶语言知觉区，语音仓库使用时激活</span></div>
+    <div class="keyterm-box"><span class="kt">PET scan</span><br><span class="zh">正电子发射断层扫描：能看到脑功能的成像技术</span></div>
+    <div class="keyterm-box"><span class="kt">congenital blindness</span><br><span class="zh">先天失明：出生起失明，Lieberman 用它质疑视空间画板</span></div>
+    <div class="keyterm-box"><span class="kt">Alzheimer's disease</span><br><span class="zh">阿尔茨海默病：神经退行性疾病，双任务失败指向中央执行受损</span></div>
+  </div>
+  <div class="footer-note">Spec 2.1.2 · Content sourced from Book 1 Ch.9 (pp.88–95) · Next: 2.1.3 Reconstructive memory</div>
+</section>
+
+</main>
+</div>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  /* ---------- sidebar scroll spy ---------- */
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  /* ---------- reveal helper ---------- */
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  /* ---------- multiple choice: one why per option ---------- */
+  var secWhy = {
+    s7: [
+      ['The phonological loop handles verbal storage only; integration across sources is not its job.',
+       'Correct. Added in 2000, the episodic buffer integrates information from the slave systems and long-term memory.',
+       'The visuospatial sketchpad handles visual and spatial information, not cross-source integration.'],
+      ['The central executive directs attention; it does not rehearse material itself.',
+       'Correct. The articulatory rehearsal system is the inner voice that refreshes verbal information in the phonological loop.',
+       'The episodic buffer integrates information; rehearsal happens in the phonological loop.'],
+      ['The phonological store holds verbal material for a few seconds; it does not control attention.',
+       'The visuospatial sketchpad processes visual and spatial information.',
+       'Correct. The central executive is the attentional controller: it focuses, divides and switches attention and allocates material to the slave systems.'],
+      ['The phonological loop deals with sound, not sight.',
+       'The episodic buffer integrates sources; it is not the visual processor.',
+       'Correct. The visuospatial sketchpad holds and manipulates visual and spatial information such as shape, colour and location.'],
+      ['Processing visual and spatial information is the job of the visuospatial sketchpad.',
+       'Rehearsing sounds is the articulatory rehearsal system, one part of the phonological loop.',
+       'Correct. The central executive coordinates the subsystems: it manages how information flows to them.'],
+      ['The central executive would be strained only if she had to coordinate or switch tasks, not by verbal overlap.',
+       'Her revision and the television are both verbal, so the visual channel is not the bottleneck.',
+       'Correct. Revision material and television speech are both verbal, so they compete for the limited capacity of the phonological loop.'],
+      ['Lieberman criticised the sketchpad using congenitally blind participants; he did not find separate components.',
+       'Correct. Darling et al. (2007) showed spatial interference disrupted location memory while visual interference disrupted appearance memory.',
+       'Sebastian and Hernandez-Gil (2012) traced digit-span development; their work concerns the phonological loop.'],
+      ['Performing two verbal tasks together is exactly where performance breaks down.',
+       'Correct. Two verbal tasks compete for the same limited phonological loop, which is why we cannot do them simultaneously.',
+       'One verbal and one visual task use different slave systems, so they can be done together without impairment.']
+    ]
+  };
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = (btn.closest('.xp-block') || section).querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+</script>
+</body>
+</html>
