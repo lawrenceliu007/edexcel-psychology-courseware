@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.2.9-2.2.10 Methods — Validity, Reliability &amp; Objectivity</title>
+<style>
+
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.sc-item { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-size: .95em; line-height: 1.7; margin: 8px 0; }
+.sc-tag { display: inline-block; background: var(--accent); color: #fff; font-size: .72em; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-right: 8px; }
+.sc-predict { background: #eff6ff; border: 1.5px solid #3b82f6; border-radius: 10px; padding: 14px 18px; margin: 16px 0 4px; }
+.sc-predict h4 { margin: 0 0 6px; color: #1d4ed8; }
+body.dark .sc-item { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .sc-tag { background: #3b82f6; }
+body.dark .sc-predict { background: rgba(59,130,246,.08); border-color: #3b82f6; }
+body.dark .sc-predict h4 { color: #93c5fd; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic B · Cognitive psychology — 2.2.9–2.2.10 Methods</span>
+  </div>
+  <span class="nav-pill">🧠 Cognitive Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">2.2.9–2.2.10 Methods</div>
+    <div class="sb-header-sub">Validity, Reliability &amp; Objectivity</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s0">Start Here: The Two Bathroom Scales</a></li>
+    <li class="sb-item"><a href="#s1">1. Reliability</a></li>
+    <li class="sb-item"><a href="#s2">2. Validity</a></li>
+    <li class="sb-item"><a href="#s3">3. Objectivity</a></li>
+    <li class="sb-item"><a href="#s4">4. Experimenter Effects</a></li>
+    <li class="sb-item"><a href="#s5">5. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s6">6. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s7">7. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>2.2.9–2.2.10 VALIDITY, RELIABILITY &amp; OBJECTIVITY<br><span style="font-size:0.65em">Reliability · Validity · Objectivity · Experimenter effects · 效度信度与客观性</span></h1>
+  <div class="meta">
+    <span class="badge">Topic B · Cognitive psychology</span>
+    <span class="badge">Methods</span>
+    <span class="badge">Spec 2.2.9–2.2.10</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.11 · pp.108–110</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this page is really asking</h4>
+  <ol>
+    <li><strong>Reliability and validity are different diseases.</strong> A scale that always over-reads by 2 kg is reliable but invalid; one that wanders is unreliable and almost certainly invalid too. Learn to name which disease a study has.</li>
+    <li><strong>Validity comes in three flavours.</strong> Internal (did the IV really cause the result?), predictive (does the measure forecast future performance?), and ecological (would it hold in everyday life?).</li>
+    <li><strong>Objectivity is the foundation.</strong> A measurement everyone records the same way (a ruler, a word count, a scan) is objective, and that is what makes reliability and validity possible at all.</li>
+    <li><strong>People are the biggest threat.</strong> Experimenters nudge with nods and smiles; participants guess aims and perform the expected behaviour. Single-blind, double-blind and standardised instructions are the named controls.</li>
+  </ol>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Define reliability, validity and objectivity</strong> and distinguish them using the speedometer/scale analogy.</li>
+    <li><strong>Identify test-retest and inter-rater reliability</strong> and say what each shows about a study.</li>
+    <li><strong>Classify validity problems</strong> as internal, predictive or ecological for a described study.</li>
+    <li><strong>Explain experimenter effects and demand characteristics</strong> with examples, and name the control for each.</li>
+    <li><strong>Evaluate a described experiment</strong> by diagnosing which of the three qualities it has and which it lacks.</li>
+  </ul>
+</div>
+
+<!-- ============ 0 · scenario ============ -->
+<section class="section" id="s0">
+  <h2>Start Here: The Two Bathroom Scales</h2>
+  <div class="sc-item"><span class="sc-tag">背景</span>You weigh yourself on your scale at home, then on your friend's scale five minutes later. Yours reads 2 kg heavier, and it reads 2 kg heavier every single time you check, week after week.</div>
+  <div class="sc-item"><span class="sc-tag">角色</span>You are the one who has to decide: is your scale broken, and how do you even describe what is wrong with it?</div>
+  <div class="sc-item"><span class="sc-tag">任务</span>Your first instinct is to say "the scale is inaccurate, so it is unreliable". But the two words do not mean the same thing, and picking the wrong one will sink half the evaluation questions on this course.</div>
+  <div class="sc-item"><span class="sc-tag">目标</span>Give the scale its correct diagnosis before reading on. The whole page tests whether your answer survives.</div>
+  <div class="sc-predict">
+    <h4><span class="sc-tag" style="background:#3b82f6">先猜</span>你家那台永远多报 2 公斤的体重秤，问题出在哪？</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">既不可靠又不准确：读数错就是不可靠</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">可靠，但不准：它每次都稳定地错同一个数</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">很准，但不可靠：它知道真实体重，只是显示不稳定</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Reliability: Consistency of Findings</h2>
+  <p><strong>Reliability</strong>（信度：研究结果的一致性）refers to the consistency of findings from research, and it is an important criterion for being scientific. If findings are consistent, we can trust that the finding will happen again and again. Achieving reliability requires research to be replicable, which demands tight control of extraneous variables: if those variables vary between repetitions, the findings change too.</p>
+  <p>Two versions matter for experiments:</p>
+  <ul class="tight">
+    <li><strong>Test-retest reliability</strong>（重测信度：同一测量重复进行，结果应稳定）: if a measuring procedure is repeated, consistent results show reliability.</li>
+    <li><strong>Inter-rater reliability</strong>（评分者间信度：不同研究者的评分应一致）: the scoring of one researcher is compared with another researcher's scoring of the same performance. The scores are correlated to show the rate of agreement, which controls for subjectivity and differences of opinion between researchers.</li>
+  </ul>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>信度只回答一个问题：再测一次、再量一遍、换个人来评，数字会不会一样？会一样，就叫可靠。注意它和「对不对」完全无关：一台秤可以每次都稳定地错同一个数，高度可靠，照样是错的。这正是你先猜那题的陷阱所在。</p>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Validity: Measuring What Was Intended</h2>
+  <p><strong>Validity</strong>（效度：研究测到的确实是想测的东西）asks whether the study is measuring the behaviour or construct it intends to measure. Think about a car's speedometer: it is designed to tell you exactly what speed you are going. If it reads 30 km/h when you are actually travelling 20 km/h, it gives an invalid measure. If it keeps over-reading by the same 10 km/h every day, it is invalid, but consistent: reliable. And if it reads 30 one day and 40 the next while you travel the same 20, it is unreliable, and very likely invalid as well.</p>
+  <table>
+    <tr><th style="width:24%">Type of validity</th><th>What it asks</th></tr>
+    <tr><td><strong>Internal validity</strong>（内部效度：结果真是 IV 造成的）</td><td>How well the procedure establishes a causal link between the manipulated IV and the measured DV, or whether the result has been confounded by uncontrolled extraneous variables. It can be ensured by standardised procedures, controlling order effects and individual differences, and avoiding demand characteristics.</td></tr>
+    <tr><td><strong>Predictive validity</strong>（预测效度：测量能预测相关表现）</td><td>The extent to which the performance being measured can predict future performance on a similar criterion. A test of intelligence that accurately predicts future academic success has predictive validity.</td></tr>
+    <tr><td><strong>Ecological validity</strong>（生态效度：结果能否推广到日常情境）</td><td>The extent to which the research can be generalised to everyday situations. Memory experiments using artificial tasks such as meaningless word lists or trigrams may tell us little about how memory is used day to day; laboratory participants who know they are being studied also behave unnaturally.</td></tr>
+  </table>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>效度回答「量的是不是那个东西」，信度回答「量得稳不稳」。两种病可以单独出现：稳定地错（可靠但无效，恒差 2 公斤的秤），也可以抖来抖去（不可靠，基本也会连累效度）。内部效度看「结果是不是 IV 干的」，生态效度看「实验室结论搬到日常生活还成立吗」，预测效度看「这个测验分数能不能预言以后的表现」。评价题先分清问的是哪一种，再开药方。</p>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Objectivity: Removing the Researcher's Judgement</h2>
+  <p>Being <strong>objective</strong>（客观性：测量不受研究者主观判断影响）means being impartial and judgement-free. Imagine guessing the length of a table: your guess rests on your own opinion and will differ from other people's guesses. Guesses are subjective, so they are unlikely to be reliable or valid. Measure the same table with a ruler, and everyone who uses the same ruler records exactly the same number: an objective measurement, and therefore both reliable and valid.</p>
+  <p>Cognitive psychology faces a special difficulty: memory and other mental processes cannot be directly observed or measured. Cognitive psychologists accept that mental processes themselves cannot be objectively measured, but the <strong>data</strong> they produce can. A short-term memory test recording a recall of five words is an objective measurement of the capacity of the short-term store; a PET scan objectively shows which brain regions are active during a memory task.</p>
+  <p>This is also why operationalisation (the previous page) matters so much: a vague DV such as "how well the child reads" hands the judgement to the researcher's opinion, while a timed reading with recorded errors turns it into something like a ruler.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>客观性的标尺就是「换谁来测，数都一样」。主观猜测各不相同，尺子人人同数。认知心理学测不了「记忆」本身，但测得了记忆留下的数据：回忆词数、脑区激活。这条链要背下来：操作化让测量客观，客观保证信度和效度，三者合起来才够格叫科学。</p>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Experimenter Effects &amp; Demand Characteristics</h2>
+  <p><strong>Experimenter effects</strong>（实验者效应：研究者的言行或在场影响结果）are the ways an experimenter may influence the outcome of an experiment by their actions or mere presence. Some are obvious: a female researcher asking a male participant about his attitudes towards gender equality, or a young researcher asking an older participant what they think about youth culture. Others are subtle: a nod or a smile that quietly affirms a particular behaviour.</p>
+  <p>Closely related are <strong>demand characteristics</strong>（需求特征：参与者猜到研究目的后改变行为）: participants behave differently from normal because clues within the research setting lead them to change their behaviour. They may detect clues about the aim of the study and then behave as they believe they are expected to. Either problem threatens the validity of the findings, because the behaviour recorded is no longer the behaviour that occurs naturally.</p>
+  <p>Both have named controls, and you have already met them on the previous page: single-blind procedures keep participants unaware of the aim, double-blind procedures also keep the conducting researcher ignorant of it, and standardised instructions remove the experimenter's chance to nod, smile or improvise. Laboratory studies are especially exposed to both problems, because participants are invited and the researcher is present; field studies avoid them partly by catching participants unaware.</p>
+  <div class="green-box">
+    <h4>Close the loop: diagnose the scale, diagnose the study</h4>
+    <p>Your scale was reliably wrong: it over-reads by 2 kg consistently, so it is high on reliability and low on validity. Now apply the same diagnosis to research. A memory experiment that consistently finds the same serial position curve across replications is reliable; whether it is valid depends on which kind of validity you ask about. Its artificial word lists may limit ecological validity; a confounding variable would damage internal validity; and if participants guessed the aim and performed the way they thought the experimenter wanted, demand characteristics have quietly replaced real memory with polite cooperation. Reliable-but-questionably-valid is exactly the standard criticism of laboratory experiments, and it is the same 2 kg in a different costume.</p>
+    <p><strong>Reflect before the Checkpoint:</strong> name one study from this topic that you suspect is reliable but weak on ecological validity, and say why in one sentence. If you can also name the control that would improve it, you are ready for the Exam Lab.</p>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Checkpoint</h2>
+  <div class="xp-block">
+    <h4>Q1 · A study produces wildly different results every time it is repeated. What is it lacking?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Objectivity</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Reliability</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Predictive validity only</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q2 · A scale always over-reports weight by exactly 2 kg. What is it?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Reliable and valid</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Reliable but invalid</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Valid but unreliable</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q3 · Two researchers independently score the same observation sessions and their scores agree closely. What does this show?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">High inter-rater reliability</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">High internal validity</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">High ecological validity</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q4 · An intelligence test accurately predicts students' future academic success. Which type of validity does this demonstrate?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Ecological validity</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Internal validity</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Predictive validity</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q5 · Participants guess the aim of a memory study and deliberately perform the way they think the researcher wants. What has happened?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">An experimenter effect caused by the researcher's presence</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Demand characteristics have altered participant behaviour</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">A confounding variable has corrupted the DV</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q6 · A researcher's nod and smile quietly encourage participants to keep doing what they are doing. What is this?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">A subtle experimenter effect</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">A situational variable</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Standardisation</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q7 · Which measurement is objective?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Each researcher estimates the length of a table by eye</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Every researcher measures the table with the same ruler and records the same number</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Participants rate how long the table feels on a 1-10 scale</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Exam Lab</h2>
+  <div class="exam-practice">
+    <div class="xp-block">
+      <h4>Q1 · Explain one weakness <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro">Zikri set up a laboratory experiment in which participants performed a single cognitive task or a dual task (the same task while learning a list of words), and he timed how long each group took. <strong>Explain one weakness of Zikri's laboratory experiment in terms of validity.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans1')">Show answer</button></div>
+      <div class="xp-result" id="ans1" hidden>
+        <p>The study may lack ecological validity: the task was performed in an artificial setting with an artificial task (a timed cognitive task plus word learning), so the findings may not generalise to how memory works in everyday situations. In addition, participants were invited into a laboratory and knew they were being studied, so they may have behaved unnaturally or tried to perform as they believed was expected, which further weakens validity.</p>
+        <p class="xp-case">Marking guidance: 1 mark for naming the validity problem (ecological validity / artificiality / awareness of being studied), 1 mark for explaining the consequence for what Zikri's timings can tell us about real-life memory.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q2 · Explain <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro">Noorie's participants took part in both Condition A (acoustically similar words) and Condition B (acoustically different words), and the aim of the study was fairly easy for them to work out. <strong>Explain how demand characteristics could have affected Noorie's investigation, and how she could have reduced them.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans2')">Show answer</button></div>
+      <div class="xp-result" id="ans2" hidden>
+        <p>Because each participant experienced both conditions, they saw the pattern of the study and could guess its aim (comparing similar- and different-sounding words). Once they guess, they may change their behaviour to perform as they believe is expected, for example concentrating harder in the second condition, so the measured recall no longer reflects normal memory and the findings lose validity. Noorie could have reduced this with a single-blind procedure: not telling participants the aim of the study, or disguising the purpose so clues are harder to read.</p>
+        <p class="xp-case">Marking guidance: 1 mark for explaining how guessing the aim changed behaviour in this study, 1 mark for a named control (single-blind / deception about the aim).</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q3 · Explain <span class="xp-badge">4 marks</span></h4>
+      <div class="xp-intro">A researcher scores children's reading from video recordings. Concerned about her own bias, she asks a second researcher to score the same recordings independently, and the two sets of scores agree closely. <strong>Explain why this improves the quality of the research. Refer to objectivity and reliability in your answer.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans3')">Show answer</button></div>
+      <div class="xp-result" id="ans3" hidden>
+        <p><strong>Objectivity:</strong> scoring with another researcher, using agreed criteria rather than one person's opinion, removes the researcher's personal judgement from how the DV is recorded. The measurement is no longer open to one person's interpretation, like guessing a table's length instead of using a ruler.</p>
+        <p><strong>Reliability:</strong> close agreement between two independent scorers is high inter-rater reliability: it shows the scores are consistent regardless of who does the scoring, so the data is not distorted by any single researcher's subjectivity, and another team could replicate the scoring and expect the same result.</p>
+        <p class="xp-case">Marking guidance: up to 2 marks each: objectivity (judgement removed from measurement) and reliability (agreement between raters shows consistency), both applied to this scoring scenario.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Key Terms</h2>
+  <div class="glossary-grid">
+    <div class="keyterm-box"><span class="kt">reliability</span><br><span class="zh">信度：研究结果的一致性，重测结果应稳定</span></div>
+    <div class="keyterm-box"><span class="kt">test-retest reliability</span><br><span class="zh">重测信度：同一测量重复进行，结果保持一致</span></div>
+    <div class="keyterm-box"><span class="kt">inter-rater reliability</span><br><span class="zh">评分者间信度：不同评分者对同一表现评分的一致程度</span></div>
+    <div class="keyterm-box"><span class="kt">validity</span><br><span class="zh">效度：研究测到的确实是想测的行为或构念</span></div>
+    <div class="keyterm-box"><span class="kt">internal validity</span><br><span class="zh">内部效度：结果确实由 IV 造成，未被混淆变量污染</span></div>
+    <div class="keyterm-box"><span class="kt">predictive validity</span><br><span class="zh">预测效度：测量能预测同类标准上的未来表现</span></div>
+    <div class="keyterm-box"><span class="kt">ecological validity</span><br><span class="zh">生态效度：结果能推广到真实日常情境</span></div>
+    <div class="keyterm-box"><span class="kt">objectivity</span><br><span class="zh">客观性：测量不受研究者主观判断影响，换人同数</span></div>
+    <div class="keyterm-box"><span class="kt">experimenter effects</span><br><span class="zh">实验者效应：主试的言行或在场（一个点头、一个微笑）影响结果</span></div>
+    <div class="keyterm-box"><span class="kt">demand characteristics</span><br><span class="zh">需求特征：参与者猜到目的后按「被期待的方式」行动</span></div>
+  </div>
+  <div class="footer-note">Spec 2.2.9–2.2.10 · Content sourced from Book 1 Ch.11 (pp.108–110) · Next: 2.2.12 Inferential statistics</div>
+</section>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  /* ---------- sidebar scroll spy ---------- */
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  /* ---------- reveal helper ---------- */
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  /* ---------- multiple choice: one why per option ---------- */
+  var secWhy = {
+    s0: [
+      ['读数错确实意味着不准（无效度），但它每次都错得整整齐齐，恰恰说明它高度一致：可靠。两个词描述两种不同的毛病，这一页就是要把它们拆开。',
+       '正确。它每次都稳定地报同一个错数：一致性无可挑剔（可靠），但和真实体重对不上（无效度）。课本用车速表讲同一件事：恒定多报 10 公里的速度计也是稳定地错。',
+       '方向反了。它显示的数字一直不是真实体重，谈不上准；「显示不稳定」描述的是另一台坏法不同的秤，每次读数都不一样的才是不可靠。']
+    ],
+    s5: [
+      ['Objectivity is about removing researcher judgement; wildly varying results point to a consistency problem.',
+       'Correct. Results that change on every repetition lack consistency: that is exactly what reliability measures.',
+       'Predictive validity concerns forecasting future performance, not the stability of repeated results.'],
+      ['Correct. Consistent over-reporting is high reliability combined with low validity: stable but wrong.',
+       'It cannot be valid: validity requires measuring the true weight, and it never does.',
+       'It is not valid (it always reads 2 kg high), so this combination is impossible.'],
+      ['Correct. Agreement between independent scorers is the definition of inter-rater reliability.',
+       'Internal validity concerns whether the IV caused the DV, not scorer agreement.',
+       'Ecological validity concerns generalising to everyday settings, not scorer agreement.'],
+      ['Correct. Accurately forecasting future performance on a similar criterion is predictive validity.',
+       'Ecological validity is about generalising to real-life settings, not forecasting.',
+       'Internal validity is about the causal link between IV and DV within the study.'],
+      ['Correct. Clues let participants guess the aim and change behaviour to match expectations: demand characteristics.',
+       'Experimenter effects come from the researcher\u2019s actions or presence, not from participants guessing.',
+       'A confounding variable distorts the DV, but the described mechanism is participant behaviour shaped by guessed expectations.'],
+      ['Correct. A nod or smile that affirms behaviour is a subtle experimenter effect.',
+       'Situational variables come from the setting (noise, temperature, time of day), not from the researcher\u2019s gestures.',
+       'Standardisation removes such gestures by fixing the instructions; it is the control, not the problem.'],
+      ['Correct. Same ruler, same number from everyone: judgement removed, so the measurement is objective.',
+       'Estimating by eye rests on personal opinion, so results differ between people: subjective.',
+       'A 1-10 feeling rating is an arbitrary subjective scale; different raters would give different numbers.']
+    ]
+  };
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = (btn.closest('.xp-block') || section).querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+</script>
+</body>
+</html>
