@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.1.1 Content — The Multi-Store Model of Memory</title>
+<style>
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic B · Cognitive psychology — 2.1.1 Content</span>
+  </div>
+  <span class="nav-pill">🧠 Cognitive Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">2.1.1 Content</div>
+    <div class="sb-header-sub">Multi-Store Model · Memory</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s1">1. Three Stores, One System</a></li>
+    <li class="sb-item"><a href="#s2">2. The Sensory Register</a></li>
+    <li class="sb-item"><a href="#s3">3. The Short-Term Store</a></li>
+    <li class="sb-item"><a href="#s4">4. The Long-Term Store</a></li>
+    <li class="sb-item"><a href="#s5">5. Evidence for Separate Stores</a></li>
+    <li class="sb-item"><a href="#s6">6. Evaluation</a></li>
+    <li class="sb-item"><a href="#s7">7. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s8">8. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s9">9. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>2.1.1 THE MULTI-STORE MODEL OF MEMORY<br><span style="font-size:0.65em">Atkinson &amp; Shiffrin (1968) · Sensory register · STM · LTM · 多重记忆系统模型</span></h1>
+  <div class="meta">
+    <span class="badge">Topic B · Cognitive psychology</span>
+    <span class="badge">Content</span>
+    <span class="badge">Spec 2.1.1</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.8 · pp.81–87</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this page is really asking</h4>
+  <ol>
+    <li><strong>Memory is not one box.</strong> Atkinson and Shiffrin split it into three stores that differ in how long they hold information (duration), how much they hold (capacity), and how they hold it (encoding).</li>
+    <li><strong>Information flows in one direction.</strong> Incoming information passes from the sensory register to short-term memory to long-term memory, and each step needs a process: attention, rehearsal, retrieval.</li>
+    <li><strong>Each store has its own numbers.</strong> Learn the numbers for each store, because evaluation questions ask you to contrast them.</li>
+    <li><strong>The model is a starting point, not the final word.</strong> Case studies and dual-task evidence support the split into stores but also reveal what the model leaves out.</li>
+  </ol>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Outline the multi-store model</strong>: the three stores, the processes that move information between them, and what happens to information that is not processed.</li>
+    <li><strong>Define encoding, storage, retrieval, capacity and duration</strong> and use each one to describe a memory store.</li>
+    <li><strong>Quote the key evidence</strong> for each store's characteristics: Peterson and Peterson (1959), Miller (1956), Conrad and Hull (1964), Bahrick et al. (1975), Brady et al. (2008), Baddeley (1966b).</li>
+    <li><strong>Evaluate the model</strong> with brain-damage cases and the serial position effect as supporting evidence, and dual-task performance and Tulving's (1972) types of long-term memory as criticism.</li>
+    <li><strong>Justify conclusions about a memory scenario</strong> by mapping each step of the scenario onto the stores and processes of the model.</li>
+  </ul>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Three Stores, One System</h2>
+  <p>Atkinson and Shiffrin (1968) proposed a general framework for human memory that became known as the <strong>multi-store model</strong>. They distinguished two kinds of component. The <strong>structural features</strong> are the memory stores themselves: fixed, built-in, like the hardware of a computer. The <strong>control processes</strong>（控制过程：你自己决定怎么对待信息的操作）are the things we consciously do with information: how we encode it, rehearse it and retrieve it. Control processes are like programs a programmer writes: flexible, chosen, and under our control.</p>
+  <p>The model divides memory into three stores arranged in a sequence: the <strong>sensory register</strong>, the <strong>short-term store</strong> and the <strong>long-term store</strong>. Information entering the system either gets processed and moves on, or is lost. What separates the stores is not just their order, but three measurable properties:</p>
+  <ul class="tight">
+    <li><strong>Encoding</strong>（编码：信息以什么形式被储存）: the format in which a store holds information.</li>
+    <li><strong>Capacity</strong>（容量：一个 store 能装多少）: how much information a store can hold.</li>
+    <li><strong>Duration</strong>（保持时长：信息能留多久）: how long information lasts there.</li>
+  </ul>
+  <div class="figure">
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, sans-serif">
+      <defs>
+        <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#334155"/></marker>
+        <marker id="arl" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#ea580c"/></marker>
+      </defs>
+      <!-- incoming -->
+      <text x="40" y="150" font-size="12" font-weight="600" fill="#334155">Incoming</text>
+      <text x="40" y="166" font-size="12" font-weight="600" fill="#334155">information</text>
+      <line x1="102" y1="158" x2="132" y2="158" stroke="#334155" stroke-width="2" marker-end="url(#ar)"/>
+      <!-- sensory -->
+      <rect x="136" y="112" width="120" height="92" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+      <text x="196" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#1e40af">Sensory</text>
+      <text x="196" y="158" text-anchor="middle" font-size="13" font-weight="700" fill="#1e40af">register</text>
+      <text x="196" y="180" text-anchor="middle" font-size="10.5" fill="#475569">few hundred ms</text>
+      <!-- loss below sensory -->
+      <line x1="196" y1="204" x2="196" y2="238" stroke="#ea580c" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#arl)"/>
+      <text x="200" y="252" font-size="10.5" fill="#c2410c">Unattended information is lost</text>
+      <!-- attention arrow -->
+      <line x1="256" y1="140" x2="306" y2="140" stroke="#16a34a" stroke-width="2.2" marker-end="url(#ar)"/>
+      <text x="281" y="130" text-anchor="middle" font-size="11" font-weight="700" fill="#166534">Attention</text>
+      <!-- STM -->
+      <rect x="310" y="112" width="120" height="92" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="370" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#c2410c">Short-term</text>
+      <text x="370" y="158" text-anchor="middle" font-size="13" font-weight="700" fill="#c2410c">memory</text>
+      <text x="370" y="180" text-anchor="middle" font-size="10.5" fill="#475569">15–30 seconds</text>
+      <!-- loss below STM -->
+      <line x1="370" y1="204" x2="370" y2="238" stroke="#ea580c" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#arl)"/>
+      <text x="374" y="252" font-size="10.5" fill="#c2410c">Unrehearsed information decays</text>
+      <!-- rehearsal arrow -->
+      <line x1="430" y1="140" x2="480" y2="140" stroke="#16a34a" stroke-width="2.2" marker-end="url(#ar)"/>
+      <text x="455" y="130" text-anchor="middle" font-size="11" font-weight="700" fill="#166534">Rehearsal</text>
+      <!-- LTM -->
+      <rect x="484" y="112" width="130" height="92" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+      <text x="549" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">Long-term</text>
+      <text x="549" y="158" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">memory</text>
+      <text x="549" y="180" text-anchor="middle" font-size="10.5" fill="#475569">potentially a lifetime</text>
+      <!-- retrieval arrow back -->
+      <path d="M584,204 C620,258 495,252 434,182" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+      <text x="516" y="278" text-anchor="middle" font-size="11" font-weight="700" fill="#1e40af">Retrieval</text>
+      <!-- some lost note -->
+      <text x="556" y="88" text-anchor="middle" font-size="10.5" fill="#64748b">some information may be</text>
+      <text x="556" y="102" text-anchor="middle" font-size="10.5" fill="#64748b">lost from LTM over time</text>
+    </svg>
+    <div class="figure-caption">The multi-store model, adapted from Atkinson and Shiffrin (1968). Green arrows are the control processes that move information forward; dashed orange arrows show loss.</div>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>把记忆想成一条流水线，三个仓库串着排。感官登记处先接住五官进来的所有信息，但只留零点几秒；被注意到的信息才能进短时记忆（保质期约 20 秒），短时记忆里反复复述的信息才有机会进长时记忆（可能存一辈子）。每一级都有淘汰出口：没被注意的、没被复述的，直接丢失。三个仓库各记三个属性：编码方式、容量、保持时长，考试评价题考的就是用这些数字把仓库两两对比。</p>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. The Sensory Register</h2>
+  <p>We experience the world through five senses, and the model proposes a sensory register for each modality: seeing, hearing, touching, tasting and smelling. The visual register is the most researched. In a typical experiment, a <strong>visual array</strong> of letters is flashed up by a <strong>tachistoscope</strong>（速示器：控制显示时间的仪器）for a moment and then participants are cued to recall the whole display or one specific row of it.</p>
+  <p>Sperling (1960, 1963) presented a twelve-letter array and found participants typically recalled on average <strong>4.32 letters</strong> of the whole display. This tells us two things about the sensory register:</p>
+  <ul class="tight">
+    <li><strong>Capacity is small</strong>: only a limited amount of the display survives.</li>
+    <li><strong>Duration is very short</strong>: a few hundred milliseconds at most, and then the trace is gone.</li>
+  </ul>
+  <p>Whatever is attended to moves on to the short-term store for processing; everything unattended is lost immediately.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>感官登记处就像一个超短曝光的摄像头：把眼前所有画面先拍下来，但照片几百毫秒后就褪色。Sperling 让人看 12 个字母，普通人只能报出 4.32 个，说明既装不多、又留不久。想保住哪部分，就得把注意力放到那部分上。</p>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. The Short-Term Store</h2>
+  <p>Information that is attended to enters the short-term store and is held temporarily for <strong>15–30 seconds</strong>. Unless it is maintained, it is assumed to decay completely.</p>
+  <h3>Duration: Peterson and Peterson (1959)</h3>
+  <p>Lloyd Peterson and Margaret Peterson used an <strong>interference task</strong> to prevent rehearsal. Participants memorised a <strong>trigram</strong>（三连字母组：三个辅音组成的一组）of three consonants, then counted backwards in threes from a number (for example, 679, 676, 673) for intervals of 3, 6, 9, 12, 15 or 18 seconds before recall. Recall was good after short intervals but dropped rapidly after 15–18 seconds. Assuming the counting task blocked rehearsal, the conclusion is that decay occurs in the short-term store over roughly <strong>20 seconds</strong>.</p>
+  <h3>Capacity: Miller (1956)</h3>
+  <p>The capacity of the short-term store is around <strong>five to nine items</strong>. George Miller (1956) refined this to <q>the magical number seven, plus or minus two</q>. Think of the store as between five and nine slots, each holding one item.</p>
+  <h3>Forgetting by displacement</h3>
+  <p>Because the slots are limited, forgetting in short-term memory happens mainly through <strong>displacement</strong>（置换：新信息把旧信息挤出槽位）: as new information enters, older information, or information with a weaker memory trace, is knocked out. Digit-span experiments demonstrate exactly this limit.</p>
+  <h3>Encoding: acoustic (Conrad and Hull, 1964)</h3>
+  <p>The memory trace in the short-term store is held in an auditory or verbal form: <strong>acoustic encoding</strong>. The evidence is the <strong>phonological similarity effect</strong>（语音相似效应：发音相近的字母更难记）: letters and words that sound alike are harder to recall than dissimilar-sounding ones, because similar sounds confuse the store. This confusion is only explainable if the store is holding information by sound.</p>
+  <h3>Two kinds of rehearsal</h3>
+  <ul class="tight">
+    <li><strong>Maintenance rehearsal</strong>（维持性复述：机械重复原样）: repeating the sounds over and over to strengthen the trace so it can transfer to long-term memory.</li>
+    <li><strong>Elaborative rehearsal</strong>（精细复述：琢磨信息的含义）: thinking about the meaning and significance of the information, which also transfers it into long-term memory.</li>
+  </ul>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>短时记忆是一个 5–9 格的储物柜，保质期约 20 秒。柜子满了之后新东西进门，旧东西就被挤出去（displacement）。柜子里存的是「声音」：发音像的字母会互相干扰，所以记不准。想让东西进长时仓库有两条路：一种是鹦鹉学舌式重复（maintenance rehearsal），一种是琢磨它的意思（elaborative rehearsal）。</p>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. The Long-Term Store</h2>
+  <p>Atkinson and Shiffrin explained that information in long-term memory is <strong>encoded semantically</strong>（语义编码：按意义储存）, according to its meaning.</p>
+  <h3>Encoding: Baddeley (1966b)</h3>
+  <p>Participants learning a sequence of <strong>semantically similar</strong> words recalled less well than participants learning semantically unrelated words. The similar meanings confused each other, which only makes sense if long-term memory stores information by meaning.</p>
+  <h3>Duration: Bahrick et al. (1975)</h3>
+  <p>The duration of long-term memory is potentially <strong>a lifetime</strong>. Harry Bahrick and colleagues tested <strong>Very Long-term Memory</strong> using the names and faces of classmates in high-school yearbooks. Four hundred participants aged 17 to 74 were tested: identification of names and faces was <strong>90% accurate within 15 years</strong> of leaving school, and still <strong>70–80% accurate 48 years</strong> after leaving.</p>
+  <h3>Capacity: Brady et al. (2008)</h3>
+  <p>The capacity of long-term memory is potentially <strong>infinite</strong>. Timothy Brady and colleagues showed participants <strong>2,500 objects over 5.5 hours</strong>, then presented pairs of objects and asked which one had been seen before. Object recognition was <strong>over 80%</strong>.</p>
+  <div class="figure">
+    <svg viewBox="0 0 680 210" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, sans-serif">
+      <!-- comparison table -->
+      <rect x="40" y="26" width="140" height="44" rx="8" fill="#1e3a5f"/>
+      <text x="110" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Store</text>
+      <text x="110" y="62" text-anchor="middle" font-size="10" fill="#cbd5e1">property</text>
+      <rect x="180" y="26" width="160" height="44" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+      <text x="260" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#1e40af">Sensory register</text>
+      <text x="260" y="62" text-anchor="middle" font-size="10" fill="#475569">modality-specific</text>
+      <rect x="340" y="26" width="160" height="44" rx="8" fill="#fff7ed" stroke="#ea580c"/>
+      <text x="420" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#c2410c">Short-term store</text>
+      <text x="420" y="62" text-anchor="middle" font-size="10" fill="#475569">acoustic</text>
+      <rect x="500" y="26" width="140" height="44" rx="8" fill="#f0fdf4" stroke="#16a34a"/>
+      <text x="570" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#166534">Long-term store</text>
+      <text x="570" y="62" text-anchor="middle" font-size="10" fill="#475569">semantic</text>
+      <!-- row 2 -->
+      <rect x="40" y="70" width="140" height="44" rx="8" fill="#f1f5f9"/>
+      <text x="110" y="90" text-anchor="middle" font-size="11.5" font-weight="700" fill="#334155">Capacity</text>
+      <rect x="180" y="70" width="160" height="44" rx="8" fill="#fff" stroke="#e2e8f0"/>
+      <text x="260" y="97" text-anchor="middle" font-size="11" fill="#334155">small (≈ 4 items)</text>
+      <rect x="340" y="70" width="160" height="44" rx="8" fill="#fff" stroke="#e2e8f0"/>
+      <text x="420" y="97" text-anchor="middle" font-size="11" fill="#334155">5–9 items (Miller)</text>
+      <rect x="500" y="70" width="140" height="44" rx="8" fill="#fff" stroke="#e2e8f0"/>
+      <text x="570" y="97" text-anchor="middle" font-size="11" fill="#334155">potentially infinite</text>
+      <!-- row 3 -->
+      <rect x="40" y="114" width="140" height="44" rx="8" fill="#f1f5f9"/>
+      <text x="110" y="134" text-anchor="middle" font-size="11.5" font-weight="700" fill="#334155">Duration</text>
+      <rect x="180" y="114" width="160" height="44" rx="8" fill="#fff" stroke="#e2e8f0"/>
+      <text x="260" y="141" text-anchor="middle" font-size="11" fill="#334155">few hundred ms</text>
+      <rect x="340" y="114" width="160" height="44" rx="8" fill="#fff" stroke="#e2e8f0"/>
+      <text x="420" y="141" text-anchor="middle" font-size="11" fill="#334155">15–30 seconds</text>
+      <rect x="500" y="114" width="140" height="44" rx="8" fill="#fff" stroke="#e2e8f0"/>
+      <text x="570" y="141" text-anchor="middle" font-size="11" fill="#334155">potentially a lifetime</text>
+      <!-- row 4 -->
+      <rect x="40" y="158" width="140" height="44" rx="8" fill="#f1f5f9"/>
+      <text x="110" y="178" text-anchor="middle" font-size="11.5" font-weight="700" fill="#334155">Evidence</text>
+      <rect x="180" y="158" width="160" height="44" rx="8" fill="#fff" stroke="#e2e8f0"/>
+      <text x="260" y="178" text-anchor="middle" font-size="10.5" fill="#334155">Sperling (1960, 1963)</text>
+      <text x="260" y="192" text-anchor="middle" font-size="10.5" fill="#334155">4.32 of 12 letters</text>
+      <rect x="340" y="158" width="160" height="44" rx="8" fill="#fff" stroke="#e2e8f0"/>
+      <text x="420" y="178" text-anchor="middle" font-size="10.5" fill="#334155">Peterson &amp; Peterson (1959)</text>
+      <text x="420" y="192" text-anchor="middle" font-size="10.5" fill="#334155">Conrad &amp; Hull (1964)</text>
+      <rect x="500" y="158" width="140" height="44" rx="8" fill="#fff" stroke="#e2e8f0"/>
+      <text x="570" y="178" text-anchor="middle" font-size="10.5" fill="#334155">Bahrick (1975)</text>
+      <text x="570" y="192" text-anchor="middle" font-size="10.5" fill="#334155">Brady (2008)</text>
+    </svg>
+    <div class="figure-caption">The three stores contrasted on encoding, capacity, duration and the key evidence for each.</div>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>长时仓库按「意思」存放：意思相近的词会互相干扰（Baddeley），所以找不到正确答案。它几乎装不满（Brady：2500 个物体认得 80% 以上），也几乎不过期（Bahrick：毕业 48 年还能认出 70–80% 的老同学）。三个仓库放一张表对比着背，评价题的分数就在「对比」两个字上。</p>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Evidence for Separate Stores</h2>
+  <h3>Case studies of brain-damaged patients</h3>
+  <p>Henry Molaison suffered amnesia following brain surgery for epilepsy: his long-term memory was severely impaired, but his short-term memory was largely intact. Clive Wearing suffered long-term memory impairment following <strong>encephalitis</strong>（脑炎）, while his short-term store remained unaffected. In both cases the patient could not transfer information from the short-term store to the long-term store. This <strong>dissociation</strong> supports the claim that the two stores are separate systems, perhaps located in different brain regions.</p>
+  <p>Two cautions come with this evidence. Case-study patients are unique and so are their injuries, so generalising from individual cases is risky. And the same cases cut the other way: Clive Wearing could not recall events from his past, yet could still play the piano and conduct an orchestra. That pattern suggests long-term memory is not one single store, but separate stores for practised skills and for factual, autobiographical information.</p>
+  <h3>The serial position effect</h3>
+  <p>Murray Glanzer and Anita Cunitz (1966) investigated whether a word's position in a list affects recall. Participants recalled more words from the <strong>beginning</strong> (the <strong>primacy effect</strong>, 首因效应) and the <strong>end</strong> (the <strong>recency effect</strong>, 近因效应) of the list, and fewest from the middle.</p>
+  <p>The multi-store explanation: words at the beginning had the chance to be rehearsed, so their traces were strengthened and transferred to the long-term store. While those words were being processed, middle words were filling the short-term slots. End words then displaced the older middle traces, leaving only the final words sitting in short-term memory. One curve, two stores: the beginning reflects long-term memory, the end reflects short-term memory.</p>
+  <div class="figure">
+    <svg viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, sans-serif">
+      <!-- axes -->
+      <line x1="80" y1="260" x2="620" y2="260" stroke="#334155" stroke-width="2"/>
+      <line x1="80" y1="260" x2="80" y2="40" stroke="#334155" stroke-width="2"/>
+      <!-- y labels -->
+      <text x="66" y="265" text-anchor="end" font-size="10.5" fill="#64748b">0</text>
+      <text x="66" y="215" text-anchor="end" font-size="10.5" fill="#64748b">25</text>
+      <text x="66" y="165" text-anchor="end" font-size="10.5" fill="#64748b">50</text>
+      <text x="66" y="115" text-anchor="end" font-size="10.5" fill="#64748b">75</text>
+      <text x="66" y="65" text-anchor="end" font-size="10.5" fill="#64748b">100</text>
+      <text x="40" y="40" font-size="11.5" font-weight="700" fill="#334155">Recall %</text>
+      <!-- x ticks -->
+      <text x="80" y="280" text-anchor="middle" font-size="10.5" fill="#64748b">1st</text>
+      <text x="196" y="280" text-anchor="middle" font-size="10.5" fill="#64748b">5</text>
+      <text x="312" y="280" text-anchor="middle" font-size="10.5" fill="#64748b">10</text>
+      <text x="428" y="280" text-anchor="middle" font-size="10.5" fill="#64748b">15</text>
+      <text x="544" y="280" text-anchor="middle" font-size="10.5" fill="#64748b">20</text>
+      <text x="350" y="300" text-anchor="middle" font-size="11.5" font-weight="700" fill="#334155">Position of word in list</text>
+      <!-- curve: high start, dip in middle, rise at end -->
+      <path d="M80,80 C110,84 140,110 180,150 C240,205 280,215 312,214 C360,213 400,205 460,170 C500,146 540,120 620,92"
+            fill="none" stroke="#ea580c" stroke-width="3"/>
+      <!-- primacy zone -->
+      <rect x="80" y="40" width="150" height="220" fill="#16a34a" opacity="0.07"/>
+      <text x="130" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="#166534">Primacy effect</text>
+      <text x="130" y="76" text-anchor="middle" font-size="10.5" fill="#166534">LTM (rehearsed)</text>
+      <!-- recency zone -->
+      <rect x="500" y="40" width="120" height="220" fill="#2563eb" opacity="0.07"/>
+      <text x="560" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="#1e40af">Recency effect</text>
+      <text x="560" y="76" text-anchor="middle" font-size="10.5" fill="#1e40af">STM (still in slots)</text>
+      <!-- middle label -->
+      <text x="312" y="240" text-anchor="middle" font-size="10.5" fill="#94a3b8">middle words displaced</text>
+    </svg>
+    <div class="figure-caption">The serial position curve (Glanzer and Cunitz, 1966): the two ends of the list are recalled well because they are held by two different stores.</div>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>记 20 个词，开头和结尾记得牢、中间忘得多，这就是系列位置效应。解释要用两个仓库接力：开头的词有时间被复述，已经进了长时仓库（首因效应）；结尾的词还坐在短时记忆的槽位上（近因效应）；中间的词被后进来的词挤掉了。一条 U 形曲线同时指向两个仓库，这就是「仓库分开存在」最直观的证据。</p>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Evaluation</h2>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Supports the model</h4>
+      <ul class="tight">
+        <li><strong>Brain-damage cases.</strong> HM and Clive Wearing lost long-term memory while short-term memory stayed intact: the stores can be damaged separately, so they are distinct systems.</li>
+        <li><strong>Serial position effect.</strong> Glanzer and Cunitz (1966): the primacy part of the curve reflects the long-term store, the recency part the short-term store.</li>
+        <li><strong>Store-specific encoding.</strong> Conrad and Hull (1964) show the short-term store holds sound; Baddeley (1966b) shows the long-term store holds meaning: qualitative differences between stores, as the model predicts.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Challenges the model</h4>
+      <ul class="tight">
+        <li><strong>Dual-task performance.</strong> We do poorly on two verbal or two visual tasks together, but well on one verbal plus one visual task. A single short-term store with fixed capacity cannot explain this; the working memory model (Baddeley and Hitch, 1974, page 2.1.2) can.</li>
+        <li><strong>Rehearsal is not essential.</strong> We often learn skills and information without consciously rehearsing them; imagery is one strategy that leaves a strong long-term trace with no rehearsal at all.</li>
+        <li><strong>Long-term memory is not unitary.</strong> Tulving (1972) proposed separate long-term stores: episodic memory for personal experiences, semantic memory for facts, procedural memory for skills. HM and Clive Wearing support this: their episodic memory was impaired while procedural and semantic memory survived.</li>
+        <li><strong>Reductionism.</strong> Artificially splitting memory into stores makes experiments easier but underplays how the systems interconnect.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">A fair verdict: despite these criticisms, the multi-store model has been a valuable framework. It stimulated a huge wealth of memory research, and the better, more precise theories that followed were built in response to it.</p>
+  <div class="exam-tip">
+    <h4>Exam tip: evaluate by contrasting the stores</h4>
+    <p>When evaluating the multi-store model, use research evidence that highlights the qualitative and quantitative differences between the short-term and long-term stores. It is not enough to state that Miller (1956) found the short-term store holds five to nine items: contrast that with the long-term store's capacity. And always explain <em>how</em> the research supports or challenges the model. Simply reporting findings without linking back to the model is not effective evaluation.</p>
+    <p><strong>Worked example:</strong></p>
+    <p><strong>Point:</strong> Clive Wearing suffered amnesia which meant he could not remember events from his past or store new memories. However, his short-term memory was not impaired.</p>
+    <p><strong>Link:</strong> This supports the multi-store model because it shows his long-term store was damaged while his short-term store was unimpaired; the stores must be independent of one another.</p>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>评价这张图记两条主线。支持线：病人案例（HM、Clive Wearing）证明两个仓库能单独坏掉，系列位置效应证明一条曲线两头对应两个仓库。反对线：双任务实验（一动嘴一动眼做得好、两件同类事做不好）单仓库解释不了；不复述也能学会东西；Tulving 说长时记忆里还分情节、语义、程序三个子仓库。最后一句万能评价：模型虽然简单化，但它推动了整个记忆研究，后来的精细理论都是在修正它的过程中长出来的。</p>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Checkpoint</h2>
+  <p>Which store is each statement describing? Choose, then read the why.</p>
+  <div class="xp-block">
+    <h4>Q1 · Encoding is acoustic</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The sensory register</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">The short-term store</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The long-term store</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q2 · The capacity is seven, plus or minus two</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The sensory register</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">The short-term store</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The long-term store</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q3 · The duration is potentially a lifetime</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The sensory register</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The short-term store</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">The long-term store</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q4 · Encoding is semantic</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The sensory register</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The short-term store</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">The long-term store</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q5 · The duration is around 20 seconds</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The sensory register</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">The short-term store</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The long-term store</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q6 · Encoding depends on the sense being used</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">The sensory register</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The short-term store</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The long-term store</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q7 · Information is forgotten through displacement</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The sensory register</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">The short-term store</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The long-term store</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q8 · Why does the serial position effect support two separate stores?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">The primacy end reflects the long-term store and the recency end the short-term store</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Both ends of the curve are held by the short-term store</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The curve shows only one store operating across the whole list</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Exam Lab</h2>
+  <div class="exam-practice">
+    <div class="xp-block">
+      <h4>Q1 · Application <span class="xp-badge">4 marks</span></h4>
+      <div class="xp-intro">Bashir needs to revise for his biology test. He is struggling to learn the functions of organs in the body, such as the heart and lungs. Bashir read his biology textbook in class and took notes but cannot remember all of the information about how organs function. He has taken his biology textbook home to learn and plans to use his textbook and notes to help revise for the test. <strong>Explain how the multi-store model (Atkinson and Shiffrin, 1968) could be used to help Bashir remember the function of organs in the body.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans1')">Show answer</button></div>
+      <div class="xp-result" id="ans1" hidden>
+        <p>Because the model says information must be attended to, rehearsed and transferred between stores, Bashir should design his revision around each step:</p>
+        <ul class="tight">
+          <li><strong>Attention</strong> (sensory register → short-term store): read the notes actively and without distraction, so the information is attended to rather than lost from the sensory register.</li>
+          <li><strong>Maintenance rehearsal</strong> (within the short-term store): repeat the key facts aloud or rewrite them, keeping the trace alive beyond the 15–30-second window.</li>
+          <li><strong>Elaborative rehearsal</strong> (short-term → long-term store): connect each organ's function to its meaning, for example linking the heart to pumping blood, so the semantic encoding of the long-term store has something to hold.</li>
+          <li><strong>Retrieval practice</strong> (long-term store → short-term store): close the book and recall the functions from memory, which exercises retrieval and strengthens the traces.</li>
+        </ul>
+        <p class="xp-case">Marking guidance: one mark for each accurate step of the model applied to Bashir's revision, up to 4. Naming a store or process with no application earns little; the command word is <em>explain how ... could be used</em>, so every point must be tied to Bashir.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q2a · Describe <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro">Smaragda is planning her revision for her end-of-year exams. She plans to put her class notes onto flashcards and go through each flashcard six times before writing out the information later to see what she remembers. <strong>Describe, using the multi-store model of memory (Atkinson and Shiffrin, 1968), how Smaragda is using information processing during her revision.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans2')">Show answer</button></div>
+      <div class="xp-result" id="ans2" hidden>
+        <p>Going through each flashcard six times is <strong>maintenance rehearsal</strong>: she is repeating the information to keep it alive in the short-term store and strengthen the trace. Writing out what she remembers afterwards is <strong>retrieval</strong>: pulling the information back from the long-term store into the short-term store.</p>
+        <p class="xp-case">Marking guidance: two steps, one mark each. Both must be linked to the model's processes.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q2b · Explain <span class="xp-badge">4 marks</span></h4>
+      <div class="xp-intro"><strong>Explain, using the multi-store model of memory (Atkinson and Shiffrin, 1968), two further ways that Smaragda could revise for her end-of-year exam.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans3')">Show answer</button></div>
+      <div class="xp-result" id="ans3" hidden>
+        <p><strong>Way 1: elaborative rehearsal.</strong> Instead of only repeating the flashcards, Smaragda could think about the meaning of each item and connect it to what she already knows. In the model, meaningful processing matches the semantic encoding of the long-term store, so the information transfers more effectively from the short-term store.</p>
+        <p><strong>Way 2: spaced rehearsal over time.</strong> She could spread the six repetitions across several days instead of one session. Each session re-attends to the material and re-rehearses it, giving repeated chances for the trace to be transferred into the long-term store before it decays from the short-term store.</p>
+        <p class="xp-case">Marking guidance: two ways, up to 2 marks each: 1 mark for naming the process, 1 mark for explaining how it maps onto the model's stores.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Key Terms</h2>
+  <div class="glossary-grid">
+    <div class="keyterm-box"><span class="kt">multi-store model</span><br><span class="zh">多重记忆系统模型：三个仓库串成流水线的记忆框架（Atkinson &amp; Shiffrin, 1968）</span></div>
+    <div class="keyterm-box"><span class="kt">structural features</span><br><span class="zh">结构特征：天生的记忆仓库本身，像电脑硬件，改不了</span></div>
+    <div class="keyterm-box"><span class="kt">control processes</span><br><span class="zh">控制过程：自己决定的加工方式（编码、复述、提取），像可写的程序</span></div>
+    <div class="keyterm-box"><span class="kt">sensory register</span><br><span class="zh">感官登记处：五官各一个，只留几百毫秒</span></div>
+    <div class="keyterm-box"><span class="kt">tachistoscope</span><br><span class="zh">速示器：精确控制视觉材料显示时长的仪器</span></div>
+    <div class="keyterm-box"><span class="kt">digit span</span><br><span class="zh">数字广度：能按顺序无错背出的数字个数</span></div>
+    <div class="keyterm-box"><span class="kt">trigram</span><br><span class="zh">三连字母组：三个辅音组成的一组，测 STM 时距用</span></div>
+    <div class="keyterm-box"><span class="kt">interference task</span><br><span class="zh">干扰任务：阻止复述的任务，如倒数三</span></div>
+    <div class="keyterm-box"><span class="kt">displacement</span><br><span class="zh">置换：新信息把旧信息从有限的槽位中挤出去</span></div>
+    <div class="keyterm-box"><span class="kt">acoustic encoding</span><br><span class="zh">听觉编码：短时记忆按声音形式储存</span></div>
+    <div class="keyterm-box"><span class="kt">semantic encoding</span><br><span class="zh">语义编码：长时记忆按意义储存</span></div>
+    <div class="keyterm-box"><span class="kt">phonological similarity effect</span><br><span class="zh">语音相似效应：发音相近的字母在 STM 里互相混淆、更难回忆</span></div>
+    <div class="keyterm-box"><span class="kt">maintenance rehearsal</span><br><span class="zh">维持性复述：机械重复，保住短时记忆的痕迹</span></div>
+    <div class="keyterm-box"><span class="kt">elaborative rehearsal</span><br><span class="zh">精细复述：加工含义，把信息送进长时记忆</span></div>
+    <div class="keyterm-box"><span class="kt">serial position effect</span><br><span class="zh">系列位置效应：列表开头与结尾回忆好于中间</span></div>
+    <div class="keyterm-box"><span class="kt">primacy / recency effect</span><br><span class="zh">首因效应／近因效应：开头进长时仓库，结尾还在短时槽位</span></div>
+    <div class="keyterm-box"><span class="kt">encephalitis</span><br><span class="zh">脑炎：脑部炎症，损伤脑结构（Clive Wearing 的病因）</span></div>
+    <div class="keyterm-box"><span class="kt">episodic / semantic / procedural memory</span><br><span class="zh">情节／语义／程序记忆：Tulving (1972) 的三个长时子仓库</span></div>
+  </div>
+  <div class="footer-note">Spec 2.1.1 · Content sourced from Book 1 Ch.8 (pp.81–87) · Next: 2.1.2 The working memory model</div>
+</section>
+
+</main>
+</div>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  /* ---------- sidebar scroll spy ---------- */
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  /* ---------- reveal helper ---------- */
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  /* ---------- multiple choice: one why per option ---------- */
+  var secWhy = {
+    s7: [
+      ['The sensory register holds whatever format each sense delivers; it does not use one single sound-based code.',
+       'Correct. The phonological similarity effect (Conrad and Hull, 1964) shows similar sounds confuse this store, so its code must be acoustic.',
+       'The long-term store encodes by meaning; the sound-based store is the short-term one.'],
+      ['Sperling\'s participants recalled about 4 of 12 letters: limited, but not the seven-plus-or-minus-two rule.',
+       'Correct. Miller (1956) put the short-term store at five to nine items, refined to the magical number seven plus or minus two.',
+       'The capacity of the long-term store is potentially infinite.'],
+      ['A few hundred milliseconds is the whole budget of the sensory register.',
+       '15 to 30 seconds, decaying over roughly 20, is the short-term store.',
+       'Correct. Bahrick et al. (1975) found names and faces still recognisable 48 years after leaving school.'],
+      ['The sensory register holds raw sensory input in the form the sense delivered.',
+       'Sound-based encoding is the short-term store; the long-term store uses meaning.',
+       'Correct. Baddeley (1966b) found semantically similar words confused participants, so the long-term store encodes semantically.'],
+      ['Hundreds of milliseconds, far shorter than 20 seconds.',
+       'Correct. Peterson and Peterson (1959) blocked rehearsal with counting backwards and found rapid decay after 15 to 18 seconds.',
+       'Potentially a lifetime is the duration of the long-term store.'],
+      ['Correct. There is one register per sense modality, so the encoding follows the sense that delivered the information.',
+       'Both later stores use one fixed format: sound first, then meaning.',
+       'The long-term store encodes semantically regardless of which sense delivered the information.'],
+      ['Loss in the sensory register is simply the trace fading before attention is paid to it.',
+       'Correct. With only five to nine slots, new items knock older, weaker traces out of the short-term store.',
+       'New items cannot knock long-term memories out; that store\'s capacity is potentially infinite.'],
+      ['Correct. The beginning of the list was rehearsed into the long-term store; the end still sits in the short-term slots.',
+       'If both ends were held by the short-term store, the primacy advantage would disappear once rehearsal was blocked.',
+       'The whole point of the curve is that its two ends behave differently, which is the evidence for two stores.']
+    ]
+  };
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = (btn.closest('.xp-block') || section).querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+</script>
+</body>
+</html>
