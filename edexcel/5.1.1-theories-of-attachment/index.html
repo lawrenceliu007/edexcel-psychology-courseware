@@ -188,6 +188,29 @@ body.dark .sc-item { background: #16213e; border-color: #334155; color: #cbd5e1;
 body.dark .sc-tag { background: #3b82f6; }
 body.dark .sc-predict { background: rgba(59,130,246,.08); border-color: #3b82f6; }
 body.dark .sc-predict h4 { color: #93c5fd; }
+.sc-ask { background: #fefce8; border: 1.5px solid #ca8a04; border-radius: 10px; padding: 14px 18px; margin: 14px 0 4px; }
+.sc-ask h4 { margin: 0 0 4px; color: #854d0e; font-size: .95em; }
+.sc-ask-step { background: #fff; border: 1px solid #e7e5e4; border-radius: 8px; padding: 10px 14px; margin: 10px 0 0; }
+.sc-ask-step.locked { opacity: .45; }
+.sc-ask-step .ask-q { font-weight: 600; font-size: .95em; margin: 0; line-height: 1.7; }
+.ask-toggle { background: #fff; border: 1px solid #d6d3d1; border-radius: 8px; padding: 5px 12px; font-size: .82rem; font-weight: 500; color: #57534e; cursor: pointer; margin-top: 8px; transition: all .15s; }
+.ask-toggle:hover:not(:disabled) { border-color: #ca8a04; color: #854d0e; }
+.ask-toggle:disabled { cursor: not-allowed; opacity: .6; }
+.ask-hint { display: none; border-top: 1px dashed #e7e5e4; margin-top: 10px; padding-top: 8px; }
+.ask-hint.show { display: block; }
+.ask-hint .hint-label { font-size: .75em; color: #a8a29e; margin: 0 0 4px; font-weight: 700; }
+.ask-hint p { margin: 0; font-size: .92em; line-height: 1.75; }
+.ask-land { margin: 12px 0 0; font-size: .9em; color: #854d0e; line-height: 1.7; }
+body.dark .sc-ask { background: rgba(202,138,4,.08); border-color: #ca8a04; }
+body.dark .sc-ask h4 { color: #fde047; }
+body.dark .sc-ask-step { background: #16213e; border-color: #334155; }
+body.dark .sc-ask-step.locked { opacity: .5; }
+body.dark .ask-toggle { background: #16213e; border-color: #334155; color: #94a3b8; }
+body.dark .ask-toggle:hover:not(:disabled) { border-color: #ca8a04; color: #fde047; }
+body.dark .ask-hint { border-top-color: #334155; }
+body.dark .ask-hint .hint-label { color: #64748b; }
+body.dark .ask-hint p { color: #cbd5e1; }
+body.dark .ask-land { color: #fde047; }
 
 .small { font-size: .84em; color: var(--text-secondary); }
 .tight { margin: 6px 0; }
@@ -269,7 +292,7 @@ body.dark .sc-predict h4 { color: #93c5fd; }
   <div class="sc-item"><span class="sc-tag">背景</span>你家的小表弟壮壮从出生起主要由奶奶带：喂饭、洗澡、哄睡，全是奶奶的活。妈妈每天下班才回来，抱他的时间不多。</div>
   <div class="sc-item"><span class="sc-tag">角色</span>你是来家里过周末的表哥表姐，负责观察这个一岁的小家伙。</div>
   <div class="sc-item"><span class="sc-tag">任务</span>怪事出现了：奶奶走开，壮壮继续玩他的玩具，毫无反应；可妈妈只是起身去倒杯水，他立刻嚎啕大哭，直到妈妈回来抱起他才消停。</div>
-  <div class="sc-item"><span class="sc-tag">目标</span>按直觉，爱应该跟着喂饭走。先猜下面这题，再带着你的答案读这一页：心理学家怎么解释「爱不跟着食物走」这件事。</div>
+  <div class="sc-item"><span class="sc-tag">目标</span>按直觉，爱应该跟着喂饭走。先猜下面这题：心理学家怎么解释「爱不跟着食物走」。猜完别急着走，下面还有两层开放式追问，先自己想，再点开提示。</div>
   <div class="sc-predict">
     <h4><span class="sc-tag" style="background:#3b82f6">先猜</span>如果「婴儿爱谁，取决于谁喂他」是对的，壮壮的现象说明什么？</h4>
     <div class="xp-controls">
@@ -279,12 +302,32 @@ body.dark .sc-predict h4 { color: #93c5fd; }
     </div>
     <div class="xp-result"></div>
   </div>
+  <div class="sc-ask">
+    <h4><span class="sc-tag" style="background:#ca8a04">追问</span>猜完先别走：这两个问题没有选项，答案是开放式，先自己想，再点开提示。</h4>
+    <div class="sc-ask-step">
+      <p class="ask-q">追问一：如果爱是学出来的，那「教材」是什么？喂饭、洗澡、哄睡，奶奶把全套教材都给了壮壮，他为什么没学会爱她？</p>
+      <button class="ask-toggle" data-target="ask-h1">想好了？看提示 →</button>
+      <div class="ask-hint" id="ask-h1">
+        <p class="hint-label">提示</p>
+        <p>学习理论押的教材是「食物带来的舒服」。壮壮的表现说明，要么教材押错了，要么学的根本不是喂饭这一件。哪条路说得通，就看 §1 的三条学习路线各自怎么解释。</p>
+      </div>
+    </div>
+    <div class="sc-ask-step locked">
+      <p class="ask-q">追问二：再往深一层：壮壮一看到妈妈就哭、妈妈一走开就找，这套行为看起来需要「学」吗？</p>
+      <button class="ask-toggle" data-target="ask-h2" disabled>想好了？看提示 →</button>
+      <div class="ask-hint" id="ask-h2">
+        <p class="hint-label">提示</p>
+        <p>一岁的小家伙没人教过他「妈妈走了要哭」。如果这套行为不用教就出现，理论就得假设婴儿天生自带「找照顾者」的程序。这正是 §3 Bowlby 的立场，先带着你的直觉去读。</p>
+      </div>
+    </div>
+    <p class="ask-land">带着这两层追问往下读：§1 先把「爱是学出来的」三条路讲完，看够不够解释壮壮；§3 给出「天生自带」的另一半答案。</p>
+  </div>
 </section>
 
 <!-- ============ 1 ============ -->
 <section class="section" id="s1">
   <h2>1. Learning Theories: Is Love Just Fed In?</h2>
-  <p><strong>Attachment</strong>（依恋：孩子与照顾者之间紧密、持久的情感联结，也指形成这种联结的过程）is the gradual process through which strong, emotional bonds form between infants and caregivers. The earliest explanations came from <strong>learning theories</strong>: attachment is learned through experience (nurture), built out of associations between the caregiver and food. The nickname for this family of explanations is <em>cupboard love</em>: the caregiver matters because the cupboard (food) is behind her.</p>
+  <p>追问一 is the question this section exists to answer: if love is learned, what exactly is the teaching material? <strong>Attachment</strong>（依恋：孩子与照顾者之间紧密、持久的情感联结，也指形成这种联结的过程）is the gradual process through which strong, emotional bonds form between infants and caregivers. The earliest explanations came from <strong>learning theories</strong>: attachment is learned through experience (nurture), built out of associations between the caregiver and food. The nickname for this family of explanations is <em>cupboard love</em>: the caregiver matters because the cupboard (food) is behind her.</p>
   <ul class="tight">
     <li><strong>Classical conditioning.</strong> Food is an <strong>unconditioned stimulus</strong>（非条件刺激：天生就能引发反应的刺激）that produces pleasure. After a few feeds, the baby associates the person who provides food with that pleasure: the caregiver becomes a <strong>conditioned stimulus</strong>（条件刺激：原本中性、因与 UCS 配对而能引发反应的刺激）, and the baby feels happy simply at the sight of her.</li>
     <li><strong>Operant conditioning.</strong> Dollard and Miller (1950) describe hunger as a <strong>drive state</strong>（驱动状态：饥饿这类让人不舒服、推动人行动的生理状态）. Feeding reduces the drive, so food is a <strong>primary reinforcer</strong>, and any behaviour the baby performs just before food arrives (crying) is positively reinforced. The caregiver becomes a <strong>secondary reinforcer</strong>（次级强化物：因反复与满足初级需求的刺激配对而获得强化力的人或物）, and over time the baby develops a <strong>secondary drive</strong>（次级驱力：习得的、指向照顾者的动机）to seek her.</li>
@@ -318,7 +361,7 @@ body.dark .sc-predict h4 { color: #93c5fd; }
 <!-- ============ 3 ============ -->
 <section class="section" id="s3">
   <h2>3. Bowlby's Theory: Attachment Is Built In</h2>
-  <p>John Bowlby (1907–1990), a psychiatrist at the Tavistock child guidance clinic in London, rejected the idea that complex emotional bonds can be explained by food alone. He proposed that attachment is <strong>innate</strong> (nature): infants and caregivers are biologically predisposed to form bonds, because in the <strong>evolutionary environment of adaptedness</strong>（适应环境：人类祖先演化出身体与行为特质的远古环境）, staying close to a protective adult reduced risks from predators and helped infants survive to reproductive age.</p>
+  <p>追问二's hunch, that some of this behaviour never needed teaching at all, is exactly where this section starts. John Bowlby (1907–1990), a psychiatrist at the Tavistock child guidance clinic in London, rejected the idea that complex emotional bonds can be explained by food alone. He proposed that attachment is <strong>innate</strong> (nature): infants and caregivers are biologically predisposed to form bonds, because in the <strong>evolutionary environment of adaptedness</strong>（适应环境：人类祖先演化出身体与行为特质的远古环境）, staying close to a protective adult reduced risks from predators and helped infants survive to reproductive age.</p>
   <ul class="tight">
     <li><strong>Social releasers</strong>（社会释放器：天生引发照顾行为的婴儿行为，如哭泣、微笑、目光接触）: innate baby behaviours that trigger caregiving responses in adults. Babies who inherited these tendencies survived more often, so the predisposition to attach spread through the population.</li>
     <li><strong>Imprinting and critical periods.</strong> Bowlby drew on Lorenz's goslings, which followed the first moving object they saw within hours of hatching. Imprinting typically occurs within 12–24 hours and becomes impossible after about 32 hours: a <strong>critical period</strong>（关键期：发展中的一段有限时间，某些经验必须在期内发生才能正常发展）. Bowlby applied a human version: failure to attach within roughly the first three years, the <strong>sensitive period</strong>（敏感期：环境影响作用特别大的弹性时间窗）, may leave children unable to form secure, lasting bonds.</li>
@@ -350,7 +393,9 @@ body.dark .sc-predict h4 { color: #93c5fd; }
     <text x="30" y="24" font-size="11.5" fill="#475569">Bonds form in stages, but the one-person preference peaks in phase 3 (monotropy).</text>
     <text x="340" y="155" text-anchor="middle" font-size="11" fill="#64748b">Age runs left to right; phase 3 is where Zhuangzhuang's behaviour would be easiest to see.</text>
   </svg>
-  <p><strong>Evaluation.</strong> Schaffer and Emerson (1964) challenged monotropy: in their Glasgow sample of sixty babies, 29 per cent were attached to two or more people by 12 months, and by 18 months only 13 per cent had a single attachment while 31 per cent had five or more, so multiple attachments form much earlier than Bowlby allowed. However, the same data support his hierarchy: the strongest attachment behaviours still pointed at one specific person. The internal working model is supported by Hazan and Shaver's (1987) Love Quiz, which found a significant correlation between recalled parenting warmth and adult relationship length and divorce rate. But this is correlational, and Kagan (1984) offers a temperament（气质：早年即可观察的人格生物学侧面，包括情绪反应性、探索意愿与羞怯）explanation: the same inborn temperament could shape both early attachment and adult relationships, which would make the working model unnecessary as an explanation. Bowlby's theory is also <strong>socially sensitive</strong>: although he accepted the mother need not be the primary figure, his emphasis on her role (hormonal changes, breastfeeding) has been used to justify negative attitudes towards working mothers and can make mothers who cannot provide constant care feel guilty.</p>
+  <p><strong>Evaluation.</strong> Schaffer and Emerson (1964) challenged monotropy: in their Glasgow sample of sixty babies, 29 per cent were attached to two or more people by 12 months, and by 18 months only 13 per cent had a single attachment while 31 per cent had five or more, so multiple attachments form much earlier than Bowlby allowed. However, the same data support his hierarchy: the strongest attachment behaviours still pointed at one specific person.</p>
+  <p>The internal working model is supported by Hazan and Shaver's (1987) Love Quiz, which found a significant correlation between recalled parenting warmth and adult relationship length and divorce rate. But this is correlational, and Kagan (1984) offers a temperament（气质：早年即可观察的人格生物学侧面，包括情绪反应性、探索意愿与羞怯）explanation: the same inborn temperament could shape both early attachment and adult relationships, which would make the working model unnecessary as an explanation.</p>
+  <p>Bowlby's theory is also <strong>socially sensitive</strong>: although he accepted the mother need not be the primary figure, his emphasis on her role (hormonal changes, breastfeeding) has been used to justify negative attitudes towards working mothers and can make mothers who cannot provide constant care feel guilty.</p>
   <p class="small">Back to Zhuangzhuang once more: he is around phase 3, where the preference for one figure peaks. His grandmother may be the busiest caregiver, but Bowlby predicts the hierarchy is organised by importance, not by feeding hours.</p>
   <div class="cn-note">
     <p><strong>中文理解：</strong>Bowlby 的理论记五件套：① 天生论：依恋是进化产物，贴近保护者活下来的祖先把「想依附」写进了基因；② 社会释放器：哭、笑、对视是天生的「求照顾按钮」；③ 关键期与敏感期：从 Lorenz 的小鹅（24 小时内印刻、32 小时后不可能）搬到人类（约 3 岁，错过难补）；④ 单向性：7–12 个月出现对一个人的最强偏好，之后的依恋按重要性排成等级；⑤ 内部工作模型：早期关系存成模板，指导以后的恋爱和交友。证据三对：Harlow 的绒布妈妈支持「安慰重于食物」；Schaffer & Emerson 反驳单向性（多个依恋出现得早）但支持等级结构；Hazan & Shaver 的爱情测验支持内部工作模型但被 Kagan 用气质说挑战。社会敏感性：理论容易被拿去指责职场妈妈。</p>
@@ -387,7 +432,8 @@ body.dark .sc-predict h4 { color: #93c5fd; }
   </table>
   <p><strong>Conclusion:</strong> juvenile thieves with affectionless traits (lack of empathy and guilt) were likely to have experienced prolonged separations from their primary caregivers in the early years.</p>
   <p><strong>The right statistical test.</strong> Bowlby used an independent groups design (thieves versus non-thieves) and collected nominal data（称名数据：只有类别之分，如「分离过 / 没分离过」）: did each child experience early prolonged separation, yes or no? Independent groups + nominal data means the correct test is the <strong>chi-squared test</strong>（卡方检验：用于两组独立样本、称名数据的显著性检验）.</p>
-  <p><strong>Evaluation.</strong> The study was longitudinal: children visited the clinic many times for therapy, so character classifications were not based on a single meeting, which increased validity. Against it: the classifications may have been subjective, because Bowlby interviewed the children after receiving the social worker's and psychologist's information, and his questions to the mothers may have been shaped by what the children had already told him: researcher bias that reduces the scientific status of the findings. The sample was small (44 per group), mostly boys, all from one London clinic, so the link may not generalise to girls, other regions, or cultures where childcare is routinely shared. Most importantly, 61 per cent of the thieves (27/44) had <em>not</em> experienced prolonged separations, so early separation cannot be the whole story of childhood criminality. The link is strongest for the affectionless group, and may depend on why the separation happened (bereavement, family discord; Rutter, 1981). Bowlby's research still changed society for the better: hospitals extended visiting hours and provided parent beds, orphanages were closed in many countries, and foster care now prioritises continuity of high-quality care.</p>
+  <p><strong>Evaluation.</strong> The study was longitudinal: children visited the clinic many times for therapy, so character classifications were not based on a single meeting, which increased validity. Against it: the classifications may have been subjective, because Bowlby interviewed the children after receiving the social worker's and psychologist's information, and his questions to the mothers may have been shaped by what the children had already told him: researcher bias that reduces the scientific status of the findings. The sample was small (44 per group), mostly boys, all from one London clinic, so the link may not generalise to girls, other regions, or cultures where childcare is routinely shared.</p>
+  <p>Most importantly, 61 per cent of the thieves (27/44) had <em>not</em> experienced prolonged separations, so early separation cannot be the whole story of childhood criminality. The link is strongest for the affectionless group, and may depend on why the separation happened (bereavement, family discord; Rutter, 1981). Bowlby's research still changed society for the better: hospitals extended visiting hours and provided parent beds, orphanages were closed in many countries, and foster care now prioritises continuity of high-quality care.</p>
   <div class="cn-note">
     <p><strong>中文理解：</strong>44 小偷研究的骨架：机会样本 44 个小偷 + 配对控制组 44 个非小偷，方法全是临床访谈（社工问妈妈、Bowlby 各访谈一小时、学校报告做次级资料）。结果记三组百分数：小偷里 39% 经历过早期长期分离，非小偷只有 5%；无情型小偷里 86% 有分离史，非无情型只有 17%；控制组 0% 被判为无情型。频率表背一个对比：小偷 17/44 有分离史，非小偷 2/44。统计检验考法：独立组设计 + 称名数据 → 卡方检验。评价三刀：纵向多次见面提高效度（加分）；Bowlby 先看了社工和心理学家的信息再访谈孩子和母亲，研究者偏差减分；最大的漏洞是 61% 的小偷没有分离史，分离讲不完偷窃这件事。</p>
   </div>
@@ -622,6 +668,27 @@ body.dark .sc-predict h4 { color: #93c5fd; }
       box.classList.add('show');
     }
   };
+})();
+
+/* Socratic sc-ask: progressive reveal, next step unlocks after previous hint opens */
+(function () {
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.sc-ask-step'));
+  if (!steps.length) return;
+  steps.forEach(function (step, i) {
+    var btn = step.querySelector('.ask-toggle');
+    var hint = document.getElementById(btn ? btn.getAttribute('data-target') : '');
+    if (!btn || !hint) return;
+    btn.addEventListener('click', function () {
+      var open = hint.classList.toggle('show');
+      btn.textContent = open ? '收起提示' : '想好了？看提示 →';
+      if (open && i + 1 < steps.length) {
+        var next = steps[i + 1];
+        next.classList.remove('locked');
+        var nb = next.querySelector('.ask-toggle');
+        if (nb) nb.disabled = false;
+      }
+    });
+  });
 })();
 </script>
 </body>
