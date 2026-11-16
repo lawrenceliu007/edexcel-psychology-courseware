@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.2.12 Methods — Inferential Statistics</title>
+<style>
+
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.sc-item { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-size: .95em; line-height: 1.7; margin: 8px 0; }
+.sc-tag { display: inline-block; background: var(--accent); color: #fff; font-size: .72em; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-right: 8px; }
+.sc-predict { background: #eff6ff; border: 1.5px solid #3b82f6; border-radius: 10px; padding: 14px 18px; margin: 16px 0 4px; }
+.sc-predict h4 { margin: 0 0 6px; color: #1d4ed8; }
+body.dark .sc-item { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .sc-tag { background: #3b82f6; }
+body.dark .sc-predict { background: rgba(59,130,246,.08); border-color: #3b82f6; }
+body.dark .sc-predict h4 { color: #93c5fd; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic B · Cognitive psychology — 2.2.12 Methods</span>
+  </div>
+  <span class="nav-pill">🧠 Cognitive Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">2.2.12 Methods</div>
+    <div class="sb-header-sub">Inferential Statistics &amp; Data Decisions</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s0">Start Here: The Coin That Refuses to Lose</a></li>
+    <li class="sb-item"><a href="#s1">1. Chance or a Real Effect?</a></li>
+    <li class="sb-item"><a href="#s2">2. The 5% Rule</a></li>
+    <li class="sb-item"><a href="#s3">3. Type I and Type II Errors</a></li>
+    <li class="sb-item"><a href="#s4">4. Levels of Measurement</a></li>
+    <li class="sb-item"><a href="#s5">5. Choosing the Right Test</a></li>
+    <li class="sb-item"><a href="#s6">6. Wilcoxon Step by Step</a></li>
+    <li class="sb-item"><a href="#s7">7. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s8">8. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s9">9. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>2.2.12 INFERENTIAL STATISTICS<br><span style="font-size:0.65em">Probability · Significance · Type I/II errors · Levels of measurement · Wilcoxon signed ranks · 推断统计</span></h1>
+  <div class="meta">
+    <span class="badge">Topic B · Cognitive psychology</span>
+    <span class="badge">Methods</span>
+    <span class="badge">Spec 2.2.12</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.12 · pp.112–124</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this page is really asking</h4>
+  <ol>
+    <li><strong>A difference is never enough.</strong> Two conditions always differ somewhere; an inferential test decides whether that difference is a real effect or just chance — the same judgement as refusing to pay out on a coin that landed heads ten times.</li>
+    <li><strong>Psychology draws the line at 5%.</strong> p ≤ .05 means the "luck" explanation survives at most 1 time in 20, so the null is rejected; p ≤ .10 is too lenient, p ≤ .01 is highly significant, and nothing is ever "proved" — only supported.</li>
+    <li><strong>The line creates two errors.</strong> Too lenient risks a Type I (false positive); too stringent risks a Type II (false negative). Medicine uses 1% because a false drug approval is costlier than a missed effect.</li>
+    <li><strong>Then the mechanics.</strong> Name your data level (nominal vs ordinal-or-above), pick the test (chi-squared / Wilcoxon / Spearman's), compute T, compare calculated ≤ critical, and report all six pieces of the statistical statement.</li>
+  </ol>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Explain what an inferential test does</strong> and why a visible difference between conditions is not, by itself, evidence of an effect.</li>
+    <li><strong>Interpret the levels of significance</strong> p ≤ .10, p ≤ .05 and p ≤ .01, and state the correct decision at each.</li>
+    <li><strong>Identify Type I and Type II errors</strong> in described scenarios and explain why different disciplines choose different levels.</li>
+    <li><strong>Classify data</strong> as nominal, ordinal, interval or ratio, and choose the correct inferential test from the decision conditions.</li>
+    <li><strong>Calculate the Wilcoxon signed ranks test</strong> (differences, ranks, T), compare it to a critical value, and write the full statistical statement.</li>
+  </ul>
+</div>
+
+
+<!-- ============ 0 ============ -->
+<section class="section" id="s0">
+  <h2>Start Here: The Coin That Refuses to Lose</h2>
+  <div class="sc-item"><span class="sc-tag">背景</span>你和朋友打赌抛硬币，说好正面归你。结果连抛 10 次，10 次全是正面。</div>
+  <div class="sc-item"><span class="sc-tag">角色</span>你是口袋里那枚可疑硬币的主人，你得决定要不要认账。</div>
+  <div class="sc-item"><span class="sc-tag">任务</span>判断这串结果到底是运气，还是硬币被动了手脚。注意：连抛 10 次出 6 次正面你不会起疑，10 次全正面你就会起疑。差别在哪？</div>
+  <div class="sc-item"><span class="sc-tag">目标</span>把「起疑的那条线」说清楚。心理学家判断实验结果用的是同一套逻辑，这一页教你把这条线画出来。</div>
+  <div class="sc-predict">
+    <h4><span class="sc-tag" style="background:#3b82f6">先猜</span>实验里 A 组比 B 组平均多记对 2 个词。研究者可以下结论「记忆训练有效」吗？</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">可以。只要两组数据有差别，就说明训练真的起了作用</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">要看情况：得先算出「这么大差别纯靠运气出现的概率」有多大，再决定</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">不可以。差别只有 2 个词，太小了，肯定无效</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Chance or a Real Effect?</h2>
+  <p>Descriptive statistics — means, tables, graphs — describe a data set. But describing is not deciding. Two conditions will almost never produce exactly the same scores, so a difference between them always exists. The real question is whether that difference is a <strong>genuine effect</strong> of the independent variable or just <strong>chance variation</strong> between the two groups.</p>
+  <p>An <strong>inferential test of significance</strong>（推断检验：算出「这个结果纯靠运气出现的概率」的统计工具）answers exactly that question. It rests on one concept: <strong>probability</strong>（概率：某件事发生的可能性）。A fair coin has a probability of 0.5 of landing heads. Ten heads in a row is unlikely; one hundred heads in a row is so unlikely that you stop blaming luck and start blaming the coin. When a result becomes very unlikely under chance, some other factor — usually the manipulated IV — is the better explanation.</p>
+  <p>This is also where the <strong>null hypothesis</strong> does its job. It predicts no real difference: any difference found is due to chance. The inferential test tells you whether to <strong>reject</strong> the null (a real effect — accept the alternative) or <strong>retain</strong>（保留：不推翻）it (no real effect).</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>推断检验回答的问题只有一个：「这个差别是巧合吗？」逻辑跟抛硬币完全一样。10 次里出 6 次正面你认，是运气；100 次全正面你不认，因为运气解释不通了。实验数据的差别也一样：小到运气能解释 → 保留虚无假设；小到运气解释不了 → 推翻虚无假设，承认是自变量真的起了作用。整页就围绕「这条线画在哪」展开。</p>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. The 5% Rule: Levels of Significance</h2>
+  <p>So how unlikely must a result be before you blame the coin? Psychology draws the line at <strong>p ≤ .05</strong>（显著性水平：结果纯靠运气出现的概率上限）。If the probability of the result occurring by chance is 5 per cent or less — 1 in 20 — the result is <strong>significant</strong>（显著：够格推翻虚无假设）and the null hypothesis is rejected. If the probability is greater than .05, the result is not significant and the null hypothesis is retained.</p>
+  <p>Two other levels matter. At <strong>p ≤ .10</strong> the result is still not significant, so the null is retained — but a 1-in-10 result may still be reported and followed up with more research. At <strong>p ≤ .01</strong> the result is <strong>highly significant</strong>: there is a 1-in-100 probability of it being due to chance, and the null is rejected with extra confidence.</p>
+  <svg viewBox="0 0 680 170" role="img" aria-label="Significance levels ladder">
+    <defs>
+      <marker id="arS" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker>
+    </defs>
+    <text x="20" y="24" font-size="13" font-weight="700" fill="#0f172a">Probability of the result being due to chance</text>
+    <rect x="20" y="40" width="600" height="30" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+    <rect x="20" y="40" width="80" height="30" rx="6" fill="#16a34a"/>
+    <rect x="100" y="40" width="250" height="30" fill="#facc15"/>
+    <text x="370" y="60" font-size="12" fill="#334155">p ≤ .10 → not significant · retain null</text>
+    <text x="30" y="60" font-size="12" font-weight="700" fill="#fff">.01</text>
+    <text x="115" y="60" font-size="12" font-weight="700" fill="#92400e">.05 → significant</text>
+    <text x="20" y="95" font-size="12" fill="#475569">Smaller probability ⇒ the "luck" explanation collapses ⇒ the IV is the better explanation.</text>
+    <line x1="20" y1="115" x2="620" y2="115" stroke="#334155" stroke-width="2" marker-end="url(#arS)"/>
+    <text x="20" y="140" font-size="11.5" fill="#64748b">left = luck can explain it</text>
+    <text x="490" y="140" font-size="11.5" fill="#64748b">right = luck almost cannot</text>
+    <text x="20" y="162" font-size="11.5" fill="#64748b">.01 and .05 reject the null (highly significant / significant); .10 retains it. Medicine uses the stricter 1%.</text>
+  </svg>
+  <p>One warning the textbook underlines: even after a significant test we have not <em>proved</em> anything. We can only say the result <strong>reasonably supports</strong> the alternative hypothesis — or, if the test is not significant, that we are not confident enough and retain the null. Proof is not on the menu; support is.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>记住三个门槛和对应的决定。p ≤ .10：不显著，保留虚无假设（但可以继续研究）；p ≤ .05：显著，推翻虚无假设（心理学的默认线，1/20 的运气概率）；p ≤ .01：高度显著，推翻得更放心（1/100）。另一个铁律：统计永远不能「证明」假设，只能说「支持」，考试写「prove」会扣分，写「supports」才对。</p>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Type I and Type II Errors</h2>
+  <p>Wherever you draw the line, two wrong decisions are possible. A <strong>Type I error</strong>（第一类错误：把巧合当成了真效应，假阳性）is a false positive: the researcher rejects the null hypothesis when it is actually true — they claim an effect that was not real. A <strong>Type II error</strong>（第二类错误：把真效应当成了巧合，假阴性）is a false negative: the researcher retains the null when a real effect was there all along.</p>
+  <table>
+    <tr><th></th><th>A real effect exists</th><th>No real effect</th></tr>
+    <tr><td><strong>Reject the null</strong></td><td>Correct decision</td><td>Type I error (false positive)</td></tr>
+    <tr><td><strong>Retain the null</strong></td><td>Type II error (false negative)</td><td>Correct decision</td></tr>
+  </table>
+  <p>The level you choose is a trade-off between the two errors, and different disciplines draw the line differently:</p>
+  <ul class="tight">
+    <li><strong>Medical research uses p ≤ .01</strong> — stringent. Approving an ineffective drug is too costly, so false positives (Type I) must be minimised. The price: with the bar that high, a genuine but modest effect may be missed — a Type II risk.</li>
+    <li><strong>Exploratory research sometimes uses p ≤ .10</strong> — lenient. Early studies use small samples, and missing something important (Type II) is the bigger worry. The price: more false positives slip through.</li>
+    <li><strong>Psychology's p ≤ .05 is the compromise</strong> between the two risks.</li>
+  </ul>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>两类错误是一对跷跷板。门槛定得松（.10）→ 容易把巧合当真（第一类）；门槛定得严（.01）→ 容易把真效应漏掉（第二类）。记忆锚点：第一类 = 假阳性 = 「没病说有病」；第二类 = 假阴性 = 「有病说没病」。医学怕第一种（批了无效药），所以用 .01；探索性研究怕第二种（错过新发现），所以敢用 .10；心理学 .05 是折中。</p>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Levels of Measurement</h2>
+  <p>Before choosing a test you must know what kind of data you have. The four <strong>levels of measurement</strong>（测量水平：数据的类型）run from least to most informative:</p>
+  <ul class="tight">
+    <li><strong>Nominal</strong>（称名数据：只有类别和各类别的人数）— categories only. A class survey counts how many students own a pet and how many do not. We know the totals in each category and nothing about any individual value.</li>
+    <li><strong>Ordinal</strong>（顺序数据：排得出名次、量不出差距）— ranked positions. Houses ranked first, second, third tell you the order but not the gaps: first may beat second by 10 points while third trails by 100. Ratings on arbitrary scales (grades, attractiveness 1–10) are ordinal because the intervals are not truly equal — someone rated 5 is not half as attractive as someone rated 10.</li>
+    <li><strong>Interval and ratio</strong>（等距／等比数据：刻度均匀，差多少是真差多少）— recognised scales with equal intervals. Ratio data additionally has an absolute zero: height in centimetres, time in seconds, distance in kilometres all start at zero.</li>
+  </ul>
+  <p>For <strong>choosing an inferential test</strong> you only need one distinction: nominal versus ordinal-or-above. Interval and ratio data can be treated as ordinal for test selection.</p>
+  <table>
+    <tr><th>Level</th><th>What you know</th><th>Example</th></tr>
+    <tr><td>Nominal</td><td>Category totals only</td><td>14 students own a pet, 11 do not</td></tr>
+    <tr><td>Ordinal</td><td>Rank order, not the gaps</td><td>House points ranked 1st, 2nd, 3rd</td></tr>
+    <tr><td>Interval / ratio</td><td>Equal intervals (ratio: true zero)</td><td>Pet weights measured on a 0–600 kg scale</td></tr>
+  </table>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>判断数据水平问一句话：「数字之间能比出真差距吗？」只能数人头 → 称名；只能排名次、刻度是人定的 → 顺序；有统一刻度、差距是真的 → 等距／等比（等比多一个「真零点」：体重 0 kg 就是没有重量）。选检验时只用二分：称名，还是顺序及以上。</p>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Choosing the Right Test</h2>
+  <p>Three questions decide which inferential test fits your data:</p>
+  <ol class="tight">
+    <li>Are you investigating a <strong>difference</strong> or a <strong>relationship</strong> between variables?</li>
+    <li>Is the design <strong>related</strong> (same or matched participants in both conditions) or <strong>unrelated</strong>?</li>
+    <li>What is the <strong>level of measurement</strong>?</li>
+  </ol>
+  <p>You are only required to learn three tests, and the textbook condenses the decision into one table:</p>
+  <table>
+    <tr><th>Test</th><th>Conditions for use</th></tr>
+    <tr><td><strong>Chi-squared test</strong>（卡方检验）</td><td>A test of difference <em>and</em> association; nominal data is gathered</td></tr>
+    <tr><td><strong>Wilcoxon signed ranks test</strong>（威尔科克森符号秩检验）</td><td>A test of difference; ordinal (or above) data; a repeated measures design was used</td></tr>
+    <tr><td><strong>Spearman's rank test</strong>（斯皮尔曼等级相关检验）</td><td>A test of relationship/correlation; ordinal (or above) data</td></tr>
+  </table>
+  <p>One design rule completes the table: a <strong>matched pairs design</strong>（匹配对设计：两组人按关键特征一一配对）is technically independent groups, but because the participants are matched, for test selection it is <strong>treated as a repeated measures design</strong>.</p>
+  <p>The choice also connects to your hypothesis. A <strong>directional</strong> hypothesis (direction predicted) leads to a <strong>one-tailed test</strong>（单尾检验）; a <strong>non-directional</strong> hypothesis leads to a <strong>two-tailed test</strong>（双尾检验）. The tail decides which column of the critical values table you read — you will see it in action below.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>选检验 = 回答三连问。找差别还是找关系？同一批人（或配对人）还是两批人？什么水平的数据？三问答完检验就定了：差别 + 称名 → 卡方；差别 + 顺序及以上 + 重复测量（含匹配对）→ 威尔科克森；关系 + 顺序及以上 → 斯皮尔曼。方向预测得出 → 单尾；预测不出 → 双尾。这一步错了，后面全错，所以选题的三个条件要在考场上先默背一遍。</p>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Wilcoxon Signed Ranks, Step by Step</h2>
+  <p>The Wilcoxon signed ranks test is used for a difference between two conditions, with ordinal-or-above data, in a repeated measures (or matched pairs) design. Here is the textbook's own example: ten participants recall words from a <strong>non-categorised list</strong> and from a <strong>categorised list</strong>. Does list type make a real difference?</p>
+  <p><strong>The calculation, in five moves:</strong></p>
+  <ol class="tight">
+    <li>Calculate the <strong>difference</strong> between each participant's pair of scores (A − B).</li>
+    <li><strong>Rank</strong> the differences, ignoring plus and minus signs. Equal scores share a divided rank: two 4s occupy positions 2 and 3, so each is ranked 2.5 — and the next score jumps to position 4.</li>
+    <li>Sort the ranks into a <strong>rank-if-positive</strong> column and a <strong>rank-if-negative</strong> column. Participants with zero difference are ignored.</li>
+    <li>Add up each column.</li>
+    <li>The <strong>smaller total is the T value</strong> — the observed (calculated) value of the test.</li>
+  </ol>
+  <table>
+    <tr><th>Ppt</th><th>Non-categorised (A)</th><th>Categorised (B)</th><th>Difference (A−B)</th><th>Rank</th><th>Rank if +</th><th>Rank if −</th></tr>
+    <tr><td>1</td><td>8</td><td>11</td><td>−3</td><td>4</td><td></td><td>4</td></tr>
+    <tr><td>2</td><td>7</td><td>7</td><td>0</td><td>— ignored —</td><td></td><td></td></tr>
+    <tr><td>3</td><td>9</td><td>16</td><td>−7</td><td>6</td><td></td><td>6</td></tr>
+    <tr><td>4</td><td>11</td><td>12</td><td>−1</td><td>1.5</td><td></td><td>1.5</td></tr>
+    <tr><td>5</td><td>13</td><td>18</td><td>−5</td><td>5</td><td></td><td>5</td></tr>
+    <tr><td>6</td><td>9</td><td>8</td><td>+1</td><td>1.5</td><td>1.5</td><td></td></tr>
+    <tr><td>7</td><td>8</td><td>16</td><td>−8</td><td>7</td><td></td><td>7</td></tr>
+    <tr><td>8</td><td>5</td><td>17</td><td>−12</td><td>9</td><td></td><td>9</td></tr>
+    <tr><td>9</td><td>13</td><td>11</td><td>+2</td><td>3</td><td>3</td><td></td></tr>
+    <tr><td>10</td><td>6</td><td>17</td><td>−11</td><td>8</td><td></td><td>8</td></tr>
+    <tr><td><strong>Total</strong></td><td></td><td></td><td></td><td></td><td><strong>4.5</strong></td><td><strong>40.5</strong></td></tr>
+  </table>
+  <p>The smaller total is <strong>T = 4.5</strong>. Participant 2 showed no difference and is excluded, so <strong>n = 9</strong>. Now compare T to the table of critical values.</p>
+  <table>
+    <tr><th>n</th><th>One-tailed p ≤ .05</th><th>Two-tailed p ≤ .05</th></tr>
+    <tr><td>5</td><td>0</td><td>—</td></tr>
+    <tr><td>6</td><td>2</td><td>0</td></tr>
+    <tr><td>7</td><td>3</td><td>2</td></tr>
+    <tr><td>8</td><td>5</td><td>3</td></tr>
+    <tr><td>9</td><td><strong>8</strong></td><td>5</td></tr>
+    <tr><td>10</td><td>11</td><td>8</td></tr>
+    <tr><td>11</td><td>13</td><td>10</td></tr>
+    <tr><td>12</td><td>17</td><td>13</td></tr>
+  </table>
+  <p style="font-size:.9em;color:var(--text-secondary)">The calculated value of T must be <strong>equal to or less than</strong> the critical value for significance at the level shown.</p>
+  <p>The hypothesis — more words will be recalled from a categorised list — is directional, so a <strong>one-tailed test</strong> at p ≤ .05 with n = 9 gives a critical value of <strong>8</strong>. Our calculated value of 4.5 is less than 8: the result is <strong>significant</strong>, the null hypothesis is rejected, and we conclude that participants recall more words from a categorised list.</p>
+  <p>Finally, report the finding in a full <strong>statistical statement</strong>（统计报告句：把判断过程完整说出来的固定句式）, including all six pieces of information: the calculated value, the critical value, the number of participants, one- or two-tailed, the significance level, and the hypothesis decision. For example: <em>"The calculated value of T = 4.5 was less than the critical value of 8 for a one-tailed test with n = 9. Therefore p &lt; .05 and the null hypothesis can be rejected. This means that participants will recall more words from a categorised list than a non-categorised list."</em> Note the symbols: significant results are reported as p &lt; .05; non-significant ones as p &gt; .05.</p>
+  <p>Before any of these numbers are trusted, run a <strong>sense check</strong>（数据合理性检查：动手算之前先目测估计结果）: glance at the data, predict roughly what the calculation should produce, and compare. If your predicted mean is around 5–6 but you calculate 50, you have almost certainly made an arithmetic error. In multi-step calculations like the standard deviation or the Wilcoxon ranking itself, this rough guess is the cheapest error trap you have.</p>
+  <div class="green-box">
+    <h4>Close the loop: back to the coin</h4>
+    <p>The coin game and the word-list experiment are the same judgement. In the coin game, ten heads in a row has a tiny probability under chance, so you blame the coin. In the experiment, the inferential test computed the probability of the score difference arising by chance — and found it at or below 5 per cent (T = 4.5 ≤ critical value 8). The "luck" explanation collapses at the 5% line, so the IV — list type — is the better explanation. That is all an inferential test ever does: it weighs your result against pure chance and tells you which side of the line it falls.</p>
+    <p style="margin-top:8px"><strong>Reflect before the Exam Lab:</strong> if another researcher repeated the word-list study and got T = 12 with n = 9, would they reach the same conclusion? Say the decision out loud before opening the next section.</p>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>威尔科克森五步：算差 → 排秩（负号不看，同分平分秩位）→ 分正负两栏 → 各自求和 → 小的那栏就是 T。三条反直觉规则最容易丢分：① T 越小越显著（跟大多数检验相反），判断句是「计算值 ≤ 临界值 → 显著」；② n 要剔除差为 0 的人；③ 报告句六要素一个不能少（计算值 / 临界值 / n / 单双尾 / p 水平 / 假设决定）。动手算之前先目测一遍数据，结果离谱就说明算错了。</p>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Checkpoint</h2>
+  <div class="xp-block">
+    <h4>Q1 · What question does an inferential test of significance actually answer?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">It describes the data set using means and ranges</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Whether the difference found is a real effect or likely due to chance</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">It proves the alternative hypothesis is true</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q2 · A result is significant at p ≤ .05. What exactly does this mean?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">There is a 95 per cent probability that the results are due to chance</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">There is a 5 per cent or less probability that the results are due to chance, so the null hypothesis is rejected</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The alternative hypothesis has been proven true</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q3 · A researcher rejects the null hypothesis, but in reality there was no effect. Which error is this?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Type I error — a false positive</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Type II error — a false negative</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Neither; retaining a true null is the correct decision</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q4 · Why does medical research generally adopt the more stringent p ≤ .01 level?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Because medical samples are always very small</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Because doctors want to detect even modest effects</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Because the cost of a false positive — such as approving an ineffective drug — is too severe, even though this raises the risk of a Type II error</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q5 · Participants rate a stranger's attractiveness from 1 to 10. What level of measurement is this?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Nominal — the ratings are just categories</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Ordinal — the scale is arbitrary, so the intervals between values are not truly equal</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Ratio — the scale starts at zero and has equal intervals</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q6 · Which combination of conditions calls for the Wilcoxon signed ranks test?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">A test of difference, nominal data, independent groups</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">A test of difference, ordinal (or above) data, a repeated measures design</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">A test of correlation, ordinal (or above) data</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q7 · A Wilcoxon test gives a calculated T of 4 with n = 10, two-tailed, at p ≤ .05 (critical value 8). What is the correct decision?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Not significant, because 4 is smaller than the critical value</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Significant: the calculated value must be equal to or less than the critical value, and 4 ≤ 8</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Significant only if the calculated value is larger than the critical value</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Exam Lab</h2>
+  <div class="exam-practice">
+    <h3>Exam Practice: Bertrand's visuospatial game</h3>
+    <div class="xp-intro" style="margin-bottom:12px">Bertrand developed a visuospatial game to see if spatial awareness could be improved through practice using the game every day for a week. He scored participants' spatial ability before using the visuospatial game and again after a week. Scores: A 44→78, B 47→74, C 56→88, D 65→76, E 68→80, F 54→53.</div>
+    <div class="xp-block">
+      <h4>Q1a · Calculate the Wilcoxon signed ranks test <span class="xp-badge">4 marks</span></h4>
+      <div class="xp-intro"><strong>Copy and complete the table of differences and ranks, and calculate T.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans1')">Show answer</button></div>
+      <div class="xp-result" id="ans1" hidden>
+        <p>Differences (after − before): A +34, B +27, C +32, D +11, E +12, F −1. Ranks (ignoring signs): 1 → rank 1, 11 → rank 2, 12 → rank 3, 27 → rank 4, 32 → rank 5, 34 → rank 6. Rank if positive: 6 + 4 + 5 + 2 + 3 = 20. Rank if negative: 1. The smaller total is <strong>T = 1</strong>.</p>
+        <p class="xp-case">Marking guidance: 1 mark for correct differences, 1 for correct ranks, 1 for correct column totals, 1 for identifying the smaller total as T = 1.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q1b · Determine significance <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Determine whether Bertrand's results are significant for a one-tailed (directional) test at p ≤ .05.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans2')">Show answer</button></div>
+      <div class="xp-result" id="ans2" hidden>
+        <p>n = 6 (no zero differences to exclude). For a one-tailed test at p ≤ .05 with n = 6, the critical value is 2. The calculated value T = 1 is equal to or less than the critical value of 2, so the result is significant: p &lt; .05 and the null hypothesis can be rejected. Practice with the game improved spatial awareness.</p>
+        <p class="xp-case">Marking guidance: 1 mark for reading the correct critical value (2, for n = 6, one-tailed, .05), 1 mark for the comparison T = 1 ≤ 2 and the conclusion "significant".</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q1c · Describe p ≤ .01 <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Bertrand decided to calculate whether his results were significant at the p ≤ .01 level of probability. Describe what is meant by p ≤ .01 in relation to Bertrand's investigation.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans3')">Show answer</button></div>
+      <div class="xp-result" id="ans3" hidden>
+        <p>p ≤ .01 means there is a 1 per cent or less probability (1 in 100) that the difference in spatial scores between the two tests occurred by chance. It is a more stringent level of significance than p ≤ .05; if Bertrand's result is significant at .01, the improvement is highly significant and the null hypothesis can be rejected with greater confidence.</p>
+        <p class="xp-case">Marking guidance: 1 mark for stating the 1 per cent / 1-in-100 chance probability, 1 mark for linking it to significance of Bertrand's spatial-awareness difference.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q1d · Strength of a sense check <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Explain one strength of Bertrand applying a 'sense check' to the data gathered in his investigation.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans4')">Show answer</button></div>
+      <div class="xp-result" id="ans4" hidden>
+        <p>A sense check means glancing at the data first and predicting roughly what the calculation should produce before doing it. If Bertrand's rough prediction differs vastly from his actual calculated value, he knows to look for an arithmetic error before drawing any conclusion. This is especially valuable in a multi-step calculation like the Wilcoxon ranking, where one slipped rank would silently change the T value and could flip the significance decision.</p>
+        <p class="xp-case">Marking guidance: 1 mark for describing what a sense check does (predict before calculating), 1 mark for the consequence: catching calculation errors before they distort the conclusion.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q1e · Why the Wilcoxon? <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Give two reasons why Bertrand used a Wilcoxon signed ranks test.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans5')">Show answer</button></div>
+      <div class="xp-result" id="ans5" hidden>
+        <p><strong>Reason 1:</strong> he was testing a difference between two conditions (before and after using the game), and the Wilcoxon is a test of difference. <strong>Reason 2:</strong> his design was repeated measures — the same participants were scored twice — and the spatial scores are ordinal level or above, which are exactly the Wilcoxon's conditions.</p>
+        <p class="xp-case">Marking guidance: 1 mark per correct reason from: test of difference / ordinal-or-above data / repeated measures (or matched pairs) design.</p>
+      </div>
+    </div>
+    <h3 style="margin-top:18px">Exam Practice: Priya's memory training</h3>
+    <div class="xp-block">
+      <h4>Q2a · Is Priya's result significant? <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro">Priya carried out a Wilcoxon signed ranks test on her data to calculate the statistical significance for the difference in words recalled following a memory training exercise. The calculated value (T) was 8 (T = 8) for a two-tailed test at p &lt; .05 with n = 10. <strong>Explain whether Priya's result is significant or not.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans6')">Show answer</button></div>
+      <div class="xp-result" id="ans6" hidden>
+        <p>For a two-tailed test at p ≤ .05 with n = 10, the critical value is 8. The calculated value of T = 8 is equal to the critical value, and the rule is that the calculated value must be <em>equal to or less than</em> the critical value for significance. So the result is significant at p ≤ .05 and the null hypothesis can be rejected: the memory training made a genuine difference.</p>
+        <p class="xp-case">Marking guidance: 1 mark for the correct critical value (8, two-tailed, n = 10), 1 mark for the "equal to" comparison and the conclusion "significant".</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q2b · Level of measurement <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Explain the level of measurement recorded in Priya's experiment.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans7')">Show answer</button></div>
+      <div class="xp-result" id="ans7" hidden>
+        <p>Priya recorded the number of words each participant recalled. This is a count on a recognised scale: the values have equal intervals and a true zero (recalling zero words means none were recalled), which makes it ratio level data. For the purpose of selecting an inferential test, ratio data can be treated as ordinal-or-above — one of the conditions that justified her using the Wilcoxon signed ranks test.</p>
+        <p class="xp-case">Marking guidance: 1 mark for identifying ratio (or interval/ordinal-or-above) level, 1 mark for justifying it with the properties of the scores (count, equal intervals, true zero).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Key Terms</h2>
+  <div class="keyterm-box"><span class="kt">inferential test of significance</span><br><span class="zh">推断检验：计算「结果纯靠运气出现的概率」，据此决定推翻还是保留虚无假设</span></div>
+  <div class="keyterm-box"><span class="kt">probability</span><br><span class="zh">概率：某件事发生的可能性，抛一次均匀硬币正面朝上是 0.5</span></div>
+  <div class="keyterm-box"><span class="kt">level of significance (p ≤ .05)</span><br><span class="zh">显著性水平：心理学默认的判断线，运气概率 ≤ 5% 即视为显著</span></div>
+  <div class="keyterm-box"><span class="kt">null hypothesis</span><br><span class="zh">虚无假设：预测无真差异，任何差别都归因于偶然因素</span></div>
+  <div class="keyterm-box"><span class="kt">Type I error</span><br><span class="zh">第一类错误：假阳性，效应并不存在却被当成真的</span></div>
+  <div class="keyterm-box"><span class="kt">Type II error</span><br><span class="zh">第二类错误：假阴性，真效应存在却被漏掉</span></div>
+  <div class="keyterm-box"><span class="kt">nominal / ordinal / interval / ratio data</span><br><span class="zh">四种测量水平：类别计数 → 排名次 → 均匀刻度 → 带真零点的均匀刻度</span></div>
+  <div class="keyterm-box"><span class="kt">matched pairs design</span><br><span class="zh">匹配对设计：两组人按关键特征配对，选检验时按重复测量处理</span></div>
+  <div class="keyterm-box"><span class="kt">observed (calculated) value</span><br><span class="zh">计算值：跑完检验得出的分数，如 T = 4.5</span></div>
+  <div class="keyterm-box"><span class="kt">critical value</span><br><span class="zh">临界值：临界值表里查出的对照数字，计算值 ≤ 临界值即显著（威尔科克森）</span></div>
+  <div class="keyterm-box"><span class="kt">one-tailed / two-tailed test</span><br><span class="zh">单尾／双尾检验：方向假设用单尾，非方向假设用双尾，决定读哪一栏临界值</span></div>
+  <div class="keyterm-box"><span class="kt">sense check</span><br><span class="zh">合理性检查：动手算之前先目测估计结果，差距离谱即说明算错</span></div>
+</section>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  /* ---------- sidebar scroll spy ---------- */
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  /* ---------- reveal helper ---------- */
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  /* ---------- multiple choice: one why per option ---------- */
+  var secWhy = {
+    s0: [
+      ['这恰恰是本页要拆掉的直觉。有差别从来不等于有因果：两组数据几乎不可能完全一样，差别总是存在。真正要问的是，这个差别大到「运气解释不通」了吗？答案往下读就揭晓。',
+       '正确。这就是推断检验的全部工作：先算出「这么大差别纯靠运气出现的概率」，再跟 5% 这条线比。概率够小，运气解释崩塌，才能下「真效应」的结论。抛硬币 100 次全正面你怀疑硬币，用的是同一套逻辑。',
+       '方向对了一半，但「差别小就肯定无效」也不对。2 个词的差别可能只是运气，也可能是真效应的开端，问题不在差别的大小本身，而在它的概率。第二项才是完整的判断逻辑。']
+    ],
+    s7: [
+      ['Means and ranges are descriptive statistics: they describe the data but cannot decide whether an effect is real.',
+       'An inferential test computes the probability of the difference arising by chance and compares it to a significance level, deciding between a real effect and chance variation.',
+       'Statistics can never prove anything. At best a test reasonably supports the alternative hypothesis; "prove" is not on the menu.'],
+      ['That reverses the numbers: p ≤ .05 means chance explains the result at most 5 per cent of the time, not 95.',
+       'At or below the 5 per cent probability line the result is significant and the null hypothesis is rejected.',
+       'Nothing is ever proven by statistics. p ≤ .05 supports the alternative hypothesis; it does not prove it true.'],
+      ['Rejecting a null that is actually true is a Type I error — a false positive: claiming an effect that was not real.',
+       'A Type II error is the opposite mistake: retaining the null when a real effect existed — a false negative.',
+       'Retaining a true null is the correct decision; this researcher rejected it, so an error was made.'],
+      ['Sample size is not the reason for the 1 per cent level; the choice is driven by the cost of errors.',
+       'Detecting modest effects is what the lenient 10 per cent level helps with; the 1 per cent level actually makes detection harder.',
+       'Approving an ineffective drug is too severe a cost, so medical research minimises Type I errors with the stringent 1 per cent level — accepting a raised risk of missing real effects.'],
+      ['Nominal data is category counts; attractiveness ratings are numbers on a scale, not categories.',
+       'A 1–10 attractiveness scale is an arbitrary scale, so the intervals are not truly equal — someone rated 5 is not half as attractive as someone rated 10. That makes it ordinal.',
+       'Ratio data needs equal intervals and a true zero; an arbitrary rating scale has neither, despite starting at 1.'],
+      ['Nominal data plus independent groups does not fit the Wilcoxon; that combination would point towards a chi-squared test for difference.',
+       'The Wilcoxon signed ranks test is for a difference, with ordinal or above data, in a repeated measures design (matched pairs counts too).',
+       'A test of correlation with ordinal data describes Spearman\'s rank test, not the Wilcoxon.'],
+      ['The direction of the comparison is reversed: for the Wilcoxon, smaller calculated values mean the difference is less likely to be chance.',
+       'The rule reads "calculated value equal to or less than the critical value = significant", so 4 ≤ 8 gives p ≤ .05 and the null is rejected.',
+       'For the Wilcoxon the calculated value must be smaller than or equal to the critical value, not larger; larger values mean not significant.']
+    ]
+  };
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = (btn.closest('.xp-block') || section).querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+</script>
+</body>
+</html>
