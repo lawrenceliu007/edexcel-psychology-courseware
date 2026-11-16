@@ -179,6 +179,15 @@ body.dark .xp-block h4 { color: #fb923c; }
 body.dark .xp-block .xp-intro { color: #cbd5e1; }
 body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
 
+.sc-item { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-size: .95em; line-height: 1.7; margin: 8px 0; }
+.sc-tag { display: inline-block; background: var(--accent); color: #fff; font-size: .72em; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-right: 8px; }
+.sc-predict { background: #eff6ff; border: 1.5px solid #3b82f6; border-radius: 10px; padding: 14px 18px; margin: 16px 0 4px; }
+.sc-predict h4 { margin: 0 0 6px; color: #1d4ed8; }
+body.dark .sc-item { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .sc-tag { background: #3b82f6; }
+body.dark .sc-predict { background: rgba(59,130,246,.08); border-color: #3b82f6; }
+body.dark .sc-predict h4 { color: #93c5fd; }
+
 .small { font-size: .84em; color: var(--text-secondary); }
 .tight { margin: 6px 0; }
 .tight li { margin: 3px 0; }
@@ -207,6 +216,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
     <div class="sb-header-sub">Multi-Store Model · Memory</div>
   </div>
   <ul class="sb-list">
+    <li class="sb-item"><a href="#s0">Start Here: The Lost Phone Number</a></li>
     <li class="sb-item"><a href="#s1">1. Three Stores, One System</a></li>
     <li class="sb-item"><a href="#s2">2. The Sensory Register</a></li>
     <li class="sb-item"><a href="#s3">3. The Short-Term Store</a></li>
@@ -252,6 +262,24 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   </ul>
 </div>
 
+<!-- ============ 0 · scenario ============ -->
+<section class="section" id="s0">
+  <h2>Start Here: The Phone Number You Lost</h2>
+  <div class="sc-item"><span class="sc-tag">背景</span>A friend reads out an unfamiliar phone number. You need to walk to your desk and type it in.</div>
+  <div class="sc-item"><span class="sc-tag">角色</span>You are the one holding the number in your head.</div>
+  <div class="sc-item"><span class="sc-tag">任务</span>You repeat it silently all the way there. Then a classmate calls your name, you answer with one sentence — and the number is gone.</div>
+  <div class="sc-item"><span class="sc-tag">目标</span>Explain why it vanished. Before you read on, commit to a prediction below. Keep your answer in mind: the whole page is built to test it.</div>
+  <div class="sc-predict">
+    <h4><span class="sc-tag" style="background:#3b82f6">先猜</span>如果从现在起没人打扰、你一直重复这个号码，你能把它保持多久？</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">只要我不停重复，就能一直保持</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">大约一分钟，之后自然消失</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">十几秒，重复也救不了</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
 <!-- ============ 1 ============ -->
 <section class="section" id="s1">
   <h2>1. Three Stores, One System</h2>
@@ -259,7 +287,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   <p>The model divides memory into three stores arranged in a sequence: the <strong>sensory register</strong>, the <strong>short-term store</strong> and the <strong>long-term store</strong>. Information entering the system either gets processed and moves on, or is lost. What separates the stores is not just their order, but three measurable properties:</p>
   <ul class="tight">
     <li><strong>Encoding</strong>（编码：信息以什么形式被储存）: the format in which a store holds information.</li>
-    <li><strong>Capacity</strong>（容量：一个 store 能装多少）: how much information a store can hold.</li>
+    <li><strong>Capacity</strong>（容量：一个仓库能装多少）: how much information a store can hold.</li>
     <li><strong>Duration</strong>（保持时长：信息能留多久）: how long information lasts there.</li>
   </ul>
   <div class="figure">
@@ -334,6 +362,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   <p>Information that is attended to enters the short-term store and is held temporarily for <strong>15–30 seconds</strong>. Unless it is maintained, it is assumed to decay completely.</p>
   <h3>Duration: Peterson and Peterson (1959)</h3>
   <p>Lloyd Peterson and Margaret Peterson used an <strong>interference task</strong> to prevent rehearsal. Participants memorised a <strong>trigram</strong>（三连字母组：三个辅音组成的一组）of three consonants, then counted backwards in threes from a number (for example, 679, 676, 673) for intervals of 3, 6, 9, 12, 15 or 18 seconds before recall. Recall was good after short intervals but dropped rapidly after 15–18 seconds. Assuming the counting task blocked rehearsal, the conclusion is that decay occurs in the short-term store over roughly <strong>20 seconds</strong>.</p>
+  <p class="small">Back to the phone number: counting backwards in threes is the laboratory version of the classmate calling your name. Both occupy rehearsal, and once rehearsal stops, the trace decays within roughly 20 seconds.</p>
   <h3>Capacity: Miller (1956)</h3>
   <p>The capacity of the short-term store is around <strong>five to nine items</strong>. George Miller (1956) refined this to <q>the magical number seven, plus or minus two</q>. Think of the store as between five and nine slots, each holding one item.</p>
   <h3>Forgetting by displacement</h3>
@@ -459,6 +488,11 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   </div>
   <div class="cn-note">
     <p><strong>中文理解：</strong>记 20 个词，开头和结尾记得牢、中间忘得多，这就是系列位置效应。解释要用两个仓库接力：开头的词有时间被复述，已经进了长时仓库（首因效应）；结尾的词还坐在短时记忆的槽位上（近因效应）；中间的词被后进来的词挤掉了。一条 U 形曲线同时指向两个仓库，这就是「仓库分开存在」最直观的证据。</p>
+  </div>
+  <div class="green-box">
+    <h4>Close the loop: explain the lost number with the model</h4>
+    <p>Your friend's voice entered the <strong>sensory register</strong>. You attended to it, so it moved into the <strong>short-term store</strong>, and repeating it silently was <strong>maintenance rehearsal</strong> keeping the trace alive. When your classmate called your name, your rehearsal was interrupted; with no rehearsal, the trace decayed within 15–30 seconds, and the number was gone. This is exactly what the prediction asked: keep repeating and the trace stays; stop and it dies. To keep the number for good, you would need <strong>elaborative rehearsal</strong>: process what the digits mean, so the semantic encoding of the long-term store has something to hold.</p>
+    <p><strong>Reflect before the Exam Lab:</strong> think of one thing you recently forgot within seconds. Which store lost it, and which process was interrupted? Answer in your own words first, then check it against the sections above.</p>
   </div>
 </section>
 
@@ -687,6 +721,11 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
 
   /* ---------- multiple choice: one why per option ---------- */
   var secWhy = {
+    s0: [
+      ['正确。短时仓库不靠时间活着，靠复述续命：只要复述不停，痕迹就在。真正杀死号码的是那声叫你名字的干扰，它占掉了复述。带着这个答案读下面三节，你会看到它的实验室证据。',
+       '大多数人都这么猜，直觉是记忆像水池，会自然蒸发。第 3 节的实验会给出另一个版本：不复述，15 至 30 秒就没了；一直复述，想保多久保多久。读完回来改你的答案。',
+       '方向接近但不准：不复述确实十几秒就衰减，但「重复也救不了」说反了，复述恰恰是唯一的救命稻草。正确答案是第一项。']
+    ],
     s7: [
       ['The sensory register holds whatever format each sense delivers; it does not use one single sound-based code.',
        'Correct. The phonological similarity effect (Conrad and Hull, 1964) shows similar sounds confuse this store, so its code must be acoustic.',
