@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.2.1-2.2.4 Methods — Designing Experiments: Variables &amp; Hypotheses</title>
+<style>
+
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.sc-item { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-size: .95em; line-height: 1.7; margin: 8px 0; }
+.sc-tag { display: inline-block; background: var(--accent); color: #fff; font-size: .72em; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-right: 8px; }
+.sc-predict { background: #eff6ff; border: 1.5px solid #3b82f6; border-radius: 10px; padding: 14px 18px; margin: 16px 0 4px; }
+.sc-predict h4 { margin: 0 0 6px; color: #1d4ed8; }
+body.dark .sc-item { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .sc-tag { background: #3b82f6; }
+body.dark .sc-predict { background: rgba(59,130,246,.08); border-color: #3b82f6; }
+body.dark .sc-predict h4 { color: #93c5fd; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic B · Cognitive psychology — 2.2.1–2.2.4 Methods</span>
+  </div>
+  <span class="nav-pill">🧠 Cognitive Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">2.2.1–2.2.4 Methods</div>
+    <div class="sb-header-sub">Experiments, Variables &amp; Hypotheses</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s0">Start Here: The Short-Video Accusation</a></li>
+    <li class="sb-item"><a href="#s1">1. What Makes an Experiment</a></li>
+    <li class="sb-item"><a href="#s2">2. Laboratory vs Field</a></li>
+    <li class="sb-item"><a href="#s3">3. Independent &amp; Dependent Variables</a></li>
+    <li class="sb-item"><a href="#s4">4. Hypotheses</a></li>
+    <li class="sb-item"><a href="#s5">5. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s6">6. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s7">7. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>2.2.1–2.2.4 DESIGNING EXPERIMENTS<br><span style="font-size:0.65em">Experiments · IV &amp; DV · Hypotheses · 实验设计与假设</span></h1>
+  <div class="meta">
+    <span class="badge">Topic B · Cognitive psychology</span>
+    <span class="badge">Methods</span>
+    <span class="badge">Spec 2.2.1–2.2.4</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.11 · pp.101–111</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this page is really asking</h4>
+  <ol>
+    <li><strong>An experiment is defined by three moves</strong>, not by white coats or labs: manipulate one variable, measure another, control everything else. Only this combination earns a causal claim.</li>
+    <li><strong>Where you run it decides what you trade.</strong> A laboratory buys control and reliability but loses realism; a field setting buys realism and natural behaviour but loses control and raises consent problems.</li>
+    <li><strong>The IV is what you change; the DV is what you count.</strong> Find them by asking "what did the researcher do?" and "what did the researcher record?"</li>
+    <li><strong>Hypotheses come in three strengths.</strong> Directional when evidence points one way, non-directional when it conflicts, and a null hypothesis that attributes any difference to chance.</li>
+  </ol>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Identify what makes a study an experiment</strong> by applying the manipulate–measure–control test to any research description.</li>
+    <li><strong>Distinguish laboratory and field experiments</strong> and evaluate each with the control-versus-realism trade-off, including ethics in field settings.</li>
+    <li><strong>Write an aim and identify the IV and DV</strong> for a given research scenario.</li>
+    <li><strong>Construct directional, non-directional and null hypotheses</strong> for a scenario and justify which type the evidence supports.</li>
+    <li><strong>Justify design choices</strong> by mapping a real argument (like the Start Here scenario) onto variables and conditions.</li>
+  </ul>
+</div>
+
+<!-- ============ 0 · scenario ============ -->
+<section class="section" id="s0">
+  <h2>Start Here: The Short-Video Accusation</h2>
+  <div class="sc-item"><span class="sc-tag">背景</span>You present data at a year-group assembly: students who spend two or more hours a day on short videos average 20 marks lower than those who barely watch any.</div>
+  <div class="sc-item"><span class="sc-tag">角色</span>You are the student who has to defend the claim, in front of the head of year.</div>
+  <div class="sc-item"><span class="sc-tag">任务</span>The head of year counters: "That proves nothing. Maybe the weaker students are simply the ones who watch more videos. Find a way to show the videos are really doing the damage."</div>
+  <div class="sc-item"><span class="sc-tag">目标</span>Settle the argument with evidence, not with more data. Commit to a choice below before you read on: the whole page is built to justify it.</div>
+  <div class="sc-predict">
+    <h4><span class="sc-tag" style="background:#3b82f6">先猜</span>要让班主任的质疑站不住脚，下面哪种做法最有说服力？</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">再收集更多学校的数据：样本越大越有说服力</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">找两组水平差不多的同学，一组两周不刷短视频、一组照常刷，再比成绩</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">发一份问卷，问大家自己觉得刷视频有没有影响成绩</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. What Makes a Study an Experiment</h2>
+  <p>Memory cannot be watched directly, so cognitive psychologists measure it through <strong>experiments</strong>（实验：研究者主动改动一件事、再测量结果的研究）. An experiment is an investigation in which the researcher <strong>manipulates or alters one variable</strong> and <strong>measures its effect</strong> on another, while <strong>maintaining control</strong> over everything else that might interfere. Three moves define it:</p>
+  <ul class="tight">
+    <li><strong>Manipulate</strong> one thing: deliberately change it, creating two or more conditions.</li>
+    <li><strong>Measure</strong> another: record the outcome expected to change as a result.</li>
+    <li><strong>Control</strong> the rest: hold every other factor still, so the only systematic difference between conditions is the thing you changed.</li>
+  </ul>
+  <p>Only the researcher-controlled change licenses a <strong>causal</strong>（因果：改动是原因、变化是结果的确定关系）claim: "this caused that". Studies that merely measure things that already differ, however carefully, can only describe.</p>
+  <div class="figure">
+    <svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, sans-serif">
+      <defs>
+        <marker id="ar1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#334155"/></marker>
+        <marker id="ar2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#ea580c"/></marker>
+      </defs>
+      <rect x="30" y="80" width="130" height="70" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="95" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Theory</text>
+      <text x="95" y="126" text-anchor="middle" font-size="12" fill="#475569">proposed</text>
+      <rect x="195" y="80" width="140" height="70" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="265" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Hypothesis</text>
+      <text x="265" y="126" text-anchor="middle" font-size="12" fill="#475569">prediction made</text>
+      <rect x="370" y="80" width="140" height="70" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="440" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#c2410c">IV manipulated</text>
+      <text x="440" y="126" text-anchor="middle" font-size="12" fill="#475569">one variable changed</text>
+      <rect x="545" y="80" width="120" height="70" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <text x="605" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#c2410c">DV measured</text>
+      <text x="605" y="126" text-anchor="middle" font-size="12" fill="#475569">outcome recorded</text>
+      <line x1="160" y1="115" x2="192" y2="115" stroke="#334155" stroke-width="2" marker-end="url(#ar1)"/>
+      <line x1="335" y1="115" x2="367" y2="115" stroke="#334155" stroke-width="2" marker-end="url(#ar1)"/>
+      <line x1="510" y1="115" x2="542" y2="115" stroke="#334155" stroke-width="2" marker-end="url(#ar1)"/>
+      <path d="M605,150 C605,215 95,215 95,152" fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar2)"/>
+      <text x="350" y="222" text-anchor="middle" font-size="12" fill="#c2410c">Outcome: theory supported or refuted</text>
+    </svg>
+    <div class="figure-caption">The experimental method (Figure 11.1): a theory generates a prediction, the prediction is tested by manipulating the IV and measuring the DV, and the outcome feeds back to support or refute the theory.</div>
+  </div>
+  <p>Every experiment starts from an <strong>aim</strong>（研究目的：说明研究什么领域的一句话）: a general statement of the area being researched, usually beginning with "To investigate…". It directs the overall ambition of the study and should be as clear and precise as a hypothesis.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>实验三步口诀「改一个、量一个、其余按住不动」。改的那个叫 IV，量的那个叫 DV，其他一切变量都要控制住。三步凑齐才敢说因果：如果没改任何东西，或者别的因素没按住，那么测到的变化就不能算在 IV 头上。开头情景里班主任的质疑，就是在攻击「其余按住不动」这一步。</p>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Laboratory vs Field Experiments</h2>
+  <p>The same three-move logic can run in two very different places, and the choice of place decides what you gain and what you pay.</p>
+  <table>
+    <tr><th style="width:22%"></th><th>Laboratory experiment（实验室实验：在受控环境里做）</th><th>Field experiment（现场实验：在行为自然发生的环境里做）</th></tr>
+    <tr><td><strong>Setting</strong></td><td>An artificial, controlled environment built for the study.</td><td>The setting where the behaviour would naturally occur: a classroom, a supermarket, a high street.</td></tr>
+    <tr><td><strong>Gains</strong></td><td>Taking participants away from their natural environment removes extraneous variables; tight control over relevant variables achieves a scientific approach and ensures causality. High control also means the study can be repeated to check the findings, so it is highly reliable.</td><td>Behaviour is natural and the environment realistic, so the study has greater <strong>ecological validity</strong>（生态效度：结果能否推广到真实日常情境）. If participants are unaware they are taking part, they will not show demand characteristics.</td></tr>
+    <tr><td><strong>Costs</strong></td><td>Artificial setting and artificial tasks mean the findings may not apply to real life. Participants are often invited, so they know they are being studied and may change their behaviour; the researcher's presence can also influence performance.</td><td>Less control: extraneous variables have a greater chance of affecting the DV. Ethical problems arise if participants are unaware they are taking part: they have not given consent and cannot withdraw. The experimenter may debrief them afterwards and offer the right to withdraw their data.</td></tr>
+  </table>
+  <p>Notice that the two columns are the same trade seen from opposite ends: the control that makes laboratory findings causal is the very thing that makes them unlike everyday life, and the realism that makes field findings convincing is the very thing that makes them messy to control.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>实验室和现场是一笔交易的两端。实验室花钱买控制：环境、流程、变量全按住，因果说得硬，可重复性好；代价是任务不真实，学生知道自己在被研究。现场花钱买真实：行为自然、没人觉得自己在被观察；代价是杂七杂八的干扰因素按不住，而且不知情参加还有伦理麻烦：没有事先同意、不能随时退出，只能事后做 debrief（向参与者说明研究并允许撤回数据）来补救。答评价题时写交易，不要只贴标签。</p>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Independent and Dependent Variables</h2>
+  <p>Every experiment has two named variables. The <strong>independent variable</strong>（IV，自变量：研究者主动改动、制造不同条件的变量）is manipulated by the researcher to demonstrate a difference between the experimental conditions. The <strong>dependent variable</strong>（DV，因变量：被测量、随 IV 变化而变化的变量）is the measured outcome: it records any changes that occur because of the IV.</p>
+  <div class="xp-case">
+    <p><strong>Worked example:</strong> "A researcher wished to investigate whether participants will recall more words from an organised list compared to a random list."</p>
+    <ul class="tight">
+      <li>The researcher changes which list participants learn from: one set gets randomised words, one set gets organised words. The <strong>type of word list is the IV</strong>.</li>
+      <li>The researcher records how many words each participant recalls correctly. The <strong>number of words correctly recalled is the DV</strong>.</li>
+    </ul>
+  </div>
+  <p>Back to the assembly scenario: the option you picked in Start Here was exactly this move. Group A has the videos removed for two weeks, Group B keeps watching: what the researcher changes is <strong>video exposure</strong>, so video exposure is the IV. What the researcher records is <strong>end-of-term test scores</strong>, so scores are the DV. Matching the groups on ability beforehand is the "control the rest" move that answers the head of year's objection.</p>
+  <p>Once the IV and DV are chosen, both must be made precise and specific so they are directly testable. How exactly that is done is the next page's job; for now, remember that a vague DV cannot be scored the same way by two different researchers.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>找 IV 的办法是问「研究者动了什么」；找 DV 的办法是问「研究者数的是什么」。两个词出自同一个句子：动「词表类型」，量「回忆词数」。IV 在前、DV 在后，顺序不能颠倒：因为变化的是 DV，它才要「依赖」IV；IV 自己不依赖任何人，所以叫自变量。</p>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Hypotheses: Predicting the Result</h2>
+  <p>An experiment begins with a prediction of what is likely to happen, based on previous knowledge, research or theory. This prediction is the <strong>experimental/alternative hypothesis</strong>（实验假设／备择假设：对研究结果清晰明确的预测）: a clear and precise statement predicting the results of the study.</p>
+  <p>How bold you can be depends on the evidence behind the prediction:</p>
+  <ul class="tight">
+    <li><strong>Directional (one-tailed)</strong>（方向性假设／单尾：预测结果朝哪个方向走）: used when the outcome can be predicted with confidence, because strong evidence or a robust theory points one way. <em>Cats will purr for longer when they are fed tinned food compared to dry food.</em></li>
+    <li><strong>Non-directional (two-tailed)</strong>（非方向性假设／双尾：预测有差异，但不预测方向）: used when theories conflict or relevant evidence is lacking, so a difference is predicted but not its direction. <em>There will be a difference in the length of time a cat purrs when given tinned and dry food.</em></li>
+    <li><strong>Null hypothesis</strong>（虚无假设：预测没有差异，任何差异都归因于偶然因素）: the default prediction that there is no difference, or that any difference found is due to chance factors. <em>There will be no difference in the length of time cats spend purring when fed tinned or dry food. Any difference found will be due to chance factors.</em></li>
+  </ul>
+  <p>The null hypothesis exists because results are never truly "proved". We almost always find some difference between conditions; the real question is whether the difference is big enough to be more than chance variation. If praise really affected how long children spend tidying their toys, we would still expect some small change from chance alone, so the null hypothesis says: any effect found is due to chance. Chapter 2.2.12 shows how inferential tests turn that sentence into a decision.</p>
+  <div class="green-box">
+    <h4>Close the loop: settle the assembly argument</h4>
+    <p>The head of year's objection was "the weak students were weak first". A bigger dataset (option A) cannot remove that objection, because the groups still differ in ways nobody controlled. Option B is an experiment: it <strong>manipulates</strong> video exposure (the IV) across two matched groups, <strong>controls</strong> the rest by matching ability, and <strong>measures</strong> the outcome (test scores, the DV). Only this design can license the causal sentence "short videos lowered the marks". Its experimental hypothesis, if prior evidence pointed one way, would be directional: <em>students who stop watching short videos for two weeks will score higher on their end-of-term tests than students who keep watching</em>.</p>
+    <p><strong>Reflect before the Checkpoint:</strong> pick any study you have already met in this topic, for example Peterson and Peterson's trigram recall. Say out loud what was manipulated, what was measured, and what was held still. If you can fill all three slots, you are reading experiments correctly.</p>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Checkpoint</h2>
+  <div class="xp-block">
+    <h4>Q1 · What must a researcher do for a study to count as an experiment?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Collect a large sample of naturally occurring data</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Manipulate one variable and measure its effect while controlling other variables</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Ask participants to describe their experiences in their own words</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q2 · Which phrasing matches an aim?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">"Participants will recall more words from an organised list than a random list."</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">"There will be no difference in recall between the two lists."</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">"To investigate whether list type affects the number of words recalled."</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q3 · A prediction rests on one robust theory with consistent supporting evidence. Which hypothesis should be used?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">A directional (one-tailed) hypothesis</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">A non-directional (two-tailed) hypothesis</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">A null hypothesis</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q4 · What does a null hypothesis predict?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">That the IV will have a large and lasting effect on the DV</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">That no difference will be found, or any difference is due to chance factors</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">That the difference will favour one specific condition over the other</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q5 · Lorenzo read a short story to a 20–30-year-old group and a 60–70-year-old group, then scored each written retelling by counting correct words. What is the IV?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">The age range of the group (20–30 vs 60–70)</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The number of correct words in the retelling</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The 50-word short story</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q6 · In the same Lorenzo study, what is the DV?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">How many times the story was read aloud</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">How many correct words each participant recalled in the retelling</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The age of each participant</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q7 · Which pair of criticisms applies to field experiments?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Artificial tasks and demand characteristics</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Uncontrolled extraneous variables and consent problems with unaware participants</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Experimenter effects and a small, unrepresentative sample</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Exam Lab</h2>
+  <div class="exam-practice">
+    <div class="xp-block">
+      <h4>Q1a · Explain <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro">Zikri investigated working memory and set up an experiment to test the difference between participants performing a single cognitive task and a dual task. Zikri recruited ten friends to perform the single task, and ten classmates to perform the dual task, which involved the same cognitive task while also learning a list of words. Zikri timed how long it took each group to perform the tasks. <strong>Explain how one participant variable could have affected Zikri's investigation.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans1')">Show answer</button></div>
+      <div class="xp-result" id="ans1" hidden>
+        <p>The two groups were different people: his friends in one condition and his classmates in the other. Any natural difference between them, other than the task, could have affected the timed performance. For example, the friends may have been more motivated, or more practised at that kind of cognitive task, so they completed the single task faster for reasons that had nothing to do with single versus dual processing. Because the groups were made of different people, Zikri cannot tell whether the timing difference came from the task or from who was in each group.</p>
+        <p class="xp-case">Marking guidance: 1 mark for identifying a participant variable (for example motivation, ability, practice), 1 mark for explaining how it distorted the comparison between the two groups.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q1b · Describe <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro">Zikri wanted to increase the ecological validity of the study and decided to conduct a field experiment to test dual processing in memory. <strong>Describe a task that Zikri could use to test dual processing in memory in this field experiment.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans2')">Show answer</button></div>
+      <div class="xp-result" id="ans2" hidden>
+        <p>The task must keep the IV manipulated but move it into a natural setting where memory is used in everyday life. For example, Zikri could have participants walk a real route while either holding a conversation (dual task) or not talking (single task), and afterwards measure how many landmarks from the route they recall. The setting is natural (a real street or campus), the IV is still set by the researcher, and recall of the route is the measured DV.</p>
+        <p class="xp-case">Marking guidance: 1 mark for a realistic everyday setting with a dual-task element, 1 mark for a measurable memory outcome. A task that stays in a laboratory earns neither mark.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q1c · Explain two weaknesses <span class="xp-badge">4 marks</span></h4>
+      <div class="xp-intro"><strong>Explain two weaknesses of Zikri using a field experiment to investigate short-term memory.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans3')">Show answer</button></div>
+      <div class="xp-result" id="ans3" hidden>
+        <p><strong>Weakness 1: control.</strong> In a natural setting the researcher cannot hold extraneous variables constant. Traffic, noise, weather, other pedestrians and time of day all vary between participants, so any difference in recall could come from these situational factors instead of the dual task, and the causal claim weakens.</p>
+        <p><strong>Weakness 2: ethics.</strong> Passers-by do not know they are taking part, so they have not given consent and cannot exercise the right to withdraw during the study. Zikri would need to debrief participants afterwards and offer them the right to withdraw their data, but consent obtained after the fact is still weaker than consent obtained before.</p>
+        <p class="xp-case">Marking guidance: up to 2 marks per weakness: 1 for naming it (control / ethics), 1 for explaining the consequence for this study. Generic answers with no link to the field setting score little.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Key Terms</h2>
+  <div class="glossary-grid">
+    <div class="keyterm-box"><span class="kt">experiment</span><br><span class="zh">实验：改动一个变量、测量其效果、控制其余变量，三步齐备才能说因果</span></div>
+    <div class="keyterm-box"><span class="kt">aim</span><br><span class="zh">研究目的：以 To investigate… 开头的领域说明，指明研究的方向</span></div>
+    <div class="keyterm-box"><span class="kt">causality</span><br><span class="zh">因果：改动变量与测量结果之间确定的 cause-and-effect 关系</span></div>
+    <div class="keyterm-box"><span class="kt">laboratory experiment</span><br><span class="zh">实验室实验：在受控环境中进行，控制强、生态效度弱</span></div>
+    <div class="keyterm-box"><span class="kt">field experiment</span><br><span class="zh">现场实验：在行为自然发生的环境中进行，真实性强、控制弱</span></div>
+    <div class="keyterm-box"><span class="kt">ecological validity</span><br><span class="zh">生态效度：结果能否推广到日常真实情境</span></div>
+    <div class="keyterm-box"><span class="kt">independent variable (IV)</span><br><span class="zh">自变量：研究者主动改动、制造条件差异的变量</span></div>
+    <div class="keyterm-box"><span class="kt">dependent variable (DV)</span><br><span class="zh">因变量：被测量的结果，记录 IV 引起的变化</span></div>
+    <div class="keyterm-box"><span class="kt">experimental / alternative hypothesis</span><br><span class="zh">实验假设／备择假设：基于理论或已有研究做出的明确结果预测</span></div>
+    <div class="keyterm-box"><span class="kt">directional (one-tailed)</span><br><span class="zh">方向性假设／单尾：证据充分时预测差异的方向</span></div>
+    <div class="keyterm-box"><span class="kt">non-directional (two-tailed)</span><br><span class="zh">非方向性假设／双尾：证据冲突或不足时只预测有差异、不预测方向</span></div>
+    <div class="keyterm-box"><span class="kt">null hypothesis</span><br><span class="zh">虚无假设：预测无差异，或任何差异都由偶然因素造成</span></div>
+  </div>
+  <div class="footer-note">Spec 2.2.1–2.2.4 · Content sourced from Book 1 Ch.11 (pp.101–111) · Next: 2.2.5 Experimental designs and controls</div>
+</section>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  /* ---------- sidebar scroll spy ---------- */
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  /* ---------- reveal helper ---------- */
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  /* ---------- multiple choice: one why per option ---------- */
+  var secWhy = {
+    s0: [
+      ['数据多不等于因果成立。再大的样本也只是在重复「爱刷的人分更低」这个相关，班主任的质疑（成绩差才爱刷）照样能解释它。你缺的不是数据量，而是「谁导致谁」的证明。',
+       '正确。你亲手改动了一件事（刷不刷视频），其他条件尽量按住不动，再看成绩变不变。这就是实验的核心逻辑，本页三节都在讲它，最后一节会把你的选择完整翻译成实验语言。',
+       '问卷收集的是自我感受，不是被操控的证据。就算大家都「觉得」有影响，班主任一句「感觉不代表事实」就能推翻它。有说服力的证据来自主动改动和测量。']
+    ],
+    s5: [
+      ['Large samples describe; they do not manipulate, so the study stays a measure of existing differences.',
+       'Correct. Manipulating an IV, measuring a DV and controlling the rest are the three defining moves of an experiment.',
+       'Asking participants to describe experiences is a self-report method, not an experiment.'],
+      ['That sentence predicts a result, which makes it a hypothesis rather than an aim.',
+       'That sentence predicts no difference, which makes it a null hypothesis.',
+       'Correct. An aim is a general statement of the research area, usually beginning "To investigate...".'],
+      ['Correct. Strong evidence or a robust theory pointing one way justifies predicting the direction: a one-tailed hypothesis.',
+       'A two-tailed hypothesis is for conflicting theories or missing evidence, where the direction cannot be predicted.',
+       'The null hypothesis predicts no difference; it is not chosen because evidence is strong.'],
+      ['Correct. The null expects no difference, and any difference found is attributed to chance factors.',
+       'A large and lasting effect is what an experimental hypothesis might predict, not the null.',
+       'Predicting that the difference favours one condition is a directional (one-tailed) hypothesis.'],
+      ['Correct. The age range is what Lorenzo set up and changed between groups: the manipulated variable.',
+       'The number of correct words is what Lorenzo recorded: that is the DV.',
+       'The story was the same for every participant, so it creates no difference between conditions.'],
+      ['Correct. The retelling score is the measured outcome of the study: the DV.',
+       'The number of readings was fixed for every group, so nothing was measured about it.',
+       'Age was manipulated as the IV; the measured outcome was the retelling score.'],
+      ['Correct. Natural settings leave extraneous variables uncontrolled, and unaware participants cannot give consent or withdraw.',
+       'Artificial tasks and demand characteristics are the classic weaknesses of laboratory experiments.',
+       'Experimenter effects and small samples are possible anywhere; they are not the defining weaknesses of field experiments.']
+    ]
+  };
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = (btn.closest('.xp-block') || section).querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+</script>
+</body>
+</html>
