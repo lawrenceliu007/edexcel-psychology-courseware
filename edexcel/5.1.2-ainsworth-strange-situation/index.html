@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5.1.2 Attachment — Ainsworth &amp; the Strange Situation</title>
+<style>
+
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.sc-item { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-size: .95em; line-height: 1.7; margin: 8px 0; }
+.sc-tag { display: inline-block; background: var(--accent); color: #fff; font-size: .72em; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-right: 8px; }
+.sc-predict { background: #eff6ff; border: 1.5px solid #3b82f6; border-radius: 10px; padding: 14px 18px; margin: 16px 0 4px; }
+.sc-predict h4 { margin: 0 0 6px; color: #1d4ed8; }
+body.dark .sc-item { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .sc-tag { background: #3b82f6; }
+body.dark .sc-predict { background: rgba(59,130,246,.08); border-color: #3b82f6; }
+body.dark .sc-predict h4 { color: #93c5fd; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic E · Developmental psychology — 5.1.2 Ainsworth</span>
+  </div>
+  <span class="nav-pill">👶 Developmental Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">5.1.2 Ainsworth</div>
+    <div class="sb-header-sub">Types of Attachment &amp; the Strange Situation</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s0">Start Here: Two Babies on the First Day of Nursery</a></li>
+    <li class="sb-item"><a href="#s1">1. Uganda &amp; the Sensitivity Hypothesis</a></li>
+    <li class="sb-item"><a href="#s2">2. The Strange Situation Procedure</a></li>
+    <li class="sb-item"><a href="#s3">3. Three Types of Attachment</a></li>
+    <li class="sb-item"><a href="#s4">4. Evaluating the Procedure</a></li>
+    <li class="sb-item"><a href="#s5">5. Cross-Cultural Research</a></li>
+    <li class="sb-item"><a href="#s6">6. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s7">7. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s8">8. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>5.1.2 AINSWORTH'S WORK ON ATTACHMENT<br><span style="font-size:0.65em">Caregiver sensitivity · Strange Situation · Three types · Cross-cultural research · 陌生情境与依恋类型</span></h1>
+  <div class="meta">
+    <span class="badge">Topic E · Developmental psychology</span>
+    <span class="badge">Content</span>
+    <span class="badge">Spec 5.1.2</span>
+    <span class="badge">📖 Textbook Book 2 · Ch.1 · pp.15–22</span>
+  </div>
+</div>
+
+<div class="quick-summary">
+  <h4>What this page is really asking</h4>
+  <ol>
+    <li><strong>Calm is not the same as secure.</strong> The nursery head praised the baby who never cried; Ainsworth's procedure shows that the "easy" baby may be the insecure-avoidant one, and the clingy crying one may be securely attached.</li>
+    <li><strong>Sensitivity is the hypothesis.</strong> Caregivers who read the baby's signals and respond appropriately tend to raise secure infants — though later meta-analyses shrink the effect (from .78 to .24) and temperament shares the credit.</li>
+    <li><strong>The Strange Situation is a graded stress test.</strong> Eight episodes, two separations, two reunions: safe-base behaviour, stranger response, separation behaviour and reunion behaviour are the four things scored.</li>
+    <li><strong>Secure attachment is universal, but the insecure split is cultural.</strong> German independence can masquerade as avoidance; Japanese infants rarely left alone can find the same episodes far more stressful.</li>
+  </ol>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Describe Ainsworth's two observational studies</strong> (Uganda ethnographic, Baltimore) and the caregiving hypothesis.</li>
+    <li><strong>Reproduce the Strange Situation procedure</strong>: eight episodes, the four measured behaviours, time sampling and rating scales.</li>
+    <li><strong>Classify infants into Types A/B/C</strong> using safe-base, stranger, separation and reunion behaviour.</li>
+    <li><strong>Evaluate the procedure</strong> on standardisation, inter-rater reliability, demand characteristics, ethnocentrism and social sensitivity.</li>
+    <li><strong>Interpret cross-cultural findings</strong> (Grossman 1991, Takahashi 1990) as a test of universality and of the procedure's validity.</li>
+  </ul>
+</div>
+
+<!-- ============ 0 ============ -->
+<section class="section" id="s0">
+  <h2>Start Here: Two Babies on the First Day of Nursery</h2>
+  <div class="sc-item"><span class="sc-tag">背景</span>托儿所开学第一天，教室门口一左一右站着两位妈妈。左边是朵朵的妈妈，右边是乐乐的妈妈，两个宝宝都刚满一岁。</div>
+  <div class="sc-item"><span class="sc-tag">角色</span>你是这家托儿所的新实习生，园长让你观察两个孩子的适应情况。</div>
+  <div class="sc-item"><span class="sc-tag">任务</span>两幕好戏随后登场：妈妈离开时，朵朵嚎啕大哭，妈妈回来她扑过去，可抱起来又挥手又蹬腿，一边要抱一边推开；乐乐全程安静，妈妈走了没什么反应，妈妈回来了他也不抬头，继续玩积木。园长在观察本上写：「乐乐适应得最好。」</div>
+  <div class="sc-item"><span class="sc-tag">目标</span>先猜下面这题：你同不同意园长的判断？读完这一页，你会掌握一套能回答这个问题的标准流程：陌生情境程序。</div>
+  <div class="sc-predict">
+    <h4><span class="sc-tag" style="background:#3b82f6">先猜</span>两个宝宝，谁和妈妈的关系最让人放心？</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">乐乐：不哭不闹，到哪都适应得快，说明安全感最强</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">朵朵：分离大哭、回来渴望亲近而且能被安抚，这是安全型依恋的样子</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">两个都有问题：健康的宝宝应该既不哭也不黏</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. From Uganda to Baltimore: The Sensitivity Hypothesis</h2>
+  <p>Mary Ainsworth worked with Bowlby for several years. Her major contribution was a <strong>standardised</strong> way to measure security of attachment and the identification of three attachment types: <strong>secure</strong>, <strong>insecure-avoidant</strong>（焦虑-回避型）and <strong>insecure-resistant</strong>（焦虑-矛盾型，也称反抗型）.</p>
+  <p>Her evidence began with <strong>ethnographic research</strong>（人种志研究：研究者深入当地社区，用长期自然观察和访谈理解一种文化的日常实践）in a village near Kampala, Uganda: a nine-month longitudinal study observing mother-child interactions in 26 families, visiting twice a month for two hours with a local social worker interpreting. She recorded qualitative field notes and open-question interviews, and noticed that securely attached babies explored more with their mothers present and cried less, while insecure babies were fussier and explored less. She identified three factors affecting security (Ainsworth, 1967): the amount of care mothers provided, the detail mothers shared in interviews, and their enjoyment of breastfeeding.</p>
+  <p>From these observations she developed the <strong>caregiving hypothesis</strong>（照顾假说：照顾者的敏感性与回应性决定婴儿依恋的安全性）: security depends on <strong>caregiver sensitivity</strong>（照顾者敏感性：能否读懂婴儿不同的哭声与表情信号，并恰当、及时地回应）. Caregivers who can tell a cry for food from a cry for comfort, and respond quickly and effectively, tend to form secure attachments; caregivers who struggle to read the cues tend to form insecure ones.</p>
+  <p><strong>Evaluation.</strong> The Strange Situation results and naturalistic home observations supported a strong correlation (<strong>.78</strong>) between attachment type and maternal sensitivity. However, replications have not been so strong: a meta-analysis by de Wolff and van IJzendoorn (1997) found correlations of only <strong>0.24</strong> for mothers and 0.13 for fathers, although some included studies observed for very short periods. Fuertes et al. (2009) studied 48 Portuguese mother-infant pairs and found that infant <strong>temperament</strong> in the first months was also a significant predictor of attachment type at 12 months, so the caregiving hypothesis is not a complete explanation.</p>
+  <p class="small">Back to the nursery: Duoduo's mother may show sensitivity in bursts but inconsistency across occasions, while Lele's mother's signals may be getting ignored at home. Keep both in mind for Section 4.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>Ainsworth 的证据链分两步：先在乌干达 26 个家庭里做了九个月的人种志观察（每月两次、每次两小时），发现安全型宝宝在妈妈在场时更敢探索、哭得更少；由此提出照顾假说，依恋安全与否取决于照顾者能否读懂信号并恰当回应。评价记三个数字：她自己的数据相关高达 .78；但 1997 年元分析掉到母亲 .24、父亲 .13；Fuertes 2009 发现婴儿气质也是预测因素。一句话：敏感性重要，但不是全部解释。</p>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. The Strange Situation: The Procedure</h2>
+  <p>In 1963 Ainsworth began a second observational study in Baltimore, USA, with middle-class families recruited before their babies were born. She observed parent-child interactions for four hours each month from the first weeks of life, again finding that sensitive-responsive parenting went with happier, less crying children. At 12 months, families were invited into a <strong>structured observation</strong>（结构化观察：在人工布置的环境中观察并记录行为，刻意操纵情境以引发目标行为）: the Strange Situation.</p>
+  <ul class="tight">
+    <li><strong>Aim:</strong> to investigate individual differences in attachment by observing infant behaviour in an unfamiliar environment, with and without an unfamiliar adult present.</li>
+    <li><strong>Method:</strong> structured observation (non-participant, controlled).</li>
+    <li><strong>Sample:</strong> the initial pilot included 23 middle-class American mothers and their infants; other studies with slightly larger samples were ongoing as the procedure was developed.</li>
+    <li><strong>Setting:</strong> a 9 × 9-foot laboratory playroom marked into 16 squares so the baby's location and movement could be monitored, watched through a one-way mirror by two observers describing behaviour into a voice recorder.</li>
+  </ul>
+  <p>The 20-minute procedure has <strong>eight episodes</strong>. A timer clicked every 15 seconds so each comment matched its moment; observers scored one point for every 15-second period containing movement, toy play, looking at the mother or crying (12 points maximum per three-minute episode: <strong>time sampling</strong>). They also used 1–7 rating scales for intensity of proximity and contact-seeking, contact-maintaining, avoidance, resistance, and searching during separations. Four attachment behaviours were measured:</p>
+  <ul class="tight">
+    <li><strong>Safe-base behaviour</strong>（安全基地行为：妈妈在场时敢不敢探索房间与玩具）</li>
+    <li><strong>Stranger response</strong>（陌生人反应：妈妈在场与不在场时对陌生人的反应）</li>
+    <li><strong>Separation behaviour</strong>（分离行为：妈妈离开时的反应）</li>
+    <li><strong>Reunion behaviour</strong>（重聚行为：妈妈回来时的反应）</li>
+  </ul>
+  <table>
+    <tr><th>Episode</th><th>People present</th><th>Duration</th><th>What happens</th></tr>
+    <tr><td>1</td><td>Mother, infant, observer</td><td>30 sec</td><td>Observer shows mother and infant into the playroom, then leaves.</td></tr>
+    <tr><td>2</td><td>Mother, infant</td><td>3 min</td><td>Mother sits quietly; infant plays with toys; mother responds if the infant seeks attention.</td></tr>
+    <tr><td>3</td><td>Mother, infant, stranger</td><td>3 min</td><td>Stranger enters, silent for 1 min, talks to mother for 1 min, then approaches the infant with a toy. The mother quietly leaves.</td></tr>
+    <tr><td>4</td><td>Infant, stranger</td><td>3 min</td><td>Stranger interacts if the infant is not playing; comforts if distressed.</td></tr>
+    <tr><td>5</td><td>Mother, infant</td><td>3 min</td><td>Mother returns, stranger leaves; mother engages with toys, then says "bye-bye" and leaves again.</td></tr>
+    <tr><td>6</td><td>Infant alone</td><td>3 min</td><td>Infant is alone in the room.</td></tr>
+    <tr><td>7</td><td>Infant, stranger</td><td>3 min</td><td>Stranger returns and behaves as in episode 4.</td></tr>
+    <tr><td>8</td><td>Mother, infant</td><td>3 min</td><td>Mother returns; stranger leaves.</td></tr>
+  </table>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>陌生情境是「故意制造轻微压力」的标准流程：8 幕、约 20 分钟，关键节点是两次分离（第 3 幕尾和第 5 幕尾）和两次重聚（第 5 幕和第 8 幕）。记录分两层。定量层：每 15 秒打一次点（时间取样，每幕满分 12）。量表层：1 到 7 的强度评分。判型看四件事：敢不敢探索（安全基地行为），怕不怕陌生人，分离时多难受，重聚时怎么表现。记住一个设计要点：压力是逐级加码的，不是一下子把宝宝扔进陌生人怀抱。</p>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Three Types of Attachment</h2>
+  <p>From her detailed observations, Ainsworth identified three types (Table 1.4 in the textbook). The distribution in her US studies was approximately <strong>70 per cent secure, 20 per cent insecure-avoidant, 10 per cent insecure-resistant</strong>.</p>
+  <table>
+    <tr><th></th><th>Insecure-avoidant (Type A) · 20%</th><th>Secure (Type B) · 70%</th><th>Insecure-resistant (Type C) · 10%</th></tr>
+    <tr><td><strong>Safe-base behaviour</strong></td><td>Explore independently regardless of the mother's presence (she is not used as a safe base)</td><td>Explore only when the mother is in the room (she is the safe base)</td><td>Cling to the mother; cry more, explore less than A and B</td></tr>
+    <tr><td><strong>Stranger fear</strong></td><td>Accept comfort from the stranger and interact with them</td><td>Avoid contact with the stranger; resist comfort when offered</td><td>Similar to Type B: show stranger fear</td></tr>
+    <tr><td><strong>Separation anxiety</strong></td><td>Not upset when the mother leaves</td><td>Very distressed when the mother leaves</td><td>Even greater distress than Type B</td></tr>
+    <tr><td><strong>Reunion behaviour</strong></td><td>Ignore the returning mother; look or turn away when picked up</td><td>Seek comfort; easily soothed</td><td>Seek contact but push her away angrily when she tries to soothe</td></tr>
+    <tr><td><strong>Home observations</strong></td><td>Insensitive, interfering, rejecting mothering</td><td>Sensitive, responsive mothering</td><td>Inconsistent mothering: warm at times, rejecting at others</td></tr>
+  </table>
+  <p>Ainsworth concluded that attachment security depends on the attachment figure's emotional availability, including sensitivity and responsiveness.</p>
+  <p class="small">Back to the nursery: Duoduo's pattern (huge separation distress, contact-seeking on reunion mixed with angry pushing away) maps onto Type C with its inconsistent mothering. Lele's calm (no separation protest, no reunion response, stranger accepted) maps onto Type A. The head teacher's "best adapted" verdict now looks questionable.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>三类型表格是本页的记忆锚点。判型的黄金线索在重聚那一行：B 型回来要抱、一哄就好；A 型回来当没看见；C 型回来又扑又推。分离强度排序：C 大于 B 大于 A（A 型不哭不等于没压力）。配套的家庭观察记三条：A 型背后是忽视和拒绝，B 型背后是敏感回应，C 型背后是时好时坏的不一致。比例 70 / 20 / 10。回看先猜题：园长把 A 型的「冷静」当成了适应好，这正是本页要拆掉的直觉。</p>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Evaluating the Strange Situation</h2>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Strengths</h4>
+      <ul class="tight">
+        <li><strong>Highly standardised, therefore scientific.</strong> Every episode lasts the same time and the mothers come and go the same way (leaving quietly the first time, saying "bye-bye" the second), so other researchers can repeat the study, for example with fathers (Main &amp; Weston, 1981).</li>
+        <li><strong>High inter-rater reliability.</strong> For 14 randomly selected infants (Ainsworth &amp; Bell, 1970), observers trained on the rating scales agreed strongly, for example <strong>0.93</strong> for proximity- and contact-seeking behaviours, which raises the scientific status of the findings.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Weaknesses</h4>
+      <ul class="tight">
+        <li><strong>Validity threat from demand characteristics.</strong> Although a one-way mirror was used, the mothers knew they were being observed and may have behaved unnaturally, for example being more attentive than usual.</li>
+        <li><strong>Ethnocentric sample.</strong> All infants came from middle-class US families in Baltimore. In cultures where children are cared for by multiple people from an early age, or are rarely separated from caregivers, the distribution of types could look very different (see Takahashi, Section 5).</li>
+        <li><strong>Socially sensitive.</strong> The procedure highlights the mother's role and implies that a mother's parenting style <em>causes</em> insecure attachment with negative consequences for the child, which can feed blame and guilt.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>评价记两绿三红。绿：高度标准化所以可重复（连妈妈离开的方式都有脚本，第一次安静走、第二次说 bye-bye）；评分者信度 .93（14 名婴儿、观察者受过详细培训）。红：妈妈知道被观察，可能出现需求特征，行为不自然；样本全是巴尔的摩中产家庭，民族中心主义；「妈妈养育方式决定依恋类型」这个暗示对社会敏感，容易变成对妈妈的指责。</p>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Cross-Cultural Research: Does the Procedure Travel?</h2>
+  <p>Cultural variations matter beyond curiosity: they test Bowlby's claim that attachment behaviour is innate and <strong>universal</strong>（普遍性：不论文化养育方式如何都成立）. If attachment is biology, babies worldwide should react similarly in the Strange Situation; if nurture shapes it, distributions should differ, because cultures differ in beliefs about how children should be raised. Two replications in cultures with very different values (Table 1.5 in the textbook):</p>
+  <svg viewBox="0 0 680 200" role="img" aria-label="Attachment type distributions in three samples">
+    <rect x="180" y="24" width="460" height="26" rx="5" fill="#f8fafc" stroke="#cbd5e1"/>
+    <rect x="180" y="24" width="322" height="26" rx="5" fill="#16a34a"/>
+    <rect x="502" y="24" width="92" height="26" fill="#f59e0b"/>
+    <rect x="594" y="24" width="46" height="26" fill="#dc2626"/>
+    <text x="168" y="41" text-anchor="end" font-size="12" font-weight="700" fill="#334155">US (Ainsworth)</text>
+    <text x="341" y="41" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">B · 70%</text>
+    <text x="548" y="41" text-anchor="middle" font-size="11.5" font-weight="700" fill="#7c2d12">A · 20%</text>
+    <text x="617" y="41" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">C · 10%</text>
+    <rect x="180" y="60" width="460" height="26" rx="5" fill="#f8fafc" stroke="#cbd5e1"/>
+    <rect x="180" y="60" width="152" height="26" fill="#16a34a"/>
+    <rect x="332" y="60" width="225" height="26" fill="#f59e0b"/>
+    <rect x="557" y="60" width="83" height="26" fill="#dc2626"/>
+    <text x="168" y="77" text-anchor="end" font-size="12" font-weight="700" fill="#334155">Germany (Grossman)</text>
+    <text x="256" y="77" text-anchor="middle" font-size="11.5" font-weight="700" fill="#14532d">B · 33%</text>
+    <text x="444" y="77" text-anchor="middle" font-size="11.5" font-weight="700" fill="#7c2d12">A · 49%</text>
+    <text x="598" y="77" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">C · 18%</text>
+    <rect x="180" y="96" width="460" height="26" rx="5" fill="#f8fafc" stroke="#cbd5e1"/>
+    <rect x="180" y="96" width="313" height="26" fill="#16a34a"/>
+    <rect x="493" y="96" width="147" height="26" fill="#dc2626"/>
+    <text x="168" y="113" text-anchor="end" font-size="12" font-weight="700" fill="#334155">Japan (Takahashi)</text>
+    <text x="336" y="113" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">B · 68%</text>
+    <text x="500" y="113" font-size="11.5" font-weight="700" fill="#fff">A · 0%</text>
+    <text x="580" y="113" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">C · 32%</text>
+    <rect x="180" y="140" width="14" height="14" fill="#16a34a"/><text x="200" y="151" font-size="11.5" fill="#334155">Secure (B)</text>
+    <rect x="300" y="140" width="14" height="14" fill="#f59e0b"/><text x="320" y="151" font-size="11.5" fill="#334155">Insecure-avoidant (A)</text>
+    <rect x="470" y="140" width="14" height="14" fill="#dc2626"/><text x="490" y="151" font-size="11.5" fill="#334155">Insecure-resistant (C)</text>
+    <text x="340" y="182" text-anchor="middle" font-size="11.5" fill="#475569">Secure is dominant everywhere (supports universality), but the insecure split shifts with culture.</text>
+  </svg>
+  <table>
+    <tr><th></th><th>Grossman et al. (1991)</th><th>Takahashi et al. (1990)</th></tr>
+    <tr><td><strong>Location</strong></td><td>Bielefeld, North Germany</td><td>Sapporo, Japan</td></tr>
+    <tr><td><strong>Values</strong></td><td>Self-reliance, independence</td><td>Harmony, order, respect for family hierarchy, strict compliance with social conventions</td></tr>
+    <tr><td><strong>Norms</strong></td><td>Greater interpersonal distance; close bodily contact discouraged between walking infants and caregivers</td><td>Close contact encouraged; separation rare in the first 12 months; infants carried often, sleep and bathe with mothers until at least age 2; avoidance is impolite</td></tr>
+    <tr><td><strong>Method</strong></td><td>Longitudinal study of 49 families recruited before birth; naturalistic and controlled observations of attachment behaviour and maternal sensitivity</td><td>60 middle-class male and female infants assessed with the Strange Situation Procedure</td></tr>
+    <tr><td><strong>Results</strong></td><td>A 49% · B 33% · C 18%</td><td>A 0% · B 68% · C 32%</td></tr>
+  </table>
+  <p><strong>Interpreting the differences.</strong> At face value the results suggest lower parental sensitivity in Germany and Japan, but read them with caution: the procedure may simply not be valid for cultures whose child-rearing practices differ sharply from the US. In Germany, children are taught self-reliance from an early age, and this independence may have been wrongly interpreted as avoidance: maternal sensitivity of the Type A German mothers did not differ significantly from that of the Type B American mothers, so what looked like insecure-avoidant attachment reflected cultural norms about interpersonal distance rather than insensitive parenting. In Japan, infants are traditionally rarely left alone, so the mother's exit in episode 3 provoked far more intense reactions; many Japanese babies became so upset they could not be comforted and their trials had to be ended. Extreme distress is coded as resistant behaviour, which explains the high Type C rate, and suggests the procedure is not a valid measure for infants raised in more traditional Japanese families.</p>
+  <p><strong>Overall.</strong> Secure attachment dominates across many cultures, which supports Bowlby's evolutionary account (nature). But when infants do form insecure attachments, the <em>type</em> of insecurity is influenced by experience (nurture), supporting Ainsworth's caregiver sensitivity ideas.</p>
+  <div class="green-box">
+    <h4>Close the loop: back to the two babies at the nursery door</h4>
+    <p>You now have a full, evidence-based answer to the head teacher's judgement. Duoduo's reunion mix of clinging and angry pushing is the signature of Type C, usually linked to inconsistent caregiving, not to a badly attached child. Lele's flat calm is not strong security: a securely attached baby uses the mother as a safe base and seeks her on reunion, while Lele ignored her, which matches Type A, linked at home to insensitive or rejecting mothering. The nursery verdict got it exactly backwards, and the cross-cultural evidence explains why calm behaviour misleads us: in some cultures independence looks like avoidance without being insecure, and extreme separation distress looks like resistance without being a broken bond. The behaviour you see in a strange room depends on what "normal" separation means at home.</p>
+    <p style="margin-top:8px"><strong>Reflect before the Checkpoint:</strong> if the Strange Situation were run in your own city, which cultural norms might change how babies behave in episodes 3 and 6, and would that make the classifications wrong or right?</p>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Checkpoint</h2>
+  <div class="xp-block">
+    <h4>Q1 · How might a Type A baby behave when their mother leaves the room?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Cry immediately and try to follow her to the door</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Cry harder than a Type B baby would</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Show little or no upset, continuing to explore as if nothing had changed</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q2 · According to Ainsworth, which two qualities in an attachment figure lead to the most secure infants?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Sensitivity and responsiveness: reading the baby's cues and responding appropriately</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Feeding frequency and physical closeness</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Strictness and consistency of routine</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q3 · What is meant by universality of attachment?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">That every infant forms exactly one attachment to the mother</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">That attachment applies to all humans regardless of cultural practices and upbringing</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">That attachment types are distributed identically in every country</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q4 · What does the inter-rater reliability figure of 0.93 (Ainsworth &amp; Bell, 1970) tell you?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">That 93 per cent of infants were correctly classified</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">That trained observers agreed very strongly on the ratings, which raises the scientific status of the findings</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">That the procedure works the same way in 93 per cent of cultures</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q5 · Why did Takahashi et al.'s trials have to be ended for some Japanese infants?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The mothers refused to leave the room in episode 5</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Some infants became so distressed they could not be comforted, because Japanese infants are traditionally rarely left alone</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The one-way mirror equipment failed in the Sapporo laboratory</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q6 · Why is the high Type A rate in Germany probably NOT evidence of insensitive parenting?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Because the German mothers refused to take part in the observations</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Because maternal sensitivity of Type A German mothers did not differ significantly from Type B American mothers: self-reliance was misread as avoidance</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Because German infants were younger than the American sample</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Exam Lab</h2>
+  <div class="exam-practice">
+    <div class="xp-block">
+      <h4>Q1 · Explain one strength <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Explain one strength of Ainsworth's Strange Situation Procedure.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans1')">Show answer</button></div>
+      <div class="xp-result" id="ans1" hidden>
+        <p>One strength is that the procedure is highly <strong>standardised</strong>: each episode lasts the same amount of time and the mothers come and go in the same way, for example leaving quietly the first time and saying "bye-bye" the second. Because every infant experiences the same sequence, other researchers can repeat the study to check the findings, for example testing children with their fathers (Main &amp; Weston, 1981), which makes the procedure scientific and replicable.</p>
+        <p class="xp-case">Marking guidance: 1 mark for identifying the strength (standardisation / replicability / high inter-rater reliability), 1 mark for explaining how it improves the scientific status or comparability of the findings.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q2 · Explain two ways <span class="xp-badge">4 marks</span></h4>
+      <div class="xp-intro"><strong>Bodhana and Jovita are 8 months old. Bodhana is cared for by her childminder Olena when her mother is at work. Olena has worked with the family since Bodhana was born and knows exactly how to help when Bodhana is upset. Jovita's mother works from home. Although she feeds and changes Jovita regularly, she pays no attention to her daughter. Explain two ways that Bodhana and Jovita's parenting experiences might affect their development. You should refer to caregiver sensitivity in your answer.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans2')">Show answer</button></div>
+      <div class="xp-result" id="ans2" hidden>
+        <p><strong>Way 1: Bodhana's sensitive care should promote secure attachment.</strong> Olena knows exactly how to help when Bodhana is upset, which is caregiver sensitivity: perceiving the baby's signals and responding promptly and appropriately. According to Ainsworth's caregiving hypothesis, this sensitive, responsive care is associated with secure attachment (Type B), so Bodhana is likely to use Olena as a safe base, explore confidently and be easily comforted.</p>
+        <p><strong>Way 2: Jovita's unresponsive care risks insecure attachment.</strong> Jovita's mother meets physical needs (feeding, changing) but pays no attention to her, so the baby's social and emotional cues go unread and unanswered. Low sensitivity is associated with insecure attachment, likely insecure-avoidant (Type A) given the consistent ignoring of cues, meaning Jovita may not use her mother as a safe base and may show little comfort-seeking, which could affect her later relationships through her internal working model.</p>
+        <p class="xp-case">Marking guidance: up to 2 marks per way: 1 for identifying how the caregiving differs (sensitive vs unresponsive), 1 for explaining the developmental consequence via caregiver sensitivity and attachment security.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q3 · Assess <span class="xp-badge">8 marks</span></h4>
+      <div class="xp-intro"><strong>Assess the Strange Situation Procedure in terms of validity and ethics.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans3')">Show answer</button></div>
+      <div class="xp-result" id="ans3" hidden>
+        <p><strong>Validity: strengths.</strong> The procedure is highly standardised, with fixed episode durations and scripted maternal departures, so it measures attachment behaviours consistently across infants and can be replicated (Main &amp; Weston, 1981). Inter-rater reliability was very high (0.93 for proximity- and contact-seeking; Ainsworth &amp; Bell, 1970), meaning the classifications are not one observer's opinion but agreed measurements, supporting the validity of the type assignments.</p>
+        <p><strong>Validity: weaknesses.</strong> The mothers knew they were being observed, so demand characteristics are a threat: they may have behaved more attentively than usual, making the observed behaviour unnatural. More seriously, the procedure may lack cross-cultural validity: Takahashi et al. (1990) found 32 per cent resistant classifications in Japan, but Japanese infants are rarely left alone, so the separation episodes provoked extreme distress that had to be ended for some babies, and the distress was coded as resistance. Grossman et al. (1991) found 49 per cent avoidant in Germany, yet maternal sensitivity did not differ from American Type B mothers, so German self-reliance was misread as avoidance. Behaviour in the strange room depends on cultural norms about separation, so the same behaviour may not mean the same attachment type everywhere.</p>
+        <p><strong>Ethics: strengths and safeguards.</strong> The stress was designed to be mild and brief: episodes are about three minutes, the stranger first interacts with the mother rather than the baby, and mothers return as soon as the sequence requires, so the distress is within everyday experience.</p>
+        <p><strong>Ethics: weaknesses.</strong> The infants could not give consent, so consent came from mothers who did not know the procedure's aim of inducing separation stress. Takahashi's data show the procedure can push infants beyond mild distress: some became inconsolable and trials were terminated, which suggests the risk of psychological harm is real, especially for infants whose upbringing makes separation unusual. Confidentiality is easier to protect than wellbeing here, because the core ethical problem, deliberately stressing an infant who cannot withdraw meaningfully, is built into the design itself.</p>
+        <p class="xp-case">Marking guidance: AO1 (4): accurate description of validity strengths/weaknesses and ethical issues. AO3 (4): linked evaluation, e.g. demand characteristics vs standardisation, Takahashi and Grossman as evidence on cultural validity, consent and harm for infants. Both strands (validity and ethics) must be addressed for full marks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Key Terms</h2>
+  <div class="keyterm-box"><span class="kt">ethnographic research</span><br><span class="zh">人种志研究：深入当地社区做长期自然观察与访谈（Ainsworth 在乌干达 26 个家庭做了九个月）</span></div>
+  <div class="keyterm-box"><span class="kt">caregiving hypothesis</span><br><span class="zh">照顾假说：照顾者的敏感性与回应性决定婴儿依恋的安全程度</span></div>
+  <div class="keyterm-box"><span class="kt">caregiver sensitivity</span><br><span class="zh">照顾者敏感性：能否注意并正确解读婴儿不同的行为信号</span></div>
+  <div class="keyterm-box"><span class="kt">structured observation</span><br><span class="zh">结构化观察：在人工环境中观察并记录行为，刻意操纵情境以引发目标行为</span></div>
+  <div class="keyterm-box"><span class="kt">safe-base behaviour</span><br><span class="zh">安全基地行为：妈妈在场时婴儿敢不敢探索房间与玩具</span></div>
+  <div class="keyterm-box"><span class="kt">separation / reunion behaviour</span><br><span class="zh">分离行为：妈妈离开时的反应；重聚行为：妈妈回来时的反应</span></div>
+  <div class="keyterm-box"><span class="kt">secure (Type B)</span><br><span class="zh">安全型：妈妈在场才探索，分离大哭，重聚求安慰且易被安抚；约 70%</span></div>
+  <div class="keyterm-box"><span class="kt">insecure-avoidant (Type A)</span><br><span class="zh">焦虑-回避型：探索不看妈妈，分离不难过，重聚回避；约 20%</span></div>
+  <div class="keyterm-box"><span class="kt">insecure-resistant (Type C)</span><br><span class="zh">焦虑-矛盾型：黏人少探索，分离反应最大，重聚又要又推；约 10%</span></div>
+  <div class="keyterm-box"><span class="kt">ethnocentric</span><br><span class="zh">民族中心主义：样本缺乏文化多样性，结论默认以本文化为准</span></div>
+  <div class="keyterm-box"><span class="kt">universal</span><br><span class="zh">普遍性：不论文化养育差异如何都适用于全人类的特征</span></div>
+</section>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  /* ---------- sidebar scroll spy ---------- */
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  /* ---------- reveal helper ---------- */
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  /* ---------- multiple choice: one why per option ---------- */
+  var secWhy = {
+  s0: [
+    [
+      '直觉又是反的：不哭不闹在陌生情境里更像是 A 型（回避型）的表现，A 型在家的观察记录是忽视与拒绝式养育。把「适应快」当安全感强，正是这一页要拆掉的误读。',
+      '正确。朵朵分离时大哭、重聚时扑过去求亲近，这是 B 型（安全型）的画像：把妈妈当安全基地，回来求安抚、而且一哄就好。乐乐全程平静、妈妈回来也不抬头，反而对应 A 型。判断依恋的黄金线索在重聚反应，不在哭不哭。',
+      '「既不哭也不黏才算健康」是用成人的想象给婴儿打分。按陌生情境的标准，安全型宝宝恰恰会分离大哭、重聚求抱：哭泣表达依恋，不表达不安全。'
+    ]
+  ],
+  s6: [
+    [
+      '哭闹跟随是 C 型或 B 型的反应方向：A 型的特点恰恰是对分离和陌生人都不太有反应。',
+      'A 型分离不难过，C 型才分离反应最大；「哭得比 B 型还凶」属于 C 型，不属于 A 型。',
+      '正确。A 型婴儿分离时几乎不受影响，继续探索房间，好像什么都没变。这种「冷静」配合家庭观察里的忽视式养育，正是它被解读为回避依恋的原因。'
+    ]
+    ,[
+      '喂食频率是学习理论的关键词，Ainsworth 的假说早已越过「食物」这一层。',
+      '正确。照顾假说的两个关键词：sensitivity（读懂婴儿的信号）与 responsiveness（及时、恰当地回应）。能分辨饿哭和求安抚的照顾者更可能养育出安全型婴儿。',
+      '刻板作息是养育风格的一种，但假说指向的是对婴儿信号的读取与回应，不是日程管理。'
+    ]
+    ,[
+      '单一依恋对象是 Bowlby 单向性的主张；普遍性说的是另一件事：跨文化都成立。',
+      '正确。普遍性指依恋行为不论文化养育方式与环境影响如何都适用于全人类。这正是跨文化研究的用途：安全型在各国都占多数支持普遍性，但不安全型的具体分布随文化变化。',
+      '分布完全一致恰恰与数据不符：德国 49% A 型、日本 0% A 型，美国 20% A 型。普遍性指的是安全型占多数这个模式，不是分布数字。'
+    ]
+    ,[
+      '93% 的分类正确率是编造的换算；这个数字量的是两个观察者之间的一致程度。',
+      '正确。0.93 是评分者信度：14 名婴儿由受训观察者独立评分，接近完全一致，说明分类不依赖某个人的主观判断，这提高了发现的科学地位。',
+      '跨文化适用性是另一码事（恰恰是 Takahashi 挑战的点）；0.93 量的只是本实验内观察者之间的一致性。'
+    ]
+    ,[
+      '妈妈们并没有拒绝离开；问题出在婴儿那一头。',
+      '正确。日本婴儿传统上很少被单独留下，第 6 幕独处引发了极端痛苦，有些婴儿无法被安抚、试验只能中止。这同时是效度证据：流程对这类养育文化的婴儿可能测不准。',
+      '设备故障不是课本给出的原因；课本明确归因于婴儿的极端分离痛苦。'
+    ]
+    ,[
+      '参与率与样本年龄都不是课本的解释路径。',
+      '正确。德国 A 型妈妈与安全型当道的美国 B 型妈妈在敏感性上没有显著差异：被误读为回避的其实是德国文化鼓励的自立与人际距离。这提示流程在跨文化使用时要小心。',
+      '样本年龄没有差异证据；课本的解释落在文化规范，不在人口学变量。'
+    ]
+  ]
+};
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = (btn.closest('.xp-block') || section).querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+</script>
+</body>
+</html>
