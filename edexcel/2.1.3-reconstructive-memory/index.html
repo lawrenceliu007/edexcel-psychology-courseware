@@ -179,6 +179,13 @@ body.dark .xp-block h4 { color: #fb923c; }
 body.dark .xp-block .xp-intro { color: #cbd5e1; }
 body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
 
+.sc-predict { background: #eff6ff; border: 1.5px solid #3b82f6; border-radius: 10px; padding: 14px 18px; margin: 16px 0 4px; }
+.sc-predict h4 { margin: 0 0 6px; color: #1d4ed8; }
+.sc-tag { display: inline-block; background: var(--accent); color: #fff; font-size: .72em; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-right: 8px; }
+body.dark .sc-tag { background: #3b82f6; }
+body.dark .sc-predict { background: rgba(59,130,246,.08); border-color: #3b82f6; }
+body.dark .sc-predict h4 { color: #93c5fd; }
+
 .small { font-size: .84em; color: var(--text-secondary); }
 .tight { margin: 6px 0; }
 .tight li { margin: 3px 0; }
@@ -256,6 +263,15 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   <h2>1. Memory as Reconstruction</h2>
   <p>Try a quick demonstration. Read this once, then cover it and recount it as carefully as you can:</p>
   <p class="small"><em>When the man entered the kitchen, he slipped on a wet spot and dropped the delicate glass pitcher on the floor. The pitcher was very expensive and everyone watched the event in horror.</em> (Bransford, 1979)</p>
+  <div class="sc-predict">
+    <h4><span class="sc-tag" style="background:#3b82f6">先猜</span>你刚才复述这段话的时候，玻璃杯（水罐）碎了吗？</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">碎了，原文里写了它摔碎了</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">没碎，原文只说掉在地板上</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">原文没说碎，但我刚才「记得」它碎了</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
   <p>People typically recall that the glass smashed. Nothing in the passage says so. The word <em>glass</em> plus the context of the story invites the inference, and the inference becomes part of the memory. Bartlett's theory explains this exactly: the story was stored, but at recall you used your imagination to rebuild it.</p>
   <p>Sir Frederic C. Bartlett (1886–1969) was one of the most influential cognitive psychologists of the last century; his signature contribution was a series of memory experiments published in his book <em>Remembering</em>. Against the fashion of his time, he insisted on studying memory in a real context: experiments should not just capture reactions, they should capture human beings. He rejected the idea of dividing memory into independent parts and studying each in isolation; memory had to be understood in its relationship to other cognitive processes.</p>
   <p>From his experiments Bartlett built the theory of <strong>reconstructive memory</strong>（重构记忆：回忆是在重建，不是在回放）. When we experience an event we record it like a series of notes on a notepad: partial, sketchy. When we later remember the event, we return to those notes and actively try to make sense of them, drawing on previously stored knowledge. In doing so we may add, reinterpret, fill in gaps and transform the fragments into a coherent story. It is an <strong>imaginative reconstruction</strong>, and the original event can end up distorted in the process.</p>
@@ -326,6 +342,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   <h2>3. Evidence for Schemas</h2>
   <h3>The office study: Brewer and Treyens (1981)</h3>
   <p>Participants waited in an office and were later asked to recall the items in it. Some objects were consistent with an office, such as a lamp; one was inconsistent, a skull. Participants were more likely to recall schema-consistent objects, and crucially also recalled objects that fit an office schema but were <strong>not actually there</strong>. They were reading from their office schema, not the room: direct evidence for schema-driven recall.</p>
+  <p class="small">Back to the pitcher: when you <q>remembered</q> the glass smashing, you did exactly what the office participants did. You never stored a smashing; your kitchen schema supplied one at recall.</p>
   <h3>The bank robbery: Tuckey and Brewer (2003)</h3>
   <p>Michelle Tuckey and Neil Brewer asked 234 students to list what they thought were common elements of a bank robbery (for example, the robbers left with the money), establishing each student's robbery schema. The students then watched video footage of a real staged robbery and recalled it three days, three weeks and three months later. Witnesses modified schema-inconsistent details from the video (the robbers were wearing suits) into schema-consistent ones (the robbers left in a car) in at least one interview.</p>
   <h3>Contaminated recall: Zhu et al. (2012)</h3>
@@ -343,6 +360,11 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   <p>Laboratory work shows the same mechanism in miniature. Zhu et al.'s participants absorbed inaccurate descriptions into their memories; Tuckey and Brewer's witnesses bent the robbery footage toward their schema. A witness is not lying when this happens: they are reporting a reconstruction they believe.</p>
   <div class="cn-note">
     <p><strong>中文理解：</strong>重构记忆理论最大的社会应用就是目击证词。证人不是在撒谎，他是在如实报告自己「补写好的故事」，而补写用的模板可能本来就是错的。Ronald Cotton 被受害者指认、坐了十多年冤狱才靠 DNA 平反，就是最沉重的实例。所以记忆理论直接关系司法：证词该信，但不能全信。</p>
+  </div>
+  <div class="green-box">
+    <h4>Close the loop: from the pitcher to the witness stand</h4>
+    <p>Suppose the pitcher passage were a crime you witnessed. Your confident memory of the glass smashing would become testimony, and the court would have no way to see the original passage. That is exactly what happened to Ronald Cotton, except the cost was ten years of his life: his victim reported a reconstruction she believed. The witnesses in this section were not lying; like you with the pitcher, they reported a rebuild they had no way to check against the original.</p>
+    <p><strong>Reflect before the Exam Lab:</strong> think of one thing you recently misremembered. Was it filtered out at encoding, or filled in at retrieval by a schema? Answer in your own words first, then check it against schema theory above.</p>
   </div>
 </section>
 
@@ -555,6 +577,11 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
 
   /* ---------- multiple choice: one why per option ---------- */
   var secWhy = {
+    s1: [
+      ['再读一遍原文：只有 dropped on the floor，没有任何一个词说「碎」。「碎了」是你自己补写的，而且补得毫无察觉。往下读，你会知道是谁替你补的。',
+       '你读得很仔细，原文确实没说碎。但重点在旁边：很多人读完坚信杯子碎了。把没发生的事记成发生了，正是本页要解释的现象，见 Bartlett 的笔记比喻。',
+       '正确，你刚刚亲身经历了一次重构记忆：想象混进了记忆，而你自己毫无察觉。往下读，Bartlett 会给这个现象一个完整的解释。']
+    ],
     s6: [
       ['Exact-copy storage is the belief Bartlett argued against; the evidence shows recall changes material.',
        'Unchanged memories are the opposite of the theory: the War of the Ghosts became shorter and culturally familiar.',

@@ -179,6 +179,15 @@ body.dark .xp-block h4 { color: #fb923c; }
 body.dark .xp-block .xp-intro { color: #cbd5e1; }
 body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
 
+.sc-item { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-size: .95em; line-height: 1.7; margin: 8px 0; }
+.sc-tag { display: inline-block; background: var(--accent); color: #fff; font-size: .72em; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-right: 8px; }
+.sc-predict { background: #eff6ff; border: 1.5px solid #3b82f6; border-radius: 10px; padding: 14px 18px; margin: 16px 0 4px; }
+.sc-predict h4 { margin: 0 0 6px; color: #1d4ed8; }
+body.dark .sc-item { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .sc-tag { background: #3b82f6; }
+body.dark .sc-predict { background: rgba(59,130,246,.08); border-color: #3b82f6; }
+body.dark .sc-predict h4 { color: #93c5fd; }
+
 .small { font-size: .84em; color: var(--text-secondary); }
 .tight { margin: 6px 0; }
 .tight li { margin: 3px 0; }
@@ -207,6 +216,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
     <div class="sb-header-sub">Working Memory Model</div>
   </div>
   <ul class="sb-list">
+    <li class="sb-item"><a href="#s0">Start Here: The Mall Route</a></li>
     <li class="sb-item"><a href="#s1">1. Why a New Model</a></li>
     <li class="sb-item"><a href="#s2">2. The Central Executive</a></li>
     <li class="sb-item"><a href="#s3">3. The Phonological Loop</a></li>
@@ -251,6 +261,24 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
     <li><strong>Apply the model to everyday scenarios</strong>, explaining which component is overloaded and why.</li>
   </ul>
 </div>
+
+<!-- ============ 0 · scenario ============ -->
+<section class="section" id="s0">
+  <h2>Start Here: The Route That Slipped Away</h2>
+  <div class="sc-item"><span class="sc-tag">背景</span>You are in an unfamiliar shopping mall looking for a store. A friend phones you with directions: <q>pass two corners, turn left at the blue sign.</q></div>
+  <div class="sc-item"><span class="sc-tag">角色</span>You are the one navigating while on the call.</div>
+  <div class="sc-item"><span class="sc-tag">任务</span>You repeat each direction silently as you listen, while your eyes scan for the signs. A few corners later, the earlier steps have already slipped away.</div>
+  <div class="sc-item"><span class="sc-tag">目标</span>Explain why the route slipped, and why listening to music while jogging never causes this problem. Predict first, and keep your answer in mind: the page is built to test it.</div>
+  <div class="sc-predict">
+    <h4><span class="sc-tag" style="background:#3b82f6">先猜</span>边打电话记路线、边认路标，为什么路线会丢？而边听歌边跑步却从来不会丢步骤？</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">因为两件事都要借用心里默念的那条语音通道，通道被挤爆了</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">因为人只要同时做两件事就会顾此失彼，跟事情的类型无关</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">因为认路标太费眼睛，眼睛忙起来耳朵就不好使了</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
 
 <!-- ============ 1 ============ -->
 <section class="section" id="s1">
@@ -339,6 +367,7 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   <p><strong>The word length effect.</strong> Short monosyllabic words (cat, rug, hat) are recalled better than long polysyllabic words (intelligence, alligator, hippopotamus). Longer words fill up the limited capacity of the articulatory rehearsal system, so words earlier in the list decay. The longer the word, the more capacity it eats, and the more likely forgetting becomes. The same logic explains <strong>articulatory suppression</strong>（发音抑制：复述被占线）: rehearsal collapses when you must repeat a filler such as <q>the</q> while learning a list, and recall deteriorates.</p>
   <h3>Why the loop exists: language acquisition</h3>
   <p>The Italian patient VP, with an acquired phonological impairment, could not retain any vocabulary from a new language, suggesting the loop evolved for language learning (Baddeley et al., 1988). Children with Specific Language Impairment（特定型语言障碍）struggle to repeat non-words (slimp, dar, gep), and this correlates with vocabulary size: deficits in the loop make learning novel language hard (Gathercole and Baddeley, 1996). Non-word repetition is now a standard indicator test for SLI.</p>
+  <p class="small">Back to the mall: your friend's spoken directions and the shop signs you read both end up in the phonological loop, because you translate each sign into inner speech before you can think about it. One rehearsal channel, two loads: that is why the earlier corners slipped away.</p>
   <div class="cn-note">
     <p><strong>中文理解：</strong>语音回路 = 仓库 + 复读机。两个经典效应都在证明这条设计：发音像的字母互相干扰（证明存的是声音），长单词占容量多、忘得快（证明复读机带宽有限）。进化意义也考过：学外语靠它（病人 VP 与 SLI 儿童的证据），所以非词复述测试成了语言障碍的筛查工具。</p>
   </div>
@@ -407,6 +436,11 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
   </div>
   <div class="cn-note">
     <p><strong>中文理解：</strong>支持线抓三类证据。行为证据：双任务（同通道抢资源、异通道不打架）。临床证据：KF 坏了语音回路但视觉记忆完好，HM 反过来，正好证明两个子系统独立。脑成像证据：PET 扫出复述用布洛卡区、仓库用缘上回，部件在脑子里真的分了工。反对线三把刀：总裁说不清测不了、个案病人不好推广、实验室任务太窄。背证据时每个都带上人名年份，评价题的分数就落在「证据指到哪个部件」上。</p>
+  </div>
+  <div class="green-box">
+    <h4>Close the loop: the mall route, explained</h4>
+    <p>Your friend's spoken directions entered the <strong>phonological store</strong>, and silently repeating them ran the <strong>articulatory rehearsal system</strong>. The shop signs were visual at first, but thinking about a sign means converting it into inner speech, which feeds the same loop. Two loads on one limited channel: the earliest corners decayed while you rehearsed the newer ones. Music and jogging never collide like this, because familiar lyrics need no rehearsal and running is controlled by well-practised motor programmes outside working memory. The collision is not about <em>how many</em> tasks you do, but about <em>which component</em> they both load.</p>
+    <p><strong>Reflect before the Exam Lab:</strong> think of a moment when you failed at doing two things at once. Which two components collided? Answer in your own words first, then check it against the model above.</p>
   </div>
 </section>
 
@@ -586,6 +620,11 @@ body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #3
 
   /* ---------- multiple choice: one why per option ---------- */
   var secWhy = {
+    s0: [
+      ['正确。你在心里默念路线，走的是语音回路；看到路标后也要先转成内心语言才能思考，两批信息全挤进同一条复述通道。听歌和跑步走的是别的通道，所以不打架。带着这个答案读第 3、4 节，你会看到两个部门各自的分工。',
+       '这是「一心不能二用」的直觉版本。第 6 节的双任务实验会给出相反的结论：一件语音事加一件视觉事可以做得很好，真正做不好的是两件同类事。打架不怪「两件事」，怪它们挤同一个部门。读完回来改答案。',
+       '干扰不按感官配对：眼忙导致耳背只是表面联想。真正的冲突发生在两批信息挤进同一个加工部门的时候，见第 3 节。']
+    ],
     s7: [
       ['The phonological loop handles verbal storage only; integration across sources is not its job.',
        'Correct. Added in 2000, the episodic buffer integrates information from the slave systems and long-term memory.',
