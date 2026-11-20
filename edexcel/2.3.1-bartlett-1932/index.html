@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.3.1 Classic Study — Bartlett (1932) War of the Ghosts</title>
+<style>
+
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.sc-item { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-size: .95em; line-height: 1.7; margin: 8px 0; }
+.sc-tag { display: inline-block; background: var(--accent); color: #fff; font-size: .72em; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-right: 8px; }
+.sc-predict { background: #eff6ff; border: 1.5px solid #3b82f6; border-radius: 10px; padding: 14px 18px; margin: 16px 0 4px; }
+.sc-predict h4 { margin: 0 0 6px; color: #1d4ed8; }
+body.dark .sc-item { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .sc-tag { background: #3b82f6; }
+body.dark .sc-predict { background: rgba(59,130,246,.08); border-color: #3b82f6; }
+body.dark .sc-predict h4 { color: #93c5fd; }
+.sc-ask { background: #fefce8; border: 1.5px solid #ca8a04; border-radius: 10px; padding: 14px 18px; margin: 14px 0 4px; }
+.sc-ask h4 { margin: 0 0 4px; color: #854d0e; font-size: .95em; }
+.sc-ask-step { background: #fff; border: 1px solid #e7e5e4; border-radius: 8px; padding: 10px 14px; margin: 10px 0 0; }
+.sc-ask-step.locked { opacity: .45; }
+.sc-ask-step .ask-q { font-weight: 600; font-size: .95em; margin: 0; line-height: 1.7; }
+.ask-toggle { background: #fff; border: 1px solid #d6d3d1; border-radius: 8px; padding: 5px 12px; font-size: .82rem; font-weight: 500; color: #57534e; cursor: pointer; margin-top: 8px; transition: all .15s; }
+.ask-toggle:hover:not(:disabled) { border-color: #ca8a04; color: #854d0e; }
+.ask-toggle:disabled { cursor: not-allowed; opacity: .6; }
+.ask-hint { display: none; border-top: 1px dashed #e7e5e4; margin-top: 10px; padding-top: 8px; }
+.ask-hint.show { display: block; }
+.ask-hint .hint-label { font-size: .75em; color: #a8a29e; margin: 0 0 4px; font-weight: 700; }
+.ask-hint p { margin: 0; font-size: .92em; line-height: 1.75; }
+.ask-land { margin: 12px 0 0; font-size: .9em; color: #854d0e; line-height: 1.7; }
+body.dark .sc-ask { background: rgba(202,138,4,.08); border-color: #ca8a04; }
+body.dark .sc-ask h4 { color: #fde047; }
+body.dark .sc-ask-step { background: #16213e; border-color: #334155; }
+body.dark .sc-ask-step.locked { opacity: .5; }
+body.dark .ask-toggle { background: #16213e; border-color: #334155; color: #94a3b8; }
+body.dark .ask-toggle:hover:not(:disabled) { border-color: #ca8a04; color: #fde047; }
+body.dark .ask-hint { border-top-color: #334155; }
+body.dark .ask-hint .hint-label { color: #64748b; }
+body.dark .ask-hint p { color: #cbd5e1; }
+body.dark .ask-land { color: #fde047; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic B · Cognitive psychology — 2.3.1 Bartlett (1932)</span>
+  </div>
+  <span class="nav-pill">🧠 Cognitive Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">2.3.1 Classic Study</div>
+    <div class="sb-header-sub">Bartlett (1932) · War of the Ghosts</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s0">Start Here: The Story That Would Not Survive</a></li>
+    <li class="sb-item"><a href="#s1">1. The Story, the Aim and the Method</a></li>
+    <li class="sb-item"><a href="#s2">2. Evidence: What the Retellings Changed</a></li>
+    <li class="sb-item"><a href="#s3">3. Conclusion: Memory Is Reconstructive</a></li>
+    <li class="sb-item"><a href="#s4">4. Evaluation</a></li>
+    <li class="sb-item"><a href="#s5">5. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s6">6. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s7">7. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>2.3.1 CLASSIC STUDY: BARTLETT (1932)<br><span style="font-size:0.65em">War of the Ghosts · Serial reproduction · Reconstructive memory · War of the Ghosts 与记忆重构</span></h1>
+  <div class="meta">
+    <span class="badge">Topic B · Cognitive psychology</span>
+    <span class="badge">Classic study</span>
+    <span class="badge">Spec 2.3.1</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.13 · pp.125–127</span>
+  </div>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Describe the aim, sample and procedure</strong> of Bartlett's War of the Ghosts study, including serial reproduction.</li>
+    <li><strong>Recall the key findings</strong>: which details changed, which survived, and the numbers (330 → 180 words; title changes).</li>
+    <li><strong>Explain the conclusion</strong> that memory is reconstructive, shaped by cultural expectations and schemas.</li>
+    <li><strong>Evaluate the study</strong> on standardisation, replication (Roediger et al.), the unfamiliarity problem (Wynne &amp; Logie 1998), controls and generalisability.</li>
+    <li><strong>Answer exam questions</strong> on the sample (1 mark), one improvement (2 marks) and a full 8-mark evaluation.</li>
+  </ul>
+</div>
+
+<div class="quick-summary">
+  <h4>What this page is really asking</h4>
+  <ol>
+    <li><strong>Can a story survive retelling?</strong> Bartlett gave students a Native American folk tale full of unfamiliar names and objects, asked them to recall it over minutes, days, weeks and years — and watched the story quietly turn into something the students found more familiar.</li>
+    <li><strong>Order survives, content transforms.</strong> The sequence of events stayed roughly intact, but the story shrank from 330 words to about 180, unfamiliar objects were swapped for familiar ones (canoe → boat), and the ghosts were dropped or explained away.</li>
+    <li><strong>The conclusion changed psychology.</strong> Memory is not a playback; it is rebuilt on every recall using what you already know — which is exactly why an unfamiliar story distorts fastest.</li>
+    <li><strong>The method was loose and the claim needs care.</strong> The distortion pattern itself has replicated (Roediger et al.), but the leap to "memory is unreliable in everyday life" is challenged by Wynne and Logie (1998), because everyday material is rarely this unfamiliar.</li>
+  </ol>
+</div>
+
+<!-- ============ 0 ============ -->
+<section class="section" id="s0">
+  <h2>Start Here: The Story That Would Not Survive</h2>
+  <div class="sc-item"><span class="sc-tag">背景</span>心理课课间，老师组织了一场传话游戏。他私下把一段约三百字的故事拿给第一位同学看：故事来自另一个文化，人名、地名、物品全是大家没见过的。第一位同学凭记忆讲给第二位，一路传下去，直到第八位。</div>
+  <div class="sc-item"><span class="sc-tag">角色</span>你是围观的同学。下课铃响时，老师把原版故事和第八位同学写下的版本并排贴在黑板上。</div>
+  <div class="sc-item"><span class="sc-tag">任务</span>对比两个版本：事件的先后顺序基本没乱，但故事短了一大截；「独木舟」变成了「小船」，「猎海豹」变成了「钓鱼」，「鬼魂」那段情节被改成了「他们大概是敌人」。最流畅的地方，恰恰是改动最大的地方。</div>
+  <div class="sc-item"><span class="sc-tag">目标</span>先猜下面这题：哪类内容最先被改掉？读完这一页，你不只能回答它，还能看懂一个更大的东西：心理学里「记忆是重构的」这个模型，是怎么从一个小小的传话实验里长出来的。猜完别急着走，再往下追问两层，先自己想，再点开提示。</div>
+  <div class="sc-predict">
+    <h4><span class="sc-tag" style="background:#3b82f6">先猜</span>故事传到第八个人时，最先被改掉的是哪类内容？</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">事件的先后顺序：传的次数多了，情节框架最先乱掉</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">名字、生词、不熟悉的物件：最先被丢掉，或者被换成熟悉的东西</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">什么都不会变：听过八遍等于复习八遍，最后一版应该最接近原版</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="sc-ask">
+    <h4><span class="sc-tag" style="background:#ca8a04">追问</span>猜完先别走：这两个问题没有选项，先自己想，再点开提示。</h4>
+    <div class="sc-ask-step">
+      <p class="ask-q">追问一：第八版又短又通顺，读起来完全是「我们这边的故事」，这算记性好，还是记性差？</p>
+      <button class="ask-toggle" data-target="ask-h1">想好了？看提示 →</button>
+      <div class="ask-hint" id="ask-h1">
+        <p class="hint-label">提示</p>
+        <p>更通顺恰恰是问题所在。他能讲顺，是因为他顺手用自己熟悉的概念替换了陌生概念：替换得越顺滑，说明重构发生得越多。「讲得好」和「记得准」是两回事。</p>
+      </div>
+    </div>
+    <div class="sc-ask-step locked">
+      <p class="ask-q">追问二：老师说「传话游戏证明人类的记忆不可靠」。这句话能直接推广到日常生活吗？</p>
+      <button class="ask-toggle" data-target="ask-h2" disabled>想好了？看提示 →</button>
+      <div class="ask-hint" id="ask-h2">
+        <p class="hint-label">提示</p>
+        <p>不能直接推。传话游戏挑的材料刻意求陌生；日常生活里我们记的大多是熟悉的事件。Wynne 和 Logie (1998) 让大学生回忆入学初期的真实事件，反复回忆几个月，几乎没发现什么重构。材料越陌生，错误越多，这是 Bartlett 的设计选择，也是评价他时最关键的一句。</p>
+      </div>
+    </div>
+    <p class="ask-land">带着这两个追问往下读：Bartlett 用一个「最陌生的故事」逼出了记忆的重构本性，也顺手埋下了「记忆真有这么不可靠吗」的质疑。</p>
+  </div>
+</section>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. The Story, the Aim and the Method</h2>
+  <p>You have just watched reconstruction happen in miniature: every retelling in the game was one cycle of what Bartlett called <strong>serial reproduction</strong>（系列再现：同一名参加者在越来越长的时间间隔后反复回忆同一材料）. In his study, Bartlett turned that classroom game into an experiment. His <strong>aim</strong> was to investigate whether memory for an unfamiliar story would be affected by previously stored knowledge — in other words, whether memory is <strong>reconstructive</strong>（重构式的：回忆时用已有知识和预期把记忆重新搭出来，而不是原样播放）, and whether recall would be shaped by cultural expectations and <strong>schemas</strong>（图式：头脑中已有的知识框架，用来组织和解释新信息）.</p>
+  <div class="note-box">
+    <h4>The story itself: 'War of the Ghosts'</h4>
+    <p class="small" style="line-height:1.9"><em>One night two young men from Egulac went down to the river to hunt seals, and whilst they were there it became foggy and calm. Then they heard war-cries, and they thought 'Maybe this is a war party'. They escaped to the shore, and hid behind a log. Now canoes came up, and they heard the noise of paddles, and saw one canoe coming up to them.</em></p>
+    <p class="small" style="line-height:1.9"><em>There were five men in the canoe, and they said, 'What do you think? We wish to take you along. We are going up the river to make war on the people.'</em></p>
+    <p class="small" style="line-height:1.9"><em>One of the young men said, 'I have no arrows.' 'Arrows are in the canoe,' they said. 'I will not go along. I might be killed. My relatives do not know where I have gone. But you,' he said, turning to the other, 'may go with them.'</em></p>
+    <p class="small" style="line-height:1.9"><em>So one of the young men went, but the other returned home. And the warriors went up the river to a town on the other side of Kalama. The people came down to the water, and they began to fight, and many were killed. But presently the young man heard one of the warriors say, 'Quick, let us go home: that Indian has been hit.' Now he thought: 'Oh, they are ghosts.' He did not feel sick, but they said he had been shot.</em></p>
+    <p class="small" style="line-height:1.9"><em>So the canoes went back to Egulac, and the young man went ashore to his house and made a fire. And he told everybody and said: 'Behold I accompanied the ghosts, and we went to fight. Many of our fellows were killed, and many of those who attacked us were killed. They said I was hit, and I did not feel sick.'</em></p>
+    <p class="small" style="line-height:1.9"><em>He told it all, and then he became quiet. When the sun rose he fell down. Something black came out of his mouth. His face became contorted. The people jumped up and cried.</em></p>
+    <p class="small" style="line-height:1.9"><em>He was dead.</em></p>
+  </div>
+  <ul class="tight">
+    <li><strong>Sample:</strong> 20 British undergraduate students at the University of Cambridge — 7 male, 13 female. They were not told the aim of the study, only that they would be tested on the accuracy of their recall. A Western sample recalling a culturally unfamiliar story was exactly the contrast Bartlett wanted.</li>
+    <li><strong>Procedure:</strong> participants read the story to themselves twice, then recalled it at different intervals — once after 15 minutes, then at intervals of several hours, days, weeks and even years. Each recall is one reproduction, and the changes across reproductions are the data.</li>
+  </ul>
+  <p class="small">Back to the game: in the classroom version, eight people formed the chain and the story degraded as it went. Bartlett's participants did the same job alone, with time doing the work that the chain of classmates did.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>流程记四个数：20 名剑桥本科生（7 男 13 女）、故事读两遍、15 分钟后第一次回忆，之后间隔逐级拉长，从几小时一直到几周、几年。三个关键点：① 参加者不知道实验目的，只知道「要测回忆的准确性」，所以不会故意配合；② 材料是北美原住民故事，人名（Egulac、Kalama）和内容对英国学生全部陌生，而这种陌生正是刻意设计的；③ 「系列再现」指的是同一个人隔越来越久回忆同一材料，跟传话游戏（不同的人接力）不一样，考试别混。</p>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Evidence: What the Retellings Changed</h2>
+  <p>The reproductions changed from the very first recall at 15 minutes, and kept changing across the later ones. Two things happened at once: the <strong>order</strong> of events was relatively preserved, while the <strong>content</strong> was steadily transformed to align with the students' cultural schemas.</p>
+  <svg viewBox="0 0 680 210" role="img" aria-label="Story length shrank across reproductions">
+    <text x="60" y="47" font-size="12" font-weight="700" fill="#334155">Original</text>
+    <rect x="180" y="30" width="330" height="26" rx="5" fill="#ea580c"/>
+    <text x="345" y="47" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">330 words</text>
+    <text x="60" y="87" font-size="12" font-weight="700" fill="#334155">Later versions</text>
+    <rect x="180" y="70" width="180" height="26" rx="5" fill="#f97316"/>
+    <text x="270" y="87" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">about 180 words</text>
+    <text x="60" y="127" font-size="12" font-weight="700" fill="#334155">Preserved</text>
+    <rect x="180" y="110" width="460" height="26" rx="5" fill="#f8fafc" stroke="#cbd5e1"/>
+    <rect x="180" y="110" width="300" height="26" fill="#16a34a"/>
+    <text x="330" y="127" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">Order of events stayed intact</text>
+    <text x="60" y="167" font-size="12" font-weight="700" fill="#334155">Rebuilt</text>
+    <rect x="180" y="150" width="460" height="26" rx="5" fill="#f8fafc" stroke="#cbd5e1"/>
+    <rect x="180" y="150" width="460" height="26" fill="#dc2626"/>
+    <text x="410" y="167" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">Content omitted, simplified, made familiar</text>
+    <text x="340" y="202" text-anchor="middle" font-size="11.5" fill="#475569">The story did not fade evenly: it was rewritten towards what the students already knew.</text>
+  </svg>
+  <ul class="tight">
+    <li><strong>The story got shorter.</strong> From 330 words in the original to around 180 words after repeated reproductions, because the first recall already omitted or simplified details and each later version consolidated those cuts.</li>
+    <li><strong>The title did not survive either.</strong> Seven participants omitted the title altogether, and ten transformed it, for example into 'War-Ghost story'.</li>
+    <li><strong>Unfamiliar objects became familiar ones.</strong> 'Canoe' was changed to 'boat'; 'hunting seals' became 'fishing'.</li>
+    <li><strong>The ghosts were the biggest casualty.</strong> Many participants did not grasp the role of the ghosts in the story, so they simply left them out or rationalised their presence in some way.</li>
+  </ul>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>发现记「三保三换」。保住的：事件顺序大体不变。换掉的分三类：① 物品熟悉化：独木舟变小船、猎海豹变钓鱼；② 情节合理化：鬼魂要么被删掉，要么被解释成说得通的东西；③ 整体压缩：330 词缩到约 180 词，标题 7 人直接删、10 人改名。最关键的时间点：15 分钟后的第一次回忆就已经出错，而且这些错误会在后面的回忆里被固定下来，不是越忘越少，是错误越滚越结实。</p>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Conclusion: Memory Is Reconstructive</h2>
+  <p>Bartlett concluded that memory is <strong>reconstructed each time it is recalled</strong>. It is rarely accurate, and it is prone to <strong>distortion, rationalisation, transformation and simplification</strong>. Even recall after a few minutes produced errors — and those errors were not corrected later but consolidated into subsequent reproductions. Remembering, in his account, is a constructive process guided by the cultural inferences the rememberer brings to the material.</p>
+  <p>This is the evidence behind the theory you met in 2.1.3: when Bartlett's students hit something their schemas could not absorb — a ghost, a seal hunt, a name like Kalama — they did not store it and forget it; they rebuilt the story around it until it made sense to them. The unfamiliar details were not simply lost. They were <em>replaced</em>.</p>
+  <p class="small">Back to the game: the eighth student's version was smoother and shorter because reconstruction had eight cycles to work with. Bartlett's participants produced the same kind of drift alone — smoothness, familiarity, shrinking length — which is why the game makes a good opening but a poor substitute for his method.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>结论一句话：每次回忆都是一次重新搭建。四个关键词按考试频率排：distortion（歪曲）、rationalisation（合理化：把讲不通的情节说成说得通）、transformation（转换）、simplification（简化）。两条易错点：① 错误出现在 15 分钟后，且会被后续回忆固化，不是「刚记完最准」；② 记忆不是「存了再丢」，是「用熟悉的东西替换陌生的」，这正是 2.1.3 重构记忆理论的实验证据。</p>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Evaluation: How Far Can the Ghosts Take Us?</h2>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Strengths</h4>
+      <ul class="tight">
+        <li><strong>Pioneering.</strong> The study challenged the assumption that memory is an accurate, faithful record of events, and this new approach led to many advancements in memory research.</li>
+        <li><strong>Depth through qualitative analysis.</strong> Describing <em>how</em> the stories changed gave a depth of understanding that a correct/incorrect score could never offer.</li>
+        <li><strong>Real-world application.</strong> It is applied in legal settings: if eyewitnesses simplify and rationalise what they saw, the police can be cautious about treating testimony as evidence.</li>
+        <li><strong>Standardised material, and it replicated.</strong> Every participant recalled the same story, so the study can be retested. Roediger et al. attempted a replication with 30 Washington University undergraduates and found similar forgetting and distortion after six months, supporting Bartlett's findings.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Weaknesses</h4>
+      <ul class="tight">
+        <li><strong>The unfamiliarity problem.</strong> The story was deliberately unfamiliar — that was the point — but it can mislead us into assuming memory is generally unreliable. Everyday material is familiar, and Wynne and Logie (1998) found that students recalling real events from their first year at university showed very limited reconstructive memory. In real life, memory may not be as reconstructive as Bartlett claimed.</li>
+        <li><strong>No controls between reading and recall.</strong> We cannot be sure participants did not re-read the story or discuss it with others across the hours, days and weeks, which reduces the reliability of the findings.</li>
+        <li><strong>Small, culturally narrow sample.</strong> Only 20 British undergraduates. That made sense for testing cultural schema against an unfamiliar story, but we cannot know whether other cultures would transform the story the same way, because no other cultures were tested.</li>
+        <li><strong>Lacks scientific rigour.</strong> Participants were reasonably free to deliberate over the stories; in one instance Bartlett simply bumped into a previous participant after six-and-a-half years and suggested he recall the story. The findings were qualitative and descriptive, open to subjective interpretation.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">A fair verdict: the <em>pattern</em> of change is trustworthy — standardised material and the Roediger replication support it — but the pessimistic extrapolation to everyday memory is not, because everyday material is rarely as unfamiliar as the Ghosts.</p>
+  <div class="exam-tip"><strong>Exam tip:</strong> the 8-mark evaluation is marked AO1 4 + AO3 4. Spend the AO1 marks describing the procedure and findings accurately (20 undergraduates, serial reproduction, 330 → 180 words, canoe → boat), then spend the AO3 marks making linked judgements — for example: standardisation + Roediger replication <em>supports</em> reliability, but no controls between readings + the unfamiliarity problem (Wynne &amp; Logie) <em>limits</em> what the conclusions can claim.</div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>评价记「四绿四红」和一句裁决。绿记四条：开创性（推翻「记忆是精确录像」）；质性分析把「变化怎么发生」交代得细；应用于目击证词；材料标准化且被 Roediger 用 30 名华盛顿大学学生重复出类似结果。红：材料刻意陌生导致悲观结论（Wynne &amp; Logie 1998 反例）、读与忆之间零控制、样本仅 20 名英国本科生、流程随意（六年后路上偶遇就让人回忆）加质性资料主观性强。裁决句：变化的「模式」可信，推广到日常记忆的「悲观结论」不可信。</p>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Exam Lab</h2>
+  <div class="exam-practice">
+    <div class="xp-block">
+      <h4>Q1 · Describe <span class="xp-badge">1 mark</span></h4>
+      <div class="xp-intro"><strong>Describe the sample that Bartlett used in his study.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans1')">Show answer</button></div>
+      <div class="xp-result" id="ans1" hidden>
+        <p>Bartlett's sample was 20 British undergraduate students attending the University of Cambridge, of whom 7 were male and 13 were female.</p>
+        <p class="xp-case">Marking guidance: 1 mark for an accurate description (number + who they were). One detailed sentence is enough for a one-mark question — but it must name both the number and the population.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q2 · Explain one improvement <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Explain one improvement to Bartlett's War of the Ghosts study.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans2')">Show answer</button></div>
+      <div class="xp-result" id="ans2" hidden>
+        <p><strong>Improvement: control what participants did between readings.</strong> Bartlett applied no controls between reading the story and recalling it hours, days, weeks or years later, so participants might have re-read the story or discussed it with others, and we cannot be sure their recall reflected memory alone. The study could be improved by requiring participants to confirm at each recall that they had not encountered the story in the meantime — for example by signing a statement to that effect. This would isolate the effect of time and schemas on recall, so any transformations found could be attributed to reconstructive memory rather than to extra exposure, increasing the internal validity of the conclusions.</p>
+        <p class="xp-case">Marking guidance: 1 mark for identifying a valid improvement (e.g. controls between readings; a larger and more culturally varied sample; a familiar story as a comparison condition), 1 mark for explaining how it improves the study (validity, reliability or generalisability).</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q3 · Evaluate <span class="xp-badge">8 marks</span></h4>
+      <div class="xp-intro"><strong>Evaluate Bartlett's War of the Ghosts study.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans3')">Show answer</button></div>
+      <div class="xp-result" id="ans3" hidden>
+        <p><strong>AO1 — what Bartlett did and found.</strong> Bartlett investigated whether memory for an unfamiliar story is affected by previously stored knowledge. Twenty British undergraduates (7 male, 13 female) at the University of Cambridge read the Native American tale 'War of the Ghosts' twice and recalled it after 15 minutes and at intervals of hours, days, weeks and years (serial reproduction). The order of events was relatively preserved, but the stories shrank from 330 to around 180 words, seven participants omitted the title and ten changed it, unfamiliar objects became familiar ('canoe' → 'boat', 'hunting seals' → 'fishing'), and the ghosts were omitted or rationalised. He concluded that memory is reconstructed at each recall, guided by cultural schemas.</p>
+        <p><strong>AO3 — strength: standardisation and replication.</strong> Every participant recalled the same story, so the material was standardised and the study can be retested. Roediger et al.'s replication with 30 Washington University undergraduates found similar forgetting and distortion after six months, which supports the reliability of the reconstructive pattern and its status as a foundation for memory research.</p>
+        <p><strong>AO3 — strength: application.</strong> The findings are applied in legal contexts: because eyewitnesses tend to simplify and rationalise criminal events, the police can treat testimony with appropriate caution rather than as a faithful record.</p>
+        <p><strong>AO3 — weakness: the unfamiliarity problem.</strong> The story was deliberately unfamiliar, which inflates distortion and risks an overly pessimistic view of memory. Wynne and Logie (1998) asked students to recall real events from the start of their first university year over several months and found very limited reconstruction, suggesting everyday memory — which deals in familiar material — is less reconstructive than Bartlett claimed.</p>
+        <p><strong>AO3 — weakness: controls and rigour.</strong> Nothing controlled what participants did between readings, so re-reading or discussion could explain part of the changes. The procedures were loosely standardised — one participant was simply bumped into after six-and-a-half years — and the qualitative analysis is open to subjective interpretation, weakening the scientific status of the conclusions. The sample of 20 British undergraduates also limits generalisability to other cultures, which were never tested.</p>
+        <p><strong>Overall judgement.</strong> The reconstructive pattern itself is well supported, but the study's casual procedures mean the <em>strength</em> of the claim should be limited to unfamiliar material rather than memory in general.</p>
+        <p class="xp-case">Marking guidance: AO1 (4) accurate description of aim, sample, procedure and findings; AO3 (4) linked evaluation with evidence (Roediger replication; Wynne &amp; Logie; controls; sample; scientific rigour). A judgement is needed for the top marks — not four unconnected strengths followed by four weaknesses.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Checkpoint</h2>
+  <div class="xp-block">
+    <h4>Q1 · Who took part in Bartlett's study?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">20 British undergraduates at the University of Cambridge (7 male, 13 female)</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">30 undergraduates at Washington University</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">72 volunteers from the University of Aberdeen panel</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q2 · What is serial reproduction?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Passing a story from person to person, each one retelling it to the next</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">One participant recalling the same material at increasing time intervals</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Re-reading a story repeatedly until it can be recalled perfectly</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q3 · Which feature of the story was relatively preserved across reproductions?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The role of the ghosts</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The number of words</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">The order of the events</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q4 · What typically happened to 'canoe' and 'hunting seals' in the retellings?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">They were kept exactly as written, because they were the most vivid details</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">They were made familiar: 'canoe' became 'boat' and 'hunting seals' became 'fishing'</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">They were always omitted entirely, leaving the story unrecognisable</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q5 · What did Wynne and Logie (1998) find, and why does it matter for Bartlett?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">They replicated Bartlett exactly, confirming that all memory is reconstructive</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Students recalling familiar real events showed very limited reconstruction, challenging the pessimistic extrapolation from Bartlett's unfamiliar story</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">They showed that recall gets more accurate the longer the interval</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q6 · Why does the Roediger et al. replication matter for evaluating Bartlett?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">It shows Bartlett's original numbers were wrong and need correcting</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">It proves that only British participants reconstruct stories</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">It found similar forgetting and distortion after six months with different participants, supporting the reliability of the reconstructive pattern</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Key Terms</h2>
+  <div class="keyterm-box"><span class="kt">serial reproduction</span><br><span class="zh">系列再现：同一名参加者在越来越长的时间间隔后反复回忆同一材料（从 15 分钟一直到几周、几年）</span></div>
+  <div class="keyterm-box"><span class="kt">reconstructive memory</span><br><span class="zh">重构式记忆：回忆时用已有知识和预期把记忆重新搭出来，而不是原样播放录像</span></div>
+  <div class="keyterm-box"><span class="kt">schema</span><br><span class="zh">图式：头脑中已有的知识框架，用来组织和解释新信息；材料不合图式时最容易被改写</span></div>
+  <div class="keyterm-box"><span class="kt">rationalisation</span><br><span class="zh">合理化：把回忆里讲不通的情节改成能自圆其说的版本（例如给鬼魂的情节找一个「说得过去」的解释）</span></div>
+  <div class="keyterm-box"><span class="kt">distortion</span><br><span class="zh">歪曲：回忆内容偏离原始材料的总称，包括替换、压缩与添加</span></div>
+  <div class="keyterm-box"><span class="kt">qualitative data</span><br><span class="zh">质性资料：描述「变化是怎么发生的」的文字资料；信息量大，但分析带有主观解释空间</span></div>
+  <div class="keyterm-box"><span class="kt">standardisation</span><br><span class="zh">标准化：所有参加者使用完全相同的故事材料，使研究可被重复检验</span></div>
+  <div class="keyterm-box"><span class="kt">replication</span><br><span class="zh">重复验证：其他研究者在别处重做同一研究（Roediger et al. 用 30 名华盛顿大学学生得出类似结果）</span></div>
+  <div class="keyterm-box"><span class="kt">generalisability</span><br><span class="zh">可推广性：结论能否推广到样本之外的人群与文化；20 名英国本科生限制了跨文化推广</span></div>
+</section>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  /* ---------- sidebar scroll spy ---------- */
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  /* ---------- reveal helper ---------- */
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  /* ---------- multiple choice: one why per option ---------- */
+  var secWhy = {
+  s0: [
+    [
+      '顺序恰恰是最先「保住」的东西：Bartlett 的记录是事件的先后次序相对完整，被改的是内容本身。',
+      '正确。最不熟悉的信息最先遭殃：标题 7 人删掉、10 人改写；独木舟变小船、猎海豹变钓鱼；鬼魂要么被删要么被合理化。材料的陌生程度和被改写的速度成正比。',
+      '多听几遍不等于复习：回忆的间隔越拉越长，而且错误一旦出现会被后续回忆固化——第八版不是最准的版本，是离原版最远的版本。'
+    ]
+  ],
+  s6: [
+    [
+      '这是 Roediger et al. 重复实验的样本，不是 Bartlett 本人用的。',
+      '正确。20 名剑桥本科生，7 男 13 女，只被告知要测回忆准确性，不知道实验目的。华盛顿大学的 30 人是后来的重复实验样本。',
+      '72 名阿伯丁志愿者是 Darling et al. (2007) 的样本，属于本主题另一项研究。'
+    ]
+    ,[
+      '这是传话游戏的接力方式，不是 Bartlett 的方法；他的参加者始终是同一个人。',
+      '正确。系列再现是同一名参加者在越来越长的时间间隔后反复回忆同一材料。传话游戏是不同的人接力，两者考试时容易混。',
+      '反复重读直到记住是在测「学习」，不是在测「回忆会怎么变」。'
+    ]
+    ,[
+      '鬼魂恰恰是最先消失的角色：很多参加者没读懂它们的作用，直接删除或给了个合理解释。',
+      '词数从 330 缩到约 180——长度是变化最大的指标之一，不是被保住的东西。',
+      '正确。事件顺序相对完整地保留了下来，被改写的是内容：物件被换成熟悉的、情节被压缩和合理化。这条「顺序保住、内容重构」的不对称，是答题时最值得写的细节。'
+    ]
+    ,[
+      '这些细节并不「生动好记」——它们正是图式消化不了的部分，注定被改写。',
+      '正确。陌生的物件被替换成熟悉的对应物：独木舟变小船、猎海豹变钓鱼。替换得越自然，说明重构发生得越多。',
+      '偶尔整段省略是简化的一种，但「必然删到面目全非」说过头了：顺序一直都在，故事骨架还在。'
+    ]
+    ,[
+      '他们的发现方向恰好相反：熟悉的真实事件几乎没有被重构。',
+      '正确。Wynne 和 Logie 让大学生回忆入学初期的真实事件并隔几个月反复回忆，几乎没发现重构——因为日常材料不陌生。这限制了把 Bartlett 的悲观结论推广到日常记忆。',
+      '间隔越长越准与所有证据相反：Bartlett 的错误会随后续回忆被固化。'
+    ]
+    ,[
+      'Roediger 的结果与 Bartlett 一致，是支持而不是纠正。',
+      '只有英国人参加的说法不成立；重复实验恰恰用的是美国学生。',
+      '正确。重复实验用 30 名华盛顿大学本科生，六个月后出现类似的遗忘和歪曲，说明重构模式不依赖 Bartlett 的那批特定参加者，这直接支持了发现的可靠性。'
+    ]
+  ]
+};
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = (btn.closest('.xp-block') || section).querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+
+/* Socratic sc-ask: progressive reveal, next step unlocks after previous hint opens */
+(function () {
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.sc-ask-step'));
+  if (!steps.length) return;
+  steps.forEach(function (step, i) {
+    var btn = step.querySelector('.ask-toggle');
+    var hint = document.getElementById(btn ? btn.getAttribute('data-target') : '');
+    if (!btn || !hint) return;
+    btn.addEventListener('click', function () {
+      var open = hint.classList.toggle('show');
+      btn.textContent = open ? '收起提示' : '想好了？看提示 →';
+      if (open && i + 1 < steps.length) {
+        var next = steps[i + 1];
+        next.classList.remove('locked');
+        var nb = next.querySelector('.ask-toggle');
+        if (nb) nb.disabled = false;
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

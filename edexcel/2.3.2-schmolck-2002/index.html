@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.3.2 Contemporary Study — Schmolck et al. (2002)</title>
+<style>
+
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.sc-item { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-size: .95em; line-height: 1.7; margin: 8px 0; }
+.sc-tag { display: inline-block; background: var(--accent); color: #fff; font-size: .72em; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-right: 8px; }
+.sc-predict { background: #eff6ff; border: 1.5px solid #3b82f6; border-radius: 10px; padding: 14px 18px; margin: 16px 0 4px; }
+.sc-predict h4 { margin: 0 0 6px; color: #1d4ed8; }
+body.dark .sc-item { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .sc-tag { background: #3b82f6; }
+body.dark .sc-predict { background: rgba(59,130,246,.08); border-color: #3b82f6; }
+body.dark .sc-predict h4 { color: #93c5fd; }
+.sc-ask { background: #fefce8; border: 1.5px solid #ca8a04; border-radius: 10px; padding: 14px 18px; margin: 14px 0 4px; }
+.sc-ask h4 { margin: 0 0 4px; color: #854d0e; font-size: .95em; }
+.sc-ask-step { background: #fff; border: 1px solid #e7e5e4; border-radius: 8px; padding: 10px 14px; margin: 10px 0 0; }
+.sc-ask-step.locked { opacity: .45; }
+.sc-ask-step .ask-q { font-weight: 600; font-size: .95em; margin: 0; line-height: 1.7; }
+.ask-toggle { background: #fff; border: 1px solid #d6d3d1; border-radius: 8px; padding: 5px 12px; font-size: .82rem; font-weight: 500; color: #57534e; cursor: pointer; margin-top: 8px; transition: all .15s; }
+.ask-toggle:hover:not(:disabled) { border-color: #ca8a04; color: #854d0e; }
+.ask-toggle:disabled { cursor: not-allowed; opacity: .6; }
+.ask-hint { display: none; border-top: 1px dashed #e7e5e4; margin-top: 10px; padding-top: 8px; }
+.ask-hint.show { display: block; }
+.ask-hint .hint-label { font-size: .75em; color: #a8a29e; margin: 0 0 4px; font-weight: 700; }
+.ask-hint p { margin: 0; font-size: .92em; line-height: 1.75; }
+.ask-land { margin: 12px 0 0; font-size: .9em; color: #854d0e; line-height: 1.7; }
+body.dark .sc-ask { background: rgba(202,138,4,.08); border-color: #ca8a04; }
+body.dark .sc-ask h4 { color: #fde047; }
+body.dark .sc-ask-step { background: #16213e; border-color: #334155; }
+body.dark .sc-ask-step.locked { opacity: .5; }
+body.dark .ask-toggle { background: #16213e; border-color: #334155; color: #94a3b8; }
+body.dark .ask-toggle:hover:not(:disabled) { border-color: #ca8a04; color: #fde047; }
+body.dark .ask-hint { border-top-color: #334155; }
+body.dark .ask-hint .hint-label { color: #64748b; }
+body.dark .ask-hint p { color: #cbd5e1; }
+body.dark .ask-land { color: #fde047; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic B · Cognitive psychology — 2.3.2 Schmolck et al. (2002)</span>
+  </div>
+  <span class="nav-pill">🧠 Cognitive Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">2.3.2 Contemporary Study</div>
+    <div class="sb-header-sub">Schmolck et al. (2002) · HM &amp; semantic knowledge</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s0">Start Here: Three Definitions of a Swan</a></li>
+    <li class="sb-item"><a href="#s1">1. The Aim: Where Does Semantic Knowledge Live?</a></li>
+    <li class="sb-item"><a href="#s2">2. Sample and the Thirteen Tests</a></li>
+    <li class="sb-item"><a href="#s3">3. Evidence: The Scores by Damage Site</a></li>
+    <li class="sb-item"><a href="#s4">4. Conclusions and the Special Case of HM</a></li>
+    <li class="sb-item"><a href="#s5">5. Evaluation</a></li>
+    <li class="sb-item"><a href="#s6">6. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s7">7. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s8">8. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>2.3.2 CONTEMPORARY STUDY: SCHMOLCK ET AL. (2002)<br><span style="font-size:0.65em">Semantic knowledge · HM · medial &amp; lateral temporal lobes · 语义知识与脑损伤定位</span></h1>
+  <div class="meta">
+    <span class="badge">Topic B · Cognitive psychology</span>
+    <span class="badge">Contemporary study</span>
+    <span class="badge">Spec 2.3.2</span>
+    <span class="badge">📖 Textbook Book 1 · Ch.13 · pp.128–132</span>
+  </div>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Describe the aim</strong> of the study: relating semantic test scores to the site of temporal lobe damage, and deciding whether HM was unique.</li>
+    <li><strong>Reproduce the design</strong>: six amnesia patients in three groups (HF, MTL+, HM) compared with eight matched controls, and the 48 line drawings behind the tests.</li>
+    <li><strong>Interpret the results</strong>: hippocampus-only damage leaves semantic knowledge intact, while anterolateral temporal cortex damage impairs it, especially for living things.</li>
+    <li><strong>Explain the HM special case</strong>: his grammatical errors, the nurture explanation and why it cannot be settled.</li>
+    <li><strong>Evaluate the study</strong> on converging evidence, the 14 raters, small samples, retrospective causal limits, ecological validity and social sensitivity.</li>
+  </ul>
+</div>
+
+<div class="quick-summary">
+  <h4>What this page is really asking</h4>
+  <ol>
+    <li><strong>Can a brain lesion tell us where a memory system sits?</strong> Patients with damage in different temporal lobe regions were given the same semantic tests; the pattern of who failed what acts like a map.</li>
+    <li><strong>The hippocampus is not the semantic store.</strong> The two HF patients, whose damage was largely restricted to the hippocampus, performed like the controls. The three MTL+ patients, with medial plus anterolateral damage, did not.</li>
+    <li><strong>HM was almost, but not quite, one of them.</strong> He resembled the MTL+ group on definitions yet stayed in the normal range on other tests, and made a striking number of grammatical errors that the researchers traced to his upbringing rather than his surgery.</li>
+    <li><strong>The method is powerful but retrospective.</strong> Rare case studies cannot prove cause, the line drawings may lack mundane realism, and 14 independent raters were needed to keep the qualitative scoring objective.</li>
+  </ol>
+</div>
+
+<!-- ============ 0 ============ -->
+<section class="section" id="s0">
+  <h2>Start Here: Three Definitions of a Swan</h2>
+  <div class="sc-item"><span class="sc-tag">背景</span>神经科病房里，研究者给三位病人看同一张天鹅的线条画，请他们说出这是什么、并给出一个定义。三个人都做过脑部手术或患过脑炎，损伤位置各不相同。</div>
+  <div class="sc-item"><span class="sc-tag">角色</span>你是跟随查房的实习生，负责把三段回答按 0 到 4 分打分：分数只看定义是否准确，不看说了多少字。</div>
+  <div class="sc-item"><span class="sc-tag">任务</span>甲答得干净利落，和正常人一样；乙连名字都报不出来；丙说了一长串：「嗯……天鹅……有时候会飞……不过它也待在水上……还去抓鱼……脖子很长……它们能把鱼存在嘴里……有些是白的，有些是棕的……」信息量最大，却是全场最低分之一。</div>
+  <div class="sc-item"><span class="sc-tag">目标</span>先猜下面这题：说得多却得分低，问题出在哪儿？读完这一页你会拿到一张「损伤位置 → 语义能力」的对照地图。猜完别急着走，再往下追问两层，先自己想，再点开提示。</div>
+  <div class="sc-predict">
+    <h4><span class="sc-tag" style="background:#3b82f6">先猜</span>丙说了一大堆关于天鹅的事，为什么反而算语义知识受损？</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">他说得太长了，评分者没耐心看完，所以分数被压低</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">他给的是零散的外围联想，没有抓住「天鹅是一种鸟」这层概念核心</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">他把天鹅说成白色的，可天鹅中也有棕色的品种，事实性错误导致扣分</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="sc-ask">
+    <h4><span class="sc-tag" style="background:#ca8a04">追问</span>猜完先别走：这两个问题没有选项，先自己想，再点开提示。</h4>
+    <div class="sc-ask-step">
+      <p class="ask-q">追问一：如果语义知识=「知道一个词的意思」，丙明明知道天鹅会飞、在水上、脖子长，为什么还说他不知道？</p>
+      <button class="ask-toggle" data-target="ask-h1">想好了？看提示 →</button>
+      <div class="ask-hint" id="ask-h1">
+        <p class="hint-label">提示</p>
+        <p>语义知识量的是概念的边界和类别，不是相关特征的堆砌。丙列了一串外围细节，却始终没能给出「一种大型水禽」这类把天鹅放进类别里的表述。0 到 4 分的评分，量的正是这层核心有没有被说出来。</p>
+      </div>
+    </div>
+    <div class="sc-ask-step locked">
+      <p class="ask-q">追问二：这批病人里只有丙的语法错误特别多。能直接下结论说「是颞叶损伤造成了他说话没语法」吗？</p>
+      <button class="ask-toggle" data-target="ask-h2" disabled>想好了？看提示 →</button>
+      <div class="ask-hint" id="ask-h2">
+        <p class="hint-label">提示</p>
+        <p>不能。同样有颞叶损伤的其他病人没有这个特点；研究者反而把他的语言问题归到童年因素（10 岁那次癫痫发作、低社会经济地位、学业中断）。更麻烦的是，他术前从没测过语言，这条因果链永远补不齐。Schmolck 的研究里，「HM 是特例」这句话本身就是一次天性还是教养的开放讨论。</p>
+      </div>
+    </div>
+    <p class="ask-land">带着这两层追问往下读：Schmolck 真正做的事情，是用「哪里坏了」给「语义知识存在哪」画一张定位图；而那位说得最多的病人，恰好是图上最不好标注的一个点。</p>
+  </div>
+</section>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. The Aim: Where Does Semantic Knowledge Live?</h2>
+  <p>You have just spotted the difference between naming things and knowing what they mean: <strong>semantic memory</strong>（语义记忆：关于词义、事实与概念的长期记忆，不依赖某次具体经历）can stay intact even when a person cannot form new memories of events. Case studies of brain-damaged patients are valuable precisely because they draw boundaries between memory systems that blur together in a healthy brain. Damage to the <strong>temporal lobe</strong>（颞叶：大脑两侧靠耳朵的区域）is widely associated with anterograde and retrograde amnesia, yet well-established long-term semantic knowledge often survives.</p>
+  <p>Schmolck, Kensinger, Corkin and Squire set out to investigate the effects of specific brain damage on semantic memory, using case studies of brain-damaged patients compared with a control group of participants without brain damage. Two questions drove the study: <strong>what is the relationship between semantic test scores and the site of temporal lobe damage</strong>, and <strong>whether Henry Molaison (HM) was unique</strong> in how his damage affected his memory compared with similar damage in others.</p>
+  <p>Before the numbers, fix the coordinate system. Three patient groups differ by how far the damage spread from the hippocampus towards the side of the temporal lobe:</p>
+  <table>
+    <tr><th>Group</th><th>Who</th><th>Damage</th><th>What the comparison tests</th></tr>
+    <tr><td><strong>HF</strong></td><td>2 patients</td><td>Damage largely restricted to the <strong>hippocampus</strong>（海马：内侧颞叶深处、与形成新的情景记忆有关）</td><td>Whether the hippocampus itself is needed for semantic knowledge</td></tr>
+    <tr><td><strong>MTL+</strong></td><td>3 patients</td><td>Encephalitis causing large <strong>medial temporal lobe</strong>（内侧颞叶，medial 意为靠近中线）plus <strong>anterolateral temporal cortex</strong>（前外侧颞叶皮层，anterolateral 意为靠前且靠侧面）damage</td><td>Whether damage spreading to the outer temporal cortex changes the picture</td></tr>
+    <tr><td><strong>HM</strong></td><td>1 patient</td><td>Medial temporal lobe damage with some lateral temporal lobe damage, following surgery to resolve his epilepsy</td><td>Whether the most famous amnesia case fits the same pattern as the others</td></tr>
+  </table>
+  <p>All patients had <strong>bilateral</strong>（双侧：大脑两个半球都受累）damage to varying degrees, and the researchers compiled a biography of each patient. Eight control participants were matched to the patients on <strong>age (74), sex (male) and education (12.4 years)</strong>, apart from one female patient.</p>
+  <p class="small">Back to the swan: patient 甲, whose definition was clean, behaves like the HF group; patient 乙, who could not even name it, behaves like the MTL+ group; the long, rambling answer belongs to HM. Section 3 puts the actual scores beside these three answers.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>先建坐标再读数字。三个病人组按「损伤从海马往外扩了多远」排列：HF（只在海马）2 人、MTL+（内侧颞叶加前外侧颞叶皮层，多由脑炎造成）3 人、HM（手术造成内侧加部分外侧损伤）1 人。全部是双侧损伤。对照组 8 人，按年龄 74 岁、男性、受教育 12.4 年匹配（有一名女性病人）。研究目的两句：语义测验成绩与颞叶损伤位置是什么关系；HM 和别人相比是不是特例。</p>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Sample and the Thirteen Tests</h2>
+  <p>The tests were built around <strong>48 line drawings</strong>: 24 animals and 24 objects, split into eight groups of eight — domestic land animals, non-native land animals, water animals, birds, electrical household items, non-electrical household items, vehicles and musical instruments. Nine tests were conducted over three to five sessions (seven from an existing semantic test battery, two written by the researchers); a further four were given to some patients and controls, and of these HM received only test 10.</p>
+  <table>
+    <tr><th>Tests</th><th>What participants did</th></tr>
+    <tr><td><strong>1–4</strong></td><td>Pointed to or named a picture when given its name or a description</td></tr>
+    <tr><td><strong>5</strong></td><td>Answered yes/no questions about the physical and associated features of an object</td></tr>
+    <tr><td><strong>6–7</strong></td><td>Category fluency and sorting: generated or sorted as many examples as possible within a category or class (living/non-living) without a picture cue</td></tr>
+    <tr><td><strong>8–9</strong></td><td>Defined the 24 less common objects from a name or a picture</td></tr>
+    <tr><td><strong>10</strong></td><td>Pyramid and palm tree test: chose which of two test pictures went with a target (a saddle goes with a horse, not a goat)</td></tr>
+    <tr><td><strong>11</strong></td><td>Object/non-object discrimination: decided whether the object shown was real</td></tr>
+    <tr><td><strong>12</strong></td><td>Coloured 28 line drawings using appropriate colours from four coloured pencils</td></tr>
+    <tr><td><strong>13</strong></td><td>Nouns and verbs: a fill-in-the-gaps exercise on regular and irregular verbs and tenses</td></tr>
+  </table>
+  <p>All tests except 8 and 9 were scored as a <strong>percentage of correct responses</strong>. The definitions in tests 8 and 9 were recorded, transcribed, and given an <strong>accuracy rating from 0 to 4</strong> by the researchers; the transcripts were also checked for errors in grammar, expression, confusion and word intrusions, and inter-rater reliability was established for the scoring.</p>
+  <p class="small">Back to the swan: HM's answer was one of the definitions in tests 8 and 9. It was not scored right/wrong but transcribed and rated — which is why a long answer can still receive a low score.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>材料是 48 张线条画（24 只动物、24 件物品，分成八类每类八张）。核心九项测验分三到五次做完，另有四项只给部分人做，HM 只做了第 10 项。评分分两套：其余测验算正确率百分比；第 8、9 项的定义要录音转写，按 0 到 4 分评准确度，同时检查语法错误、表达混乱和词语侵入。记住这个分工：定义题是质性资料，才需要 14 名独立评分者（见 §5）。</p>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Evidence: The Scores by Damage Site</h2>
+  <p>Read the tables as a single argument: the two HF patients, whose damage was largely restricted to the hippocampus, named, pointed to and answered questions about objects with considerable accuracy, and were comparable to the controls when generating category examples or giving definitions. The three MTL+ patients performed less well on naming, pointing and feature questions, had considerable difficulty generating examples in a category, and gave definitions with less detail and more errors. HM performed worst among these patients on definitions.</p>
+  <table>
+    <tr><th>Test</th><th>Controls</th><th>HM</th><th>HF</th><th>MTL+</th></tr>
+    <tr><td><strong>1–4 naming / pointing</strong> (% correct)</td><td>98.9</td><td>96.5</td><td>Comparable to controls</td><td>78.1</td></tr>
+    <tr><td><strong>5 semantic features</strong> (% correct)</td><td>91.9</td><td>85.4 living · 95.8 non-living</td><td>96.9</td><td>76 living · 85.8 non-living</td></tr>
+    <tr><td><strong>6 category fluency</strong> (average items given)</td><td>128.9</td><td>43</td><td>112</td><td>75.7</td></tr>
+    <tr><td><strong>7 sorting</strong> (% correct)</td><td>97</td><td>93.5</td><td>98.5</td><td>97</td></tr>
+    <tr><td><strong>8 definition</strong> (0–4 rating)</td><td>3.2</td><td>1.8</td><td>3.1</td><td>2.0</td></tr>
+    <tr><td><strong>9 definition</strong> (0–4 rating)</td><td>3.2</td><td>2.0</td><td>3.2</td><td>1.8</td></tr>
+  </table>
+  <p class="small">Figures from Tables 13.2–13.4. One MTL+ patient could not generate names of dog breeds despite having been a dog breeder; MTL+ patients found it hardest to identify and recall facts about <strong>living</strong> objects compared with non-living ones across all tasks, and their definitions were often unidentifiable.</p>
+  <div class="note-box">
+    <h4>HM defining a swan (Figure 13.2)</h4>
+    <p class="small" style="line-height:1.9"><em>'Well … a swan … flies around sometime … but it goes on the water too … and goes after fish in a way … and it's got a very long neck … and … these is just scooped over a certain area and they find the fish … a lot of fish in there and they could swallow them … and uh, and the throat … so they can get everything down that way … white … some of them are white, some of them are brown … but you mostly think of a white swan.'</em></p>
+    <p class="small">Rich in associated detail, thin on the concept itself — and full of the grammatical errors that made HM a special case.</p>
+  </div>
+  <p>When participants were ranked by overall performance, their rank corresponded directly with the <strong>extent of brain damage</strong>: damage to the anterolateral temporal cortex seemed to cause the semantic impairment. On tests 10–13, two MTL+ participants performed well on the object decision task but one made eight errors; all MTL+ patients scored well on colouring; MTL+ patients and HM scored either below the required 90 per cent or below the controls on the pyramid and palm tree test; and while MTL+ patients produced regular plurals and verbs but struggled with irregular ones, <strong>HM performed well on both</strong>, suggesting the difficulty with irregular items is associated with anterolateral temporal cortex damage.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>数字抓三个落点：① 命名指认（1–4 题）对照组 98.9、HM 96.5、MTL+ 只有 78.1，HF 组和对照组相当；② 类别流畅性（第 6 题）对照组平均说出 128.9 个、HM 只有 43 个，一位当过养犬人的 MTL+ 病人说不出任何犬种名；③ 定义评分（0 到 4）对照组 3.2、HM 1.8/2.0、HF 3.1/3.2、MTL+ 2.0/1.8。贯穿全表的规律：活物比非活物更难，整体排名和损伤范围一一对应，越靠外侧颞叶皮层受损越重。</p>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Conclusions and the Special Case of HM</h2>
+  <p>The MTL+ data show that damage to the <strong>anterolateral temporal cortex</strong> is consistent with a loss of semantic knowledge: conceptual knowledge becomes 'blurred', so categories overlap and cause confusion. This knowledge is associated with the anterolateral region, <strong>not</strong> the medial temporal lobe — a conclusion consistent with patients with <strong>semantic dementia</strong>（语义性痴呆：语义记忆进行性丧失的神经退行性疾病）, whose impairment is restricted to the anterolateral temporal cortex while the medial temporal lobe is relatively unaffected. MRI scans also suggest that the more progressed the disease, the greater the anterolateral damage. Because HF patients performed like the controls, the researchers concluded that <strong>the hippocampus is not involved in semantic knowledge</strong>, and because HM was less affected than the MTL+ patients, that the anterolateral temporal cortex rather than the medial temporal lobe is involved.</p>
+  <p><strong>HM – a special case.</strong> He resembled the MTL+ patients on definitions, suggesting a similar physiological basis for that impairment, but in many other respects his semantic knowledge was in the normal range. Only HM produced a large number of <strong>grammatical errors</strong>. The researchers suggest this language-production deficit was unlikely to be related to his temporal lobe damage, but to other factors in his childhood: a seizure at age 10, low socioeconomic status and interrupted schooling. This is a nurture rather than nature explanation — though whether such errors can really be attributed solely to educational disruption and economic circumstances is itself questionable. The debate can never be resolved in this case, because HM's language was <em>not tested before the surgery</em>.</p>
+  <p class="small">Back to the swan: the rambling answer is now readable twice over — as weak definitional accuracy (1.8–2.0 versus 3.2 for controls) and as a language-production pattern the researchers would not pin on the lesion. The study separates the two rather than collapsing them into one 'amnesia' label.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>结论三步：① MTL+ 组概念边界变模糊，定位到前外侧颞叶皮层；② HF 组与对照组无异，说明海马不承担语义知识；③ 语义性痴呆病人和 MRI 结果从旁佐证。HM 特例单独记：定义像 MTL+，其他语义测验却在正常范围；语法错误数量独一份，研究者归因于童年（10 岁癫痫发作、家境、学业中断）而非手术损伤。这条 nature–nurture 之争无法收尾，因为术前没有语言基线数据。</p>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Evaluation: A Map Drawn from Six Patients</h2>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Strengths</h4>
+      <ul class="tight">
+        <li><strong>Converging evidence.</strong> Case studies of brain-damaged patients are rare and therefore small in number, but findings from semantic dementia, neuroimaging, brain stimulation and unilateral lobectomy all support the conclusion that the anterolateral — especially the lateral — temporal cortex is involved in semantic knowledge, strongly reinforcing this study.</li>
+        <li><strong>Objective scoring of qualitative data.</strong> The researchers used <strong>14 raters</strong> to judge the definitions and gave each a quality score from 0 to 4. Qualitative data is open to subjective analysis, but 14 independent raters made the scoring more objective.</li>
+        <li><strong>A properly matched comparison.</strong> The eight controls were matched to the patients on age, sex and education, and the patient groups were defined by damage site with a biography compiled for each, so differences in test scores can be linked to the lesion rather than to obvious demographic differences.</li>
+        <li><strong>HM's case advanced the field.</strong> His surgery, however controversial, established that memory is a distinct cognitive process independent of language and thought, and helped neuroscience locate memory in the brain; he became the most researched individual in the field.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Weaknesses</h4>
+      <ul class="tight">
+        <li><strong>Small sample.</strong> Six amnesia patients and eight controls limit the generalisability of the conclusions; rare cases make larger samples almost impossible.</li>
+        <li><strong>Retrospective research cannot establish cause.</strong> Individual differences may reflect variation in neurology, and the brain can adapt and compensate for injury: test performance may reflect that adaptation rather than the injury itself. Prospective research is not possible, as it would require predicting who will sustain such damage.</li>
+        <li><strong>Low ecological validity.</strong> The line drawings common to many cognitive investigations lack <strong>mundane realism</strong>（日常真实感：实验任务与真实生活情境的相似程度）and may not tap semantic knowledge as it is used in everyday life, so findings may not generalise to everyday use of semantic memory.</li>
+        <li><strong>The HM nurture explanation is untestable.</strong> Whether his grammatical errors came from childhood circumstances rather than the lesion cannot be settled because no pre-surgery language measure exists; the attribution itself is questionable.</li>
+        <li><strong>Socially sensitive research.</strong> Amnesia affects a person's past, their future and their family's caring role; studying such patients is sensitive for the individual and their family, especially when the deficit appears late in life.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">A fair verdict: the localisation claim is stronger than the sample size suggests, because independent lines of evidence converge on the same region — but the causal story about HM's language, and the generalisation to everyday semantic memory, both remain open.</p>
+  <div class="exam-tip"><strong>Exam tip:</strong> a 2-mark 'explain one strength' answer needs the point plus a linked justification, not a label. 'Fourteen independent raters scored the definitions from 0 to 4' earns the first mark; 'because qualitative definitions are open to subjective interpretation, using many independent raters makes the scoring more objective and the findings more trustworthy' earns the second. Keep the same point-plus-because structure for weaknesses.</div>
+  <div class="green-box">
+    <h4>Close the loop: back to the three definitions of a swan</h4>
+    <p>甲's clean definition matches the HF pattern: hippocampal damage alone left semantic knowledge essentially intact (definitions 3.1/3.2 against 3.2 for controls). 乙's failure to name or define fits the MTL+ pattern (78.1 per cent on naming, 2.0/1.8 on definitions), where damage has spread to the anterolateral temporal cortex and conceptual boundaries blur. 丙's long answer is HM: accurate on many other semantic tests, weakest on definitions (1.8/2.0), and marked by grammatical errors the researchers traced to his childhood rather than his surgery. The three answers are not three degrees of one deficit — they are three different lesion sites plus one unresolved nature–nurture question, which is exactly why the study needed matched groups, thirteen tests and fourteen raters to read them.</p>
+    <p style="margin-top:8px"><strong>Reflect before the Exam Lab:</strong> if HM's language had been tested before his surgery, which single conclusion in this study would change the most, and why?</p>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>评价记「两强三限」。强：语义性痴呆患者、脑成像和脑刺激研究、单侧脑叶切除病人，四条独立证据都指向同一区域；14 名独立评分者把定义打分的客观性拉起来；对照组按年龄性别教育匹配。限：样本只有 6 加 8；回溯研究无法定因果，大脑可代偿；线条画缺乏日常真实感；把 HM 语法问题归到教养一侧的解释，因缺术前基线而永远无法验证；研究对病人和家属社会敏感。裁决：定位结论比样本量暗示的更稳，因果与推广仍开放。</p>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Exam Lab</h2>
+  <div class="exam-practice">
+    <div class="xp-block">
+      <h4>Q1 · Describe one aim <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Describe one aim of the study by Schmolck et al. (2002).</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans1')">Show answer</button></div>
+      <div class="xp-result" id="ans1" hidden>
+        <p>One aim was to investigate the relationship between semantic test scores and the site of temporal lobe damage, using case studies of brain-damaged patients compared with a control group of participants without brain damage. Specifically, the researchers wanted to know whether HM was unique in the way his brain damage affected his memory compared with other patients with similar damage.</p>
+        <p class="xp-case">Marking guidance: 2 marks for a detailed description — 1 for the general aim (relating semantic memory performance to specific brain damage), 1 for the specific comparison or the HM question. A bare 'to study memory' is not enough.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q2 · Explain one strength <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Explain one strength of the study by Schmolck et al. (2002).</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans2')">Show answer</button></div>
+      <div class="xp-result" id="ans2" hidden>
+        <p>One strength is the objectivity of the scoring for the qualitative definition data. The researchers used 14 independent raters to identify the definitions participants gave and to award a quality score from 0 to 4. Because qualitative data is open to subjective interpretation, using many independent raters reduces the influence of any one rater's judgement, making the definition scores more objective and the conclusions drawn from them more trustworthy.</p>
+        <p class="xp-case">Marking guidance: 1 mark for identifying the strength (14 independent raters / converging evidence from semantic dementia, neuroimaging, brain stimulation and unilateral lobectomy / matched controls), 1 for explaining why it improves the study. 'It used a control group' alone stays at 1 mark.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q3 · Explain one weakness <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Explain one weakness of the study by Schmolck et al. (2002).</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans3')">Show answer</button></div>
+      <div class="xp-result" id="ans3" hidden>
+        <p>One weakness is that the study is retrospective, so it cannot establish a causal relationship between the injury sustained and the impairments measured. Only six amnesia patients were tested, and the brain is adaptable and can compensate for injury, so the test results may reflect the brain's adaptation rather than the damage itself. Prospective research would be needed to establish cause, but it is not possible because researchers cannot predict which individuals will sustain such brain damage. This limits the confidence with which the anterolateral temporal cortex can be claimed as the cause of the semantic deficits.</p>
+        <p class="xp-case">Marking guidance: 1 mark for a valid weakness (small sample; retrospective/causal limits; line drawings lacking mundane realism and ecological validity; untestable nurture explanation for HM; social sensitivity), 1 for explaining its effect on the validity or generalisability of the conclusions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Checkpoint</h2>
+  <div class="xp-block">
+    <h4>Q1 · How many amnesia patients were compared with the controls?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Six patients and six matched controls</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Six amnesia patients and eight matched controls</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Fourteen patients in total, all with hippocampal damage</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q2 · Which patient group performed like the controls, and what does that show?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The MTL+ group, showing that encephalitis leaves semantic memory intact</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">The HF group, showing that the hippocampus is not involved in semantic knowledge</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">HM alone, showing that his surgery had no effect on any memory</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q3 · Which items did the MTL+ patients find hardest across all tasks?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Non-living objects such as electrical household items</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Living objects, compared with non-living objects</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Musical instruments, because none of the patients had musical training</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q4 · Why were tests 8 and 9 scored differently from the other tests?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Because HM refused to complete any test involving pictures</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Because definitions are qualitative: they were transcribed and rated 0 to 4 for accuracy</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Because they were the only tests given to the control group</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q5 · What makes HM a 'special case' in this study?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">He could not name any of the 48 line drawings at all</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">He was the only patient with bilateral damage</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">His semantic knowledge was largely normal outside definitions, but he made many unique grammatical errors</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q6 · Why can the nurture explanation of HM's language problems never be confirmed?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Because his medical records were destroyed after the surgery</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Because his language was never tested before the surgery, so there is no baseline to compare with</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Because the 14 raters disagreed about how to score his grammar</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Key Terms</h2>
+  <div class="keyterm-box"><span class="kt">semantic memory</span><br><span class="zh">语义记忆：关于词义、事实与概念的长期记忆，不依赖某次具体经历</span></div>
+  <div class="keyterm-box"><span class="kt">hippocampus (HF group)</span><br><span class="zh">海马；HF 组损伤主要局限于此，语义测验成绩与对照组相当</span></div>
+  <div class="keyterm-box"><span class="kt">medial temporal lobe</span><br><span class="zh">内侧颞叶：medial 意为靠近中线，与情景记忆和失忆症密切相关</span></div>
+  <div class="keyterm-box"><span class="kt">anterolateral temporal cortex</span><br><span class="zh">前外侧颞叶皮层：靠前且靠侧面的颞叶区域；本研究把它定位为语义知识的关键区</span></div>
+  <div class="keyterm-box"><span class="kt">bilateral damage</span><br><span class="zh">双侧损伤：左右两个大脑半球都受累</span></div>
+  <div class="keyterm-box"><span class="kt">MTL+ group</span><br><span class="zh">三名脑炎后内侧颞叶加前外侧颞叶皮层大面积损伤的病人，语义成绩最低</span></div>
+  <div class="keyterm-box"><span class="kt">retrospective research</span><br><span class="zh">回溯研究：损伤发生后才测，无法确立因果关系，大脑代偿也会混淆结果</span></div>
+  <div class="keyterm-box"><span class="kt">inter-rater reliability</span><br><span class="zh">评分者信度：多名评分者独立打分的一致程度；本研究用 14 人评 0 到 4 分</span></div>
+  <div class="keyterm-box"><span class="kt">mundane realism / ecological validity</span><br><span class="zh">日常真实感／生态效度：线条画任务与真实生活用语义知识的距离</span></div>
+  <div class="keyterm-box"><span class="kt">socially sensitive research</span><br><span class="zh">社会敏感性研究：失忆症触及病人身份与家庭照护，结论可能影响对病人及家属的看法</span></div>
+</section>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  /* ---------- sidebar scroll spy ---------- */
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  /* ---------- reveal helper ---------- */
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  /* ---------- multiple choice: one why per option ---------- */
+  var secWhy = {
+  s0: [
+    [
+      '评分标准和字数无关：0 到 4 分量的是定义是否抓住概念核心，不是回答长短。',
+      '正确。丙给的是一串外围联想（会飞、在水上、抓鱼、长脖子），始终没能把天鹅放进「一种大型水禽」这层类别里。语义知识量的是概念边界，不是相关特征的堆砌。',
+      '他把颜色说对了（有些白、有些棕），而且事实性细节也不是这项评分的重点；问题在于没有类别化的定义。'
+    ]
+  ],
+  s7: [
+    [
+      '对照组是八人，不是六人；十四人是两组相加的总数。',
+      '正确。6 名失忆病人（2 名 HF、3 名 MTL+、HM 本人）对比 8 名按年龄 74 岁、男性、受教育 12.4 年匹配的对照参加者。',
+      '十四名是样本总数，而且病人并非全是海马损伤：三人是内侧加前外侧颞叶皮层损伤，HM 还有部分外侧损伤。'
+    ]
+    ,[
+      'MTL+ 组恰恰是成绩最差的一组，命名指认只有 78.1 分。',
+      '正确。HF 组（损伤主要局限在海马）在命名、指认、类别举例和定义上都与对照组相当，研究者据此得出「海马不承担语义知识」的结论。',
+      'HM 在定义题上拿了全场最低分之一（1.8／2.0），手术对他的记忆当然有影响；只是其他语义测验大体正常。'
+    ]
+    ,[
+      '非活物恰恰是相对容易的一侧：第 5 题 HM 非活物 95.8、活物 85.4，MTL+ 也是非活物高于活物。',
+      '正确。数据摆在这里：MTL+ 病人在所有任务里，识别和回忆「活物」的事实都比「非活物」更困难。',
+      '乐器只是八类材料之一，这一题的关键在活物与非活物的分野，不在有没有受过音乐训练。'
+    ]
+    ,[
+      'HM 并没有拒绝任何测验；他只是额外四项里只做了第 10 项。',
+      '正确。第 8、9 项是定义题，属于质性资料：答案要录音转写，按 0 到 4 评准确度，同时检查语法、表达混乱和词语侵入，因此需要 14 名独立评分者。',
+      '所有九项核心测验对照组都做了，不只是定义题；区别在评分方式，不在施测对象。'
+    ]
+    ,[
+      '他在命名指认上拿 96.5 分，远不是「一个都认不出」。',
+      '所有病人都有双侧损伤，这不是 HM 独有的。',
+      '正确。HM 在定义题上像 MTL+ 组，其他语义测验却大多在正常范围；独一份的是大量语法错误，研究者把它归因于童年因素而不是颞叶损伤。'
+    ]
+    ,[
+      '病历留存与否不是症结；关键是术前根本没测过语言，连一份可对照的基线都没有。',
+      '正确。研究者提出他的语言问题也许来自 nurture（10 岁癫痫发作、低社会经济地位、学业中断），但 HM 术前从未测过语言，所以无法比较、无法定论。',
+      '14 名评分者解决的是定义打分的客观性，不是 HM 语法来源的因果判定。'
+    ]
+  ]
+};
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = (btn.closest('.xp-block') || section).querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+
+/* Socratic sc-ask: progressive reveal, next step unlocks after previous hint opens */
+(function () {
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.sc-ask-step'));
+  if (!steps.length) return;
+  steps.forEach(function (step, i) {
+    var btn = step.querySelector('.ask-toggle');
+    var hint = document.getElementById(btn ? btn.getAttribute('data-target') : '');
+    if (!btn || !hint) return;
+    btn.addEventListener('click', function () {
+      var open = hint.classList.toggle('show');
+      btn.textContent = open ? '收起提示' : '想好了？看提示 →';
+      if (open && i + 1 < steps.length) {
+        var next = steps[i + 1];
+        next.classList.remove('locked');
+        var nb = next.querySelector('.ask-toggle');
+        if (nb) nb.disabled = false;
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
