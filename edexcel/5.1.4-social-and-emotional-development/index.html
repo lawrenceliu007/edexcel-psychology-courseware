@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5.1.4 Social &amp; Emotional Development — Erikson, Vygotsky &amp; Mindfulness</title>
+<style>
+
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.sc-item { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-size: .95em; line-height: 1.7; margin: 8px 0; }
+.sc-tag { display: inline-block; background: var(--accent); color: #fff; font-size: .72em; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-right: 8px; }
+.sc-predict { background: #eff6ff; border: 1.5px solid #3b82f6; border-radius: 10px; padding: 14px 18px; margin: 16px 0 4px; }
+.sc-predict h4 { margin: 0 0 6px; color: #1d4ed8; }
+body.dark .sc-item { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .sc-tag { background: #3b82f6; }
+body.dark .sc-predict { background: rgba(59,130,246,.08); border-color: #3b82f6; }
+body.dark .sc-predict h4 { color: #93c5fd; }
+.sc-ask { background: #fefce8; border: 1.5px solid #ca8a04; border-radius: 10px; padding: 14px 18px; margin: 14px 0 4px; }
+.sc-ask h4 { margin: 0 0 4px; color: #854d0e; font-size: .95em; }
+.sc-ask-step { background: #fff; border: 1px solid #e7e5e4; border-radius: 8px; padding: 10px 14px; margin: 10px 0 0; }
+.sc-ask-step.locked { opacity: .45; }
+.sc-ask-step .ask-q { font-weight: 600; font-size: .95em; margin: 0; line-height: 1.7; }
+.ask-toggle { background: #fff; border: 1px solid #d6d3d1; border-radius: 8px; padding: 5px 12px; font-size: .82rem; font-weight: 500; color: #57534e; cursor: pointer; margin-top: 8px; transition: all .15s; }
+.ask-toggle:hover:not(:disabled) { border-color: #ca8a04; color: #854d0e; }
+.ask-toggle:disabled { cursor: not-allowed; opacity: .6; }
+.ask-hint { display: none; border-top: 1px dashed #e7e5e4; margin-top: 10px; padding-top: 8px; }
+.ask-hint.show { display: block; }
+.ask-hint .hint-label { font-size: .75em; color: #a8a29e; margin: 0 0 4px; font-weight: 700; }
+.ask-hint p { margin: 0; font-size: .92em; line-height: 1.75; }
+.ask-land { margin: 12px 0 0; font-size: .9em; color: #854d0e; line-height: 1.7; }
+body.dark .sc-ask { background: rgba(202,138,4,.08); border-color: #ca8a04; }
+body.dark .sc-ask h4 { color: #fde047; }
+body.dark .sc-ask-step { background: #16213e; border-color: #334155; }
+body.dark .sc-ask-step.locked { opacity: .5; }
+body.dark .ask-toggle { background: #16213e; border-color: #334155; color: #94a3b8; }
+body.dark .ask-toggle:hover:not(:disabled) { border-color: #ca8a04; color: #fde047; }
+body.dark .ask-hint { border-top-color: #334155; }
+body.dark .ask-hint .hint-label { color: #64748b; }
+body.dark .ask-hint p { color: #cbd5e1; }
+body.dark .ask-land { color: #fde047; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic E · Developmental psychology — 5.1.4 Social &amp; Emotional Development</span>
+  </div>
+  <span class="nav-pill">🧠 Developmental Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">5.1.4 Social &amp; Emotional</div>
+    <div class="sb-header-sub">Erikson · Vygotsky · Mindfulness</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s0">Start Here: The Tantrum in the Supermarket</a></li>
+    <li class="sb-item"><a href="#s1">1. Erikson's Eight Psychosocial Stages</a></li>
+    <li class="sb-item"><a href="#s2">2. The Stages in Detail</a></li>
+    <li class="sb-item"><a href="#s3">3. Erikson: Evidence and Limits</a></li>
+    <li class="sb-item"><a href="#s4">4. Vygotsky's Theory of Social Development</a></li>
+    <li class="sb-item"><a href="#s5">5. Vygotsky: Evidence and Applications</a></li>
+    <li class="sb-item"><a href="#s6">6. Mindfulness in Schools</a></li>
+    <li class="sb-item"><a href="#s7">7. Mindfulness: The Evidence</a></li>
+    <li class="sb-item"><a href="#s8">8. Evaluation</a></li>
+    <li class="sb-item"><a href="#s9">9. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s10">10. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s11">11. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>5.1.4 SOCIAL &amp; EMOTIONAL DEVELOPMENT<br><span style="font-size:0.65em">Erikson's psychosocial stages · Vygotsky's social development · Mindfulness · 社会与情绪发展</span></h1>
+  <div class="meta">
+    <span class="badge">Topic E · Developmental psychology</span>
+    <span class="badge">Theory page</span>
+    <span class="badge">Spec 5.1.4</span>
+    <span class="badge">📖 Textbook Book 2 · Ch.3 · pp.44–54</span>
+  </div>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Describe Erikson's eight stages of psychosocial development</strong>, naming each crisis, its age range, the virtue gained and the negative outcome.</li>
+    <li><strong>Describe Vygotsky's theory of social development</strong>, including social constructivism, imaginary play and self-regulation.</li>
+    <li><strong>Explain mindfulness</strong> and how it is used in schools to enhance social, emotional and cognitive development.</li>
+    <li><strong>Evaluate all three</strong> with named studies and figures (Malone, Kihlgren, Singer, Lillard, White &amp; Carlson, Schonert-Reichl, Klingbeil, Dunning, MYRIAD).</li>
+    <li><strong>Answer exam questions</strong>: a 2-mark definition, a 4-mark strength/weakness on psychology as a science, and scenario questions on Erikson and Vygotsky.</li>
+  </ul>
+</div>
+
+<div class="quick-summary">
+  <h4>What this page is really asking</h4>
+  <ol>
+    <li><strong>How do we become social beings?</strong> Erikson says life is a sequence of eight crises, each resolving into a virtue such as hope or wisdom; Vygotsky says knowledge and self-control are built through interaction, especially pretend play.</li>
+    <li><strong>Why does a four-year-old's tantrum matter?</strong> For Erikson it is the autonomy-versus-shame crisis; for Vygotsky it is a child still learning to regulate behaviour through social play.</li>
+    <li><strong>Can a classroom teach emotional skill directly?</strong> Mindfulness programmes claim yes, but the evidence is mixed: small positive effects in some meta-analyses, no advantage over active controls in others.</li>
+    <li><strong>The exam thread is "psychology as a science".</strong> Whenever you evaluate these theories, ask whether the claim is falsifiable, whether the measure is valid, and whether the design permits a causal conclusion.</li>
+  </ol>
+</div>
+
+<!-- ============ 0 ============ -->
+<section class="section" id="s0">
+  <h2>Start Here: The Tantrum in the Supermarket</h2>
+  <div class="sc-item"><span class="sc-tag">背景</span>一个四岁孩子在超市大哭，非要一包糖。旁边的家长有三种做法：立刻买、严厉呵斥、或者蹲下来说「你想吃苹果还是香蕉？」。同一个孩子，几年后可能乐于分享、能等轮流，也可能一不如意就退缩或发火。</div>
+  <div class="sc-item"><span class="sc-tag">角色</span>你是实习老师，家长问你：这几年的变化到底是怎么发生的？家长能做什么？</div>
+  <div class="sc-item"><span class="sc-tag">任务</span>你要用三个理论回答：Erikson 说这是人生某个阶段的核心冲突；Vygotsky 说孩子在与人和游戏的互动里学会控制自己；mindfulness 说注意力训练也能直接教。</div>
+  <div class="sc-item"><span class="sc-tag">目标</span>先猜下面这题。读完这一页，你能用三个理论解释这个孩子，并且指出每种说法的证据有多强。猜完往下追问两层。</div>
+  <div class="sc-predict">
+    <h4><span class="sc-tag" style="background:#3b82f6">先猜</span>面对这个四岁孩子，哪种回应最有助他长远发展？</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">立刻满足，先止住哭闹，孩子安全感最重要</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">给有限选择（苹果还是香蕉），让他有一点控制权</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">严厉制止，让他明白哭闹没有用、必须服从</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="sc-ask">
+    <h4><span class="sc-tag" style="background:#ca8a04">追问</span>猜完先别走：这两个问题没有选项，先自己想，再点开提示。</h4>
+    <div class="sc-ask-step">
+      <p class="ask-q">追问一：为什么「给一点选择」比「全不许」或「全顺着」都可能更好？</p>
+      <button class="ask-toggle" data-target="ask-h1">想好了？看提示 →</button>
+      <div class="ask-hint" id="ask-h1">
+        <p class="hint-label">提示</p>
+        <p>Erikson 会说，四岁前后孩子正处在「自主对羞愧怀疑」的冲突里：他既想自己做事，又怕做错被否定。有限选择让他练「做决定」，同时不至于失控。这个冲突解决得好会形成意志（will）；如果被不断否定，可能变成羞愧和低自尊。</p>
+      </div>
+    </div>
+    <div class="sc-ask-step locked">
+      <p class="ask-q">追问二：孩子玩「过家家」时装老师、装店员，还逼着别人守角色的规矩。这对情绪控制有什么用？</p>
+      <button class="ask-toggle" data-target="ask-h2" disabled>想好了？看提示 →</button>
+      <div class="ask-hint" id="ask-h2">
+        <p class="hint-label">提示</p>
+        <p>Vygotsky 会说这就是关键。扮演角色时孩子必须压住自己的冲动、按角色的规则行动，这正好练了 self-regulation（自我调节：控制自己的行为、情绪与想法以达成目标）。他说这种在游戏里练出来的能力会迁移到课堂和真实生活。后面你会看到支持他的实验，也会看到质疑他的研究。</p>
+      </div>
+    </div>
+    <p class="ask-land">带着这两个追问往下读：Erikson 给你一生的地图，Vygotsky 给你社交和游戏的机制，mindfulness 给你一套可以直接教的方法。超市里那个孩子，三个理论会给出三种不同但互补的答案。</p>
+  </div>
+</section>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Erikson's Eight Psychosocial Stages</h2>
+  <p><strong>Social and emotional development</strong>（社会与情绪发展：学会理解和管理情绪、建立并维持关系、在不同社会情境中与人互动的过程） means forming positive relationships with adults and peers. Children must learn to regulate behaviour and emotions, communicate needs, listen, resist impulses, make friends, resolve conflicts and cope with frustration. This varies by culture, and these skills interact with attention and awareness: only about <strong>40 per cent</strong> of children entering preschool have the skills needed to succeed (Ashdown &amp; Bernard, 2012), yet social-emotional competence predicts academic achievement.</p>
+  <p>Erik Erikson was a student of Freud, but unlike Freud he held that experiences <em>throughout life</em> shape development, with social interaction at each stage. Each of the eight stages is marked by a <strong>psychosocial crisis</strong>（心理社会危机：每个阶段必须解决的内部冲突，解决后才能获得相应的美德）. Resolving one produces a <strong>virtue</strong>（美德：成功解决心理社会危机后获得的积极品质） that supports later life; leaving it unresolved can produce negative tendencies such as withdrawal.</p>
+  <table class="mat2x2 c3">
+    <tr><th>Stage / age</th><th>Crisis</th><th>Key influence</th><th>Virtue / negative outcome</th></tr>
+    <tr><td>1 · 0–18 months</td><td>Basic trust vs mistrust</td><td>Attachment figure</td><td>Hope / withdrawal</td></tr>
+    <tr><td>2 · 18 months–3 years</td><td>Autonomy vs shame, doubt</td><td>Parents / guardians</td><td>Will / compulsion</td></tr>
+    <tr><td>3 · 3–6 years</td><td>Initiative vs guilt</td><td>Family</td><td>Purpose / inhibition</td></tr>
+    <tr><td>4 · 6–11 (12) years</td><td>Industry vs inferiority</td><td>Community, school friends, teachers</td><td>Competence / inertia</td></tr>
+    <tr><td>5 · 12–18 years</td><td>Identity vs identity confusion</td><td>Peers, out-groups, leaders</td><td>Fidelity / repudiation</td></tr>
+    <tr><td>6 · 18–30 years</td><td>Intimacy vs isolation</td><td>Partners, friends, colleagues</td><td>Love / exclusivity</td></tr>
+    <tr><td>7 · 30–65 years</td><td>Generativity vs stagnation</td><td>Shared work and household</td><td>Care / over-extension or rejectivity</td></tr>
+    <tr><td>8 · 65+ years</td><td>Integrity vs despair</td><td>Humankind</td><td>Wisdom / disdain</td></tr>
+  </table>
+  <p class="small" style="color:var(--text-secondary)">Table 3.1: Erikson's eight psychosocial stages. Note the table gives stage 4 as 6–11 while the prose describes 6–12; both are reproduced as printed.</p>
+  <p class="small">Back to the parent: the supermarket child is around stage 2 in this scheme. Erikson's map tells you <em>which</em> conflict is live; it does not tell you the right thing to say, which is where Vygotsky and the evidence in this chapter come in.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>八阶段用「年龄 + 危机 + 美德」三列一起背最省事：0–18 月信任（希望），18 月–3 岁自主（意志），3–6 岁主动（目的）；后面依次是 6–11 岁勤奋（能力）和 12–18 岁同一性（忠诚），再往后是 18–30 岁亲密（爱）、30–65 岁繁殖（关怀），最后 65 岁以上完善（智慧）。危机解决了得美德，没解决就出相应的消极面：开头几段是退缩和强迫，接着有抑制与怠惰，往后还会有反叛、孤立，以及停滞和轻蔑。表格写 6–11 岁、正文写 6–12 岁，两处口径略有出入，照原样记即可，不必纠结这个细节。</p>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. The Stages in Detail</h2>
+  <div class="note-box">
+    <h4>Early childhood · stages 1–4</h4>
+    <p class="small"><strong>1 Trust vs mistrust (0–18 months).</strong> Consistent, predictable caregiving lets infants trust others and themselves, developing <strong>basic trust</strong>（基本信任：相信他人可靠，源于照料行为的可预测性） and the virtue of hope, which supports risk-taking later. Inconsistent or emotionally distant care breeds mistrust, withdrawal and irritability.</p>
+    <p class="small"><strong>2 Autonomy vs shame and doubt (18 months–3 years).</strong> Once children can move independently they want to explore and do things themselves, but adults often take over. Limited choices ("beans or peas?") give control; constant disapproval produces shame and low self-esteem. Success brings <strong>will</strong>（意志：有意识地行动和做选择的能力）.</p>
+    <p class="small"><strong>3 Initiative vs guilt (3–6 years).</strong> Play and social interaction with friends, family, teachers and neighbours build <strong>initiative</strong>（主动性：控制和指导自己及他人行为的能力）; pretending and trying new ideas matter. Disapproval produces guilt and <strong>inhibition</strong>（抑制：因害怕后果而不敢按冲动行动）. Teaching that mistakes are learning opportunities builds purpose and resilience.</p>
+    <p class="small"><strong>4 Industry vs inferiority (6–11/12 years).</strong> Children focus on culturally relevant skills: schoolwork, chores such as fishing or weaving, hobbies and caring for pets or siblings. Success gives competence; lack of opportunity produces <strong>inertia</strong>（怠惰：被动状态，伴随无能感和自卑）. Community groups and voluntary work can build industry and confidence.</p>
+  </div>
+  <div class="note-box">
+    <h4>Later life · stages 5–8</h4>
+    <p class="small"><strong>5 Identity vs confusion (12–18 years).</strong> Puberty and changed expectations make "who am I?" urgent, along with future plans and impression management. Sensitive support lets young people reorganise their <strong>self-concept</strong>（自我概念：关于「我是谁」的心理表征，类似同一性） and develop <strong>fidelity</strong>（忠诚：对群体和价值的承诺）; failure produces identity confusion, poor mental health and lower attainment, or <strong>repudiation</strong>（反叛：抗拒与叛逆感）.</p>
+    <p class="small"><strong>6 Intimacy vs isolation (18–30 years).</strong> Connection through friendship and partners requires compromise; genuine love depends on having resolved stage 5. Without close ties, loneliness and weak <strong>social support</strong>（社会支持：从亲友和社群获得的安慰、鼓励与帮助） impair coping and are linked to poor diet, less exercise and sleep problems (Schrempft et al., 2019).</p>
+    <p class="small"><strong>7 Generativity vs stagnation (30–65 years).</strong> Generativity means nurturing others: raising children, mentoring, campaigning or building a legacy. The virtue is care. Failing to contribute leads to stagnation. Erikson also noted over-extension, where too many commitments cause <strong>burnout syndrome</strong>（倦怠综合征：长期压力导致的身心耗竭）.</p>
+    <p class="small"><strong>8 Integrity vs despair (65+).</strong> Looking back with accomplishment and acceptance produces <strong>integrity</strong>（完善：对自己一生的完满感与接纳） and the virtue of wisdom; regret and rumination produce despair, low motivation and <strong>disdain</strong>（轻蔑：把人或事看得低下、不尊重）.</p>
+  </div>
+  <p class="small">Back to the parent: Erikson's stages after childhood explain what the supermarket child's early resolutions may set up later — trust, autonomy and purpose feed the virtues of adolescence and adulthood.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>前四阶段依次讲信任和自主，再讲主动与勤奋：照料可靠就有希望；给有限选择就有意志；玩耍被允许就有目的；有学习机会就有能力。后四阶段走的是同一性、亲密，再到繁殖与完善：先搞清楚我是谁，才谈得上真正的亲密；中年靠养育和指导别人获得关怀感，过度投入反而倦怠；晚年回望一生，接纳则完善，遗憾则绝望。每阶段的美德建立在前一阶段之上，这是理解「各阶段互相连接」的关键。</p>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Erikson: Evidence and Limits</h2>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Supporting evidence</h4>
+      <ul class="tight">
+        <li><strong>Johanna Malone et al. (2016)</strong> ran a prospective longitudinal study, interviewing people aged 30–47 and following them to 75–85. Quality of life in earlier stages predicted cognitive decline and scores on the Geriatric Depression Scale in later life, supporting the claim that earlier virtues raise the chance of later crises being resolved well.</li>
+        <li><strong>Practical application.</strong> <strong>Mona Kihlgren et al. (1993)</strong> observed ten nurses and their patients for three months in a long-stay ward. On wards using Integrity Promoting Care (IPC), patients were more cooperative, communicative and involved in decisions than in a matched control ward; the video coder was single-blind, unaware of who had trained. The theory improved vulnerable patients' lives.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Weaknesses</h4>
+      <ul class="tight">
+        <li><strong>The Malone data are correlational.</strong> We cannot say poor earlier quality of life <em>caused</em> later decline; a genetic predisposition to depression might explain both, and the sample contained only men, so women's later experience may differ.</li>
+        <li><strong>Old age is under-explained.</strong> Joan Erikson added a ninth stage for very old age, arguing that physical illness and lost independence can re-create the shame, doubt and mistrust of infancy (Erikson, 1998).</li>
+        <li><strong>Falsifiability.</strong> Popper's criterion is relevant: if a hypothesis can be confirmed whichever way the data fall, the theory is hard to falsify. At stage 7, both high involvement (over-extension, burnout) and low involvement (stagnation) are负面 outcomes, which can make the stage resist testing.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">Verdict: the sequence is a useful framework with real applied value, but its evidence is often correlational and some outcomes are phrased so broadly that disconfirmation is difficult.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>Erikson 的证据一正一限。Malone 2016 是前瞻追踪：30–47 岁时的生活质量预测 75–85 岁的认知衰退和抑郁分数，支持「早期美德帮后期危机」。但它是相关研究，不能说因果，还只测了男性。应用证据 Kihlgren 1993：IPC 培训后病人更合作、更愿意参与决定，而且录像编码者不知道谁受过培训（单盲），这条很硬。弱点还有 Joan Erikson 的第九阶段（高龄丧失自理会重新出现婴儿期的羞愧和不信任），以及可证伪性问题：第七阶段「投入太多」和「投入太少」都算负面，怎么测都能圆。</p>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Vygotsky's Theory of Social Development</h2>
+  <p>Vygotsky described development as a <strong>social process</strong> in which knowledge is built through interaction with others — an example of <strong>social constructivism</strong>（社会建构主义：知识和理解通过与他人的社会互动主动建构，因此重视合作与讨论）. Interactions shape both the rate of progress and the interests a child develops.</p>
+  <p>He emphasised <strong>play</strong>. From about 18 months children develop social skills through symbolic play, later moving to <strong>imaginary play</strong>（想象游戏：创造虚构情境的假装活动，约三岁起常见） and role-playing social situations. Even in fantasy, children follow the norms of the character they play — teacher, shop assistant. Vygotsky saw this as central to <strong>self-regulation</strong>（自我调节：控制行为、情绪和想法以达成目标）: a child must modify behaviour to fit the situation, conform to peers' ideas and override personal impulses to follow the game's rules. These skills matter especially on entering formal education.</p>
+  <div class="note-box">
+    <h4>Why the supermarket child needs play</h4>
+    <p class="small">In a pretend tea party the child must wait for a turn, use the "host" voice and ignore the impulse to grab. Vygotsky's claim is that practising this inside a game builds the capacity to do it outside one, so the skill transfers to classroom and family life. That transfer is exactly what the studies in the next section test.</p>
+  </div>
+  <p class="small">Back to the parent: Erikson names the conflict; Vygotsky offers a mechanism — the child learns self-control by playing at being someone else, under the loose rules of a social game.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>社会建构主义一句话：知识是跟别人互动时搭出来的，不是一个人闷头想出来的。Vygotsky 特别看重游戏：18 个月起象征性游戏，约三岁起想象游戏，孩子假装老师或店员时会按角色的规矩做事、压住自己的冲动，这就在练自我调节。关键主张是「游戏里练出来的能力能迁移到真实生活」，这也是后面研究要检验的点。</p>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Vygotsky: Evidence and Applications</h2>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Supporting evidence</h4>
+      <ul class="tight">
+        <li><strong>Jerome Singer (1961)</strong> told children aged six to nine that waiting would show whether they would make a good astronaut. Those preferring fantasy play waited <strong>twice as long</strong> as those who did not, suggesting a link between imaginary play and self-regulation.</li>
+        <li><strong>Rachel White and Stephanie Carlson (2015)</strong>, in a well-controlled study called "What would Batman do?", encouraged five-year-olds to role-play characters such as Batman and found improved <strong>executive functioning</strong>（执行功能：计划与组织、维持注意、调节情绪和适应变化的认知过程）, an aspect of self-regulation. Self-distancing（自我疏离：脱离自己中心的视角） in pretend play may be the active ingredient.</li>
+        <li><strong>Dunn et al. (1991)</strong> found that preschoolers who engaged in more pretend play and positive interaction with older siblings showed more advanced emotional development.</li>
+        <li><strong>Application.</strong> <strong>Tools of the Mind</strong>, created by Elena Bodrova and Deborah Leong (2007), has teachers scaffold planning of make-believe play, with an hour of play a day. It targets self-regulation, which predicts school performance better than IQ (Duckworth &amp; Seligman, 2005).</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Weaknesses</h4>
+      <ul class="tight">
+        <li><strong>Bidirectional ambiguity in Singer.</strong> Fantasy play may build self-regulation, but children who are already better at self-regulation may simply enjoy and seek more of that play; the direction of causality is unclear.</li>
+        <li><strong>Angeline Lillard et al. (2013)</strong> challenged a causal link altogether, citing small mainly middle-income samples, experimenter bias (researchers knew play preferences before assessing self-regulation), and inconsistent definitions of play and measures of self-regulation that prevent comparison.</li>
+        <li><strong>Adult scaffolding is not always best.</strong> <strong>Amy Ogan (2008)</strong> found children in unstructured free play made greater gains in self-regulation than those in an adult-guided intervention group, so autonomy and peer interaction may matter more than one-to-one adult guidance.</li>
+        <li><strong>Implementation varies.</strong> In Tools of the Mind, effect size is moderated by teacher experience and wellbeing, affecting fidelity (Goble, 2021).</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">Verdict: pretend play is plausibly involved in self-regulation and the intervention evidence is promising, but most supporting data are correlational and the active mechanism (role-taking, free play or adult scaffolding) is still contested.</p>
+  <div class="exam-tip"><strong>Exam tip:</strong> Vygotsky appears three times in Topic E. For a question specifically on <em>social</em> development, focus on play and self-regulation; with more marks, also bring in ZPD, scaffolding and private speech, since the cognitive, language and social strands overlap.</div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>支持 Vygotsky 的证据：Singer 1961 扮演游戏偏好组等待时间是另一组的两倍；White & Carlson 2015 的 Batman 角色扮演提升执行功能；Dunn 1991 有兄姐互动的游戏预测更好的情绪发展；应用是 Tools of the Mind（每天一小时假装游戏，自我调节比 IQ 更能预测成绩）。反对：Singer 的因果方向不清（也可能是自控好的孩子更爱玩）；Lillard 2013 指出样本小、实验者偏差、定义和测量不统一；Ogan 2008 发现自由游戏组反而比成人指导组进步大；Goble 说效果受老师经验和心理状态调节。</p>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Mindfulness in Schools</h2>
+  <p><strong>Mindfulness</strong>（正念：完全觉察当下、把注意力放在此时此地的感觉上，不被对过去和未来的杂念带走） is a state of consciousness in which the person is fully aware of the present moment. It is a common cultural practice worldwide and has grown popular in the West in recent decades. Anyone can achieve the state, though some need more practice.</p>
+  <p>In the 1970s Jon Kabat-Zinn developed an eight-week <strong>Mindfulness Based Stress Reduction (MBSR)</strong>（正念减压课程：Kabat-Zinn 设计的八周课程，通过冥想提升正念） programme. It teaches mindfulness through <strong>meditation</strong>（冥想：通过集中注意或放松达到正念-state 的技术）, a practice in many world religions which Kabat-Zinn adapted for non-religious people with stress, depression, anxiety, chronic pain or substance abuse.</p>
+  <p>In schools the idea shifted from treating adults with poor mental health to <strong>prevention</strong>: teaching children to reduce stress early could maintain wellbeing across life. Supporters argue it builds self-awareness and emotion management, improves concentration and reduces behaviour problems. Programmes have been adapted by age: <strong>Mindfulness-Oriented Meditation (MOM)</strong> was used with seven- and eight-year-old Italian pupils (Crescentini et al., 2016), and the UK's Mindfulness in Schools Project offers teacher training and resources for ages three to 18.</p>
+  <p class="small">Back to the parent: mindfulness is the third answer to the supermarket question. Instead of resolving a stage or playing a role, it trains the attention system directly — but the next section shows that the size of the benefit depends heavily on how it is tested.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>正念 = 把注意力放在此刻，放下对过去和未来的杂念。Kabat-Zinn 在 1970 年代做了八周的 MBSR，原本帮成人减压镇痛，后来学校把它改成预防性课程：早点教孩子减压，理论上能长期受益。年龄适配的例子有意大利 7–8 岁的 MOM、英国覆盖 3–18 岁的学校正念项目。抓住「从治疗成人转向预防儿童」这个转向，它是理解整节的关键。</p>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Mindfulness: The Evidence</h2>
+  <div class="note-box">
+    <h4>Effects on social and emotional development</h4>
+    <p class="small"><strong>Kimberly Schonert-Reichl and Molly Lawlor (2010)</strong> studied Canadian children aged nine to 13 who took mindfulness sessions three times a day. Compared with a matched control group without the Mindfulness Education programme, they rated themselves more optimistic and showed better self-concept, and teachers rated their classroom behaviour as improved. Two problems: the teachers who rated the children also delivered the sessions, weakening objectivity, and there was no follow-up, so long-term benefits are unknown.</p>
+    <p class="small"><strong>Felicia Huppert and Daniel Johnson (2010)</strong> tested boys aged 14 to 15 with a single 40-minute lesson each week across four weeks and found benefits. The largest gains went to those who practised most, and especially to boys with emotional difficulties — so daily timetabling is not necessary when children embed the practice in life.</p>
+  </div>
+  <div class="note-box">
+    <h4>Effects on cognitive development</h4>
+    <p class="small"><strong>David Klingbeil et al. (2017)</strong> meta-analysed 76 studies with over 6,000 children and young people. Mindfulness-Based Interventions (MBIs) had <strong>small but positive</strong> effects on attainment, attention and cognitive flexibility, and the 24 longitudinal studies showed effects growing over time.</p>
+    <p class="small">But <strong>Darren Dunning et al. (2022)</strong> found that when studies used <strong>active control groups</strong>（主动对照组：接受另一种真实干预的对照组，用来排除「只要有人关注就会好转」的解释）, MBIs improved only depression and anxiety, not cognitive or academic skills. The largest investigation, the <strong>MYRIAD project</strong> (Crane et al., 2020), found no significant difference in mental health and wellbeing between MBI and control groups; mindfulness was hard to introduce without committed staff and extensive teacher training, and only a minority delivered effective lessons.</p>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>证据分两类看。社会情绪：Schonert-Reichl 2010 每天三次正念，孩子更乐观、自我概念更好、课堂行为改善，但打分老师就是授课老师（客观性弱）且无追踪；Huppert & Johnson 2010 每周一节课就有效，练得多的和情绪困难的男孩受益最大。认知：Klingbeil 2017 汇总 76 项研究和 6000 多人，发现小但正向的效果；Dunning 2022 用主动对照组后只剩抑郁焦虑有改善，认知和成绩没了；MYRIAD（Crane 2020）干脆没有显著差异，还发现老师培训难、真正教得好的是少数。记一句：对照条件越严格，正念的「认知效果」越缩水。</p>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Evaluation</h2>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Strengths</h4>
+      <ul class="tight">
+        <li><strong>Erikson — longitudinal and applied.</strong> Malone et al. (2016) linked earlier quality of life to later cognitive decline and depression; Kihlgren et al. (1993) showed IPC-trained nurses improved cooperation and involvement in patients with dementia, with single-blind coding.</li>
+        <li><strong>Vygotsky — experimental support.</strong> White and Carlson (2015) improved executive functioning through Batman role-play; Dunn et al. (1991) linked pretend play with siblings to advanced emotional development; Tools of the Mind (Bodrova &amp; Leong, 2007) is a direct classroom application.</li>
+        <li><strong>Mindfulness — some sound evidence.</strong> Klingbeil et al. (2017) pooled over 6,000 participants across 76 studies and found small positive effects that grew in longitudinal designs; Huppert and Johnson (2010) showed a single weekly lesson could help.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Weaknesses</h4>
+      <ul class="tight">
+        <li><strong>Erikson — causality and falsifiability.</strong> Malone's data are correlational and male-only; Joan Erikson's ninth stage concedes old age is not fully covered; both over- and under-investment at stage 7 count as negative, which Popper would call hard to falsify.</li>
+        <li><strong>Vygotsky — direction and method.</strong> Singer (1961) suffers bidirectional ambiguity; Lillard et al. (2013) cite small samples, experimenter bias and inconsistent definitions; Ogan (2008) found free play beat adult scaffolding, and Goble (2021) showed effects depend on teacher experience.</li>
+        <li><strong>Mindfulness — weak controls and implementation.</strong> Schonert-Reichl and Lawlor (2010) used teachers who also delivered the intervention and had no follow-up; Dunning et al. (2022) found no cognitive advantage under active controls; MYRIAD (Crane et al., 2020) found no significant benefit and major training barriers.</li>
+        <li><strong>Socially sensitive.</strong> Conflicting findings can make opponents of school mindfulness seem disruptive, yet some research links mindfulness to relapse after depression (Ma &amp; Teasdale, 2004) and to stress, anxiety, dissociation, poor sleep or psychotic episodes (Shapiro et al., 1992; Britton, 2019).</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">Verdict: all three approaches describe plausible routes to social and emotional competence, but the strength of evidence falls as the designs get stricter. The exam rewards naming that gradient rather than treating the theories as equally supported.</p>
+  <div class="exam-tip"><strong>Exam tip:</strong> when asked to refer to psychology as a science, use falsifiability (Erikson's stage 7), correlation versus causation (Malone; Singer), observer bias (Schonert-Reichl's teachers), and the active control group (Dunning). Each is a ready-made AO3 point with a named study attached.</div>
+  <div class="green-box">
+    <h4>Close the loop</h4>
+    <p class="small">The supermarket parent now has three answers. Erikson would identify the autonomy crisis and warn against constant disapproval; Vygotsky would point to limited choices and pretend play as the practice ground for self-control; mindfulness would offer attention training, while admitting the evidence for cognitive gain is thin. None of the three alone settles the case, and all three predict behaviour that is difficult to measure cleanly.</p>
+    <p class="small"><strong>Reflect before the Exam Lab:</strong> if a school introduces mindfulness and Behaviour improves, what would you need to know about the control group before crediting mindfulness? Think about what an active control holds constant.</p>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>总评三条理论按「证据强度随设计严格而下降」来记：Erikson 有纵向和应用证据但相关、不可证伪；Vygotsky 有实验支持但方向不清、方法不一；正念有 76 项研究的汇总但换主动对照后认知优势消失，MYRIAD 更没差异。考试问「心理学作为科学」时，四个万能 AO3 点：可证伪性（第七阶段）、相关不等于因果（Malone、Singer）、观察者偏差（Schonert-Reichl 的老师）、主动对照组（Dunning）。再加社会敏感性：反对其进课程的人未必「不懂」，研究也提示可能的负面影响。</p>
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Exam Lab</h2>
+  <div class="exam-practice">
+    <div class="xp-block">
+      <h4>Q1 · Outline <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Outline what is meant by mindfulness.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans1')">Show answer</button></div>
+      <div class="xp-result" id="ans1" hidden>
+        <p>Mindfulness is a state of consciousness in which a person is fully aware of the present moment (1 mark), focusing on sensations in the here and now rather than being distracted by thoughts about the past or future; it can be achieved through meditation (1 mark).</p>
+        <p class="xp-case">Marking guidance: 1 mark for present-moment awareness, 1 mark for elaboration such as redirecting attention away from past/future thoughts or the link to meditation.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q2 · Strength and weakness <span class="xp-badge">4 marks</span></h4>
+      <div class="xp-intro"><strong>Explain one strength and one weakness of Erikson's stages of psychosocial development. You must refer to psychology as a science in your answer.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans2')">Show answer</button></div>
+      <div class="xp-result" id="ans2" hidden>
+        <p><strong>Strength — falsifiable, longitudinal evidence.</strong> Malone et al. (2016) used a prospective longitudinal design, measuring quality of life in adults aged 30–47 and then cognitive decline and depression scores at 75–85. This generates predictions that could in principle be disconfirmed, so the theory meets Popper's criterion of falsifiability better than accounts that explain outcomes after the fact.</p>
+        <p><strong>Weakness — correlation and over-flexible predictions.</strong> The same data are correlational, so earlier quality of life cannot be said to cause later decline; genetics might account for both, and only men were tested. In addition, at stage 7 both over-extension and stagnation are negative, so almost any outcome fits the theory, which weakens its scientific status because it is difficult to falsify.</p>
+        <p class="xp-case">Marking guidance: 1 mark for an accurate strength with a named study, 1 mark explaining its scientific merit (falsifiability/longitudinal prediction); 1 mark for an accurate weakness with a named study, 1 mark explaining the scientific limitation (correlation, bias, falsifiability).</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q3 · Apply the theory <span class="xp-badge">6 marks</span></h4>
+      <div class="xp-intro"><strong>Ezekiel is 36 and his wife Darcy is 32. They cannot have children and have coped differently. Ezekiel coaches a youth basketball team of under-16s and is training to run a marathon to raise money for the local children's ward. Darcy feels responsible for not having a baby, had been writing a novel but can no longer find the motivation, feels tired, and sees less of her sister. With reference to Erikson's stages, explain Ezekiel and Darcy's behaviour and how this might affect them as they get older.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans3')">Show answer</button></div>
+      <div class="xp-result" id="ans3" hidden>
+        <p><strong>Identification (1):</strong> both are in Erikson's stage 7, generativity versus stagnation, typically 30–65 years, whose virtue is care and whose negative outcomes are stagnation and over-extension.</p>
+        <p><strong>Ezekiel (2):</strong> coaching young players and raising money for a children's ward are ways of nurturing the next generation and building a legacy, so he is resolving the crisis generatively and developing the virtue of care. This should increase the chance of later integrity: he is more likely to look back with accomplishment. A caution is Erikson's own warning about over-extension, since very many commitments can lead to burnout.</p>
+        <p><strong>Darcy (2):</strong> losing motivation for her novel, feeling tired and withdrawing from her sister suggest stagnation, a failure to find a way to contribute, and possibly the isolation of an unresolved stage 6. If it persists, Erikson's model predicts a weaker sense of care and a greater risk of regret or despair in stage 8.</p>
+        <p><strong>Evaluation (1):</strong> these are interpretations of a brief scenario, and Erikson's stages are hard to falsify because both over-involvement and under-involvement can be labelled negative; Malone et al. (2016) found earlier quality of life predicted later wellbeing but only established correlation.</p>
+        <p class="xp-case">Marking guidance: identify stage 7 (1), apply generativity and care to Ezekiel (2), apply stagnation and its likely consequences to Darcy (2), add a linked evaluation or future-stage point (1). Answers must use the scenario detail, not just describe the stages.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q4 · Evaluate with applications <span class="xp-badge">8 marks</span></h4>
+      <div class="xp-intro"><strong>Evaluate Vygotsky's theory of social development. You must refer to practical applications in your answer.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans4')">Show answer</button></div>
+      <div class="xp-result" id="ans4" hidden>
+        <p><strong>AO1 — the theory.</strong> Vygotsky proposed social constructivism: knowledge and understanding are built through interaction with others. He emphasised play, especially symbolic and imaginary play from around 18 months to three years, in which children take on roles and follow the rules of the character, overriding their own impulses. This develops self-regulation, the ability to control behaviour, emotions and thoughts, and the skill transfers to other settings such as formal education. Scaffolding from more knowledgeable peers also supports progress through the ZPD.</p>
+        <p><strong>AO3 — supporting evidence.</strong> Singer (1961) found children preferring fantasy play waited twice as long as others when told waiting showed they would make good astronauts. White and Carlson (2015) improved executive functioning in five-year-olds through Batman role-play, suggesting self-distancing is the active mechanism. Dunn et al. (1991) linked pretend play with older siblings to more advanced emotional development.</p>
+        <p><strong>AO3 — application.</strong> Tools of the Mind (Bodrova &amp; Leong, 2007) is a preschool intervention in which teachers scaffold children's planning of make-believe play, with an hour of play a day. It targets self-regulation, which predicts school performance better than IQ (Duckworth &amp; Seligman, 2005). This is a direct practical use of the theory in education.</p>
+        <p><strong>AO3 — weaknesses.</strong> Singer's result is bidirectionally ambiguous: self-regulated children may simply seek more fantasy play. Lillard et al. (2013) argue there is no causal link, citing small middle-income samples, experimenter bias and inconsistent definitions and measures. Ogan (2008) found unstructured free play produced greater gains than adult-scaffolded play, and Goble (2021) showed the intervention's effect depends on teacher experience and wellbeing, affecting fidelity.</p>
+        <p><strong>Overall judgement.</strong> The theory has genuine applied value and plausible evidence that role-play builds self-control, but much of the evidence is correlational and the effective ingredient of play remains disputed, so claims should be qualified.</p>
+        <p class="xp-case">Marking guidance: AO1 accurate description of social constructivism, play, self-regulation and possibly ZPD/scaffolding; AO3 evidence with named studies, at least one application, and a justified conclusion. Generic comment without application caps the mark.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Checkpoint</h2>
+  <div class="xp-block">
+    <h4>Q1 · How does Erikson say a person acquires developmental virtues?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">By receiving praise at every stage from the same attachment figure</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">By successfully resolving each psychosocial crisis</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">By copying the virtues of older siblings</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q2 · A child is four years old. Which psychosocial stage and crisis does Erikson describe?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Autonomy versus shame and doubt (18 months–3 years)</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Initiative versus guilt (3–6 years)</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Industry versus inferiority (6–11 years)</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q3 · What term did Erikson use for people who are too productive at the generativity stage?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Stagnation</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Over-extension</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Repudiation</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q4 · Why does Vygotsky think pretend play matters for social and emotional development?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">It lets children avoid all social rules while they are young</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Taking a role makes children follow rules and override impulses, developing self-regulation that transfers to other settings</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">It replaces the need for any interaction with adults or peers</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q5 · What were the two groups compared in Singer's (1961) astronaut study?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Children aged six to nine versus children aged 10 to 13</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Children who preferred fantasy play versus those who did not enjoy it</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Boys who had mindfulness lessons versus girls who did not</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q6 · Which boys benefited most in Huppert and Johnson's (2010) study?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The boys who attended the most schools</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Those who practised most, with the largest gains among boys with emotional difficulties</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Only the boys who had a parent with depression</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Key Terms</h2>
+  <div class="keyterm-box"><span class="kt">social and emotional development</span><br><span class="zh">社会与情绪发展：学会理解管理情绪、建立维持关系、在不同社会情境中与人互动的过程</span></div>
+  <div class="keyterm-box"><span class="kt">psychosocial crisis</span><br><span class="zh">心理社会危机：Erikson 每个阶段的内部冲突，必须解决才能进入下一阶段</span></div>
+  <div class="keyterm-box"><span class="kt">virtue</span><br><span class="zh">美德：成功解决心理社会危机后获得的积极品质，包括希望与意志、目的与能力、忠诚与爱，以及关怀和智慧</span></div>
+  <div class="keyterm-box"><span class="kt">basic trust</span><br><span class="zh">基本信任：相信他人可靠，照料行为可预测时更容易形成</span></div>
+  <div class="keyterm-box"><span class="kt">initiative / inhibition</span><br><span class="zh">主动性：控制和指导自己及他人行为的能力 / 抑制：因害怕后果而不敢行动</span></div>
+  <div class="keyterm-box"><span class="kt">inertia</span><br><span class="zh">怠惰：被动状态，伴随无能感与自卑，源于勤奋阶段缺乏支持</span></div>
+  <div class="keyterm-box"><span class="kt">identity / self-concept / self-esteem</span><br><span class="zh">同一性 / 自我概念 / 自尊：对「我是谁」的主观感受 / 关于自己的心理表征 / 对自我价值的评价</span></div>
+  <div class="keyterm-box"><span class="kt">fidelity / repudiation</span><br><span class="zh">忠诚：对群体和价值的承诺 / 反叛：抗拒与叛逆感</span></div>
+  <div class="keyterm-box"><span class="kt">intimacy / social support</span><br><span class="zh">亲密：与他人的深厚联结 / 社会支持：从亲友社群获得的安慰、鼓励与帮助</span></div>
+  <div class="keyterm-box"><span class="kt">generativity / stagnation / burnout syndrome</span><br><span class="zh">繁殖感：养育指导下一代的needs / 停滞：找不到贡献社会的方式 / 倦怠：长期压力导致的身心耗竭</span></div>
+  <div class="keyterm-box"><span class="kt">integrity / despair / disdain / wisdom</span><br><span class="zh">完善：对一生的接纳 / 绝望：遗憾与失落 / 轻蔑：看低他人和自己 / 智慧：由正负经验得来的深刻理解</span></div>
+  <div class="keyterm-box"><span class="kt">social constructivism</span><br><span class="zh">社会建构主义：知识通过与他人的社会互动主动建构，重视合作与讨论</span></div>
+  <div class="keyterm-box"><span class="kt">imaginary play</span><br><span class="zh">想象游戏：创造虚构情境的假装活动，约三岁起常见；孩子按角色规则行动</span></div>
+  <div class="keyterm-box"><span class="kt">self-regulation</span><br><span class="zh">自我调节：控制行为、情绪和想法以达成目标，Vygotsky 认为游戏中练成并可迁移</span></div>
+  <div class="keyterm-box"><span class="kt">executive functioning / self-distancing</span><br><span class="zh">执行功能：计划与组织、维持注意、调节情绪和适应变化 / 自我疏离：脱离自己中心的视角看问题</span></div>
+  <div class="keyterm-box"><span class="kt">mindfulness</span><br><span class="zh">正念：完全觉察当下的意识状态，注意力放在此时此地，不被过去未来的杂念带走</span></div>
+  <div class="keyterm-box"><span class="kt">meditation / MBSR</span><br><span class="zh">冥想：通过集中注意或放松达到正念-state 的技术 / MBSR：Kabat-Zinn 的八周正念减压课程</span></div>
+  <div class="keyterm-box"><span class="kt">active control group</span><br><span class="zh">主动对照组：接受另一种真实干预的对照组，用来排除「只要有人关注就会好转」的解释</span></div>
+  <div class="keyterm-box"><span class="kt">effect size / moderated</span><br><span class="zh">效应量：两组差异大小的度量 / 被调节：两个变量关系的方向或强度取决于第三个变量</span></div>
+  <div class="keyterm-box"><span class="kt">anxiety</span><br><span class="zh">焦虑：没有特定压力源时的紧张担忧，但与对未来事件的担忧相关</span></div>
+</section>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  var secWhy = {
+  s0: [
+    [
+      '全顺着短期止住了哭，但 Erikson 会说孩子没机会练「自己做决定」；自主感需要有限选择来培养。',
+      '正确。有限选择让四岁孩子体验到控制感，正是 Erikson 自主对羞愧怀疑阶段需要的练习：成功解决会形成意志（will）。',
+      '一味严厉否定容易让孩子产生羞愧和低自尊，把「我想自己做」变成「我做什么都不对」。'
+    ]
+  ],
+  s10: [
+    [
+      'Erikson 说的是解决危机带来美德，不是靠同一位照料者表扬。',
+      '正确。每个阶段的心理社会危机被成功解决，就获得相应美德（希望、意志、目的等），并支持下一阶段。',
+      '模仿兄姐不是 Erikson 的机制，那是社会学习理论的说法。'
+    ]
+    ,[
+      '18 个月到 3 岁才是自主对羞愧怀疑，四岁已经越过这个阶段。',
+      '正确。三到六岁是主动对内疚，重要影响力是家庭；成功获得目的（purpose），被否定则抑制。',
+      '勤奋对自卑通常从六到十一岁开始，四岁还没到。'
+    ]
+    ,[
+      '停滞是「不投入」那一端，不是过度投入。',
+      '正确。Erikson 用 over-extension（过度延伸）形容投入太多活动、连自己时间都没有，可能导致倦怠。',
+      '反叛（repudiation）属于第五阶段同一性混乱的负面结果，不是第七阶段。'
+    ]
+    ,[
+      ' pretend play 恰恰有规则：孩子要按角色行动、遵守游戏约定。',
+      '正确。扮演角色时孩子要压制个人冲动、按角色规范行事，这练出自我调节，并会迁移到课堂等真实情境。',
+      '游戏不取代互动：Vygotsky 认为知识本来就是在与他人的互动中建构的。'
+    ]
+    ,[
+      '那不是 Singer 的分组；他的参加者都是六到九岁。',
+      '正确。Singer 比较的是偏好幻想游戏的孩子与不喜欢幻想游戏的孩子，前者为了「当好宇航员」等待的时间是后者两倍。',
+      ' mindfulness 课程与本实验无关，这是另一节的内容。'
+    ]
+    ,[
+      '上学数量不是研究中的变量。',
+      '正确。练得最多的男孩改善最大，而且有情绪困难的男孩受益最多；每周只需一节课。',
+      '研究没有只针对父母抑郁的男孩，这个说法没有依据。'
+    ]
+  ]
+};
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = (btn.closest('.xp-block') || section).querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+
+/* Socratic sc-ask: progressive reveal, next step unlocks after previous hint opens */
+(function () {
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.sc-ask-step'));
+  if (!steps.length) return;
+  steps.forEach(function (step, i) {
+    var btn = step.querySelector('.ask-toggle');
+    var hint = document.getElementById(btn ? btn.getAttribute('data-target') : '');
+    if (!btn || !hint) return;
+    btn.addEventListener('click', function () {
+      var open = hint.classList.toggle('show');
+      btn.textContent = open ? '收起提示' : '想好了？看提示 →';
+      if (open && i + 1 < steps.length) {
+        var next = steps[i + 1];
+        next.classList.remove('locked');
+        var nb = next.querySelector('.ask-toggle');
+        if (nb) nb.disabled = false;
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
