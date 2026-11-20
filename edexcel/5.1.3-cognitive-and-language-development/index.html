@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5.1.3 Cognitive &amp; Language Development — Piaget, Vygotsky &amp; Language Theories</title>
+<style>
+
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.sc-item { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-size: .95em; line-height: 1.7; margin: 8px 0; }
+.sc-tag { display: inline-block; background: var(--accent); color: #fff; font-size: .72em; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-right: 8px; }
+.sc-predict { background: #eff6ff; border: 1.5px solid #3b82f6; border-radius: 10px; padding: 14px 18px; margin: 16px 0 4px; }
+.sc-predict h4 { margin: 0 0 6px; color: #1d4ed8; }
+body.dark .sc-item { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .sc-tag { background: #3b82f6; }
+body.dark .sc-predict { background: rgba(59,130,246,.08); border-color: #3b82f6; }
+body.dark .sc-predict h4 { color: #93c5fd; }
+.sc-ask { background: #fefce8; border: 1.5px solid #ca8a04; border-radius: 10px; padding: 14px 18px; margin: 14px 0 4px; }
+.sc-ask h4 { margin: 0 0 4px; color: #854d0e; font-size: .95em; }
+.sc-ask-step { background: #fff; border: 1px solid #e7e5e4; border-radius: 8px; padding: 10px 14px; margin: 10px 0 0; }
+.sc-ask-step.locked { opacity: .45; }
+.sc-ask-step .ask-q { font-weight: 600; font-size: .95em; margin: 0; line-height: 1.7; }
+.ask-toggle { background: #fff; border: 1px solid #d6d3d1; border-radius: 8px; padding: 5px 12px; font-size: .82rem; font-weight: 500; color: #57534e; cursor: pointer; margin-top: 8px; transition: all .15s; }
+.ask-toggle:hover:not(:disabled) { border-color: #ca8a04; color: #854d0e; }
+.ask-toggle:disabled { cursor: not-allowed; opacity: .6; }
+.ask-hint { display: none; border-top: 1px dashed #e7e5e4; margin-top: 10px; padding-top: 8px; }
+.ask-hint.show { display: block; }
+.ask-hint .hint-label { font-size: .75em; color: #a8a29e; margin: 0 0 4px; font-weight: 700; }
+.ask-hint p { margin: 0; font-size: .92em; line-height: 1.75; }
+.ask-land { margin: 12px 0 0; font-size: .9em; color: #854d0e; line-height: 1.7; }
+body.dark .sc-ask { background: rgba(202,138,4,.08); border-color: #ca8a04; }
+body.dark .sc-ask h4 { color: #fde047; }
+body.dark .sc-ask-step { background: #16213e; border-color: #334155; }
+body.dark .sc-ask-step.locked { opacity: .5; }
+body.dark .ask-toggle { background: #16213e; border-color: #334155; color: #94a3b8; }
+body.dark .ask-toggle:hover:not(:disabled) { border-color: #ca8a04; color: #fde047; }
+body.dark .ask-hint { border-top-color: #334155; }
+body.dark .ask-hint .hint-label { color: #64748b; }
+body.dark .ask-hint p { color: #cbd5e1; }
+body.dark .ask-land { color: #fde047; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic E · Developmental psychology — 5.1.3 Cognitive &amp; Language Development</span>
+  </div>
+  <span class="nav-pill">🧠 Developmental Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">5.1.3 Cognitive &amp; Language</div>
+    <div class="sb-header-sub">Piaget · Vygotsky · Language theories</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s0">Start Here: Can You Speed Up a Child?</a></li>
+    <li class="sb-item"><a href="#s1">1. Stage Theory &amp; Piaget's Mechanism</a></li>
+    <li class="sb-item"><a href="#s2">2. Piaget: Sensorimotor &amp; Preoperational</a></li>
+    <li class="sb-item"><a href="#s3">3. Piaget: Later Stages &amp; Overall</a></li>
+    <li class="sb-item"><a href="#s4">4. Vygotsky's Zone of Proximal Development</a></li>
+    <li class="sb-item"><a href="#s5">5. Stages of Language Development</a></li>
+    <li class="sb-item"><a href="#s6">6. Skinner's Learning Theory</a></li>
+    <li class="sb-item"><a href="#s7">7. Chomsky's Nativist Theory</a></li>
+    <li class="sb-item"><a href="#s8">8. Interactionist Theories</a></li>
+    <li class="sb-item"><a href="#s9">9. Evaluation: Piaget's Stages</a></li>
+    <li class="sb-item"><a href="#s10">10. Evaluation: Language Theories</a></li>
+    <li class="sb-item"><a href="#s11">11. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s12">12. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s13">13. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>5.1.3 COGNITIVE &amp; LANGUAGE DEVELOPMENT<br><span style="font-size:0.65em">Piaget's stages · Vygotsky's ZPD · Language stages · Skinner / Chomsky / interactionist · 认知与语言发展</span></h1>
+  <div class="meta">
+    <span class="badge">Topic E · Developmental psychology</span>
+    <span class="badge">Theory page</span>
+    <span class="badge">Spec 5.1.3</span>
+    <span class="badge">📖 Textbook Book 2 · Ch.2 · pp.23–43</span>
+  </div>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Explain Piaget's mechanism</strong> (schemas, assimilation, accommodation, equilibrium/disequilibrium) and <strong>describe the four stages</strong> of cognitive and language development with their age ranges.</li>
+    <li><strong>Describe Vygotsky's zone of proximal development</strong>, the more knowledgeable other and scaffolding, and contrast his account with Piaget's.</li>
+    <li><strong>Describe the stages of language development</strong> from prelinguistic speech to complex speech, with the approximate ages and the evidence for them.</li>
+    <li><strong>Compare three theories of language</strong>: Skinner's learning theory, Chomsky's nativist LAD and interactionist theories (Vygotsky and Bruner).</li>
+    <li><strong>Evaluate each theory</strong> with named studies and figures, and answer 2-, 4- and 8-mark exam questions applies to a scenario.</li>
+  </ul>
+</div>
+
+<div class="quick-summary">
+  <h4>What this page is really asking</h4>
+  <ol>
+    <li><strong>Do children think in stages?</strong> Piaget said yes: four universal stages, driven mostly by maturation. His mechanism is the <em>schema</em> — new experiences are either absorbed into what a child already knows (<em>assimilation</em>) or force the schema to change (<em>accommodation</em>).</li>
+    <li><strong>Does learning need other people?</strong> Vygotsky said yes: a child can do far more with a more knowledgeable partner than alone, and the gap between the two is the <em>zone of proximal development</em>.</li>
+    <li><strong>How does language actually arrive?</strong> Five stages in a fixed order, but the ages are only guides. The big argument is <em>why</em>: rewarded habits (Skinner), an inborn language device (Chomsky), or a mix of biology and social interaction (the interactionists).</li>
+    <li><strong>The recurring theme is "underestimated or overestimated?"</strong> Study after study shows children can do things earlier than Piaget claimed, when the task is made simpler or more familiar. That same question runs through every theory on this page.</li>
+  </ol>
+</div>
+
+<!-- ============ 0 ============ -->
+<section class="section" id="s0">
+  <h2>Start Here: Can You Speed Up a Child?</h2>
+  <div class="sc-item"><span class="sc-tag">背景</span>家长都想让孩子赢在起跑线：放莫扎特、教双语、学婴儿手语，各类课程花掉大量时间和钱。一个两岁孩子的家长问你：这些投入真能加快孩子的语言和思维发展吗？还是顺其自然就好？</div>
+  <div class="sc-item"><span class="sc-tag">角色</span>你是发展心理学课程的助教。这位家长把问题交给你，希望你用这一章的理论给个有依据的回答。</div>
+  <div class="sc-item"><span class="sc-tag">任务</span>你要判断三件事：发展是不是按固定阶段走、别人的帮助能起多大作用、语言到底是教出来的还是天生的。这三个问题分别对应这一页的 Piaget、Vygotsky 和三家语言理论。</div>
+  <div class="sc-item"><span class="sc-tag">目标</span>先猜下面这题。读完这一页，你不只能回答它，还能用研究证据说明「为什么」：儿童的能力什么时候被低估了，什么时候又被高估了。猜完别走，再往下追问两层。</div>
+  <div class="sc-predict">
+    <h4><span class="sc-tag" style="background:#3b82f6">先猜</span>天生的语言能力能不能被环境改变？</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">完全不能：语言和思维在出生时就定死了，家长做什么都一样</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">能，但要选对方式：在孩子快够得着的时候，给恰到好处的帮助</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">能，而且越早越多越好：训练够密就能把孩子直接推进下一阶段</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="sc-ask">
+    <h4><span class="sc-tag" style="background:#ca8a04">追问</span>猜完先别走：这两个问题没有选项，先自己想，再点开提示。</h4>
+    <div class="sc-ask-step">
+      <p class="ask-q">追问一：孩子自己够不到、大人扶一把就能完成的任务，这算「他会不会」？</p>
+      <button class="ask-toggle" data-target="ask-h1">想好了？看提示 →</button>
+      <div class="ask-hint" id="ask-h1">
+        <p class="hint-label">提示</p>
+        <p>这恰恰是 Vygotsky 最关心的问题。他会说：只看「独立能不能完成」会低估孩子，真正值得看的是「有人帮忙时能到哪」。这段距离就是 ZPD。家长的问题因此落在「帮多少、什么时候撤」上，而不在「要不要帮」。</p>
+      </div>
+    </div>
+    <div class="sc-ask-step locked">
+      <p class="ask-q">追问二：有学者说孩子天生带一套语言装置，有学者说语言靠奖励塑造。他们吵的到底是同一件事吗？</p>
+      <button class="ask-toggle" data-target="ask-h2" disabled>想好了？看提示 →</button>
+      <div class="ask-hint" id="ask-h2">
+        <p class="hint-label">提示</p>
+        <p>他们争的是天性还是教养各占多少，但争的不完全是同一层：Chomsky 解释的是「为什么这么快、错误这么有规律」，Skinner 解释的是「词汇和发音怎么被环境塑造」。互动论者干脆说两边各对一半。带着这个分歧往下读，你会发现每个理论都能解释一部分事实。</p>
+      </div>
+    </div>
+    <p class="ask-land">带着这两个追问往下读：Piaget 给你「阶段」的坐标，Vygotsky 给你「帮助」的坐标，三家语言理论给你「为什么语言会来」的坐标。家长那个问题，要三个坐标一起看才答得完整。</p>
+  </div>
+</section>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Stage Theory &amp; Piaget's Mechanism</h2>
+  <p>The parent's question assumes a stage model: that development has a fixed route. <strong>Cognitive development</strong>（认知发展：随时间变化的信息加工方式） refers to changes in the way we process information over time, caused by <strong>maturation</strong>（成熟：随年龄发生的生物变化）, environmental experience, or the interaction of both. <strong>Stage theories</strong>（阶段理论：发展按固定顺序、突变且不连续地发生的解释） make two claims: changes are universal and happen in a fixed order regardless of culture or schooling, and in typical development stages cannot be skipped or reversed except after brain damage.</p>
+  <p>Swiss biologist Jean <strong>Piaget (1896–1980)</strong> accepted the stage claim. He believed play and exploration of the physical world build a mental representation, an inner world of knowledge. The building blocks are <strong>schemas</strong>（图式：关于某个对象、事件或概念的全部知识与经验的心理表征） — interconnected cognitive structures holding everything we know. Newborns start with innate action schemas such as sucking and grasping; Bowlby's <strong>internal working model</strong>（内部工作模型：关于关系的图式，由与主要照料者的互动建立） is the "relationships" schema.</p>
+  <div class="note-box">
+    <h4>The mechanism: from lion to snake</h4>
+    <p class="small">A child has an "animal" schema: tail (one), ears (two), legs (four), fur. At a zoo visit the parent names a lion, then a bear and a camel, calling each one "animal". Each new example is simply added to the existing schema, through <strong>assimilation</strong>（同化：把新例子加进已有图式）. The child is in <strong>equilibrium</strong>（平衡：图式与经验吻合，新信息都能同化）. Then the parent points to a snake: no ears, no legs, no fur. What is seen clashes with what is known, producing <strong>disequilibrium</strong>（不平衡：认知失衡，新信息无法直接同化，推动学习）. The schema must change — the child learns that fur, ears and four legs are not true of all animals. That change is <strong>accommodation</strong>（顺应：因不平衡而修改图式）. Piaget called the ongoing updating of schemas <strong>adaptation</strong>（适应：不断更新图式使内在表征更贴合外部经验）.</p>
+  </div>
+  <svg viewBox="0 0 680 180" role="img" aria-label="Assimilation and accommodation cycle">
+    <rect x="40" y="30" width="180" height="52" rx="8" fill="#dbeafe" stroke="#3b82f6"/>
+    <text x="130" y="52" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">Equilibrium</text>
+    <text x="130" y="70" text-anchor="middle" font-size="11" fill="#1e3a8a">schema fits experience</text>
+    <rect x="460" y="30" width="180" height="52" rx="8" fill="#fef3c7" stroke="#ca8a04"/>
+    <text x="550" y="52" text-anchor="middle" font-size="13" font-weight="700" fill="#854d0e">Disequilibrium</text>
+    <text x="550" y="70" text-anchor="middle" font-size="11" fill="#854d0e">snake breaks the schema</text>
+    <path d="M220 50 L450 50" stroke="#3b82f6" stroke-width="2.5" marker-end="url(#a1)"/>
+    <text x="335" y="42" text-anchor="middle" font-size="11" fill="#1e3a8a">assimilation fails</text>
+    <path d="M450 90 L220 90" stroke="#16a34a" stroke-width="2.5" marker-end="url(#a2)"/>
+    <text x="335" y="106" text-anchor="middle" font-size="11" fill="#15803d">accommodation: schema changes</text>
+    <text x="340" y="145" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">Disequilibrium motivates learning — it is the engine of cognitive development</text>
+    <text x="340" y="167" text-anchor="middle" font-size="11" fill="#475569">Figure: the adaptation cycle in Piaget's theory.</text>
+    <defs>
+      <marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="#3b82f6"/></marker>
+      <marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="#16a34a"/></marker>
+    </defs>
+  </svg>
+  <p class="small">Back to the parent: Piaget would say the child's stage cannot be skipped by extra practice, but the <em>content</em> of each schema depends on experience — which is exactly why the parent's question needs both nature and nurture.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>核心机制是一条循环：图式装得下新经验就是平衡（同化），装不下就失衡，失衡逼着改图式（顺应），改完重新平衡。动物园例子里狮子狗熊骆驼都能同化，蛇没有耳朵和腿，逼孩子改「动物」的定义。记一句：disequilibrium 是发展的发动机，没有它孩子就不会往前走。Bowlby 的内部工作模型也是一种图式，是关于「关系」的。</p>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Piaget: Sensorimotor &amp; Preoperational</h2>
+  <p>Piaget proposed four stages in a fixed sequence that depends more on nature than nurture: <strong>sensorimotor (0–2)</strong>, <strong>preoperational (2–7)</strong>, <strong>concrete operational (7–11)</strong> and <strong>formal operational (11+)</strong>. The ages are typical, not exact.</p>
+  <div class="note-box">
+    <h4>Stage 1 · Sensorimotor (0–2 years)</h4>
+    <p class="small">Infants cannot store information or plan for the future; their world is what they see, hear, smell, taste and feel, plus what they learn their bodies can do (kicking, reaching, grasping). Gradually they experiment: shake a rattle, hear a noise, shake it again. The key achievement is <strong>object permanence</strong>（客体永久性：明白看不见的物体依然存在，需要能在脑中形成该物体的心理表征）. Piaget observed his daughter Jacqueline: a toy duck hidden under a blanket was ignored at first, but after about eight months she pulled the blanket back to find it, showing she could store a mental image. Object permanence also underpins attachment at seven to eight months: in the Strange Situation babies cry when the mother leaves because they know she still exists.</p>
+    <p class="small"><strong>Evidence against the age:</strong> Piaget judged object permanence by whether babies reached for a hidden object, which may actually measure motor skill or attention. Using looking time instead, Renée <strong>Baillargeon et al. (1987)</strong> showed babies as young as three and a half months looked longer at an impossible event (a screen passing through a solid object) than a possible one (a screen rotating to 112 degrees before sticking), suggesting far earlier understanding. But "looking longer" may mean interest, not surprise: Iain <strong>Jackson and Sylvain Sirois (2022)</strong> used pupil dilation as a more valid measure of surprise and concluded Baillargeon overestimated very young babies' abilities.</p>
+  </div>
+  <div class="note-box">
+    <h4>Stage 2 · Preoperational (2–7 years)</h4>
+    <p class="small">Children can now use <strong>symbols</strong>（符号：用一个东西代表另一个，如把箱子当船） and understand that a word represents an object, but they cannot think logically. Two features follow.</p>
+    <p class="small"><strong>Egocentrism</strong>（自我中心：只能从自己的视角想象世界，不能理解别人有不同视角）. Piaget and Inhelder's (1956) <strong>Three Mountains Experiment</strong> showed children a 3-D model of three mountains and asked them to pick the photo showing a doll's view. Four-year-olds chose their own view regardless of the question; six-year-olds chose a different picture but not consistently the right one; only seven- to eight-year-olds chose correctly every time. The task used ten photos and a 3-D model but 2-D pictures, which is complicated. Helene <strong>Borke (1975)</strong> simplified it with a turntable and Grover the puppet: four-year-olds then succeeded on 67 per cent of trials, rising to 93 per cent with a familiar scene of toy animals and people.</p>
+    <p class="small"><strong>Conservation</strong>（守恒：理解改变外形并不改变数量，除非有东西被加进或拿走）. Children aged five or below say the transformed amount is "more", focusing on appearance; from six they may say "same" but cannot explain why. Piaget reserved the <strong>concrete operational stage</strong> for children who can justify the answer by <strong>decentre</strong>（去中心化：考虑所有可用信息，而不只看单一外观）, e.g. noticing the clay sausage is longer but thinner. McGarrigle and Donaldson (1974) argued the standard procedure created demand characteristics: changing the display and repeating the question makes children think a different answer is expected. When a playful teddy "accidentally" muddled the counters, 63 per cent of four- to six-year-olds passed conservation tasks.</p>
+    <p class="small"><strong>Class inclusion</strong>（类别包含：理解小类别属于大类别，如狮子属于哺乳动物） and <strong>animism</strong>（泛灵论：相信玩具、植物等无生命物体是活的，有类似人的感受）. Siegler and Svetina (2006) found 30 per cent correct class-inclusion answers in Slovenian five-year-olds versus 89 per cent in nine- to ten-year-olds; with logical feedback, five-year-olds almost doubled their score. Animism may be <strong>ethnocentric</strong>（民族中心主义：理论只能解释一种文化的行为，或用研究者自身的文化假设去解释数据）: many traditional cultures attribute spiritual qualities to rocks and trees, so regarding animism as "immature" is a Western, Eurocentric judgement with <strong>socially sensitive</strong>（社会敏感性：研究结论可能被用来为权力关系或歧视辩护） consequences.</p>
+  </div>
+  <p class="small">Back to the parent: the toys-and-pictures findings are the reason a "stage" is a guide, not a wall. A child who fails Piaget's version may pass an easier, more familiar version — which is what a good teacher or parent can arrange.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>前两阶段记两条主线。感知运动期（0–2 岁）核心成就是客体永久性（Jacqueline 的小鸭藏起来后约 8 个月会掀毯子找），它也解释了分离焦虑。Baillargeon 用「看更久」把年龄提前到 3.5 个月，但 Jackson & Sirois 用瞳孔放大反驳，说她高估了。前运算期（2–7 岁）三个特征：自我中心（三山实验，4 岁选自己的视角，Borke 简化后 67%、熟悉场景 93%）、不守恒（McGarrigle 用泰迪熊弄乱后 63% 通过，说明孩子不是不会，是被社会线索带偏）、泛灵论和类别包含（Siegler 5 岁 30%、9–10 岁 89%，给反馈后几乎翻倍）。一句话：Piaget 反复低估了孩子。</p>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Piaget: Later Stages &amp; Overall Evaluation</h2>
+  <div class="note-box">
+    <h4>Stage 3 · Concrete operational (7–11 years)</h4>
+    <p class="small">Children become more logical because they can decentre and focus on more than one feature at a time: rolling a clay ball into a sausage no longer means "more clay", because they notice both the increased length and the decreased diameter. But they still need physical objects to manipulate, which helps them grasp <strong>reversibility</strong>（可逆性：变化不必永久，事物可以回到原状） — water poured into a tall thin beaker has not increased in volume because it can be poured back.</p>
+  </div>
+  <div class="note-box">
+    <h4>Stage 4 · Formal operational (11+ years)</h4>
+    <p class="small">From 11, children use <strong>deductive reasoning</strong>（演绎推理：从一般原则推出具体结论） on syllogisms: "All cats love fish. I have a cat called Luna. Does Luna love fish?" requires accepting a major premise and a minor premise and reasoning without seeing Luna eat. From 12 they show <strong>hypothetico-deductive reasoning</strong>（假设演绎推理：形成假设、实验检验、推出结论并修正理论）. Piaget and Inhelder's (1958) pendulum problem asked which factor controls swing speed, weight or string length; 14- to 15-year-olds manipulated one variable at a time while younger children worked unsystematically.</p>
+    <p class="small"><strong>Evidence against universality:</strong> Susan <strong>Martorano (1977)</strong> tested 80 females aged 11 to 17 on ten tasks including the pendulum; scores rose with age but fewer than 60 per cent of 17-year-olds passed the pendulum and only 10 per cent used formal operational thinking consistently across all ten tasks. Yet Willis <strong>Overton et al. (1987)</strong> found over 90 per cent of 17-year-olds applied logical thinking when problems were phrased in familiar, meaningful ways — so the gap may reflect artificial tasks, not absent ability.</p>
+  </div>
+  <p><strong>Overall judgement on the stage theory.</strong> Piaget claimed universality driven by maturation, but Joel <strong>Bradmetz et al. (1999)</strong> found a moderate positive correlation between formal operational thought and general intelligence, pointing to individual differences such as genetics and diet. He also underestimated differences between children inside the same stage and overestimated those between stages. Against this, the theory changed education: classrooms for seven- to 11-year-olds routinely use water, sand, modelling clay, counters and blocks to let children discover answers, replacing pure knowledge delivery with active, developmentally appropriate learning.</p>
+  <p class="small">Back to the parent: Piaget's legacy for practice is real — hands-on, age-appropriate materials — but his ages are not deadlines. A child "behind" on one task may simply have met an unfamiliar version of it.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>后两阶段：具体运算期（7–11 岁）的孩子既能去中心也懂可逆，不过操作时还离不开实物；形式运算期（11+）的孩子会做演绎推理和假设检验，钟摆实验里 14–15 岁能一次只改一个变量。反驳数据要记两组：Martorano 测出 17 岁不到 60% 通过钟摆，只有 10% 在全部十项里稳定用形式运算；Overton 换成熟悉情境出题后超过 90% 都能做到。两相对照说明是任务脱离生活，不是孩子没有这个能力。总评：Bradmetz 发现形式运算与一般智力中度正相关，个体差异被低估；但理论确实改变了课堂，7–11 岁教室里常见的水和沙，加上橡皮泥、计数器等教具，都留下了它的影子。</p>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Vygotsky's Zone of Proximal Development</h2>
+  <p>Lev <strong>Vygotsky (1896–1934)</strong> agreed that children of different ages reason differently, but disagreed about why. Piaget emphasised curiosity, self-discovery and schema accommodation; Vygotsky emphasised <strong>social interaction</strong>（社会互动：与他人交流协作的学习过程） and the people who support learning, so language has a much bigger role in his theory. Skills such as decision-making pass from more experienced members of a group to younger ones, which is why cultures differ in how their members think.</p>
+  <p>The <strong>zone of proximal development (ZPD)</strong>（最近发展区：在有知识的人帮助下能完成、但独立做不到的任务范围） is the gap between what a child achieves alone and what they achieve with a <strong>more knowledgeable other (MKO)</strong>（更有知识者：能在 ZPD 内指导和支持学习者的人，如老师、家长或熟练同伴）. "Proximal" means the task is only slightly beyond the current level. The ZPD varies with the child's existing abilities and the partner's skill; progress is fastest when the challenge is manageable and support prevents fear of failure.</p>
+  <div class="note-box">
+    <h4>Scaffolding and its evidence</h4>
+    <p class="small">David <strong>Wood et al. (1976)</strong> described <strong>scaffolding</strong>（脚手架：MKO 在 ZPD 内提供的支持与引导） as focusing attention on what the learner already understands, giving positive feedback and hints, and helping maintain attention. Effective scaffolding is matched to the learner and gradually withdrawn. David <strong>Conner et al. (1997)</strong> found that better quality parent–child interaction during problem-solving and literacy tasks predicted greater competence when children were tested alone later, supporting Vygotsky; but the study covered only two-year-olds, so the value of expert partners at other ages or when the partner is a peer is unclear.</p>
+    <p class="small"><strong>Cultural limits.</strong> Harold <strong>Odden and Philippe Rochat (2004)</strong> studied rural Samoa, where hierarchy and status matter greatly: adult scaffolding was rare, and parents said child-centred interaction would reduce the respect children owe adults. Learning therefore happens differently where rank restricts interaction, so the theory may be ethnocentric. <strong>Application:</strong> Mehwish <strong>Haider and Aalyia Yasmin (2015)</strong> found that ten- and eleven-year-olds given four weeks of <strong>peer tutoring</strong>（同伴辅导：能力相近的学习者一起工作、互相支持以推进各自的 ZPD） by 12- and 13-year-olds progressed significantly more in English reading than a matched control group, influencing educational policy and teaching methods.</p>
+  </div>
+  <svg viewBox="0 0 680 190" role="img" aria-label="Zone of proximal development">
+    <rect x="60" y="30" width="230" height="56" rx="8" fill="#dbeafe" stroke="#3b82f6"/>
+    <text x="175" y="52" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e3a8a">Can do alone</text>
+    <text x="175" y="72" text-anchor="middle" font-size="11" fill="#1e3a8a">current level</text>
+    <rect x="290" y="30" width="220" height="56" rx="8" fill="#fef3c7" stroke="#ca8a04"/>
+    <text x="400" y="52" text-anchor="middle" font-size="12.5" font-weight="700" fill="#854d0e">ZPD</text>
+    <text x="400" y="72" text-anchor="middle" font-size="11" fill="#854d0e">with MKO + scaffolding</text>
+    <rect x="510" y="30" width="110" height="56" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="565" y="52" text-anchor="middle" font-size="12" font-weight="700" fill="#991b1b">Too hard</text>
+    <text x="565" y="72" text-anchor="middle" font-size="11" fill="#991b1b">even with help</text>
+    <path d="M60 115 L280 115" stroke="#3b82f6" stroke-width="3"/>
+    <path d="M290 115 L500 115" stroke="#ca8a04" stroke-width="3"/>
+    <text x="175" y="140" text-anchor="middle" font-size="11" fill="#1e3a8a">what the child already has</text>
+    <text x="395" y="140" text-anchor="middle" font-size="11" fill="#854d0e">what help unlocks</text>
+    <text x="340" y="170" text-anchor="middle" font-size="11.5" fill="#475569">Figure: the ZPD sits between independent ability and what is unreachable.</text>
+  </svg>
+  <p class="small">Back to the parent: Vygotsky's answer is not "push harder" but "find the ZPD" — tasks just beyond the child's own reach, with a partner who adjusts help and then withdraws it.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>Vygotsky 和 Piaget 的分歧：一个靠自己探索，一个靠社会互动。ZPD 是「自己能做到的」和「有人帮才能做到的」之间的那一截；MKO 是有知识的人，scaffolding 是他给的支架，最好的支架会随孩子变强而逐步撤掉。证据两正一反：Conner 说亲子互动质量预测后来的独立表现（但只测了 2 岁）；Odden & Rochat 说萨摩亚社会等级高，成人很少 scaffold，理论可能民族中心；Haider & Yasmin 的同伴辅导让 10–11 岁孩子阅读显著进步，是应用证据。</p>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Stages of Language Development</h2>
+  <p>Language stages are described as universal in order, but the rate varies with individual, social and cultural differences, so ages are guidelines only. Five stages run from birth to about five years.</p>
+  <table class="mat2x2 c3">
+    <tr><th>Stage</th><th>Age guide</th><th>What happens</th><th>Key detail</th></tr>
+    <tr><td><strong>Prelinguistic</strong></td><td>0–12 months</td><td>Phoneme discrimination, cooing, babbling</td><td>Japanese babies distinguish ra/la; adults may not (Miyawaki et al., 1975); deaf babies babble (Stoel-Gammon &amp; Otomo, 1986); about 30 words understood</td></tr>
+    <tr><td><strong>One-word</strong></td><td>12–18 months</td><td>First words; receptive ahead of expressive; holophrases</td><td>about 30 words by 18 months; nouns before verbs; vocabulary explosion up to 20 new words a day</td></tr>
+    <tr><td><strong>Telegraphic</strong></td><td>18–24 months</td><td>Two- and three-word sentences, nouns and verbs only</td><td>about 100–200 words; "Daddy cup"; rigid word order (syntax), no grammar words</td></tr>
+    <tr><td><strong>Language expansion</strong></td><td>2–3 years</td><td>Mean length of utterance rises; morphemes added</td><td>-s, -ing, articles; over-generalisation "Daddy drinked milk"; questions and prepositions appear</td></tr>
+    <tr><td><strong>Complex speech</strong></td><td>3–5 years</td><td>Full grammar, conjunctions, pronouns</td><td>phonological awareness (rhyme) and clearer articulation</td></tr>
+  </table>
+  <p class="small" style="color:var(--text-secondary)">Table: the five stages of language development, with ages as guidelines only.</p>
+  <div class="note-box">
+    <h4>Evidence, and the "universal" question</h4>
+    <p class="small">A ten-month longitudinal study by Beverly <strong>Goldfield and Steven Reznick (1990)</strong> used mothers' diaries to track vocabulary in 14-month-olds: in 72 per cent of cases children showed vocabulary "spurts", learning words four times faster than before, though five children progressed at a steady rate. Jean <strong>Berko (1958)</strong> used nonsense words to test grammar: with "wug/wugs" 76 per cent of four- to five-year-olds and 97 per cent of five-and-a-half- to seven-year-olds used the plural correctly (p &lt; 0.02); for the past tense "bod/bodded" the figures were 14 and 31 per cent (p &lt; 0.05). Because the words were new to every child, the study isolates learned grammar rules.</p>
+    <p class="small">But universality is challenged: Michael <strong>Maratos (1988)</strong> found that children learning Turkish, Georgian or Polish bypassed telegraphic speech and used inflections much earlier than English speakers; William <strong>Snyder (2011)</strong> replied that the absence of grammatical errors holds only for spontaneous speech, since experimental tasks still produce errors. Application: knowing the norms lets professionals spot children progressing significantly slower than age-matched peers and refer them to a <strong>speech and language therapist</strong>（语言治疗师：评估、诊断并治疗沟通与吞咽困难的专业人员）.</p>
+  </div>
+  <p class="small">Back to the parent: "vocabulary explosion" and "telegraphic speech" describe what most children do, but Maratos's finding is the warning — a milestone table built on English-speaking children is not a universal timetable.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>五阶段按年龄串起来：0–12 个月能分辨所有音位（日本婴儿分得出 ra/la，大人反而分不出），8 周咕咕声、6 个月咿呀，聋儿也会咿呀说明先天；12–18 个月第一批词，理解快于表达，18 个月约 30 词，每天最多新增 20 词；18–24 个月电报式句子（约 100–200 词，"Daddy cup"，只有名词动词）；2–3 岁加词尾（-s、-ing）出现过度概括错误（"drinked"）；3–5 岁语法基本齐全。证据：Goldfield & Reznick 72% 有词汇爆发（4 倍速），Berko 用假词测语法（wug 76%→97%）。反例：土耳其语、格鲁吉亚语、波兰语孩子跳过电报期，Snyder 说实验任务里照样出错。</p>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Skinner's Learning Theory</h2>
+  <p>Burrhus F <strong>Skinner (1957)</strong> argued babies learn language through operant conditioning: spoken language is shaped by positive reinforcement. Babies babble ("mamamamama"); parents respond with excited faces and attention, so those sounds become more common, while sounds outside the family language are ignored and become extinct — <strong>selective reinforcement</strong>（选择性强化：只奖励目标行为，其他行为被忽略）. Gradually parents reinforce sounds only in the right context ("mamama" near mother) and later only correct pronunciation ("mook" → milk) and correct syntax.</p>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Supporting evidence</h4>
+      <ul class="tight">
+        <li><strong>Michael Goldstein et al. (2003)</strong> compared two groups of eight-month-olds: mothers smiled every time their baby made a sound in one group, but smiled non-contingently in the other. The contingent group babbled more, and their vocalisations were judged more complex and mature — operant conditioning contributes in the prelinguistic stage.</li>
+        <li><strong>Application:</strong> speech and language therapists use operant methods to help children with language delays, including autism.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Challenges</h4>
+      <ul class="tight">
+        <li><strong>Roger Brown and Camille Hanlon (1970)</strong> observed three families for two years: parents praised and rewarded children regardless of how accurate their syntax was, responding to meaning and rarely disapproving of ungrammatical speech.</li>
+        <li><strong>Kathy Hirsh-Pasek et al. (1984)</strong> content-analysed observations of 40 upper-middle-class American mothers: mothers' approval was no different whether children spoke grammatically ("people live in Florida") or not ("people lives in Florida") — yet 20 per cent of utterances were ungrammatical.</li>
+        <li><strong>The error problem:</strong> children add "-s" and "-ed" to exceptions ("tooths", "goed") which they cannot have heard from parents, and keep making errors after correction. Operant conditioning cannot explain this.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">Verdict: the research supports a role for reward in early babbling, but parents do not train grammar the way Skinner claimed, and his account cannot produce the systematic errors children actually make.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>Skinner 主张语言是操作条件作用塑造的：婴儿咿呀，父母笑着回应就是强化，不符合母语的音被忽略而消失，这叫选择性强化。支持证据是 Goldstein 2003：妈妈每次发音都笑的那组，孩子咿呀更多、更复杂。反对证据两条都来自真实观察：Brown & Hanlon 发现父母不在乎语法对错，只在乎意思；Hirsh-Pasek 发现 20% 的话不合语法，但母亲反应没差别。致命一击是过度概括错误（tooths/goed），这些话孩子从没听过，奖励塑造说解释不了。</p>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Chomsky's Nativist Theory</h2>
+  <p>Noam <strong>Chomsky (1957)</strong> argued language cannot result from reinforcement and imitation: children learn an enormous amount very fast, often from messy input in which adults interrupt themselves and leave sentences unfinished. He proposed an innate <strong>language acquisition device (LAD)</strong>（语言习得装置：人类天生具备的假设性认知机制，用来识别语言模式并推导词序规则） — not a specific brain region, but a uniquely human tool for identifying patterns and extracting rules.</p>
+  <ul class="tight">
+    <li><strong>Universal grammar</strong>（普遍语法：人类天生共享的基本语言特征知识，使任何语言都能被习得）: the LAD is born with features shared by all languages, e.g. sentences combine noun phrases ("the cat") and verb phrases ("is drinking"), and sounds combine consonants and vowels.</li>
+    <li><strong>Transformational grammar</strong>（转换语法：把表层结构转换为深层结构以理解意义的规则）: comprehension converts <em>surface structure</em>（表层结构：实际词语及其顺序） into <em>deep structure</em>（深层结构：句子的意义）, and production does the reverse, effortlessly and unconsciously.</li>
+    <li><strong>Critical period:</strong> Eric <strong>Lenneberg (1967)</strong> held that a first language not acquired by puberty will never reach complex grammar, because neuroplasticity（神经可塑性：大脑终生形成新连接、重新组织的能力） declines after puberty. Modern nativist Daniel Slobin notes we attend more to stressed words, which disambiguates sentences such as "I never said she stole my money".</li>
+  </ul>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Supporting evidence</h4>
+      <ul class="tight">
+        <li><strong>Grammatical errors make sense.</strong> If the LAD infers rules such as "add -s for plural", over-generalisation naturally produces "I goed to the dentist" and "I'm brushing my tooths" — errors Skinner's account cannot explain.</li>
+        <li><strong>Critical-period cases.</strong> <strong>Genie</strong>, found in Los Angeles in the 1970s after ten years of isolation, quickly built a large vocabulary and meaningful multi-word utterances ("I like hear music ice cream truck"), but her speech remained "syntactically primitive and underdeveloped" (Curtiss, 1978), consistent with Lenneberg.</li>
+        <li><strong>Application:</strong> early second-language teaching and cochlear implants for deaf infants aim to use the critical window.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Challenges</h4>
+      <ul class="tight">
+        <li><strong>Universals challenged.</strong> Greenberg (1963) based the claim on 45 features across 30 languages (e.g. Pakistan, Colombia, Senegal), but languages such as Riau Indonesian do not share them — a beta bias（β 偏误：忽视群体差异，把某一群体的结果当作普遍规律） that ignores linguistic diversity.</li>
+        <li><strong>Social interaction ignored.</strong> <strong>Jim</strong>, a hearing child of deaf parents, was exposed to abundant speech through television and radio yet progressed very little (Sachs et al., 1981), suggesting input alone is not enough.</li>
+        <li><strong>Genie is contested.</strong> linguist Peter Jones (1995) argued her progress plateaued because of later trauma, not a missing critical period.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">Verdict: nativism explains the speed and the patterned errors of early grammar; it struggles with linguistic diversity and with cases where rich input without interaction fails.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>Chomsky 的核心：LAD 是天生的语言工具，内含普遍语法，能把表层（词序）转成深层（意义）。最大功劳是解释了过度概括错误（goed/tooths），这些错误恰恰说明孩子在主动推规则，不是被奖励塑造。Lenneberg 的关键期说：青春期前没习得第一语言就学不会复杂语法，因为神经可塑性下降。反证：Greenberg 的 45 个普遍特征被 Riau Indonesian 打破（β 偏误）；Jim 听得够多却不说话；Genie 词汇涨得快但句法始终原始，不过 Jones 说是创伤让她停滞。</p>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Interactionist Theories</h2>
+  <p>Interactionists explain language as a combination of nature and nurture: we are born able to learn language, but the social context is critical. The approach grows out of Vygotsky's claim that infants learn language because they want to communicate and join in social activities. He called very early speech <strong>preintellectual</strong>（前智性语言：婴儿为了与人互动而模仿词句，而非用它思考）.</p>
+  <ul class="tight">
+    <li><strong>Private and inner speech.</strong> Young children talk aloud while solving problems (<strong>private speech</strong>，私人言语：出声的自我指导). If they have experienced sensitive scaffolding, this becomes internalised by two to three years as <strong>inner speech</strong>（内部言语：不出声的内部思考工具）, allowing them to think through problems verbally without speaking.</li>
+    <li><strong>Cultural tools</strong>（文化工具：语言、数学、艺术等代代相传的符号系统，帮助人用更复杂的方式思考）. Language is one of several symbol systems transmitted through social interaction and formal education.</li>
+    <li><strong>Bruner's LASS.</strong> Jerome Bruner accepted the LAD but argued it cannot work without a <strong>language acquisition support system (LASS)</strong>（语言习得支持系统：父母、兄姐、同伴等以儿童为中心的方式与婴儿互动）. This includes <strong>motherese/parentese</strong>（儿向语：对婴幼儿说话时提高音调、放慢语速、夸张发音的方式） and joint attention（共同注意：两人协调地把注意力放在同一事物上，如一起看图册）, which develops at six to 12 months.</li>
+  </ul>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Supporting evidence</h4>
+      <ul class="tight">
+        <li><strong>Jim again:</strong> the child of deaf parents progressed poorly with passive radio/TV input but advanced rapidly once he interacted socially with a speech and language therapist.</li>
+        <li><strong>Nairán Ramírez-Esparza et al. (2017):</strong> a longitudinal study with positive correlations between parentese at 11 months and language at 24 and 33 months; children exposed to most parentese produced on average 400 more words at 33 months than those exposed to least. Parents wore vests with recording devices, giving 48 hours of natural data per child.</li>
+        <li><strong>Jae Yung Song et al. (2010):</strong> 19-month-olds were more likely to look at the correct picture when instructions used slow speed and hyper-articulation, showing which features of parentese help.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Challenges</h4>
+      <ul class="tight">
+        <li><strong>Jim is inconclusive:</strong> his poor progress may reflect passive listening without feedback, or input lacking infant-directed features, rather than absent interaction.</li>
+        <li><strong>Confound in Ramírez-Esparza:</strong> parents using most parentese at 11 months also talked more at 33 months, so parentese itself cannot be isolated as the cause.</li>
+        <li><strong>Parentese is not universal:</strong> Elinor Ochs and Bambi Schieffelin (1984) found Kaluli parents in Papua New Guinea do not speak to infants until they can talk back, with no parentese and minimal interaction, yet language is still acquired — supporting Chomsky more than Vygotsky.</li>
+        <li><strong>WEIRD samples:</strong> much evidence comes from white, educated, industrialised, rich, democratic societies. David Lancy's term <strong>neontocracy</strong>（儿童中心文化：高度重视儿童、把其快乐与地位放在首位的文化） captures the child-centric norm against which other cultures are unfairly judged, making this research socially sensitive.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">Verdict: interactionism fits the strongest evidence on social input, but the size of the social effect varies by culture, and the active ingredient in "parentese" is still disputed.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>互动论 = 先天能力 + 社会情境。Vygotsky 的两条线：私人言语（出声自言自语）在 2–3 岁内化成内部言语；语言只是文化工具之一（还有数学、艺术）。Bruner 补了 LASS：LAD 离了父母同伴的支持系统就转不动，典型形式是儿向语和共同注意（6–12 个月出现）。证据 Ramírez-Esparza 用背心录音 48 小时，儿向语多的孩子 33 个月时平均多会 400 词，但混淆是这些父母本身话就多。反证 Ochs & Schieffelin：巴布亚新几内亚 Kaluli 父母儿向语为零照样学会说话。再加 WEIRD 样本和 neontocracy，提醒这整片研究的文化局限。</p>
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Evaluation: Piaget's Stage Theory</h2>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Strengths</h4>
+      <ul class="tight">
+        <li><strong>A generative framework.</strong> The stage sequence gave developmental psychology a testable structure; research inspired by it (Baillargeon, Borke, McGarrigle, Siegler) has mapped exactly where children's abilities appear earlier than Piaget thought.</li>
+        <li><strong>Naturalistic observation of his own children.</strong> Piaget's detailed observations of Jacqueline and his own children provide rich, ecologically valid descriptions of how schemas develop.</li>
+        <li><strong>Standardised, replicable tasks.</strong> The Three Mountains, conservation and pendulum problems gave later researchers concrete procedures to repeat and challenge, supporting objective, reliable testing.</li>
+        <li><strong>Educational impact.</strong> Child-focused, developmentally appropriate classrooms (water, sand, clay, counters for 7–11-year-olds) replaced passive knowledge delivery with discovery learning.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Weaknesses</h4>
+      <ul class="tight">
+        <li><strong>Underestimates young children.</strong> Baillargeon et al. (1987) found object-permanence understanding at three and a half months; Borke (1975) got 67–93 per cent success from four-year-olds on a simplified Three Mountains; McGarrigle and Donaldson (1974) got 63 per cent conservation passes when demand characteristics were removed.</li>
+        <li><strong>Overestimates adolescents.</strong> Martorano (1977): fewer than 60 per cent of 17-year-olds passed the pendulum problem and only 10 per cent reasoned formally across all ten tasks — though Overton et al. (1987) got over 90 per cent with familiar wording.</li>
+        <li><strong>Ethnocentric and socially sensitive.</strong> Price-Williams et al. (1969) found Mexican pottery-making children conserved earlier because of relevant experience; animism as "immature" reflects a Western worldview and can justify colonial attitudes.</li>
+        <li><strong>Individual differences ignored.</strong> Bradmetz et al. (1999) found a moderate correlation between formal operational thought and intelligence; Piaget understated variation within stages and overstated gaps between them.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">Verdict: as a description of the <em>sequence</em> of children's thinking, the theory remains influential; as a fixed timetable of universal abilities it has been repeatedly shown to set the ages too late for some tasks and too early for others.</p>
+  <div class="exam-tip"><strong>Exam tip:</strong> build chain reasoning with C–E–O (Cause, Explanation/Example, Outcome): e.g. Piaget's own-child observations and European middle-class samples (cause) → Price-Williams's pottery children (example) → abilities may be underestimated through beta bias (outcome). Always pair a weakness with a named study and figure.</div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>Piaget 总评四绿四红。绿：理论给了可检验的结构、对自己孩子的自然观察资料丰富、任务标准化可重复、推动了以儿童为中心的教学改革。红：低估幼儿（Baillargeon 3.5 个月、Borke 67–93%、McGarrigle 63%）、高估青少年（Martorano 10% vs Overton 90%）、民族中心与社会敏感（Price-Williams 制陶儿童更早守恒、泛灵论被当成不成熟）、忽略个体差异（Bradmetz 与智力中度相关）。裁决句：作为思维顺序的描述仍有影响，作为固定年龄表被反复证伪。C–E–O 三段式是写论述题的骨架。</p>
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Evaluation: The Three Language Theories</h2>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>What each theory explains well</h4>
+      <ul class="tight">
+        <li><strong>Skinner — early sounds.</strong> Goldstein et al. (2003) showed contingent smiling increased and matured babbling in eight-month-olds; operant methods help speech therapy.</li>
+        <li><strong>Chomsky — patterned errors and speed.</strong> Over-generalisation ("goed", "tooths") follows from rule inference, and children acquire grammar far faster than the fragmented input would allow.</li>
+        <li><strong>Interactionists — the social fact.</strong> Ramírez-Esparza et al. (2017) found 400 more words at 33 months in the highest-parentese group; Song et al. (2010) isolated slow speech and hyper-articulation as helpful features.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Where each theory fails</h4>
+      <ul class="tight">
+        <li><strong>Skinner — no grammar training.</strong> Brown and Hanlon (1970) and Hirsh-Pasek et al. (1984) found parents respond to meaning, not grammatical accuracy; 20 per cent of utterances are ungrammatical, and errors persist after correction.</li>
+        <li><strong>Chomsky — diversity and interaction.</strong> Riau Indonesian breaks the proposed universals (Greenberg's 45 features); Jim (Sachs et al., 1981) had abundant input without social use and made little progress; Genie is contested by Jones (1995).</li>
+        <li><strong>Interactionists — culture and method.</strong> Kaluli children (Ochs &amp; Schieffelin, 1984) acquire language without parentese; Ramírez-Esparza's parentese effect is confounded with total talk; evidence is largely WEIRD and reflects neontocracy (Lancy).</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">Verdict: the three theories are not simply rivals. Skinner best explains the shaping of early sounds, Chomsky the speed and rule-governed errors of grammar, and interactionists the role of the social partner. The exam rewards saying which evidence fits which claim.</p>
+  <div class="exam-tip"><strong>Exam tip:</strong> for a 2-mark "explain one weakness", name the study and state the consequence, e.g. "Hirsh-Pasek et al. found mothers responded no differently to grammatical and ungrammatical speech, so parents do not reinforce correct grammar as Skinner claimed." For the 8-mark scenario question, apply the theory to the named child and the context given.</div>
+  <div class="green-box">
+    <h4>Close the loop</h4>
+    <p class="small">Back to the parent who asked whether money and effort can speed up a child. The answer from this page is conditional. Piaget says the sequence cannot be skipped, so drilling a child into the next stage will not work; but the many "underestimated" findings show a well-chosen, familiar task reveals more than a standard test. Vygotsky says the useful investment is time with a partner who finds the ZPD and withdraws help. The language theories say input matters, but so do rules the child brings and the social context around them.</p>
+    <p class="small"><strong>Reflect before the Exam Lab:</strong> if a four-year-old fails a conservation task, how would you tell "does not understand" from "does not understand this particular question"? Which study on this page gives you the method?</p>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>三家理论总评：Skinner 解释早期发音的塑造（Goldstein），但解释不了语法（Brown & Hanlon、Hirsh-Pasek、20% 错误率）；Chomsky 解释速度和有规律的错误（goed/tooths），但普遍语法被 Riau Indonesian 打破，Jim 说明光有输入不够；互动论解释社会伙伴的作用（+400 词、慢速夸张发音有效），但 Kaluli 反例和混淆变量提醒文化局限。裁决句：三家不是非此即彼，各自解释一块。答 2 分时研究名加后果，答 8 分题要贴题里的人和情境。</p>
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Exam Lab</h2>
+  <div class="exam-practice">
+    <div class="xp-block">
+      <h4>Q1 · Describe <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Describe what Piaget meant by egocentrism.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans1')">Show answer</button></div>
+      <div class="xp-result" id="ans1" hidden>
+        <p>Egocentrism is the preoperational child's inability to understand that other people see the world from their own point of view (1 mark). Such a child can mentally represent objects that are not present but assumes others share their perspective, as when a four-year-old selects their own view of the three mountains as the view of the doll (1 mark).</p>
+        <p class="xp-case">Marking guidance: 1 mark for the definition (cannot take another's viewpoint), 1 mark for elaboration such as the Three Mountains example.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q2 · Explain a weakness <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Explain one weakness of Chomsky's nativist explanation of language development.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans2')">Show answer</button></div>
+      <div class="xp-result" id="ans2" hidden>
+        <p><strong>Weakness: it underestimates social interaction.</strong> Jim, a hearing child of deaf parents, was exposed to a great deal of speech through radio and television but made extremely limited progress until he could interact with a speech and language therapist (Sachs et al., 1981) (1 mark). If an inborn LAD plus sufficient input were all that was needed, Jim should have acquired speech from that input; his case suggests interaction matters, so Chomsky's explanation is incomplete (1 mark).</p>
+        <p class="xp-case">Marking guidance: 1 mark for identifying a valid weakness with evidence (Jim; Riau Indonesian against universals; contested Genie), 1 mark for explaining why it weakens the theory. A named study is needed for full marks.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q3 · Apply the theory <span class="xp-badge">4 marks</span></h4>
+      <div class="xp-intro"><strong>Claudia serves three fish fingers each to her four-year-old daughters, Guilia and Chiara. Guilia cuts hers into small pieces spread all over her plate: "There I've got more than you now!" Claudia pours the same amount of juice for each; Guilia has a short wide beaker, Chiara a tall thin one. "I don't care!" says Chiara, "because I have more juice!" With reference to Piaget's theory, explain one reason why Guilia thinks she has more fish fingers and Chiara thinks she has more juice.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans3')">Show answer</button></div>
+      <div class="xp-result" id="ans3" hidden>
+        <p><strong>Identification (1):</strong> both girls are in Piaget's preoperational stage (2–7 years), in which children cannot yet think logically about transformations.</p>
+        <p><strong>Explanation applied to Guilia (1):</strong> she focuses only on the appearance of the fish fingers, now numerous small pieces spread widely across the plate, and cannot decentre to take account of the fact that nothing was added or removed. This is a failure of conservation of number.</p>
+        <p><strong>Explanation applied to Chiara (1):</strong> she focuses on the single perceptual feature of height in the tall thin beaker and ignores its narrowness, so the juice looks like more. Again she cannot decentre or appreciate reversibility, that the juice could be poured back into the original beaker unchanged.</p>
+        <p><strong>Evaluation linked to the scenario (1):</strong> Piaget may have underestimated both girls: McGarrigle and Donaldson (1974) found 63 per cent of four- to six-year-olds passed similar tasks when a teddy, rather than an adult, appeared to change the display, suggesting the girls may understand more than their answers show if the situation were less demanding.</p>
+        <p class="xp-case">Marking guidance: identify the stage (1), apply the concept of centration/failure to decentre to each child's behaviour (2), and add a linked evaluation point or accurate elaboration (1). Answers that merely define egocentrism without applying it to both children lose marks.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q4 · Discuss with context <span class="xp-badge">8 marks</span></h4>
+      <div class="xp-intro"><strong>Aldo has two children. His son Alfie is 18 months old and his daughter Hema is five. Hema loves to play with Alfie. She talks to him a lot while showing him her toys. Aldo has noticed that Alfie seems to be communicating much more than Hema did at his age. Using Vygotsky's interactionist explanation of language development, discuss why Alfie might be making more rapid progress than Hema. You must make reference to the context in your answer.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans4')">Show answer</button></div>
+      <div class="xp-result" id="ans4" hidden>
+        <p><strong>AO1 — the theory applied.</strong> Vygotsky argued that language develops through social interaction: infants are driven to communicate and join in activities with caregivers, and early speech is preintellectual, used to engage others rather than to think. A more knowledgeable other supports the child within the zone of proximal development, the gap between what the child does alone and what they can do with help. Scaffolding (Wood et al., 1976) involves focusing attention, giving feedback and hints, maintaining attention, and gradually withdrawing support. Children talk aloud while problem-solving (private speech), which becomes internalised as inner speech by two to three years; language is one of the cultural tools passed on through interaction. Bruner added that the language acquisition device cannot function without a language acquisition support system, including motherese and joint attention.</p>
+        <p><strong>AO3 — why the context fits.</strong> Hema, aged five, acts as the more knowledgeable other: she talks to Alfie while showing him toys, which is precisely scaffolding in his ZPD, focusing his attention and giving a model just beyond what he produces alone. Alfie is 18 months old, in the one-word stage moving towards telegraphic speech, a period of rapid vocabulary growth (up to 20 new words a day), so he is at a sensitive point for exactly this input. This fits Conner et al. (1997), who linked the quality of parent–child interaction to later individual competence, and Haider and Yasmin (2015), where peer tutoring accelerated reading: an older partner supporting a younger one advances progress.</p>
+        <p><strong>AO3 — caution.</strong> The observation does not prove causation. Alfie's faster progress could reflect a general advance in language norms over the years between the siblings, or his own disposition; Ramírez-Esparza et al. (2017) found parentese correlated with larger vocabularies but noted that parents who used more parentese also talked more overall, so the active ingredient is uncertain. Interactionism also depends on culture: Ochs and Schieffelin (1984) found Kaluli children acquired language without parentese, so Vygotsky's emphasis on this style of interaction may be ethnocentric.</p>
+        <p><strong>Overall judgement.</strong> Vygotsky's account explains Aldo's observation well: a skilled five-year-old partner provides scaffolding and joint attention at a moment of rapid language growth. The evidence supports the general role of social partners, but not the claim that this particular style of interaction is the only route.</p>
+        <p class="xp-case">Marking guidance: AO1 accurate description of ZPD, MKO, scaffolding and relevant language-stage detail; AO3 application to Alfie (18 months, one-word stage), Hema (five, MKO role) and the talking-while-playing context, plus a judgement with evidence and a limitation. Generic description with no reference to the children caps the mark.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="section" id="s12">
+  <h2>12. Checkpoint</h2>
+  <div class="xp-block">
+    <h4>Q1 · Which term does Piaget use when a child's schema no longer matches evidence from the outside world?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Assimilation</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Disequilibrium</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Equilibrium</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q2 · In which stage is a child able to decentre?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Sensorimotor</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Preoperational</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Concrete operational</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q3 · What is the link between the ZPD and scaffolding?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">They are two names for the same thing</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Scaffolding is the support an MKO gives to help a learner progress through the ZPD</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Scaffolding is what remains when the ZPD has been closed</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q4 · In which stage do children make grammar errors through over-generalisation?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Prelinguistic</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Language expansion (2–3 years)</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Complex speech (3–5 years)</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q5 · What term does Skinner use for rewarding sounds from the child's own language and ignoring other sounds?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Selective attention</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Selective reinforcement</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Over-generalisation</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q6 · Why did Chomsky think language acquisition must be biological?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Because parents never speak to their children</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Because children acquire far more language, far faster and more accurately than fragmented input and reinforcement could explain</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Because deaf children never produce any babbling</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="section" id="s13">
+  <h2>13. Key Terms</h2>
+  <div class="keyterm-box"><span class="kt">schema</span><br><span class="zh">图式：关于某个对象、事件或概念的全部知识与经验的心理表征，是思维的积木</span></div>
+  <div class="keyterm-box"><span class="kt">assimilation / accommodation</span><br><span class="zh">同化 / 顺应：把新例子加进已有图式 / 因新信息挑战而修改图式</span></div>
+  <div class="keyterm-box"><span class="kt">equilibrium / disequilibrium</span><br><span class="zh">平衡 / 不平衡：图式与经验吻合 / 不吻合；不平衡推动学习，是发展的发动机</span></div>
+  <div class="keyterm-box"><span class="kt">object permanence</span><br><span class="zh">客体永久性：明白看不见的物体依然存在，依赖在脑中形成心理表征（约 8 个月，Baillargeon 认为更早）</span></div>
+  <div class="keyterm-box"><span class="kt">egocentrism</span><br><span class="zh">自我中心：前运算期儿童不能理解别人有不同视角（三山实验）</span></div>
+  <div class="keyterm-box"><span class="kt">conservation / decentre</span><br><span class="zh">守恒 / 去中心化：外形改变不等于数量改变 / 考虑全部信息而不只看外观</span></div>
+  <div class="keyterm-box"><span class="kt">animism / class inclusion</span><br><span class="zh">泛灵论：相信无生命物体是活的；类别包含：理解小类别属于大类别（狮子属于哺乳动物）</span></div>
+  <div class="keyterm-box"><span class="kt">reversibility</span><br><span class="zh">可逆性：变化不是永久的，事物可以回到原状（倒回去的水不会变多）</span></div>
+  <div class="keyterm-box"><span class="kt">syllogism / hypothetico-deductive reasoning</span><br><span class="zh">三段论 / 假设演绎推理：由两个前提得出结论 / 提出假设、检验、得出结论并修正理论</span></div>
+  <div class="keyterm-box"><span class="kt">zone of proximal development (ZPD)</span><br><span class="zh">最近发展区：在更有知识者帮助下能完成、独立做不到的任务范围</span></div>
+  <div class="keyterm-box"><span class="kt">more knowledgeable other (MKO) / scaffolding</span><br><span class="zh">更有知识者 / 脚手架：能指导学习者的人 / 在 ZPD 内提供的支持，随学习者变强而逐步撤除</span></div>
+  <div class="keyterm-box"><span class="kt">peer tutoring</span><br><span class="zh">同伴辅导：能力相近的学习者一起工作、互相支持以推进各自的 ZPD（Haider &amp; Yasmin 2015）</span></div>
+  <div class="keyterm-box"><span class="kt">phoneme / babbling / holophrase</span><br><span class="zh">音位 / 咿呀 / 单词句：能区分意义的最小语音单位 / 重复音节 / 一个词表达完整意思</span></div>
+  <div class="keyterm-box"><span class="kt">telegraphic speech</span><br><span class="zh">电报式语言：18–24 个月，两三个词组成句子，只有名词动词没有语法词（"Daddy cup"）</span></div>
+  <div class="keyterm-box"><span class="kt">mean length of utterance (MLU) / morpheme</span><br><span class="zh">平均话语长度 / 语素：说话平均词数 / 语言中最小的意义单位（如复数 -s、过去式 -ed）</span></div>
+  <div class="keyterm-box"><span class="kt">vocabulary explosion</span><br><span class="zh">词汇爆发：短期内词汇量猛增，最多每天学 20 个新词（Goldfield &amp; Reznick 1990：72% 出现爆发）</span></div>
+  <div class="keyterm-box"><span class="kt">selective reinforcement</span><br><span class="zh">选择性强化：Skinner 的概念，只奖励与目标语言一致的发音，其他发音被忽略而消失</span></div>
+  <div class="keyterm-box"><span class="kt">language acquisition device (LAD) / universal grammar</span><br><span class="zh">语言习得装置 / 普遍语法：Chomsky 的天生语言机制 / 人类共享的基本语言特征知识</span></div>
+  <div class="keyterm-box"><span class="kt">deep / surface structure</span><br><span class="zh">深层 / 表层结构：句子的意义 / 实际词语顺序；理解即把表层转成深层</span></div>
+  <div class="keyterm-box"><span class="kt">critical period / neuroplasticity</span><br><span class="zh">关键期 / 神经可塑性：语言必须在某时窗前习得 / 大脑终生重组形成新连接的能力（Lenneberg 1967）</span></div>
+  <div class="keyterm-box"><span class="kt">private / inner speech</span><br><span class="zh">私人言语 / 内部言语：出声的自我指导 / 2–3 岁内化后不出声的思考工具</span></div>
+  <div class="keyterm-box"><span class="kt">cultural tools</span><br><span class="zh">文化工具：语言、数学、艺术等代代相传的符号系统，让人用更复杂的方式思考</span></div>
+  <div class="keyterm-box"><span class="kt">language acquisition support system (LASS) / motherese</span><br><span class="zh">语言习得支持系统 / 儿向语：Bruner 的社会支持 / 高音调、慢语速、夸张发音的婴幼儿用语</span></div>
+  <div class="keyterm-box"><span class="kt">joint attention / neontocracy</span><br><span class="zh">共同注意 / 儿童中心文化：两人协调关注同一事物 / 高度重视儿童的文化（Lancy），会使其他文化被不公评判</span></div>
+</section>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  /* ---------- sidebar scroll spy ---------- */
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  /* ---------- reveal helper ---------- */
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  /* ---------- multiple choice: one why per option ---------- */
+  var secWhy = {
+  s0: [
+    [
+      '说得太绝了。天生的能力有，但环境和帮助确实能改变孩子「表现出多少」：Vygotsky 的 ZPD、互动论的 LASS 都在讲这件事。',
+      '正确。这正是 Vygotsky 的答案：在孩子快够得着的范围里给恰到好处的帮助（ZPD + scaffolding），然后逐步撤掉。家长的问题不是帮不帮，而是帮多少。',
+      '「越早越多越好、直接推进下一阶段」正是 Piaget 反对的：阶段按成熟顺序走，不能靠训练跳过。过度训练还可能让孩子只学会按外观答题。'
+    ]
+  ],
+  s12: [
+    [
+      '同化是把新例子装进已有图式，发生在图式还装得下的时候；装不下才出问题。',
+      '正确。图式与外部经验对不上就是 disequilibrium（不平衡），这种认知失衡促使孩子修改图式，是发展的动力。',
+      '平衡是图式与经验吻合、新信息都能同化的状态，正好相反。'
+    ]
+    ,[
+      '感知运动期（0–2 岁）的孩子还没有守恒概念，重点是客体永久性。',
+      '前运算期（2–7 岁）的孩子只看外观，还不能去中心，所以过不了守恒任务。',
+      '正确。具体运算期（7–11 岁）的孩子能同时考虑多个特征、懂得可逆，才真正通过守恒并能解释原因。'
+    ]
+    ,[
+      '它们相关但不是同一个东西：一个是任务范围，一个是给的支持。',
+      '正确。ZPD 是「独立能做到」与「有人帮才能做到」的差距，脚手架就是 MKO 在这段差距里给的引导与帮助，并随孩子进步逐步撤除。',
+      '脚手架用完了不代表 ZPD 消失；下一批任务又会有新的 ZPD。'
+    ]
+    ,[
+      '前语言期主要是咕咕声和咿呀，还没有词尾变化。',
+      '正确。2–3 岁的语言扩展期，孩子开始加 -s、-ing 等语素，于是出现 drinked、tooths 这类把规则用过头的错误。',
+      '3–5 岁的复杂语言期语法已基本齐全，过度概括的高峰在前一个阶段。'
+    ]
+    ,[
+      '选择性注意不是 Skinner 的术语，这里讲的是奖励哪些发音。',
+      '正确。selective reinforcement（选择性强化）：与目标语言一致的发音得到回应，其他发音被忽略而逐渐消失。',
+      '过度概括是 Chomsky 用来解释语法错误的现象，不是 Skinner 的强化机制。'
+    ]
+    ,[
+      '父母当然会跟孩子说话，这不是 Chomsky 的理由。',
+      '正确。儿童在极短时间内学到极多、极准确的语言，而输入本身零碎且充满错误，单靠强化和模仿解释不了，所以 Chomsky 推断有天生的 LAD。',
+      '正好相反：包括聋儿在内的婴儿都会咿呀，这正是先天性的证据。'
+    ]
+  ]
+};
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = (btn.closest('.xp-block') || section).querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+
+/* Socratic sc-ask: progressive reveal, next step unlocks after previous hint opens */
+(function () {
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.sc-ask-step'));
+  if (!steps.length) return;
+  steps.forEach(function (step, i) {
+    var btn = step.querySelector('.ask-toggle');
+    var hint = document.getElementById(btn ? btn.getAttribute('data-target') : '');
+    if (!btn || !hint) return;
+    btn.addEventListener('click', function () {
+      var open = hint.classList.toggle('show');
+      btn.textContent = open ? '收起提示' : '想好了？看提示 →';
+      if (open && i + 1 < steps.length) {
+        var next = steps[i + 1];
+        next.classList.remove('locked');
+        var nb = next.querySelector('.ask-toggle');
+        if (nb) nb.disabled = false;
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
