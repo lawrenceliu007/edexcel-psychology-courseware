@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2.1.1 Content — The Multi-Store Model of Memory</title>
+<title>2.1.1 The Multi-Store Model of Memory — Atkinson &amp; Shiffrin (1968)</title>
 <style>
+
 :root {
   --primary: #ea580c;
   --primary-light: #f97316;
@@ -187,17 +188,41 @@ body.dark .sc-item { background: #16213e; border-color: #334155; color: #cbd5e1;
 body.dark .sc-tag { background: #3b82f6; }
 body.dark .sc-predict { background: rgba(59,130,246,.08); border-color: #3b82f6; }
 body.dark .sc-predict h4 { color: #93c5fd; }
+.sc-ask { background: #fefce8; border: 1.5px solid #ca8a04; border-radius: 10px; padding: 14px 18px; margin: 14px 0 4px; }
+.sc-ask h4 { margin: 0 0 4px; color: #854d0e; font-size: .95em; }
+.sc-ask-step { background: #fff; border: 1px solid #e7e5e4; border-radius: 8px; padding: 10px 14px; margin: 10px 0 0; }
+.sc-ask-step.locked { opacity: .45; }
+.sc-ask-step .ask-q { font-weight: 600; font-size: .95em; margin: 0; line-height: 1.7; }
+.ask-toggle { background: #fff; border: 1px solid #d6d3d1; border-radius: 8px; padding: 5px 12px; font-size: .82rem; font-weight: 500; color: #57534e; cursor: pointer; margin-top: 8px; transition: all .15s; }
+.ask-toggle:hover:not(:disabled) { border-color: #ca8a04; color: #854d0e; }
+.ask-toggle:disabled { cursor: not-allowed; opacity: .6; }
+.ask-hint { display: none; border-top: 1px dashed #e7e5e4; margin-top: 10px; padding-top: 8px; }
+.ask-hint.show { display: block; }
+.ask-hint .hint-label { font-size: .75em; color: #a8a29e; margin: 0 0 4px; font-weight: 700; }
+.ask-hint p { margin: 0; font-size: .92em; line-height: 1.75; }
+.ask-land { margin: 12px 0 0; font-size: .9em; color: #854d0e; line-height: 1.7; }
+body.dark .sc-ask { background: rgba(202,138,4,.08); border-color: #ca8a04; }
+body.dark .sc-ask h4 { color: #fde047; }
+body.dark .sc-ask-step { background: #16213e; border-color: #334155; }
+body.dark .sc-ask-step.locked { opacity: .5; }
+body.dark .ask-toggle { background: #16213e; border-color: #334155; color: #94a3b8; }
+body.dark .ask-toggle:hover:not(:disabled) { border-color: #ca8a04; color: #fde047; }
+body.dark .ask-hint { border-top-color: #334155; }
+body.dark .ask-hint .hint-label { color: #64748b; }
+body.dark .ask-hint p { color: #cbd5e1; }
+body.dark .ask-land { color: #fde047; }
 
 .small { font-size: .84em; color: var(--text-secondary); }
 .tight { margin: 6px 0; }
 .tight li { margin: 3px 0; }
 </style>
+
 <div class="container">
 <nav class="nav-bar">
   <div class="nav-breadcrumb">
     <a href="../../index.html">Home</a> <span class="sep">›</span>
     <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
-    <span>Topic B · Cognitive psychology — 2.1.1 Content</span>
+    <span>Topic B · Cognitive psychology — 2.1.1 The Multi-Store Model of Memory</span>
   </div>
   <span class="nav-pill">🧠 Cognitive Psychology</span>
   <div class="nav-controls">
@@ -213,26 +238,28 @@ body.dark .sc-predict h4 { color: #93c5fd; }
 <aside class="sidebar"><div class="sidebar-inner">
   <div class="sb-header">
     <div class="sb-header-title">2.1.1 Content</div>
-    <div class="sb-header-sub">Multi-Store Model · Memory</div>
+    <div class="sb-header-sub">The Multi-Store Model of Memory</div>
   </div>
   <ul class="sb-list">
-    <li class="sb-item"><a href="#s0">Start Here: The Lost Phone Number</a></li>
-    <li class="sb-item"><a href="#s1">1. Three Stores, One System</a></li>
-    <li class="sb-item"><a href="#s2">2. The Sensory Register</a></li>
-    <li class="sb-item"><a href="#s3">3. The Short-Term Store</a></li>
-    <li class="sb-item"><a href="#s4">4. The Long-Term Store</a></li>
-    <li class="sb-item"><a href="#s5">5. Evidence for Separate Stores</a></li>
-    <li class="sb-item"><a href="#s6">6. Evaluation</a></li>
-    <li class="sb-item"><a href="#s7">7. Checkpoint</a></li>
-    <li class="sb-item"><a href="#s8">8. Exam Lab</a></li>
-    <li class="sb-item"><a href="#s9">9. Key Terms</a></li>
+    <li class="sb-item"><a href="#s0">Start Here: The Number You Lost</a></li>
+    <li class="sb-item"><a href="#s1">1. Memory Is a Route, Not a Box</a></li>
+    <li class="sb-item"><a href="#s2">2. Stop One: The Sensory Register</a></li>
+    <li class="sb-item"><a href="#s3">3. Stop Two: The Short-Term Store</a></li>
+    <li class="sb-item"><a href="#s4">4. The Gate Into Long-Term Memory</a></li>
+    <li class="sb-item"><a href="#s5">5. Stop Three: The Long-Term Store</a></li>
+    <li class="sb-item"><a href="#s6">6. Are the Stores Really Separate?</a></li>
+    <li class="sb-item"><a href="#s7">7. Where the Model Fails</a></li>
+    <li class="sb-item"><a href="#s8">8. Evaluation</a></li>
+    <li class="sb-item"><a href="#s9">9. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s10">10. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s11">11. Key Terms</a></li>
   </ul>
 </div>
 </aside>
 
 <main class="main-content">
 <div class="header">
-  <h1>2.1.1 THE MULTI-STORE MODEL OF MEMORY<br><span style="font-size:0.65em">Atkinson &amp; Shiffrin (1968) · Sensory register · STM · LTM · 多重记忆系统模型</span></h1>
+  <h1>2.1.1 THE MULTI-STORE MODEL OF MEMORY<br><span style="font-size:0.65em">Atkinson &amp; Shiffrin (1968) · sensory register → short-term → long-term · 多重记忆系统模型</span></h1>
   <div class="meta">
     <span class="badge">Topic B · Cognitive psychology</span>
     <span class="badge">Content</span>
@@ -241,157 +268,170 @@ body.dark .sc-predict h4 { color: #93c5fd; }
   </div>
 </div>
 
-<div class="quick-summary">
-  <h4>What this page is really asking</h4>
-  <ol>
-    <li><strong>Memory is not one box.</strong> Atkinson and Shiffrin split it into three stores that differ in how long they hold information (duration), how much they hold (capacity), and how they hold it (encoding).</li>
-    <li><strong>Information flows in one direction.</strong> Incoming information passes from the sensory register to short-term memory to long-term memory, and each step needs a process: attention, rehearsal, retrieval.</li>
-    <li><strong>Each store has its own numbers.</strong> Learn the numbers for each store, because evaluation questions ask you to contrast them.</li>
-    <li><strong>The model is a starting point, not the final word.</strong> Case studies and dual-task evidence support the split into stores but also reveal what the model leaves out.</li>
-  </ol>
-</div>
-
 <div class="objectives">
   <h4>Learning Objectives 学习目标</h4>
   <ul class="tight">
-    <li><strong>Outline the multi-store model</strong>: the three stores, the processes that move information between them, and what happens to information that is not processed.</li>
-    <li><strong>Define encoding, storage, retrieval, capacity and duration</strong> and use each one to describe a memory store.</li>
-    <li><strong>Quote the key evidence</strong> for each store's characteristics: Peterson and Peterson (1959), Miller (1956), Conrad and Hull (1964), Bahrick et al. (1975), Brady et al. (2008), Baddeley (1966b).</li>
-    <li><strong>Evaluate the model</strong> with brain-damage cases and the serial position effect as supporting evidence, and dual-task performance and Tulving's (1972) types of long-term memory as criticism.</li>
-    <li><strong>Justify conclusions about a memory scenario</strong> by mapping each step of the scenario onto the stores and processes of the model.</li>
+    <li><strong>Describe the route</strong> information takes through the three stores, and what happens at each step if it is not processed.</li>
+    <li><strong>Define encoding, capacity and duration</strong>, and use each to tell the three stores apart.</li>
+    <li><strong>State the evidence for each store</strong> and say what each piece of evidence actually proves (not just who found what).</li>
+    <li><strong>Evaluate the model</strong> by weighing the evidence for separate stores against the criticisms (dual task, rehearsal, Tulving).</li>
+    <li><strong>Apply the model to a revision scenario</strong>, explaining each step of a person's learning through the stores.</li>
   </ul>
 </div>
 
-<!-- ============ 0 · scenario ============ -->
+<div class="quick-summary">
+  <h4>What this page is really asking</h4>
+  <ol>
+    <li><strong>How does information travel through memory?</strong> Atkinson and Shiffrin's answer: through three stores in a fixed order, and at every step it is either processed and passed on, or lost.</li>
+    <li><strong>What makes the three stores different?</strong> Three measurable things: what form the information is stored in (encoding), how much fits (capacity), and how long it lasts (duration).</li>
+    <li><strong>Why believe there are three stores at all?</strong> Because they can be damaged separately, and because one memory experiment produces a curve whose two ends behave differently.</li>
+    <li><strong>And why does the model fall short?</strong> It cannot explain dual-task performance, it overrates rehearsal, and it treats long-term memory as one box when it is several.</li>
+  </ol>
+</div>
+
+<!-- ============ 0 ============ -->
 <section class="section" id="s0">
-  <h2>Start Here: The Phone Number You Lost</h2>
-  <div class="sc-item"><span class="sc-tag">背景</span>A friend reads out an unfamiliar phone number. You need to walk to your desk and type it in.</div>
-  <div class="sc-item"><span class="sc-tag">角色</span>You are the one holding the number in your head.</div>
-  <div class="sc-item"><span class="sc-tag">任务</span>You repeat it silently all the way there. Then a classmate calls your name, you answer with one sentence — and the number is gone.</div>
-  <div class="sc-item"><span class="sc-tag">目标</span>Explain why it vanished. Before you read on, commit to a prediction below. Keep your answer in mind: the whole page is built to test it.</div>
+  <h2>Start Here: The Number You Lost</h2>
+  <div class="sc-item"><span class="sc-tag">背景</span>一个朋友念给你一串陌生的电话号码，你要走到桌前把它打进手机。</div>
+  <div class="sc-item"><span class="sc-tag">角色</span>你是那个把号码装进脑子、一路默念、准备打字的人。</div>
+  <div class="sc-item"><span class="sc-tag">任务</span>你小声重复着走回去。这时一个同学喊了你一声，你回了一句话，回头再看手机，号码没了。</div>
+  <div class="sc-item"><span class="sc-tag">目标</span>解释这个号码为什么消失。先猜下面这题，猜完别走，再往下追两层。整页内容都是为了验证你的猜测而安排的。</div>
   <div class="sc-predict">
-    <h4><span class="sc-tag" style="background:#3b82f6">先猜</span>如果从现在起没人打扰、你一直重复这个号码，你能把它保持多久？</h4>
+    <h4><span class="sc-tag" style="background:#3b82f6">先猜</span>如果没人打断、你一直重复这个号码，你能把它保持多久？</h4>
     <div class="xp-controls">
-      <button class="q-option" data-ok="1" onclick="mcAns(this)">只要我不停重复，就能一直保持</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">十几秒，重复也救不了它</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">只要一直重复，就能一直保持</button>
       <button class="q-option" data-ok="0" onclick="mcAns(this)">大约一分钟，之后自然消失</button>
-      <button class="q-option" data-ok="0" onclick="mcAns(this)">十几秒，重复也救不了</button>
     </div>
     <div class="xp-result"></div>
+  </div>
+  <div class="sc-ask">
+    <h4><span class="sc-tag" style="background:#ca8a04">追问</span>猜完先别走：这两个问题没有选项，先自己想，再点开提示。</h4>
+    <div class="sc-ask-step">
+      <p class="ask-q">追问一：号码为什么一被打断就没了？你那一遍遍的「重复」，到底在做什么？</p>
+      <button class="ask-toggle" data-target="ask-h1">想好了？看提示 →</button>
+      <div class="ask-hint" id="ask-h1">
+        <p class="hint-label">提示</p>
+        <p>重复（复述）是在给号码的痕迹续命：短时记忆里的痕迹本来几十秒就会消失，每重复一遍，就等于把它从消失边缘再拉回来一次。同学喊你那一声，占掉了本该用来复述的那点注意，痕迹就没人维持了。所以真正杀死号码的不是时间，是复述被打断。</p>
+      </div>
+    </div>
+    <div class="sc-ask-step locked">
+      <p class="ask-q">追问二：如果这个号码你特别想记一辈子，光靠一直重复，够吗？</p>
+      <button class="ask-toggle" data-target="ask-h2" disabled>想好了？看提示 →</button>
+      <div class="ask-hint" id="ask-h2">
+        <p class="hint-label">提示</p>
+        <p>不够。复述能把信息从短时送进长时，但长时记忆按「意思」来存，机械重复不一定会留下长期痕迹；而且复述根本不是唯一的路。这个疑问正是本页评价部分要解决的，它最后会变成批评这个模型的一条理由。带着它往下读。</p>
+      </div>
+    </div>
+    <p class="ask-land">带着这两个追问往下读：第一节先给你整张地图，后面每一节回答地图上的一个具体问题，最后回到这个丢掉的号码，你能用模型完整解释它。</p>
   </div>
 </section>
 
 <!-- ============ 1 ============ -->
 <section class="section" id="s1">
-  <h2>1. Three Stores, One System</h2>
-  <p>Atkinson and Shiffrin (1968) proposed a general framework for human memory that became known as the <strong>multi-store model</strong>. They distinguished two kinds of component. The <strong>structural features</strong> are the memory stores themselves: fixed, built-in, like the hardware of a computer. The <strong>control processes</strong>（控制过程：你自己决定怎么对待信息的操作）are the things we consciously do with information: how we encode it, rehearse it and retrieve it. Control processes are like programs a programmer writes: flexible, chosen, and under our control.</p>
-  <p>The model divides memory into three stores arranged in a sequence: the <strong>sensory register</strong>, the <strong>short-term store</strong> and the <strong>long-term store</strong>. Information entering the system either gets processed and moves on, or is lost. What separates the stores is not just their order, but three measurable properties:</p>
+  <h2>1. Memory Is a Route, Not a Box</h2>
+  <p>Richard Atkinson and Richard Shiffrin (1968) set out to answer one question: <strong>what has to happen for a piece of information to be remembered?</strong> Their answer is that memory is not one container, but a <strong>route</strong> information travels along, passing through three stores in a fixed order. At each store it is either processed and passed on, or it is lost.</p>
+  <p>They separated what is fixed from what we control. The <strong>structural features</strong>（结构特征：记忆的固定部分，即三个存储单元本身） are the stores themselves: built in, and not something we can change. The <strong>control processes</strong>（控制过程：我们主动对信息做的操作，如编码、复述、提取） are the things we choose to do with information — how we encode it, rehearse it and retrieve it.</p>
+  <p>To tell the three stores apart, the model gives each of them three measurable properties:</p>
   <ul class="tight">
-    <li><strong>Encoding</strong>（编码：信息以什么形式被储存）: the format in which a store holds information.</li>
-    <li><strong>Capacity</strong>（容量：一个仓库能装多少）: how much information a store can hold.</li>
-    <li><strong>Duration</strong>（保持时长：信息能留多久）: how long information lasts there.</li>
+    <li><strong>Encoding</strong>（编码：信息以什么形式被存下来）: the format in which the store holds information.</li>
+    <li><strong>Capacity</strong>（容量：这个单元能装多少）: how much information it can hold.</li>
+    <li><strong>Duration</strong>（时长：信息在这里能留多久）: how long information lasts in it.</li>
   </ul>
-  <div class="figure">
-    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, sans-serif">
-      <defs>
-        <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#334155"/></marker>
-        <marker id="arl" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#ea580c"/></marker>
-      </defs>
-      <!-- incoming -->
-      <text x="40" y="150" font-size="12" font-weight="600" fill="#334155">Incoming</text>
-      <text x="40" y="166" font-size="12" font-weight="600" fill="#334155">information</text>
-      <line x1="102" y1="158" x2="132" y2="158" stroke="#334155" stroke-width="2" marker-end="url(#ar)"/>
-      <!-- sensory -->
-      <rect x="136" y="112" width="120" height="92" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-      <text x="196" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#1e40af">Sensory</text>
-      <text x="196" y="158" text-anchor="middle" font-size="13" font-weight="700" fill="#1e40af">register</text>
-      <text x="196" y="180" text-anchor="middle" font-size="10.5" fill="#475569">few hundred ms</text>
-      <!-- loss below sensory -->
-      <line x1="196" y1="204" x2="196" y2="238" stroke="#ea580c" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#arl)"/>
-      <text x="200" y="252" font-size="10.5" fill="#c2410c">Unattended information is lost</text>
-      <!-- attention arrow -->
-      <line x1="256" y1="140" x2="306" y2="140" stroke="#16a34a" stroke-width="2.2" marker-end="url(#ar)"/>
-      <text x="281" y="130" text-anchor="middle" font-size="11" font-weight="700" fill="#166534">Attention</text>
-      <!-- STM -->
-      <rect x="310" y="112" width="120" height="92" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
-      <text x="370" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#c2410c">Short-term</text>
-      <text x="370" y="158" text-anchor="middle" font-size="13" font-weight="700" fill="#c2410c">memory</text>
-      <text x="370" y="180" text-anchor="middle" font-size="10.5" fill="#475569">15–30 seconds</text>
-      <!-- loss below STM -->
-      <line x1="370" y1="204" x2="370" y2="238" stroke="#ea580c" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#arl)"/>
-      <text x="374" y="252" font-size="10.5" fill="#c2410c">Unrehearsed information decays</text>
-      <!-- rehearsal arrow -->
-      <line x1="430" y1="140" x2="480" y2="140" stroke="#16a34a" stroke-width="2.2" marker-end="url(#ar)"/>
-      <text x="455" y="130" text-anchor="middle" font-size="11" font-weight="700" fill="#166534">Rehearsal</text>
-      <!-- LTM -->
-      <rect x="484" y="112" width="130" height="92" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
-      <text x="549" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">Long-term</text>
-      <text x="549" y="158" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">memory</text>
-      <text x="549" y="180" text-anchor="middle" font-size="10.5" fill="#475569">potentially a lifetime</text>
-      <!-- retrieval arrow back -->
-      <path d="M584,204 C620,258 495,252 434,182" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
-      <text x="516" y="278" text-anchor="middle" font-size="11" font-weight="700" fill="#1e40af">Retrieval</text>
-      <!-- some lost note -->
-      <text x="556" y="88" text-anchor="middle" font-size="10.5" fill="#64748b">some information may be</text>
-      <text x="556" y="102" text-anchor="middle" font-size="10.5" fill="#64748b">lost from LTM over time</text>
-    </svg>
-    <div class="figure-caption">The multi-store model, adapted from Atkinson and Shiffrin (1968). Green arrows are the control processes that move information forward; dashed orange arrows show loss.</div>
-  </div>
+  <svg viewBox="0 0 680 300" role="img" aria-label="The three stores of the multi-store model">
+    <defs>
+      <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#334155"/></marker>
+      <marker id="arl" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#ea580c"/></marker>
+    </defs>
+    <text x="40" y="150" font-size="12" font-weight="600" fill="#334155">Incoming</text>
+    <text x="40" y="166" font-size="12" font-weight="600" fill="#334155">information</text>
+    <line x1="102" y1="158" x2="132" y2="158" stroke="#334155" stroke-width="2" marker-end="url(#ar)"/>
+    <rect x="136" y="112" width="120" height="92" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="196" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#1e40af">Sensory</text>
+    <text x="196" y="158" text-anchor="middle" font-size="13" font-weight="700" fill="#1e40af">register</text>
+    <text x="196" y="180" text-anchor="middle" font-size="10.5" fill="#475569">few hundred ms</text>
+    <line x1="196" y1="204" x2="196" y2="238" stroke="#ea580c" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#arl)"/>
+    <text x="200" y="252" font-size="10.5" fill="#c2410c">Unattended information is lost</text>
+    <line x1="256" y1="140" x2="306" y2="140" stroke="#16a34a" stroke-width="2.2" marker-end="url(#ar)"/>
+    <text x="281" y="130" text-anchor="middle" font-size="11" font-weight="700" fill="#166534">Attention</text>
+    <rect x="310" y="112" width="120" height="92" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+    <text x="370" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#c2410c">Short-term</text>
+    <text x="370" y="158" text-anchor="middle" font-size="13" font-weight="700" fill="#c2410c">memory</text>
+    <text x="370" y="180" text-anchor="middle" font-size="10.5" fill="#475569">15–30 seconds</text>
+    <line x1="370" y1="204" x2="370" y2="238" stroke="#ea580c" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#arl)"/>
+    <text x="374" y="252" font-size="10.5" fill="#c2410c">Unrehearsed information decays</text>
+    <line x1="430" y1="140" x2="480" y2="140" stroke="#16a34a" stroke-width="2.2" marker-end="url(#ar)"/>
+    <text x="455" y="130" text-anchor="middle" font-size="11" font-weight="700" fill="#166534">Rehearsal</text>
+    <rect x="484" y="112" width="130" height="92" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+    <text x="549" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">Long-term</text>
+    <text x="549" y="158" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">memory</text>
+    <text x="549" y="180" text-anchor="middle" font-size="10.5" fill="#475569">potentially a lifetime</text>
+    <path d="M584,204 C620,258 495,252 434,182" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#ar)"/>
+    <text x="516" y="278" text-anchor="middle" font-size="11" font-weight="700" fill="#1e40af">Retrieval</text>
+    <text x="556" y="88" text-anchor="middle" font-size="10.5" fill="#64748b">some information may be</text>
+    <text x="556" y="102" text-anchor="middle" font-size="10.5" fill="#64748b">lost from LTM over time</text>
+  </svg>
+  <p class="small">Back to the number: the friend's voice entered the first store, you attended to it, it moved to the second — and the three stores plus their three properties are the whole map you will now walk through.</p>
   <div class="cn-note">
-    <p><strong>中文理解：</strong>把记忆想成一条流水线，三个仓库串着排。感官登记处先接住五官进来的所有信息，但只留零点几秒；被注意到的信息才能进短时记忆（保质期约 20 秒），短时记忆里反复复述的信息才有机会进长时记忆（可能存一辈子）。每一级都有淘汰出口：没被注意的、没被复述的，直接丢失。三个仓库各记三个属性：编码方式、容量、保持时长，考试评价题考的就是用这些数字把仓库两两对比。</p>
+    <p><strong>中文理解：</strong>先记住这条单向路线：信息进来 → 感官登记处 →（被注意）→ 短时记忆 →（被复述）→ 长时记忆。每一关都有淘汰出口：没被注意的、没被复述的，都直接丢。三个单元靠三把尺子区分：编码（存成什么形式）、容量（装多少）、时长（留多久）。后面三节就是依次把每个单元用这三把尺子量一遍。结构特征是固定的单元，控制过程是你自己做的操作，考试别把这两类混在一起。</p>
   </div>
 </section>
 
 <!-- ============ 2 ============ -->
 <section class="section" id="s2">
-  <h2>2. The Sensory Register</h2>
-  <p>We experience the world through five senses, and the model proposes a sensory register for each modality: seeing, hearing, touching, tasting and smelling. The visual register is the most researched. In a typical experiment, a <strong>visual array</strong> of letters is flashed up by a <strong>tachistoscope</strong>（速示器：控制显示时间的仪器）for a moment and then participants are cued to recall the whole display or one specific row of it.</p>
-  <p>Sperling (1960, 1963) presented a twelve-letter array and found participants typically recalled on average <strong>4.32 letters</strong> of the whole display. This tells us two things about the sensory register:</p>
-  <ul class="tight">
-    <li><strong>Capacity is small</strong>: only a limited amount of the display survives.</li>
-    <li><strong>Duration is very short</strong>: a few hundred milliseconds at most, and then the trace is gone.</li>
-  </ul>
-  <p>Whatever is attended to moves on to the short-term store for processing; everything unattended is lost immediately.</p>
+  <h2>2. Stop One: The Sensory Register</h2>
+  <p>The first question the model has to answer is: <strong>before we even pay attention, how much does memory hold on to, and for how long?</strong> The model proposes a sensory register for each of the five senses; the visual one is the most studied.</p>
+  <p>The question leads straight to a measurement problem: the information vanishes almost at once, so to measure it you must flash it for an instant and ask immediately. George Sperling (1960, 1963) did exactly that — he used a <strong>tachistoscope</strong>（速示器：精确控制视觉材料显示时长的仪器） to flash a <strong>visual array</strong>（视觉阵列：一组排好的字母或数字） of twelve letters for a moment, then asked people to recall what they had seen.</p>
+  <p>The result: participants recalled on average <strong>4.32 letters</strong> of the twelve. That single number proves two things at once. The register holds only a fraction of what the senses take in, so its <strong>capacity is small</strong>; and whatever is not reported must have already faded by the time they finished answering, so its <strong>duration is a few hundred milliseconds</strong> at most.</p>
+  <p class="small">Back to the number: this first store held the friend's voice for an instant, and it survived only because you paid attention to it — attention is the process that moves information on to the next store. Everything unattended was lost right there.</p>
   <div class="cn-note">
-    <p><strong>中文理解：</strong>感官登记处就像一个超短曝光的摄像头：把眼前所有画面先拍下来，但照片几百毫秒后就褪色。Sperling 让人看 12 个字母，普通人只能报出 4.32 个，说明既装不多、又留不久。想保住哪部分，就得把注意力放到那部分上。</p>
+    <p><strong>中文理解：</strong>感官登记处要回答的问题是「还没注意之前，信息能留多久」。测它的难点在于信息消失太快，所以 Sperling 用速示器一闪 12 个字母，让人马上报，结果平均只报出 4.32 个。这一个数字推出两个结论：装得少（容量小）、留得短（几百毫秒）。能被注意到的信息继续往前走，其余当场丢掉。</p>
   </div>
 </section>
 
 <!-- ============ 3 ============ -->
 <section class="section" id="s3">
-  <h2>3. The Short-Term Store</h2>
-  <p>Information that is attended to enters the short-term store and is held temporarily for <strong>15–30 seconds</strong>. Unless it is maintained, it is assumed to decay completely.</p>
-  <h3>Duration: Peterson and Peterson (1959)</h3>
-  <p>Lloyd Peterson and Margaret Peterson used an <strong>interference task</strong> to prevent rehearsal. Participants memorised a <strong>trigram</strong>（三连字母组：三个辅音组成的一组）of three consonants, then counted backwards in threes from a number (for example, 679, 676, 673) for intervals of 3, 6, 9, 12, 15 or 18 seconds before recall. Recall was good after short intervals but dropped rapidly after 15–18 seconds. Assuming the counting task blocked rehearsal, the conclusion is that decay occurs in the short-term store over roughly <strong>20 seconds</strong>.</p>
-  <p class="small">Back to the phone number: counting backwards in threes is the laboratory version of the classmate calling your name. Both occupy rehearsal, and once rehearsal stops, the trace decays within roughly 20 seconds.</p>
-  <h3>Capacity: Miller (1956)</h3>
-  <p>The capacity of the short-term store is around <strong>five to nine items</strong>. George Miller (1956) refined this to <q>the magical number seven, plus or minus two</q>. Think of the store as between five and nine slots, each holding one item.</p>
-  <h3>Forgetting by displacement</h3>
-  <p>Because the slots are limited, forgetting in short-term memory happens mainly through <strong>displacement</strong>（置换：新信息把旧信息挤出槽位）: as new information enters, older information, or information with a weaker memory trace, is knocked out. Digit-span experiments demonstrate exactly this limit.</p>
-  <h3>Encoding: acoustic (Conrad and Hull, 1964)</h3>
-  <p>The memory trace in the short-term store is held in an auditory or verbal form: <strong>acoustic encoding</strong>. The evidence is the <strong>phonological similarity effect</strong>（语音相似效应：发音相近的字母更难记）: letters and words that sound alike are harder to recall than dissimilar-sounding ones, because similar sounds confuse the store. This confusion is only explainable if the store is holding information by sound.</p>
-  <h3>Two kinds of rehearsal</h3>
-  <ul class="tight">
-    <li><strong>Maintenance rehearsal</strong>（维持性复述：机械重复原样）: repeating the sounds over and over to strengthen the trace so it can transfer to long-term memory.</li>
-    <li><strong>Elaborative rehearsal</strong>（精细复述：琢磨信息的含义）: thinking about the meaning and significance of the information, which also transfers it into long-term memory.</li>
-  </ul>
+  <h2>3. Stop Two: The Short-Term Store</h2>
+  <p>Information you attend to enters the short-term store. Three separate questions need answering here — how long it lasts, how much it holds, and what form it is stored in — and each question has a matching experiment.</p>
+  <h3>Duration: why the counting task?</h3>
+  <p>To measure how long short-term memory lasts, you hit an obstacle: people rehearse, and rehearsing keeps refreshing the memory, so you would never observe its natural lifetime. Peterson and Peterson (1959) got around this by <strong>blocking</strong> rehearsal. They read participants a <strong>trigram</strong>（三连字母组：三个辅音组成的一组） of three consonants, then made them count backwards in threes from a number for 3, 6, 9, 12, 15 or 18 seconds before recalling it.</p>
+  <p>The result: after a 3-second count, recall was good; after 15 to 18 seconds, it had dropped sharply. Because the counting task stopped rehearsal, the forgetting that remained can only be decay — so the short-term store's duration is roughly <strong>20 seconds</strong> without rehearsal.</p>
+  <p class="small">Back to the number: counting backwards in threes is the laboratory version of the classmate calling your name. Both take over the part of attention that was doing the rehearsal, and once rehearsal stops, the trace decays within about 20 seconds.</p>
+  <h3>Capacity: five to eight items</h3>
+  <p>George Miller (1956) put the short-term store at around <strong>five to eight items</strong>, which he summarised as "the magical number seven, plus or minus two". Because the space is limited, forgetting happens by <strong>displacement</strong>（置换：新信息把旧信息从有限的槽位里挤出去）: when new items arrive, older or weaker ones are knocked out.</p>
+  <h3>Encoding: held by sound</h3>
+  <p>The third question — what form is the information in? — is answered by the <strong>phonological similarity effect</strong>（语音相似效应：发音相近的字母更难回忆）. Conrad and Hull (1964) found that letters which sound alike are harder to recall than letters that sound different. The reasoning is the key point: sounds can only confuse each other if the store is holding information by sound, so the short-term store must use <strong>acoustic encoding</strong>（声学编码：按声音形式储存）.</p>
   <div class="cn-note">
-    <p><strong>中文理解：</strong>短时记忆是一个 5–9 格的储物柜，保质期约 20 秒。柜子满了之后新东西进门，旧东西就被挤出去（displacement）。柜子里存的是「声音」：发音像的字母会互相干扰，所以记不准。想让东西进长时仓库有两条路：一种是鹦鹉学舌式重复（maintenance rehearsal），一种是琢磨它的意思（elaborative rehearsal）。</p>
+    <p><strong>中文理解：</strong>短时记忆这一节要讲清「为什么实验这么设计」。测时长时，障碍是人会复述、复述会续命，所以 Peterson 用倒着数数把复述堵死，剩下的遗忘就只能是自然衰减，推出约 20 秒。容量 Miller 说是 5 到 8 项（魔数 7±2），满了就靠「置换」把旧的挤掉。编码靠 Conrad 的语音相似效应：发音像的字母互相干扰，说明这一单元是按「声音」存的，不是按意思。三个问题、三个实验、三个结论，一一对应。</p>
   </div>
 </section>
 
 <!-- ============ 4 ============ -->
 <section class="section" id="s4">
-  <h2>4. The Long-Term Store</h2>
-  <p>Atkinson and Shiffrin explained that information in long-term memory is <strong>encoded semantically</strong>（语义编码：按意义储存）, according to its meaning.</p>
-  <h3>Encoding: Baddeley (1966b)</h3>
-  <p>Participants learning a sequence of <strong>semantically similar</strong> words recalled less well than participants learning semantically unrelated words. The similar meanings confused each other, which only makes sense if long-term memory stores information by meaning.</p>
-  <h3>Duration: Bahrick et al. (1975)</h3>
-  <p>The duration of long-term memory is potentially <strong>a lifetime</strong>. Harry Bahrick and colleagues tested <strong>Very Long-term Memory</strong> using the names and faces of classmates in high-school yearbooks. Four hundred participants aged 17 to 74 were tested: identification of names and faces was <strong>90% accurate within 15 years</strong> of leaving school, and still <strong>70–80% accurate 48 years</strong> after leaving.</p>
-  <h3>Capacity: Brady et al. (2008)</h3>
-  <p>The capacity of long-term memory is potentially <strong>infinite</strong>. Timothy Brady and colleagues showed participants <strong>2,500 objects over 5.5 hours</strong>, then presented pairs of objects and asked which one had been seen before. Object recognition was <strong>over 80%</strong>.</p>
+  <h2>4. The Gate Into Long-Term Memory</h2>
+  <p>The short-term store is temporary, so the next question is: <strong>how does information get from the short-term store into the long-term store?</strong> The model's answer is <strong>rehearsal</strong>, and it distinguishes two kinds.</p>
+  <ul class="tight">
+    <li><strong>Maintenance rehearsal</strong>（维持性复述：机械重复，不加工含义）: repeating the sounds over and over, which strengthens the trace and keeps it alive.</li>
+    <li><strong>Elaborative rehearsal</strong>（精细复述：思考信息的含义和意义）: thinking about the meaning and significance of the information.</li>
+  </ul>
+  <p>This is the point where the model plants a seed it cannot water. Rehearsal is one route into long-term memory, but the model treats it as the central one — and the next section's evidence, plus the evaluation later, will show that is a weakness. For now, hold that question and see what the long-term store is actually like.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>从短时到长时，模型给出的门是复述，分两种：维持性复述是鹦鹉学舌式重复，精细复述是琢磨意思。先记这个区别（考试爱问 Smaragda 翻卡片六遍属于哪种）。但留个心眼：模型把复述当成通往长时的主路，后面评价会指出这不是唯一的路，甚至不是必需的路。这个伏笔现在先埋着。</p>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Stop Three: The Long-Term Store</h2>
+  <p>The final store is where information is meant to stay. The same three questions — encoding, duration, capacity — are answered here, and the answers are almost the opposite of the short-term store's.</p>
+  <h3>Encoding: held by meaning</h3>
+  <p>Baddeley (1966b) gave participants lists of words that were either close in meaning or unrelated, and found the semantically similar words were recalled less well. The reasoning mirrors Conrad and Hull: meanings can only confuse each other if the store is holding information by meaning, so the long-term store uses <strong>semantic encoding</strong>（语义编码：按意义储存）.</p>
+  <h3>Duration: potentially a lifetime</h3>
+  <p>Bahrick et al. (1975) tested whether memories survive decades by asking 400 people aged 17 to 74 to match names and faces from their school yearbooks. Recognition was <strong>90% accurate within 15 years</strong> of leaving school, and still <strong>70–80% after 48 years</strong> — so the long-term store can hold information for a lifetime.</p>
+  <h3>Capacity: potentially infinite</h3>
+  <p>Brady et al. (2008) showed participants 2,500 objects over 5.5 hours, then asked them to pick, from pairs, which object they had seen. Recognition was <strong>over 80%</strong>, suggesting the store does not fill up the way the short-term store does.</p>
   <div class="figure">
-    <svg viewBox="0 0 680 210" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, sans-serif">
-      <!-- comparison table -->
+    <svg viewBox="0 0 680 210" role="img" aria-label="Three stores compared on encoding, capacity and duration">
       <rect x="40" y="26" width="140" height="44" rx="8" fill="#1e3a5f"/>
       <text x="110" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Store</text>
       <text x="110" y="62" text-anchor="middle" font-size="10" fill="#cbd5e1">property</text>
@@ -404,16 +444,14 @@ body.dark .sc-predict h4 { color: #93c5fd; }
       <rect x="500" y="26" width="140" height="44" rx="8" fill="#f0fdf4" stroke="#16a34a"/>
       <text x="570" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#166534">Long-term store</text>
       <text x="570" y="62" text-anchor="middle" font-size="10" fill="#475569">semantic</text>
-      <!-- row 2 -->
       <rect x="40" y="70" width="140" height="44" rx="8" fill="#f1f5f9"/>
       <text x="110" y="90" text-anchor="middle" font-size="11.5" font-weight="700" fill="#334155">Capacity</text>
       <rect x="180" y="70" width="160" height="44" rx="8" fill="#fff" stroke="#e2e8f0"/>
       <text x="260" y="97" text-anchor="middle" font-size="11" fill="#334155">small (≈ 4 items)</text>
       <rect x="340" y="70" width="160" height="44" rx="8" fill="#fff" stroke="#e2e8f0"/>
-      <text x="420" y="97" text-anchor="middle" font-size="11" fill="#334155">5–9 items (Miller)</text>
+      <text x="420" y="97" text-anchor="middle" font-size="11" fill="#334155">5–8 items (Miller)</text>
       <rect x="500" y="70" width="140" height="44" rx="8" fill="#fff" stroke="#e2e8f0"/>
       <text x="570" y="97" text-anchor="middle" font-size="11" fill="#334155">potentially infinite</text>
-      <!-- row 3 -->
       <rect x="40" y="114" width="140" height="44" rx="8" fill="#f1f5f9"/>
       <text x="110" y="134" text-anchor="middle" font-size="11.5" font-weight="700" fill="#334155">Duration</text>
       <rect x="180" y="114" width="160" height="44" rx="8" fill="#fff" stroke="#e2e8f0"/>
@@ -422,7 +460,6 @@ body.dark .sc-predict h4 { color: #93c5fd; }
       <text x="420" y="141" text-anchor="middle" font-size="11" fill="#334155">15–30 seconds</text>
       <rect x="500" y="114" width="140" height="44" rx="8" fill="#fff" stroke="#e2e8f0"/>
       <text x="570" y="141" text-anchor="middle" font-size="11" fill="#334155">potentially a lifetime</text>
-      <!-- row 4 -->
       <rect x="40" y="158" width="140" height="44" rx="8" fill="#f1f5f9"/>
       <text x="110" y="178" text-anchor="middle" font-size="11.5" font-weight="700" fill="#334155">Evidence</text>
       <rect x="180" y="158" width="160" height="44" rx="8" fill="#fff" stroke="#e2e8f0"/>
@@ -437,103 +474,124 @@ body.dark .sc-predict h4 { color: #93c5fd; }
     </svg>
     <div class="figure-caption">The three stores contrasted on encoding, capacity, duration and the key evidence for each.</div>
   </div>
+  <p class="small">Back to the number: the friend's voice reached the second store, and if you had done more than repeat it — if you had processed what the digits meant — it would have been encoded semantically and transferred to this store, where it could stay.</p>
   <div class="cn-note">
-    <p><strong>中文理解：</strong>长时仓库按「意思」存放：意思相近的词会互相干扰（Baddeley），所以找不到正确答案。它几乎装不满（Brady：2500 个物体认得 80% 以上），也几乎不过期（Bahrick：毕业 48 年还能认出 70–80% 的老同学）。三个仓库放一张表对比着背，评价题的分数就在「对比」两个字上。</p>
+    <p><strong>中文理解：</strong>长时记忆是三个单元的终点，三个答案几乎和短时相反：按「意思」存（Baddeley，语义相近的词互相干扰）、留一辈子（Bahrick，毕业 48 年还认得出 70–80% 的老同学）、几乎装不满（Brady，2500 个物体认得 80% 以上）。三张表放一起看，评价题的分数就在「两两对比」上：短时按声音、长时按意思；短时 20 秒、长时一辈子；短时 5–8 项、长时无限。</p>
   </div>
 </section>
 
-<!-- ============ 5 ============ -->
-<section class="section" id="s5">
-  <h2>5. Evidence for Separate Stores</h2>
-  <h3>Case studies of brain-damaged patients</h3>
-  <p>Henry Molaison suffered amnesia following brain surgery for epilepsy: his long-term memory was severely impaired, but his short-term memory was largely intact. Clive Wearing suffered long-term memory impairment following <strong>encephalitis</strong>（脑炎）, while his short-term store remained unaffected. In both cases the patient could not transfer information from the short-term store to the long-term store. This <strong>dissociation</strong> supports the claim that the two stores are separate systems, perhaps located in different brain regions.</p>
-  <p>Two cautions come with this evidence. Case-study patients are unique and so are their injuries, so generalising from individual cases is risky. And the same cases cut the other way: Clive Wearing could not recall events from his past, yet could still play the piano and conduct an orchestra. That pattern suggests long-term memory is not one single store, but separate stores for practised skills and for factual, autobiographical information.</p>
-  <h3>The serial position effect</h3>
-  <p>Murray Glanzer and Anita Cunitz (1966) investigated whether a word's position in a list affects recall. Participants recalled more words from the <strong>beginning</strong> (the <strong>primacy effect</strong>, 首因效应) and the <strong>end</strong> (the <strong>recency effect</strong>, 近因效应) of the list, and fewest from the middle.</p>
-  <p>The multi-store explanation: words at the beginning had the chance to be rehearsed, so their traces were strengthened and transferred to the long-term store. While those words were being processed, middle words were filling the short-term slots. End words then displaced the older middle traces, leaving only the final words sitting in short-term memory. One curve, two stores: the beginning reflects long-term memory, the end reflects short-term memory.</p>
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Are the Stores Really Separate?</h2>
+  <p>So far the three stores are a useful description. But a description is not evidence — the next question is <strong>why believe short-term and long-term memory are two separate systems, rather than one continuous line?</strong> Two kinds of evidence answer it.</p>
+  <h3>Evidence one: damage can hit one store and spare the other</h3>
+  <p>Henry Molaison, following brain surgery for epilepsy, was left unable to form new long-term memories while his short-term memory stayed largely intact. Clive Wearing, after <strong>encephalitis</strong>（脑炎：脑部炎症，损伤脑结构）, suffered the same pattern: long-term memory lost, short-term memory preserved. The reasoning is what matters: if short-term and long-term memory were one system, damage would weaken both together. The fact that one can break while the other keeps working means they are <strong>separate systems</strong>, likely in different brain regions.</p>
+  <p class="small">But notice what the same cases also show: Clive Wearing could not recall his own past, yet he could still play the piano and conduct an orchestra. That is the first crack in the model — long-term memory itself may not be a single store, a point the evaluation returns to.</p>
+  <h3>Evidence two: one experiment, two different curves</h3>
+  <p>Glanzer and Cunitz (1966) asked whether a word's position in a list changes how well it is recalled. Participants recalled the words at the <strong>beginning</strong> and the <strong>end</strong> well, and the middle worst. The model explains this <strong>serial position effect</strong>（系列位置效应：列表开头和结尾的回忆好于中间） in two steps. Words at the start had time to be rehearsed, so they transferred to the long-term store — that is the <strong>primacy effect</strong>（首因效应：开头记得好）. Words at the end were still sitting in the short-term store's slots when recall began — that is the <strong>recency effect</strong>（近因效应：结尾记得好）. The middle words had been displaced by later ones. One curve, two ends, two stores: the beginning reflects long-term memory, the end reflects short-term memory.</p>
   <div class="figure">
-    <svg viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, sans-serif">
-      <!-- axes -->
+    <svg viewBox="0 0 680 320" role="img" aria-label="The serial position curve">
       <line x1="80" y1="260" x2="620" y2="260" stroke="#334155" stroke-width="2"/>
       <line x1="80" y1="260" x2="80" y2="40" stroke="#334155" stroke-width="2"/>
-      <!-- y labels -->
       <text x="66" y="265" text-anchor="end" font-size="10.5" fill="#64748b">0</text>
       <text x="66" y="215" text-anchor="end" font-size="10.5" fill="#64748b">25</text>
       <text x="66" y="165" text-anchor="end" font-size="10.5" fill="#64748b">50</text>
       <text x="66" y="115" text-anchor="end" font-size="10.5" fill="#64748b">75</text>
       <text x="66" y="65" text-anchor="end" font-size="10.5" fill="#64748b">100</text>
       <text x="40" y="40" font-size="11.5" font-weight="700" fill="#334155">Recall %</text>
-      <!-- x ticks -->
       <text x="80" y="280" text-anchor="middle" font-size="10.5" fill="#64748b">1st</text>
       <text x="196" y="280" text-anchor="middle" font-size="10.5" fill="#64748b">5</text>
       <text x="312" y="280" text-anchor="middle" font-size="10.5" fill="#64748b">10</text>
       <text x="428" y="280" text-anchor="middle" font-size="10.5" fill="#64748b">15</text>
       <text x="544" y="280" text-anchor="middle" font-size="10.5" fill="#64748b">20</text>
       <text x="350" y="300" text-anchor="middle" font-size="11.5" font-weight="700" fill="#334155">Position of word in list</text>
-      <!-- curve: high start, dip in middle, rise at end -->
       <path d="M80,80 C110,84 140,110 180,150 C240,205 280,215 312,214 C360,213 400,205 460,170 C500,146 540,120 620,92"
             fill="none" stroke="#ea580c" stroke-width="3"/>
-      <!-- primacy zone -->
       <rect x="80" y="40" width="150" height="220" fill="#16a34a" opacity="0.07"/>
       <text x="130" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="#166534">Primacy effect</text>
       <text x="130" y="76" text-anchor="middle" font-size="10.5" fill="#166534">LTM (rehearsed)</text>
-      <!-- recency zone -->
       <rect x="500" y="40" width="120" height="220" fill="#2563eb" opacity="0.07"/>
       <text x="560" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="#1e40af">Recency effect</text>
       <text x="560" y="76" text-anchor="middle" font-size="10.5" fill="#1e40af">STM (still in slots)</text>
-      <!-- middle label -->
       <text x="312" y="240" text-anchor="middle" font-size="10.5" fill="#94a3b8">middle words displaced</text>
     </svg>
-    <div class="figure-caption">The serial position curve (Glanzer and Cunitz, 1966): the two ends of the list are recalled well because they are held by two different stores.</div>
+    <div class="figure-caption">The serial position curve: its two raised ends are each held by a different store.</div>
   </div>
+  <p class="small">Back to the number: the model now has a body of evidence, not just a diagram — the stores can break separately, and one list produces a curve that splits cleanly into two. That is what makes the three-store claim scientific rather than just tidy.</p>
   <div class="cn-note">
-    <p><strong>中文理解：</strong>记 20 个词，开头和结尾记得牢、中间忘得多，这就是系列位置效应。解释要用两个仓库接力：开头的词有时间被复述，已经进了长时仓库（首因效应）；结尾的词还坐在短时记忆的槽位上（近因效应）；中间的词被后进来的词挤掉了。一条 U 形曲线同时指向两个仓库，这就是「仓库分开存在」最直观的证据。</p>
-  </div>
-  <div class="green-box">
-    <h4>Close the loop: explain the lost number with the model</h4>
-    <p>Your friend's voice entered the <strong>sensory register</strong>. You attended to it, so it moved into the <strong>short-term store</strong>, and repeating it silently was <strong>maintenance rehearsal</strong> keeping the trace alive. When your classmate called your name, your rehearsal was interrupted; with no rehearsal, the trace decayed within 15–30 seconds, and the number was gone. This is exactly what the prediction asked: keep repeating and the trace stays; stop and it dies. To keep the number for good, you would need <strong>elaborative rehearsal</strong>: process what the digits mean, so the semantic encoding of the long-term store has something to hold.</p>
-    <p><strong>Reflect before the Exam Lab:</strong> think of one thing you recently forgot within seconds. Which store lost it, and which process was interrupted? Answer in your own words first, then check it against the sections above.</p>
-  </div>
-</section>
-
-<!-- ============ 6 ============ -->
-<section class="section" id="s6">
-  <h2>6. Evaluation</h2>
-  <div class="compare-grid">
-    <div class="compare-card green">
-      <h4>Supports the model</h4>
-      <ul class="tight">
-        <li><strong>Brain-damage cases.</strong> HM and Clive Wearing lost long-term memory while short-term memory stayed intact: the stores can be damaged separately, so they are distinct systems.</li>
-        <li><strong>Serial position effect.</strong> Glanzer and Cunitz (1966): the primacy part of the curve reflects the long-term store, the recency part the short-term store.</li>
-        <li><strong>Store-specific encoding.</strong> Conrad and Hull (1964) show the short-term store holds sound; Baddeley (1966b) shows the long-term store holds meaning: qualitative differences between stores, as the model predicts.</li>
-      </ul>
-    </div>
-    <div class="compare-card red">
-      <h4>Challenges the model</h4>
-      <ul class="tight">
-        <li><strong>Dual-task performance.</strong> We do poorly on two verbal or two visual tasks together, but well on one verbal plus one visual task. A single short-term store with fixed capacity cannot explain this; the working memory model (Baddeley and Hitch, 1974, page 2.1.2) can.</li>
-        <li><strong>Rehearsal is not essential.</strong> We often learn skills and information without consciously rehearsing them; imagery is one strategy that leaves a strong long-term trace with no rehearsal at all.</li>
-        <li><strong>Long-term memory is not unitary.</strong> Tulving (1972) proposed separate long-term stores: episodic memory for personal experiences, semantic memory for facts, procedural memory for skills. HM and Clive Wearing support this: their episodic memory was impaired while procedural and semantic memory survived.</li>
-        <li><strong>Reductionism.</strong> Artificially splitting memory into stores makes experiments easier but underplays how the systems interconnect.</li>
-      </ul>
-    </div>
-  </div>
-  <p class="small">A fair verdict: despite these criticisms, the multi-store model has been a valuable framework. It stimulated a huge wealth of memory research, and the better, more precise theories that followed were built in response to it.</p>
-  <div class="exam-tip">
-    <h4>Exam tip: evaluate by contrasting the stores</h4>
-    <p>When evaluating the multi-store model, use research evidence that highlights the qualitative and quantitative differences between the short-term and long-term stores. It is not enough to state that Miller (1956) found the short-term store holds five to nine items: contrast that with the long-term store's capacity. And always explain <em>how</em> the research supports or challenges the model. Simply reporting findings without linking back to the model is not effective evaluation.</p>
-    <p><strong>Worked example:</strong></p>
-    <p><strong>Point:</strong> Clive Wearing suffered amnesia which meant he could not remember events from his past or store new memories. However, his short-term memory was not impaired.</p>
-    <p><strong>Link:</strong> This supports the multi-store model because it shows his long-term store was damaged while his short-term store was unimpaired; the stores must be independent of one another.</p>
-  </div>
-  <div class="cn-note">
-    <p><strong>中文理解：</strong>评价这张图记两条主线。支持线：病人案例（HM、Clive Wearing）证明两个仓库能单独坏掉，系列位置效应证明一条曲线两头对应两个仓库。反对线：双任务实验（一动嘴一动眼做得好、两件同类事做不好）单仓库解释不了；不复述也能学会东西；Tulving 说长时记忆里还分情节、语义、程序三个子仓库。最后一句万能评价：模型虽然简单化，但它推动了整个记忆研究，后来的精细理论都是在修正它的过程中长出来的。</p>
+    <p><strong>中文理解：</strong>这一节回答「凭什么说它们是分开的」。证据一：HM 和 Clive Wearing 都是长时坏了、短时没坏。一个系统若是一体的，就该一起坏，能单独坏说明是两个独立系统。证据二：系列位置效应，记 20 个词，开头（有时间复述→进了长时）和结尾（还坐在短时槽里）记得好，中间（被后进来的挤掉）最差。一条 U 形曲线两头各自对应一个仓库。但别漏：Clive Wearing 能弹琴，这个细节已经埋下「长时记忆内部也分」的伏笔。</p>
   </div>
 </section>
 
 <!-- ============ 7 ============ -->
 <section class="section" id="s7">
-  <h2>7. Checkpoint</h2>
+  <h2>7. Where the Model Fails</h2>
+  <p>The model earned its place, but the same evidence that built it also exposes its limits. Four criticisms follow, each one a claim about something the model cannot explain.</p>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>What the model gets right</h4>
+      <ul class="tight">
+        <li><strong>Separate stores.</strong> HM and Clive Wearing show the long-term store can fail while the short-term store works.</li>
+        <li><strong>Two ends, two stores.</strong> Glanzer and Cunitz's curve splits into a long-term (primacy) and a short-term (recency) part.</li>
+        <li><strong>Different codes.</strong> Conrad and Hull (acoustic) and Baddeley (semantic) show the stores differ in kind, not just size.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>What the model cannot explain</h4>
+      <ul class="tight">
+        <li><strong>Dual-task performance.</strong> We struggle with two verbal tasks or two visual tasks at once, but manage one verbal plus one visual easily. A single short-term store with fixed capacity cannot explain why performance depends on the <em>type</em> of task, not just the amount. The working memory model (Baddeley and Hitch, 1974) was built to solve exactly this.</li>
+        <li><strong>Rehearsal is not essential.</strong> People learn skills and facts without deliberately rehearsing them; imagery leaves a strong long-term trace with no rehearsal at all. The model overrates the rehearsal route.</li>
+        <li><strong>Long-term memory is not one store.</strong> Tulving (1972) split it into episodic memory for personal events, semantic memory for facts, and procedural memory for skills — and the brain-damage cases support this, since Clive Wearing kept skills while losing his past.</li>
+        <li><strong>Reductionism.</strong> Cutting memory into separate stores makes experiments easier, but it downplays how the systems actually work together.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">Back to the number: the model explains why your number vanished, but it stumbles the moment you ask it about two tasks at once, or about learning something without repeating it. That is the honest limit of the framework.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>反对意见四条，每条都是「模型解释不了的某个现象」。① 双任务：两件同类事做不好、一嘴一眼做得好，单仓库解释不了，这是工作记忆模型的起点。② 复述不是必需的：不复述也能学会，用图像就能留下长期痕迹。③ 长时记忆不是一个仓库：Tulving 分出情节、语义、程序三类，Clive Wearing 会弹琴但记不得过去，正好支持。④ 还原论：切得太碎，忽略了系统之间的协作。前三条都有具体证据，考试能各写一条。</p>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Evaluation</h2>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Supports the model</h4>
+      <ul class="tight">
+        <li><strong>Brain-damage cases.</strong> HM and Clive Wearing lost long-term memory while short-term memory stayed intact: the stores can be damaged separately, so they are distinct systems.</li>
+        <li><strong>Serial position effect.</strong> Glanzer and Cunitz (1966): the primacy end reflects the long-term store, the recency end the short-term store.</li>
+        <li><strong>Store-specific encoding.</strong> Conrad and Hull (1964) show the short-term store holds sound; Baddeley (1966b) shows the long-term store holds meaning — a difference in kind, exactly as the model predicts.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Challenges the model</h4>
+      <ul class="tight">
+        <li><strong>Dual-task performance.</strong> Two similar tasks clash, but one verbal plus one visual does not. A single fixed-capacity store cannot explain this; the working memory model can.</li>
+        <li><strong>Rehearsal is not essential.</strong> Skills and facts are learned without conscious rehearsal; imagery leaves a long-term trace with none.</li>
+        <li><strong>Long-term memory is not unitary.</strong> Tulving (1972) proposed episodic, semantic and procedural stores; HM and Clive Wearing support this, since episodic memory failed while skills and facts survived.</li>
+        <li><strong>Reductionism.</strong> Splitting memory into stores simplifies experiments but underplays how the systems interconnect.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">A fair verdict: as a first map of memory the model was enormously productive — it launched the research that later produced sharper theories. Its store structure survives in those theories; its two biggest simplifications, the single short-term store and the single long-term store, are exactly what the working memory model and Tulving corrected.</p>
+  <div class="exam-tip">
+    <h4>Exam tip: contrast, then link</h4>
+    <p>Evaluation marks come from two moves. First, <strong>contrast the stores</strong>: saying Miller found five to eight items earns little on its own; say it <em>against</em> the long-term store's near-infinite capacity and it becomes a point. Second, <strong>link the evidence back to the model</strong>: state what the finding proves or fails to prove about the three stores, not just what the researcher did. A worked example: <em>"Clive Wearing could not form new long-term memories but his short-term memory was intact — this supports the model because it shows the two stores can fail independently."</em></p>
+  </div>
+  <div class="green-box">
+    <h4>Close the loop: explain the lost number</h4>
+    <p class="small">The friend's voice entered the <strong>sensory register</strong>. You attended to it, so it moved into the <strong>short-term store</strong>, where your silent repetition was <strong>maintenance rehearsal</strong> keeping the trace alive. When the classmate called your name, your attention left the rehearsal; with nothing maintaining it, the trace decayed within about 20 seconds and the number was gone. That is the prediction confirmed: keep rehearsing and the trace survives; stop and it dies. To keep the number for good, maintenance would not be enough — you would need <strong>elaborative rehearsal</strong>, processing what the digits mean, so the semantic encoding of the long-term store has something to hold.</p>
+    <p class="small"><strong>Reflect before the Exam Lab:</strong> the model says the number is lost because rehearsal stopped. Can you think of something you once learned without any rehearsal? Which criticism of the model does that point at?</p>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>评价记住「三支持三反对」加一句裁决。支持：病人案例证明能单独坏（两个仓库分开）、系列位置效应一条曲线两头对应两仓库、编码差异（短时按声、长时按义）是质的区别。反对：双任务解释不了、复述不是必需、Tulving 说长时还要再分三层。裁决句：作为第一张记忆地图，它很能生发研究；它最大的两个简化（短时只有一个、长时只有一个）恰好是后来工作记忆模型和 Tulving 分别修正的地方。答题套路：先拿数字做对比，再把证据连回模型说「证明了什么」。</p>
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="section" id="s9">
+  <h2>9. Checkpoint</h2>
   <p>Which store is each statement describing? Choose, then read the why.</p>
   <div class="xp-block">
     <h4>Q1 · Encoding is acoustic</h4>
@@ -609,78 +667,76 @@ body.dark .sc-predict h4 { color: #93c5fd; }
   </div>
 </section>
 
-<!-- ============ 8 ============ -->
-<section class="section" id="s8">
-  <h2>8. Exam Lab</h2>
+<!-- ============ 10 ============ -->
+<section class="section" id="s10">
+  <h2>10. Exam Lab</h2>
   <div class="exam-practice">
     <div class="xp-block">
       <h4>Q1 · Application <span class="xp-badge">4 marks</span></h4>
-      <div class="xp-intro">Bashir needs to revise for his biology test. He is struggling to learn the functions of organs in the body, such as the heart and lungs. Bashir read his biology textbook in class and took notes but cannot remember all of the information about how organs function. He has taken his biology textbook home to learn and plans to use his textbook and notes to help revise for the test. <strong>Explain how the multi-store model (Atkinson and Shiffrin, 1968) could be used to help Bashir remember the function of organs in the body.</strong></div>
+      <div class="xp-intro">Bashir is struggling to learn the functions of organs for his biology test. He read his textbook in class and took notes, but cannot remember how the organs function. He has taken the textbook home to revise. <strong>Explain how the multi-store model could be used to help Bashir remember the function of organs.</strong></div>
       <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans1')">Show answer</button></div>
       <div class="xp-result" id="ans1" hidden>
-        <p>Because the model says information must be attended to, rehearsed and transferred between stores, Bashir should design his revision around each step:</p>
+        <p>Each step of the model maps to a concrete revision action:</p>
         <ul class="tight">
-          <li><strong>Attention</strong> (sensory register → short-term store): read the notes actively and without distraction, so the information is attended to rather than lost from the sensory register.</li>
-          <li><strong>Maintenance rehearsal</strong> (within the short-term store): repeat the key facts aloud or rewrite them, keeping the trace alive beyond the 15–30-second window.</li>
-          <li><strong>Elaborative rehearsal</strong> (short-term → long-term store): connect each organ's function to its meaning, for example linking the heart to pumping blood, so the semantic encoding of the long-term store has something to hold.</li>
-          <li><strong>Retrieval practice</strong> (long-term store → short-term store): close the book and recall the functions from memory, which exercises retrieval and strengthens the traces.</li>
+          <li><strong>Attention</strong> (sensory register → short-term store): Bashir should revise without distraction, so the organ functions are attended to rather than lost from the sensory register.</li>
+          <li><strong>Maintenance rehearsal</strong> (within the short-term store): repeating the key facts keeps the trace alive past the 15–30-second window.</li>
+          <li><strong>Elaborative rehearsal</strong> (short-term → long-term store): connecting each organ to what it does (the heart pumps blood) gives the semantic encoding of the long-term store something to hold.</li>
+          <li><strong>Retrieval practice</strong> (long-term → short-term store): closing the book and recalling the functions exercises retrieval and strengthens the traces.</li>
         </ul>
-        <p class="xp-case">Marking guidance: one mark for each accurate step of the model applied to Bashir's revision, up to 4. Naming a store or process with no application earns little; the command word is <em>explain how ... could be used</em>, so every point must be tied to Bashir.</p>
+        <p class="xp-case">Marking guidance: one mark per accurate step applied to Bashir, up to 4. Naming a store or process without applying it earns little — the command is <em>explain how</em>, so every point must be tied to Bashir.</p>
       </div>
     </div>
     <div class="xp-block">
       <h4>Q2a · Describe <span class="xp-badge">2 marks</span></h4>
-      <div class="xp-intro">Smaragda is planning her revision for her end-of-year exams. She plans to put her class notes onto flashcards and go through each flashcard six times before writing out the information later to see what she remembers. <strong>Describe, using the multi-store model of memory (Atkinson and Shiffrin, 1968), how Smaragda is using information processing during her revision.</strong></div>
+      <div class="xp-intro">Smaragda plans to put her notes onto flashcards and go through each card six times, then write out the information later to see what she remembers. <strong>Describe, using the multi-store model, how Smaragda is using information processing.</strong></div>
       <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans2')">Show answer</button></div>
       <div class="xp-result" id="ans2" hidden>
-        <p>Going through each flashcard six times is <strong>maintenance rehearsal</strong>: she is repeating the information to keep it alive in the short-term store and strengthen the trace. Writing out what she remembers afterwards is <strong>retrieval</strong>: pulling the information back from the long-term store into the short-term store.</p>
-        <p class="xp-case">Marking guidance: two steps, one mark each. Both must be linked to the model's processes.</p>
+        <p>Going through each flashcard six times is <strong>maintenance rehearsal</strong>: repeating the information to keep it alive in the short-term store and strengthen the trace. Writing out what she remembers afterwards is <strong>retrieval</strong>: pulling the information back from the long-term store into the short-term store.</p>
+        <p class="xp-case">Marking guidance: two processes, one mark each, both linked to the model.</p>
       </div>
     </div>
     <div class="xp-block">
       <h4>Q2b · Explain <span class="xp-badge">4 marks</span></h4>
-      <div class="xp-intro"><strong>Explain, using the multi-store model of memory (Atkinson and Shiffrin, 1968), two further ways that Smaragda could revise for her end-of-year exam.</strong></div>
+      <div class="xp-intro"><strong>Explain, using the multi-store model, two further ways Smaragda could revise.</strong></div>
       <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans3')">Show answer</button></div>
       <div class="xp-result" id="ans3" hidden>
-        <p><strong>Way 1: elaborative rehearsal.</strong> Instead of only repeating the flashcards, Smaragda could think about the meaning of each item and connect it to what she already knows. In the model, meaningful processing matches the semantic encoding of the long-term store, so the information transfers more effectively from the short-term store.</p>
-        <p><strong>Way 2: spaced rehearsal over time.</strong> She could spread the six repetitions across several days instead of one session. Each session re-attends to the material and re-rehearses it, giving repeated chances for the trace to be transferred into the long-term store before it decays from the short-term store.</p>
-        <p class="xp-case">Marking guidance: two ways, up to 2 marks each: 1 mark for naming the process, 1 mark for explaining how it maps onto the model's stores.</p>
+        <p><strong>Way 1: elaborative rehearsal.</strong> Instead of only repeating the cards, Smaragda could think about the meaning of each item and connect it to what she already knows. Meaningful processing matches the semantic encoding of the long-term store, so the information transfers more effectively.</p>
+        <p><strong>Way 2: spaced rehearsal.</strong> She could spread the six repetitions over several days rather than one session. Each session re-attends to the material and re-rehearses it, giving repeated chances for the trace to transfer to the long-term store before it decays.</p>
+        <p class="xp-case">Marking guidance: two ways, up to 2 marks each: 1 for naming the process, 1 for explaining how it maps onto the stores.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 9 ============ -->
-<section class="section" id="s9">
-  <h2>9. Key Terms</h2>
+<!-- ============ 11 ============ -->
+<section class="section" id="s11">
+  <h2>11. Key Terms</h2>
   <div class="glossary-grid">
-    <div class="keyterm-box"><span class="kt">multi-store model</span><br><span class="zh">多重记忆系统模型：三个仓库串成流水线的记忆框架（Atkinson &amp; Shiffrin, 1968）</span></div>
-    <div class="keyterm-box"><span class="kt">structural features</span><br><span class="zh">结构特征：天生的记忆仓库本身，像电脑硬件，改不了</span></div>
-    <div class="keyterm-box"><span class="kt">control processes</span><br><span class="zh">控制过程：自己决定的加工方式（编码、复述、提取），像可写的程序</span></div>
+    <div class="keyterm-box"><span class="kt">multi-store model</span><br><span class="zh">多重记忆系统模型：把记忆分成三个按顺序加工信息的单元（Atkinson &amp; Shiffrin, 1968）</span></div>
+    <div class="keyterm-box"><span class="kt">structural features</span><br><span class="zh">结构特征：记忆的固定部分，即三个存储单元本身</span></div>
+    <div class="keyterm-box"><span class="kt">control processes</span><br><span class="zh">控制过程：主动对信息做的操作，如编码、复述、提取</span></div>
     <div class="keyterm-box"><span class="kt">sensory register</span><br><span class="zh">感官登记处：五官各一个，只留几百毫秒</span></div>
     <div class="keyterm-box"><span class="kt">tachistoscope</span><br><span class="zh">速示器：精确控制视觉材料显示时长的仪器</span></div>
     <div class="keyterm-box"><span class="kt">digit span</span><br><span class="zh">数字广度：能按顺序无错背出的数字个数</span></div>
-    <div class="keyterm-box"><span class="kt">trigram</span><br><span class="zh">三连字母组：三个辅音组成的一组，测 STM 时距用</span></div>
-    <div class="keyterm-box"><span class="kt">interference task</span><br><span class="zh">干扰任务：阻止复述的任务，如倒数三</span></div>
-    <div class="keyterm-box"><span class="kt">displacement</span><br><span class="zh">置换：新信息把旧信息从有限的槽位中挤出去</span></div>
-    <div class="keyterm-box"><span class="kt">acoustic encoding</span><br><span class="zh">听觉编码：短时记忆按声音形式储存</span></div>
+    <div class="keyterm-box"><span class="kt">trigram</span><br><span class="zh">三连字母组：三个辅音组成的一组，测短时时长用</span></div>
+    <div class="keyterm-box"><span class="kt">interference task</span><br><span class="zh">干扰任务：阻止复述的任务，如倒着数数</span></div>
+    <div class="keyterm-box"><span class="kt">displacement</span><br><span class="zh">置换：新信息把旧信息从有限的槽位里挤出去</span></div>
+    <div class="keyterm-box"><span class="kt">acoustic encoding</span><br><span class="zh">声学编码：短时记忆按声音形式储存</span></div>
     <div class="keyterm-box"><span class="kt">semantic encoding</span><br><span class="zh">语义编码：长时记忆按意义储存</span></div>
-    <div class="keyterm-box"><span class="kt">phonological similarity effect</span><br><span class="zh">语音相似效应：发音相近的字母在 STM 里互相混淆、更难回忆</span></div>
+    <div class="keyterm-box"><span class="kt">phonological similarity effect</span><br><span class="zh">语音相似效应：发音相近的字母在短时记忆里互相混淆、更难回忆</span></div>
     <div class="keyterm-box"><span class="kt">maintenance rehearsal</span><br><span class="zh">维持性复述：机械重复，保住短时记忆的痕迹</span></div>
     <div class="keyterm-box"><span class="kt">elaborative rehearsal</span><br><span class="zh">精细复述：加工含义，把信息送进长时记忆</span></div>
     <div class="keyterm-box"><span class="kt">serial position effect</span><br><span class="zh">系列位置效应：列表开头与结尾回忆好于中间</span></div>
-    <div class="keyterm-box"><span class="kt">primacy / recency effect</span><br><span class="zh">首因效应／近因效应：开头进长时仓库，结尾还在短时槽位</span></div>
+    <div class="keyterm-box"><span class="kt">primacy / recency effect</span><br><span class="zh">首因效应／近因效应：开头进了长时单元，结尾还坐在短时槽位</span></div>
     <div class="keyterm-box"><span class="kt">encephalitis</span><br><span class="zh">脑炎：脑部炎症，损伤脑结构（Clive Wearing 的病因）</span></div>
-    <div class="keyterm-box"><span class="kt">episodic / semantic / procedural memory</span><br><span class="zh">情节／语义／程序记忆：Tulving (1972) 的三个长时子仓库</span></div>
+    <div class="keyterm-box"><span class="kt">episodic / semantic / procedural memory</span><br><span class="zh">情节／语义／程序记忆：Tulving (1972) 的长时记忆三类细分</span></div>
   </div>
-  <div class="footer-note">Spec 2.1.1 · Content sourced from Book 1 Ch.8 (pp.81–87) · Next: 2.1.2 The working memory model</div>
 </section>
 
 </main>
 </div>
 
 <button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-</div>
 
 <script>
 (function () {
@@ -698,7 +754,6 @@ body.dark .sc-predict h4 { color: #93c5fd; }
     document.documentElement.style.fontSize = baseFont + 'px';
   };
 
-  /* ---------- sidebar scroll spy ---------- */
   var links = $$('.sb-item a');
   var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
   function spy() {
@@ -713,44 +768,44 @@ body.dark .sc-predict h4 { color: #93c5fd; }
     if (b) { b.classList.toggle('show', window.scrollY > 400); }
   });
 
-  /* ---------- reveal helper ---------- */
   window.revealAns = function (id) {
     var el = document.getElementById(id);
     if (el) el.classList.toggle('show');
   };
 
-  /* ---------- multiple choice: one why per option ---------- */
   var secWhy = {
     s0: [
-      ['正确。短时仓库不靠时间活着，靠复述续命：只要复述不停，痕迹就在。真正杀死号码的是那声叫你名字的干扰，它占掉了复述。带着这个答案读下面三节，你会看到它的实验室证据。',
-       '大多数人都这么猜，直觉是记忆像水池，会自然蒸发。第 3 节的实验会给出另一个版本：不复述，15 至 30 秒就没了；一直复述，想保多久保多久。读完回来改你的答案。',
-       '方向接近但不准：不复述确实十几秒就衰减，但「重复也救不了」说反了，复述恰恰是唯一的救命稻草。正确答案是第一项。']
+      [
+        '方向反了：不复述确实十几秒就衰减，但「重复也救不了」说反了，复述正是续命的唯一手段。正确答案是第二项。',
+        '正确。短时记忆不靠时间活着，靠复述续命：只要复述不停，痕迹就一直在。真正杀死号码的是那声叫你名字的干扰，它占掉了复述。后面第 3 节会给出这条结论的实验室证据。',
+        '这是最常见的直觉，但第 3 节的实验给出另一个版本：不复述，15 到 30 秒就没了；一直复述，想保多久保多久。读完回来再定。'
+      ]
     ],
-    s7: [
-      ['The sensory register holds whatever format each sense delivers; it does not use one single sound-based code.',
-       'Correct. The phonological similarity effect (Conrad and Hull, 1964) shows similar sounds confuse this store, so its code must be acoustic.',
-       'The long-term store encodes by meaning; the sound-based store is the short-term one.'],
-      ['Sperling\'s participants recalled about 4 of 12 letters: limited, but not the seven-plus-or-minus-two rule.',
-       'Correct. Miller (1956) put the short-term store at five to nine items, refined to the magical number seven plus or minus two.',
-       'The capacity of the long-term store is potentially infinite.'],
-      ['A few hundred milliseconds is the whole budget of the sensory register.',
-       '15 to 30 seconds, decaying over roughly 20, is the short-term store.',
-       'Correct. Bahrick et al. (1975) found names and faces still recognisable 48 years after leaving school.'],
-      ['The sensory register holds raw sensory input in the form the sense delivered.',
-       'Sound-based encoding is the short-term store; the long-term store uses meaning.',
-       'Correct. Baddeley (1966b) found semantically similar words confused participants, so the long-term store encodes semantically.'],
-      ['Hundreds of milliseconds, far shorter than 20 seconds.',
-       'Correct. Peterson and Peterson (1959) blocked rehearsal with counting backwards and found rapid decay after 15 to 18 seconds.',
-       'Potentially a lifetime is the duration of the long-term store.'],
-      ['Correct. There is one register per sense modality, so the encoding follows the sense that delivered the information.',
-       'Both later stores use one fixed format: sound first, then meaning.',
-       'The long-term store encodes semantically regardless of which sense delivered the information.'],
-      ['Loss in the sensory register is simply the trace fading before attention is paid to it.',
-       'Correct. With only five to nine slots, new items knock older, weaker traces out of the short-term store.',
-       'New items cannot knock long-term memories out; that store\'s capacity is potentially infinite.'],
-      ['Correct. The beginning of the list was rehearsed into the long-term store; the end still sits in the short-term slots.',
-       'If both ends were held by the short-term store, the primacy advantage would disappear once rehearsal was blocked.',
-       'The whole point of the curve is that its two ends behave differently, which is the evidence for two stores.']
+    s9: [
+      ['感官登记处按各个感觉各自的格式存，不是统一按声音存。',
+       '正确。语音相似效应（Conrad &amp; Hull, 1964）显示发音相近的字母会互相混淆，所以这一单元按声音存。',
+       '长时记忆按意思存，按声音存的是短时记忆。'],
+      ['Sperling 的人平均报出 12 个里的 4 个左右：容量小，但不是 7±2 那条规则。',
+       '正确。Miller (1956) 把短时记忆定在 5 到 8 项，总结为魔数 7±2。',
+       '长时记忆的容量接近无限。'],
+      ['几百毫秒是感官登记处的全部时长。',
+       '15 到 30 秒、约 20 秒衰减，这是短时记忆。',
+       '正确。Bahrick et al. (1975) 发现毕业 48 年后还能认出 70–80% 的老同学。'],
+      ['感官登记处按感觉传来的原始格式存。',
+       '按声音存的是短时记忆，长时记忆按意思存。',
+       '正确。Baddeley (1966b) 发现语义相近的词会互相混淆，所以长时记忆按意义编码。'],
+      ['几百毫秒，比 20 秒短得多。',
+       '正确。Peterson 和 Peterson (1959) 用倒着数数堵住复述，发现 15 到 18 秒后快速衰减。',
+       '可能一辈子，那是长时记忆的时长。'],
+      ['正确。每种感觉各有一个登记处，所以编码跟着传达信息的感觉走。',
+       '后两个单元各用一个固定格式：先声音，再意思。',
+       '长时记忆无论信息来自哪个感觉，都按意思编码。'],
+      ['感官登记处的丢失是痕迹在被注意之前就淡掉了。',
+       '正确。短时记忆只有 5 到 8 个槽位，新的项目会把旧的、较弱的痕迹挤出去。',
+       '新信息挤不掉长时记忆，那个单元的容量接近无限。'],
+      ['正确。开头被复述进了长时记忆，结尾还坐在短时槽位里。',
+       '如果两头都由短时记忆持有，一旦堵住复述，开头的优势就该消失。',
+       '这条曲线的意义正是两头表现不同，这本身就是两个单元的证据。']
     ]
   };
 
@@ -777,6 +832,27 @@ body.dark .sc-predict h4 { color: #93c5fd; }
       box.classList.add('show');
     }
   };
+})();
+
+/* Socratic sc-ask: progressive reveal */
+(function () {
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.sc-ask-step'));
+  if (!steps.length) return;
+  steps.forEach(function (step, i) {
+    var btn = step.querySelector('.ask-toggle');
+    var hint = document.getElementById(btn ? btn.getAttribute('data-target') : '');
+    if (!btn || !hint) return;
+    btn.addEventListener('click', function () {
+      var open = hint.classList.toggle('show');
+      btn.textContent = open ? '收起提示' : '想好了？看提示 →';
+      if (open && i + 1 < steps.length) {
+        var next = steps[i + 1];
+        next.classList.remove('locked');
+        var nb = next.querySelector('.ask-toggle');
+        if (nb) nb.disabled = false;
+      }
+    });
+  });
 })();
 </script>
 </body>
