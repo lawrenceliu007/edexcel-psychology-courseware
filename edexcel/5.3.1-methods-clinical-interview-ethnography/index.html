@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5.3.1 Methods — Clinical Interviews, Ethnography &amp; Longitudinal Designs</title>
+<style>
+
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.sc-item { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-size: .95em; line-height: 1.7; margin: 8px 0; }
+.sc-tag { display: inline-block; background: var(--accent); color: #fff; font-size: .72em; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-right: 8px; }
+.sc-predict { background: #eff6ff; border: 1.5px solid #3b82f6; border-radius: 10px; padding: 14px 18px; margin: 16px 0 4px; }
+.sc-predict h4 { margin: 0 0 6px; color: #1d4ed8; }
+body.dark .sc-item { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .sc-tag { background: #3b82f6; }
+body.dark .sc-predict { background: rgba(59,130,246,.08); border-color: #3b82f6; }
+body.dark .sc-predict h4 { color: #93c5fd; }
+.sc-ask { background: #fefce8; border: 1.5px solid #ca8a04; border-radius: 10px; padding: 14px 18px; margin: 14px 0 4px; }
+.sc-ask h4 { margin: 0 0 4px; color: #854d0e; font-size: .95em; }
+.sc-ask-step { background: #fff; border: 1px solid #e7e5e4; border-radius: 8px; padding: 10px 14px; margin: 10px 0 0; }
+.sc-ask-step.locked { opacity: .45; }
+.sc-ask-step .ask-q { font-weight: 600; font-size: .95em; margin: 0; line-height: 1.7; }
+.ask-toggle { background: #fff; border: 1px solid #d6d3d1; border-radius: 8px; padding: 5px 12px; font-size: .82rem; font-weight: 500; color: #57534e; cursor: pointer; margin-top: 8px; transition: all .15s; }
+.ask-toggle:hover:not(:disabled) { border-color: #ca8a04; color: #854d0e; }
+.ask-toggle:disabled { cursor: not-allowed; opacity: .6; }
+.ask-hint { display: none; border-top: 1px dashed #e7e5e4; margin-top: 10px; padding-top: 8px; }
+.ask-hint.show { display: block; }
+.ask-hint .hint-label { font-size: .75em; color: #a8a29e; margin: 0 0 4px; font-weight: 700; }
+.ask-hint p { margin: 0; font-size: .92em; line-height: 1.75; }
+.ask-land { margin: 12px 0 0; font-size: .9em; color: #854d0e; line-height: 1.7; }
+body.dark .sc-ask { background: rgba(202,138,4,.08); border-color: #ca8a04; }
+body.dark .sc-ask h4 { color: #fde047; }
+body.dark .sc-ask-step { background: #16213e; border-color: #334155; }
+body.dark .sc-ask-step.locked { opacity: .5; }
+body.dark .ask-toggle { background: #16213e; border-color: #334155; color: #94a3b8; }
+body.dark .ask-toggle:hover:not(:disabled) { border-color: #ca8a04; color: #fde047; }
+body.dark .ask-hint { border-top-color: #334155; }
+body.dark .ask-hint .hint-label { color: #64748b; }
+body.dark .ask-hint p { color: #cbd5e1; }
+body.dark .ask-land { color: #fde047; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic E · Developmental psychology — 5.3.1 Methods: Interviews, Ethnography &amp; Designs</span>
+  </div>
+  <span class="nav-pill">🧠 Developmental Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">5.3.1 Methods</div>
+    <div class="sb-header-sub">Interviews · Ethnography · Designs</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s0">Start Here: Interviewing a Five-Year-Old</a></li>
+    <li class="sb-item"><a href="#s1">1. Clinical Interviewing</a></li>
+    <li class="sb-item"><a href="#s2">2. Ethnographic Fieldwork</a></li>
+    <li class="sb-item"><a href="#s3">3. Punch in Bolivia (2002)</a></li>
+    <li class="sb-item"><a href="#s4">4. Longitudinal vs Cross-Sectional</a></li>
+    <li class="sb-item"><a href="#s5">5. Evaluation</a></li>
+    <li class="sb-item"><a href="#s6">6. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s7">7. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s8">8. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>5.3.1 METHODS: CLINICAL INTERVIEWS, ETHNOGRAPHY &amp; DESIGNS<br><span style="font-size:0.65em">Understanding the world of the child · Punch (2002) · longitudinal vs cross-sectional · 发展心理学研究方法</span></h1>
+  <div class="meta">
+    <span class="badge">Topic E · Developmental psychology</span>
+    <span class="badge">Methods</span>
+    <span class="badge">Spec 5.3.1</span>
+    <span class="badge">📖 Textbook Book 2 · Ch.5 · pp.72–77</span>
+  </div>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Describe clinical interviewing</strong>, how Piaget adapted it, and the special skills needed with young children.</li>
+    <li><strong>Describe ethnographic fieldwork</strong> and the emic approach, through Punch's four-year study in Bolivia.</li>
+    <li><strong>Compare longitudinal and cross-sectional designs</strong>, including attrition and cohort effects.</li>
+    <li><strong>Evaluate each method</strong> with strengths, weaknesses and the practical compromises researchers face.</li>
+    <li><strong>Answer exam questions</strong> comparing methods and evaluating Punch's research.</li>
+  </ul>
+</div>
+
+<div class="quick-summary">
+  <h4>What this page is really asking</h4>
+  <ol>
+    <li><strong>How do you find out what a child thinks?</strong> You cannot give a five-year-old a questionnaire. Three tools exist: the clinical interview, ethnographic fieldwork, and age-comparing designs.</li>
+    <li><strong>The clinical interview trades structure for depth.</strong> Bowlby used it to diagnose; Piaget mixed fixed questions with open follow-ups to hear the child's reasoning.</li>
+    <li><strong>Ethnography trades speed for richness.</strong> Punch lived in rural Bolivia for years, watching how children decide between school and work.</li>
+    <li><strong>Every design pays a price.</strong> Longitudinal studies lose people (attrition); cross-sectional studies compare groups with different life histories (cohort effects).</li>
+  </ol>
+</div>
+
+<!-- ============ 0 ============ -->
+<section class="section" id="s0">
+  <h2>Start Here: Interviewing a Five-Year-Old</h2>
+  <div class="sc-item"><span class="sc-tag">背景</span>你要去一所当地学校，访谈一些五岁的孩子，问他们怎么看待友谊和玩耍。成年人和孩子看到的世界不一样，这正是这个领域难做的原因。</div>
+  <div class="sc-item"><span class="sc-tag">角色</span>你是发展心理学的研究新手，这是你的第一次儿童访谈。</div>
+  <div class="sc-task" style="display:none"></div>
+  <div class="sc-item"><span class="sc-tag">任务</span>先做三个决定：穿什么？录不录音？怎么问？然后列出可能出现的伦理和实际问题。孩子跟大人说话的方式跟同龄人不一样。</div>
+  <div class="sc-item"><span class="sc-tag">目标</span>先猜下面这题。读完这一页，你会掌握三种了解孩子的方法，也知道每种方法会在哪里出错。猜完往下追两层。</div>
+  <div class="sc-predict">
+    <h4><span class="sc-tag" style="background:#3b82f6">先猜</span>访谈五岁孩子之前，最该做的一件事是什么？</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">准备好一份标准化的问题清单，一个问题都不能改</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">先花时间跟孩子聊他们的兴趣，混熟了再开始正式提问</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">直接开始问，孩子的回答本来就不值得认真分析</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="sc-ask">
+    <h4><span class="sc-tag" style="background:#ca8a04">追问</span>猜完先别走：这两个问题没有选项，先自己想，再点开提示。</h4>
+    <div class="sc-ask-step">
+      <p class="ask-q">追问一：孩子答不出来，是「不知道」还是「不敢说」？你怎么区分？</p>
+      <button class="ask-toggle" data-target="ask-h1">想好了？看提示 →</button>
+      <div class="ask-hint" id="ask-h1">
+        <p class="hint-label">提示</p>
+        <p>在很多文化里，孩子习惯了服从大人，很少被问「你觉得呢」。他们可能根本没被认真问过意见，所以被问到时会不知所措。这不是能力问题，是权力关系问题：研究者不是孩子的同龄人，孩子面对大人会紧张或应付。这在做跨文化研究时尤其明显。</p>
+      </div>
+    </div>
+    <div class="sc-ask-step locked">
+      <p class="ask-q">追问二：想研究「孩子这几年怎么变的」，你可以追同一批孩子好几年，也可以一次性对比不同年龄组。两条路各会掉进什么坑？</p>
+      <button class="ask-toggle" data-target="ask-h2" disabled>想好了？看提示 →</button>
+      <div class="ask-hint" id="ask-h2">
+        <p class="hint-label">提示</p>
+        <p>追同一批人（纵向设计）的坑是人会流失：搬家、失去兴趣，最后剩下的可能不再代表最初的那批人。一次性对比不同年龄组（横断设计）的坑是同龄组效应：不同年出生的孩子经历了不同的世界，比如经历过疫情封控的一组和没经历过的一组，差异可能来自时代而不是年龄。</p>
+      </div>
+    </div>
+    <p class="ask-land">两个追问先放在心里。往下读，你会看到三种方法的真实样子：怎么访谈、怎么住进一个社区观察四年、以及两种时间设计的取舍。</p>
+  </div>
+</section>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Clinical Interviewing</h2>
+  <p>A <strong>clinical interview</strong>（临床访谈：通常是非结构化、对话式的访谈，用来诊断、治疗，或探索孩子的想法和感受） is how psychologists look inside a child's world. It is typically unstructured and conversational. The interviewer may start with a set of themes, but each question is shaped by the child's last answer — so the interviewer can adjust to the child and dig deeper wherever something interesting appears.</p>
+  <p>Bowlby used exactly this method when diagnosing the 44 Thieves. Piaget went further and combined two styles: he asked every child the same standardised closed questions first, then asked the child to <em>explain their reasoning</em> with open follow-ups, probing again and again. He called this the <strong>clinical method</strong>; it is also known as a <strong>semi-clinical interview</strong>（半临床访谈：固定问题加开放追问的混合访谈法，Elkind, 1964）.</p>
+  <p>Interviewing young children needs special skills. You get more valid information if you spend time getting to know the child first — talking about their interests before any formal questions. Young children have limited attention, so get what you need quickly. And their language is still developing, so questions may need simplifying.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>临床访谈 = 非结构化、像聊天、跟着孩子的回答走。Bowlby 用它诊断 44 小偷；Piaget 的混合版是「固定的封闭问题 + 开放的追问」，让他说出推理过程，叫临床方法（或半临床访谈）。访谈幼儿三原则：先混熟、抓紧时间、简化问题。</p>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Ethnographic Fieldwork</h2>
+  <p><strong>Ethnographic fieldwork</strong>（民族志田野调查：住进研究对象的社区，通过观察和参与了解他们的信念、价值观和生活方式，通常持续很久） means studying people inside their own world. Researchers live within the communities they study for months or even years, watching and joining in. The data is usually field notes — detailed diaries of what the researcher sees and hears.</p>
+  <p>This is an <strong>emic</strong>（主位视角：从文化内部看文化，而不是套用外部的评判标准） approach: it looks at a culture from the inside, instead of judging it from outside. Working with local team members who speak the language helps reduce barriers that would weaken the data.</p>
+  <p>There is one problem specific to children: an adult researcher can never truly become one of them. The age gap gives the researcher power and authority, which makes it hard to see the world from a child's eye level. In cultures where children rarely get asked for opinions, the problem doubles — a direct question from an adult may leave the child stuck.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>民族志 = 住进去、参与进去、记田野笔记，通常做好几个月甚至几年。核心立场是 emic（主位）：从文化内部理解，不用外部标准评判。做儿童版的难点：研究者永远当不了「同龄人」，大人自带权威，孩子面对大人问话容易卡壳。这也适用于对老年人的参与观察。</p>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Punch in Bolivia (2002)</h2>
+  <p>Samantha Punch put ethnographic fieldwork into practice. In 2002 she published two papers on her research in rural Bolivia. In the majority world, children often work from a young age. In rural Bolivia, schooling lasts five compulsory years — there is no secondary school in the small community — and after that, children face a choice: stay, work, or migrate.</p>
+  <p><strong>Aim:</strong> to investigate how young people in rural Bolivia decide between continuing education and moving into work, including the effects of family attitudes, gender, birth order, social networks and role models.</p>
+  <ul class="tight">
+    <li><strong>Method:</strong> a <strong>four-year longitudinal study</strong> using participant observation and interviews.</li>
+    <li><strong>Sample:</strong> families from 18 households in Churquiales, a small, isolated, poor community in southern Bolivia. Only 7 per cent of 13–19-year-olds were still at school; 42 per cent worked at home or locally; 52 per cent worked in nearby towns or Argentina.</li>
+    <li><strong>Procedure:</strong> naturalistic observation and interviews with every family member. Children drew pictures, took photos, filled worksheets, made spider diagrams of where they go, marked how often they did tasks, and kept daily diaries. Punch also followed some children to Argentina for follow-up interviews.</li>
+  </ul>
+  <p><strong>Results:</strong> young people migrated for economic reasons — little land, irregular work. Boys were more likely to migrate to Argentina; girls more often worked at home or in the community. Returning migrants became role models who shaped younger children's ambitions, and older siblings sometimes funded younger ones' schooling.</p>
+  <p><strong>Conclusion:</strong> decisions about work versus education come from complex interactions between family, personal aspirations and economic constraints. Punch called it <strong>negotiated interdependence</strong>（协商式相互依赖：孩子与成人的关系通过持续协商影响重大人生决定，家庭的经济相互依赖贯穿一生）.</p>
+  <div class="figure">
+    <svg viewBox="0 0 680 170" role="img" aria-label="What Bolivian 13-19 year olds were doing">
+      <text x="60" y="34" font-size="12" font-weight="700" fill="#334155">Still at school</text>
+      <rect x="240" y="16" width="50" height="26" rx="5" fill="#2563eb"/>
+      <text x="300" y="34" font-size="12" font-weight="700" fill="#334155">7%</text>
+      <text x="60" y="84" font-size="12" font-weight="700" fill="#334155">Working at home / locally</text>
+      <rect x="240" y="66" width="300" height="26" rx="5" fill="#16a34a"/>
+      <text x="560" y="84" font-size="12" font-weight="700" fill="#334155">42%</text>
+      <text x="60" y="134" font-size="12" font-weight="700" fill="#334155">Working in towns / Argentina</text>
+      <rect x="240" y="116" width="370" height="26" rx="5" fill="#ea580c"/>
+      <text x="620" y="134" font-size="12" font-weight="700" fill="#334155">52%</text>
+    </svg>
+    <div class="figure-caption">What 13–19-year-olds in Churquiales were doing: school was the rarest path.</div>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>Punch 研究是民族志的样板：四年纵向、参与观察加访谈、18 户家庭。数据收集用了很多适合孩子的工具，从画画拍照到工作纸、蛛网图和日记，还追到阿根廷做随访。结果：男孩更倾向去阿根廷打工，女孩更多留在家和社区；回乡的打工者成了弟弟妹妹的榜样。结论用她自己的词叫「协商式相互依赖」，意思是去留这件事由家庭和孩子反复商量决定。比例图记住 7% 在上学、42% 本地干活、52% 外出打工。</p>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Longitudinal vs Cross-Sectional</h2>
+  <p>Two designs answer the question "how does development change over time?" — and each one trips on a different rock.</p>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Longitudinal（纵向研究）</h4>
+      <p class="small">The <em>same people</em> are measured repeatedly over months or years. This unit is full of them: Ding et al. tested babies at 14–18 months and again at three; Rutter's Romanian orphans have been reassessed many times since the 1990s; Malone's participants were followed from adolescence into their 80s. Even Koluchová tracked her Czech twins for 22 years.</p>
+      <ul class="tight">
+        <li><strong>Weakness 1 — attrition</strong>（流失：参加者中途退出，剩下的人可能不再代表目标群体）: people move house or lose interest.</li>
+        <li><strong>Weakness 2 — subjectivity:</strong> researchers build relationships with participants across visits, which colours their assessments.</li>
+        <li><strong>Weakness 3 — cost:</strong> expensive and slow, so replications are rare.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Cross-sectional（横断研究）</h4>
+      <p class="small">Different age groups are compared at <em>one</em> point in time — no waiting. Piaget and Inhelder compared four- to eight-year-olds on Three Mountains; Berko compared four- to seven-year-olds on grammar; Martorano compared 11- to 17-year-olds on the pendulum.</p>
+      <ul class="tight">
+        <li><strong>Weakness 1 — no random allocation:</strong> you cannot assign age, so participant variables may be driving the results.</li>
+        <li><strong>Weakness 2 — cohort effects</strong>（同龄组效应：不同年出生的组经历了不同的社会历史环境，差异可能来自时代而非年龄）: compare a group whose schooling was disrupted by COVID lockdowns with one that was not, and the "age difference" may really be a life-history difference.</li>
+        <li><strong>The trade-off:</strong> cross-sectional is cheaper, faster and kinder to participants (less attrition); longitudinal avoids cohort effects but pays with attrition, subjectivity and cost.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">Back to the school visit: if you want to know how friendship changes from age five to age ten, you must choose which rock to trip on — wait and lose children, or compare and risk comparing different worlds.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>纵向 = 同一批人反复测，坑有三个：人会流失，研究者跟参加者熟了会变主观，再加上又贵又慢难复制。横断 = 一次测多个年龄组，坑有两个：一是无法随机分配年龄，二是同龄组效应（cohort effects，COVID 封控那一届就是现成例子）。两者的取舍：横断便宜快、流失少、对参加者更伦理；纵向避开同龄组效应但代价大。本单元两边的例子都要记几个：纵向有 Ding、Rutter 和 Malone，还有追踪 22 年的 Koluchová；横断有 Piaget 三山、Berko 和 Martorano 钟摆。</p>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Evaluation</h2>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Strengths of these methods</h4>
+      <ul class="tight">
+        <li><strong>Punch: depth through triangulation.</strong> Four years of observation plus interviews produced rich qualitative data, so participants spoke in their own words — Monica's account of migrating to Argentina was hers, not a tick-box answer.</li>
+        <li><strong>Punch: visual methods.</strong> Drawing helped children express feelings that language could not carry, easing language barriers.</li>
+        <li><strong>Punch: protecting from harm.</strong> Giving children the camera was a way of protecting their self-esteem — some were embarrassed by their drawing skills.</li>
+        <li><strong>Cross-sectional: practical and kinder.</strong> Less demanding for participants, less attrition, and arguably more ethical than a long study people feel obliged to continue.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Weaknesses of these methods</h4>
+      <ul class="tight">
+        <li><strong>Drawing did not work as planned.</strong> Rural Bolivian children rarely saw cartoons, and drew only what school taught them: flowers, houses, animals, copied from textbooks. The method measured art lessons, not attitudes.</li>
+        <li><strong>Children are not adult peers.</strong> Participant observation is weaker with children because the researcher can never join the age group; the power gap blocks the child's-eye view.</li>
+        <li><strong>Direct questions can freeze children</strong> in cultures where they are rarely consulted, so data quality drops.</li>
+        <li><strong>Camera consent lesson.</strong> Children loved the photography, but parents who could not afford cameras disapproved — a reminder that consent is needed for <em>every</em> aspect of a study, to protect both children and parents from psychological harm.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">A fair verdict: with children, no method is clean. Interviews need warmth and speed, ethnography needs years and humility, and both time designs carry a signature flaw. The exam rewards saying exactly which flaw belongs to which method.</p>
+  <div class="exam-tip"><strong>Exam tip:</strong> a common 2-mark question asks for one similarity and one difference between ethnographic fieldwork and cross-cultural research. Similarity: both can be used to study developmental change (and both may collect qualitative or quantitative data). Difference: ethnography is immersive and emic, living inside one culture; cross-cultural research compares standardised data across cultures and takes an etic approach.</div>
+  <div class="green-box">
+    <h4>Close the loop</h4>
+    <p class="small">Your first child interview now has a toolkit. Warm up before the formal questions (clinical interviewing knows why), expect silence in cultures where children are not consulted (the power gap explains it), and if you later want to measure change over years, you already know which rock each design trips on. Punch's four years in Bolivia show the best and hardest of ethnography in one study.</p>
+    <p class="small"><strong>Reflect before the Exam Lab:</strong> Punch asked children to draw — and the drawings failed. What does that teach you about choosing methods for children?</p>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>评价分两边记。正面：Punch 四年三角互证、资料丰富（Monica 用自己的话讲经历）、画画帮语言受限的孩子表达、给孩子相机保护自尊；横断设计对参加者负担小、流失少、更伦理。反面：画画没按预期起作用（孩子只会画学校教的花房子动物）、研究者永远进不了儿童同龄圈、直接提问会把孩子问僵、相机引发家长不满（每个环节都要征得同意）。裁决：跟儿童做研究没有干净的方法，考试要能把「哪个坑属于哪个方法」配对说清。</p>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Exam Lab</h2>
+  <div class="exam-practice">
+    <div class="xp-block">
+      <h4>Q1 · Outline <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Outline one similarity and one difference between ethnographic fieldwork and cross-cultural research in developmental psychology.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans1')">Show answer</button></div>
+      <div class="xp-result" id="ans1" hidden>
+        <p><strong>Similarity:</strong> both can be used to study how development varies across groups of people (1 mark). <strong>Difference:</strong> ethnographic fieldwork is immersive, living inside one culture and taking an emic approach, whereas cross-cultural research compares standardised data collected in two or more cultures from an etic standpoint (1 mark).</p>
+        <p class="xp-case">Marking guidance: 1 mark for a valid similarity, 1 mark for a valid difference. The emic/etic contrast is the strongest difference to give.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q2 · Strength and weakness <span class="xp-badge">4 marks</span></h4>
+      <div class="xp-intro"><strong>Explain one strength and one weakness of Punch's ethnographic research.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans2')">Show answer</button></div>
+      <div class="xp-result" id="ans2" hidden>
+        <p><strong>Strength: triangulation over four years.</strong> Punch combined participant observation with interviews across a four-year longitudinal study, producing rich qualitative data (1 mark). Because participants described their experiences in their own words, such as Monica explaining why she migrated to Argentina, the conclusions have credibility and are not squeezed into preset response categories (1 mark).</p>
+        <p><strong>Weakness: the drawing method failed.</strong> Punch asked children to draw to express their attitudes (1 mark), but rural Bolivian children were not used to drawing as self-expression and only produced what school had taught them — flowers, houses and animals copied from textbooks — so the drawings measured school art lessons rather than the children's real attitudes (1 mark).</p>
+        <p class="xp-case">Marking guidance: 1 mark for identifying each point, 1 mark for explaining it. Alternatives: camera consent (ethical strength/weakness), the power gap between adult researcher and children.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q3 · Design <span class="xp-badge">4 marks</span></h4>
+      <div class="xp-intro">Carlos runs mindfulness sessions for children and parents at a community centre. Parents say they feel calmer afterwards. <strong>Explain how Carlos could carry out clinical interviews to investigate these comments.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans3')">Show answer</button></div>
+      <div class="xp-result" id="ans3" hidden>
+        <p>Carlos should use unstructured, conversational interviews adapted to each participant (1 mark). He should start with a few fixed themes — for example, how calm they feel after sessions and how they interact with their children afterwards — but let each answer shape the next question, probing and asking for examples (1 mark). With the children, he should first spend time getting to know them through their interests, keep the session short to match their limited attention, and simplify the language of every question (1 mark). He should record the interviews (with consent) so responses can be analysed and checked, rather than relying on memory (1 mark).</p>
+        <p class="xp-case">Marking guidance: 1 mark per accurate feature of clinical interviewing applied to Carlos's situation, up to 4: unstructured/conversational, theme-led with probing, child-specific adaptations, recording for analysis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Checkpoint</h2>
+  <div class="xp-block">
+    <h4>Q1 · What best describes a clinical interview?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">A fixed list of identical closed questions for every child</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">An unstructured conversational interview shaped by the child's previous answers</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">A questionnaire completed by the child's parents</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q2 · Why did Piaget add open follow-up questions after his standardised ones?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">To save time during each interview</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">To understand each child's reasoning by probing their point of view</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Because closed questions were banned in his school</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q3 · Is ethnographic fieldwork emic or etic?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Etic: it applies measures from one culture to another</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Emic: it looks at a culture from inside, without external judgements</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Neither: ethnography avoids culture entirely</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q4 · What is attrition in a longitudinal study?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The growing bond between researcher and participant</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Participants dropping out, which can leave a sample that no longer represents the target population</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The effect of age on the measured variable</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q5 · What are cohort effects?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Differences between age groups caused by the researcher's expectations</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Differences between groups born in different years, caused by their different life experiences</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The tendency of participants to improve over repeated testing</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q6 · Why did the drawings fail in Punch's study?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The children refused to pick up the pens</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">They only drew what school had taught them — flowers, houses and animals copied from textbooks</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The drawings were too detailed to analyse</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Key Terms</h2>
+  <div class="glossary-grid">
+    <div class="keyterm-box"><span class="kt">clinical interview</span><br><span class="zh">临床访谈：非结构化、对话式，跟着回答走，用于诊断治疗或探索孩子的想法感受</span></div>
+    <div class="keyterm-box"><span class="kt">clinical method / semi-clinical interview</span><br><span class="zh">临床方法／半临床访谈：Piaget 的混合法，固定封闭问题加开放追问（Elkind, 1964）</span></div>
+    <div class="keyterm-box"><span class="kt">ethnographic fieldwork</span><br><span class="zh">民族志田野调查：住进社区观察参与，通常持续数月至数年，记田野笔记</span></div>
+    <div class="keyterm-box"><span class="kt">emic</span><br><span class="zh">主位视角：从文化内部看文化，不套用外部评判标准</span></div>
+    <div class="keyterm-box"><span class="kt">etic</span><br><span class="zh">客位视角：强调文化共通性，常用一种文化的工具测另一种文化（与跨文化研究相连）</span></div>
+    <div class="keyterm-box"><span class="kt">longitudinal study</span><br><span class="zh">纵向研究：同一批人反复测量数月至数年，看变化</span></div>
+    <div class="keyterm-box"><span class="kt">cross-sectional study</span><br><span class="zh">横断研究：同一时间点比较不同年龄组</span></div>
+    <div class="keyterm-box"><span class="kt">attrition</span><br><span class="zh">流失：纵向研究中参加者中途退出，剩余样本可能不再有代表性</span></div>
+    <div class="keyterm-box"><span class="kt">cohort effects</span><br><span class="zh">同龄组效应：不同年出生的组经历了不同社会环境，差异可能来自时代而非年龄</span></div>
+    <div class="keyterm-box"><span class="kt">majority / minority world</span><br><span class="zh">多数世界／少数世界：世界人口的大多数所在地区（亚非拉）／少数（欧美及部分大洋洲）</span></div>
+    <div class="keyterm-box"><span class="kt">negotiated interdependence</span><br><span class="zh">协商式相互依赖：Punch 的术语，孩子与成人通过持续协商共同决定人生走向</span></div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  var secWhy = {
+    s0: [
+      [
+        '反了：固定的封闭问题清单是 Piaget 临床方法的「前半段」，但对孩子来说先混熟才最重要。',
+        '正确。先聊兴趣再正式提问，能拿到更真实有效的回答。幼儿注意力有限，所以要抓紧时间；语言还在发展，问题要简化。',
+        '孩子的回答值得认真分析——Bowlby 靠临床访谈诊断了整个 44 小偷样本。'
+      ]
+    ],
+    s7: [
+      ['那份清单更像标准化问卷，不是临床访谈的定义。',
+       '正确。临床访谈是非结构化、对话式的，下一个问题由上一个回答决定，可以随时追问。',
+       '家长问卷是自我报告法，与临床访谈无关。'],
+      ['省时间不是目的，他这样做恰恰花了更多时间。',
+       '正确。封闭问题保证一致，开放追问挖出孩子自己的推理过程，这套混合法就是他的临床方法。',
+       '封闭问题在学校里完全合法，Piaget 没被禁。'],
+      ['那是 etic（客位）的定义，方向反了。',
+       '正确。民族志是 emic（主位）：从文化内部理解，不做外部评判。',
+       '民族志恰恰深度依赖文化语境。'],
+      ['那是主观性（研究者与参加者熟了），不是流失。',
+       '正确。attrition（流失）：搬家、失去兴趣都会让人退出，最后剩下的样本可能不再代表目标群体。',
+       '年龄无法随机分配是横断研究的问题，与纵向的流失是两回事。'],
+      ['那是研究者效应，不是同龄组效应。',
+       '正确。cohort effects（同龄组效应）：不同年出生的组带着不同的时代经历，比如经历和没经历疫情封控的两届学生。',
+       '重复测试的进步叫练习效应，与同龄组效应无关。'],
+      ['孩子们画了，只是画的内容不对。',
+       '正确。玻利维亚农村孩子很少接触卡通，他们只画学校教的花、房子和动物，互相照抄——所以画画测到的是美术课，不是态度。',
+       '问题不是太详细，而是内容完全没反映出真实态度。']
+    ]
+  };
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = (btn.closest('.xp-block') || section).querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+
+/* Socratic sc-ask: progressive reveal */
+(function () {
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.sc-ask-step'));
+  if (!steps.length) return;
+  steps.forEach(function (step, i) {
+    var btn = step.querySelector('.ask-toggle');
+    var hint = document.getElementById(btn ? btn.getAttribute('data-target') : '');
+    if (!btn || !hint) return;
+    btn.addEventListener('click', function () {
+      var open = hint.classList.toggle('show');
+      btn.textContent = open ? '收起提示' : '想好了？看提示 →';
+      if (open && i + 1 < steps.length) {
+        var next = steps[i + 1];
+        next.classList.remove('locked');
+        var nb = next.querySelector('.ask-toggle');
+        if (nb) nb.disabled = false;
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
