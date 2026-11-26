@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5.2.3 Contemporary Study — Ashdown &amp; Bernard (2012) You Can Do It!</title>
+<style>
+
+:root {
+  --primary: #ea580c;
+  --primary-light: #f97316;
+  --primary-dark: #c2410c;
+  --accent: #1e3a5f;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --highlight: #fff7ed;
+  --warning: #fef2f2;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+}
+* { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.75; color: var(--text); background: var(--bg); margin: 0; padding: 0; font-size: 1em; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 3px solid var(--primary); padding: .65rem 2rem; display: flex; align-items: center; gap: 1rem; margin: 0 0 28px 0; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.nav-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem 1.1rem; background: var(--primary); color: white; border-radius: 20px; text-decoration: none; font-size: .82em; font-weight: 600; white-space: nowrap; }
+.nav-breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .82em; color: var(--text-secondary); flex: 1; flex-wrap: wrap; }
+.nav-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.nav-breadcrumb a:hover { color: var(--primary); }
+.nav-breadcrumb .sep { color: #ccc; }
+.nav-breadcrumb span:last-child { color: var(--text); font-weight: 500; }
+.nav-controls { display: flex; align-items: center; gap: .5rem; }
+.nav-btn { background: none; border: 1px solid #ddd; border-radius: 6px; padding: .35rem .65rem; cursor: pointer; font-size: .85em; color: var(--text-secondary); display: flex; align-items: center; gap: .25rem; }
+.nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+body.dark .nav-btn { border-color: #444; color: #aaa; }
+
+.page-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 24px; align-items: start; }
+.sidebar { width: 200px; position: sticky; top: 60px; max-height: calc(100vh - 80px); overflow-y: auto; padding: 12px 0; z-index: 50; }
+.sidebar::-webkit-scrollbar { width: 2px; }
+.sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sidebar-inner { background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.sb-header { padding: 13px 16px 10px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.sb-header-title { font-size: .72em; font-weight: 700; color: white; letter-spacing: .8px; text-transform: uppercase; margin: 0; }
+.sb-header-sub { font-size: .63em; color: rgba(255,255,255,.75); margin: 2px 0 0; font-weight: 500; }
+.sb-list { list-style: none; padding: 6px 0 10px; margin: 0; }
+.sb-item a { display: block; padding: 7px 14px 7px 18px; color: #475569; text-decoration: none; font-size: .76em; font-weight: 500; border-left: 3px solid transparent; line-height: 1.45; border-radius: 0 7px 7px 0; margin: 1px 4px 1px 0; }
+.sb-item a:hover { border-left-color: var(--primary); color: var(--primary-dark); background: linear-gradient(90deg, rgba(234,88,12,.07), transparent); }
+.sb-item a.sb-active { border-left-color: var(--primary); color: var(--primary-dark); font-weight: 700; background: linear-gradient(90deg, rgba(234,88,12,.12), transparent); }
+
+.main-content { min-width: 0; max-width: 900px; }
+.header { background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light)); color: white; padding: 32px 28px 24px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 15px rgba(234,88,12,.35); }
+.header h1 { font-size: 1.7em; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.header .subtitle { font-size: 1em; opacity: .95; }
+.header .meta { margin-top: 12px; font-size: .88em; line-height: 1.6; background: rgba(255,255,255,.2); display: inline-block; padding: 8px 20px; border-radius: 8px; }
+.badge { display: inline-block; padding: 4px 13px; border-radius: 20px; background: rgba(255,255,255,.22); margin: 3px; font-size: .83em; }
+.section { background: white; border-radius: 12px; padding: 26px 28px; margin-bottom: 32px; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 3px solid var(--primary); }
+.section h2 { color: var(--primary-dark); font-size: 1.42em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.section h3 { color: var(--primary); font-size: 1.15em; margin: 20px 0 10px; }
+.section h4 { color: var(--text); font-size: 1.02em; margin: 12px 0 7px; }
+p { margin: 8px 0; }
+ul, ol { margin: 8px 0; padding-left: 22px; }
+li { margin: 5px 0; }
+strong { color: #1f2937; font-weight: 600; }
+
+.keyterm-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.keyterm-box .kt { font-weight: 700; color: #b45309; }
+.note-box { background: var(--highlight); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.note-box h4 { color: var(--primary-dark); margin: 0 0 6px; }
+.blue-box { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.green-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.warn-box { background: var(--warning); border-left: 4px solid var(--wrong); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.cn-note { background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left: 4px solid var(--primary); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: .95em; }
+.cn-note strong { color: var(--primary-dark); }
+.exam-tip { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+.exam-tip strong { color: #1d4ed8; }
+.checkpoint { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #43a047; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.checkpoint h3 { color: #2e7d32; margin-top: 0; }
+.exam-practice { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #1976d2; border-radius: 10px; padding: 20px 24px; margin: 18px 0; }
+.exam-practice h3 { color: #0d47a1; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .93em; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-radius: 8px; overflow: hidden; }
+th { background: var(--primary); color: #fff; padding: 13px 15px; text-align: left; font-weight: 600; }
+td { padding: 12px 15px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+td:first-child { font-weight: 600; color: #374151; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.compare-card { background: #fafafa; border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--accent); }
+.compare-card h4 { color: var(--accent); font-size: .91em; margin-bottom: 6px; }
+.compare-card.green { border-left-color: #16a34a; }
+.compare-card.green h4 { color: #166534; }
+.compare-card.red { border-left-color: #dc2626; }
+.compare-card.red h4 { color: #991b1b; }
+.figure { margin: 18px 0; text-align: center; }
+.figure svg { max-width: 100%; height: auto; }
+.figure-caption { font-size: .87em; color: var(--text-secondary); margin-top: 7px; font-style: italic; }
+.quick-summary { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-left: 5px solid var(--primary); border-radius: 10px; padding: 16px 20px; margin: 18px 0 24px; box-shadow: 0 2px 8px rgba(234,88,12,.08); }
+.quick-summary h4 { color: var(--primary-dark); margin: 0 0 10px; font-size: .95em; }
+.objectives { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; border-radius: 10px; padding: 16px 20px; margin: 18px 0 10px; box-shadow: 0 2px 8px rgba(22,163,74,.08); }
+.objectives h4 { color: #166534; margin: 0 0 10px; font-size: .95em; }
+.objectives li { margin: 4px 0; font-size: .92em; }
+.quick-summary ol, .quick-summary ul { margin: 0; padding-left: 18px; }
+.quick-summary li { margin: 6px 0; font-size: .89em; color: #4b5563; line-height: 1.6; }
+.quick-summary li strong { color: var(--primary-dark); }
+.footer-note { font-size: .84em; color: var(--text-secondary); margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--border); text-align: center; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.3em; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234,88,12,.3); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all .3s; z-index: 90; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+@media(max-width:900px){ .page-layout { grid-template-columns: 1fr; } .sidebar { display: none; } .main-content { max-width: 100%; } .compare-grid { grid-template-columns: 1fr; } }
+@media(max-width:600px){ .container { padding: 16px 12px; } .section { padding: 16px 18px; } }
+
+body.dark { background: #0f172a; color: #e2e8f0; }
+body.dark .nav-bar { background: #1a1a2e; }
+body.dark .nav-breadcrumb a { color: #aaa; }
+body.dark .nav-breadcrumb span:last-child { color: #ddd; }
+body.dark .sidebar-inner { background: #16213e; border-color: #334155; }
+body.dark .sb-item a { color: #94a3b8; }
+body.dark .sb-item a.sb-active { color: #fb923c; border-left-color: #f97316; background: linear-gradient(90deg, rgba(249,115,22,.16), transparent); }
+body.dark .section { background: #1a1a2e; }
+body.dark .section h2 { color: #f97316; border-bottom-color: #334155; }
+body.dark .section h3 { color: #fb923c; }
+body.dark .note-box { background: rgba(251,146,60,.06); border-left-color: #fb923c; }
+body.dark .blue-box { background: rgba(59,130,246,.06); border-left-color: #42A5F5; }
+body.dark .green-box { background: rgba(22,163,74,.06); border-left-color: #4ade80; }
+body.dark .warn-box { background: rgba(220,38,38,.06); border-left-color: #ef5350; }
+body.dark .cn-note { background: rgba(234,88,12,.06); border-left-color: #fb923c; }
+body.dark .cn-note strong { color: #fb923c; }
+body.dark .keyterm-box { background: rgba(245,158,11,.08); border-left-color: #fbbf24; }
+body.dark .exam-tip { background: rgba(59,130,246,.07); border-color: #3b82f6; }
+body.dark .exam-tip strong { color: #93c5fd; }
+body.dark .checkpoint { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(22,163,74,.05)); border-color: #16a34a; }
+body.dark .checkpoint h3 { color: #4ade80; }
+body.dark .exam-practice { background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(37,99,235,.05)); border-color: #2563eb; }
+body.dark .exam-practice h3 { color: #60a5fa; }
+body.dark .quick-summary { background: linear-gradient(135deg, rgba(234,88,12,.08), rgba(249,115,22,.05)); border-left-color: #f97316; }
+body.dark .quick-summary h4 { color: #fb923c; }
+body.dark .objectives { background: linear-gradient(135deg, rgba(22,163,74,.10), rgba(34,197,94,.06)); border-left-color: #22c55e; }
+body.dark .objectives h4 { color: #4ade80; }
+body.dark .quick-summary li { color: #cbd5e1; }
+body.dark .quick-summary li strong { color: #fb923c; }
+body.dark table { border-color: #334155; }
+body.dark th { background: #c2410c; }
+body.dark td { border-color: #334155; color: #cbd5e1; }
+body.dark tr:nth-child(even) { background: rgba(255,255,255,.02); }
+body.dark td:first-child { color: #fb923c; }
+body.dark strong { color: #fbbf24; }
+body.dark .compare-card { background: #16213e; }
+body.dark .compare-card h4 { color: #93c5fd; }
+body.dark .compare-card.green h4 { color: #86efac; }
+body.dark .compare-card.red h4 { color: #fca5a5; }
+body.dark .footer-note { border-top-color: #1e293b; color: #94a3b8; }
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 10px; }
+.keyterm-box { font-size: .9rem; }
+.keyterm-box .kt { font-size: .96rem; }
+.keyterm-box .zh { color: #92400e; font-size: .85rem; font-weight: 600; }
+body.dark .keyterm-box .zh { color: #fbbf24; }
+
+.q-option { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #374151; cursor: pointer; margin: 4px 6px 4px 0; transition: all .15s; }
+.q-option:hover:not(:disabled) { border-color: var(--primary); color: var(--primary-dark); background: var(--highlight); }
+.q-option.chosen-best { border-color: var(--correct); background: #f0fdf4; color: #166534; font-weight: 600; }
+.q-option.chosen-bad { border-color: var(--wrong); background: #fef2f2; color: #991b1b; }
+body.dark .q-option { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.xp-block { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid var(--primary); border-radius: 14px; padding: 18px 20px; margin: 22px 0; box-shadow: 0 3px 12px rgba(234,88,12,.10); }
+.xp-block h4 { margin: 0 0 6px; color: var(--primary-dark); font-size: 1.05rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.xp-badge { display: inline-block; background: var(--primary); color: #fff; font-size: .66em; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: .5px; }
+.xp-block .xp-intro { margin: 0 0 4px; font-size: .9rem; line-height: 1.6; color: #4b5563; }
+.xp-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.xp-btn { background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.xp-btn:hover { background: var(--primary-dark); }
+.xp-result { background: #fff; border: 1px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-top: 12px; font-size: .92rem; line-height: 1.65; display: none; }
+.xp-result.show { display: block; }
+.xp-result.ok { border-color: var(--correct); }
+.xp-result .xp-verdict { font-weight: 700; }
+.xp-result.ok .xp-verdict { color: var(--correct); }
+.xp-case { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+body.dark .xp-block { background: linear-gradient(135deg, rgba(234,88,12,.12), rgba(249,115,22,.06)); border-color: #f97316; }
+body.dark .xp-block h4 { color: #fb923c; }
+body.dark .xp-block .xp-intro { color: #cbd5e1; }
+body.dark .xp-result, body.dark .xp-case { background: #16213e; border-color: #334155; color: #cbd5e1; }
+
+.sc-item { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-size: .95em; line-height: 1.7; margin: 8px 0; }
+.sc-tag { display: inline-block; background: var(--accent); color: #fff; font-size: .72em; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-right: 8px; }
+.sc-predict { background: #eff6ff; border: 1.5px solid #3b82f6; border-radius: 10px; padding: 14px 18px; margin: 16px 0 4px; }
+.sc-predict h4 { margin: 0 0 6px; color: #1d4ed8; }
+body.dark .sc-item { background: #16213e; border-color: #334155; color: #cbd5e1; }
+body.dark .sc-tag { background: #3b82f6; }
+body.dark .sc-predict { background: rgba(59,130,246,.08); border-color: #3b82f6; }
+body.dark .sc-predict h4 { color: #93c5fd; }
+.sc-ask { background: #fefce8; border: 1.5px solid #ca8a04; border-radius: 10px; padding: 14px 18px; margin: 14px 0 4px; }
+.sc-ask h4 { margin: 0 0 4px; color: #854d0e; font-size: .95em; }
+.sc-ask-step { background: #fff; border: 1px solid #e7e5e4; border-radius: 8px; padding: 10px 14px; margin: 10px 0 0; }
+.sc-ask-step.locked { opacity: .45; }
+.sc-ask-step .ask-q { font-weight: 600; font-size: .95em; margin: 0; line-height: 1.7; }
+.ask-toggle { background: #fff; border: 1px solid #d6d3d1; border-radius: 8px; padding: 5px 12px; font-size: .82rem; font-weight: 500; color: #57534e; cursor: pointer; margin-top: 8px; transition: all .15s; }
+.ask-toggle:hover:not(:disabled) { border-color: #ca8a04; color: #854d0e; }
+.ask-toggle:disabled { cursor: not-allowed; opacity: .6; }
+.ask-hint { display: none; border-top: 1px dashed #e7e5e4; margin-top: 10px; padding-top: 8px; }
+.ask-hint.show { display: block; }
+.ask-hint .hint-label { font-size: .75em; color: #a8a29e; margin: 0 0 4px; font-weight: 700; }
+.ask-hint p { margin: 0; font-size: .92em; line-height: 1.75; }
+.ask-land { margin: 12px 0 0; font-size: .9em; color: #854d0e; line-height: 1.7; }
+body.dark .sc-ask { background: rgba(202,138,4,.08); border-color: #ca8a04; }
+body.dark .sc-ask h4 { color: #fde047; }
+body.dark .sc-ask-step { background: #16213e; border-color: #334155; }
+body.dark .sc-ask-step.locked { opacity: .5; }
+body.dark .ask-toggle { background: #16213e; border-color: #334155; color: #94a3b8; }
+body.dark .ask-toggle:hover:not(:disabled) { border-color: #ca8a04; color: #fde047; }
+body.dark .ask-hint { border-top-color: #334155; }
+body.dark .ask-hint .hint-label { color: #64748b; }
+body.dark .ask-hint p { color: #cbd5e1; }
+body.dark .ask-land { color: #fde047; }
+
+.small { font-size: .84em; color: var(--text-secondary); }
+.tight { margin: 6px 0; }
+.tight li { margin: 3px 0; }
+</style>
+
+<div class="container">
+<nav class="nav-bar">
+  <div class="nav-breadcrumb">
+    <a href="../../index.html">Home</a> <span class="sep">›</span>
+    <a href="../../index.html">Edexcel</a> <span class="sep">›</span>
+    <span>Topic E · Developmental psychology — 5.2.3 Ashdown &amp; Bernard (2012)</span>
+  </div>
+  <span class="nav-pill">🧠 Developmental Psychology</span>
+  <div class="nav-controls">
+    <button class="nav-btn" onclick="toggleDarkMode()" id="darkBtn">🌙 Dark</button>
+    <button class="nav-btn" onclick="adjustFontSize(-1)">A-</button>
+    <button class="nav-btn" onclick="adjustFontSize(1)">A+</button>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar"><div class="sidebar-inner">
+  <div class="sb-header">
+    <div class="sb-header-title">5.2.3 Contemporary Study</div>
+    <div class="sb-header-sub">Ashdown &amp; Bernard (2012)</div>
+  </div>
+  <ul class="sb-list">
+    <li class="sb-item"><a href="#s0">Start Here: Does a Feelings Lesson Work?</a></li>
+    <li class="sb-item"><a href="#s1">1. Background and Aim</a></li>
+    <li class="sb-item"><a href="#s2">2. Method and Sample</a></li>
+    <li class="sb-item"><a href="#s3">3. Results: What Improved, What Did Not</a></li>
+    <li class="sb-item"><a href="#s4">4. Conclusions</a></li>
+    <li class="sb-item"><a href="#s5">5. Evaluation</a></li>
+    <li class="sb-item"><a href="#s6">6. Exam Lab</a></li>
+    <li class="sb-item"><a href="#s7">7. Checkpoint</a></li>
+    <li class="sb-item"><a href="#s8">8. Key Terms</a></li>
+  </ul>
+</div>
+</aside>
+
+<main class="main-content">
+<div class="header">
+  <h1>5.2.3 CONTEMPORARY STUDY: ASHDOWN &amp; BERNARD (2012)<br><span style="font-size:0.65em">You Can Do It! Education · social-emotional learning · 社会情绪学习课程研究</span></h1>
+  <div class="meta">
+    <span class="badge">Topic E · Developmental psychology</span>
+    <span class="badge">Contemporary study</span>
+    <span class="badge">Spec 5.2.3</span>
+    <span class="badge">📖 Textbook Book 2 · Ch.4 · pp.63–67</span>
+  </div>
+</div>
+
+<div class="objectives">
+  <h4>Learning Objectives 学习目标</h4>
+  <ul class="tight">
+    <li><strong>Describe the YCDI programme</strong>: its five competencies, its Vygotsky-based design, and the 12 thinking habits.</li>
+    <li><strong>Describe the method</strong>: a randomised controlled trial with a wait-list control group, and the two teacher questionnaires.</li>
+    <li><strong>State the key findings</strong>: what improved, what did not, and which class benefited more.</li>
+    <li><strong>Evaluate the study</strong> on statistical testing, fidelity, teacher ratings (expectancy versus knowledge), the sample and the two time points.</li>
+    <li><strong>Assess the study as scientific</strong>, for an 8-mark question.</li>
+  </ul>
+</div>
+
+<div class="quick-summary">
+  <h4>What this page is really asking</h4>
+  <ol>
+    <li><strong>Can you teach five-year-olds emotional skills?</strong> The You Can Do It! (YCDI) programme says yes, and it builds on Vygotsky's idea that self-talk helps children control themselves.</li>
+    <li><strong>Does it actually work?</strong> This study tested it in a real school with a proper control group — the strongest kind of test you can run in a classroom.</li>
+    <li><strong>The answer is mostly yes, with fine print.</strong> Social-emotional competence and wellbeing improved clearly. Problem behaviour fell in the older class but not the younger one. Reading barely moved.</li>
+    <li><strong>The honest questions are about the delivery.</strong> Teachers changed the lessons, and the same teachers scored the children — both are real weaknesses, and both have counter-arguments.</li>
+  </ol>
+</div>
+
+<!-- ============ 0 ============ -->
+<section class="section" id="s0">
+  <h2>Start Here: Does a Feelings Lesson Work?</h2>
+  <div class="sc-item"><span class="sc-tag">背景</span>一所学校想给五六岁的孩子开一门课，教五样东西：自信、坚持、有条理，还有与人相处和情绪韧性。每周三节，每节 20 分钟。有同事反对：这种课挤占阅读时间，还未必有用。</div>
+  <div class="sc-item"><span class="sc-tag">角色</span>你是这所学校的研究合作者。校长要你用证据回答：这门课到底有没有效？</div>
+  <div class="sc-item"><span class="sc-tag">任务</span>把课程开进两个班（Prep 和 Grade One），另两个班当对照。上十周课，前后各测一次，用数字说话。</div>
+  <div class="sc-item"><span class="sc-tag">目标</span>先猜下面这题。读完这一页，你能说出哪些指标变了、哪些没变，还能评价这项研究够不够科学。猜完往下追两层。</div>
+  <div class="sc-predict">
+    <h4><span class="sc-tag" style="background:#3b82f6">先猜</span>十周的 YCDI 课程结束后，最可能看到什么？</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">所有方面都变好：情绪、问题行为、阅读全面提升</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">社会情绪能力和幸福感明显变好，但不同年级不一样，阅读基本没变</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">没有任何变化：五六岁的孩子太小，学不会这些东西</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="sc-ask">
+    <h4><span class="sc-tag" style="background:#ca8a04">追问</span>猜完先别走：这两个问题没有选项，先自己想，再点开提示。</h4>
+    <div class="sc-ask-step">
+      <p class="ask-q">追问一：给 YCDI 组孩子打分的老师，就是教 YCDI 课的老师。这会怎么影响分数？</p>
+      <button class="ask-toggle" data-target="ask-h1">想好了？看提示 →</button>
+      <div class="ask-hint" id="ask-h1">
+        <p class="hint-label">提示</p>
+        <p>两个方向都有。坏的方向：老师知道这些孩子上了课，也知道研究者期待他们进步，所以打分时可能不自觉地往好里打，这叫 expectancy effect（期待效应）。好的方向：老师天天和孩子相处，比研究者更了解他们的真实表现。这个「既是弱点又是强点」的矛盾，正是评价这一研究最好写的地方。</p>
+      </div>
+    </div>
+    <div class="sc-ask-step locked">
+      <p class="ask-q">追问二：如果老师上课时没有完全照着教案来，效果不好了，算谁的？</p>
+      <button class="ask-toggle" data-target="ask-h2" disabled>想好了？看提示 →</button>
+      <div class="ask-hint" id="ask-h2">
+        <p class="hint-label">提示</p>
+        <p>不能直接算课程的错。课程有没有效，前提是它被「照原样」教出去，这个前提叫 fidelity（保真度：干预是否按设计原样实施）。研究者真的去课堂看了，发现老师没完全照教案来。那 Prep 班没进步，就可能是老师改了活动，而不是课程没用。</p>
+      </div>
+    </div>
+    <p class="ask-land">两个追问先放在心里。往下读，你会看到这个研究怎么设计、结果哪些变哪些没变，最后回到「它算不算科学」这个 8 分大题。</p>
+  </div>
+</section>
+
+<!-- ============ 1 ============ -->
+<section class="section" id="s1">
+  <h2>1. Background and Aim</h2>
+  <p>Programmes that teach social-emotional skills are not new. Earlier research had shown they can work with preschoolers, and may even help academic performance. But not everyone believed it. So the researchers put one programme to the test in a real Australian school.</p>
+  <p>The programme is called <strong>You Can Do It! (YCDI)</strong>. It builds on Vygotsky: children learn to control themselves through thinking and <strong>self-talk</strong>（自我对话：心里默默对自己说的话）, the inner speech you met in 5.1.3. Structured lessons, activities, songs and posters develop five competencies:</p>
+  <ul class="tight">
+    <li><strong>Confidence</strong>（自信） · <strong>Persistence</strong>（坚持） · <strong>Organisation</strong>（有条理） · <strong>Getting Along</strong>（与人相处） · <strong>Emotional Resilience</strong>（情绪韧性：遇到困难能扛住、恢复）</li>
+  </ul>
+  <p>These are built through twelve thinking "habits", including "I Can Do It", "Giving Effort", "Setting Goals" and "Being Socially Responsible". The programme had already worked with older children. What was missing was evidence for four- to seven-year-olds — which is exactly the gap this study fills.</p>
+  <p>The <strong>aim</strong> was to evaluate YCDI on the social-emotional development, wellbeing and academic achievement of 99 Preparatory and Grade One students at a Catholic school in Melbourne, Australia. They expected the YCDI children, compared with controls, to show bigger gains in competence and wellbeing, fewer problem behaviours, and better academic achievement including independent reading.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>YCDI 是一套教情绪技能的课程，理论根基是 Vygotsky 的内语言，孩子靠「自己对自己说话」来管住自己。五个能力是自信、坚持、有条理，再加与人相处和情绪韧性，用 12 个思考习惯来搭。之前只有大孩子有效的证据，这次专门测 4–7 岁这个空档。Aim 就是看这三个方面：社会情绪、幸福感、学业（含独立阅读）有没有提升。</p>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="section" id="s2">
+  <h2>2. Method and Sample</h2>
+  <p>This is a <strong>randomised controlled trial (RCT)</strong>（随机对照试验：把参加者随机分进干预组和对照组，是因果推断最硬的设计） with independent measures. One Prep class and one Grade One class were randomly chosen to receive YCDI. The other Prep and Grade One classes were the control group — and they received the programme after the study ended. That is called a <strong>wait-list control group</strong>（等待名单对照组：对照组先等一等、研究结束后同样享受干预）.</p>
+  <p>The <strong>sample</strong> was 45 girls and 54 boys, aged five to six, from a Catholic school in Melbourne's western suburbs. Most were from low socioeconomic backgrounds, and most spoke English as a second language at home — Vietnamese, languages from China, Africa, Europe and the Pacific Islands.</p>
+  <p>The YCDI group had <strong>three 20-minute sessions a week for ten weeks</strong>, taught by their usual classroom teachers, who received just <strong>two hours of training</strong>. Teachers scored every child twice — before and after — using two questionnaires:</p>
+  <ul class="tight">
+    <li><strong>ACER Well-being Survey</strong>: 50 statements on a four-point scale, covering positive and negative emotions, resilience, coping and values. Sample item: "The child appears to raise their hand to answer a difficult question even when unsure."</li>
+    <li><strong>SSRS</strong>: 30 statements on social skills, 18 on problem behaviours (externalising, internalising and <strong>hyperactivity</strong>（多动：精力过剩导致的冲动、坐不住、难集中注意）), and 9 on academic competence. Sample item: "Introduces themselves to new people without being told."</li>
+  </ul>
+  <p>Teachers also rated independent reading from 0 to 28 (5 is average for Prep, 20 for Grade One).</p>
+  <p class="small">Back to the headteacher: this design answers her question the strongest way a school can. The only thing a control group cannot tell you is what happened inside each classroom — and that is where the problems start.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>方法记住三件事。一，这是 RCT：随机分班，一组上 YCDI，一组对照（研究结束后也给他们上，是等待名单设计，公平）。二，样本：99 人（45女54男），五六岁，低 SES、多数家里说英语以外的语言。三，测法：老师前后各填两份问卷（ACER 50 题 4 点量表 + SSRS 测技能/问题/学业），再加阅读分 0–28。授课的就是孩子自己的老师，只培训了 2 小时。</p>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="section" id="s3">
+  <h2>3. Results: What Improved, What Did Not</h2>
+  <p>The headline is positive, but the fine print matters. Four findings stand out.</p>
+  <ul class="tight">
+    <li><strong>Social-emotional competence and wellbeing improved significantly</strong> in the YCDI group compared with controls, for both Prep and Grade One students.</li>
+    <li><strong>Problem behaviours fell in Grade One, but not in Prep.</strong> The younger class showed no significant reduction.</li>
+    <li><strong>Social skills stayed flat in Prep</strong>, while Grade One pupils <em>not</em> receiving YCDI actually got worse between the two tests.</li>
+    <li><strong>Reading was mostly unrelated to YCDI</strong> — with one exception: children with the lowest initial reading improved more if they had done the programme.</li>
+  </ul>
+  <p>Across the whole sample, boys showed more problem behaviours and lower competence, wellbeing and social skills than girls. But the <em>effectiveness</em> of YCDI was the same for boys and girls, and the same for children whatever language they spoke at home.</p>
+  <p class="small">Back to the headteacher: the course helps with feelings and behaviour, especially in Grade One — but do not expect it to lift reading scores for most children.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>结果记「两升一降一没变」。升：社会情绪能力和幸福感（两个年级都显著提升）。降：问题行为，但只有 Grade One 降了，Prep 没降。没变：Prep 的社会技能和大多数孩子的阅读。唯一的阅读例外是起点最差的孩子上 YCDI 后进步明显。男女效果一致，不同母语效果也一致。</p>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="section" id="s4">
+  <h2>4. Conclusions</h2>
+  <p>Five- to six-year-olds gained significantly in social-emotional competence, wellbeing and social skills after ten weeks of YCDI. And the programme <strong>worked even when delivered by classroom teachers with minimal training</strong>. That is a big deal for schools: the programme does not need outside experts.</p>
+  <p>It may work slightly better in Grade One than Prep, for reducing problem behaviour and building social skills. And it may be especially helpful for Grade One children with lower academic achievement, based on the reading exception.</p>
+  <p class="small">Back to the headteacher: buy the puppets and posters if your goal is social-emotional growth. Do not buy them as a reading intervention, except perhaps for the weakest readers in Grade One.</p>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>结论三句：一，YCDI 能显著提升五六岁孩子的社会情绪能力、幸福感和社交技能，而且普通班主任就能教（不是非得请专家）。二，Grade One 比 Prep 效果更好（问题行为和社交技能上）。三，对学业较弱的 Grade One 孩子尤其有用（阅读例外）。</p>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="section" id="s5">
+  <h2>5. Evaluation</h2>
+  <div class="compare-grid">
+    <div class="compare-card green">
+      <h4>Strengths</h4>
+      <ul class="tight">
+        <li><strong>Numbers, not impressions.</strong> The Likert-scale questionnaires produced quantitative data, so the researchers could test whether the differences were statistically significant. A school spending money on puppets and posters needs exactly that kind of proof.</li>
+        <li><strong>A fair comparison.</strong> The RCT design with a wait-list control group means every child eventually gets the programme, and parents had the right to withdraw. Ethically clean.</li>
+        <li><strong>Real classrooms, real teachers.</strong> The programme worked with ordinary teachers and two hours of training — strong evidence it can scale.</li>
+        <li><strong>Equally effective across groups.</strong> No difference in effectiveness between boys and girls, or English and non-English first-language students.</li>
+      </ul>
+    </div>
+    <div class="compare-card red">
+      <h4>Weaknesses</h4>
+      <ul class="tight">
+        <li><strong>Fidelity slipped.</strong> The researchers observed the lessons: the Prep teacher significantly modified activities, and the Grade One teacher added her own. So the weak Prep result may reflect changed lessons, not a weak programme — and a replication might deliver the programme differently again.</li>
+        <li><strong>The raters knew who got the programme.</strong> Teachers scoring the children knew which group each child was in, and what the researchers expected. Some of the improvement may be an expectancy effect. In contrast, teachers also know the children far better than any outside researcher would — so the same choice is both a weakness and a strength.</li>
+        <li><strong>One school, one profile.</strong> All children came from a single Melbourne school: low socioeconomic status, mostly second-language English speakers. Such children may face acculturation stress, so the results may not transfer to other kinds of schools.</li>
+        <li><strong>Only two time points.</strong> Data came from before and immediately after. Whether the gains lasted is unknown, and slower-developing benefits for Prep children may have been missed entirely.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">A fair verdict: the design is the strongest a school can offer, and the core finding — better social-emotional competence and wellbeing — survives the criticisms. The two soft spots, fidelity and teacher raters, both point in the same direction: they qualify <em>how much</em> we trust the size of the effect, not whether the programme is worth trying.</p>
+  <div class="exam-tip"><strong>Exam tip:</strong> for the 8-mark question on whether this study is scientific, argue both ways. Scientific side: RCT, random allocation, quantitative data, statistical significance testing. Unscientific side: fidelity broke down, teacher raters could bias scores, single school limits generalisability, no long-term follow-up. Finish with a judgement: scientific in design, limited in execution.</div>
+  <div class="green-box">
+    <h4>Close the loop</h4>
+    <p class="small">The headteacher's question now has an evidence-based answer. Ten weeks of YCDI, taught by ordinary teachers, significantly improved social-emotional competence and wellbeing in five- to six-year-olds, with the clearest gains in Grade One. Reading stayed flat for most children, so the programme should be sold as an emotional-skills course, not an academic one. And the two doubts you raised at the start — the teachers who scored their own pupils, and the lessons that drifted from the script — are exactly the points where the study's confidence should be tempered.</p>
+    <p class="small"><strong>Reflect before the Exam Lab:</strong> if the school ran the study again with independent observers instead of teachers, which findings would you expect to stay the same, and which might shrink?</p>
+  </div>
+  <div class="cn-note">
+    <p><strong>中文理解：</strong>评价「四强四弱」。强：量表产生定量数据、能算统计显著性（学校买资源要证据）；RCT 加等待名单对照（伦理干净）；普通老师就能教（可推广）；男女、不同母语效果一致。弱：保真度破了（老师改教案，Prep 没进步可能是老师改活动不是课程没用）；打分老师知道分组（期待效应），但老师也更了解孩子（同一件事既是弱点又是强点）；单校低 SES 多 ESL（泛化谨慎）；只有前后两个时间点（不知道效果能不能持久）。裁决：设计是学校能做到的最强，核心结论站得住，两个软点都只是「效果有多大要打折」，不是「值不值得试」。</p>
+  </div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="section" id="s6">
+  <h2>6. Exam Lab</h2>
+  <div class="exam-practice">
+    <div class="xp-block">
+      <h4>Q1 · Describe <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Describe the sample used by Ashdown and Bernard (2012).</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans1')">Show answer</button></div>
+      <div class="xp-result" id="ans1" hidden>
+        <p>99 children aged five to six (Preparatory and Grade One): 45 girls and 54 boys (1 mark), from a Catholic school in Melbourne, Australia, mainly from low socioeconomic backgrounds and mostly speaking English as a second language (1 mark).</p>
+        <p class="xp-case">Marking guidance: 1 mark for the number/age composition, 1 mark for the school context (location, SES or language background).</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q2 · Explain <span class="xp-badge">2 marks</span></h4>
+      <div class="xp-intro"><strong>Explain one weakness of Ashdown and Bernard's (2012) procedure.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans2')">Show answer</button></div>
+      <div class="xp-result" id="ans2" hidden>
+        <p><strong>Weakness: the teachers who scored the children knew which group they were in.</strong> Teachers rated their own pupils using questionnaires, knowing whether each child had received YCDI and that improvement was expected (1 mark). This risks an expectancy effect: teachers may have interpreted behaviour more positively for YCDI children, so part of the measured improvement may reflect teacher expectation rather than the programme itself, reducing the validity of the findings (1 mark).</p>
+        <p class="xp-case">Marking guidance: 1 mark for identifying a valid weakness (teacher raters; fidelity; two time points; single school), 1 mark for explaining its consequence. Alternative: the fidelity point — teachers modified the scripted lessons, so the Prep result may reflect the delivery, not the programme.</p>
+      </div>
+    </div>
+    <div class="xp-block">
+      <h4>Q3 · Assess <span class="xp-badge">8 marks</span></h4>
+      <div class="xp-intro"><strong>With reference to Ashdown and Bernard (2012), assess whether this contemporary study can be considered scientific.</strong></div>
+      <div class="xp-controls"><button class="xp-btn" onclick="revealAns('ans3')">Show answer</button></div>
+      <div class="xp-result" id="ans3" hidden>
+        <p><strong>AO1 — the scientific features present.</strong> The study was a randomised controlled trial: classes were randomly allocated to YCDI or a wait-list control, which is the strongest design for establishing cause and effect. It collected quantitative data on Likert scales (the ACER and SSRS), so differences between groups could be tested for statistical significance rather than judged by impression. The procedure is replicable: the YCDI programme, its 12 thinking habits and the two questionnaires are documented, so another school could repeat it.</p>
+        <p><strong>AO3 — limits to the scientific claim.</strong> First, fidelity: teachers modified the scripted lessons (the Prep teacher changed activities; the Grade One teacher added her own), so the study did not test the programme exactly as designed, and a replication might produce different results. Second, objectivity: the teachers who scored the children knew their group and the expected direction of the results, risking an expectancy effect; the counter-argument is that teachers know the children far better than outside researchers, which supports validity. Third, generalisability: one Melbourne school, low SES, mostly second-language English speakers, so the sample may not represent other populations. Fourth, the two time points mean long-term effects are unknown.</p>
+        <p><strong>Judgement.</strong> The study is scientific in design — randomisation, quantitative measurement, significance testing and documented materials all point that way. Its scientific quality is limited in execution, mainly through fidelity and subjective raters, so its conclusions should be held with moderate confidence: the direction of the effect is credible, the exact size is less certain.</p>
+        <p class="xp-case">Marking guidance: AO1 accurate description of the study's design and measures; AO3 each point must tie a named feature (RCT, Likert data, fidelity, teacher raters, sample, time points) to the scientific criteria (replicability, objectivity, generalisability, validity), ending with a justified judgement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="section" id="s7">
+  <h2>7. Checkpoint</h2>
+  <div class="xp-block">
+    <h4>Q1 · What were the five competencies targeted by YCDI?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Reading, writing, maths, science and art</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Confidence, persistence, organisation, getting along and emotional resilience</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Trust, autonomy, initiative, industry and identity</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q2 · What design did Ashdown and Bernard use?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">A longitudinal study with repeated interviews</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">A randomised controlled trial with a wait-list control group</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">A meta-analysis of existing studies</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q3 · What happened to problem behaviours in the Prep class?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">They fell significantly compared with controls</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">They showed no significant reduction</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">They were not measured</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q4 · Who delivered the YCDI lessons, and with how much training?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Outside experts with a teaching qualification</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">The children's usual classroom teachers, with two hours of training</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">The researchers themselves, in person</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q5 · Why might the teacher ratings be biased?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Teachers never met the children before the study</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Teachers knew which children were in YCDI and what improvement was expected, risking an expectancy effect</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Teachers were not allowed to see the children's work</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+  <div class="xp-block">
+    <h4>Q6 · What is the counter-argument to the teacher-rater weakness?</h4>
+    <div class="xp-controls">
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Teachers forgot the children's behaviour quickly</button>
+      <button class="q-option" data-ok="1" onclick="mcAns(this)">Teachers know the children well and observe them in many situations, unlike outside researchers</button>
+      <button class="q-option" data-ok="0" onclick="mcAns(this)">Parents double-checked every rating themselves</button>
+    </div>
+    <div class="xp-result"></div>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="section" id="s8">
+  <h2>8. Key Terms</h2>
+  <div class="glossary-grid">
+    <div class="keyterm-box"><span class="kt">randomised controlled trial (RCT)</span><br><span class="zh">随机对照试验：参加者被随机分进干预组和对照组，因果推断最硬的设计</span></div>
+    <div class="keyterm-box"><span class="kt">wait-list control group</span><br><span class="zh">等待名单对照组：对照组先等一等，研究结束后同样享受干预，公平且合伦理</span></div>
+    <div class="keyterm-box"><span class="kt">fidelity</span><br><span class="zh">保真度：干预是否按设计原样实施；老师改教案会降低保真度</span></div>
+    <div class="keyterm-box"><span class="kt">self-talk / inner speech</span><br><span class="zh">自我对话／内部言语：心里默默对自己说的话（Vygotsky，YCDI 的理论基础）</span></div>
+    <div class="keyterm-box"><span class="kt">externalising behaviours</span><br><span class="zh">外化行为：用看得见的行动表达负面情绪，如捣乱、攻击、违抗</span></div>
+    <div class="keyterm-box"><span class="kt">internalising behaviours</span><br><span class="zh">内化行为：负面情绪转向自己，如焦虑、抑郁、社交退缩</span></div>
+    <div class="keyterm-box"><span class="kt">hyperactivity</span><br><span class="zh">多动：精力过剩导致的冲动、坐不住、难集中注意</span></div>
+    <div class="keyterm-box"><span class="kt">expectancy effect</span><br><span class="zh">期待效应：评分者知道对方属于哪一组、期待什么结果，打分就不自觉偏向预期</span></div>
+    <div class="keyterm-box"><span class="kt">acculturation stress</span><br><span class="zh">文化适应压力：已适应一种文化的人再接触另一种文化时经历的心理困难</span></div>
+    <div class="keyterm-box"><span class="kt">Likert scale</span><br><span class="zh">李克特量表：对陈述按程度打分（如 0–3 分），产生定量数据</span></div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  var baseFont = 16;
+  window.toggleDarkMode = function () {
+    document.body.classList.toggle('dark');
+    var b = document.getElementById('darkBtn');
+    if (b) { b.textContent = document.body.classList.contains('dark') ? '\u2600\uFE0F Light' : '\ud83c\udf19 Dark'; }
+  };
+  window.adjustFontSize = function (d) {
+    baseFont = Math.max(12, Math.min(22, baseFont + d));
+    document.documentElement.style.fontSize = baseFont + 'px';
+  };
+
+  var links = $$('.sb-item a');
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function spy() {
+    var y = window.scrollY + 120, idx = 0;
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= y) idx = i; }
+    links.forEach(function (a, i) { a.classList.toggle('sb-active', i === idx); });
+  }
+  window.addEventListener('scroll', spy); spy();
+
+  window.addEventListener('scroll', function () {
+    var b = document.getElementById('btt');
+    if (b) { b.classList.toggle('show', window.scrollY > 400); }
+  });
+
+  window.revealAns = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('show');
+  };
+
+  var secWhy = {
+    s0: [
+      [
+        '过头了：情绪和幸福感确实升了，但阅读基本没变，问题行为也只有大班降了。正确答案是第二项。',
+        '正确。社会情绪能力和幸福感两个年级都显著提升；问题行为只有 Grade One 下降；阅读基本没变（只有起点最差的孩子有例外）。',
+        '方向反了：课程确实有效果，只是效果有差别，不是完全没用。'
+      ]
+    ],
+    s7: [
+      ['那是学科列表，不是 YCDI 的五个能力。',
+       '正确。五个能力：自信（Confidence）、坚持（Persistence）、有条理（Organisation）、与人相处（Getting Along）、情绪韧性（Emotional Resilience）。',
+       '信任、自主、主动、勤奋、同一性是 Erikson 的阶段危机，不是 YCDI 的内容。'],
+      ['纵向研究是另一类设计，这个研究不是追踪多年。',
+       '正确。RCT：班级随机分进 YCDI 或对照组，对照组用等待名单设计，研究结束后同样上课。',
+       'Cassibba 那页才是元分析，这个研究是现场试验。'],
+      ['那是 Grade One 的结果，Prep 没有显著下降。',
+       '正确。问题行为的显著下降只出现在 Grade One 的 YCDI 组，Prep 班没有显著变化。',
+       '问题行为前后各测一次，当然有测。'],
+      ['外部专家不参与授课，这恰恰是本研究的应用亮点。',
+       '正确。授课的就是孩子平时的班主任，只接受 2 小时培训——这说明课程可以由普通学校自己实施。',
+       '研究者没有亲自上课，他们只做观察和数据分析。'],
+      ['老师和孩子们朝夕相处，当然认识。',
+       '正确。老师知道谁在 YCDI 组、也知道研究者期待进步，打分可能不自觉偏向预期，这就是期待效应。',
+       '问题不在看不看作品，而在「知道分组 + 知道预期」。'],
+      ['问题不在老师记性。',
+       '正确。老师天天观察孩子、比外部研究者了解得多，所以老师打分同时也有「更懂孩子」这一面。这是「对立论证」的经典例子。',
+       '没有家长复核评分这个环节，这个说法没有依据。']
+    ]
+  };
+
+  window.mcAns = function (btn) {
+    var ok = btn.getAttribute('data-ok') === '1';
+    var group = btn.parentNode;
+    var section = btn.closest('.section');
+    var sid = section ? section.id : '';
+    var sibs = Array.prototype.slice.call(group.querySelectorAll('.q-option'));
+    var groups = Array.prototype.slice.call(section.querySelectorAll('.xp-controls'));
+    var qi = groups.indexOf(group), oi = sibs.indexOf(btn);
+    for (var i = 0; i < sibs.length; i++) { sibs[i].classList.remove('chosen-best', 'chosen-bad'); }
+    btn.classList.add(ok ? 'chosen-best' : 'chosen-bad');
+    var why = 'Re-read the section this question comes from.';
+    var arr = secWhy[sid];
+    if (arr && arr[qi] && typeof arr[qi] === 'string') {
+      why = arr[qi];
+    } else if (arr && arr[qi] && arr[qi][oi]) {
+      why = arr[qi][oi];
+    }
+    var box = (btn.closest('.xp-block') || section).querySelector('.xp-result');
+    if (box) {
+      box.innerHTML = '<p><span class="xp-verdict">' + (ok ? 'Correct.' : 'Not quite.') + '</span> ' + why + '</p>';
+      box.classList.add('show');
+    }
+  };
+})();
+
+/* Socratic sc-ask: progressive reveal */
+(function () {
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.sc-ask-step'));
+  if (!steps.length) return;
+  steps.forEach(function (step, i) {
+    var btn = step.querySelector('.ask-toggle');
+    var hint = document.getElementById(btn ? btn.getAttribute('data-target') : '');
+    if (!btn || !hint) return;
+    btn.addEventListener('click', function () {
+      var open = hint.classList.toggle('show');
+      btn.textContent = open ? '收起提示' : '想好了？看提示 →';
+      if (open && i + 1 < steps.length) {
+        var next = steps[i + 1];
+        next.classList.remove('locked');
+        var nb = next.querySelector('.ask-toggle');
+        if (nb) nb.disabled = false;
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
